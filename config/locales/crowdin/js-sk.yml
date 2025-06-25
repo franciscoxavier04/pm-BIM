@@ -784,6 +784,7 @@ sk:
     autocompleter:
       placeholder: "Type to search"
       notFoundText: "No items found"
+      search: "Search"
       project:
         placeholder: "Select project"
     repositories:
@@ -1139,7 +1140,6 @@ sk:
       current_project_and_all_descendants: "V tomto projekte + podprojektoch"
       current_project: "V tomto projekte"
       recently_viewed: "Recently viewed"
-      search: "Vyhľadávanie"
       title:
         all_projects: "všetky projekty"
         project_and_subprojects: "a všetky podprojekty"

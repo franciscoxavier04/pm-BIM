@@ -529,7 +529,7 @@ ro:
           drag: "Trage și aruncă cartonașele dintr-o listă dată pentru a le reordona sau muta în altă listă. <br> Poți da click pe pictograma (i) din colțul din dreapta sus sau poți face dublu clic pe un card pentru a-i deschide detaliile."
         wp:
           toggler: "Acum să ne uităm la secțiunea <b>Pachet de lucru</b>, care vă oferă o vizualizare mai detaliată a activității dumneavoastră."
-          list: "Acest pachet <b>de lucru</b> oferă o listă a tuturor activităților din proiectul tău, cum ar fi sarcini, jaloane, faze și altele. <br> Pachetele de lucru pot fi create și editate direct din acest punct de vedere. Pentru a accesa detaliile unui anumit pachet de lucru, faceți dublu clic pe rând."
+          list: "Acest pachet <b>de lucru</b> oferă o listă a tuturor activităților din proiectul tău, cum ar fi sarcini, jaloane, faze și altele. <br> Pachetele de lucru pot fi create și editate direct din acest punct de vedere. Pentru a accesa detaliile unui anumit pachet de lucru, fă dublu clic pe rând."
           full_view: "Vizualizarea <b>pentru detaliile pachetului de lucru</b> furnizează toate informațiile relevante referitoare la un anumit pachet de lucru, cum ar fi descrierea, starea, prioritatea, activitățile, dependențele si comentariile."
           back_button: "Utilizează săgeata de întoarcere din colțul din stânga sus pentru a ieși și pentru a reveni la lista pachetelor de lucru."
           create_button: "Butonul <b>Creează</b> va adăuga un nou pachet de lucru la proiectul tău."
@@ -782,6 +782,7 @@ ro:
     autocompleter:
       placeholder: "Tastează pentru a căuta"
       notFoundText: "Niciun articol găsit"
+      search: "Search"
       project:
         placeholder: "Select project"
     repositories:
@@ -1134,7 +1135,6 @@ ro:
       current_project_and_all_descendants: "In acest proiect + subproiecte"
       current_project: "In acest proiect"
       recently_viewed: "Vizualizate recent"
-      search: "Căutare"
       title:
         all_projects: "toate proiectele"
         project_and_subprojects: "si toate subproiectele"

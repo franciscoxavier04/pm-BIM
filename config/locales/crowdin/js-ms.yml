@@ -781,6 +781,7 @@ ms:
     autocompleter:
       placeholder: "Taip untuk cari"
       notFoundText: "Tiada item ditemui"
+      search: "Search"
       project:
         placeholder: "Pilih projek"
     repositories:
@@ -1127,7 +1128,6 @@ ms:
       current_project_and_all_descendants: "Dalam projek ini + subprojek"
       current_project: "Dalam projek ini"
       recently_viewed: "Dilihat baru-baru ini"
-      search: "Cari"
       title:
         all_projects: "semua projek"
         project_and_subprojects: "dan semua subprojek"

@@ -782,6 +782,7 @@ tr:
     autocompleter:
       placeholder: "Aramak için yazın"
       notFoundText: "Hiçbir öge bulunamadı"
+      search: "Search"
       project:
         placeholder: "Proje seçin"
     repositories:
@@ -1131,7 +1132,6 @@ tr:
       current_project_and_all_descendants: "Bu projede + alt projelerde"
       current_project: "Bu projede"
       recently_viewed: "Son görüntülenenler"
-      search: "Ara"
       title:
         all_projects: "tüm projeler"
         project_and_subprojects: "ve tüm alt projeler"

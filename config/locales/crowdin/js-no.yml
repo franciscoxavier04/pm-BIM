@@ -782,6 +782,7 @@
     autocompleter:
       placeholder: "Skriv for å søke"
       notFoundText: "Ingen elementer funnet"
+      search: "Search"
       project:
         placeholder: "Velg prosjekt"
     repositories:
@@ -1131,7 +1132,6 @@
       current_project_and_all_descendants: "I dette prosjektet + underprosjekter"
       current_project: "I dette prosjektet"
       recently_viewed: "Nylig sett"
-      search: "Søk"
       title:
         all_projects: "alle prosjekter"
         project_and_subprojects: "og alle underprosjekter"

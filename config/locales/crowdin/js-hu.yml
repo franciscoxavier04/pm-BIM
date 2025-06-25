@@ -781,6 +781,7 @@ hu:
     autocompleter:
       placeholder: "Gépeljen a kereséshez"
       notFoundText: "Nem található elem"
+      search: "Search"
       project:
         placeholder: "Select project"
     repositories:
@@ -1130,7 +1131,6 @@ hu:
       current_project_and_all_descendants: "Ebben a projektben + alprojektekben"
       current_project: "Ebben a projektben"
       recently_viewed: "Recently viewed"
-      search: "Keresés"
       title:
         all_projects: "minden projekt"
         project_and_subprojects: "az összes alprojektben"

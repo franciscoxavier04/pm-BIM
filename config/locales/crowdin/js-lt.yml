@@ -784,6 +784,7 @@ lt:
     autocompleter:
       placeholder: "Paieškai pradėkite rinkti tekstą"
       notFoundText: "Nieko nerasta"
+      search: "Search"
       project:
         placeholder: "Pasirinkite projektą"
     repositories:
@@ -1139,7 +1140,6 @@ lt:
       current_project_and_all_descendants: "Šiame projekte + subprojektuose"
       current_project: "Šiame projekte"
       recently_viewed: "Neseniai žiūrėtos"
-      search: "Paieška"
       title:
         all_projects: "visi projektai"
         project_and_subprojects: "ir visi subprojektai"

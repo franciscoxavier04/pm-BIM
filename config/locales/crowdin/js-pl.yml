@@ -784,6 +784,7 @@ pl:
     autocompleter:
       placeholder: "Wpisz szukaną frazę"
       notFoundText: "Nie znaleziono elementów"
+      search: "Search"
       project:
         placeholder: "Wybierz projekt"
     repositories:
@@ -1139,7 +1140,6 @@ pl:
       current_project_and_all_descendants: "W tym projekcie + pod projekcie"
       current_project: "W tym projekcie"
       recently_viewed: "Ostatnio wyświetlane"
-      search: "Szukaj"
       title:
         all_projects: "Wszystkie projekty"
         project_and_subprojects: "i wszystkie podprojekty"

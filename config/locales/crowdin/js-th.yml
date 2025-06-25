@@ -781,6 +781,7 @@ th:
     autocompleter:
       placeholder: "Type to search"
       notFoundText: "ไม่พบรายการ "
+      search: "Search"
       project:
         placeholder: "Select project"
     repositories:
@@ -1127,7 +1128,6 @@ th:
       current_project_and_all_descendants: "In this project + subprojects"
       current_project: "In this project"
       recently_viewed: "Recently viewed"
-      search: "ค้นหา"
       title:
         all_projects: "all projects"
         project_and_subprojects: "and all subprojects"

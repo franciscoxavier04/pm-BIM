@@ -782,6 +782,7 @@ ka:
     autocompleter:
       placeholder: "მოსაძებნად აკრიფეთ"
       notFoundText: "ელემენტები ვერ ვიპოვე"
+      search: "Search"
       project:
         placeholder: "აირჩიეთ პროექტი"
     repositories:
@@ -1131,7 +1132,6 @@ ka:
       current_project_and_all_descendants: "In this project + subprojects"
       current_project: "In this project"
       recently_viewed: "Recently viewed"
-      search: "ძებნა"
       title:
         all_projects: "ყველა პროექტი"
         project_and_subprojects: "and all subprojects"

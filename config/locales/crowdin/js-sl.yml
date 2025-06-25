@@ -783,6 +783,7 @@ sl:
     autocompleter:
       placeholder: "Iskalni niz"
       notFoundText: "Ni najdenih elementov"
+      search: "Search"
       project:
         placeholder: "Select project"
     repositories:
@@ -1138,7 +1139,6 @@ sl:
       current_project_and_all_descendants: "V tem projektu + podprojektu"
       current_project: "V tem projektu"
       recently_viewed: "Recently viewed"
-      search: "Išči"
       title:
         all_projects: "Vsi projekti"
         project_and_subprojects: "in vsi podprojekti"

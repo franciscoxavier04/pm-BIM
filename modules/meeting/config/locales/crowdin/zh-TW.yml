@@ -361,7 +361,7 @@ zh-TW:
   text_meeting_empty_description1: "可以點選下幫「增加」來新增項目。 每個項目可以像標題一樣簡單，但您也可以加上其他詳細信息，例如開會時間與備註。"
   text_meeting_empty_description2: '你也可以引用到現有工作套件。當您這樣做時，相關的紀錄將自動呈現於於工作套件的「會議」標籤。'
   label_meeting_empty_action: "新增議程項目"
-  label_meeting_actions: "會議行動"
+  label_meeting_actions: "會議任務"
   label_meeting_edit_title: "編輯會議標題"
   label_meeting_delete: "刪除會議"
   label_meeting_created_by: "建立者"

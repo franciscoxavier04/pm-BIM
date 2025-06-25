@@ -1004,18 +1004,18 @@ ro:
         custom_field_section: Secțiune
       project/phase:
         date_range: "Interval calendaristic"
-        definition: "Definition"
-        duration: "Duration"
-        start_date: "Start date"
-        start_date_caption: "Follows the previous phase."
-        finish_date: "Finish date"
+        definition: "Definiţie"
+        duration: "Durată"
+        start_date: "Dată început"
+        start_date_caption: "Urmează faza anterioară."
+        finish_date: "Dată finalizare"
       project/phase_definition:
         name: "Nume"
         color: "Culoare"
-        start_gate: "Start phase gate"
-        start_gate_name: "Start phase gate name"
-        finish_gate: "Finish phase gate"
-        finish_gate_name: "Finish phase gate name"
+        start_gate: "Înecput poartă fază"
+        start_gate_name: "Nume început poartă fază"
+        finish_gate: "Final poartă fază"
+        finish_gate_name: "Nume final poartă fază"
       query:
         sums: "Sums"
         columns: "Coloane"
@@ -1333,11 +1333,11 @@ ro:
         project/phase:
           attributes:
             start_date:
-              must_be_before_finish_date: "must be before the finish date."
-              non_continuous_dates: "can't be earlier than the previous phase's end date."
+              must_be_before_finish_date: "trebuie să fie înainte de data finală."
+              non_continuous_dates: "nu poate fi mai devreme de data de încheiere a fazei anterioare."
             finish_date:
-              must_be_after_start_date: "must be after the start date."
-          cannot_be_a_non_working_day: "can't be a non-working day."
+              must_be_after_start_date: "trebuie să fie după dată început."
+          cannot_be_a_non_working_day: "nu poate fi o zi nelucrătoare."
         query:
           attributes:
             project:
@@ -1656,14 +1656,14 @@ ro:
       wiki_edit: "Wiki"
       work_package: "Pachete de lucru"
     project_phase:
-      activated: "Activat"
-      added_date: "set to %{date}"
-      changed_date: "changed from %{from} to %{to}"
-      deactivated: "Dezactivat"
-      deleted_project_phase: "Deleted project phase"
-      phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      activated: "activat"
+      added_date: "setează la %{date}"
+      changed_date: "schimbat de la %{from} la %{to}"
+      deactivated: "dezactivat"
+      deleted_project_phase: "Fază proiect ștearsă"
+      phase_and_both_gates: "%{phase_message}. %{start_gate_message}, și %{finish_gate_message}"
       phase_and_one_gate: "%{phase_message}. %{gate_message}"
-      removed_date: "date deleted %{date}"
+      removed_date: "dată ștearsă %{date}"
   #common attributes of all models
   attributes:
     active: "Activ"
@@ -3485,7 +3485,7 @@ ro:
   #Default format for numbers
   number:
     format:
-      delimiter: ""
+      delimiter: ","
       precision: 3
       separator: ","
     human:
@@ -3636,7 +3636,7 @@ ro:
     filters:
       project_phase: "Fază proiect: %{phase}"
       project_phase_any: "Fază proiect: Oricare"
-      project_phase_gate: "Project phase gate: %{gate}"
+      project_phase_gate: "Poartă fază proiect: %{gate}"
     identifier:
       warning_one: Participanții la proiect vor trebui să mute arhivele proiectului.
       warning_two: Legăturile existente la acest proiect nu vor mai funcționa.
@@ -4041,21 +4041,21 @@ ro:
       heading: "Ciclul de viață proiect"
       heading_description: "Ciclul de viață al proiectului definește fazele proiectului care pot fi utilizate pentru planificarea proiectului și vor apărea în pagina de ansamblu a fiecărui proiect. Aceste atribute pot fi activate sau dezactivate, dar nu pot fi reordonate la nivel de proiect."
       label_add: "Adaugă"
-      label_add_description: "Add project phase definition"
+      label_add_description: "Adaugă definiție fază proiect"
       filter:
-        label: "Search project phase"
-      section_header: "Phases"
-      non_defined: "No phases are currently defined."
-      phase_gates: "Phase gates"
+        label: "Caută fază proiect"
+      section_header: "Faze"
+      non_defined: "Nicio fază nu este definită."
+      phase_gates: "Porți fază"
       new:
-        description: "Changes to this project phase will be reflected in all projects where it is enabled."
-        heading: "New phase"
-      both_gate: "Start and finish gate"
-      no_gate: "No gate"
-      start_gate: "Start gate"
-      start_gate_caption: "Add a gate with the start date of the phase"
-      finish_gate: "Finish gate"
-      finish_gate_caption: "Add a gate with the end date of the phase"
+        description: "Modificările aduse acestei faze de proiect se vor reflecta în toate proiectele în care aceasta este activată."
+        heading: "Fază nouă"
+      both_gate: "Început și final poartă"
+      no_gate: "Fără poartă"
+      start_gate: "Poartă început"
+      start_gate_caption: "Adăugați o poartă cu data de începere a fazei"
+      finish_gate: "Poartă final"
+      finish_gate_caption: "Adăugă o poartă cu data de final a fazei"
     projects:
       missing_dependencies: "Project module %{module} was checked which depends on %{dependencies}. You need to check these dependencies as well."
       section_new_projects: "Setări pentru proiecte noi"

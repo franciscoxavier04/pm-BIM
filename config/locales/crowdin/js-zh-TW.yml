@@ -780,6 +780,7 @@ zh-TW:
     autocompleter:
       placeholder: "搜尋"
       notFoundText: "找不到任何項目"
+      search: "Search"
       project:
         placeholder: "選取專案"
     repositories:
@@ -1126,7 +1127,6 @@ zh-TW:
       current_project_and_all_descendants: "目前專案和子專案"
       current_project: "目前專案"
       recently_viewed: "最近檢視"
-      search: "搜尋"
       title:
         all_projects: "所有專案"
         project_and_subprojects: "含子專案"

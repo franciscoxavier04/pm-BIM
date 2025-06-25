@@ -3444,7 +3444,7 @@ fil:
   #Default format for numbers
   number:
     format:
-      delimiter: ""
+      delimiter: ","
       precision: 0
       separator: "."
     human:

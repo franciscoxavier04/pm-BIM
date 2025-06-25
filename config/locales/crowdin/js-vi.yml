@@ -781,6 +781,7 @@ vi:
     autocompleter:
       placeholder: "Gõ để tìm kiếm"
       notFoundText: "Không tìm thấy mục nào"
+      search: "Search"
       project:
         placeholder: "Chọn dự án"
     repositories:
@@ -1127,7 +1128,6 @@ vi:
       current_project_and_all_descendants: "Trong dự án này + các dự án con"
       current_project: "Trong dự án này"
       recently_viewed: "Đã xem gần đây"
-      search: "Tìm kiếm"
       title:
         all_projects: "tất cả các dự án"
         project_and_subprojects: "và tất cả các dự án con"

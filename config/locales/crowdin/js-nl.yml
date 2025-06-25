@@ -782,6 +782,7 @@ nl:
     autocompleter:
       placeholder: "Typ om te zoeken"
       notFoundText: "Geen items gevonden"
+      search: "Search"
       project:
         placeholder: "Select project"
     repositories:
@@ -1131,7 +1132,6 @@ nl:
       current_project_and_all_descendants: "In dit project + subprojecten"
       current_project: "In dit project"
       recently_viewed: "Recent bekeken"
-      search: "Zoeken"
       title:
         all_projects: "alle projecten"
         project_and_subprojects: "en alle subprojecten"

@@ -100,12 +100,12 @@ de:
         upgrade: "Jetzt Upgrade durchführen"
         contact: "Kontaktieren Sie uns für eine Demo"
       status:
-        expired: "Expired"
-        expiring_soon: "Expiring soon"
-        in_grace_period: "In grace period"
-        invalid_domain: "Invalid domain"
-        not_active: "Not active"
-        trial: "Trial"
+        expired: "Abgelaufen"
+        expiring_soon: "Läuft bald ab"
+        in_grace_period: "In der Kulanzzeit"
+        invalid_domain: "Ungültige Domain"
+        not_active: "Nicht aktiv"
+        trial: "Probezeitraum"
     jemalloc_allocator: Jemalloc Speicher allocator
     journal_aggregation:
       explanation:
@@ -919,10 +919,10 @@ de:
       enterprise_token:
         starts_at: "Aktiv seit"
         subscriber: "Abonnent"
-        subscription: "Subscription"
+        subscription: "Abonnement"
         plan: "Plan"
         encoded_token: "Enterprise edition Support Token"
-        active_user_count_restriction: "Active users"
+        active_user_count_restriction: "Aktive Nutzer"
       enterprise_trial:
         company: "Unternehmen"
       grids/grid:
@@ -1084,21 +1084,21 @@ de:
         password_confirmation: "Bestätigung"
         consented_at: "Eingewilligt am"
       user_preference:
-        header_look_and_feel: "Look and feel"
-        header_alerts: "Alerts"
-        button_update_look_and_feel: "Update look and feel"
-        button_update_alerts: "Update alerts"
-        comments_sorting: "Display work package activity sorted by"
-        disable_keyboard_shortcuts: "Disable keyboard shortcuts"
+        header_look_and_feel: "Erscheinungsbild und Bedienverhalten"
+        header_alerts: "Warnmeldungen"
+        button_update_look_and_feel: "Erscheinungsbild und Bedienverhalten aktualisieren"
+        button_update_alerts: "Warnmeldungen aktualisieren"
+        comments_sorting: "Arbeits­paket­aktivität anzeigen, sortiert nach"
+        disable_keyboard_shortcuts: "Tastaturkürzel deaktivieren"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
+          Sie können die standardmäßigen <a href="%{href}">Tastenkombinationen</a> deaktivieren, wenn Sie einen Screenreader verwenden oder unbeabsichtigtes Auslösen einer Aktion durch eine Tastenkombination vermeiden möchten.
         dismissed_enterprise_banners: "Ausgeblendete Unternehmensbanner"
         impaired: "Für die barrierefreie Nutzung optimierte Oberfläche"
         auto_hide_popups: "Benachrichtigungen erfolgreicher Aktionen automatisch ausblenden"
         warn_on_leaving_unsaved: "Beim Verlassen einer Arbeitspaket-Seite mit ungespeichertem Text warnen"
-        theme: "Colour mode"
+        theme: "Farbmodus"
         time_zone: "Zeitzone"
-        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. Please select Light mode for full custom theme support."
+        mode_guideline: "Einige Modi überschreiben benutzerdefinierte Theme-Farben zur Verbesserung von Barrierefreiheit und Lesbarkeit. Bitte wählen Sie den Hellmodus für die vollständige Unterstützung Ihres benutzerdefinierten Themes."
         daily_reminders: "Tägliche Erinnerungen"
         workdays: "Arbeitstage"
       version:
@@ -1265,7 +1265,7 @@ de:
           general_consent: "Bitte akzeptieren Sie die Nutzungs- und Vertragsbedingungen."
         enterprise_token:
           unreadable: "kann nicht gelesen werden. Ist dies ein Enterprise edition Support Token?"
-          already_added: "This token has already been added."
+          already_added: "Dieser Token wurde bereits hinzugefügt."
         grids/grid:
           overlaps: "überlappen."
           outside: "ist außerhalb des Rasters."
@@ -2062,7 +2062,7 @@ de:
       plan_title: "Enterprise %{plan} Add-on"
       plan_name: "%{plan} Enterprise Plan"
       plan_text_html: "Beginnend mit dem %{plan_name} verfügbar."
-      unlimited: "Unlimited"
+      unlimited: "Unbegrenzt"
       already_have_token: >
         Haben Sie bereits ein Token? Fügen Sie es über den Button unten hinzu, um zum gebuchten Enterprise-Plan zu wechseln.
       hide_banner: "Dieses Banner ausblenden"
@@ -2072,15 +2072,15 @@ de:
       baseline_comparison:
         description: An dieser Liste vorgenommene Änderungen seit einem beliebigen Zeitpunkt in der Vergangenheit hervorheben.
       benefits:
-        description: "What are the benefits of the Enterprise on-premises edition?"
-        high_security: "Security features"
-        high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
-        installation: "Installation support"
-        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
-        premium_features: "Enterprise add-ons"
-        premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
-        professional_support: "Professional support"
-        professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
+        description: "Was sind die Vorteile der Enterprise On-premises Edition?"
+        high_security: "Sicherheitsfunktionen"
+        high_security_text: "Single Sign on (SAML, OpenID Connect, CAS), LDAP Gruppen."
+        installation: "Installations-Support"
+        installation_text: "Erfahrene Software-Ingenieure führen Sie durch den gesamten Installations- und Einrichtungsprozess in Ihrer eigenen Infrastruktur."
+        premium_features: "Enterprise Add-ons"
+        premium_features_text: "Agile Boards, benutzerdefinierte Farben und Logo, Graphen, intelligente Workflows mit benutzerdefinierten Aktionen, Volltextsuche für Anhänge von Arbeitspaketen und Mehrfachauswahl benutzerdefinierter Felder."
+        professional_support: "Professioneller Support"
+        professional_support_text: "Sie bekommen zuverlässigen und persönlichen Support von Experten, die sich mit dem Einsatz von OpenProject in geschäftskritischen Umgebungen auskennen."
       work_package_subject_generation:
         description: "Erstellen Sie automatisch generierte Betreffe mit referenzierten Attributen und Text."
       customize_life_cycle:
@@ -2777,7 +2777,7 @@ de:
   label_information_plural: "Information"
   label_installation_guides: "Installationsanleitungen"
   label_integer: "Zahl"
-  label_interface: "Interface"
+  label_interface: "Benutzeroberfläche"
   label_internal: "Intern"
   label_introduction_video: "Einführungsvideo"
   label_invite_user: "Nutzer einladen"
@@ -3436,7 +3436,7 @@ de:
   #Default format for numbers
   number:
     format:
-      delimiter: ""
+      delimiter: ","
       precision: 2
       separator: ","
     human:
@@ -4302,7 +4302,7 @@ de:
     reminders:
       label_remind_at: "Datum"
       note_placeholder: "Warum richten Sie diese Erinnerung ein?"
-      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
+      create_success_message: "Erinnerung erfolgreich gesetzt. Sie erhalten eine Benachrichtigung für dieses Arbeitspaket am %{reminder_time}."
       success_update_message: "Erinnerung aktualisiert erfolgreich."
       success_deletion_message: "Erinnerung erfolgreich gelöscht."
   sharing:
