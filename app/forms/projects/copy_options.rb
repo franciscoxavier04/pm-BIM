@@ -42,7 +42,5 @@ module Projects
 
     attribute :dependencies, array: true, default: all_dependencies.keys
     attribute :send_notifications, :boolean, default: false
-
-    validates :dependencies, inclusion: { in: all_dependencies.keys }
   end
 end
