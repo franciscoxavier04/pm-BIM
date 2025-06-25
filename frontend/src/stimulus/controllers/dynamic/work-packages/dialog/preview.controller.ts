@@ -78,9 +78,14 @@ export abstract class DialogPreviewController extends Controller {
         Idiomorph.morph(currentElement, newElement, {
           ignoreActiveValue: this.ignoreActiveValueWhenMorphing(),
           callbacks: {
-            beforeNodeMorphed: (oldNode:Element) => {
-              // In case the element is an OpenProject custom dom element, morphing is prevented.
-              return !oldNode.tagName?.startsWith('OPCE-');
+            beforeNodeMorphed: (oldNode:Element, newNode:Element) => {
+              // In case the element is an OpenProject custom dom element, prevent morphing and
+              // replace the angular tag with the new version.
+              if (oldNode.tagName?.startsWith('OPCE-')) {
+                oldNode.replaceWith(newNode);
+                return false;
+              }
+              return true;
             },
           },
         });

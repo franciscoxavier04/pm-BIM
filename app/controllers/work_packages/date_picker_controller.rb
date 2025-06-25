@@ -108,8 +108,7 @@ class WorkPackages::DatePickerController < ApplicationController
              touched_field_map:,
              date_mode:
            },
-           status:,
-           layout: false
+           status:
   end
 
   def focused_field
