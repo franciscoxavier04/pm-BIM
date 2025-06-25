@@ -26,31 +26,50 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { Injectable } from '@angular/core';
-import * as URI from 'urijs';
-import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
-import { HalResource } from 'core-app/features/hal/resources/hal-resource';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+} from '@angular/core';
+import { I18nService } from 'core-app/core/i18n/i18n.service';
 
-@Injectable({ providedIn: 'root' })
+export type BreadcrumbItem =
+  | { href:string; text:string }
+  | string;
 
-export class HierarchyQueryLinkHelperService {
+@Component({
+  templateUrl: './op-breadcrumbs.component.html',
+  selector: 'op-breadcrumbs',
+  styleUrls: ['./op-breadcrumbs.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class OpBreadcrumbsComponent {
+  @Input() items:BreadcrumbItem[] = [];
+  @Input() lastItemSection:string | null = null;
+
   constructor(
-    private pathHelper:PathHelperService,
-  ) {}
+    readonly I18n:I18nService,
+  ) { }
 
-  public addHref(link:HTMLAnchorElement, resource:HalResource):void {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    if (resource && resource.id) {
-      const wpID = resource.id.toString();
-      const props = {
-        c: ['id', 'subject', 'type', 'status', 'estimatedTime', 'remainingTime', 'percentageDone'],
-        hi: true,
-        is: true,
-        f: [{ n: 'parent', o: '=', v: [wpID] }],
-      };
-      link.href = URI(this.pathHelper.workPackagesPath(null))
-        .query({ query_props: JSON.stringify(props) })
-        .toString();
+  text = {
+    breadcrumb: this.I18n.t('js.breadcrumb'),
+  };
+
+  isLink(item:BreadcrumbItem):item is { href:string; text:string } {
+    return typeof item !== 'string' && 'href' in item && 'text' in item;
+  }
+
+  getText(item:BreadcrumbItem):string {
+    if (this.isLink(item)) {
+      return item.text;
     }
+    if (typeof item === 'string') {
+      return item;
+    }
+    return '';
+  }
+
+  getHref(item:BreadcrumbItem):string | null {
+    return this.isLink(item) ? item.href : null;
   }
 }
