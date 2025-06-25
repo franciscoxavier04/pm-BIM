@@ -29,8 +29,6 @@
 # ++
 
 class WorkPackages::DatePickerController < ApplicationController
-  include OpTurbo::ComponentStream
-
   ERROR_PRONE_ATTRIBUTES = %i[start_date
                               due_date
                               duration].freeze
