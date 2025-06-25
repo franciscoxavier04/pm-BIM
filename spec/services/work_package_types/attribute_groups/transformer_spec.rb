@@ -48,12 +48,12 @@ RSpec.describe WorkPackageTypes::AttributeGroups::Transformer do
       let(:raw_groups) do
         [
           {
-            "name" => "Custom",
-            "key" => "custom",
-            "type" => "attribute",
-            "attributes" => [
-              { "key" => "custom_field_1" },
-              { "key" => "custom_field_2" }
+            name: "Custom",
+            key: "custom",
+            type: "attribute",
+            attributes: [
+              { key: "custom_field_1" },
+              { key: "custom_field_2" }
             ]
           }
         ]
@@ -68,9 +68,9 @@ RSpec.describe WorkPackageTypes::AttributeGroups::Transformer do
       let(:raw_groups) do
         [
           {
-            "name" => "General Info",
-            "type" => "attribute",
-            "attributes" => [{ "key" => "subject" }]
+            name: "General Info",
+            type: "attribute",
+            attributes: [{ key: "subject" }]
           }
         ]
       end

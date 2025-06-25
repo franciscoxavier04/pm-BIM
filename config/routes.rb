@@ -146,6 +146,8 @@ Rails.application.routes.draw do
       put :subject_configuration,
           controller: "work_package_types/subject_configuration_tab",
           action: "update_subject_configuration"
+
+      resource :form_configuration, only: %i[edit update], controller: "work_package_types/form_configuration_tab"
     end
 
     resources :pdf_export_template, only: %i[],

@@ -29,29 +29,43 @@
 #++
 
 module WorkPackageTypes
-  class UpdateService < ::BaseServices::Update
-    protected
+  class FormConfigurationTabController < ApplicationController
+    include PaginationHelper
 
-    def instance_class = Type
+    layout "admin"
 
-    def validate_params(params)
-      # Only set attribute groups when it exists (Regression #28400)
-      set_attribute_groups(params) if params[:attribute_groups]
+    before_action :require_admin
+    before_action :find_type
 
-      super
+    TAB_NAME = "form_configuration"
+
+    def edit
+      @tab = TAB_NAME
+    end
+
+    def update
+      result = WorkPackageTypes::UpdateService
+        .new(user: current_user, model: @type, contract_class: UpdateFormConfigurationContract)
+        .call(permitted_type_params)
+
+      if result.success?
+        redirect_to edit_form_configuration_path(@type), notice: t(:notice_successful_update)
+      else
+        render :edit, status: :unprocessable_entity
+      end
     end
 
     private
 
-    def default_contract_class = UpdateSettingsContract
+    def find_type
+      @type = ::Type.includes(:projects, :custom_fields).find(params[:id])
+      show_error_not_found unless @type
+    end
 
-    def set_attribute_groups(params)
-      if params[:attribute_groups].empty?
-        model.reset_attribute_groups
-      else
-        model.attribute_groups = AttributeGroups::Transformer.new(groups: params[:attribute_groups], user: user).call
-        params.delete(:attribute_groups)
-      end
+    def permitted_type_params
+      # having to call #to_unsafe_h as a query hash the attribute_groups
+      # parameters would otherwise still be an ActiveSupport::Parameter
+      permitted_params.type.to_unsafe_h
     end
   end
 end

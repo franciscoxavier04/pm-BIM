@@ -53,8 +53,8 @@ module WorkPackageTypes
       attr_reader :groups, :user
 
       def transform_attribute_group(group)
-        name = group["key"]&.to_sym || group["name"]
-        attributes = group["attributes"].pluck("key")
+        name = group[:key]&.to_sym || group[:name]
+        attributes = group[:attributes].pluck(:key)
 
         [name, attributes]
       end
