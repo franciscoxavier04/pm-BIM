@@ -74,8 +74,8 @@ export abstract class DialogPreviewController extends Controller {
     // caption and validation message unaccessible for screen readers and other
     // assistive technologies. This is why morph cannot be used here.
     this.frameMorphRenderer = (event:CustomEvent<TurboBeforeFrameRenderEventDetail>) => {
-      const oldFrame = event.srcElement as HTMLTurboFrameElement;
-      const requestUrl = new URL(oldFrame.src || '');
+      const target = event.target as HTMLTurboFrameElement;
+      const requestUrl = new URL(target.src || '', window.location.origin);
       // Do not replace the angular datepicker unless the schedule_manually flag is changed.
       const replaceAngularTags = requestUrl.searchParams.has('schedule_manually');
 
