@@ -552,7 +552,6 @@ RSpec.describe "Custom actions", :js, with_ee: %i[custom_actions] do
 
   context "with a multi_user field (Bug#64981)" do
     it "saves when a user is assigned to the custom field" do
-      # login_as(user)
       index_ca_page.visit!
 
       new_ca_page = index_ca_page.new
