@@ -28,12 +28,34 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class BlockNoteEditor < ApplicationComponent
-  attr_reader :input_name, :value
+module Primer
+  module OpenProject
+    module Forms
+      module Dsl
+        class BlockNoteEditorInput < Primer::Forms::Dsl::Input
+          attr_reader :name, :label, :value
 
-  def initialize(input_name, value, **)
-    super(**)
-    @input_name = input_name
-    @value = value
+          def initialize(name:, label:, value:, **system_arguments)
+            @name = name
+            @label = label
+            @value = value
+
+            super(**system_arguments)
+          end
+
+          def to_component
+            BlockNoteEditor.new(input: self, value:)
+          end
+
+          def type
+            :block_note_editor
+          end
+
+          def focusable?
+            true
+          end
+        end
+      end
+    end
   end
 end

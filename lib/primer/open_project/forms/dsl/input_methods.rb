@@ -25,8 +25,8 @@ module Primer
             add_input AutocompleterInput.new(builder:, form:, **decorate_options(**), &)
           end
 
-          def pattern_input(**, &)
-            add_input PatternInput.new(builder:, form:, **decorate_options(**), &)
+          def block_note_editor(**, &)
+            add_input BlockNoteEditorInput.new(builder:, form:, **decorate_options(**), &)
           end
 
           def color_select_list(**, &)
@@ -35,6 +35,10 @@ module Primer
 
           def html_content(**, &)
             add_input HtmlContentInput.new(builder:, form:, **, &)
+          end
+
+          def pattern_input(**, &)
+            add_input PatternInput.new(builder:, form:, **decorate_options(**), &)
           end
 
           def project_autocompleter(**, &)

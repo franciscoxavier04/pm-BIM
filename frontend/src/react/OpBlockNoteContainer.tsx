@@ -35,7 +35,7 @@ import { dummyBlockSpec, getDefaultOpenProjectSlashMenuItems, openProjectWorkPac
 import { useEffect, useState } from "react";
 
 interface OpBlockNoteContainerProps {
-  inputName?: string;
+  inputField: HTMLInputElement;
   inputText?: string;
 }
 
@@ -47,9 +47,8 @@ const schema = BlockNoteSchema.create({
   },
 });
 
-export default function OpBlockNoteContainer({ inputName, inputText }: OpBlockNoteContainerProps) {
+export default function OpBlockNoteContainer({ inputField, inputText }: OpBlockNoteContainerProps) {
   const [isLoading, setIsLoading] = useState(true);
-  const [editorContent, setEditorContent] = useState(inputText || "");
 
   const editor = useCreateBlockNote({ schema });
   type EditorType = typeof editor;
@@ -65,7 +64,6 @@ export default function OpBlockNoteContainer({ inputName, inputText }: OpBlockNo
     async function loadInitialContent() {
       const blocks = await editor.tryParseMarkdownToBlocks(inputText || "");
       editor.replaceBlocks(editor.document, blocks);
-      setEditorContent(await editor.blocksToMarkdownLossy());
       setIsLoading(false);
     }
     loadInitialContent();
@@ -73,14 +71,13 @@ export default function OpBlockNoteContainer({ inputName, inputText }: OpBlockNo
 
   return (
     <>
-      <input type="hidden" name={inputName} value={editorContent} />
       {isLoading ? <div>Loading...</div>
         :
         <BlockNoteView
           editor={editor}
           onChange={async (editor) => {
             const content = await editor.blocksToMarkdownLossy();
-            setEditorContent(content);
+            inputField.value = content;
           }}
         >
           <SuggestionMenuController
