@@ -11,7 +11,7 @@ module PDFExportSpecUtils
   def label_title(column_name)
     if column_name.start_with?("cf_")
       id = column_name.delete_prefix("cf_").to_i
-      return ::CustomField.find_by(id:).name
+      return ::CustomField.find(id).name
     end
     WorkPackage.human_attribute_name(column_name)
   end
