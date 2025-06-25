@@ -40,7 +40,7 @@ RSpec.describe EnterpriseEdition::TrialTeaserComponent, type: :component do
   end
 
   before do
-    allow(EnterpriseToken).to receive(:active_trial_tokens).and_return([mock_token])
+    allow(EnterpriseToken).to receive(:active_trial_token).and_return(mock_token)
   end
 
   context "for an admin user" do

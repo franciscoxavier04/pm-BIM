@@ -1355,6 +1355,7 @@ en:
           failed_to_create: "Trial could not be created (%{status})"
           general_consent: "Please accept the terms and conditions."
         enterprise_token:
+          only_one_trial: "Only one trial token can be active. Please delete the previous trial token before adding another."
           unreadable: "can't be read. Are you sure it is a support token?"
           already_added: "This token has already been added."
         grids/grid:
