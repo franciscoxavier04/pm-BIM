@@ -34,15 +34,17 @@ import { createRoot } from 'react-dom/client';
 import OpBlockNoteContainer from 'react/OpBlockNoteContainer';
 
 export default class extends Controller {
-  static targets = ['blockNoteEditor'];
+  static targets = [
+    'blockNoteEditor',
+    'blockNoteInputField',
+  ];
   static values = {
-    inputName: String,
     inputText: String,
   };
 
-  declare readonly blockNoteEditorTarget:HTMLElement;
-  declare readonly inputNameValue:string;
-  declare readonly inputTextValue:string;
+  declare readonly blockNoteEditorTarget: HTMLElement;
+  declare readonly blockNoteInputFieldTarget: HTMLInputElement;
+  declare readonly inputTextValue: string;
 
   connect() {
     const root = createRoot(this.blockNoteEditorTarget);
@@ -51,7 +53,7 @@ export default class extends Controller {
 
   BlockNoteReactContainer() {
     return React.createElement(OpBlockNoteContainer, {
-      inputName: this.inputNameValue,
+      inputField: this.blockNoteInputFieldTarget,
       inputText: this.inputTextValue,
     });
   }
