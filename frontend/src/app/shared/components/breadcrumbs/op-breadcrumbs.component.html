@@ -9,17 +9,21 @@
       >
         <ng-container *ngIf="!last">
           <ng-container *ngIf="isLink(item); else plainText">
-            <a [href]="item.href" target="_self">{{ item.text }}</a>
+            <a [href]="item.href" target="_top">{{ item.text }}</a>
           </ng-container>
-          <ng-template #plainText>
-            <span>{{ item }}</span>
-          </ng-template>
+            <ng-template #plainText>
+                <a class="op-breadcrumbs--text"
+                   href="#"
+                   target="_top">
+                    {{ item }}
+                </a>
+            </ng-template>
         </ng-container>
         <ng-container *ngIf="last">
-          <a
+          <a href="#"
             aria-current="page"
             class="op-breadcrumbs--current"
-            tabindex="0"
+             target="_self"
           >
             <ng-container *ngIf="lastItemSection">
               <span class="op-breadcrumbs--section">{{ lastItemSection }}:</span>
@@ -35,7 +39,7 @@
   <nav [attr.aria-label]="text.breadcrumb" class="hidden-for-desktop">
     <div class="op-breadcrumbs--mobile" *ngIf="items.length > 1">
       <ng-container *ngIf="getHref(items[items.length - 2]) as href">
-        <a class="op-breadcrumbs--back" [href]="href" target="_self">
+        <a class="op-breadcrumbs--back" [href]="href" target="_top">
           <svg arrow-left-icon size="small"></svg>
           {{ getText(items[items.length - 2]) }}
         </a>
