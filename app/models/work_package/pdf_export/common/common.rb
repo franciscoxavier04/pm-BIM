@@ -361,4 +361,17 @@ module WorkPackage::PDFExport::Common::Common
       end
     end
   end
+
+  def get_cf_link_cell(custom_url)
+    make_link_href_cell(custom_url.to_s, custom_url.to_s)
+  end
+
+  def get_value_cell_by_column(work_package, column_name, format_subject)
+    value = get_column_value(work_package, column_name)
+    return get_cf_link_cell(value) if value.is_a?(::Exports::Formatters::LinkFormatter)
+    return get_id_column_cell(work_package, value) if column_name == :id
+    return get_subject_column_cell(work_package, value) if format_subject && column_name == :subject
+
+    escape_tags(value)
+  end
 end
