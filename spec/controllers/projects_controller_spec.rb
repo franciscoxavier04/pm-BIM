@@ -181,40 +181,41 @@ RSpec.describe ProjectsController do
       let(:template) { create(:template_project) }
 
       before do
-        copy_service = instance_double(Projects::EnqueueCopyService, call: service_result)
+        copy_service = instance_double(Projects::EnqueueCopyService)
 
         allow(Projects::EnqueueCopyService)
-          .to receive(:new)
-                .with(user: admin, model: template)
-                .and_return(copy_service)
+         .to receive(:new)
+               .with(user: admin, model: template)
+               .and_return(copy_service)
+
+        allow(copy_service)
+          .to receive(:call)
+              .with(target_project_params: { "name" => name }, only: [], send_notifications: false)
+              .and_return(service_result)
+
+        post :create, params: {
+          template_id: template.id,
+          project: { name: },
+          copy_options: { dependencies: [""], send_notifications: false } # emulating empty dependencies array
+        }
       end
 
       context "when service call succeeds" do
+        let(:name) { "Copied project" }
         let(:job) { CopyProjectJob.new }
         let(:service_result) { ServiceResult.success(result: job) }
 
         it "redirects to job status", :aggregate_failures do
-          post :create, params: {
-            template_id: template.id,
-            project: { name: "New Project" },
-            copy_options: { dependencies: [], send_notifications: false }
-          }
-
           expect(response).to redirect_to job_status_path(job.job_id)
         end
       end
 
       context "when service call fails" do
+        let(:name) { "" }
         let(:project) { Project.new }
         let(:service_result) { ServiceResult.failure(result: project, message: "") }
 
         it "renders new template with errors", :aggregate_failures do
-          post :create, params: {
-            template_id: template.id,
-            project: { name: "" },
-            copy_options: { dependencies: [], send_notifications: false }
-          }
-
           expect(response).not_to be_successful
           expect(response).to have_http_status :unprocessable_entity
           expect(assigns(:new_project)).to be_a_new(Project)
@@ -346,40 +347,41 @@ RSpec.describe ProjectsController do
     let(:project) { create(:project, identifier: "blog") }
 
     before do
-      copy_service = instance_double(Projects::EnqueueCopyService, call: service_result)
+      copy_service = instance_double(Projects::EnqueueCopyService)
 
       allow(Projects::EnqueueCopyService)
        .to receive(:new)
              .with(user: admin, model: project)
              .and_return(copy_service)
+
+      allow(copy_service)
+        .to receive(:call)
+            .with(target_project_params: { "name" => name }, only: [], send_notifications: false)
+            .and_return(service_result)
+
+      post :copy, params: {
+        id: project.identifier,
+        project: { name: },
+        copy_options: { dependencies: [""], send_notifications: false } # emulating empty dependencies array
+      }
     end
 
     context "when service call succeeds" do
+      let(:name) { "Copied project" }
       let(:job) { CopyProjectJob.new }
       let(:service_result) { ServiceResult.success(result: job) }
 
       it "redirects to job status" do
-        post :copy, params: {
-          id: project.identifier,
-          project: { name: "Copied project" },
-          copy_options: { dependencies: [], send_notifications: false }
-        }
-
         expect(response).to redirect_to job_status_path(job.job_id)
       end
     end
 
     context "when service call fails" do
+      let(:name) { "" }
       let(:target_project) { Project.new }
       let(:service_result) { ServiceResult.failure(result: target_project, message: "") }
 
       it "renders copy_form template with errors", :aggregate_failures do
-        post :copy, params: {
-          id: project.identifier,
-          project: { name: "" },
-          copy_options: { dependencies: [], send_notifications: false }
-        }
-
         expect(response).not_to be_successful
         expect(response).to have_http_status :unprocessable_entity
         expect(assigns(:target_project)).to be_a_new(Project)

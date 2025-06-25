@@ -31,6 +31,9 @@
 module Projects
   class CopyOptionsForm < ApplicationForm
     form do |f|
+      # Primer, unlike Rails' check_box helper, does not render this auxilary hidden field for us.
+      f.hidden name: "copy_options[dependencies][]", value: "", scope_name_to_model: false
+
       f.check_box_group(name: :dependencies, label: I18n.t("js.project.copy.copy_options")) do |group|
         CopyOptions.all_dependencies.each do |value, label|
           group.check_box label:, value:

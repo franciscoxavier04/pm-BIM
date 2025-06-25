@@ -42,6 +42,10 @@ RSpec.describe Projects::CopyOptionsForm, type: :forms do
   end
 
   describe "dependencies" do
+    it "renders auxilary hidden field" do
+      expect(page).to have_field "copy_options[dependencies][]", type: "hidden", with: ""
+    end
+
     include_examples "rendering dependency checkbox", "Boards"
     include_examples "rendering dependency checkbox", "File storages: Project folders"
     include_examples "rendering dependency checkbox", "File storages"
