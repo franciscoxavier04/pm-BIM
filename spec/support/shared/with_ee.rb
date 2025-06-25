@@ -59,6 +59,11 @@ RSpec.configure do |config|
       enterprise_token = EnterpriseToken.new
       allow(enterprise_token).to receive_messages(token_object:)
 
+      # To ensure tests don't trip up on the trial teaser banner
+      if example.metadata[:with_ee_trial]
+        allow(enterprise_token).to receive(:days_left).and_return(42)
+      end
+
       # EnterpriseToken is mocked to return the partial double of enterprise
       # token as active token
       allow(EnterpriseToken).to receive(:active_tokens).and_return([enterprise_token])
