@@ -287,6 +287,8 @@ es:
       greater_or_equal_zero: "debe ser mayor o igual a 0."
       not_found: "no encontrado."
       rules:
+        copy_workflow_from:
+          workflow_missing: "has no own workflow."
         item:
           root_item: "no puede ser un elemento raíz."
           not_persisted: "debe ser un elemento ya existente."
@@ -297,6 +299,8 @@ es:
         parent:
           not_descendant: "debe ser descendiente de la raíz de la jerarquía."
     rules:
+      copy_workflow_from: "Type for workflow copy"
+      enabled: "Enabled"
       depth: "Profundidad"
       item: "Elemento"
       label: "Etiqueta"
@@ -1269,6 +1273,7 @@ es:
           failed_to_create: "Trial could not be created (%{status})"
           general_consent: "Please accept the terms and conditions."
         enterprise_token:
+          only_one_trial: "Only one trial token can be active. Please delete the previous trial token before adding another."
           unreadable: "no se puede leer. ¿Seguro que es un token de soporte?"
           already_added: "This token has already been added."
         grids/grid:
@@ -1839,6 +1844,7 @@ es:
   button_unwatch: "No controlar más"
   button_update: "Actualizar"
   button_upgrade: "Mejorar"
+  button_buy_now: "Buy now"
   button_upload: "Cargar"
   button_view: "Ver"
   button_watch: "Controlar"
@@ -2132,6 +2138,11 @@ es:
       internal_comments_inline:
         title: "Escriba comentarios internos que solo un pequeño grupo pueda ver"
         description: " "
+    teaser:
+      title:
+        one: "One day left of %{trial_plan} trial token"
+        other: "%{count} days left of %{trial_plan} trial token"
+      description: "You have access to all %{trial_plan} features."
     trial:
       not_found: "You have requested a trial token, but that request is no longer available. Please try again."
       wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
@@ -3440,7 +3451,7 @@ es:
   #Default format for numbers
   number:
     format:
-      delimiter: ","
+      delimiter: "."
       precision: 3
       separator: "."
     human:

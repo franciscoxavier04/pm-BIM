@@ -700,6 +700,7 @@ lt:
           first_day: "Pirma diena"
           last_day: "Paskutinė diena"
     text_are_you_sure: "Ar esate įsitikinę?"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "Visa įvesta informacija bus prarasta."
     text_user_wrote: "%{value} parašė:"
     types:

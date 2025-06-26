@@ -698,6 +698,7 @@ pt-PT:
           first_day: "Primeiro dia"
           last_day: "Último dia"
     text_are_you_sure: "Tem a certeza?"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "Todos os dados inseridos serão perdidos."
     text_user_wrote: "%{value} escreveu:"
     types:

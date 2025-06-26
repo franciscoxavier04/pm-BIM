@@ -700,6 +700,7 @@ cs:
           first_day: "První den"
           last_day: "Poslední den"
     text_are_you_sure: "Jste si jisti?"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "Všechna zadaná data budou ztracena."
     text_user_wrote: "%{value} napsal:"
     types:

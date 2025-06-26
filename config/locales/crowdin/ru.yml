@@ -288,6 +288,8 @@ ru:
       greater_or_equal_zero: "должно быть больше или равно 0."
       not_found: "не найдено."
       rules:
+        copy_workflow_from:
+          workflow_missing: "has no own workflow."
         item:
           root_item: "не может быть корневым элементом."
           not_persisted: "должно быть уже существующим элементом."
@@ -298,6 +300,8 @@ ru:
         parent:
           not_descendant: "должно быть потомком корневого уровня иерархии."
     rules:
+      copy_workflow_from: "Type for workflow copy"
+      enabled: "Enabled"
       depth: "Глубина"
       item: "Элемент"
       label: "Метка"
@@ -1286,6 +1290,7 @@ ru:
           failed_to_create: "Пробная версия не может быть создана (%{status})"
           general_consent: "Пожалуйста, подтвердите правила и условия пользования."
         enterprise_token:
+          only_one_trial: "Only one trial token can be active. Please delete the previous trial token before adding another."
           unreadable: "невозможно прочитать. Вы уверены, что это маркер поддержки?"
           already_added: "Этот токен уже был добавлен."
         grids/grid:
@@ -1884,6 +1889,7 @@ ru:
   button_unwatch: "Прекратить наблюдение"
   button_update: "Обновление"
   button_upgrade: "Обновить"
+  button_buy_now: "Buy now"
   button_upload: "Загрузить"
   button_view: "Вид"
   button_watch: "Наблюдать"
@@ -2215,6 +2221,13 @@ ru:
       internal_comments_inline:
         title: "Напишите внутренние комментарии только небольшой группы"
         description: " "
+    teaser:
+      title:
+        one: "One day left of %{trial_plan} trial token"
+        few: "%{count} days left of %{trial_plan} trial token"
+        many: "%{count} days left of %{trial_plan} trial token"
+        other: "%{count} days left of %{trial_plan} trial token"
+      description: "You have access to all %{trial_plan} features."
     trial:
       not_found: "Вы запросили пробный токен, но запрос более недоступен. Пожалуйста, попробуйте еще раз."
       wait_for_confirmation: "Мы отправили вам письмо для подтверждения вашего адреса для получения токена пробной версии."

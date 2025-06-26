@@ -698,6 +698,7 @@
           first_day: "Første dag "
           last_day: "Siste dag"
     text_are_you_sure: "Er du sikker?"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "Alle angitte data vil gå tapt."
     text_user_wrote: "%{value} skrev:"
     types:

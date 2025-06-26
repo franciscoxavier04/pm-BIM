@@ -697,6 +697,7 @@ vi:
           first_day: "Ngày đầu tiên"
           last_day: "Ngày cuối cùng"
     text_are_you_sure: "Bạn có chắc không?"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "Tất cả dữ liệu đã nhập sẽ bị mất."
     text_user_wrote: "%{value} đã viết:"
     types:

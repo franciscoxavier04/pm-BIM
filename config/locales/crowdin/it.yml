@@ -287,6 +287,8 @@ it:
       greater_or_equal_zero: "deve essere maggiore o uguale a 0."
       not_found: "non trovato."
       rules:
+        copy_workflow_from:
+          workflow_missing: "has no own workflow."
         item:
           root_item: "non può essere un elemento radice."
           not_persisted: "deve essere un elemento già esistente."
@@ -297,6 +299,8 @@ it:
         parent:
           not_descendant: "deve essere un discendente della radice gerarchica."
     rules:
+      copy_workflow_from: "Type for workflow copy"
+      enabled: "Enabled"
       depth: "Profondità"
       item: "Elemento"
       label: "Etichetta"
@@ -1269,6 +1273,7 @@ it:
           failed_to_create: "Trial could not be created (%{status})"
           general_consent: "Please accept the terms and conditions."
         enterprise_token:
+          only_one_trial: "Only one trial token can be active. Please delete the previous trial token before adding another."
           unreadable: "non può essere letto. Sei sicuro che si tratta di un token di assistenza?"
           already_added: "This token has already been added."
         grids/grid:
@@ -1839,6 +1844,7 @@ it:
   button_unwatch: "Smetti di Osservare"
   button_update: "Aggiorna"
   button_upgrade: "Aggiornamento"
+  button_buy_now: "Buy now"
   button_upload: "Carica"
   button_view: "Vedi"
   button_watch: "Osserva"
@@ -2132,6 +2138,11 @@ it:
       internal_comments_inline:
         title: "Scrivi commenti interni che solo un piccolo gruppo può vedere"
         description: " "
+    teaser:
+      title:
+        one: "One day left of %{trial_plan} trial token"
+        other: "%{count} days left of %{trial_plan} trial token"
+      description: "You have access to all %{trial_plan} features."
     trial:
       not_found: "You have requested a trial token, but that request is no longer available. Please try again."
       wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
@@ -3441,7 +3452,7 @@ it:
   #Default format for numbers
   number:
     format:
-      delimiter: ","
+      delimiter: "."
       precision: 3
       separator: "."
     human:

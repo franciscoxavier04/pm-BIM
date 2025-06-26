@@ -287,6 +287,8 @@ pt-PT:
       greater_or_equal_zero: "tem de ser maior ou igual a 0."
       not_found: "não encontrado."
       rules:
+        copy_workflow_from:
+          workflow_missing: "has no own workflow."
         item:
           root_item: "não pode ser um item de raiz."
           not_persisted: "tem de ser um item já existente."
@@ -297,6 +299,8 @@ pt-PT:
         parent:
           not_descendant: "tem de ser um descendente da raiz da hierarquia."
     rules:
+      copy_workflow_from: "Type for workflow copy"
+      enabled: "Enabled"
       depth: "Profundidade"
       item: "Item"
       label: "Etiqueta"
@@ -1269,6 +1273,7 @@ pt-PT:
           failed_to_create: "Trial could not be created (%{status})"
           general_consent: "Please accept the terms and conditions."
         enterprise_token:
+          only_one_trial: "Only one trial token can be active. Please delete the previous trial token before adding another."
           unreadable: "não foi possível ler. Tem a certeza que é um token de suporte?"
           already_added: "This token has already been added."
         grids/grid:
@@ -1839,6 +1844,7 @@ pt-PT:
   button_unwatch: "Não observar"
   button_update: "Atualizar"
   button_upgrade: "Atualizar"
+  button_buy_now: "Buy now"
   button_upload: "Carregar"
   button_view: "Ver"
   button_watch: "Observar"
@@ -2132,6 +2138,11 @@ pt-PT:
       internal_comments_inline:
         title: "Escreva comentários internos visíveis apenas para um pequeno grupo"
         description: " "
+    teaser:
+      title:
+        one: "One day left of %{trial_plan} trial token"
+        other: "%{count} days left of %{trial_plan} trial token"
+      description: "You have access to all %{trial_plan} features."
     trial:
       not_found: "You have requested a trial token, but that request is no longer available. Please try again."
       wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
@@ -3440,7 +3451,7 @@ pt-PT:
   #Default format for numbers
   number:
     format:
-      delimiter: ","
+      delimiter: "."
       precision: 3
       separator: "."
     human:

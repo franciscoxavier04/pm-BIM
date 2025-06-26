@@ -697,6 +697,7 @@ hu:
           first_day: "Első nap"
           last_day: "Utolsó nap"
     text_are_you_sure: "Biztos vagy benne?"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "Az összes adat elveszhet"
     text_user_wrote: "%{value} írta:"
     types:

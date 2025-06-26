@@ -288,6 +288,8 @@ zh-TW:
       greater_or_equal_zero: "必須大於或等於 0"
       not_found: "未找到"
       rules:
+        copy_workflow_from:
+          workflow_missing: "has no own workflow."
         item:
           root_item: "不能為根項目"
           not_persisted: "必須是已存在的項目"
@@ -298,6 +300,8 @@ zh-TW:
         parent:
           not_descendant: "必須是層級展開的"
     rules:
+      copy_workflow_from: "Type for workflow copy"
+      enabled: "Enabled"
       depth: "深度"
       item: "項目"
       label: "標籤"
@@ -1222,7 +1226,7 @@ zh-TW:
           attributes:
             content_type:
               blank: "文件的內容類型不能為空。"
-              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
+              not_allowlisted: "檔案被自動過濾器拒絕。'%{value}' 不允許上傳。"
               format: "%{message}"
         capability:
           context:
@@ -1260,6 +1264,7 @@ zh-TW:
           failed_to_create: "無法建立試用帳號（%{status}）"
           general_consent: "請接受條款與條件。"
         enterprise_token:
+          only_one_trial: "Only one trial token can be active. Please delete the previous trial token before adding another."
           unreadable: "無法讀取，確定是一個 support token?"
           already_added: "此令牌已經新增過。"
         grids/grid:
@@ -1816,6 +1821,7 @@ zh-TW:
   button_unwatch: "取消監看"
   button_update: "更新"
   button_upgrade: "升級"
+  button_buy_now: "Buy now"
   button_upload: "上傳"
   button_view: "檢視"
   button_watch: "監看"
@@ -2090,6 +2096,10 @@ zh-TW:
       internal_comments_inline:
         title: "只讓少數人能看到的內部備註"
         description: " "
+    teaser:
+      title:
+        other: "%{count} days left of %{trial_plan} trial token"
+      description: "You have access to all %{trial_plan} features."
     trial:
       not_found: "您已請求試用令牌，但該請求已無效。請再試一次。"
       wait_for_confirmation: "我們已傳送一封電子郵件給您，請確認您的地址以取得試用令牌。"

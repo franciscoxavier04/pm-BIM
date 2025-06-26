@@ -3,6 +3,7 @@ zh-TW:
   js:
     team_planner:
       add_existing: '加入現有工作套件'
+      label_team_planner_plural: 'Team planners'
       add_existing_title: '新增現有的工作套件'
       create_label: '團隊規劃'
       create_title: '建立新的團隊規劃'

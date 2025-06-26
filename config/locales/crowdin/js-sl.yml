@@ -699,6 +699,7 @@ sl:
           first_day: "First day"
           last_day: "Last day"
     text_are_you_sure: "Ste prepričani?"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "All entered data will be lost."
     text_user_wrote: "%{value} je napisal(a):"
     types:

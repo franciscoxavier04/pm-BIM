@@ -697,6 +697,7 @@ de:
           first_day: "Erster Tag"
           last_day: "Letzter Tag"
     text_are_you_sure: "Sind Sie sicher?"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "Alle eingegebenen Daten gehen verloren."
     text_user_wrote: "%{value} schrieb:"
     types:
@@ -781,7 +782,7 @@ de:
     autocompleter:
       placeholder: "Suchbegriff eintippen"
       notFoundText: "Keine Elemente gefunden"
-      search: "Search"
+      search: "Suche"
       project:
         placeholder: "Projekt wählen"
     repositories:

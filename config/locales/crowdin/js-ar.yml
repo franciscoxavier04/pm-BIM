@@ -702,6 +702,7 @@ ar:
           first_day: "First day"
           last_day: "Last day"
     text_are_you_sure: "هل أنت متأكد؟"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "All entered data will be lost."
     text_user_wrote: "%{value} كتب:"
     types:

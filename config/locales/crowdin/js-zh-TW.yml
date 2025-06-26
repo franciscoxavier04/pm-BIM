@@ -696,6 +696,7 @@ zh-TW:
           first_day: "第一天"
           last_day: "最後一天"
     text_are_you_sure: "是否確定？"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "所有資料將遺失"
     text_user_wrote: "%{value} 寫道："
     types:
@@ -780,7 +781,7 @@ zh-TW:
     autocompleter:
       placeholder: "搜尋"
       notFoundText: "找不到任何項目"
-      search: "Search"
+      search: "搜尋"
       project:
         placeholder: "選取專案"
     repositories:

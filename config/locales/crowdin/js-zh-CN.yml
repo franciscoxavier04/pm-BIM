@@ -212,10 +212,10 @@ zh-CN:
         change_button: "保存并重新安排"
         change_title: "更改工作日"
         removed_title: "您将从非工作日列表中删除以下日期："
-        change_description: "Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance."
+        change_description: "在这种情况下，更改一周中哪几天被视为工作日或非工作日会影响所有项目中所有工作包和生命周期的开始和结束日期。"
         warning: >
-          The changes might take some time to take effect. You will be notified when all relevant work packages and project life cycles have been updated.
-          Are you sure you want to continue?
+          更改可能需要一些时间才能生效。所有相关工作包和项目生命周期更新后，您将收到通知。
+          您确定要继续吗？
       work_packages_settings:
         warning_progress_calculation_mode_change_from_status_to_field_html: >-
           将进度计算模式从基于状态改为基于工时，将使<i>完成 %</i>字段可自由编辑。如果您选择输入<i>工时</i>或<i>剩余工时</i>的值，它们也将与<i>完成 %</i>相关联。更改<i>剩余工时</i>就可以更新<i>完成 %</i>。
@@ -697,6 +697,7 @@ zh-CN:
           first_day: "第一天"
           last_day: "最后一天"
     text_are_you_sure: "是否确定？"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "输入的所有数据将全部丢失。"
     text_user_wrote: "%{value} 写道："
     types:
@@ -781,7 +782,7 @@ zh-CN:
     autocompleter:
       placeholder: "键入内容进行搜索"
       notFoundText: "没有找到条目"
-      search: "Search"
+      search: "搜索"
       project:
         placeholder: "选择项目"
     repositories:

@@ -289,6 +289,8 @@ tr:
       greater_or_equal_zero: "sıfıra eşit ya da büyük olmalı."
       not_found: "bulunamadı."
       rules:
+        copy_workflow_from:
+          workflow_missing: "has no own workflow."
         item:
           root_item: "bir kök öğe olamaz."
           not_persisted: "zaten var olan bir öğe olmalıdır."
@@ -299,6 +301,8 @@ tr:
         parent:
           not_descendant: "must be a descendant of the hierarchy root."
     rules:
+      copy_workflow_from: "Type for workflow copy"
+      enabled: "Enabled"
       depth: "Derinlik"
       item: "Öğe"
       label: "Etiket"
@@ -1271,6 +1275,7 @@ tr:
           failed_to_create: "Trial could not be created (%{status})"
           general_consent: "Please accept the terms and conditions."
         enterprise_token:
+          only_one_trial: "Only one trial token can be active. Please delete the previous trial token before adding another."
           unreadable: "okunamıyor. Desteklenen bir destek anahtarı olduğuna emin misiniz?"
           already_added: "This token has already been added."
         grids/grid:
@@ -1841,6 +1846,7 @@ tr:
   button_unwatch: "Takip etme"
   button_update: "Güncelle"
   button_upgrade: "Yükselt"
+  button_buy_now: "Buy now"
   button_upload: "Yükle"
   button_view: "Göster"
   button_watch: "Takip et"
@@ -2134,6 +2140,11 @@ tr:
       internal_comments_inline:
         title: "Write internal comments only a small group can see"
         description: " "
+    teaser:
+      title:
+        one: "One day left of %{trial_plan} trial token"
+        other: "%{count} days left of %{trial_plan} trial token"
+      description: "You have access to all %{trial_plan} features."
     trial:
       not_found: "You have requested a trial token, but that request is no longer available. Please try again."
       wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
@@ -3441,7 +3452,7 @@ tr:
   #Default format for numbers
   number:
     format:
-      delimiter: ","
+      delimiter: "."
       precision: 3
       separator: "."
     human:

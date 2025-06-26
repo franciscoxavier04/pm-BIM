@@ -700,6 +700,7 @@ pl:
           first_day: "Pierwszy dzień"
           last_day: "Ostatni dzień"
     text_are_you_sure: "Jesteś pewny?"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "Wszystkie wprowadzone dane zostaną utracone."
     text_user_wrote: "%{value} napisał(a):"
     types:

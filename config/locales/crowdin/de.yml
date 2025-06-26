@@ -286,6 +286,8 @@ de:
       greater_or_equal_zero: "muss größer oder gleich 0 sein."
       not_found: "nicht gefunden."
       rules:
+        copy_workflow_from:
+          workflow_missing: "has no own workflow."
         item:
           root_item: "kann keine Hierarchiewurzel sein."
           not_persisted: "muss ein bereits vorhandenes Element sein."
@@ -296,6 +298,8 @@ de:
         parent:
           not_descendant: "muss ein Unterelement der Hierarchiewurzel sein."
     rules:
+      copy_workflow_from: "Type for workflow copy"
+      enabled: "Enabled"
       depth: "Tiefe"
       item: "Element"
       label: "Bezeichnung"
@@ -1226,7 +1230,7 @@ de:
           attributes:
             content_type:
               blank: "Der Content-Type der Datei darf nicht leer sein."
-              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
+              not_allowlisted: "Die Datei wurde von einem automatischen Filter abgelehnt. ‚%{value}‘ ist für den Upload nicht zulässig."
               format: "%{message}"
         capability:
           context:
@@ -1264,6 +1268,7 @@ de:
           failed_to_create: "Testversion konnte nicht erstellt werden (%{status})"
           general_consent: "Bitte akzeptieren Sie die Nutzungs- und Vertragsbedingungen."
         enterprise_token:
+          only_one_trial: "Only one trial token can be active. Please delete the previous trial token before adding another."
           unreadable: "kann nicht gelesen werden. Ist dies ein Enterprise edition Support Token?"
           already_added: "Dieser Token wurde bereits hinzugefügt."
         grids/grid:
@@ -1834,6 +1839,7 @@ de:
   button_unwatch: "Nicht beobachten"
   button_update: "Aktualisieren"
   button_upgrade: "Upgraden"
+  button_buy_now: "Buy now"
   button_upload: "Hochladen"
   button_view: "Anzeigen"
   button_watch: "Beobachten"
@@ -2127,6 +2133,11 @@ de:
       internal_comments_inline:
         title: "Interne Kommentare schreiben, die nur für ausgewählte Mitglieder sichtbar ist."
         description: " "
+    teaser:
+      title:
+        one: "One day left of %{trial_plan} trial token"
+        other: "%{count} days left of %{trial_plan} trial token"
+      description: "You have access to all %{trial_plan} features."
     trial:
       not_found: "Sie haben einen Test-Token angefordert, aber diese Anfrage ist nicht mehr abrufbar. Bitte versuchen Sie es erneut."
       wait_for_confirmation: "Wir haben Ihnen eine E-Mail zur Bestätigung geschickt, um den Token der Testversion abzurufen."
@@ -3436,7 +3447,7 @@ de:
   #Default format for numbers
   number:
     format:
-      delimiter: ","
+      delimiter: "."
       precision: 2
       separator: ","
     human:

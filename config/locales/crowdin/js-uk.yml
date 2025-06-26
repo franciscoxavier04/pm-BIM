@@ -700,6 +700,7 @@ uk:
           first_day: "Перший день"
           last_day: "Останній день"
     text_are_you_sure: "Ви впевненені?"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "Усі введені дані буде втрачено."
     text_user_wrote: "%{value} написав(-ла):"
     types:

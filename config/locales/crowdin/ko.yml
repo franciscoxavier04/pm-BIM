@@ -289,6 +289,8 @@ ko:
       greater_or_equal_zero: "- 0보다 크거나 같아야 합니다."
       not_found: "- 찾을 수 없습니다."
       rules:
+        copy_workflow_from:
+          workflow_missing: "has no own workflow."
         item:
           root_item: "- 루트 항목일 수 없습니다."
           not_persisted: "- 이미 존재하는 항목이어야 합니다."
@@ -299,6 +301,8 @@ ko:
         parent:
           not_descendant: "- 계층 루트의 하위 항목이어야 합니다."
     rules:
+      copy_workflow_from: "Type for workflow copy"
+      enabled: "Enabled"
       depth: "깊이"
       item: "항목"
       label: "레이블"
@@ -1264,6 +1268,7 @@ ko:
           failed_to_create: "Trial could not be created (%{status})"
           general_consent: "Please accept the terms and conditions."
         enterprise_token:
+          only_one_trial: "Only one trial token can be active. Please delete the previous trial token before adding another."
           unreadable: "읽을 수 없습니다. 지원하는 토큰이 확실한가요?"
           already_added: "This token has already been added."
         grids/grid:
@@ -1820,6 +1825,7 @@ ko:
   button_unwatch: "주시 안 함"
   button_update: "업데이트"
   button_upgrade: "업그레이드"
+  button_buy_now: "Buy now"
   button_upload: "업로드하기"
   button_view: "보기"
   button_watch: "주시"
@@ -2094,6 +2100,10 @@ ko:
       internal_comments_inline:
         title: "소규모 그룹만 볼 수 있는 내부 코멘트 작성"
         description: " "
+    teaser:
+      title:
+        other: "%{count} days left of %{trial_plan} trial token"
+      description: "You have access to all %{trial_plan} features."
     trial:
       not_found: "You have requested a trial token, but that request is no longer available. Please try again."
       wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."

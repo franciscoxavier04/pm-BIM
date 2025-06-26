@@ -285,6 +285,8 @@ uk:
       greater_or_equal_zero: "має дорівнювати нулю або перевищувати його."
       not_found: "не знайдено."
       rules:
+        copy_workflow_from:
+          workflow_missing: "has no own workflow."
         item:
           root_item: "не може бути кореневим елементом."
           not_persisted: "має бути вже наявним елементом."
@@ -295,6 +297,8 @@ uk:
         parent:
           not_descendant: "має бути нащадком кореня ієрархії."
     rules:
+      copy_workflow_from: "Type for workflow copy"
+      enabled: "Enabled"
       depth: "Глибина"
       item: "Елемент"
       label: "Мітка"
@@ -1281,6 +1285,7 @@ uk:
           failed_to_create: "Trial could not be created (%{status})"
           general_consent: "Please accept the terms and conditions."
         enterprise_token:
+          only_one_trial: "Only one trial token can be active. Please delete the previous trial token before adding another."
           unreadable: "неможливо прочитати. Ви впевнені, що це маркер підтримки?"
           already_added: "This token has already been added."
         grids/grid:
@@ -1879,6 +1884,7 @@ uk:
   button_unwatch: "Перестати відстежувати"
   button_update: "Оновити"
   button_upgrade: "Оновити"
+  button_buy_now: "Buy now"
   button_upload: "Завантажити"
   button_view: "Перегляд"
   button_watch: "Спостерігати"
@@ -2210,6 +2216,13 @@ uk:
       internal_comments_inline:
         title: "Створюйте внутрішні коментарі лише для учасників невеликої групи"
         description: " "
+    teaser:
+      title:
+        one: "One day left of %{trial_plan} trial token"
+        few: "%{count} days left of %{trial_plan} trial token"
+        many: "%{count} days left of %{trial_plan} trial token"
+        other: "%{count} days left of %{trial_plan} trial token"
+      description: "You have access to all %{trial_plan} features."
     trial:
       not_found: "You have requested a trial token, but that request is no longer available. Please try again."
       wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
