@@ -109,7 +109,8 @@ class WorkPackages::RemindersController < ApplicationController
 
   def reminder_chosen_time(reminder)
     OpPrimer::RelativeTimeComponent.new(
-      datetime: in_user_zone(reminder.remind_at)
+      datetime: in_user_zone(reminder.remind_at),
+      month: :long
     ).render_in(view_context)
   end
 
