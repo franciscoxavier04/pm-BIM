@@ -173,6 +173,8 @@ module WorkPackage::PDFExport::Export::Markdown
   end
 
   def write_markdown!(markdown, styling_yml)
+    return if markdown.blank?
+
     markdown_writer(styling_yml)
       .draw_markdown(markdown, pdf, ->(src) {
         with_images? ? attachment_image_filepath(src) : nil

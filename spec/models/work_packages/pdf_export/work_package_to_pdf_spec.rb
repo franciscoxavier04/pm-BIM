@@ -34,7 +34,8 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
   include Redmine::I18n
   include PDFExportSpecUtils
   let(:type) do
-    create(:type_bug, custom_fields: [cf_long_text, cf_empty_long_text, cf_disabled_in_project, cf_global_bool])
+    create(:type_bug,
+           custom_fields: [cf_long_text, cf_empty_long_text, cf_disabled_in_project, cf_global_bool, cf_link])
   end
   let(:parent_project) do
     create(:project, name: "Parent project")
@@ -65,10 +66,10 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
              project_custom_field_bool.id => true,
              project_custom_field_long_text.id => "foo"
            },
-           work_package_custom_fields: [cf_long_text, cf_empty_long_text, cf_disabled_in_project, cf_global_bool],
+           work_package_custom_fields: [cf_long_text, cf_empty_long_text, cf_disabled_in_project, cf_global_bool, cf_link],
 
            # cf_disabled_in_project.id not included == disabled
-           work_package_custom_field_ids: [cf_long_text.id, cf_empty_long_text.id, cf_global_bool.id])
+           work_package_custom_field_ids: [cf_long_text.id, cf_empty_long_text.id, cf_global_bool.id, cf_link.id])
   end
   let(:forbidden_project) do
     create(:project,
@@ -80,10 +81,10 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
            status_code: "on_track",
            active: true,
            parent: parent_project,
-           work_package_custom_fields: [cf_long_text, cf_empty_long_text, cf_disabled_in_project, cf_global_bool],
+           work_package_custom_fields: [cf_long_text, cf_empty_long_text, cf_disabled_in_project, cf_global_bool, cf_link],
 
            # cf_disabled_in_project.id not included == disabled
-           work_package_custom_field_ids: [cf_long_text.id, cf_empty_long_text.id, cf_global_bool.id])
+           work_package_custom_field_ids: [cf_long_text.id, cf_empty_long_text.id, cf_global_bool.id, cf_link.id])
   end
   let(:user) do
     create(:user,
@@ -106,6 +107,9 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
   let(:cf_empty_long_text_description) { "" }
   let(:cf_long_text) do
     create(:issue_custom_field, :text, name: "Work Package Custom Field Long Text")
+  end
+  let(:cf_link) do
+    create(:link_wp_custom_field, :link, name: "My Link")
   end
   let(:cf_empty_long_text) do
     create(:issue_custom_field, :text, name: "Empty Work Package Custom Field Long Text")
@@ -169,7 +173,8 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
              cf_long_text.id => cf_long_text_description,
              cf_empty_long_text.id => cf_empty_long_text_description,
              cf_disabled_in_project.id => "6.25",
-             cf_global_bool.id => true
+             cf_global_bool.id => true,
+             cf_link.id => "https://example.com"
            }).tap do |wp|
       allow(wp)
         .to receive(:attachments)
@@ -230,9 +235,10 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
       "Project phase",
       "Date", "05/30/2024 - 03/13/2025",
       "Other",
-      "Work Package Custom Field Boolean", "Yes",
-      "Empty Work Package Custom Field Long Text",
       "Work Package Custom Field Long Text", "foo   faa",
+      "Empty Work Package Custom Field Long Text",
+      "Work Package Custom Field Boolean", "Yes",
+      "My Link", "https://example.com",
       "Costs",
       "Spent units", "Labor costs", "Unit costs", "Overall costs", "Budget"
     ]
@@ -339,6 +345,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
             <tr><td>Custom field rich text</td><td>
                 workPackageValue:1:"#{cf_long_text.name}"
             </td></tr>
+            <tr><td>My link in table</td><td>workPackageValue:"#{cf_link.name}"</td></tr>
             <tr><td>No replacement of:</td><td>
                 <code>workPackageValue:1:assignee</code>
                 <code>workPackageLabel:assignee</code>
@@ -352,11 +359,31 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
             workPackageLabel:assignee
             ```
 
+            workPackageValue:"My Link"
+
             Work package not found:
             workPackageValue:1234567890:assignee
             Access denied:
             workPackageValue:#{forbidden_work_package.id}:assignee
         DESCRIPTION
+      end
+
+      def expected_description
+        [
+          "Custom field boolean", I18n.t(:general_text_Yes),
+          "Custom field rich text", "[#{I18n.t('export.macro.rich_text_unsupported')}]",
+          "My link in table", "https://example.com",
+          "No replacement of:", "workPackageValue:1:assignee", " ", "workPackageLabel:assignee",
+          "workPackageValue:2:assignee workPackageLabel:assignee",
+          "workPackageValue:3:assignee", "workPackageLabel:assignee",
+          "https://example.com",
+          "Work package not found:  ",
+          "[#{I18n.t('export.macro.error', message:
+            I18n.t('export.macro.resource_not_found', resource: 'WorkPackage 1234567890'))}]  ",
+          "Access denied:  ",
+          "[#{I18n.t('export.macro.error', message:
+            I18n.t('export.macro.resource_not_found', resource: "WorkPackage #{forbidden_work_package.id}"))}]"
+        ]
       end
 
       it "contains resolved attributes and labels" do
@@ -372,17 +399,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
               API::Utilities::PropertyNameConverter.to_ar_name(embed[0].to_sym, context: work_package)
             ), embed[1]]
           end,
-          "Custom field boolean", I18n.t(:general_text_Yes),
-          "Custom field rich text", "[#{I18n.t('export.macro.rich_text_unsupported')}]",
-          "No replacement of:", "workPackageValue:1:assignee", " ", "workPackageLabel:assignee",
-          "workPackageValue:2:assignee workPackageLabel:assignee",
-          "workPackageValue:3:assignee", "workPackageLabel:assignee",
-          "Work package not found:  ",
-          "[#{I18n.t('export.macro.error', message:
-            I18n.t('export.macro.resource_not_found', resource: 'WorkPackage 1234567890'))}]  ",
-          "Access denied:  ",
-          "[#{I18n.t('export.macro.error', message:
-            I18n.t('export.macro.resource_not_found', resource: "WorkPackage #{forbidden_work_package.id}"))}]",
+          *expected_description,
           "2", export_date_formatted, project.name
         ].flatten.join(" ")
         expect(result).to eq(expected_result)

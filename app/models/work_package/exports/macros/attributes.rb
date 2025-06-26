@@ -162,6 +162,9 @@ module WorkPackage::Exports
       def self.format_attribute_value(ar_name, model, obj)
         formatter = Exports::Register.formatter_for(model, ar_name, :pdf)
         value = formatter.format(obj)
+        # do NOT escape a tag for custom field link
+        return value.to_html if value.is_a?(::Exports::Formatters::LinkFormatter)
+
         # important NOT to return empty string as this could change meaning of markdown
         # e.g. **to_be_replaced** could be rendered as **** (horizontal line and a *)
         value.blank? ? " " : escape_tags(value)
