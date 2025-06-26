@@ -106,7 +106,15 @@ module ScimV2
     end
 
     def storage_scope
-      User.left_joins(:groups, :user_auth_provider_links).includes(:groups, :user_auth_provider_links).not_builtin
+      User
+        .left_joins(:groups, :user_auth_provider_links)
+        .includes(:groups, :user_auth_provider_links)
+        .where(user_auth_provider_links: { auth_provider_id: scim_client.auth_provider_id })
+        .not_builtin
+    end
+
+    def scim_client
+      User.current.service_account_association.service
     end
   end
 end

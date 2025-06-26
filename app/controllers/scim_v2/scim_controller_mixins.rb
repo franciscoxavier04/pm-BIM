@@ -42,8 +42,11 @@ module ScimV2
         warden = request.env["warden"]
         User.current = warden.authenticate! scope: :scim_v2
 
-        # Only admins are able to manage users, so that's the only permission we can check for it
-        handle_scim_error(Scimitar::AuthenticationError.new) unless User.current.admin?
+        # Only a ServiceAccount associated with a ScimClient can use SCIM Server API
+
+        unless User.current.is_a?(ServiceAccount) && User.current.service_account_association.service.is_a?(ScimClient)
+          handle_scim_error(Scimitar::AuthenticationError.new)
+        end
       end
     end
   end

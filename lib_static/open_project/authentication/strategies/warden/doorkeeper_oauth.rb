@@ -42,7 +42,7 @@ module OpenProject
           end
 
           def authenticate_user(id)
-            user = id && User.active.find_by(id:)
+            user = id && User.active.where(id:).or(ServiceAccount.where(id:)).first
             if user
               success!(user)
             else

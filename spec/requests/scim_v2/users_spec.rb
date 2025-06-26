@@ -33,15 +33,25 @@ require "spec_helper"
 RSpec.describe "SCIM API Users" do
   let(:external_user_id) { "idp_user_id_123asdqwe12345" }
   let(:external_group_id) { "idp_group_id_123asdqwe12345" }
-  let(:admin) { create(:admin) }
-  let(:oidc_provider) { create(:oidc_provider, slug: "keycloak", creator: admin) }
+  let(:external_admin_id) { "idp_admin_id_123asdqwe12345" }
+  let(:oidc_provider_slug) { "keycloak" }
+  let(:oidc_provider) { create(:oidc_provider, slug: oidc_provider_slug) }
+  let(:admin) { create(:admin, identity_url: "#{oidc_provider.slug}:#{external_admin_id}") }
   let(:user) { create(:user, identity_url: "#{oidc_provider.slug}:#{external_user_id}") }
   let(:group) { create(:group, identity_url: "#{oidc_provider.slug}:#{external_group_id}", members: [user]) }
-  let(:headers) { { "CONTENT_TYPE" => "application/scim+json", "HTTP_AUTHORIZATION" => "Bearer access_token" } }
+  let(:headers) { { "CONTENT_TYPE" => "application/scim+json", "HTTP_AUTHORIZATION" => "Bearer #{token.plaintext_token}" } }
+  let(:token) { create(:oauth_access_token, resource_owner: service_account, scopes: ["scim_v2"]) }
+  let(:service_account) { create(:service_account, service: scim_client) }
+  let(:scim_client) { create(:scim_client, authentication_method: :oauth2_token, auth_provider_id: oidc_provider.id) }
+
+  before { token }
 
   describe "GET /scim_v2/Users" do
     context "with the feature flag enabled", with_flag: { scim_api: true } do
-      before { group }
+      before do
+        admin
+        group
+      end
 
       it do
         get "/scim_v2/Users", {}, headers
@@ -53,6 +63,7 @@ RSpec.describe "SCIM API Users" do
                                                         "type" => "work",
                                                         "value" => admin.mail }],
                                          "groups" => [],
+                                         "externalId" => external_admin_id,
                                          "id" => admin.id.to_s,
                                          "meta" => { "created" => admin.created_at.iso8601,
                                                      "lastModified" => admin.updated_at.iso8601,

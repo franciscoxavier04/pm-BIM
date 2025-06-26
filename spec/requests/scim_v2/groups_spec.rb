@@ -33,13 +33,25 @@ require "spec_helper"
 RSpec.describe "SCIM API Groups" do
   let(:external_user_id) { "idp_user_id_123asdqwe12345" }
   let(:external_group_id) { "idp_group_id_123asdqwe12345" }
-  let(:admin) { create(:admin) }
-  let(:oidc_provider) { create(:oidc_provider, slug: "keycloak", creator: admin) }
-  let(:user) { create(:user, identity_url: "#{oidc_provider.slug}:#{external_user_id}") }
+  let(:external_admin_id) { "idp_admin_id_123asdqwe12345" }
+  let(:oidc_provider_slug) { "keycloak" }
+  let(:oidc_provider) { create(:oidc_provider, slug: oidc_provider_slug) }
+  let(:admin) { create(:admin, identity_url: "#{oidc_provider_slug}:#{external_admin_id}") }
+  let(:user) { create(:user, identity_url: "#{oidc_provider_slug}:#{external_user_id}") }
   let(:user1) { user }
-  let(:user2) { create(:user, identity_url: "#{oidc_provider.slug}:#{external_user_id}_user2") }
-  let(:group) { create(:group, identity_url: "#{oidc_provider.slug}:#{external_group_id}", members: [user]) }
-  let(:headers) { { "CONTENT_TYPE" => "application/scim+json", "HTTP_AUTHORIZATION" => "Bearer access_token" } }
+  let(:user2) { create(:user, identity_url: "#{oidc_provider_slug}:#{external_user_id}_user2") }
+  let(:group) { create(:group, identity_url: "#{oidc_provider_slug}:#{external_group_id}", members: [user]) }
+  let(:group_without_external_id) { create(:group, members: [user]) }
+  let(:headers) { { "CONTENT_TYPE" => "application/scim+json", "HTTP_AUTHORIZATION" => "Bearer #{token.plaintext_token}" } }
+  let(:token) { create(:oauth_access_token, resource_owner: service_account, scopes: ["scim_v2"]) }
+  let(:service_account) { create(:service_account, service: scim_client) }
+  let(:scim_client) { create(:scim_client, authentication_method: :oauth2_token, auth_provider_id: oidc_provider.id) }
+
+  before do
+    oidc_provider
+    group_without_external_id
+    token
+  end
 
   describe "GET /scim_v2/Groups" do
     context "with the feature flag enabled", with_flag: { scim_api: true } do
@@ -157,17 +169,20 @@ RSpec.describe "SCIM API Groups" do
 
   describe "POST /scim_v2/Groups/" do
     context "with the feature flag enabled", with_flag: { scim_api: true } do
+      let(:group_name) { "Group 123" }
+
       it do
         user
-        request_body = { "displayName" => "Group 123",
+        request_body = { "displayName" => group_name,
                          "externalId" => external_group_id,
                          "members" => [{ "value" => user.id.to_s }],
                          "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] }
-        post "/scim_v2/Groups/", request_body.to_json, headers
+        expect {
+          post "/scim_v2/Groups/", request_body.to_json, headers
+        }.to change(Group, :count).by(1)
 
         response_body = JSON.parse(last_response.body)
-        group = Group.last
-        expect(Group.count).to eq(1)
+        group = Group.find_by(name: group_name)
         expect(response_body).to eq({ "displayName" => group.name,
                                       "externalId" => external_group_id,
                                       "id" => group.id.to_s,
@@ -185,11 +200,12 @@ RSpec.describe "SCIM API Groups" do
         request_body = { "displayName" => "Group 123",
                          "externalId" => external_group_id,
                          "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] }
-        post "/scim_v2/Groups/", request_body.to_json, headers
+        expect {
+          post "/scim_v2/Groups/", request_body.to_json, headers
+        }.to change(Group, :count).by(1)
 
         response_body = JSON.parse(last_response.body)
-        group = Group.last
-        expect(Group.count).to eq(1)
+        group = Group.find_by(name: group_name)
         expect(response_body).to eq({ "displayName" => group.name,
                                       "externalId" => external_group_id,
                                       "id" => group.id.to_s,
@@ -268,6 +284,7 @@ RSpec.describe "SCIM API Groups" do
   describe "PUT /scim_v2/Users/:id" do
     context "with the feature flag enabled", with_flag: { scim_api: true } do
       it do
+        admin
         group
         new_external_group_id = "new_idp_group_id_123asdqwe12345"
         request_body = {

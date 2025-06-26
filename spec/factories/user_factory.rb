@@ -79,7 +79,7 @@ FactoryBot.define do
       end
     end
 
-    factory :admin do
+    factory :admin, parent: :user, class: "User" do
       firstname { "OpenProject" }
       sequence(:lastname) { |n| "Admin#{n}" }
       sequence(:login) { |n| "admin#{n}" }
