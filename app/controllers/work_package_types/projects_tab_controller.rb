@@ -35,6 +35,10 @@ module WorkPackageTypes
     before_action :require_admin
     before_action :find_type
 
+    current_menu_item [:edit] do
+      :types
+    end
+
     def edit
       @projects = Project.all
     end

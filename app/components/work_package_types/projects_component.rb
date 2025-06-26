@@ -51,12 +51,7 @@ module WorkPackageTypes
     def build_project_tree(tree)
       nested_project_list = Project.build_projects_hierarchy(projects)
 
-      tree.with_sub_tree(expanded: true,
-                         select_variant: :multiple,
-                         select_strategy: :self,
-                         label: "All Projects") do |sub_tree|
-        add_sub_tree(sub_tree, nested_project_list)
-      end
+      add_sub_tree(tree, nested_project_list)
     end
 
     private
