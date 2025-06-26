@@ -39,7 +39,7 @@ RSpec.describe ErrorMessageHelper do
   let(:description) { error_flash[:description] }
 
   def escape_html(array)
-    array.map { CGI.escapeHTML _1 }
+    array.map { CGI.escapeHTML it }
   end
 
   before do

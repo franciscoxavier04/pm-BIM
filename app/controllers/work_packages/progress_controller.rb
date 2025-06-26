@@ -142,7 +142,7 @@ class WorkPackages::ProgressController < ApplicationController
                  "remaining_hours_touched",
                  "done_ratio_touched",
                  "status_id_touched")
-          .transform_values { _1 == "true" }
+          .transform_values { it == "true" }
           .permit!
   end
 
@@ -153,7 +153,7 @@ class WorkPackages::ProgressController < ApplicationController
   end
 
   def allowed_touched_params
-    allowed_params.filter { touched?(_1) }
+    allowed_params.filter { touched?(it) }
   end
 
   def allowed_params

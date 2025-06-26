@@ -45,7 +45,7 @@ module Types
       end
 
       def initialize(patterns:)
-        transformed = patterns.transform_values { Pattern.new(**_1) }.freeze
+        transformed = patterns.transform_values { Pattern.new(**it) }.freeze
 
         super(patterns: transformed)
       end
