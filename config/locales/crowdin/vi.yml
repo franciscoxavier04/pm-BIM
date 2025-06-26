@@ -1200,7 +1200,7 @@ vi:
           attributes:
             content_type:
               blank: "Loại nội dung của tệp không thể để trống."
-              not_whitelisted: "Tệp đã bị từ chối bởi bộ lọc tự động. '%{value}' không được phép tải lên."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:
@@ -3891,8 +3891,6 @@ vi:
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
         heading: "New phase"
-      edit:
-        heading: "Edit phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"

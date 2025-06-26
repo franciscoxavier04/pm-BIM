@@ -36,8 +36,8 @@ module Attachments
     # @param whitelist A custom whitelist to validate with, or empty to disable validation
     #
     # Warning: When passing an empty whitelist, this results in no validations on the content type taking place.
-    def self.bypass_whitelist(user:, whitelist: [])
-      new(user:, contract_options: { whitelist: whitelist.map(&:to_s) })
+    def self.bypass_allowlist(user:, allowlist: [])
+      new(user:, contract_options: { allowlist: allowlist.map(&:to_s) })
     end
   end
 end

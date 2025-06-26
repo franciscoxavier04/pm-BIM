@@ -1196,7 +1196,7 @@ id:
           attributes:
             content_type:
               blank: "Jenis konten file tidak boleh kosong."
-              not_whitelisted: "File ditolak oleh filter otomatis.  '%{value}' tidak masuk daftar putih untuk unggahan."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:
@@ -3884,8 +3884,6 @@ id:
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
         heading: "New phase"
-      edit:
-        heading: "Edit phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"

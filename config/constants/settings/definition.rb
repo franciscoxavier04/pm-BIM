@@ -1160,7 +1160,7 @@ module Settings
         default: {
           "workers" => 2,
           "timeout" => Rails.env.production? ? 120 : 0,
-          "wait_timeout" => 10,
+          "wait_timeout" => 30,
           "min_threads" => 4,
           "max_threads" => 16
         },

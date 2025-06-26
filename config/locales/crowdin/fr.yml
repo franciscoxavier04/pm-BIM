@@ -1206,7 +1206,7 @@ fr:
           attributes:
             content_type:
               blank: "Le type de contenu du fichier ne peut pas être vide."
-              not_whitelisted: "Le fichier a été rejeté par un filtre automatique. « %{value} » n'est pas en liste blanche pour le téléversement."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:
@@ -3930,8 +3930,6 @@ fr:
       new:
         description: "Les modifications apportées à cette phase du projet seront répercutées dans tous les projets où elle est activée."
         heading: "New phase"
-      edit:
-        heading: "Edit phase"
       both_gate: "Porte de début et de fin"
       no_gate: "Aucune porte"
       start_gate: "Porte de début"

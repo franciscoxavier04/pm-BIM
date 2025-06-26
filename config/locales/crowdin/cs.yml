@@ -1224,7 +1224,7 @@ cs:
           attributes:
             content_type:
               blank: "Typ obsahu souboru nemůže být prázdný."
-              not_whitelisted: "Soubor byl odmítnut automatickým filtrem. '%{value}' není na seznamu povolených pro nahrávání."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:
@@ -4013,8 +4013,6 @@ cs:
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
         heading: "New phase"
-      edit:
-        heading: "Edit phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"

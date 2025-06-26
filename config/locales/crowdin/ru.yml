@@ -773,7 +773,7 @@ ru:
     label_edit_x: "Редактировать %{x}"
     label_add_description: "Добавить описание"
     lag:
-      subject: "Отставание"
+      subject: "Задержка"
       caption: |-
         Минимальное количество рабочих дней, которое должно быть между двумя пакетами работ.
         Оно также может быть отрицательным.
@@ -923,7 +923,7 @@ ru:
       emoji_reaction:
         reactable: "Реакция на"
       enterprise_token:
-        domain: "Домен"
+        domain: "Доменное имя"
         starts_at: "Действует с"
         subscriber: "Подписчик"
         encoded_token: "Маркер поддержки корпоративной версии"
@@ -1029,7 +1029,7 @@ ru:
         include_subprojects: "Включить подпроекты"
         results: "Результаты"
       relation:
-        lag: "Отставание"
+        lag: "Задержка"
         from: "Похожий пакет работ"
         to: "Похожий пакет работ"
         relation_type: "Тип отношения"
@@ -1222,7 +1222,7 @@ ru:
           attributes:
             content_type:
               blank: "Тип содержимого файла не может быть пустым."
-              not_whitelisted: "Файл был отклонен автоматическим фильтром. '%{value}' не является белым списком для загрузки."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:
@@ -4009,8 +4009,6 @@ ru:
       new:
         description: "Изменения на этом этапе проекта будут отражены во всех проектах, где он включен."
         heading: "Новый этап"
-      edit:
-        heading: "Изменить этап"
       both_gate: "Начать и завершить стадию"
       no_gate: "Нет стадии"
       start_gate: "Начать стадию"
@@ -4387,12 +4385,12 @@ ru:
         message: "Совместное использование списков проектов с отдельными пользователями является корпоративным дополнением."
   working_days:
     info: >
-      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
+      Невыбранные дни пропускаются при планировании пакетов работ и жизненного цикла проекта (и не включаются в подсчет дней). Они могут быть переопределены на уровне пакетов работ.
     instance_wide_info: >
       Даты, добавленные в список ниже, считаются нерабочими и пропускаются при планировании пакетов работ.
     change_button: "Изменить рабочие дни"
     warning: >
-      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
+      Изменение дней недели, считающихся рабочими или нерабочими днями, может повлиять на начало и завершение всех пакетов работ и жизненных циклов во всех проектах.
     journal_note:
       changed: _**Рабочие дни** изменены (%{changes})._
       days:

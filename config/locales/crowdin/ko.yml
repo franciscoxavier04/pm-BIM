@@ -1200,7 +1200,7 @@ ko:
           attributes:
             content_type:
               blank: "파일의 콘텐츠 유형은 비워둘 수 없습니다."
-              not_whitelisted: "파일이 자동 필터에 의해 거부되었습니다. '%{value}'은(는) 업로드 허용 목록에 등록되지 않았습니다."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:
@@ -3888,8 +3888,6 @@ ko:
       new:
         description: "이 프로젝트 단계의 변경 사항은 이 단계가 활성화된 모든 프로젝트에 반영됩니다."
         heading: "New phase"
-      edit:
-        heading: "Edit phase"
       both_gate: "시작 및 완료 게이트"
       no_gate: "게이트 없음"
       start_gate: "시작 게이트"

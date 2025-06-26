@@ -1205,7 +1205,7 @@ es:
           attributes:
             content_type:
               blank: "El tipo de contenido del archivo no puede estar en blanco."
-              not_whitelisted: "El archivo se rechazó a causa de un filtro automático. «%{value}» no se incluye en la lista de permitidos para carga."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:
@@ -3928,8 +3928,6 @@ es:
       new:
         description: "Los cambios en esta fase del proyecto se reflejarán en todos los proyectos en los que esté activada."
         heading: "New phase"
-      edit:
-        heading: "Edit phase"
       both_gate: "Puerta inicial y final"
       no_gate: "Sin puerta"
       start_gate: "Puerta de inicio"

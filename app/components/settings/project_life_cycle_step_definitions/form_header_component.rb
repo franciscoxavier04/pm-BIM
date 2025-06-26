@@ -31,7 +31,13 @@
 module Settings
   module ProjectLifeCycleStepDefinitions
     class FormHeaderComponent < ApplicationComponent
-      options :heading_scope
+      def definition_heading
+        if model.persisted?
+          model.name
+        else
+          t("settings.project_phase_definitions.new.heading")
+        end
+      end
 
       def breadcrumbs_items
         [
@@ -47,7 +53,7 @@ module Settings
             href: admin_settings_project_phase_definitions_path,
             text: t("settings.project_phase_definitions.heading")
           },
-          t("settings.project_phase_definitions.#{heading_scope}.heading")
+          definition_heading
         ]
       end
     end

@@ -36,13 +36,13 @@ ro:
           name: Negru
       project_phase_colors:
         item_0:
-          name: PM2 Orange
+          name: PM2 Portocaliu
         item_1:
-          name: PM2 Red
+          name: PM2 Roșu
         item_2:
           name: PM2 Magenta
         item_3:
-          name: PM2 Green Yellow
+          name: PM2 Verde Galben
       document_categories:
         item_0:
           name: Documentație
@@ -81,16 +81,16 @@ ro:
     standard:
       project_phases:
         item_0:
-          name: Initiating
+          name: Inițializare
         item_1:
           name: Planificare
-          start_gate: Ready for Planning
+          start_gate: Gata pentru planificare
         item_2:
-          name: Executing
-          start_gate: Ready for Executing
+          name: Execuție
+          start_gate: Gata de execuție
         item_3:
-          name: Closing
-          start_gate: Ready for Closing
+          name: Închidere
+          start_gate: Gata pentru închidere
       priorities:
         item_0:
           name: Scăzută

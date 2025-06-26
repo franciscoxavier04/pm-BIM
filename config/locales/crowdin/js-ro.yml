@@ -274,10 +274,10 @@ ro:
         change_button: "Salvează și reprogramează"
         change_title: "Modifică zilelor lucrătoare"
         removed_title: "Veţi elimina următoarele zile din lista de zile nelucrătoare:"
-        change_description: "Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance."
+        change_description: "Schimbarea zilelor din săptămână care sunt considerate zile lucrătoare sau zile nelucrătoare poate afecta zilele de începere și de încheiere a tuturor pachetelor de lucru și ciclurilor de viață în toate proiectele, în acest caz."
         warning: >
-          The changes might take some time to take effect. You will be notified when all relevant work packages and project life cycles have been updated.
-          Are you sure you want to continue?
+          Modificările ar putea dura ceva timp pentru a produce efecte. Vei fi notificat când toate pachetele de lucru relevante și ciclurile de viață ale proiectului au fost actualizate.
+          Ești sigur că vrei să continui?
       work_packages_settings:
         warning_progress_calculation_mode_change_from_status_to_field_html: >-
           Changing progress calculation mode from status-based to work-based will make the <i>% Complete</i> field freely editable. If you optionally enter values for <i>Work</i> or <i>Remaining work</i>, they will also be linked to <i>% Complete</i>. Changing <i>Remaining work</i> can then update <i>% Complete</i>.
@@ -360,7 +360,7 @@ ro:
           "16_1":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Structure the project life cycle with phases and phase gates.</li> <li>Export meetings in PDF format.</li> <li>Set smart default options for reminders.</li> <li>Use negative lag for work package dates.</li> <li>Display hierarchy trees for hierarchy custom fields.</li> <li>Benefit from improved accessibility for the date picker with ARIA live regions.</li> </ul>
+                Publicarea conține diverse caracteristici noi și îmbunătățiri, cum ar fi <br> <ul class="%{list_styling_class}"> <li>Structura ciclul de viață al proiectului cu etape și faze.</li> <li>Ședințe la export în format PDF.</li> <li>Setează opțiuni implicite inteligente pentru mementouri.</li> <li>Utilizați decalajul negativ pentru pachetele de lucru.</li> <li>Afișați copaci ierarhici pentru câmpuri personalizate ierarhice.</li> <li>Beneficiază de o mai bună accesibilitate pentru selectorul de date cu regiunile vii ARIA</li> </ul>
     ical_sharing_modal:
       title: "Subscribe to calendar"
       inital_setup_error_message: "An error occured while fetching data."
@@ -592,7 +592,7 @@ ro:
           drag: "Trage și aruncă cartonașele dintr-o listă dată pentru a le reordona sau muta în altă listă. <br> Poți da click pe pictograma (i) din colțul din dreapta sus sau poți face dublu clic pe un card pentru a-i deschide detaliile."
         wp:
           toggler: "Acum să ne uităm la secțiunea <b>Pachet de lucru</b>, care vă oferă o vizualizare mai detaliată a activității dumneavoastră."
-          list: "Acest pachet <b>de lucru</b> oferă o listă a tuturor activităților din proiectul tău, cum ar fi sarcini, jaloane, faze și altele. <br> Pachetele de lucru pot fi create și editate direct din acest punct de vedere. Pentru a accesa detaliile unui anumit pachet de lucru, faceți dublu clic pe rând."
+          list: "Acest pachet <b>de lucru</b> oferă o listă a tuturor activităților din proiectul tău, cum ar fi sarcini, jaloane, faze și altele. <br> Pachetele de lucru pot fi create și editate direct din acest punct de vedere. Pentru a accesa detaliile unui anumit pachet de lucru, fă dublu clic pe rând."
           full_view: "Vizualizarea <b>pentru detaliile pachetului de lucru</b> furnizează toate informațiile relevante referitoare la un anumit pachet de lucru, cum ar fi descrierea, starea, prioritatea, activitățile, dependențele si comentariile."
           back_button: "Utilizează săgeata de întoarcere din colțul din stânga sus pentru a ieși și pentru a reveni la lista pachetelor de lucru."
           create_button: "Butonul <b>Creează</b> va adăuga un nou pachet de lucru la proiectul tău."

@@ -1220,7 +1220,7 @@ pl:
           attributes:
             content_type:
               blank: "Zawartość tego typu zwartości nie może być pusta."
-              not_whitelisted: "Plik został odrzucony przez automatyczny filtr. '%{value}' nie jest na białej liście do przesyłania."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:
@@ -4007,8 +4007,6 @@ pl:
       new:
         description: "Zmiany w tej fazie projektu zostaną odzwierciedlone we wszystkich projektach, w których jest ona włączona."
         heading: "New phase"
-      edit:
-        heading: "Edit phase"
       both_gate: "Bramka początkowa i końcowa"
       no_gate: "Brak bramki"
       start_gate: "Bramka początkowa"

@@ -122,7 +122,14 @@ Redmine::MenuManager.map :account_menu do |menu|
             }
   menu.push :logout,
             :signout_path,
-            if: ->(_) { User.current.logged? }
+            if: ->(_) { User.current.logged? },
+            html: {
+              data: {
+                # Turbo-drive needs to be disabled, as we might redirect to other origins
+                # as a result here (e.g., post logout SSO redirects).
+                turbo: false
+              }
+            }
 end
 
 Redmine::MenuManager.map :global_menu do |menu|

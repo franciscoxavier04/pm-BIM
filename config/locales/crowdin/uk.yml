@@ -1217,7 +1217,7 @@ uk:
           attributes:
             content_type:
               blank: "Тип контенту файлу не може бути пустий."
-              not_whitelisted: "Файл відхилено автоматичним фільтром. Завантаження «%{value}» не дозволено."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:
@@ -4005,8 +4005,6 @@ uk:
       new:
         description: "Зміни цього етапу проєкту відображатимуться в усіх проєктах із цим етапом."
         heading: "New phase"
-      edit:
-        heading: "Edit phase"
       both_gate: "Початкова й кінцева контрольні точки"
       no_gate: "Немає контрольної точки"
       start_gate: "Початкова контрольна точка"
