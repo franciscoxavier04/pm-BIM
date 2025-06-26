@@ -38,13 +38,14 @@ export default class extends Controller {
     'blockNoteEditor',
     'blockNoteInputField',
   ];
+
   static values = {
     inputText: String,
   };
 
-  declare readonly blockNoteEditorTarget: HTMLElement;
-  declare readonly blockNoteInputFieldTarget: HTMLInputElement;
-  declare readonly inputTextValue: string;
+  declare readonly blockNoteEditorTarget:HTMLElement;
+  declare readonly blockNoteInputFieldTarget:HTMLInputElement;
+  declare readonly inputTextValue:string;
 
   connect() {
     const root = createRoot(this.blockNoteEditorTarget);

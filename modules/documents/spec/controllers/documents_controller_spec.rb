@@ -67,14 +67,9 @@ RSpec.describe DocumentsController do
       get :new, params: { project_id: project.id }
     end
 
-    it "returns a successful response" do
+    it "returns render the new page successfully" do
       expect(response).to be_successful
-    end
-
-    it "show the new document form" do
-      expect(response.body).to include("Category")
-      expect(response.body).to include("Title")
-      expect(response.body).to include("Description")
+      expect(response).to render_template("new")
     end
   end
 

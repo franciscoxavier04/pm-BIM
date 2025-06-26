@@ -33,6 +33,7 @@ class DocumentForm < ApplicationForm
     f.select_list(
       name: :category_id,
       label: I18n.t("label_document_category"),
+      input_width: :medium,
       required: true
     ) do |select|
       DocumentCategory.find_each do |category|
@@ -50,12 +51,14 @@ class DocumentForm < ApplicationForm
       f.block_note_editor(
         name: :description,
         label: I18n.t("label_document_description"),
+        classes: "document-form--long-description",
         value: model.description
       )
     else
       f.rich_text_area(
         name: :description,
         label: I18n.t("label_document_description"),
+        classes: "document-form--long-description",
         rich_text_options: {
           with_text_formatting: true,
           resource:,
@@ -67,9 +70,10 @@ class DocumentForm < ApplicationForm
     f.submit(
       name: :save,
       label: save_label,
-      class: "-with-icon icon-checkmark",
       scheme: :primary
-    )
+    ) do |button|
+      button.with_leading_visual_icon(icon: :check)
+    end
   end
 
   private

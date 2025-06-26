@@ -27,36 +27,31 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+#
+require "spec_helper"
 
-module Primer
-  module OpenProject
-    module Forms
-      module Dsl
-        class BlockNoteEditorInput < Primer::Forms::Dsl::Input
-          attr_reader :name, :label, :value, :classes
+RSpec.describe DocumentForm, type: :forms do
+  include_context "with rendered form"
 
-          def initialize(name:, label:, value:, **system_arguments)
-            @name = name
-            @label = label
-            @value = value
-            @classes = system_arguments[:classes]
+  let(:project) { create(:project) }
+  let(:category) { create(:document_category, name: "Experimental", project:) }
+  let(:model) { create(:document, category: category) }
 
-            super(**system_arguments)
-          end
+  context "when the feature flag is disabled" do
+    it "renders field" do
+      expect(page).to have_field("Category", required: true)
+      expect(page).to have_field("Title", required: true)
+      expect(page).to have_element("opce-ckeditor-augmented-textarea",
+                                   "data-test-selector": "augmented-text-area-description")
+    end
+  end
 
-          def to_component
-            BlockNoteEditor.new(input: self, value:)
-          end
-
-          def type
-            :block_note_editor
-          end
-
-          def focusable?
-            true
-          end
-        end
-      end
+  context "when the feature flag is enabled", with_flag: { block_note_editor: true } do
+    it "renders field" do
+      expect(page).to have_field("Category", required: true)
+      expect(page).to have_field("Title", required: true)
+      expect(page).to have_css(".document-form--long-description")
+      expect(page).not_to have_element("opce-ckeditor-augmented-textarea")
     end
   end
 end
