@@ -39,7 +39,7 @@ module Projects
       f.hidden name: :template_id, value: template.id, scope_name_to_model: false
 
       f.fields_for(:copy_options, copy_options, nested: false) do |builder|
-        CopyOptionsForm.new(builder)
+        CopyOptionsForm.new(builder, dependencies_label: I18n.t("create_project.copy_options.dependencies_label"))
       end
     end
   end

@@ -36,7 +36,7 @@ module Projects
 
     form do |f|
       f.fields_for(:copy_options, copy_options, nested: false) do |builder|
-        CopyOptionsForm.new(builder)
+        CopyOptionsForm.new(builder, dependencies_label: I18n.t("copy_project.copy_options.dependencies_label"))
       end
     end
   end
