@@ -44,7 +44,7 @@ RSpec.describe "SCIM API Groups" do
   let(:group_without_external_id) { create(:group, members: [user]) }
   let(:headers) { { "CONTENT_TYPE" => "application/scim+json", "HTTP_AUTHORIZATION" => "Bearer #{token.plaintext_token}" } }
   let(:token) { create(:oauth_access_token, resource_owner: service_account, scopes: ["scim_v2"]) }
-  let(:service_account) { create(:service_account, service: scim_client) }
+  let(:service_account) { create(:service_account, service: scim_client, admin: true) }
   let(:scim_client) { create(:scim_client, authentication_method: :oauth2_token, auth_provider_id: oidc_provider.id) }
 
   before do
@@ -61,7 +61,7 @@ RSpec.describe "SCIM API Groups" do
         get "/scim_v2/Groups", {}, headers
 
         response_body = JSON.parse(last_response.body)
-        expect(response_body).to eq({ "Resources" => [{ "displayName" => group.name,
+        expect(response_body).to match({ "Resources" => match_array([{ "displayName" => group.name,
                                                         "externalId" => external_group_id,
                                                         "id" => group.id.to_s,
                                                         "members" => [{ "value" => user.id.to_s }],
@@ -69,11 +69,20 @@ RSpec.describe "SCIM API Groups" do
                                                                     "created" => group.created_at.iso8601,
                                                                     "lastModified" => group.updated_at.iso8601,
                                                                     "resourceType" => "Group" },
-                                                        "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] }],
+                                                        "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] },
+                                                      { "displayName" => group_without_external_id.name,
+                                                        "id" => group_without_external_id.id.to_s,
+                                                        "members" => [{ "value" => user.id.to_s }],
+                                                        "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group_without_external_id.id}",
+                                                                    "created" => group_without_external_id.created_at.iso8601,
+                                                                    "lastModified" => group_without_external_id.updated_at.iso8601,
+                                                                    "resourceType" => "Group" },
+                                                        "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] }
+                                                     ]),
                                       "itemsPerPage" => 100,
                                       "schemas" => ["urn:ietf:params:scim:api:messages:2.0:ListResponse"],
                                       "startIndex" => 1,
-                                      "totalResults" => 1 })
+                                      "totalResults" => 2 })
       end
 
       it "filters results" do
