@@ -1196,7 +1196,7 @@ zh-TW:
           attributes:
             content_type:
               blank: "文件的內容類型不能為空。"
-              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
+              not_allowlisted: "檔案被自動過濾器拒絕。'%{value}' 不允許上傳。"
               format: "%{message}"
         capability:
           context:
