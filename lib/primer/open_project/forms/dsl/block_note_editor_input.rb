@@ -33,12 +33,13 @@ module Primer
     module Forms
       module Dsl
         class BlockNoteEditorInput < Primer::Forms::Dsl::Input
-          attr_reader :name, :label, :value
+          attr_reader :name, :label, :value, :classes
 
           def initialize(name:, label:, value:, **system_arguments)
             @name = name
             @label = label
             @value = value
+            @classes = system_arguments[:classes]
 
             super(**system_arguments)
           end
