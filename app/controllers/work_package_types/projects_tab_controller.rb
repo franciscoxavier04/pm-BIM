@@ -23,7 +23,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
@@ -34,14 +34,13 @@ module WorkPackageTypes
 
     before_action :require_admin
     before_action :find_type
+    before_action :load_projects, only: :edit
 
     current_menu_item [:edit] do
       :types
     end
 
-    def edit
-      @projects = Project.all
-    end
+    def edit; end
 
     def update
       result = UpdateService.new(user: current_user, model: @type, contract_class: UpdateProjectsContract)
@@ -50,11 +49,21 @@ module WorkPackageTypes
       if result.success?
         redirect_to edit_type_projects_path(type_id: @type.id), notice: I18n.t(:notice_successful_update)
       else
+        flash_error(result)
+        load_projects
         render :edit, status: :unprocessable_entity
       end
     end
 
     private
+
+    def flash_error(result)
+      flash.now[:error] = result.errors.messages_for(:project_ids).to_sentence
+    end
+
+    def load_projects
+      @projects = Project.all
+    end
 
     def find_type
       @type = ::Type.find(params[:type_id])
