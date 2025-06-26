@@ -44,12 +44,7 @@ See COPYRIGHT and LICENSE files for more details.
           border_radius: 2,
           bg: :inset,
           my: 3,
-          p: 3,
-          data: {
-            controller: "highlight-when-value-selected",
-            highlight_when_value_selected_highlight_class: resolve_css_classes(bg: :accent),
-            highlight_when_value_selected_target: "content"
-          }
+          p: 3
         )
       ) do
         render Projects::TemplateAutocompleter.new(f, template_id:, parent_id:)

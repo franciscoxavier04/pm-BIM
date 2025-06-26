@@ -55,7 +55,6 @@ RSpec.describe Projects::TemplateAutocompleter, type: :forms do
 
   it "connects Stimulus controller actions" do
     expect(page).to have_element "opce-project-autocompleter", "data-input-name": "\"template_id\"" do |element|
-      expect(element["data-action"]).to include "change->highlight-when-value-selected#itemSelected"
       expect(element["data-action"]).to include "change->auto-submit#submit"
     end
   end

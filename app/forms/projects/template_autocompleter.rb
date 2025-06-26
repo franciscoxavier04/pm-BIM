@@ -49,7 +49,7 @@ module Projects
             { name: "templated", operator: "=", values: ["t"] }
           ],
           data: {
-            action: "change->highlight-when-value-selected#itemSelected change->auto-submit#submit",
+            action: "change->auto-submit#submit",
             "qa-field-name": "use_template"
           }
         }
