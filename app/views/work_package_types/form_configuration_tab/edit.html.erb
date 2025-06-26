@@ -29,18 +29,13 @@ See COPYRIGHT and LICENSE files for more details.
 
 <% html_title t(:label_administration), "#{t(:label_edit)} #{t(:label_work_package_types)} #{h @type.name}" %>
 
-<%
-  tabs = types_tabs
-  selected_tab = tabs.find { |tab| tab[:name] == "form_configuration" }
-%>
-
-<%= render ::Types::EditPageHeaderComponent.new(type: @type, tabs:) %>
+<%= render ::Types::EditPageHeaderComponent.new(type: @type, tabs: types_tabs) %>
 
 <%=
   form_for @type,
             url: form_configuration_path(id: @type.id),
             builder: TabularFormBuilder,
             lang: current_language do |f|
-    render partial: "common/tabs", locals: { f:, tabs:, selected_tab:, with_tab_nav: false }
+    render partial: "form", locals: { f: f }
   end
 %>

@@ -29,7 +29,7 @@
 #++
 
 module ::TypesHelper
-  # rubocop:disable Rails/HelperInstanceVariable, Metrics/AbcSize
+  # rubocop:disable Rails/HelperInstanceVariable
   def types_tabs
     [
       {
@@ -40,8 +40,7 @@ module ::TypesHelper
       },
       {
         name: "form_configuration",
-        partial: "types/form/form_configuration",
-        path: edit_tab_type_path(id: @type.id, tab: :form_configuration),
+        path: edit_form_configuration_path(id: @type.id),
         label: I18n.t("types.edit.form_configuration.tab")
       },
       {
@@ -66,7 +65,7 @@ module ::TypesHelper
     ]
   end
 
-  # rubocop:enable Rails/HelperInstanceVariable, Metrics/AbcSize
+  # rubocop:enable Rails/HelperInstanceVariable
 
   def icon_for_type(type)
     return unless type

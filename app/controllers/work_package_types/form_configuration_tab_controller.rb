@@ -37,11 +37,7 @@ module WorkPackageTypes
     before_action :require_admin
     before_action :find_type
 
-    TAB_NAME = "form_configuration"
-
-    def edit
-      @tab = TAB_NAME
-    end
+    def edit; end
 
     def update
       result = WorkPackageTypes::UpdateService
