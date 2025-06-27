@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-RSpec.describe Versions::Scopes::OrderBySemverName do
+RSpec.describe Version, "order by name" do
   let(:project) { create(:project) }
   let(:names) do
     [
@@ -21,7 +21,7 @@ RSpec.describe Versions::Scopes::OrderBySemverName do
   end
   let!(:versions) { names.map { |name| create(:version, name:, project:) } }
 
-  subject { Version.order_by_semver_name.order(id: :desc).to_a }
+  subject { Version.order(:name, id: :desc).to_a }
 
   it "returns the versions in semver order" do
     expect(subject)

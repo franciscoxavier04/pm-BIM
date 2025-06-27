@@ -30,16 +30,10 @@ class Queries::Versions::Orders::DefaultOrder < Queries::Orders::Base
   self.model = Version
 
   def self.key
-    /\A(id|name|semver_name)\z/
+    /\A(id|name)\z/
   end
 
   def initialize(attribute)
-    if attribute == :semver_name
-      OpenProject::Deprecation.warn("Sorting by semver_name is deprecated, name should be used instead")
-
-      super(:name)
-    else
-      super
-    end
+    super
   end
 end

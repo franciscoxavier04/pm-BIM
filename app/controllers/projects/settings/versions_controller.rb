@@ -30,6 +30,6 @@ class Projects::Settings::VersionsController < Projects::SettingsController
   menu_item :settings_versions
 
   def show
-    @versions = @project.shared_versions.order_by_semver_name
+    @versions = @project.shared_versions.order(:name)
   end
 end
