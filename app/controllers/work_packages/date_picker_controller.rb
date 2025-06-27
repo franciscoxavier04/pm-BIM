@@ -35,8 +35,8 @@ class WorkPackages::DatePickerController < ApplicationController
 
   layout false
 
-  before_action :find_work_package, except: %i[new create]
-  authorization_checked! :show, :update, :edit, :new, :create
+  before_action :find_work_package, except: %i[new create preview]
+  authorization_checked! :show, :preview, :update, :edit, :new, :create
 
   attr_accessor :work_package
 
@@ -54,6 +54,17 @@ class WorkPackages::DatePickerController < ApplicationController
   def edit
     set_date_attributes_to_work_package
     render_form
+  end
+
+  def preview
+    if params[:work_package_id]
+      find_work_package
+    else
+      make_fake_initial_work_package
+    end
+
+    set_date_attributes_to_work_package
+    render_form(preview: true)
   end
 
   def create
@@ -97,14 +108,15 @@ class WorkPackages::DatePickerController < ApplicationController
 
   private
 
-  def render_form(status: :ok)
+  def render_form(status: :ok, preview: false)
     render :show,
            locals: {
              work_package:,
              schedule_manually:,
              focused_field:,
              touched_field_map:,
-             date_mode:
+             date_mode:,
+             preview:
            },
            status:
   end

@@ -146,8 +146,7 @@ export abstract class DialogPreviewController extends Controller {
       });
     }
 
-    const wpAction = this.isUpdatingWorkPackage(form.action) ? 'edit' : 'new';
-    const previewUrl = `${form.action}/${wpAction}?${new URLSearchParams(wpParams).toString()}`;
+    const previewUrl = `${form.action}/preview?${new URLSearchParams(wpParams).toString()}`;
     const turboFrame = this.formTarget.closest('turbo-frame') as HTMLTurboFrameElement;
 
     if (turboFrame) {
