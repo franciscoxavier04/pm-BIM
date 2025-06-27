@@ -34,7 +34,9 @@
             class="op-pagination--item">
           <em
             *ngIf="pageNumber === pagination.page"
+            [attr.aria-label]="text.pageNumberText(pageNumber)"
             aria-current="page"
+            tabindex="0"
           >
             {{ pageNumber }}
           </em>
@@ -44,7 +46,7 @@
             *ngIf="pageNumber !== pagination.page"
             (click)="showPage(pageNumber)"
             rel="next"
-            [attr.aria-label]="'Go to page ' + pageNumber"
+            [attr.aria-label]="text.pageNumberText(pageNumber)"
             [textContent]="pageNumber"
           ></button>
         </li>
@@ -96,29 +98,43 @@
   </nav>
 
   <div class="op-pagination--options" *ngIf="showPerPageOptions()">
-    <ul class="op-pagination--items op-pagination--items_end">
-      <li
-        class="op-pagination--label"
-        [textContent]="text.per_page"
-        title="{{ text.per_page }}"
-      ></li>
-
-      <li
-        *ngFor="let perPageOption of perPageOptions"
-        [ngClass]="{ 'op-pagination--item_current': perPageOption === pagination.perPage }"
-        class="op-pagination--item"
+    <nav aria-label="Pagination controls">
+      <ul
+        class="op-pagination--items op-pagination--items_end"
+        role="presentation"
       >
+        <li
+          class="op-pagination--label"
+          title="{{ text.per_page }}"
+          role="presentation"
+          [textContent]="text.per_page"
+        ></li>
+
+        <li
+          *ngFor="let perPageOption of perPageOptions"
+          class="op-pagination--item"
+          role="presentation"
+        >
         <span *ngIf="perPageOption !== pagination.perPage">
           <button
             class="op-pagination--item-link"
             type="button"
             (click)="selectPerPage(perPageOption)"
             [textContent]="perPageOption"
+            [attr.aria-label]="text.show_per_page(perPageOption)"
           ></button>
         </span>
 
-        <span *ngIf="perPageOption === pagination.perPage">{{ perPageOption }}</span>
-      </li>
-    </ul>
+          <span
+            *ngIf="perPageOption === pagination.perPage"
+            tabindex="0"
+            aria-current="page"
+            [attr.aria-label]="text.show_per_page(perPageOption)"
+          >
+          {{ perPageOption }}
+        </span>
+        </li>
+      </ul>
+    </nav>
   </div>
 </div>

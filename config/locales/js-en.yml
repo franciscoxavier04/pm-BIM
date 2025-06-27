@@ -698,8 +698,10 @@ en:
     pagination:
       no_other_page: "You are on the only page."
       pages:
-        next: "Forward to the next page"
-        previous: "Back to the previous page"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
 
     placeholders:
       default: "-"
