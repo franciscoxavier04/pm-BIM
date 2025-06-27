@@ -239,7 +239,7 @@ pt-BR:
           test_ee: "Teste a edição Enterprise gratuitamente por 14 dias"
           quick_overview: "Obtenha uma visão geral da gestão de projetos e colaboração entre equipes com o OpenProject edição Enterprise."
         upsell:
-          become_hero: "Torne-se um herói!"
+          become_hero: "Torne-se nosso herói"
           enterprise_info_html: "%{feature_title} é um complemento do <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> Enterprise."
           upgrade_info: "Faça o upgrade para um plano pago para ativar e começar a usá-lo em sua equipe."
           text: >
@@ -254,13 +254,13 @@ pt-BR:
             premium_features: "Complementos Enterprise"
             premium_features_text: "Painéis práticos, gráficos de temas e logotipos personalizados, fluxos de trabalho inteligentes com ações personalizadas, pesquisa de texto completo para anexos em pacotes de trabalho e campos personalizados de multi-seleção."
             professional_support: "Suporte profissional"
-            professional_support_text: "Receba suporte confiável de alto nível de engenheiros sênior, com conhecimento especializado sobre a gestão do OpenProject em ambientes de negócios críticos."
+            professional_support_text: "Receba suporte confiável de alto nível de engenheiros sênior, com conhecimento especializado sobre a gerenciamento"
           button_start_trial: "Iniciar avaliação gratuita"
-          button_upgrade: "Faça o upgrade agora"
-          button_contact_us: " Contate-nos para obter uma demonstração"
+          button_upgrade: "Faça o \"upgrade\" agora"
+          button_contact_us: "Contate-nos para obter uma demonstração"
           button_book_now: "Reservar agora"
           confidence: >
-            Fornecemos toda a segurança de um software de gestão de projetos de classe empresarial, testado e com suporte - com código aberto e mente aberta.
+            Fornecemos toda a segurança de um 'software' de gerenciamento de projetos de classe empresarial, testado e com suporte — com código aberto e mente aberta.
           link_quote: "Solicitar uma cotação"
           more_info: "Mais informações"
           unlimited: "Ilimitado"
@@ -274,10 +274,10 @@ pt-BR:
         change_button: "Salvar e reagendar"
         change_title: "Alterar dias úteis"
         removed_title: "Você removerá os seguintes dias da lista de dias não úteis:"
-        change_description: "Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance."
+        change_description: "Alterar quais dias da semana são considerados dias úteis ou não úteis pode afetar as datas de início e término de todos os pacotes de trabalho e ciclos de vida em todos os projetos desta instância."
         warning: >
-          The changes might take some time to take effect. You will be notified when all relevant work packages and project life cycles have been updated.
-          Are you sure you want to continue?
+          As alterações podem levar algum tempo para entrar em vigor. Você será notificado quando todos os pacotes de trabalho e ciclos de vida dos projetos relevantes forem atualizados.
+          Tem certeza de que deseja continuar?
       work_packages_settings:
         warning_progress_calculation_mode_change_from_status_to_field_html: >-
           Alterar o modo de cálculo de progresso de baseado em status para baseado em trabalho tornará o campo <i>% de conclusão</i> editável livremente. Se você optar por inserir valores para <i>Trabalho</i> ou <i>Trabalho restante</i>, eles também estarão vinculados ao <i>% de conclusão</i>. Alterar <i>Trabalho restante</i> pode, então, atualizar <i>% de conclusão</i>.

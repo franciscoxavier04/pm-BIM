@@ -1222,7 +1222,7 @@ ru:
           attributes:
             content_type:
               blank: "Тип содержимого файла не может быть пустым."
-              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
+              not_allowlisted: "Файл был отклонен автоматическим фильтром. '%{value}' не разрешен для загрузки."
               format: "%{message}"
         capability:
           context:
