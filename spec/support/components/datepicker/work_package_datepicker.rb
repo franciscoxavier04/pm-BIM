@@ -178,6 +178,13 @@ module Components
       end
     end
 
+    def toggle_scheduling_mode_via_keyboard
+      page.within_test_selector "op-datepicker-modal--scheduling" do
+        el = page.find('[data-qa-selected="false"]')
+        el.native.send_keys(:enter)
+      end
+    end
+
     def click_manual_scheduling_mode
       container.click_link I18n.t("work_packages.datepicker_modal.mode.manual")
     end
