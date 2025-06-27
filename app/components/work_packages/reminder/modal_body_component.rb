@@ -78,7 +78,6 @@ module WorkPackages
           scheme: :secondary,
           data: {
             controller: "primer-to-angular-modal",
-            application_target: "dynamic",
             action: "click->primer-to-angular-modal#close",
             test_selector: "op-reminder-modal-close-button"
           }
@@ -121,7 +120,7 @@ module WorkPackages
       end
 
       def time_as_date(time)
-        format_time_as_date(time, format: "%Y-%m-%d")
+        format_date(time, format: "%Y-%m-%d")
       end
 
       def attribute_blank?(attribute)

@@ -51,25 +51,12 @@ $arrow-left-width: 40px
   background-color: var(--main-menu-bg-color)
 
   #menu-sidebar
+    display: flex
+    flex-direction: column
     +allow-vertical-scrolling
     height: calc(100vh - var(--header-height))
     position: relative
     @include styled-scroll-bar
-
-    // Fixed heights to allow inner scrolling
-    .menu_root.closed,
-    .menu_root > li.open,
-    wp-query-select,
-    .searchable-menu,
-    .searchable-menu--search-container,
-    .main-menu--children > li.partial:only-child
-      height: 100%
-
-    .main-menu--children
-      // 10px spacing
-      height: calc(100% - (var(--main-menu-item-height) + 10px))
-      overflow: auto
-      @include styled-scroll-bar
 
   a:not(.Button):focus
     color: var(--main-menu-font-color)
@@ -188,6 +175,10 @@ $arrow-left-width: 40px
         @include main-menu-hover
 
 .main-menu--children-menu-header
+  position: sticky
+  top: 0
+  z-index: 1
+  background: var(--main-menu-bg-color)
   padding: 10px 10px 0 4px
   height: calc(var(--main-menu-item-height) + 10px)
 
@@ -221,6 +212,8 @@ a.main-menu--parent-node:not(.Button)
 // logic for showing either parent or child menu
 .main-menu
   ul.menu_root
+    flex-grow: 1
+
     &.closed
       li
         display: none
@@ -274,7 +267,7 @@ a.main-menu--parent-node:not(.Button)
   .main-menu--children
     display: none
 
-#sidebar
+#sidebar:has(> *)
   margin: 30px 0 0 0
 
 #sidebar, #menu-sidebar .sidebar

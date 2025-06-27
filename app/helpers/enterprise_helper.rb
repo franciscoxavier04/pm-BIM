@@ -29,11 +29,18 @@
 #++
 
 module EnterpriseHelper
+  ##
+  # Renders the enterprise banner component with a guard for the given feature key.
+  # If the feature is not enabled, it will not render the given block.
+  def with_enterprise_banner_guard(feature_key, **args)
+    concat(render(EnterpriseEdition::BannerComponent.new(feature_key, **args)))
+    yield if EnterpriseToken.allows_to?(feature_key)
+  end
+
   def enterprise_angular_trial_inputs
     trial_key = Token::EnterpriseTrialKey.find_by(user_id: User.system.id)
-    token = EnterpriseToken.current
 
-    if token.present? || trial_key.blank?
+    if EnterpriseToken.active? || trial_key.blank?
       enterprise_angular_static_inputs
     else
       enterprise_angular_static_inputs.merge(
@@ -52,11 +59,7 @@ module EnterpriseHelper
 
   def enterprise_token_plan_name(enterprise_token)
     plan = enterprise_token.plan.to_s
-
-    <<~LABEL.squish
-      #{I18n.t(plan, scope: [:enterprise_plans], default: plan.humanize)}
-      (#{I18n.t(:label_token_version)} #{enterprise_token.version})
-    LABEL
+    I18n.t(plan, scope: [:enterprise_plans], default: plan.humanize)
   end
 
   def enterprise_plan_additional_features(enterprise_token)

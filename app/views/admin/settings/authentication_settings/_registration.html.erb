@@ -33,7 +33,6 @@ See COPYRIGHT and LICENSE files for more details.
     url: admin_settings_authentication_path(tab: params[:tab]),
     data: {
       turbo_method: :patch,
-      application_target: "dynamic",
       controller: "admin--registration",
       admin__registration_target: "selfRegistrationRadioGroup",
       admin__registration_activation_by_email_value: Setting::SelfRegistration.value(key: :activation_by_email),

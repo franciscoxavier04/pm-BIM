@@ -108,6 +108,36 @@ export class WorkPackageViewPageComponent extends PartitionedQuerySpacePageCompo
     this.text.button_settings = this.I18n.t('js.button_settings');
   }
 
+  breadcrumbItems() {
+    const items = [];
+
+    if (this.currentProject?.identifier) {
+      items.push({
+        href: this.pathHelperService.projectPath(this.currentProject.identifier),
+        text: this.currentProject.name,
+      });
+    }
+    items.push(this.breadcrumbModuleEntry());
+    if (this.selectedTitle) {
+      items.push(this.selectedTitle);
+    }
+
+    return items;
+  }
+
+  breadcrumbModuleEntry():{ href:string, text:string } {
+    if (this.isGantt) {
+      return {
+        href: this.pathHelperService.ganttChartsPath(this.currentProject.identifier as string),
+        text: this.I18n.t('js.work_packages.label_gantt_chart_plural'),
+      };
+    }
+    return {
+      href: this.pathHelperService.workPackagesPath(this.currentProject.identifier as string),
+      text: this.I18n.t('js.label_work_package_plural'),
+    };
+  }
+
   protected additionalLoadingTime():Promise<unknown> {
     if (this.wpTableTimeline.isVisible) {
       return this.querySpace.timelineRendered.pipe(take(1)).toPromise();
@@ -120,10 +150,14 @@ export class WorkPackageViewPageComponent extends PartitionedQuerySpacePageCompo
   }
 
   private get stateName() {
-    if (this.$state.current.name?.includes('gantt')) {
+    if (this.isGantt) {
       return 'gantt.partitioned.list.new';
     }
 
     return 'work-packages.partitioned.list.new';
+  }
+
+  private get isGantt() {
+    return this.$state.current.name?.includes('gantt');
   }
 }

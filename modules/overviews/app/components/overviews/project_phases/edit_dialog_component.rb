@@ -35,7 +35,7 @@ module Overviews
       include OpTurbo::Streamable
       include OpPrimer::ComponentHelpers
 
-      DIALOG_ID = "edit-project-life-cycles-dialog"
+      DIALOG_ID = "edit-project-life-cycle-dialog"
 
       def title
         helpers.safe_join([icon, " ", model.name])

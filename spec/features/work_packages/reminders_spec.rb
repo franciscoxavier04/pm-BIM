@@ -76,16 +76,21 @@ RSpec.describe "Work package reminder modal",
           .to have_css(".spot-modal--subheader",
                        text: "You will receive a notification for this work package at the chosen time.")
         fill_in "Date", with: date
-        # capybara expets us to set a full timestamp here, eventhough the
-        # input is only for time and the date portion is irrelevant
-        fill_in "Time", with: "1970-01-01T#{time.strftime('%H:%M')}"
+        fill_in "Time", with: time.strftime("%H:%M").to_time
         fill_in "Note", with: "Never forget!"
 
         click_link_or_button "Set reminder"
       end
 
-      work_package_page.expect_and_dismiss_flash(type: :success,
-                                                 message: I18n.t("work_package.reminders.success_creation_message"))
+      # Relative time is rendered as a dynamic component  that is a not assertable as text in capybara
+      within_test_selector("op-primer-flash-message") do
+        expect(find("relative-time")[:datetime]).to eq(time.iso8601)
+      end
+
+      work_package_page.expect_and_dismiss_flash(
+        type: :success,
+        message: /Reminder set successfully\. You will receive a notification for this work package .+/
+      )
       work_package_page.expect_reminder_button_alarm_set_icon
 
       expect(Reminder.last)
@@ -187,17 +192,12 @@ RSpec.describe "Work package reminder modal",
 
     describe "validations" do
       it "renders errors on the date field or time field when the reminder is in the past" do
-        two_am = Time.zone.parse("02:00")
-        thirty_minutes_ago = 30.minutes.ago
-                                    .in_time_zone(current_user.time_zone)
-                                    .strftime("%H:%M")
-                                    .to_time
-        thirty_minutes_from_now = 30.minutes.from_now
-                                        .in_time_zone(current_user.time_zone)
-                                        .strftime("%H:%M")
-                                        .to_time
-        yesterday = Time.current.in_time_zone(current_user.time_zone).yesterday.to_date
-        today = Time.current.in_time_zone(current_user.time_zone).to_date
+        now = Time.now.in_time_zone(current_user.time_zone)
+        two_am = now.change(hour: 2, minute: 0, second: 0)
+        thirty_minutes_ago = (now - 30.minutes).strftime("%H:%M")
+        thirty_minutes_from_now = (now + 30.minutes).strftime("%H:%M")
+        yesterday = (now - 1.day).to_date
+        today = now.to_date
 
         work_package_page.visit!
         work_package_page.click_reminder_button_with_context_menu
@@ -221,7 +221,7 @@ RSpec.describe "Work package reminder modal",
 
           # 30 minutes ago
           fill_in "Date", with: today
-          fill_in "Time", with: thirty_minutes_ago
+          fill_in "Time", with: thirty_minutes_ago.to_time
           click_link_or_button "Set reminder"
 
           wait_for_network_idle
@@ -229,14 +229,22 @@ RSpec.describe "Work package reminder modal",
 
           # 30 minutes from now
           fill_in "Date", with: today
-          fill_in "Time", with: thirty_minutes_from_now
+          fill_in "Time", with: thirty_minutes_from_now.to_time
           click_link_or_button "Set reminder"
 
           wait_for_network_idle
         end
 
-        work_package_page.expect_and_dismiss_flash(type: :success,
-                                                   message: I18n.t("work_package.reminders.success_creation_message"))
+        # Relative time is rendered as a dynamic component  that is a not assertable as text in capybara
+        within_test_selector("op-primer-flash-message") do
+          expect(find("relative-time")[:datetime])
+            .to eq(current_user.time_zone.parse("#{today} #{thirty_minutes_from_now}").iso8601)
+        end
+
+        work_package_page.expect_and_dismiss_flash(
+          type: :success,
+          message: /Reminder set successfully\. You will receive a notification for this work package .+/
+        )
         work_package_page.expect_reminder_button_alarm_set_icon
       end
 

@@ -31,7 +31,6 @@
 module ::Overviews
   class ProjectPhasesController < ::ApplicationController
     include OpTurbo::ComponentStream
-    include OpTurbo::DialogStreamHelper
 
     before_action :find_project_phase_and_project
     before_action :authorize

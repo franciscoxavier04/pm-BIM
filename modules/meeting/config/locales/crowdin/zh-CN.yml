@@ -344,7 +344,7 @@ zh-CN:
   permission_delete_meetings: "删除会议"
   permission_view_meetings: "查看会议"
   permission_manage_agendas: "管理议程"
-  permission_manage_agendas_explanation: "允许管理动态会议的议程项目。"
+  permission_manage_agendas_explanation: "允许创建、编辑和删除议程项目"
   permission_manage_outcomes: "管理结果"
   permission_send_meeting_invites_and_outcomes: "向与会者发送会议邀请和结果"
   project_module_meetings: "会议"

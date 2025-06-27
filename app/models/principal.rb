@@ -122,11 +122,13 @@ class Principal < ApplicationRecord
 
   before_create :set_default_empty_values
 
+  self.ignored_columns += [:identity_url]
+
   # Columns required for formatting the principal's name.
   def self.columns_for_name(formatter = nil)
     raise NotImplementedError, "Redefine in subclass" unless self == Principal
 
-    [User, Group, PlaceholderUser].map { _1.columns_for_name(formatter) }.inject(:|)
+    [User, Group, PlaceholderUser].map { it.columns_for_name(formatter) }.inject(:|)
   end
 
   # Select columns for formatting the user's name.

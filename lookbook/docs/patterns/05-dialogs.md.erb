@@ -29,7 +29,7 @@ The async-controller stimulus controller will ensure that a loading progress bar
 ```ruby
 class TestController < ApplicationControler
   # include the helper module
-  include OpTurbo::DialogStreamHelper
+  include OpTurbo::ComponentStream
 
   # ...
 
@@ -39,7 +39,7 @@ class TestController < ApplicationControler
 end
 ```
 
-For this to work, the `OpTurbo::Streamable` module needs to be included in the modal component, along with the `OpTurbo::DialogStreamHelper` module in the corresponding controller:
+For this to work, the `OpTurbo::Streamable` module needs to be included in the modal component, along with the `OpTurbo::ComponentStream` module in the corresponding controller:
 
 ```ruby
 class MyDialogComponent < ApplicationControler
@@ -70,9 +70,6 @@ You can also render the dialog in a manual turbo_stream template:
 
 ```ruby
 class TestController < ApplicationControler
-  # include the helper module
-  include OpTurbo::DialogStreamHelper
-
   # ...
 
   def dialog; end
@@ -145,7 +142,7 @@ Referring to the example above (see "Dialogs with separate forms"), a controller
 ```ruby
 class TestController < ApplicationControler
   # include the helper module
-  include OpTurbo::DialogStreamHelper
+  include OpTurbo::ComponentStream
 
   # ...
 

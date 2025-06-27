@@ -79,11 +79,15 @@
         main-menu-bg-color: "Bakgrunnsfarge på venstremeny."
       theme_warning: Endring av tema vil overskrive din egendefinerte stil. Designet vil da gå tapt. Er du sikker på at du vil fortsette?
     enterprise:
-      upgrade_to_ee: "Oppgrader til Enterprise utgaven"
+      delete_dialog:
+        title: "Delete enterprise token"
+        heading: "Delete this enterprise token?"
+        confirmation: "Are you sure you want to delete this Enterprise edition support token?"
+      create_dialog:
+        title: "Add Enterprise token"
+        type_token_text: "Type support token text"
+        token_placeholder: "Paste your Enterprise edition support token here"
       add_token: "Last opp en Enterprise edition supportnøkkel"
-      delete_token_modal:
-        text: "Er du sikker på at du vil fjerne gjeldende Enterprise edition nøkkel som brukes?"
-        title: "Slett token"
       replace_token: "Erstatt din nåværende supporttoken"
       order: "Oppgradere til Enterprise on-premises-utgave"
       paste: "Lim inn din Enterprise edition supportnøkkel"
@@ -95,8 +99,13 @@
       buttons:
         upgrade: "Oppgrader nå"
         contact: "Kontakt oss for en demo"
-      enterprise_info_html: "er en Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>-utvidelse."
-      upgrade_info: "Vennligst oppgrader til et betalt abonnement for å kunne aktivere og begynne å bruke det i ditt team."
+      status:
+        expired: "Expired"
+        expiring_soon: "Expiring soon"
+        in_grace_period: "In grace period"
+        invalid_domain: "Invalid domain"
+        not_active: "Not active"
+        trial: "Trial"
     jemalloc_allocator: Jemalloc minne allokator
     journal_aggregation:
       explanation:
@@ -280,6 +289,8 @@
       greater_or_equal_zero: "must be greater or equal to 0."
       not_found: "not found."
       rules:
+        copy_workflow_from:
+          workflow_missing: "has no own workflow."
         item:
           root_item: "cannot be a root item."
           not_persisted: "must be an already existing item."
@@ -290,6 +301,8 @@
         parent:
           not_descendant: "must be a descendant of the hierarchy root."
     rules:
+      copy_workflow_from: "Type for workflow copy"
+      enabled: "Enabled"
       depth: "Depth"
       item: "Element"
       label: "Label"
@@ -820,6 +833,7 @@
       required_description: "Marks this work package as being a requirement to the related one"
       label_parent_singular: "overordnet"
       label_parent_plural: "overordnet"
+      label_other_relations: "Other relations"
       ghost_relation_title: "Relatert arbeidspakke"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Invitasjon
@@ -854,6 +868,10 @@
     auth_source_login: Logg inn som <em>%{login}</em> for å aktivere kontoen din.
     omniauth_login: Vennligst logg inn for å aktivere kontoen din.
   actionview_instancetag_blank_option: "Vennligst velg"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependencies"
   activerecord:
     attributes:
       announcements:
@@ -869,6 +887,8 @@
       attribute_help_text:
         attribute_name: "Egenskap"
         help_text: "Hjelpetekst"
+      auth_provider:
+        scim_clients: "SCIM Clients"
       capability:
         context: "Kontekst"
       changeset:
@@ -908,11 +928,14 @@
       emoji_reaction:
         reactable: "Reacted on"
       enterprise_token:
-        domain: "Domene"
         starts_at: "Gyldig siden"
         subscriber: "Abonnent"
+        subscription: "Subscription"
+        plan: "Plan"
         encoded_token: "Enterprise support nøkkel"
-        active_user_count_restriction: "Maksimalt antall aktive brukere"
+        active_user_count_restriction: "Active users"
+      enterprise_trial:
+        company: "Company"
       grids/grid:
         page: "Side"
         row_count: "Antall rader"
@@ -1072,14 +1095,21 @@
         password_confirmation: "Bekreftelse"
         consented_at: "Godkjent"
       user_preference:
-        comments_sorting: "Vis kommentarer"
+        header_look_and_feel: "Look and feel"
+        header_alerts: "Alerts"
+        button_update_look_and_feel: "Update look and feel"
+        button_update_alerts: "Update alerts"
+        comments_sorting: "Display work package activity sorted by"
+        disable_keyboard_shortcuts: "Disable keyboard shortcuts"
+        disable_keyboard_shortcuts_caption_html: |-
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Tilgjengelighetsmodus"
         auto_hide_popups: "Auto-skjul suksessvarsler"
         warn_on_leaving_unsaved: "Varsle meg når jeg forlater en arbeidspakke med ulagrede endringer"
-        theme: "Modus"
+        theme: "Colour mode"
         time_zone: "Tidssone"
-        mode_guideline: "Noen moduser vil overskrive tilpassede temafarger for tilgjengelighet og leselighet. For å få fullstendig tilpasset tema, velg lys modus."
+        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. Please select Light mode for full custom theme support."
         daily_reminders: "Daily reminders"
         workdays: "Arbeidsdager"
       version:
@@ -1240,8 +1270,14 @@
               forbidden_uri: "er forbudt av serveren."
             scopes:
               not_match_configured: "samsvarer ikke med tilgjengelige omfang."
+        enterprise_trial:
+          already_used: "was already used to create a trial."
+          failed_to_create: "Trial could not be created (%{status})"
+          general_consent: "Please accept the terms and conditions."
         enterprise_token:
+          only_one_trial: "Only one trial token can be active. Please delete the previous trial token before adding another."
           unreadable: "kan ikke leses. Er du sikker på at det er en brukerstøttenøkkel?"
+          already_added: "This token has already been added."
         grids/grid:
           overlaps: "overlapp."
           outside: "er utenfor rutenett."
@@ -1517,6 +1553,9 @@
       custom_action: "Tilpasset handling"
       custom_field: "Egendefinert felt"
       "doorkeeper/application": "OAuth program"
+      enterprise_token:
+        one: "Enterprise token"
+        other: "Enterprise tokens"
       forum: "Forum"
       global_role: "Global rolle"
       group: "Gruppe"
@@ -1540,6 +1579,9 @@
       role:
         one: "Rolle"
         other: "Rolle"
+      scim_client:
+        one: "SCIM Client"
+        other: "SCIM Clients"
       status: "Status for arbeidspakke"
       token/api:
         one: Access token
@@ -1636,6 +1678,7 @@
     derived_start_date: "Utledet startdato"
     direction: "Direction"
     display_sums: "Vis summer"
+    domain: "Domain"
     due_date: "Sluttdato"
     estimated_hours: "Arbeid"
     estimated_time: "Arbeid"
@@ -1803,6 +1846,7 @@
   button_unwatch: "Stopp overvåking"
   button_update: "Oppdatèr"
   button_upgrade: "Oppgrader"
+  button_buy_now: "Buy now"
   button_upload: "Last opp"
   button_view: "Vis"
   button_watch: "Overvåk"
@@ -2020,23 +2064,36 @@
       readonly_work_packages: Readonly Work Packages
       sso_auth_providers: Single sign-on
       team_planner_view: Team Planner View
-      two_factor_authentication: 2FA Authentication
       virus_scanning: Antivirus Scanning
       work_package_query_relation_columns: Work Package Query Relation Columns
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
+      buy_now_button: "Buy now"
       plans_title: "Enterprise plans"
       title: "Enterprise programtillegg"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
+      unlimited: "Unlimited"
+      already_have_token: >
+        Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "Skjul banneret"
       homescreen_description: >
         Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
       homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: Marker endringer som er gjort på denne listen tidligere.
+      benefits:
+        description: "What are the benefits of the Enterprise on-premises edition?"
+        high_security: "Security features"
+        high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
+        installation: "Installation support"
+        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+        premium_features: "Enterprise add-ons"
+        premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
+        professional_support: "Professional support"
+        professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
       work_package_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
@@ -2083,6 +2140,31 @@
       internal_comments_inline:
         title: "Write internal comments only a small group can see"
         description: " "
+    teaser:
+      title:
+        one: "One day left of %{trial_plan} trial token"
+        other: "%{count} days left of %{trial_plan} trial token"
+      description: "You have access to all %{trial_plan} features."
+    trial:
+      not_found: "You have requested a trial token, but that request is no longer available. Please try again."
+      wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
+      already_retrieved: >
+        Your trial enterprise token was already retrieved. Please check your emails for the token being attached. Please reach out to our support team if you need a new one.
+      successfully_saved: "Your trial enterprise token has been successfully retrieved."
+      token_sent: "Trial token requested"
+      request_again: "Request again"
+      resend_action: "Resend confirmation email"
+      welcome_title: "Quick feature overview"
+      welcome_description: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
+      confirmation_info: >
+        We sent you an email on %{date} to %{email} with all the information to start the free trial of OpenProject Enterprise. Please check your inbox and click the confirmation link provided to start your 14-day free trial.
+      confirmation_subline: >
+        Please, check your inbox and follow the steps to start your 14-day free trial.
+      domain_caption: The token will be valid for your currently configured host name.
+      receive_newsletter_html: >
+        I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
+      consent_html: >
+        I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
   enumeration_activities: "Tidregistrering aktiviteter"
   enumeration_work_package_priorities: "Prioritering av arbeidspakker"
   enumeration_reported_project_statuses: "Rapportert prosjektstatus"
@@ -2107,6 +2189,7 @@
   error_color_could_not_be_saved: "Farger kunne ikke lagres"
   error_cookie_missing: "Cookie OpenProject mangler. Kontroller at informasjonskapsler er aktivert, dette programmet fungerer ikke riktig uten."
   error_custom_option_not_found: "Alternativet finnes ikke."
+  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
   error_enterprise_activation_user_limit: "Kontoen din kan ikke aktiveres (brukergrensen er nådd). Kontakt systemansvarlig for å få tilgang."
   error_enterprise_token_invalid_domain: "Enterprise utgaven er ikke aktiv. Din Enterprise nøkkels domene (%{actual}) samsvarer ikke med systemets vertsnavn (%{expected})."
   error_failed_to_delete_entry: "Kan ikke slette denne oppføringen."
@@ -2590,6 +2673,7 @@
   label_dashboard: "Kontrollsenter"
   label_database_version: "PostgreSQL versjon"
   label_date: "Dato"
+  label_dates: "Dates"
   label_date_and_time: "Dato og tid"
   label_date_format: "Datoformat"
   label_date_from: "Fra"
@@ -2711,6 +2795,7 @@
   label_information_plural: "Informasjon"
   label_installation_guides: "Installasjons guider"
   label_integer: "Heltall"
+  label_interface: "Interface"
   label_internal: "Intern"
   label_introduction_video: "Introduksjonsvideo"
   label_invite_user: "Inviter bruker"
@@ -3349,6 +3434,8 @@
   notice_successful_delete: "Slettingen var vellykket."
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Oppdateringen var vellykket."
+  notice_unsuccessful_create: "Creation failed."
+  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
   notice_unsuccessful_update: "Update failed."
   notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
@@ -3367,7 +3454,7 @@
   #Default format for numbers
   number:
     format:
-      delimiter: ""
+      delimiter: "."
       precision: 3
       separator: ","
     human:
@@ -4234,7 +4321,7 @@
     reminders:
       label_remind_at: "Dato"
       note_placeholder: "Why are you setting this reminder?"
-      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
       success_update_message: "Reminder updated successfully."
       success_deletion_message: "Reminder deleted successfully."
   sharing:

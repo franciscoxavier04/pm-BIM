@@ -31,10 +31,10 @@
 require "spec_helper"
 
 RSpec.describe "Project phase field in the work package table", :js do
-  let(:phase_definition) { create(:project_phase_definition, position: 99) }
+  let(:phase_definition) { create(:project_phase_definition, position: 2) }
   let(:project_phase) { create(:project_phase, definition: phase_definition) }
   let(:project_phase_from_other_project) { create(:project_phase, definition: phase_definition) }
-  let(:other_project_phase) { create(:project_phase) }
+  let(:other_project_phase) { create(:project_phase, definition: create(:project_phase_definition, position: 1)) }
   let(:project) { create(:project_with_types, phases: [project_phase, other_project_phase]) }
   let(:another_project) { create(:project_with_types, phases: [project_phase_from_other_project]) }
   let(:all_permissions) do
@@ -128,308 +128,212 @@ RSpec.describe "Project phase field in the work package table", :js do
     wait_for_network_idle
   end
 
-  context "with the feature flag being active", with_flag: { stages_and_gates: true } do
-    context "with the phase being active" do
-      it "shows the project phase column with the correct phase for the work package" do
-        wp_table.expect_work_package_with_attributes(work_package, { projectPhase: project_phase.name })
-        wp_table.expect_work_package_with_attributes(other_wp, { projectPhase: other_project_phase.name })
-        wp_table.expect_work_package_with_attributes(wp_without_phase, { projectPhase: "-" })
-      end
-
-      describe "filtering" do
-        let(:query_filters) do
-          [{ name: "project_phase_definition_id", operator:, values: }]
-        end
-
-        context "when filtering to include a phase" do
-          let(:operator) { "=" }
-          let(:values) { [phase_definition.id.to_s] }
-
-          it "only shows work packages with this phase" do
-            wp_table.expect_work_package_listed(work_package)
-            wp_table.ensure_work_package_not_listed!(other_wp, wp_without_phase)
-          end
-        end
-
-        context "when filtering to include multiple phases" do
-          let(:operator) { "=" }
-          let(:values) { [phase_definition.id.to_s, other_project_phase.definition.id.to_s] }
-
-          it "only shows work packages with these phases" do
-            wp_table.expect_work_package_listed(work_package, other_wp)
-            wp_table.ensure_work_package_not_listed!(wp_without_phase)
-          end
-        end
-
-        context "when filtering to exclude a phase" do
-          let(:operator) { "!" }
-          let(:values) { [other_project_phase.definition.id.to_s] }
-
-          it "shows work packages with other phases or without a phase" do
-            wp_table.expect_work_package_listed(wp_without_phase, work_package)
-            wp_table.ensure_work_package_not_listed!(other_wp)
-          end
-        end
-
-        context "when filtering to have a phase" do
-          let(:operator) { "*" }
-          let(:values) { nil }
-
-          it "shows work packages with a phase" do
-            wp_table.expect_work_package_listed(work_package, other_wp)
-            wp_table.ensure_work_package_not_listed!(wp_without_phase)
-          end
-        end
-
-        context "when filtering to not have a phase" do
-          let(:operator) { "!*" }
-          let(:values) { nil }
-
-          it "shows work packages without a phase" do
-            wp_table.expect_work_package_listed(wp_without_phase)
-            wp_table.ensure_work_package_not_listed!(work_package, other_wp)
-          end
-        end
-      end
-
-      context "when sorting by project phase ASC" do
-        let(:sort_criteria) { [%w[project_phase asc]] }
-
-        it "sorts ASC by phase position" do
-          wp_table.expect_work_package_order(wp_without_phase, other_wp, work_package)
-        end
-      end
-
-      context "when sorting by project phase DESC" do
-        let(:sort_criteria) { [%w[project_phase desc]] }
-
-        it "sorts DESC by phase position" do
-          wp_table.expect_work_package_order(work_package, other_wp, wp_without_phase)
-        end
-      end
-
-      context "when editing the value of a project phase cell" do
-        it "changes the value" do
-          wp_table.update_work_package_attributes(wp_without_phase, projectPhase: phase_definition)
-          wp_table.expect_work_package_with_attributes(wp_without_phase, { projectPhase: project_phase.name })
-        end
-      end
-
-      context "when grouping by project phase" do
-        let(:group_by) { :project_phase }
-
-        it "groups by project phase" do
-          wp_table.expect_groups({
-                                   project_phase.name => 1,
-                                   other_project_phase.name => 1,
-                                   "-" => 1
-                                 })
-        end
-
-        it "includes the group icon in the group row header" do
-          within("#wp-table-rowgroup-1") do
-            expect(page).to have_test_selector("project-phase-icon #{other_project_phase.name}")
-          end
-
-          within("#wp-table-rowgroup-2") do
-            expect(page).to have_test_selector("project-phase-icon #{project_phase.name}")
-          end
-        end
-      end
+  context "with the phase being active" do
+    it "shows the project phase column with the correct phase for the work package" do
+      wp_table.expect_work_package_with_attributes(work_package, { projectPhase: project_phase.name })
+      wp_table.expect_work_package_with_attributes(other_wp, { projectPhase: other_project_phase.name })
+      wp_table.expect_work_package_with_attributes(wp_without_phase, { projectPhase: "-" })
     end
 
-    context "with one phase being inactive" do
-      let(:project_phase) { create(:project_phase, definition: phase_definition, active: false) }
-
-      it "does not show the inactive phase" do
-        wp_table.expect_work_package_with_attributes(other_wp, { projectPhase: other_project_phase.name })
-        wp_table.expect_work_package_with_attributes(work_package, { projectPhase: "-" })
-        wp_table.expect_work_package_with_attributes(wp_without_phase, { projectPhase: "-" })
+    describe "filtering" do
+      let(:query_filters) do
+        [{ name: "project_phase_definition_id", operator:, values: }]
       end
 
-      context "when sorting by project phase ASC" do
-        let(:sort_criteria) { [%w[project_phase asc]] }
+      context "when filtering to include a phase" do
+        let(:operator) { "=" }
+        let(:values) { [phase_definition.id.to_s] }
 
-        it "sorts work packages with an inactive project phase like work packages without a project phase" do
-          wp_table.expect_work_package_order(work_package, wp_without_phase, other_wp)
+        it "only shows work packages with this phase" do
+          wp_table.expect_work_package_listed(work_package)
+          wp_table.ensure_work_package_not_listed!(other_wp, wp_without_phase)
         end
       end
 
-      context "when grouping" do
-        let(:group_by) { :project_phase }
-
-        it "groups work packages with an inactive project phase like work packages without a project phase" do
-          wp_table.expect_groups({
-                                   other_project_phase.name => 1,
-                                   "-" => 2
-                                 })
-        end
-      end
-
-      describe "filtering" do
-        let(:query_filters) do
-          [{ name: "project_phase_definition_id", operator:, values: }]
-        end
+      context "when filtering to include multiple phases" do
+        let(:operator) { "=" }
         let(:values) { [phase_definition.id.to_s, other_project_phase.definition.id.to_s] }
 
-        context "when filtering to include multiple phases" do
-          let(:operator) { "=" }
-
-          it "does not consider inactive phases, even when you filter for them" do
-            wp_table.expect_work_package_listed(other_wp)
-            wp_table.ensure_work_package_not_listed!(wp_without_phase, work_package)
-          end
+        it "only shows work packages with these phases" do
+          wp_table.expect_work_package_listed(work_package, other_wp)
+          wp_table.ensure_work_package_not_listed!(wp_without_phase)
         end
+      end
 
-        context "when filtering to exclude phases" do
-          let(:operator) { "!" }
+      context "when filtering to exclude a phase" do
+        let(:operator) { "!" }
+        let(:values) { [other_project_phase.definition.id.to_s] }
 
-          it "only excludes active phases, inactive phases are treated like they are not there" do
-            # `work_package` is listed since its phase is inactive. The exclusion does not apply.
-            wp_table.expect_work_package_listed(wp_without_phase, work_package)
-
-            # successfully exclude the other work package:
-            wp_table.ensure_work_package_not_listed!(other_wp)
-          end
+        it "shows work packages with other phases or without a phase" do
+          wp_table.expect_work_package_listed(wp_without_phase, work_package)
+          wp_table.ensure_work_package_not_listed!(other_wp)
         end
+      end
 
-        context "when filtering to have a phase" do
-          let(:operator) { "*" }
+      context "when filtering to have a phase" do
+        let(:operator) { "*" }
+        let(:values) { nil }
 
-          it "considers inactive phases" do
-            wp_table.expect_work_package_listed(other_wp)
-            wp_table.ensure_work_package_not_listed!(wp_without_phase, work_package)
-          end
+        it "shows work packages with a phase" do
+          wp_table.expect_work_package_listed(work_package, other_wp)
+          wp_table.ensure_work_package_not_listed!(wp_without_phase)
         end
+      end
 
-        context "when filtering to not have a phase" do
-          let(:operator) { "!*" }
+      context "when filtering to not have a phase" do
+        let(:operator) { "!*" }
+        let(:values) { nil }
 
-          it "considers inactive phases" do
-            wp_table.expect_work_package_listed(wp_without_phase, work_package)
-            wp_table.ensure_work_package_not_listed!(other_wp)
-          end
+        it "shows work packages without a phase" do
+          wp_table.expect_work_package_listed(wp_without_phase)
+          wp_table.ensure_work_package_not_listed!(work_package, other_wp)
         end
       end
     end
 
-    context "when viewing multiple projects" do
-      let!(:query) { build(:global_query, user: current_user) }
+    context "when sorting by project phase ASC" do
+      let(:sort_criteria) { [%w[project_phase asc]] }
 
-      context "when a phase is active in one project, but inactive in another" do
-        let(:project_phase_from_other_project) { create(:project_phase, active: false, definition: phase_definition) }
-
-        it "shows the inactive phase as if it was not set" do
-          wp_table.expect_work_package_with_attributes(other_wp, { projectPhase: other_project_phase.name })
-          wp_table.expect_work_package_with_attributes(work_package, { projectPhase: phase_definition.name })
-
-          # Has no phase at all:
-          wp_table.expect_work_package_with_attributes(wp_from_another_project, { projectPhase: "" })
-          wp_table.expect_work_package_with_attributes(wp_without_phase, { projectPhase: "" })
-
-          # Has an inactive phase:
-          wp_table.expect_work_package_with_attributes(wp_with_phase_from_another_project, { projectPhase: "" })
-        end
-
-        context "when sorting by project phase ASC" do
-          let(:sort_criteria) { [%w[project_phase asc]] }
-
-          it "sorts work packages from projects with inactive phases like work packages without a project phase" do
-            wp_table.expect_work_package_order(wp_with_phase_from_another_project, wp_from_another_project,
-                                               wp_without_phase, other_wp, work_package)
-          end
-        end
-
-        context "when grouping" do
-          let(:group_by) { :project_phase }
-
-          it "groups work packages with inactive phases like work packages without a project phase" do
-            wp_table.expect_groups({
-                                     other_project_phase.name => 1,
-                                     project_phase.name => 1,
-                                     "-" => 3
-                                   })
-          end
-        end
-
-        describe "filtering" do
-          let(:query_filters) do
-            [{ name: "project_phase_definition_id", operator:, values: }]
-          end
-          # mind that project_phase_from_other_project refers to the same phase_definition, but is set to inactive
-          let(:values) { [phase_definition.id.to_s] }
-
-          context "when filtering to include multiple phases" do
-            let(:operator) { "=" }
-
-            it "does not consider inactive phases, even when you filter for them" do
-              wp_table.expect_work_package_listed(work_package)
-
-              # has no matching phase, not listed:
-              wp_table.ensure_work_package_not_listed!(wp_without_phase, wp_from_another_project, other_wp)
-              # has the desired phase, but it's inactive, so not listed:
-              wp_table.ensure_work_package_not_listed!(wp_with_phase_from_another_project)
-            end
-          end
-
-          context "when filtering to exclude phases" do
-            let(:operator) { "!" }
-
-            it "only excludes active phases, inactive phases are treated like they are not there" do
-              # The exclusion does not apply to the inactive phase:
-              wp_table.expect_work_package_listed(wp_with_phase_from_another_project)
-              # The exclusion does not apply if there is no phase at all:
-              wp_table.expect_work_package_listed(wp_without_phase, wp_from_another_project, other_wp)
-
-              # This phase is active and thus excluded:
-              wp_table.ensure_work_package_not_listed!(work_package)
-            end
-          end
-
-          context "when filtering to have a phase" do
-            let(:operator) { "*" }
-
-            it "treats inactive phases like they are not there" do
-              wp_table.expect_work_package_listed(work_package, other_wp)
-              wp_table.ensure_work_package_not_listed!(
-                wp_without_phase, wp_from_another_project, wp_with_phase_from_another_project
-              )
-            end
-          end
-
-          context "when filtering to not have a phase" do
-            let(:operator) { "!*" }
-
-            it "treats inactive phases like they are not there" do
-              wp_table.expect_work_package_listed(
-                wp_without_phase, wp_from_another_project, wp_with_phase_from_another_project
-              )
-              wp_table.ensure_work_package_not_listed!(work_package, other_wp)
-            end
-          end
-        end
+      it "sorts ASC by phase position" do
+        wp_table.expect_work_package_order(wp_without_phase, other_wp, work_package)
       end
     end
 
-    context "without the necessary permissions to view phases in some projects" do
-      let!(:query) { build(:global_query, user: current_user) }
-      let(:another_project_permissions) do
-        all_permissions - [:view_project_phases]
+    context "when sorting by project phase DESC" do
+      let(:sort_criteria) { [%w[project_phase desc]] }
+
+      it "sorts DESC by phase position" do
+        wp_table.expect_work_package_order(work_package, other_wp, wp_without_phase)
+      end
+    end
+
+    context "when editing the value of a project phase cell" do
+      it "changes the value" do
+        wp_table.update_work_package_attributes(wp_without_phase, projectPhase: phase_definition)
+        wp_table.expect_work_package_with_attributes(wp_without_phase, { projectPhase: project_phase.name })
+      end
+    end
+
+    context "when grouping by project phase" do
+      let(:group_by) { :project_phase }
+
+      it "groups by project phase" do
+        wp_table.expect_groups({
+                                 project_phase.name => 1,
+                                 other_project_phase.name => 1,
+                                 "-" => 1
+                               })
       end
 
-      it "does not render project phases you don't have permission for" do
-        # permission given, phase visible:
+      it "includes the group icon in the group row header" do
+        within("#wp-table-rowgroup-1") do
+          expect(page).to have_test_selector("project-phase-icon #{other_project_phase.name}")
+        end
+
+        within("#wp-table-rowgroup-2") do
+          expect(page).to have_test_selector("project-phase-icon #{project_phase.name}")
+        end
+      end
+    end
+  end
+
+  context "with one phase being inactive" do
+    let(:project_phase) { create(:project_phase, definition: phase_definition, active: false) }
+
+    it "does not show the inactive phase" do
+      wp_table.expect_work_package_with_attributes(other_wp, { projectPhase: other_project_phase.name })
+      wp_table.expect_work_package_with_attributes(work_package, { projectPhase: "-" })
+      wp_table.expect_work_package_with_attributes(wp_without_phase, { projectPhase: "-" })
+    end
+
+    context "when sorting by project phase ASC" do
+      let(:sort_criteria) { [%w[project_phase asc]] }
+
+      it "sorts work packages with an inactive project phase like work packages without a project phase" do
+        wp_table.expect_work_package_order(work_package, wp_without_phase, other_wp)
+      end
+    end
+
+    context "when grouping" do
+      let(:group_by) { :project_phase }
+
+      it "groups work packages with an inactive project phase like work packages without a project phase" do
+        wp_table.expect_groups({
+                                 other_project_phase.name => 1,
+                                 "-" => 2
+                               })
+      end
+    end
+
+    describe "filtering" do
+      let(:query_filters) do
+        [{ name: "project_phase_definition_id", operator:, values: }]
+      end
+      let(:values) { [phase_definition.id.to_s, other_project_phase.definition.id.to_s] }
+
+      context "when filtering to include multiple phases" do
+        let(:operator) { "=" }
+
+        it "does not consider inactive phases, even when you filter for them" do
+          wp_table.expect_work_package_listed(other_wp)
+          wp_table.ensure_work_package_not_listed!(wp_without_phase, work_package)
+        end
+      end
+
+      context "when filtering to exclude phases" do
+        let(:operator) { "!" }
+
+        it "only excludes active phases, inactive phases are treated like they are not there" do
+          # `work_package` is listed since its phase is inactive. The exclusion does not apply.
+          wp_table.expect_work_package_listed(wp_without_phase, work_package)
+
+          # successfully exclude the other work package:
+          wp_table.ensure_work_package_not_listed!(other_wp)
+        end
+      end
+
+      context "when filtering to have a phase" do
+        let(:operator) { "*" }
+
+        it "considers inactive phases" do
+          wp_table.expect_work_package_listed(other_wp)
+          wp_table.ensure_work_package_not_listed!(wp_without_phase, work_package)
+        end
+      end
+
+      context "when filtering to not have a phase" do
+        let(:operator) { "!*" }
+
+        it "considers inactive phases" do
+          wp_table.expect_work_package_listed(wp_without_phase, work_package)
+          wp_table.ensure_work_package_not_listed!(other_wp)
+        end
+      end
+    end
+  end
+
+  context "when viewing multiple projects" do
+    let!(:query) { build(:global_query, user: current_user) }
+
+    context "when a phase is active in one project, but inactive in another" do
+      let(:project_phase_from_other_project) { create(:project_phase, active: false, definition: phase_definition) }
+
+      it "shows the inactive phase as if it was not set" do
+        wp_table.expect_work_package_with_attributes(other_wp, { projectPhase: other_project_phase.name })
         wp_table.expect_work_package_with_attributes(work_package, { projectPhase: phase_definition.name })
 
-        # permission missing, phase invisible:
+        # Has no phase at all:
         wp_table.expect_work_package_with_attributes(wp_from_another_project, { projectPhase: "" })
+        wp_table.expect_work_package_with_attributes(wp_without_phase, { projectPhase: "" })
+
+        # Has an inactive phase:
         wp_table.expect_work_package_with_attributes(wp_with_phase_from_another_project, { projectPhase: "" })
       end
 
       context "when sorting by project phase ASC" do
         let(:sort_criteria) { [%w[project_phase asc]] }
 
-        it "sorts work packages from projects you don't have permission to like work packages without a project phase" do
+        it "sorts work packages from projects with inactive phases like work packages without a project phase" do
           wp_table.expect_work_package_order(wp_with_phase_from_another_project, wp_from_another_project,
                                              wp_without_phase, other_wp, work_package)
         end
@@ -438,7 +342,7 @@ RSpec.describe "Project phase field in the work package table", :js do
       context "when grouping" do
         let(:group_by) { :project_phase }
 
-        it "groups work packages from projects you don't have permission to like work packages without a project phase" do
+        it "groups work packages with inactive phases like work packages without a project phase" do
           wp_table.expect_groups({
                                    other_project_phase.name => 1,
                                    project_phase.name => 1,
@@ -451,20 +355,19 @@ RSpec.describe "Project phase field in the work package table", :js do
         let(:query_filters) do
           [{ name: "project_phase_definition_id", operator:, values: }]
         end
-        let(:values) { [phase_definition.id.to_s, other_project_phase.definition.id.to_s] }
-        let(:operator) { "=" }
-
-        it "offers a phase filter" do
-          expect(query.available_filters.map(&:name)).to include(:project_phase_definition_id)
-        end
+        # mind that project_phase_from_other_project refers to the same phase_definition, but is set to inactive
+        let(:values) { [phase_definition.id.to_s] }
 
         context "when filtering to include multiple phases" do
           let(:operator) { "=" }
 
-          it "does not consider unviewable phases, even when you filter for them" do
-            wp_table.expect_work_package_listed(other_wp, work_package)
+          it "does not consider inactive phases, even when you filter for them" do
+            wp_table.expect_work_package_listed(work_package)
 
-            wp_table.ensure_work_package_not_listed!(wp_with_phase_from_another_project, wp_without_phase)
+            # has no matching phase, not listed:
+            wp_table.ensure_work_package_not_listed!(wp_without_phase, wp_from_another_project, other_wp)
+            # has the desired phase, but it's inactive, so not listed:
+            wp_table.ensure_work_package_not_listed!(wp_with_phase_from_another_project)
           end
         end
 
@@ -472,22 +375,23 @@ RSpec.describe "Project phase field in the work package table", :js do
           let(:operator) { "!" }
 
           it "only excludes active phases, inactive phases are treated like they are not there" do
-            wp_table.expect_work_package_listed(
-              wp_without_phase, wp_with_phase_from_another_project, wp_from_another_project
-            )
+            # The exclusion does not apply to the inactive phase:
+            wp_table.expect_work_package_listed(wp_with_phase_from_another_project)
+            # The exclusion does not apply if there is no phase at all:
+            wp_table.expect_work_package_listed(wp_without_phase, wp_from_another_project, other_wp)
 
-            wp_table.ensure_work_package_not_listed!(other_wp, work_package)
+            # This phase is active and thus excluded:
+            wp_table.ensure_work_package_not_listed!(work_package)
           end
         end
 
         context "when filtering to have a phase" do
           let(:operator) { "*" }
 
-          it "treats unviewable phases like they are not there" do
-            wp_table.expect_work_package_listed(other_wp, work_package)
-
+          it "treats inactive phases like they are not there" do
+            wp_table.expect_work_package_listed(work_package, other_wp)
             wp_table.ensure_work_package_not_listed!(
-              wp_without_phase, wp_with_phase_from_another_project, wp_from_another_project
+              wp_without_phase, wp_from_another_project, wp_with_phase_from_another_project
             )
           end
         end
@@ -495,39 +399,107 @@ RSpec.describe "Project phase field in the work package table", :js do
         context "when filtering to not have a phase" do
           let(:operator) { "!*" }
 
-          it "treats unviewable phases like they are not there" do
+          it "treats inactive phases like they are not there" do
             wp_table.expect_work_package_listed(
-              wp_without_phase, wp_with_phase_from_another_project, wp_from_another_project
+              wp_without_phase, wp_from_another_project, wp_with_phase_from_another_project
             )
-
-            wp_table.ensure_work_package_not_listed!(other_wp, work_package)
+            wp_table.ensure_work_package_not_listed!(work_package, other_wp)
           end
         end
       end
     end
   end
 
-  context "without the necessary permissions to view phases in all projects" do
-    let(:project_permissions) { all_permissions - [:view_project_phases] }
-    let(:query_columns) { %w(subject) }
+  context "without the necessary permissions to view phases in some other projects" do
+    let!(:query) { build(:global_query, user: current_user) }
+    let(:another_project_permissions) { all_permissions - [:view_project_phases] }
 
-    it "does not offer a phase column" do
-      expect(query.available_columns.map(&:name)).not_to include(:project_phase)
+    it "does not render project phases you don't have permission for" do
+      # permission given, phase visible:
+      wp_table.expect_work_package_with_attributes(work_package, { projectPhase: phase_definition.name })
+
+      # permission missing, phase invisible:
+      wp_table.expect_work_package_with_attributes(wp_from_another_project, { projectPhase: "" })
+      wp_table.expect_work_package_with_attributes(wp_with_phase_from_another_project, { projectPhase: "" })
+    end
+
+    context "when sorting by project phase ASC" do
+      let(:sort_criteria) { [%w[project_phase asc]] }
+
+      it "sorts work packages from projects you don't have permission to like work packages without a project phase" do
+        wp_table.expect_work_package_order(wp_with_phase_from_another_project, wp_from_another_project,
+                                           wp_without_phase, other_wp, work_package)
+      end
+    end
+
+    context "when grouping" do
+      let(:group_by) { :project_phase }
+
+      it "groups work packages from projects you don't have permission to like work packages without a project phase" do
+        wp_table.expect_groups({
+                                 other_project_phase.name => 1,
+                                 project_phase.name => 1,
+                                 "-" => 3
+                               })
+      end
     end
 
     describe "filtering" do
-      it "does not offer a phase filter" do
-        expect(query.available_filters.map(&:name)).not_to include(:project_phase_definition_id)
+      let(:query_filters) do
+        [{ name: "project_phase_definition_id", operator:, values: }]
       end
-    end
-  end
+      let(:values) { [phase_definition.id.to_s, other_project_phase.definition.id.to_s] }
+      let(:operator) { "=" }
 
-  context "with the feature flag being inactive", with_flag: { stages_and_gates: false } do
-    let(:query_columns) { %w(subject) }
+      it "offers a phase filter" do
+        expect(query.available_filters.map(&:name)).to include(:project_phase_definition_id)
+      end
 
-    it "does not offer to add the column to a query" do
-      wp_table.click_setting_item("Insert column")
-      wp_table.expect_no_column_add_option("Project phase")
+      context "when filtering to include multiple phases" do
+        let(:operator) { "=" }
+
+        it "does not consider unviewable phases, even when you filter for them" do
+          wp_table.expect_work_package_listed(other_wp, work_package)
+
+          wp_table.ensure_work_package_not_listed!(wp_with_phase_from_another_project, wp_without_phase)
+        end
+      end
+
+      context "when filtering to exclude phases" do
+        let(:operator) { "!" }
+
+        it "only excludes active phases, inactive phases are treated like they are not there" do
+          wp_table.expect_work_package_listed(
+            wp_without_phase, wp_with_phase_from_another_project, wp_from_another_project
+          )
+
+          wp_table.ensure_work_package_not_listed!(other_wp, work_package)
+        end
+      end
+
+      context "when filtering to have a phase" do
+        let(:operator) { "*" }
+
+        it "treats unviewable phases like they are not there" do
+          wp_table.expect_work_package_listed(other_wp, work_package)
+
+          wp_table.ensure_work_package_not_listed!(
+            wp_without_phase, wp_with_phase_from_another_project, wp_from_another_project
+          )
+        end
+      end
+
+      context "when filtering to not have a phase" do
+        let(:operator) { "!*" }
+
+        it "treats unviewable phases like they are not there" do
+          wp_table.expect_work_package_listed(
+            wp_without_phase, wp_with_phase_from_another_project, wp_from_another_project
+          )
+
+          wp_table.ensure_work_package_not_listed!(other_wp, work_package)
+        end
+      end
     end
   end
 end

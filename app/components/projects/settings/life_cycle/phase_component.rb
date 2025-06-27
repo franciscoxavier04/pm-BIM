@@ -33,7 +33,7 @@ module Projects
         include ApplicationHelper
         include OpPrimer::ComponentHelpers
         include OpTurbo::Streamable
-        include Projects::LifeCycleDefinitionHelper
+        include Projects::PhaseDefinitionHelper
 
         options :definition,
                 :active?

@@ -28,7 +28,7 @@
 
 module Users
   module Profile
-    class AttributesComponent < ApplicationComponent # rubocop:disable OpenProject/AddPreviewForViewComponent
+    class AttributesComponent < ApplicationComponent
       include ApplicationHelper
       include OpTurbo::Streamable
       include OpPrimer::ComponentHelpers
@@ -40,7 +40,7 @@ module Users
       end
 
       def render?
-        user_is_allowed_to_see_email || @user.visible_custom_field_values.any? { _1.value.present? }
+        user_is_allowed_to_see_email || @user.visible_custom_field_values.any? { it.value.present? }
       end
 
       def visible_custom_fields

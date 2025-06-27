@@ -58,6 +58,12 @@ module Redmine::MenuManager::TopMenuHelper
     end
   end
 
+  def render_top_menu_teaser
+    if User.current.admin? && EnterpriseToken.trial_only?
+      render(EnterpriseEdition::BuyNowButtonComponent.new)
+    end
+  end
+
   def render_global_search_input
     angular_component_tag "opce-global-search",
                           inputs: {
@@ -67,6 +73,7 @@ module Redmine::MenuManager::TopMenuHelper
 
   def render_top_menu_right
     capture do
+      concat render_top_menu_teaser
       concat render_top_menu_search
       concat top_menu_right_node
     end

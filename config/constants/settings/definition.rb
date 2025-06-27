@@ -333,6 +333,10 @@ module Settings
         description: "Default sort order for activities",
         default: "asc"
       },
+      disable_keyboard_shortcuts: {
+        description: "Whether keyboard short cuts should be disabled (e.g. for better screen reader support)",
+        default: false
+      },
       default_language: {
         default: "en",
         allowed: -> { Redmine::I18n.all_languages }

@@ -350,7 +350,7 @@ nl:
   permission_delete_meetings: "Verwijder vergaderingen"
   permission_view_meetings: "Bekijk vergaderingen"
   permission_manage_agendas: "Agenda's beheren"
-  permission_manage_agendas_explanation: "Staat het bewerken van de inhoud van de Dynamische vergadering op de agenda toe."
+  permission_manage_agendas_explanation: "Allows creating, editing and removing agenda items"
   permission_manage_outcomes: "Manage outcomes"
   permission_send_meeting_invites_and_outcomes: "Send meeting invites and outcomes to participants"
   project_module_meetings: "Vergaderingen"

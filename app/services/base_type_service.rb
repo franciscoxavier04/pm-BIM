@@ -171,8 +171,8 @@ class BaseTypeService
     type.custom_field_ids = type
                               .attribute_groups
                               .flat_map(&:members)
-                              .select { CustomField.custom_field_attribute? _1 }
-                              .map { _1.gsub(/^custom_field_/, "").to_i }
+                              .select { CustomField.custom_field_attribute? it }
+                              .map { it.gsub(/^custom_field_/, "").to_i }
                               .uniq
   end
 

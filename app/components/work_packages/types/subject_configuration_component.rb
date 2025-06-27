@@ -48,7 +48,6 @@ module WorkPackages
           method: :put,
           model: form_model,
           data: {
-            application_target: "dynamic",
             controller: "admin--subject-configuration",
             admin__subject_configuration_hide_pattern_input_value: form_model.subject_configuration == :manual
           }

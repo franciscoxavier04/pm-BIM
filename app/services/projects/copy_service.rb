@@ -33,7 +33,7 @@ module Projects
     include Projects::Concerns::NewProjectService
 
     def self.copy_dependencies
-      dependencies = [
+      [
         ::Projects::Copy::MembersDependentService,
         ::Projects::Copy::VersionsDependentService,
         ::Projects::Copy::CategoriesDependentService,
@@ -46,12 +46,6 @@ module Projects
         ::Projects::Copy::PhasesDependentService,
         ::Projects::Copy::StoragesDependentService
       ]
-
-      if OpenProject::FeatureDecisions.stages_and_gates_active?
-        dependencies
-      else
-        dependencies - [::Projects::Copy::PhasesDependentService]
-      end
     end
 
     # Project Folders and File Links aren't dependent services anymore,
@@ -64,6 +58,10 @@ module Projects
                { identifier: "file_links",
                  name_source: -> { I18n.t("projects.copy.work_package_file_links") },
                  count_source: ->(source, _) { source.work_packages.joins(:file_links).count("file_links.id") } }]
+    end
+
+    def initialize(contract_options: {}, **)
+      super(contract_options: contract_options.reverse_merge(validate_model: true), **)
     end
 
     protected
@@ -107,10 +105,6 @@ module Projects
 
     def copy_activated_custom_fields(call)
       call.result.project_custom_field_ids = source.project_custom_field_ids
-    end
-
-    def contract_options
-      { copy_source: source, validate_model: true }
     end
 
     def retain_attributes(source, target)

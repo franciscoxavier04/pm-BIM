@@ -350,7 +350,7 @@ pt-PT:
   permission_delete_meetings: "Apagar reuniões"
   permission_view_meetings: "Ver reuniões"
   permission_manage_agendas: "Gerir agendas"
-  permission_manage_agendas_explanation: "Permite gerir os itens da agenda da Reunião Dinâmica."
+  permission_manage_agendas_explanation: "Allows creating, editing and removing agenda items"
   permission_manage_outcomes: "Gerir resultados"
   permission_send_meeting_invites_and_outcomes: "Enviar convites para reuniões e resultados para participantes"
   project_module_meetings: "Reuniões"
