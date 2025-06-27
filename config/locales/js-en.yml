@@ -697,6 +697,7 @@ en:
 
     pagination:
       no_other_page: "You are on the only page."
+      pagination_controls: "Pagination controls"
       pages:
         next: "Next page"
         previous: "Previous page"

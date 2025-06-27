@@ -1,6 +1,6 @@
 <div class="op-pagination" *ngIf="pagination && isVisible && pagination.total">
-  <nav class="op-pagination--pages">
-    <ul class="op-pagination--items op-pagination--items_start">
+  <nav class="op-pagination--pages" [attr.aria-label]="text.pagination_controls">
+    <ul class="op-pagination--items op-pagination--items_start" role="presentation">
 
       <li [hidden]="pagination.page === 1 || !showPageSelections" class="op-pagination--item">
         <button
@@ -8,8 +8,7 @@
           type="button"
           (click)="showPage(pagination.page - 1)"
           rel="prev start"
-          [attr.aria-label]="text.label_previous"
-        >
+          [attr.aria-label]="text.label_previous">
           &#60;
         </button>
       </li>
@@ -36,8 +35,7 @@
             *ngIf="pageNumber === pagination.page"
             [attr.aria-label]="text.pageNumberText(pageNumber)"
             aria-current="page"
-            tabindex="0"
-          >
+            tabindex="0">
             {{ pageNumber }}
           </em>
           <button
@@ -50,7 +48,6 @@
             [textContent]="pageNumber"
           ></button>
         </li>
-
         <li *ngIf="postPageNumbers.length" class="op-pagination--space">…</li>
       </ng-container>
 
@@ -73,24 +70,20 @@
           (click)="showPage(pagination.page + 1)"
           rel="next"
           class="op-pagination--item-link op-pagination--item-link_next"
-          [attr.aria-label]="text.label_next"
-        >
+          [attr.aria-label]="text.label_next">
           &#62;
         </button>
       </li>
-
       <li class="op-pagination--range">
         <span [textContent]="currentRange"></span>
-        <span
-          *ngIf="pageNumbers.length === 1"
+        <span *ngIf="pageNumbers.length === 1"
           id="op-pagination-empty-text"
           tabindex="0"
           class="hidden-for-sighted"
-          [textContent]="text.no_other_page"
-        ></span>
+          [textContent]="text.no_other_page"></span>
       </li>
-
-      <li class="op-pagination--info" *ngIf="infoText">
+      <li class="op-pagination--info"
+          *ngIf="infoText">
         <op-icon icon-classes="icon-info1 icon-context"></op-icon>
         <span [textContent]="infoText"></span>
       </li>
@@ -98,41 +91,36 @@
   </nav>
 
   <div class="op-pagination--options" *ngIf="showPerPageOptions()">
-    <nav aria-label="Pagination controls">
+    <nav [attr.aria-label]="text.pagination_controls">
       <ul
         class="op-pagination--items op-pagination--items_end"
-        role="presentation"
-      >
+        role="presentation">
         <li
           class="op-pagination--label"
           title="{{ text.per_page }}"
           role="presentation"
-          [textContent]="text.per_page"
-        ></li>
-
+          [textContent]="text.per_page">
+        </li>
         <li
           *ngFor="let perPageOption of perPageOptions"
           class="op-pagination--item"
-          role="presentation"
-        >
-        <span *ngIf="perPageOption !== pagination.perPage">
-          <button
-            class="op-pagination--item-link"
-            type="button"
-            (click)="selectPerPage(perPageOption)"
-            [textContent]="perPageOption"
-            [attr.aria-label]="text.show_per_page(perPageOption)"
-          ></button>
-        </span>
-
-          <span
-            *ngIf="perPageOption === pagination.perPage"
+          [ngClass]="{ 'op-pagination--item_current': perPageOption === pagination.perPage }"
+          role="presentation">
+          <span *ngIf="perPageOption !== pagination.perPage">
+            <button
+              class="op-pagination--item-link"
+              type="button"
+              (click)="selectPerPage(perPageOption)"
+              [textContent]="perPageOption"
+              [attr.aria-label]="text.show_per_page(perPageOption)"
+            ></button>
+          </span>
+          <span *ngIf="perPageOption === pagination.perPage"
             tabindex="0"
             aria-current="page"
-            [attr.aria-label]="text.show_per_page(perPageOption)"
-          >
-          {{ perPageOption }}
-        </span>
+            [attr.aria-label]="text.show_per_page(perPageOption)">
+            {{ perPageOption }}
+          </span>
         </li>
       </ul>
     </nav>
