@@ -82,10 +82,10 @@ module Meetings
                                        color_namespace: :meeting_status,
                                        icon: :"issue-opened",
                                        tag: :a,
+                                       href: href("open"),
                                        description: t("text_meeting_open_dropdown_description"),
-                                       href: change_state_project_meeting_path(@project, @meeting, state: "open"),
                                        content_arguments: {
-                                         data: { "turbo-stream": true, "turbo-method": "put" }
+                                         data: data_attributes(href("open"))
                                        })
     end
 
@@ -95,10 +95,10 @@ module Meetings
                                        color_namespace: :meeting_status,
                                        icon: :play,
                                        tag: :a,
+                                       href: href("in_progress"),
                                        description: t("text_meeting_in_progress_dropdown_description"),
-                                       href: change_state_project_meeting_path(@project, @meeting, state: "in_progress"),
                                        content_arguments: {
-                                         data: { "turbo-stream": true, "turbo-method": "put" }
+                                         data: data_attributes(href("in_progress"))
                                        })
     end
 
@@ -108,11 +108,22 @@ module Meetings
                                        color_namespace: :meeting_status,
                                        icon: :"issue-closed",
                                        tag: :a,
+                                       href: href("closed"),
                                        description: t("text_meeting_closed_dropdown_description"),
-                                       href: change_state_project_meeting_path(@project, @meeting, state: "closed"),
                                        content_arguments: {
-                                         data: { "turbo-stream": true, "turbo-method": "put" }
+                                         data: data_attributes(href("closed"))
                                        })
+    end
+
+    def href(state)
+      change_state_project_meeting_path(@project, @meeting, state: state)
+    end
+
+    def data_attributes(href)
+      {
+        action: "click->meetings--check-unsaved#handleClick",
+        href: href
+      }
     end
   end
 end
