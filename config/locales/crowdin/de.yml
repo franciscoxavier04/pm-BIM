@@ -4313,7 +4313,7 @@ de:
     reminders:
       label_remind_at: "Datum"
       note_placeholder: "Warum richten Sie diese Erinnerung ein?"
-      create_success_message: "Erinnerung erfolgreich gesetzt. Sie erhalten eine Benachrichtigung für dieses Arbeitspaket am %{reminder_time}."
+      create_success_message: "Erinnerung erfolgreich gesetzt. Sie erhalten eine Benachrichtigung für dieses Arbeitspaket %{reminder_time}."
       success_update_message: "Erinnerung aktualisiert erfolgreich."
       success_deletion_message: "Erinnerung erfolgreich gelöscht."
   sharing:

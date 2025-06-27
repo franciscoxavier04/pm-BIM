@@ -699,7 +699,7 @@ ru:
           first_day: "Первый день"
           last_day: "Последний день"
     text_are_you_sure: "Уверены?"
-    breadcrumb: "Breadcrumb"
+    breadcrumb: "Навигационная цепочка"
     text_data_lost: "Все введенные данные будут потеряны."
     text_user_wrote: "%{value} написал:"
     types:
@@ -784,7 +784,7 @@ ru:
     autocompleter:
       placeholder: "Введите для поиска"
       notFoundText: "Элементов не найдено"
-      search: "Search"
+      search: "Поиск"
       project:
         placeholder: "Выберите проект"
     repositories:

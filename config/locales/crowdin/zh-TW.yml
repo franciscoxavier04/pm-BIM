@@ -289,7 +289,7 @@ zh-TW:
       not_found: "未找到"
       rules:
         copy_workflow_from:
-          workflow_missing: "has no own workflow."
+          workflow_missing: "沒有自己的工作流程。"
         item:
           root_item: "不能為根項目"
           not_persisted: "必須是已存在的項目"
@@ -300,8 +300,8 @@ zh-TW:
         parent:
           not_descendant: "必須是層級展開的"
     rules:
-      copy_workflow_from: "Type for workflow copy"
-      enabled: "Enabled"
+      copy_workflow_from: "工作流程複本的類型"
+      enabled: "啟用"
       depth: "深度"
       item: "項目"
       label: "標籤"
@@ -1264,7 +1264,7 @@ zh-TW:
           failed_to_create: "無法建立試用帳號（%{status}）"
           general_consent: "請接受條款與條件。"
         enterprise_token:
-          only_one_trial: "Only one trial token can be active. Please delete the previous trial token before adding another."
+          only_one_trial: "只能啟用一個試用令牌。請先刪除前一個試用令牌後，再新增另一個。"
           unreadable: "無法讀取，確定是一個 support token?"
           already_added: "此令牌已經新增過。"
         grids/grid:
@@ -1821,7 +1821,7 @@ zh-TW:
   button_unwatch: "取消監看"
   button_update: "更新"
   button_upgrade: "升級"
-  button_buy_now: "Buy now"
+  button_buy_now: "立刻購買"
   button_upload: "上傳"
   button_view: "檢視"
   button_watch: "監看"
@@ -2098,8 +2098,8 @@ zh-TW:
         description: " "
     teaser:
       title:
-        other: "%{count} days left of %{trial_plan} trial token"
-      description: "You have access to all %{trial_plan} features."
+        other: "%{count} %{trial_plan} 試用令牌所剩天數"
+      description: "您可以存取所有 %{trial_plan} 功能。"
     trial:
       not_found: "您已請求試用令牌，但該請求已無效。請再試一次。"
       wait_for_confirmation: "我們已傳送一封電子郵件給您，請確認您的地址以取得試用令牌。"

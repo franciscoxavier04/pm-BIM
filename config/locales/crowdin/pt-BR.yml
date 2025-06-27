@@ -100,12 +100,12 @@ pt-BR:
         upgrade: "Atualizar agora"
         contact: "Contate-nos para uma demonstração"
       status:
-        expired: "Expired"
-        expiring_soon: "Expiring soon"
-        in_grace_period: "In grace period"
-        invalid_domain: "Invalid domain"
-        not_active: "Not active"
-        trial: "Trial"
+        expired: "Expirado"
+        expiring_soon: "Expirando em breve"
+        in_grace_period: "Em período de carência"
+        invalid_domain: "Domínio inválido"
+        not_active: "Inativo"
+        trial: "Período de avaliação"
     jemalloc_allocator: Alocador de memória Jemalloc
     journal_aggregation:
       explanation:
@@ -289,7 +289,7 @@ pt-BR:
       not_found: "não encontrado."
       rules:
         copy_workflow_from:
-          workflow_missing: "has no own workflow."
+          workflow_missing: "não possui fluxo de trabalho próprio."
         item:
           root_item: "não pode ser um item raiz."
           not_persisted: "deve ser um item já existente."
@@ -300,8 +300,8 @@ pt-BR:
         parent:
           not_descendant: "deve ser um descendente da raiz da hierarquia."
     rules:
-      copy_workflow_from: "Type for workflow copy"
-      enabled: "Enabled"
+      copy_workflow_from: "Tipo para cópia do fluxo de trabalho"
+      enabled: "Ativado"
       depth: "Profundidade"
       item: "Item"
       label: "Rótulo"
@@ -575,11 +575,11 @@ pt-BR:
   priorities:
     edit:
       priority_color_text: |
-        Click to assign or change the color of this priority.
-        It can be used for highlighting work packages in the table.
+        Clique para atribuir ou alterar a cor desta prioridade.
+        Ela pode ser usada para destacar pacotes de trabalho na tabela.
     admin:
       default:
-        caption: Making this priority default will override the previous default priority.
+        caption: Definir esta prioridade como padrão substituirá a prioridade padrão anterior.
   reactions:
     action_title: "Reagir"
     add_reaction: "Adicionar reação"
@@ -831,7 +831,7 @@ pt-BR:
       required_description: "Marca este pacote de trabalho como um requisito para o pacote de trabalho relacionado"
       label_parent_singular: "pais"
       label_parent_plural: "pais"
-      label_other_relations: "Other relations"
+      label_other_relations: "Outras relações"
       ghost_relation_title: "Pacote de trabalho relacionado"
       ghost_relation_description: "Você não possui permissão para visualizar isso."
   label_invitation: Convite
@@ -928,12 +928,12 @@ pt-BR:
       enterprise_token:
         starts_at: "Válido desde"
         subscriber: "Assinante"
-        subscription: "Subscription"
+        subscription: "Assinatura"
         plan: "Plano"
         encoded_token: "Token de suporte Enterprise"
-        active_user_count_restriction: "Active users"
+        active_user_count_restriction: "Usuários ativos"
       enterprise_trial:
-        company: "Company"
+        company: "Empresa"
       grids/grid:
         page: "Página"
         row_count: "Número de linhas"
@@ -1093,21 +1093,21 @@ pt-BR:
         password_confirmation: "Confirmação"
         consented_at: "Consentido em"
       user_preference:
-        header_look_and_feel: "Look and feel"
-        header_alerts: "Alerts"
-        button_update_look_and_feel: "Update look and feel"
-        button_update_alerts: "Update alerts"
-        comments_sorting: "Display work package activity sorted by"
-        disable_keyboard_shortcuts: "Disable keyboard shortcuts"
+        header_look_and_feel: "Aparência e usabilidade"
+        header_alerts: "Alertas"
+        button_update_look_and_feel: "Atualizar aparência e usabilidade"
+        button_update_alerts: "Atualizar alertas"
+        comments_sorting: "Exibir atividade do pacote de trabalho ordenada por"
+        disable_keyboard_shortcuts: "Desativar atalhos de teclado"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
+          Você pode optar por desativar os <a href="%{href}">atalhos de teclado</a> padrão se utilizar um leitor de tela ou quiser evitar acionar uma ação acidentalmente com um atalho
         dismissed_enterprise_banners: "Banners empresariais ocultos"
         impaired: "Modo de acessibilidade"
         auto_hide_popups: "Auto-ocultar notificações de sucesso"
         warn_on_leaving_unsaved: "Alertar-me ao sair de um pacote de trabalho sem salvar as alterações"
-        theme: "Colour mode"
+        theme: "Modo de cor"
         time_zone: "Fuso horário"
-        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. Please select Light mode for full custom theme support."
+        mode_guideline: "Alguns modos substituem as cores personalizadas do tema para melhorar a acessibilidade e a legibilidade. Selecione o modo Claro para ter suporte completo a temas personalizados."
         daily_reminders: "Lembretes diários"
         workdays: "Dias úteis"
       version:
@@ -1235,7 +1235,7 @@ pt-BR:
           attributes:
             content_type:
               blank: "O tipo de conteúdo do arquivo não pode ficar em branco."
-              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
+              not_allowlisted: "O arquivo foi rejeitado por um filtro automático. '%{value}' não é permitido para ‘upload’."
               format: "%{message}"
         capability:
           context:
@@ -1269,13 +1269,13 @@ pt-BR:
             scopes:
               not_match_configured: "não corresponde a escopos disponíveis."
         enterprise_trial:
-          already_used: "was already used to create a trial."
-          failed_to_create: "Trial could not be created (%{status})"
-          general_consent: "Please accept the terms and conditions."
+          already_used: "já foi usado para criar uma avaliação."
+          failed_to_create: "A avaliação não pôde ser criada (%{status})"
+          general_consent: "Por favor, aceite os termos e condições."
         enterprise_token:
-          only_one_trial: "Only one trial token can be active. Please delete the previous trial token before adding another."
+          only_one_trial: "Apenas um token de avaliação pode estar ativo. Por favor, exclua o token de avaliação anterior antes de adicionar outro."
           unreadable: "não pode ser lido. Tem certeza que é um token de suporte?"
-          already_added: "This token has already been added."
+          already_added: "Este token já foi adicionado."
         grids/grid:
           overlaps: "sobreposição."
           outside: "está fora da grade."
@@ -1676,7 +1676,7 @@ pt-BR:
     derived_start_date: "Data inicial derivada"
     direction: "Direção"
     display_sums: "Mostrar somas"
-    domain: "Domain"
+    domain: "Domínio"
     due_date: "Data de conclusão"
     estimated_hours: "Trabalho"
     estimated_time: "Trabalho"
@@ -1844,7 +1844,7 @@ pt-BR:
   button_unwatch: "Não observar"
   button_update: "Atualizar"
   button_upgrade: "Atualizar"
-  button_buy_now: "Buy now"
+  button_buy_now: "Comprar agora"
   button_upload: "Carregar"
   button_view: "Ver"
   button_watch: "Observar"
@@ -2073,9 +2073,9 @@ pt-BR:
       plan_title: "Complemento do %{plan} Enterprise"
       plan_name: "Plano enterprise %{plan}"
       plan_text_html: "Disponível a partir do %{plan_name}."
-      unlimited: "Unlimited"
+      unlimited: "Ilimitado"
       already_have_token: >
-        Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
+        Já possui um token? Adicione-o usando o botão abaixo para fazer o "upgrade" para o plano Enterprise.
       hide_banner: "Ocultar este banner"
       homescreen_description: >
         Os planos Enterprise ampliam a edição Community do OpenProject que você está utilizando. Eles incluem complementos, recursos adicionais e suporte profissional, permitindo que organizações de todos os tamanhos conquistem grandes resultados juntos.
@@ -2083,15 +2083,15 @@ pt-BR:
       baseline_comparison:
         description: Destaque as alterações realizadas nesta lista desde qualquer ponto no passado.
       benefits:
-        description: "What are the benefits of the Enterprise on-premises edition?"
-        high_security: "Security features"
-        high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
-        installation: "Installation support"
-        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
-        premium_features: "Enterprise add-ons"
-        premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
-        professional_support: "Professional support"
-        professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
+        description: "Quais são os benefícios da edição Enterprise on-premises?"
+        high_security: "Recursos de segurança"
+        high_security_text: "Autenticação única (SAML, OpenID Connect, CAS), grupos LDAP."
+        installation: "Suporte à instalação"
+        installation_text: "Engenheiros de software experientes guiam você por todo o processo de instalação e configuração na sua própria infraestrutura."
+        premium_features: "Complementos Enterprise"
+        premium_features_text: "Quadros ágeis, tema e logo personalizados, gráficos, fluxos de trabalho inteligentes com ações personalizadas, busca por texto completo em arquivos anexos aos pacotes de trabalho e campos personalizados com seleção múltipla."
+        professional_support: "Suporte profissional"
+        professional_support_text: "Receba suporte confiável e personalizado de engenheiros de suporte sênior com conhecimento especializado para operar o OpenProject em ambientes críticos para os negócios."
       work_package_subject_generation:
         description: "Crie assuntos gerados automaticamente com base em atributos e textos referenciados."
       customize_life_cycle:
@@ -2140,29 +2140,29 @@ pt-BR:
         description: " "
     teaser:
       title:
-        one: "One day left of %{trial_plan} trial token"
-        other: "%{count} days left of %{trial_plan} trial token"
-      description: "You have access to all %{trial_plan} features."
+        one: "Falta um dia para o término do token de avaliação %{trial_plan}"
+        other: "Faltam %{count} dias para o término do token de avaliação %{trial_plan}"
+      description: "Você tem acesso a todos os recursos do %{trial_plan}."
     trial:
-      not_found: "You have requested a trial token, but that request is no longer available. Please try again."
-      wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
+      not_found: "Você solicitou um token de avaliação, mas essa solicitação não está mais disponível. Por favor, tente novamente."
+      wait_for_confirmation: "Enviamos um e-mail para confirmar seu endereço para que você possa receber um token de avaliação."
       already_retrieved: >
-        Your trial enterprise token was already retrieved. Please check your emails for the token being attached. Please reach out to our support team if you need a new one.
-      successfully_saved: "Your trial enterprise token has been successfully retrieved."
-      token_sent: "Trial token requested"
-      request_again: "Request again"
-      resend_action: "Resend confirmation email"
-      welcome_title: "Quick feature overview"
-      welcome_description: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
+        Seu token de avaliação Enterprise já foi enviado. Verifique seus e-mails para encontrar o token em anexo. Caso precise de um novo, entre em contato com nossa equipe de suporte.
+      successfully_saved: "Seu token de avaliação Enterprise foi recuperado com sucesso."
+      token_sent: "Token de avaliação solicitado"
+      request_again: "Solicitar novamente"
+      resend_action: "Reenviar e-mail de confirmação"
+      welcome_title: "Visão geral rápida dos recursos"
+      welcome_description: "Tenha uma visão rápida sobre gerenciamento de projetos e colaboração em equipe com a edição Enterprise do OpenProject."
       confirmation_info: >
-        We sent you an email on %{date} to %{email} with all the information to start the free trial of OpenProject Enterprise. Please check your inbox and click the confirmation link provided to start your 14-day free trial.
+        Enviamos um e-mail em %{date} para %{email} com todas as informações para iniciar a avaliação gratuita do OpenProject Enterprise. Por favor, verifique sua caixa de entrada e clique no link de confirmação para começar seu período de avaliação gratuito de 14 dias.
       confirmation_subline: >
-        Please, check your inbox and follow the steps to start your 14-day free trial.
-      domain_caption: The token will be valid for your currently configured host name.
+        Por favor, verifique sua caixa de entrada e siga os passos para iniciar seu período de avaliação gratuito de 14 dias.
+      domain_caption: O token será válido para o nome do host configurado atualmente.
       receive_newsletter_html: >
-        I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
+        Quero receber a <a target="_blank" href="https://www.openproject.org/newsletter/">boletim informativo</a> do OpenProject.
       consent_html: >
-        I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
+        Eu concordo com os <a target="_blank" href="https://www.openproject.org/terms-of-service/">termos de serviço</a> e a <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">política de privacidade</a>.
   enumeration_activities: "Atividades de controle de tempo"
   enumeration_work_package_priorities: "Prioridades do pacote de trabalho"
   enumeration_reported_project_statuses: "Situação de projeto comunicada"
@@ -4014,7 +4014,7 @@ pt-BR:
       phase_gates: "Controles de fase"
       new:
         description: "As alterações nesta fase do projeto serão aplicadas a todos os projetos nos quais ela esteja ativada."
-        heading: "New phase"
+        heading: "Nova fase"
       both_gate: "Controle inicial e controle final"
       no_gate: "Sem controle"
       start_gate: "Data inicial"
@@ -4317,7 +4317,7 @@ pt-BR:
     reminders:
       label_remind_at: "Data"
       note_placeholder: "Por que você está configurando este lembrete?"
-      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
+      create_success_message: "Lembrete configurado com sucesso. Você receberá uma notificação deste pacote de trabalho %{reminder_time}."
       success_update_message: "Lembrete atualizado com sucesso."
       success_deletion_message: "Lembrete excluído com sucesso."
   sharing:
@@ -4389,12 +4389,12 @@ pt-BR:
         message: "Compartilhar listas de projetos com usuários individuais é um complemento Enterprise."
   working_days:
     info: >
-      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
+      Os dias que não estiverem selecionados são ignorados ao programar os pacotes de trabalho e os ciclos de vida do projeto (e não são incluídos na contagem de dias). Esses valores podem ser sobrescritos no nível do pacote de trabalho.
     instance_wide_info: >
       As datas adicionadas à lista abaixo são consideradas não úteis e ignoradas ao agendar pacotes de trabalho.
     change_button: "Alterar dias úteis"
     warning: >
-      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
+      Alterar quais dias da semana são considerados dias úteis ou não úteis pode afetar as datas de início e término de todos os pacotes de trabalho e ciclos de vida em todos os projetos desta instância.
     journal_note:
       changed: _**Dias úteis** alterado (%{changes})._
       days:
