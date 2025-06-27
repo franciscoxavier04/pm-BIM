@@ -47,6 +47,7 @@ module WorkPackageTypes
       if result.success?
         redirect_to edit_form_configuration_path(@type), notice: t(:notice_successful_update)
       else
+        flash.now[:error] = result.errors[:attribute_groups].to_sentence
         render :edit, status: :unprocessable_entity
       end
     end
