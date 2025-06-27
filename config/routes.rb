@@ -138,6 +138,8 @@ Rails.application.routes.draw do
   get "/roles/workflow/:id/:role_id/:type_id" => "roles#workflow"
 
   resources :types do
+    resource :projects, controller: "work_package_types/projects_tab", only: %i[update edit]
+
     member do
       get "edit/:tab" => "types#edit", as: "edit_tab"
       match "update/:tab" => "types#update", as: "update_tab", via: %i[post patch]

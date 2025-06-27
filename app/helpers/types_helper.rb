@@ -53,8 +53,8 @@ module ::TypesHelper
       },
       {
         name: "projects",
-        partial: "types/form/projects",
-        path: edit_tab_type_path(id: @type.id, tab: :projects),
+        path: edit_type_projects_path(type_id: @type.id),
+        view_component: WorkPackageTypes::ProjectsComponent,
         label: I18n.t("types.edit.projects.tab")
       },
       {
