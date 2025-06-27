@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,32 +26,32 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
 module WorkPackageTypes
-  class UpdateSubjectPatternContract < BaseContract
-    attribute :patterns
+  class PatternInput < Primer::Forms::BaseComponent
+    prepend Primer::OpenProject::Forms::WrappedInput
 
-    validate :validate_subject_generation_pattern
+    delegate :name, to: :@input
 
-    private
-
-    def validate_subject_generation_pattern
-      blueprint = model.patterns.subject&.blueprint
-      return if blueprint.nil?
-
-      valid_tokens = flat_valid_token_list
-      invalid_tokens = blueprint.scan(WorkPackageTypes::PatternResolver::TOKEN_REGEX)
-                                .reduce([]) do |acc, match|
-        token = WorkPackageTypes::Patterns::PatternToken.build(match).key
-        valid_tokens.include?(token) ? acc : acc << token
-      end
-
-      if invalid_tokens.any?
-        errors.add(:patterns, :invalid_tokens)
-      end
+    def initialize(input:, value:, suggestions:)
+      super()
+      @input = input
+      @value = value
+      @suggestions = suggestions
     end
 
-    def flat_valid_token_list = WorkPackageTypes::Patterns::TokenPropertyMapper.new.tokens_for_type(model).map(&:key)
+    def suggestions_for_stimulus
+      @suggestions_for_stimulus ||= @suggestions.to_json
+    end
+
+    def suggestions_list_component
+      @suggestions_list_component ||= Primer::Alpha::ActionList.new(
+        role: :list,
+        scheme: :inset,
+        ml: 0,
+        "data-pattern-input-target": "suggestions"
+      )
+    end
   end
 end

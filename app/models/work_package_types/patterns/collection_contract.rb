@@ -29,29 +29,16 @@
 #++
 
 module WorkPackageTypes
-  class UpdateSubjectPatternContract < BaseContract
-    attribute :patterns
+  module Patterns
+    class CollectionContract < Dry::Validation::Contract
+      config.messages.backend = :i18n
 
-    validate :validate_subject_generation_pattern
-
-    private
-
-    def validate_subject_generation_pattern
-      blueprint = model.patterns.subject&.blueprint
-      return if blueprint.nil?
-
-      valid_tokens = flat_valid_token_list
-      invalid_tokens = blueprint.scan(WorkPackageTypes::PatternResolver::TOKEN_REGEX)
-                                .reduce([]) do |acc, match|
-        token = WorkPackageTypes::Patterns::PatternToken.build(match).key
-        valid_tokens.include?(token) ? acc : acc << token
-      end
-
-      if invalid_tokens.any?
-        errors.add(:patterns, :invalid_tokens)
+      params do
+        optional(:subject).hash do
+          required(:blueprint).filled(:string)
+          required(:enabled).filled(:bool)
+        end
       end
     end
-
-    def flat_valid_token_list = WorkPackageTypes::Patterns::TokenPropertyMapper.new.tokens_for_type(model).map(&:key)
   end
 end

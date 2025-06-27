@@ -29,29 +29,34 @@
 #++
 
 module WorkPackageTypes
-  class UpdateSubjectPatternContract < BaseContract
-    attribute :patterns
+  class SettingsComponent < ApplicationComponent
+    include ApplicationHelper
+    include OpPrimer::ComponentHelpers
+    include OpTurbo::Streamable
 
-    validate :validate_subject_generation_pattern
+    def initialize(model, copy_workflow_from: nil, **)
+      @copy_workflow_from = copy_workflow_from
+      super(model, **)
+    end
 
-    private
-
-    def validate_subject_generation_pattern
-      blueprint = model.patterns.subject&.blueprint
-      return if blueprint.nil?
-
-      valid_tokens = flat_valid_token_list
-      invalid_tokens = blueprint.scan(WorkPackageTypes::PatternResolver::TOKEN_REGEX)
-                                .reduce([]) do |acc, match|
-        token = WorkPackageTypes::Patterns::PatternToken.build(match).key
-        valid_tokens.include?(token) ? acc : acc << token
-      end
-
-      if invalid_tokens.any?
-        errors.add(:patterns, :invalid_tokens)
+    def form_options
+      if model.new_record?
+        create_form_options
+      else
+        update_form_options
       end
     end
 
-    def flat_valid_token_list = WorkPackageTypes::Patterns::TokenPropertyMapper.new.tokens_for_type(model).map(&:key)
+    private
+
+    attr_reader :copy_workflow_from
+
+    def create_form_options
+      { url: types_path, method: :post, model:, copy_workflow_from: }
+    end
+
+    def update_form_options
+      { url: update_tab_type_path(id: model.id, tab: :settings), method: :patch, model: }
+    end
   end
 end

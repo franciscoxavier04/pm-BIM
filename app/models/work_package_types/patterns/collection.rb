@@ -29,29 +29,38 @@
 #++
 
 module WorkPackageTypes
-  class UpdateSubjectPatternContract < BaseContract
-    attribute :patterns
+  module Patterns
+    Collection = Data.define(:patterns) do
+      extend Dry::Monads[:result]
+      private_class_method :new
 
-    validate :validate_subject_generation_pattern
-
-    private
-
-    def validate_subject_generation_pattern
-      blueprint = model.patterns.subject&.blueprint
-      return if blueprint.nil?
-
-      valid_tokens = flat_valid_token_list
-      invalid_tokens = blueprint.scan(WorkPackageTypes::PatternResolver::TOKEN_REGEX)
-                                .reduce([]) do |acc, match|
-        token = WorkPackageTypes::Patterns::PatternToken.build(match).key
-        valid_tokens.include?(token) ? acc : acc << token
+      def self.empty
+        new(patterns: {})
       end
 
-      if invalid_tokens.any?
-        errors.add(:patterns, :invalid_tokens)
+      def self.build(patterns:, contract: CollectionContract.new)
+        contract.call(patterns).to_monad.fmap { |success| new(success.to_h) }
+      rescue ArgumentError => e
+        Failure(e)
+      end
+
+      def initialize(patterns:)
+        transformed = patterns.transform_values { Pattern.new(**it) }.freeze
+
+        super(patterns: transformed)
+      end
+
+      def subject
+        patterns[:subject]
+      end
+
+      def all_enabled
+        patterns.select { |_, pattern| pattern.enabled? }
+      end
+
+      def to_h
+        patterns.stringify_keys.transform_values(&:to_h)
       end
     end
-
-    def flat_valid_token_list = WorkPackageTypes::Patterns::TokenPropertyMapper.new.tokens_for_type(model).map(&:key)
   end
 end

@@ -86,7 +86,7 @@ module WorkPackageTypes
 
       it "sets the patterns to an empty collection" do
         service.call(params)
-        expect(model.patterns).to eq(Types::Patterns::Collection.empty)
+        expect(model.patterns).to eq(WorkPackageTypes::Patterns::Collection.empty)
       end
     end
 

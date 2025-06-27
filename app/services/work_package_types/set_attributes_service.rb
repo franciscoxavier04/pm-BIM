@@ -65,7 +65,7 @@ module WorkPackageTypes
       return unless params.key?(:patterns)
       return if params.key?(:patterns) && params[:patterns].blank?
 
-      result = Types::Patterns::CollectionContract.new.call(params[:patterns])
+      result = WorkPackageTypes::Patterns::CollectionContract.new.call(params[:patterns])
       if result.failure?
         @param_validations.update({ patterns: validation_failure_to_message(result).join(", ") })
       end

@@ -23,35 +23,37 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
 module WorkPackageTypes
-  class UpdateSubjectPatternContract < BaseContract
-    attribute :patterns
-
-    validate :validate_subject_generation_pattern
-
-    private
-
-    def validate_subject_generation_pattern
-      blueprint = model.patterns.subject&.blueprint
-      return if blueprint.nil?
-
-      valid_tokens = flat_valid_token_list
-      invalid_tokens = blueprint.scan(WorkPackageTypes::PatternResolver::TOKEN_REGEX)
-                                .reduce([]) do |acc, match|
-        token = WorkPackageTypes::Patterns::PatternToken.build(match).key
-        valid_tokens.include?(token) ? acc : acc << token
+  module Patterns
+    AttributeToken = Data.define(:key, :label_fn, :resolve_fn) do
+      def label_with_context
+        attribute_context = I18n.t("types.edit.subject_configuration.token.context.#{context}")
+        I18n.t("types.edit.subject_configuration.token.label_with_context", attribute_context:, attribute_label: label)
       end
 
-      if invalid_tokens.any?
-        errors.add(:patterns, :invalid_tokens)
+      def label(*)
+        label_fn.call(*)
+      end
+
+      def call(*)
+        resolve_fn.call(*)
+      end
+
+      def context
+        case key.to_s
+        when /^project_/
+          :project
+        when /^parent_/
+          :parent
+        else
+          :work_package
+        end
       end
     end
-
-    def flat_valid_token_list = WorkPackageTypes::Patterns::TokenPropertyMapper.new.tokens_for_type(model).map(&:key)
   end
 end
