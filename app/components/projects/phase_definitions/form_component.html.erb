@@ -36,11 +36,11 @@ See COPYRIGHT and LICENSE files for more details.
           render Projects::PhaseDefinitions::DetailsForm.new(f)
         end
 
-        body.with_row(mt: 2) do
+        body.with_row(mt: 3) do
           render Projects::PhaseDefinitions::StartGateCheckboxForm.new(f)
         end
         body.with_row(
-          mt: 2,
+          mt: 3,
           classes: model.start_gate.blank? ? "d-none" : "",
           data: {
             target_name: "start_gate",
@@ -51,11 +51,11 @@ See COPYRIGHT and LICENSE files for more details.
           render Projects::PhaseDefinitions::StartGateNameForm.new(f)
         end
 
-        body.with_row(mt: 2) do
+        body.with_row(mt: 3) do
           render Projects::PhaseDefinitions::FinishGateCheckboxForm.new(f)
         end
         body.with_row(
-          mt: 2,
+          mt: 3,
           classes: model.finish_gate.blank? ? "d-none" : "",
           data: {
             target_name: "finish_gate",
