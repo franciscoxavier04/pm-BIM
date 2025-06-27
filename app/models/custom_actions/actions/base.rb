@@ -99,7 +99,7 @@ class CustomActions::Actions::Base
   private
 
   def deconstruct_keys(*)
-    { type:, custom_field: respond_to?(:custom_field) }
+    { type:, custom_field_based: respond_to?(:custom_field) }
   end
 
   def validate_value_required(errors)

@@ -81,7 +81,7 @@
                                               labelForId: "custom_action_actions_#{action.key}",
                                               inputValue: action.values.first
                                             } %>
-                <% in { type: :user, custom_field: false } %>
+                <% in { type: :user, custom_field_based: false } %>
                   <% selected = action.value_objects.map { |v| { id: v[:value], name: v[:label] } } %>
                   <%= angular_component_tag "opce-user-autocompleter",
                                             inputs: {
