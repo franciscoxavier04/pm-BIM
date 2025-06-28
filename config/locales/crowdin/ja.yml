@@ -286,7 +286,7 @@ ja:
         short:
           not_unique: "は、同じ階層レベル内で一意である必要があります。"
         parent:
-          not_descendant: "階層ルートの子孫でなければなりません"
+          not_descendant: "階層ルートの子孫でなければなりません。"
     rules:
       depth: "深さ"
       item: "アイテム"

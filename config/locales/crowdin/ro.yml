@@ -993,7 +993,7 @@ ro:
       project/phase_definition:
         name: "Nume"
         color: "Culoare"
-        start_gate: "Înecput poartă fază"
+        start_gate: "Început poartă fază"
         start_gate_name: "Nume început poartă fază"
         finish_gate: "Final poartă fază"
         finish_gate_name: "Nume final poartă fază"
