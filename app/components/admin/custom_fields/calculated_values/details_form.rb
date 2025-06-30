@@ -47,7 +47,7 @@ module Admin::CustomFields::CalculatedValues
         label: I18n.t("activerecord.attributes.project_custom_field.custom_field_section"),
         required: true
       ) do |li|
-        ProjectCustomFieldSection.all.collect.each do |cs|
+        ProjectCustomFieldSection.find_each do |cs|
           li.option(value: cs.id, label: cs.name)
         end
       end
