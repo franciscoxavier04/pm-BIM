@@ -37,7 +37,7 @@ module WorkPackageTypes
     def show; end
 
     def update
-      permitted = params.expect(types_forms_subject_configuration_form_model: %i[subject_configuration pattern]).to_h
+      permitted = params.expect(work_package_types_forms_subject_configuration_form_model: %i[subject_configuration pattern]).to_h
 
       result = UpdateService.new(model: @type, user: current_user, contract_class: UpdateSubjectPatternContract)
                             .call(patterns: build_patterns(permitted))

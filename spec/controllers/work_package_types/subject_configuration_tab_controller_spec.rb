@@ -43,7 +43,7 @@ module WorkPackageTypes
 
       it "requires login" do
         get :show, params: { type_id: wp_type.id }
-        expect(response.status).to redirect_to signin_url(back_url: subject_configuration_type_url(wp_type))
+        expect(response.status).to redirect_to signin_url(back_url: type_subject_configuration_url(wp_type))
       end
     end
 
@@ -60,7 +60,7 @@ module WorkPackageTypes
       before do
         put :update, params: {
           type_id: wp_type.id,
-          types_forms_subject_configuration_form_model: form_data
+          work_package_types_forms_subject_configuration_form_model: form_data
         }
       end
 
