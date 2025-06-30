@@ -46,7 +46,7 @@
               render(Primer::Beta::Text.new(color: :subtle)) { t("settings.project_attributes.label_no_project_custom_fields") }
             end
             empty_list_container.with_column do
-              render(Primer::Alpha::ActionMenu.new(data: { test_selector: "new-project-custom-field-button" })) do |menu|
+              render(Primer::Alpha::ActionMenu.new(data: { test_selector: "new-project-custom-field-in-section-button" })) do |menu|
                 menu.with_show_button(
                   scheme: :secondary,
                   "aria-label": t("settings.project_attributes.label_new_attribute")

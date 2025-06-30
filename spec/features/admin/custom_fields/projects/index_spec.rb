@@ -243,7 +243,7 @@ RSpec.describe "List project custom fields", :js do
 
       it "redirects to the custom field new page via button in empty sections" do
         within_project_custom_field_section_container(section_for_multi_select_fields) do
-          expect(page).not_to have_test_selector("new-project-custom-field-button")
+          expect(page).not_to have_test_selector("new-project-custom-field-in-section-button")
         end
 
         multi_list_project_custom_field.destroy
@@ -253,11 +253,12 @@ RSpec.describe "List project custom fields", :js do
         cf_index_page.visit!
 
         within_project_custom_field_section_container(section_for_multi_select_fields) do
-          page.find_test_selector("new-project-custom-field-button").click
+          page.find_test_selector("new-project-custom-field-in-section-button").click
+          page.find_test_selector("new-project-custom-field-in-section-button-int").click
         end
 
         expect(page).to have_current_path(new_admin_settings_project_custom_field_path(
-                                            type: "ProjectCustomField",
+                                            field_format: "int",
                                             custom_field_section_id: section_for_multi_select_fields.id
                                           ))
       end

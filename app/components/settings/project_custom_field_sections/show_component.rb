@@ -147,7 +147,7 @@ module Settings
             custom_field_section_id: @project_custom_field_section.id
           ),
           content_arguments: { data: { turbo: "false",
-                                       test_selector: "new-project-custom-field-button" } }
+                                       test_selector: "new-project-custom-field-in-section-button-#{format.name}" } }
         )
       end
     end
