@@ -94,39 +94,28 @@ RSpec.describe OpenProject::CustomFieldFormat do
   end
 
   describe ".available_formats" do
-    context "with a custom_field_hierarchies ee", with_ee: [:custom_field_hierarchies] do
-      it "returns all custom field formats including hierarchy" do
+    shared_examples_for "available custom field formats" do |suffix, expected_formats|
+      it "returns all custom field formats #{suffix}", :aggregate_failures do
         formats = described_class.available_formats
-        expect(formats)
-          .to contain_exactly("bool", "date", "float", "int", "link", "list", "string", "text", "user",
-                              "version", "hierarchy", "empty")
-      end
-
-      context "with calculated values feature flag enabled", with_flag: { calculated_value_project_attribute: true } do
-        it "returns all custom field formats including calculated values" do
-          formats = described_class.available_formats
-          expect(formats)
-            .to contain_exactly("bool", "calculated_value", "date", "float", "int", "link", "list", "string", "text",
-                                "user", "version", "hierarchy", "empty")
-        end
+        expect(formats).to match_array(expected_formats)
       end
     end
 
+    context "with a custom_field_hierarchies ee", with_ee: [:custom_field_hierarchies] do
+      it_behaves_like "available custom field formats",
+                      "including hierarchy",
+                      %w[bool date float int link list string text user version hierarchy empty]
+    end
+
     context "without a custom_field_hierarchies ee" do
-      it "returns all custom field formats excluding hierarchy" do
-        formats = described_class.available_formats
-        expect(formats)
-          .to contain_exactly("bool", "date", "float", "int", "link", "list", "string", "text", "user",
-                              "version", "empty")
-      end
+      it_behaves_like "available custom field formats",
+                      "excluding hierarchy",
+                      %w[bool date float int link list string text user version empty]
 
       context "with calculated values feature flag enabled", with_flag: { calculated_value_project_attribute: true } do
-        it "returns all custom field formats including calculated values" do
-          formats = described_class.available_formats
-          expect(formats)
-            .to contain_exactly("bool", "calculated_value", "date", "float", "int", "link", "list", "string", "text",
-                                "user", "version", "empty")
-        end
+        it_behaves_like "available custom field formats",
+                        "including calculated values",
+                        %w[bool calculated_value date float int link list string text user version empty]
       end
     end
   end
