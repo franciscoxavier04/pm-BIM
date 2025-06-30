@@ -54,7 +54,7 @@ RSpec.describe Reminders::SetAttributesService do
         creator: user
       }
 
-      service.perform(params)
+      service.call(params)
 
       expect(model_instance).to have_attributes(
         remind_at: current_user.time_zone.parse("2023-10-01 12:00"),
@@ -75,7 +75,7 @@ RSpec.describe Reminders::SetAttributesService do
           creator: user
         }
 
-        model_result = service.perform(params).result
+        model_result = service.call(params).result
 
         expect(model_result).to have_attributes(
           remind_at: current_user.time_zone.parse("2027-10-01 08:00"),
@@ -89,17 +89,17 @@ RSpec.describe Reminders::SetAttributesService do
     context "when remind_at_date or remind_at_time is not provided" do
       it "does not set the remind_at attribute" do
         aggregate_failures "one is nil" do
-          service.perform(remind_at_date: nil, remind_at_time: "12:00")
+          service.call(remind_at_date: nil, remind_at_time: "12:00")
           expect(model_instance.remind_at).to be_nil
         end
 
         aggregate_failures "both are nil" do
-          service.perform(remind_at_date: nil, remind_at_time: nil)
+          service.call(remind_at_date: nil, remind_at_time: nil)
           expect(model_instance.remind_at).to be_nil
         end
 
         aggregate_failures "none provided" do
-          service.perform({})
+          service.call({})
           expect(model_instance.remind_at).to be_nil
         end
       end
@@ -110,7 +110,7 @@ RSpec.describe Reminders::SetAttributesService do
 
       context "and neither remind_at, remind_at_date nor remind_at_time are provided" do
         it "does not change the remind_at attribute" do
-          contract_call = service.perform({})
+          contract_call = service.call({})
 
           model_result = contract_call.result
           expect(model_result.remind_at).to eq(model_instance.remind_at)
@@ -125,7 +125,7 @@ RSpec.describe Reminders::SetAttributesService do
 
     context "with remind_at blank active model error" do
       it "adds blank errors for `remind_at_date` and `remind_at_time` attributes" do
-        result = service.perform({})
+        result = service.call({})
 
         expect(result).to be_failure
         expect(result.errors.messages).to include(
@@ -140,7 +140,7 @@ RSpec.describe Reminders::SetAttributesService do
       let(:remind_at_time) { 1.hour.ago.strftime("%H:%M") }
 
       it "adds errors for `remind_at_date` and `remind_at_time` attributes" do
-        result = service.perform(remind_at_date:, remind_at_time:)
+        result = service.call(remind_at_date:, remind_at_time:)
 
         expect(result).to be_failure
         expect(result.errors.messages).to include(

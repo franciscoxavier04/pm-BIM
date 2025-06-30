@@ -46,13 +46,13 @@ module Attachments
       in_context(attachment.container, send_notifications:, &)
     end
 
-    def validate_params(_params)
+    def validate_params
       super.tap do |call|
         validate_local_file_exists(call)
       end
     end
 
-    def before_perform(*)
+    def before_perform(_)
       super.tap do
         set_attachment_parameters
       end

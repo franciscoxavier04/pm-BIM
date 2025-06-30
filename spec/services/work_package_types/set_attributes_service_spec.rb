@@ -42,18 +42,18 @@ module WorkPackageTypes
       let(:params) { { patterns: "vader_s_rubber_duck" } }
 
       it "fails" do
-        result = service.perform(params)
+        result = service.call(params)
 
         expect(result).to be_failure
       end
 
       it "adds an error on the patterns atrribute" do
-        result = service.perform(params)
+        result = service.call(params)
         expect(result.errors.details).to eq(patterns: [{ error: :is_invalid }])
       end
 
       it "does not override the already existing value on the model" do
-        service.perform(params)
+        service.call(params)
         expect(model).not_to be_changed
       end
     end
@@ -62,17 +62,17 @@ module WorkPackageTypes
       let(:params) { { patterns: { subject: { blueprint: "{{author}}" } } } }
 
       it "fails" do
-        result = service.perform(params)
+        result = service.call(params)
         expect(result).to be_failure
       end
 
       it "adds an error on the patterns attribute" do
-        result = service.perform(params)
+        result = service.call(params)
         expect(result.errors.details).to eq(patterns: [{ error: "Enabled is missing" }])
       end
 
       it "does not override the already existing value on the model" do
-        service.perform(params)
+        service.call(params)
         expect(model).not_to be_changed
       end
     end
@@ -81,11 +81,11 @@ module WorkPackageTypes
       let(:params) { { patterns: nil } }
 
       it "succeeds" do
-        expect(service.perform(params)).to be_success
+        expect(service.call(params)).to be_success
       end
 
       it "sets the patterns to an empty collection" do
-        service.perform(params)
+        service.call(params)
         expect(model.patterns).to eq(Types::Patterns::Collection.empty)
       end
     end
@@ -94,17 +94,17 @@ module WorkPackageTypes
       let(:params) { { copy_workflow_from: "1337" } }
 
       it "fails" do
-        result = service.perform(params)
+        result = service.call(params)
         expect(result).to be_failure
       end
 
       it "adds an error on the copy_workflow_from attribute" do
-        result = service.perform(params)
+        result = service.call(params)
         expect(result.errors.details).to eq(copy_workflow_from: [{ error: "Type for workflow copy not found." }])
       end
 
       it "does not override the already existing value on the model" do
-        service.perform(params)
+        service.call(params)
         expect(model).not_to be_changed
       end
     end
@@ -114,17 +114,17 @@ module WorkPackageTypes
       let(:params) { { copy_workflow_from: wp_type.id.to_s } }
 
       it "fails" do
-        result = service.perform(params)
+        result = service.call(params)
         expect(result).to be_failure
       end
 
       it "adds an error on the copy_workflow_from attribute" do
-        result = service.perform(params)
+        result = service.call(params)
         expect(result.errors.details).to eq(copy_workflow_from: [{ error: "Type for workflow copy has no own workflow." }])
       end
 
       it "does not override the already existing value on the model" do
-        service.perform(params)
+        service.call(params)
         expect(model).not_to be_changed
       end
     end
@@ -134,17 +134,17 @@ module WorkPackageTypes
       let(:params) { { project_ids: [project.id.to_s, "1337"] } }
 
       it "fails" do
-        result = service.perform(params)
+        result = service.call(params)
         expect(result).to be_failure
       end
 
       it "adds an error on the project_ids attribute" do
-        result = service.perform(params)
+        result = service.call(params)
         expect(result.errors.details).to eq(project_ids: [{ error: "Projects with ids 1337 do not exist." }])
       end
 
       it "does not override the already existing value on the model" do
-        service.perform(params)
+        service.call(params)
         expect(model).not_to be_changed
       end
     end

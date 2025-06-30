@@ -39,7 +39,7 @@ module BaseServices
       self.params = extract_options!(args).deep_symbolize_keys
 
       run_callbacks(:call) do
-        perform(*args, **params)
+        perform(*args)
       end
     end
 

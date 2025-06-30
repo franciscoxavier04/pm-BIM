@@ -40,8 +40,11 @@ class WorkPackages::CreateService < BaseServices::BaseCallable
     @contract_class = contract_class
   end
 
-  def perform(work_package: WorkPackage.new, send_notifications: nil, **attributes)
-    in_user_context(send_notifications:) do
+  def perform
+    attributes = params.except(:send_notifications, :work_package)
+    work_package = params[:work_package] || WorkPackage.new
+
+    in_user_context(send_notifications: params[:send_notifications]) do
       create(attributes, work_package)
     end
   end
