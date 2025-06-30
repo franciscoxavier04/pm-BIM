@@ -42,20 +42,20 @@ RSpec.describe WorkPackageTypes::FormConfigurationTabController do
     context "with an unauthorized account" do
       let(:user) { create(:user) }
 
-      before { get "edit", params: { id: type.id } }
+      before { get "edit", params: { type_id: type.id } }
 
       it { expect(response).to have_http_status(:forbidden) }
     end
 
     context "with invalid type id" do
       it "renders a 404" do
-        get :edit, params: { id: "invalid" }
+        get :edit, params: { type_id: "invalid" }
         expect(response).to have_http_status(:not_found)
       end
     end
 
     it "renders the edit tab" do
-      get :edit, params: { id: type.id }
+      get :edit, params: { type_id: type.id }
       expect(response).to render_template(:edit)
     end
   end
@@ -63,7 +63,7 @@ RSpec.describe WorkPackageTypes::FormConfigurationTabController do
   describe "POST #update" do
     let(:params) do
       {
-        id: type.id,
+        type_id: type.id,
         type: {
           attribute_groups: [
             {
@@ -83,7 +83,7 @@ RSpec.describe WorkPackageTypes::FormConfigurationTabController do
       let(:user) { create(:user) }
 
       describe "the access should be restricted" do
-        before { post "update", params: { id: "123" } }
+        before { post "update", params: { type_id: "123" } }
 
         it { expect(response).to have_http_status(:forbidden) }
       end
@@ -92,7 +92,7 @@ RSpec.describe WorkPackageTypes::FormConfigurationTabController do
     it "updates the work package type" do
       put :update, params: params
 
-      expect(response).to redirect_to(edit_form_configuration_path(id: type.id))
+      expect(response).to redirect_to(edit_type_form_configuration_path(type))
 
       type.reload
       expect(type.attribute_groups.count).to eq(1)
@@ -102,7 +102,7 @@ RSpec.describe WorkPackageTypes::FormConfigurationTabController do
     context "with invalid parameters" do
       let(:params) do
         {
-          id: type.id,
+          type_id: type.id,
           type: {
             attribute_groups: [
               {

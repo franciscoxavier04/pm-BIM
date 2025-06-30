@@ -34,7 +34,7 @@ module WorkPackageTypes
 
     def instance_class = Type
 
-    def validate_params(params)
+    def validate_params
       # Only set attribute groups when it exists (Regression #28400)
       set_attribute_groups(params) if params[:attribute_groups]
 
