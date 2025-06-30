@@ -28,22 +28,41 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-FactoryBot.define do
-  factory :comment do
-    author factory: :user
-    sequence(:comments) { |n| "I am a comment No. #{n}" }
-    commented factory: :news
+require "spec_helper"
+require "contracts/shared/model_contract_shared_context"
 
-    trait :commented_work_package do
-      commented factory: :work_package
+RSpec.describe Comments::BaseContract do
+  include_context "ModelContract shared context"
+
+  let(:contract) { described_class.new(comment, current_user) }
+  let(:user) { build_stubbed(:admin) }
+  let(:comment) { build_stubbed(:comment, author: user) }
+  let(:current_user) { user }
+
+  before do
+    User.current = current_user
+    allow(User).to receive(:exists?).with(current_user.id).and_return(true)
+  end
+
+  describe "anonymous user" do
+    let(:user) { build_stubbed(:anonymous) }
+
+    before do
+      mock_permissions_for(user) do |mock|
+        mock.allow_in_project(:comment_news, project: comment.commented.project)
+      end
     end
 
-    trait :commented_news do
-      commented factory: :news
-    end
+    it_behaves_like "contract is invalid", base: :error_unauthorized
+  end
 
-    trait :internal do
-      internal { true }
+  describe "validate author exists" do
+    context "when author does not exist" do
+      before { allow(User).to receive(:exists?).with(user.id).and_return(false) }
+
+      it_behaves_like "contract is invalid", author: :not_found
     end
   end
+
+  include_examples "contract reuses the model errors"
 end
