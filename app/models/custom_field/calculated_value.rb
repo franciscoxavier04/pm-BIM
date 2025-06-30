@@ -80,10 +80,9 @@ module CustomField::CalculatedValue
     # and ensures that the formula is really valid. A welcome side effect of the basic validation done here is that
     # it prevents built-in functions from being used in the formula, which we do not want to allow.
     allowed_chars = %w[+ - / * ( )] + [" "]
-    split_pattern = /\s|(\+)|(-)|(\/)|(\*)|(\()|(\))/
     allowed_tokens = /^(cf_\d+|\d+\.?\d*|\.\d+|[#{allowed_chars.join}]+)$/
 
-    formula_string.split(split_pattern).reject(&:empty?).all? do |token|
+    formula_string.split(Regexp.union(allowed_chars)).reject(&:empty?).all? do |token|
       token.match?(allowed_tokens)
     end
   end
