@@ -49,21 +49,14 @@ export class MainMenuToggleService {
 
   @InjectField() currentProject:CurrentProjectService;
 
-  private global = (window as any);
-
   private htmlNode = document.getElementsByTagName('html')[0];
 
   private mainMenu = jQuery('#main-menu')[0]; // main menu, containing sidebar and resizer
 
-  // Title needs to be sync in main-menu-toggle.component.ts and main-menu-resizer.component.ts
-  private titleData = new BehaviorSubject<string>('');
-
-  public titleData$ = this.titleData.asObservable();
-
   // Notes all changes of the menu size (currently needed in wp-resizer.component.ts)
-  private changeData = new BehaviorSubject<any>({});
-
+  private changeData = new BehaviorSubject<number|undefined>(undefined);
   public changeData$ = this.changeData.asObservable();
+
   private wasHiddenDueToResize = false;
 
   private wasCollapsedByUser = false;
@@ -145,11 +138,13 @@ export class MainMenuToggleService {
 
   public closeMenu():void {
     this.setWidth(0);
+    this.changeData.next(0);
     jQuery('.searchable-menu--search-input').blur();
   }
 
   public openMenu():void {
     this.setWidth(this.defaultWidth);
+    this.changeData.next(this.defaultWidth);
   }
 
   public setWidth(width?:number):void {
@@ -166,7 +161,6 @@ export class MainMenuToggleService {
     // Check if menu is open or closed and apply CSS class if needed
     this.toggleClassHidden();
     this.snapBack();
-    this.setToggleTitle();
 
     // Save the width if it's open
     if (this.elementWidth > 0) {
@@ -188,15 +182,6 @@ export class MainMenuToggleService {
     if (this.elementWidth < this.elementMinWidth) {
       this.elementWidth = 0;
     }
-  }
-
-  private setToggleTitle():void {
-    if (this.showNavigation) {
-      this.toggleTitle = this.I18n.t('js.label_hide_project_menu');
-    } else {
-      this.toggleTitle = this.I18n.t('js.label_expand_project_menu');
-    }
-    this.titleData.next(this.toggleTitle);
   }
 
   private toggleClassHidden():void {

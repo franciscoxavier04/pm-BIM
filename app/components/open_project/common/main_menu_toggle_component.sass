@@ -26,38 +26,27 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-@media screen and (max-width: $breakpoint-lg)
-  .main-menu
-    @include spot-z-index("main-menu")
-    position: fixed
-    border: none
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15)
-    min-width: 75vw
+#menu-toggle--expand-button
+  position: absolute
+  left: 11px
+  z-index: 1
 
-  .hidden-navigation
-    .main-menu
-      display: none
-
-  .main-item-wrapper a
-    width: 100%
-
-  .main-menu--resizer
+  @at-root .nosidebar &
     display: none
 
-  .content-overlay
-    // Background color transition simulates a fade-in effect
-    background: #fff
-    transition: background .3s
+#menu-toggle--collapse-button
+  margin-right: 5px
 
-  #wrapper:not(.hidden-navigation)
-    .content-overlay
-      display: block
-      position: fixed
-      height: 100%
-      background: #000
-      top: 55px
-      left: 0
-      bottom: 0
-      right: 0
-      opacity: .4
-      @include spot-z-index("main-menu", -1)
+  .Button-visual
+    color: var(--main-menu-font-color)
+
+#wrapper
+  .hidden-navigation
+    // Push the breadcrumb to the right when the sidebar is collapsed
+    .PageHeader-contextBar,
+    .op-breadcrumbs
+      margin-left: 30px
+
+  &:not(.hidden-navigation)
+    #menu-toggle--expand-button
+      display: none
