@@ -33,7 +33,7 @@
             class="op-pagination--item">
           <em
             *ngIf="pageNumber === pagination.page"
-            [attr.aria-label]="text.pageNumberText(pageNumber)"
+            [attr.aria-label]="text.page_number(pageNumber)"
             aria-current="page"
             tabindex="0">
             {{ pageNumber }}
@@ -44,7 +44,7 @@
             *ngIf="pageNumber !== pagination.page"
             (click)="showPage(pageNumber)"
             rel="next"
-            [attr.aria-label]="text.pageNumberText(pageNumber)"
+            [attr.aria-label]="text.page_number(pageNumber)"
             [textContent]="pageNumber"
           ></button>
         </li>
