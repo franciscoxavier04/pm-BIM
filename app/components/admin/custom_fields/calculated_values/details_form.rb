@@ -61,9 +61,9 @@ module Admin::CustomFields::CalculatedValues
       )
 
       details_form.check_box(
-        name: :is_for_all,
-        label: I18n.t("activerecord.attributes.custom_field.is_for_all"),
-        caption: I18n.t("custom_fields.instructions.is_for_all")
+        name: :is_required,
+        label: I18n.t("activerecord.attributes.project_custom_field.is_required"),
+        caption: I18n.t("custom_fields.instructions.is_required_for_project")
       )
 
       details_form.check_box(
