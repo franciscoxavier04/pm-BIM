@@ -72,7 +72,7 @@ module Admin::CustomFields::CalculatedValues
         caption: I18n.t("custom_fields.instructions.admin_only")
       )
 
-      details_form.submit(name: :submit, label: I18n.t(:button_save), scheme: :default)
+      details_form.submit(name: :submit, label: I18n.t(:button_save), scheme: :primary)
     end
   end
 end
