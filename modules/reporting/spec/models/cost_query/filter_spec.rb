@@ -60,6 +60,10 @@ RSpec.describe CostQuery, :reporting_query_helper do
       end
     end
 
+    it "does not fail when grouping by a non-existent column" do
+      expect { query.filter(:non_existent_column, value: "something").result }.not_to raise_error
+    end
+
     it "sets activity_id to -1 for cost entries" do
       query.result.each do |result|
         expect(result["activity_id"].to_i).to eq(-1) if result["type"] != "TimeEntry"
