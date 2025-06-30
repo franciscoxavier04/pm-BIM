@@ -30,17 +30,57 @@
 
 module OpenProject::TextFormatting
   module Filters
-    class TableOfContentsFilter < HTML::Pipeline::TableOfContentsFilter
+    class TableOfContentsFilter < HTMLPipeline::NodeFilter
       include ActionView::Context
       include ActionView::Helpers::TagHelper
 
       attr_reader :headings, :ids
 
-      def initialize(doc, context = nil, result = nil)
-        super
-        @headings ||= doc.css("h1, h2, h3, h4, h5, h6")
-        @ids = Set.new
+      SELECTOR = Selma::Selector.new(
+        match_element: "h1, h2, h3, h4, h5, h6"
+        # match_text_within: "h1, h2, h3, h4, h5, h6"
+      )
+
+      def selector
+        SELECTOR
       end
+
+      def after_initialize
+        result[:toc] = []
+      end
+
+      def handle_element(element)
+        element["id"] = "FOO"
+        # text = element.text
+        # return "".html_safe if text.blank?
+
+        # id = get_unique_id(text)
+        # add_header_link_class_and_id(node, id)
+
+        # content_tag(:li, class: "op-uc-toc--list-item") do
+        #  anchor_tag(text, number, id)
+        # end
+        result[:toc] << {}
+      end
+
+      def handle_text_chunk(text)
+        return "".html_safe if text.blank?
+
+        id = get_unique_id(text)
+        # add_header_link_class_and_id(node, id)
+
+        result[:toc].last[:id] = id
+
+        # content_tag(:li, class: "op-uc-toc--list-item") do
+        #  anchor_tag(text, number, id)
+        # end
+      end
+
+      # def initialize(doc, context = nil, result = nil)
+      #  super
+      #  @headings ||= doc.css("h1, h2, h3, h4, h5, h6")
+      #  @ids = Set.new
+      # end
 
       def add_header_link_class_and_id(node, id)
         node.css("a").first["class"] = "op-uc-link_permalink icon-link"

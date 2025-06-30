@@ -30,19 +30,17 @@
 
 module OpenProject::TextFormatting
   module Filters
-    class LinkAttributeFilter < HTML::Pipeline::Filter
-      def call
-        links.each do |node|
-          next if node["target"] || node["href"]&.start_with?("#")
+    class LinkAttributeFilter < HTMLPipeline::NodeFilter
+      SELECTOR = Selma::Selector.new(match_element: "a")
 
-          node["target"] = context.fetch(:target, "_top")
-        end
-
-        doc
+      def selector
+        SELECTOR
       end
 
-      def links
-        doc.css("a")
+      def handle_element(element)
+        return if element["target"] || element["href"]&.start_with?("#")
+
+        element["target"] = context.fetch(:target, "_top")
       end
     end
   end

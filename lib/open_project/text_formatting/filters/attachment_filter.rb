@@ -30,15 +30,25 @@
 
 module OpenProject::TextFormatting
   module Filters
-    class AttachmentFilter < HTML::Pipeline::Filter
+    class AttachmentFilter < HTMLPipeline::NodeFilter
       include OpenProject::StaticRouting::UrlHelpers
       include OpenProject::ObjectLinking
+
+      SELECTOR = Selma::Selector.new(match_element: "img[src]")
+
+      def selector
+        SELECTOR
+      end
+
+      def handle_element(element)
+        element
+      end
 
       def matched_filenames_regex
         /(bmp|gif|jpe?g|png|svg)\z/
       end
 
-      def call
+      def call2
         attachments = get_attachments
 
         rewriter = ::OpenProject::TextFormatting::Helpers::LinkRewriter.new context

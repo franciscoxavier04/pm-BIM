@@ -30,21 +30,31 @@
 
 module OpenProject::TextFormatting
   module Filters
-    class FigureWrappedFilter < HTML::Pipeline::Filter
+    class FigureWrappedFilter < HTMLPipeline::NodeFilter
       include ActionView::Context
       include ActionView::Helpers::TagHelper
 
-      def call
-        doc.search("table", "img").each do |element|
-          case element.name
-          when "img", "table"
-            wrap_element(element)
-          else
-            # nothing
-          end
-        end
+      SELECTOR = Selma::Selector.new(match_element: %(table,img))
 
-        doc
+      def selector
+        SELECTOR
+      end
+
+      def handle_element(element)
+        p "HGTM"
+        p @doc
+        p @html
+        wrap_element(element)
+        p "after"
+        p @doc
+        p @html
+      end
+
+      def call(*)
+        super
+        p "HTML"
+        p @html
+        doc.to_html
       end
 
       private
@@ -67,20 +77,18 @@ module OpenProject::TextFormatting
       # The figure and img/table element later on get css classes applied to them so it does
       # not have to happen here.
       def wrap_element(element)
-        wrap_in_div(element)
-        wrap_in_figure(element.parent)
+        wrap_in_figure(element) # unless has_ancestor?(element, "figure")
+        wrap_in_div(element) # unless has_ancestor?(element, "div")
       end
 
       def wrap_in_figure(element)
-        element.wrap("<figure>") unless element.parent&.name == "figure"
+        element.before("<figure>", as: :html)
+        element.after("</figure>", as: :html)
       end
 
       def wrap_in_div(element)
-        element.wrap("<div>") unless element.parent&.name == "div"
-
-        div = element.parent
-
-        div["class"] = "op-uc-figure--content"
+        foo = element.before(%(<div class="op-uc-figure--content">), as: :html)
+        element.after("</div>", as: :html)
       end
     end
   end
