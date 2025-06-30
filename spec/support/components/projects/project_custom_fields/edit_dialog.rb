@@ -97,18 +97,15 @@ module Components
 
         def expect_field_label_with_help_text(label_text)
           expect_field_label(label_text)
-          sleep 5 # Todo: remove
           expect(find_field_label(label_text)).to have_link accessible_name: "Show help text"
         end
 
         def expect_field_label_without_help_text(label_text)
           expect_field_label(label_text)
-          sleep 5 # Todo: remove
           expect(find_field_label(label_text)).to have_no_link accessible_name: "Show help text"
         end
 
         def click_help_text_link_for_label(label_text)
-          expect_field_label_with_help_text(label_text)
           link = find_field_label(label_text).find(:link, accessible_name: "Show help text")
           link.click
         end
