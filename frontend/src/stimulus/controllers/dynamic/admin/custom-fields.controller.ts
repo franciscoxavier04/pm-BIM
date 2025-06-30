@@ -47,7 +47,6 @@ export default class CustomFieldsController extends Controller {
     'multiSelect',
     'possibleValues',
     'regexp',
-    'formula',
     'searchable',
     'textOrientation',
 
@@ -81,7 +80,6 @@ export default class CustomFieldsController extends Controller {
   declare readonly multiSelectTargets:HTMLElement[];
   declare readonly possibleValuesTargets:HTMLElement[];
   declare readonly regexpTargets:HTMLElement[];
-  declare readonly formulaTargets:HTMLElement[];
   declare readonly searchableTargets:HTMLInputElement[];
   declare readonly textOrientationTargets:HTMLElement[];
 
