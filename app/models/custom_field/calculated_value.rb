@@ -48,8 +48,8 @@ module CustomField::CalculatedValue
 
     # Dentaku will return nil if the formula is invalid.
     # TODO WP-64348: add support for referenced custom fields by injecting them as variables,
-    #       e.g. Dentaku(formula_string, cf_123: CustomField.find(123).value)
-    errors.add(:formula, :invalid) unless Dentaku(formula_string)
+    #       e.g. calculator.evaluate(formula_string, cf_123: CustomField.find(123).value)
+    errors.add(:formula, :invalid) unless Dentaku::Calculator.new.evaluate(formula_string)
 
     # TODO: consider differentiating between a formula that contains missing variables, invalid
     #       syntax, or mathematical errors.
