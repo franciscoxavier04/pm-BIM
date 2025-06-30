@@ -27,24 +27,21 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<%= error_messages_for @document %>
-
-<div class="form--field -required">
-  <%= f.select :category_id,
-               DocumentCategory.all.map { |c| [c.name, c.id] },
-               required: true,
-               container_class: "-slim" %>
-</div>
-<div class="form--field -required">
-  <%= f.text_field :title, required: true, container_class: "-wide" %>
-</div>
-<div class="form--field -visible-overflow">
-  <%= f.text_area :description,
-                  container_class: "-xxwide",
-                  label_options: {
-                    class: "-top"
-                  },
-                  with_text_formatting: true,
-                  resource: api_v3_document_resource(f.object),
-                  preview_context: preview_context(f.object.project) %>
-</div>
+<%=
+  render FormControl.new(
+    input: @input, class: @input.classes, data: {
+      controller: "block-note",
+      block_note_input_text_value: value
+    }
+  ) do
+%>
+  <%= @input.builder.hidden_field(name, value: @value, data: { block_note_target: "blockNoteInputField" }) %>
+  <%=
+    render(
+      Primer::BaseComponent.new(
+        tag: :div, border: true, border_radius: 2, mt: 1, mb: 1,
+        data: { block_note_target: "blockNoteEditor" }
+      )
+    )
+  %>
+<% end %>

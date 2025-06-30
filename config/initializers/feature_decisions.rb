@@ -46,3 +46,6 @@ OpenProject::FeatureDecisions.add :built_in_oauth_applications,
 
 OpenProject::FeatureDecisions.add :calculated_value_project_attribute,
                                   description: "Allows the use of calculated values as a project attribute."
+
+OpenProject::FeatureDecisions.add :block_note_editor,
+                                  description: "Enables the block note editor for rich text fields where available."

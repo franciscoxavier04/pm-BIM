@@ -232,6 +232,13 @@ RSpec.describe Primer::OpenProject::Forms::Dsl::InputMethods, type: :forms do
       it_behaves_like "supporting help texts"
     end
 
+    describe "#block_note_editor" do
+      let(:field_group) { form_dsl.block_note_editor(name:, label:, value: "", suggestions: [], **options) }
+
+      include_examples "input class", Primer::OpenProject::Forms::Dsl::BlockNoteEditorInput
+      it_behaves_like "supporting help texts"
+    end
+
     describe "#storage_manual_project_folder_selection" do
       let(:project_storage) { build_stubbed(:project_storage) }
       let(:field_group) { form_dsl.storage_manual_project_folder_selection(name:, label:, project_storage:, **options) }

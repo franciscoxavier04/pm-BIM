@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,38 +27,31 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+#
+require "spec_helper"
 
-en:
-  plugin_openproject_documents:
-    name: "OpenProject Documents"
-    description: "An OpenProject plugin to allow creation of documents in projects."
+RSpec.describe DocumentForm, type: :forms do
+  include_context "with rendered form"
 
-  activerecord:
-    models:
-      document: "Document"
+  let(:project) { create(:project) }
+  let(:category) { create(:document_category, name: "Experimental", project:) }
+  let(:model) { create(:document, category: category) }
 
-  activity:
-    filter:
-      document: "Documents"
+  context "when the feature flag is disabled" do
+    it "renders field" do
+      expect(page).to have_field("Category", required: true)
+      expect(page).to have_field("Title", required: true)
+      expect(page).to have_element("opce-ckeditor-augmented-textarea",
+                                   "data-test-selector": "augmented-text-area-description")
+    end
+  end
 
-  default_doc_category_tech: "Technical documentation"
-  default_doc_category_user: "User documentation"
-
-  enumeration_doc_categories: "Document categories"
-
-  documents:
-    label_attachment_author: "Attachment author"
-    label_categories: "Categories"
-    new_category: "New category"
-
-  label_document_added: "Document added"
-  label_document_new: "New document"
-  label_document_plural: "Documents"
-  label_documents: "Documents"
-  label_document_title: "Title"
-  label_document_description: "Description"
-  label_document_category: "Category"
-
-  permission_manage_documents: "Manage documents"
-  permission_view_documents: "View documents"
-  project_module_documents: "Documents"
+  context "when the feature flag is enabled", with_flag: { block_note_editor: true } do
+    it "renders field" do
+      expect(page).to have_field("Category", required: true)
+      expect(page).to have_field("Title", required: true)
+      expect(page).to have_css(".document-form--long-description")
+      expect(page).not_to have_element("opce-ckeditor-augmented-textarea")
+    end
+  end
+end
