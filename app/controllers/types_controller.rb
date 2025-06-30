@@ -60,9 +60,8 @@ class TypesController < ApplicationController
 
   def create
     additional_params = {}
-    if (value = params.dig(:type, :copy_workflow_from) && value.present?)
-      additional_params[:copy_workflow_from] = value
-    end
+    value = params.dig(:type, :copy_workflow_from)
+    additional_params[:copy_workflow_from] = value if value.present?
 
     service_call = WorkPackageTypes::CreateService
                      .new(user: current_user)
