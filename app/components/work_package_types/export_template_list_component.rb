@@ -29,29 +29,39 @@
 #++
 
 module WorkPackageTypes
-  class UpdateSubjectPatternContract < BaseContract
-    attribute :patterns
+  class ExportTemplateListComponent < ApplicationComponent
+    include ApplicationHelper
+    include OpPrimer::ComponentHelpers
+    include OpTurbo::Streamable
 
-    validate :validate_subject_generation_pattern
+    def initialize(type:)
+      super
 
-    private
-
-    def validate_subject_generation_pattern
-      blueprint = model.patterns.subject&.blueprint
-      return if blueprint.nil?
-
-      valid_tokens = flat_valid_token_list
-      invalid_tokens = blueprint.scan(WorkPackageTypes::PatternResolver::TOKEN_REGEX)
-                                .reduce([]) do |acc, match|
-        token = WorkPackageTypes::Patterns::PatternToken.build(match).key
-        valid_tokens.include?(token) ? acc : acc << token
-      end
-
-      if invalid_tokens.any?
-        errors.add(:patterns, :invalid_tokens)
-      end
+      @type = type
     end
 
-    def flat_valid_token_list = WorkPackageTypes::Patterns::TokenPropertyMapper.new.tokens_for_type(model).map(&:key)
+    def wrapper_data_attributes
+      {
+        controller: "generic-drag-and-drop"
+      }
+    end
+
+    def drag_and_drop_target_config
+      {
+        "is-drag-and-drop-target": true,
+        "target-container-accessor": "& > ul",
+        "target-allowed-drag-type": "template",
+        test_selector: "pdf-export-template-rows"
+      }
+    end
+
+    def draggable_item_config(template)
+      {
+        "draggable-id": template.id,
+        "draggable-type": "template",
+        "drop-url": drop_type_pdf_export_template_path(type_id: @type.id, id: template.id),
+        test_selector: "pdf-export-template-row-#{template.id}"
+      }
+    end
   end
 end

@@ -29,29 +29,24 @@
 #++
 
 module WorkPackageTypes
-  class UpdateSubjectPatternContract < BaseContract
-    attribute :patterns
+  module Patterns
+    PatternToken = Data.define(:pattern, :key) do
+      private_class_method :new
 
-    validate :validate_subject_generation_pattern
-
-    private
-
-    def validate_subject_generation_pattern
-      blueprint = model.patterns.subject&.blueprint
-      return if blueprint.nil?
-
-      valid_tokens = flat_valid_token_list
-      invalid_tokens = blueprint.scan(WorkPackageTypes::PatternResolver::TOKEN_REGEX)
-                                .reduce([]) do |acc, match|
-        token = WorkPackageTypes::Patterns::PatternToken.build(match).key
-        valid_tokens.include?(token) ? acc : acc << token
+      def self.build(pattern)
+        new(pattern, pattern.tr("{}", "").to_sym)
       end
 
-      if invalid_tokens.any?
-        errors.add(:patterns, :invalid_tokens)
+      def context
+        case key.to_s
+        when /^project_/
+          :project
+        when /^parent_/
+          :parent
+        else
+          :work_package
+        end
       end
     end
-
-    def flat_valid_token_list = WorkPackageTypes::Patterns::TokenPropertyMapper.new.tokens_for_type(model).map(&:key)
   end
 end
