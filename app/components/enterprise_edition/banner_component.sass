@@ -73,6 +73,7 @@ $op-enterprise-banner-fixed-height-large: 320px
     grid-template-columns: 1fr 1fr
 
     &--content
+      height: $op-enterprise-banner-fixed-height-medium
       z-index: 1
       align-self: center
       padding: var(--base-size-16)
@@ -127,6 +128,8 @@ $op-enterprise-banner-fixed-height-large: 320px
       top: var(--base-size-24)
       right: var(--base-size-24)
 
+  &--description
+    flex-grow: 1
 
   &--content
     padding: var(--base-size-6) var(--base-size-8)

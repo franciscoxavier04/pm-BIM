@@ -86,7 +86,7 @@ module Projects
         .merge(target_project_params)
     end
 
-    def before_perform(params, service_call)
+    def before_perform(service_call)
       super.tap do |super_call|
         # Retain values after the set attributes service
         retain_attributes(source, super_call.result)

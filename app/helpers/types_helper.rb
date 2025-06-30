@@ -36,7 +36,7 @@ module ::TypesHelper
         name: "settings",
         path: edit_tab_type_path(id: @type.id, tab: :settings),
         label: I18n.t("types.edit.settings.tab"),
-        view_component: WorkPackages::Types::SettingsComponent
+        view_component: WorkPackageTypes::SettingsComponent
       },
       {
         name: "form_configuration",
@@ -48,7 +48,7 @@ module ::TypesHelper
         name: "subject_configuration",
         path: edit_tab_type_path(id: @type.id, tab: :subject_configuration),
         label: I18n.t("types.edit.subject_configuration.tab"),
-        view_component: WorkPackages::Types::SubjectConfigurationComponent,
+        view_component: WorkPackageTypes::SubjectConfigurationComponent,
         enterprise_feature: :work_package_subject_generation
       },
       {
@@ -61,7 +61,7 @@ module ::TypesHelper
         name: "export_configuration",
         path: edit_tab_type_path(id: @type.id, tab: :export_configuration),
         label: I18n.t("types.edit.export_configuration.tab"),
-        view_component: WorkPackages::Types::ExportConfigurationComponent
+        view_component: WorkPackageTypes::ExportConfigurationComponent
       }
     ]
   end

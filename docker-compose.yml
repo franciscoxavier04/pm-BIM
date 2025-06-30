@@ -181,7 +181,6 @@ services:
     depends_on:
       - chrome
       - firefox
-      - opera
     networks:
       - testing
 
@@ -211,23 +210,6 @@ services:
     networks:
       - testing
     shm_size: 2g
-    environment:
-      SE_EVENT_BUS_HOST: selenium-hub
-      SE_EVENT_BUS_PUBLISH_PORT: 4442
-      SE_EVENT_BUS_SUBSCRIBE_PORT: 4443
-      SCREEN_WIDTH: 1920
-      SCREEN_HEIGHT: 1080
-      # in case we want multiple sessions per container
-      NODE_MAX_INSTANCES: "${CI_JOBS:-4}"
-      NODE_MAX_SESSION: "${CI_JOBS:-4}"
-
-  opera:
-    image: selenium/node-opera:4
-    volumes:
-      - /dev/shm:/dev/shm
-      - "downloads-test:/home/seluser/Downloads"
-    networks:
-      - testing
     environment:
       SE_EVENT_BUS_HOST: selenium-hub
       SE_EVENT_BUS_PUBLISH_PORT: 4442

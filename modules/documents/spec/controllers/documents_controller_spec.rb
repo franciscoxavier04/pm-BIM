@@ -67,8 +67,9 @@ RSpec.describe DocumentsController do
       get :new, params: { project_id: project.id }
     end
 
-    it "show the new document form" do
-      expect(response).to render_template(partial: "documents/_form")
+    it "returns render the new page successfully" do
+      expect(response).to be_successful
+      expect(response).to render_template("new")
     end
   end
 

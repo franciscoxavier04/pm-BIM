@@ -29,7 +29,7 @@
 module Saml
   module Providers
     module UpdateMetadata
-      def after_validate(_params, call)
+      def after_validate(call)
         model = call.result
         return call unless model&.metadata_updated?
 

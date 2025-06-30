@@ -32,7 +32,7 @@ module Meetings
   class DeleteService < ::BaseServices::Delete
     protected
 
-    def after_validate(_, call)
+    def after_validate(call)
       send_cancellation_mail(model)
       cancel_scheduled_meeting(model)
 

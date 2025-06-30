@@ -34,10 +34,20 @@ module Settings
       include OpTurbo::Streamable
       include CustomFieldsHelper
 
+      def initialize(allow_custom_field_creation:)
+        super
+
+        @allow_custom_field_creation = allow_custom_field_creation
+      end
+
       def breadcrumbs_items
         [{ href: admin_index_path, text: t("label_administration") },
          { href: admin_settings_project_custom_fields_path, text: t("label_project_plural") },
          t("settings.project_attributes.heading")]
+      end
+
+      def allow_custom_field_creation?
+        @allow_custom_field_creation
       end
     end
   end

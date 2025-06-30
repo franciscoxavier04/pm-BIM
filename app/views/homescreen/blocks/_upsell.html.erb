@@ -18,12 +18,14 @@
       end
     %>
 
-    <p class="widget-box--blocks--upsell-description">
-      <%= t("ee.upsell.homescreen_description") %>
-    </p>
-    <p class="widget-box--blocks--upsell-description">
-      <%= t("ee.upsell.homescreen_subline") %>
-    </p>
+    <div class="widget-box--blocks--upsell-description">
+      <p>
+        <%= t("ee.upsell.homescreen_description") %>
+      </p>
+      <p>
+        <%= t("ee.upsell.homescreen_subline") %>
+      </p>
+    </div>
 
     <%= render EnterpriseEdition::UpsellButtonsComponent.new(nil) %>
   </div>

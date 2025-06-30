@@ -32,8 +32,10 @@ class Relations::CreateService < Relations::BaseService
     self.contract_class = Relations::CreateContract
   end
 
-  def perform(send_notifications: nil, **attributes)
-    in_user_context(send_notifications:) do
+  def perform
+    attributes = params.except(:send_notifications)
+
+    in_user_context(send_notifications: params[:send_notifications]) do
       update_relation ::Relation.new, attributes
     end
   end
