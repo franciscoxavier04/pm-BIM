@@ -29,51 +29,16 @@
 #++
 
 module WorkPackageTypes
-  class ProjectsTabController < ApplicationController
+  class BaseTabController < ApplicationController
     layout "admin"
 
     before_action :require_admin
     before_action :find_type
-    before_action :load_projects, only: :edit
-
-    current_menu_item [:edit, :update] do
-      :types
-    end
-
-    def edit; end
-
-    def update
-      result = UpdateService.new(user: current_user, model: @type, contract_class: UpdateProjectsContract)
-                            .call(permitted_project_params)
-
-      if result.success?
-        redirect_to edit_type_projects_path(type_id: @type.id), notice: I18n.t(:notice_successful_update)
-      else
-        params[:tab] = "projects"
-        flash_error(result)
-        load_projects
-        render :edit, status: :unprocessable_entity
-      end
-    end
 
     private
 
-    def flash_error(result)
-      flash.now[:error] = result.errors.messages_for(:project_ids).to_sentence
-    end
-
-    def load_projects
-      @projects = Project.all
-    end
-
     def find_type
       @type = ::Type.find(params[:type_id])
-    end
-
-    def permitted_project_params
-      # TODO: once the input is correctly delivered just return: params.expect(type: [:project_ids])
-
-      { project_ids: JSON.parse(params.expect(type: [:project_ids])[:project_ids]) }
     end
   end
 end

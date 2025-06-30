@@ -44,7 +44,7 @@ module ::TypesHelper
       },
       {
         name: "subject_configuration",
-        path: edit_tab_type_path(id: @type.id, tab: :subject_configuration),
+        path: type_subject_configuration_path(type_id: @type.id),
         label: I18n.t("types.edit.subject_configuration.tab"),
         view_component: WorkPackageTypes::SubjectConfigurationComponent,
         enterprise_feature: :work_package_subject_generation
