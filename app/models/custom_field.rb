@@ -73,7 +73,6 @@ class CustomField < ApplicationRecord
   validate :validate_field_format_inclusion
   validate :validate_default_value
   validate :validate_regex
-  validate :validate_formula
 
   validates :min_length, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :max_length, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
