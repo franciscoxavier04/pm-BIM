@@ -34,7 +34,7 @@
           <em
             *ngIf="pageNumber === pagination.page"
             [attr.aria-label]="text.page_number(pageNumber)"
-            aria-current="page"
+            aria-current="true"
             tabindex="0">
             {{ pageNumber }}
           </em>
@@ -117,7 +117,7 @@
           </span>
           <span *ngIf="perPageOption === pagination.perPage"
             tabindex="0"
-            aria-current="page"
+            aria-current="true"
             [attr.aria-label]="text.show_per_page(perPageOption)">
             {{ perPageOption }}
           </span>
