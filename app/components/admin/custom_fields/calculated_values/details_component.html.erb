@@ -41,7 +41,7 @@ See COPYRIGHT and LICENSE files for more details.
           id: "custom_field_form",
           url: form_url,
           method: form_method
-        ) { |form| render Admin::CustomFields::CalculatedValues::DetailsForm.new(form) }
+        ) { |form| render CustomFields::CalculatedValues::DetailsForm.new(form) }
       end
     end
   end
