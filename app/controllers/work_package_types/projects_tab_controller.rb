@@ -29,11 +29,7 @@
 #++
 
 module WorkPackageTypes
-  class ProjectsTabController < ApplicationController
-    layout "admin"
-
-    before_action :require_admin
-    before_action :find_type
+  class ProjectsTabController < BaseTabController
     before_action :load_projects, only: :edit
 
     current_menu_item [:edit, :update] do
