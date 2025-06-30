@@ -101,7 +101,11 @@ module My
       def collapsed?(date)
         return false if mode == :day
 
-        date.past?
+        if range.include?(Date.current)
+          !date.today?
+        else
+          false
+        end
       end
 
       def date_caption(date)

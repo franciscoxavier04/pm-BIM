@@ -80,42 +80,72 @@ RSpec.describe "my time tracking", :js do
   end
 
   context "when requesting list view" do
-    context "for a defined work week", with_settings: { working_days: [1, 3, 4, 5] } do
+    context "when today is part of the selected week" do
       before do
-        visit my_time_tracking_path(date: "2025-04-09", view_mode: "list", mode: "workweek")
+        visit my_time_tracking_path(date: "2025-04-09", view_mode: "list", mode: mode)
       end
 
-      it "shows all dates of the current work week" do
-        list_page.expect_displays_day_section("2025-04-07", collapsed: true)
-        list_page.expect_no_display_day_section("2025-04-08")
-        list_page.expect_displays_day_section("2025-04-09", collapsed: false)
-        list_page.expect_displays_day_section("2025-04-10", collapsed: false)
-        list_page.expect_displays_day_section("2025-04-11", collapsed: false)
-        list_page.expect_no_display_day_section("2025-04-12")
-        list_page.expect_no_display_day_section("2025-04-13")
+      context "for a defined work week", with_settings: { working_days: [1, 3, 4, 5] } do
+        let(:mode) { "workweek" }
+
+        it "shows all dates of the current work week with only today expanded" do
+          list_page.expect_displays_day_section("2025-04-07", collapsed: true)
+          list_page.expect_no_display_day_section("2025-04-08") # no work day
+          list_page.expect_displays_day_section("2025-04-09", collapsed: false) # today
+          list_page.expect_displays_day_section("2025-04-10", collapsed: true)
+          list_page.expect_displays_day_section("2025-04-11", collapsed: true)
+          list_page.expect_no_display_day_section("2025-04-12") # no work day
+          list_page.expect_no_display_day_section("2025-04-13") # no work day
+        end
+      end
+
+      context "for a full week" do
+        let(:mode) { "week" }
+
+        it "shows all dates of the current week with only today expanded" do
+          list_page.expect_displays_day_section("2025-04-07", collapsed: true)
+          list_page.expect_displays_day_section("2025-04-08", collapsed: true)
+          list_page.expect_displays_day_section("2025-04-09", collapsed: false) # today
+          list_page.expect_displays_day_section("2025-04-10", collapsed: true)
+          list_page.expect_displays_day_section("2025-04-11", collapsed: true)
+          list_page.expect_displays_day_section("2025-04-12", collapsed: true)
+          list_page.expect_displays_day_section("2025-04-13", collapsed: true)
+        end
       end
     end
 
-    context "for a full week" do
+    context "when today is not part of the selected week" do
       before do
-        visit my_time_tracking_path(date: "2025-04-09", view_mode: "list", mode: "week")
+        visit my_time_tracking_path(date: "2025-04-16", view_mode: "list", mode: mode)
       end
 
-      it "shows all dates of the current week" do
-        list_page.expect_displays_day_section("2025-04-07", collapsed: true)
-        list_page.expect_displays_day_section("2025-04-08", collapsed: true)
-        list_page.expect_displays_day_section("2025-04-09", collapsed: false)
-        list_page.expect_displays_day_section("2025-04-10", collapsed: false)
-        list_page.expect_displays_day_section("2025-04-11", collapsed: false)
-        list_page.expect_displays_day_section("2025-04-12", collapsed: false)
-        list_page.expect_displays_day_section("2025-04-13", collapsed: false)
-      end
-    end
-  end
+      context "for a defined work week", with_settings: { working_days: [1, 3, 4, 5] } do
+        let(:mode) { "workweek" }
 
-  context "when requesting calendar view" do # rubocop:disable RSpec/EmptyExampleGroup
-    before do
-      visit my_time_tracking_path(date: "2025-04-09", view_mode: "calendar", mode: "workweek")
+        it "shows all dates of the current work week" do
+          list_page.expect_displays_day_section("2025-04-14", collapsed: false)
+          list_page.expect_no_display_day_section("2025-04-15") # no work day
+          list_page.expect_displays_day_section("2025-04-16", collapsed: false)
+          list_page.expect_displays_day_section("2025-04-17", collapsed: false)
+          list_page.expect_displays_day_section("2025-04-18", collapsed: false)
+          list_page.expect_no_display_day_section("2025-04-19") # no work day
+          list_page.expect_no_display_day_section("2025-04-20") # no work day
+        end
+      end
+
+      context "for a full week" do
+        let(:mode) { "week" }
+
+        it "shows all dates of the current week" do
+          list_page.expect_displays_day_section("2025-04-14", collapsed: false)
+          list_page.expect_displays_day_section("2025-04-15", collapsed: false)
+          list_page.expect_displays_day_section("2025-04-16", collapsed: false)
+          list_page.expect_displays_day_section("2025-04-17", collapsed: false)
+          list_page.expect_displays_day_section("2025-04-18", collapsed: false)
+          list_page.expect_displays_day_section("2025-04-19", collapsed: false)
+          list_page.expect_displays_day_section("2025-04-20", collapsed: false)
+        end
+      end
     end
   end
 end
