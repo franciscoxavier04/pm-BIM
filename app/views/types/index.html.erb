@@ -124,7 +124,7 @@ See COPYRIGHT and LICENSE files for more details.
           <% for type in @types %>
             <tr>
               <td class="timelines-pet-name">
-                <%= link_to type.name, edit_tab_type_path(type, tab: "settings") %>
+                <%= link_to type.name, edit_type_settings_path(type_id: type.id) %>
               </td>
               <td>
                 <% if type.workflows.empty? %>

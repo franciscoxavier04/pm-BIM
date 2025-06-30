@@ -139,6 +139,7 @@ Rails.application.routes.draw do
 
   resources :types do
     resource :projects, controller: "work_package_types/projects_tab", only: %i[update edit]
+    resource :settings, controller: "work_package_types/settings_tab", only: %i[update edit]
 
     member do
       get "edit/:tab" => "types#edit", as: "edit_tab"

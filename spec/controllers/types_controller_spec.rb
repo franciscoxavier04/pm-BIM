@@ -67,14 +67,6 @@ RSpec.describe TypesController do
       end
     end
 
-    describe "GET edit" do
-      describe "the access should be restricted" do
-        before { get "edit", params: { id: "123" } }
-
-        it { expect(response).to have_http_status(:forbidden) }
-      end
-    end
-
     describe "POST create" do
       describe "the access should be restricted" do
         before { post "create" }
@@ -86,14 +78,6 @@ RSpec.describe TypesController do
     describe "DELETE destroy" do
       describe "the access should be restricted" do
         before { delete "destroy", params: { id: "123" } }
-
-        it { expect(response).to have_http_status(:forbidden) }
-      end
-    end
-
-    describe "POST update" do
-      describe "the access should be restricted" do
-        before { post "update", params: { id: "123" } }
 
         it { expect(response).to have_http_status(:forbidden) }
       end
@@ -146,7 +130,7 @@ RSpec.describe TypesController do
 
         it do
           type = Type.find_by(name: "New type")
-          expect(response).to redirect_to(action: "edit", tab: "settings", id: type.id)
+          expect(response).to redirect_to(edit_type_settings_path(type))
         end
       end
 
@@ -198,79 +182,13 @@ RSpec.describe TypesController do
 
         it do
           type = Type.find_by(name: "New type")
-          expect(response).to redirect_to(action: "edit", tab: "settings", id: type.id)
+          expect(response).to redirect_to(edit_type_settings_path(type))
         end
 
         it "has the copied workflows" do
           expect(Type.find_by(name: "New type")
                         .workflows.count).to eq(existing_type.workflows.count)
         end
-      end
-    end
-
-    describe "GET edit settings" do
-      render_views
-      let(:type) do
-        create(:type, name: "My type",
-                      is_milestone: true,
-                      projects: [project])
-      end
-
-      before do
-        get "edit", params: { id: type.id, tab: :settings }
-      end
-
-      it { expect(response).to have_http_status(:ok) }
-      it { expect(response).to render_template "edit" }
-      it { expect(response.body).to have_css "input[@name='type[name]'][@value='My type']" }
-      it { expect(response.body).to have_css "input[@name='type[is_milestone]'][@value='1'][@checked='checked']" }
-    end
-
-    describe "PATCH update" do
-      let(:project2) { create(:project) }
-      let(:type) do
-        create(:type, name: "My type",
-                      is_milestone: true,
-                      projects: [project, project2])
-      end
-
-      describe "WITH type rename" do
-        let(:params) do
-          { "id" => type.id,
-            "type" => { name: "My type renamed" },
-            "tab" => "settings" }
-        end
-
-        before do
-          patch :update, params:
-        end
-
-        it { expect(response).to be_redirect }
-
-        it do
-          expect(response).to(
-            redirect_to(edit_tab_type_path(id: type.id, tab: "settings"))
-          )
-        end
-
-        it "is renamed" do
-          expect(Type.find_by(name: "My type renamed").id).to eq(type.id)
-        end
-      end
-
-      describe "WITH the name being erroneously blank" do
-        let(:params) do
-          { "id" => type.id,
-            "type" => { name: "" },
-            "tab" => "settings" }
-        end
-
-        before do
-          patch :update, params:
-        end
-
-        it { expect(response).to have_http_status(:unprocessable_entity) }
-        it { expect(response).to render_template "edit" }
       end
     end
 
