@@ -28,22 +28,27 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-FactoryBot.define do
-  factory :comment do
-    author factory: :user
-    sequence(:comments) { |n| "I am a comment No. #{n}" }
-    commented factory: :news
+module Comments
+  class BaseContract < ::ModelContract
+    attribute :comments
+    attribute :author_id
+    attribute :commented_id
+    attribute :commented_type
+    attribute :internal
 
-    trait :commented_work_package do
-      commented factory: :work_package
+    validate :anonymous_user_cannot_comment
+    validate :validate_author_exists
+
+    def self.model = Comment
+
+    private
+
+    def anonymous_user_cannot_comment
+      errors.add(:base, :error_unauthorized) unless user.logged?
     end
 
-    trait :commented_news do
-      commented factory: :news
-    end
-
-    trait :internal do
-      internal { true }
+    def validate_author_exists
+      errors.add(:author, :not_found) unless User.exists?(model.author_id)
     end
   end
 end
