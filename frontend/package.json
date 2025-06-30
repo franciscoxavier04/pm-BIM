@@ -131,6 +131,7 @@
     "dom-autoscroller": "^2.2.8",
     "dom-plane": "^1.0.2",
     "dragula": "^3.7.3",
+    "es6-slide-up-down": "^1.0.0",
     "expose-loader": "^0.7.5",
     "flatpickr": "^4.6.13",
     "glob": "^9.0.0",
