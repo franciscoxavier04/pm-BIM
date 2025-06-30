@@ -190,7 +190,7 @@ class EditField
   # Set or select the given value.
   # For fields of type select, will check for an option with that value.
   def set_value(content)
-    scroll_to_element(input_element)
+    scroll_to_element(input_element, block: :nearest)
     if autocompleter_field?
       autocomplete(content)
     elsif using_cuprite?
