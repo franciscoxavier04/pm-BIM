@@ -5,8 +5,7 @@
 
   &--search
     position: sticky
-    // Header item + 10px padding + 77px project selector
-    top: calc(var(--main-menu-item-height) + 10px + 77px)
+    top: 0
     z-index: 1
     background: var(--main-menu-bg-color)
     padding: 12px var(--main-menu-x-spacing)
@@ -52,10 +51,9 @@
     cursor: pointer
     width: 100%
 
-
     &:hover
-      background: var(--main-menu-bg-hover-background)
-      color: var(--main-menu-hover-font-color)
+      background: var(--control-transparent-bgColor-hover)
+      color: var(--main-menu-font-color)
       border-color: var(--main-menu-hover-border-color)
 
   &--items
@@ -71,8 +69,8 @@
     padding: 8px 12px 8px 32px
 
     &:hover
-      background: var(--main-menu-bg-hover-background)
-      color: var(--main-menu-hover-font-color)
+      background: var(--control-transparent-bgColor-hover)
+      color: var(--main-menu-font-color)
 
     &_active
       background: var(--main-menu-bg-selected-background)

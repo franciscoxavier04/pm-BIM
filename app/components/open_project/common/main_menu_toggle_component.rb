@@ -1,4 +1,6 @@
-#-- copyright
+# frozen_string_literal: true
+
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -24,56 +26,53 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
+#
+module OpenProject
+  module Common
+    class MainMenuToggleComponent < ApplicationComponent
+      def initialize(expanded:)
+        super()
 
-module OpenProject::CustomStyles
-  module Design
-    module_function
-
-    ##
-    # Returns the name of the color scheme.
-    # To be overridden by a plugin
-    def name
-      "OpenProject Theme"
-    end
-
-    def identifier
-      :core_design
-    end
-
-    def overridden?
-      identifier == :core_design
-    end
-
-    ##
-    # Path to favicon
-    def favicon_asset_path
-      if OpenProject::Configuration.development_highlight_enabled?
-        "development/favicon.ico".freeze
-      else
-        "favicon.ico".freeze
+        @expanded = expanded
       end
-    end
 
-    ##
-    # Path to apple touch icon
-    def apple_touch_icon_asset_path
-      if OpenProject::Configuration.development_highlight_enabled?
-        "development/apple-touch-icon-120x120.png".freeze
-      else
-        "apple-touch-icon-120x120.png".freeze
+      def call
+        render(Primer::Beta::IconButton.new(icon:,
+                                            id:,
+                                            aria: { label: aria_label },
+                                            scheme:,
+                                            size:,
+                                            data:))
       end
-    end
 
-    ##
-    # Returns the keys of variables that are customizable through the design
-    def customizable_variables
-      %w( primary-button-color
-          accent-color
-          header-bg-color
-          header-item-bg-hover-color
-          main-menu-bg-color
-          main-menu-bg-selected-background)
+      private
+
+      def icon
+        @expanded ? "sidebar-expand" : :"sidebar-collapse"
+      end
+
+      def id
+        "menu-toggle--#{@expanded ? 'collapse-button' : 'expand-button'}"
+      end
+
+      def aria_label
+        @expanded ? I18n.t("js.label_hide_project_menu") : I18n.t("js.label_expand_project_menu")
+      end
+
+      def scheme
+        :invisible
+      end
+
+      def size
+        @expanded ? :medium : :small
+      end
+
+      def data
+        {
+          action: "click->menus--main-toggle#toggleNavigation"
+        }
+      end
     end
   end
 end
