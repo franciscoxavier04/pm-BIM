@@ -31,88 +31,98 @@
 require "spec_helper"
 
 RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_project_attribute: true } do
-  context "when calculated value" do
-    subject(:custom_field) { create(:calculated_value_project_custom_field, formula: "1 + 1") }
+  subject(:custom_field) { create(:calculated_value_project_custom_field, formula: "1 + 1") }
 
-    describe "#formula=" do
-      it "splits formula and referenced custom fields on persist if given a string" do
-        formula = "1 * cf_7 + cf_42"
-        subject.formula = formula
+  describe "#formula=" do
+    it "splits formula and referenced custom fields on persist if given a string" do
+      formula = "1 * cf_7 + cf_42"
+      subject.formula = formula
 
-        expect(subject.formula).to eq({ "formula" => formula, "referenced_custom_fields" => [7, 42] })
-      end
-
-      it "omits referenced custom fields if none are given" do
-        formula = "2 + 3 * (8 / 7)"
-        subject.formula = formula
-
-        expect(subject.formula).to eq({ "formula" => formula, "referenced_custom_fields" => [] })
-      end
+      expect(subject.formula).to eq({ "formula" => formula, "referenced_custom_fields" => [7, 42] })
     end
 
-    describe "#formula_string" do
-      it "returns an empty string if no formula is set" do
-        subject.formula = nil
-        expect(subject.formula_string).to eq("")
-      end
+    it "omits referenced custom fields if none are given" do
+      formula = "2 + 3 * (8 / 7)"
+      subject.formula = formula
 
-      it "returns the formula as a string" do
-        formula = "1 * cf_7 + cf_42"
-        subject.formula = formula
+      expect(subject.formula).to eq({ "formula" => formula, "referenced_custom_fields" => [] })
+    end
+  end
 
-        expect(subject.formula_string).to eq(formula)
-      end
+  describe "#formula_string" do
+    it "returns an empty string if no formula is set" do
+      subject.formula = nil
+      expect(subject.formula_string).to eq("")
     end
 
-    describe "#validate_formula" do
-      let(:formula) { "" }
+    it "returns the formula as a string" do
+      formula = "1 * cf_7 + cf_42"
+      subject.formula = formula
 
-      before do
+      expect(subject.formula_string).to eq(formula)
+    end
+  end
+
+  describe "#validate_formula" do
+    shared_examples_for "valid formula" do
+      it "is valid", :aggregate_failures do
         subject.formula = formula
         subject.validate_formula
+
+        expect(subject).to be_valid
       end
+    end
 
-      context "with an empty formula" do
-        it "is invalid" do
-          expect(subject).not_to be_valid
-          expect(subject.errors[:formula]).to include("can't be blank.")
-        end
+    shared_examples_for "invalid formula" do |error_message|
+      it "is invalid", :aggregate_failures do
+        subject.formula = formula
+        subject.validate_formula
+
+        expect(subject).not_to be_valid
+        expect(subject.errors[:formula]).to include(error_message)
       end
+    end
 
-      context "with a formula containing only allowed characters" do
-        let(:formula) { "1 / 2 + (3 * 4.5) - 0.0" }
+    let(:formula) { "" }
 
-        it "is valid" do
-          expect(subject).to be_valid
-        end
-      end
+    context "with an empty formula" do
+      it_behaves_like "invalid formula", "can't be blank."
+    end
 
-      context "with a formula containing forbidden characters" do
-        let(:formula) { "abc + 2" }
+    context "with a formula containing only allowed characters" do
+      let(:formula) { "1 / 2 + (3 * 4.5) - 0.0" }
 
-        it "is invalid" do
-          expect(subject).not_to be_valid
-          expect(subject.errors[:formula]).to include("contains invalid characters.")
-        end
-      end
+      it_behaves_like "valid formula"
+    end
 
-      context "with a formula that is not a valid equation" do
-        let(:formula) { "1 / + - 3" }
+    context "when omitting leading decimals before a decimal point" do
+      let(:formula) { "1.5 + .0 - 3.25" }
 
-        it "is invalid" do
-          expect(subject).not_to be_valid
-          expect(subject.errors[:formula]).to include("is invalid.")
-        end
-      end
+      it_behaves_like "valid formula"
+    end
 
-      context "with a formula that causes a division by zero error" do
-        let(:formula) { "1 / 0" }
+    context "when omitting trailing decimals after a decimal point" do
+      let(:formula) { "1.5 + 1. - 3.25" }
 
-        it "is invalid" do
-          expect(subject).not_to be_valid
-          expect(subject.errors[:formula]).to include("is invalid.")
-        end
-      end
+      it_behaves_like "invalid formula", "is invalid."
+    end
+
+    context "with a formula containing forbidden characters" do
+      let(:formula) { "abc + 2" }
+
+      it_behaves_like "invalid formula", "contains invalid characters."
+    end
+
+    context "with a formula that is not a valid equation" do
+      let(:formula) { "1 / + - 3" }
+
+      it_behaves_like "invalid formula", "is invalid."
+    end
+
+    context "with a formula that causes a division by zero error" do
+      let(:formula) { "1 / 0" }
+
+      it_behaves_like "invalid formula", "is invalid."
     end
   end
 end

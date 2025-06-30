@@ -65,7 +65,7 @@ module CustomField::CalculatedValue
 
   # Returns the formula as a string. Will return an empty string if the formula is not set.
   def formula_string
-    formula.is_a?(Hash) ? formula.fetch("formula", "") : formula.to_s
+    formula ? formula.fetch("formula", "") : ""
   end
 
   private
@@ -80,7 +80,7 @@ module CustomField::CalculatedValue
     # and ensures that the formula is really valid. A welcome side effect of the basic validation done here is that
     # it prevents built-in functions from being used in the formula, which we do not want to allow.
     allowed_chars = %w[+ - / * ( )] + [" "]
-    allowed_tokens = /^(cf_\d+|\d+\.?\d*|\.\d+|[#{allowed_chars.join}]+)$/
+    allowed_tokens = /\A(cf_\d+|\d+\.?\d*|\.\d+)\z/
 
     formula_string.split(Regexp.union(allowed_chars)).reject(&:empty?).all? do |token|
       token.match?(allowed_tokens)
