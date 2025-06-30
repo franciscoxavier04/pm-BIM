@@ -139,6 +139,7 @@ Rails.application.routes.draw do
 
   resources :types do
     resource :projects, controller: "work_package_types/projects_tab", only: %i[update edit]
+    resource :form_configuration, only: %i[edit update], controller: "work_package_types/form_configuration_tab"
 
     member do
       get "edit/:tab" => "types#edit", as: "edit_tab"
@@ -146,8 +147,6 @@ Rails.application.routes.draw do
       put :subject_configuration,
           controller: "work_package_types/subject_configuration_tab",
           action: "update_subject_configuration"
-
-      resource :form_configuration, only: %i[edit update], controller: "work_package_types/form_configuration_tab"
     end
 
     resources :pdf_export_template, only: %i[],

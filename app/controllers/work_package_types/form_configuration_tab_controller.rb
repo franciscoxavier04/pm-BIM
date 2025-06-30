@@ -36,6 +36,11 @@ module WorkPackageTypes
 
     before_action :require_admin
     before_action :find_type
+    before_action :assign_tab, only: :update
+
+    current_menu_item [:edit, :update] do
+      :types
+    end
 
     def edit; end
 
@@ -45,7 +50,7 @@ module WorkPackageTypes
         .call(permitted_type_params)
 
       if result.success?
-        redirect_to edit_form_configuration_path(@type), notice: t(:notice_successful_update)
+        redirect_to edit_type_form_configuration_path(@type), notice: t(:notice_successful_update)
       else
         flash.now[:error] = result.errors[:attribute_groups].to_sentence
         render :edit, status: :unprocessable_entity
@@ -55,8 +60,12 @@ module WorkPackageTypes
     private
 
     def find_type
-      @type = ::Type.includes(:projects, :custom_fields).find(params[:id])
+      @type = ::Type.includes(:projects, :custom_fields).find(params[:type_id])
       show_error_not_found unless @type
+    end
+
+    def assign_tab
+      params[:tab] = "form_configuration" unless params[:tab]
     end
 
     def permitted_type_params

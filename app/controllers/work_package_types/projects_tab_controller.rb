@@ -36,7 +36,7 @@ module WorkPackageTypes
     before_action :find_type
     before_action :load_projects, only: :edit
 
-    current_menu_item [:edit] do
+    current_menu_item [:edit, :update] do
       :types
     end
 
@@ -49,6 +49,7 @@ module WorkPackageTypes
       if result.success?
         redirect_to edit_type_projects_path(type_id: @type.id), notice: I18n.t(:notice_successful_update)
       else
+        params[:tab] = "projects"
         flash_error(result)
         load_projects
         render :edit, status: :unprocessable_entity

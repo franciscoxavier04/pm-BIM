@@ -33,7 +33,7 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%=
   form_for @type,
-            url: form_configuration_path(id: @type.id),
+            url: type_form_configuration_path(@type),
             builder: TabularFormBuilder,
             lang: current_language do |f|
     render partial: "form", locals: { f: f }

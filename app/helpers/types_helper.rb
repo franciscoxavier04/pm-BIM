@@ -40,7 +40,7 @@ module ::TypesHelper
       },
       {
         name: "form_configuration",
-        path: edit_form_configuration_path(id: @type.id),
+        path: edit_type_form_configuration_path(@type),
         label: I18n.t("types.edit.form_configuration.tab")
       },
       {
