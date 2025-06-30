@@ -124,14 +124,20 @@ RSpec.describe "Edit project custom field calculated value", :js, with_flag: { c
     end
   end
 
-  context "without the feature flag" do
-    it "renders a 404" do
-      allow(OpenProject::FeatureDecisions).to receive(:calculated_value_project_attribute_active?).and_return(false)
+  context "without the feature flag", with_flag: { calculated_value_project_attribute: false } do
+    let!(:calculated_value) { nil }
 
-      login_as(admin)
-      visit edit_admin_settings_project_custom_field_path(calculated_value)
+    it "prevents saving a calculated value" do
+      expect do
+        login_as(admin)
+        visit new_admin_settings_project_custom_field_path(field_format: "calculated_value",
+                                                           custom_field_section_id: section_for_input_fields.id)
+        fill_in("custom_field_name", with: "New calculated value")
+        fill_in("custom_field_formula", with: "1 + 1")
+        click_on "Save"
 
-      expect(page).to have_http_status(:not_found)
+        expect(page).to have_text("Format is not set to one of the allowed values.")
+      end.not_to change(CustomField, :count)
     end
   end
 end

@@ -70,8 +70,7 @@ class CustomField < ApplicationRecord
     errors.add(:name, :taken) if name.in?(taken_names)
   end
 
-  validates :field_format, inclusion: { in: -> { OpenProject::CustomFieldFormat.available_formats } }
-
+  validate :validate_field_format_inclusion
   validate :validate_default_value
   validate :validate_regex
   validate :validate_formula
@@ -105,6 +104,17 @@ class CustomField < ApplicationRecord
     else
       val = read_attribute :default_value
       cast_value val
+    end
+  end
+
+  def validate_field_format_inclusion
+    available = OpenProject::CustomFieldFormat.available_formats
+    # When creating a new custom field, only the available formats are allowed.
+    # But you can edit and update existing custom fields, even if they have a field format that is disabled.
+    allowed = new_record? ? available : (available + OpenProject::CustomFieldFormat.disabled_formats).uniq
+
+    unless allowed.include?(field_format)
+      errors.add(:field_format, :inclusion)
     end
   end
 

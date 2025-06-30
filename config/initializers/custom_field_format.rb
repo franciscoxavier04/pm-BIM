@@ -94,5 +94,8 @@ OpenProject::CustomFieldFormat.map do |fields|
   fields.register OpenProject::CustomFieldFormat.new("calculated_value",
                                                      label: :label_calculated_value,
                                                      only: %w(Project),
-                                                     order: 13)
+                                                     order: 13,
+                                                     enabled: lambda do
+                                                       OpenProject::FeatureDecisions.calculated_value_project_attribute_active?
+                                                     end)
 end
