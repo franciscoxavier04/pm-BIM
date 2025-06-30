@@ -36,7 +36,7 @@ RSpec.describe "List project custom fields", :js do
 
   let(:cf_index_page) { Pages::Admin::CustomFields::CustomFieldsProjects::Index.new }
 
-  context "with unsufficient permissions" do
+  context "with insufficient permissions" do
     it "is not accessible" do
       login_as(non_admin)
       cf_index_page.visit!
@@ -49,6 +49,34 @@ RSpec.describe "List project custom fields", :js do
     before do
       login_as(admin)
       cf_index_page.visit!
+    end
+
+    it "only allows project attribute creation when there is at least one section" do
+      # All sections are there, so we can add project attributes
+      cf_index_page.expect_add_project_attribute_submenu
+
+      section_for_input_fields.destroy
+      section_for_multi_select_fields.destroy
+      select_fields.each(&:destroy)
+
+      cf_index_page.visit!
+
+      # The (empty) select section is still there, so we can still add project attributes
+      cf_index_page.expect_add_project_attribute_submenu
+
+      within_project_custom_field_section_menu(section_for_select_fields) do
+        accept_confirm do
+          click_on("Delete")
+        end
+      end
+
+      # Now there are no sections left, so we cannot add project attributes:
+      # Turbo stream updated the component properly:
+      cf_index_page.expect_no_add_project_attribute_submenu(close_dialog: false)
+
+      # Revisiting the page again should not change anything:
+      cf_index_page.visit!
+      cf_index_page.expect_no_add_project_attribute_submenu(close_dialog: false)
     end
 
     it "shows all sections in the correct order and allows reordering via menu or drag and drop" do
@@ -253,7 +281,7 @@ RSpec.describe "List project custom fields", :js do
     within_project_custom_field_section_menu(section) do
       click_on(action)
     end
-    sleep 0.5 # quick fix: allow the brower to process the action
+    sleep 0.5 # quick fix: allow the browser to process the action
   end
 
   def within_project_custom_field_container(custom_field, &)
@@ -271,6 +299,6 @@ RSpec.describe "List project custom fields", :js do
     within_project_custom_field_menu(custom_field) do
       click_on(action)
     end
-    sleep 0.5 # quick fix: allow the brower to process the action
+    sleep 0.5 # quick fix: allow the browser to process the action
   end
 end

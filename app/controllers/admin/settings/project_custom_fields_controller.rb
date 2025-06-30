@@ -48,6 +48,8 @@ module Admin::Settings
     # rubocop:enable Rails/LexicallyScopedActionFilter
 
     def index
+      @allow_custom_field_creation = @project_custom_field_sections.any?
+
       respond_to :html
     end
 
