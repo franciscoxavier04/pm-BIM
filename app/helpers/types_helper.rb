@@ -34,9 +34,8 @@ module ::TypesHelper
     [
       {
         name: "settings",
-        path: edit_tab_type_path(id: @type.id, tab: :settings),
+        path: edit_type_settings_path(@type),
         label: I18n.t("types.edit.settings.tab"),
-        view_component: WorkPackageTypes::SettingsComponent
       },
       {
         name: "form_configuration",
@@ -53,8 +52,7 @@ module ::TypesHelper
       },
       {
         name: "projects",
-        path: edit_type_projects_path(type_id: @type.id),
-        view_component: WorkPackageTypes::ProjectsComponent,
+        path: edit_type_projects_path(@type),
         label: I18n.t("types.edit.projects.tab")
       },
       {
