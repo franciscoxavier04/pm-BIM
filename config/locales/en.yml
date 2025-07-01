@@ -1148,7 +1148,7 @@ en:
         ongoing: "Ongoing"
       type:
         description: "Default text for description"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "Displayed in roadmap by default"
         is_default: "Activated for new projects by default"
         is_milestone: "Is milestone"

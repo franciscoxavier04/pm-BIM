@@ -23,18 +23,20 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
 module WorkPackageTypes
-  class ProjectsTabController < ApplicationController
+  class FormConfigurationTabController < ApplicationController
+    include PaginationHelper
+
     layout "admin"
 
     before_action :require_admin
     before_action :find_type
-    before_action :load_projects, only: :edit
+    before_action :assign_tab, only: :update
 
     current_menu_item [:edit, :update] do
       :types
@@ -43,37 +45,33 @@ module WorkPackageTypes
     def edit; end
 
     def update
-      result = UpdateService.new(user: current_user, model: @type, contract_class: UpdateProjectsContract)
-                            .call(permitted_project_params)
+      result = WorkPackageTypes::UpdateService
+        .new(user: current_user, model: @type, contract_class: UpdateFormConfigurationContract)
+        .call(permitted_type_params)
 
       if result.success?
-        redirect_to edit_type_projects_path(type_id: @type.id), notice: I18n.t(:notice_successful_update)
+        redirect_to edit_type_form_configuration_path(@type), notice: t(:notice_successful_update)
       else
-        params[:tab] = "projects"
-        flash_error(result)
-        load_projects
+        flash.now[:error] = result.errors[:attribute_groups].to_sentence
         render :edit, status: :unprocessable_entity
       end
     end
 
     private
 
-    def flash_error(result)
-      flash.now[:error] = result.errors.messages_for(:project_ids).to_sentence
-    end
-
-    def load_projects
-      @projects = Project.all
-    end
-
     def find_type
-      @type = ::Type.find(params[:type_id])
+      @type = ::Type.includes(:projects, :custom_fields).find(params[:type_id])
+      show_error_not_found unless @type
     end
 
-    def permitted_project_params
-      # TODO: once the input is correctly delivered just return: params.expect(type: [:project_ids])
+    def assign_tab
+      params[:tab] = "form_configuration" unless params[:tab]
+    end
 
-      { project_ids: JSON.parse(params.expect(type: [:project_ids])[:project_ids]) }
+    def permitted_type_params
+      # having to call #to_unsafe_h as a query hash the attribute_groups
+      # parameters would otherwise still be an ActiveSupport::Parameter
+      permitted_params.type.to_unsafe_h
     end
   end
 end

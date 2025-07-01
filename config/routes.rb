@@ -138,6 +138,7 @@ Rails.application.routes.draw do
   get "/roles/workflow/:id/:role_id/:type_id" => "roles#workflow"
 
   resources :types do
+    resource :form_configuration, only: %i[edit update], controller: "work_package_types/form_configuration_tab"
     resource :projects, controller: "work_package_types/projects_tab", only: %i[update edit]
     resource :settings, controller: "work_package_types/settings_tab", only: %i[update edit]
 
