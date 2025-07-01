@@ -172,6 +172,118 @@ RSpec.describe WorkPackage do
     end
   end
 
+  describe "#comment_editable_by?" do
+    subject { work_package.comment_editable_by?(comment, user) }
+
+    context "when the comment is internal" do
+      let(:comment) { build_stubbed(:comment, :internal, author: user, commented: work_package) }
+
+      context "and the user is an admin" do
+        let(:user) { build_stubbed(:admin) }
+
+        it { is_expected.to be(true) }
+
+        context "and the comment belongs to a different user" do
+          let(:comment) { build_stubbed(:comment, :internal, author: build_stubbed(:user), commented: work_package) }
+
+          it { is_expected.to be(true) }
+        end
+      end
+
+      context "and the user is not an admin" do
+        let(:user) { build_stubbed(:user) }
+
+        context "and the user is allowed to edit own internal comments" do
+          before do
+            mock_permissions_for(user) do |mock|
+              mock.allow_in_project(:edit_own_internal_comments, project: work_package.project)
+            end
+          end
+
+          it { is_expected.to be(true) }
+        end
+
+        context "and the user is not allowed to edit own internal comments" do
+          it { is_expected.to be(false) }
+        end
+
+        context "and the user is allowed to edit others internal comments" do
+          before do
+            mock_permissions_for(user) do |mock|
+              mock.allow_in_project(:edit_others_internal_comments, project: work_package.project)
+            end
+          end
+
+          context "with own comment" do
+            let(:comment) { build_stubbed(:comment, :internal, author: user, commented: work_package) }
+
+            it { is_expected.to be(true) }
+          end
+
+          context "with others comment" do
+            let(:comment) { build_stubbed(:comment, :internal, author: build_stubbed(:user), commented: work_package) }
+
+            it { is_expected.to be(true) }
+          end
+        end
+      end
+    end
+
+    context "when the comment is not internal" do
+      let(:comment) { build_stubbed(:comment, author: user, commented: work_package) }
+
+      context "and the user is an admin" do
+        let(:user) { build_stubbed(:admin) }
+
+        it { is_expected.to be(true) }
+
+        context "and the comment belongs to a different user" do
+          let(:comment) { build_stubbed(:comment, author: build_stubbed(:user), commented: work_package) }
+
+          it { is_expected.to be(true) }
+        end
+      end
+
+      context "and the user is not an admin" do
+        let(:user) { build_stubbed(:user) }
+
+        context "and the user is allowed to edit own work package comments" do
+          before do
+            mock_permissions_for(user) do |mock|
+              mock.allow_in_project(:edit_work_package_comments, project: work_package.project)
+            end
+          end
+
+          it { is_expected.to be(true) }
+        end
+
+        context "and the user is not allowed to edit own work package comments" do
+          it { is_expected.to be(false) }
+        end
+
+        context "and the user is allowed to edit others work package comments" do
+          before do
+            mock_permissions_for(user) do |mock|
+              mock.allow_in_project(:edit_work_package_comments, project: work_package.project)
+            end
+          end
+
+          context "with own comment" do
+            let(:comment) { build_stubbed(:comment, author: user, commented: work_package) }
+
+            it { is_expected.to be(true) }
+          end
+
+          context "with others comment" do
+            let(:comment) { build_stubbed(:comment, author: build_stubbed(:user), commented: work_package) }
+
+            it { is_expected.to be(true) }
+          end
+        end
+      end
+    end
+  end
+
   describe "#hide_attachments?" do
     subject { work_package.hide_attachments? }
 
