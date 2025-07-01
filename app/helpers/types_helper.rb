@@ -34,7 +34,7 @@ module ::TypesHelper
     [
       {
         name: "settings",
-        path: edit_type_settings_path(type_id: @type.id),
+        path: edit_type_settings_path(@type),
         label: I18n.t("types.edit.settings.tab"),
       },
       {
@@ -52,7 +52,7 @@ module ::TypesHelper
       },
       {
         name: "projects",
-        path: edit_type_projects_path(type_id: @type.id),
+        path: edit_type_projects_path(@type),
         label: I18n.t("types.edit.projects.tab")
       },
       {
