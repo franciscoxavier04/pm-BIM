@@ -138,6 +138,19 @@ module Settings
             @project_custom_field_section.last?
           end
       end
+
+      def action_menu_item_for_custom_field_format(menu, format)
+        menu.with_item(
+          label: helpers.label_for_custom_field_format(format.name),
+          tag: :a,
+          href: new_admin_settings_project_custom_field_path(
+            field_format: format.name,
+            custom_field_section_id: @project_custom_field_section.id
+          ),
+          content_arguments: { data: { turbo: "false",
+                                       test_selector: "new-project-custom-field-in-section-button-#{format.name}" } }
+        )
+      end
     end
   end
 end
