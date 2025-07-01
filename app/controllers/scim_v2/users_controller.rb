@@ -56,7 +56,10 @@ module ScimV2
           end
 
           user = call.result
-          user.to_scim(location: url_for(action: :show, id: user.id))
+          user.to_scim(
+            location: url_for(action: :show, id: user.id),
+            include_attributes:
+          )
         end
       end
     end
@@ -70,7 +73,10 @@ module ScimV2
             .new(user: User.current, model: user)
             .call
             .on_failure { |call| raise call.message }
-          user.to_scim(location: url_for(action: :show, id: user.id))
+          user.to_scim(
+            location: url_for(action: :show, id: user.id),
+            include_attributes:
+          )
         end
       end
     end
@@ -84,7 +90,10 @@ module ScimV2
             .new(user: User.current, model: user)
             .call
             .on_failure { |call| raise call.message }
-          user.to_scim(location: url_for(action: :show, id: user.id))
+          user.to_scim(
+            location: url_for(action: :show, id: user.id),
+            include_attributes:
+          )
         end
       end
     end
@@ -95,7 +104,19 @@ module ScimV2
         Users::DeleteService
           .new(user: User.current, model: user)
           .call
-          .on_failure { |call| raise call.message }
+          .on_failure do |result|
+          unauthorized_error = result.errors.find { |e| e.type == :error_unauthorized }
+          if unauthorized_error.present?
+            raise Scimitar::ErrorResponse.new(
+              status: 403,
+              detail: "User can't be deleted due to permission absence."
+            )
+          else
+            raise result.message
+          end
+
+          raise call.message
+        end
       end
     end
 

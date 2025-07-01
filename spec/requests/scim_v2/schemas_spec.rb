@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "SCIM API ServiceProviderConfig" do
+RSpec.describe "SCIM API Schemas" do
   let(:oidc_provider_slug) { "keycloak" }
   let(:oidc_provider) { create(:oidc_provider, slug: oidc_provider_slug) }
   let(:headers) { { "CONTENT_TYPE" => "application/scim+json", "HTTP_AUTHORIZATION" => "Bearer #{token.plaintext_token}" } }
@@ -51,6 +51,16 @@ RSpec.describe "SCIM API ServiceProviderConfig" do
         expect(response_body["schemas"]).to eq(["urn:ietf:params:scim:api:messages:2.0:ListResponse"])
         group_schema = response_body["Resources"].find { |r| r["name"] == "Group" }
         user_schema = response_body["Resources"].find { |r| r["name"] == "User" }
+        external_id_schema = { "multiValued" => false,
+                               "required" => true,
+                               "caseExact" => true,
+                               "mutability" => "readWrite",
+                               "uniqueness" => "none",
+                               "returned" => "default",
+                               "name" => "externalId",
+                               "type" => "string" }
+        expect(group_schema["attributes"]).to include(external_id_schema)
+        expect(user_schema["attributes"]).to include(external_id_schema)
       end
     end
 

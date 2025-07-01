@@ -53,7 +53,7 @@ RSpec.describe "SCIM API Users" do
         group
       end
 
-      it do
+      it "responds with users list" do
         get "/scim_v2/Users", {}, headers
 
         response_body = JSON.parse(last_response.body)
@@ -175,13 +175,14 @@ RSpec.describe "SCIM API Users" do
           { "detail" => "Requires authentication", "schemas" => ["urn:ietf:params:scim:api:messages:2.0:Error"],
             "status" => "401" }
         )
+        expect(last_response).to have_http_status(401)
       end
     end
   end
 
   describe "GET /scim_v2/Users/:id" do
     context "with the feature flag enabled", with_flag: { scim_api: true } do
-      it do
+      it "returns specific user data" do
         group
         get "/scim_v2/Users/#{user.id}", {}, headers
 
@@ -213,6 +214,7 @@ RSpec.describe "SCIM API Users" do
           { "detail" => "Requires authentication", "schemas" => ["urn:ietf:params:scim:api:messages:2.0:Error"],
             "status" => "401" }
         )
+        expect(last_response).to have_http_status(401)
       end
     end
   end
@@ -222,7 +224,7 @@ RSpec.describe "SCIM API Users" do
 
     context "with the feature flag enabled", with_flag: { scim_api: true } do
       context "when user with userName has already exists" do
-        it do
+        it "responds with uniqueness error" do
           group
           request_body = {
             "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:User"],
@@ -242,8 +244,7 @@ RSpec.describe "SCIM API Users" do
 
           post "/scim_v2/Users/", request_body.to_json, headers
 
-
-          expect(last_response.status).to eq(409)
+          expect(last_response).to have_http_status(409)
           response_body = JSON.parse(last_response.body)
           expect(response_body).to eq({ "schemas" => ["urn:ietf:params:scim:api:messages:2.0:Error"],
                                         "detail" => "Operation failed due to a uniqueness constraint: Username has already been taken.",
@@ -252,7 +253,43 @@ RSpec.describe "SCIM API Users" do
         end
       end
 
-      it do
+      it "creates user with provided data and excludes some attributes" do
+        request_body = {
+          "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:User"],
+          "externalId" => external_user_id,
+          "userName" => "jdoe",
+          "name" => {
+            "givenName" => "John",
+            "familyName" => "Doe"
+          },
+          "active" => true,
+          "emails" => [
+            {
+              "value" => "jdoe@example.com",
+              "type" => "work",
+              "primary" => true
+            }
+          ]
+        }
+        post "/scim_v2/Users/?excludedAttributes=emails,name.givenName", request_body.to_json, headers
+
+        response_body = JSON.parse(last_response.body)
+        created_user = User.find_by(login: "jdoe")
+        expect(created_user).to be_present
+        expect(response_body).to eq({ "active" => true,
+                                      "externalId" => external_user_id,
+                                      "groups" => [],
+                                      "id" => created_user.id.to_s,
+                                      "meta" => { "created" => created_user.created_at.iso8601,
+                                                  "lastModified" => created_user.updated_at.iso8601,
+                                                  "location" => "http://test.host/scim_v2/Users/#{created_user.id}",
+                                                  "resourceType" => "User" },
+                                      "name" => { "familyName" => "Doe" },
+                                      "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:User"],
+                                      "userName" => "jdoe" })
+      end
+
+      it "creates user with provided data" do
         request_body = {
           "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:User"],
           "externalId" => external_user_id,
@@ -292,7 +329,7 @@ RSpec.describe "SCIM API Users" do
                                       "userName" => "jdoe" })
       end
 
-      it "microsoft style" do
+      it "creates user with any email type string provided" do
         request_body = {
           "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:User"],
           "externalId" => external_user_id,
@@ -340,50 +377,66 @@ RSpec.describe "SCIM API Users" do
           { "detail" => "Requires authentication", "schemas" => ["urn:ietf:params:scim:api:messages:2.0:Error"],
             "status" => "401" }
         )
+        expect(last_response).to have_http_status(401)
       end
     end
   end
 
-  describe "DELETE /scim_v2/Users/:id", with_settings: { users_deletable_by_admins: true } do
+  describe "DELETE /scim_v2/Users/:id" do
     context "with the feature flag enabled", with_flag: { scim_api: true } do
-      it do
-        group
+      context "when users_deletable_by_admins is enabled", with_settings: { users_deletable_by_admins: true } do
+        it do
+          group
 
-        delete "/scim_v2/Users/#{user.id}", "", headers
+          delete "/scim_v2/Users/#{user.id}", "", headers
 
-        expect(last_response.body).to eq("")
-        expect(last_response).to have_http_status(204)
+          expect(last_response.body).to eq("")
+          expect(last_response).to have_http_status(204)
 
-        get "/scim_v2/Users/#{user.id}", "", headers
+          get "/scim_v2/Users/#{user.id}", "", headers
 
-        response_body = JSON.parse(last_response.body)
-        expect(response_body).to eq({ "active" => false,
-                                      "emails" => [{ "primary" => true,
-                                                     "type" => "work",
-                                                     "value" => user.mail }],
-                                      "externalId" => external_user_id,
-                                      "groups" => [{ "value" => group.id.to_s }],
-                                      "id" => user.id.to_s,
-                                      "meta" => { "created" => user.created_at.iso8601,
-                                                  "lastModified" => user.updated_at.iso8601,
-                                                  "location" => "http://test.host/scim_v2/Users/#{user.id}",
-                                                  "resourceType" => "User" },
-                                      "name" => { "familyName" => user.lastname,
-                                                  "givenName" => user.firstname },
-                                      "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:User"],
-                                      "userName" => user.login })
+          response_body = JSON.parse(last_response.body)
+          expect(response_body).to eq({ "active" => false,
+                                        "emails" => [{ "primary" => true,
+                                                       "type" => "work",
+                                                       "value" => user.mail }],
+                                        "externalId" => external_user_id,
+                                        "groups" => [{ "value" => group.id.to_s }],
+                                        "id" => user.id.to_s,
+                                        "meta" => { "created" => user.created_at.iso8601,
+                                                    "lastModified" => user.updated_at.iso8601,
+                                                    "location" => "http://test.host/scim_v2/Users/#{user.id}",
+                                                    "resourceType" => "User" },
+                                        "name" => { "familyName" => user.lastname,
+                                                    "givenName" => user.firstname },
+                                        "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:User"],
+                                        "userName" => user.login })
 
-        perform_enqueued_jobs
-        assert_performed_jobs 1
+          perform_enqueued_jobs
+          assert_performed_jobs 1
 
-        get "/scim_v2/Users/#{user.id}", "", headers
+          get "/scim_v2/Users/#{user.id}", "", headers
 
-        response_body = JSON.parse(last_response.body)
-        expect(response_body).to eq(
-          { "detail" => "Resource \"#{user.id}\" not found",
-            "schemas" => ["urn:ietf:params:scim:api:messages:2.0:Error"],
-            "status" => "404" }
-        )
+          response_body = JSON.parse(last_response.body)
+          expect(response_body).to eq(
+            { "detail" => "Resource \"#{user.id}\" not found",
+              "schemas" => ["urn:ietf:params:scim:api:messages:2.0:Error"],
+              "status" => "404" }
+          )
+        end
+      end
+
+      context "when users_deletable_by_admins is disabled", with_settings: { users_deletable_by_admins: false } do
+        it "responds with 403 error" do
+          group
+          delete "/scim_v2/Users/#{user.id}", "", headers
+
+          response_body = JSON.parse(last_response.body)
+          expect(response_body).to eq({ "schemas" => ["urn:ietf:params:scim:api:messages:2.0:Error"],
+                                        "detail" => "User can't be deleted due to permission absence.",
+                                        "status" => "403" })
+          expect(last_response).to have_http_status(403)
+        end
       end
     end
 
@@ -396,6 +449,7 @@ RSpec.describe "SCIM API Users" do
           { "detail" => "Requires authentication", "schemas" => ["urn:ietf:params:scim:api:messages:2.0:Error"],
             "status" => "401" }
         )
+        expect(last_response).to have_http_status(401)
       end
     end
   end
@@ -406,7 +460,7 @@ RSpec.describe "SCIM API Users" do
     context "with the feature flag enabled", with_flag: { scim_api: true } do
       let(:new_external_user_id) { "new_idp_user_id_123asdqwe12345" }
 
-      it do
+      it "updates existing user by replacing with newly provided data" do
         request_body = {
           "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:User"],
           "externalId" => new_external_user_id,
@@ -449,7 +503,6 @@ RSpec.describe "SCIM API Users" do
 
     context "with the feature flag disabled", with_flag: { scim_api: false } do
       it do
-        headers = { "CONTENT_TYPE" => "application/scim+json", "HTTP_AUTHORIZATION" => "Bearer access_token" }
         put "/scim_v2/Users/123", "", headers
 
         response_body = JSON.parse(last_response.body)
@@ -457,6 +510,7 @@ RSpec.describe "SCIM API Users" do
           { "detail" => "Requires authentication", "schemas" => ["urn:ietf:params:scim:api:messages:2.0:Error"],
             "status" => "401" }
         )
+        expect(last_response).to have_http_status(401)
       end
     end
   end
@@ -545,6 +599,7 @@ RSpec.describe "SCIM API Users" do
           { "detail" => "Requires authentication", "schemas" => ["urn:ietf:params:scim:api:messages:2.0:Error"],
             "status" => "401" }
         )
+        expect(last_response).to have_http_status(401)
       end
     end
   end

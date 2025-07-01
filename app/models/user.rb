@@ -558,34 +558,6 @@ class User < Principal
     SystemUser.first
   end
 
-  def scim_external_id
-    active_user_auth_provider_link&.external_id
-  end
-
-  def scim_external_id=(external_id)
-    oidc_provider = User.current.service_account_association.service.auth_provider
-
-    ::Users::SetAttributesService
-      .new(user: User.system, model: self, contract_class: EmptyContract)
-      .call(identity_url: "#{oidc_provider.slug}:#{external_id}")
-      .on_failure { |result| raise result.to_s }
-    external_id
-  end
-
-  def scim_active=(is_active)
-    if is_active
-      activate
-      true
-    else
-      lock if active?
-      false
-    end
-  end
-
-  def scim_active
-    active?
-  end
-
   def scim_emails
     [ScimEmail.new(mail, true, "work")]
   end
@@ -637,11 +609,6 @@ class User < Principal
     }
   end
 
-  def self.scim_mutable_attributes
-    # Allow mutation of everything with a write accessor
-    nil
-  end
-
   def self.scim_queryable_attributes
     {
       externalId: { column: UserAuthProviderLink.arel_table[:external_id] },
@@ -651,13 +618,6 @@ class User < Principal
       emails: { column: :mail },
       groups: { column: Group.arel_table[:id] },
       "groups.value" => { column: Group.arel_table[:id] }
-    }
-  end
-
-  def self.scim_timestamps_map
-    {
-      created: :created_at,
-      lastModified: :updated_at
     }
   end
 

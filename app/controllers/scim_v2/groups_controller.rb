@@ -62,7 +62,10 @@ module ScimV2
               .on_failure { |call| raise call.message }
           end
 
-          group.to_scim(location: url_for(action: :show, id: group.id))
+          group.to_scim(
+            location: url_for(action: :show, id: group.id),
+            include_attributes:
+          )
         end
       end
     end
@@ -77,7 +80,10 @@ module ScimV2
             .call(user_ids: scim_resource.members.map(&:value))
             .on_failure { |call| raise call.message }
           group.reload
-          group.to_scim(location: url_for(action: :show, id: group.id))
+          group.to_scim(
+            location: url_for(action: :show, id: group.id),
+            include_attributes:
+          )
         end
       end
     end
@@ -93,7 +99,10 @@ module ScimV2
             .call(user_ids:)
             .on_failure { |call| raise call.message }
           group.reload
-          group.to_scim(location: url_for(action: :show, id: group.id))
+          group.to_scim(
+            location: url_for(action: :show, id: group.id),
+            include_attributes:
+          )
         end
       end
     end

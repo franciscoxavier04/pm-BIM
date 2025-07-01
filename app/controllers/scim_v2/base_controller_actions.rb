@@ -55,13 +55,10 @@ module ScimV2
                             .limit(pagination_info.limit)
                             .to_a
 
-        excluded_attributes = params.fetch(:excludedAttributes, "").split(",")
-        attributes = storage_class.scim_attributes_map.keys + storage_class.scim_attributes_map.values.find_all { |i| i.is_a? Hash }.flat_map(&:keys)
-        attributes = attributes.map(&:to_s)
         super(pagination_info, page_of_results) do |record|
           record.to_scim(
             location: url_for(action: :show, id: record.id),
-            include_attributes: attributes - excluded_attributes
+            include_attributes:
           )
         end
       end
@@ -69,14 +66,28 @@ module ScimV2
       def show
         super do |record_id|
           record = storage_scope.find(record_id)
-          excluded_attributes = params.fetch(:excludedAttributes, "").split(",")
-          attributes = storage_class.scim_attributes_map.keys + storage_class.scim_attributes_map.values.find_all { |i| i.is_a? Hash }.flat_map(&:keys)
-          attributes = attributes.map(&:to_s)
           record.to_scim(
             location: url_for(action: :show, id: record_id),
-            include_attributes: attributes - excluded_attributes
+            include_attributes:
           )
         end
+      end
+
+      private
+
+      def include_attributes
+        first_level_attrs = storage_class.scim_attributes_map.keys.map(&:to_s)
+        second_level_attrs =
+          storage_class
+            .scim_attributes_map
+            .find_all { |_, v| v.is_a? Hash }
+            .flat_map { |parent, childs| childs.map { |child, _| "#{parent}.#{child}" } }
+        all_possible_attributes = (first_level_attrs + second_level_attrs)
+
+        excluded_attributes = params.fetch(:excludedAttributes, "").split(",")
+        excluded_parents = excluded_attributes.filter_map { |attr| attr.split(".")[-2] }
+
+        all_possible_attributes - excluded_attributes - excluded_parents
       end
     end
   end

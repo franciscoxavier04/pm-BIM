@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -181,7 +183,7 @@ class Principal < ApplicationRecord
   ##
   # Allows the API and other sources to determine locking actions
   # on represented collections of children of Principals.
-  # Must be overridden by User
+  # Must be overridden by descendants
   def lockable?
     false
   end
@@ -206,6 +208,47 @@ class Principal < ApplicationRecord
       # groups after users
       other.class.name <=> self.class.name
     end
+  end
+
+  def scim_active=(is_active)
+    if is_active
+      activate
+      true
+    else
+      lock if active?
+      false
+    end
+  end
+
+  def scim_active
+    active?
+  end
+
+  def scim_external_id
+    active_user_auth_provider_link&.external_id
+  end
+
+  def scim_external_id=(external_id)
+    oidc_provider = User.current.service_account_association.service.auth_provider
+
+    "::#{self.class}s::SetAttributesService"
+      .constantize
+      .new(user: User.current, model: self, contract_class: EmptyContract)
+      .call(identity_url: "#{oidc_provider.slug}:#{external_id}")
+      .on_failure { |result| raise result.to_s }
+    external_id
+  end
+
+  def self.scim_mutable_attributes
+    # Allow mutation of everything with a write accessor
+    nil
+  end
+
+  def self.scim_timestamps_map
+    {
+      created: :created_at,
+      lastModified: :updated_at
+    }
   end
 
   class << self

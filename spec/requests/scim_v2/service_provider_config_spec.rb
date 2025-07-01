@@ -42,14 +42,11 @@ RSpec.describe "SCIM API ServiceProviderConfig" do
 
   describe "GET /scim_v2/ServiceProviderConfig" do
     context "with the feature flag enabled", with_flag: { scim_api: true } do
-      it do
+      it "responds with ServiceProviderConfig information" do
         get "/scim_v2/ServiceProviderConfig", {}, headers
 
         response_body = JSON.parse(last_response.body)
-        expect(response_body).to include({ "authenticationSchemes" => [{ "description" => "Authentication scheme using the HTTP Basic Standard",
-                                                                         "name" => "HTTP Basic",
-                                                                         "type" => "httpbasic" },
-                                                                       { "description" => "Authentication scheme using the OAuth Bearer Token Standard",
+        expect(response_body).to include({ "authenticationSchemes" => [{ "description" => "Authentication scheme using the OAuth Bearer Token Standard",
                                                                          "name" => "OAuth Bearer Token",
                                                                          "type" => "oauthbearertoken" }],
                                            "bulk" => { "supported" => false },
@@ -72,6 +69,7 @@ RSpec.describe "SCIM API ServiceProviderConfig" do
           { "detail" => "Requires authentication", "schemas" => ["urn:ietf:params:scim:api:messages:2.0:Error"],
             "status" => "401" }
         )
+        expect(last_response).to have_http_status(401)
       end
     end
   end

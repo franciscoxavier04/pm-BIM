@@ -30,7 +30,8 @@
 
 Rails.application.config.to_prepare do
   Scimitar.service_provider_configuration = Scimitar::ServiceProviderConfiguration.new(
-    patch: Scimitar::Supportable.supported
+    patch: Scimitar::Supportable.supported,
+    authenticationSchemes: [Scimitar::AuthenticationScheme.bearer]
   )
   Scimitar.engine_configuration = Scimitar::EngineConfiguration.new(
     application_controller_mixin: ScimV2::ScimControllerMixins
@@ -38,7 +39,10 @@ Rails.application.config.to_prepare do
 
   module ScimitarSchemaExtension
     def scim_attributes
-      super + [Scimitar::Schema::Attribute.new(name: "externalId", type: "string")]
+      super + [Scimitar::Schema::Attribute.new(name: "externalId",
+                                               type: "string",
+                                               caseExact: true,
+                                               required: true)]
     end
   end
 
