@@ -55,11 +55,10 @@ module ReportingHelper
     end
 
     name = name.camelcase
-    if CostQuery::Filter.const_defined? name
-      CostQuery::Filter.const_get(name).label
-    elsif
-      CostQuery::GroupBy.const_defined? name
-      CostQuery::GroupBy.const_get(name).label
+    if CostQuery::Filter.const_defined?(name, false)
+      CostQuery::Filter.const_get(name, false).label
+    elsif CostQuery::GroupBy.const_defined?(name, false)
+      CostQuery::GroupBy.const_get(name, false).label
     else
       # note that using WorkPackage.human_attribute_name relies on the attribute
       # being an work_package attribute or a general attribute for all models which might not
