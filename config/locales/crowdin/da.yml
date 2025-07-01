@@ -66,7 +66,6 @@ da:
         header-item-bg-hover-color: "Overskriftsbaggrund ved mus over"
         main-menu-bg-color: "Hovedmenu baggrund"
         main-menu-bg-selected-background: "Hovedmenu når valgt"
-        main-menu-bg-hover-background: "Hovedmenu ved mus over"
       custom_colors: "Brugerdefinerede farver"
       manage_colors: "Redigér egenskaber for farvevalg"
       instructions:

@@ -324,6 +324,7 @@ eu:
     label_added_time_by: 'Added by <a href="%{authorLink}">%{author}</a> at %{age}'
     label_ago: "days ago"
     label_all: "all"
+    label_all_projects: "All projects"
     label_all_uppercase: "Denak"
     label_all_work_packages: "all work packages"
     label_and: "and"
@@ -433,7 +434,6 @@ eu:
     label_repository_plural: "Repositories"
     label_save_as: "Save as"
     label_search_columns: "Search a column"
-    label_select_project: "Select a project"
     label_select_watcher: "Select a watcher..."
     label_selected_filter_list: "Selected filters"
     label_show_attributes: "Show all attributes"
@@ -643,9 +643,12 @@ eu:
       title: "Confirm your password to continue"
     pagination:
       no_other_page: "You are on the only page."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "Forward to the next page"
-        previous: "Back to the previous page"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Enter subject here"

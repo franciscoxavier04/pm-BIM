@@ -324,6 +324,7 @@ it:
     label_added_time_by: 'Aggiunto da <a href="%{authorLink}">%{author}</a> alle %{age}'
     label_ago: "giorni fa"
     label_all: "tutti"
+    label_all_projects: "All projects"
     label_all_uppercase: "Tutti"
     label_all_work_packages: "tutte le macro-attività"
     label_and: "e"
@@ -433,7 +434,6 @@ it:
     label_repository_plural: "Archivi"
     label_save_as: "Salva come"
     label_search_columns: "Cerca una colonna"
-    label_select_project: "Seleziona un progetto"
     label_select_watcher: "Seleziona un osservatore..."
     label_selected_filter_list: "Filtri selezionati"
     label_show_attributes: "Mostra tutti gli attributi"
@@ -643,9 +643,12 @@ it:
       title: "Confermare la password per continuare"
     pagination:
       no_other_page: "Sei nella pagina unica."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "Vai alla pagina successiva"
-        previous: "Torna alla pagina precedente"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Inserisci l'oggetto qui"

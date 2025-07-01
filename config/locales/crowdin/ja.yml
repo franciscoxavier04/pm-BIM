@@ -66,7 +66,6 @@ ja:
         header-item-bg-hover-color: "ホバー時のヘッダの背景"
         main-menu-bg-color: "メインメニューの背景"
         main-menu-bg-selected-background: "選択時のメインメニュー"
-        main-menu-bg-hover-background: "ホバー時のメインメニュー"
       custom_colors: "カスタム色"
       manage_colors: "色の選択オプションを編集"
       instructions:

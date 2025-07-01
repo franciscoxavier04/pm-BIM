@@ -324,6 +324,7 @@ cs:
     label_added_time_by: 'Přidal <a href="%{authorLink}">%{author}</a> v %{age}'
     label_ago: "dnů před"
     label_all: "vše"
+    label_all_projects: "All projects"
     label_all_uppercase: "Vše"
     label_all_work_packages: "všechny pracovní balíčky"
     label_and: "a"
@@ -433,7 +434,6 @@ cs:
     label_repository_plural: "Repozitáře"
     label_save_as: "Uložit jako"
     label_search_columns: "Vyhledávání ve sloupci"
-    label_select_project: "Vyberte projekt"
     label_select_watcher: "Zvolte sledujícího..."
     label_selected_filter_list: "Vybrané filtry"
     label_show_attributes: "Zobrazit všechny atributy"
@@ -645,9 +645,12 @@ cs:
       title: "Pro pokračování potvrďte vaše heslo"
     pagination:
       no_other_page: "Jste na jediné stránce."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "Přejít na další stránku"
-        previous: "Zpět na předchozí stránku"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Zde zadejte předmět"

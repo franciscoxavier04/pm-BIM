@@ -323,6 +323,7 @@ zh-TW:
     label_added_time_by: '由 <a href=%{authorLink}>%{author}</a> 在 %{age} 添加'
     label_ago: "天前"
     label_all: "所有"
+    label_all_projects: "All projects"
     label_all_uppercase: "全部"
     label_all_work_packages: "所有工作套件"
     label_and: "和"
@@ -432,7 +433,6 @@ zh-TW:
     label_repository_plural: "版本庫"
     label_save_as: "另存為"
     label_search_columns: "選取欄位"
-    label_select_project: "選擇專案"
     label_select_watcher: "選擇監看者"
     label_selected_filter_list: "所選的篩選條件"
     label_show_attributes: "顯示所有屬性"
@@ -641,9 +641,12 @@ zh-TW:
       title: "確認您的密碼以便繼續"
     pagination:
       no_other_page: "您位於唯一頁面上。"
+      pagination_controls: "Pagination controls"
       pages:
-        next: "前往下一頁"
-        previous: "回到上一頁"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "在此輸入名稱"

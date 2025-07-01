@@ -66,7 +66,6 @@ bg:
         header-item-bg-hover-color: "Фон на заглавието при поставяне на мишката"
         main-menu-bg-color: "Фон на главното меню"
         main-menu-bg-selected-background: "Основно меню, когато е избрано"
-        main-menu-bg-hover-background: "Основно меню при преминаване върху него"
       custom_colors: "Персонализирани цветове"
       manage_colors: "Редактиране на опциите за избор на цвят"
       instructions:

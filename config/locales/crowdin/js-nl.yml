@@ -324,6 +324,7 @@ nl:
     label_added_time_by: 'Toegevoegd door <a href="%{authorLink}">%{author}</a> op %{age}'
     label_ago: "dagen geleden"
     label_all: "alle"
+    label_all_projects: "All projects"
     label_all_uppercase: "Alle"
     label_all_work_packages: "alle werkpakketten"
     label_and: "en"
@@ -433,7 +434,6 @@ nl:
     label_repository_plural: "Repositories"
     label_save_as: "Opslaan als"
     label_search_columns: "Search a column"
-    label_select_project: "Selecteer een project"
     label_select_watcher: "Kies een toezichter..."
     label_selected_filter_list: "Geselecteerde filters"
     label_show_attributes: "Toon alle kenmerken"
@@ -643,9 +643,12 @@ nl:
       title: "Voer uw wachtwoord in om door te gaan"
     pagination:
       no_other_page: "U bent op de enige pagina."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "Vooruit naar volgende pagina"
-        previous: "Terug naar de vorige pagina"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Onderwerp hier invoeren"

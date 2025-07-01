@@ -66,7 +66,6 @@ pl:
         header-item-bg-hover-color: "Tło nagłowka po najechaniu myszą"
         main-menu-bg-color: "Tło menu głównego"
         main-menu-bg-selected-background: "Menu główne po wybraniu"
-        main-menu-bg-hover-background: "Menu główne po najechaniu myszą"
       custom_colors: "Kolory użytkownika"
       manage_colors: "Edytuj kolor wybranych opcji"
       instructions:

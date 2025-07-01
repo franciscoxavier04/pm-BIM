@@ -66,7 +66,6 @@ pt-BR:
         header-item-bg-hover-color: "Fundo do cabeçalho ao passar o mouse"
         main-menu-bg-color: "Fundo do menu principal"
         main-menu-bg-selected-background: "Menu principal quando selecionado"
-        main-menu-bg-hover-background: "Menu principal ao passar o mouse"
       custom_colors: "Cores personalizadas"
       manage_colors: "Editar opções de seleção de cor"
       instructions:

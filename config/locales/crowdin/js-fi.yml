@@ -324,6 +324,7 @@ fi:
     label_added_time_by: 'Added by <a href="%{authorLink}">%{author}</a> at %{age}'
     label_ago: "päiviä sitten"
     label_all: "kaikki"
+    label_all_projects: "All projects"
     label_all_uppercase: "Kaikki"
     label_all_work_packages: "kaikki tehtävät"
     label_and: "and"
@@ -433,7 +434,6 @@ fi:
     label_repository_plural: "Tietovarastot"
     label_save_as: "Tallenna nimellä"
     label_search_columns: "Search a column"
-    label_select_project: "Valitse projekti"
     label_select_watcher: "Valitse seuraaja..."
     label_selected_filter_list: "Valitut suodattimet"
     label_show_attributes: "Näytä kaikki määritteet"
@@ -643,9 +643,12 @@ fi:
       title: "Vahvista salasanasi jatkaaksesi"
     pagination:
       no_other_page: "Olet jo ainoalla sivulla."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "Eteenpäin seuraavalle sivulle"
-        previous: "Palaa edelliselle sivulle"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Lisää aihe"

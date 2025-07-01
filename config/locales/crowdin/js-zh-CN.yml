@@ -324,6 +324,7 @@ zh-CN:
     label_added_time_by: '由 <a href=%{authorLink}>%{author}</a> 在 %{age} 添加'
     label_ago: "天前"
     label_all: "所有"
+    label_all_projects: "All projects"
     label_all_uppercase: "全部"
     label_all_work_packages: "所有工作包"
     label_and: "和"
@@ -433,7 +434,6 @@ zh-CN:
     label_repository_plural: "存储库"
     label_save_as: "另存为"
     label_search_columns: "搜索列"
-    label_select_project: "选择项目"
     label_select_watcher: "选择一个关注者..."
     label_selected_filter_list: "已选筛选器"
     label_show_attributes: "显示所有属性"
@@ -642,9 +642,12 @@ zh-CN:
       title: "输入密码以继续"
     pagination:
       no_other_page: "您位于唯一页面上。"
+      pagination_controls: "Pagination controls"
       pages:
-        next: "前进到下一页"
-        previous: "返回到上一页"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "在此处输入标题"
@@ -697,7 +700,7 @@ zh-CN:
           first_day: "第一天"
           last_day: "最后一天"
     text_are_you_sure: "是否确定？"
-    breadcrumb: "Breadcrumb"
+    breadcrumb: "面包屑"
     text_data_lost: "输入的所有数据将全部丢失。"
     text_user_wrote: "%{value} 写道："
     types:

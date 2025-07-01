@@ -66,7 +66,6 @@ zh-CN:
         header-item-bg-hover-color: "悬停时的标题背景"
         main-menu-bg-color: "主菜单背景"
         main-menu-bg-selected-background: "选择时的主菜单"
-        main-menu-bg-hover-background: "悬停时的主菜单"
       custom_colors: "自定义颜色"
       manage_colors: "编辑颜色选择选项"
       instructions:
@@ -287,7 +286,7 @@ zh-CN:
       not_found: "未找到"
       rules:
         copy_workflow_from:
-          workflow_missing: "has no own workflow."
+          workflow_missing: "没有自己的工作流。"
         item:
           root_item: "不能为根项目"
           not_persisted: "必须是已存在的项目"
@@ -298,8 +297,8 @@ zh-CN:
         parent:
           not_descendant: "必须是层次结构根的后代"
     rules:
-      copy_workflow_from: "Type for workflow copy"
-      enabled: "Enabled"
+      copy_workflow_from: "工作流副本类型"
+      enabled: "已启用"
       depth: "深"
       item: "条目"
       label: "标签"
@@ -1264,7 +1263,7 @@ zh-CN:
           failed_to_create: "无法创建试验 (%{status})"
           general_consent: "请接受条款和条件。"
         enterprise_token:
-          only_one_trial: "Only one trial token can be active. Please delete the previous trial token before adding another."
+          only_one_trial: "只能激活一个试用版令牌。请先删除上一个试用版令牌，然后再添加另一个。"
           unreadable: "无法读取。是否确定为支持令牌？"
           already_added: "此令牌已被添加。"
         grids/grid:
@@ -1821,7 +1820,7 @@ zh-CN:
   button_unwatch: "取消关注"
   button_update: "更新"
   button_upgrade: "升级"
-  button_buy_now: "Buy now"
+  button_buy_now: "立即购买"
   button_upload: "上传"
   button_view: "查看"
   button_watch: "关注"
@@ -2098,8 +2097,8 @@ zh-CN:
         description: " "
     teaser:
       title:
-        other: "%{count} days left of %{trial_plan} trial token"
-      description: "You have access to all %{trial_plan} features."
+        other: "%{count} %{trial_plan} 试用令牌的剩余天数"
+      description: "您可以访问 %{trial_plan} 的所有功能。"
     trial:
       not_found: "您已申请试用令牌，但该申请已不可用。请重试。"
       wait_for_confirmation: "我们向您发送了一封电子邮件，请确认地址，以便获取试用令牌。"
