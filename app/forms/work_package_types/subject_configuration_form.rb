@@ -44,7 +44,7 @@ module WorkPackageTypes
           checked: !subject_configuration_manual?,
           label: I18n.t("types.edit.subject_configuration.automatically_generated_subjects.label"),
           caption: I18n.t("types.edit.subject_configuration.automatically_generated_subjects.caption"),
-          disabled: !enterprise? && subject_configuration_manual?,
+          disabled: !enterprise?,
           data: { action: "admin--subject-configuration#showPatternInput" }
         )
       end
@@ -53,6 +53,7 @@ module WorkPackageTypes
         toggleable_group.pattern_input(
           name: :pattern,
           value: model.pattern,
+          hidden: !enterprise?,
           suggestions: model.suggestions,
           label: I18n.t("types.edit.subject_configuration.pattern.label"),
           caption: pattern_input_caption,

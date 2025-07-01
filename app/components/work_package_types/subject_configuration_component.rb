@@ -23,7 +23,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
@@ -53,7 +53,15 @@ module WorkPackageTypes
       }
     end
 
+    def show_upsale_page?
+      !enterprise? && subject_form_object.subject_configuration == :manual
+    end
+
     private
+
+    def enterprise?
+      EnterpriseToken.allows_to?(:work_package_subject_generation)
+    end
 
     def subject_form_object
       values = subject_configuration_form_values
