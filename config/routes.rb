@@ -141,13 +141,11 @@ Rails.application.routes.draw do
     resource :form_configuration, only: %i[edit update], controller: "work_package_types/form_configuration_tab"
     resource :projects, controller: "work_package_types/projects_tab", only: %i[update edit]
     resource :settings, controller: "work_package_types/settings_tab", only: %i[update edit]
+    resource :subject_configuration, controller: "work_package_types/subject_configuration_tab", only: %i[update edit]
 
     member do
       get "edit/:tab" => "types#edit", as: "edit_tab"
       match "update/:tab" => "types#update", as: "update_tab", via: %i[post patch]
-      put :subject_configuration,
-          controller: "work_package_types/subject_configuration_tab",
-          action: "update_subject_configuration"
     end
 
     resources :pdf_export_template, only: %i[],

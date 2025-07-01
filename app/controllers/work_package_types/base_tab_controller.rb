@@ -29,43 +29,16 @@
 #++
 
 module WorkPackageTypes
-  class SubjectConfigurationTabController < BaseTabController
-    current_menu_item [:edit, :update] do
-      :types
-    end
+  class BaseTabController < ApplicationController
+    layout "admin"
 
-    def edit; end
-
-    def update
-      permitted = params.expect(work_package_types_forms_subject_configuration_form_model: %i[subject_configuration pattern]).to_h
-
-      result = UpdateService.new(model: @type, user: current_user, contract_class: UpdateSubjectPatternContract)
-                            .call(patterns: build_patterns(permitted))
-
-      if result.success?
-        redirect_to edit_type_subject_configuration_path(@type), status: :see_other
-      else
-        render :edit, status: :unprocessable_entity
-      end
-    end
+    before_action :require_admin
+    before_action :find_type
 
     private
 
-    def build_patterns(form_params)
-      case form_params
-      in { subject_configuration: "generated", pattern: String => blueprint }
-        { subject: { blueprint:, enabled: true } }
-      in { subject_configuration: "manual", pattern: String => blueprint }
-        if blueprint.empty?
-          # Submitting the form with an empty blueprint and manual subject configuration will
-          # remove the subject pattern from the collection
-          nil
-        else
-          { subject: { blueprint:, enabled: false } }
-        end
-      else
-        nil
-      end
+    def find_type
+      @type = ::Type.find(params[:type_id])
     end
   end
 end
