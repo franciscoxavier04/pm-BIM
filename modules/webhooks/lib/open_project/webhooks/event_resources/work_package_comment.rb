@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,27 +28,37 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require_relative "../spec_helper"
+require_relative "base"
 
-RSpec.describe OpenProject::Webhooks::Hook do
-  describe "#relative_url" do
-    let(:hook) { OpenProject::Webhooks::Hook.new("myhook") }
+module OpenProject::Webhooks::EventResources
+  class WorkPackageComment < Base
+    class << self
+      def notification_names
+        [
+          OpenProject::Events::AGGREGATED_WORK_PACKAGE_JOURNAL_READY
+        ]
+      end
 
-    it "returns the correct URL" do
-      expect(hook.relative_url).to eql("webhooks/myhook")
-    end
-  end
+      def available_actions
+        %i(comment internal_comment)
+      end
 
-  describe "#handle" do
-    let(:probe) { lambda {} }
-    let(:hook) { OpenProject::Webhooks::Hook.new("myhook", &probe) }
+      def resource_name
+        I18n.t :label_work_package_comments
+      end
 
-    before do
-      expect(probe).to receive(:call).with(hook, 1, 2, 3)
-    end
+      protected
 
-    it "executes the callback with the correct parameters" do
-      hook.handle(1, 2, 3)
+      def handle_notification(payload, _)
+        journal = payload[:journal]
+        return if journal.notes.blank?
+
+        action = journal.internal? ? "internal_comment" : "comment"
+        event_name = prefixed_event_name(action)
+        active_webhooks.with_event_name(event_name).pluck(:id).each do |id|
+          WorkPackageCommentWebhookJob.perform_later(id, journal, event_name)
+        end
+      end
     end
   end
 end

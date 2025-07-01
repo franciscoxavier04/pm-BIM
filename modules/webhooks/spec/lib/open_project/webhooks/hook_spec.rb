@@ -28,35 +28,24 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require_relative "base"
+require "spec_helper"
 
-module OpenProject::Webhooks::EventResources
-  class WorkPackage < Base
-    class << self
-      def notification_names
-        [
-          OpenProject::Events::AGGREGATED_WORK_PACKAGE_JOURNAL_READY
-        ]
-      end
+RSpec.describe OpenProject::Webhooks::Hook do
+  describe "#relative_url" do
+    let(:hook) { described_class.new("myhook") }
 
-      def available_actions
-        %i(updated created)
-      end
+    it "returns the correct URL" do
+      expect(hook.relative_url).to eql("webhooks/myhook")
+    end
+  end
 
-      def resource_name
-        I18n.t :label_work_package_plural
-      end
+  describe "#handle" do
+    let(:probe) { -> {} }
+    let(:hook) { described_class.new("myhook", &probe) }
 
-      protected
-
-      def handle_notification(payload, event_name)
-        action = payload[:journal].initial? ? "created" : "updated"
-        event_name = prefixed_event_name(action)
-        work_package = payload[:journal].journable
-        active_webhooks.with_event_name(event_name).pluck(:id).each do |id|
-          WorkPackageWebhookJob.perform_later(id, work_package, event_name)
-        end
-      end
+    it "executes the callback with the correct parameters" do
+      expect(probe).to receive(:call).with(hook, 1, 2, 3)
+      hook.handle(1, 2, 3)
     end
   end
 end

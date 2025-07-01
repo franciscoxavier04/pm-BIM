@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,4 +28,18 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
+class WorkPackageCommentWebhookJob < RepresentedWebhookJob
+  def payload_key
+    :activity
+  end
+
+  def payload_representer_class
+    ::API::V3::Activities::ActivityRepresenter
+  end
+
+  def project_id
+    # For comment webhooks, the resource is a Journal
+    # We need to get the project_id through the journable (WorkPackage)
+    resource.journable.project_id
+  end
+end
