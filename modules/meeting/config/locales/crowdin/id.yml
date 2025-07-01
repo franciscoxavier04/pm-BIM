@@ -252,7 +252,7 @@ id:
         label: Include agenda outcomes
         caption: If your agenda outcomes contain confidential information, you can choose to not include them in the export.
       footer_text:
-        label: Footer text
+        label: Teks footer
         caption: This text will appear on every page on the right of the footer.
       submit_button: Download
   meeting_section:

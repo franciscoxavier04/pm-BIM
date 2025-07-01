@@ -66,7 +66,6 @@ pl:
         header-item-bg-hover-color: "Tło nagłowka po najechaniu myszą"
         main-menu-bg-color: "Tło menu głównego"
         main-menu-bg-selected-background: "Menu główne po wybraniu"
-        main-menu-bg-hover-background: "Menu główne po najechaniu myszą"
       custom_colors: "Kolory użytkownika"
       manage_colors: "Edytuj kolor wybranych opcji"
       instructions:
@@ -286,6 +285,8 @@ pl:
       greater_or_equal_zero: "musi mieć wartość większą lub równą 0."
       not_found: "nie znaleziono."
       rules:
+        copy_workflow_from:
+          workflow_missing: "has no own workflow."
         item:
           root_item: "nie może być elementem głównym."
           not_persisted: "musi być już istniejącym elementem."
@@ -296,6 +297,8 @@ pl:
         parent:
           not_descendant: "musi być potomkiem katalogu głównego hierarchii."
     rules:
+      copy_workflow_from: "Type for workflow copy"
+      enabled: "Enabled"
       depth: "Głębokość"
       item: "Element"
       label: "Etykieta"
@@ -1246,7 +1249,7 @@ pl:
           attributes:
             content_type:
               blank: "Zawartość tego typu zwartości nie może być pusta."
-              not_whitelisted: "Plik został odrzucony przez automatyczny filtr. '%{value}' nie jest na białej liście do przesyłania."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:
@@ -1284,6 +1287,7 @@ pl:
           failed_to_create: "Trial could not be created (%{status})"
           general_consent: "Please accept the terms and conditions."
         enterprise_token:
+          only_one_trial: "Only one trial token can be active. Please delete the previous trial token before adding another."
           unreadable: "nie można odczytać. Czy na pewno jest to token wsparcia?"
           already_added: "This token has already been added."
         grids/grid:
@@ -1882,6 +1886,7 @@ pl:
   button_unwatch: "Nie obserwuj"
   button_update: "Aktualizacja"
   button_upgrade: "Aktualizuj"
+  button_buy_now: "Buy now"
   button_upload: "Wyślij"
   button_view: "Widok"
   button_watch: "Obserwuj"
@@ -2213,6 +2218,13 @@ pl:
       internal_comments_inline:
         title: "Pisz komentarze wewnętrzne, które może zobaczyć tylko niewielka grupa"
         description: " "
+    teaser:
+      title:
+        one: "One day left of %{trial_plan} trial token"
+        few: "%{count} days left of %{trial_plan} trial token"
+        many: "%{count} days left of %{trial_plan} trial token"
+        other: "%{count} days left of %{trial_plan} trial token"
+      description: "You have access to all %{trial_plan} features."
     trial:
       not_found: "You have requested a trial token, but that request is no longer available. Please try again."
       wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
@@ -3523,7 +3535,7 @@ pl:
   #Default format for numbers
   number:
     format:
-      delimiter: ""
+      delimiter: ","
       precision: 3
       separator: ","
     human:

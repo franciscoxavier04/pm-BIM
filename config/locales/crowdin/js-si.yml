@@ -324,6 +324,7 @@ si:
     label_added_time_by: 'Added by <a href="%{authorLink}">%{author}</a> at %{age}'
     label_ago: "දින කිහිපයකට පෙර"
     label_all: "සියලු"
+    label_all_projects: "All projects"
     label_all_uppercase: "සියලු"
     label_all_work_packages: "සියලුම වැඩ පැකේජ"
     label_and: "සහ"
@@ -433,7 +434,6 @@ si:
     label_repository_plural: "ගබඩාවලදී"
     label_save_as: "ලෙස සුරකින්න"
     label_search_columns: "Search a column"
-    label_select_project: "ව්යාපෘතියක් තෝරන්න"
     label_select_watcher: "මුරකරුවෙකු තෝරන්න..."
     label_selected_filter_list: "තෝරාගත් පෙරහන්"
     label_show_attributes: "සියලු ගුණාංග පෙන්වන්න"
@@ -643,9 +643,12 @@ si:
       title: "දිගටම කරගෙන යාමට ඔබගේ මුරපදය තහවුරු කරන්න"
     pagination:
       no_other_page: "ඔබ සිටින්නේ එකම පිටුවේ ය."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "ඊළඟ පිටුවට ඉදිරියට යන්න"
-        previous: "පෙර පිටුවට ආපසු යන්න"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "මෙහි විෂය ඇතුලත් කරන්න"
@@ -698,6 +701,7 @@ si:
           first_day: "First day"
           last_day: "Last day"
     text_are_you_sure: "ඔබට විශ්වාසද?"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "All entered data will be lost."
     text_user_wrote: "%{value} ලිවීය:"
     types:
@@ -782,6 +786,7 @@ si:
     autocompleter:
       placeholder: "සෙවීමට ටයිප් කරන්න"
       notFoundText: "No items found"
+      search: "Search"
       project:
         placeholder: "Select project"
     repositories:
@@ -1131,7 +1136,6 @@ si:
       current_project_and_all_descendants: "මෙම ව්යාපෘතිය+උප ව්යාපෘති"
       current_project: "මෙම ව්යාපෘතියේ"
       recently_viewed: "Recently viewed"
-      search: "සොයන්න"
       title:
         all_projects: "සියලු ව්යාපෘති"
         project_and_subprojects: "සහ සියළු උප ව්යාපෘති"

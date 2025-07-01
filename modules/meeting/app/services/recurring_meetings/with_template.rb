@@ -34,7 +34,7 @@ module RecurringMeetings
     included do
       attr_accessor :template_params
 
-      def before_perform(params, _)
+      def before_perform(_)
         @template_params = extract_template_params(params)
 
         super

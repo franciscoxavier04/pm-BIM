@@ -324,6 +324,7 @@ vi:
     label_added_time_by: 'Được thêm bởi <a href="%{authorLink}">%{author}</a> lúc %{age}'
     label_ago: "ngày trước"
     label_all: "tất cả"
+    label_all_projects: "All projects"
     label_all_uppercase: "Tất cả"
     label_all_work_packages: "tất cả các gói công việc"
     label_and: "và"
@@ -433,7 +434,6 @@ vi:
     label_repository_plural: "Các kho lưu trữ"
     label_save_as: "Lưu dưới dạng"
     label_search_columns: "Tìm cột"
-    label_select_project: "Chọn dự án"
     label_select_watcher: "Chọn người theo dõi..."
     label_selected_filter_list: "Danh sách bộ lọc đã chọn"
     label_show_attributes: "Hiển thị tất cả thuộc tính"
@@ -642,9 +642,12 @@ vi:
       title: "Xác nhận mật khẩu của bạn để tiếp tục"
     pagination:
       no_other_page: "Bạn đang ở trang duy nhất."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "Tiến tới trang tiếp theo"
-        previous: "Quay lại trang trước"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Nhập chủ đề tại đây"
@@ -697,6 +700,7 @@ vi:
           first_day: "Ngày đầu tiên"
           last_day: "Ngày cuối cùng"
     text_are_you_sure: "Bạn có chắc không?"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "Tất cả dữ liệu đã nhập sẽ bị mất."
     text_user_wrote: "%{value} đã viết:"
     types:
@@ -781,6 +785,7 @@ vi:
     autocompleter:
       placeholder: "Gõ để tìm kiếm"
       notFoundText: "Không tìm thấy mục nào"
+      search: "Search"
       project:
         placeholder: "Chọn dự án"
     repositories:
@@ -1127,7 +1132,6 @@ vi:
       current_project_and_all_descendants: "Trong dự án này + các dự án con"
       current_project: "Trong dự án này"
       recently_viewed: "Đã xem gần đây"
-      search: "Tìm kiếm"
       title:
         all_projects: "tất cả các dự án"
         project_and_subprojects: "và tất cả các dự án con"

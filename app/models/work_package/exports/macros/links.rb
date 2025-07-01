@@ -48,10 +48,6 @@ module WorkPackage::Exports
         [WorkPackagesLinkHandler]
       end
 
-      def self.html_replacement?
-        true
-      end
-
       # Faster inclusion check before the full regex is being applied
       def self.applicable?(content)
         /#\d/.match(content)

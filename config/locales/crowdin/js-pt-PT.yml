@@ -212,10 +212,10 @@ pt-PT:
         change_button: "Guardar e reagendar"
         change_title: "Alterar dias úteis"
         removed_title: "Removerá os seguintes dias da lista de dias não-úteis:"
-        change_description: "Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance."
+        change_description: "Mudar quais dias da semana considerados dias úteis ou não úteis pode afetar os dias de início e de término de todos os pacotes de trabalho em todos os projetos nesta instância."
         warning: >
-          The changes might take some time to take effect. You will be notified when all relevant work packages and project life cycles have been updated.
-          Are you sure you want to continue?
+          As alterações podem demorar algum tempo a entrar em vigor. Receberá uma notificação quando todos os pacotes de trabalho relevantes forem atualizados.
+          Tem a certeza que quer continuar?
       work_packages_settings:
         warning_progress_calculation_mode_change_from_status_to_field_html: >-
           Se alterar o modo de cálculo do progresso de baseado no estado para baseado no trabalho, o campo <i>% de conclusão</i> poderá ser editado livremente. Se, opcionalmente, introduzir valores para <i>Trabalho</i> ou <i>Trabalho restante</i>, estes também serão associado a <i>% de conclusão</i>. Se alterar o <i>Trabalho restante</i>, pode atualizar a <i>% de conclusão</i>.
@@ -324,6 +324,7 @@ pt-PT:
     label_added_time_by: 'Adicionado por <a href="%{authorLink}">%{author}</a> a %{age}'
     label_ago: "dias atrás"
     label_all: "todos"
+    label_all_projects: "All projects"
     label_all_uppercase: "Todas"
     label_all_work_packages: "todas as tarefas"
     label_and: "e"
@@ -433,7 +434,6 @@ pt-PT:
     label_repository_plural: "Repositórios"
     label_save_as: "Guardar como"
     label_search_columns: "Pesquisar uma coluna"
-    label_select_project: "Selecionar um projeto"
     label_select_watcher: "Selecione um \"observador\"..."
     label_selected_filter_list: "Filtros selecionados"
     label_show_attributes: "Mostrar todos os atributos"
@@ -643,9 +643,12 @@ pt-PT:
       title: "Confirme a sua palavra-passe para continuar"
     pagination:
       no_other_page: "Mais nenhuma página a apresentar."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "Avançar para a próxima página"
-        previous: "Voltar à página anterior"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Introduzir assunto aqui"
@@ -698,6 +701,7 @@ pt-PT:
           first_day: "Primeiro dia"
           last_day: "Último dia"
     text_are_you_sure: "Tem a certeza?"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "Todos os dados inseridos serão perdidos."
     text_user_wrote: "%{value} escreveu:"
     types:
@@ -782,6 +786,7 @@ pt-PT:
     autocompleter:
       placeholder: "Digite para pesquisar"
       notFoundText: "Nenhum item encontrado"
+      search: "Pesquisar"
       project:
         placeholder: "Selecionar projeto"
     repositories:
@@ -1131,7 +1136,6 @@ pt-PT:
       current_project_and_all_descendants: "Neste projeto + subprojetos"
       current_project: "Neste projeto"
       recently_viewed: "Visto recentemente"
-      search: "Pesquisar"
       title:
         all_projects: "todos os projetos"
         project_and_subprojects: "e todos os subprojetos"

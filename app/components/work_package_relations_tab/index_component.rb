@@ -19,22 +19,22 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
   ].freeze
 
   FIRST_LEVEL_RELATION_MENU_TYPES = [
-    *ADD_CHILD_MENU_TYPES,
+    Relation::TYPE_RELATES,
     Relation::TYPE_FOLLOWS,
     Relation::TYPE_PRECEDES,
-    Relation::TYPE_PARENT,
-    Relation::TYPE_RELATES
+    *ADD_CHILD_MENU_TYPES,
+    Relation::TYPE_PARENT
   ].freeze
 
   SECOND_LEVEL_RELATION_MENU_TYPES = [
+    Relation::TYPE_DUPLICATES,
+    Relation::TYPE_DUPLICATED,
     Relation::TYPE_BLOCKS,
     Relation::TYPE_BLOCKED,
     Relation::TYPE_INCLUDES,
     Relation::TYPE_PARTOF,
     Relation::TYPE_REQUIRES,
-    Relation::TYPE_REQUIRED,
-    Relation::TYPE_DUPLICATES,
-    Relation::TYPE_DUPLICATED
+    Relation::TYPE_REQUIRED
   ].freeze
 
   include ApplicationHelper

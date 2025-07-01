@@ -324,6 +324,7 @@ fil:
     label_added_time_by: 'Added by <a href="%{authorLink}">%{author}</a> at %{age}'
     label_ago: "ang mga araw nakalipas"
     label_all: "lahat"
+    label_all_projects: "All projects"
     label_all_uppercase: "All"
     label_all_work_packages: "lahat ng mga work package"
     label_and: "at"
@@ -433,7 +434,6 @@ fil:
     label_repository_plural: "Mga repositoryo"
     label_save_as: "I-save bilang"
     label_search_columns: "Search a column"
-    label_select_project: "Pumili ng proyekto"
     label_select_watcher: "Pumili ng manunuod..."
     label_selected_filter_list: "Napiling mga filter"
     label_show_attributes: "Ipakita ang lahat ng mga katangian"
@@ -643,9 +643,12 @@ fil:
       title: "Kumpirmahin ang iyong password upanh magpatuloy"
     pagination:
       no_other_page: "Ikaw ay nasa pahina lamang."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "Ipasa sa susunod na pahina"
-        previous: "Bunalik sa nakaraang pahina"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Ipasok ang paksa dito"
@@ -698,6 +701,7 @@ fil:
           first_day: "First day"
           last_day: "Last day"
     text_are_you_sure: "Sigurado ka ba?"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "All entered data will be lost."
     text_user_wrote: "%{value} isinulat:"
     types:
@@ -782,6 +786,7 @@ fil:
     autocompleter:
       placeholder: "Type to search"
       notFoundText: "No items found"
+      search: "Search"
       project:
         placeholder: "Select project"
     repositories:
@@ -1131,7 +1136,6 @@ fil:
       current_project_and_all_descendants: "In this project + subprojects"
       current_project: "In this project"
       recently_viewed: "Recently viewed"
-      search: "Hanapin"
       title:
         all_projects: "all projects"
         project_and_subprojects: "and all subprojects"

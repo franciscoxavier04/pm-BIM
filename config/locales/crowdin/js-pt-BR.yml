@@ -211,10 +211,10 @@ pt-BR:
         change_button: "Salvar e reagendar"
         change_title: "Alterar dias úteis"
         removed_title: "Você removerá os seguintes dias da lista de dias não úteis:"
-        change_description: "Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance."
+        change_description: "Alterar quais dias da semana são considerados dias úteis ou não úteis pode afetar as datas de início e término de todos os pacotes de trabalho e ciclos de vida em todos os projetos desta instância."
         warning: >
-          The changes might take some time to take effect. You will be notified when all relevant work packages and project life cycles have been updated.
-          Are you sure you want to continue?
+          As alterações podem levar algum tempo para entrar em vigor. Você será notificado quando todos os pacotes de trabalho e ciclos de vida dos projetos relevantes forem atualizados.
+          Tem certeza de que deseja continuar?
       work_packages_settings:
         warning_progress_calculation_mode_change_from_status_to_field_html: >-
           Alterar o modo de cálculo de progresso de baseado em status para baseado em trabalho tornará o campo <i>% de conclusão</i> editável livremente. Se você optar por inserir valores para <i>Trabalho</i> ou <i>Trabalho restante</i>, eles também estarão vinculados ao <i>% de conclusão</i>. Alterar <i>Trabalho restante</i> pode, então, atualizar <i>% de conclusão</i>.
@@ -323,6 +323,7 @@ pt-BR:
     label_added_time_by: 'Adicionado por <a href="%{authorLink}">%{author}</a> em %{age}'
     label_ago: "dias atrás"
     label_all: "todos"
+    label_all_projects: "All projects"
     label_all_uppercase: "Todos"
     label_all_work_packages: "todos pacotes de trabalho"
     label_and: "e"
@@ -432,7 +433,6 @@ pt-BR:
     label_repository_plural: "Repositórios"
     label_save_as: "Salvar como"
     label_search_columns: "Buscar uma coluna"
-    label_select_project: "Selecionar um projeto"
     label_select_watcher: "Selecione um observador..."
     label_selected_filter_list: "Filtros selecionados"
     label_show_attributes: "Mostrar todos os atributos"
@@ -642,9 +642,12 @@ pt-BR:
       title: "Confirme sua senha para continuar"
     pagination:
       no_other_page: "Você está na página única."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "Ir para a próxima página"
-        previous: "Voltar para a página anterior"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Informe o assunto aqui"
@@ -697,6 +700,7 @@ pt-BR:
           first_day: "Primeiro dia"
           last_day: "Último dia"
     text_are_you_sure: "Você tem certeza?"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "Todos os dados inseridos serão perdidos."
     text_user_wrote: "%{value} escreveu:"
     types:
@@ -781,6 +785,7 @@ pt-BR:
     autocompleter:
       placeholder: "Escreva para pesquisar"
       notFoundText: "Nenhum item encontrado"
+      search: "Search"
       project:
         placeholder: "Selecionar projeto"
     repositories:
@@ -1130,7 +1135,6 @@ pt-BR:
       current_project_and_all_descendants: "Neste projeto + subprojetos"
       current_project: "Neste projeto"
       recently_viewed: "Visualizado recentemente"
-      search: "Pesquisar"
       title:
         all_projects: "todos os projetos"
         project_and_subprojects: "e todos os subprojetos"

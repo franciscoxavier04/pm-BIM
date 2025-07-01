@@ -1185,8 +1185,6 @@ RSpec.describe WorkPackages::BaseContract do
     subject do
       contract.validate
 
-      # while we do validate the parent
-      # the errors are still put on :base so that the messages can be reused
       contract.errors.symbols_for(:parent)
     end
 
@@ -1196,6 +1194,7 @@ RSpec.describe WorkPackages::BaseContract do
       it "returns an error for the parent" do
         expect(subject)
           .to eq [:cannot_be_self_assigned]
+        expect(contract.errors.attribute_names).to contain_exactly(:parent)
       end
     end
 

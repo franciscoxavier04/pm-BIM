@@ -324,6 +324,7 @@ ko:
     label_added_time_by: '%{age}, <a href="%{authorLink}">%{author}</a> 님이 추가함'
     label_ago: "일 전"
     label_all: "모두"
+    label_all_projects: "All projects"
     label_all_uppercase: "모두"
     label_all_work_packages: "모든 작업 패키지"
     label_and: "그리고"
@@ -433,7 +434,6 @@ ko:
     label_repository_plural: "리포지토리"
     label_save_as: "다른 이름으로 저장"
     label_search_columns: "열 검색"
-    label_select_project: "프로젝트 선택"
     label_select_watcher: "주시하는 사람을 선택"
     label_selected_filter_list: "선택된 필터"
     label_show_attributes: "모든 특성 표시"
@@ -642,9 +642,12 @@ ko:
       title: "계속하려면 암호 확인"
     pagination:
       no_other_page: "유일한 페이지에 있습니다."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "다음 페이지로"
-        previous: "전 페이지로"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "여기에 제목 입력"
@@ -697,6 +700,7 @@ ko:
           first_day: "첫날"
           last_day: "마지막 날"
     text_are_you_sure: "계속하시겠습니까?"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "입력한 모든 데이터가 손실됩니다."
     text_user_wrote: "%{value}이(가) 작성함:"
     types:
@@ -781,6 +785,7 @@ ko:
     autocompleter:
       placeholder: "검색할 유형"
       notFoundText: "항목 없음"
+      search: "Search"
       project:
         placeholder: "프로젝트 선택"
     repositories:
@@ -1127,7 +1132,6 @@ ko:
       current_project_and_all_descendants: "이 프로젝트 + 하위 프로젝트에서"
       current_project: "이 프로젝트에서"
       recently_viewed: "최근에 조회됨"
-      search: "검색"
       title:
         all_projects: "모든 프로젝트"
         project_and_subprojects: "그리고 모든 하위 프로젝트"

@@ -324,6 +324,7 @@ fr:
     label_added_time_by: 'Ajouté par <a href="%{authorLink}">%{author}</a> le %{age}'
     label_ago: "il y a"
     label_all: "tous"
+    label_all_projects: "All projects"
     label_all_uppercase: "Tous"
     label_all_work_packages: "tous les lots de travaux"
     label_and: "et"
@@ -433,7 +434,6 @@ fr:
     label_repository_plural: "Dépôts"
     label_save_as: "Enregistrer sous"
     label_search_columns: "Rechercher une colonne"
-    label_select_project: "Sélectionner un projet"
     label_select_watcher: "Sélectionner un observateur…"
     label_selected_filter_list: "Filtres sélectionnés"
     label_show_attributes: "Afficher tous les attributs"
@@ -643,9 +643,12 @@ fr:
       title: "Confirmez votre mot de passe pour continuer"
     pagination:
       no_other_page: "Vous êtes sur la seule page."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "Avancer à la page suivante"
-        previous: "Revenir à la page précédente"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Saisir le sujet ici"
@@ -698,6 +701,7 @@ fr:
           first_day: "Premier jour"
           last_day: "Dernier jour"
     text_are_you_sure: "Êtes-vous sûr ?"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "Toutes les données saisies seront perdues."
     text_user_wrote: "%{value} écrit:"
     types:
@@ -782,6 +786,7 @@ fr:
     autocompleter:
       placeholder: "Taper pour rechercher"
       notFoundText: "Aucun élément trouvé"
+      search: "Search"
       project:
         placeholder: "Sélectionnez le projet"
     repositories:
@@ -1131,7 +1136,6 @@ fr:
       current_project_and_all_descendants: "Dans ce projet + sous-projets"
       current_project: "Pour ce projet"
       recently_viewed: "Consultés récemment"
-      search: "Recherche"
       title:
         all_projects: "tous les projets"
         project_and_subprojects: "et tous les sous-projets"

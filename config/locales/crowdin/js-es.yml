@@ -323,6 +323,7 @@ es:
     label_added_time_by: 'Agregado por <a href="%{authorLink}">%{author}</a> a las %{age}'
     label_ago: "días antes"
     label_all: "todos"
+    label_all_projects: "All projects"
     label_all_uppercase: "Todos"
     label_all_work_packages: "todos los paquetes de trabajo"
     label_and: "y"
@@ -432,7 +433,6 @@ es:
     label_repository_plural: "Repositorios"
     label_save_as: "Guardad como"
     label_search_columns: "Buscar una columna"
-    label_select_project: "Seleccione un proyecto"
     label_select_watcher: "Selecciona un observador..."
     label_selected_filter_list: "Filtros seleccionados"
     label_show_attributes: "Mostrar todos los atributos"
@@ -642,9 +642,12 @@ es:
       title: "Confirma tu contraseña para continuar"
     pagination:
       no_other_page: "Usted está en la única página."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "Avanzar a la siguiente página"
-        previous: "Volver a la página anterior"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Escriba aquí el asunto"
@@ -697,6 +700,7 @@ es:
           first_day: "Primer día"
           last_day: "Último día"
     text_are_you_sure: "¿Estás seguro?"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "Todos los datos introducidos se perderán."
     text_user_wrote: "%{value} escribió:"
     types:
@@ -781,6 +785,7 @@ es:
     autocompleter:
       placeholder: "Escriba para buscar"
       notFoundText: "No se encontraron elementos"
+      search: "Search"
       project:
         placeholder: "Seleccionar proyecto"
     repositories:
@@ -1130,7 +1135,6 @@ es:
       current_project_and_all_descendants: "En este proyecto + subproyectos"
       current_project: "En este proyecto"
       recently_viewed: "Vistos recientemente"
-      search: "Buscar"
       title:
         all_projects: "todos los proyectos"
         project_and_subprojects: "y todos los subproyectos"

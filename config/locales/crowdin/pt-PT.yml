@@ -66,7 +66,6 @@ pt-PT:
         header-item-bg-hover-color: "Fundo do cabeçalho ao passar o rato"
         main-menu-bg-color: "Fundo do menu principal"
         main-menu-bg-selected-background: "Menu principal quando selecionado"
-        main-menu-bg-hover-background: "Menu principal ao passar o rato"
       custom_colors: "Cores personalizadas"
       manage_colors: "Editar opções de selecção de cor"
       instructions:
@@ -100,12 +99,12 @@ pt-PT:
         upgrade: "Fazer o upgrade agora"
         contact: "Contacte-nos para obter uma demonstração"
       status:
-        expired: "Expired"
-        expiring_soon: "Expiring soon"
+        expired: "Expirado"
+        expiring_soon: "Expira em breve"
         in_grace_period: "In grace period"
-        invalid_domain: "Invalid domain"
-        not_active: "Not active"
-        trial: "Trial"
+        invalid_domain: "Domínio inválido"
+        not_active: "Não ativo"
+        trial: "Teste"
     jemalloc_allocator: Alocador de memória Jemalloc
     journal_aggregation:
       explanation:
@@ -287,6 +286,8 @@ pt-PT:
       greater_or_equal_zero: "tem de ser maior ou igual a 0."
       not_found: "não encontrado."
       rules:
+        copy_workflow_from:
+          workflow_missing: "não tem um fluxo de trabalho próprio."
         item:
           root_item: "não pode ser um item de raiz."
           not_persisted: "tem de ser um item já existente."
@@ -297,6 +298,8 @@ pt-PT:
         parent:
           not_descendant: "tem de ser um descendente da raiz da hierarquia."
     rules:
+      copy_workflow_from: "Type for workflow copy"
+      enabled: "Ativado"
       depth: "Profundidade"
       item: "Item"
       label: "Etiqueta"
@@ -570,11 +573,11 @@ pt-PT:
   priorities:
     edit:
       priority_color_text: |
-        Click to assign or change the color of this priority.
-        It can be used for highlighting work packages in the table.
+        Clique para atribuir ou alterar a cor desta prioridade.
+        Pode ser usada para destacar os pacotes de trabalho na tabela.
     admin:
       default:
-        caption: Making this priority default will override the previous default priority.
+        caption: Fazer esta prioridade a predefinição irá substituir a prioridade predefinida anterior.
   reactions:
     action_title: "Reagir"
     add_reaction: "Adicionar reação"
@@ -827,7 +830,7 @@ pt-PT:
       required_description: "Assinala este pacote de trabalho como sendo um requisito para o pacote relacionado"
       label_parent_singular: "principal"
       label_parent_plural: "principal"
-      label_other_relations: "Other relations"
+      label_other_relations: "Outras relações"
       ghost_relation_title: "Pacote de trabalho relacionado"
       ghost_relation_description: "Não tem as permissões necessárias para ver isto."
   label_invitation: Convite
@@ -924,12 +927,12 @@ pt-PT:
       enterprise_token:
         starts_at: "Válido desde"
         subscriber: "Assinante"
-        subscription: "Subscription"
+        subscription: "Assinatura"
         plan: "Plano"
         encoded_token: "Token de suporte da versão Enterprise"
-        active_user_count_restriction: "Active users"
+        active_user_count_restriction: "Utilizadores ativos"
       enterprise_trial:
-        company: "Company"
+        company: "Empresa"
       grids/grid:
         page: "Página"
         row_count: "Número de linhas"
@@ -1090,20 +1093,20 @@ pt-PT:
         consented_at: "Consentiu em"
       user_preference:
         header_look_and_feel: "Look and feel"
-        header_alerts: "Alerts"
+        header_alerts: "Alertas"
         button_update_look_and_feel: "Update look and feel"
-        button_update_alerts: "Update alerts"
-        comments_sorting: "Display work package activity sorted by"
-        disable_keyboard_shortcuts: "Disable keyboard shortcuts"
+        button_update_alerts: "Atualizar alertas"
+        comments_sorting: "Exibir a atividade do pacote de trabalho ordenada por"
+        disable_keyboard_shortcuts: "Desativar atalhos de teclado"
         disable_keyboard_shortcuts_caption_html: |-
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Faixas de empresas ocultas"
         impaired: "Modo de acessibilidade"
         auto_hide_popups: "Ocultar automaticamente notificações de sucesso"
         warn_on_leaving_unsaved: "Alertar-me quando sair de um pacote de trabalho sem guardar as alterações"
-        theme: "Colour mode"
+        theme: "Modo de cor"
         time_zone: "Fuso horário"
-        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. Please select Light mode for full custom theme support."
+        mode_guideline: "Alguns modos irão sobrescrever cores de tema personalizadas para acessibilidade e legibilidade. Por favor, selecione o Modo Leve para apoio completo para o tema personalizado."
         daily_reminders: "Lembretes diários"
         workdays: "Dias úteis"
       version:
@@ -1231,7 +1234,7 @@ pt-PT:
           attributes:
             content_type:
               blank: "O tipo de conteúdo do ficheiro não pode ficar em branco."
-              not_whitelisted: "O ficheiro foi rejeitado por um filtro automático. '%{value}' não está na lista branca para upload."
+              not_allowlisted: "O ficheiro foi rejeitado por um filtro automático. '%{value}' não está na lista der permissão para o envio."
               format: "%{message}"
         capability:
           context:
@@ -1265,12 +1268,13 @@ pt-PT:
             scopes:
               not_match_configured: "não corresponde a âmbitos disponíveis."
         enterprise_trial:
-          already_used: "was already used to create a trial."
-          failed_to_create: "Trial could not be created (%{status})"
-          general_consent: "Please accept the terms and conditions."
+          already_used: "já foi usado para criar um teste."
+          failed_to_create: "Não foi possível criar o teste (%{status})"
+          general_consent: "Por favor, aceite os termos e condições."
         enterprise_token:
+          only_one_trial: "Só pode estar ativa uma ficha de avaliação. Elimine a ficha de avaliação anterior antes de adicionar outra."
           unreadable: "não foi possível ler. Tem a certeza que é um token de suporte?"
-          already_added: "This token has already been added."
+          already_added: "Esta ficha já foi adicionada."
         grids/grid:
           overlaps: "sobreposição."
           outside: "está fora da rede."
@@ -1671,7 +1675,7 @@ pt-PT:
     derived_start_date: "Data inicial derivada"
     direction: "Direção"
     display_sums: "Exibir somas"
-    domain: "Domain"
+    domain: "Domínio"
     due_date: "Data de término"
     estimated_hours: "Trabalho"
     estimated_time: "Trabalho"
@@ -1839,6 +1843,7 @@ pt-PT:
   button_unwatch: "Não observar"
   button_update: "Atualizar"
   button_upgrade: "Atualizar"
+  button_buy_now: "Compre agora"
   button_upload: "Carregar"
   button_view: "Ver"
   button_watch: "Observar"
@@ -2067,7 +2072,7 @@ pt-PT:
       plan_title: "Complemento %{plan} Enterprise"
       plan_name: "Plano Enterprise %{plan}"
       plan_text_html: "Disponível a partir do %{plan_name}."
-      unlimited: "Unlimited"
+      unlimited: "Ilimitado"
       already_have_token: >
         Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "Ocultar esta faixa"
@@ -2078,10 +2083,10 @@ pt-PT:
         description: Destacar as alterações introduzidas nesta lista desde qualquer ponto no passado.
       benefits:
         description: "What are the benefits of the Enterprise on-premises edition?"
-        high_security: "Security features"
+        high_security: "Funcionalidades de segurança"
         high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
-        installation: "Installation support"
-        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+        installation: "Apoio à instalação"
+        installation_text: "Engenheiros de software experientes darão orientações durante toda a instalação e processo de configuração na sua própria infraestrutura."
         premium_features: "Enterprise add-ons"
         premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
         professional_support: "Professional support"
@@ -2132,6 +2137,11 @@ pt-PT:
       internal_comments_inline:
         title: "Escreva comentários internos visíveis apenas para um pequeno grupo"
         description: " "
+    teaser:
+      title:
+        one: "One day left of %{trial_plan} trial token"
+        other: "%{count} days left of %{trial_plan} trial token"
+      description: "You have access to all %{trial_plan} features."
     trial:
       not_found: "You have requested a trial token, but that request is no longer available. Please try again."
       wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
@@ -3440,7 +3450,7 @@ pt-PT:
   #Default format for numbers
   number:
     format:
-      delimiter: ""
+      delimiter: "."
       precision: 3
       separator: "."
     human:
@@ -4377,12 +4387,12 @@ pt-PT:
         message: "A partilha de listas de projetos com utilizadores individuais é um complemento Enterprise."
   working_days:
     info: >
-      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
+      Dias não selecionados são ignorados ao agendar pacotes de trabalho (e não são incluídos na contagem de dias). Podem ser substituídos ao nível dos pacotes de trabalho.
     instance_wide_info: >
       As datas adicionadas à lista abaixo são consideradas inúteis e ignoradas ao agendar pacotes de trabalho.
     change_button: "Alterar dias úteis"
     warning: >
-      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
+      Mudar quais dias da semana considerados dias úteis ou não úteis pode afetar os dias de início e de término de todos os pacotes de trabalho em todos os projetos nesta instância.
     journal_note:
       changed: _**Dias úteis** alterados (%{changes})._
       days:

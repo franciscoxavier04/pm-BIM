@@ -66,7 +66,6 @@ ca:
         header-item-bg-hover-color: "Fons de capçalera en passar el ratolí"
         main-menu-bg-color: "Fons del menú principal"
         main-menu-bg-selected-background: "Menú principal quan es selecciona"
-        main-menu-bg-hover-background: "Menú principal en passar el ratolí"
       custom_colors: "Colors personalitzats"
       manage_colors: "Edita les opcions de selecció de colors"
       instructions:
@@ -286,6 +285,8 @@ ca:
       greater_or_equal_zero: "must be greater or equal to 0."
       not_found: "not found."
       rules:
+        copy_workflow_from:
+          workflow_missing: "has no own workflow."
         item:
           root_item: "cannot be a root item."
           not_persisted: "must be an already existing item."
@@ -296,6 +297,8 @@ ca:
         parent:
           not_descendant: "must be a descendant of the hierarchy root."
     rules:
+      copy_workflow_from: "Type for workflow copy"
+      enabled: "Enabled"
       depth: "Depth"
       item: "Item"
       label: "Label"
@@ -1231,7 +1234,7 @@ ca:
           attributes:
             content_type:
               blank: "El tipus de contingut del fitxer no pot ser buit."
-              not_whitelisted: "El fitxer s'ha rebutjat per un filtre automàtic. '%{value}' no és a la llista blanca de càrrega."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:
@@ -1269,6 +1272,7 @@ ca:
           failed_to_create: "Trial could not be created (%{status})"
           general_consent: "Please accept the terms and conditions."
         enterprise_token:
+          only_one_trial: "Only one trial token can be active. Please delete the previous trial token before adding another."
           unreadable: "no es pot llegir. Estàs segur que és un token de suport?"
           already_added: "This token has already been added."
         grids/grid:
@@ -1839,6 +1843,7 @@ ca:
   button_unwatch: "Deixa de Seguir"
   button_update: "Actualitza"
   button_upgrade: "Actualitza"
+  button_buy_now: "Buy now"
   button_upload: "Carrega"
   button_view: "Mostra"
   button_watch: "Observa"
@@ -2132,6 +2137,11 @@ ca:
       internal_comments_inline:
         title: "Write internal comments only a small group can see"
         description: " "
+    teaser:
+      title:
+        one: "One day left of %{trial_plan} trial token"
+        other: "%{count} days left of %{trial_plan} trial token"
+      description: "You have access to all %{trial_plan} features."
     trial:
       not_found: "You have requested a trial token, but that request is no longer available. Please try again."
       wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
@@ -3437,7 +3447,7 @@ ca:
   #Default format for numbers
   number:
     format:
-      delimiter: ""
+      delimiter: ","
       precision: 3
       separator: "."
     human:

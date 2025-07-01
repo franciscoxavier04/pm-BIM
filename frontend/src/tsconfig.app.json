@@ -16,9 +16,10 @@
   "include": [
     "src/**/*.ts",
     "stimulus/**/*.ts",
-    "**/*.d.ts",
+    "**/*.d.ts"
   ],
   "exclude": [
     "**/*.stories.*"
   ]
 }
+

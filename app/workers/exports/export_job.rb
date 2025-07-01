@@ -117,7 +117,7 @@ module Exports
       filename = clean_filename(export_result)
 
       call = Attachments::CreateService
-               .bypass_whitelist(user: User.current)
+               .bypass_allowlist(user: User.current)
                .call(container:, file:, filename:, description: "")
 
       call.on_success do

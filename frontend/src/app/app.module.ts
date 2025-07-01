@@ -68,7 +68,6 @@ import {
   RevitAddInSettingsButtonService,
 } from 'core-app/features/bim/revit_add_in/revit-add-in-settings-button.service';
 import { OpenprojectEnterpriseModule } from 'core-app/features/enterprise/openproject-enterprise.module';
-import { MainMenuToggleComponent } from 'core-app/core/main-menu/main-menu-toggle.component';
 import { ConfirmDialogService } from 'core-app/shared/components/modals/confirm-dialog/confirm-dialog.service';
 import { ConfirmDialogModalComponent } from 'core-app/shared/components/modals/confirm-dialog/confirm-dialog.modal';
 import { DynamicContentModalComponent } from 'core-app/shared/components/modals/modal-wrapper/dynamic-content.modal';
@@ -209,7 +208,6 @@ import {
 import {
   OpWpDatePickerInstanceComponent,
 } from 'core-app/shared/components/datepicker/wp-date-picker-modal/wp-date-picker-instance.component';
-import { ReportingPageComponent } from 'core-app/features/reporting/reporting-page/reporting-page.component';
 
 export function initializeServices(injector:Injector) {
   return () => {
@@ -354,7 +352,6 @@ export function initializeServices(injector:Injector) {
 
     // Main menu
     MainMenuResizerComponent,
-    MainMenuToggleComponent,
 
     // Project selector
     OpHeaderProjectSelectComponent,
@@ -437,7 +434,6 @@ export class OpenProjectModule implements DoBootstrap {
     registerCustomElement('opce-header-project-select', OpHeaderProjectSelectComponent, { injector });
     registerCustomElement('opce-no-results', NoResultsComponent, { injector });
     registerCustomElement('opce-non-working-days-list', OpNonWorkingDaysListComponent, { injector });
-    registerCustomElement('opce-main-menu-toggle', MainMenuToggleComponent, { injector });
     registerCustomElement('opce-main-menu-resizer', MainMenuResizerComponent, { injector });
     registerCustomElement('opce-global-search-title', GlobalSearchTitleComponent, { injector });
     registerCustomElement('opce-persistent-toggle', PersistentToggleComponent, { injector });
@@ -449,6 +445,5 @@ export class OpenProjectModule implements DoBootstrap {
     registerCustomElement('opce-global-search-tabs', GlobalSearchTabsComponent, { injector });
     registerCustomElement('opce-zen-mode-toggle-button', ZenModeButtonComponent, { injector });
     registerCustomElement('opce-colors-autocompleter', ColorsAutocompleterComponent, { injector });
-    registerCustomElement('opce-reporting-page', ReportingPageComponent, { injector });
   }
 }

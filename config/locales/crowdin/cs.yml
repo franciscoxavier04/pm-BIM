@@ -66,7 +66,6 @@ cs:
         header-item-bg-hover-color: "Pozadí záhlaví při přejetí myší"
         main-menu-bg-color: "Pozadí hlavního menu"
         main-menu-bg-selected-background: "Hlavní menu při výběru"
-        main-menu-bg-hover-background: "Hlavní menu při přejetí myší"
       custom_colors: "Vlastní barvy"
       manage_colors: "Upravit možnosti výběru barvy"
       instructions:
@@ -289,6 +288,8 @@ cs:
       greater_or_equal_zero: "musí být větší nebo rovno 0."
       not_found: "nenalezeno"
       rules:
+        copy_workflow_from:
+          workflow_missing: "has no own workflow."
         item:
           root_item: "nemůže být kořenová položka."
           not_persisted: "musí být již existující položka."
@@ -299,6 +300,8 @@ cs:
         parent:
           not_descendant: "musí být potomkem kořenu hierarchie."
     rules:
+      copy_workflow_from: "Type for workflow copy"
+      enabled: "Enabled"
       depth: "Hloubka"
       item: "Položka"
       label: "Popisek"
@@ -1250,7 +1253,7 @@ cs:
           attributes:
             content_type:
               blank: "Typ obsahu souboru nemůže být prázdný."
-              not_whitelisted: "Soubor byl odmítnut automatickým filtrem. '%{value}' není na seznamu povolených pro nahrávání."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:
@@ -1288,6 +1291,7 @@ cs:
           failed_to_create: "Trial could not be created (%{status})"
           general_consent: "Please accept the terms and conditions."
         enterprise_token:
+          only_one_trial: "Only one trial token can be active. Please delete the previous trial token before adding another."
           unreadable: "nelze číst. Jste si jisti, že se jedná o token podpory?"
           already_added: "This token has already been added."
         grids/grid:
@@ -1886,6 +1890,7 @@ cs:
   button_unwatch: "Přestat sledovat"
   button_update: "Aktualizovat"
   button_upgrade: "Upgradovat"
+  button_buy_now: "Buy now"
   button_upload: "Nahrát"
   button_view: "Zobrazit"
   button_watch: "Sledovat"
@@ -2217,6 +2222,13 @@ cs:
       internal_comments_inline:
         title: "Write internal comments only a small group can see"
         description: " "
+    teaser:
+      title:
+        one: "One day left of %{trial_plan} trial token"
+        few: "%{count} days left of %{trial_plan} trial token"
+        many: "%{count} days left of %{trial_plan} trial token"
+        other: "%{count} days left of %{trial_plan} trial token"
+      description: "You have access to all %{trial_plan} features."
     trial:
       not_found: "You have requested a trial token, but that request is no longer available. Please try again."
       wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
@@ -3527,7 +3539,7 @@ cs:
   #Default format for numbers
   number:
     format:
-      delimiter: ""
+      delimiter: ","
       precision: 3
       separator: ","
     human:

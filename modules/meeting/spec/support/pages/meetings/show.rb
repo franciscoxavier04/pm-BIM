@@ -421,8 +421,12 @@ module Pages::Meetings
     end
 
     def expect_item_edit_field_error(item, text)
-      page.within("#meeting-agenda-items-form-component-#{item.id}") do
-        expect(page).to have_css(".FormControl-inlineValidation", text:)
+      # retry because the #meeting-agenda-items-form-component-<id> may not be
+      # updated yet and then becomes stale while checking for field error.
+      retry_block do
+        page.within("#meeting-agenda-items-form-component-#{item.id}") do
+          expect(page).to have_css(".FormControl-inlineValidation", text:)
+        end
       end
     end
 

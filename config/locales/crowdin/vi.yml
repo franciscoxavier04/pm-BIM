@@ -66,7 +66,6 @@ vi:
         header-item-bg-hover-color: "Màu nền tiêu đề khi trỏ chuột"
         main-menu-bg-color: "Nền menu chính"
         main-menu-bg-selected-background: "Menu chính khi được chọn"
-        main-menu-bg-hover-background: "Menu khi trỏ chuột"
       custom_colors: "Tùy chỉnh màu sắc"
       manage_colors: "Chỉnh sửa màu sắc trong select option"
       instructions:
@@ -289,6 +288,8 @@ vi:
       greater_or_equal_zero: "must be greater or equal to 0."
       not_found: "not found."
       rules:
+        copy_workflow_from:
+          workflow_missing: "has no own workflow."
         item:
           root_item: "cannot be a root item."
           not_persisted: "must be an already existing item."
@@ -299,6 +300,8 @@ vi:
         parent:
           not_descendant: "must be a descendant of the hierarchy root."
     rules:
+      copy_workflow_from: "Type for workflow copy"
+      enabled: "Enabled"
       depth: "Depth"
       item: "Item"
       label: "Label"
@@ -1226,7 +1229,7 @@ vi:
           attributes:
             content_type:
               blank: "Loại nội dung của tệp không thể để trống."
-              not_whitelisted: "Tệp đã bị từ chối bởi bộ lọc tự động. '%{value}' không được phép tải lên."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:
@@ -1264,6 +1267,7 @@ vi:
           failed_to_create: "Trial could not be created (%{status})"
           general_consent: "Please accept the terms and conditions."
         enterprise_token:
+          only_one_trial: "Only one trial token can be active. Please delete the previous trial token before adding another."
           unreadable: "không thể đọc được. Bạn có chắc đó là mã thông báo hỗ trợ không?"
           already_added: "This token has already been added."
         grids/grid:
@@ -1820,6 +1824,7 @@ vi:
   button_unwatch: "Ngừng theo dõi"
   button_update: "Cập Nhật"
   button_upgrade: "Nâng cấp"
+  button_buy_now: "Buy now"
   button_upload: "Tải lên"
   button_view: "Khung nhìn"
   button_watch: "Theo dõi"
@@ -2094,6 +2099,10 @@ vi:
       internal_comments_inline:
         title: "Write internal comments only a small group can see"
         description: " "
+    teaser:
+      title:
+        other: "%{count} days left of %{trial_plan} trial token"
+      description: "You have access to all %{trial_plan} features."
     trial:
       not_found: "You have requested a trial token, but that request is no longer available. Please try again."
       wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
@@ -3402,7 +3411,7 @@ vi:
   #Default format for numbers
   number:
     format:
-      delimiter: ""
+      delimiter: "."
       precision: 3
       separator: "."
     human:

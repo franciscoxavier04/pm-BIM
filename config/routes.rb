@@ -138,16 +138,18 @@ Rails.application.routes.draw do
   get "/roles/workflow/:id/:role_id/:type_id" => "roles#workflow"
 
   resources :types do
+    resource :projects, controller: "work_package_types/projects_tab", only: %i[update edit]
+
     member do
       get "edit/:tab" => "types#edit", as: "edit_tab"
       match "update/:tab" => "types#update", as: "update_tab", via: %i[post patch]
       put :subject_configuration,
-          controller: "work_packages/types/subject_configuration_tab",
+          controller: "work_package_types/subject_configuration_tab",
           action: "update_subject_configuration"
     end
 
     resources :pdf_export_template, only: %i[],
-                                    controller: "work_packages/types/pdf_export_template",
+                                    controller: "work_package_types/pdf_export_template",
                                     path: "pdf_export_template" do
       member do
         post :toggle

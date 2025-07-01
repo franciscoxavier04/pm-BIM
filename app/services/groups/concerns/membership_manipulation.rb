@@ -30,9 +30,7 @@ module Groups::Concerns
   module MembershipManipulation
     extend ActiveSupport::Concern
 
-    def after_validate(params, _call)
-      params ||= {}
-
+    def after_validate(_call)
       with_error_handled do
         ::Group.transaction do
           send_notifications = params.fetch(:send_notifications, Journal::NotificationConfiguration.active?)

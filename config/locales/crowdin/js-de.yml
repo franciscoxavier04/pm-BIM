@@ -323,6 +323,7 @@ de:
     label_added_time_by: 'Hinzugefügt von <a href="%{authorLink}">%{author}</a> am %{age}'
     label_ago: "Tage her"
     label_all: "alle"
+    label_all_projects: "All projects"
     label_all_uppercase: "Alle"
     label_all_work_packages: "alle Arbeitspakete"
     label_and: "und"
@@ -432,7 +433,6 @@ de:
     label_repository_plural: "Projektarchive"
     label_save_as: "Speichern unter"
     label_search_columns: "Spalte suchen"
-    label_select_project: "Projekt auswählen"
     label_select_watcher: "Beobachter auswählen ..."
     label_selected_filter_list: "Ausgewählte Filter"
     label_show_attributes: "Alle Attribute anzeigen"
@@ -642,9 +642,12 @@ de:
       title: "Geben Sie Ihr Kennwort ein, um fortzufahren"
     pagination:
       no_other_page: "Sie befinden sich auf der einzigen Seite."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "Vorwärts zur nächsten Seite"
-        previous: "Zurück zur vorherigen Seite"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Titel hier eingeben"
@@ -697,6 +700,7 @@ de:
           first_day: "Erster Tag"
           last_day: "Letzter Tag"
     text_are_you_sure: "Sind Sie sicher?"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "Alle eingegebenen Daten gehen verloren."
     text_user_wrote: "%{value} schrieb:"
     types:
@@ -781,6 +785,7 @@ de:
     autocompleter:
       placeholder: "Suchbegriff eintippen"
       notFoundText: "Keine Elemente gefunden"
+      search: "Suche"
       project:
         placeholder: "Projekt wählen"
     repositories:
@@ -1130,7 +1135,6 @@ de:
       current_project_and_all_descendants: "In diesem Projekt + Unterprojekten"
       current_project: "In diesem Projekt"
       recently_viewed: "Vor Kurzem angesehen"
-      search: "Suche"
       title:
         all_projects: "alle Projekte"
         project_and_subprojects: "und alle Unterprojekte"

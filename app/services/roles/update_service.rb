@@ -29,7 +29,7 @@
 class Roles::UpdateService < BaseServices::Update
   private
 
-  def before_perform(params, service_call)
+  def before_perform(service_call)
     @permissions_old = service_call.result.permissions
     super
   end

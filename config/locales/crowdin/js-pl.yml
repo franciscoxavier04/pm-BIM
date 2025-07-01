@@ -324,6 +324,7 @@ pl:
     label_added_time_by: 'Dodany przez <a href="%{authorLink}">%{author}</a> o %{age}'
     label_ago: "dni temu"
     label_all: "wszystkie"
+    label_all_projects: "All projects"
     label_all_uppercase: "Wszystkie"
     label_all_work_packages: "wszystkie pakiety pracy"
     label_and: "i"
@@ -433,7 +434,6 @@ pl:
     label_repository_plural: "Repozytoria"
     label_save_as: "Zapisz jako"
     label_search_columns: "Wyszukaj kolumnę"
-    label_select_project: "Wybierz projekt"
     label_select_watcher: "Wybierz obserwatora..."
     label_selected_filter_list: "Wybrane filtry"
     label_show_attributes: "Pokaż wszystkie atrybuty"
@@ -645,9 +645,12 @@ pl:
       title: "Potwierdź hasło aby kontynuować"
     pagination:
       no_other_page: "Jesteś na jedynej stronie."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "Do następnej strony"
-        previous: "Wróć do poprzedniej strony"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Wpisz tutaj temat"
@@ -700,6 +703,7 @@ pl:
           first_day: "Pierwszy dzień"
           last_day: "Ostatni dzień"
     text_are_you_sure: "Jesteś pewny?"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "Wszystkie wprowadzone dane zostaną utracone."
     text_user_wrote: "%{value} napisał(a):"
     types:
@@ -784,6 +788,7 @@ pl:
     autocompleter:
       placeholder: "Wpisz szukaną frazę"
       notFoundText: "Nie znaleziono elementów"
+      search: "Search"
       project:
         placeholder: "Wybierz projekt"
     repositories:
@@ -1139,7 +1144,6 @@ pl:
       current_project_and_all_descendants: "W tym projekcie + pod projekcie"
       current_project: "W tym projekcie"
       recently_viewed: "Ostatnio wyświetlane"
-      search: "Szukaj"
       title:
         all_projects: "Wszystkie projekty"
         project_and_subprojects: "i wszystkie podprojekty"

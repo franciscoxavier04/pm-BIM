@@ -40,8 +40,8 @@ module BaseServices
       self.contract_options = contract_options
     end
 
-    def perform(params = {})
-      set_attributes(params || {})
+    def perform
+      set_attributes(params)
 
       validate_and_result
     end

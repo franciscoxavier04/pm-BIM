@@ -58,7 +58,7 @@ class WorkPackages::UpdateAncestorsService < BaseServices::BaseCallable
   end
 
   def ancestors(work_packages)
-    work_packages.reject { initiator?(_1) }
+    work_packages.reject { initiator?(it) }
   end
 
   def update_current_and_former_ancestors(attributes)
@@ -73,7 +73,7 @@ class WorkPackages::UpdateAncestorsService < BaseServices::BaseCallable
   end
 
   def save_updated_work_packages(updated_work_packages)
-    updated_initiators, updated_ancestors = updated_work_packages.partition { initiator?(_1) }
+    updated_initiators, updated_ancestors = updated_work_packages.partition { initiator?(it) }
 
     # Send notifications for initiator updates
     success = updated_initiators.all? { |wp| wp.save(validate: false) }

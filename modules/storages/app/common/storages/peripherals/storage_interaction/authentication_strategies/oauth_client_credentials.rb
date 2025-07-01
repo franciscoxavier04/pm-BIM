@@ -48,9 +48,8 @@ module Storages
             token_cache_key = cache_key(storage)
             access_token = @use_cache ? Rails.cache.read(token_cache_key) : nil
 
-            # In ruby 3.4 this can become `return it`
             http = build_http_session(access_token, config, http_options)
-                     .on_failure { return _1 }
+                     .on_failure { return it }
                      .result
 
             operation_result = yield http

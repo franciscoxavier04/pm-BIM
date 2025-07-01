@@ -34,7 +34,7 @@ module RecurringMeetings
 
     protected
 
-    def validate_params(*)
+    def validate_params
       @old_schedule = model.full_schedule_in_words
       super
     end
