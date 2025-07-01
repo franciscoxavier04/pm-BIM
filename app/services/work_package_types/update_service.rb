@@ -70,7 +70,7 @@ module WorkPackageTypes
     end
 
     def set_active_custom_fields_for_project_ids(project_ids)
-      new_project_ids_to_activate_cfs = project_ids.reject(&:empty?).map(&:to_i) - type.project_ids
+      new_project_ids_to_activate_cfs = project_ids.reject(&:empty?).map(&:to_i) - model.project_ids
 
       values = Project
                  .where(id: new_project_ids_to_activate_cfs)
