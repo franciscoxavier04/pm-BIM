@@ -35,7 +35,7 @@ module ::TypesHelper
       {
         name: "settings",
         path: edit_type_settings_path(@type),
-        label: I18n.t("types.edit.settings.tab"),
+        label: I18n.t("types.edit.settings.tab")
       },
       {
         name: "form_configuration",
@@ -46,7 +46,6 @@ module ::TypesHelper
         name: "subject_configuration",
         path: edit_type_subject_configuration_path(type_id: @type.id),
         label: I18n.t("types.edit.subject_configuration.tab"),
-        view_component: WorkPackageTypes::SubjectConfigurationComponent,
         enterprise_feature: :work_package_subject_generation
       },
       {
