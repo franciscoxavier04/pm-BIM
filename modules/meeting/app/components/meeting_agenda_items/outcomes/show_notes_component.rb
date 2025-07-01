@@ -50,7 +50,13 @@ module MeetingAgendaItems
         !@agenda_item.in_backlog?
     end
 
+    def in_backlog?
+      @agenda_item.meeting_section.backlog?
+    end
+
     def edit_action_item(menu)
+      return unless edit_enabled?
+
       menu.with_item(label: t("label_agenda_outcome_edit"),
                      href: edit_meeting_outcome_path(@meeting, @meeting_outcome),
                      content_arguments: {
@@ -61,6 +67,8 @@ module MeetingAgendaItems
     end
 
     def copy_action_item(menu)
+      return if in_backlog?
+
       url = meeting_url(@meeting, anchor: "outcome-#{@meeting_outcome.id}")
       menu.with_item(label: t("button_copy_link_to_clipboard"),
                      tag: :"clipboard-copy",
@@ -70,6 +78,8 @@ module MeetingAgendaItems
     end
 
     def delete_action_item(menu)
+      return unless edit_enabled?
+
       menu.with_item(label: t("label_agenda_outcome_delete"),
                      scheme: :danger,
                      href: meeting_outcome_path(@meeting, @meeting_outcome),
