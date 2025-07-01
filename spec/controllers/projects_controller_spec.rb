@@ -77,7 +77,7 @@ RSpec.describe ProjectsController do
     end
 
     shared_examples_for "successful request" do
-      it "renders 'new'", :aggregate_faulures do
+      it "renders 'new'", :aggregate_failures do
         expect(response).to be_successful
         expect(assigns(:new_project)).to be_a_new(Project)
         expect(assigns(:parent)).to eq parent
