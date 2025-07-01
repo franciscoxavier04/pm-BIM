@@ -1,4 +1,6 @@
-# -- copyright
+# frozen_string_literal: true
+
+#-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -24,45 +26,37 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-# ++
-
+#++
 module ProjectQueries
-  class BaseContract < ::ModelContract
-    include PermissionsGuard
+  module PermissionsGuard
+    extend ActiveSupport::Concern
 
-    attribute :name
-    attribute :selects
-    attribute :filters
-    attribute :orders
-
-    def self.model
-      ProjectQuery
+    included do
+      validate :user_is_logged_in
+      validate :allowed_to_modify_private_query
+      validate :allowed_to_modify_public_query
     end
 
-    validates :name,
-              presence: true,
-              length: { maximum: 255 }
-
-    validate :name_select_included
-    # When we only changed the name, we don't need to validate the selects
-    validate :existing_selects, unless: :only_changed_name?
-
-    protected
-
-    def name_select_included
-      if model.selects.none? { |s| s.attribute == :name }
-        errors.add :selects, :name_not_included
+    def user_is_logged_in
+      unless user.logged?
+        errors.add :base, :error_unauthorized
       end
     end
 
-    def existing_selects
-      model.selects.select { |s| s.is_a?(Queries::Selects::NotExistingSelect) }.each do |s|
-        errors.add :selects, :nonexistent, column: s.attribute
-      end
+    def allowed_to_modify_private_query
+      return if model.public?
+      return if model.user == user
+      return if user.allowed_in_project_query?(:edit_project_query, model)
+
+      errors.add :base, :can_only_be_modified_by_owner
     end
 
-    def only_changed_name?
-      model.changed == ["name"]
+    def allowed_to_modify_public_query
+      return unless model.public?
+      return if user.allowed_in_project_query?(:edit_project_query, model)
+      return if user.allowed_globally?(:manage_public_project_queries)
+
+      errors.add :base, :need_permission_to_modify_public_query
     end
   end
 end

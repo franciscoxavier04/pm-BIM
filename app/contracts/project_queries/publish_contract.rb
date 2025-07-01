@@ -27,7 +27,9 @@
 #++
 
 module ProjectQueries
-  class PublishContract < BaseContract
+  class PublishContract < ::ModelContract
+    include PermissionsGuard
+
     attribute :public
 
     def validate_model?
