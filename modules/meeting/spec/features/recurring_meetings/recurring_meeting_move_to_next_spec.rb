@@ -128,7 +128,11 @@ RSpec.describe "Recurring meetings move to next meeting", :js do
 
       it "does not show the move to next meeting option" do
         meeting_page.expect_agenda_item(title: "Test notes")
-        meeting_page.expect_no_agenda_action_menu(agenda_item)
+
+        meeting_page.open_menu(agenda_item) do
+          expect(page).to have_no_css(".ActionListItem-label", text: "Move to next meeting")
+          expect(page).to have_css(".ActionListItem-label", count: 1)
+        end
       end
     end
   end
