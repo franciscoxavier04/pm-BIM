@@ -35,6 +35,7 @@ module BasicData
     ]
     self.model_class = Workflow
     self.seed_data_model_key = "workflows"
+    self.attribute_names_for_required_references = %w[statuses type]
 
     def seed_data!
       seed_workflows
