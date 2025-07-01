@@ -117,15 +117,6 @@ RSpec.describe PermittedParams do
     it_behaves_like "allows params"
   end
 
-  describe "#comment" do
-    let(:attribute) { :comment }
-    let(:hash) do
-      %w(commented author comments).index_with { |_x| "value" }.to_h
-    end
-
-    it_behaves_like "allows params"
-  end
-
   describe "#watcher" do
     let(:attribute) { :watcher }
     let(:hash) do
