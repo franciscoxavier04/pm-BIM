@@ -60,9 +60,8 @@ module DemoData
       ]
     end
 
-    def applicable?
-      seed_data.reference_exists?(:default_role_project_admin) &&
-        types_seed_data.all? { |type_reference| seed_data.reference_exists?(type_reference) }
+    def all_required_references
+      [:default_role_project_admin] + types_seed_data
     end
 
     private

@@ -69,7 +69,11 @@ module BasicData
     end
 
     def applicable?
-      model_class.none?
+      model_class.none? && seed_data.all_references_exist?(all_required_references)
+    end
+
+    def all_required_references
+      get_required_references(models_data)
     end
 
     def lookup_existing_references

@@ -26,12 +26,12 @@
 # See COPYRIGHT and LICENSE files for more details.
 module DemoData
   class WikiSeeder < Seeder
-    attr_reader :project, :project_data
+    attr_reader :project
+    alias_method :project_data, :seed_data
 
     def initialize(project, project_data)
-      super()
+      super(project_data)
       @project = project
-      @project_data = project_data
     end
 
     def seed_data!

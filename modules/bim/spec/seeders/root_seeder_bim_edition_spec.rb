@@ -151,6 +151,25 @@ RSpec.describe RootSeeder,
         expect(Boards::Grid.count).to eq 2
       end
     end
+
+    context "when run a second time after all demo projects and original statuses " \
+            "and workflows are deleted (Bug #65138)", :settings_reset do
+      before_all do
+        # Simulate a user having created new statuses, and deleted all default
+        # statuses and workflows (making looking up statuses by name impossible)
+        new_status = create(:status, :default, name: "My own default status")
+        Project.destroy_all
+        # destroying all statuses will destroy all workflows by cascade
+        Status.where.not(id: new_status.id).destroy_all
+        described_class.new.seed_data!
+      end
+
+      it "does not create additional data and does not raise any errors" do
+        # seeding does not recreate demo projects
+        expect(Project.count).to eq 0
+        expect(WorkPackage.count).to eq 0
+      end
+    end
   end
 
   describe "demo data mock-translated in another language" do
