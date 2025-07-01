@@ -36,25 +36,31 @@ class News::CommentsController < ApplicationController
   before_action :authorize
 
   def create
-    comment_result = Comments::CreateService
+    service_result = Comments::CreateService
       .new(user: current_user)
       .call(comment_params)
 
-    if comment_result.success?
-      flash[:notice] = I18n.t(:label_comment_added)
+    redirect_to_news_with_flash(service_result:, message: I18n.t(:label_comment_added))
+  end
+
+  def destroy
+    service_result = Comments::DeleteService.new(user: current_user, model: @comment)
+                                             .call
+
+    redirect_to_news_with_flash(service_result:, message: I18n.t(:label_comment_deleted))
+  end
+
+  private
+
+  def redirect_to_news_with_flash(service_result:, message:)
+    if service_result.success?
+      flash[:notice] = message
     else
-      flash[:error] = comment_result.message
+      flash[:error] = service_result.message
     end
 
     redirect_to news_path(@news)
   end
-
-  def destroy
-    @comment.destroy
-    redirect_to news_path(@news)
-  end
-
-  private
 
   def comment_params
     params.expect(comment: %i[comments])
