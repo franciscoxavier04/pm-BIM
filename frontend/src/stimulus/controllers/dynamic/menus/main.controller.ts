@@ -52,10 +52,8 @@ export default class MainMenuController extends Controller {
   }
 
   keydown(event:KeyboardEvent) {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      this.ascend(event);
-    }
+    event.preventDefault();
+    this.ascend(event);
   }
 
   private getActiveMenuName():string|undefined {
