@@ -66,7 +66,6 @@ tr:
         header-item-bg-hover-color: "Fareyle üzerine gelindiğinde başlık arka planı"
         main-menu-bg-color: "Ana menü arka planı"
         main-menu-bg-selected-background: "Seçildiğinde ana menü"
-        main-menu-bg-hover-background: "Fareyle üzerine gelindiğinde ana menü"
       custom_colors: "Özel renkler"
       manage_colors: "Renk seçim seçeneklerini düzenle"
       instructions:
@@ -289,6 +288,8 @@ tr:
       greater_or_equal_zero: "sıfıra eşit ya da büyük olmalı."
       not_found: "bulunamadı."
       rules:
+        copy_workflow_from:
+          workflow_missing: "has no own workflow."
         item:
           root_item: "bir kök öğe olamaz."
           not_persisted: "zaten var olan bir öğe olmalıdır."
@@ -299,6 +300,8 @@ tr:
         parent:
           not_descendant: "must be a descendant of the hierarchy root."
     rules:
+      copy_workflow_from: "Type for workflow copy"
+      enabled: "Enabled"
       depth: "Derinlik"
       item: "Öğe"
       label: "Etiket"
@@ -366,7 +369,7 @@ tr:
       header_status: Proje Durumu
       header_relations: Proje ilişkileri
       button_update_details: Detayları güncelle
-      button_update_status_description: Update status description
+      button_update_status_description: Durum açıklamasını güncelle
       button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
@@ -398,12 +401,12 @@ tr:
         header:
           title: "Proje yaşam döngüsü"
           description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
-        non_defined: "No phases are currently defined."
-        section_header: "Phases"
+        non_defined: "Şu anda herhangi bir faz tanımlanmamıştır."
+        section_header: "Fazlar"
         step:
           use_in_project: "Use %{step} in this project"
         filter:
-          label: "Search project phase"
+          label: "Proje aşaması ara"
       project_custom_fields:
         header:
           title: "Proje öznitelikleri"
@@ -996,17 +999,17 @@ tr:
       project/phase:
         date_range: "Tarih aralığı"
         definition: "Tanım"
-        duration: "Duration"
-        start_date: "Start date"
-        start_date_caption: "Follows the previous phase."
-        finish_date: "Finish date"
+        duration: "Süre"
+        start_date: "Başlangıç tarihi"
+        start_date_caption: "Önceki aşamayı takip eder."
+        finish_date: "Bitiş tarihi"
       project/phase_definition:
         name: "İsim"
         color: "Renk"
-        start_gate: "Start phase gate"
-        start_gate_name: "Start phase gate name"
-        finish_gate: "Finish phase gate"
-        finish_gate_name: "Finish phase gate name"
+        start_gate: "Başlangıç aşaması kapısı"
+        start_gate_name: "Başlangıç aşaması kapı adı"
+        finish_gate: "Bitiş aşaması kapısı"
+        finish_gate_name: "Başlangıç aşaması kapı adı"
       query:
         sums: "Toplam"
         columns: "Sütunlar"
@@ -1233,7 +1236,7 @@ tr:
           attributes:
             content_type:
               blank: "Dosyanın içerik türü boş olamaz."
-              not_whitelisted: "Dosya, otomatik bir filtre tarafından reddedildi. '%{value}' yükleme için beyaz listeye alınmadı."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:
@@ -1271,6 +1274,7 @@ tr:
           failed_to_create: "Trial could not be created (%{status})"
           general_consent: "Please accept the terms and conditions."
         enterprise_token:
+          only_one_trial: "Only one trial token can be active. Please delete the previous trial token before adding another."
           unreadable: "okunamıyor. Desteklenen bir destek anahtarı olduğuna emin misiniz?"
           already_added: "This token has already been added."
         grids/grid:
@@ -1324,8 +1328,8 @@ tr:
         project/phase:
           attributes:
             start_date:
-              must_be_before_finish_date: "must be before the finish date."
-              non_continuous_dates: "can't be earlier than the previous phase's end date."
+              must_be_before_finish_date: "bitiş tarihinden önce olmalıdır."
+              non_continuous_dates: "önceki aşamanın bitiş tarihinden daha erken olamaz."
             finish_date:
               must_be_after_start_date: "must be after the start date."
           cannot_be_a_non_working_day: "can't be a non-working day."
@@ -1636,9 +1640,9 @@ tr:
       activated: "etkinleştirildi"
       added_date: "%{date} tarihine ayarlandı"
       changed_date: "changed from %{from} to %{to}"
-      deactivated: "devre dışı bırakmak"
+      deactivated: "devre dışı bırakıldı"
       deleted_project_phase: "Deleted project phase"
-      phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_both_gates: "%{phase_message}. %{start_gate_message}, ve %{finish_gate_message}"
       phase_and_one_gate: "%{phase_message}. %{gate_message}"
       removed_date: "date deleted %{date}"
   #common attributes of all models
@@ -1708,8 +1712,8 @@ tr:
     priority: "Öncelik"
     project: "Proje"
     project_ids: "Proje Kimlikleri"
-    project_phase: "Project phase"
-    project_phase_definition: "Project phase"
+    project_phase: "Proje aşaması"
+    project_phase_definition: "Proje aşaması"
     reason: "Sebep"
     responsible: "Sorumlu"
     required: "Gerekli"
@@ -1841,6 +1845,7 @@ tr:
   button_unwatch: "Takip etme"
   button_update: "Güncelle"
   button_upgrade: "Yükselt"
+  button_buy_now: "Buy now"
   button_upload: "Yükle"
   button_view: "Göster"
   button_watch: "Takip et"
@@ -2068,22 +2073,22 @@ tr:
       title: "Kurumsal eklenti"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
-      plan_text_html: "Available starting with the %{plan_name}."
+      plan_text_html: "%{plan_name} ile başlayarak kullanılabilir."
       unlimited: "Unlimited"
       already_have_token: >
         Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "Hide this banner"
       homescreen_description: >
-        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
-      homescreen_subline: By upgrading, you will also be supporting an open source project.
+        Kurumsal planlar şu anda kullanmakta olduğunuz OpenProject'in Topluluk sürümünü genişletir. Eklentiler, ek özellikler ve her büyüklükteki kuruluşun birlikte harika işler başarmasını sağlayan profesyonel destek içerirler.
+      homescreen_subline: Yükseltme yaparak açık kaynaklı bir projeyi de desteklemiş olacaksınız.
       baseline_comparison:
         description: Geçmişte herhangi bir noktadan bu yana bu listede yapılan değişiklikleri vurgulayın.
       benefits:
         description: "What are the benefits of the Enterprise on-premises edition?"
         high_security: "Security features"
         high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
-        installation: "Installation support"
-        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+        installation: "Kurulum desteği"
+        installation_text: "Deneyimli yazılım mühendisleri, kendi altyapınızdaki eksiksiz kurulum ve yapılandırma sürecinde size rehberlik eder."
         premium_features: "Enterprise add-ons"
         premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
         professional_support: "Professional support"
@@ -2091,7 +2096,7 @@ tr:
       work_package_subject_generation:
         description: "Referens öznitelikleri ve metni kullanarak otomatik konular oluşturun."
       customize_life_cycle:
-        description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
+        description: "PM2 proje döngüsü planlaması tarafından sağlananlardan farklı proje aşamaları oluşturun ve düzenleyin."
       conditional_highlighting:
         description: "Need certain work packages to stand out from the mass? Use conditional highlighting in the work packages table."
       work_package_query_relation_columns:
@@ -2134,6 +2139,11 @@ tr:
       internal_comments_inline:
         title: "Write internal comments only a small group can see"
         description: " "
+    teaser:
+      title:
+        one: "One day left of %{trial_plan} trial token"
+        other: "%{count} days left of %{trial_plan} trial token"
+      description: "You have access to all %{trial_plan} features."
     trial:
       not_found: "You have requested a trial token, but that request is no longer available. Please try again."
       wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
@@ -3441,7 +3451,7 @@ tr:
   #Default format for numbers
   number:
     format:
-      delimiter: ""
+      delimiter: "."
       precision: 3
       separator: "."
     human:
@@ -3506,7 +3516,7 @@ tr:
   permission_edit_others_internal_comments_explanation: "Caution: Users with this permission are able to edit other users' internal comments."
   permission_edit_project: "Proje düzenleme"
   permission_edit_project_attributes: "Proje özniteliklerini düzenleme"
-  permission_edit_project_phases: "Edit project phases"
+  permission_edit_project_phases: "Proje aşamalarını düzenleme"
   permission_edit_reportings: "Raporlamayı düzenlemek"
   permission_edit_time_entries: "Diğer kullanıcılar için zaman günlüklerini düzenleyin"
   permission_edit_timelines: "Zaman akışını düzenlemek"
@@ -3536,7 +3546,7 @@ tr:
   permission_search_project: "Projeyi ara"
   permission_select_custom_fields: "Özel alanları seçin"
   permission_select_project_custom_fields: "Select project attributes"
-  permission_select_project_phases: "Select project phases"
+  permission_select_project_phases: "Proje aşamalarını seçin"
   permission_select_project_phases_explanation: "Activate/Deactivate the phases in a project. Enables the user to select the life cycle appropriate for the project as inactive phases will not be visible in the project overview page nor the project list."
   permission_select_project_modules: "Proje modülleri seçmek"
   permission_share_work_packages: "İş paketini paylaşma"
@@ -3589,9 +3599,9 @@ tr:
       subprojects_confirmation: "Alt projeleri:% {value} de silinecek. %{value}"
       title: "% {Name} adlı projeyi sil %{name}"
     filters:
-      project_phase: "Project phase: %{phase}"
-      project_phase_any: "Project phase: Any"
-      project_phase_gate: "Project phase gate: %{gate}"
+      project_phase: "Proje aşaması: %{phase}"
+      project_phase_any: "Proje aşaması: Herhangi bir"
+      project_phase_gate: "Proje aşama kapısı: %{gate}"
     identifier:
       warning_one: Projenin üyeleri, projenin depoları yeniden yerleştirmek zorunda kalacaklardır.
       warning_two: Projeye mevcut bağlantılar artık çalışmayacaktır.
@@ -3736,9 +3746,9 @@ tr:
     manual: "Elle ayarla"
     automatic: "Otomatik ayarla"
   search_input_placeholder: "Ara ..."
-  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols: "İzin verilen bağlantı protokolleri"
   setting_allowed_link_protocols_text_html: >-
-    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
+    Bu protokollerin iş paketi açıklamalarında, uzun metin alanlarında ve yorumlarda bağlantı olarak gösterilmesine izin verin. Örneğin, %{tel_code} veya %{element_code}. Her satıra bir protokol girin. <br/> %{http_code}, %{https_code} ve %{mailto_code} protokollerine her zaman izin verilir.
   setting_after_first_login_redirect_url: "İlk giriş yönlendirmesi"
   setting_after_first_login_redirect_url_text_html: >
     Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
@@ -3810,7 +3820,7 @@ tr:
   setting_duration_format: "Süre biçimi"
   setting_duration_format_hours_only: "Sadece saat"
   setting_duration_format_days_and_hours: "Gün ve saat"
-  setting_duration_format_instructions: "This defines how Work, Remaining work, and Time spent durations are displayed."
+  setting_duration_format_instructions: "Bu, İş, Kalan iş ve Harcanan zaman sürelerinin nasıl görüntüleneceğini tanımlar."
   setting_emails_footer: "E-posta altbilgi"
   setting_emails_header: "E-posta üstbilgisi"
   setting_email_login: "Giriş olarak e-posta kullanın"
@@ -3957,7 +3967,7 @@ tr:
       first_date_of_week_and_year_set: >
         Eğer %{day_of_week_setting_name} veya %{first_week_setting_name} seçeneklerinden biri ayarlanmışsa, ön uçta tutarsızlık yaşanmaması için diğer seçeneğin de ayarlanması gerekir.
       first_week_of_year_text_html: >
-        Select the date of January that is contained in the first week of the year. This value together with first day of the week determines the total number of weeks in a year. For more information, please see our <a href="%{link}" target="_blank">documentation</a> on this topic.
+        Yılın ilk haftasında yer alan Ocak ayının tarihini seçin. Bu değer haftanın ilk günü ile birlikte bir yıldaki toplam hafta sayısını belirler. Daha fazla bilgi için lütfen bu konudaki <a href="%{link}" target="_blank">belgelerimize</a> bakın.
     experimental:
       save_confirmation: Dikkat! Veri kaybı riski! Deneysel özellikleri sadece OpenProject kurulumunuzu bozmak ve tüm verilerini kaybetmeyi önemsemiyorsanız etkinleştirin.
       warning_toast: Özellik bayrakları, halen geliştirilme aşamasında olan özellikleri etkinleştiren ayarlardır. Sadece test amaçlı kullanılmalıdırlar. Önemli veriler içeren OpenProject kurulumlarında asla etkinleştirilmemelidirler. Bu özellikler büyük olasılıkla verilerinizi bozacaktır. Bunları kendi sorumluluğunuzda kullanın.
@@ -3984,7 +3994,7 @@ tr:
       label_new_section: "Bölüm"
       label_edit_section: "Başlığı düzenle"
       label_section_actions: "Bölüm eylemleri"
-      heading_description: "These project attributes appear in the overview page of each project. You can add new attributes, group them into sections and re-order them as you please. These attributes can be enabled or disabled but not re-ordered at a project level."
+      heading_description: "Bu proje nitelikleri her projenin genel bakış sayfasında görünür. Yeni nitelikler ekleyebilir, bunları bölümler halinde gruplandırabilir ve istediğiniz gibi yeniden sıralayabilirsiniz. Bu nitelikler etkinleştirilebilir veya devre dışı bırakılabilir ancak proje düzeyinde yeniden sıralanamaz."
       label_project_custom_field_actions: "Proje öznitelik eylemleri"
       label_no_project_custom_fields: "Bu bölümde tanımlanmış proje özniteliği yok"
       edit:
@@ -3994,22 +4004,22 @@ tr:
         description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
     project_phase_definitions:
       heading: "Proje yaşam döngüsü"
-      heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
+      heading_description: "Proje yaşam döngüsü, proje planlamanız için kullanılabilecek ve her projenin genel bakış sayfasında görünecek proje aşamalarını tanımlar. Bu nitelikler etkinleştirilebilir veya devre dışı bırakılabilir ancak proje düzeyinde yeniden sıralanamaz."
       label_add: "Ekle"
-      label_add_description: "Add project phase definition"
+      label_add_description: "Proje aşaması tanımı ekleyin"
       filter:
-        label: "Search project phase"
-      section_header: "Phases"
-      non_defined: "No phases are currently defined."
-      phase_gates: "Phase gates"
+        label: "Proje aşaması ara"
+      section_header: "Aşamalar"
+      non_defined: "Şu anda herhangi bir aşama tanımlanmamıştır."
+      phase_gates: "Aşama kapıları"
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
-        heading: "New phase"
-      both_gate: "Start and finish gate"
-      no_gate: "No gate"
-      start_gate: "Start gate"
-      start_gate_caption: "Add a gate with the start date of the phase"
-      finish_gate: "Finish gate"
+        heading: "Yeni aşama"
+      both_gate: "Başlangıç ve bitiş kapısı"
+      no_gate: "Kapı yok"
+      start_gate: "Başlangıç kapısı"
+      start_gate_caption: "Aşamanın başlangıç tarihini içeren bir kapı ekleyin"
+      finish_gate: "Bitiş kapısı"
       finish_gate_caption: "Add a gate with the end date of the phase"
     projects:
       missing_dependencies: "%{dependencies} bağımlılıkları olan %{module} proje modülü kontrol edildi. Bu bağımlılıkları da kontrol etmeniz gerekir."
@@ -4379,12 +4389,12 @@ tr:
         message: "Proje listelerini bireysel kullanıcılarla paylaşmak kurumsal bir eklentidir."
   working_days:
     info: >
-      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
+      İş paketleri ve proje yaşam döngüleri planlanırken seçilmeyen günler atlanır (ve gün sayımına dahil edilmez). Bunlar iş paketi düzeyinde geçersiz kılınabilir.
     instance_wide_info: >
-      Dates added to the list below are considered non-working and skipped when scheduling work packages.
+      Aşağıdaki listeye eklenen tarihler çalışılmayan tarihler olarak kabul edilir ve iş paketleri planlanırken atlanır.
     change_button: "İş günlerini değiştir"
     warning: >
-      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
+      Haftanın hangi günlerinin iş günü veya iş günü olmayan günler olarak kabul edileceğinin değiştirilmesi, bu sistemdeki tüm projelerdeki tüm iş paketlerinin ve yaşam döngülerinin başlangıç ve bitiş günlerini etkileyebilir.
     journal_note:
       changed: _**Çalışma günleri** değişti (%{changes})._
       days:

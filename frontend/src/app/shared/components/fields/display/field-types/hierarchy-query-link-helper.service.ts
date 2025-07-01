@@ -48,7 +48,7 @@ export class HierarchyQueryLinkHelperService {
         is: true,
         f: [{ n: 'parent', o: '=', v: [wpID] }],
       };
-      link.href = URI(this.pathHelper.workPackagesPath())
+      link.href = URI(this.pathHelper.workPackagesPath(null))
         .query({ query_props: JSON.stringify(props) })
         .toString();
     }

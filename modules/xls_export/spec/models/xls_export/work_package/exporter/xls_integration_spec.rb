@@ -202,24 +202,8 @@ RSpec.describe XlsExport::WorkPackage::Exporter::XLS do
       expect(sheet.rows.size).to eq(4 + 1)
 
       cost_column = sheet.columns.last.to_a
-      %w[1 99.99 1000].each do |value|
+      %w[1 99.99 1,000].each do |value|
         expect(cost_column).to include(value)
-      end
-    end
-
-    context "with german locale" do
-      let(:current_user) { create(:admin, language: :de) }
-
-      it "exports successfully the work packages with a cost column localized" do
-        I18n.with_locale :de do
-          sheet
-        end
-
-        expect(sheet.rows.size).to eq(4 + 1)
-        cost_column = sheet.columns.last.to_a
-        %w[1 99,99 1000].each do |value|
-          expect(cost_column).to include(value)
-        end
       end
     end
 

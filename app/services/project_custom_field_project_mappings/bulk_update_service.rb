@@ -35,7 +35,7 @@ module ProjectCustomFieldProjectMappings
       @project_custom_field_section = project_custom_field_section
     end
 
-    def perform(params)
+    def perform
       service_call = validate_permissions
       service_call = perform_bulk_edit(service_call, params) if service_call.success?
 

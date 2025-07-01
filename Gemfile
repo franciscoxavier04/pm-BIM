@@ -160,7 +160,7 @@ gem "structured_warnings", "~> 0.5.0"
 gem "airbrake", "~> 13.0.0", require: false
 
 gem "markly", "~> 0.13" # another markdown parser like commonmarker, but with AST support used in PDF export
-gem "md_to_pdf", git: "https://github.com/opf/md-to-pdf", ref: "be1ab00e2c49ce2e5e08a4edb4733438081c53ab"
+gem "md_to_pdf", git: "https://github.com/opf/md-to-pdf", ref: "9961752e4d1e990ec1d4bf48436de9277838763f"
 gem "prawn", "~> 2.4"
 gem "ttfunk", "~> 1.7.0" # remove after https://github.com/prawnpdf/prawn/issues/1346 resolved.
 
@@ -419,4 +419,4 @@ end
 
 gem "openproject-octicons", "~>19.25.0"
 gem "openproject-octicons_helper", "~>19.25.0"
-gem "openproject-primer_view_components", "~>0.70.1"
+gem "openproject-primer_view_components", "~>0.70.2"

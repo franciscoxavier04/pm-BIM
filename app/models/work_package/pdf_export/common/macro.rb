@@ -70,17 +70,13 @@ module WorkPackage::PDFExport::Common::Macro
   end
 
   def apply_macros_node_text(node, context)
-    formatted, applied_macros = apply_macro_text(node.string_content, context)
+    formatted = apply_macro_text(node.string_content, context)
     return if formatted == node.string_content
 
-    if has_html_macro?(applied_macros)
-      fragment = Markly::Node.new(:inline_html)
-      fragment.string_content = formatted
-      node.insert_before(fragment)
-      node.delete
-    else
-      node.string_content = formatted
-    end
+    fragment = Markly::Node.new(:inline_html)
+    fragment.string_content = formatted
+    node.insert_before(fragment)
+    node.delete
   end
 
   def apply_macros_node_html(node, context)
@@ -100,7 +96,7 @@ module WorkPackage::PDFExport::Common::Macro
         macro.process_match(Regexp.last_match, matched_string, context)
       end
     end
-    [text, applicable_macros]
+    text
   end
 
   def apply_macro_html(html, context)
@@ -111,20 +107,10 @@ module WorkPackage::PDFExport::Common::Macro
     doc.to_html
   end
 
-  def has_html_macro?(macros)
-    macros.any? { |macro| macro.respond_to?(:html_replacement?) && macro.html_replacement? }
-  end
-
   def apply_macro_html_node(node, context)
     if node.text?
-      formatted, applied_macros = apply_macro_text(node.content, context)
-      if formatted != node.content
-        if has_html_macro?(applied_macros)
-          node.replace(formatted)
-        else
-          node.content = formatted
-        end
-      end
+      formatted = apply_macro_text(node.content, context)
+      node.replace(formatted) if formatted != node.content
     elsif PREFORMATTED_BLOCKS.exclude?(node.name)
       node.children.each { |child| apply_macro_html_node(child, context) }
     end

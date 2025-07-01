@@ -87,7 +87,7 @@ zh-TW:
     button_advanced_filter: "進階篩選"
     button_list_view: "清單檢視"
     button_show_view: "全螢幕瀏覽"
-    button_log_time: "日誌的時間"
+    button_log_time: "工時紀錄"
     button_more: "更多"
     button_open_details: "檢視工作套件所有資料"
     button_close_details: "關閉詳細檢視"
@@ -229,7 +229,7 @@ zh-TW:
       cannot_save_changes_with_message: "由於以下錯誤, 無法保存所做的更改: %{error}"
       query_saving: "無法保存版面。"
       embedded_table_loading: "無法載入版面: %{message}"
-    enumeration_activities: "活動 (時間追蹤)"
+    enumeration_activities: "活動 (工時紀錄)"
     enumeration_doc_categories: "文件類別"
     enumeration_work_package_priorities: "工作套件優先等級"
     filter:
@@ -323,6 +323,7 @@ zh-TW:
     label_added_time_by: '由 <a href=%{authorLink}>%{author}</a> 在 %{age} 添加'
     label_ago: "天前"
     label_all: "所有"
+    label_all_projects: "All projects"
     label_all_uppercase: "全部"
     label_all_work_packages: "所有工作套件"
     label_and: "和"
@@ -432,7 +433,6 @@ zh-TW:
     label_repository_plural: "版本庫"
     label_save_as: "另存為"
     label_search_columns: "選取欄位"
-    label_select_project: "選擇專案"
     label_select_watcher: "選擇監看者"
     label_selected_filter_list: "所選的篩選條件"
     label_show_attributes: "顯示所有屬性"
@@ -641,9 +641,12 @@ zh-TW:
       title: "確認您的密碼以便繼續"
     pagination:
       no_other_page: "您位於唯一頁面上。"
+      pagination_controls: "Pagination controls"
       pages:
-        next: "前往下一頁"
-        previous: "回到上一頁"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "在此輸入名稱"
@@ -696,6 +699,7 @@ zh-TW:
           first_day: "第一天"
           last_day: "最後一天"
     text_are_you_sure: "是否確定？"
+    breadcrumb: "導覽軌跡"
     text_data_lost: "所有資料將遺失"
     text_user_wrote: "%{value} 寫道："
     types:
@@ -711,8 +715,8 @@ zh-TW:
         nevermind: "無視"
     time_entry:
       work_package_required: "需要先選擇一個工作套件。"
-      title: "日誌的時間"
-      tracking: "時間追蹤"
+      title: "工時紀錄"
+      tracking: "工時紀錄"
       stop: "停止"
     timer:
       start_new_timer: "開始新的計時"
@@ -780,6 +784,7 @@ zh-TW:
     autocompleter:
       placeholder: "搜尋"
       notFoundText: "找不到任何項目"
+      search: "搜尋"
       project:
         placeholder: "選取專案"
     repositories:
@@ -928,7 +933,7 @@ zh-TW:
         latest_activity: "最新活動"
         created_by_me: "由我建立"
         assigned_to_me: "分配給我"
-        recently_created: "最近創建的"
+        recently_created: "近期建立的"
         all_open: "所有 「開啟中」 工作"
         overdue: "逾期"
         summary: "總覽"
@@ -1126,7 +1131,6 @@ zh-TW:
       current_project_and_all_descendants: "目前專案和子專案"
       current_project: "目前專案"
       recently_viewed: "最近檢視"
-      search: "搜尋"
       title:
         all_projects: "所有專案"
         project_and_subprojects: "含子專案"

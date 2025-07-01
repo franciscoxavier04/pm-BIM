@@ -30,8 +30,9 @@ class Attachments::DeleteService < BaseServices::Delete
   include Attachments::TouchContainer
 
   def call(params = {})
+    self.params = params
     in_context(model.container || model) do
-      perform(params)
+      perform
     end
   end
 

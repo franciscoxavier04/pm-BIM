@@ -30,7 +30,7 @@ module ProjectQueries
   class PublishService < BaseServices::Update
     private
 
-    def after_validate(params, service_call)
+    def after_validate(service_call)
       model.public = params[:public]
 
       service_call

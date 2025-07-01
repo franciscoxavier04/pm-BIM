@@ -12,7 +12,7 @@
         end
 
         grid.with_area(:content) do
-          flex_layout do |flex|
+          flex_layout(h: :full) do |flex|
             flex.with_row do
               if medium? || large?
                 flex_layout(

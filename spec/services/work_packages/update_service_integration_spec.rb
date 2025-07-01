@@ -1892,9 +1892,33 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
       }
     end
 
-    # Bug #63499: this was causing an infinite loop when computing the future
+    # Bug #64973: this was causing an infinite loop when computing the future
     # dates of the predecessor.
-    it "displays an error about the inability to have multiple relations between the same work packages (Bug #63499)" do
+    it "displays an error about the inability to have multiple relations between the same work packages (Bug #64973)" do
+      expect(subject).to be_failure
+
+      expect(subject.errors.attribute_names).to contain_exactly(:parent)
+      # the error message in this case is far from ideal
+      expect(subject.errors.details).to include(parent: [{ error: :cant_link_a_work_package_with_a_descendant }])
+    end
+  end
+
+  context "when a work package with a child and a grandchild is made a child of its child" do
+    let_work_packages(<<~TABLE)
+      hierarchy      | scheduling mode
+      work_package   | automatic
+        child        | automatic
+          grandchild | manual
+    TABLE
+    let(:attributes) do
+      {
+        parent: child
+      }
+    end
+
+    # Bug #65062: this was causing an infinite loop when computing automatically
+    # scheduled ancestors of the updated work package.
+    it "displays an error about the inability to have multiple relations between the same work packages (Bug #65062)" do
       expect(subject).to be_failure
 
       expect(subject.errors.attribute_names).to contain_exactly(:parent)

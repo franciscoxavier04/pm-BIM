@@ -324,6 +324,7 @@ ca:
     label_added_time_by: 'Afegit per <a href=%{authorLink}>%{author}</a> el %{age}'
     label_ago: "dies abans"
     label_all: "tot"
+    label_all_projects: "All projects"
     label_all_uppercase: "Totes"
     label_all_work_packages: "tots els paquets de treball"
     label_and: "i"
@@ -433,7 +434,6 @@ ca:
     label_repository_plural: "Repositoris"
     label_save_as: "Desa com a"
     label_search_columns: "Search a column"
-    label_select_project: "Selecciona un projecte"
     label_select_watcher: "Seleccioneu un observador..."
     label_selected_filter_list: "Filtres seleccionats"
     label_show_attributes: "Mostrar tots els atributs"
@@ -643,9 +643,12 @@ ca:
       title: "Confirma la teva contrasenya per continuar"
     pagination:
       no_other_page: "Estàs en la pàgina única."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "Avançar a la pàgina següent"
-        previous: "Tornar a la pàgina anterior"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Introdueixi l'assumpte aquí"
@@ -698,6 +701,7 @@ ca:
           first_day: "Primer dia"
           last_day: "Últim dia"
     text_are_you_sure: "N'esteu segur?"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "Totes les dades entrades es perdran."
     text_user_wrote: "%{value} va escriure:"
     types:
@@ -782,6 +786,7 @@ ca:
     autocompleter:
       placeholder: "Escriviu per cercar"
       notFoundText: "Elements no trobats"
+      search: "Search"
       project:
         placeholder: "Select project"
     repositories:
@@ -1131,7 +1136,6 @@ ca:
       current_project_and_all_descendants: "En aquest projecte + subprojectes"
       current_project: "En aquest projecte"
       recently_viewed: "Vist recentment"
-      search: "Cercar"
       title:
         all_projects: "tots els projectes"
         project_and_subprojects: "i tots els subprojectes"

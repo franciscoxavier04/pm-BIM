@@ -209,6 +209,28 @@ RSpec.describe API::V3::Activities::ActivitiesByWorkPackageAPI, with_ee: [:inter
           end
         end
       end
+
+      context "with attachments" do
+        include_context "create activity"
+
+        let(:attachment1) { create(:attachment, container: nil, author: current_user) }
+        let(:attachment2) { create(:attachment, container: nil, author: current_user) }
+
+        let(:comment) do
+          <<~HTML
+            <img class="op-uc-image op-uc-image_inline" src="/api/v3/attachments/#{attachment1.id}/content">
+            Lorem ipsum dolor sit amet
+            <img class="op-uc-image op-uc-image_inline" src="/api/v3/attachments/#{attachment2.id}/content">
+            consectetur adipiscing elit
+          HTML
+        end
+
+        it "creates attachment claims" do
+          expect(last_response.body).to be_json_eql(comment.to_json).at_path("comment/raw")
+          journal = work_package.journals.last
+          expect(journal.attachments).to contain_exactly(attachment1, attachment2)
+        end
+      end
     end
   end
 end

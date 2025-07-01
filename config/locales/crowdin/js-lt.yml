@@ -324,6 +324,7 @@ lt:
     label_added_time_by: 'Pridėjo <a href="%{authorLink}">%{author}</a> %{age}'
     label_ago: "dienų prieš"
     label_all: "visi"
+    label_all_projects: "All projects"
     label_all_uppercase: "Visi"
     label_all_work_packages: "visi darbų paketai"
     label_and: "ir"
@@ -433,7 +434,6 @@ lt:
     label_repository_plural: "Repozitorijos"
     label_save_as: "Įrašyti kaip"
     label_search_columns: "Ieškoti stulpelio"
-    label_select_project: "Pasirinkti projektą"
     label_select_watcher: "Parinkti stebėtoją..."
     label_selected_filter_list: "Parinkti filtrus"
     label_show_attributes: "Rodyti visus atributus"
@@ -645,9 +645,12 @@ lt:
       title: "Norėdami tęsti, patvirtinkite savo slaptažodį"
     pagination:
       no_other_page: "Jūs esate vieninteliame puslapyje."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "Į kitą puslapį"
-        previous: "Į ankstesnį puslapį"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Įveskite temą čia"
@@ -700,6 +703,7 @@ lt:
           first_day: "Pirma diena"
           last_day: "Paskutinė diena"
     text_are_you_sure: "Ar esate įsitikinę?"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "Visa įvesta informacija bus prarasta."
     text_user_wrote: "%{value} parašė:"
     types:
@@ -784,6 +788,7 @@ lt:
     autocompleter:
       placeholder: "Paieškai pradėkite rinkti tekstą"
       notFoundText: "Nieko nerasta"
+      search: "Search"
       project:
         placeholder: "Pasirinkite projektą"
     repositories:
@@ -1139,7 +1144,6 @@ lt:
       current_project_and_all_descendants: "Šiame projekte + subprojektuose"
       current_project: "Šiame projekte"
       recently_viewed: "Neseniai žiūrėtos"
-      search: "Paieška"
       title:
         all_projects: "visi projektai"
         project_and_subprojects: "ir visi subprojektai"

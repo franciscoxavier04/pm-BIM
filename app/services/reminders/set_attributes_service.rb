@@ -30,7 +30,7 @@
 
 module Reminders
   class SetAttributesService < ::BaseServices::SetAttributes
-    def perform(params = {})
+    def perform
       remind_at_params = params.extract!(:remind_at_date, :remind_at_time)
 
       build_remind_at_from_params(params, remind_at_params) unless params.key?(:remind_at)

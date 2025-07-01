@@ -63,7 +63,7 @@ class Members::RolesDiff
 
   def user_previous_member_roles_ids
     Set.new(user_member.member_roles
-      .reject { group_member.member_roles.map(&:id).include?(_1.inherited_from) }
+      .reject { group_member.member_roles.map(&:id).include?(it.inherited_from) }
       .map(&:role_id).uniq)
   end
 

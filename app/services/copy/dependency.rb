@@ -79,7 +79,7 @@ module Copy
       errors.full_messages.join(". ")
     end
 
-    def perform(params:)
+    def perform
       begin
         copy_dependency(params:)
       rescue StandardError => e

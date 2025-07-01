@@ -324,6 +324,7 @@ sk:
     label_added_time_by: 'Added by <a href="%{authorLink}">%{author}</a> at %{age}'
     label_ago: "dní späť"
     label_all: "Všetky"
+    label_all_projects: "All projects"
     label_all_uppercase: "Všetky"
     label_all_work_packages: "všetky pracovné balíčky"
     label_and: "a"
@@ -433,7 +434,6 @@ sk:
     label_repository_plural: "Repozitáre"
     label_save_as: "Uložiť ako"
     label_search_columns: "Search a column"
-    label_select_project: "Vybrať projekt"
     label_select_watcher: "Vybrať pozorovateľa ..."
     label_selected_filter_list: "Vybrané filtre"
     label_show_attributes: "Zobraziť všetky atribúty"
@@ -645,9 +645,12 @@ sk:
       title: "Ak chcete pokračovať, potvrďte svoje heslo"
     pagination:
       no_other_page: "Ste na jedinej stránke."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "Vpred na nasledujúcu stranu"
-        previous: "Späť na predchádzajúcu stranu"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Sem zadajte predmet"
@@ -700,6 +703,7 @@ sk:
           first_day: "First day"
           last_day: "Last day"
     text_are_you_sure: "Ste si istí?"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "All entered data will be lost."
     text_user_wrote: "%{value} napísal:"
     types:
@@ -784,6 +788,7 @@ sk:
     autocompleter:
       placeholder: "Type to search"
       notFoundText: "No items found"
+      search: "Search"
       project:
         placeholder: "Select project"
     repositories:
@@ -1139,7 +1144,6 @@ sk:
       current_project_and_all_descendants: "V tomto projekte + podprojektoch"
       current_project: "V tomto projekte"
       recently_viewed: "Recently viewed"
-      search: "Vyhľadávanie"
       title:
         all_projects: "všetky projekty"
         project_and_subprojects: "a všetky podprojekty"

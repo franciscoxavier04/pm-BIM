@@ -324,6 +324,7 @@ hr:
     label_added_time_by: 'Added by <a href="%{authorLink}">%{author}</a> at %{age}'
     label_ago: "dana ranije"
     label_all: "sve"
+    label_all_projects: "All projects"
     label_all_uppercase: "Svi"
     label_all_work_packages: "svi radni paketi"
     label_and: "i"
@@ -433,7 +434,6 @@ hr:
     label_repository_plural: "Repozitoriji"
     label_save_as: "Spremiti kao"
     label_search_columns: "Search a column"
-    label_select_project: "Odaberi projekt"
     label_select_watcher: "Odaberite nadglednika..."
     label_selected_filter_list: "Odabrani filteri"
     label_show_attributes: "Pokaži sve atribute"
@@ -644,9 +644,12 @@ hr:
       title: "Potvrdite lozinku za nastavak"
     pagination:
       no_other_page: "You are on the only page."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "Forward to the next page"
-        previous: "Povratak na prethodnu stranicu"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Enter subject here"
@@ -699,6 +702,7 @@ hr:
           first_day: "First day"
           last_day: "Last day"
     text_are_you_sure: "Da li ste sigurni?"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "All entered data will be lost."
     text_user_wrote: "%{value} je napisao:"
     types:
@@ -783,6 +787,7 @@ hr:
     autocompleter:
       placeholder: "Type to search"
       notFoundText: "No items found"
+      search: "Search"
       project:
         placeholder: "Select project"
     repositories:
@@ -1135,7 +1140,6 @@ hr:
       current_project_and_all_descendants: "In this project + subprojects"
       current_project: "In this project"
       recently_viewed: "Recently viewed"
-      search: "Pretraživanje"
       title:
         all_projects: "all projects"
         project_and_subprojects: "and all subprojects"

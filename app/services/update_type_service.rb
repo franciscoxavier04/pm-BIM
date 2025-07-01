@@ -63,7 +63,7 @@ class UpdateTypeService < BaseTypeService
   end
 
   def set_patterns(patterns)
-    Types::Patterns::Collection
+    WorkPackageTypes::Patterns::Collection
       .build(patterns:)
       .either(
         ->(collection) { type.patterns = collection },

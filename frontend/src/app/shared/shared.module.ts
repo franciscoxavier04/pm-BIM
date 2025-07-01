@@ -84,6 +84,7 @@ import {
 import { OpenprojectModalModule } from 'core-app/shared/components/modal/modal.module';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { OpDatePickerModule } from 'core-app/shared/components/datepicker/datepicker.module';
+import { OpBreadcrumbsComponent } from './components/breadcrumbs/op-breadcrumbs.component';
 
 export function bootstrapModule(injector:Injector):void {
   // Ensure error reporter is run
@@ -166,7 +167,7 @@ export function bootstrapModule(injector:Injector):void {
     IconTriggeredContextMenuComponent,
 
     NoResultsComponent,
-
+    OpBreadcrumbsComponent,
     EditableToolbarTitleComponent,
 
     DynamicModule,
@@ -201,6 +202,7 @@ export function bootstrapModule(injector:Injector):void {
     ZenModeButtonComponent,
 
     NoResultsComponent,
+    OpBreadcrumbsComponent,
 
     EditableToolbarTitleComponent,
 

@@ -117,17 +117,10 @@ RSpec.describe "Create project custom fields in sections", :js do
       before do
         ProjectCustomFieldSection.destroy_all
         cf_index_page.visit!
-
-        cf_index_page.click_to_create_new_custom_field("Integer")
       end
 
-      it "prevents creating a new project custom field with an empty name" do
-        fill_in("custom_field_name", with: "New custom field")
-
-        click_on("Save")
-
-        expect(page).to have_field "custom_field_custom_field_section_id",
-                                   validation_message: "Please select an item in the list."
+      it "prevents creating a new project custom field" do
+        cf_index_page.expect_no_add_project_attribute_submenu
       end
     end
   end

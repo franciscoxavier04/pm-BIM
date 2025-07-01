@@ -66,7 +66,6 @@ ms:
         header-item-bg-hover-color: "Latar belakang pengepala pada hover"
         main-menu-bg-color: "Latar belakang menu utama"
         main-menu-bg-selected-background: "Menu utama apabila dipilih"
-        main-menu-bg-hover-background: "Menu utama pada hover"
       custom_colors: "Pilihan warna tersuai"
       manage_colors: "Edit pilihan pilihan warna "
       instructions:
@@ -288,6 +287,8 @@ ms:
       greater_or_equal_zero: "mestilah lebih besar atau sama dengan 0."
       not_found: "tidak dijumpai."
       rules:
+        copy_workflow_from:
+          workflow_missing: "has no own workflow."
         item:
           root_item: "tidak boleh menjadi punca item."
           not_persisted: "mestilah item yang sedia ada."
@@ -298,6 +299,8 @@ ms:
         parent:
           not_descendant: "mestilah keturunan akar hierarki."
     rules:
+      copy_workflow_from: "Type for workflow copy"
+      enabled: "Enabled"
       depth: "Kedalaman"
       item: "Item"
       label: "Label"
@@ -1224,7 +1227,7 @@ ms:
           attributes:
             content_type:
               blank: "Jenis kandungan fail tidak boleh kosong."
-              not_whitelisted: "Fail ditolak oleh penyaring automatik. '%{value}' tidak diluluskan untuk dimuat naik."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:
@@ -1262,6 +1265,7 @@ ms:
           failed_to_create: "Trial could not be created (%{status})"
           general_consent: "Please accept the terms and conditions."
         enterprise_token:
+          only_one_trial: "Only one trial token can be active. Please delete the previous trial token before adding another."
           unreadable: "tidak boleh dibaca. Adakah anda pasti ia adalah token sokongan?"
           already_added: "This token has already been added."
         grids/grid:
@@ -1818,6 +1822,7 @@ ms:
   button_unwatch: "Berhenti memerhatikan"
   button_update: "Kemas kini"
   button_upgrade: "Naik taraf"
+  button_buy_now: "Buy now"
   button_upload: "Muat naik"
   button_view: "Lihat"
   button_watch: "Perhati"
@@ -2092,6 +2097,10 @@ ms:
       internal_comments_inline:
         title: "Write internal comments only a small group can see"
         description: " "
+    teaser:
+      title:
+        other: "%{count} days left of %{trial_plan} trial token"
+      description: "You have access to all %{trial_plan} features."
     trial:
       not_found: "You have requested a trial token, but that request is no longer available. Please try again."
       wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
@@ -3399,7 +3408,7 @@ ms:
   #Default format for numbers
   number:
     format:
-      delimiter: ""
+      delimiter: ","
       precision: 3
       separator: "."
     human:

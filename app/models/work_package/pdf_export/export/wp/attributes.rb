@@ -242,10 +242,6 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
   end
 
   def get_column_value_cell(work_package, column_name)
-    value = get_column_value(work_package, column_name)
-    return get_id_column_cell(work_package, value) if column_name == :id
-    return get_subject_column_cell(work_package, value) if column_name == :subject
-
-    escape_tags(value)
+    get_value_cell_by_column(work_package, column_name, true)
   end
 end

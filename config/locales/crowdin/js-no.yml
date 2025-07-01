@@ -324,6 +324,7 @@
     label_added_time_by: 'Lagt til av <a href="%{authorLink}">%{author}</a> i %{age}'
     label_ago: "dager siden"
     label_all: "alle"
+    label_all_projects: "All projects"
     label_all_uppercase: "Alle"
     label_all_work_packages: "alle arbeidspakker"
     label_and: "og"
@@ -433,7 +434,6 @@
     label_repository_plural: "Pakkebrønner"
     label_save_as: "Lagre som"
     label_search_columns: "Søk i en kolonne"
-    label_select_project: "Velg et prosjekt"
     label_select_watcher: "Velg en overvåker..."
     label_selected_filter_list: "Valgte filtre"
     label_show_attributes: "Vis alle attributter"
@@ -643,9 +643,12 @@
       title: "Bekreft ditt passord for å fortsette"
     pagination:
       no_other_page: "Du er på den eneste siden."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "Gå til neste side"
-        previous: "Tilbake til forrige side"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Angi emne her"
@@ -698,6 +701,7 @@
           first_day: "Første dag "
           last_day: "Siste dag"
     text_are_you_sure: "Er du sikker?"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "Alle angitte data vil gå tapt."
     text_user_wrote: "%{value} skrev:"
     types:
@@ -782,6 +786,7 @@
     autocompleter:
       placeholder: "Skriv for å søke"
       notFoundText: "Ingen elementer funnet"
+      search: "Search"
       project:
         placeholder: "Velg prosjekt"
     repositories:
@@ -1131,7 +1136,6 @@
       current_project_and_all_descendants: "I dette prosjektet + underprosjekter"
       current_project: "I dette prosjektet"
       recently_viewed: "Nylig sett"
-      search: "Søk"
       title:
         all_projects: "alle prosjekter"
         project_and_subprojects: "og alle underprosjekter"

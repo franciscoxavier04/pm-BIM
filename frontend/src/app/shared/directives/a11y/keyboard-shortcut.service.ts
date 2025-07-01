@@ -57,7 +57,7 @@ export class KeyboardShortcutService {
     '?': () => this.showHelpModal(),
     'g m': this.globalAction('myPagePath'),
     'g o': this.projectScoped('projectPath'),
-    'g w p': this.projectScoped('projectWorkPackagesPath'),
+    'g w p': this.projectScoped('workPackagesPath'),
     'g w i': this.projectScoped('projectWikiPath'),
     'g a': this.projectScoped('projectActivityPath'),
     'g c': this.projectScoped('projectCalendarPath'),

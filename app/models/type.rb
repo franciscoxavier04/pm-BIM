@@ -36,7 +36,7 @@ class Type < ApplicationRecord
 
   include ::Scopes::Scoped
 
-  attribute :patterns, Types::Patterns::CollectionType.new
+  attribute :patterns, WorkPackageTypes::Patterns::CollectionType.new
 
   store_attribute :pdf_export_templates_config, :export_templates_disabled, :json
   store_attribute :pdf_export_templates_config, :export_templates_order, :json

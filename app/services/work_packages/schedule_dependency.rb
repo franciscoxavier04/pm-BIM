@@ -102,13 +102,21 @@ class WorkPackages::ScheduleDependency
   def automatically_scheduled_ancestors(work_package)
     @automatically_scheduled_ancestors ||= {}
     @automatically_scheduled_ancestors[work_package] ||= begin
-      parent = parent_of(work_package)
+      work_packages_to_process = [work_package]
+      result = []
+      processed_ids = Set.new
 
-      if parent&.schedule_automatically?
-        [parent, *automatically_scheduled_ancestors(parent)]
-      else
-        []
+      while current = work_packages_to_process.shift
+        processed_ids.add(current.id)
+
+        parent = parent_of(current)
+
+        if parent&.schedule_automatically?
+          result << parent unless parent.id == work_package.id
+          work_packages_to_process << parent unless processed_ids.include?(parent.id)
+        end
       end
+      result
     end
   end
 
