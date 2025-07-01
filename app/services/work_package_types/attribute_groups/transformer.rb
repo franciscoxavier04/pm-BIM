@@ -40,7 +40,7 @@ module WorkPackageTypes
         return [] if groups.blank?
 
         groups.map do |group|
-          if group["type"] == "query"
+          if group[:type] == "query"
             transform_query_group(group)
           else
             transform_attribute_group(group)
@@ -60,8 +60,8 @@ module WorkPackageTypes
       end
 
       def transform_query_group(group)
-        name = group["name"]
-        props = JSON.parse(group["query"])
+        name = group[:name]
+        props = JSON.parse(group[:query])
 
         query = Query.new_default(name: "Embedded table: #{name}")
         query.extend(OpenProject::ChangedBySystem)

@@ -84,10 +84,10 @@ RSpec.describe WorkPackageTypes::AttributeGroups::Transformer do
       let(:raw_groups) do
         [
           {
-            "name" => "Embedded Table",
-            "type" => "query",
-            "attributes" => nil,
-            "query" => {
+            name: "Embedded Table",
+            type: "query",
+            attributes: nil,
+            query: {
               "columns[]" => %w[id subject],
               "filters" => "[]",
               "sortBy" => "[['id', 'asc']]",
@@ -111,9 +111,9 @@ RSpec.describe WorkPackageTypes::AttributeGroups::Transformer do
       let(:raw_groups) do
         [
           {
-            "name" => "Broken",
-            "type" => "query",
-            "query" => "not a json"
+            name: "Broken",
+            type: "query",
+            query: "not a json"
           }
         ]
       end
