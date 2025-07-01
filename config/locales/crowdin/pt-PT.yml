@@ -561,11 +561,11 @@ pt-PT:
   priorities:
     edit:
       priority_color_text: |
-        Click to assign or change the color of this priority.
-        It can be used for highlighting work packages in the table.
+        Clique para atribuir ou alterar a cor desta prioridade.
+        Pode ser usada para destacar os pacotes de trabalho na tabela.
     admin:
       default:
-        caption: Making this priority default will override the previous default priority.
+        caption: Fazer esta prioridade a predefinição irá substituir a prioridade predefinida anterior.
   reactions:
     action_title: "Reagir"
     add_reaction: "Adicionar reação"
@@ -1205,7 +1205,7 @@ pt-PT:
           attributes:
             content_type:
               blank: "O tipo de conteúdo do ficheiro não pode ficar em branco."
-              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
+              not_allowlisted: "O ficheiro foi rejeitado por um filtro automático. '%{value}' não está na lista der permissão para o envio."
               format: "%{message}"
         capability:
           context:
@@ -4301,12 +4301,12 @@ pt-PT:
         message: "A partilha de listas de projetos com utilizadores individuais é um complemento Enterprise."
   working_days:
     info: >
-      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
+      Dias não selecionados são ignorados ao agendar pacotes de trabalho (e não são incluídos na contagem de dias). Podem ser substituídos ao nível dos pacotes de trabalho.
     instance_wide_info: >
       As datas adicionadas à lista abaixo são consideradas inúteis e ignoradas ao agendar pacotes de trabalho.
     change_button: "Alterar dias úteis"
     warning: >
-      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
+      Mudar quais dias da semana considerados dias úteis ou não úteis pode afetar os dias de início e de término de todos os pacotes de trabalho em todos os projetos nesta instância.
     journal_note:
       changed: _**Dias úteis** alterados (%{changes})._
       days:

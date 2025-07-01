@@ -275,10 +275,10 @@ pt-PT:
         change_button: "Guardar e reagendar"
         change_title: "Alterar dias úteis"
         removed_title: "Removerá os seguintes dias da lista de dias não-úteis:"
-        change_description: "Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance."
+        change_description: "Mudar quais dias da semana considerados dias úteis ou não úteis pode afetar os dias de início e de término de todos os pacotes de trabalho em todos os projetos nesta instância."
         warning: >
-          The changes might take some time to take effect. You will be notified when all relevant work packages and project life cycles have been updated.
-          Are you sure you want to continue?
+          As alterações podem demorar algum tempo a entrar em vigor. Receberá uma notificação quando todos os pacotes de trabalho relevantes forem atualizados.
+          Tem a certeza que quer continuar?
       work_packages_settings:
         warning_progress_calculation_mode_change_from_status_to_field_html: >-
           Se alterar o modo de cálculo do progresso de baseado no estado para baseado no trabalho, o campo <i>% de conclusão</i> poderá ser editado livremente. Se, opcionalmente, introduzir valores para <i>Trabalho</i> ou <i>Trabalho restante</i>, estes também serão associado a <i>% de conclusão</i>. Se alterar o <i>Trabalho restante</i>, pode atualizar a <i>% de conclusão</i>.

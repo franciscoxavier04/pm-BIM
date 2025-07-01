@@ -14,7 +14,7 @@ tr:
         client_secret: İstemci gizliliği
         secret: Gizli Anahtar
         scope: Kapsam
-        grant_types_supported: Supported grant types
+        grant_types_supported: Desteklenen izin türleri
         limit_self_registration: Kendi kendine kaydı sınırlayın
         authorization_endpoint: Yetkilendirme bitiş noktası
         userinfo_endpoint: Kullanıcı bilgisi bitiş noktası

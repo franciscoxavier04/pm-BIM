@@ -60,7 +60,7 @@ tr:
         time: Zaman
     models:
       time_entry:
-        one: "Zaman girişleri"
+        one: "Zaman girişi"
         other: "Zaman girişleri"
       cost_entry:
         one: "Maliyet girişi"
