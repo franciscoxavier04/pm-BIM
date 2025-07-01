@@ -74,8 +74,7 @@ class Group < Principal
   end
 
   def scim_external_id=(external_id)
-    oidc_provider = OpenIDConnect::Provider.first
-    raise "There should at least one OIDC Provider for SCIM to work with" unless oidc_provider
+    oidc_provider = User.current.service_account_association.service.auth_provider
 
     ::Groups::SetAttributesService
       .new(user: User.system, model: self, contract_class: EmptyContract)

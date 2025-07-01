@@ -38,7 +38,7 @@ module ScimV2
           group = storage_class.new
           group.from_scim!(scim_hash: scim_resource.as_json)
           call = Groups::CreateService
-                   .new(user: User.system, model: group)
+                   .new(user: User.current, model: group)
                    .call(group.attributes)
                    .on_failure do |result|
             uniqueness_error = result.errors.find { |e| e.type == :taken }
@@ -73,7 +73,7 @@ module ScimV2
           group = storage_scope.find(group_id)
           group.from_scim!(scim_hash: scim_resource.as_json)
           Groups::UpdateService
-            .new(user: User.system, model: group)
+            .new(user: User.current, model: group)
             .call(user_ids: scim_resource.members.map(&:value))
             .on_failure { |call| raise call.message }
           group.reload
@@ -89,7 +89,7 @@ module ScimV2
           group.from_scim_patch!(patch_hash: patch_hash)
           user_ids = group.scim_members.map(&:id)
           Groups::UpdateService
-            .new(user: User.system, model: group)
+            .new(user: User.current, model: group)
             .call(user_ids:)
             .on_failure { |call| raise call.message }
           group.reload
@@ -102,7 +102,7 @@ module ScimV2
       super do |group_id|
         group = storage_scope.find(group_id)
         Groups::DeleteService
-          .new(user: User.system, model: group)
+          .new(user: User.current, model: group)
           .call
           .on_failure { |call| raise call.message }
       end
@@ -115,7 +115,10 @@ module ScimV2
     end
 
     def storage_scope
-      Group.left_joins(:users, :user_auth_provider_links).includes(:users, :user_auth_provider_links).not_builtin
+      Group
+        .left_joins(:users, :user_auth_provider_links)
+        .includes(:users, :user_auth_provider_links)
+        .not_builtin
     end
   end
 end

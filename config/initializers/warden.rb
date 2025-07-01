@@ -26,6 +26,10 @@ OpenProject::Authentication.update_strategies(OpenProject::Authentication::Scope
      anonymous_fallback]
 end
 
+OpenProject::Authentication.update_strategies(OpenProject::Authentication::Scope::SCIM_V2, { store: false }) do |_|
+  %i[oauth jwt_oidc session]
+end
+
 Rails.application.configure do |app|
   app.config.middleware.use OpenProject::Authentication::Manager, intercept_401: false # rubocop:disable Naming/VariableNumber
 end

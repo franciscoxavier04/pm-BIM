@@ -31,18 +31,17 @@
 require "spec_helper"
 
 RSpec.describe "SCIM API ServiceProviderConfig" do
-  let(:external_user_id) { "idp_user_id_123asdqwe12345" }
-  let(:external_group_id) { "idp_group_id_123asdqwe12345" }
-  let(:admin) { create(:admin) }
-  let(:oidc_provider) { create(:oidc_provider, slug: "keycloak", creator: admin) }
-  let(:user) { create(:user, identity_url: "#{oidc_provider.slug}:#{external_user_id}") }
-  let(:group) { create(:group, identity_url: "#{oidc_provider.slug}:#{external_group_id}", members: [user]) }
-  let(:headers) { { "CONTENT_TYPE" => "application/scim+json", "HTTP_AUTHORIZATION" => "Bearer access_token" } }
+  let(:oidc_provider_slug) { "keycloak" }
+  let(:oidc_provider) { create(:oidc_provider, slug: oidc_provider_slug) }
+  let(:headers) { { "CONTENT_TYPE" => "application/scim+json", "HTTP_AUTHORIZATION" => "Bearer #{token.plaintext_token}" } }
+  let(:token) { create(:oauth_access_token, resource_owner: service_account, scopes: ["scim_v2"]) }
+  let(:service_account) { create(:service_account, service: scim_client) }
+  let(:scim_client) { create(:scim_client, authentication_method: :oauth2_token, auth_provider_id: oidc_provider.id) }
+
+  before { token }
 
   describe "GET /scim_v2/ServiceProviderConfig" do
     context "with the feature flag enabled", with_flag: { scim_api: true } do
-      before { group }
-
       it do
         get "/scim_v2/ServiceProviderConfig", {}, headers
 
