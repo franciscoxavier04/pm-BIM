@@ -220,7 +220,7 @@ module Redmine::MenuManager::MenuHelper
       "aria-label": I18n.t(:label_go_back),
       class: "main-menu--arrow-left-to-project",
       data: {
-        action: "menus--main#ascend keydown.enter->menus--main#keydown",
+        action: "menus--main#ascend keydown.enter->menus--main#ascend",
         "tour-selector": "main-menu--arrow-left_#{node.name}",
         "test-selector": "main-menu--arrow-left-to-project"
       }
