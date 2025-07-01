@@ -38,6 +38,7 @@ module Settings
 
         @project_custom_field_section = project_custom_field_section
         @project_custom_fields = project_custom_field_section.custom_fields
+
         @first_and_last = first_and_last
       end
 

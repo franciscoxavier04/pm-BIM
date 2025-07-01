@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,36 +27,27 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+#
+module Admin::CustomFields::CalculatedValues
+  class DetailsComponent < ApplicationComponent
+    include ApplicationHelper
+    include OpPrimer::ComponentHelpers
+    include OpTurbo::Streamable
 
-module Settings
-  module ProjectCustomFields
-    class EditFormHeaderComponent < ApplicationComponent
-      def initialize(custom_field:, selected:)
-        super
-        @custom_field = custom_field
-      end
+    alias_method :custom_field, :model
 
-      def tabs
-        [
-          {
-            name: "project_custom_field_edit",
-            path: edit_admin_settings_project_custom_field_path(@custom_field),
-            label: t(:label_details)
-          },
-          {
-            name: "project_custom_field_project_mappings",
-            path: project_mappings_admin_settings_project_custom_field_path(@custom_field),
-            label: t(:label_project_mappings)
-          }
-        ]
-      end
+    private
 
-      def breadcrumbs_items
-        [{ href: admin_index_path, text: t("label_administration") },
-         { href: admin_settings_project_custom_fields_path, text: t("label_project_plural") },
-         { href: admin_settings_project_custom_fields_path, text: t("settings.project_attributes.heading") },
-         @custom_field.attribute_in_database("name")]
+    def form_url
+      if custom_field.new_record?
+        admin_settings_project_custom_fields_path
+      else
+        admin_settings_project_custom_field_path(custom_field)
       end
+    end
+
+    def form_method
+      custom_field.new_record? ? :post : :put
     end
   end
 end

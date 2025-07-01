@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,35 +28,10 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Settings
-  module ProjectCustomFields
-    class EditFormHeaderComponent < ApplicationComponent
-      def initialize(custom_field:, selected:)
-        super
-        @custom_field = custom_field
-      end
+class AddFormulaToCustomFields < ActiveRecord::Migration[8.0]
+  def change
+    add_column :custom_fields, :formula, :jsonb, null: true
 
-      def tabs
-        [
-          {
-            name: "project_custom_field_edit",
-            path: edit_admin_settings_project_custom_field_path(@custom_field),
-            label: t(:label_details)
-          },
-          {
-            name: "project_custom_field_project_mappings",
-            path: project_mappings_admin_settings_project_custom_field_path(@custom_field),
-            label: t(:label_project_mappings)
-          }
-        ]
-      end
-
-      def breadcrumbs_items
-        [{ href: admin_index_path, text: t("label_administration") },
-         { href: admin_settings_project_custom_fields_path, text: t("label_project_plural") },
-         { href: admin_settings_project_custom_fields_path, text: t("settings.project_attributes.heading") },
-         @custom_field.attribute_in_database("name")]
-      end
-    end
+    add_index :custom_fields, :formula, using: :gin
   end
 end
