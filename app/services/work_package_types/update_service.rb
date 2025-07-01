@@ -37,6 +37,8 @@ module WorkPackageTypes
     def validate_params
       # Only set attribute groups when it exists (Regression #28400)
       set_attribute_groups(params) if params[:attribute_groups]
+      set_active_custom_fields
+      set_active_custom_fields_for_project_ids(params[:project_ids]) if params[:project_ids].present?
 
       super
     end
@@ -52,6 +54,33 @@ module WorkPackageTypes
         model.attribute_groups = AttributeGroups::Transformer.new(groups: params[:attribute_groups], user: user).call
         params.delete(:attribute_groups)
       end
+    end
+
+    ##
+    # Syncs attribute group settings for custom fields with enabled custom fields
+    # for this type. If a custom field is not in a group, it is removed from the
+    # custom_field_ids list.
+    def set_active_custom_fields
+      model.custom_field_ids = model
+                                .attribute_groups
+                                .flat_map(&:members)
+                                .select { CustomField.custom_field_attribute? it }
+                                .map { it.gsub(/^custom_field_/, "").to_i }
+                                .uniq
+    end
+
+    def set_active_custom_fields_for_project_ids(project_ids)
+      new_project_ids_to_activate_cfs = project_ids.reject(&:empty?).map(&:to_i) - type.project_ids
+
+      values = Project
+                 .where(id: new_project_ids_to_activate_cfs)
+                 .to_a
+                 .product(model.custom_field_ids)
+                 .map { |p, cf_ids| { project_id: p.id, custom_field_id: cf_ids } }
+
+      return if values.empty?
+
+      CustomFieldsProject.insert_all(values)
     end
   end
 end
