@@ -28,17 +28,17 @@
 
 @import "app/spot/styles/sass/common/icon"
 
-$menu-item-line-height: 30px
-$arrow-left-width: 40px
+$arrow-left-width: 36px
 
 @mixin main-menu-hover($main-item: true)
   background: var(--control-transparent-bgColor-hover)
   color: var(--main-menu-font-color)
   border-style: solid
   border-color: var(--main-menu-hover-border-color)
+  border-radius: var(--borderRadius-medium)
   @if $main-item
     border-width: 1px 1px 1px 5px
-    padding-left: 12px
+    padding-left: 8px
   @else
     border-width: 1px
 
@@ -46,8 +46,9 @@ $arrow-left-width: 40px
   background: var(--control-transparent-bgColor-selected)
   color: var(--main-menu-selected-font-color)
   border: 1px solid var(--main-menu-bg-selected-border)
+  border-radius: var(--borderRadius-medium)
   border-left: 5px solid var(--main-menu-bg-selected-background) !important
-  padding-left: 12px
+  padding-left: 8px
 
 .main-menu
   width: var(--main-menu-width)
@@ -66,6 +67,7 @@ $arrow-left-width: 40px
     height: calc(100vh - var(--header-height))
     position: relative
     @include styled-scroll-bar
+    padding: 0 var(--main-menu-x-spacing)
 
   ul
     margin: 0
@@ -118,7 +120,7 @@ $arrow-left-width: 40px
       text-decoration: none
 
   .toggler
-    width: 40px
+    width: $arrow-left-width
     height: var(--main-menu-item-height)
     overflow: hidden
     display: flex
@@ -147,13 +149,19 @@ $arrow-left-width: 40px
 
       & ~ .toggler
         @include main-menu-hover(false)
+        border-top-left-radius: 0
+        border-bottom-left-radius: 0
+
+      &:has(+.toggler)
+        border-top-right-radius: 0
+        border-bottom-right-radius: 0
 
   a:not(.Button):not(.toggler)
     @extend .small-12
 
   a:not(.Button):not(:only-child):first-of-type
-    flex: 0 0 calc(100% - 40px)
-    max-width: calc(100% - 40px)
+    flex: 0 0 calc(100% - $arrow-left-width)
+    max-width: calc(100% - $arrow-left-width)
 
 // -------------------- CHILD menu items ---------------------------
 .main-menu--children
@@ -182,16 +190,14 @@ $arrow-left-width: 40px
   top: 0
   z-index: 1
   background: var(--main-menu-bg-color)
-  padding: 0px 10px 0 4px
+  padding: 0px 10px 0 0px
   height: calc(var(--main-menu-item-height) + 10px)
 
   .main-menu--arrow-left-to-project:not(.Button)
     display: inline-block
     width: $arrow-left-width
     float: left
-    border-radius: 3px
-    padding-left: var(--main-menu-x-spacing-small)
-    padding-right: var(--main-menu-x-spacing-small)
+    border-radius: var(--borderRadius-medium)
     border: 1px solid transparent
 
     &:hover, &:focus, &:active
@@ -204,13 +210,13 @@ $arrow-left-width: 40px
   background: var(--main-menu-bg-color)
 
   .main-menu--projects-divider
-    background: var(--borderColor-neutral-emphasis)
+    background: var(--borderColor-neutral-muted)
     margin: 1rem 0
 
 a.main-menu--parent-node:not(.Button)
   border: 1px solid transparent
   display: inline-block
-  padding: 0 var(--main-menu-x-spacing-small)
+  padding: 0 var(--main-menu-x-spacing)
   font-size: var(--main-menu-font-size)
   font-weight: var(--base-text-weight-bold)
   width: calc(100% - #{$arrow-left-width})
@@ -259,6 +265,7 @@ a.main-menu--parent-node:not(.Button)
     &.open
       > li
         display: list-item
+        margin-bottom: 2px
 
         .main-menu--children-menu-header
           display: none
@@ -335,17 +342,19 @@ a.main-menu--parent-node:not(.Button)
 
   .tree-menu--item
     &.-selected
-      background: var(--main-menu-bg-selected-background)
+      border-left: 5px solid var(--main-menu-bg-selected-background)
 
       .tree-menu--title
         color: var(--main-menu-selected-font-color)
 
     &:hover
-      background: var(--control-transparent-bgColor-hover)
-
       .tree-menu--title
         color: var(--main-menu-font-color)
         text-decoration: none
+
+    .tree-menu--title
+      &:hover
+        background: transparent !important
 
 // Resizer & toggle styles
 .main-menu--resizer
