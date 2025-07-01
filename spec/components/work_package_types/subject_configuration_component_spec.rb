@@ -104,32 +104,25 @@ RSpec.describe WorkPackageTypes::SubjectConfigurationComponent, type: :component
   end
 
   context "when enterprise edition is not activated", with_ee: %i[] do
-    it "shows the enterprise banner" do
+    it "shows the large enterprise banner" do
       render_component
 
-      expect(page).to have_enterprise_banner(:professional)
-    end
-
-    it "disables only automatic mode selector", :aggregate_failures do
-      render_component
-
-      expect(page.find("input[type=radio][value=generated]")).to be_disabled
-      expect(page.find("input[type=radio][value=manual]")).not_to be_disabled
+      expect(page).to have_enterprise_banner(:professional, class: "op-enterprise-banner_large")
     end
 
     context "and when the subject is already automatically generated" do
       let(:type) { create(:type, patterns: { subject: { blueprint: "Hello world", enabled: true } }) }
 
-      it "shows the enterprise banner" do
+      it "shows the inline enterprise banner" do
         render_component
 
-        expect(page).to have_enterprise_banner(:professional)
+        expect(page).to have_enterprise_banner(:professional, class: "op-enterprise-banner_medium")
       end
 
       it "enables mode selectors", :aggregate_failures do
         render_component
 
-        expect(page.find("input[type=radio][value=generated]")).not_to be_disabled
+        expect(page.find("input[type=radio][value=generated]")).to be_disabled
         expect(page.find("input[type=radio][value=manual]")).not_to be_disabled
       end
     end
