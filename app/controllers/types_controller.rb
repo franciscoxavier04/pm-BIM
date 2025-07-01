@@ -60,9 +60,8 @@ class TypesController < ApplicationController
 
   def create
     additional_params = {}
-    if (value = params.dig(:type, :copy_workflow_from))
-      additional_params[:copy_workflow_from] = value
-    end
+    value = params.dig(:type, :copy_workflow_from)
+    additional_params[:copy_workflow_from] = value if value.present?
 
     service_call = WorkPackageTypes::CreateService
                      .new(user: current_user)
@@ -70,7 +69,7 @@ class TypesController < ApplicationController
 
     @type = service_call.result
     if service_call.success?
-      redirect_to_type_tab_path(@type, t(:notice_successful_create))
+      redirect_to edit_type_settings_path(@type), notice: t(:notice_successful_create), status: :see_other
     else
       render action: :new, status: :unprocessable_entity
     end
