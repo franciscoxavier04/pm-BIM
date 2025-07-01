@@ -61,12 +61,13 @@ module WorkPackageTypes
     # for this type. If a custom field is not in a group, it is removed from the
     # custom_field_ids list.
     def set_active_custom_fields
-      model.custom_field_ids = model
-                                .attribute_groups
-                                .flat_map(&:members)
-                                .select { CustomField.custom_field_attribute? it }
-                                .map { it.gsub(/^custom_field_/, "").to_i }
-                                .uniq
+      model.custom_field_ids = model.attribute_groups
+                                  .flat_map(&:members)
+                                  .filter_map do |attr|
+                                    if CustomField.custom_field_attribute?(attr)
+                                      attr.delete_prefix("custom_field_").to_i
+                                    end
+                                  end.uniq
     end
 
     def set_active_custom_fields_for_project_ids(project_ids)
