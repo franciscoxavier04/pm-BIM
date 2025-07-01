@@ -161,7 +161,7 @@ RSpec.describe RootSeeder,
 
     before_all do
       with_edition("standard") do
-        root_seeder.seed_data!
+        root_seeder.seed!
 
         # Run background jobs as those are also triggered by seeding.
         # But since those background jobs retrigger themselves, don't wrap the seeding inside a block.
@@ -176,7 +176,7 @@ RSpec.describe RootSeeder,
     context "when run a second time in a different language", :settings_reset do
       before_all do
         with_locale_env("de") do
-          described_class.new.seed_data!
+          described_class.new.seed!
         end
       end
 
@@ -206,7 +206,7 @@ RSpec.describe RootSeeder,
           # Simulate a user having deleted the seeded colors.
           # Could also be the user changing the hexcode of the colors, making lookup by hexcode fail.
           Color.where(name: ["Grey", "Blue", "Black"]).delete_all
-          described_class.new.seed_data!
+          described_class.new.seed!
         end
       end
 
@@ -226,7 +226,7 @@ RSpec.describe RootSeeder,
         Project.destroy_all
         # destroying all statuses will destroy all workflows by cascade
         Status.where.not(id: new_status.id).destroy_all
-        described_class.new.seed_data!
+        described_class.new.seed!
       end
 
       it "does not create additional data and does not raise any errors" do
@@ -249,7 +249,7 @@ RSpec.describe RootSeeder,
       AddWorkPackageRoles.new.up
 
       with_edition("standard") do
-        root_seeder.seed_data!
+        root_seeder.seed!
 
         # Run background jobs as those are also triggered by seeding.
         # But since those background jobs retrigger themselves, don't wrap the seeding inside a block.
@@ -270,7 +270,7 @@ RSpec.describe RootSeeder,
           original_translation = m.call(*args, **kw)
           "tr: #{original_translation}"
         end
-        root_seeder.seed_data!
+        root_seeder.seed!
 
         # Run background jobs as those are also triggered by seeding.
         # But since those background jobs retrigger themselves, don't wrap the seeding inside a block.
@@ -296,7 +296,7 @@ RSpec.describe RootSeeder,
       before_all do
         with_locale_env("de", env_var_name:) do
           with_edition("standard") do
-            root_seeder.seed_data!
+            root_seeder.seed!
 
             # Run background jobs as those are also triggered by seeding.
             # But since those background jobs retrigger themselves, don't wrap the seeding inside a block.
@@ -330,7 +330,7 @@ RSpec.describe RootSeeder,
         allow(Settings::Definition["default_projects_modules"])
           .to receive(:writable?).and_return(false)
 
-        root_seeder.seed_data!
+        root_seeder.seed!
       end
     end
 
@@ -363,7 +363,7 @@ RSpec.describe RootSeeder,
       with_env("OPENPROJECT_SEED_ADMIN_USER_LOCKED" => "true") do
         with_edition("standard") do
           reset(:seed_admin_user_locked)
-          root_seeder.seed_data!
+          root_seeder.seed!
         end
       end
     ensure

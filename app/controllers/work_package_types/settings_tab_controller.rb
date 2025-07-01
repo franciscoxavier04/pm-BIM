@@ -23,40 +23,44 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
 module WorkPackageTypes
-  class SettingsComponent < ApplicationComponent
-    include ApplicationHelper
-    include OpPrimer::ComponentHelpers
-    include OpTurbo::Streamable
+  class SettingsTabController < ApplicationController
+    layout "admin"
 
-    def initialize(model, copy_workflow_from: nil, **)
-      @copy_workflow_from = copy_workflow_from
-      super(model, **)
+    before_action :require_admin
+    before_action :find_type
+
+    current_menu_item %i[edit update] do
+      :types
     end
 
-    def form_options
-      if model.new_record?
-        create_form_options
+    def edit; end
+
+    def update
+      result = UpdateService.new(user: current_user, model: @type, contract_class: UpdateSettingsContract)
+                            .call(permitted_settings_params)
+
+      if result.success?
+        redirect_to edit_type_settings_path(type_id: @type.id), notice: I18n.t(:notice_successful_update)
       else
-        update_form_options
+        params[:tab] = "settings"
+        render :edit, status: :unprocessable_entity
       end
     end
 
     private
 
-    attr_reader :copy_workflow_from
-
-    def create_form_options
-      { url: types_path, method: :post, model:, copy_workflow_from: }
+    def find_type
+      @type = ::Type.find(params[:type_id])
     end
 
-    def update_form_options
-      { url: type_settings_path(type_id: model.id), method: :patch, model: }
+    def permitted_settings_params
+      params.expect(type: %i[name color_id description is_milestone is_in_roadmap is_default])
     end
   end
 end
