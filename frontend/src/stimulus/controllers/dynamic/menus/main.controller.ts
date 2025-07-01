@@ -33,10 +33,12 @@ export default class MainMenuController extends Controller {
 
     targetLi.querySelector<HTMLElement>('li > a, .tree-menu--title')?.focus();
 
+    const backArrow = targetLi.querySelector('[class^="main-menu--arrow-left"]') as HTMLElement;
+    backArrow.focus();
     this.markActive(targetLi.dataset.name as string);
   }
 
-  ascend(event:MouseEvent) {
+  ascend(event:Event) {
     event.preventDefault();
     const target = event.target as HTMLElement;
     const parent = target.closest('li') as HTMLElement;
@@ -47,6 +49,13 @@ export default class MainMenuController extends Controller {
     parent.querySelector<HTMLElement>('.toggler')?.focus();
 
     this.sidebarTarget.classList.remove('-hidden');
+  }
+
+  keydown(event:KeyboardEvent) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      this.ascend(event);
+    }
   }
 
   private getActiveMenuName():string|undefined {
