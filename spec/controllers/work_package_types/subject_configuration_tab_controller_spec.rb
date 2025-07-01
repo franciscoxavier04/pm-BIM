@@ -42,8 +42,8 @@ module WorkPackageTypes
       let(:user) { User.anonymous }
 
       it "requires login" do
-        get :show, params: { type_id: wp_type.id }
-        expect(response.status).to redirect_to signin_url(back_url: type_subject_configuration_url(wp_type))
+        get :edit, params: { type_id: wp_type.id }
+        expect(response.status).to redirect_to signin_url(back_url: edit_type_subject_configuration_url(wp_type))
       end
     end
 
@@ -71,7 +71,7 @@ module WorkPackageTypes
 
         it "renders the edit template" do
           expect(response).to have_http_status :unprocessable_entity
-          expect(response).to render_template "work_package_types/subject_configuration_tab/show"
+          expect(response).to render_template "work_package_types/subject_configuration_tab/edit"
         end
       end
 
@@ -82,7 +82,7 @@ module WorkPackageTypes
           let(:service_result) { ServiceResult.success }
 
           it "redirects to the current tab path" do
-            expect(response).to redirect_to type_subject_configuration_path(type_id: wp_type.id)
+            expect(response).to redirect_to edit_type_subject_configuration_path(type_id: wp_type.id)
           end
         end
 
@@ -92,7 +92,7 @@ module WorkPackageTypes
           let(:service_result) { ServiceResult.success }
 
           it "redirects to the current tab path" do
-            expect(response).to redirect_to type_subject_configuration_path(type_id: wp_type.id)
+            expect(response).to redirect_to edit_type_subject_configuration_path(type_id: wp_type.id)
           end
         end
 
@@ -102,7 +102,7 @@ module WorkPackageTypes
           let(:service_result) { ServiceResult.success }
 
           it "redirects to the current tab path" do
-            expect(response).to redirect_to type_subject_configuration_path(type_id: wp_type.id)
+            expect(response).to redirect_to edit_type_subject_configuration_path(type_id: wp_type.id)
           end
         end
       end

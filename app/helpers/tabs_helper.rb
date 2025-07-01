@@ -65,8 +65,7 @@ module TabsHelper
   end
 
   def selected_tab(tabs)
-    selected = tabs.detect { |t| t[:name].to_s == params[:tab].to_s } || tabs.detect { |t| tab_route_shown?(t) }
-
+    selected = tabs.detect { |t| t[:name].to_s == params[:tab].to_s || tab_route_shown?(t) }
     return selected unless selected.nil?
 
     tabs.first
@@ -81,7 +80,10 @@ module TabsHelper
 
   def tab_route_shown?(tab)
     # Check not only for exact matches but also for sub-routes, like
-    # /module_a/items and /module_a/items/:id
-    request&.path&.starts_with?(tab[:path])
+    # /module_a/items and /module_a/items/:id and /module_a/items/:id/edit
+    path = request&.path
+    return false if path.blank?
+
+    tab[:path].starts_with?(path)
   end
 end

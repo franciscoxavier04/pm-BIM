@@ -96,8 +96,6 @@ module WorkPackageTypes
     end
 
     def subject_configuration_form_values
-      Rails.logger.error "[MARCELLOGGER] #{@subject_configuration_form_data}"
-
       if @subject_configuration_form_data.present?
         @subject_configuration_form_data
       else

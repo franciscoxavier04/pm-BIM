@@ -30,11 +30,11 @@
 
 module WorkPackageTypes
   class SubjectConfigurationTabController < BaseTabController
-    current_menu_item [:show, :update] do
+    current_menu_item [:edit, :update] do
       :types
     end
 
-    def show; end
+    def edit; end
 
     def update
       permitted = params.expect(work_package_types_forms_subject_configuration_form_model: %i[subject_configuration pattern]).to_h
@@ -43,9 +43,9 @@ module WorkPackageTypes
                             .call(patterns: build_patterns(permitted))
 
       if result.success?
-        redirect_to type_subject_configuration_path(@type), status: :see_other
+        redirect_to edit_type_subject_configuration_path(@type), status: :see_other
       else
-        render :show, status: :unprocessable_entity
+        render :edit, status: :unprocessable_entity
       end
     end
 
