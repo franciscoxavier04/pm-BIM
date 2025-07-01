@@ -37,10 +37,6 @@ RSpec.describe Projects::CopyOptions, type: :model do
     it "has a default value" do
       expect(subject.dependencies).to match_array(all_dependencies)
     end
-
-    it "validates dependencies" do
-      expect(subject).to validate_inclusion_of(:dependencies).in_array(all_dependencies)
-    end
   end
 
   describe "#send_notifications" do

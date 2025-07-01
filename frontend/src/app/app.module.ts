@@ -55,7 +55,6 @@ import {
 } from 'core-app/shared/components/work-package-graphs/openproject-work-package-graphs.module';
 import { OpenprojectOverviewModule } from 'core-app/features/overview/openproject-overview.module';
 import { OpenprojectMyPageModule } from 'core-app/features/my-page/openproject-my-page.module';
-import { OpenprojectProjectsModule } from 'core-app/features/projects/openproject-projects.module';
 import { KeyboardShortcutService } from 'core-app/shared/directives/a11y/keyboard-shortcut.service';
 import { CopyToClipboardService } from 'core-app/shared/components/copy-to-clipboard/copy-to-clipboard.service';
 import {
@@ -138,7 +137,6 @@ import {
   DraggableAutocompleteComponent,
 } from 'core-app/shared/components/autocompleter/draggable-autocomplete/draggable-autocomplete.component';
 import { OpExclusionInfoComponent } from 'core-app/shared/components/fields/display/info/op-exclusion-info.component';
-import { CopyProjectComponent } from 'core-app/features/projects/components/copy-project/copy-project.component';
 import { OpenProjectJobStatusModule } from 'core-app/features/job-status/openproject-job-status.module';
 import {
   NotificationsSettingsPageComponent,
@@ -259,9 +257,6 @@ export function initializeServices(injector:Injector) {
     OpenprojectFieldsModule,
     OpenprojectGridsModule,
     OpenprojectAttachmentsModule,
-
-    // Project module
-    OpenprojectProjectsModule,
 
     // Work packages and their routes
     OpenprojectWorkPackagesModule,
@@ -415,7 +410,6 @@ export class OpenProjectModule implements DoBootstrap {
     registerCustomElement('opce-custom-modal-overlay', OpCustomModalOverlayComponent, { injector });
 
     // TODO: These elements are now registered custom elements, but are actually single-use components. They should be removed when we move these pages to Rails.
-    registerCustomElement('opce-copy-project', CopyProjectComponent, { injector });
     registerCustomElement('opce-notification-settings', NotificationsSettingsPageComponent, { injector });
     registerCustomElement('opce-reminder-settings', ReminderSettingsPageComponent, { injector });
     registerCustomElement('opce-notification-center', InAppNotificationCenterComponent, { injector });
