@@ -105,8 +105,7 @@ RSpec.describe ProjectsController do
       end
 
       context "with a parent with public permissions" do
-        let(:user) { create(:user, global_permissions: [:add_project], member_with_roles: { parent => parent_role }) }
-        let(:parent_role) { create(:project_role) }
+        let(:user) { create(:user, global_permissions: [:add_project], member_with_permissions: { parent => [] }) }
         let(:parent) { create(:project) }
 
         it_behaves_like "successful request"
@@ -127,8 +126,7 @@ RSpec.describe ProjectsController do
       end
 
       context "with a parent with add_subprojects permissions" do
-        let(:user) { create(:user, global_permissions: [], member_with_roles: { parent => parent_role }) }
-        let(:parent_role) { create(:project_role, permissions: [:add_subprojects]) }
+        let(:user) { create(:user, member_with_permissions: { parent => [:add_subprojects] }) }
         let(:parent) { create(:project) }
         let(:template) { nil }
 
@@ -327,8 +325,7 @@ RSpec.describe ProjectsController do
     end
 
     context "as a non-admin with copy_projects permissions" do
-      let(:user) { create(:user, member_with_roles: { project => project_role }) }
-      let(:project_role) { build(:project_role, permissions: [:copy_projects]) }
+      let(:user) { create(:user, member_with_permissions: { project => [:copy_projects] }) }
 
       it_behaves_like "successful request"
     end
