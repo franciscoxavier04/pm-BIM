@@ -324,6 +324,7 @@ vi:
     label_added_time_by: 'Được thêm bởi <a href="%{authorLink}">%{author}</a> lúc %{age}'
     label_ago: "ngày trước"
     label_all: "tất cả"
+    label_all_projects: "All projects"
     label_all_uppercase: "Tất cả"
     label_all_work_packages: "tất cả các gói công việc"
     label_and: "và"
@@ -433,7 +434,6 @@ vi:
     label_repository_plural: "Các kho lưu trữ"
     label_save_as: "Lưu dưới dạng"
     label_search_columns: "Tìm cột"
-    label_select_project: "Chọn dự án"
     label_select_watcher: "Chọn người theo dõi..."
     label_selected_filter_list: "Danh sách bộ lọc đã chọn"
     label_show_attributes: "Hiển thị tất cả thuộc tính"
@@ -642,9 +642,12 @@ vi:
       title: "Xác nhận mật khẩu của bạn để tiếp tục"
     pagination:
       no_other_page: "Bạn đang ở trang duy nhất."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "Tiến tới trang tiếp theo"
-        previous: "Quay lại trang trước"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Nhập chủ đề tại đây"

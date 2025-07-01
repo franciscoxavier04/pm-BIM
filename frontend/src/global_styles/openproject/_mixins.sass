@@ -292,7 +292,9 @@ $scrollbar-size: 10px
   width: auto
 
   ul.op-breadcrumb
-    height: initial
+    // Match the height of the Primer breadcrumb which itself takes the height of the small action button it can have on mobile
+    height: var(--control-small-size)
+    line-height: var(--control-small-size)
     margin: 0
     padding: 0
     li
@@ -301,7 +303,6 @@ $scrollbar-size: 10px
       float: left
       margin: 0 5px 0 0
       padding: 0
-      line-height: 20px
       max-width: 100%
       @include text-shortener
 

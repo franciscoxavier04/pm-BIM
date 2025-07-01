@@ -324,6 +324,7 @@ hr:
     label_added_time_by: 'Added by <a href="%{authorLink}">%{author}</a> at %{age}'
     label_ago: "dana ranije"
     label_all: "sve"
+    label_all_projects: "All projects"
     label_all_uppercase: "Svi"
     label_all_work_packages: "svi radni paketi"
     label_and: "i"
@@ -433,7 +434,6 @@ hr:
     label_repository_plural: "Repozitoriji"
     label_save_as: "Spremiti kao"
     label_search_columns: "Search a column"
-    label_select_project: "Odaberi projekt"
     label_select_watcher: "Odaberite nadglednika..."
     label_selected_filter_list: "Odabrani filteri"
     label_show_attributes: "Pokaži sve atribute"
@@ -644,9 +644,12 @@ hr:
       title: "Potvrdite lozinku za nastavak"
     pagination:
       no_other_page: "You are on the only page."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "Forward to the next page"
-        previous: "Povratak na prethodnu stranicu"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Enter subject here"

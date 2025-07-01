@@ -301,7 +301,7 @@ tr:
             kanban:
               name: Kanban panosu
             basic:
-              name: Görev tahtası
+              name: Görev panosu
               lists:
                 item_0:
                   name: İstek listesi

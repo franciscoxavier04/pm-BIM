@@ -66,7 +66,6 @@ nl:
         header-item-bg-hover-color: "Header background on hover"
         main-menu-bg-color: "Achtergrond hoofdmenu"
         main-menu-bg-selected-background: "Hoofdmenu wanneer geselecteerd"
-        main-menu-bg-hover-background: "Hoofd menu bij zweven"
       custom_colors: "Aangepaste kleuren"
       manage_colors: "Bewerk de kleur selectie opties"
       instructions:

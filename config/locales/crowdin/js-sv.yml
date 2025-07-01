@@ -323,6 +323,7 @@ sv:
     label_added_time_by: 'Added by <a href="%{authorLink}">%{author}</a> at %{age}'
     label_ago: "dagar sedan"
     label_all: "alla"
+    label_all_projects: "All projects"
     label_all_uppercase: "Alla"
     label_all_work_packages: "alla arbetspaket"
     label_and: "och"
@@ -432,7 +433,6 @@ sv:
     label_repository_plural: "Versionsarkiv"
     label_save_as: "Spara som"
     label_search_columns: "Search a column"
-    label_select_project: "Välj ett projekt"
     label_select_watcher: "Välj en bevakare..."
     label_selected_filter_list: "Valda filter"
     label_show_attributes: "Visa alla attribut"
@@ -642,9 +642,12 @@ sv:
       title: "Bekräfta ditt lösenord för att fortsätta"
     pagination:
       no_other_page: "Du befinner dig på den enda sidan."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "Fortsätt till nästa sida"
-        previous: "Bakåt till föregående sida"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Ange ämne här"

@@ -323,6 +323,7 @@ ru:
     label_added_time_by: 'Добавлено <a href="%{authorLink}">%{author}</a> в %{age}'
     label_ago: "дней назад"
     label_all: "все"
+    label_all_projects: "All projects"
     label_all_uppercase: "Bсе"
     label_all_work_packages: "Все пакеты работ"
     label_and: "и"
@@ -432,7 +433,6 @@ ru:
     label_repository_plural: "Репозитории"
     label_save_as: "Сохранить как"
     label_search_columns: "Поиск столбца"
-    label_select_project: "Выберите проект"
     label_select_watcher: "Выберите наблюдателя..."
     label_selected_filter_list: "Выбранные фильтры"
     label_show_attributes: "Показать все атрибуты"
@@ -644,9 +644,12 @@ ru:
       title: "Для продолжения введите свой пароль"
     pagination:
       no_other_page: "Вы находитесь на единственной странице."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "Вперед к следующей странице"
-        previous: "Назад к предыдущей странице"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Введите тему здесь"

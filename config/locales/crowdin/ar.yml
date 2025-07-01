@@ -66,7 +66,6 @@ ar:
         header-item-bg-hover-color: "خلفية الترويسة على الحافة"
         main-menu-bg-color: "خلفية القائمة الرئيسية"
         main-menu-bg-selected-background: "القائمة الرئيسية عند تحديد"
-        main-menu-bg-hover-background: "القائمة الرئيسية على الحافة"
       custom_colors: "تخصيص الألوان"
       manage_colors: "تعديل خيارات تحديد اللون"
       instructions:

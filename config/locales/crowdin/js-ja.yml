@@ -325,6 +325,7 @@ ja:
     label_added_time_by: 'Added by <a href="%{authorLink}">%{author}</a> at %{age}'
     label_ago: "○日前"
     label_all: "全て"
+    label_all_projects: "All projects"
     label_all_uppercase: "全て"
     label_all_work_packages: "全ての作業項目"
     label_and: "及び"
@@ -434,7 +435,6 @@ ja:
     label_repository_plural: "リポジトリ"
     label_save_as: "名前をつけて保存"
     label_search_columns: "Search a column"
-    label_select_project: "プロジェクトの選択"
     label_select_watcher: "ウォッチャーを選択..."
     label_selected_filter_list: "選択されたフィルタ"
     label_show_attributes: "すべての属性を表示"
@@ -643,9 +643,12 @@ ja:
       title: "続行するにはパスワードを確認してください"
     pagination:
       no_other_page: "このページだけです。"
+      pagination_controls: "Pagination controls"
       pages:
-        next: "次のページに進む"
-        previous: "前のページに戻る"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "ここにタイトルを入力します"

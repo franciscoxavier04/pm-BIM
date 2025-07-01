@@ -324,6 +324,7 @@ uk:
     label_added_time_by: 'Додано користувачем <a href="%{authorLink}">%{author}</a> о %{age}'
     label_ago: "днів тому"
     label_all: "всі"
+    label_all_projects: "All projects"
     label_all_uppercase: "Усі"
     label_all_work_packages: "всі пакети в роботі"
     label_and: "і"
@@ -433,7 +434,6 @@ uk:
     label_repository_plural: "Репозиторії"
     label_save_as: "Зберегти як"
     label_search_columns: "Пошук стовпця"
-    label_select_project: "Виберіть проєкт"
     label_select_watcher: "Виберіть спостерігача..."
     label_selected_filter_list: "Вибрані фільтри"
     label_show_attributes: "Показати всі атрибути"
@@ -645,9 +645,12 @@ uk:
       title: "Підтвердіть ваш пароль щоб продовжити"
     pagination:
       no_other_page: "Ви знаходитесь на єдиній сторінці."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "Перейти до наступної сторінки"
-        previous: "Повернутись до попередньої сторінки"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Введіть тему тут"

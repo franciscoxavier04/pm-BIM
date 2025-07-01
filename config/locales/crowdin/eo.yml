@@ -66,7 +66,6 @@ eo:
         header-item-bg-hover-color: "Kapa fono dum musumo"
         main-menu-bg-color: "Fono de la ĉefa menuo"
         main-menu-bg-selected-background: "Ĉefa menuo elektita"
-        main-menu-bg-hover-background: "Ĉefa menuo dum musumo"
       custom_colors: "Propraj koloroj"
       manage_colors: "Redakti agordojn de kolorelekto"
       instructions:

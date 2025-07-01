@@ -324,6 +324,7 @@ eo:
     label_added_time_by: 'Added by <a href="%{authorLink}">%{author}</a> at %{age}'
     label_ago: "tagoj antaŭe"
     label_all: "ĉiuj"
+    label_all_projects: "All projects"
     label_all_uppercase: "Ĉiuj"
     label_all_work_packages: "ĉiuj laborpakaĵoj"
     label_and: "and"
@@ -433,7 +434,6 @@ eo:
     label_repository_plural: "Repositories"
     label_save_as: "Konservi kiel"
     label_search_columns: "Search a column"
-    label_select_project: "Elekti projekton"
     label_select_watcher: "Select a watcher..."
     label_selected_filter_list: "Elekti filtrilon"
     label_show_attributes: "Montri ĉiujn atribuojn"
@@ -643,9 +643,12 @@ eo:
       title: "Konfirmu vian pasvorton por daŭrigi"
     pagination:
       no_other_page: "You are on the only page."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "Antaŭeniru al la venonta paĝo"
-        previous: "Reveni al la antaŭa paĝo"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Enter subject here"

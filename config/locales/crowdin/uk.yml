@@ -66,7 +66,6 @@ uk:
         header-item-bg-hover-color: "Фон заголовка в разі наведення курсора"
         main-menu-bg-color: "Фон головного меню"
         main-menu-bg-selected-background: "Головне меню в разі вибору"
-        main-menu-bg-hover-background: "Головне меню в разі наведення"
       custom_colors: "Кольори за власними вподобаннями"
       manage_colors: "Редагувати параметри вибору кольору"
       instructions:

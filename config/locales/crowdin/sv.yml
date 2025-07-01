@@ -66,7 +66,6 @@ sv:
         header-item-bg-hover-color: "Rubrikbakgrund vid hovring"
         main-menu-bg-color: "Huvudmeny bakgrund"
         main-menu-bg-selected-background: "Huvudmeny när vald"
-        main-menu-bg-hover-background: "Huvudmeny vid hovring"
       custom_colors: "Anpassade färger"
       manage_colors: "Redigera alternativ för valbara färger"
       instructions:

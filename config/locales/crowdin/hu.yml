@@ -66,7 +66,6 @@ hu:
         header-item-bg-hover-color: "Fejléc háttere, ha az egér rajta áll"
         main-menu-bg-color: "Főmenü háttere"
         main-menu-bg-selected-background: "Főmenü, ha ki van választva"
-        main-menu-bg-hover-background: "Főmenü, ha egér rajta"
       custom_colors: "Egyéni színek"
       manage_colors: "A színválasztás beállításainak módosítása"
       instructions:

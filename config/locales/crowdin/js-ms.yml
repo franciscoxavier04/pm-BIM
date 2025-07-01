@@ -324,6 +324,7 @@ ms:
     label_added_time_by: 'Ditambah oleh <a href="%{authorLink}">%{author} pada %{age}'
     label_ago: "hari yang lalu"
     label_all: "semua"
+    label_all_projects: "All projects"
     label_all_uppercase: "Semua"
     label_all_work_packages: "semua pakej kerja"
     label_and: "dan"
@@ -433,7 +434,6 @@ ms:
     label_repository_plural: "Repositori"
     label_save_as: "Simpan sebagai"
     label_search_columns: "Cari kolum"
-    label_select_project: "Pilih projek"
     label_select_watcher: "Pilih pemerhati..."
     label_selected_filter_list: "Penyaring yang dipilih"
     label_show_attributes: "Paparkan semua atribut"
@@ -642,9 +642,12 @@ ms:
       title: "Sahkan kata laluan anda untuk teruskan"
     pagination:
       no_other_page: "Anda berada di satu-satunya halaman."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "Pergi ke halaman seterusnya"
-        previous: "Kembali ke halaman sebelumnya"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Masukkan subjek di sini"

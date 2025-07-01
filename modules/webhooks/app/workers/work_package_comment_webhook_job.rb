@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,27 +28,18 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require_relative "../spec_helper"
-
-RSpec.describe OpenProject::Webhooks::Hook do
-  describe "#relative_url" do
-    let(:hook) { OpenProject::Webhooks::Hook.new("myhook") }
-
-    it "returns the correct URL" do
-      expect(hook.relative_url).to eql("webhooks/myhook")
-    end
+class WorkPackageCommentWebhookJob < RepresentedWebhookJob
+  def payload_key
+    :activity
   end
 
-  describe "#handle" do
-    let(:probe) { lambda {} }
-    let(:hook) { OpenProject::Webhooks::Hook.new("myhook", &probe) }
+  def payload_representer_class
+    ::API::V3::Activities::ActivityRepresenter
+  end
 
-    before do
-      expect(probe).to receive(:call).with(hook, 1, 2, 3)
-    end
-
-    it "executes the callback with the correct parameters" do
-      hook.handle(1, 2, 3)
-    end
+  def project_id
+    # For comment webhooks, the resource is a Journal
+    # We need to get the project_id through the journable (WorkPackage)
+    resource.journable.project_id
   end
 end

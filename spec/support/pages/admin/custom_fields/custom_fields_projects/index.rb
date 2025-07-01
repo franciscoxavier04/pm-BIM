@@ -39,6 +39,32 @@ module Pages
             "/admin/settings/project_custom_fields"
           end
 
+          def expect_add_project_attribute_submenu(close_dialog: true)
+            wait_for_network_idle
+
+            click_button "Add"
+
+            expect(page).to have_test_selector("add-project-custom-field-attribute")
+
+            if close_dialog
+              element_in_dialog = find_test_selector("add-project-custom-field-section")
+              element_in_dialog.send_keys :escape
+            end
+          end
+
+          def expect_no_add_project_attribute_submenu(close_dialog: true)
+            wait_for_network_idle
+
+            click_button "Add"
+
+            expect(page).not_to have_test_selector("add-project-custom-field-attribute")
+
+            if close_dialog
+              element_in_dialog = find_test_selector("add-project-custom-field-section")
+              element_in_dialog.send_keys :escape
+            end
+          end
+
           def click_to_create_new_custom_field(type)
             wait_for_network_idle
 
@@ -47,6 +73,26 @@ module Pages
             click_button "Project attribute"
 
             click_on type
+          end
+
+          def expect_having_create_item(type)
+            wait_for_network_idle
+
+            click_button "Add"
+
+            click_button "Project attribute"
+
+            expect(page).to have_link(type)
+          end
+
+          def expect_not_having_create_item(type)
+            wait_for_network_idle
+
+            click_button "Add"
+
+            click_button "Project attribute"
+
+            expect(page).to have_no_link(type)
           end
         end
       end

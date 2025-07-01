@@ -66,7 +66,6 @@ es:
         header-item-bg-hover-color: "Fondo de encabezado al mantener el cursor"
         main-menu-bg-color: "Fondo del menú principal"
         main-menu-bg-selected-background: "Menú principal seleccionado"
-        main-menu-bg-hover-background: "Menú principal al mantener el cursor"
       custom_colors: "Colores personalizados"
       manage_colors: "Editar opciones de selección de colores"
       instructions:

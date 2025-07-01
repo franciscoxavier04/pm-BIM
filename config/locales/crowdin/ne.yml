@@ -66,7 +66,6 @@ ne:
         header-item-bg-hover-color: "होभरमा हेडर पृष्ठभूमि"
         main-menu-bg-color: "मुख्य मेनू पृष्ठभूमि"
         main-menu-bg-selected-background: "मुख्य मेनू चयन गरिदा"
-        main-menu-bg-hover-background: "होभरमा मुख्य मेनू"
       custom_colors: "बैकल्पिक रंगहरु "
       manage_colors: "रङ चयन गर्न सकिने विकल्पहरू सम्पादन गर्नुहोस्"
       instructions:

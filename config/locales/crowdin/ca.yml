@@ -66,7 +66,6 @@ ca:
         header-item-bg-hover-color: "Fons de capçalera en passar el ratolí"
         main-menu-bg-color: "Fons del menú principal"
         main-menu-bg-selected-background: "Menú principal quan es selecciona"
-        main-menu-bg-hover-background: "Menú principal en passar el ratolí"
       custom_colors: "Colors personalitzats"
       manage_colors: "Edita les opcions de selecció de colors"
       instructions:

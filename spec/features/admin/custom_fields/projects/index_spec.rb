@@ -36,7 +36,7 @@ RSpec.describe "List project custom fields", :js do
 
   let(:cf_index_page) { Pages::Admin::CustomFields::CustomFieldsProjects::Index.new }
 
-  context "with unsufficient permissions" do
+  context "with insufficient permissions" do
     it "is not accessible" do
       login_as(non_admin)
       cf_index_page.visit!
@@ -49,6 +49,34 @@ RSpec.describe "List project custom fields", :js do
     before do
       login_as(admin)
       cf_index_page.visit!
+    end
+
+    it "only allows project attribute creation when there is at least one section" do
+      # All sections are there, so we can add project attributes
+      cf_index_page.expect_add_project_attribute_submenu
+
+      section_for_input_fields.destroy
+      section_for_multi_select_fields.destroy
+      select_fields.each(&:destroy)
+
+      cf_index_page.visit!
+
+      # The (empty) select section is still there, so we can still add project attributes
+      cf_index_page.expect_add_project_attribute_submenu
+
+      within_project_custom_field_section_menu(section_for_select_fields) do
+        accept_confirm do
+          click_on("Delete")
+        end
+      end
+
+      # Now there are no sections left, so we cannot add project attributes:
+      # Turbo stream updated the component properly:
+      cf_index_page.expect_no_add_project_attribute_submenu(close_dialog: false)
+
+      # Revisiting the page again should not change anything:
+      cf_index_page.visit!
+      cf_index_page.expect_no_add_project_attribute_submenu(close_dialog: false)
     end
 
     it "shows all sections in the correct order and allows reordering via menu or drag and drop" do
@@ -129,6 +157,56 @@ RSpec.describe "List project custom fields", :js do
     end
 
     describe "managing project custom fields" do
+      context "with calculated value feature flag active", with_flag: { calculated_value_project_attribute: true } do
+        it "offers the type for creation" do
+          cf_index_page.expect_having_create_item("Calculated value")
+        end
+
+        context "with fields of type calculated value" do
+          let!(:calculated_value_project_custom_field) do
+            create(:calculated_value_project_custom_field,
+                   name: "Calculated value field",
+                   formula: "42 + 1",
+                   project_custom_field_section: section_for_input_fields)
+          end
+
+          before do
+            login_as(admin)
+            cf_index_page.visit!
+          end
+
+          it "lists the calculated value custom field" do
+            within_project_custom_field_section_container(section_for_input_fields) do
+              containers = page.all(".op-project-custom-field-container")
+
+              expect(containers.last.text).to include(calculated_value_project_custom_field.name)
+            end
+          end
+
+          it "lists calculated values even if the feature flag is deactivated later" do
+            # This spec tests that calculated values are still shown after the feature flag is deactivated.
+            # First, a custom field of type calculated value is created. This must be done while the feature flag is active,
+            # or else the model validation will fail.
+            # Next, we simulate that the feature flag is off:
+            allow(OpenProject::FeatureDecisions).to receive(:calculated_value_project_attribute_active?).and_return(false)
+
+            # Revisit the page and check that the field is still listed:
+            cf_index_page.visit!
+            within_project_custom_field_section_container(section_for_input_fields) do
+              containers = page.all(".op-project-custom-field-container")
+
+              expect(containers.last.text).to include(calculated_value_project_custom_field.name)
+            end
+          end
+        end
+      end
+
+      context "without calculated value feature flag active" do
+        it "does not offer the type for creation" do
+          cf_index_page.expect_not_having_create_item("Calculated value")
+        end
+      end
+
       it "shows all custom fields in the correct order within their section and allows reordering via menu or drag and drop" do
         within_project_custom_field_section_container(section_for_input_fields) do
           containers = page.all(".op-project-custom-field-container")
@@ -253,7 +331,7 @@ RSpec.describe "List project custom fields", :js do
     within_project_custom_field_section_menu(section) do
       click_on(action)
     end
-    sleep 0.5 # quick fix: allow the brower to process the action
+    sleep 0.5 # quick fix: allow the browser to process the action
   end
 
   def within_project_custom_field_container(custom_field, &)
@@ -271,6 +349,6 @@ RSpec.describe "List project custom fields", :js do
     within_project_custom_field_menu(custom_field) do
       click_on(action)
     end
-    sleep 0.5 # quick fix: allow the brower to process the action
+    sleep 0.5 # quick fix: allow the browser to process the action
   end
 end

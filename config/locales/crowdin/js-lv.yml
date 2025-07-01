@@ -324,6 +324,7 @@ lv:
     label_added_time_by: 'Added by <a href="%{authorLink}">%{author}</a> at %{age}'
     label_ago: "days ago"
     label_all: "all"
+    label_all_projects: "All projects"
     label_all_uppercase: "Visi"
     label_all_work_packages: "visu darbu pakotnes"
     label_and: "and"
@@ -433,7 +434,6 @@ lv:
     label_repository_plural: "Repositories"
     label_save_as: "Saglabāt kā"
     label_search_columns: "Search a column"
-    label_select_project: "Select a project"
     label_select_watcher: "Select a watcher..."
     label_selected_filter_list: "Atlasītajiem filtriem"
     label_show_attributes: "Parādīt visus atribūtus"
@@ -644,9 +644,12 @@ lv:
       title: "Confirm your password to continue"
     pagination:
       no_other_page: "Jūs esat vienīgajā lapā."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "Uz priekšu uz nākamo lapu"
-        previous: "Atpakaļ uz iepriekšējo lapu"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Enter subject here"

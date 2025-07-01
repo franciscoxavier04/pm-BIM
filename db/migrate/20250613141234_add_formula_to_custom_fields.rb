@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,4 +28,10 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
+class AddFormulaToCustomFields < ActiveRecord::Migration[8.0]
+  def change
+    add_column :custom_fields, :formula, :jsonb, null: true
+
+    add_index :custom_fields, :formula, using: :gin
+  end
+end

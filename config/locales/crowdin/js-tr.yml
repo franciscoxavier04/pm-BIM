@@ -212,7 +212,7 @@ tr:
         change_button: "Kaydet ve yeniden planla"
         change_title: "İş günlerini değiştir"
         removed_title: "Aşağıdaki günleri çalışılmayan günler listesinden çıkaracaksınız:"
-        change_description: "Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance."
+        change_description: "Haftanın hangi günlerinin iş günü veya iş günü olmayan günler olarak kabul edileceğinin değiştirilmesi, bu sistemdeki tüm projelerdeki tüm iş paketlerinin ve yaşam döngülerinin başlangıç ve bitiş günlerini etkileyebilir."
         warning: >
           The changes might take some time to take effect. You will be notified when all relevant work packages and project life cycles have been updated.
           Are you sure you want to continue?
@@ -292,7 +292,7 @@ tr:
       blocks:
         new_features:
           text_new_features: "Yeni özellikler ve ürün güncellemeleri hakkında bilgi edinin."
-          learn_about: "Learn more about all new features"
+          learn_about: "Tüm yeni özellikler hakkında daha fazla bilgi edinin"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
           "16_1":
@@ -324,6 +324,7 @@ tr:
     label_added_time_by: '%{age} <a href="%{authorLink}">%{author}</a> tarafından eklendi'
     label_ago: "gün önce"
     label_all: "tüm"
+    label_all_projects: "All projects"
     label_all_uppercase: "Hepsi"
     label_all_work_packages: "tüm iş paketleri"
     label_and: "ve"
@@ -433,7 +434,6 @@ tr:
     label_repository_plural: "Depolar"
     label_save_as: "Farklı Kaydet"
     label_search_columns: "Bir sütunda arama yap"
-    label_select_project: "Bir proje seçin"
     label_select_watcher: "Takip eden seç..."
     label_selected_filter_list: "Seçilen filtreler"
     label_show_attributes: "Tüm öznitelikleri göster"
@@ -503,7 +503,7 @@ tr:
     label_version_plural: "Sürümler"
     label_view_has_changed: "Bu görünüm kaydedilmemiş değişikliklere sahip. Onları kaydetmek için tıklayın."
     help_texts:
-      show_modal: "Show help text"
+      show_modal: "Yardım metnini göster"
     onboarding:
       buttons:
         skip: "Atla"
@@ -643,9 +643,12 @@ tr:
       title: "Devam etmek için parolanızı doğrulayın"
     pagination:
       no_other_page: "Geçerli tek sayfadasınız."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "Bir sonraki sayfaya ilerleyin"
-        previous: "Önceki sayfa geri dön"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Buraya konuyu girin"
@@ -974,15 +977,15 @@ tr:
       reminders:
         button_label: "Hatırlatma ayarla"
         title:
-          new: "Set a reminder"
+          new: "Bir hatırlatıcı ayarlayın"
           edit: "Hatırlatma düzenle"
         subtitle: "Seçilen zamanda bu iş paketi için bir bildirim alacaksınız."
         presets:
-          tomorrow: "Tomorrow"
-          three_days: "In 3 days"
-          week: "In a week"
-          month: "In a month"
-          custom: "At a particular date/time"
+          tomorrow: "Yarın"
+          three_days: "3 gün içinde"
+          week: "Bir hafta içinde"
+          month: "Bir ay içinde"
+          custom: "Belirli bir tarih/saatte"
       scheduling:
         is_parent: "Bu çalışma paketinin tarihleri otomatik olarak çocuklarından çıkarılır. Tarihleri ayarlamak için 'Manuel zamanlama'yı etkinleştirin."
         is_switched_from_manual_to_automatic: "Bu çalışma paketinin tarihlerinin, diğer çalışma paketleriyle olan ilişkiler nedeniyle manuelden otomatik zamanlamaya geçtikten sonra yeniden hesaplanması gerekebilir."

@@ -324,6 +324,7 @@ sk:
     label_added_time_by: 'Added by <a href="%{authorLink}">%{author}</a> at %{age}'
     label_ago: "dní späť"
     label_all: "Všetky"
+    label_all_projects: "All projects"
     label_all_uppercase: "Všetky"
     label_all_work_packages: "všetky pracovné balíčky"
     label_and: "a"
@@ -433,7 +434,6 @@ sk:
     label_repository_plural: "Repozitáre"
     label_save_as: "Uložiť ako"
     label_search_columns: "Search a column"
-    label_select_project: "Vybrať projekt"
     label_select_watcher: "Vybrať pozorovateľa ..."
     label_selected_filter_list: "Vybrané filtre"
     label_show_attributes: "Zobraziť všetky atribúty"
@@ -645,9 +645,12 @@ sk:
       title: "Ak chcete pokračovať, potvrďte svoje heslo"
     pagination:
       no_other_page: "Ste na jedinej stránke."
+      pagination_controls: "Pagination controls"
       pages:
-        next: "Vpred na nasledujúcu stranu"
-        previous: "Späť na predchádzajúcu stranu"
+        next: "Next page"
+        previous: "Previous page"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Sem zadajte predmet"

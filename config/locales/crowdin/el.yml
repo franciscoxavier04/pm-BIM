@@ -66,7 +66,6 @@ el:
         header-item-bg-hover-color: "Φόντο κεφαλίδας κατά το πέρασμα του ποντικιού"
         main-menu-bg-color: "Φόντο κύριου μενού"
         main-menu-bg-selected-background: "Κύριο μενού όταν είναι επιλεγμένο"
-        main-menu-bg-hover-background: "Κύριο μενού κατά το πέρασμα του ποντικιού"
       custom_colors: "Προσαρμοσμένα χρώματα"
       manage_colors: "Επεξεργαστείτε τις επιλογές επιλογής χρώματος"
       instructions:

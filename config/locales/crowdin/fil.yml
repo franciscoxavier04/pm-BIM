@@ -66,7 +66,6 @@ fil:
         header-item-bg-hover-color: "Header background on hover"
         main-menu-bg-color: "Main menu background"
         main-menu-bg-selected-background: "Main menu when selected"
-        main-menu-bg-hover-background: "Main menu on hover"
       custom_colors: "Naka-kustom ng mga kukay"
       manage_colors: "I-edit ang kulay ng mga napiling opsyon"
       instructions:

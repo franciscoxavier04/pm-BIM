@@ -66,7 +66,6 @@ ru:
         header-item-bg-hover-color: "Фон заголовка при наведении курсора"
         main-menu-bg-color: "Фон главного меню"
         main-menu-bg-selected-background: "Главное меню при выборе"
-        main-menu-bg-hover-background: "Главное меню при наведении"
       custom_colors: "Настроить цвета"
       manage_colors: "Изменить цвет выбранных опций"
       instructions:
