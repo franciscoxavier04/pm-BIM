@@ -37,7 +37,7 @@ module ProjectQueries
     end
 
     def persist(service_call)
-      model.save
+      model.save(validate: false)
 
       service_call
     end

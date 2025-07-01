@@ -53,12 +53,29 @@ module Components
         end
 
         def toggle_public
-          find("toggle-switch").click
+          within("toggle-switch") do
+            expect(page).to have_no_css('[data-target="toggle-switch.loadingSpinner"]')
+            click_button
+            expect(page).to have_css('[data-target="toggle-switch.loadingSpinner"]')
+            expect(page).to have_no_css('[data-target="toggle-switch.loadingSpinner"]')
+          end
         end
 
         def expect_toggle_public_disabled
           within("toggle-switch") do
             expect(find("button")).to be_disabled
+          end
+        end
+
+        def expect_toggle_public_on
+          within("toggle-switch") do
+            expect(find("button")[:"aria-pressed"]).to eq("true")
+          end
+        end
+
+        def expect_toggle_public_off
+          within("toggle-switch") do
+            expect(find("button")[:"aria-pressed"]).to eq("false")
           end
         end
       end

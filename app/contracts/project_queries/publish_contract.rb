@@ -29,5 +29,9 @@
 module ProjectQueries
   class PublishContract < BaseContract
     attribute :public
+
+    def validate_model?
+      false
+    end
   end
 end
