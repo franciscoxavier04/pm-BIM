@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -29,14 +31,19 @@
 class News::CommentsController < ApplicationController
   default_search_scope :news
   model_object Comment, scope: [News => :commented]
+
   before_action :find_object_and_scope
   before_action :authorize
 
   def create
-    @comment = Comment.new(permitted_params.comment)
-    @comment.author = User.current
-    if @news.comments << @comment
+    comment_result = Comments::CreateService
+      .new(user: current_user)
+      .call(comment_params)
+
+    if comment_result.success?
       flash[:notice] = I18n.t(:label_comment_added)
+    else
+      flash[:error] = comment_result.message
     end
 
     redirect_to news_path(@news)
@@ -45,5 +52,12 @@ class News::CommentsController < ApplicationController
   def destroy
     @comment.destroy
     redirect_to news_path(@news)
+  end
+
+  private
+
+  def comment_params
+    params.expect(comment: %i[comments])
+          .merge(commented: @news, author: current_user)
   end
 end
