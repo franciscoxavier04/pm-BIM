@@ -45,7 +45,6 @@ module WorkPackageTypes
       if result.success?
         redirect_to edit_type_projects_path(type_id: @type.id), notice: I18n.t(:notice_successful_update)
       else
-        params[:tab] = "projects"
         flash_error(result)
         load_projects
         render :edit, status: :unprocessable_entity
@@ -60,10 +59,6 @@ module WorkPackageTypes
 
     def load_projects
       @projects = Project.all
-    end
-
-    def find_type
-      @type = ::Type.find(params[:type_id])
     end
 
     def permitted_project_params
