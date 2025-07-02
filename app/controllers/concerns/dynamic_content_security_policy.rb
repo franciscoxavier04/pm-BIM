@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,18 +27,23 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-#
 
-module OpenProject::Patches::SecureHeadersTurboAwareNonce
-  def content_security_policy_script_nonce(request)
-    if request.env["HTTP_TURBO_REFERRER"].present?
-      request.env[SecureHeaders::NONCE_KEY] ||= request.env["HTTP_X_TURBO_NONCE"]
+module DynamicContentSecurityPolicy
+  ##
+  # Dynamically append sources to CSP directives
+  # This replaces the secure_headers named append functionality
+  def append_content_security_policy_directives(directives)
+    current_policy = current_content_security_policy
+    directives.each do |directive, source_values|
+      current_value = current_policy.send(directive) || current_policy.default_src
+      new_values =
+        if current_value == %w('none') # rubocop:disable Lint/PercentStringArray
+          source_values.compact.uniq
+        else
+          (current_value + source_values).compact.uniq
+        end
+
+      request.content_security_policy.send(directive, *new_values)
     end
-
-    super
   end
-end
-
-OpenProject::Patches.patch_gem_version "secure_headers", "7.1.0" do
-  SecureHeaders.singleton_class.prepend OpenProject::Patches::SecureHeadersTurboAwareNonce
 end
