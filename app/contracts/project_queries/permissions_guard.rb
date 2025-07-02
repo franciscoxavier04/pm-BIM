@@ -27,6 +27,7 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+
 module ProjectQueries
   module PermissionsGuard
     extend ActiveSupport::Concern
