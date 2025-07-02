@@ -276,6 +276,7 @@ sk:
       admin_only: "Check to make this attribute only visible to administrators. Users without admin rights will not be able to view or edit it."
       is_filter: >
         Allow the custom field to be used in a filter in work package views. Note that only with 'For all projects' selected, the custom field will show up in global views.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: Momentálne nie sú k dispozícií žiadne vlastné polia.
       no_results_content_text: Vytvoriť nové vlastné pole
@@ -918,6 +919,7 @@ sk:
         default_value: "Predvolená hodnota"
         editable: "Editovateľné"
         field_format: "Formát"
+        formula: "Formula"
         is_filter: "Použiť ako filter"
         is_for_all: "Pre všetky projekty"
         is_required: "Požadované"
@@ -1084,7 +1086,7 @@ sk:
         ongoing: "Ongoing"
       type:
         description: "Default text for description"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "Zobraziť v Roadmap štandardne"
         is_default: "Aktivované pre nové projekty štandardne"
         is_milestone: "Je medzník"
@@ -1211,6 +1213,7 @@ sk:
         inclusion: "nie je nastavená na niektorú z povolených hodnôt."
         inclusion_nested: "is not set to one of the allowed values at path '%{path}'."
         invalid: "je neplatný."
+        invalid_characters: "contains invalid characters."
         invalid_url: "nie je platnou URL adresou."
         invalid_url_scheme: "nie je podporovaný protokol (povolené: %{allowed_schemes})."
         less_than_or_equal_to: "musí byť menšie alebo rovné ako %{count}."
@@ -2708,6 +2711,7 @@ sk:
   label_select_main_menu_item: Vyberte novú položku hlavného menu
   label_required_disk_storage: "Požadované miesto na disku"
   label_send_invitation: Poslať pozvánku
+  label_calculated_value: "Calculated value"
   label_change_plural: "Zmeny"
   label_change_properties: "Zmeniť vlastnosti"
   label_change_status: "Zmeniť stav"
@@ -2843,6 +2847,7 @@ sk:
   label_follows: "nasleduje"
   label_force_user_language_to_default: "Nastavenie jazyka užívateľov ktorí majú nastavený ako predvolený nepovolený jazyk"
   label_form_configuration: "Konfigurácia formulára"
+  label_formula: "Formula"
   label_gantt_chart: "Ganttov diagram"
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Všeobecné"
@@ -3240,6 +3245,7 @@ sk:
   label_work_package_attachments: "Prílohy pracovného balíčka"
   label_work_package_category_new: "Nová kategória"
   label_work_package_category_plural: "kategórie pracovných balíčkov"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Hierarchia Pracovného balíčka"
   label_work_package_new: "Nový pracovný balíček"
   label_work_package_edit: "Úprava pracovného balíčka %{name}"

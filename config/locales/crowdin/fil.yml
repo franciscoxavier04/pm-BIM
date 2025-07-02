@@ -276,6 +276,7 @@ fil:
       admin_only: "Check to make this attribute only visible to administrators. Users without admin rights will not be able to view or edit it."
       is_filter: >
         Allow the custom field to be used in a filter in work package views. Note that only with 'For all projects' selected, the custom field will show up in global views.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: Sa kasalukuyan ay walang mga custom field.
       no_results_content_text: Gumawa ng bagong patlang na custom
@@ -902,6 +903,7 @@ fil:
         default_value: "Ang default na halaga"
         editable: "Pwedeng mabago"
         field_format: "Format"
+        formula: "Formula"
         is_filter: "Gamitin bilang tagasala"
         is_for_all: "Para sa lahat ng mga proyekto"
         is_required: "Kinakailangan"
@@ -1068,7 +1070,7 @@ fil:
         ongoing: "Ongoing"
       type:
         description: "Default text for description"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "Displayed in roadmap by default"
         is_default: "Activated for new projects by default"
         is_milestone: "Ay milestone"
@@ -1195,6 +1197,7 @@ fil:
         inclusion: "ay hindi nakatakda sa isa ng mga pinahintulutan halaga."
         inclusion_nested: "is not set to one of the allowed values at path '%{path}'."
         invalid: "ay hindi balido."
+        invalid_characters: "contains invalid characters."
         invalid_url: "ay hindi balidong URL."
         invalid_url_scheme: "ay hindi suportado ng protocol (pinahintulutan: %{allowed_schemes})."
         less_than_or_equal_to: "dapat ay hindi baba o katumbas sa %{count}."
@@ -2624,6 +2627,7 @@ fil:
   label_select_main_menu_item: Piliin ang bagong pangunahing pagpipilian aytem
   label_required_disk_storage: "Kinakailangan lalagyan ng disk"
   label_send_invitation: Magpadala ng imbitasyon
+  label_calculated_value: "Calculated value"
   label_change_plural: "Pagbabago"
   label_change_properties: "Baguhin ang mga properry"
   label_change_status: "Baguhin ang estado"
@@ -2759,6 +2763,7 @@ fil:
   label_follows: "sundan"
   label_force_user_language_to_default: "Magtakda ng linggwahe ng mga gumagamit na mayroon pinayagang linggwahe sa default"
   label_form_configuration: "Form kompigurasyon"
+  label_formula: "Formula"
   label_gantt_chart: "Gantt tsart"
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Pangkalahatan"
@@ -3156,6 +3161,7 @@ fil:
   label_work_package_attachments: "Nakakalakip na pahinag trabaho"
   label_work_package_category_new: "Bagong kategorya"
   label_work_package_category_plural: "Ang mga katergorya ng work package"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Hierarchy ng work package"
   label_work_package_new: "Bagong work package"
   label_work_package_edit: "I-edit ang work package %{name}"

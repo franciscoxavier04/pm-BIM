@@ -276,6 +276,7 @@ ar:
       admin_only: "Check to make this attribute only visible to administrators. Users without admin rights will not be able to view or edit it."
       is_filter: >
         Allow the custom field to be used in a filter in work package views. Note that only with 'For all projects' selected, the custom field will show up in global views.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: لا يوجد حالياً ملفات للزبائن.
       no_results_content_text: إنشاء ملف زبون جديد
@@ -934,6 +935,7 @@ ar:
         default_value: "القيمة الافتراضية"
         editable: "قابل للتعديل"
         field_format: "تنسيق"
+        formula: "Formula"
         is_filter: "يستخدم كعامل تصفية"
         is_for_all: "لكافة المشاريع"
         is_required: "مطلوب"
@@ -1100,7 +1102,7 @@ ar:
         ongoing: "Ongoing"
       type:
         description: "Default text for description"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "Displayed in roadmap by default"
         is_default: "Activated for new projects by default"
         is_milestone: "هو مشروع رئيسي"
@@ -1227,6 +1229,7 @@ ar:
         inclusion: "لم يتم تعيين إلى واحدة من القيم المسموح بها."
         inclusion_nested: "is not set to one of the allowed values at path '%{path}'."
         invalid: "غير صالح."
+        invalid_characters: "contains invalid characters."
         invalid_url: "is not a valid URL."
         invalid_url_scheme: "is not a supported protocol (allowed: %{allowed_schemes})."
         less_than_or_equal_to: "يجب أن يكون أقل من أو يساوي %{count}."
@@ -2792,6 +2795,7 @@ ar:
   label_select_main_menu_item: حدد عنصر القائمة الرئيسية الجديد
   label_required_disk_storage: "التخزين على القرص المطلوب"
   label_send_invitation: Send invitation
+  label_calculated_value: "Calculated value"
   label_change_plural: "التغييرات"
   label_change_properties: "تغيير الخصائص"
   label_change_status: "تغيير الحالة"
@@ -2927,6 +2931,7 @@ ar:
   label_follows: "تتبع"
   label_force_user_language_to_default: "إعطاء لغة للمستخدمين غير اللغة المسموح بها بشكل افتراضي"
   label_form_configuration: "تشكيل النموذج"
+  label_formula: "Formula"
   label_gantt_chart: "Gantt chart"
   label_gantt_chart_plural: "Gantt charts"
   label_general: "عام"
@@ -3324,6 +3329,7 @@ ar:
   label_work_package_attachments: "Work package attachments"
   label_work_package_category_new: "فئة جديدة"
   label_work_package_category_plural: "فئات مجموعة العمل"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "التسلسل الهرمي لمجموعة العمل"
   label_work_package_new: "مجموعة عمل جديدة"
   label_work_package_edit: "تعديل مجموعة العمل %{name}"

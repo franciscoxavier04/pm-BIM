@@ -276,6 +276,7 @@ eo:
       admin_only: "Check to make this attribute only visible to administrators. Users without admin rights will not be able to view or edit it."
       is_filter: >
         Allow the custom field to be used in a filter in work package views. Note that only with 'For all projects' selected, the custom field will show up in global views.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: Nun estas neniu adaptita kampo.
       no_results_content_text: Krei novan adaptitan kampon
@@ -902,6 +903,7 @@ eo:
         default_value: "Defaŭlta valoro"
         editable: "Redaktebla"
         field_format: "Dosierformo"
+        formula: "Formula"
         is_filter: "Uzita kiel filtrilo"
         is_for_all: "Por ĉiuj projektoj"
         is_required: "Deviga"
@@ -1068,7 +1070,7 @@ eo:
         ongoing: "Ongoing"
       type:
         description: "Defaŭlta teksto por priskribo"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "Displayed in roadmap by default"
         is_default: "Activated for new projects by default"
         is_milestone: "Ĝi estas mejloŝtono"
@@ -1195,6 +1197,7 @@ eo:
         inclusion: "is not set to one of the allowed values."
         inclusion_nested: "is not set to one of the allowed values at path '%{path}'."
         invalid: "Ĝi ne estas valida."
+        invalid_characters: "contains invalid characters."
         invalid_url: "Ĝi ne estas valida URL."
         invalid_url_scheme: "ne estas subtenita protokolo (permesitaj: %{allowed_schemes})."
         less_than_or_equal_to: "devas esti malpli aŭ egala al %{count}."
@@ -2624,6 +2627,7 @@ eo:
   label_select_main_menu_item: Elekti novan ĉefmenueron
   label_required_disk_storage: "Required disk storage"
   label_send_invitation: Sendi inviton
+  label_calculated_value: "Calculated value"
   label_change_plural: "Ŝanĝoj"
   label_change_properties: "Ŝanĝi ecaron"
   label_change_status: "Ŝanĝi staton"
@@ -2759,6 +2763,7 @@ eo:
   label_follows: "follows"
   label_force_user_language_to_default: "Set language of users having a non allowed language to default"
   label_form_configuration: "Formulara agordo"
+  label_formula: "Formula"
   label_gantt_chart: "Gantt chart"
   label_gantt_chart_plural: "Gantt charts"
   label_general: "General"
@@ -3156,6 +3161,7 @@ eo:
   label_work_package_attachments: "Work package attachments"
   label_work_package_category_new: "New category"
   label_work_package_category_plural: "Work package categories"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Work package hierarchy"
   label_work_package_new: "New work package"
   label_work_package_edit: "Redakti laborpakaĵon %{name}"

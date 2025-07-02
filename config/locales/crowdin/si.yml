@@ -276,6 +276,7 @@ si:
       admin_only: "Check to make this attribute only visible to administrators. Users without admin rights will not be able to view or edit it."
       is_filter: >
         Allow the custom field to be used in a filter in work package views. Note that only with 'For all projects' selected, the custom field will show up in global views.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: දැනට අභිරුචි ක්ෂේත්ර නොමැත.
       no_results_content_text: නව අභිරුචි ක්ෂේත්‍රයක් සාදන්න
@@ -902,6 +903,7 @@ si:
         default_value: "පෙරනිමි අගය"
         editable: "සංස්කරණය කළ හැකිය"
         field_format: "ආකෘතිය"
+        formula: "Formula"
         is_filter: "පෙරනයක් ලෙස භාවිතා"
         is_for_all: "සියලුම ව්යාපෘති සඳහා"
         is_required: "අවශ්‍යයි"
@@ -1068,7 +1070,7 @@ si:
         ongoing: "Ongoing"
       type:
         description: "විස්තරය සඳහා පෙරනිමි පෙළ"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "පෙරනිමියෙන් මාර්ග සිතියමෙහි දර්ශනය වේ"
         is_default: "පෙරනිමියෙන් නව ව්යාපෘති සඳහා සක්රිය"
         is_milestone: "සන්ධිස්ථානයක්"
@@ -1195,6 +1197,7 @@ si:
         inclusion: "අවසර ලත් අගයන්ගෙන් එකක් ලෙස සකසා නැත."
         inclusion_nested: "is not set to one of the allowed values at path '%{path}'."
         invalid: "අවලංගුයි."
+        invalid_characters: "contains invalid characters."
         invalid_url: "වලංගු URL එකක් නොවේ."
         invalid_url_scheme: "සහාය දක්වන ප්රොටෝකෝලය නොවේ (අවසර ඇත: %{allowed_schemes})."
         less_than_or_equal_to: "%{count}ට වඩා අඩු හෝ සමාන විය යුතුය."
@@ -2624,6 +2627,7 @@ si:
   label_select_main_menu_item: නව ප්රධාන මෙනු අයිතමය තෝරන්න
   label_required_disk_storage: "අවශ්ය තැටි ගබඩා"
   label_send_invitation: ආරාධනය යවන්න
+  label_calculated_value: "Calculated value"
   label_change_plural: "වෙනස්කම්"
   label_change_properties: "ගුණාංග වෙනස් කරන්න"
   label_change_status: "තත්ත්වය වෙනස් කරන්න"
@@ -2759,6 +2763,7 @@ si:
   label_follows: "පහත සඳහන්"
   label_force_user_language_to_default: "පෙරනිමියට අවසර නොලත් භාෂාවක් ඇති පරිශීලකයින්ගේ භාෂාව සකසන්න"
   label_form_configuration: "ආකෘති වින්යාසය"
+  label_formula: "Formula"
   label_gantt_chart: "ගැන්ට් සටහන"
   label_gantt_chart_plural: "Gantt charts"
   label_general: "පොදු"
@@ -3156,6 +3161,7 @@ si:
   label_work_package_attachments: "වැඩ පැකේජ ඇමුණුම්"
   label_work_package_category_new: "නව ප්රවර්ගය"
   label_work_package_category_plural: "වැඩ පැකේජ කාණ්ඩ"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "වැඩ පැකේජය ධූරාවලිය"
   label_work_package_new: "නව වැඩ පැකේජය"
   label_work_package_edit: "වැඩ පැකේජය සංස්කරණය කරන්න %{name}"

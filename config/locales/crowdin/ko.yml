@@ -276,6 +276,7 @@ ko:
       admin_only: "이 특성을 관리자에게만 표시하려면 선택하세요. 관리자 권한이 없는 사용자는 이 특성을 보거나 편집할 수 없습니다."
       is_filter: >
         작업 패키지 보기의 필터에서 사용자 지정 필드를 사용할 수 있도록 허용합니다. '모든 프로젝트용'을 선택한 경우에만 사용자 지정 필드가 글로벌 보기에 표시됩니다.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: 사용자 필드가 없습니다.
       no_results_content_text: 새 사용자 필드 생성
@@ -894,6 +895,7 @@ ko:
         default_value: "기본값"
         editable: "편집 가능"
         field_format: "형식"
+        formula: "Formula"
         is_filter: "필터사용"
         is_for_all: "모든 프로젝트용"
         is_required: "필수"
@@ -1060,7 +1062,7 @@ ko:
         ongoing: "진행 중"
       type:
         description: "설명의 기본 텍스트"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "기본적으로 로드맵에 표시됨"
         is_default: "새 프로젝트에 대해 기본적으로 활성화됨"
         is_milestone: "마일스톤"
@@ -1187,6 +1189,7 @@ ko:
         inclusion: "은(는) 허용되는 값이 아닙니다."
         inclusion_nested: "- 경로 '%{path}'에서 허용되는 값 중 하나로 설정되지 않았습니다."
         invalid: "은(는) 올바르지 않은 값입니다"
+        invalid_characters: "contains invalid characters."
         invalid_url: "은(는) 올바른 URL이 아닙니다."
         invalid_url_scheme: "은(는) 지원되는 프로토콜(허용: %{allowed_schemes})이 아닙니다."
         less_than_or_equal_to: "은(는) %{count} 보다 작거나 같아야 합니다"
@@ -2582,6 +2585,7 @@ ko:
   label_select_main_menu_item: 새 기본 메뉴 항목 선택
   label_required_disk_storage: "필요한 디스크 스토리지"
   label_send_invitation: 초대장 보내기
+  label_calculated_value: "Calculated value"
   label_change_plural: "변경"
   label_change_properties: "속성 변경"
   label_change_status: "상태 변경"
@@ -2717,6 +2721,7 @@ ko:
   label_follows: "팔로우"
   label_force_user_language_to_default: "허용되지 않는 언어가 있는 사용자의 언어를 기본값으로 설정"
   label_form_configuration: "양식 구성"
+  label_formula: "Formula"
   label_gantt_chart: "Gantt 차트"
   label_gantt_chart_plural: "Gantt 차트"
   label_general: "일반"
@@ -3114,6 +3119,7 @@ ko:
   label_work_package_attachments: "작업 패키지 첨부 파일"
   label_work_package_category_new: "새 카테고리"
   label_work_package_category_plural: "작업 패키지 카테고리"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "작업 패키지 계층 구조"
   label_work_package_new: "새 작업 패키지"
   label_work_package_edit: "작업 패키지 %{name} 편집"

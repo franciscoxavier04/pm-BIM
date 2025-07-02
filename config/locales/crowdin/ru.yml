@@ -275,6 +275,7 @@ ru:
       admin_only: "Установите флажок, чтобы сделать этот атрибут видимым только для администраторов. Пользователи без прав администратора не смогут просматривать или редактировать его."
       is_filter: >
         Разрешить использование пользовательского поля в фильтре в представлениях рабочих пакетов. Обратите внимание, что пользовательское поле будет отображаться в глобальных представлениях только при выборе параметра "Для всех проектов".
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: Нет настраиваемых полей.
       no_results_content_text: Создать новое настраиваемое поле
@@ -916,6 +917,7 @@ ru:
         default_value: "Значение по умолчанию"
         editable: "Доступно для правки"
         field_format: "Формат"
+        formula: "Formula"
         is_filter: "Используется в качестве фильтра"
         is_for_all: "Для всех проектов"
         is_required: "Обязательно"
@@ -1082,7 +1084,7 @@ ru:
         ongoing: "В процессе"
       type:
         description: "Текст для описания по умолчанию"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "По умолчанию отображается в дорожной карте"
         is_default: "В новых проектах активируется по умолчанию"
         is_milestone: "Это веха"
@@ -1209,6 +1211,7 @@ ru:
         inclusion: "не задано ни одно из допустимых значений."
         inclusion_nested: "не задано одно из допустимых значений в пути '%{path}'."
         invalid: "неверно."
+        invalid_characters: "contains invalid characters."
         invalid_url: "не является допустимым URL-адресом."
         invalid_url_scheme: "не является поддерживаемым протоколом (разрешены следующие: %{allowed_schemes})."
         less_than_or_equal_to: "должно быть меньше или равно %{count}."
@@ -2706,6 +2709,7 @@ ru:
   label_select_main_menu_item: Выберите новый пункт главного меню
   label_required_disk_storage: "Требуется место на диске"
   label_send_invitation: Отправить приглашение
+  label_calculated_value: "Calculated value"
   label_change_plural: "Изменения"
   label_change_properties: "Изменить свойства"
   label_change_status: "Изменить статус"
@@ -2841,6 +2845,7 @@ ru:
   label_follows: "Следует"
   label_force_user_language_to_default: "Язык, который пользователям нельзя установить как действующий по-умолчанию"
   label_form_configuration: "Настройка форм"
+  label_formula: "Formula"
   label_gantt_chart: "Диаграмма Ганта"
   label_gantt_chart_plural: "Диаграммы Ганта"
   label_general: "Общие"
@@ -3238,6 +3243,7 @@ ru:
   label_work_package_attachments: "Вложения пакета работ"
   label_work_package_category_new: "Новая категория"
   label_work_package_category_plural: "Категории пакета работ"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Иерархия пакета работ"
   label_work_package_new: "Новый пакет работ"
   label_work_package_edit: "Редактирование пакета работ %{name}"

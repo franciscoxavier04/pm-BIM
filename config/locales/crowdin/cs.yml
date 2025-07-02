@@ -276,6 +276,7 @@ cs:
       admin_only: "Check to make this attribute only visible to administrators. Users without admin rights will not be able to view or edit it."
       is_filter: >
         Povolit použití vlastního pole ve filtru v zobrazení pracovního balíčku. Všimněte si, že pouze s vybraným 'pro všechny projekty' se vlastní pole zobrazí v globálních zobrazeních.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: V současné době nejsou žádná vlastní pole.
       no_results_content_text: Vytvořit nové vlastní pole
@@ -918,6 +919,7 @@ cs:
         default_value: "Výchozí hodnota"
         editable: "Upravitelné"
         field_format: "Formát"
+        formula: "Formula"
         is_filter: "Používá jako filtr"
         is_for_all: "Pro všechny projekty"
         is_required: "Požadováno"
@@ -1084,7 +1086,7 @@ cs:
         ongoing: "Probíhající"
       type:
         description: "Výchozí text pro popis"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "Ve výchozím nastavení zobrazeno v plánu"
         is_default: "Aktivováno pro nové projekty ve výchozím nastavení"
         is_milestone: "Je milník"
@@ -1211,6 +1213,7 @@ cs:
         inclusion: "není nastavena na jednu z povolených hodnot."
         inclusion_nested: "není nastavena na jednu z povolených hodnot na cestě '%{path}'."
         invalid: "je neplatné."
+        invalid_characters: "contains invalid characters."
         invalid_url: "není platná adresa URL."
         invalid_url_scheme: "není podporovaný protokol (povoleny: %{allowed_schemes})."
         less_than_or_equal_to: "musí být menší než nebo rovno %{count}."
@@ -2708,6 +2711,7 @@ cs:
   label_select_main_menu_item: Vyberte novou hlavní položku nabídky
   label_required_disk_storage: "Požadované úložiště disku"
   label_send_invitation: Odeslat pozvánku
+  label_calculated_value: "Calculated value"
   label_change_plural: "Změny"
   label_change_properties: "Změnit vlastnosti"
   label_change_status: "Změnit stav"
@@ -2843,6 +2847,7 @@ cs:
   label_follows: "sleduje"
   label_force_user_language_to_default: "Nastavte jazyk uživatelů, kteří nemají povolený jazyk na výchozí"
   label_form_configuration: "Konfigurace formuláře"
+  label_formula: "Formula"
   label_gantt_chart: "Ganttův diagram"
   label_gantt_chart_plural: "Ganttovy diagramy"
   label_general: "Obecné"
@@ -3240,6 +3245,7 @@ cs:
   label_work_package_attachments: "Přílohy pracovních balíčků"
   label_work_package_category_new: "Nová kategorie"
   label_work_package_category_plural: "Kategorie pracovních balíčků"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Hierarchie pracovních balíčků"
   label_work_package_new: "Nový pracovní balíček"
   label_work_package_edit: "Upravit pracovní balíček %{name}"

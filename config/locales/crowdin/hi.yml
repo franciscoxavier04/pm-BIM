@@ -276,6 +276,7 @@ hi:
       admin_only: "Check to make this attribute only visible to administrators. Users without admin rights will not be able to view or edit it."
       is_filter: >
         Allow the custom field to be used in a filter in work package views. Note that only with 'For all projects' selected, the custom field will show up in global views.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: There are currently no custom fields.
       no_results_content_text: Create a new custom field
@@ -901,6 +902,7 @@ hi:
         default_value: "डिफ़ॉल्ट मान"
         editable: "संपादनीय"
         field_format: "Format"
+        formula: "Formula"
         is_filter: "फिल्टर रूप में इस्तेमाल"
         is_for_all: "सभी परियोजनाओं के लिए"
         is_required: "अनिवार्य"
@@ -1067,7 +1069,7 @@ hi:
         ongoing: "Ongoing"
       type:
         description: "Default text for description"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "डिफ़ॉल्ट रूप से रोडमैप में प्रदर्शित"
         is_default: "डिफ़ॉल्ट रूप से नए प्रोजेक्ट्स के लिए सक्रिय"
         is_milestone: "Is milestone"
@@ -1194,6 +1196,7 @@ hi:
         inclusion: "is not set to one of the allowed values."
         inclusion_nested: "is not set to one of the allowed values at path '%{path}'."
         invalid: "is invalid."
+        invalid_characters: "contains invalid characters."
         invalid_url: "is not a valid URL."
         invalid_url_scheme: "is not a supported protocol (allowed: %{allowed_schemes})."
         less_than_or_equal_to: "must be less than or equal to %{count}."
@@ -2623,6 +2626,7 @@ hi:
   label_select_main_menu_item: नए मुख्य मेनू आइटम का चयन करें
   label_required_disk_storage: "Required disk storage"
   label_send_invitation: आमंत्रण भेजें
+  label_calculated_value: "Calculated value"
   label_change_plural: "परिवर्तन"
   label_change_properties: "गुण परिवर्तित करें"
   label_change_status: "स्थिति बदलें"
@@ -2758,6 +2762,7 @@ hi:
   label_follows: "फॉलो करें"
   label_force_user_language_to_default: "डिफ़ॉल्ट करने के लिए एक गैर अनुमति भाषा वाले उपयोगकर्ताओं की भाषा सेट करें"
   label_form_configuration: "Form configuration"
+  label_formula: "Formula"
   label_gantt_chart: "गैंट चार्ट"
   label_gantt_chart_plural: "Gantt charts"
   label_general: "सामान्य"
@@ -3155,6 +3160,7 @@ hi:
   label_work_package_attachments: "Work package attachments"
   label_work_package_category_new: "नई श्रेणी"
   label_work_package_category_plural: "कार्य पैकेज श्रेणियां"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Work package hierarchy"
   label_work_package_new: "नया कार्य पैकेज"
   label_work_package_edit: "कार्य पैकेज संपादित करें %{name}"

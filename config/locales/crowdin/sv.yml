@@ -276,6 +276,7 @@ sv:
       admin_only: "Check to make this attribute only visible to administrators. Users without admin rights will not be able to view or edit it."
       is_filter: >
         Allow the custom field to be used in a filter in work package views. Note that only with 'For all projects' selected, the custom field will show up in global views.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: Det finns för närvarande inga anpassade fält.
       no_results_content_text: Skapa ett nytt anpassat fält
@@ -902,6 +903,7 @@ sv:
         default_value: "Standardvärde"
         editable: "Redigerbar"
         field_format: "Format"
+        formula: "Formula"
         is_filter: "Används som ett filter"
         is_for_all: "För alla projekt"
         is_required: "Krävs"
@@ -1068,7 +1070,7 @@ sv:
         ongoing: "Ongoing"
       type:
         description: "Standardtext för beskrivning"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "Visas som standard i roadmap"
         is_default: "Aktiverad som standard för nya projekt"
         is_milestone: "Är milstolpe"
@@ -1195,6 +1197,7 @@ sv:
         inclusion: "inte är inställd på ett av de tillåtna värdena."
         inclusion_nested: "is not set to one of the allowed values at path '%{path}'."
         invalid: "är ogiltig."
+        invalid_characters: "contains invalid characters."
         invalid_url: "är inte ett giltigt URL."
         invalid_url_scheme: "är inte ett tillåtet protokoll (tillåtna: %{allowed_schemes})."
         less_than_or_equal_to: "måste vara mindre än eller lika med %{count}."
@@ -2624,6 +2627,7 @@ sv:
   label_select_main_menu_item: Välj ny huvudmenypost
   label_required_disk_storage: "Erfordrat lagringsutrymme"
   label_send_invitation: Skicka inbjudan
+  label_calculated_value: "Calculated value"
   label_change_plural: "Förändringar"
   label_change_properties: "Ändra egenskaper"
   label_change_status: "Ändra status"
@@ -2759,6 +2763,7 @@ sv:
   label_follows: "följer"
   label_force_user_language_to_default: "Välj standardspråk för användare som har ett icke tillåtet språk"
   label_form_configuration: "Ställ in formulär"
+  label_formula: "Formula"
   label_gantt_chart: "Gantt-schema"
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Allmänt"
@@ -3156,6 +3161,7 @@ sv:
   label_work_package_attachments: "Bilagor till arbetspaket"
   label_work_package_category_new: "Ny kategori"
   label_work_package_category_plural: "Arbetspaketkategorier"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Arbetspaketshierarki"
   label_work_package_new: "Nytt arbetspaket"
   label_work_package_edit: "Redigera arbetspaket %{name}"

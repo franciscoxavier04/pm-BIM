@@ -273,6 +273,7 @@ nl:
       admin_only: "Vink aan om dit kenmerk alleen zichtbaar te maken voor beheerders. Gebruikers zonder beheerdersrechten kunnen dit kenmerk niet bekijken of bewerken."
       is_filter: >
         Allow the custom field to be used in a filter in work package views. Note that only with 'For all projects' selected, the custom field will show up in global views.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: Momenteel zijn er geen aangepaste velden.
       no_results_content_text: Maak een nieuw aangepast veld
@@ -898,6 +899,7 @@ nl:
         default_value: "Standaardwaarde"
         editable: "Bewerkbaar"
         field_format: "Formaat"
+        formula: "Formula"
         is_filter: "Als een filter gebruikt"
         is_for_all: "Voor alle projecten"
         is_required: "Vereist"
@@ -1064,7 +1066,7 @@ nl:
         ongoing: "Lopend"
       type:
         description: "Standaard tekst voor beschrijving"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "Standaard weergegeven in roadmap"
         is_default: "Standaart ingesteld voor nieuwe projecten"
         is_milestone: "Is mijlpaal"
@@ -1191,6 +1193,7 @@ nl:
         inclusion: "is niet ingesteld op één van de toegestane waarden."
         inclusion_nested: "is niet ingesteld op een van de toegestane waarden op pad '%{path}'."
         invalid: "is ongeldig."
+        invalid_characters: "contains invalid characters."
         invalid_url: "is geen geldige URL."
         invalid_url_scheme: "is geen ondersteunde protocol (toegestaan: %{allowed_schemes})."
         less_than_or_equal_to: "moet kleiner zijn dan of gelijk aan %{count}."
@@ -2620,6 +2623,7 @@ nl:
   label_select_main_menu_item: Selecteer nieuwe hoofdmenu-item
   label_required_disk_storage: "Vereiste schijfruimte"
   label_send_invitation: Verstuur uitnodiging
+  label_calculated_value: "Calculated value"
   label_change_plural: "Wijzigingen"
   label_change_properties: "Eigenschappen wijzigen"
   label_change_status: "Status wijzigen"
@@ -2755,6 +2759,7 @@ nl:
   label_follows: "volgt"
   label_force_user_language_to_default: "Taal van gebruikers met een niet toegestane taal op standaard instellen"
   label_form_configuration: "Formulierconfiguratie"
+  label_formula: "Formula"
   label_gantt_chart: "Gantt-grafiek"
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Algemeen"
@@ -3152,6 +3157,7 @@ nl:
   label_work_package_attachments: "Werkpakket bijlagen"
   label_work_package_category_new: "Nieuwe categorie"
   label_work_package_category_plural: "Werkpakket categorieën"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Werkpakket hiërarchie"
   label_work_package_new: "Nieuw werkpakket"
   label_work_package_edit: "Bewerk werkpakket %{name}"

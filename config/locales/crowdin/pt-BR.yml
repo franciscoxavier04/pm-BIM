@@ -275,6 +275,7 @@ pt-BR:
       admin_only: "Marque esta opção para tornar este atributo visível apenas para os administradores. Os usuários sem permissões de administrador não poderão vê-lo ou editá-lo."
       is_filter: >
         Permita que o campo personalizado seja utilizado num filtro nas visualizações do pacote de trabalho. Note que apenas com a opção "Para todos os projetos" selecionada, o campo personalizado irá aparecer nas visualizações globais.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: Atualmente, não há campos personalizados.
       no_results_content_text: Criar um novo campo personalizado
@@ -899,6 +900,7 @@ pt-BR:
         default_value: "Valor padrão"
         editable: "Editável"
         field_format: "Formato"
+        formula: "Formula"
         is_filter: "Usado como filtro"
         is_for_all: "Para todos os projetos"
         is_required: "Obrigatório"
@@ -1065,7 +1067,7 @@ pt-BR:
         ongoing: "Em andamento"
       type:
         description: "Texto padrão para descrição"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "Exibido no planejamento como padrão"
         is_default: "Ativado para novos projetos por padrão"
         is_milestone: "É marco"
@@ -1192,6 +1194,7 @@ pt-BR:
         inclusion: "Não está definido como um dos valores permitidos."
         inclusion_nested: "não foi definido para um dos valores permitidos no caminho '%{path}'. "
         invalid: "é inválido."
+        invalid_characters: "contains invalid characters."
         invalid_url: "não é um URL válido."
         invalid_url_scheme: "não é um protocolo suportado (permitidos: %{allowed_schemes})."
         less_than_or_equal_to: "deve ser menor ou igual a %{count}."
@@ -2621,6 +2624,7 @@ pt-BR:
   label_select_main_menu_item: Selecione novo item do menu principal
   label_required_disk_storage: "Armazenamento em disco necessário"
   label_send_invitation: Enviar Convite
+  label_calculated_value: "Calculated value"
   label_change_plural: "Mudanças"
   label_change_properties: "Alterar propriedades"
   label_change_status: "Alterar situação"
@@ -2756,6 +2760,7 @@ pt-BR:
   label_follows: "Segue"
   label_force_user_language_to_default: "Configurar o idioma de usuário que tem uma linguagem não permitida como padrão"
   label_form_configuration: "Configuração do formulário"
+  label_formula: "Formula"
   label_gantt_chart: "Gráfico de Gantt"
   label_gantt_chart_plural: "Gráficos de Gantt"
   label_general: "Geral"
@@ -3153,6 +3158,7 @@ pt-BR:
   label_work_package_attachments: "Anexos de pacote de trabalho"
   label_work_package_category_new: "Nova categoria"
   label_work_package_category_plural: "Categorias de pacote de trabalho"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Hierarquia de pacotes de trabalho"
   label_work_package_new: "Novo pacote de trabalho"
   label_work_package_edit: "Editar pacote de trabalho %{name}"

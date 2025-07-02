@@ -276,6 +276,7 @@ fi:
       admin_only: "Check to make this attribute only visible to administrators. Users without admin rights will not be able to view or edit it."
       is_filter: >
         Allow the custom field to be used in a filter in work package views. Note that only with 'For all projects' selected, the custom field will show up in global views.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: Tällä hetkellä ei ole mukautettuja kenttiä.
       no_results_content_text: Luo uusi mukautettu kenttä
@@ -902,6 +903,7 @@ fi:
         default_value: "Oletusarvo"
         editable: "Muokattava"
         field_format: "Kentän tyyppi"
+        formula: "Formula"
         is_filter: "Käytetään suodattimena"
         is_for_all: "Kaikille projekteille"
         is_required: "Pakollinen tieto"
@@ -1068,7 +1070,7 @@ fi:
         ongoing: "Ongoing"
       type:
         description: "Default text for description"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "Näytä oletuksena tiekartalla"
         is_default: "Activated for new projects by default"
         is_milestone: "On virstanpylväs"
@@ -1195,6 +1197,7 @@ fi:
         inclusion: "ei löydy listauksesta."
         inclusion_nested: "is not set to one of the allowed values at path '%{path}'."
         invalid: "ei kelpaa."
+        invalid_characters: "contains invalid characters."
         invalid_url: "ei ole kelvollinen URL."
         invalid_url_scheme: "is not a supported protocol (allowed: %{allowed_schemes})."
         less_than_or_equal_to: "täytyy olla pienempi tai yhtä suuri kuin %{count}."
@@ -2624,6 +2627,7 @@ fi:
   label_select_main_menu_item: Valitse uusi valikkovaihtoehto päävalikkoon
   label_required_disk_storage: "Tarvittava levytila"
   label_send_invitation: Lähetä kutsu
+  label_calculated_value: "Calculated value"
   label_change_plural: "Muutokset"
   label_change_properties: "Vaihda asetuksia"
   label_change_status: "Muuta tila"
@@ -2759,6 +2763,7 @@ fi:
   label_follows: "seuraa"
   label_force_user_language_to_default: "Määritä oletuskieli jos käytössä on kieli joka ei ole sallittu"
   label_form_configuration: "Lomakkeen muokkaus"
+  label_formula: "Formula"
   label_gantt_chart: "Gantt-kaavio"
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Yleinen"
@@ -3156,6 +3161,7 @@ fi:
   label_work_package_attachments: "Work package attachments"
   label_work_package_category_new: "Uusi luokka"
   label_work_package_category_plural: "Kategoriat"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Tehtävähierarkia"
   label_work_package_new: "Uusi tehtävä"
   label_work_package_edit: "Muokkaa tehtävää %{name}"

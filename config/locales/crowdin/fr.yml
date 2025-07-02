@@ -276,6 +276,7 @@ fr:
       admin_only: "Cocher pour rendre cet attribut visible uniquement par les administrateurs. Les utilisateurs sans droits d'administration ne seront pas en mesure de le voir ou de l'éditer."
       is_filter: >
         Permet au champ personnalisé d'être utilisé dans un filtre dans les vues des lots de travaux. Notez que le champ personnalisé n'apparaîtra dans les vues globales que si l'option "Pour tous les projets" est sélectionnée.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: Il n'y a actuellement aucun champ personnalisé.
       no_results_content_text: Créer un nouveau champ personnalisé
@@ -900,6 +901,7 @@ fr:
         default_value: "Valeur par défaut"
         editable: "Modifiable"
         field_format: "Format"
+        formula: "Formula"
         is_filter: "Utilisé comme filtre"
         is_for_all: "Pour tous les projets"
         is_required: "Obligatoire"
@@ -1066,7 +1068,7 @@ fr:
         ongoing: "En cours"
       type:
         description: "Texte par défaut pour la description"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "Affiché par défaut dans la feuille de route"
         is_default: "Activé par défaut pour les nouveaux projets"
         is_milestone: "Est un jalon"
@@ -1193,6 +1195,7 @@ fr:
         inclusion: "ne correspond à aucune des valeurs autorisées."
         inclusion_nested: "ne correspond à aucune des valeurs autorisées dans le chemin « %{path} »."
         invalid: "est invalide."
+        invalid_characters: "contains invalid characters."
         invalid_url: "n’est pas une URL valide."
         invalid_url_scheme: "n’est pas un protocole pris en charge (autorisés : %{allowed_schemes})."
         less_than_or_equal_to: "doit être inférieur ou égal à %{count}."
@@ -2622,6 +2625,7 @@ fr:
   label_select_main_menu_item: Sélectionner nouvel élément de menu principal
   label_required_disk_storage: "Espace disque requis"
   label_send_invitation: Envoyer une invitation
+  label_calculated_value: "Calculated value"
   label_change_plural: "Changements"
   label_change_properties: "Modifier les propriétés"
   label_change_status: "Changer le statut"
@@ -2757,6 +2761,7 @@ fr:
   label_follows: "suivi"
   label_force_user_language_to_default: "Pour cet utilisateur, revenir au langage par defaut"
   label_form_configuration: "Configuration du formulaire"
+  label_formula: "Formula"
   label_gantt_chart: "Diagramme de Gantt"
   label_gantt_chart_plural: "Diagrammes de Gantt"
   label_general: "Général"
@@ -3154,6 +3159,7 @@ fr:
   label_work_package_attachments: "Pièces jointes du lot de travaux"
   label_work_package_category_new: "Nouvelle catégorie"
   label_work_package_category_plural: "Catégories de Lots de Travaux"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Hiérarchie du lot de travaux"
   label_work_package_new: "Nouveau Lot de Travaux"
   label_work_package_edit: "Éditer le lot de travaux %{name}"

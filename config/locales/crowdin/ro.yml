@@ -276,6 +276,7 @@ ro:
       admin_only: "Bifează pentru a face acest atribut vizibil doar administratorilor. Utilizatorii fără drepturi de administrator nu vor putea vedea sau edita acest atribut"
       is_filter: >
         Permite ca, câmpul personalizat să fie utilizat într-un filtru în vizualizările pachetului de lucru. Ține cont că numai cu 'Pentru toate proiectele' selectate, câmpul personalizat va apărea în vizualizări globale.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: În acest moment nu există câmpuri personalizate.
       no_results_content_text: Creează câmp personalizat nou
@@ -910,6 +911,7 @@ ro:
         default_value: "Valoare implicită"
         editable: "Editabil"
         field_format: "Format"
+        formula: "Formula"
         is_filter: "Folosit ca filtru"
         is_for_all: "Pentru toate proiectele"
         is_required: "Obligatoriu"
@@ -1076,7 +1078,7 @@ ro:
         ongoing: "Ongoing"
       type:
         description: "Text implicit pentru descriere"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "Afișat în mod implicit în foaia de parcurs"
         is_default: "Activat în mod implicit pentru proiectele noi"
         is_milestone: "Este reper de etapă"
@@ -1203,6 +1205,7 @@ ro:
         inclusion: "nu este setată la una din valorile permise."
         inclusion_nested: "nu este setată la una dintre valorile permise la calea '%{path}'."
         invalid: "este invalid."
+        invalid_characters: "contains invalid characters."
         invalid_url: "nu este o adresa URL validă."
         invalid_url_scheme: "nu este un protocol permis (allowed: %{allowed_schemes})."
         less_than_or_equal_to: "trebuie să fie mai mic sau egal cu %{count}."
@@ -2666,6 +2669,7 @@ ro:
   label_select_main_menu_item: Selectare meniu wiki nou
   label_required_disk_storage: "Spațiu pe disc necesar"
   label_send_invitation: Trimite invitație
+  label_calculated_value: "Calculated value"
   label_change_plural: "Modificări"
   label_change_properties: "Modificare proprietăţi"
   label_change_status: "Modificare stare"
@@ -2801,6 +2805,7 @@ ro:
   label_follows: "urmează după"
   label_force_user_language_to_default: "Setare limbă pentru utilizatorii care au o limbă implicită nepermisă"
   label_form_configuration: "Configurare formular"
+  label_formula: "Formula"
   label_gantt_chart: "Grafic Gantt"
   label_gantt_chart_plural: "Diagrame Gantt"
   label_general: "General"
@@ -3198,6 +3203,7 @@ ro:
   label_work_package_attachments: "Anexe la pachetul de lucru"
   label_work_package_category_new: "Categorie nouă"
   label_work_package_category_plural: "Categorii pachete de lucru"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Ierarhia pachetelor de lucru"
   label_work_package_new: "Pachet de lucru nou"
   label_work_package_edit: "Editare pachet de lucru %{name}"

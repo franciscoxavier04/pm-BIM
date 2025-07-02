@@ -272,6 +272,7 @@ el:
       admin_only: "Check to make this attribute only visible to administrators. Users without admin rights will not be able to view or edit it."
       is_filter: >
         Allow the custom field to be used in a filter in work package views. Note that only with 'For all projects' selected, the custom field will show up in global views.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: Προς το παρόν δεν υπάρχουν προσαρμοσμένα πεδία.
       no_results_content_text: Δημιουργία νέου προσαρμοσμένου πεδίου
@@ -898,6 +899,7 @@ el:
         default_value: "Προεπιλεγμένη τιμή"
         editable: "Επεξεργάσιμο"
         field_format: "Μορφοποίηση"
+        formula: "Formula"
         is_filter: "Χρησιμοποιήθηκε ως φίλτρο"
         is_for_all: "Για όλα τα έργα"
         is_required: "Απαιτείται"
@@ -1064,7 +1066,7 @@ el:
         ongoing: "Ongoing"
       type:
         description: "Προεπιλεγμένο κείμενο για την περιγραφή"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "Εμφάνιση στο χάρτη πορείας από προεπιλογή"
         is_default: "Ενεργοποιημένα για καινούργια έργα από προεπιλογή"
         is_milestone: "Είναι ορόσημο"
@@ -1191,6 +1193,7 @@ el:
         inclusion: "δεν έχει οριστεί σε μια από τις επιτρεπόμενες τιμές."
         inclusion_nested: "is not set to one of the allowed values at path '%{path}'."
         invalid: "δεν είναι έγκυρο."
+        invalid_characters: "contains invalid characters."
         invalid_url: "δεν είναι μια έγκυρη διεύθυνση URL."
         invalid_url_scheme: "δεν είναι υποστηριζόμενο πρωτόκολλο (επιτρεπόμενα: %{allowed_schemes})."
         less_than_or_equal_to: "πρέπει να είναι μικρότερο ή ίσο με %{count}."
@@ -2620,6 +2623,7 @@ el:
   label_select_main_menu_item: Επιλέξτε νέο αντικείμενο κύριου μενού
   label_required_disk_storage: "Απαιτούμενος χώρος στον δίσκο"
   label_send_invitation: Αποστολή πρόσκλησης
+  label_calculated_value: "Calculated value"
   label_change_plural: "Αλλαγές"
   label_change_properties: "Αλλαγή ιδιοτήτων"
   label_change_status: "Αλλαγή κατάστασης"
@@ -2755,6 +2759,7 @@ el:
   label_follows: "ακολουθεί"
   label_force_user_language_to_default: "Ορίστε την γλώσσα των χρηστών που έχουν μια μη επιτρεπόμενη γλώσσα ως προεπιλογή"
   label_form_configuration: "Διαμόρφωση φόρμας"
+  label_formula: "Formula"
   label_gantt_chart: "Διάγραμμα Gantt"
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Γενικά"
@@ -3152,6 +3157,7 @@ el:
   label_work_package_attachments: "Συνημμένα πακέτου εργασίας"
   label_work_package_category_new: "Νέα κατηγορία"
   label_work_package_category_plural: "Κατηγορίες πακέτου εργασίας"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Ιεραρχία πακέτου εργασίας"
   label_work_package_new: "Νέο πακέτο εργασίας"
   label_work_package_edit: "Επεξεργασία του πακέτου εργασίας %{name}"

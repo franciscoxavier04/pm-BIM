@@ -167,7 +167,7 @@ fa:
   label_meeting_series: "Meeting series"
   label_version: "نسخه"
   label_time_zone: "منطقه زمانی"
-  label_start_date: "Start date"
+  label_start_date: "تاریخ شروع"
   meeting:
     participants:
       template: "These participants will be invited automatically to all future meetings as they are created."
@@ -291,7 +291,7 @@ fa:
         one: "Every day"
         other: "Every %{count} days"
       x_weekly:
-        one: "Every week"
+        one: "هر هفته"
         other: "Every %{count} weeks"
       every_weekday: "Every %{day_of_the_week}"
       working_days: "Every working day"

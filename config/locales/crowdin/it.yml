@@ -274,6 +274,7 @@ it:
       admin_only: "Spunta la casella per rendere questo attributo visibile solo agli amministratori. Gli utenti senza diritti di amministratore non saranno in grado di visualizzarlo o modificarlo."
       is_filter: >
         Consenti l'utilizzo del campo personalizzato in un filtro nelle visualizzazioni delle macro-attività. Tieni presente che solo con l'opzione "Per tutti i progetti" selezionata, il campo personalizzato verrà visualizzato nelle visualizzazioni globali.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: Al momento non esistono campi personalizzati.
       no_results_content_text: Crea un nuovo campo personalizzato
@@ -899,6 +900,7 @@ it:
         default_value: "Valore predefinito"
         editable: "Modificabile"
         field_format: "Formato"
+        formula: "Formula"
         is_filter: "Usato come filtro"
         is_for_all: "Per tutti i progetti"
         is_required: "Richiesto"
@@ -1065,7 +1067,7 @@ it:
         ongoing: "In Corso"
       type:
         description: "Testo predefinito per la descrizione"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "Visualizzato nella tabella di marcia per impostazione predefinita"
         is_default: "Attivato nei nuovi progetti per impostazione predefinita"
         is_milestone: "È un traguardo"
@@ -1192,6 +1194,7 @@ it:
         inclusion: "non è impostata su uno dei valori consentiti."
         inclusion_nested: "non è impostato su uno dei valori consentiti al percorso '%{path}'."
         invalid: "non è valido."
+        invalid_characters: "contains invalid characters."
         invalid_url: "non è un URL valido."
         invalid_url_scheme: "non è un protocollo supportato (ammessi: %{allowed_schemes})."
         less_than_or_equal_to: "deve essere inferiore o uguale a %{count}."
@@ -2621,6 +2624,7 @@ it:
   label_select_main_menu_item: Seleziona una nuova voce del menu principale
   label_required_disk_storage: "Spazio disco richiesto"
   label_send_invitation: Invia invito
+  label_calculated_value: "Calculated value"
   label_change_plural: "Modifiche"
   label_change_properties: "Cambia proprietà"
   label_change_status: "Cambia stato"
@@ -2756,6 +2760,7 @@ it:
   label_follows: "segue"
   label_force_user_language_to_default: "Imposta la lingua degli utenti che non hanno una lingua consentita a quella predefinita"
   label_form_configuration: "Configurazione del modulo"
+  label_formula: "Formula"
   label_gantt_chart: "Diagramma di Gantt"
   label_gantt_chart_plural: "Diagrammi di Gantt"
   label_general: "Generale"
@@ -3153,6 +3158,7 @@ it:
   label_work_package_attachments: "Allegati macro-attività"
   label_work_package_category_new: "Nuova categoria"
   label_work_package_category_plural: "Categorie della macro-attività"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Gerarchia Macro-attività"
   label_work_package_new: "Nuova macro-attività"
   label_work_package_edit: "Modifica la macro-attività %{name}"

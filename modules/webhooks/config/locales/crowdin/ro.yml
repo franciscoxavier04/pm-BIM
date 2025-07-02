@@ -31,6 +31,8 @@ ro:
       events:
         created: "Creat pe"
         updated: "Actualizat"
+        comment: "Comment"
+        internal_comment: "Internal comment"
       explanation:
         text: >
           La apariția unui eveniment, cum ar fi crearea unui pachet de lucru sau o actualizare a unui proiect, OpenProject va trimite o cerere POST către punctele finale web configurate. De multe ori, evenimentul este trimis după ce a trecut %{link}.

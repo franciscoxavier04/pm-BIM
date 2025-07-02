@@ -276,6 +276,7 @@ vi:
       admin_only: "Tích để chỉ hiển thị thuộc tính này cho người quản trị. Người dùng không có quyền quản trị sẽ không thể xem hoặc chỉnh sửa thuộc tính này."
       is_filter: >
         Cho phép trường tùy chỉnh được sử dụng trong bộ lọc trong chế độ xem gói công việc. Lưu ý rằng chỉ khi 'Cho tất cả các dự án' được chọn, trường tùy chỉnh mới xuất hiện trong các chế độ xem toàn cầu.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: Không có hiện tại không có trường tùy chỉnh.
       no_results_content_text: Tạo trường tùy chỉnh mới
@@ -894,6 +895,7 @@ vi:
         default_value: "Giá trị mặc định"
         editable: "Có thể chỉnh sửa"
         field_format: "Định dạng"
+        formula: "Formula"
         is_filter: "Dùng như bộ lọc"
         is_for_all: "Cho tất cả các dự án"
         is_required: "Bắt buộc"
@@ -1060,7 +1062,7 @@ vi:
         ongoing: "Đang diễn ra"
       type:
         description: "Văn bản mặc định cho mô tả"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "Hiển thị trong lộ trình mặc định"
         is_default: "Kích hoạt cho các dự án mới theo mặc định"
         is_milestone: "Là cột mốc"
@@ -1187,6 +1189,7 @@ vi:
         inclusion: "không nằm trong các giá trị cho phép"
         inclusion_nested: "không được thiết lập thành một trong các giá trị được phép tại đường dẫn '%{path}'."
         invalid: "không hợp lệ"
+        invalid_characters: "contains invalid characters."
         invalid_url: "không phải là một URL hợp lệ."
         invalid_url_scheme: "không phải là giao thức được hỗ trợ  (được phép: %{allowed_schemes})."
         less_than_or_equal_to: "phải nhỏ hơn hoặc bằng %{count}"
@@ -2582,6 +2585,7 @@ vi:
   label_select_main_menu_item: Chọn mục trình đơn chính mới
   label_required_disk_storage: "Ổ đĩa lưu trữ bắt buộc"
   label_send_invitation: Gửi lời mời
+  label_calculated_value: "Calculated value"
   label_change_plural: "Thay đổi"
   label_change_properties: "Thay đổi những thuộc tính"
   label_change_status: "Đổi trạng thái"
@@ -2717,6 +2721,7 @@ vi:
   label_follows: "theo dõi"
   label_force_user_language_to_default: "Có một ngôn ngữ không được cho phép để mặc định trong thiết lập ngôn ngữ cho người sử dụng"
   label_form_configuration: "Mẫu cấu hình"
+  label_formula: "Formula"
   label_gantt_chart: "Biểu đồ Gantt"
   label_gantt_chart_plural: "Biểu đồ Gantt"
   label_general: "Tổng quan"
@@ -3114,6 +3119,7 @@ vi:
   label_work_package_attachments: "Phần đính kèm công việc"
   label_work_package_category_new: "Danh mục mới"
   label_work_package_category_plural: "Các thể loại work package"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Phân cấp công việc"
   label_work_package_new: "Work package mới"
   label_work_package_edit: "Chỉnh sửa work package %{name}"
