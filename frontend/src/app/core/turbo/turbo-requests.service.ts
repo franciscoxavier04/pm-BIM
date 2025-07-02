@@ -91,8 +91,9 @@ export class TurboRequestsService {
   ):Promise<{ html:string, headers:Headers }> {
     const formData = new FormData(form);
     const requestParams = params ? `?${params.toString()}` : '';
+    const requestUrlWithParams = `${url}${requestParams}`;
     return this.request(
-      `${url}${requestParams}`,
+      requestUrlWithParams,
       {
         method: form.method,
         body: formData,
@@ -101,11 +102,14 @@ export class TurboRequestsService {
         },
       },
       true,
-      requestId,
+      requestId || requestUrlWithParams,
     );
   }
 
-  public requestStream(url:string, requestId?:string):Promise<{ html:string, headers:Headers }> {
+  public requestStream(
+    url:string,
+    requestId = url,
+  ):Promise<{ html:string, headers:Headers }> {
     return this.request(
       url,
       {
