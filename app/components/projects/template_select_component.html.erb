@@ -52,12 +52,12 @@ See COPYRIGHT and LICENSE files for more details.
         render_inline_form(f) do |form|
           form.project_autocompleter(
             name: :template_id,
-            label: I18n.t("js.project.use_template"),
+            label: I18n.t("create_project.template_label"),
             autocomplete_options: {
               focusDirectly: false,
               dropdownPosition: "bottom",
               inputValue: template_id_value,
-              placeholder: I18n.t("js.project.no_template_selected"),
+              placeholder: I18n.t("label_none_parentheses"),
               filters: [
                 { name: "user_action", operator: "=", values: ["projects/copy"] },
                 { name: "templated", operator: "=", values: ["t"] }

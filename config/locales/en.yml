@@ -2048,6 +2048,7 @@ en:
       dependencies_label: 'Copy from project'
 
   create_project:
+    template_label: "Use template"
     copy_options:
       dependencies_label: 'Copy from template'
 
