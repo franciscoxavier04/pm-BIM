@@ -76,6 +76,8 @@ class WorkPackage < ApplicationRecord
   # that retrieves the meetings, hence we need to remove the order.
   has_many :meetings, -> { unscope(:order).distinct }, through: :meeting_agenda_items, source: :meeting
 
+  has_many :activities, class_name: "WorkPackageActivity" # rubocop:disable Rails/HasManyOrHasOneDependent
+
   scope :recently_updated, -> {
     order(updated_at: :desc)
   }
@@ -269,7 +271,7 @@ class WorkPackage < ApplicationRecord
   end
 
   def to_s
-    "#{type.is_standard ? '' : type.name} ##{id}: #{subject}"
+    "#{type.name unless type.is_standard} ##{id}: #{subject}"
   end
 
   # Return true if the work_package is closed, otherwise false
