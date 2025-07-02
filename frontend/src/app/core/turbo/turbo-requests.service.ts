@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { renderStreamMessage } from '@hotwired/turbo';
 import { ToastService } from 'core-app/shared/components/toaster/toast.service';
 import { debugLog } from 'core-app/shared/helpers/debug_output';
+import { TurboHelpers } from 'turbo/helpers';
 
 @Injectable({ providedIn: 'root' })
 export class TurboRequestsService {
@@ -110,6 +111,8 @@ export class TurboRequestsService {
     url:string,
     requestId = url,
   ):Promise<{ html:string, headers:Headers }> {
+    TurboHelpers.showProgressBar();
+
     return this.request(
       url,
       {
@@ -121,7 +124,10 @@ export class TurboRequestsService {
       },
       false,
       requestId,
-    );
+    )
+    .finally(() => {
+      TurboHelpers.hideProgressBar();
+    });
   }
 
   public abortRequest(requestId:string):void {
