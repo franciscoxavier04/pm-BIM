@@ -95,7 +95,7 @@ module RecurringMeetings
 
       schedule_meetings.each do |scheduled|
         # Ensure we treat the start_time as a local time of the series
-        start_time = scheduled.start_time.in_zone(recurring_meeting.time_zone)
+        start_time = scheduled.start_time.in_time_zone(recurring_meeting.time_zone)
         # so that we change the correct hour/minute
         new_time = start_time.change(
           hour: recurring_meeting.start_time.hour,
