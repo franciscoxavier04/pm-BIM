@@ -84,6 +84,64 @@ RSpec.describe WorkPackage do
     it { is_expected.to have_many(:member_principals).through(:members).class_name("Principal").source(:principal) }
     it { is_expected.to have_many(:meeting_agenda_items) }
     it { is_expected.to have_many(:meetings).through(:meeting_agenda_items).source(:meeting) }
+    it { is_expected.to have_many(:activities).class_name("WorkPackageActivity").inverse_of(:work_package) }
+
+    describe "activities" do
+      let(:project) { create(:project, enabled_internal_comments: true) }
+      let(:user) { create(:user) }
+      let(:work_package) { create(:work_package, project:, author: user) }
+
+      let(:work_package_journals) do
+        [create(:work_package_journal, user:, notes: "Test internal (journal) comment", journable: work_package, version: 2,
+                                       internal: true),
+         create(:work_package_journal, user:, notes: "Test comment", journable: work_package, version: 3)]
+      end
+
+      let(:work_package_comments) do
+        [create(:comment, :internal, author: user, commented: work_package, comments: "I am a comment No. 1 (internal)"),
+         create(:comment, author: user, commented: work_package, comments: "I am a comment No. 2")]
+      end
+
+      subject { work_package.activities }
+
+      before do
+        work_package_journals
+        work_package_comments
+      end
+
+      shared_examples "returns all work package activities" do
+        it "returns all work package activities", :aggregate_failures do
+          expect(subject.count)
+            .to eq(work_package_journals.count + work_package_comments.count + 1) # +1 for initial journal version
+          expect(subject.pluck(:comments))
+            .to contain_exactly("I am a comment No. 1 (internal)", "I am a comment No. 2", "Test comment",
+                                "Test internal (journal) comment", "")
+          expect(subject.pluck(:internal)).to contain_exactly(false, true, false, true, false)
+          expect(subject).to all(be_a(WorkPackageActivity))
+        end
+      end
+
+      it_behaves_like "returns all work package activities"
+
+      context "with `internal_visible` association extension" do
+        subject { work_package.activities.internal_visible }
+
+        context "and the user has the `view_internal_comments` permission" do
+          let(:user) { create(:user, member_with_permissions: { project => %i[view_internal_comments] }) }
+
+          before { User.current = user }
+
+          it_behaves_like "returns all work package activities"
+        end
+
+        context "and the user does not have the `view_internal_comments` permission" do
+          it "returns only non-internal activities" do
+            expect(subject.count).to eq((work_package_journals.count - 1) + (work_package_comments.count - 1) + 1)
+            expect(subject.pluck(:internal)).to contain_exactly(false, false, false)
+          end
+        end
+      end
+    end
   end
 
   describe ".new" do

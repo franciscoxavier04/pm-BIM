@@ -76,7 +76,7 @@ class WorkPackage < ApplicationRecord
   # that retrieves the meetings, hence we need to remove the order.
   has_many :meetings, -> { unscope(:order).distinct }, through: :meeting_agenda_items, source: :meeting
 
-  has_many :activities, class_name: "WorkPackageActivity" # rubocop:disable Rails/HasManyOrHasOneDependent
+  has_many :activities, -> { extending InternalVisibleExtension }, class_name: "WorkPackageActivity", inverse_of: :work_package # rubocop:disable Rails/HasManyOrHasOneDependent
 
   scope :recently_updated, -> {
     order(updated_at: :desc)
