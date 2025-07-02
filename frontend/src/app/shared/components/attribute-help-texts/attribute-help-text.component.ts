@@ -60,6 +60,8 @@ export class AttributeHelpTextComponent implements OnInit {
   // Use single id entry if given
   @Input() public helpTextId?:string|number;
 
+  isLoading = false;
+
   readonly tooltipId = uniqueId('tooltip-');
 
   readonly text = {
@@ -96,7 +98,15 @@ export class AttributeHelpTextComponent implements OnInit {
   }
 
   public handleClick(event:Event):void {
-    void this.getId().then((id) => this.attributeHelpTextModalService.show(id));
+    if (this.isLoading) return;
+    this.isLoading = true;
+
+    void this.getId()
+      .then((id) => this.attributeHelpTextModalService.show(id))
+      .finally(() => {
+        this.isLoading = false;
+        this.cdRef.detectChanges();
+      });
 
     event.preventDefault();
   }

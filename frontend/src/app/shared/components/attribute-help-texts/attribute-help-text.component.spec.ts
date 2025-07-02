@@ -101,8 +101,31 @@ describe('AttributeHelpTextComponent', () => {
     button.nativeElement.click();
 
     fixture.detectChanges();
+
+    expect(button.nativeElement.ariaDisabled).toEqual('true');
+
     void fixture.whenStable().then(() => {
       expect(modalServiceStub.show).toHaveBeenCalledOnceWith('1');
+      expect(button.nativeElement.ariaDisabled).toEqual('false');
+    });
+  });
+
+  it('should call modalService only once', () => {
+    const button = element.query(By.css("[role='button']"));
+    button.nativeElement.click();
+
+    fixture.detectChanges();
+
+    expect(button.nativeElement.ariaDisabled).toEqual('true');
+
+    button.nativeElement.click();
+    button.triggerEventHandler('keydown.enter');
+    button.triggerEventHandler('keydown.space');
+
+    fixture.detectChanges();
+    void fixture.whenStable().then(() => {
+      expect(modalServiceStub.show).toHaveBeenCalledOnceWith('1');
+      expect(button.nativeElement.ariaDisabled).toEqual('false');
     });
   });
 });

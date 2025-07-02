@@ -51,7 +51,7 @@ describe('AttributeHelpTextModalService', () => {
     it('should make a request and handle Turbo Stream dialog response', async () => {
       expect(document.querySelector('dialog')).toBeFalsy();
 
-      modalService.show('1');
+      await modalService.show('1');
 
       expect(fetchSpy).toHaveBeenCalledTimes(1);
 

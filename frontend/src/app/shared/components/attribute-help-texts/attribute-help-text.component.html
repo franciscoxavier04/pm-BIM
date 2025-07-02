@@ -4,6 +4,7 @@
     [attr.id]="buttonId"
     [attr.aria-labelledby]="tooltipId"
     [attr.data-qa-help-text-for]="attribute"
+    [attr.aria-disabled]="isLoading"
     (click)="handleClick($event)"
     (keydown.enter)="handleClick($event)"
     (keydown.space)="handleClick($event)"

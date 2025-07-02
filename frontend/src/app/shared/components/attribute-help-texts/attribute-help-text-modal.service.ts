@@ -39,8 +39,8 @@ export class AttributeHelpTextModalService {
 
   }
 
-  public show(helpTextId:string):void {
-    void this.turboRequests.requestStream(this.helpTextModalUrl(helpTextId));
+  public show(helpTextId:string):Promise<unknown> {
+    return this.turboRequests.requestStream(this.helpTextModalUrl(helpTextId));
   }
 
   private helpTextModalUrl(helpTextId:string):string {
