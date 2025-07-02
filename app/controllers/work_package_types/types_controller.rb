@@ -37,6 +37,10 @@ module WorkPackageTypes
     before_action :require_admin
     before_action :find_type, only: %i[update move destroy]
 
+    current_menu_item do
+      :types
+    end
+
     def index
       @types = ::Type.page(page_param).per_page(per_page_param)
     end
