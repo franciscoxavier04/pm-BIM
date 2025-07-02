@@ -367,7 +367,7 @@ RSpec.describe "Project list sharing",
           share_dialog.expect_toggle_public_off
 
           share_dialog.toggle_public
-          share_dialog.wait_for_toggle_public_to_load
+          wait_for_network_idle
 
           share_dialog.expect_toggle_public_on
           share_dialog.close
