@@ -137,11 +137,11 @@ Rails.application.routes.draw do
 
   get "/roles/workflow/:id/:role_id/:type_id" => "roles#workflow"
 
-  resources :types do
-    resource :form_configuration, only: %i[edit update], controller: "work_package_types/form_configuration_tab"
-    resource :projects, controller: "work_package_types/projects_tab", only: %i[update edit]
-    resource :settings, controller: "work_package_types/settings_tab", only: %i[update edit]
-    resource :subject_configuration, controller: "work_package_types/subject_configuration_tab", only: %i[update edit]
+  resources :types, module: "work_package_types" do
+    resource :form_configuration, only: %i[edit update], controller: "form_configuration_tab"
+    resource :projects, controller: "projects_tab", only: %i[update edit]
+    resource :settings, controller: "settings_tab", only: %i[update edit]
+    resource :subject_configuration, controller: "subject_configuration_tab", only: %i[update edit]
 
     member do
       get "edit/:tab" => "types#edit", as: "edit_tab"
@@ -149,7 +149,7 @@ Rails.application.routes.draw do
     end
 
     resources :pdf_export_template, only: %i[],
-                                    controller: "work_package_types/pdf_export_template",
+                                    controller: "pdf_export_template",
                                     path: "pdf_export_template" do
       member do
         post :toggle

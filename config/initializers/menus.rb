@@ -329,7 +329,7 @@ Redmine::MenuManager.map :admin_menu do |menu|
             parent: :admin_work_packages
 
   menu.push :types,
-            { controller: "/types" },
+            { controller: "/work_package_types/types" },
             if: ->(_) { User.current.admin? },
             caption: :label_type_plural,
             parent: :admin_work_packages
