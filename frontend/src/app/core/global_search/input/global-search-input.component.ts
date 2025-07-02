@@ -195,7 +195,7 @@ export class GlobalSearchInputComponent implements AfterViewInit, OnDestroy {
 
     // handle click on search button
     if (insideOrSelf(this.btn.nativeElement as HTMLElement, event.target as HTMLElement)) {
-      if (this.deviceService.isMobile) {
+      if (this.deviceService.isTablet) {
         this.toggleMobileSearch();
         // open ng-select menu on default
         jQuery('.ng-input input').focus();
