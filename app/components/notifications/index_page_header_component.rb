@@ -46,8 +46,7 @@ module Notifications
     end
 
     def breadcrumb_items
-      [{ href: home_path, text: helpers.organization_name },
-       { href: notifications_path, text: I18n.t("js.notifications.title") },
+      [{ href: notifications_path, text: I18n.t("js.notifications.title") },
        current_breadcrumb_element]
     end
 
