@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "SCIM API Users" do
+RSpec.describe "SCIM API Users", with_ee: [:scim_api] do
   let(:external_user_id) { "idp_user_id_123asdqwe12345" }
   let(:external_group_id) { "idp_group_id_123asdqwe12345" }
   let(:external_admin_id) { "idp_admin_id_123asdqwe12345" }

@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "SCIM API ServiceProviderConfig" do
+RSpec.describe "SCIM API ServiceProviderConfig", with_ee: [:scim_api] do
   let(:oidc_provider_slug) { "keycloak" }
   let(:oidc_provider) { create(:oidc_provider, slug: oidc_provider_slug) }
   let(:headers) { { "CONTENT_TYPE" => "application/scim+json", "HTTP_AUTHORIZATION" => "Bearer #{token.plaintext_token}" } }

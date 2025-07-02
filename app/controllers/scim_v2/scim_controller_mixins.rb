@@ -37,15 +37,22 @@ module ScimV2
     module Overwrites
       # Completely overwriting authenticate method of Scimitar
       def authenticate
-        return handle_scim_error(Scimitar::AuthenticationError.new) unless OpenProject::FeatureDecisions.scim_api_active?
+        if !EnterpriseToken.allows_to?(:scim_api) || !OpenProject::FeatureDecisions.scim_api_active?
+          return handle_scim_error(Scimitar::AuthenticationError.new)
+        end
 
-        warden = request.env["warden"]
         User.current = warden.authenticate!(scope: :scim_v2)
 
         # Only a ServiceAccount associated with a ScimClient can use SCIM Server API
         unless User.current.respond_to?(:service) && User.current.service.is_a?(ScimClient)
           handle_scim_error(Scimitar::AuthenticationError.new)
         end
+      end
+
+      private
+
+      def warden
+        request.env["warden"]
       end
     end
   end
