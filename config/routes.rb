@@ -139,7 +139,11 @@ Rails.application.routes.draw do
 
   resources :types do
     resource :form_configuration, only: %i[edit update], controller: "work_package_types/form_configuration_tab"
-    resource :projects, controller: "work_package_types/projects_tab", only: %i[update edit]
+    resource :projects, controller: "work_package_types/projects_tab", only: %i[update edit] do
+      collection do
+        post :enable_all, to: "work_package_types/projects_tab#enable_all_projects"
+      end
+    end
     resource :settings, controller: "work_package_types/settings_tab", only: %i[update edit]
     resource :subject_configuration, controller: "work_package_types/subject_configuration_tab", only: %i[update edit]
 

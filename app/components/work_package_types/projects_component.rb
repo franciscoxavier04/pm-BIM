@@ -46,15 +46,19 @@ module WorkPackageTypes
       }
     end
 
-    def projects = options[:projects]
-
     def build_project_tree(tree)
       nested_project_list = Project.build_projects_hierarchy(projects)
 
       add_sub_tree(tree, nested_project_list)
     end
 
+    def enabled_for_all_projects?
+      model.projects.pluck(:id).sort == projects.pluck(:id).sort
+    end
+
     private
+
+    def projects = options[:projects]
 
     def add_sub_tree(tree, project_list)
       project_list.each do |project_hash|
