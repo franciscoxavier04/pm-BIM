@@ -43,8 +43,7 @@ module Users
       if actor == user
         Setting.users_deletable_by_self?
       else
-        (actor.admin? && actor.active? && Setting.users_deletable_by_admins?) ||
-          User.system == actor
+        actor.admin? && actor.active? && Setting.users_deletable_by_admins?
       end
     end
   end

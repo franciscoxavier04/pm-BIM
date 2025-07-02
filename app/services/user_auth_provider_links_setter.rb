@@ -46,7 +46,7 @@ module UserAuthProviderLinksSetter
             model.user_auth_provider_links.find { |l| l.id == link.id }.external_id_will_change!
           end
         else
-          raise ActiveRecord::RecordNotFound, "AuthProvider with slug: \"#{slug}\" has been not found"
+          raise ActiveRecord::RecordNotFound, "AuthProvider with slug: \"#{slug}\" has not been found"
         end
       end
     end

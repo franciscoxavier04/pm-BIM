@@ -239,19 +239,19 @@ class Principal < ApplicationRecord
     external_id
   end
 
-  def self.scim_mutable_attributes
-    # Allow mutation of everything with a write accessor
-    nil
-  end
-
-  def self.scim_timestamps_map
-    {
-      created: :created_at,
-      lastModified: :updated_at
-    }
-  end
-
   class << self
+    def scim_mutable_attributes
+      # Allow mutation of everything with a write accessor
+      nil
+    end
+
+    def scim_timestamps_map
+      {
+        created: :created_at,
+        lastModified: :updated_at
+      }
+    end
+
     # Hack to exclude the Users::InexistentUser
     # from showing up on filters for type.
     # The method is copied over from rails changed only

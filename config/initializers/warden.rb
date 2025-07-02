@@ -27,7 +27,7 @@ OpenProject::Authentication.update_strategies(OpenProject::Authentication::Scope
 end
 
 OpenProject::Authentication.update_strategies(OpenProject::Authentication::Scope::SCIM_V2, { store: false }) do |_|
-  %i[oauth jwt_oidc session]
+  %i[oauth jwt_oidc]
 end
 
 Rails.application.configure do |app|

@@ -114,8 +114,6 @@ module ScimV2
           else
             raise result.message
           end
-
-          raise call.message
         end
       end
     end
