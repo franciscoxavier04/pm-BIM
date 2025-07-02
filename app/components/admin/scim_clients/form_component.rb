@@ -28,40 +28,36 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class ScimClients::CreateService < BaseServices::Create
-  def after_perform(_)
-    super.tap do |service_result|
-      self.model = service_result.result
+module Admin::ScimClients
+  class FormComponent < ApplicationComponent
+    include ApplicationHelper
+    include OpPrimer::ComponentHelpers
+    include OpTurbo::Streamable
 
-      update_oauth_application(service_result)
+    def self.wrapper_key = :scim_clients_form
+
+    private
+
+    def form_options
+      form_target.merge(stimulus_controller_options)
+                 .merge(model:)
     end
-  end
 
-  private
+    def form_target
+      if model.new_record?
+        { method: :post, url: admin_scim_clients_path }
+      else
+        { method: :patch, url: admin_scim_client_path(model) }
+      end
+    end
 
-  def update_oauth_application(service_result)
-    return if !model.authentication_method_oauth2_client? && !model.authentication_method_oauth2_token?
-
-    persist_service_result = create_oauth_application
-    model.oauth_application = persist_service_result.result if persist_service_result.success?
-    service_result.add_dependent!(persist_service_result)
-  end
-
-  def service_account
-    model.service_account
-  end
-
-  def create_oauth_application
-    ::OAuth::Applications::CreateService
-      .new(user:)
-      .call(
-        name: "#{model.name} (#{ScimClient.model_name.human})",
-        redirect_uri: "urn:ietf:wg:oauth:2.0:oob",
-        client_credentials_user_id: service_account.id,
-        scopes: "scim_v2",
-        confidential: true,
-        integration: model,
-        owner: user
-      )
+    def stimulus_controller_options
+      {
+        data: {
+          controller: "scim-clients--form-inputs",
+          turbo_frame: "_top"
+        }
+      }
+    end
   end
 end

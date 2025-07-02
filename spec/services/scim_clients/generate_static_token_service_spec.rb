@@ -28,40 +28,41 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class ScimClients::CreateService < BaseServices::Create
-  def after_perform(_)
-    super.tap do |service_result|
-      self.model = service_result.result
+require "spec_helper"
 
-      update_oauth_application(service_result)
+RSpec.describe ScimClients::GenerateStaticTokenService do
+  subject(:service_result) { described_class.new(scim_client).call }
+
+  let(:scim_client) { create(:scim_client, :oauth2_token) }
+
+  it "returns a valid token", :aggregate_failures, :freeze_time do
+    expect(service_result).to be_success
+
+    expect(service_result.result.expires_at).to eq(1.year.from_now)
+    expect(service_result.result.includes_scope?("scim_v2")).to be_truthy # rubocop:disable RSpec/PredicateMatcher
+  end
+
+  it "generates a token" do
+    expect { subject }.to change(Doorkeeper::AccessToken, :count).by(1)
+  end
+
+  context "when the SCIM client is authenticating through client credentials" do
+    let(:scim_client) { create(:scim_client, :oauth2_client) }
+
+    it { is_expected.to be_failure }
+
+    it "does not generate a token" do
+      expect { subject }.not_to change(Doorkeeper::AccessToken, :count)
     end
   end
 
-  private
+  context "when the SCIM client is authenticating through IDP tokens" do
+    let(:scim_client) { create(:scim_client) }
 
-  def update_oauth_application(service_result)
-    return if !model.authentication_method_oauth2_client? && !model.authentication_method_oauth2_token?
+    it { is_expected.to be_failure }
 
-    persist_service_result = create_oauth_application
-    model.oauth_application = persist_service_result.result if persist_service_result.success?
-    service_result.add_dependent!(persist_service_result)
-  end
-
-  def service_account
-    model.service_account
-  end
-
-  def create_oauth_application
-    ::OAuth::Applications::CreateService
-      .new(user:)
-      .call(
-        name: "#{model.name} (#{ScimClient.model_name.human})",
-        redirect_uri: "urn:ietf:wg:oauth:2.0:oob",
-        client_credentials_user_id: service_account.id,
-        scopes: "scim_v2",
-        confidential: true,
-        integration: model,
-        owner: user
-      )
+    it "does not generate a token" do
+      expect { subject }.not_to change(Doorkeeper::AccessToken, :count)
+    end
   end
 end

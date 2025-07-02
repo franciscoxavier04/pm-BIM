@@ -28,40 +28,24 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class ScimClients::CreateService < BaseServices::Create
-  def after_perform(_)
-    super.tap do |service_result|
-      self.model = service_result.result
-
-      update_oauth_application(service_result)
+module Admin::ScimClients
+  class RowComponent < OpPrimer::BorderBoxRowComponent
+    def name
+      render(Primer::Beta::Link.new(href: edit_admin_scim_client_path(model), font_weight: :bold)) { model.name }
     end
-  end
 
-  private
+    def user_count
+      return "—" if model.auth_provider.nil?
 
-  def update_oauth_application(service_result)
-    return if !model.authentication_method_oauth2_client? && !model.authentication_method_oauth2_token?
+      model.auth_provider.users.count
+    end
 
-    persist_service_result = create_oauth_application
-    model.oauth_application = persist_service_result.result if persist_service_result.success?
-    service_result.add_dependent!(persist_service_result)
-  end
+    def authentication_method
+      t("admin.scim_clients.authentication_methods.#{model.authentication_method}")
+    end
 
-  def service_account
-    model.service_account
-  end
-
-  def create_oauth_application
-    ::OAuth::Applications::CreateService
-      .new(user:)
-      .call(
-        name: "#{model.name} (#{ScimClient.model_name.human})",
-        redirect_uri: "urn:ietf:wg:oauth:2.0:oob",
-        client_credentials_user_id: service_account.id,
-        scopes: "scim_v2",
-        confidential: true,
-        integration: model,
-        owner: user
-      )
+    def created_at
+      helpers.format_date(model.created_at)
+    end
   end
 end

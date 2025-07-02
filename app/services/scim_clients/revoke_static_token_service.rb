@@ -28,40 +28,18 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class ScimClients::CreateService < BaseServices::Create
-  def after_perform(_)
-    super.tap do |service_result|
-      self.model = service_result.result
+class ScimClients::RevokeStaticTokenService < BaseServices::BaseCallable
+  def initialize(scim_client)
+    super()
 
-      update_oauth_application(service_result)
-    end
+    @scim_client = scim_client
   end
 
-  private
+  def perform(access_token)
+    return ServiceResult.failure if access_token.application.integration != @scim_client
 
-  def update_oauth_application(service_result)
-    return if !model.authentication_method_oauth2_client? && !model.authentication_method_oauth2_token?
+    access_token.revoke unless access_token.revoked?
 
-    persist_service_result = create_oauth_application
-    model.oauth_application = persist_service_result.result if persist_service_result.success?
-    service_result.add_dependent!(persist_service_result)
-  end
-
-  def service_account
-    model.service_account
-  end
-
-  def create_oauth_application
-    ::OAuth::Applications::CreateService
-      .new(user:)
-      .call(
-        name: "#{model.name} (#{ScimClient.model_name.human})",
-        redirect_uri: "urn:ietf:wg:oauth:2.0:oob",
-        client_credentials_user_id: service_account.id,
-        scopes: "scim_v2",
-        confidential: true,
-        integration: model,
-        owner: user
-      )
+    ServiceResult.success(result: access_token)
   end
 end

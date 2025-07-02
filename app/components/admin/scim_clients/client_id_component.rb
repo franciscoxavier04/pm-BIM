@@ -28,29 +28,9 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module ScimClients
-  FormModel = Data.define(:name, :auth_provider_id, :authentication_method, :jwt_sub) do
-    extend ActiveModel::Naming
-
-    class << self
-      def from_client(client)
-        jwt_sub = client.service_account&.active_user_auth_provider_link&.external_id
-        new(
-          name: client.name,
-          auth_provider_id: client.auth_provider_id,
-          authentication_method: client.authentication_method,
-          jwt_sub:
-        )
-      end
-
-      def from_params(params)
-        new(
-          name: params[:name],
-          auth_provider_id: params[:auth_provider_id],
-          authentication_method: params[:authentication_method].to_s,
-          jwt_sub: params[:jwt_sub]
-        )
-      end
+module Admin
+  module ScimClients
+    class ClientIdComponent < ApplicationComponent
     end
   end
 end

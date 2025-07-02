@@ -31,26 +31,9 @@
 class ScimClients::UpdateService < BaseServices::Update
   def after_perform(_)
     super.tap do |result|
-      update_service_account(result.result)
+      scim_client = result.result
+      scim_client.service_account&.save!
+      scim_client.auth_provider_link&.save!
     end
-  end
-
-  private
-
-  def update_service_account(scim_client)
-    scim_client.service_account&.update!(params.slice(:name))
-
-    if model.authentication_method_sso?
-      link = scim_client.service_account&.user_auth_provider_links&.find_or_initialize_by({})
-      update_user_auth_provider_link(link)
-    end
-  end
-
-  def update_user_auth_provider_link(link)
-    return if link.nil?
-
-    link.auth_provider_id = params[:auth_provider_id] if params.key?(:auth_provider_id)
-    link.external_id = params[:jwt_sub] if params.key?(:jwt_sub)
-    link.save!
   end
 end

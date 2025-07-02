@@ -28,40 +28,31 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class ScimClients::CreateService < BaseServices::Create
-  def after_perform(_)
-    super.tap do |service_result|
-      self.model = service_result.result
+require "spec_helper"
+require "services/base_services/behaves_like_delete_service"
 
-      update_oauth_application(service_result)
-    end
+RSpec.describe ScimClients::DeleteService, type: :model do
+  subject { instance.call }
+
+  let(:instance) { described_class.new(user:, model: scim_client) }
+  let(:user) { build_stubbed(:admin) }
+  let!(:scim_client) do
+    # loading the freshly created client from the database, so that associations are not preloaded
+    # (because this leads to different behaviour after destroy)
+    ScimClient.find(create(:scim_client, service_account:).id)
+  end
+  let(:service_account) { create(:service_account, authentication_provider: create(:oidc_provider)) }
+
+  it_behaves_like "BaseServices delete service" do
+    let(:model_instance) { scim_client }
   end
 
-  private
-
-  def update_oauth_application(service_result)
-    return if !model.authentication_method_oauth2_client? && !model.authentication_method_oauth2_token?
-
-    persist_service_result = create_oauth_application
-    model.oauth_application = persist_service_result.result if persist_service_result.success?
-    service_result.add_dependent!(persist_service_result)
+  it "locks the service account" do
+    subject
+    expect(service_account.reload).to be_locked
   end
 
-  def service_account
-    model.service_account
-  end
-
-  def create_oauth_application
-    ::OAuth::Applications::CreateService
-      .new(user:)
-      .call(
-        name: "#{model.name} (#{ScimClient.model_name.human})",
-        redirect_uri: "urn:ietf:wg:oauth:2.0:oob",
-        client_credentials_user_id: service_account.id,
-        scopes: "scim_v2",
-        confidential: true,
-        integration: model,
-        owner: user
-      )
+  it "deassociates the service account from its authentication provider" do
+    expect { subject }.to change(UserAuthProviderLink, :count).from(1).to(0)
   end
 end
