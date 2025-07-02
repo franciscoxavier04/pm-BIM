@@ -50,13 +50,24 @@ class Version < ApplicationRecord
          :rolled_up,
          :shared_with
 
+  # Returns versions that are either:
+  # - from projects the user can see (via :view_work_packages)
+  # - systemwide versions
+  # - or referenced by a work package visible to the user (e.g., via sharing)
   scope :visible, ->(*args) {
+    user = args.first || User.current
     joins(:project)
-      .merge(Project.allowed_to(args.first || User.current, :view_work_packages))
+      .merge(Project.allowed_to(user, :view_work_packages))
       .or(Version.systemwide)
+      .or(Version.shared_via_work_packages(user))
   }
 
   scope :systemwide, -> { where(sharing: "system") }
+
+  scope :shared_via_work_packages, ->(*args) {
+    user = args.first || User.current
+    where(id: WorkPackage.visible(user).where.not(version_id: nil).distinct.select(:version_id))
+  }
 
   def self.with_status_open
     where(status: "open")
@@ -64,7 +75,8 @@ class Version < ApplicationRecord
 
   # Returns true if +user+ or current user is allowed to view the version
   def visible?(user = User.current)
-    user.allowed_in_project?(:view_work_packages, project)
+    user.allowed_in_project?(:view_work_packages, project) ||
+      work_packages.visible(user).exists?
   end
 
   def due_date
