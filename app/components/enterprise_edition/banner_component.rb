@@ -48,7 +48,7 @@ module EnterpriseEdition
     # @param image [String, NilClass] Path to the image to show on the banner, or nil.
     #   Only applicable and required when variant is :medium.
     # @param video [String, NilClass] Path to the video to show on the banner, or nil.
-    #   Only applicable and required when variant is :video.
+    #   Only applicable and required when variant is :large.
     # @param i18n_scope [String] Provide the i18n scope to look for title, description, and features.
     #                            Defaults to "ee.upsell.{feature_key}"
     # @param dismissable [boolean] Allow this banner to be dismissed.
