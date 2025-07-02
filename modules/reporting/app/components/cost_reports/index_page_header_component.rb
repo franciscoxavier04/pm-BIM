@@ -44,18 +44,10 @@ module CostReports
     end
 
     def breadcrumb_items
-      [parent_element,
+      [*([{ href: project_overview_path(@project.id), text: @project.name }] if @project.present?),
        { href: url_for({ controller: "cost_reports", action: :index, project_id: @project }),
          text: I18n.t(:cost_reports_title) },
        current_breadcrumb_element]
-    end
-
-    def parent_element
-      if @project.present?
-        { href: project_overview_path(@project.id), text: @project.name }
-      else
-        { href: home_path, text: helpers.organization_name }
-      end
     end
 
     def current_breadcrumb_element
