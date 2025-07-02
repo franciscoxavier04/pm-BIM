@@ -32,7 +32,7 @@
 require "spec_helper"
 
 module WorkPackageTypes
-  RSpec.describe SubjectConfigurationTabController do
+  RSpec.describe SubjectConfigurationTabController, with_ee: [:work_package_subject_generation] do
     let(:user) { create(:admin) }
     let(:wp_type) { create(:type) }
 
