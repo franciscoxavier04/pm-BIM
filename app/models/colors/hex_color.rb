@@ -17,6 +17,13 @@ module Colors
     end
 
     ##
+    # Returns whether the color is dark according to
+    # YIQ lightness.
+    def dark?
+      brightness_yiq <= 100
+    end
+
+    ##
     # Returns whether the color is bright according to
     # YIQ lightness.
     def bright?
