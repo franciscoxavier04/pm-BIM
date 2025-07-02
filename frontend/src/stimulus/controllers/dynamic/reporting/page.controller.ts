@@ -29,7 +29,7 @@
  */
 
 import { Controller } from '@hotwired/stimulus';
-import * as jQuery from 'jquery';
+import jQuery from 'jquery';
 import 'tablesorter';
 
 declare global {
@@ -192,7 +192,6 @@ export default class PageController extends Controller {
     // This prevents the tablesorter plugin to check for metadata which is done
     // using eval which conflicts with our csp.
     // Works because of a check in tablesorter:
-    // @ts-expect-error Prevent metadata from accessing metadata
     jQuery.metadata = undefined;
 
     // Override the default texts to enable translations
