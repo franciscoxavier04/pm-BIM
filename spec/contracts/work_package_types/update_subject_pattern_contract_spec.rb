@@ -31,7 +31,7 @@
 require "spec_helper"
 
 module WorkPackageTypes
-  RSpec.describe UpdateSubjectPatternContract do
+  RSpec.describe UpdateSubjectPatternContract, with_ee: [:work_package_subject_generation] do
     let(:model) { create(:type, :with_subject_pattern) }
     let(:user) { create(:admin) }
 
@@ -44,9 +44,25 @@ module WorkPackageTypes
         expect(contract.validate).to be_falsey
       end
 
-      it "adds and error to the contract" do
+      it "adds an error to the contract" do
         contract.validate
         expect(contract.errors.details).to eq(base: [{ error: :error_unauthorized }])
+      end
+    end
+
+    context "if there is no enterprise token that allows subject configuration", with_ee: [] do
+      it "adds an error to the contract" do
+        contract.validate
+        expect(contract.errors.details)
+          .to eq(patterns: [{ action: "Work Package Subject Generation", error: :error_enterprise_only }])
+      end
+
+      context "with manual subject configuration" do
+        let(:model) { create(:type) }
+
+        it "succeeds" do
+          expect(contract.validate).to be_truthy
+        end
       end
     end
 

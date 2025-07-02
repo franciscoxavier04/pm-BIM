@@ -31,7 +31,7 @@
 require "spec_helper"
 
 module WorkPackageTypes
-  RSpec.describe SetAttributesService do
+  RSpec.describe SetAttributesService, with_ee: [:work_package_subject_generation] do
     let(:user) { create(:admin) }
     let(:model) { create(:type, :with_subject_pattern) }
     let(:params) { Hash.new }

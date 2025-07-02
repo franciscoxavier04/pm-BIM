@@ -32,9 +32,17 @@ module WorkPackageTypes
   class UpdateSubjectPatternContract < BaseContract
     attribute :patterns
 
+    validate :enterprise_edition
     validate :validate_subject_generation_pattern
 
     private
+
+    def enterprise_edition
+      action = :work_package_subject_generation
+      if model.patterns.subject&.enabled && !EnterpriseToken.allows_to?(action)
+        errors.add(:patterns, :error_enterprise_only, action: action.to_s.titleize)
+      end
+    end
 
     def validate_subject_generation_pattern
       blueprint = model.patterns.subject&.blueprint

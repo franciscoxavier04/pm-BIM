@@ -27,12 +27,26 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<%=
-  render(EnterpriseEdition::BannerComponent.new(:work_package_subject_generation))
-%>
+<% if show_upsale_page? %>
+  <%= render(
+        EnterpriseEdition::BannerComponent.new(
+          :work_package_subject_generation,
+          variant: :large,
+          video: "enterprise/automatically_generated_subjects.mp4"
+        )
+      ) %>
+<% else %>
+  <%= render(
+        EnterpriseEdition::BannerComponent.new(
+          :work_package_subject_generation,
+          variant: :medium,
+          image: "enterprise/automatically-generated-subjects.png"
+        )
+      ) %>
 
-<%=
-  settings_primer_form_with(**form_options) do |f|
-    render(WorkPackageTypes::SubjectConfigurationForm.new(f))
-  end
-%>
+  <%=
+    settings_primer_form_with(**form_options) do |f|
+      render(WorkPackageTypes::SubjectConfigurationForm.new(f))
+    end
+  %>
+<% end %>
