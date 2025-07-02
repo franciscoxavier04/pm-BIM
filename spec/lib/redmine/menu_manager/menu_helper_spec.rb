@@ -132,7 +132,7 @@ RSpec.describe Redmine::MenuManager::MenuHelper, type: :helper do
               </button>
             </div>
             <div class="main-menu--children-menu-header">
-              <a class="main-menu--arrow-left-to-project" data-action="menus--main#ascend" data-tour-selector="main-menu--arrow-left_parent_node" data-test-selector="main-menu--arrow-left-to-project" href="#" aria-label="Go back one menu level">
+              <a class="main-menu--arrow-left-to-project" data-action="menus--main#ascend keydown.enter-&gt;menus--main#ascend" data-tour-selector="main-menu--arrow-left_parent_node" data-test-selector="main-menu--arrow-left-to-project" href="#" aria-label="Go back one menu level" tabindex="0">
                 <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-arrow-left">
                   <path d="M7.78 12.53a.75.75 0 0 1-1.06 0L2.47 8.28a.75.75 0 0 1 0-1.06l4.25-4.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L4.81 7h7.44a.75.75 0 0 1 0 1.5H4.81l2.97 2.97a.75.75 0 0 1 0 1.06Z"></path>
                 </svg>
@@ -228,10 +228,10 @@ RSpec.describe Redmine::MenuManager::MenuHelper, type: :helper do
             </div>
             <div class="main-menu--children-menu-header">
               <a class="main-menu--arrow-left-to-project"
-                 data-action="menus--main#ascend"
+                 data-action="menus--main#ascend keydown.enter-&gt;menus--main#ascend"
                  data-tour-selector="main-menu--arrow-left_parent_node"
                  data-test-selector="main-menu--arrow-left-to-project"
-                 href="#" aria-label="Go back one menu level">
+                 href="#" aria-label="Go back one menu level" tabindex="0">
                 <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-arrow-left">
                   <path d="M7.78 12.53a.75.75 0 0 1-1.06 0L2.47 8.28a.75.75 0 0 1 0-1.06l4.25-4.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L4.81 7h7.44a.75.75 0 0 1 0 1.5H4.81l2.97 2.97a.75.75 0 0 1 0 1.06Z"></path>
                 </svg>
@@ -307,7 +307,7 @@ RSpec.describe Redmine::MenuManager::MenuHelper, type: :helper do
               </button>
             </div>
             <div class="main-menu--children-menu-header">
-              <a class="main-menu--arrow-left-to-project" data-action="menus--main#ascend" data-tour-selector="main-menu--arrow-left_parent_node" data-test-selector="main-menu--arrow-left-to-project" href="#" aria-label="Go back one menu level">
+              <a class="main-menu--arrow-left-to-project" data-action="menus--main#ascend keydown.enter-&gt;menus--main#ascend" data-tour-selector="main-menu--arrow-left_parent_node" data-test-selector="main-menu--arrow-left-to-project" href="#" aria-label="Go back one menu level" tabindex="0">
                 <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-arrow-left">
                   <path d="M7.78 12.53a.75.75 0 0 1-1.06 0L2.47 8.28a.75.75 0 0 1 0-1.06l4.25-4.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L4.81 7h7.44a.75.75 0 0 1 0 1.5H4.81l2.97 2.97a.75.75 0 0 1 0 1.06Z"></path>
                 </svg>
@@ -331,7 +331,7 @@ RSpec.describe Redmine::MenuManager::MenuHelper, type: :helper do
                   </button>
                 </div>
                 <div class="main-menu--children-menu-header">
-                  <a class="main-menu--arrow-left-to-project" data-action="menus--main#ascend" data-tour-selector="main-menu--arrow-left_child_node" href="#" aria-label="Go back one menu level" data-test-selector="main-menu--arrow-left-to-project" >
+                  <a class="main-menu--arrow-left-to-project" data-action="menus--main#ascend keydown.enter-&gt;menus--main#ascend" data-tour-selector="main-menu--arrow-left_child_node" href="#" aria-label="Go back one menu level" data-test-selector="main-menu--arrow-left-to-project" tabindex="0">
                     <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-arrow-left">
                       <path d="M7.78 12.53a.75.75 0 0 1-1.06 0L2.47 8.28a.75.75 0 0 1 0-1.06l4.25-4.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L4.81 7h7.44a.75.75 0 0 1 0 1.5H4.81l2.97 2.97a.75.75 0 0 1 0 1.06Z"></path>
                     </svg>
@@ -350,9 +350,9 @@ RSpec.describe Redmine::MenuManager::MenuHelper, type: :helper do
             </ul>
             <div class="main-menu--children-menu-header">
               <a class="main-menu--arrow-left-to-project"
-                 data-action="menus--main#ascend"
+                 data-action="menus--main#ascend keydown.enter-&gt;menus--main#ascend"
                  data-tour-selector="main-menu--arrow-left_parent_node"
-                 data-test-selector="main-menu--arrow-left-to-project" href="#" aria-label="Go back one menu level">
+                 data-test-selector="main-menu--arrow-left-to-project" href="#" aria-label="Go back one menu level" tabindex="0">
                 <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-arrow-left">
                   <path d="M7.78 12.53a.75.75 0 0 1-1.06 0L2.47 8.28a.75.75 0 0 1 0-1.06l4.25-4.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L4.81 7h7.44a.75.75 0 0 1 0 1.5H4.81l2.97 2.97a.75.75 0 0 1 0 1.06Z"></path>
                 </svg>
