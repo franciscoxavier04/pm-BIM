@@ -47,7 +47,30 @@ See COPYRIGHT and LICENSE files for more details.
           p: 3
         )
       ) do
-        render Projects::TemplateAutocompleter.new(f, template_id:, parent_id:)
+        template_id_value = template_id
+        parent_id_value = parent_id
+        render_inline_form(f) do |form|
+          form.project_autocompleter(
+            name: :template_id,
+            label: I18n.t("js.project.use_template"),
+            autocomplete_options: {
+              focusDirectly: false,
+              dropdownPosition: "bottom",
+              inputValue: template_id_value,
+              placeholder: I18n.t("js.project.no_template_selected"),
+              filters: [
+                { name: "user_action", operator: "=", values: ["projects/copy"] },
+                { name: "templated", operator: "=", values: ["t"] }
+              ],
+              data: {
+                action: "change->auto-submit#submit",
+                "qa-field-name": "use_template"
+              }
+            }
+          )
+
+          form.hidden name: :parent_id, value: parent_id_value
+        end
       end
     end
   end
