@@ -27,36 +27,26 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-#
-require "spec_helper"
 
-RSpec.describe Projects::TemplateAutocompleter, type: :forms do
-  include ViewComponent::TestHelpers
+require "rails_helper"
 
-  def render_form
-    render_in_view_context(template_id, described_class) do |template_id, described_class|
-      primer_form_with(url: "/foo") do |f|
-        render(described_class.new(f, template_id:))
-      end
-    end
+RSpec.describe Projects::SourceProjectSelectComponent, type: :component do
+  let(:source_project) { build_stubbed(:project) }
+
+  def render_component(**params)
+    render_inline(described_class.new(source_project:, **params))
+    page
   end
 
-  before do
-    render_form
+  it "renders form" do
+    expect(render_component).to have_css "form"
   end
 
-  let(:template_id) { 1001 }
-
-  it "renders field" do
-    expect(page).to have_element "opce-project-autocompleter", "data-input-name": "\"template_id\"" do |element|
-      expect(element["data-input-value"]).to eq "1001"
-    end
-  end
-
-  it "connects Stimulus controller actions" do
-    expect(page).to have_element "opce-project-autocompleter", "data-input-name": "\"template_id\"" do |element|
-      expect(element["data-action"]).to include "change->highlight-when-value-selected#itemSelected"
-      expect(element["data-action"]).to include "change->auto-submit#submit"
+  it "renders disabled project autocompleter" do
+    expect(render_component).to have_element "opce-project-autocompleter",
+                                             "data-input-name": "\"project_id\"",
+                                             "data-disabled": "true" do |element|
+      expect(element["data-input-value"]).to eq source_project.id.to_s
     end
   end
 end

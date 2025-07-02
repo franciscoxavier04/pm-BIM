@@ -104,7 +104,7 @@ RSpec.describe "Project templates", :js, with_good_job_batches: [CopyProjectJob,
 
       # Only when a template is selected, the options are displayed.
       # Using this to know when the copy form has been fetched from the backend.
-      expect(page).to have_selector :fieldset, "Copy options"
+      expect(page).to have_selector :fieldset, "Copy from template"
 
       # FIXME: It should keep the name. See BUG OP#64594 https://community.openproject.org/wp/64594
       # expect(page).to have_field "Name", with: "Foo bar"
@@ -112,12 +112,10 @@ RSpec.describe "Project templates", :js, with_good_job_batches: [CopyProjectJob,
 
       template_field.expect_selected "My template"
 
-      expect(page).to have_unchecked_field "Send email notifications during the project copy"
+      expect(page).to have_unchecked_field fieldset: "Notifications"
 
-      within_fieldset "Copy options" do
-        # And allows to deselect copying the members.
-        uncheck "Project members"
-      end
+      # And allows to deselect copying the members.
+      uncheck "Project members", fieldset: "Copy from template"
 
       click_on "Create"
 

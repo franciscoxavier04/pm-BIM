@@ -49,6 +49,6 @@ RSpec.describe Projects::CopyForm, type: :forms do
   let(:copy_options) { Projects::CopyOptions.new }
 
   it "renders Copy options" do
-    expect(page).to have_selector :fieldset, "Copy options"
+    expect(page).to have_selector :fieldset, "Copy from project"
   end
 end

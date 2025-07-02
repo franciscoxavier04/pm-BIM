@@ -27,28 +27,40 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<% title = t("copy_project.title", source_project_name: @project.name) %>
-<% html_title title %>
-
 <%=
-  render Primer::OpenProject::PageHeader.new do |header|
-    header.with_title { title }
-    header.with_breadcrumbs(
-      [{ href: project_overview_path(@project.id), text: @project.name },
-       { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
-       title]
-    )
+  component_wrapper do
+    settings_primer_form_with(
+      url: copy_project_path(source_project),
+      method: :get
+    ) do |f|
+      render(
+        Primer::Box.new(
+          border: true,
+          border_radius: 2,
+          bg: :inset,
+          my: 3,
+          p: 3
+        )
+      ) do
+        source_project_id_value = source_project_id
+        render_inline_form(f) do |form|
+          form.project_autocompleter(
+            name: :project_id,
+            label: I18n.t("copy_project.source_project_label"),
+            autocomplete_options: {
+              disabled: true,
+              focusDirectly: false,
+              dropdownPosition: "bottom",
+              inputValue: source_project_id_value,
+              placeholder: I18n.t("label_none_parentheses"),
+              filters: [
+                { name: "user_action", operator: "=", values: ["projects/copy"] },
+                { name: "templated", operator: "=", values: ["f"] }
+              ]
+            }
+          )
+        end
+      end
+    end
   end
-%>
-
-<%=
-  render Projects::SourceProjectSelectComponent.new(source_project: @project)
-%>
-
-<%=
-  render Projects::CopyFormComponent.new(
-    source_project: @project,
-    target_project: @target_project,
-    copy_options: @copy_options
-  )
 %>

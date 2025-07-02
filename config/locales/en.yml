@@ -2043,6 +2043,14 @@ en:
     text:
       failed: 'Could not copy project "%{source_project_name}" to project "%{target_project_name}".'
       succeeded: 'Copied project "%{source_project_name}" to "%{target_project_name}".'
+    source_project_label: "Project copied"
+    copy_options:
+      dependencies_label: 'Copy from project'
+
+  create_project:
+    template_label: "Use template"
+    copy_options:
+      dependencies_label: 'Copy from template'
 
   create_wiki_page: "Create new wiki page"
   create_wiki_page_button: "Wiki page"

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2010-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -26,36 +26,18 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
 module Projects
-  class TemplateAutocompleter < ApplicationForm
-    extend Dry::Initializer
+  class SourceProjectSelectComponent < ApplicationComponent
+    include ApplicationHelper
+    include OpPrimer::ComponentHelpers
+    include OpTurbo::Streamable
 
-    option :template_id, optional: true
-    option :parent_id, optional: true
+    options :source_project
 
-    form do |f|
-      f.project_autocompleter(
-        name: :template_id,
-        label: I18n.t("js.project.use_template"),
-        autocomplete_options: {
-          focusDirectly: false,
-          dropdownPosition: "bottom",
-          inputValue: template_id,
-          placeholder: I18n.t("js.project.no_template_selected"),
-          filters: [
-            { name: "user_action", operator: "=", values: ["projects/copy"] },
-            { name: "templated", operator: "=", values: ["t"] }
-          ],
-          data: {
-            action: "change->highlight-when-value-selected#itemSelected change->auto-submit#submit",
-            "qa-field-name": "use_template"
-          }
-        }
-      )
+    private
 
-      f.hidden name: :parent_id, value: parent_id
-    end
+    def source_project_id = source_project.id
   end
 end

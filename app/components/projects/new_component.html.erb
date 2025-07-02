@@ -38,16 +38,6 @@ See COPYRIGHT and LICENSE files for more details.
   ) do
     settings_primer_form_with(model: project) do |f|
       flex_layout do |container|
-        container.with_row(mb: 3) do
-          render(
-            Primer::Forms::FormList.new(
-              Projects::Settings::NameForm.new(f),
-              Projects::Settings::RelationsForm.new(f),
-              Projects::Settings::CustomFieldsForm.new(f)
-            )
-          )
-        end
-
         if template
           container.with_row(mb: 3) do
             render(Primer::Box.new(border: true, border_radius: 2, bg: :inset, p: 3)) do
@@ -56,6 +46,16 @@ See COPYRIGHT and LICENSE files for more details.
               )
             end
           end
+        end
+
+        container.with_row(mb: 3) do
+          render(
+            Primer::Forms::FormList.new(
+              Projects::Settings::NameForm.new(f),
+              Projects::Settings::RelationsForm.new(f),
+              Projects::Settings::CustomFieldsForm.new(f)
+            )
+          )
         end
 
         container.with_row(mb: 3) do

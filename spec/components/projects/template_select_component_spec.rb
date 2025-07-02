@@ -38,7 +38,19 @@ RSpec.describe Projects::TemplateSelectComponent, type: :component do
     page
   end
 
-  it "renders a form" do
+  it "renders form" do
     expect(render_component).to have_css "form"
+  end
+
+  it "renders project autocompleter" do
+    expect(render_component).to have_element "opce-project-autocompleter", "data-input-name": "\"template_id\"" do |element|
+      expect(element["data-input-value"]).to eq template.id.to_s
+    end
+  end
+
+  it "connects Stimulus controller actions" do
+    expect(render_component).to have_element "opce-project-autocompleter", "data-input-name": "\"template_id\"" do |element|
+      expect(element["data-action"]).to include "change->auto-submit#submit"
+    end
   end
 end

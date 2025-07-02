@@ -59,6 +59,6 @@ RSpec.describe Projects::TemplateForm, type: :forms do
   end
 
   it "renders Copy options" do
-    expect(page).to have_selector :fieldset, "Copy options"
+    expect(page).to have_selector :fieldset, "Copy from template"
   end
 end
