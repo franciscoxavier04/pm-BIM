@@ -248,6 +248,9 @@ gem "httpx", "~> 1.3.4"
 # Brings actual deep freezing to most ruby objects
 gem "ice_nine"
 
+# Adds methods to ActiveRecord::Migration to create and manage database views
+gem "scenic", "~> 1.9"
+
 group :test do
   gem "launchy", "~> 3.1.0"
   gem "rack-test", "~> 2.2.0"
