@@ -29,14 +29,10 @@
 #++
 
 module WorkPackageTypes
-  class FormConfigurationTabController < ApplicationController
+  class FormConfigurationTabController < BaseTabController
     include PaginationHelper
 
     layout "admin"
-
-    before_action :require_admin
-    before_action :find_type
-    before_action :assign_tab, only: :update
 
     current_menu_item [:edit, :update] do
       :types
@@ -62,10 +58,6 @@ module WorkPackageTypes
     def find_type
       @type = ::Type.includes(:projects, :custom_fields).find(params[:type_id])
       show_error_not_found unless @type
-    end
-
-    def assign_tab
-      params[:tab] = "form_configuration" unless params[:tab]
     end
 
     def permitted_type_params

@@ -29,11 +29,8 @@
 #++
 
 module WorkPackageTypes
-  class SettingsTabController < ApplicationController
+  class SettingsTabController < BaseTabController
     layout "admin"
-
-    before_action :require_admin
-    before_action :find_type
 
     current_menu_item %i[edit update] do
       :types
@@ -48,16 +45,11 @@ module WorkPackageTypes
       if result.success?
         redirect_to edit_type_settings_path(type_id: @type.id), notice: I18n.t(:notice_successful_update)
       else
-        params[:tab] = "settings"
         render :edit, status: :unprocessable_entity
       end
     end
 
     private
-
-    def find_type
-      @type = ::Type.find(params[:type_id])
-    end
 
     def permitted_settings_params
       params.expect(type: %i[name color_id description is_milestone is_in_roadmap is_default])
