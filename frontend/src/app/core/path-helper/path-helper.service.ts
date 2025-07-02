@@ -391,4 +391,8 @@ export class PathHelperService {
   public myTimeTrackingRefresh(date:string, viewMode:string, mode:string) {
     return `${this.staticBase}/my/time-tracking/refresh?date=${date}&view_mode=${viewMode}&mode=${mode}`;
   }
+
+  public homePath() {
+    return `${this.staticBase}/`;
+  }
 }
