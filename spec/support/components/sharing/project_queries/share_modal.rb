@@ -53,9 +53,11 @@ module Components
         end
 
         def toggle_public
+          find("toggle-switch").click
+        end
+
+        def wait_for_toggle_public_to_load
           within("toggle-switch") do
-            expect(page).to have_no_css('[data-target="toggle-switch.loadingSpinner"]')
-            click_button
             expect(page).to have_css('[data-target="toggle-switch.loadingSpinner"]')
             expect(page).to have_no_css('[data-target="toggle-switch.loadingSpinner"]')
           end
