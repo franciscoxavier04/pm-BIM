@@ -49,6 +49,7 @@ module Authentication
     end
 
     def validate_auth_hash_not_expired
+      return if auth_hash.nil?
       return unless auth_hash["timestamp"]
 
       if auth_hash["timestamp"] < Time.now - 30.minutes
