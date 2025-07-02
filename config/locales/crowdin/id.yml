@@ -272,6 +272,7 @@ id:
       admin_only: "Check to make this attribute only visible to administrators. Users without admin rights will not be able to view or edit it."
       is_filter: >
         Mengizinkan bidang kustom untuk digunakan dalam filter di tampilan paket kerja. Perhatikan bahwa hanya dengan memilih 'Untuk semua proyek', bidang kustom akan muncul di tampilan global.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: Tidak ada bidang kustom saat ini.
       no_results_content_text: Buat bidang kustom baru
@@ -890,6 +891,7 @@ id:
         default_value: "Nilai default"
         editable: "Dapat diedit"
         field_format: "Format"
+        formula: "Formula"
         is_filter: "Filter"
         is_for_all: "Untuk semua Project"
         is_required: "Harus diisi"
@@ -1056,7 +1058,7 @@ id:
         ongoing: "Ongoing"
       type:
         description: "Teks default untuk deskripsi"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "Ditampilkan di roadmap secara default"
         is_default: "Diaktifkan untuk proyek baru secara default"
         is_milestone: "Is milestone"
@@ -1183,6 +1185,7 @@ id:
         inclusion: "belum di set dengan nilai yang diperbolehkan."
         inclusion_nested: "tidak disetel ke salah satu nilai yang diizinkan di jalur '%{path}'."
         invalid: "tidak valid."
+        invalid_characters: "contains invalid characters."
         invalid_url: "bukanlah URL yang Valid."
         invalid_url_scheme: "bukanlah sebuah protokol yang didukung (diperbolehkan: %{allowed_schemes})."
         less_than_or_equal_to: "harus kurang dari atau sama dengan %{count}."
@@ -2578,6 +2581,7 @@ id:
   label_select_main_menu_item: Pilih item main menu baru
   label_required_disk_storage: "Storage yang dibutuhkan"
   label_send_invitation: Kirim undangan
+  label_calculated_value: "Calculated value"
   label_change_plural: "Perubahan"
   label_change_properties: "Ubah properti"
   label_change_status: "Ubah status"
@@ -2713,6 +2717,7 @@ id:
   label_follows: "Berikut"
   label_force_user_language_to_default: "Set bahasa user ke default"
   label_form_configuration: "Form configuration"
+  label_formula: "Formula"
   label_gantt_chart: "Bagan Gantt"
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Umum"
@@ -3110,6 +3115,7 @@ id:
   label_work_package_attachments: "Lampiran paket kerja"
   label_work_package_category_new: "Kategori Baru"
   label_work_package_category_plural: "Kategori Paket-Penugasan"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Work package hierarchy"
   label_work_package_new: "Paket-Penugasan baru"
   label_work_package_edit: "Edit Paket-Penugasan %{name}"

@@ -56,7 +56,7 @@ module WorkPackageTypes
     end
 
     def update_form_options
-      { url: update_tab_type_path(id: model.id, tab: :settings), method: :patch, model: }
+      { url: type_settings_path(type_id: model.id), method: :patch, model: }
     end
   end
 end

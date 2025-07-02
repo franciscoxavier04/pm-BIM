@@ -29,11 +29,16 @@
 #++
 
 class ScimClients::DeleteService < BaseServices::Delete
-  def after_perform(call)
-    return call if call.failure?
+  def before_perform(call)
+    # pre-loading service_account association before destroy to ensure it's available afterwards
+    call.result.service_account
+    call
+  end
 
+  def after_perform(call)
     client = call.result
     client.service_account.update_column(:status, User.statuses[:locked])
+    client.service_account.user_auth_provider_links.delete_all
     call
   end
 end

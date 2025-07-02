@@ -276,6 +276,7 @@ hr:
       admin_only: "Check to make this attribute only visible to administrators. Users without admin rights will not be able to view or edit it."
       is_filter: >
         Allow the custom field to be used in a filter in work package views. Note that only with 'For all projects' selected, the custom field will show up in global views.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: Trenutno nije dostupno niti jedno prilagođeno polje.
       no_results_content_text: Novo prilagođeno polje
@@ -910,6 +911,7 @@ hr:
         default_value: "Zadane vrijednost"
         editable: "Može se uređivati"
         field_format: "Format"
+        formula: "Formula"
         is_filter: "Koristi se kao filtar"
         is_for_all: "Za sve projekte"
         is_required: "Obavezno"
@@ -1076,7 +1078,7 @@ hr:
         ongoing: "Ongoing"
       type:
         description: "Default text for description"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "Displayed in roadmap by default"
         is_default: "Activated for new projects by default"
         is_milestone: "Je ključna točka"
@@ -1203,6 +1205,7 @@ hr:
         inclusion: "nije postavljeno na jednu od dozvoljenih vrijednosti."
         inclusion_nested: "is not set to one of the allowed values at path '%{path}'."
         invalid: "je nevažeće."
+        invalid_characters: "contains invalid characters."
         invalid_url: "nije valjani URL."
         invalid_url_scheme: "nije podržani protokol (dozvoljeno: %{allowed_schemes})."
         less_than_or_equal_to: "mora biti manji od ili jednak %{count}."
@@ -2666,6 +2669,7 @@ hr:
   label_select_main_menu_item: Odaberite novi element glavnog izbornika
   label_required_disk_storage: "Potraban diskovni prostor"
   label_send_invitation: Pošalji pozivnicu
+  label_calculated_value: "Calculated value"
   label_change_plural: "Promjene"
   label_change_properties: "Promjeni značajke"
   label_change_status: "Promijeni status"
@@ -2801,6 +2805,7 @@ hr:
   label_follows: "slijedi"
   label_force_user_language_to_default: "Postavi zadani jezik za korisnike koji imaju nedozvoljeni jezik kao zadani"
   label_form_configuration: "Form configuration"
+  label_formula: "Formula"
   label_gantt_chart: "Gantt chart"
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Općenito"
@@ -3198,6 +3203,7 @@ hr:
   label_work_package_attachments: "Work package attachments"
   label_work_package_category_new: "Nova kategorija"
   label_work_package_category_plural: "Kategorije radnih paketa"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Hijerarhija radnih paketa"
   label_work_package_new: "Novi radni paket"
   label_work_package_edit: "Uredi radni paket %{name}"

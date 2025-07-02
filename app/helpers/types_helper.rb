@@ -29,32 +29,28 @@
 #++
 
 module ::TypesHelper
-  # rubocop:disable Rails/HelperInstanceVariable, Metrics/AbcSize
+  # rubocop:disable Rails/HelperInstanceVariable
   def types_tabs
     [
       {
         name: "settings",
-        path: edit_tab_type_path(id: @type.id, tab: :settings),
-        label: I18n.t("types.edit.settings.tab"),
-        view_component: WorkPackageTypes::SettingsComponent
+        path: edit_type_settings_path(@type),
+        label: I18n.t("types.edit.settings.tab")
       },
       {
         name: "form_configuration",
-        partial: "types/form/form_configuration",
-        path: edit_tab_type_path(id: @type.id, tab: :form_configuration),
+        path: edit_type_form_configuration_path(@type),
         label: I18n.t("types.edit.form_configuration.tab")
       },
       {
         name: "subject_configuration",
-        path: edit_tab_type_path(id: @type.id, tab: :subject_configuration),
+        path: edit_type_subject_configuration_path(type_id: @type.id),
         label: I18n.t("types.edit.subject_configuration.tab"),
-        view_component: WorkPackageTypes::SubjectConfigurationComponent,
         enterprise_feature: :work_package_subject_generation
       },
       {
         name: "projects",
-        path: edit_type_projects_path(type_id: @type.id),
-        view_component: WorkPackageTypes::ProjectsComponent,
+        path: edit_type_projects_path(@type),
         label: I18n.t("types.edit.projects.tab")
       },
       {
@@ -66,7 +62,7 @@ module ::TypesHelper
     ]
   end
 
-  # rubocop:enable Rails/HelperInstanceVariable, Metrics/AbcSize
+  # rubocop:enable Rails/HelperInstanceVariable
 
   def icon_for_type(type)
     return unless type

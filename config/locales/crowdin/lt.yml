@@ -273,6 +273,7 @@ lt:
       admin_only: "Check to make this attribute only visible to administrators. Users without admin rights will not be able to view or edit it."
       is_filter: >
         Leisi naudoti savo lauką darbo paketų vaizdų filtruose. Pastebėtina, kad globaliuose vaizduose matysis savi laukai, kuriuose pažymėta „Visiems projektams“.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: Nėra jokių pasirinktinų laukų.
       no_results_content_text: Sukurti naują pasirinktinį lauką
@@ -915,6 +916,7 @@ lt:
         default_value: "Numatytoji vertė"
         editable: "Galimas redaguoti"
         field_format: "Formatas"
+        formula: "Formula"
         is_filter: "Naudojamas kaip filtras"
         is_for_all: "Visiems projektams"
         is_required: "Būtinas"
@@ -1081,7 +1083,7 @@ lt:
         ongoing: "Vykstantys"
       type:
         description: "Numatytasis aprašymo tekstas"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "Rodoma plane pagal nutylėjimą"
         is_default: "Pagal nutylėjimą įjungta naujiems projektams"
         is_milestone: "Yra svarbus etapas"
@@ -1208,6 +1210,7 @@ lt:
         inclusion: "nenustatyta kaip viena iš leidžiamų reikšmių."
         inclusion_nested: "nėra nustatytas į vieną iš leidžiamų reikšmių kelyje „%{path}“."
         invalid: " neteisingas."
+        invalid_characters: "contains invalid characters."
         invalid_url: "nėra tinkamas URL."
         invalid_url_scheme: "nėra palaikomos protokolas (leidžiamas: %{allowed_schemes})."
         less_than_or_equal_to: "turi būti mažesnis arba lygus %{count}."
@@ -2705,6 +2708,7 @@ lt:
   label_select_main_menu_item: Pasirinkti naują pagrindinio meniu punktą
   label_required_disk_storage: "Reikalinga vieta diske"
   label_send_invitation: Siųsti pakvietimą
+  label_calculated_value: "Calculated value"
   label_change_plural: "Pakeitimai"
   label_change_properties: "Pakeisti nustatymus"
   label_change_status: "Pakeisti būseną"
@@ -2840,6 +2844,7 @@ lt:
   label_follows: "seka"
   label_force_user_language_to_default: "Nustatyti numatytąją kalbą vartotojams, kurie nurodo, sistemoje nežinomą kalbą"
   label_form_configuration: "Formos konfigūracija"
+  label_formula: "Formula"
   label_gantt_chart: "Ganto grafikas"
   label_gantt_chart_plural: "Ganto diagramos"
   label_general: "Bendra"
@@ -3237,6 +3242,7 @@ lt:
   label_work_package_attachments: "Darbų paketo prisegti failai"
   label_work_package_category_new: "Nauja kategorija"
   label_work_package_category_plural: "Darbų paketo kategorijos"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Darbų paketo hierarchija"
   label_work_package_new: "Naujas darbų paketas"
   label_work_package_edit: "Redaguoti darbų paketą %{name}"

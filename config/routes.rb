@@ -138,14 +138,14 @@ Rails.application.routes.draw do
   get "/roles/workflow/:id/:role_id/:type_id" => "roles#workflow"
 
   resources :types do
+    resource :form_configuration, only: %i[edit update], controller: "work_package_types/form_configuration_tab"
     resource :projects, controller: "work_package_types/projects_tab", only: %i[update edit]
+    resource :settings, controller: "work_package_types/settings_tab", only: %i[update edit]
+    resource :subject_configuration, controller: "work_package_types/subject_configuration_tab", only: %i[update edit]
 
     member do
       get "edit/:tab" => "types#edit", as: "edit_tab"
       match "update/:tab" => "types#update", as: "update_tab", via: %i[post patch]
-      put :subject_configuration,
-          controller: "work_package_types/subject_configuration_tab",
-          action: "update_subject_configuration"
     end
 
     resources :pdf_export_template, only: %i[],
@@ -307,7 +307,8 @@ Rails.application.routes.draw do
     member do
       get "settings", to: redirect("projects/%{id}/settings/general/")
 
-      get :copy
+      get :copy, to: "projects#copy_form"
+      post :copy
 
       patch :types
 
@@ -629,6 +630,18 @@ Rails.application.routes.draw do
     resources :quarantined_attachments,
               controller: "/admin/attachments/quarantined_attachments",
               only: %i[index destroy]
+
+    resources :scim_clients, only: %i[index edit new create update destroy] do
+      member do
+        get :deletion_dialog
+      end
+
+      resources :static_tokens, only: %i[create destroy], controller: "/admin/scim_client_static_tokens" do
+        member do
+          get :deletion_dialog
+        end
+      end
+    end
 
     resource :backups, controller: "/admin/backups", only: %i[show] do
       collection do

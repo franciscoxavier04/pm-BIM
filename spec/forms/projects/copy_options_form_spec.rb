@@ -31,17 +31,33 @@
 require "spec_helper"
 
 RSpec.describe Projects::CopyOptionsForm, type: :forms do
-  include_context "with rendered form"
+  include ViewComponent::TestHelpers
+
+  def render_form
+    render_in_view_context(model, described_class) do |model, described_class|
+      primer_form_with(url: "/foo", model:) do |f|
+        render(described_class.new(f, dependencies_label: "Copy from project"))
+      end
+    end
+  end
+
+  before do
+    render_form
+  end
 
   let(:model) { Projects::CopyOptions.new }
 
   shared_examples "rendering dependency checkbox" do |locator|
     it "renders checked checkbox for '#{locator}'" do
-      expect(page).to have_checked_field locator, fieldset: "Copy options"
+      expect(page).to have_checked_field locator, fieldset: "Copy from project"
     end
   end
 
   describe "dependencies" do
+    it "renders auxilary hidden field" do
+      expect(page).to have_field "copy_options[dependencies][]", type: "hidden", with: ""
+    end
+
     include_examples "rendering dependency checkbox", "Boards"
     include_examples "rendering dependency checkbox", "File storages: Project folders"
     include_examples "rendering dependency checkbox", "File storages"
@@ -61,7 +77,7 @@ RSpec.describe Projects::CopyOptionsForm, type: :forms do
 
   describe "notifications" do
     it "renders unchecked checkbox for email notifications" do
-      expect(page).to have_unchecked_field "Send email notifications during the project copy"
+      expect(page).to have_unchecked_field "Send email notifications during the project copy", fieldset: "Notifications"
     end
   end
 end

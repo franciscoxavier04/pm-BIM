@@ -275,6 +275,7 @@ zh-TW:
       admin_only: "勾選可使此屬性只對管理員可見。沒有管理員權限的使用者將無法檢視或編輯。"
       is_filter: >
         允許在工作套件檢視中的篩選條件使用客製欄位。請注意，僅在選擇「所有專案」的情況下，客製欄位才會出現在所有檢視中。
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: 目前沒有自定義的欄位
       no_results_content_text: 建立一個新的自定義欄位
@@ -890,6 +891,7 @@ zh-TW:
         default_value: "預設值"
         editable: "可編輯"
         field_format: "格式"
+        formula: "Formula"
         is_filter: "作為篩選條件"
         is_for_all: "適用於所有專案"
         is_required: "必填"
@@ -1056,7 +1058,7 @@ zh-TW:
         ongoing: "開啟中"
       type:
         description: "描述的預設文字"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "在藍圖中預設為顯示"
         is_default: "新專案的預設啟動類型"
         is_milestone: "里程碑"
@@ -1183,6 +1185,7 @@ zh-TW:
         inclusion: "沒有被設置為一個允許的值。"
         inclusion_nested: "未設置為路徑“%{path}”中允許的值之一"
         invalid: "不正確。"
+        invalid_characters: "contains invalid characters."
         invalid_url: "不是有效的 URL。"
         invalid_url_scheme: "不是受支援的協定 (允許的協定: %{allowed_schemes})。"
         less_than_or_equal_to: "必須少於或者等於 %{count}。"
@@ -2578,6 +2581,7 @@ zh-TW:
   label_select_main_menu_item: 選擇新的主選單項目
   label_required_disk_storage: "所使用的磁碟空間"
   label_send_invitation: 發送邀請
+  label_calculated_value: "Calculated value"
   label_change_plural: "更改"
   label_change_properties: "更改屬性"
   label_change_status: "更改狀態"
@@ -2713,6 +2717,7 @@ zh-TW:
   label_follows: "關注"
   label_force_user_language_to_default: "設置使用者使用預設語言"
   label_form_configuration: "表單設置"
+  label_formula: "Formula"
   label_gantt_chart: "甘特圖"
   label_gantt_chart_plural: "甘特圖"
   label_general: "一般"
@@ -3110,6 +3115,7 @@ zh-TW:
   label_work_package_attachments: "工作套件附件"
   label_work_package_category_new: "新增類別"
   label_work_package_category_plural: "工作套件類別"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "工作套件層級"
   label_work_package_new: "新增工作套件"
   label_work_package_edit: "編輯工作套件 %{name}"

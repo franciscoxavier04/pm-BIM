@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -41,6 +43,7 @@ module OpenProject
                    only: nil,
                    multi_value_possible: false,
                    enterprise_feature: nil,
+                   enabled: lambda { true },
                    formatter: "CustomValue::StringStrategy")
       @name = name
       @label = label
@@ -49,6 +52,7 @@ module OpenProject
       @class_names = only
       @multi_value_possible = multi_value_possible
       @enterprise_feature = enterprise_feature
+      @enabled = enabled
       @formatter = formatter
     end
 
@@ -59,6 +63,14 @@ module OpenProject
     def formatter
       # avoid using stale definitions in dev mode
       Kernel.const_get(@formatter)
+    end
+
+    def enabled?
+      @enabled.call
+    end
+
+    def disabled?
+      !enabled?
     end
 
     class << self
@@ -72,8 +84,9 @@ module OpenProject
       end
 
       def available
-        registered
-          .select { |_, format| !format.enterprise_feature || EnterpriseToken.allows_to?(format.enterprise_feature) }
+        registered.select do |_, format|
+          format.enabled? && (!format.enterprise_feature || EnterpriseToken.allows_to?(format.enterprise_feature))
+        end
       end
 
       def available_formats
@@ -90,6 +103,10 @@ module OpenProject
           .select { |field| field.class_names.nil? || field.class_names.include?(class_name) }
           .sort_by(&:order)
           .reject { |format| format.label.nil? }
+      end
+
+      def disabled_formats
+        registered.select { |_, format| format.disabled? }.keys
       end
     end
   end

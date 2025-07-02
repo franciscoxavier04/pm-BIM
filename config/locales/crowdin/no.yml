@@ -276,6 +276,7 @@
       admin_only: "Marker for å gjøre denne attributten synlig kun for administratorer. Brukere uten administrative rettigheter vil ikke kunne se eller redigere den."
       is_filter: >
         Tillat at egendefinert felt brukes i filter i arbeidspakkevisninger. Merk at med 'For alle prosjekter' som er valgt, vil egendefinert felt vises i globale visninger.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: Det er ingen egendefinerte felt for øyeblikket.
       no_results_content_text: Opprett nytt egendefinert felt
@@ -901,6 +902,7 @@
         default_value: "Standardverdi"
         editable: "Redigerbar"
         field_format: "Format"
+        formula: "Formula"
         is_filter: "Brukt som et filter"
         is_for_all: "For alle prosjekter"
         is_required: "Obligatorisk"
@@ -1067,7 +1069,7 @@
         ongoing: "Pågående"
       type:
         description: "Standardtekst for beskrivelse"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "Vist i roadmap som standard"
         is_default: "Aktivert for nye prosjekter som standard"
         is_milestone: "Er milepæl"
@@ -1194,6 +1196,7 @@
         inclusion: "ikke er satt til en av de tillatte verdiene."
         inclusion_nested: "er ikke satt til en av de tillatte verdiene i stien%{path}'."
         invalid: "er ugyldig."
+        invalid_characters: "contains invalid characters."
         invalid_url: "er ikke en gyldig URL."
         invalid_url_scheme: "er ikke en støttet protokoll (tillatt: %{allowed_schemes})."
         less_than_or_equal_to: "må være mindre enn eller lik %{count}."
@@ -2623,6 +2626,7 @@
   label_select_main_menu_item: Velg nytt hovedmenyelement
   label_required_disk_storage: "Nødvendig lagringsplass"
   label_send_invitation: Send invitasjon
+  label_calculated_value: "Calculated value"
   label_change_plural: "Endringer"
   label_change_properties: "Endre egenskaper"
   label_change_status: "Endre status"
@@ -2758,6 +2762,7 @@
   label_follows: "følger"
   label_force_user_language_to_default: "Sett språk for brukere som har et ikke-tillatt språk som standard"
   label_form_configuration: "Skjema konfigurering"
+  label_formula: "Formula"
   label_gantt_chart: "Gantt diagram"
   label_gantt_chart_plural: "Gantt-diagrammer"
   label_general: "Generell"
@@ -3155,6 +3160,7 @@
   label_work_package_attachments: "Vedlegg på arbeidspakke"
   label_work_package_category_new: "Ny kategori"
   label_work_package_category_plural: "Kategorier for arbeidspakker"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Hierarki for arbeidspakker"
   label_work_package_new: "Ny arbeidspakke"
   label_work_package_edit: "Rediger arbeidspakke %{name}"

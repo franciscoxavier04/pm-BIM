@@ -276,6 +276,7 @@ ka:
       admin_only: "Check to make this attribute only visible to administrators. Users without admin rights will not be able to view or edit it."
       is_filter: >
         Allow the custom field to be used in a filter in work package views. Note that only with 'For all projects' selected, the custom field will show up in global views.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: There are currently no custom fields.
       no_results_content_text: Create a new custom field
@@ -902,6 +903,7 @@ ka:
         default_value: "ნაგულისხმევი მნიშვნელობა"
         editable: "ჩასწორებადი"
         field_format: "ფორმატი"
+        formula: "Formula"
         is_filter: "Used as a filter"
         is_for_all: "For all projects"
         is_required: "აუცილებელია"
@@ -1068,7 +1070,7 @@ ka:
         ongoing: "მიმდინარე"
       type:
         description: "Default text for description"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "Displayed in roadmap by default"
         is_default: "Activated for new projects by default"
         is_milestone: "საკონტროლო წერტილია"
@@ -1195,6 +1197,7 @@ ka:
         inclusion: "is not set to one of the allowed values."
         inclusion_nested: "is not set to one of the allowed values at path '%{path}'."
         invalid: "არასწორია."
+        invalid_characters: "contains invalid characters."
         invalid_url: "is not a valid URL."
         invalid_url_scheme: "is not a supported protocol (allowed: %{allowed_schemes})."
         less_than_or_equal_to: "must be less than or equal to %{count}."
@@ -2624,6 +2627,7 @@ ka:
   label_select_main_menu_item: Select new main menu item
   label_required_disk_storage: "Required disk storage"
   label_send_invitation: Send invitation
+  label_calculated_value: "Calculated value"
   label_change_plural: "ცვლილებები"
   label_change_properties: "Change properties"
   label_change_status: "სტატუსის შეცვლა"
@@ -2759,6 +2763,7 @@ ka:
   label_follows: "მიჰყვება"
   label_force_user_language_to_default: "Set language of users having a non allowed language to default"
   label_form_configuration: "Form configuration"
+  label_formula: "Formula"
   label_gantt_chart: "განტის დიაგრამა"
   label_gantt_chart_plural: "Gantt charts"
   label_general: "ზოგადი"
@@ -3156,6 +3161,7 @@ ka:
   label_work_package_attachments: "Work package attachments"
   label_work_package_category_new: "ახალი კატეგორია"
   label_work_package_category_plural: "Work package categories"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Work package hierarchy"
   label_work_package_new: "New work package"
   label_work_package_edit: "Edit work package %{name}"

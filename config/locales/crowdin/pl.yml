@@ -273,6 +273,7 @@ pl:
       admin_only: "Zaznacz, aby ten atrybut był widoczny tylko dla administratorów. Użytkownicy bez uprawnień administratora nie będą mogli go wyświetlać ani edytować."
       is_filter: >
         Zezwól na użycie pola niestandardowego w filtrze w widokach pakietów roboczych. Pamiętaj, że pole niestandardowe będzie wyświetlane w widokach globalnych dopiero po zaznaczeniu opcji „Dla wszystkich projektów”.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: Nie ma jeszcze żadnych pól użytkownika.
       no_results_content_text: Utwórz pole użytkownika
@@ -914,6 +915,7 @@ pl:
         default_value: "Wartość domyślna"
         editable: "Edytowalne"
         field_format: "Format"
+        formula: "Formula"
         is_filter: "Używany jako filtr"
         is_for_all: "Dla wszystkich projektów"
         is_required: "Wymagane"
@@ -1080,7 +1082,7 @@ pl:
         ongoing: "Bieżący"
       type:
         description: "Domyślny tekst opisu"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "Domyślnie wyświetlany w planie działania"
         is_default: "Domyślnie aktywny dla nowych projektów"
         is_milestone: "Jest Kamieniem Milowym"
@@ -1207,6 +1209,7 @@ pl:
         inclusion: "jest niezgodne z jednym z dozwolonych wartości."
         inclusion_nested: "nie jest ustawione na jedną z dozwolonych wartości na ścieżce '%{path}'."
         invalid: "jest nieprawidłowe."
+        invalid_characters: "contains invalid characters."
         invalid_url: "nie jest poprawnym adresem URL."
         invalid_url_scheme: "nie jest obsługiwanym protokołem (dozwolone: %{allowed_schemes})."
         less_than_or_equal_to: "musi być mniejsze niż lub równe %{count}."
@@ -2704,6 +2707,7 @@ pl:
   label_select_main_menu_item: Wybierz nową pozycję menu głównego
   label_required_disk_storage: "Wymagane miejsce na dysku"
   label_send_invitation: Wyślij zaproszenie
+  label_calculated_value: "Calculated value"
   label_change_plural: "Zmiany"
   label_change_properties: "Zmiana właściwości"
   label_change_status: "Zmiana stanu"
@@ -2839,6 +2843,7 @@ pl:
   label_follows: "Następujący"
   label_force_user_language_to_default: "Ustaw język domyślny dla użytkowników o innych ustawieniach językowych niż dozwolone"
   label_form_configuration: "Konfiguracja formularza"
+  label_formula: "Formula"
   label_gantt_chart: "Wykres Gantta"
   label_gantt_chart_plural: "Wykresy Gantta"
   label_general: "Ogólne"
@@ -3236,6 +3241,7 @@ pl:
   label_work_package_attachments: "Załączniki pakietu roboczego"
   label_work_package_category_new: "Nowa kategoria"
   label_work_package_category_plural: "Kategorie pakietów roboczych"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Hierarchia zadań"
   label_work_package_new: "Nowy pakiet roboczy"
   label_work_package_edit: "Edytuj pakiet roboczy %{name}"

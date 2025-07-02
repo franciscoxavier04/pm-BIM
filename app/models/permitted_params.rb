@@ -302,7 +302,9 @@ class PermittedParams
   end
 
   def copy_project_options
-    params.expect(copy_options: [[dependencies: []], :send_notifications])
+    copy_options_params = params.expect(copy_options: [[dependencies: []], :send_notifications])
+    copy_options_params[:dependencies].compact_blank!
+    copy_options_params
   end
 
   def project_phase
@@ -481,6 +483,7 @@ class PermittedParams
         custom_field: [
           :editable,
           :field_format,
+          :formula,
           :is_filter,
           :is_for_all,
           :is_required,

@@ -276,6 +276,7 @@ bg:
       admin_only: "Check to make this attribute only visible to administrators. Users without admin rights will not be able to view or edit it."
       is_filter: >
         Allow the custom field to be used in a filter in work package views. Note that only with 'For all projects' selected, the custom field will show up in global views.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: В момента няма потребителски полета.
       no_results_content_text: Създаване на ново персонализирано поле
@@ -902,6 +903,7 @@ bg:
         default_value: "Стойност по подразбиране"
         editable: "Редактируемо"
         field_format: "Формат"
+        formula: "Formula"
         is_filter: "Се използва като филтър"
         is_for_all: "За всички проекти"
         is_required: "Задължително"
@@ -1068,7 +1070,7 @@ bg:
         ongoing: "Ongoing"
       type:
         description: "Default text for description"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "Показване в пътната карта по подразбиране"
         is_default: "Активирано за нови проекти по подразбиране"
         is_milestone: "Е крайъгълен камък"
@@ -1195,6 +1197,7 @@ bg:
         inclusion: "не е зададена, като позволена стойност."
         inclusion_nested: "не е зададена на една от разрешените стойности в пътя '%{path}'."
         invalid: "е невалиден."
+        invalid_characters: "contains invalid characters."
         invalid_url: "невалиден URL адрес."
         invalid_url_scheme: "не е поддържан протокол (разрешен: %{allowed_schemes})."
         less_than_or_equal_to: "трябва да бъде по-малка или равна на %{count}."
@@ -2624,6 +2627,7 @@ bg:
   label_select_main_menu_item: Изберете нов елемент от главното меню
   label_required_disk_storage: "Необходимо дисково пространство"
   label_send_invitation: Send invitation
+  label_calculated_value: "Calculated value"
   label_change_plural: "Промени"
   label_change_properties: "Промяна на свойствата"
   label_change_status: "Промяна на статуса"
@@ -2759,6 +2763,7 @@ bg:
   label_follows: "следва"
   label_force_user_language_to_default: "Задаване на език по подразбиране за потребителите с липсващи в системата езици"
   label_form_configuration: "Конфигурация на формата"
+  label_formula: "Formula"
   label_gantt_chart: "Диаграма на Гант"
   label_gantt_chart_plural: "Диаграми на Гант"
   label_general: "Общ"
@@ -3156,6 +3161,7 @@ bg:
   label_work_package_attachments: "Приложения към работния пакет"
   label_work_package_category_new: "Нова категория"
   label_work_package_category_plural: "Категории работни пакети"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Йерархия на работните пакети"
   label_work_package_new: "Нов работен пакет"
   label_work_package_edit: "Редактиране на работен пакет %{name}"

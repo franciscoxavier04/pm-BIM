@@ -273,6 +273,7 @@ ca:
       admin_only: "Check to make this attribute only visible to administrators. Users without admin rights will not be able to view or edit it."
       is_filter: >
         Allow the custom field to be used in a filter in work package views. Note that only with 'For all projects' selected, the custom field will show up in global views.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: Actualment no hi ha camps personalitzats.
       no_results_content_text: Crea un camp personalitzat nou
@@ -899,6 +900,7 @@ ca:
         default_value: "Valor per defecte"
         editable: "Editable"
         field_format: "Format"
+        formula: "Formula"
         is_filter: "Utilitzat com a filtre"
         is_for_all: "Per tots els projectes"
         is_required: "Obligatori"
@@ -1065,7 +1067,7 @@ ca:
         ongoing: "En curs"
       type:
         description: "Text per defecte per la descripció"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "Es mostra al full de ruta per defecte "
         is_default: "Actiu per defecte als nous projectes "
         is_milestone: "És una fita"
@@ -1192,6 +1194,7 @@ ca:
         inclusion: "no està establert a un dels valors permesos."
         inclusion_nested: "no correspon a un dels valors permesos a la ruta '%{path}'."
         invalid: "no és vàlid."
+        invalid_characters: "contains invalid characters."
         invalid_url: "no és una URL vàlida."
         invalid_url_scheme: "no és un protocal suportat (permès: %{allowed_schemes})."
         less_than_or_equal_to: "ha de ser menor o igual a %{count}."
@@ -2621,6 +2624,7 @@ ca:
   label_select_main_menu_item: Seleccioneu nou element de menú principal
   label_required_disk_storage: "Emmagatzematge de disc necessari"
   label_send_invitation: Enviar invitació
+  label_calculated_value: "Calculated value"
   label_change_plural: "Canvis"
   label_change_properties: "Canvia les propietats"
   label_change_status: "Canvia l'estat"
@@ -2756,6 +2760,7 @@ ca:
   label_follows: "segueix"
   label_force_user_language_to_default: "Definir la llengua pels usuaris que tenen una llengua per defecte no permesa"
   label_form_configuration: "Configuració del formulari"
+  label_formula: "Formula"
   label_gantt_chart: "Diagrama de Gantt"
   label_gantt_chart_plural: "Gantt charts"
   label_general: "General"
@@ -3153,6 +3158,7 @@ ca:
   label_work_package_attachments: "Fitxers adjunts del paquet de treball"
   label_work_package_category_new: "Nova categoria"
   label_work_package_category_plural: "Categories de paquet de treball"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Jerarquia del paquet de treball"
   label_work_package_new: "Paquet de treball nou"
   label_work_package_edit: "Editar paquet de treball %{name}"

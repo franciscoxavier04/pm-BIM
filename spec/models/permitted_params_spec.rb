@@ -289,6 +289,13 @@ RSpec.describe PermittedParams do
       it_behaves_like "allows params"
     end
 
+    context "with dependencies with empty values" do
+      let(:hash) { { "dependencies" => ["", " "] } }
+      let(:expected_allowed_params) { { "dependencies" => [] } }
+
+      it_behaves_like "allows params"
+    end
+
     context "with dependencies" do
       let(:hash) { { "dependencies" => ["members"] } }
 

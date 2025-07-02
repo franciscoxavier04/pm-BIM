@@ -273,6 +273,7 @@ de:
       admin_only: "Das Attribut ist nur für Administratoren sichtbar. Nutzer ohne Adminrechte können dieses Attribut nicht sehen oder bearbeiten."
       is_filter: >
         Erlaubt das benutzerdefinierte Feld in einem Filter in der Arbeitspaket-Ansicht zu verwenden. Beachten Sie, dass, nur wenn "Für alle Projekte" ausgewählt ist, das benutzerdefinierte Feld in globalen Ansichten angezeigt wird.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: Zur Zeit existieren keine benutzerdefinierten Felder.
       no_results_content_text: Neues benutzerdefiniertes Feld anlegen
@@ -894,6 +895,7 @@ de:
         default_value: "Standardwert"
         editable: "Bearbeitbar"
         field_format: "Format"
+        formula: "Formula"
         is_filter: "Als Filter benutzen"
         is_for_all: "Für alle Projekte"
         is_required: "Erforderlich"
@@ -1060,7 +1062,7 @@ de:
         ongoing: "Fortlaufend"
       type:
         description: "Standardtext für Beschreibung"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "In Roadmap standardmäßig angezeigt"
         is_default: "Typ für neue Projekte standardmäßig aktiviert"
         is_milestone: "Ist ein Meilenstein"
@@ -1187,6 +1189,7 @@ de:
         inclusion: "ist nicht auf einen erlaubten Wert gesetzt."
         inclusion_nested: "ist nicht auf einen der erlaubten Werte im Pfad '%{path} ' gesetzt."
         invalid: "ist ungültig."
+        invalid_characters: "contains invalid characters."
         invalid_url: "ist keine gültige URL."
         invalid_url_scheme: "ist kein unterstütztes Protokoll (erlaubt: %{allowed_schemes})."
         less_than_or_equal_to: "muss kleiner oder gleich %{count} sein."
@@ -2616,6 +2619,7 @@ de:
   label_select_main_menu_item: Neuen Hauptmenüpunkt auwählen
   label_required_disk_storage: "Erforderlicher Festplattenspeicher"
   label_send_invitation: Einladung senden
+  label_calculated_value: "Calculated value"
   label_change_plural: "Änderungen"
   label_change_properties: "Eigenschaften ändern"
   label_change_status: "Statuswechsel"
@@ -2751,6 +2755,7 @@ de:
   label_follows: "folgt"
   label_force_user_language_to_default: "Setze Sprache für Nutzer, die eine nicht erlaubte Sprache gewählt haben, auf die Standard-Sprache"
   label_form_configuration: "Formularkonfiguration"
+  label_formula: "Formula"
   label_gantt_chart: "Gantt-Diagramm"
   label_gantt_chart_plural: "Gantt Diagramme"
   label_general: "Allgemein"
@@ -3148,6 +3153,7 @@ de:
   label_work_package_attachments: "Anhänge des Arbeitspakets"
   label_work_package_category_new: "Neue Kategorie"
   label_work_package_category_plural: "Arbeitspaket-Kategorien"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Arbeitspakethierarchie"
   label_work_package_new: "Neues Arbeitspaket"
   label_work_package_edit: "Arbeitspaket %{name} editieren"

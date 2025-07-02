@@ -29,62 +29,42 @@
 #++
 
 module WorkPackageTypes
-  class SubjectConfigurationTabController < ApplicationController
-    layout "admin"
+  class SubjectConfigurationTabController < BaseTabController
+    current_menu_item [:edit, :update] do
+      :types
+    end
 
-    before_action :require_admin
-    before_action :find_type, only: %i[update_subject_configuration]
+    def edit; end
 
-    def update_subject_configuration
-      form_params = params.expect(
-        work_package_types_forms_subject_configuration_form_model: %i[subject_configuration pattern]
-      ).to_h
+    def update
+      permitted = params.expect(work_package_types_forms_subject_configuration_form_model: %i[subject_configuration pattern]).to_h
 
-      UpdateTypeService.new(@type, current_user)
-                       .call({ patterns: pattern_collection_update(form_params) }) do |call|
-        call.on_success do
-          redirect_to tab_path, notice: I18n.t(:notice_successful_update)
-        end
+      result = UpdateService.new(model: @type, user: current_user, contract_class: UpdateSubjectPatternContract)
+                            .call(patterns: build_patterns(permitted))
 
-        call.on_failure do
-          params[:tab] = "subject_configuration"
-          render template: "types/edit", status: :unprocessable_entity
-        end
+      if result.success?
+        redirect_to edit_type_subject_configuration_path(@type), status: :see_other
+      else
+        render :edit, status: :unprocessable_entity
       end
     end
 
     private
 
-    def find_type
-      @type = ::Type.find(params[:id])
-    end
-
-    def tab_path = edit_tab_type_path(id: @type.id, tab: :subject_configuration)
-
-    def pattern_collection_update(form_params)
-      patterns = @type.patterns.to_h.symbolize_keys
-
-      subject_pattern =
-        case form_params
-        in { subject_configuration: "generated", pattern: String => blueprint }
-          { subject: { blueprint:, enabled: true } }
-        in { subject_configuration: "manual", pattern: String => blueprint }
-          if blueprint.empty?
-            # Submitting the form with an empty blueprint and manual subject configuration will
-            # remove the subject pattern from the collection
-            nil
-          else
-            { subject: { blueprint:, enabled: false } }
-          end
-        else
+    def build_patterns(form_params)
+      case form_params
+      in { subject_configuration: "generated", pattern: String => blueprint }
+        { subject: { blueprint:, enabled: true } }
+      in { subject_configuration: "manual", pattern: String => blueprint }
+        if blueprint.empty?
+          # Submitting the form with an empty blueprint and manual subject configuration will
+          # remove the subject pattern from the collection
           nil
+        else
+          { subject: { blueprint:, enabled: false } }
         end
-
-      if subject_pattern.nil?
-        patterns.delete(:subject)
-        patterns
       else
-        patterns.merge(subject_pattern)
+        nil
       end
     end
   end

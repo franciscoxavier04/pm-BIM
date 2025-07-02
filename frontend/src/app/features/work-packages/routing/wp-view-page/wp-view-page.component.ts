@@ -116,6 +116,11 @@ export class WorkPackageViewPageComponent extends PartitionedQuerySpacePageCompo
         href: this.pathHelperService.projectPath(this.currentProject.identifier),
         text: this.currentProject.name,
       });
+    } else {
+      items.push({
+        href: this.pathHelperService.homePath(),
+        text: this.titleService.appTitle,
+      });
     }
     items.push(this.breadcrumbModuleEntry());
     if (this.selectedTitle) {

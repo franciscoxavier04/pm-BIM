@@ -43,7 +43,7 @@ module WorkPackageTypes
       form_model = subject_form_object
 
       {
-        url: subject_configuration_type_path(id: model.id),
+        url: type_subject_configuration_path(type_id: model.id),
         method: :put,
         model: form_model,
         data: {

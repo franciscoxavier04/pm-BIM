@@ -197,7 +197,7 @@ fa:
   setting_allow_tracking_start_and_end_times: "Allow start and finish times"
   setting_costs_currency: "واحد پول"
   setting_costs_currency_format: "فرمت واحد پول"
-  setting_enforce_tracking_start_and_end_times: "Require start and finish times"
+  setting_enforce_tracking_start_and_end_times: "درخواست زمان های شروع و پایان"
   setting_enforce_without_allow: "Requiring start and finish times is not possible without allowing them"
   setting_allow_tracking_start_and_end_times_caption: "Enables entering start and finish times when logging time."
   setting_enforce_tracking_start_and_end_times_caption: "Makes entering start and finish times mandatory when logging time."

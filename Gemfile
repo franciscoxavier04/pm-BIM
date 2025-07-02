@@ -223,7 +223,7 @@ gem "dry-validation"
 gem "store_attribute", "~> 2.0"
 
 # Appsignal integration
-gem "appsignal", "~> 3.10.0", require: false
+gem "appsignal", "~> 4.2", require: false
 
 # Yabeda integration
 gem "yabeda-activerecord"
@@ -391,6 +391,9 @@ gem "googleauth", require: false
 
 # Required for contracts
 gem "disposable", "~> 0.6.2"
+
+# Used for formula evaluation of calculated values
+gem "dentaku", "~> 3.5"
 
 platforms :mri, :mingw, :x64_mingw do
   group :postgres do

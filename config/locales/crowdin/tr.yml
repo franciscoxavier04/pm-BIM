@@ -276,6 +276,7 @@ tr:
       admin_only: "Bu niteliğin yalnızca yöneticilere görünür kılmak için işaretleyin. Yönetici hakları olmayan kullanıcılar bunu görüntüleyemez veya düzenleyemez."
       is_filter: >
         Özel alanın iş paketi görünümlerinde bir filtrede kullanılmasına izin verin. Yalnızca 'Tüm projeler için' seçildiğinde, özel alanın genel görünümlerde görüneceğini unutmayın.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: Şu anda özel bir alan bulunmamakta.
       no_results_content_text: Yeni bir özel alan oluştur
@@ -901,6 +902,7 @@ tr:
         default_value: "Varsayılan değer"
         editable: "Düzenlenebilir"
         field_format: "Biçim"
+        formula: "Formula"
         is_filter: "Filtre olarak kullanılan"
         is_for_all: "Tüm projeler için"
         is_required: "Gerekli"
@@ -1067,7 +1069,7 @@ tr:
         ongoing: "Devam eden"
       type:
         description: "Açıklama için varsayılan metin"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "Yol haritasında varsayılan olarak gösterilsin"
         is_default: "Yeni projelerde varsayılan olarak aktif"
         is_milestone: "Kilometre taşı"
@@ -1194,6 +1196,7 @@ tr:
         inclusion: "izin verilen değerlerden birine ayarlanmamış."
         inclusion_nested: "'%{path}' yolunda izin verilen değerlerden birine ayarlanmamış."
         invalid: "geçersizdir."
+        invalid_characters: "contains invalid characters."
         invalid_url: "geçerli bir adres değil."
         invalid_url_scheme: "bu protokol desteklenmiyor (izin: %{allowed_schemes})."
         less_than_or_equal_to: "%{count} 'ten küçük veya bu değere eşit olmalıdır."
@@ -2623,6 +2626,7 @@ tr:
   label_select_main_menu_item: Yeni ana menü öğesi seç
   label_required_disk_storage: "Gerekli disk alanı"
   label_send_invitation: Davet gönder
+  label_calculated_value: "Calculated value"
   label_change_plural: "Değişiklikler"
   label_change_properties: "Özellikleri değiştir"
   label_change_status: "Durumu değiştir"
@@ -2758,6 +2762,7 @@ tr:
   label_follows: "takip eder"
   label_force_user_language_to_default: "Varsayılan olmayan izin verildi bir dil olan kullanıcı dilini ayarlama"
   label_form_configuration: "Formu yapılandırma"
+  label_formula: "Formula"
   label_gantt_chart: "Gantt görünümü"
   label_gantt_chart_plural: "Gantt grafikleri"
   label_general: "Genel"
@@ -3155,6 +3160,7 @@ tr:
   label_work_package_attachments: "İş paketi ekleri"
   label_work_package_category_new: "Yeni kategori"
   label_work_package_category_plural: "İş paketi kategorileri"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "İş paketi hiyerarşisi"
   label_work_package_new: "Yeni iş paketi"
   label_work_package_edit: "%{name} iş paketini düzenle"

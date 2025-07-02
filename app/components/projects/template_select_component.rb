@@ -36,10 +36,6 @@ module Projects
 
     options :template, :parent
 
-    def resolve_css_classes(**)
-      Primer::Classify.(**)[:class]
-    end
-
     private
 
     def template_id = template&.id

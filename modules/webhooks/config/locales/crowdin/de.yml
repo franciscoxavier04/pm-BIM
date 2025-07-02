@@ -31,6 +31,8 @@ de:
       events:
         created: "Angelegt"
         updated: "Aktualisiert"
+        comment: "Comment"
+        internal_comment: "Internal comment"
       explanation:
         text: >
           Bei dem Auftreten eines Ereignisses wie der Erstellung eines Arbeitspakets oder einer Aktualisierung eines Projekts sendet OpenProject einen HTTP POST Request an die konfigurierten Web-Endpunkte. Oft wird das Ereignis nach Ablauf der %{link} gesendet.

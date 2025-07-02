@@ -274,6 +274,7 @@ es:
       admin_only: "Marque esta casilla para que este atributo solo sea visible para los administradores. Los usuarios sin derechos de administrador no podrán verlo ni editarlo."
       is_filter: >
         Permitir que el campo personalizado se utilice como filtro en las vistas de paquetes de trabajo. Tenga en cuenta que solo 'Para todos los proyectos' seleccionados, el campo personalizado se mostrará en vistas globales.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: Actualmente no hay campos personalizados.
       no_results_content_text: Crear un nuevo campo personalizado
@@ -899,6 +900,7 @@ es:
         default_value: "Valor predeterminado"
         editable: "Editable"
         field_format: "Formato"
+        formula: "Formula"
         is_filter: "Usado como filtro"
         is_for_all: "Para todos los proyectos"
         is_required: "Obligatorio"
@@ -1065,7 +1067,7 @@ es:
         ongoing: "En curso"
       type:
         description: "Texto predeterminado para descripción"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "Mostrado en la hoja de ruta de forma predeterminada"
         is_default: "Activado para nuevos proyectos de forma predeterminada"
         is_milestone: "Es un hito"
@@ -1192,6 +1194,7 @@ es:
         inclusion: "no está establecido a uno de los valores permitidos."
         inclusion_nested: "no está establecido en uno de los valores permitidos en la ruta '%{path}'."
         invalid: "no es válido."
+        invalid_characters: "contains invalid characters."
         invalid_url: "no es una URL válida."
         invalid_url_scheme: "no es un protocolo admitido (permitidos: %{allowed_schemes})."
         less_than_or_equal_to: "debe ser menor o igual a %{count}."
@@ -2621,6 +2624,7 @@ es:
   label_select_main_menu_item: Seleccione nuevo elemento de menú principal
   label_required_disk_storage: "Almacenamiento en disco requerido"
   label_send_invitation: Enviar invitación
+  label_calculated_value: "Calculated value"
   label_change_plural: "Cambios"
   label_change_properties: "Cambiar propiedades"
   label_change_status: "Cambiar estado"
@@ -2756,6 +2760,7 @@ es:
   label_follows: "sigue"
   label_force_user_language_to_default: "Configurar idioma de usuarios que tienen un lenguaje no permitido por defecto"
   label_form_configuration: "Configuración del formato"
+  label_formula: "Formula"
   label_gantt_chart: "Diagrama de Gantt"
   label_gantt_chart_plural: "Diagramas de Gantt"
   label_general: "General"
@@ -3153,6 +3158,7 @@ es:
   label_work_package_attachments: "Datos adjuntos de paquete de trabajo"
   label_work_package_category_new: "Nueva categoría"
   label_work_package_category_plural: "Categorías de paquete de trabajo"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Jerarquía del paquete de trabajo"
   label_work_package_new: "Nuevo paquete de trabajo"
   label_work_package_edit: "Editar paquete de trabajo %{name}"

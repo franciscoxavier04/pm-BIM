@@ -23,20 +23,16 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
 module WorkPackageTypes
-  class ProjectsTabController < ApplicationController
-    layout "admin"
-
-    before_action :require_admin
-    before_action :find_type
+  class ProjectsTabController < BaseTabController
     before_action :load_projects, only: :edit
 
-    current_menu_item [:edit] do
+    current_menu_item [:edit, :update] do
       :types
     end
 
@@ -63,10 +59,6 @@ module WorkPackageTypes
 
     def load_projects
       @projects = Project.all
-    end
-
-    def find_type
-      @type = ::Type.find(params[:type_id])
     end
 
     def permitted_project_params

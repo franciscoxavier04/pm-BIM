@@ -273,6 +273,7 @@ zh-CN:
       admin_only: "选中使此属性仅对管理员可见。没有管理员权限的用户将无法查看或编辑该属性。"
       is_filter: >
         允许在工作包视图中使用自定义字段。 请注意，只有选择了“所有项目”时，自定义字段才会显示在全局视图中。
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: 目前没有自定义字段。
       no_results_content_text: 创建新的自定义字段
@@ -890,6 +891,7 @@ zh-CN:
         default_value: "默认值"
         editable: "可编辑"
         field_format: "格式"
+        formula: "Formula"
         is_filter: "用作筛选器"
         is_for_all: "适用于所有项目"
         is_required: "必填"
@@ -1056,7 +1058,7 @@ zh-CN:
         ongoing: "正在进行的"
       type:
         description: "默认描述文本"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "默认在路线图中显示"
         is_default: "默认激活新项目"
         is_milestone: "里程碑"
@@ -1183,6 +1185,7 @@ zh-CN:
         inclusion: "未设置为允许的值之一。"
         inclusion_nested: "未设置为路径“%{path}”中允许的值之一。"
         invalid: "是无效的。"
+        invalid_characters: "contains invalid characters."
         invalid_url: "不是有效的 URL。"
         invalid_url_scheme: "不是受支持的协议（允许：%{allowed_schemes}）。"
         less_than_or_equal_to: "必须小于或等于 %{count}。"
@@ -2578,6 +2581,7 @@ zh-CN:
   label_select_main_menu_item: 选择新的主菜单项
   label_required_disk_storage: "所需的磁盘空间"
   label_send_invitation: 发送邀请
+  label_calculated_value: "Calculated value"
   label_change_plural: "更改"
   label_change_properties: "更改属性"
   label_change_status: "更改状态"
@@ -2713,6 +2717,7 @@ zh-CN:
   label_follows: "跟踪"
   label_force_user_language_to_default: "设置拥有非允许语言的用户的默认语言"
   label_form_configuration: "表格配置"
+  label_formula: "Formula"
   label_gantt_chart: "甘特图"
   label_gantt_chart_plural: "甘特图"
   label_general: "通用"
@@ -3110,6 +3115,7 @@ zh-CN:
   label_work_package_attachments: "工作包附件"
   label_work_package_category_new: "新的类别"
   label_work_package_category_plural: "工作包类别"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "工作包的层次结构"
   label_work_package_new: "新工作包"
   label_work_package_edit: "编辑工作包 %{name}"

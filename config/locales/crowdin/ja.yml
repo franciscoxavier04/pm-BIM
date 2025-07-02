@@ -274,6 +274,7 @@ ja:
       admin_only: "Check to make this attribute only visible to administrators. Users without admin rights will not be able to view or edit it."
       is_filter: >
         作業項目ビューのフィルタでカスタム項目を使用できるようにします。 「すべてのプロジェクトについて」が選択されている場合のみ、カスタムフィールドはグローバルビューに表示されます。
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: 現在、カスタム フィールドはありません。
       no_results_content_text: 新しいカスタム フィールドを作成
@@ -892,6 +893,7 @@ ja:
         default_value: "デフォルト値"
         editable: "編集可能"
         field_format: "書式"
+        formula: "Formula"
         is_filter: "フィルタとして使用"
         is_for_all: "全プロジェクト向け"
         is_required: "必須"
@@ -1058,7 +1060,7 @@ ja:
         ongoing: "Ongoing"
       type:
         description: "デフォルトの説明"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "デフォルトでロードマップに表示されます"
         is_default: "デフォルトで新規プロジェクト用に有効化"
         is_milestone: "マイルストーン"
@@ -1185,6 +1187,7 @@ ja:
         inclusion: "は許可されている値ではありません。"
         inclusion_nested: "is not set to one of the allowed values at path '%{path}'."
         invalid: "は不正な値です。"
+        invalid_characters: "contains invalid characters."
         invalid_url: "は有効な URL ではありません。"
         invalid_url_scheme: "はサポートされたプロトコルではありません (可能: %{allowed_schemes})。"
         less_than_or_equal_to: "は%{count}以下の値にしてください。"
@@ -2580,6 +2583,7 @@ ja:
   label_select_main_menu_item: 新しいメインメニュー項目を選択する
   label_required_disk_storage: "必要なディスク ストレージ"
   label_send_invitation: 招待状を送信
+  label_calculated_value: "Calculated value"
   label_change_plural: "変更"
   label_change_properties: "プロパティの変更"
   label_change_status: "ステータスの変更"
@@ -2715,6 +2719,7 @@ ja:
   label_follows: "次の項目に後続"
   label_force_user_language_to_default: "ユーザーの言語設定が利用許可されていない場合、デフォルト言語を利用する"
   label_form_configuration: "フォーム設定"
+  label_formula: "Formula"
   label_gantt_chart: "ガントチャート"
   label_gantt_chart_plural: "ガントチャート"
   label_general: "概要"
@@ -3112,6 +3117,7 @@ ja:
   label_work_package_attachments: "ワークパッケージの添付ファイル"
   label_work_package_category_new: "新規カテゴリ"
   label_work_package_category_plural: "ワークパッケージのカテゴリ"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "ワークパッケージの階層"
   label_work_package_new: "新しいワークパッケージ"
   label_work_package_edit: "ワークパッケージ %{name} を編集"

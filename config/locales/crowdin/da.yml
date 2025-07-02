@@ -274,6 +274,7 @@ da:
       admin_only: "Check to make this attribute only visible to administrators. Users without admin rights will not be able to view or edit it."
       is_filter: >
         Allow the custom field to be used in a filter in work package views. Note that only with 'For all projects' selected, the custom field will show up in global views.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: Der er i øjeblikket ingen brugerdefinerede felter.
       no_results_content_text: Oprette en ny brugerdefineret felt
@@ -900,6 +901,7 @@ da:
         default_value: "Forhåndsvalgt værdi"
         editable: "Redigerbar"
         field_format: "Format"
+        formula: "Formula"
         is_filter: "Bruges som filter"
         is_for_all: "For alle projekter"
         is_required: "Påkrævet"
@@ -1066,7 +1068,7 @@ da:
         ongoing: "Ongoing"
       type:
         description: "Default text for description"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "Displayed in roadmap by default"
         is_default: "Activated for new projects by default"
         is_milestone: "Is milestone"
@@ -1193,6 +1195,7 @@ da:
         inclusion: "er ikke sat til en tilladt værdi."
         inclusion_nested: "is not set to one of the allowed values at path '%{path}'."
         invalid: "er ugyldig."
+        invalid_characters: "contains invalid characters."
         invalid_url: "is not a valid URL."
         invalid_url_scheme: "is not a supported protocol (allowed: %{allowed_schemes})."
         less_than_or_equal_to: "skal være mindre end eller lig med %{count}."
@@ -2622,6 +2625,7 @@ da:
   label_select_main_menu_item: Vælg nyt punkt i hovedmenu
   label_required_disk_storage: "Påkrævet disklagerplads"
   label_send_invitation: Send invitation
+  label_calculated_value: "Calculated value"
   label_change_plural: "Ændringer"
   label_change_properties: "Skift egenskaber"
   label_change_status: "Skift status"
@@ -2757,6 +2761,7 @@ da:
   label_follows: "følger"
   label_force_user_language_to_default: "Sæt sprog for brugere, der har forhåndsvalgt et ikke gangbart sprog"
   label_form_configuration: "Form configuration"
+  label_formula: "Formula"
   label_gantt_chart: "Gantt chart"
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Generelle"
@@ -3154,6 +3159,7 @@ da:
   label_work_package_attachments: "Work package attachments"
   label_work_package_category_new: "Ny kategori"
   label_work_package_category_plural: "Kategorier for arbejdspakker"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Work package hierarchy"
   label_work_package_new: "Ny arbejdspakke"
   label_work_package_edit: "Rediger arbejdspakke %{name}"

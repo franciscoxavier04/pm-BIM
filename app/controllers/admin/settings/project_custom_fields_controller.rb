@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -55,7 +57,7 @@ module Admin::Settings
 
     def show
       # quick fixing redirect issue from perform_update
-      # perform_update is always redirecting to the show action altough configured otherwise
+      # perform_update is always redirecting to the show action although configured otherwise
       render :edit
     end
 

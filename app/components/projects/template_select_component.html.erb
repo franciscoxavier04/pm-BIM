@@ -44,15 +44,33 @@ See COPYRIGHT and LICENSE files for more details.
           border_radius: 2,
           bg: :inset,
           my: 3,
-          p: 3,
-          data: {
-            controller: "highlight-when-value-selected",
-            highlight_when_value_selected_highlight_class: resolve_css_classes(bg: :accent),
-            highlight_when_value_selected_target: "content"
-          }
+          p: 3
         )
       ) do
-        render Projects::TemplateAutocompleter.new(f, template_id:, parent_id:)
+        template_id_value = template_id
+        parent_id_value = parent_id
+        render_inline_form(f) do |form|
+          form.project_autocompleter(
+            name: :template_id,
+            label: I18n.t("create_project.template_label"),
+            autocomplete_options: {
+              focusDirectly: false,
+              dropdownPosition: "bottom",
+              inputValue: template_id_value,
+              placeholder: I18n.t("label_none_parentheses"),
+              filters: [
+                { name: "user_action", operator: "=", values: ["projects/copy"] },
+                { name: "templated", operator: "=", values: ["t"] }
+              ],
+              data: {
+                action: "change->auto-submit#submit",
+                "qa-field-name": "use_template"
+              }
+            }
+          )
+
+          form.hidden name: :parent_id, value: parent_id_value
+        end
       end
     end
   end

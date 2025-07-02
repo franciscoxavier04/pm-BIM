@@ -275,6 +275,7 @@ ms:
       admin_only: "Semak untuk menjadikan atribut ini hanya kelihatan kepada pentadbir. Pengguna tanpa hak pentadbir tidak akan dapat melihat atau mengeditnya."
       is_filter: >
         Benarkan ruang tersuai untuk digunakan di penyaring paparan pakej kerja. Perhatikan bahawa hanya "Untuk semua projek" yang dipilih, ruang tersuai akan dipaparkan di paparan global.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: Tiada ruangan tersuai pada masa ini.
       no_results_content_text: Cipta ruangan tersuai baharu
@@ -892,6 +893,7 @@ ms:
         default_value: "Nilai default"
         editable: "Boleh diedit"
         field_format: "Format"
+        formula: "Formula"
         is_filter: "Digunakan sebagai penyaring"
         is_for_all: "Untuk semua projek"
         is_required: "Diperlukan"
@@ -1058,7 +1060,7 @@ ms:
         ongoing: "Sedang berlangsung"
       type:
         description: "Teks default untuk deskripsi"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "Dipaparkan dalam roadmap secara default"
         is_default: "Diaktifkan untuk projek baharu secara default"
         is_milestone: "Adalah pencapaian"
@@ -1185,6 +1187,7 @@ ms:
         inclusion: "tidak ditetapkan pada salah satu nilai yang dibenarkan."
         inclusion_nested: "tidak ditetapkan pada salah satu nilai yang dibenarkan pada laluan '%{path}'."
         invalid: "tidak sah."
+        invalid_characters: "contains invalid characters."
         invalid_url: "bukan URL yang sah."
         invalid_url_scheme: "adalah bukan protokol yang disokong (dibenarkan: %{allowed_schemes})."
         less_than_or_equal_to: "perlu kurang daripada atau sama dengan %{count}."
@@ -2580,6 +2583,7 @@ ms:
   label_select_main_menu_item: Pilih item menu utama baharu
   label_required_disk_storage: "Storan cakera yang diperlukan"
   label_send_invitation: Hantar jemputan
+  label_calculated_value: "Calculated value"
   label_change_plural: "Perubahan"
   label_change_properties: "Tukar ciri-ciri"
   label_change_status: "Tukar status"
@@ -2715,6 +2719,7 @@ ms:
   label_follows: "ikuti"
   label_force_user_language_to_default: "Tetapkan bahasa pengguna yang mempunyai bahasa yang tidak dibenarkan kepada default"
   label_form_configuration: "Konfigurasi borang"
+  label_formula: "Formula"
   label_gantt_chart: "Carta Gantt"
   label_gantt_chart_plural: "Carta Gantt"
   label_general: "Umum"
@@ -3112,6 +3117,7 @@ ms:
   label_work_package_attachments: "Lampiran pakej kerja"
   label_work_package_category_new: "Kategori baharu"
   label_work_package_category_plural: "Kategori pakej kerja"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Hierarki pakej kerja"
   label_work_package_new: "Pakej kerja baharu"
   label_work_package_edit: "Edit pakej kerja %{name}"

@@ -33,23 +33,11 @@ class ScimClients::CreateService < BaseServices::Create
     super.tap do |service_result|
       self.model = service_result.result
 
-      update_service_account
       update_oauth_application(service_result)
     end
   end
 
   private
-
-  def update_service_account
-    service_account.name = params[:name]
-    if model.authentication_method_sso?
-      service_account.user_auth_provider_links.build(
-        auth_provider_id: params[:auth_provider_id],
-        external_id: params[:jwt_sub]
-      )
-    end
-    service_account.save!
-  end
 
   def update_oauth_application(service_result)
     return if !model.authentication_method_oauth2_client? && !model.authentication_method_oauth2_token?
@@ -60,7 +48,7 @@ class ScimClients::CreateService < BaseServices::Create
   end
 
   def service_account
-    @service_account ||= model.build_service_account(admin: true)
+    model.service_account
   end
 
   def create_oauth_application
@@ -69,6 +57,7 @@ class ScimClients::CreateService < BaseServices::Create
       .call(
         name: "#{model.name} (#{ScimClient.model_name.human})",
         redirect_uri: "urn:ietf:wg:oauth:2.0:oob",
+        client_credentials_user_id: service_account.id,
         scopes: "scim_v2",
         confidential: true,
         integration: model,

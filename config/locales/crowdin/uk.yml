@@ -272,6 +272,7 @@ uk:
       admin_only: "Установіть прапорець, щоб зробити цей атрибут видимим лише для адміністраторів. Користувачі без прав адміністратора не зможуть переглядати або редагувати його."
       is_filter: >
         Дозвольте відображати користувацьке поле у фільтрі в поданнях пакета робіт. Зверніть увагу: користувацьке поле відображатиметься в глобальних поданнях, лише якщо встановлено прапорець «Для всіх проєктів».
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: Наразі немає спеціальних полів.
       no_results_content_text: Створіть нове спеціальне поле
@@ -911,6 +912,7 @@ uk:
         default_value: "Значення за замовчуванням"
         editable: "Може бути відредаговане"
         field_format: "Формат"
+        formula: "Formula"
         is_filter: "Використовується як фільтр"
         is_for_all: "Для всіх проєктів"
         is_required: "Обов'язкове поле"
@@ -1077,7 +1079,7 @@ uk:
         ongoing: "Триває"
       type:
         description: "Текст за умовчанням для опису"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "За умовчанням відображається в дорожній карті"
         is_default: "Активовано для нових проектів за замовчуванням"
         is_milestone: "Це віха"
@@ -1204,6 +1206,7 @@ uk:
         inclusion: "не встановлено в одному з допустимих значень"
         inclusion_nested: "– не призначено одне з дозволених значень за шляхом «%{path}»."
         invalid: "зазначено невірно"
+        invalid_characters: "contains invalid characters."
         invalid_url: "не є дійсною URL-адресою."
         invalid_url_scheme: "не є підтримуваним протоколом (дозволено: %{allowed_schemes})."
         less_than_or_equal_to: "має бути меншим або рівним %{count}"
@@ -2701,6 +2704,7 @@ uk:
   label_select_main_menu_item: Виберіть новий пункт головного меню
   label_required_disk_storage: "Необхідне місце на диску"
   label_send_invitation: Надіслати запрошення
+  label_calculated_value: "Calculated value"
   label_change_plural: "Зміни"
   label_change_properties: "Змінити властивості"
   label_change_status: "Змінити статус"
@@ -2836,6 +2840,7 @@ uk:
   label_follows: "слідкувати"
   label_force_user_language_to_default: "Встановити мову користувачів, які мають не підтримувану мову, за умовчанням"
   label_form_configuration: "Конфігурація форми"
+  label_formula: "Formula"
   label_gantt_chart: "Діаграма Ґанта"
   label_gantt_chart_plural: "Діаграми Ґанта"
   label_general: "Загальні"
@@ -3233,6 +3238,7 @@ uk:
   label_work_package_attachments: "Додатки до робочого пакету"
   label_work_package_category_new: "Нова категорія"
   label_work_package_category_plural: "Категорії робочих пакетів"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Ієрархія робочих пакетів"
   label_work_package_new: "Новий пакет робіт"
   label_work_package_edit: "Редагувати робочий пакет %{name}"

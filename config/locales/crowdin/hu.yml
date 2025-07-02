@@ -275,6 +275,7 @@ hu:
       admin_only: "Check to make this attribute only visible to administrators. Users without admin rights will not be able to view or edit it."
       is_filter: >
         Allow the custom field to be used in a filter in work package views. Note that only with 'For all projects' selected, the custom field will show up in global views.
+      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
     tab:
       no_results_title_text: Jelenleg nincsenek egyéni mezők.
       no_results_content_text: Új egyéni mező létrehozása
@@ -901,6 +902,7 @@ hu:
         default_value: "Alap érték"
         editable: "Szerkeszthető"
         field_format: "Formátum"
+        formula: "Formula"
         is_filter: "Szűrőként használható"
         is_for_all: "Minden projekthez"
         is_required: "Kötelező"
@@ -1067,7 +1069,7 @@ hu:
         ongoing: "Ongoing"
       type:
         description: "Alapértelmezett szöveg a leíráshoz"
-        attribute_groups: ""
+        attribute_groups: "Form configuration"
         is_in_roadmap: "Alapértelmezés szerint az ütemterv jelenik meg"
         is_default: "Alapértelmezetten aktiválva az új projekteknél"
         is_milestone: "Mérföldkő"
@@ -1194,6 +1196,7 @@ hu:
         inclusion: "nem a megengedett értékek egyike lett beállítva."
         inclusion_nested: "nincs beállítva az '%{path}' elérési útvonalon a megengedett értékek egyikére."
         invalid: "érvénytelen."
+        invalid_characters: "contains invalid characters."
         invalid_url: "nem érvényes URL."
         invalid_url_scheme: "nem támogatott protokoll (támogatott: %{allowed_schemes})."
         less_than_or_equal_to: "kisebbnek vagy egyenlőnek kell lennie mint, %{count}."
@@ -2623,6 +2626,7 @@ hu:
   label_select_main_menu_item: Válasszon ki új fő menüpontot
   label_required_disk_storage: "Szükséges lemezterület"
   label_send_invitation: Meghívó küldése
+  label_calculated_value: "Calculated value"
   label_change_plural: "Változtat"
   label_change_properties: "A tulajdonságok megváltoztatása"
   label_change_status: "Az állapot megváltoztatása"
@@ -2758,6 +2762,7 @@ hu:
   label_follows: "követi ezt"
   label_force_user_language_to_default: "Nyelv beállitása a felhasználóknak, amelyeknél nem az alapértelmezett nyelv az elfogadott"
   label_form_configuration: "Űrlap konfiguráció"
+  label_formula: "Formula"
   label_gantt_chart: "Gantt-diagram"
   label_gantt_chart_plural: "Gantt-diagram"
   label_general: "Általános"
@@ -3155,6 +3160,7 @@ hu:
   label_work_package_attachments: "Munkacsomag mellékletek"
   label_work_package_category_new: "Új kategória"
   label_work_package_category_plural: "Munkacsomag kategóriák"
+  label_work_package_comments: "Work package comments"
   label_work_package_hierarchy: "Feladatcsoport hierarchia"
   label_work_package_new: "Új munkacsomag"
   label_work_package_edit: "Munkacsomag %{name} szerkesztése"

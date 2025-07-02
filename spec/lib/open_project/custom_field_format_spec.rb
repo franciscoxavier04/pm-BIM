@@ -41,66 +41,95 @@ RSpec.describe OpenProject::CustomFieldFormat do
     end
 
     context "for a 'Project' class" do
-      it_behaves_like "custom field formats",
-                      "Project",
-                      ["bool", "date", "float", "int", "link", "list", "string", "text", "user", "version"]
+      context "with calculated values feature flag enabled", with_flag: { calculated_value_project_attribute: true } do
+        it_behaves_like "custom field formats",
+                        "Project",
+                        %w[bool calculated_value date float int link list string text user version]
+      end
+
+      context "with calculated values feature flag disabled" do
+        it_behaves_like "custom field formats",
+                        "Project",
+                        %w[bool date float int link list string text user version]
+      end
     end
 
     context "for a 'WorkPackage' class" do
       context "with a custom_field_hierarchies ee", with_ee: [:custom_field_hierarchies] do
         it_behaves_like "custom field formats",
                         "WorkPackage",
-                        ["bool", "date", "float", "int", "link", "list", "string", "text", "user", "version", "hierarchy"]
+                        %w[bool date float int link list string text user version hierarchy]
       end
 
       context "without a custom_field_hierarchies ee" do
         it_behaves_like "custom field formats",
                         "WorkPackage",
-                        ["bool", "date", "float", "int", "link", "list", "string", "text", "user", "version"]
+                        %w[bool date float int link list string text user version]
       end
     end
 
     context "for a 'Version' class" do
       it_behaves_like "custom field formats",
                       "Version",
-                      ["bool", "date", "float", "int", "list", "string", "text", "user", "version"]
+                      %w[bool date float int list string text user version]
     end
 
     context "for a 'TimeEntry' class" do
       it_behaves_like "custom field formats",
                       "TimeEntry",
-                      ["bool", "date", "float", "int", "list", "string", "text", "user", "version"]
+                      %w[bool date float int list string text user version]
     end
 
     context "for a 'User' class" do
       it_behaves_like "custom field formats",
                       "User",
-                      ["bool", "date", "float", "int", "list", "string", "text"]
+                      %w[bool date float int list string text]
     end
 
     context "for a 'Group' class" do
       it_behaves_like "custom field formats",
                       "Group",
-                      ["bool", "date", "float", "int", "list", "string", "text"]
+                      %w[bool date float int list string text]
     end
   end
 
   describe ".available_formats" do
-    context "with a custom_field_hierarchies ee", with_ee: [:custom_field_hierarchies] do
-      it "returns all custom field formats including hierarchy" do
+    shared_examples_for "available custom field formats" do |suffix, expected_formats|
+      it "returns all custom field formats #{suffix}", :aggregate_failures do
         formats = described_class.available_formats
-        expect(formats)
-          .to contain_exactly("bool", "date", "float", "int", "link", "list", "string", "text", "user",
-                              "version", "hierarchy", "empty")
+        expect(formats).to match_array(expected_formats)
       end
     end
 
+    context "with a custom_field_hierarchies ee", with_ee: [:custom_field_hierarchies] do
+      it_behaves_like "available custom field formats",
+                      "including hierarchy",
+                      %w[bool date float int link list string text user version hierarchy empty]
+    end
+
     context "without a custom_field_hierarchies ee" do
-      it "returns all custom field formats excluding hierarchy" do
-        formats = described_class.available_formats
-        expect(formats)
-          .to contain_exactly("bool", "date", "float", "int", "link", "list", "string", "text", "user",
-                              "version", "empty")
+      it_behaves_like "available custom field formats",
+                      "excluding hierarchy",
+                      %w[bool date float int link list string text user version empty]
+
+      context "with calculated values feature flag enabled", with_flag: { calculated_value_project_attribute: true } do
+        it_behaves_like "available custom field formats",
+                        "including calculated values",
+                        %w[bool calculated_value date float int link list string text user version empty]
+      end
+    end
+  end
+
+  describe ".disabled_formats" do
+    it "returns disabled formats" do
+      formats = described_class.disabled_formats
+      expect(formats).to match_array(%w[calculated_value])
+    end
+
+    context "with calculated values feature flag enabled", with_flag: { calculated_value_project_attribute: true } do
+      it "returns no disabled formats" do
+        formats = described_class.disabled_formats
+        expect(formats).to be_empty
       end
     end
   end
