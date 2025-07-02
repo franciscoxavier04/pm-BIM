@@ -54,7 +54,7 @@ RSpec.describe WorkPackageActivity do
   describe "enums" do
     it "defines compatible kinds" do
       expect(described_class.kinds)
-        .to eq({ "Journal" => "Journal", "Comment" => "Comment", "Revision" => "Revision" })
+        .to eq({ "journal" => "Journal", "comment" => "Comment", "revision" => "Revision" })
     end
   end
 
@@ -77,7 +77,7 @@ RSpec.describe WorkPackageActivity do
       expect(work_package_activities.count).to eq(expected_count + 1) # +1 for the initial version
       expect(work_package_activities.pluck(:work_package_id)).to all(eq(work_package.id))
 
-      expect(work_package_activities.pluck(:kind).uniq).to match_array(described_class.compatible_kinds)
+      expect(work_package_activities.pluck(:kind).uniq).to contain_exactly("comment", "journal", "revision")
     end
   end
 

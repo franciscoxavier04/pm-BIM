@@ -47,6 +47,6 @@ module ViewBasedModel
   def readonly? = true
 
   included do
-    enum :kind, compatible_kinds.index_with(&:to_s)
+    enum :kind, compatible_kinds.index_by(&:downcase)
   end
 end

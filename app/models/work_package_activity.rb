@@ -51,8 +51,4 @@ class WorkPackageActivity < ApplicationRecord
   def initial?
     journal? && (version < 2)
   end
-
-  def journal?
-    kind == "Journal"
-  end
 end
