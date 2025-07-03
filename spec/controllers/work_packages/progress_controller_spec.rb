@@ -69,7 +69,7 @@ RSpec.describe WorkPackages::ProgressController do
       params["work_package"]["remaining_hours"] = "3"
       params["work_package"]["remaining_hours_touched"] = "true"
 
-      get("new", params:, as: :turbo_stream)
+      get("new", params:)
 
       assigned_work_package = assigns(:work_package)
       expect(assigned_work_package).to be_new_record
@@ -88,7 +88,7 @@ RSpec.describe WorkPackages::ProgressController do
         params["work_package"]["remaining_hours"] = "3"
         params["work_package"]["remaining_hours_touched"] = "true"
 
-        get("new", params:, as: :turbo_stream)
+        get("new", params:)
 
         assigned_work_package = assigns(:work_package)
         expect(progress_errors(assigned_work_package)).to match(
@@ -106,7 +106,7 @@ RSpec.describe WorkPackages::ProgressController do
         params["work_package"]["remaining_hours"] = "3"
         params["work_package"]["remaining_hours_touched"] = "true"
 
-        get("new", params:, as: :turbo_stream)
+        get("new", params:)
 
         assigned_work_package = assigns(:work_package)
         expect(progress_errors(assigned_work_package)).to be_empty
@@ -133,7 +133,7 @@ RSpec.describe WorkPackages::ProgressController do
       params["work_package"]["estimated_hours"] = "50h"
       params["work_package"]["estimated_hours_touched"] = "true"
 
-      get("edit", params:, as: :turbo_stream)
+      get("edit", params:)
 
       assigned_work_package = assigns(:work_package)
       expect(assigned_work_package.estimated_hours).to eq(50)
@@ -151,7 +151,7 @@ RSpec.describe WorkPackages::ProgressController do
         params["work_package"]["estimated_hours"] = "50h"
         params["work_package"]["estimated_hours_touched"] = "true"
 
-        get("edit", params:, as: :turbo_stream)
+        get("edit", params:)
 
         assigned_work_package = assigns(:work_package)
         expect(progress_errors(assigned_work_package)).to be_empty
@@ -167,7 +167,7 @@ RSpec.describe WorkPackages::ProgressController do
         params["work_package"]["estimated_hours"] = "50h"
         params["work_package"]["estimated_hours_touched"] = "true"
 
-        get("edit", params:, as: :turbo_stream)
+        get("edit", params:)
 
         assigned_work_package = assigns(:work_package)
         expect(progress_errors(assigned_work_package)).to match(
