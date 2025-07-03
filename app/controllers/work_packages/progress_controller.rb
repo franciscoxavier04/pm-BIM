@@ -30,6 +30,7 @@
 
 class WorkPackages::ProgressController < ApplicationController
   include OpTurbo::ComponentStream
+  include FlashMessagesHelper
 
   ERROR_PRONE_ATTRIBUTES = %i[status_id
                               estimated_hours
@@ -104,6 +105,9 @@ class WorkPackages::ProgressController < ApplicationController
     else
       respond_to do |format|
         format.turbo_stream do
+          # errors not visible from progress modal fields are rendered in a flash message
+          render_error_flash_message_via_turbo_stream(message: extra_error_messages(service_call))
+
           update_via_turbo_stream(
             component: progress_modal_component,
             method: "morph"
@@ -206,5 +210,13 @@ class WorkPackages::ProgressController < ApplicationController
 
   def formatted_duration(hours)
     API::V3::Utilities::DateTimeFormatter.format_duration_from_hours(hours, allow_nil: true)
+  end
+
+  def extra_error_messages(service_call)
+    errors_not_handled_by_progress_modal = service_call.errors.reject do |error|
+      ERROR_PRONE_ATTRIBUTES.include?(error.attribute)
+    end
+
+    join_flash_messages(errors_not_handled_by_progress_modal.map(&:full_message))
   end
 end
