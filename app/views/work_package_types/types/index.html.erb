@@ -166,5 +166,8 @@ See COPYRIGHT and LICENSE files for more details.
   </div>
   <%= pagination_links_full @types %>
 <% else %>
-  <%= no_results_box(action_url: new_type_path, display_action: true) %>
+  <%= no_results_box(
+      action_url: new_type_path,
+      display_action: true,
+      custom_action_text: t("types.index.no_results_content_text")) %>
 <% end %>
