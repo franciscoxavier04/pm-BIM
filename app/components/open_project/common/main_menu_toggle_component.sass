@@ -29,7 +29,8 @@
 #menu-toggle--expand-button
   position: absolute
   left: 11px
-  z-index: 1
+  top: var(--main-menu-toggler-top-spacing)
+  z-index: calc(var(--main-menu-toggler-z-index) + 1)
 
   @at-root .nosidebar &
     display: none
