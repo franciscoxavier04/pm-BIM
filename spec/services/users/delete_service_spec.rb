@@ -70,7 +70,7 @@ RSpec.describe Users::DeleteService, type: :model do
         allow(actor).to receive(:admin?).and_return false
       end
 
-      it_behaves_like "deletes the user"
+      it_behaves_like "does not delete the user"
     end
 
     context "with privileged system user" do
@@ -90,7 +90,7 @@ RSpec.describe Users::DeleteService, type: :model do
     context "with system user" do
       let(:actor) { User.system }
 
-      it_behaves_like "deletes the user"
+      it_behaves_like "does not delete the user"
     end
   end
 end

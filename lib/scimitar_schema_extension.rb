@@ -28,20 +28,11 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-Rails.application.config.to_prepare do
-  Scimitar.service_provider_configuration = Scimitar::ServiceProviderConfiguration.new(
-    patch: Scimitar::Supportable.supported,
-    authenticationSchemes: [Scimitar::AuthenticationScheme.bearer]
-  )
-  Scimitar.engine_configuration = Scimitar::EngineConfiguration.new(
-    application_controller_mixin: ScimV2::ScimControllerMixins
-  )
-
-  Scimitar::Schema::User.singleton_class.class_eval do
-    prepend ScimitarSchemaExtension
-  end
-
-  Scimitar::Schema::Group.singleton_class.class_eval do
-    prepend ScimitarSchemaExtension
+module ScimitarSchemaExtension
+  def scim_attributes
+    super + [Scimitar::Schema::Attribute.new(name: "externalId",
+                                             type: "string",
+                                             caseExact: true,
+                                             required: true)]
   end
 end

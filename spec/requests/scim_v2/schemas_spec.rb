@@ -42,7 +42,7 @@ RSpec.describe "SCIM API Schemas" do
 
   describe "GET /scim_v2/Schemas" do
     context "with the feature flag enabled", with_flag: { scim_api: true } do
-      it do
+      it "responds with supported schemas " do
         get "/scim_v2/Schemas", {}, headers
 
         response_body = JSON.parse(last_response.body)

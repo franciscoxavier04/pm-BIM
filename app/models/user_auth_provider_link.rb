@@ -29,7 +29,7 @@
 #++
 
 class UserAuthProviderLink < ApplicationRecord
-  belongs_to :principal, foreign_key: :user_id
+  belongs_to :principal, foreign_key: :user_id, inverse_of: :user_auth_provider_links
   belongs_to :auth_provider
 
   scope :with_identity_url, ->(identity_url) do

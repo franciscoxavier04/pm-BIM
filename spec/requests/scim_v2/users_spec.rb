@@ -246,10 +246,12 @@ RSpec.describe "SCIM API Users" do
 
           expect(last_response).to have_http_status(409)
           response_body = JSON.parse(last_response.body)
-          expect(response_body).to eq({ "schemas" => ["urn:ietf:params:scim:api:messages:2.0:Error"],
-                                        "detail" => "Operation failed due to a uniqueness constraint: Username has already been taken.",
-                                        "status" => "409",
-                                        "scimType" => "uniqueness" })
+          expect(response_body).to eq(
+            { "schemas" => ["urn:ietf:params:scim:api:messages:2.0:Error"],
+              "detail" => "Operation failed due to a uniqueness constraint: Username has already been taken.",
+              "status" => "409",
+              "scimType" => "uniqueness" }
+          )
         end
       end
 

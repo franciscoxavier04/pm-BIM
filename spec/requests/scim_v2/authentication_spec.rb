@@ -117,7 +117,7 @@ RSpec.describe "SCIM API Authentication" do
           header "Authorization", "Bearer #{token}"
         end
 
-        it "" do
+        it do
           get "/scim_v2/ServiceProviderConfig", {}, headers
 
           expect(last_response).to have_http_status(200)
@@ -126,18 +126,18 @@ RSpec.describe "SCIM API Authentication" do
         context "when scim_v2 scope is missing in token" do
           let(:token_scope) { "api_v3" }
 
-          it "" do
+          it do
             get "/scim_v2/ServiceProviderConfig", {}, headers
-            expect(last_response).to have_http_status(401)
             expect(last_response.body).to eq("insufficient_scope")
             expect(last_response.headers["WWW-Authenticate"]).to eq("Bearer realm=\"OpenProject API\", error=\"insufficient_scope\", error_description=\"Requires scope scim_v2 to access this resource.\"")
+            expect(last_response).to have_http_status(401)
           end
         end
 
         context "when token_sub does not match a service_account" do
           before { service_account.user_auth_provider_links.delete_all }
 
-          it "" do
+          it do
             get "/scim_v2/ServiceProviderConfig", {}, headers
 
             expect(last_response).to have_http_status(401)
@@ -160,6 +160,7 @@ RSpec.describe "SCIM API Authentication" do
           { "detail" => "Requires authentication", "schemas" => ["urn:ietf:params:scim:api:messages:2.0:Error"],
             "status" => "401" }
         )
+        expect(last_response).to have_http_status(401)
       end
     end
   end

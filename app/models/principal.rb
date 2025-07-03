@@ -67,7 +67,10 @@ class Principal < ApplicationRecord
            foreign_key: "user_id"
   has_many :projects, through: :memberships
   has_many :categories, foreign_key: "assigned_to_id", dependent: :nullify, inverse_of: :assigned_to
-  has_many :user_auth_provider_links, dependent: :destroy, foreign_key: :user_id
+  has_many :user_auth_provider_links,
+           dependent: :destroy,
+           foreign_key: :user_id,
+           inverse_of: :principal
   has_many :auth_providers, through: :user_auth_provider_links
 
   has_paper_trail
@@ -208,20 +211,6 @@ class Principal < ApplicationRecord
       # groups after users
       other.class.name <=> self.class.name
     end
-  end
-
-  def scim_active=(is_active)
-    if is_active
-      activate
-      true
-    else
-      lock if active?
-      false
-    end
-  end
-
-  def scim_active
-    active?
   end
 
   def scim_external_id

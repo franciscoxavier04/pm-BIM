@@ -278,7 +278,7 @@ class User < Principal
   def self.try_to_autologin(key)
     token = Token::AutoLogin.find_by_plaintext_value(key) # rubocop:disable Rails/DynamicFindBy
     # Make sure there's only 1 token that matches the key
-    if token && ((token.created_at > Setting.autologin.to_i.day.ago) && token.user&.active?)
+    if token && (token.created_at > Setting.autologin.to_i.day.ago) && token.user&.active?
       token.user
     end
   end
@@ -565,10 +565,26 @@ class User < Principal
   def scim_emails=(emails)
     email = (emails.find { |email| email.primary == true }) ||
             (emails.find { |email| email.type == "work" }) ||
-            emails.sort.first
+            emails.min
 
     self.mail = email&.value
   end
+
+  # rubocop:disable Naming/PredicateMethod
+  def scim_active=(is_active)
+    if is_active
+      activate
+      true
+    else
+      lock if active?
+      false
+    end
+  end
+
+  def scim_active
+    active?
+  end
+  # rubocop:enable Naming/PredicateMethod
 
   def self.scim_resource_type
     Scimitar::Resources::User

@@ -304,8 +304,7 @@ RSpec.describe "SCIM API Groups" do
           "members" => [
             { "value" => user.id.to_s },
             { "value" => admin.id.to_s }
-          ],
-          "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"]
+          ]
         }
 
         put "/scim_v2/Groups/#{group.id}", request_body.to_json, headers

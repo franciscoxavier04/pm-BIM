@@ -37,8 +37,6 @@ module ScimV2
         storage_class.transaction do
           user = storage_class.new
           user.from_scim!(scim_hash: scim_resource.as_json)
-          user.firstname = "123" if user.firstname.blank?
-          user.lastname = "456" if user.lastname.blank?
           call = Users::CreateService
                    .new(user: User.current, model: user)
                    .call(user.attributes)
