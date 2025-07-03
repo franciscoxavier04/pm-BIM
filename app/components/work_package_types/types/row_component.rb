@@ -65,11 +65,11 @@ module WorkPackageTypes
       end
 
       def default
-        checked_image(model.is_default)
+        checked_image model.is_default
       end
 
       def milestone
-        checked_image(model.is_milestone)
+        checked_image model.is_milestone
       end
 
       def sort
