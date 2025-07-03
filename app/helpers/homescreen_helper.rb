@@ -34,9 +34,9 @@ module HomescreenHelper
   end
 
   ##
-  # Homescreen organization icon
-  def organization_icon
-    op_icon("icon-context icon-enterprise")
+  # Homescreen breadcrumb element
+  def homescreen_breadcrumb_element
+    nested_breadcrumb_element(organization_name, I18n.t(:label_home))
   end
 
   ##

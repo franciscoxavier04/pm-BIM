@@ -30,7 +30,12 @@ module OpenProject
   module Patches
     module PrimerPageHeaderBreadcrumb
       def with_breadcrumbs(breadcrumbs, **)
-        super([{ href: home_path, text: helpers.organization_name}] + breadcrumbs, **)
+        unless breadcrumbs.length == 1 && breadcrumbs[0] == helpers.homescreen_breadcrumb_element
+          super([{ href: home_path, text: helpers.organization_name }] + breadcrumbs, **)
+          return
+        end
+
+        super
       end
     end
   end
