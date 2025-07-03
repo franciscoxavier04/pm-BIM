@@ -42,7 +42,10 @@ module WorkPackageTypes
     end
 
     def index
-      @types = ::Type.page(page_param).per_page(per_page_param)
+      @types = ::Type
+                .includes(:workflows, :projects, :custom_fields, :color)
+                .page(page_param)
+                .per_page(per_page_param)
     end
 
     def type
