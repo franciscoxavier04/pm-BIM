@@ -15,7 +15,7 @@
         )
         page_title
       end
-      header.with_breadcrumbs(breadcrumb_items, selected_item_font_weight: current_breadcrumb_element == page_title ? :bold : :normal)
+      header.with_breadcrumbs(breadcrumb_items, selected_item_font_weight: current_breadcrumb_element == page_title && !first_menu_item? ? :bold : :normal)
 
       if can_save?
         header_save_action(

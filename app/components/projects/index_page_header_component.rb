@@ -42,6 +42,7 @@ class Projects::IndexPageHeaderComponent < ApplicationComponent
   STATE_EDIT = :edit
 
   delegate :projects_query_params, to: :helpers
+  delegate :name, to: :query, prefix: true
 
   def initialize(current_user:, query:, params:, state: STATE_DEFAULT)
     super
@@ -112,19 +113,17 @@ class Projects::IndexPageHeaderComponent < ApplicationComponent
 
   def breadcrumb_items
     [
-      { href: projects_path, text: t(:label_project_plural) },
+      *([{ href: projects_path, text: t(:label_project_plural) }] unless first_menu_item?),
       current_breadcrumb_element
     ]
   end
 
   def current_breadcrumb_element
-    return page_title if query.name.blank?
+    return page_title if query_name.blank?
+    return helpers.nested_breadcrumb_element(t(:label_project_plural), query_name) if first_menu_item?
+    return helpers.nested_breadcrumb_element(current_section.header, query_name) if in_section?
 
-    if current_section && current_section.header.present?
-      helpers.nested_breadcrumb_element(current_section.header, query.name)
-    else
-      page_title
-    end
+    page_title
   end
 
   def current_section
@@ -133,6 +132,15 @@ class Projects::IndexPageHeaderComponent < ApplicationComponent
     @current_section = Projects::Menu
       .new(controller_path:, params:, current_user:)
       .selected_menu_group
+  end
+
+  def first_menu_item?
+    current_item = current_section&.children&.select { |x| x.selected == true }&.first
+    current_item&.title == ::ProjectQueries::Static.query(ProjectQueries::Static::DEFAULT).name
+  end
+
+  def in_section?
+    current_section && current_section.header.present?
   end
 
   def header_save_action(header:, message:, label:, href:, method: nil)
