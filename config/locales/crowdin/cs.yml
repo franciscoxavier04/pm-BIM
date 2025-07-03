@@ -35,7 +35,7 @@ cs:
         label_sort_desc: "Nejnovější nahoře"
         label_type_to_comment: "Přidejte komentář. Zadejte @ pro označení lidí."
         label_submit_comment: "Odeslat komentář"
-        label_who: Who?
+        label_who: Kdo?
         changed_on: "změněno dne"
         created_on: "toto vytvořil/a dne"
         changed: "změněno"
@@ -710,18 +710,18 @@ cs:
         aria_label: "Datepicker tabs"
         children: "Potomci"
         dates: "Data"
-        predecessors: "Predecessors"
-        successors: "Successors"
+        predecessors: "Předchůdci"
+        successors: "Nástupci"
         blankslate:
           predecessors:
             title: "Žádní předchůdci"
             description: "This work package does not have any predecessors."
           successors:
-            title: "No successors"
+            title: "Žádní nástupci"
             description: "This work package does not have any successors."
           children:
             title: "No children"
-            description: "This work package does not have any children."
+            description: "Tento pracovní balíček nemá žádné potomky."
     x_descendants:
       one: "Jeden potomek pracovního balíčku"
       few: "%{count} potomků pracovního balíčku"
@@ -994,10 +994,10 @@ cs:
       project/phase:
         date_range: "Časový rozsah"
         definition: "Definice"
-        duration: "Duration"
-        start_date: "Start date"
+        duration: "Trvání"
+        start_date: "Datum zahájení"
         start_date_caption: "Follows the previous phase."
-        finish_date: "Finish date"
+        finish_date: "Termín ukončení"
       project/phase_definition:
         name: "Název:"
         color: "Barva"
@@ -1675,7 +1675,7 @@ cs:
     derived_due_date: "Derivované Datum ukončení "
     derived_estimated_hours: "Celková práce"
     derived_start_date: "Derivované Datum zahájení "
-    direction: "Direction"
+    direction: "Směr"
     display_sums: "Zobrazit součty"
     due_date: "Datum dokončení"
     estimated_hours: "Práce"
@@ -2755,7 +2755,7 @@ cs:
   label_force_user_language_to_default: "Nastavte jazyk uživatelů, kteří nemají povolený jazyk na výchozí"
   label_form_configuration: "Konfigurace formuláře"
   label_gantt_chart: "Ganttův diagram"
-  label_gantt_chart_plural: "Ganttovy diagramy"
+  label_gantt_chart_plural: "Gantt diagramy"
   label_general: "Obecné"
   label_generate_key: "Generovat klíč"
   label_global_roles: "Globální role"
