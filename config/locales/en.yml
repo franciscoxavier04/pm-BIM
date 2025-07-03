@@ -1878,6 +1878,7 @@ en:
     title: "Title"
     type: "Type"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Updated on"
     updated_on: "Updated on"
     uploader: "Uploader"
