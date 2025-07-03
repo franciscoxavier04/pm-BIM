@@ -31,53 +31,39 @@
 module WorkPackageTypes
   module Types
     class RowComponent < ::RowComponent
-      with_collection_parameter :type
-
       include ApplicationHelper
       include TypesHelper
 
-      attr_reader :type
-
-      def initialize(type:, table:)
-        super(row: type, table: table)
-        @type = type
-        @table = table
-      end
-
       def name
-        link_to type.name, edit_type_settings_path(type_id: type.id)
+        link_to model.name, edit_type_settings_path(type_id: model.id)
       end
 
       def workflow_warning
-        return unless type.workflows.empty?
+        return unless model.workflows.empty?
 
         safe_join([
                     op_icon("icon3 icon-warning"),
                     t(:text_type_no_workflow),
                     " (",
-                    link_to(t(:button_edit), edit_workflows_path(type: type)),
+                    link_to(t(:button_edit), edit_workflows_path(type: model)),
                     ")"
                   ])
       end
 
       def color
-        icon_for_type type
+        icon_for_type model
       end
 
       def default
-        checked_image(type.is_default)
+        checked_image(model.is_default)
       end
 
       def milestone
-        checked_image(type.is_milestone)
+        checked_image(model.is_milestone)
       end
 
       def sort
-        helpers.reorder_links("type", { action: "move", id: type })
-      end
-
-      def model
-        @type
+        helpers.reorder_links("type", { action: "move", id: model })
       end
 
       def button_links
@@ -85,11 +71,11 @@ module WorkPackageTypes
       end
 
       def delete_link
-        return if type.is_standard?
+        return if model.is_standard?
 
         link_to(
           "",
-          type,
+          model,
           method: :delete,
           data: { confirm: t(:text_are_you_sure) },
           class: "icon icon-delete",
