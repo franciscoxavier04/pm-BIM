@@ -93,6 +93,10 @@ class Members::IndexPageHeaderComponent < ApplicationComponent
   end
 
   def first_menu_item?
-    current_query[:query_href] == project_members_path(@project)
+    if current_query.present?
+      return current_query[:query_href] == project_members_path(@project)
+    end
+
+    false
   end
 end

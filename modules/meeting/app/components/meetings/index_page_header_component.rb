@@ -47,8 +47,10 @@ module Meetings
 
     def breadcrumb_items
       [*([{ href: project_overview_path(@project.id), text: @project.name }] if @project.present?),
-       *([{ href: url_for({ controller: "meetings", action: :index, project_id: @project }),
-            text: I18n.t(:label_meeting_plural) }] unless first_menu_item?),
+       *(unless first_menu_item?
+           [{ href: url_for({ controller: "meetings", action: :index, project_id: @project }),
+              text: I18n.t(:label_meeting_plural) }]
+         end),
        current_breadcrumb_element]
     end
 
@@ -83,7 +85,7 @@ module Meetings
     end
 
     def first_menu_item?
-      current_item.href == (@project.present? ? project_meetings_path(@project.identifier) : meetings_path)
+      current_item&.href == (@project.present? ? project_meetings_path(@project.identifier) : meetings_path)
     end
   end
 end

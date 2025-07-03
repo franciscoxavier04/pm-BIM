@@ -77,7 +77,7 @@ module Notifications
     end
 
     def first_menu_item?
-      current_item.href == notifications_path
+      current_item&.href == notifications_path
     end
   end
 end

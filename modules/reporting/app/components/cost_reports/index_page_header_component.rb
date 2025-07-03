@@ -41,7 +41,10 @@ module CostReports
 
     def breadcrumb_items
       [*([{ href: project_overview_path(@project.id), text: @project.name }] if @project.present?),
-       *([{ href: cost_reports_path(@project), text: I18n.t(:cost_reports_title) }] if current_section && current_section.header.present?),
+       *(if current_section && current_section.header.present?
+           [{ href: cost_reports_path(@project),
+              text: I18n.t(:cost_reports_title) }]
+         end),
        current_breadcrumb_element]
     end
 
