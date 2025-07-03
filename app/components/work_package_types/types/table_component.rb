@@ -29,31 +29,33 @@
 #++
 
 module WorkPackageTypes
-  class TableComponent < ::TableComponent
-    columns :name, :color, :workflow_warning, :default, :milestone, :sort
+  module Types
+    class TableComponent < ::TableComponent
+      columns :name, :color, :workflow_warning, :default, :milestone, :sort
 
-    def headers
-      [
-        [:name, { caption: Type.human_attribute_name(:name) }],
-        [:color, { caption: Type.human_attribute_name(:color) }],
-        [:workflow_warning, { caption: "Workflow" }],
-        [:default, { caption: I18n.t(:label_active_in_new_projects) }],
-        [:milestone, { caption: Type.human_attribute_name(:is_milestone) }],
-        [:sort, { caption: I18n.t(:button_sort) }]
-      ]
-    end
+      def headers
+        [
+          [:name, { caption: Type.human_attribute_name(:name) }],
+          [:color, { caption: Type.human_attribute_name(:color) }],
+          [:workflow_warning, { caption: "Workflow" }],
+          [:default, { caption: I18n.t(:label_active_in_new_projects) }],
+          [:milestone, { caption: Type.human_attribute_name(:is_milestone) }],
+          [:sort, { caption: I18n.t(:button_sort) }]
+        ]
+      end
 
-    def header_options(name)
-      headers_hash = headers.to_h
-      headers_hash[name.to_sym] || { caption: name.to_s }
-    end
+      def header_options(name)
+        headers_hash = headers.to_h
+        headers_hash[name.to_sym] || { caption: name.to_s }
+      end
 
-    def mobile_title
-      I18n.t(:label_type_plural)
-    end
+      def mobile_title
+        I18n.t(:label_type_plural)
+      end
 
-    def sortable?
-      false
+      def sortable?
+        false
+      end
     end
   end
 end
