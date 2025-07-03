@@ -110,6 +110,59 @@ ru:
       explanation:
         text: "Личные действия пользователя (например, обновление пакета работ дважды) агрегируются в одно действие, если их разница во времени не больше указанной. Они будут отображаться как одно действие внутри приложения. Это также задерживает уведомление на такое же количество времени, уменьшая количество отправляемых писем и также повлияет на %{webhook_link} задержки."
         link: "вебхук"
+    scim_clients:
+      authentication_methods:
+        sso: "JWT from identity provider"
+        oauth2_client: "OAuth 2.0 client credentials"
+        oauth2_token: "Static access token"
+      created_client_credentials_dialog_component:
+        title: "Client credentials created"
+        heading: "Client credentials have been generated"
+        one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
+      created_token_dialog_component:
+        title: "Token created"
+        heading: "An token has been generated"
+        label_token: "Token"
+        one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
+      delete_scim_client_dialog_component:
+        title: "Delete SCIM client"
+        heading: "Are you sure you want to delete this SCIM client?"
+        description: "Users managed by this SCIM client can no longer be updated by it."
+      edit:
+        label_delete_scim_client: "Delete SCIM client"
+      form:
+        auth_provider_description: "This is the service that users added by the SCIM provider will use to authenticate in OpenProject."
+        authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
+        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM clients</a> for more information on these configuration options.'
+        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
+        name_description: "Choose a name that will help other admins better understand why this client was configured."
+      index:
+        description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
+        label_create_button: "Add SCIM client"
+      new:
+        title: "New SCIM client"
+      revoke_static_token_dialog_component:
+        confirm_button: "Revoke"
+        title: "Revoke static token"
+        heading: "Are you sure you want to revoke this token?"
+        description: "The SCIM client that uses this token will no longer be able to access OpenProject's SCIM server API."
+      table_component:
+        blank_slate:
+          title: "No SCIM clients configured yet"
+          description: "Add clients to see them here"
+        user_count: "Users"
+      token_list_component:
+        description: "The tokens you generate here can be passed by a SCIM client to access the OpenProject SCIM API."
+        heading: "Tokens"
+        label_add_token: "Token"
+        label_aria_add_token: "Add token"
+      token_table_component:
+        blank_slate:
+          title: "No tokens have been created yet"
+          description: "You can create one now"
+        expired: "Expired on %{date}"
+        revoked: "Revoked on %{date}"
+        title: "Access token table"
   authentication:
     login_and_registration: "Войти и зарегистрироваться"
   announcements:
@@ -275,7 +328,7 @@ ru:
       admin_only: "Установите флажок, чтобы сделать этот атрибут видимым только для администраторов. Пользователи без прав администратора не смогут просматривать или редактировать его."
       is_filter: >
         Разрешить использование пользовательского поля в фильтре в представлениях рабочих пакетов. Обратите внимание, что пользовательское поле будет отображаться в глобальных представлениях только при выборе параметра "Для всех проектов".
-      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
+      formula: "Добавьте числовые значения или введите / для поиска атрибута или математического оператора."
     tab:
       no_results_title_text: Нет настраиваемых полей.
       no_results_content_text: Создать новое настраиваемое поле
@@ -903,7 +956,7 @@ ru:
         attribute_name: "Атрибут"
         help_text: "Текст справки"
       auth_provider:
-        scim_clients: "Клиенты SCIM"
+        scim_clients: "SCIM clients"
       capability:
         context: "Контекст"
       changeset:
@@ -917,7 +970,7 @@ ru:
         default_value: "Значение по умолчанию"
         editable: "Доступно для правки"
         field_format: "Формат"
-        formula: "Formula"
+        formula: "Формула"
         is_filter: "Используется в качестве фильтра"
         is_for_all: "Для всех проектов"
         is_required: "Обязательно"
@@ -1068,6 +1121,10 @@ ru:
         url: "URL"
       role:
         permissions: "Разрешения"
+      scim_client:
+        auth_provider: "Authentication provider"
+        authentication_method: "Authentication method"
+        jwt_sub: "Subject claim"
       status:
         is_closed: "Пакет работ закрыт"
         is_readonly: "Пакет работ только для просмотра"
@@ -1084,7 +1141,7 @@ ru:
         ongoing: "В процессе"
       type:
         description: "Текст для описания по умолчанию"
-        attribute_groups: "Form configuration"
+        attribute_groups: "Настройка формы"
         is_in_roadmap: "По умолчанию отображается в дорожной карте"
         is_default: "В новых проектах активируется по умолчанию"
         is_milestone: "Это веха"
@@ -1211,7 +1268,7 @@ ru:
         inclusion: "не задано ни одно из допустимых значений."
         inclusion_nested: "не задано одно из допустимых значений в пути '%{path}'."
         invalid: "неверно."
-        invalid_characters: "contains invalid characters."
+        invalid_characters: "содержит недопустимые символы."
         invalid_url: "не является допустимым URL-адресом."
         invalid_url_scheme: "не является поддерживаемым протоколом (разрешены следующие: %{allowed_schemes})."
         less_than_or_equal_to: "должно быть меньше или равно %{count}."
@@ -1613,10 +1670,10 @@ ru:
         many: "Роль"
         other: "Роль"
       scim_client:
-        one: "Клиент SCIM"
-        few: "SCIM Clients"
-        many: "SCIM Clients"
-        other: "Клиенты SCIM"
+        one: "SCIM client"
+        few: "SCIM clients"
+        many: "SCIM clients"
+        other: "SCIM clients"
       status: "Статус пакета работ"
       token/api:
         one: Токен доступа
@@ -1936,6 +1993,13 @@ ru:
     text:
       failed: 'Не удалось скопировать проект «%{source_project_name}» в проект «%{target_project_name}».'
       succeeded: 'Скопированный проект «%{source_project_name}» в «%{target_project_name}».'
+    source_project_label: "Project copied"
+    copy_options:
+      dependencies_label: 'Copy from project'
+  create_project:
+    template_label: "Use template"
+    copy_options:
+      dependencies_label: 'Copy from template'
   create_wiki_page: "Добавить новую wiki-страницу"
   create_wiki_page_button: "Wiki-страница"
   date:
@@ -2709,7 +2773,7 @@ ru:
   label_select_main_menu_item: Выберите новый пункт главного меню
   label_required_disk_storage: "Требуется место на диске"
   label_send_invitation: Отправить приглашение
-  label_calculated_value: "Calculated value"
+  label_calculated_value: "Рассчитанное значение"
   label_change_plural: "Изменения"
   label_change_properties: "Изменить свойства"
   label_change_status: "Изменить статус"
@@ -2845,7 +2909,7 @@ ru:
   label_follows: "Следует"
   label_force_user_language_to_default: "Язык, который пользователям нельзя установить как действующий по-умолчанию"
   label_form_configuration: "Настройка форм"
-  label_formula: "Formula"
+  label_formula: "Формула"
   label_gantt_chart: "Диаграмма Ганта"
   label_gantt_chart_plural: "Диаграммы Ганта"
   label_general: "Общие"
@@ -3243,7 +3307,7 @@ ru:
   label_work_package_attachments: "Вложения пакета работ"
   label_work_package_category_new: "Новая категория"
   label_work_package_category_plural: "Категории пакета работ"
-  label_work_package_comments: "Work package comments"
+  label_work_package_comments: "Комментарии к пакету работ"
   label_work_package_hierarchy: "Иерархия пакета работ"
   label_work_package_new: "Новый пакет работ"
   label_work_package_edit: "Редактирование пакета работ %{name}"

@@ -110,6 +110,59 @@ zh-CN:
       explanation:
         text: "如果用户的多项操作（例如，更新工作包两次）的时间间隔小于指定的时间跨度，则这些操作将被聚合为单个操作，并在应用程序中显示为单个操作。这也会将通知延迟同等的时间，从而减少电子邮件的发送数量，并且还会影响 %{webhook_link} 延迟。"
         link: "Webhook"
+    scim_clients:
+      authentication_methods:
+        sso: "JWT from identity provider"
+        oauth2_client: "OAuth 2.0 client credentials"
+        oauth2_token: "Static access token"
+      created_client_credentials_dialog_component:
+        title: "Client credentials created"
+        heading: "Client credentials have been generated"
+        one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
+      created_token_dialog_component:
+        title: "Token created"
+        heading: "An token has been generated"
+        label_token: "Token"
+        one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
+      delete_scim_client_dialog_component:
+        title: "Delete SCIM client"
+        heading: "Are you sure you want to delete this SCIM client?"
+        description: "Users managed by this SCIM client can no longer be updated by it."
+      edit:
+        label_delete_scim_client: "Delete SCIM client"
+      form:
+        auth_provider_description: "This is the service that users added by the SCIM provider will use to authenticate in OpenProject."
+        authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
+        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM clients</a> for more information on these configuration options.'
+        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
+        name_description: "Choose a name that will help other admins better understand why this client was configured."
+      index:
+        description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
+        label_create_button: "Add SCIM client"
+      new:
+        title: "New SCIM client"
+      revoke_static_token_dialog_component:
+        confirm_button: "Revoke"
+        title: "Revoke static token"
+        heading: "Are you sure you want to revoke this token?"
+        description: "The SCIM client that uses this token will no longer be able to access OpenProject's SCIM server API."
+      table_component:
+        blank_slate:
+          title: "No SCIM clients configured yet"
+          description: "Add clients to see them here"
+        user_count: "Users"
+      token_list_component:
+        description: "The tokens you generate here can be passed by a SCIM client to access the OpenProject SCIM API."
+        heading: "Tokens"
+        label_add_token: "Token"
+        label_aria_add_token: "Add token"
+      token_table_component:
+        blank_slate:
+          title: "No tokens have been created yet"
+          description: "You can create one now"
+        expired: "Expired on %{date}"
+        revoked: "Revoked on %{date}"
+        title: "Access token table"
   authentication:
     login_and_registration: "登录和注册"
   announcements:
@@ -877,7 +930,7 @@ zh-CN:
         attribute_name: "属性"
         help_text: "帮助文本"
       auth_provider:
-        scim_clients: "SCIM 客户端"
+        scim_clients: "SCIM clients"
       capability:
         context: "背景"
       changeset:
@@ -1042,6 +1095,10 @@ zh-CN:
         url: "URL"
       role:
         permissions: "权限"
+      scim_client:
+        auth_provider: "Authentication provider"
+        authentication_method: "Authentication method"
+        jwt_sub: "Subject claim"
       status:
         is_closed: "工作包已关闭"
         is_readonly: "只读工作包"
@@ -1563,7 +1620,7 @@ zh-CN:
       role:
         other: "角色"
       scim_client:
-        other: "SCIM 客户端"
+        other: "SCIM clients"
       status: "工作包状态"
       token/api:
         other: 访问令牌
@@ -1868,6 +1925,13 @@ zh-CN:
     text:
       failed: '无法将项目"%{source_project_name}"复制到项目"%{target_project_name}"。'
       succeeded: '已复制项目"%{source_project_name}"到"%{target_project_name}"。'
+    source_project_label: "Project copied"
+    copy_options:
+      dependencies_label: 'Copy from project'
+  create_project:
+    template_label: "Use template"
+    copy_options:
+      dependencies_label: 'Copy from template'
   create_wiki_page: "创建新的 Wiki 页面"
   create_wiki_page_button: "Wiki 页面"
   date:

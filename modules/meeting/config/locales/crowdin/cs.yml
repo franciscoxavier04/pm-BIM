@@ -190,7 +190,7 @@ cs:
       agenda_items: "Kopírovat položky agendy"
       agenda_text: "Zkopírujte program staré schůzky"
       participants: "Kopírovat seznam účastníků"
-      to_clipboard: "Copy to clipboard"
+      to_clipboard: "Kopírovat do schránky"
     email:
       send_emails: "Účastníci e-mailu"
       send_invitation_emails: >
@@ -266,7 +266,7 @@ cs:
       footer_text:
         label: Footer text
         caption: This text will appear on every page on the right of the footer.
-      submit_button: Download
+      submit_button: Stáhnout
   meeting_section:
     untitled_title: "Sekce bez názvu"
     delete_confirmation: "Smazáním sekce také smažete všechny body agendy. Opravdu to chcete udělat?"

@@ -659,15 +659,10 @@ fr:
       autocompleter:
         label: "Remplissage automatique du projet"
       click_to_switch_to_project: "Projet : %{projectname}"
-      confirm_template_load: "Changer de modèle rechargera la page et vous perdrez toutes les entrées de ce formulaire. Continuer ?"
       context: "Contexte du projet"
-      copy:
-        copy_options: "Options de copie"
       not_available: "Projet N/D"
-      no_template_selected: "(aucun)"
       required_outside_context: >
         Veuillez choisir un projet pour créer le lot de travaux et voir tous les attributs. Vous pouvez seulement sélectionner des projets ayant le type ci-dessus activé.
-      use_template: "Utiliser le modèle"
     reminders:
       settings:
         daily:

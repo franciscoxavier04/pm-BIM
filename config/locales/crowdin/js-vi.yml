@@ -658,15 +658,10 @@ vi:
       autocompleter:
         label: "Hoàn tất tự động dự án"
       click_to_switch_to_project: "Dự án: %{projectname}"
-      confirm_template_load: "Việc chuyển đổi mẫu sẽ tải lại trang và bạn sẽ mất tất cả dữ liệu đã nhập vào biểu mẫu này. Tiếp tục?"
       context: "Ngữ cảnh dự án"
-      copy:
-        copy_options: "Tùy chọn sao chép"
       not_available: "Project N/A"
-      no_template_selected: "(Không có)"
       required_outside_context: >
         Vui lòng chọn một dự án để tạo gói công việc nhằm xem tất cả các thuộc tính. Bạn chỉ có thể chọn các dự án mà loại trên đã được kích hoạt.
-      use_template: "Sử dụng mẫu"
     reminders:
       settings:
         daily:
