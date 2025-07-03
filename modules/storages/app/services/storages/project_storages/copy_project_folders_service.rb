@@ -80,7 +80,7 @@ module Storages
                 source_path:,
                 destination_path:).on_failure do |failed|
           log_storage_error(failed.errors)
-          add_error(:base, failed.errors, options: { destination_path:, source_path: }).fail!
+          add_error(:base, failed.errors, options: { destination_path:, source_path: })
         end
       end
 

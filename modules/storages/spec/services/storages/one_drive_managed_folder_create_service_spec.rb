@@ -252,7 +252,7 @@ RSpec.describe Storages::OneDriveManagedFolderCreateService, :webmock do
 
           expect { result = service.call }.not_to change(project_storage, :project_folder_id)
 
-          expect(result).to be_success
+          expect(result).to be_failure
           expect(result.errors[:create_folder])
             .to match_array(I18n.t("#{error_key_prefix}.attributes.create_folder.conflict",
                                    folder_name: project_storage.managed_project_folder_path, parent_location: "/"))

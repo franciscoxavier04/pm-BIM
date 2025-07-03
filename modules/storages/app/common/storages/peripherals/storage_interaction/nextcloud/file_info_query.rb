@@ -58,12 +58,12 @@ module Storages
           private
 
           def validate_input(file_id)
-            if file_id.nil?
+            if file_id.blank?
               ServiceResult.failure(
                 result: :error,
                 errors: StorageError.new(code: :error,
                                          data: StorageErrorData.new(source: self.class),
-                                         log_message: "File ID can not be nil")
+                                         log_message: "File ID can not be blank")
               )
             else
               ServiceResult.success

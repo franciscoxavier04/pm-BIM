@@ -97,9 +97,9 @@ RSpec.describe Storages::ManagedFolderSyncService do
 
     it { is_expected.to be_failure }
 
-    it "does not call the folder permissions service" do
+    it "calls the folder permissions service anyways" do
       call
-      expect(folder_permissions_service).not_to have_received(:call).with(storage:)
+      expect(folder_permissions_service).to have_received(:call).with(storage:)
     end
   end
 
