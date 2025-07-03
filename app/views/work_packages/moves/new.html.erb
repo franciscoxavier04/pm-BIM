@@ -28,8 +28,18 @@ See COPYRIGHT and LICENSE files for more details.
 ++#%>
 
 <% html_title @copy ? t(:button_copy) : t(:button_move), t("activerecord.models.work_package") %>
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { @copy ? t(:button_copy) : t(:button_move) }
+    header.with_breadcrumbs(
+      [*([href: home_path, text: organization_name] unless @project),
+       *([href: project_overview_path(@project.id), text: @project.name] if @project),
+       { href: project_work_packages_path(@project), text: t(:label_work_package_plural) },
+       @copy ? t(:button_copy) : t(:button_move)]
+    )
+  end
+%>
 
-<h2><%= @copy ? t(:button_copy) : t(:button_move) %></h2>
 <ul>
   <% @work_packages.each do |work_package| -%>
     <li>
