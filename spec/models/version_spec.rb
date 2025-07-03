@@ -557,12 +557,17 @@ RSpec.describe Version do
       let(:stranger) { create(:user) }
       let!(:unrelated_version) { create(:version) }
 
-      before do
-        allow(WorkPackage).to receive(:visible).with(stranger).and_return(WorkPackage.none)
-      end
-
       it "returns false" do
         expect(unrelated_version.visible?(stranger)).to be false
+      end
+    end
+
+    context "when the version is systemwide" do
+      let(:stranger) { create(:user) }
+      let!(:systemwide_version) { create(:version, sharing: "system") }
+
+      it "returns true" do
+        expect(systemwide_version.visible?(stranger)).to be true
       end
     end
   end
