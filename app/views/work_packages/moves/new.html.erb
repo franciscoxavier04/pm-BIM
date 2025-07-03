@@ -27,6 +27,8 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
+<% single_wp = @work_packages.size == 1 ? @work_packages.first : nil %>
+
 <% html_title @copy ? t(:button_copy) : t(:button_move), t("activerecord.models.work_package") %>
 <%=
   render Primer::OpenProject::PageHeader.new do |header|
@@ -35,22 +37,25 @@ See COPYRIGHT and LICENSE files for more details.
       [*([href: home_path, text: organization_name] unless @project),
        *([href: project_overview_path(@project.id), text: @project.name] if @project),
        { href: project_work_packages_path(@project), text: t(:label_work_package_plural) },
+       *(single_wp ? [{ href: work_package_path(single_wp), text: single_wp.subject }] : []),
        @copy ? t(:button_copy) : t(:button_move)]
     )
   end
 %>
 
-<ul>
-  <% @work_packages.each do |work_package| -%>
-    <li>
-      <%= link_to_work_package work_package %>
-      <% descendant_count = work_package.descendants.size %>
-      <% if descendant_count > 0 %>
-        <span class="contextual-info -small">(+ <%= t("work_packages.x_descendants", count: descendant_count) %>)</span>
-      <% end %>
-    </li>
-  <% end -%>
-</ul>
+<% if @work_packages.size > 1 %>
+  <ul>
+    <% @work_packages.each do |work_package| -%>
+      <li>
+        <%= link_to_work_package work_package %>
+        <% descendant_count = work_package.descendants.size %>
+        <% if descendant_count > 0 %>
+          <span class="contextual-info -small">(+ <%= t("work_packages.x_descendants", count: descendant_count) %>)</span>
+        <% end %>
+      </li>
+    <% end -%>
+  </ul>
+<% end %>
 
 <%= styled_form_tag(
       { action: "create" },
@@ -90,6 +95,7 @@ See COPYRIGHT and LICENSE files for more details.
                                         } %>
             </div>
           </div>
+
           <div class="form--field">
             <label class="form--label" for="new_type_id"><%= WorkPackage.human_attribute_name(:type) %>:</label>
             <div class="form--field-container">
@@ -116,6 +122,7 @@ See COPYRIGHT and LICENSE files for more details.
               </div>
             <% end %>
           </div>
+
           <div class="form--field">
             <label class="form--label" for='status_id'><%= WorkPackage.human_attribute_name(:status) %></label>
             <div class="form--field-container">
@@ -126,6 +133,7 @@ See COPYRIGHT and LICENSE files for more details.
                   ) %>
             </div>
           </div>
+
           <div class="form--field">
             <label class="form--label" for='version_id'><%= WorkPackage.human_attribute_name(:version) %></label>
             <div class="form--field-container">
@@ -136,6 +144,7 @@ See COPYRIGHT and LICENSE files for more details.
                   ) %>
             </div>
           </div>
+
           <div class="form--field">
             <label class="form--label" for='priority_id'><%= WorkPackage.human_attribute_name(:priority) %></label>
             <div class="form--field-container">
@@ -146,6 +155,7 @@ See COPYRIGHT and LICENSE files for more details.
                   ) %>
             </div>
           </div>
+
           <div class="form--field">
             <label class="form--label" for='assigned_to_id'><%= WorkPackage.human_attribute_name(:assigned_to) %></label>
             <div class="form--field-container">
@@ -157,6 +167,7 @@ See COPYRIGHT and LICENSE files for more details.
                   ) %>
             </div>
           </div>
+
           <div class="form--field">
             <label class="form--label" for='responsible_id'><%= WorkPackage.human_attribute_name(:responsible) %></label>
             <div class="form--field-container">
@@ -168,15 +179,17 @@ See COPYRIGHT and LICENSE files for more details.
                   ) %>
             </div>
           </div>
+
           <div class="form--field">
             <%= styled_label_tag :budget_id, Budget.model_name.human %>
             <%= styled_select_tag(
                   "budget_id", (@target_project == @project ? content_tag("option", t(:label_no_change_option), value: "") : "") +
-              content_tag("option", t(:label_none), value: "none") +
-              options_from_collection_for_select(@target_project.budgets, :id, :subject)
+                  content_tag("option", t(:label_none), value: "none") +
+                  options_from_collection_for_select(@target_project.budgets, :id, :subject)
                 ) %>
           </div>
         </div>
+
         <div class="grid-content medium-6">
           <div class="form--field">
             <label class="form--label" for='start_date'><%= WorkPackage.human_attribute_name(:start_date) %></label>
@@ -188,6 +201,7 @@ See COPYRIGHT and LICENSE files for more details.
                                         } %>
             </div>
           </div>
+
           <div class="form--field">
             <label class="form--label" for='due_date'><%= WorkPackage.human_attribute_name(:due_date) %></label>
             <div class="form--field-container -visible-overflow">
@@ -198,6 +212,7 @@ See COPYRIGHT and LICENSE files for more details.
                                         } %>
             </div>
           </div>
+
           <% if @target_type %>
             <% @target_type.custom_fields.required.each do |custom_field| %>
               <div class="form--field">
@@ -208,16 +223,21 @@ See COPYRIGHT and LICENSE files for more details.
               </div>
             <% end %>
           <% end %>
+
         </div>
       </div>
     </fieldset>
+
     <fieldset class="form--fieldset">
       <legend class="form--fieldset-legend"><%= Journal.human_attribute_name(:notes) %></legend>
       <%= label_tag "notes", Journal.human_attribute_name(:notes), class: "hidden-for-sighted" %>
       <%= styled_text_area_tag "notes", @notes, cols: 60, rows: 10, class: "wiki-edit", with_text_formatting: true %>
     </fieldset>
+
     <%= call_hook(:view_work_packages_move_bottom, work_packages: @work_packages, target_project: @target_project, copy: !!@copy) %>
+
   </section>
+
   <% if @copy %>
     <%= hidden_field_tag("copy") %>
     <%= styled_submit_tag t(:button_copy), class: "-primary" %>
@@ -227,6 +247,7 @@ See COPYRIGHT and LICENSE files for more details.
     <%= styled_submit_tag t(:button_move_and_follow), name: "follow", class: "-primary" %>
   <% end %>
 <% end %>
+
 <% content_for :header_tags do %>
   <%= robot_exclusion_tag %>
 <% end %>
