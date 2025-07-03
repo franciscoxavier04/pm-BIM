@@ -904,10 +904,10 @@ en:
         mixed: "Mixed"
     work_packages:
       bulk_actions:
-        move: "Bulk change of project"
         edit: "Bulk edit"
-        copy: "Bulk copy"
         delete: "Bulk delete"
+        duplicate: "Bulk duplicate"
+        move: "Bulk change of project"
       button_clear: "Clear"
       comment_added: "The comment was successfully added."
       comment_send_failed: "An error has occurred. Could not submit the comment."
@@ -951,8 +951,8 @@ en:
         header_no_type: "New work package (Type not yet set)"
         header_with_parent: "New %{type} (Child of %{parent_type} #%{id})"
         button: "Create"
-      copy:
-        title: "Copy work package"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Show hierarchy mode"
         hide: "Hide hierarchy mode"

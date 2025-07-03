@@ -4,7 +4,7 @@ require "spec_helper"
 require "features/page_objects/notification"
 require "support/components/autocompleter/ng_select_autocomplete_helpers"
 
-RSpec.describe "Copy work packages through Rails view", :js do
+RSpec.describe "Duplicate work packages through Rails view", :js do
   include Components::Autocompleter::NgSelectAutocompleteHelpers
 
   shared_let(:type) { create(:type, name: "Bug") }
@@ -70,7 +70,7 @@ RSpec.describe "Copy work packages through Rails view", :js do
 
       before do
         context_menu.open_for work_package
-        context_menu.choose "Bulk copy"
+        context_menu.choose "Bulk duplicate"
 
         expect(page).to have_css("#new_project_id") # rubocop:disable RSpec/ExpectInHook
 
@@ -85,10 +85,10 @@ RSpec.describe "Copy work packages through Rails view", :js do
         wait_for_network_idle # wait for the change of target project to finish updating the page
       end
 
-      it "sets the version on copy and leaves a note" do
+      it "sets the version on duplicate and leaves a note" do
         select version.name, from: "version_id"
-        notes.set_markdown "A note on copy"
-        click_on "Copy and follow"
+        notes.set_markdown "A note on duplicate"
+        click_on "Duplicate and follow"
 
         wp_table_target.expect_current_path
         wp_table_target.expect_work_package_count 2
@@ -102,15 +102,15 @@ RSpec.describe "Copy work packages through Rails view", :js do
         copied_wps = WorkPackage.last(2)
         expect(copied_wps.map(&:project_id).uniq).to eq([project2.id])
         expect(copied_wps.map(&:version_id).uniq).to eq([version.id])
-        expect(copied_wps.map { |wp| wp.journals.last.notes }.uniq).to eq(["A note on copy"])
+        expect(copied_wps.map { |wp| wp.journals.last.notes }.uniq).to eq(["A note on duplicate"])
       end
 
       context "when the limit to move in the frontend is reached",
               with_settings: { work_packages_bulk_request_limit: 1 } do
         it "copies them in the background and shows a status page" do
           select version.name, from: "version_id"
-          notes.set_markdown "A note on copy"
-          click_on "Copy and follow"
+          notes.set_markdown "A note on duplicate"
+          click_on "Duplicate and follow"
 
           expect(page).to have_text("The job has been queued and will be processed shortly.", wait: 10)
 
@@ -171,7 +171,7 @@ RSpec.describe "Copy work packages through Rails view", :js do
 
         it "copies WPs with parent/child hierarchy and relations maintained, " \
            "as well as dates and scheduling modes" do
-          click_on "Copy and follow"
+          click_on "Duplicate and follow"
 
           wp_table_target.expect_current_path
           expect(page).to have_css("#projects-menu", text: "Target")
@@ -240,7 +240,7 @@ RSpec.describe "Copy work packages through Rails view", :js do
 
         it "copies WPs with relations maintained, " \
            "as well as dates and scheduling modes" do
-          click_on "Copy and follow"
+          click_on "Duplicate and follow"
 
           wp_table_target.expect_current_path
           expect(page).to have_css("#projects-menu", text: "Target")
@@ -278,7 +278,7 @@ RSpec.describe "Copy work packages through Rails view", :js do
         end
 
         it "fails, informing of the reasons" do
-          click_on "Copy and follow"
+          click_on "Duplicate and follow"
 
           expect_flash(type: :error, message: I18n.t("work_packages.bulk.none_could_be_saved", total: 3))
           expect_flash(type: :error,
@@ -296,7 +296,7 @@ RSpec.describe "Copy work packages through Rails view", :js do
         context "when the limit to move in the frontend is 0",
                 with_settings: { work_packages_bulk_request_limit: 0 } do
           it "shows the errors properly in the frontend" do
-            click_on "Copy and follow"
+            click_on "Duplicate and follow"
 
             expect(page).to have_text "The job has been queued and will be processed shortly."
 
@@ -325,7 +325,7 @@ RSpec.describe "Copy work packages through Rails view", :js do
     context "without permission" do
       let(:current_user) { dev }
 
-      it "does not allow to copy" do
+      it "does not allow to duplicate work packages" do
         context_menu.open_for work_package, check_if_open: false
         context_menu.expect_closed
       end
@@ -342,7 +342,7 @@ RSpec.describe "Copy work packages through Rails view", :js do
       work_package.save
     end
 
-    it "copies the work package" do
+    it "duplicates the work package" do
       context_menu.open_for work_package
       context_menu.choose "Duplicate in another project"
 
@@ -357,7 +357,7 @@ RSpec.describe "Copy work packages through Rails view", :js do
 
       select "nobody", from: "Assignee"
 
-      click_on "Copy and follow"
+      click_on "Duplicate and follow"
 
       expect_flash(message: I18n.t(:notice_successful_create))
 
