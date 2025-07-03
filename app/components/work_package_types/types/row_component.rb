@@ -34,6 +34,16 @@ module WorkPackageTypes
       include ApplicationHelper
       include TypesHelper
 
+      def column_css_classes
+        super.merge(
+          name: "timelines-pet-name",
+          color: "timelines-pet-color",
+          default: "timelines-pet-is_default",
+          milestone: "timelines-pet-is_milestone",
+          sort: "timelines-pet-reorder"
+        )
+      end
+
       def name
         link_to model.name, edit_type_settings_path(type_id: model.id)
       end
