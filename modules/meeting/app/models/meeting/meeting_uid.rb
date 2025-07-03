@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -27,39 +28,14 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module RecurringMeetings
-  class CreateContract < BaseContract
-    attribute :uid
+module Meeting::MeetingUid
+  extend ActiveSupport::Concern
 
-    validate :user_allowed_to_add
-    validate :project_is_present
-    validate :start_time_constraints
+  included do
+    after_initialize :generate_uid, if: :new_record?
+  end
 
-    private
-
-    def project_is_present
-      if model.project.nil?
-        errors.add :project_id, :blank
-      end
-    end
-
-    def user_allowed_to_add
-      return if model.project.nil?
-
-      unless user.allowed_in_project?(:create_meetings, model.project)
-        errors.add :base, :error_unauthorized
-      end
-    end
-
-    def start_time_constraints
-      return if model.start_time.nil?
-      return if model.start_time >= Time.zone.now
-
-      if model.start_time.today?
-        errors.add :start_time_hour, :after_today
-      else
-        errors.add :start_date, :after_today
-      end
-    end
+  def generate_uid
+    self.uid = "#{SecureRandom.uuid}@#{Setting.host_name}"
   end
 end
