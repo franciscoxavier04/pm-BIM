@@ -35,7 +35,7 @@ See COPYRIGHT and LICENSE files for more details.
     header.with_breadcrumbs(
       [*([href: home_path, text: organization_name] unless @project),
        *([href: project_overview_path(@project.id), text: @project.name] if @project),
-       { href: project_work_packages_path(@project), text: t(:label_work_package_plural) },
+       { href: (@project ? project_work_packages_path(@project) : work_packages_path), text: t(:label_work_package_plural) },
        t(:label_bulk_edit_selected_work_packages)]
     )
   end
