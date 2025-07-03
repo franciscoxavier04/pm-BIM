@@ -35,9 +35,9 @@ See COPYRIGHT and LICENSE files for more details.
     header.with_breadcrumbs(
       [
         { href: admin_index_path, text: t("label_administration") },
-        { href: admin_costs_settings_path, text: t(:project_module_costs) },
-        t(:label_defaults)
-      ]
+        nested_breadcrumb_element(t(:project_module_costs), t(:label_defaults))
+      ],
+      selected_item_font_weight: :normal
     )
   end
 %>

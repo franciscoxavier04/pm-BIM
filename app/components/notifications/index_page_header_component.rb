@@ -46,13 +46,15 @@ module Notifications
     end
 
     def breadcrumb_items
-      [{ href: notifications_path, text: I18n.t("js.notifications.title") },
+      [*([{ href: notifications_path, text: I18n.t("js.notifications.title") }] unless first_menu_item?),
        current_breadcrumb_element]
     end
 
     def current_breadcrumb_element
       if current_section && current_section.header.present?
         helpers.nested_breadcrumb_element(current_section.header, page_title)
+      elsif first_menu_item?
+        helpers.nested_breadcrumb_element(I18n.t("js.notifications.title"), current_item.title)
       else
         page_title
       end
@@ -72,6 +74,10 @@ module Notifications
       @current_item = Notifications::Menu
                         .new(params:, current_user: User.current)
                         .selected_menu_item
+    end
+
+    def first_menu_item?
+      current_item.href == notifications_path
     end
   end
 end

@@ -4,9 +4,9 @@
     header.with_breadcrumbs(
       [
         { href: project_overview_path(@project.id), text: @project.name },
-        { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
-        t(:label_information_plural)
-      ]
+        helpers.nested_breadcrumb_element(t(:label_project_settings), t(:label_information_plural))
+      ],
+      selected_item_font_weight: :normal
     )
 
     if User.current.allowed_in_project?(:add_subprojects, @project)

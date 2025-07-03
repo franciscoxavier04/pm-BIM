@@ -39,7 +39,7 @@ class Members::IndexPageHeaderComponent < ApplicationComponent
 
   def breadcrumb_items
     [{ href: project_overview_path(@project.id), text: @project.name },
-     { href: project_members_path(@project), text: t(:label_member_plural) },
+     *([{ href: project_members_path(@project), text: I18n.t(:label_member_plural) }] unless first_menu_item?),
      current_breadcrumb_element]
   end
 
@@ -64,6 +64,8 @@ class Members::IndexPageHeaderComponent < ApplicationComponent
     if @query && query_name
       if menu_header.present?
         helpers.nested_breadcrumb_element(menu_header, query_name)
+      elsif first_menu_item?
+        helpers.nested_breadcrumb_element(I18n.t(:label_member_plural), query_name)
       else
         query_name
       end
@@ -74,17 +76,23 @@ class Members::IndexPageHeaderComponent < ApplicationComponent
 
   def current_query
     query_name = nil
+    query_href = nil
     menu_header = nil
 
     Members::Menu.new(project: @project, params:).menu_items.find do |section|
       section.children.find do |menu_query|
         if !!menu_query.selected
           query_name = menu_query.title
+          query_href = menu_query.href
           menu_header = section.header
         end
       end
     end
 
-    { query_name:, menu_header: }
+    { query_name:, query_href:, menu_header: }
+  end
+
+  def first_menu_item?
+    current_query[:query_href] == project_members_path(@project)
   end
 end

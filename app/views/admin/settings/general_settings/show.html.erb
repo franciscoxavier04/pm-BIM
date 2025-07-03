@@ -34,8 +34,8 @@ See COPYRIGHT and LICENSE files for more details.
     header.with_title { t(:label_general) }
     header.with_breadcrumbs(
       [{ href: admin_index_path, text: t("label_administration") },
-       { href: admin_settings_general_path, text: t(:label_system_settings) },
-       t(:label_general)]
+       nested_breadcrumb_element(t(:label_system_settings), t(:label_general))],
+      selected_item_font_weight: :normal
     )
   end
 %>

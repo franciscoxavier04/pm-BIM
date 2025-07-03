@@ -8,9 +8,9 @@
     header.with_title(variant: :medium) { t("overviews.label") }
     header.with_breadcrumbs(
       [
-        { href: project_path(@project), text: @project.name },
-        t("overviews.label")
-      ]
+        nested_breadcrumb_element(@project.name, t("overviews.label"))
+      ],
+      selected_item_font_weight: :normal
     )
     favored = @project.favored_by?(User.current)
     header.with_action_icon_button(

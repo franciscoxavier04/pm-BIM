@@ -10,9 +10,11 @@ end %>
   <%= render(Primer::OpenProject::PageHeader.new) do |header| %>
     <% header.with_title { t("external_file_storages") } %>
     <% header.with_description { t("storages.page_titles.file_storages.subtitle") } %>
-    <% header.with_breadcrumbs([{ href: admin_index_path, text: t("label_administration") },
-                                { href: admin_settings_storages_path, text: t("project_module_storages") },
-                                t("external_file_storages")]) %>
+    <% header.with_breadcrumbs(
+         [{ href: admin_index_path, text: t("label_administration") },
+          nested_breadcrumb_element(t(:project_module_storages), t(:external_file_storages))],
+         selected_item_font_weight: :normal
+       ) %>
   <% end %>
 
   <%= render(Primer::OpenProject::SubHeader.new) do |subheader|

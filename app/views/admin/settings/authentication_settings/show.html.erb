@@ -55,8 +55,8 @@ See COPYRIGHT and LICENSE files for more details.
     header.with_title { t("authentication.login_and_registration") }
     header.with_breadcrumbs(
       [{ href: admin_index_path, text: t(:label_administration) },
-       { href: admin_settings_authentication_path, text: t(:label_authentication) },
-       t("authentication.login_and_registration")]
+       nested_breadcrumb_element(t(:label_authentication), t("authentication.login_and_registration"))],
+      selected_item_font_weight: :normal
     )
     render_tab_header_nav(header, tabs)
   end

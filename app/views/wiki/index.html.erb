@@ -34,9 +34,9 @@ See COPYRIGHT and LICENSE files for more details.
     header.with_breadcrumbs(
       [
         { href: project_overview_path(@project.id), text: @project.name },
-        { href: url_for({ controller: "/wiki", action: "index", project_id: @project.identifier, id: @related_page }), text: t("activerecord.models.wiki") },
-        t(:label_wiki_toc)
-      ]
+        nested_breadcrumb_element(t("activerecord.models.wiki"), t(:label_wiki_toc))
+      ],
+      selected_item_font_weight: :normal
     )
     watcher_action_button(header, @wiki)
   end

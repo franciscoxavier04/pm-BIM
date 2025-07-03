@@ -39,24 +39,17 @@ module CostReports
       @user =  User.current
     end
 
-    def page_title
-      I18n.t(:label_meeting_plural)
-    end
-
     def breadcrumb_items
       [*([{ href: project_overview_path(@project.id), text: @project.name }] if @project.present?),
-       { href: url_for({ controller: "cost_reports", action: :index, project_id: @project }),
-         text: I18n.t(:cost_reports_title) },
+       *([{ href: cost_reports_path(@project), text: I18n.t(:cost_reports_title) }] if current_section && current_section.header.present?),
        current_breadcrumb_element]
     end
 
     def current_breadcrumb_element
-      return I18n.t(:label_new_report) unless @query.persisted?
-
       if current_section && current_section.header.present?
         helpers.nested_breadcrumb_element(current_section.header, @query.name)
       else
-        I18n.t(:label_new_report)
+        helpers.nested_breadcrumb_element(I18n.t(:cost_reports_title), I18n.t(:label_new_report))
       end
     end
 

@@ -47,14 +47,16 @@ module Meetings
 
     def breadcrumb_items
       [*([{ href: project_overview_path(@project.id), text: @project.name }] if @project.present?),
-       { href: url_for({ controller: "meetings", action: :index, project_id: @project }),
-         text: I18n.t(:label_meeting_plural) },
+       *([{ href: url_for({ controller: "meetings", action: :index, project_id: @project }),
+            text: I18n.t(:label_meeting_plural) }] unless first_menu_item?),
        current_breadcrumb_element]
     end
 
     def current_breadcrumb_element
       if section_present?
         helpers.nested_breadcrumb_element(current_section.header, page_title)
+      elsif first_menu_item?
+        helpers.nested_breadcrumb_element(I18n.t(:label_meeting_plural), current_item.title)
       else
         page_title
       end
@@ -78,6 +80,10 @@ module Meetings
       @current_item = Meetings::Menu
                         .new(project: @project, params: params.merge(current_href: request.path))
                         .selected_menu_item
+    end
+
+    def first_menu_item?
+      current_item.href == (@project.present? ? project_meetings_path(@project.identifier) : meetings_path)
     end
   end
 end
