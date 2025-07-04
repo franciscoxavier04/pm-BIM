@@ -63,7 +63,9 @@ module Admin
 
       result.on_success do
         flash[:notice] = t(:notice_successful_create)
-        redirect_to edit_admin_scim_client_path(result.result, first_time_setup: true)
+        plaintext_secret = result.result.oauth_application&.plaintext_secret
+        session[:oauth_secret] = plaintext_secret if plaintext_secret.present?
+        redirect_to(edit_admin_scim_client_path(result.result, first_time_setup: true))
       end
     end
 
@@ -112,14 +114,13 @@ module Admin
       case scim_client.authentication_method
       when "oauth2_token"
         if scim_client.access_tokens.empty?
-          ::ScimClients::GenerateStaticTokenService.new(scim_client).call
-          @setup_token = true
+          @setup_token = ::ScimClients::GenerateStaticTokenService.new(scim_client).call.result
         end
       when "oauth2_client"
         # Ensuring that the client secret can't infinitely be accessed by calling with ?first_time_setup=true long after
         # the initial setup (there is no other persisted marker showing us, that this is the first time)
         if scim_client.oauth_application.created_at > 1.minute.ago
-          @setup_client_credentials = true
+          @setup_client_secret = session.delete(:oauth_secret)
         end
       end
     end

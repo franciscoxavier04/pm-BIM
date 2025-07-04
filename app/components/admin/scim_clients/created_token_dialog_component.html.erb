@@ -39,10 +39,10 @@ See COPYRIGHT and LICENSE files for more details.
           name: :token,
           label: t(".label_token"),
           visually_hide_label: false,
-          value: model.token
+          value: model.plaintext_token
         )
         input_group.with_trailing_action_clipboard_copy_button(
-          value: model.token,
+          value: model.plaintext_token,
           aria: { label: I18n.t("button_copy_to_clipboard") }
         )
       end

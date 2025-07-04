@@ -148,7 +148,10 @@ RSpec.describe "Updating a SCIM client", :js, :selenium, driver: :firefox_de do
 
     page.find_test_selector("op-scim-clients--add-token-button").click
     within_modal("Token created") do
-      expect(page).to have_field("Token", with: Doorkeeper::AccessToken.last.token)
+      plaintext_token = page.find_field("Token").value
+      hashed_token = Doorkeeper::AccessToken.last.token
+      expect(plaintext_token).to be_present
+      expect(Digest::SHA256.hexdigest(plaintext_token)).to eq(hashed_token)
       click_on("Close")
     end
     within_test_selector("Admin::ScimClients::TokenTableComponent") do
