@@ -63,7 +63,8 @@ module Admin
 
       result.on_success do
         flash[:notice] = t(:notice_successful_create)
-        redirect_to edit_admin_scim_client_path(result.result, first_time_setup: true)
+        store_oauth_secret(result.result)
+        redirect_to(edit_admin_scim_client_path(result.result, first_time_setup: true))
       end
     end
 
@@ -112,14 +113,12 @@ module Admin
       case scim_client.authentication_method
       when "oauth2_token"
         if scim_client.access_tokens.empty?
-          ::ScimClients::GenerateStaticTokenService.new(scim_client).call
-          @setup_token = true
+          @setup_token = ::ScimClients::GenerateStaticTokenService.new(scim_client).call.result
         end
       when "oauth2_client"
-        # Ensuring that the client secret can't infinitely be accessed by calling with ?first_time_setup=true long after
-        # the initial setup (there is no other persisted marker showing us, that this is the first time)
-        if scim_client.oauth_application.created_at > 1.minute.ago
-          @setup_client_credentials = true
+        key = oauth_secret_session_key(scim_client)
+        if session.key?(key)
+          @setup_client_secret = session.delete(key)
         end
       end
     end
@@ -127,6 +126,23 @@ module Admin
     def stream_form_component(&)
       update_via_turbo_stream(component: Admin::ScimClients::FormComponent.new(@scim_client))
       respond_with_turbo_streams(&)
+    end
+
+    # saves plaintext oauth client secret to the session temporary
+    # why?
+    # because plaintext client secret needs to be presented to an admin in UI
+    # and it is only present in memory just after oauth_application creation.
+    # so, to be able to render it after redirection it is stored in the admin session
+    # and then removed right after being rendered.
+    def store_oauth_secret(scim_client)
+      return unless scim_client.authentication_method_oauth2_client?
+
+      plaintext_secret = scim_client.oauth_application.plaintext_secret
+      session[oauth_secret_session_key(scim_client)] = plaintext_secret
+    end
+
+    def oauth_secret_session_key(scim_client)
+      "scim-client-#{scim_client.id}-oauth-secret"
     end
   end
 end
