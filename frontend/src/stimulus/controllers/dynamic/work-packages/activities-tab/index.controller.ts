@@ -35,6 +35,7 @@ import {
 import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
 import { useMeta } from 'stimulus-use';
+import { retrieveCkEditorInstance } from 'core-app/shared/helpers/ckeditor-helpers';
 
 enum AnchorType {
   Comment = 'comment',
@@ -48,7 +49,7 @@ interface CustomEventWithIdParam extends Event {
   };
 }
 
-export default class IndexController extends Controller {
+export default class IndexController extends Controller<HTMLElement> {
   static values = {
     updateStreamsPath: String,
     sorting: String,
@@ -130,12 +131,12 @@ export default class IndexController extends Controller {
 
   private markAsConnected() {
     // used in specs for timing
-    (this.element as HTMLElement).dataset.stimulusControllerConnected = 'true';
+    this.element.dataset.stimulusControllerConnected = 'true';
   }
 
   private markAsDisconnected() {
     // used in specs for timing
-    (this.element as HTMLElement).dataset.stimulusControllerConnected = 'false';
+    this.element.dataset.stimulusControllerConnected = 'false';
   }
 
   private setLocalStorageKeys() {
@@ -402,12 +403,9 @@ export default class IndexController extends Controller {
   }
 
   private rescueEditorContent() {
-    const ckEditorInstance = this.getCkEditorInstance();
-    if (ckEditorInstance) {
-      const data = ckEditorInstance.getData({ trim: false });
-      if (data.length > 0) {
-        localStorage.setItem(this.rescuedEditorDataKey, data);
-      }
+    const data = this.ckEditorInstance?.getData({ trim: false });
+    if (data) {
+      localStorage.setItem(this.rescuedEditorDataKey, data);
     }
   }
 
@@ -519,13 +517,12 @@ export default class IndexController extends Controller {
     window.location.hash = `#${anchorName}-${activityId}`;
   }
 
-  private getCkEditorElement():HTMLElement | null {
+  private get ckEditorAugmentedTextarea():HTMLElement | null {
     return this.element.querySelector('opce-ckeditor-augmented-textarea');
   }
 
-  getCkEditorInstance():ICKEditorInstance | null {
-    const AngularCkEditorElement = this.getCkEditorElement();
-    return AngularCkEditorElement ? jQuery(AngularCkEditorElement).data('editor') as ICKEditorInstance : null;
+  get ckEditorInstance():ICKEditorInstance | undefined {
+    return retrieveCkEditorInstance(this.element);
   }
 
   private getInputContainer():HTMLElement | null {
@@ -587,7 +584,7 @@ export default class IndexController extends Controller {
       },
     };
 
-    const editorElement = this.getCkEditorElement();
+    const editorElement = this.ckEditorAugmentedTextarea;
     if (editorElement) {
       editorElement.addEventListener('editorEscape', handlers.onEscapeEditor, { signal });
       editorElement.addEventListener('editorKeyup', handlers.adjustMargin, { signal });
@@ -667,7 +664,7 @@ export default class IndexController extends Controller {
   }
 
   focusEditor(timeout:number = 10) {
-    const ckEditorInstance = this.getCkEditorInstance();
+    const ckEditorInstance = this.ckEditorInstance;
     if (ckEditorInstance) {
       setTimeout(() => ckEditorInstance.editing.view.focus(), timeout);
     }
@@ -675,14 +672,13 @@ export default class IndexController extends Controller {
 
   openEditorWithInitialData(quotedText:string) {
     this.showForm();
-    const ckEditorInstance = this.getCkEditorInstance();
-    if (ckEditorInstance && ckEditorInstance.getData({ trim: false }).length === 0) {
-      ckEditorInstance.setData(quotedText);
+    if (this.isEditorEmpty()) {
+      this.ckEditorInstance!.setData(quotedText);
     }
   }
 
   clearEditor() {
-    this.getCkEditorInstance()?.setData('');
+    this.ckEditorInstance?.setData('');
   }
 
   hideEditor() {
@@ -728,9 +724,7 @@ export default class IndexController extends Controller {
   }
 
   private isEditorEmpty():boolean {
-    const ckEditorInstance = this.getCkEditorInstance();
-
-    return !!(ckEditorInstance?.getData({ trim: false }).length === 0);
+    return this.ckEditorInstance?.getData({ trim: false }) === '';
   }
 
   private handleTurboSubmitStart(_event:Event) {
@@ -769,15 +763,12 @@ export default class IndexController extends Controller {
   }
 
   private setCKEditorReadonlyMode(disabled:boolean) {
-    const ckEditorInstance = this.getCkEditorInstance();
     const editorLockID = 'work-packages-activities-tab-index-component';
 
-    if (ckEditorInstance) {
-      if (disabled) {
-        ckEditorInstance.enableReadOnlyMode(editorLockID);
-      } else {
-        ckEditorInstance.disableReadOnlyMode(editorLockID);
-      }
+    if (disabled) {
+      this.ckEditorInstance?.enableReadOnlyMode(editorLockID);
+    } else {
+      this.ckEditorInstance?.disableReadOnlyMode(editorLockID);
     }
   }
 
