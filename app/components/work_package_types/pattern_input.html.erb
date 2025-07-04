@@ -106,7 +106,14 @@ See COPYRIGHT and LICENSE files for more details.
         )
       )
     %>
-    <%= render(Primer::BaseComponent.new(tag: :div, box_shadow: :medium, border_radius: 2)) do %>
+    <%=
+      render Primer::BaseComponent.new(
+        tag: :div,
+        box_shadow: :medium,
+        classes: "op-pattern-input--suggestions-dropdown",
+        border_radius: 2
+      ) do
+    %>
       <focus-group direction="vertical">
         <%= render(suggestions_list_component) %>
       </focus-group>
