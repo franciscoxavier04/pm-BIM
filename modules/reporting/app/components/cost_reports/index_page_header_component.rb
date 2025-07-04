@@ -39,15 +39,11 @@ module CostReports
       @user =  User.current
     end
 
-    def page_title
-      I18n.t(:label_meeting_plural)
-    end
-
     def breadcrumb_items
       [
         ({ href: project_overview_path(@project.id), text: @project.name } if @project.present?),
         { href: url_for({ controller: "cost_reports", action: :index, project_id: @project }),
-          text: I18n.t(:cost_reports_title) },
+          text: I18n.t(:cost_reports_title), skip_for_mobile: current_section && current_section.header.present? },
         current_breadcrumb_element
       ].compact
     end
