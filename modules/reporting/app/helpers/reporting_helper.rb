@@ -59,7 +59,7 @@ module ReportingHelper
       CostQuery::Filter.const_get(name).label
     elsif CostQuery::GroupBy.const_defined?(name)
       CostQuery::GroupBy.const_get(name).label
-    elsif field.to_sym.in?(%i[entity entity_id entity_type])
+    elsif field.to_sym.in?(%i[entity entity_id entity_type entity_gid])
       # TODO: Temporary override for now
       TimeEntry.human_attribute_name(:entity)
     else
