@@ -63,8 +63,7 @@ module Admin
 
       result.on_success do
         flash[:notice] = t(:notice_successful_create)
-        plaintext_secret = result.result.oauth_application&.plaintext_secret
-        session[oauth_secret_session_key(result.result)] = plaintext_secret if plaintext_secret.present?
+        store_oauth_secret(result.result)
         redirect_to(edit_admin_scim_client_path(result.result, first_time_setup: true))
       end
     end
@@ -127,6 +126,19 @@ module Admin
     def stream_form_component(&)
       update_via_turbo_stream(component: Admin::ScimClients::FormComponent.new(@scim_client))
       respond_with_turbo_streams(&)
+    end
+
+    # saves plaintext oauth client secret to the session temporary
+    # why?
+    # because plaintext client secret needs to be presented to an admin in UI
+    # and it is only present in memory just after oauth_application creation.
+    # so, to be able to render it after redirection it is stored in the admin session
+    # and then removed right after being rendered.
+    def store_oauth_secret(scim_client)
+      return unless scim_client.authentication_method_oauth2_client?
+
+      plaintext_secret = scim_client.oauth_application.plaintext_secret
+      session[oauth_secret_session_key(scim_client)] = plaintext_secret
     end
 
     def oauth_secret_session_key(scim_client)
