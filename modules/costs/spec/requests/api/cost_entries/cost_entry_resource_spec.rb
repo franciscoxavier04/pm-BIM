@@ -80,7 +80,7 @@ RSpec.describe "API v3 Cost Entry resource" do
                         I18n.t("api_v3.errors.code_403")
       end
 
-      context "when cost entry is his own" do
+      context "when cost entry is their own" do
         let(:entry_user) { current_user }
 
         it "returns HTTP 200" do
