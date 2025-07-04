@@ -49,8 +49,11 @@ module WorkPackageTypes
       @suggestions_list_component ||= Primer::Alpha::ActionList.new(
         role: :list,
         scheme: :inset,
+        classes: "op-pattern-input--suggestions-dropdown",
         ml: 0,
-        "data-pattern-input-target": "suggestions"
+        data: {
+          "pattern-input-target": "suggestions"
+        }
       )
     end
   end
