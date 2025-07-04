@@ -36,7 +36,7 @@ RSpec.describe "Creating a SCIM client", :js, :selenium, driver: :firefox_de do
 
   current_user { admin }
 
-  it "can create a SCIM client authenticating through JWT", :aggregate_failures do
+  it "can create a SCIM client authenticating through JWT", :aggregate_failures, with_ee: [:scim_api] do
     visit new_admin_scim_client_path
 
     expect(page).to be_axe_clean.within("#content")
@@ -64,7 +64,7 @@ RSpec.describe "Creating a SCIM client", :js, :selenium, driver: :firefox_de do
     expect(created_client.auth_provider_link&.external_id).to eq("123-abc-456-def")
   end
 
-  it "can create a SCIM client authenticating through client credentials" do
+  it "can create a SCIM client authenticating through client credentials", with_ee: [:scim_api] do
     visit new_admin_scim_client_path
 
     fill_in "Name", with: "My SCIM Client"
@@ -83,7 +83,7 @@ RSpec.describe "Creating a SCIM client", :js, :selenium, driver: :firefox_de do
     end
   end
 
-  it "can create a SCIM client authenticating through a static access token" do
+  it "can create a SCIM client authenticating through a static access token", with_ee: [:scim_api] do
     visit new_admin_scim_client_path
 
     fill_in "Name", with: "My SCIM Client"

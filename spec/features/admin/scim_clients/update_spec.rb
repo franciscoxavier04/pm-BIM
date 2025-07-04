@@ -48,7 +48,7 @@ RSpec.describe "Updating a SCIM client", :js, :selenium, driver: :firefox_de do
 
   current_user { admin }
 
-  it "can update a SCIM client authenticating through JWT", :aggregate_failures do
+  it "can update a SCIM client authenticating through JWT", :aggregate_failures, with_ee: [:scim_api] do
     visit edit_admin_scim_client_path(sso_scim_client)
     expect(page).to be_axe_clean.within("#content")
                                 .skipping("link-in-text-block") # https://community.openproject.org/wp/65252
@@ -78,7 +78,7 @@ RSpec.describe "Updating a SCIM client", :js, :selenium, driver: :firefox_de do
     expect(ScimClient.where(id: sso_scim_client.id)).to be_empty
   end
 
-  it "can update a SCIM client authenticating through client credentials", :aggregate_failures do
+  it "can update a SCIM client authenticating through client credentials", :aggregate_failures, with_ee: [:scim_api] do
     visit edit_admin_scim_client_path(oauth_client_scim_client)
     expect(page).to be_axe_clean.within("#content")
                                 .skipping("link-in-text-block") # https://community.openproject.org/wp/65252
@@ -108,7 +108,7 @@ RSpec.describe "Updating a SCIM client", :js, :selenium, driver: :firefox_de do
     expect(ScimClient.where(id: oauth_client_scim_client.id)).to be_empty
   end
 
-  it "can update a SCIM client authenticating through a static access token", :aggregate_failures do
+  it "can update a SCIM client authenticating through a static access token", :aggregate_failures, with_ee: [:scim_api] do
     visit edit_admin_scim_client_path(token_scim_client)
     expect(page).to be_axe_clean.within("#content")
                                 .skipping("link-in-text-block") # https://community.openproject.org/wp/65252
