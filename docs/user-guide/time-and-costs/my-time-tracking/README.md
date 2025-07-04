@@ -35,7 +35,7 @@ The *My time tracking* module offers a clear overview of your personal time entr
 
 ### Calendar view
 
-The *Calendar* view opens by default if start and finish times for time entries have been enabled in [System Administration](../../system-admin-guide/time-and-costs). You can adjust the zoom level using the dropdown menu, with options for **Day**, **Work week**, **Week**, or **Month**.
+The *Calendar* view opens by default if start and finish times for time entries have been enabled in [System Administration](../../system-admin-guide/time-and-costs). You can adjust the zoom level using the dropdown menu, with options for **Day**, **Work week**, **Week**, or **Month**. The current day is highlighted.
 
 Existing time entries appear on the corresponding days they were logged. Entry colors reflect the type of work package associated with the logged time.
 
@@ -45,7 +45,7 @@ You can log time by selecting a time range anywhere on the calendar or by using 
 
 You can drag and drop time entries to reposition them within the same day or move them to a different day. To adjust the duration of an entry, drag the top or bottom edge of the time entry up or down.
 
-![Example of logging time in OpenProject My time tracking module](openproject-my-time-tracking-page1.gif)
+![Example of logging time in OpenProject My time tracking module](openproject-my-time-tracking-page.gif)
 
 To edit a time entry, click it in the calendar, make your changes, and save. You can also delete it from the same menu.
 
@@ -61,7 +61,9 @@ In this view, time entries are grouped by day. Each day displays the total numbe
 
 - When the **Day** zoom is selected, the view is expanded by default.
 
-- When **Week** or **Month** zoom is selected, past days or weeks are collapsed by default. However, the current day (in Week view) or the current week (in Month view) is expanded, along with all future dates.
+- When **Week** or **Work week** zoom is selected, past and future days are collapsed by default. However, the current day is expanded.
+
+- When **Month** zoom is selected, past days or weeks are collapsed by default. However, the current week is expanded, along with all future weeks of that month.
 
 > [!TIP]
 > If monthly level is chosen in the list view mode, time entries are aggregated by  week and not by day. This is especially useful to get an overview of your tracked hours for each week. 
