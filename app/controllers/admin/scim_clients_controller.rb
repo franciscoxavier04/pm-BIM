@@ -64,7 +64,7 @@ module Admin
       result.on_success do
         flash[:notice] = t(:notice_successful_create)
         plaintext_secret = result.result.oauth_application&.plaintext_secret
-        session[:oauth_secret] = plaintext_secret if plaintext_secret.present?
+        session[oauth_secret_session_key(result.result)] = plaintext_secret if plaintext_secret.present?
         redirect_to(edit_admin_scim_client_path(result.result, first_time_setup: true))
       end
     end
@@ -117,10 +117,9 @@ module Admin
           @setup_token = ::ScimClients::GenerateStaticTokenService.new(scim_client).call.result
         end
       when "oauth2_client"
-        # Ensuring that the client secret can't infinitely be accessed by calling with ?first_time_setup=true long after
-        # the initial setup (there is no other persisted marker showing us, that this is the first time)
-        if scim_client.oauth_application.created_at > 1.minute.ago
-          @setup_client_secret = session.delete(:oauth_secret)
+        key = oauth_secret_session_key(scim_client)
+        if session.key?(key)
+          @setup_client_secret = session.delete(key)
         end
       end
     end
@@ -128,6 +127,10 @@ module Admin
     def stream_form_component(&)
       update_via_turbo_stream(component: Admin::ScimClients::FormComponent.new(@scim_client))
       respond_with_turbo_streams(&)
+    end
+
+    def oauth_secret_session_key(scim_client)
+      "scim-client-#{scim_client.id}-oauth-secret"
     end
   end
 end
