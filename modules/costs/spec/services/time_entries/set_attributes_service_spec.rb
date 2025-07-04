@@ -233,7 +233,7 @@ RSpec.describe TimeEntries::SetAttributesService, type: :model do
       }
     end
 
-    it "sets the project to the entities project" do
+    it "sets the project to the entity's project" do
       subject
 
       expect(time_entry_instance.project)
