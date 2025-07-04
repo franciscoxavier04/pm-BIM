@@ -694,8 +694,10 @@ uk:
       form_configuration:
         tab: "Конфігурація форми"
       projects:
-        tab: "Проєкти"
-        enabled_projects: "Включені проєкти"
+        tab: Проєкти
+        enable_all: Enable for all projects
+        select_projects: Select projects
+        select_projects_description: Select the projects in which you would like to use this type.
       settings:
         tab: "Налаштування"
         type_color_text: "Цей колір використовується для виділення різних типів \nна діаграмах Ґанта або в таблицях пакетів робіт. Тому рекомендуємо вибрати насичений колір."
@@ -1757,7 +1759,7 @@ uk:
     body: "Текст"
     blocks_ids: "Ідентифікатори заблокованих робочих пакетів"
     category: "Категорія"
-    comment: "Коментар"
+    comment: "Коментування"
     comments: "Коментування"
     content: "Контент"
     color: "Колір"
@@ -2939,7 +2941,7 @@ uk:
   label_index_by_title: "Індекс за назвою"
   label_information: "Інформація"
   label_information_plural: "Інформація"
-  label_installation_guides: "Інструкції зі встановлення"
+  label_installation_guides: "Інструкції із встановлення"
   label_integer: "Ціле число"
   label_interface: "Interface"
   label_internal: "Власне"

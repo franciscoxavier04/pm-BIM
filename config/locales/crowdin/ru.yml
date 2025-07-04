@@ -698,8 +698,10 @@ ru:
       form_configuration:
         tab: "Настройка форм"
       projects:
-        tab: "Проекты"
-        enabled_projects: "Доступные проекты"
+        tab: Проекты
+        enable_all: Enable for all projects
+        select_projects: Select projects
+        select_projects_description: Select the projects in which you would like to use this type.
       settings:
         tab: "Параметры"
         type_color_text: "Выбранный цвет выделяет разные типы\nна диаграммах Ганта или таблицах пакетов работ. Поэтому рекомендуется использовать насыщенный цвет."

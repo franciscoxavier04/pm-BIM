@@ -683,8 +683,10 @@ ca:
       form_configuration:
         tab: "Configuració del formulari"
       projects:
-        tab: "Projectes"
-        enabled_projects: "Projectes habilitats"
+        tab: Projectes
+        enable_all: Enable for all projects
+        select_projects: Select projects
+        select_projects_description: Select the projects in which you would like to use this type.
       settings:
         tab: "Configuració"
         type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
