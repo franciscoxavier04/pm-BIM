@@ -279,6 +279,7 @@ RSpec.describe Journable::Timestamps do
               ON "time_entries"."entity_type" = 'WorkPackage'
               AND "time_entries"."entity_id" = "work_package_journals"."id"
             SQL
+
             expect(subject.to_sql).to include <<~SQL.squish
               INNER JOIN "time_entries"
                 ON "time_entries"."entity_type" = 'WorkPackage'
