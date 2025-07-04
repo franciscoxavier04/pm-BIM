@@ -54,7 +54,6 @@ module TimeEntries
               unless: Proc.new { spent_on.blank? }
 
     attribute :project_id
-    attribute :entity
     attribute :entity_id
     attribute :entity_type
     attribute :activity_id do
