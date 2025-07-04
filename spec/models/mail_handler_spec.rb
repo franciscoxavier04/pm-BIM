@@ -1567,29 +1567,6 @@ RSpec.describe IncomingEmails::MailHandler do
     end
   end
 
-  describe "#cleanup_body" do
-    skip "move to handler spec"
-    let(:input) do
-      "Subject:foo\nDescription:bar\n" \
-        ">>> myserver.example.org 2016-01-27 15:56 >>>\n... (Email-Body) ..."
-    end
-    let(:mail_stub) { instance_double(Mail, from: ["foo@example.com"]) }
-    let(:service) { IncomingEmails::DispatchService.new(mail_stub, options: {}) }
-
-    context "with regex delimiter" do
-      before do
-        allow(Setting).to receive(:mail_handler_body_delimiter_regex).and_return(">>>.+?>>>.*")
-        allow(service).to receive(:plain_text_body).and_return(input)
-        allow(service).to receive(:cleaned_up_text_body).and_call_original
-      end
-
-      it "removes the irrelevant lines" do
-        expect(service.send(:cleaned_up_text_body)).to eq("Subject:foo\nDescription:bar")
-        expect(service).to have_received(:cleaned_up_text_body)
-      end
-    end
-  end
-
   private
 
   def read_email(filename)
