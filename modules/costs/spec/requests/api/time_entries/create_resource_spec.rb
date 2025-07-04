@@ -90,7 +90,7 @@ RSpec.describe "API v3 Time Entries resource",
           expect(time_entry.entity).to eq(work_package)
         end
 
-        context "with the deprecated workPackge field" do
+        context "with the deprecated workPackage field" do
           let(:parameters) do
             {
               _links: {
