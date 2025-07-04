@@ -35,7 +35,7 @@ module WorkPackageTypes
     layout "admin"
 
     before_action :require_admin
-    before_action :find_type, only: %i[update move destroy]
+    before_action :find_type, only: %i[move destroy]
 
     current_menu_item do
       :types
