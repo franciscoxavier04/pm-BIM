@@ -57,7 +57,7 @@ class CostlogController < ApplicationController
     elsif @cost_entry.save
 
       flash[:notice] = t(:notice_cost_logged_successfully)
-      redirect_back_or_default work_package_path(@cost_entry.entity)
+      redirect_back_or_default polymorphic_path(@cost_entry.entity)
     else
       render action: :edit, status: :unprocessable_entity
     end
