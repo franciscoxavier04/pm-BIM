@@ -77,7 +77,7 @@ Use the guidelines below to understand how phase and gate scheduling behaves.
 
   -  You cannot set gate dates independently — adjusting the phase's start or finish date will automatically move the corresponding gate.
 
-     - Phase fates are never placed inside the phase duration but always at its borders.
+     - Phase gates are never placed inside the phase duration but always at its borders.
      - Phase gates never overlap or share the same date with other gates.
 
   - **Phases and phase gates will follow the order predefined in the system administration** (e.g., *Initiating* must come before *Closing*). Dates for a subsequent phase cannot be before those of any preceding phase. The automatic scheduling enforces this as well.
