@@ -31,8 +31,6 @@
 class CostEntry < ApplicationRecord
   ALLOWED_ENTITY_TYPES = %w[WorkPackage].freeze
 
-  self.ignored_columns += [:work_package_id]
-
   belongs_to :project
   belongs_to :entity, polymorphic: true
   belongs_to :user
