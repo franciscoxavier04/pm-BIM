@@ -3,25 +3,44 @@ title: OpenProject 16.2.0
 sidebar_navigation:
     title: 16.2.0
 release_version: 16.2.0
-release_date: 2025-07-03
+release_date: 2025-07-16
 ---
 
 # OpenProject 16.2.0
 
-Release date: 2025-07-03
+Release date: 2025-07-16
 
-We released OpenProject [OpenProject 16.2.0](https://community.openproject.org/versions/2196).
-The release contains several bug fixes and we recommend updating to the newest version.
-In these Release Notes, we will give an overview of important feature changes.
-At the end, you will find a complete list of all changes and bug fixes.
+We released [OpenProject 16.2.0](https://community.openproject.org/versions/2196). The release contains several bug fixes and we recommend updating to the newest version. In these Release Notes, we will give an overview of important feature changes and important technical changes. At the end, you will find a complete list of all changes and bug fixes. 
 
 ## Important feature changes
 
-<!-- Inform about the major features in this section -->
+### New header and sidebar with improved navigation and design
 
-## Important updates and breaking changes
+- Hamburger sidebar toggle moved from main navigation to sidebar
+- Default color of sidebar changed in light mode
+- Position of search and create button in top bar moved
 
-<!-- Remove this section if empty, add to it in pull requests linking to tickets and provide information -->
+### Primer design system added to project create and project copy forms
+
+### Non-latin languages and emojis supported in PDF exports
+
+### Second level navigation for Relations create menu
+
+### Select custom field format earlier when creating a new custom field
+
+### Work package reminders presented in relative humanized time format
+
+### My time tracking: Collapse future days for week and work week views
+
+### Option to disable keyboard shortcuts for better accessibility
+
+## Important technical changes
+
+### SCIM server functionality added to OpenProject via SCIM API (Enterprise add-on)
+
+### API support for internal comments
+
+### Commenting on work packages fires a webhook
 
 <!--more-->
 
