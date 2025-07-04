@@ -46,10 +46,12 @@ module Meetings
     end
 
     def breadcrumb_items
-      [*([{ href: project_overview_path(@project.id), text: @project.name }] if @project.present?),
-       { href: url_for({ controller: "meetings", action: :index, project_id: @project }),
-         text: I18n.t(:label_meeting_plural) },
-       current_breadcrumb_element]
+      [
+        ({ href: project_overview_path(@project.id), text: @project.name } if @project.present?),
+        { href: url_for({ controller: "meetings", action: :index, project_id: @project }),
+          text: I18n.t(:label_meeting_plural) },
+        current_breadcrumb_element
+      ].compact
     end
 
     def current_breadcrumb_element

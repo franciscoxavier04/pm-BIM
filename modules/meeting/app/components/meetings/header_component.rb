@@ -75,7 +75,7 @@ module Meetings
 
     def breadcrumb_items
       [
-        *([{ href: project_overview_path(@project.id), text: @project.name }] if @project.present?),
+        ({ href: project_overview_path(@project.id), text: @project.name } if @project.present?),
         { href: @project.present? ? project_meetings_path(@project.id) : meetings_path,
           text: I18n.t(:label_meeting_plural) },
         meeting_series_element,

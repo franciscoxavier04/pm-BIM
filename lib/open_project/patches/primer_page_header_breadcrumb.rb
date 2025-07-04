@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -30,7 +32,7 @@ module OpenProject
   module Patches
     module PrimerPageHeaderBreadcrumb
       def with_breadcrumbs(breadcrumbs, **)
-        super([{ href: home_path, text: helpers.organization_name}] + breadcrumbs, **)
+        super([{ href: home_path, text: helpers.organization_name }] + breadcrumbs, **)
       end
     end
   end
