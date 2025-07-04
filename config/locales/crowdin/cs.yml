@@ -41,12 +41,12 @@ cs:
         changed: "změněno"
         created: "vytvořeno"
         commented: "komentováno"
-        internal_comment: Internal comment
+        internal_comment: Interní komentář
         internal_journal: Internal comments are visible to a limited group of members.
-        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
+        unsaved_changes_confirmation_message: Máte neuložené změny. Opravdu chcete editor zavřít?
         internal_comment_confirmation:
-          title: "Make this comment public?"
-          heading: "Make this comment public?"
+          title: "Zveřejnit tento komentář?"
+          heading: "Zveřejnit tento komentář?"
           description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
           confirm_button_text: "Zveřejnit"
   admin:
@@ -99,11 +99,11 @@ cs:
         upgrade: "Upgradovat nyní"
         contact: "Kontaktujte nás pro demo"
       status:
-        expired: "Expired"
+        expired: "Expirováno"
         expiring_soon: "Expiring soon"
         in_grace_period: "In grace period"
         invalid_domain: "Invalid domain"
-        not_active: "Not active"
+        not_active: "Neaktivní"
         trial: "Trial"
     jemalloc_allocator: Jemalloc alokátor paměti
     journal_aggregation:
@@ -120,7 +120,7 @@ cs:
         heading: "Client credentials have been generated"
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
-        title: "Token created"
+        title: "Token vytvořen"
         heading: "An token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
@@ -150,12 +150,12 @@ cs:
         blank_slate:
           title: "No SCIM clients configured yet"
           description: "Add clients to see them here"
-        user_count: "Users"
+        user_count: "Uživatelé"
       token_list_component:
         description: "The tokens you generate here can be passed by a SCIM client to access the OpenProject SCIM API."
-        heading: "Tokens"
+        heading: "Tokeny"
         label_add_token: "Token"
-        label_aria_add_token: "Add token"
+        label_aria_add_token: "Přidat token"
       token_table_component:
         blank_slate:
           title: "No tokens have been created yet"
@@ -164,7 +164,7 @@ cs:
         revoked: "Revoked on %{date}"
         title: "Access token table"
   authentication:
-    login_and_registration: "Login and registration"
+    login_and_registration: "Přihlášení a registrace"
   announcements:
     show_until: Zobrazit do
     is_active: aktuálně zobrazené
@@ -355,7 +355,7 @@ cs:
           not_descendant: "musí být potomkem kořenu hierarchie."
     rules:
       copy_workflow_from: "Type for workflow copy"
-      enabled: "Enabled"
+      enabled: "Povoleno"
       depth: "Hloubka"
       item: "Položka"
       label: "Popisek"
@@ -422,19 +422,19 @@ cs:
       header_details: Základní údaje
       header_status: Stav projektu
       header_relations: Project relations
-      button_update_details: Update details
-      button_update_status_description: Update status description
-      button_update_parent_project: Update parent project
+      button_update_details: Aktualizovat podrobnosti
+      button_update_status_description: Aktualizovat popis stavu
+      button_update_parent_project: Aktualizovat nadřazený projekt
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       public_confirmation:
         checkbox: "I understand that this will make the previously private content public"
-        title: "Make this project public?"
+        title: "Zveřejnit tento projekt?"
         description: >
           Anyone who has access to this instance will be able to view and interact with this project depending on their role and authentication settings. Sub-projects are not affected and have their own settings.
       private_confirmation:
         checkbox: "I understand that this will make the previously public content private."
-        title: "Make this project private?"
+        title: "Nastavit tento projekt jako soukromý?"
         description: >
           The project will only be visible to project members depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       change_identifier: Změnit identifikátor
@@ -453,14 +453,14 @@ cs:
         no_results_title_text: V současné době nejsou k dispozici žádná vlastní pole.
       life_cycle:
         header:
-          title: "Project life cycle"
+          title: "Životní cyklus projektu"
           description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
         non_defined: "No phases are currently defined."
-        section_header: "Phases"
+        section_header: "Fáze"
         step:
           use_in_project: "Použít %{step} v tomto projektu"
         filter:
-          label: "Search project phase"
+          label: "Hledat fázi projektu"
       project_custom_fields:
         header:
           title: "Atributy projektu"
@@ -486,7 +486,7 @@ cs:
       work_package_priorities:
         new_label: "nová priorita"
     status:
-      button_edit: Edit project status
+      button_edit: Upravit stav projektu
   lists:
     create:
       success: "Upravený seznam byl uložen jako nový seznam."
@@ -728,7 +728,7 @@ cs:
         tab: "Vytvořit PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
         pdf_export_templates:
-          label: "PDF Export templates"
+          label: "Šablony pro export do PDF"
           actions:
             label_enable_all: "Povolit vše"
             label_disable_all: "Zakázat vše"
@@ -786,7 +786,7 @@ cs:
             title: "Žádní nástupci"
             description: "This work package does not have any successors."
           children:
-            title: "No children"
+            title: "Žádní potomci"
             description: "Tento pracovní balíček nemá žádné potomky."
     x_descendants:
       one: "Jeden potomek pracovního balíčku"
@@ -1004,7 +1004,7 @@ cs:
         subscription: "Subscription"
         plan: "Plán"
         encoded_token: "Token podpory Enterprise."
-        active_user_count_restriction: "Active users"
+        active_user_count_restriction: "Aktivní uživatelé"
       enterprise_trial:
         company: "Společnost"
       grids/grid:
@@ -1170,9 +1170,9 @@ cs:
         password_confirmation: "Potvrzení"
         consented_at: "Souhlas udělen"
       user_preference:
-        header_look_and_feel: "Look and feel"
+        header_look_and_feel: "Vzhled a chování"
         header_alerts: "Alerts"
-        button_update_look_and_feel: "Update look and feel"
+        button_update_look_and_feel: "Aktualizovat vzhled a chování"
         button_update_alerts: "Update alerts"
         comments_sorting: "Display work package activity sorted by"
         disable_keyboard_shortcuts: "Disable keyboard shortcuts"
@@ -1185,7 +1185,7 @@ cs:
         theme: "Colour mode"
         time_zone: "Časové pásmo"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. Please select Light mode for full custom theme support."
-        daily_reminders: "Daily reminders"
+        daily_reminders: "Denní připomenutí"
         workdays: "Pracovní dny"
       version:
         effective_date: "Datum dokončení"
@@ -1743,7 +1743,7 @@ cs:
       work_package: "Pracovní balíčky"
     project_phase:
       activated: "Aktivováno "
-      added_date: "set to %{date}"
+      added_date: "nastavit na %{date}"
       changed_date: "changed from %{from} to %{to}"
       deactivated: "Deaktivováno"
       deleted_project_phase: "Deleted project phase"
@@ -1798,7 +1798,7 @@ cs:
     is_default: "Výchozí hodnota"
     is_for_all: "Pro všechny projekty"
     public: "Veřejné"
-    principal: "User or group"
+    principal: "Uživatel nebo skupina"
     #kept for backwards compatibility
     issue: "Pracovní balíček"
     journal: "Deník"
@@ -1950,7 +1950,7 @@ cs:
   button_unwatch: "Přestat sledovat"
   button_update: "Aktualizovat"
   button_upgrade: "Upgradovat"
-  button_buy_now: "Buy now"
+  button_buy_now: "Koupit nyní"
   button_upload: "Nahrát"
   button_view: "Zobrazit"
   button_watch: "Sledovat"
@@ -1995,9 +1995,9 @@ cs:
     text:
       failed: 'Nebylo možné zkopírovat projekt "%{source_project_name}" do "%{target_project_name}".'
       succeeded: 'Projekt "%{source_project_name}" zkopírován do "%{target_project_name}".'
-    source_project_label: "Project copied"
+    source_project_label: "Projekt zkopírován"
     copy_options:
-      dependencies_label: 'Copy from project'
+      dependencies_label: 'Kopírovat z projektu'
   create_project:
     template_label: "Use template"
     copy_options:
@@ -2213,7 +2213,7 @@ cs:
       readonly_work_packages: Readonly Work Packages
       sso_auth_providers: Single sign-on
       team_planner_view: Team Planner View
-      virus_scanning: Antivirus Scanning
+      virus_scanning: Antivirové skenování
       work_package_query_relation_columns: Work Package Query Relation Columns
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
@@ -2399,7 +2399,7 @@ cs:
       title: "Export"
       submit: "Export"
       save_export_settings:
-        label: "Save settings"
+        label: "Uložit nastavení"
       format:
         label: "Formát souboru"
         options:
@@ -2487,7 +2487,7 @@ cs:
   pdf_generator:
     page_nr_footer: "Strana %{page} z %{total}"
     template_attributes:
-      label: "Attributes and description"
+      label: "Atributy a popis"
       caption: All the attributes present in the current form configuration using the default template.
     template_contract:
       label: "Smlouva"
@@ -2510,11 +2510,11 @@ cs:
       hyphenation_language:
         label: Language and hyphenation
       page_orientation:
-        label: Page orientation
+        label: Orientace stránky
         caption: Select the orientation of the pages in the PDF document.
         options:
-          portrait: Portrait
-          landscape: Landscape
+          portrait: Na výšku
+          landscape: Na šířku
   extraction:
     available:
       pdftotext: "Pdftotext k dispozici (volitelné)"
@@ -2825,7 +2825,7 @@ cs:
   label_dashboard: "Dashboard"
   label_database_version: "Verze PostgreSQL"
   label_date: "Datum"
-  label_dates: "Dates"
+  label_dates: "Data"
   label_date_and_time: "Datum a čas"
   label_date_format: "Formát data"
   label_date_from: "Od"
@@ -3309,7 +3309,7 @@ cs:
   label_work_package_attachments: "Přílohy pracovních balíčků"
   label_work_package_category_new: "Nová kategorie"
   label_work_package_category_plural: "Kategorie pracovních balíčků"
-  label_work_package_comments: "Work package comments"
+  label_work_package_comments: "Komentáře pracovního balíčku"
   label_work_package_hierarchy: "Hierarchie pracovních balíčků"
   label_work_package_new: "Nový pracovní balíček"
   label_work_package_edit: "Upravit pracovní balíček %{name}"

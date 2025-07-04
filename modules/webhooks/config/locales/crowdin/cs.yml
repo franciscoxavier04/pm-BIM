@@ -32,7 +32,7 @@ cs:
         created: "Vytvořeno"
         updated: "Aktualizováno"
         comment: "Komentář"
-        internal_comment: "Internal comment"
+        internal_comment: "Interní komentář"
       explanation:
         text: >
           Při výskytu události, jako je vytvoření pracovního balíčku nebo aktualizace projektu, OpenProject odešle POST požadavek na nakonfigurované webové koncové body. Často je událost odeslána poté, co %{link} prošel.
