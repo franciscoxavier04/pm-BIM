@@ -26,7 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { ToastService } from 'core-app/shared/components/toaster/toast.service';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { ConfigurationService } from 'core-app/core/config/configuration.service';
@@ -46,6 +46,7 @@ declare module 'codemirror';
   selector: 'op-ckeditor',
   templateUrl: './op-ckeditor.html',
   styleUrls: ['./op-ckeditor.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OpCkeditorComponent extends UntilDestroyedMixin implements OnInit, OnDestroy {
   @Input() context:ICKEditorContext;
