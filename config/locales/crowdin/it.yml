@@ -683,8 +683,10 @@ it:
       form_configuration:
         tab: "Configurazione del modulo"
       projects:
-        tab: "Progetti"
-        enabled_projects: "Progetti abilitati"
+        tab: Progetti
+        enable_all: Enable for all projects
+        select_projects: Select projects
+        select_projects_description: Select the projects in which you would like to use this type.
       settings:
         tab: "Impostazioni"
         type_color_text: Il colore selezionato distingue diverse tipologie nei diagrammi Gantt o nelle tabelle delle macro-attività. Si consiglia quindi di utilizzare colori forti.

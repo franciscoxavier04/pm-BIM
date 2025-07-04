@@ -697,8 +697,10 @@ pl:
       form_configuration:
         tab: "Konfiguracja formularza"
       projects:
-        tab: "Projekty"
-        enabled_projects: "Aktywne projekty"
+        tab: Projekty
+        enable_all: Enable for all projects
+        select_projects: Select projects
+        select_projects_description: Select the projects in which you would like to use this type.
       settings:
         tab: "Ustawienia"
         type_color_text: Wybrany kolor odróżnia różne typy na wykresach Gantta lub w tabelach pakietów roboczych. W związku z tym zalecane jest stosowanie mocnego koloru.

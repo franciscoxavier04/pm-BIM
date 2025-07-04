@@ -677,8 +677,10 @@ ms:
       form_configuration:
         tab: "Konfigurasi borang"
       projects:
-        tab: "Projek-projek"
-        enabled_projects: "Projek yang didayakan"
+        tab: Projek-projek
+        enable_all: Enable for all projects
+        select_projects: Select projects
+        select_projects_description: Select the projects in which you would like to use this type.
       settings:
         tab: "Tetapan"
         type_color_text: Warna yang dipilih membezakan jenis yang berbeza dalam carta Gantt atau jadual pakej kerja. Oleh itu, disyorkan untuk menggunakan warna yang kuat.

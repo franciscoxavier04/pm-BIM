@@ -30,7 +30,9 @@
 
 module WorkPackageTypes
   class ProjectsTabController < BaseTabController
-    before_action :load_projects, only: :edit
+    include OpTurbo::ComponentStream
+
+    before_action :load_projects, only: %i[edit enable_all_projects]
 
     current_menu_item [:edit, :update] do
       :types
@@ -43,10 +45,28 @@ module WorkPackageTypes
                             .call(permitted_project_params)
 
       if result.success?
-        redirect_to edit_type_projects_path(type_id: @type.id), notice: I18n.t(:notice_successful_update)
+        redirect_to edit_type_projects_path(@type), notice: I18n.t(:notice_successful_update)
       else
         flash_error(result)
         load_projects
+        render :edit, status: :unprocessable_entity
+      end
+    end
+
+    def enable_all_projects
+      project_ids = if params[:value] == "1"
+                      @projects.pluck(:id).map(&:to_s)
+                    else
+                      []
+                    end
+
+      result = UpdateService.new(user: current_user, model: @type, contract_class: UpdateProjectsContract)
+                            .call({ project_ids: })
+
+      if result.success?
+        replace_via_turbo_stream(component: ProjectsComponent.new(@type, projects: @projects))
+        respond_with_turbo_streams
+      else
         render :edit, status: :unprocessable_entity
       end
     end

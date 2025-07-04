@@ -683,8 +683,10 @@ pt-BR:
       form_configuration:
         tab: "Configuração do formulário"
       projects:
-        tab: "Projetos"
-        enabled_projects: "Projetos habilitados"
+        tab: Projetos
+        enable_all: Enable for all projects
+        select_projects: Select projects
+        select_projects_description: Select the projects in which you would like to use this type.
       settings:
         tab: "Configurações"
         type_color_text: A cor selecionada distingue os tipos diferentes nas tabelas de Gantt ou tabelas dos pacotes de trabalho. Recomenda-se o uso de uma cor forte.

@@ -684,8 +684,10 @@ fr:
       form_configuration:
         tab: "Configuration du formulaire"
       projects:
-        tab: "Projets"
-        enabled_projects: "Projets activés"
+        tab: Projets
+        enable_all: Enable for all projects
+        select_projects: Select projects
+        select_projects_description: Select the projects in which you would like to use this type.
       settings:
         tab: "Paramètres"
         type_color_text: La couleur sélectionnée distingue les différents types dans les graphiques de Gantt ou les tableaux des lots de travaux. Il est donc recommandé d'utiliser une couleur forte.
