@@ -73,7 +73,7 @@ class CostlogController < ApplicationController
     elsif @cost_entry.save
 
       flash[:notice] = t(:notice_successful_update)
-      redirect_back fallback_location: work_package_path(@cost_entry.entity)
+      redirect_back fallback_location: polymorphic_path(@cost_entry.entity)
 
     else
       render action: "edit"
@@ -90,7 +90,7 @@ class CostlogController < ApplicationController
     if request.referer.include?("cost_reports")
       redirect_to controller: "/cost_reports", action: :index
     else
-      redirect_back fallback_location: work_package_path(@cost_entry.entity)
+      redirect_back fallback_location: polymorphic_path(@cost_entry.entity)
     end
   end
 
@@ -162,14 +162,6 @@ class CostlogController < ApplicationController
   end
 
   def cost_entry_params
-    params
-      .require(:cost_entry)
-      .permit(:entity_id, :entity_type, :spent_on, :user_id,
-              :cost_type_id, :units, :comments).tap do |permitted_params|
-      if params[:cost_entry][:work_package_id]
-        permitted_params[:entity_id] = params[:cost_entry][:work_package_id]
-        permitted_params[:entity_type] = "WorkPackage"
-      end
-    end
+    params.expect(cost_entry: %i[user_id entity_id entity_type spent_on cost_type_id units comments])
   end
 end
