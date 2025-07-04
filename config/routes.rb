@@ -138,14 +138,14 @@ Rails.application.routes.draw do
   get "/roles/workflow/:id/:role_id/:type_id" => "roles#workflow"
 
   resources :types, module: "work_package_types" do
-    resource :form_configuration, only: %i[edit update], controller: "work_package_types/form_configuration_tab"
-    resource :projects, controller: "work_package_types/projects_tab", only: %i[update edit] do
+    resource :form_configuration, only: %i[edit update], controller: "form_configuration_tab"
+    resource :projects, controller: "projects_tab", only: %i[update edit] do
       collection do
-        post :enable_all, to: "work_package_types/projects_tab#enable_all_projects"
+        post :enable_all, to: "projects_tab#enable_all_projects"
       end
     end
-    resource :settings, controller: "work_package_types/settings_tab", only: %i[update edit]
-    resource :subject_configuration, controller: "work_package_types/subject_configuration_tab", only: %i[update edit]
+    resource :settings, controller: "settings_tab", only: %i[update edit]
+    resource :subject_configuration, controller: "subject_configuration_tab", only: %i[update edit]
 
     member do
       get "edit/:tab" => "types#edit", as: "edit_tab"
