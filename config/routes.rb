@@ -137,7 +137,7 @@ Rails.application.routes.draw do
 
   get "/roles/workflow/:id/:role_id/:type_id" => "roles#workflow"
 
-  resources :types, module: "work_package_types" do
+  resources :types, module: "work_package_types", except: [:update] do
     resource :form_configuration, only: %i[edit update], controller: "form_configuration_tab"
     resource :projects, controller: "projects_tab", only: %i[update edit] do
       collection do
@@ -146,11 +146,6 @@ Rails.application.routes.draw do
     end
     resource :settings, controller: "settings_tab", only: %i[update edit]
     resource :subject_configuration, controller: "subject_configuration_tab", only: %i[update edit]
-
-    member do
-      get "edit/:tab" => "types#edit", as: "edit_tab"
-      match "update/:tab" => "types#update", as: "update_tab", via: %i[post patch]
-    end
 
     resources :pdf_export_template, only: %i[],
                                     controller: "pdf_export_template",

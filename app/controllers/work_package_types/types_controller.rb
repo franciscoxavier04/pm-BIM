@@ -83,15 +83,6 @@ module WorkPackageTypes
       end
     end
 
-    def update
-      UpdateTypeService
-        .new(@type, current_user)
-        .call(permitted_type_params) do |call|
-        call.on_success { redirect_to_type_tab_path(@type, t(:notice_successful_update)) }
-        call.on_failure { render_edit_tab(@type, status: :unprocessable_entity) }
-      end
-    end
-
     def move
       if @type.update(permitted_params.type_move)
         flash[:notice] = I18n.t(:notice_successful_update)
@@ -130,19 +121,6 @@ module WorkPackageTypes
     def load_projects_and_types
       @types = ::Type.order(Arel.sql("position"))
       @projects = Project.all
-    end
-
-    def redirect_to_type_tab_path(type, notice)
-      tab = params["tab"] || "settings"
-      redirect_to(edit_tab_type_path(type, tab:), notice:, status: :see_other)
-    end
-
-    def render_edit_tab(type, status: :ok)
-      @tab = params[:tab]
-      @projects = Project.all
-      @type = type
-
-      render action: :edit, status:
     end
 
     def destroy_error_message
