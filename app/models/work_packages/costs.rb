@@ -31,7 +31,7 @@ module WorkPackages::Costs
 
   included do
     belongs_to :budget, inverse_of: :work_packages, optional: true
-    has_many :cost_entries, dependent: :delete_all, inverse_of: :entity
+    has_many :cost_entries, dependent: :destroy, inverse_of: :entity
 
     # disabled for now, implements part of ticket blocking
     validate :validate_budget
