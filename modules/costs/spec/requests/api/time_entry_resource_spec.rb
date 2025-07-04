@@ -548,7 +548,7 @@ RSpec.describe "API v3 time_entry resource" do
           .to be(422)
 
         expect(subject.body)
-          .to be_json_eql("Entity can't be blank.".to_json)
+          .to be_json_eql("Logged for can't be blank.".to_json)
           .at_path("message")
       end
     end
@@ -650,7 +650,7 @@ RSpec.describe "API v3 time_entry resource" do
           .to be(422)
 
         expect(subject.body)
-          .to be_json_eql("Entity can't be blank.".to_json)
+          .to be_json_eql("Logged for can't be blank.".to_json)
           .at_path("message")
       end
     end
