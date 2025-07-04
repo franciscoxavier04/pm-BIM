@@ -30,6 +30,7 @@
 
 class Meeting < ApplicationRecord
   include VirtualStartTime
+  include MeetingUid
   include ChronicDuration
   include OpenProject::Journal::AttachmentHelper
 

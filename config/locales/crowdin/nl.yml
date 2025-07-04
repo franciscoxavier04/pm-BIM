@@ -682,8 +682,10 @@ nl:
       form_configuration:
         tab: "Formulierconfiguratie"
       projects:
-        tab: "Projecten"
-        enabled_projects: "Ingeschakelde projecten"
+        tab: Projecten
+        enable_all: Enable for all projects
+        select_projects: Select projects
+        select_projects_description: Select the projects in which you would like to use this type.
       settings:
         tab: "Instellingen"
         type_color_text: De geselecteerde kleur onderscheidt verschillende types in Gantt grafieken of werkpakketten tabellen. Het wordt daarom aangeraden om een sterke kleur te gebruiken.

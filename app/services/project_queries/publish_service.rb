@@ -37,7 +37,10 @@ module ProjectQueries
     end
 
     def persist(service_call)
-      model.save
+      # Usually we want to have validations on ProjectQueries, however in this case
+      # it is not required. It would be unusual to show any validation error when the
+      # public switch toggled on the share dialog.
+      model.save(validate: false)
 
       service_call
     end

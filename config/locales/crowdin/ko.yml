@@ -679,8 +679,10 @@ ko:
       form_configuration:
         tab: "양식 구성"
       projects:
-        tab: "프로젝트"
-        enabled_projects: "활성화된 프로젝트"
+        tab: 프로젝트
+        enable_all: Enable for all projects
+        select_projects: Select projects
+        select_projects_description: Select the projects in which you would like to use this type.
       settings:
         tab: "설정"
         type_color_text: 선택한 색상은 Gantt 차트 또는 작업 패키지 테이블에서 다양한 유형을 구분합니다. 따라서 진한 색상을 사용하는 것이 좋습니다.

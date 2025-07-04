@@ -61,6 +61,14 @@ module Components
             expect(find("button")).to be_disabled
           end
         end
+
+        def expect_toggle_public_on
+          expect(page).to have_css("toggle-switch", text: "On")
+        end
+
+        def expect_toggle_public_off
+          expect(page).to have_css("toggle-switch", text: "Off")
+        end
       end
     end
   end

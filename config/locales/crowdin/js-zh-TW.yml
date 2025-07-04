@@ -323,7 +323,7 @@ zh-TW:
     label_added_time_by: '由 <a href=%{authorLink}>%{author}</a> 在 %{age} 添加'
     label_ago: "天前"
     label_all: "所有"
-    label_all_projects: "All projects"
+    label_all_projects: "所有專案"
     label_all_uppercase: "全部"
     label_all_work_packages: "所有工作套件"
     label_and: "和"
@@ -641,12 +641,12 @@ zh-TW:
       title: "確認您的密碼以便繼續"
     pagination:
       no_other_page: "您位於唯一頁面上。"
-      pagination_controls: "Pagination controls"
+      pagination_controls: "分頁控制"
       pages:
-        next: "Next page"
-        previous: "Previous page"
-        page_number: Page %{number}
-        show_per_page: Show %{number} per page
+        next: "下一頁"
+        previous: "上一頁"
+        page_number: 頁面 %{number}
+        show_per_page: 每頁顯示 %{number} 筆
     placeholders:
       default: "-"
       subject: "在此輸入名稱"

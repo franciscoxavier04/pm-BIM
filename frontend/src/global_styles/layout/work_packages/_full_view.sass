@@ -28,7 +28,9 @@
 
 .router--work-packages-full-view:not(.router--work-packages-full-create)
   @include extended-content--bottom
-  @include extended-content--right
+
+  @media screen and (min-width: $breakpoint-sm)
+    @include extended-content--right
 
 .work-packages--show-view
   display: flex
