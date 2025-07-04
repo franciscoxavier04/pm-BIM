@@ -28,48 +28,27 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class AuthProvider < ApplicationRecord
-  belongs_to :creator, class_name: "User"
+module UserAuthProviderLinksSetter
+  private
 
-  has_many :scim_clients, dependent: :restrict_with_error
-
-  has_many :user_auth_provider_links, dependent: :destroy
-  has_many :users,
-           -> { where(type: "User") },
-           through: :user_auth_provider_links,
-           source: :principal
-
-  validates :display_name, presence: true
-  validates :display_name, uniqueness: true
-
-  after_destroy :unset_direct_provider
-
-  def self.slug_fragment
-    raise NotImplementedError
-  end
-
-  def user_count
-    @user_count ||= user_auth_provider_links.count
-  end
-
-  def human_type
-    raise NotImplementedError
-  end
-
-  def auth_url
-    root_url = OpenProject::StaticRouting::StaticUrlHelpers.new.root_url
-    URI.join(root_url, "auth/#{slug}/").to_s
-  end
-
-  def callback_url
-    URI.join(auth_url, "callback").to_s
-  end
-
-  protected
-
-  def unset_direct_provider
-    if Setting.omniauth_direct_login_provider == slug
-      Setting.omniauth_direct_login_provider = ""
+  def set_user_auth_provider_links(identity_url)
+    if identity_url.present?
+      slug, external_id = identity_url.split(":", 2)
+      if slug.present? && external_id.present?
+        auth_provider_id = AuthProvider.where(slug:).pick(:id)
+        if auth_provider_id.present?
+          link = model.user_auth_provider_links
+                   .find_or_initialize_by(auth_provider_id:)
+          link.assign_attributes(external_id:, principal: model)
+          if link.changed? && link.persisted?
+            link.save!
+            model.user_auth_provider_links.reload
+            model.user_auth_provider_links.find { |l| l.id == link.id }.external_id_will_change!
+          end
+        else
+          raise ActiveRecord::RecordNotFound, "AuthProvider with slug: \"#{slug}\" has not been found"
+        end
+      end
     end
   end
 end

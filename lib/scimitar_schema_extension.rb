@@ -28,48 +28,11 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class AuthProvider < ApplicationRecord
-  belongs_to :creator, class_name: "User"
-
-  has_many :scim_clients, dependent: :restrict_with_error
-
-  has_many :user_auth_provider_links, dependent: :destroy
-  has_many :users,
-           -> { where(type: "User") },
-           through: :user_auth_provider_links,
-           source: :principal
-
-  validates :display_name, presence: true
-  validates :display_name, uniqueness: true
-
-  after_destroy :unset_direct_provider
-
-  def self.slug_fragment
-    raise NotImplementedError
-  end
-
-  def user_count
-    @user_count ||= user_auth_provider_links.count
-  end
-
-  def human_type
-    raise NotImplementedError
-  end
-
-  def auth_url
-    root_url = OpenProject::StaticRouting::StaticUrlHelpers.new.root_url
-    URI.join(root_url, "auth/#{slug}/").to_s
-  end
-
-  def callback_url
-    URI.join(auth_url, "callback").to_s
-  end
-
-  protected
-
-  def unset_direct_provider
-    if Setting.omniauth_direct_login_provider == slug
-      Setting.omniauth_direct_login_provider = ""
-    end
+module ScimitarSchemaExtension
+  def scim_attributes
+    super + [Scimitar::Schema::Attribute.new(name: "externalId",
+                                             type: "string",
+                                             caseExact: true,
+                                             required: true)]
   end
 end

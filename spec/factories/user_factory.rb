@@ -31,7 +31,7 @@
 FactoryBot.define do
   factory :user, parent: :principal, class: "User" do
     firstname { "Bob" }
-    lastname { "Bobbit" }
+    sequence(:lastname) { |n| "Bobbit#{n}" }
     sequence(:login) { |n| "bob#{n}" }
     sequence(:mail) { |n| "bobmail#{n}.bobbit@bob.com" }
     password { "adminADMIN!" }
@@ -41,7 +41,6 @@ FactoryBot.define do
       preferences { {} }
       authentication_provider { nil }
       external_id { SecureRandom.uuid }
-      identity_url { nil }
     end
 
     language { "en" }
@@ -68,13 +67,6 @@ FactoryBot.define do
         user.user_auth_provider_links.create!(auth_provider: factory.authentication_provider,
                                               external_id: factory.external_id)
       end
-      if factory.identity_url.present?
-        slug, external_id = factory.identity_url.split(":", 2)
-        raise "slug or external_id is blank" if slug.blank? || external_id.blank?
-
-        auth_provider = AuthProvider.find_by(slug:) || create(:oidc_provider, slug:)
-        user.user_auth_provider_links.create!(auth_provider:, external_id:)
-      end
     end
 
     callback(:after_stub) do |user, evaluator|
@@ -87,7 +79,7 @@ FactoryBot.define do
       end
     end
 
-    factory :admin do
+    factory :admin, parent: :user, class: "User" do
       firstname { "OpenProject" }
       sequence(:lastname) { |n| "Admin#{n}" }
       sequence(:login) { |n| "admin#{n}" }
