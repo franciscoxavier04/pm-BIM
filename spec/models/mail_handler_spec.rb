@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe IncomingEmails::MailHandler do
+RSpec.describe IncomingEmails::MailHandler do # rubocop:disable RSpec/SpecFilePathFormat
   # we need these run first so the anonymous and system users are created and
   # there is a default work package priority to save any work packages
   shared_let(:anno_user) { User.anonymous }

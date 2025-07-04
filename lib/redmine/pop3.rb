@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -31,7 +33,7 @@ require "net/pop"
 module Redmine
   module POP3
     class << self
-      def check(pop_options = {}, options = {})
+      def check(pop_options = {}, options = {}) # rubocop:disable Metrics/AbcSize, Metrics/PerceivedComplexity
         host = pop_options[:host] || "127.0.0.1"
         port = pop_options[:port] || "110"
         apop = (pop_options[:apop].to_s == "1")

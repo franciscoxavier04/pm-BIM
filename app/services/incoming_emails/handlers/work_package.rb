@@ -73,17 +73,18 @@ module IncomingEmails::Handlers
 
       call = create_work_package(project)
 
-      call.message = if call.success?
-        "work_package created by #{user}"
-      else
-        "work_package could not be created by #{user} due to ##{call.errors.full_messages}"
-      end
+      call.message =
+        if call.success?
+          "work_package created by #{user}"
+        else
+          "work_package could not be created by #{user} due to ##{call.errors.full_messages}"
+        end
 
       call
     end
 
     # Adds a note to an existing work package
-    def receive_work_package_reply(work_package_id)
+    def receive_work_package_reply(work_package_id) # rubocop:disable Metrics/AbcSize
       work_package = ::WorkPackage.find_by(id: work_package_id)
       return unless work_package
 

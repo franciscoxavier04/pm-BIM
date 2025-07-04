@@ -42,7 +42,7 @@ module IncomingEmails::Handlers
     private
 
     # Receives a reply to a forum message
-    def receive_message_reply(message_id) # rubocop:disable Metrics/AbcSize
+    def receive_message_reply(message_id)
       message = Message.find_by(id: message_id)
       if message
         message = message.root
@@ -55,17 +55,22 @@ module IncomingEmails::Handlers
           ServiceResult.failure(message: "ignoring reply from [#{sender_email}] to a locked topic",
                                 mesage_type: :warn)
         else
-          reply = Message.new(subject: email.subject.gsub(%r{^.*msg\d+\]}, "").strip,
-                              content: cleaned_up_text_body)
-          reply.author = user
-          reply.forum = message.forum
-          message.children << reply
-          add_attachments(reply)
-          reply
-          ServiceResult.success(result: reply,
-                                message: "Reply added to message ##{message.id}")
+          create_reply_message(message)
         end
       end
+    end
+
+    def create_reply_message(root)
+      reply = Message.new(subject: email.subject.gsub(%r{^.*msg\d+\]}, "").strip,
+                          content: cleaned_up_text_body)
+      reply.author = user
+      reply.forum = root.forum
+      root.children << reply
+      add_attachments(reply)
+      reply
+
+      ServiceResult.success(result: reply,
+                            message: "Reply added to message ##{root.id}")
     end
   end
 end

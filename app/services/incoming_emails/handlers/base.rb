@@ -49,6 +49,10 @@ module IncomingEmails::Handlers
       raise NotImplementedError, "Subclasses must implement handle method"
     end
 
+    def cleaned_up_text_body
+      cleanup_body(plain_text_body)
+    end
+
     protected
 
     # The receive_* methods have been moved to specific handler classes:
@@ -188,7 +192,7 @@ module IncomingEmails::Handlers
       # * parse the email To field
       # * specific project (eg. Setting.mail_handler_target_project)
       target = Project.find_by(identifier: get_keyword(:project))
-      raise MissingInformation.new("Unable to determine target project") if target.nil?
+      raise IncomingEmails::MissingInformation.new("Unable to determine target project") if target.nil?
 
       target
     end
@@ -207,10 +211,6 @@ module IncomingEmails::Handlers
       if k = get_keyword(attribute)
         scope.find_by("lower(#{column_name}) = ?", k.downcase).try(:id)
       end
-    end
-
-    def cleaned_up_text_body
-      cleanup_body(plain_text_body)
     end
 
     # Removes the email body of text after the truncation configurations.

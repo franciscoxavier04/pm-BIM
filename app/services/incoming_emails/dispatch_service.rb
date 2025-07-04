@@ -28,10 +28,6 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 module IncomingEmails
-  class UnauthorizedAction < StandardError; end
-
-  class MissingInformation < StandardError; end
-
   class DispatchService
     include ActionView::Helpers::SanitizeHelper
 
@@ -52,6 +48,10 @@ module IncomingEmails
 
     def self.register_handler(handler_class)
       handlers.unshift(handler_class)
+    end
+
+    def self.remove_handler(handler_class)
+      handlers.delete(handler_class)
     end
 
     attr_reader :email, :sender_email, :user, :options, :success, :logs
@@ -94,6 +94,7 @@ module IncomingEmails
     # the subject. Additionally, the subject structure might change, e.g. via localization changes.
     def dispatch
       call = call_matching_handler
+      return if call.nil?
 
       @success = call.success?
       log_handler_call(call)
@@ -101,13 +102,10 @@ module IncomingEmails
       call.result
     rescue ActiveRecord::RecordInvalid => e
       log "could not save record: #{e.message}", :error
-      nil
     rescue MissingInformation => e
       log "missing information from #{user}: #{e.message}", :error
-      nil
     rescue UnauthorizedAction
       log "unauthorized attempt from #{user}", :error
-      nil
     end
 
     def log_handler_call(call)
@@ -127,7 +125,7 @@ module IncomingEmails
             :info,
             report: false
 
-        false
+        nil
       end
     end
 
@@ -262,10 +260,10 @@ module IncomingEmails
 
       message = "MailHandler: #{message}"
       Rails.logger.public_send(level, message)
+      nil
     end
 
-    def assign_options(value)
-      # rubocop:disable Metrics/AbcSize
+    def assign_options(value) # rubocop:disable Metrics/AbcSize
       options = value.dup
 
       options[:issue] ||= {}
@@ -280,6 +278,7 @@ module IncomingEmails
       options[:allow_override] << :type unless options[:issue].has_key?(:type)
       # Priority overridable by default
       options[:allow_override] << :priority unless options[:issue].has_key?(:priority)
+
       options[:no_permission_check] = ActiveRecord::Type::Boolean.new.cast(options[:no_permission_check])
 
       options

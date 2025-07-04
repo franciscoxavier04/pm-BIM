@@ -29,19 +29,6 @@
 #++
 
 module IncomingEmails
-  class MailHandler < ApplicationMailer
-    ##
-    # Code copied from base class and extended with optional options parameter
-    # as well as force_encoding support.
-    def self.receive(input, options = {})
-      raw_mail = input.dup
-      raw_mail.force_encoding("ASCII-8BIT") if raw_mail.respond_to?(:force_encoding)
-
-      ActiveSupport::Notifications.instrument("receive.action_mailer") do |payload|
-        mail = Mail.new(raw_mail)
-        set_payload_for_mail(payload, mail)
-        ::IncomingEmails::DispatchService.new(mail, options:).call!
-      end
-    end
-  end
+  class UnauthorizedAction < StandardError; end
+  class MissingInformation < StandardError; end
 end
