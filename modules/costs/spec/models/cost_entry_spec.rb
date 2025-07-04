@@ -158,6 +158,14 @@ RSpec.describe CostEntry do
   end
 
   describe "instance" do
+    describe "#entity=" do
+      it "allows setting an entity via GlobalID" do
+        wp = create(:work_package)
+        cost_entry.entity = wp.to_gid.to_s
+        expect(cost_entry.entity).to eq(wp)
+      end
+    end
+
     describe "#costs" do
       let(:fourth_rate) do
         build(:cost_rate, valid_from: date - 1.day,

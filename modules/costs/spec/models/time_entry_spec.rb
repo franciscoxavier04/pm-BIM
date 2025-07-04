@@ -92,6 +92,14 @@ RSpec.describe TimeEntry do
     end
   end
 
+  describe "#entity=" do
+    it "allows setting an entity via GlobalID" do
+      meeting = create(:meeting)
+      time_entry.entity = meeting.to_gid.to_s
+      expect(time_entry.entity).to eq(meeting)
+    end
+  end
+
   describe "#hours=" do
     formats = { "2" => 2.0,
                 "21.1" => 21.1,

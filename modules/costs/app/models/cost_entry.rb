@@ -103,6 +103,10 @@ class CostEntry < ApplicationRecord
     end
   end
 
+  def entity_gid
+    entity&.to_gid.to_s
+  end
+
   def overwritten_costs=(costs)
     write_attribute(:overwritten_costs, CostRate.parse_number_string_to_number(costs))
   end
