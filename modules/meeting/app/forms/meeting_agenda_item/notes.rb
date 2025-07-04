@@ -38,7 +38,8 @@ class MeetingAgendaItem::Notes < ApplicationForm
       classes: "ck-editor-primer-adjusted",
       rich_text_options: {
         resource:,
-        showAttachments: false
+        showAttachments: false,
+        text_area_id: "notes-#{object.id}"
       }
     )
   end

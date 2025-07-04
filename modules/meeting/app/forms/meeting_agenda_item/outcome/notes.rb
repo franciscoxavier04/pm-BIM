@@ -39,7 +39,8 @@ class MeetingAgendaItem::Outcome::Notes < ApplicationForm
       rich_text_options: {
         resource:,
         editor_type: "constrained",
-        showAttachments: false
+        showAttachments: false,
+        text_area_id: "outcome-#{object.id}"
       }
     )
   end
