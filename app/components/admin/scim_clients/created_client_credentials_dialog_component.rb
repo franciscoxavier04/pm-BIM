@@ -35,6 +35,11 @@ module Admin
 
       TEST_SELECTOR = "op-scim-clients--created-client-credentials-dialog"
 
+      def initialize(model = nil, plaintext_secret:, **options)
+        super
+        @plaintext_secret = plaintext_secret
+      end
+
       def system_arguments
         options
       end

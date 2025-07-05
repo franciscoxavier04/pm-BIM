@@ -2126,6 +2126,7 @@ de:
       placeholder_users: Platzhalter-Benutzer
       project_list_sharing: Projektlistenfreigabe
       readonly_work_packages: Schreibgeschützte Arbeitspakete
+      scim_api: SCIM server API
       sso_auth_providers: Single Sign-on
       team_planner_view: Teamplaner
       virus_scanning: Antivirus-Überprüfung
@@ -2192,6 +2193,9 @@ de:
       nextcloud_sso:
         title: "Single Sign-On für Nextcloud-Speicher"
         description: "Aktivieren Sie nahtlose und sichere Authentifizierung für Ihren Nextcloud-Speicher mit Single Sign-On. Vereinfachen Sie das Zugriffsmanagement und erhöhen Sie den Benutzerkomfort."
+      scim_api:
+        title: "SCIM clients"
+        description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
       virus_scanning:
         description: "Stellen Sie sicher, dass hochgeladene Dateien in OpenProject auf Viren gescannt werden, bevor sie für andere Benutzer zugänglich sind."
       placeholder_users:

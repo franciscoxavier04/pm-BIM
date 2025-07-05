@@ -2089,6 +2089,7 @@ zh-CN:
       placeholder_users: 占位符用户
       project_list_sharing: 项目列表共享
       readonly_work_packages: 只读工作包
+      scim_api: SCIM server API
       sso_auth_providers: 单点登录
       team_planner_view: 工作组规划器视图
       virus_scanning: 反病毒扫描
@@ -2155,6 +2156,9 @@ zh-CN:
       nextcloud_sso:
         title: "Nextcloud存储的单点登录(SSO)"
         description: "使用单点登录为您的 Nextcloud 存储启用无缝且安全的身份验证。简化访问管理并提升用户便利性。"
+      scim_api:
+        title: "SCIM clients"
+        description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
       virus_scanning:
         description: "确保在 OpenProject 中上传的文件在被其他用户访问之前进行病毒扫描。"
       placeholder_users:
