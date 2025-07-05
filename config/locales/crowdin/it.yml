@@ -1152,6 +1152,8 @@ it:
         new_password: "Nuova password"
         password_confirmation: "Conferma"
         consented_at: "Consenso a"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -2128,6 +2130,7 @@ it:
       placeholder_users: Utenti segnaposto
       project_list_sharing: Condivisione elenco progetti
       readonly_work_packages: Macro-attività di sola lettura
+      scim_api: SCIM server API
       sso_auth_providers: Single sign-on
       team_planner_view: Vista del Pianificatore di team
       virus_scanning: Scansione antivirus
@@ -2194,6 +2197,9 @@ it:
       nextcloud_sso:
         title: "Single Sign-On per Nextcloud Storage"
         description: "Abilita un'autenticazione veloce e sicura per il tuo archivio Nextcloud con Single Sign-On. Semplifica la gestione degli accessi e migliora la praticità per l'utente."
+      scim_api:
+        title: "SCIM clients"
+        description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
       virus_scanning:
         description: "Assicurati che i file caricati in OpenProject vengano scansionati alla ricerca di virus prima di renderli accessibili ad altri utenti."
       placeholder_users:
