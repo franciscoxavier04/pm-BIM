@@ -1152,6 +1152,8 @@ ca:
         new_password: "Nova contrasenya"
         password_confirmation: "Confirmació"
         consented_at: "Consentit a"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1792,6 +1794,7 @@ ca:
     title: "Títol"
     type: "Classe"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Actualitzat el"
     updated_on: "Actualitzat el"
     uploader: "Eina de càrrega"

@@ -1155,6 +1155,8 @@ fa:
         new_password: "رمز عبور جديد"
         password_confirmation: "تاییدیه"
         consented_at: "Consented at"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1795,6 +1797,7 @@ fa:
     title: "عنوان"
     type: "نوع"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "به روز شده"
     updated_on: "به روز شده"
     uploader: "Uploader"

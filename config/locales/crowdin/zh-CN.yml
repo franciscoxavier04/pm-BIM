@@ -88,7 +88,7 @@ zh-CN:
         token_placeholder: "在此处粘贴您的企业版支持令牌"
       add_token: "上传企业版支持令牌"
       replace_token: "替换您当前的支持令牌"
-      order: "订购本地部署版的 Enterprise edition"
+      order: "订购本地部署的 Enterprise edition"
       paste: "粘贴您企业版的支持令牌"
       required_for_feature: "此功能仅限具激活的企业版支持令牌的订阅者使用。"
       enterprise_link: "如需了解详细信息，请单击此处。"
@@ -112,20 +112,20 @@ zh-CN:
         link: "Webhook"
     scim_clients:
       authentication_methods:
-        sso: "JWT from identity provider"
-        oauth2_client: "OAuth 2.0 client credentials"
-        oauth2_token: "Static access token"
+        sso: "来自身份提供商的 JWT"
+        oauth2_client: "OAuth 2.0 客户端凭据"
+        oauth2_token: "静态访问令牌"
       created_client_credentials_dialog_component:
-        title: "Client credentials created"
-        heading: "Client credentials have been generated"
-        one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
+        title: "客户端凭据已创建"
+        heading: "客户端凭据已生成"
+        one_time_hint: "这是您唯一看到客户端密钥的机会。请务必立即复制。"
       created_token_dialog_component:
-        title: "Token created"
-        heading: "An token has been generated"
-        label_token: "Token"
-        one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
+        title: "令牌已创建"
+        heading: "已生成一个令牌"
+        label_token: "令牌"
+        one_time_hint: "这将是您看到这个令牌的唯一机会, 请务必立即复制它。"
       delete_scim_client_dialog_component:
-        title: "Delete SCIM client"
+        title: "删除 SCIM 客户端"
         heading: "Are you sure you want to delete this SCIM client?"
         description: "Users managed by this SCIM client can no longer be updated by it."
       edit:
@@ -142,19 +142,19 @@ zh-CN:
       new:
         title: "New SCIM client"
       revoke_static_token_dialog_component:
-        confirm_button: "Revoke"
-        title: "Revoke static token"
+        confirm_button: "撤销"
+        title: "撤销静态令牌"
         heading: "Are you sure you want to revoke this token?"
         description: "The SCIM client that uses this token will no longer be able to access OpenProject's SCIM server API."
       table_component:
         blank_slate:
           title: "No SCIM clients configured yet"
           description: "Add clients to see them here"
-        user_count: "Users"
+        user_count: "用户"
       token_list_component:
         description: "The tokens you generate here can be passed by a SCIM client to access the OpenProject SCIM API."
-        heading: "Tokens"
-        label_add_token: "Token"
+        heading: "令牌"
+        label_add_token: "令牌"
         label_aria_add_token: "Add token"
       token_table_component:
         blank_slate:
@@ -676,9 +676,9 @@ zh-CN:
         tab: "表单配置"
       projects:
         tab: 项目
-        enable_all: Enable for all projects
-        select_projects: Select projects
-        select_projects_description: Select the projects in which you would like to use this type.
+        enable_all: 适用于所有项目
+        select_projects: 选择项目
+        select_projects_description: 选择您想要使用此类型的项目。
       settings:
         tab: "设置"
         type_color_text: 所选颜色用于在甘特图或工作包表中区分不同类型。因此建议使用鲜艳的颜色。
@@ -985,7 +985,7 @@ zh-CN:
         page: "页"
         row_count: "行数"
         column_count: "列数"
-        widgets: "微件"
+        widgets: "小部件"
       journal:
         notes: "备注"
         cause_type: "Cause 类型"
@@ -1143,6 +1143,8 @@ zh-CN:
         new_password: "新密码"
         password_confirmation: "确认"
         consented_at: "同意在"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "外观和体验"
         header_alerts: "提醒"
@@ -1769,6 +1771,7 @@ zh-CN:
     title: "标题"
     type: "类型"
     typeahead: "自动补全"
+    uid: "Unique identifier"
     updated_at: "更新于"
     updated_on: "更新于"
     uploader: "上载程序"
@@ -3051,7 +3054,7 @@ zh-CN:
   label_revision_id: "修订版本 %{value}"
   label_revision_plural: "修订"
   label_roadmap: "路线图"
-  label_roadmap_edit: "编辑路线图%{name}"
+  label_roadmap_edit: "编辑路线图 %{name}"
   label_roadmap_due_in: "%{value} 到期"
   label_roadmap_no_work_packages: "该版本没有工作包。"
   label_roadmap_overdue: "%{value} 超时"
@@ -3181,7 +3184,7 @@ zh-CN:
   label_work_package_attachments: "工作包附件"
   label_work_package_category_new: "新的类别"
   label_work_package_category_plural: "工作包类别"
-  label_work_package_comments: "Work package comments"
+  label_work_package_comments: "工作包评论"
   label_work_package_hierarchy: "工作包的层次结构"
   label_work_package_new: "新工作包"
   label_work_package_edit: "编辑工作包 %{name}"
@@ -3740,7 +3743,7 @@ zh-CN:
       managed: "在 OpenProject 中创建新的存储库"
     storage:
       not_available: "磁盘存储开销不可用于此存储库。"
-      update_timeout: "在 N 分钟内保留存储库最后所需的磁盘空间信息。由于计算存储库所需的磁盘空间可能增加系统开销，增加该值可以减少性能影响。"
+      update_timeout: "在 N 分钟内保留存储库最后所需磁盘空间的信息。由于计算存储库所需的磁盘空间可能增加系统开销，增加该值可以减少性能影响。"
       oauth_application_details: "关闭此窗口后，将无法再次访问客户端密钥值。请将这些值复制到 Nextcloud OpenProject 集成设置中："
       oauth_application_details_link_text: "转到设置页面"
       setup_documentation_details: "如果您在配置新文件存储方面需要帮助，请查看文档："
@@ -3932,7 +3935,7 @@ zh-CN:
   setting_session_ttl_hint: "当设置的值低于5时，其作用类似于禁用。"
   setting_session_ttl_enabled: "会话过期"
   setting_start_of_week: "一周起始日"
-  setting_sys_api_enabled: "启用存储库管理网页服务"
+  setting_sys_api_enabled: "启用版本库管理 web 服务"
   setting_sys_api_description: "存储库管理网页服务提供了集成的，用户授权的存储库访问。"
   setting_time_format: "时间"
   setting_total_percent_complete_mode: "计算 完成% 层次结构总数"
@@ -4280,7 +4283,7 @@ zh-CN:
   warning_user_limit_reached_admin: >
     添加额外的用户将超出当前限制。请<a href="%{upgrade_url}">升级您的计划</a>，以确保外部用户能够访问此实例。
   warning_user_limit_reached_instructions: >
-    您已达到用户限制（%{current}/%{max} 活跃用户）。请联系 sales@openproject.com 升级您的企业版计划以添加额外用户。
+    您达到了用户限制（%{current}/%{max}活跃用户）。 请联系sales@openproject.com以升级您的Enterprise edition计划并添加其他用户。
   warning_protocol_mismatch_html: >
 
   warning_bar:

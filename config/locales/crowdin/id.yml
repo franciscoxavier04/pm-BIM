@@ -1143,6 +1143,8 @@ id:
         new_password: "Password baru"
         password_confirmation: "Konfirmasi"
         consented_at: "Setuju pada"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1769,6 +1771,7 @@ id:
     title: "Judul"
     type: "Tipe"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Diperbarui"
     updated_on: "Diperbarui"
     uploader: "Pengunggah"
@@ -2776,7 +2779,7 @@ id:
   label_filter_add: "Tambah Filter"
   label_filter_by: "Filter by"
   label_filter_any_name_attribute: "Name attributes"
-  label_filter_plural: "Penyaring"
+  label_filter_plural: "Filter"
   label_filters_toggle: "Tampilkan/Sembunyikan penyaringan"
   label_float: "Float"
   label_folder: "Folder"

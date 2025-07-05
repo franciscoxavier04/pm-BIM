@@ -1155,6 +1155,8 @@ fi:
         new_password: "Uusi salasana"
         password_confirmation: "Vahvistus"
         consented_at: "Hyväksytty"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1795,6 +1797,7 @@ fi:
     title: "Otsikko"
     type: "Tyyppi"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Päivitetty"
     updated_on: "Päivitetty"
     uploader: "Uploader"

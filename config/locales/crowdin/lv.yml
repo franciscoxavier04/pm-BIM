@@ -1163,6 +1163,8 @@ lv:
         new_password: "Jaunā parole"
         password_confirmation: "Jaunā parole atkārtoti"
         consented_at: "Consented at"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1817,6 +1819,7 @@ lv:
     title: "Virsraksts"
     type: "Veids"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Labots"
     updated_on: "Labots"
     uploader: "Uploader"

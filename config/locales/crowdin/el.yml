@@ -1151,6 +1151,8 @@ el:
         new_password: "Νέος κωδικός πρόσβασης"
         password_confirmation: "Επιβεβαίωση"
         consented_at: "Συγκατατίθεμαι σε"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1791,6 +1793,7 @@ el:
     title: "Τίτλος"
     type: "Τύπος"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Τροποποιήθηκε"
     updated_on: "Τροποποιήθηκε"
     uploader: "Μεταφορτώθηκε από"

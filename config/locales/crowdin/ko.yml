@@ -1147,6 +1147,8 @@ ko:
         new_password: "새로운 비밀번호"
         password_confirmation: "확인"
         consented_at: "동의함:"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1773,6 +1775,7 @@ ko:
     title: "제목"
     type: "타입"
     typeahead: "자동 완성"
+    uid: "Unique identifier"
     updated_at: "업데이트 날짜"
     updated_on: "업데이트 날짜"
     uploader: "업로더"

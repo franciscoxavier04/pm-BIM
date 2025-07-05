@@ -1187,6 +1187,8 @@ ar:
         new_password: "كلمة مرور جديدة"
         password_confirmation: "تأكيد"
         consented_at: "Consented at"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1883,6 +1885,7 @@ ar:
     title: "العنوان"
     type: "النّوع"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "تم التحديث بتاريخ"
     updated_on: "تم التحديث بتاريخ"
     uploader: "Uploader"

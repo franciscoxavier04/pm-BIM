@@ -1155,6 +1155,8 @@ ka:
         new_password: "ახალი პაროლი"
         password_confirmation: "დასტური"
         consented_at: "ეთანხმება"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1795,6 +1797,7 @@ ka:
     title: "სათაური"
     type: "ტიპი"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "განახლების თარიღი"
     updated_on: "განახლების თარიღი"
     uploader: "ამტვირთავი"

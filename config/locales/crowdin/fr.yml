@@ -1153,6 +1153,8 @@ fr:
         new_password: "Nouveau mot de passe"
         password_confirmation: "Confirmation"
         consented_at: "Consenti à"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1793,6 +1795,7 @@ fr:
     title: "Titre"
     type: "Type"
     typeahead: "Saisie semi-automatique"
+    uid: "Unique identifier"
     updated_at: "Mis à jour le"
     updated_on: "Mis à jour le"
     uploader: "Téléversé par"

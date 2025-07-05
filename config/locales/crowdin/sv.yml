@@ -1155,6 +1155,8 @@ sv:
         new_password: "Nytt lösenord"
         password_confirmation: "Bekräftelse"
         consented_at: "Samtyckte den"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1795,6 +1797,7 @@ sv:
     title: "Titel"
     type: "Typ"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Uppdaterat den"
     updated_on: "Uppdaterat den"
     uploader: "Uploader"

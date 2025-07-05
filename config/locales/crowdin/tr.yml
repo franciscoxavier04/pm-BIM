@@ -1154,6 +1154,8 @@ tr:
         new_password: "Yeni parola"
         password_confirmation: "Onay"
         consented_at: "Rızanın alınması"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1794,6 +1796,7 @@ tr:
     title: "Başlık"
     type: "Tür"
     typeahead: "Otomatik tamamla"
+    uid: "Unique identifier"
     updated_at: "Güncelleme tarihi"
     updated_on: "Güncelleme tarihi"
     uploader: "Yükleyici"

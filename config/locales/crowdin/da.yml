@@ -1153,6 +1153,8 @@ da:
         new_password: "Ny adgangskode"
         password_confirmation: "Bekræftelse"
         consented_at: "Consented at"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1793,6 +1795,7 @@ da:
     title: "Titel"
     type: "Type"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Opdateret den"
     updated_on: "Opdateret den"
     uploader: "Uploader"

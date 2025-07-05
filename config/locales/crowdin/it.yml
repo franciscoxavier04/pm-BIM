@@ -1152,6 +1152,8 @@ it:
         new_password: "Nuova password"
         password_confirmation: "Conferma"
         consented_at: "Consenso a"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1792,6 +1794,7 @@ it:
     title: "Titolo"
     type: "Tipo"
     typeahead: "Completamento automatico"
+    uid: "Unique identifier"
     updated_at: "Aggiornato il"
     updated_on: "Aggiornato il"
     uploader: "Caricatore"

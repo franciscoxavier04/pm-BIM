@@ -34,7 +34,7 @@ ja:
         work_package:
           attributes:
             blocks_ids:
-              can_only_contain_work_packages_of_current_sprint: "では現在のスプリント内の作業項目IDのみを含めることができます。"
+              can_only_contain_work_packages_of_current_sprint: "現在のスプリント内の作業項目IDのみを含めることができます。"
               must_block_at_least_one_work_package: "は少なくとも 1つのチケットIDを含める必要があります。"
             version_id:
               task_version_must_be_the_same_as_story_version: "親ストーリーのバージョンと同じでなければなりません。"

@@ -1155,6 +1155,8 @@ si:
         new_password: "නව මුරපදය"
         password_confirmation: "තහවුරු කිරීම"
         consented_at: "එකඟ විය"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1795,6 +1797,7 @@ si:
     title: "මාතෘකාව"
     type: "වර්ගය"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "යාවත්කාලීන කරන ලදි"
     updated_on: "යාවත්කාලීන කරන ලදි"
     uploader: "උඩුගත කරන්නා"

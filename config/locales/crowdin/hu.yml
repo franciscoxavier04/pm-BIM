@@ -1154,6 +1154,8 @@ hu:
         new_password: "Új jelszó"
         password_confirmation: "Új jelszó újra"
         consented_at: "Ehhez hozzájárult a"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1794,6 +1796,7 @@ hu:
     title: "Cím"
     type: "Típus"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Frissítve"
     updated_on: "Frissítve"
     uploader: "Feltöltő"

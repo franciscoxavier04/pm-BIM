@@ -1154,6 +1154,8 @@
         new_password: "Nytt passord"
         password_confirmation: "Bekreftelse"
         consented_at: "Godkjent"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1794,6 +1796,7 @@
     title: "Tittel"
     type: "Type"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Oppdatert"
     updated_on: "Oppdatert"
     uploader: "Opplaster"

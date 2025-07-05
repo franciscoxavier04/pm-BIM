@@ -1171,6 +1171,8 @@ he:
         new_password: "סיסמה חדשה"
         password_confirmation: "אימות"
         consented_at: "Consented at"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1839,6 +1841,7 @@ he:
     title: "כותרת"
     type: "סוג"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "עודכן בתאריך"
     updated_on: "עודכן בתאריך"
     uploader: "Uploader"

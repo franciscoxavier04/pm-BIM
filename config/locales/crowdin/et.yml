@@ -1155,6 +1155,8 @@ et:
         new_password: "Uus parool"
         password_confirmation: "Kinnitus"
         consented_at: "Consented at"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1795,6 +1797,7 @@ et:
     title: "Pealkiri"
     type: "Tüüp"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Uuendatud"
     updated_on: "Uuendatud"
     uploader: "Uploader"

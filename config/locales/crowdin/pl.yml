@@ -1167,6 +1167,8 @@ pl:
         new_password: "Nowe hasło"
         password_confirmation: "Potwierdzenie"
         consented_at: "Zgodę na"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1835,6 +1837,7 @@ pl:
     title: "Tytuł"
     type: "Typ"
     typeahead: "Autouzupełnianie"
+    uid: "Unique identifier"
     updated_at: "Aktualizacja"
     updated_on: "Aktualizacja"
     uploader: "Osoba przesyłająca"

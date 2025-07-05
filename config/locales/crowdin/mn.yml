@@ -1155,6 +1155,8 @@ mn:
         new_password: "New password"
         password_confirmation: "Confirmation"
         consented_at: "Consented at"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1795,6 +1797,7 @@ mn:
     title: "Title"
     type: "Type"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Updated on"
     updated_on: "Updated on"
     uploader: "Uploader"

@@ -1147,6 +1147,8 @@ th:
         new_password: "รหัสผ่านใหม่"
         password_confirmation: "ยืนยันรหัสผ่าน"
         consented_at: "Consented at"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1773,6 +1775,7 @@ th:
     title: "ชื่อเรื่อง"
     type: "ประเภท"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "แก้ไขเมื่อ"
     updated_on: "แก้ไขเมื่อ"
     uploader: "Uploader"

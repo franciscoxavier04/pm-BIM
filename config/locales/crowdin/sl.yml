@@ -1170,6 +1170,8 @@ sl:
         new_password: "Novo geslo"
         password_confirmation: "Potrditev"
         consented_at: "Soglasje ob"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1838,6 +1840,7 @@ sl:
     title: "Naslov"
     type: "Vrsta"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Posodobljeno"
     updated_on: "Posodobljeno"
     uploader: "Posodobitelj"
@@ -2057,8 +2060,8 @@ sl:
       - "avgust"
       - "september"
       - "oktober"
-      - "november"
-      - "december"
+      - "November"
+      - "December"
     order:
       - :leto
       - :mesec

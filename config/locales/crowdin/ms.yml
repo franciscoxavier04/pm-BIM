@@ -1145,6 +1145,8 @@ ms:
         new_password: "Kata laluan baharu"
         password_confirmation: "Pengesahan"
         consented_at: "Dipersetujui di"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1771,6 +1773,7 @@ ms:
     title: "Tajuk"
     type: "Jenis"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Dikemas kini pada"
     updated_on: "Dikemas kini pada"
     uploader: "Pemuat naik\n"

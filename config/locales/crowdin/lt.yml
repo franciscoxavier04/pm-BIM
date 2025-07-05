@@ -1168,6 +1168,8 @@ lt:
         new_password: "Naujas slaptažodis"
         password_confirmation: "Patvirtinimas"
         consented_at: "Sutikimo laikas"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1836,6 +1838,7 @@ lt:
     title: "Pavadinimas"
     type: "Tipas"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Atnaujinta"
     updated_on: "Atnaujinta"
     uploader: "Įkėlėjas"
