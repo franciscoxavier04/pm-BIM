@@ -95,7 +95,7 @@ export class SpotDropModalComponent implements OnDestroy {
 
   @ViewChild('anchor') anchor:ElementRef;
 
-  @ViewChild('body') body:TemplateRef<any>;
+  @ViewChild('body') body:TemplateRef<unknown>;
 
   @ViewChild('focusGrabber') focusGrabber:ElementRef;
 
