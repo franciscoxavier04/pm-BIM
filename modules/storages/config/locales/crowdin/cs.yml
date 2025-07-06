@@ -313,9 +313,9 @@ cs:
         oidc_token_refresh_failed: There was an error while trying to check your access to the storage. Please check the server logs for further information.
         unknown_error: The connection could not be validated. An unknown error occurred. Please check the server logs for further information.
       label_error: Chyba
-      label_failed: Failed
+      label_failed: Chyba
       label_healthy: Zdravé
-      label_passed: Passed
+      label_passed: Úspěch
       label_pending: Nevyřízeno
       label_skipped: Přeskočeno
       label_warning: Varování
