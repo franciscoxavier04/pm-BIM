@@ -188,7 +188,7 @@ export class WpResizerDirective extends UntilDestroyedMixin implements OnInit, A
     return undefined;
   }
   private applyColumnLayout(checkWidth = 750) {
-    const singleView = document.querySelectorAll("[data-selector='wp-single-view']")[0] as HTMLElement;
+    const singleView = document.querySelector<HTMLElement>("[data-selector='wp-single-view']");
     if (singleView) {
       jQuery(singleView).toggleClass('work-package--single-view_with-columns', singleView.offsetWidth > checkWidth);
     }
