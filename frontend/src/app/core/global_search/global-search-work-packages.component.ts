@@ -67,7 +67,6 @@ import {
     </wp-embedded-table>
   `,
 })
-
 export class GlobalSearchWorkPackagesComponent extends UntilDestroyedMixin implements OnInit, OnDestroy, AfterViewInit {
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   public queryProps:{ [key:string]:any };
