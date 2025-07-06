@@ -142,8 +142,8 @@ cs:
       new:
         title: "New SCIM client"
       revoke_static_token_dialog_component:
-        confirm_button: "Revoke"
-        title: "Revoke static token"
+        confirm_button: "Odvolat"
+        title: "Odvolat statický token"
         heading: "Are you sure you want to revoke this token?"
         description: "The SCIM client that uses this token will no longer be able to access OpenProject's SCIM server API."
       table_component:
@@ -421,7 +421,7 @@ cs:
     settings:
       header_details: Základní údaje
       header_status: Stav projektu
-      header_relations: Project relations
+      header_relations: Vztahy projektu
       button_update_details: Aktualizovat podrobnosti
       button_update_status_description: Aktualizovat popis stavu
       button_update_parent_project: Aktualizovat nadřazený projekt
@@ -974,7 +974,7 @@ cs:
         default_value: "Výchozí hodnota"
         editable: "Upravitelné"
         field_format: "Formát"
-        formula: "Formula"
+        formula: "Vzorec"
         is_filter: "Používá jako filtr"
         is_for_all: "Pro všechny projekty"
         is_required: "Požadováno"
@@ -999,11 +999,11 @@ cs:
         scopes: "Rozsah"
         confidential: "Důvěrnost"
       emoji_reaction:
-        reactable: "Reacted on"
+        reactable: "Reagováno"
       enterprise_token:
         starts_at: "Platné od"
         subscriber: "Odběratel"
-        subscription: "Subscription"
+        subscription: "Odběr"
         plan: "Plán"
         encoded_token: "Token podpory Enterprise."
         active_user_count_restriction: "Aktivní uživatelé"
@@ -1150,7 +1150,7 @@ cs:
         is_default: "Aktivováno pro nové projekty ve výchozím nastavení"
         is_milestone: "Je milník"
         color: "Barva"
-        patterns: "Patterns"
+        patterns: "Schémata"
       remote_identity:
         auth_source: "Auth Source"
         integration: "Integrace"
@@ -2223,8 +2223,8 @@ cs:
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
-      buy_now_button: "Buy now"
-      plans_title: "Enterprise plans"
+      buy_now_button: "Koupit nyní"
+      plans_title: "Doplňky Enterprise Edice"
       title: "Doplňky Enterprise Edice"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
