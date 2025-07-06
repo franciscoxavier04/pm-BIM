@@ -63,7 +63,7 @@ export function registerWorkPackageMouseHandler(this:void,
   renderInfo.change = halEditing.changeFor(renderInfo.workPackage);
 
   let placeholderForEmptyCell:HTMLElement;
-  const jBody = jQuery('body');
+  const body = document.querySelector('body')!;
 
   // handles change to existing work packages
   bar.onmousedown = (ev:MouseEvent) => {
@@ -94,7 +94,7 @@ export function registerWorkPackageMouseHandler(this:void,
     // add/remove css class while drag'n'drop is active
     const classNameActiveDrag = 'active-drag';
     bar.classList.add(classNameActiveDrag);
-    jBody.on('mouseup.timelinecell', () => bar.classList.remove(classNameActiveDrag));
+    body.addEventListener('mouseup.timelinecell', () => bar.classList.remove(classNameActiveDrag));
 
     workPackageTimeline.disableViewParamsCalculation = true;
     mouseDownStartDay = getCursorOffsetInDaysFromLeft(ev);
@@ -109,14 +109,14 @@ export function registerWorkPackageMouseHandler(this:void,
     // Determine what attributes of the work package should be changed
     const direction = renderer.onMouseDown(ev, null, renderInfo, labels);
 
-    jBody.on('mousemove.timelinecell', createMouseMoveFn(direction));
-    jBody.on('keyup.timelinecell', keyPressFn);
-    jBody.on('mouseup.timelinecell', () => deactivate(direction, false));
+    body.addEventListener('mousemove.timelinecell', createMouseMoveFn(direction));
+    body.addEventListener('keyup.timelinecell', keyPressFn);
+    body.addEventListener('mouseup.timelinecell', () => deactivate(direction, false));
   }
 
   function createMouseMoveFn(direction:MouseDirection) {
-    return (ev:JQuery.MouseMoveEvent) => {
-      const days = getCursorOffsetInDaysFromLeft(ev.originalEvent as MouseEvent) - (mouseDownStartDay as number);
+    return (ev:MouseEvent) => {
+      const days = getCursorOffsetInDaysFromLeft(ev) - (mouseDownStartDay as number);
       const offsetDayCurrent = Math.floor(ev.offsetX / renderInfo.viewParams.pixelPerDay);
       const dayUnderCursor = renderInfo.viewParams.dateDisplayStart.plus({ days: offsetDayCurrent });
 
@@ -124,8 +124,7 @@ export function registerWorkPackageMouseHandler(this:void,
     };
   }
 
-  function keyPressFn(ev:JQuery.TriggeredEvent) {
-    const kev:KeyboardEvent = ev.originalEvent as KeyboardEvent;
+  function keyPressFn(kev:KeyboardEvent) {
     if (kev.key === 'Escape') {
       deactivate(null, true);
     }
@@ -182,19 +181,19 @@ export function registerWorkPackageMouseHandler(this:void,
         return;
       }
 
-      jBody.on('mousemove.emptytimelinecell', mouseMoveOnEmptyCellFn(offsetDayStart, direction));
-      jBody.on('mouseup.emptytimelinecell', () => deactivate(direction, false));
+      body.addEventListener('mousemove.emptytimelinecell', mouseMoveOnEmptyCellFn(offsetDayStart, direction));
+      body.addEventListener('mouseup.emptytimelinecell', () => deactivate(direction, false));
 
       cell.onmouseup = () => {
         deactivate(direction, false);
       };
 
-      jBody.on('keyup.timelinecell', keyPressFn);
+      body.addEventListener('keyup.timelinecell', keyPressFn);
     };
   }
 
   function mouseMoveOnEmptyCellFn(offsetDayStart:number, mouseDownType:MouseDirection) {
-    return (ev:JQuery.MouseMoveEvent) => {
+    return (ev:MouseEvent) => {
       placeholderForEmptyCell.remove();
       const relativePosition = Math.abs(cell.getBoundingClientRect().x - ev.clientX);
       const offsetDayCurrent = Math.floor(relativePosition / renderInfo.viewParams.pixelPerDay);
@@ -216,8 +215,8 @@ export function registerWorkPackageMouseHandler(this:void,
 
     bar.style.pointerEvents = 'auto';
 
-    jBody.off('.timelinecell');
-    jBody.off('.emptytimelinecell');
+    // FIXME: jQuery Events body.off('.timelinecell');
+    // FIXME: jQuery Events body.off('.emptytimelinecell');
     workPackageTimeline.resetCursor();
     mouseDownStartDay = null;
 

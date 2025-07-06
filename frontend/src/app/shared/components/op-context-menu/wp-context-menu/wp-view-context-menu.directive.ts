@@ -24,6 +24,7 @@ import { WpDestroyModalComponent } from 'core-app/shared/components/modals/wp-de
 import isNewResource from 'core-app/features/hal/helpers/is-new-resource';
 import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
 import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
+import { computePosition, flip, offset, shift } from '@floating-ui/dom';
 
 export class WorkPackageViewContextMenu extends OpContextMenuHandler {
   @InjectField() protected states!:States;
@@ -64,7 +65,7 @@ export class WorkPackageViewContextMenu extends OpContextMenuHandler {
   constructor(
     public injector:Injector,
     protected workPackageId:string,
-    protected $element:JQuery,
+    protected element:HTMLElement,
     protected additionalPositionArgs:any = {},
     protected allowSplitScreenActions:boolean = true,
   ) {
@@ -80,11 +81,15 @@ export class WorkPackageViewContextMenu extends OpContextMenuHandler {
     };
   }
 
-  public positionArgs(evt:JQuery.TriggeredEvent) {
-    const position = super.positionArgs(evt);
-    _.assign(position, this.additionalPositionArgs);
-
-    return position;
+  public computePosition(floating:HTMLElement) {
+    return computePosition(this.element, floating, {
+      placement: 'bottom-start',
+      middleware: [
+        offset(0),
+        flip(),
+        shift({ padding: 5 }),
+      ],
+    });
   }
 
   public triggerContextMenuAction(action:WorkPackageAction) {
@@ -192,8 +197,8 @@ export class WorkPackageViewContextMenu extends OpContextMenuHandler {
       linkText: action.text,
       href: action.href,
       icon: action.icon != null ? action.icon : `icon-${action.key}`,
-      onClick: ($event:JQuery.TriggeredEvent) => {
-        if (action.href && isClickedWithModifier($event)) {
+      onClick: (event:MouseEvent) => {
+        if (action.href && isClickedWithModifier(event)) {
           return false;
         }
 
@@ -209,8 +214,8 @@ export class WorkPackageViewContextMenu extends OpContextMenuHandler {
         class: 'openFullScreenView',
         href: this.$state.href('work-packages.show', { workPackageId: this.workPackageId }),
         linkText: I18n.t('js.button_open_fullscreen'),
-        onClick: ($event:JQuery.TriggeredEvent) => {
-          if (isClickedWithModifier($event)) {
+        onClick: (event) => {
+          if (isClickedWithModifier(event)) {
             return false;
           }
 
@@ -232,8 +237,8 @@ export class WorkPackageViewContextMenu extends OpContextMenuHandler {
             { workPackageId: this.workPackageId, tabIdentifier: 'overview' },
           ),
           linkText: I18n.t('js.button_open_details'),
-          onClick: ($event:JQuery.TriggeredEvent) => {
-            if (isClickedWithModifier($event)) {
+          onClick: (event) => {
+            if (isClickedWithModifier(event)) {
               return false;
             }
 

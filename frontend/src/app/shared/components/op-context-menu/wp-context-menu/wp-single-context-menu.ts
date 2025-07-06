@@ -16,6 +16,7 @@ import { WpDestroyModalComponent } from 'core-app/shared/components/modals/wp-de
 import { WorkPackageAuthorization } from 'core-app/features/work-packages/services/work-package-authorization.service';
 import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
+import { computePosition, flip, offset, shift } from '@floating-ui/dom';
 
 @Directive({
   selector: '[wpSingleContextMenu]',
@@ -50,7 +51,7 @@ export class WorkPackageSingleContextMenuDirective extends OpContextMenuTrigger 
     document.removeEventListener('dialog:close', this.closeDialogHandler);
   }
 
-  protected open(evt:JQuery.TriggeredEvent) {
+  protected open(evt:Event) {
     this.workPackage.project.$load().then(() => {
       this.authorisationService.initModelAuth('work_package', this.workPackage.$links);
 
@@ -94,20 +95,19 @@ export class WorkPackageSingleContextMenuDirective extends OpContextMenuTrigger 
   }
 
   /**
-   * Positioning args for jquery-ui position.
+   * Compute position for Floating UI.
    *
    * @param {Event} openerEvent
    */
-  public positionArgs(evt:JQuery.TriggeredEvent) {
-    const additionalPositionArgs = {
-      my: 'right top',
-      at: 'right bottom',
-    };
-
-    const position = super.positionArgs(evt);
-    _.assign(position, additionalPositionArgs);
-
-    return position;
+  public computePosition(floating:HTMLElement, openerEvent:Event) {
+    return computePosition(this.element, floating, {
+      placement: 'bottom-start',
+      middleware: [
+        offset(0),
+        flip(),
+        shift({ padding: 5 }),
+      ],
+    });
   }
 
   private getPermittedActions(authorization:WorkPackageAuthorization) {
@@ -137,8 +137,8 @@ export class WorkPackageSingleContextMenuDirective extends OpContextMenuTrigger 
         linkText: I18n.t(`js.button_${key}`),
         href: action.link,
         icon: action.icon || `icon-${key}`,
-        onClick: ($event:JQuery.TriggeredEvent) => {
-          if (action.link && isClickedWithModifier($event)) {
+        onClick: (event:MouseEvent) => {
+          if (action.link && isClickedWithModifier(event)) {
             return false;
           }
 

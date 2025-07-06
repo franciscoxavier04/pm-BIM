@@ -446,7 +446,7 @@ export class BoardListComponent extends AbstractWidgetComponent implements OnIni
   }
 
   private get indicatorInstance() {
-    return this.loadingIndicator.indicator(jQuery(this.indicator.nativeElement));
+    return this.loadingIndicator.indicator(this.indicator.nativeElement);
   }
 
   private setQueryProps(filters:ApiV3Filter[]) {

@@ -53,9 +53,9 @@ export class TypeFormConfigurationComponent extends UntilDestroyedMixin implemen
 
   private element:HTMLElement;
 
-  private form:JQuery;
+  private form:HTMLFormElement;
 
-  private submit:JQuery;
+  private submit:HTMLButtonElement;
 
   public groups:TypeGroup[] = [];
 
@@ -89,30 +89,30 @@ export class TypeFormConfigurationComponent extends UntilDestroyedMixin implemen
     // Hook on form submit
     this.element = this.elementRef.nativeElement;
     this.no_filter_query = this.element.dataset.noFilterQuery!;
-    this.form = jQuery(this.element).closest('form');
-    this.submit = this.form.find('.form-configuration--save');
+    this.form = this.element.closest('form')!;
+    this.submit = this.form.querySelector('.form-configuration--save')!;
 
     // In the following we are triggering the form submit ourselves to work around
     // a firefox shortcoming. But to avoid double submits which are sometimes not canceled fast
     // enough, we need to memoize whether we have already submitted.
     let submitted = false;
 
-    this.form.on('submit', () => {
+    this.form.addEventListener('submit', () => {
       submitted = true;
     });
 
     // Capture mousedown on button because firefox breaks blur on click
-    this.submit.on('mousedown', () => {
+    this.submit.addEventListener('mousedown', () => {
       setTimeout(() => {
         if (!submitted) {
-          this.form.trigger('submit');
+          this.form.submit();
         }
       }, 50);
       return true;
     });
 
     // Capture regular form submit
-    this.form.on('submit.typeformupdater', () => {
+    this.form.addEventListener('submit.typeformupdater', () => {
       this.updateHiddenFields();
       return true;
     });
@@ -160,7 +160,7 @@ export class TypeFormConfigurationComponent extends UntilDestroyedMixin implemen
   }
 
   ngAfterViewInit():void {
-    const menu = jQuery(this.elementRef.nativeElement).find('.toolbar-items');
+    const menu = this.elementRef.nativeElement.querySelector('.toolbar-items');
     installMenuLogic(menu);
   }
 
@@ -229,7 +229,7 @@ export class TypeFormConfigurationComponent extends UntilDestroyedMixin implemen
     return group;
   }
 
-  resetToDefault($event:Event):boolean {
+  resetToDefault(event:Event):boolean {
     this.confirmDialog
       .confirm({
         text: {
@@ -239,16 +239,17 @@ export class TypeFormConfigurationComponent extends UntilDestroyedMixin implemen
         },
       })
       .then(() => {
-        this.form.find('input#type_attribute_groups').val(JSON.stringify([]));
+        const input = this.form.querySelector<HTMLInputElement>('input#type_attribute_groups')!;
+        input.value = JSON.stringify([]);
 
         // Disable our form handler that updates the attribute groups
-        this.form.off('submit.typeformupdater');
-        this.form.trigger('submit');
+        // FIXME: jQuery Events this.form.off('submit.typeformupdater');
+        this.form.submit();
       })
       .catch(() => {
       });
 
-    $event.preventDefault();
+    event.preventDefault();
     return false;
   }
 
@@ -267,13 +268,13 @@ export class TypeFormConfigurationComponent extends UntilDestroyedMixin implemen
   }
 
   private updateHiddenFields():void {
-    const hiddenField = this.form.find('.admin-type-form--hidden-field');
+    const hiddenField = this.form.querySelector<HTMLInputElement>('.admin-type-form--hidden-field')!;
     if (this.groups.length === 0) {
       // Ensure we're adding an empty group if deliberately removing
       // all values.
-      hiddenField.val(JSON.stringify([this.emptyGroup]));
+      hiddenField.value = JSON.stringify([this.emptyGroup]);
     } else {
-      hiddenField.val(JSON.stringify(this.groups));
+      hiddenField.value = JSON.stringify(this.groups);
     }
   }
 }

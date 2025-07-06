@@ -29,6 +29,7 @@ import { findAllFocusableElementsWithin } from 'core-app/shared/helpers/focus-he
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { slideUp, slideDown } from 'es6-slide-up-down';
 
 export const ANIMATION_RATE_MS = 100;
 
@@ -71,13 +72,10 @@ export class TopMenuService {
     skipLink?.addEventListener('click', () => {
       // Skip to the breadcrumb or the first link in the toolbar or the first link in the content (homescreen)
       const selectors = '.first-breadcrumb-element a, .toolbar-container a:first-of-type, #content a:first-of-type';
-      const visibleLink = jQuery(selectors)
-        .not(':hidden')
-        .first();
+      const visibleLink = Array.from(document.querySelectorAll<HTMLElement>(selectors))
+        .find((link) => !link.matches(':hidden'))
 
-      if (visibleLink.length) {
-        visibleLink.trigger('focus');
-      }
+      visibleLink?.focus();
     });
   }
 
@@ -196,9 +194,8 @@ export class TopMenuService {
     toDrop.setAttribute('aria-expanded', 'true');
     dropdown.classList.add('op-app-menu--item_dropdown-open');
 
-    jQuery(toDrop)
-      .slideDown(ANIMATION_RATE_MS, callback)
-      .attr('aria-expanded', 'true');
+    slideDown(toDrop, ANIMATION_RATE_MS);
+    window.requestAnimationFrame(() => toDrop.setAttribute('aria-expanded', 'true'));
   }
 
   private slideUp(dropdown:HTMLElement, immediate:boolean):void {
@@ -209,7 +206,7 @@ export class TopMenuService {
     if (immediate) {
       toDrop.style.display = 'none';
     } else {
-      jQuery(toDrop).slideUp(ANIMATION_RATE_MS);
+      slideUp(toDrop, ANIMATION_RATE_MS);
     }
   }
 

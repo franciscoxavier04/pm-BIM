@@ -95,12 +95,12 @@ export class ProjectStatusEditFieldComponent extends EditFieldComponent implemen
   public onOpen() {
     repositionDropdownBugfix(this.ngSelectComponent);
 
-    jQuery(this.hiddenOverflowContainer).one('scroll.autocompleteContainer', () => {
+    document.querySelector(this.hiddenOverflowContainer)?.addEventListener('scroll.autocompleteContainer', () => {
       this.ngSelectComponent.close();
     });
   }
 
   public onClose() {
-    jQuery(this.hiddenOverflowContainer).off('scroll.autocompleteContainer');
+    document.querySelector(this.hiddenOverflowContainer)     // FIXME: jQuery Events .off('scroll.autocompleteContainer');
   }
 }

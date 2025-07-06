@@ -47,8 +47,8 @@ export class InviteUserButtonComponent {
       );
   }
 
-  public onAddNewClick($event:Event):void {
-    $event.stopPropagation();
+  public onAddNewClick(event:Event):void {
+    event.stopPropagation();
     this.opInviteUserModalService.open(this.projectId);
     this.autocompleter.closeSelect();
   }

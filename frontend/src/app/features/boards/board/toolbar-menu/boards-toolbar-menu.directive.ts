@@ -68,7 +68,7 @@ export class BoardsToolbarMenuDirective extends OpContextMenuTrigger {
     };
   }
 
-  protected open(evt:JQuery.TriggeredEvent) {
+  protected open(evt:Event) {
     this.buildItems();
     this.opContextMenu.show(this, evt);
   }
@@ -92,7 +92,7 @@ export class BoardsToolbarMenuDirective extends OpContextMenuTrigger {
         icon: 'icon-edit',
         onClick: () => {
           if (this.board.grid.updateImmediately) {
-            jQuery('.toolbar-container .editable-toolbar-title--input').trigger(triggerEditingEvent);
+            document.querySelector('.toolbar-container .editable-toolbar-title--input')?.dispatchEvent(new CustomEvent(triggerEditingEvent));
           }
 
           return true;

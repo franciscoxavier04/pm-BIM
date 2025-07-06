@@ -57,7 +57,7 @@ export class BcfViewToggleDropdownDirective extends OpContextMenuTrigger {
     super(elementRef, opContextMenu);
   }
 
-  protected open(evt:JQuery.TriggeredEvent):void {
+  protected open(evt:Event):void {
     this.buildItems();
     this.opContextMenu.show(this, evt);
   }

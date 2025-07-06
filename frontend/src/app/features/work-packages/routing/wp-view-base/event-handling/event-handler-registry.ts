@@ -1,4 +1,5 @@
 import { EventEmitter, InjectionToken, Injector } from '@angular/core';
+import { delegateEvent } from 'core-app/shared/helpers/delegate-event';
 
 export interface WorkPackageViewEventHandler<T> {
   /** Event name to register * */
@@ -8,10 +9,10 @@ export interface WorkPackageViewEventHandler<T> {
   SELECTOR:string;
 
   /** Event callback handler */
-  handleEvent(view:T, evt:JQuery.TriggeredEvent):void;
+  handleEvent(view:T, evt:Event):void;
 
   /** Event scope method */
-  eventScope(view:T):JQuery;
+  eventScope(view:T):HTMLElement;
 }
 
 export interface WorkPackageViewOutputs {
@@ -41,9 +42,9 @@ export abstract class WorkPackageViewHandlerRegistry<T> {
       const handler = factory(viewRef);
       const target = handler.eventScope(viewRef);
 
-      target.on(handler.EVENT, handler.SELECTOR, (evt:JQuery.TriggeredEvent) => {
+      delegateEvent(handler.EVENT, handler.SELECTOR, (evt) => {
         handler.handleEvent(viewRef, evt);
-      });
+      }, target);
 
       return handler;
     });

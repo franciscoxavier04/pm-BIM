@@ -15,12 +15,12 @@ export class ContextMenuKeyboardHandler extends ContextMenuHandler {
     return this.rowSelector;
   }
 
-  public handleEvent(component:TableEventComponent, evt:JQuery.TriggeredEvent):boolean {
+  public handleEvent(component:TableEventComponent, evt:KeyboardEvent):boolean {
     if (!component.workPackageTable.configuration.contextMenuEnabled) {
       return false;
     }
 
-    const target = jQuery(evt.target);
+    const target = evt.target as HTMLElement;
 
     if (!(evt.key === 'F10' && evt.shiftKey && evt.altKey)) {
       return true;
@@ -30,8 +30,8 @@ export class ContextMenuKeyboardHandler extends ContextMenuHandler {
     evt.stopPropagation();
 
     // Locate the row from event
-    const element = target.closest(this.SELECTOR);
-    const wpId = element.data('workPackageId');
+    const element = target.closest<HTMLTableRowElement>(this.SELECTOR)!;
+    const wpId = element.dataset.workPackageId!;
 
     // Set position args to open at element
     const position = { my: 'left top', at: 'left bottom', of: target };

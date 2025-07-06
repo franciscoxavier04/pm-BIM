@@ -10,10 +10,10 @@ export class WorkPackageTableContextMenu extends WorkPackageViewContextMenu {
 
   constructor(public injector:Injector,
     protected workPackageId:string,
-    protected $element:JQuery,
+    protected element:HTMLElement,
     protected additionalPositionArgs:any = {},
     protected table:WorkPackageTable) {
-    super(injector, workPackageId, $element, additionalPositionArgs, true);
+    super(injector, workPackageId, element, additionalPositionArgs, true);
   }
 
   public triggerContextMenuAction(action:WorkPackageAction) {

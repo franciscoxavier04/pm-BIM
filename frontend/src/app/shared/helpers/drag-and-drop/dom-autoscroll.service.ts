@@ -42,19 +42,19 @@ export class DomAutoscrollService {
   }
 
   public init() {
-    jQuery(window).on('mousemove.domautoscroll touchmove.domautoscroll', (evt:any) => {
+    window.addEventListener('mousemove.domautoscroll touchmove.domautoscroll', (evt:any) => {
       if (this.down) {
         this.pointCB(evt);
         this.onMove(evt);
       }
     });
-    jQuery(window).on('mousedown.domautoscroll touchstart.domautoscroll', () => { this.down = true; });
-    jQuery(window).on('mouseup.domautoscroll touchend.domautoscroll', () => this.onUp());
-    jQuery(window).on('scroll.domautoscroll', (evt:any) => this.setScroll(evt));
+    window.addEventListener('mousedown.domautoscroll touchstart.domautoscroll', () => { this.down = true; });
+    window.addEventListener('mouseup.domautoscroll touchend.domautoscroll', () => this.onUp());
+    window.addEventListener('scroll.domautoscroll', (evt:any) => this.setScroll(evt));
   }
 
   public destroy() {
-    jQuery(window).off('.domautoscroll');
+    // window.removeEventListener('.domautoscroll'); FIXME
 
     this.elements = [];
     this.cleanAnimation();

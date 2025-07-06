@@ -34,6 +34,7 @@ import {
 import { OPContextMenuService } from 'core-app/shared/components/op-context-menu/op-context-menu.service';
 import { OpModalService } from 'core-app/shared/components/modal/modal.service';
 import { OpContextMenuItem } from 'core-app/shared/components/op-context-menu/op-context-menu.types';
+import { computePosition, flip, offset, shift } from '@floating-ui/dom';
 
 @Component({
   selector: 'icon-triggered-context-menu',
@@ -54,26 +55,25 @@ export class IconTriggeredContextMenuComponent extends OpContextMenuTrigger {
 
   @Input() menuItemsFactory:() => Promise<OpContextMenuItem[]>;
 
-  protected async open(evt:JQuery.TriggeredEvent) {
+  protected async open(evt:Event) {
     this.items = await this.buildItems();
     this.opContextMenu.show(this, evt);
   }
 
   /**
-   * Positioning args for jquery-ui position.
+   * Compute position for Floating UI.
    *
    * @param {Event} openerEvent
    */
-  public positionArgs(evt:JQuery.TriggeredEvent) {
-    const additionalPositionArgs = {
-      my: 'right top',
-      at: 'right bottom',
-    };
-
-    const position = super.positionArgs(evt);
-    _.assign(position, additionalPositionArgs);
-
-    return position;
+  public computePosition(floating:HTMLElement, openerEvent:Event) {
+    return computePosition(this.element, floating, {
+      placement: 'bottom-start',
+      middleware: [
+        offset(0),
+        flip(),
+        shift({ padding: 5 }),
+      ],
+    });
   }
 
   private async buildItems() {

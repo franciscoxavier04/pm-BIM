@@ -32,6 +32,7 @@ import { OpContextMenuTrigger } from 'core-app/shared/components/op-context-menu
 import { HalResourceEditingService } from 'core-app/shared/components/fields/edit/services/hal-resource-editing.service';
 import { States } from 'core-app/core/states/states.service';
 import { FormResource } from 'core-app/features/hal/resources/form-resource';
+import { computePosition, flip, offset, shift } from '@floating-ui/dom';
 
 @Directive({
   selector: '[wpCreateSettingsMenu]',
@@ -44,7 +45,7 @@ export class WorkPackageCreateSettingsMenuDirective extends OpContextMenuTrigger
     super(elementRef, opContextMenu);
   }
 
-  protected open(evt:JQuery.TriggeredEvent) {
+  protected open(evt:Event) {
     const wp = this.states.workPackages.get('new').value;
 
     if (wp) {
@@ -59,20 +60,19 @@ export class WorkPackageCreateSettingsMenuDirective extends OpContextMenuTrigger
   }
 
   /**
-   * Positioning args for jquery-ui position.
+   * Compute position for Floating UI.
    *
    * @param {Event} openerEvent
    */
-  public positionArgs(evt:JQuery.TriggeredEvent) {
-    const additionalPositionArgs = {
-      my: 'right top',
-      at: 'right bottom',
-    };
-
-    const position = super.positionArgs(evt);
-    _.assign(position, additionalPositionArgs);
-
-    return position;
+  public computePosition(floating:HTMLElement, openerEvent:Event) {
+    return computePosition(this.element, floating, {
+      placement: 'bottom-start',
+      middleware: [
+        offset(0),
+        flip(),
+        shift({ padding: 5 }),
+      ],
+    });
   }
 
   private buildItems(form:FormResource) {

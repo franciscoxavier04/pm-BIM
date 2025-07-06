@@ -35,7 +35,7 @@ import { openExternalLinksInNewTab, performAnchorHijacking } from './global-list
 export function initializeGlobalListeners():void {
   document
     .documentElement
-    .addEventListener('click', (evt:MouseEvent) => {
+    .addEventListener('click', (evt) => {
       const target = evt.target as HTMLElement;
 
       // Avoid defaulting clicks on elements already removed from DOM
@@ -99,13 +99,14 @@ export function initializeGlobalListeners():void {
 
   // Global submitting hook,
   // necessary to avoid a data loss warning on beforeunload
-  jQuery(document).on('submit', 'form', () => {
-    window.OpenProject.pageIsSubmitted = true;
+  document.addEventListener('submit', (event) => {
+    if (event.target instanceof Element && event.target.closest('form')) {
+      window.OpenProject.pageIsSubmitted = true;
+    }
   });
 
   // Global beforeunload hook
-  jQuery(window).on('beforeunload', (e:JQuery.TriggeredEvent) => {
-    const event = e.originalEvent as BeforeUnloadEvent;
+  window.addEventListener("onbeforeonload", (event:BeforeUnloadEvent) => {
     if (window.OpenProject.pageWasEdited && !window.OpenProject.pageIsSubmitted) {
       // Cancel the event
       event.preventDefault();
@@ -115,11 +116,14 @@ export function initializeGlobalListeners():void {
   });
 
   // Disable global drag & drop handling, which results in the browser loading the image and losing the page
-  jQuery(document.documentElement)
-    .on('dragover drop', (evt:Event) => {
-      evt.preventDefault();
-      return false;
-    });
+  document.addEventListener('dragover', (event) => {
+    event.preventDefault();
+    return false;
+  })
+  document.addEventListener('drop', (event) => {
+    event.preventDefault();
+    return false;
+  })
 
   // Bootstrap legacy app code
   setupServerResponse();

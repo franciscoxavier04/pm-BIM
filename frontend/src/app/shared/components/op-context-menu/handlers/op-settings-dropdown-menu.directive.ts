@@ -61,6 +61,7 @@ import {
   UrlParamsHelperService,
 } from 'core-app/features/work-packages/components/wp-query/url-params-helper';
 import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
+import { computePosition, flip, offset, shift } from '@floating-ui/dom';
 
 @Directive({
   selector: '[opSettingsContextMenu]',
@@ -116,7 +117,7 @@ export class OpSettingsMenuDirective extends OpContextMenuTrigger {
       });
   }
 
-  protected open(evt:JQuery.TriggeredEvent) {
+  protected open(evt:Event) {
     this.loadingPromise.then(() => {
       this.buildItems();
       this.opContextMenu.show(this, evt);
@@ -131,20 +132,19 @@ export class OpSettingsMenuDirective extends OpContextMenuTrigger {
   }
 
   /**
-   * Positioning args for jquery-ui position.
+   * Compute position for Floating UI.
    *
    * @param {Event} openerEvent
    */
-  public positionArgs(evt:JQuery.TriggeredEvent) {
-    const additionalPositionArgs = {
-      my: 'right top',
-      at: 'right bottom',
-    };
-
-    const position = super.positionArgs(evt);
-    _.assign(position, additionalPositionArgs);
-
-    return position;
+  public pcomputePosition(floating:HTMLElement, openerEvent:Event) {
+    return computePosition(this.element, floating, {
+      placement: 'bottom-start',
+      middleware: [
+        offset(0),
+        flip(),
+        shift({ padding: 5 }),
+      ]
+    });
   }
 
   public onClose(focus:boolean) {
@@ -153,15 +153,15 @@ export class OpSettingsMenuDirective extends OpContextMenuTrigger {
     }
   }
 
-  private allowQueryAction(event:JQuery.TriggeredEvent, action:any) {
+  private allowQueryAction(event:Event, action:any) {
     return this.allowAction(event, 'query', action);
   }
 
-  private allowWorkPackageAction(event:JQuery.TriggeredEvent, action:any) {
+  private allowWorkPackageAction(event:Event, action:any) {
     return this.allowAction(event, 'work_packages', action);
   }
 
-  private allowFormAction(event:JQuery.TriggeredEvent, action:string) {
+  private allowFormAction(event:Event, action:string) {
     if (this.form.$links[action]) {
       return true;
     }
@@ -169,7 +169,7 @@ export class OpSettingsMenuDirective extends OpContextMenuTrigger {
     return false;
   }
 
-  private allowAction(event:JQuery.TriggeredEvent, modelName:string, action:any) {
+  private allowAction(event:Event, modelName:string, action:any) {
     if (this.authorisationService.can(modelName, action)) {
       return true;
     }
@@ -212,7 +212,7 @@ export class OpSettingsMenuDirective extends OpContextMenuTrigger {
         linkText: this.I18n.t('js.toolbar.settings.configure_view'),
         hidden: this.hideTableOptions,
         icon: 'icon-settings',
-        onClick: ($event:JQuery.TriggeredEvent) => {
+        onClick: (event:MouseEvent) => {
           this.opContextMenu.close();
           this.opModalService.show(WpTableConfigurationModalComponent, this.injector);
 
@@ -268,9 +268,9 @@ export class OpSettingsMenuDirective extends OpContextMenuTrigger {
         disabled: !this.query.id || this.authorisationService.cannot('query', 'updateImmediately'),
         linkText: this.I18n.t('js.toolbar.settings.page_settings'),
         icon: 'icon-edit',
-        onClick: ($event:JQuery.TriggeredEvent) => {
-          if (this.allowQueryAction($event, 'update')) {
-            jQuery(`${selectableTitleIdentifier}`).trigger(triggerEditingEvent);
+        onClick: (event:MouseEvent) => {
+          if (this.allowQueryAction(event, 'update')) {
+            document.querySelector(`${selectableTitleIdentifier}`)?.dispatchEvent(new CustomEvent(triggerEditingEvent));
           }
 
           return true;
@@ -281,11 +281,11 @@ export class OpSettingsMenuDirective extends OpContextMenuTrigger {
         disabled: this.authorisationService.cannot('query', 'updateImmediately'),
         linkText: this.I18n.t('js.toolbar.settings.save'),
         icon: 'icon-save',
-        onClick: ($event:JQuery.TriggeredEvent) => {
+        onClick: (event) => {
           const { query } = this;
-          if (!isPersistedResource(query) && this.allowQueryAction($event, 'updateImmediately')) {
+          if (!isPersistedResource(query) && this.allowQueryAction(event, 'updateImmediately')) {
             this.opModalService.show(SaveQueryModalComponent, this.injector);
-          } else if (query.id && this.allowQueryAction($event, 'updateImmediately')) {
+          } else if (query.id && this.allowQueryAction(event, 'updateImmediately')) {
             this.wpListService.save(query);
           }
 
@@ -297,8 +297,8 @@ export class OpSettingsMenuDirective extends OpContextMenuTrigger {
         disabled: this.form ? !this.form.$links.create_new : this.authorisationService.cannot('query', 'updateImmediately'),
         linkText: this.I18n.t('js.toolbar.settings.save_as'),
         icon: 'icon-save',
-        onClick: ($event:JQuery.TriggeredEvent) => {
-          if (this.allowFormAction($event, 'create_new')) {
+        onClick: (event) => {
+          if (this.allowFormAction(event, 'create_new')) {
             this.opModalService.show(SaveQueryModalComponent, this.injector);
           }
 
@@ -310,8 +310,8 @@ export class OpSettingsMenuDirective extends OpContextMenuTrigger {
         disabled: this.authorisationService.cannot('query', 'delete'),
         linkText: this.I18n.t('js.toolbar.settings.delete'),
         icon: 'icon-delete',
-        onClick: ($event:JQuery.TriggeredEvent) => {
-          if (this.allowQueryAction($event, 'delete')
+        onClick: (event) => {
+          if (this.allowQueryAction(event, 'delete')
             && window.confirm(this.I18n.t('js.text_query_destroy_confirmation'))) {
             this.wpListService.delete();
           }
@@ -339,8 +339,8 @@ export class OpSettingsMenuDirective extends OpContextMenuTrigger {
         linkText: this.I18n.t('js.toolbar.settings.export'),
         hidden: this.hideTableOptions,
         icon: 'icon-export',
-        onClick: ($event:JQuery.TriggeredEvent) => {
-          if (this.allowWorkPackageAction($event, 'representations')) {
+        onClick: (event) => {
+          if (this.allowWorkPackageAction(event, 'representations')) {
             const query = this.querySpace.query.value;
             if (query) {
               const href = this.buildExportDialogHref(query);
@@ -355,8 +355,8 @@ export class OpSettingsMenuDirective extends OpContextMenuTrigger {
         disabled: this.authorisationService.cannot('query', 'unstar') && this.authorisationService.cannot('query', 'star'),
         linkText: this.I18n.t('js.toolbar.settings.visibility_settings'),
         icon: 'icon-watched',
-        onClick: ($event:JQuery.TriggeredEvent) => {
-          if (this.allowQueryAction($event, 'unstar') || this.allowQueryAction($event, 'star')) {
+        onClick: (event) => {
+          if (this.allowQueryAction(event, 'unstar') || this.allowQueryAction(event, 'star')) {
             this.opModalService.show(QuerySharingModalComponent, this.injector);
           }
 

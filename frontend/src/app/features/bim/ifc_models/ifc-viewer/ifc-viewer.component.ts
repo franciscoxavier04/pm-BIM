@@ -181,8 +181,8 @@ export class IFCViewerComponent implements OnInit, OnDestroy, AfterViewInit {
   @HostListener('keyup', ['$event'])
   @HostListener('keypress', ['$event'])
   // eslint-disable-next-line class-methods-use-this
-  cancelAllKeyEvents($event:KeyboardEvent):void {
-    $event.stopPropagation();
+  cancelAllKeyEvents(event:KeyboardEvent):void {
+    event.stopPropagation();
   }
 
   @HostListener('mousedown')

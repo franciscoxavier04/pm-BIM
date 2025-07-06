@@ -37,6 +37,7 @@ import { OpModalService } from 'core-app/shared/components/modal/modal.service';
 import { IsolatedQuerySpace } from 'core-app/features/work-packages/directives/query-space/isolated-query-space';
 import { WorkPackageInlineCreateService } from 'core-app/features/work-packages/components/wp-inline-create/wp-inline-create.service';
 import { BoardListComponent } from 'core-app/features/boards/board/board-list/board-list.component';
+import { computePosition, flip, offset, shift } from '@floating-ui/dom';
 
 @Directive({
   selector: '[op-addCardDropdown]',
@@ -55,26 +56,25 @@ export class AddCardDropdownMenuDirective extends OpContextMenuTrigger {
     super(elementRef, opContextMenu);
   }
 
-  protected open(evt:JQuery.TriggeredEvent) {
+  protected open(evt:Event) {
     this.items = this.buildItems();
     this.opContextMenu.show(this, evt);
   }
 
   /**
-   * Positioning args for jquery-ui position.
+   * Compute position for Floating UI.
    *
    * @param {Event} openerEvent
    */
-  public positionArgs(evt:JQuery.TriggeredEvent) {
-    const additionalPositionArgs = {
-      my: 'left top',
-      at: 'left bottom',
-    };
-
-    const position = super.positionArgs(evt);
-    _.assign(position, additionalPositionArgs);
-
-    return position;
+  public computePosition(floating:HTMLElement, openerEvent:Event) {
+    return computePosition(this.element, floating, {
+      placement: 'bottom-start',
+      middleware: [
+        offset(0),
+        flip(),
+        shift({ padding: 5 }),
+      ]
+    });
   }
 
   private buildItems() {

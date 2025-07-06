@@ -42,8 +42,8 @@ export function addTurboGlobalListeners() {
     setupToggableFieldsets();
 
     // Action menu logic
-    jQuery('.toolbar-items').each((_, menu:HTMLElement) => {
-      installMenuLogic(jQuery(menu));
+    document.querySelectorAll<HTMLElement>('.toolbar-items').forEach((menu) => {
+      installMenuLogic(menu);
     });
 
     // Legacy settings listener
