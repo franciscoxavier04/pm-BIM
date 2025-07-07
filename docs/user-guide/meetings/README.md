@@ -88,4 +88,4 @@ You can also use the meetings filters to refine the list of meetings based on th
 > [!TIP]
 > If you are interested in how the Meetings module is used by the OpenProject team, please take a look at [this blog article](https://www.openproject.org/blog/meeting-management-example/). 
 >
->  Find out more about OpenProject as [open source meeting management software]( https://www.openproject.org/collaboration-software-features/meeting-management/) .
+> Find out more about OpenProject as [open source meeting management software](https://www.openproject.org/collaboration-software-features/meeting-management/).
