@@ -30,7 +30,13 @@ If you create a project **based on a template**, you will immediately be able to
 
 ![OpenProject screenshot: Create new project, with options to choose what to copy from a template](openproject-16-2-create-project.png)
 
-### Non-latin languages and emojis supported in PDF exports
+### Non-latin languages and emojis supported in PDF exports for work packages
+
+PDF work package exports in OpenProject now support **non-latin characters and emojis**. This means that project information written in scripts such as Chinese, Arabic, Cyrillic, or accented characters — as well as any emojis you use in work packages, meetings, or descriptions — will display correctly in exported PDF files. This ensures that documents generated from OpenProject reflect your content accurately, no matter which language or symbols you use.
+
+![PDF export extract from an OpenProject work package that contains emojis, symbols and non-latin characters](openproject-16-2-pdf-export.png)
+
+Please note that the screenshot only displays some of the now supported characters.
 
 ### Second level navigation for Relations create menu
 
