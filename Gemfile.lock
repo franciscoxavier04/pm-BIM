@@ -560,9 +560,9 @@ GEM
       logger
     factory_bot (6.5.4)
       activesupport (>= 6.1.0)
-    factory_bot_rails (6.4.4)
+    factory_bot_rails (6.5.0)
       factory_bot (~> 6.5)
-      railties (>= 5.0.0)
+      railties (>= 6.1.0)
     faraday (2.13.2)
       faraday-net_http (>= 2.0, < 3.5)
       json
@@ -1391,7 +1391,7 @@ DEPENDENCIES
   erblint-github
   escape_utils (~> 1.3)
   factory_bot (~> 6.5.0)
-  factory_bot_rails (~> 6.4.4)
+  factory_bot_rails (~> 6.5.0)
   ffi (~> 1.15)
   flamegraph
   fog-aws
@@ -1682,7 +1682,7 @@ CHECKSUMS
   eventmachine_httpserver (0.2.1) sha256=5db5e8a23754204d43592e5fcc2160457c57c870babe6307c4e61fc95019b809
   excon (1.2.7) sha256=3b3917dbdf0c65b8d872039fe2b37bf423da2f245ef05b0af07423027c4cfde5
   factory_bot (6.5.4) sha256=4707fb7d80a7c14d71feb069460587bfc342e4ff1ef28097e0ad69d5ddfce613
-  factory_bot_rails (6.4.4) sha256=139e17caa2c50f098fddf5e5e1f29e8067352024e91ca1186d018b36589e5c88
+  factory_bot_rails (6.5.0) sha256=4a7b61635424a57cc60412a18b72b9dcfb02fabfce2c930447a01dce8b37c0a2
   faraday (2.13.2) sha256=5c19762e3bbe78e61d8007c5119f2968373c5296d6c6d6aa05b6f9cec34f2a1a
   faraday-follow_redirects (0.3.0) sha256=d92d975635e2c7fe525dd494fcd4b9bb7f0a4a0ec0d5f4c15c729530fdb807f9
   faraday-net_http (3.4.1) sha256=095757fae7872b94eac839c08a1a4b8d84fd91d6886cfbe75caa2143de64ab3b
