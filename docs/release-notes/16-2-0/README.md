@@ -46,6 +46,8 @@ The + Relation menu has been reorganized with a new two-level structure, making 
 
 ### Select custom field format earlier when creating a new custom field
 
+When creating a new custom field or project attribute, you now select the format — such as text, list, or date — right at the beginning. This streamlines the creation process and avoids unnecessary steps, since each type opens directly in the appropriate form. This improvement is especially helpful for administrators who frequently set up new custom fields.
+
 ### Work package reminders presented in relative humanized time format
 
 ### My time tracking: Collapse future days for week and work week views
