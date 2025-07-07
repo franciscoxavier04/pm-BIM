@@ -37,10 +37,9 @@ RSpec.describe "Creating a SCIM client", :js, :selenium, driver: :firefox_de do
   current_user { admin }
 
   it "can create a SCIM client authenticating through JWT", :aggregate_failures, with_ee: [:scim_api] do
-    visit new_admin_scim_client_path
-
-    expect(page).to be_axe_clean.within("#content")
-                                .skipping("link-in-text-block") # https://community.openproject.org/wp/65252
+    visit_and_check_a11y(new_admin_scim_client_path, skipping: [
+                           "link-in-text-block" # https://community.openproject.org/wp/65252
+                         ])
 
     expect(page).to have_no_field("Subject claim")
     select "JWT from identity provider", from: "Authentication method"
