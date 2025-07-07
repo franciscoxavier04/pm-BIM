@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -31,9 +33,5 @@ class Queries::Versions::Orders::DefaultOrder < Queries::Orders::Base
 
   def self.key
     /\A(id|name)\z/
-  end
-
-  def initialize(attribute)
-    super
   end
 end
