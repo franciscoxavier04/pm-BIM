@@ -1233,6 +1233,8 @@ en:
         new_password: "New password"
         password_confirmation: "Confirmation"
         consented_at: "Consented at"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1318,6 +1320,7 @@ en:
         error_unauthorized: "may not be accessed."
         error_readonly: "was attempted to be written but is not writable."
         error_conflict: "Information has been updated by at least one other user in the meantime."
+        error_not_found: "not found."
         email: "is not a valid email address."
         empty: "can't be empty."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1477,8 +1480,6 @@ en:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "not found"
             public:
               error_unauthorized: "- The user has no permission to create public views."
             group_by:
@@ -1518,10 +1519,8 @@ en:
             circular_dependency: "The relationship creates a circle of relationships."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "SCM vendor is not available"
@@ -1661,10 +1660,6 @@ en:
                 description: "'Password confirmation' should match the input in the 'New password' field."
             status:
               invalid_on_create: "is not a valid status for new users."
-            ldap_auth_source:
-              error_not_found: "not found"
-            auth_source:
-              error_not_found: "not found"
         member:
           principal_blank: "Please choose at least one user or group."
           role_blank: "need to be assigned."
@@ -2210,6 +2205,7 @@ en:
       placeholder_users: Placeholder Users
       project_list_sharing: Project List Sharing
       readonly_work_packages: Readonly Work Packages
+      scim_api: SCIM server API
       sso_auth_providers: Single sign-on
       team_planner_view: Team Planner View
       virus_scanning: Antivirus Scanning
@@ -2278,6 +2274,9 @@ en:
       nextcloud_sso:
         title: "Single Sign-On for Nextcloud Storage"
         description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
+      scim_api:
+        title: "SCIM clients"
+        description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       placeholder_users:

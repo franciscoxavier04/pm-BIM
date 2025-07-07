@@ -1167,6 +1167,8 @@ pl:
         new_password: "Nowe hasło"
         password_confirmation: "Potwierdzenie"
         consented_at: "Zgodę na"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1835,6 +1837,7 @@ pl:
     title: "Tytuł"
     type: "Typ"
     typeahead: "Autouzupełnianie"
+    uid: "Unique identifier"
     updated_at: "Aktualizacja"
     updated_on: "Aktualizacja"
     uploader: "Osoba przesyłająca"
@@ -2209,6 +2212,7 @@ pl:
       placeholder_users: Użytkownicy zastępczy
       project_list_sharing: Udostępnianie listy projektów
       readonly_work_packages: Pakiety robocze tylko do odczytu
+      scim_api: SCIM server API
       sso_auth_providers: Logowanie jednokrotne
       team_planner_view: Widok planisty zespołu
       virus_scanning: Skanowanie antywirusowe
@@ -2275,6 +2279,9 @@ pl:
       nextcloud_sso:
         title: "Logowanie jednokrotne do magazynu Nextcloud"
         description: "Włącz bezproblemowe, bezpieczne uwierzytelnianie dla swojego magazynu Nextcloud za pomocą logowania jednokrotnego. Uprość zarządzanie dostępem i zwiększ wygodę użytkowników."
+      scim_api:
+        title: "SCIM clients"
+        description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
       virus_scanning:
         description: "Upewnij się, że przesłane do OpenProject pliki  są przeskanowane pod kątem wirusów, zanim będą dostępne dla innych użytkowników."
       placeholder_users:

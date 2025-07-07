@@ -35,12 +35,25 @@ RSpec.describe "Listing SCIM clients", :js, :selenium, driver: :firefox_de do
 
   current_user { admin }
 
-  context "when there are no SCIM clients" do
+  context "when using an insufficient enterprise token" do
+    it "renders an enterprise banner and no table" do
+      visit admin_scim_clients_path
+
+      expect(page).to be_axe_clean.within("#content")
+                                  .skipping("color-contrast") # https://community.openproject.org/wp/65507
+
+      expect(page).to have_enterprise_banner(:corporate)
+      expect(page).to have_no_test_selector("Admin::ScimClients::TableComponent")
+    end
+  end
+
+  context "when there are no SCIM clients", with_ee: [:scim_api] do
     it "renders a proper blank slate" do
       visit admin_scim_clients_path
 
       expect(page).to be_axe_clean.within "#content"
 
+      expect(page).not_to have_enterprise_banner
       within_test_selector("Admin::ScimClients::TableComponent") do
         expect(page).to have_content("No SCIM clients configured yet")
         expect(page).to have_content("Add clients to see them here")
@@ -54,7 +67,7 @@ RSpec.describe "Listing SCIM clients", :js, :selenium, driver: :firefox_de do
     end
   end
 
-  context "when there are SCIM clients" do
+  context "when there are SCIM clients", with_ee: [:scim_api] do
     let!(:sso_client) { create(:scim_client) }
 
     it "renders a proper clients table" do
@@ -62,6 +75,7 @@ RSpec.describe "Listing SCIM clients", :js, :selenium, driver: :firefox_de do
 
       expect(page).to be_axe_clean.within "#content"
 
+      expect(page).not_to have_enterprise_banner
       within_test_selector("Admin::ScimClients::TableComponent") do
         within(".name") { expect(page).to have_content(sso_client.name) }
         within(".authentication_method") { expect(page).to have_content("JWT from identity provider") }

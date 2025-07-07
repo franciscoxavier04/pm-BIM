@@ -1155,6 +1155,8 @@ fil:
         new_password: "Bagong password"
         password_confirmation: "Kompirmasyon"
         consented_at: "Consented at"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1795,6 +1797,7 @@ fil:
     title: "Pamagat"
     type: "Uri"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Naka-update sa"
     updated_on: "Naka-update sa"
     uploader: "Uploader"
@@ -2131,6 +2134,7 @@ fil:
       placeholder_users: Placeholder Users
       project_list_sharing: Project List Sharing
       readonly_work_packages: Readonly Work Packages
+      scim_api: SCIM server API
       sso_auth_providers: Single sign-on
       team_planner_view: Team Planner View
       virus_scanning: Antivirus Scanning
@@ -2197,6 +2201,9 @@ fil:
       nextcloud_sso:
         title: "Single Sign-On for Nextcloud Storage"
         description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
+      scim_api:
+        title: "SCIM clients"
+        description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       placeholder_users:

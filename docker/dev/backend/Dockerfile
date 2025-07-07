@@ -37,6 +37,9 @@ RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesourc
 RUN apt-get update
 RUN apt-get install -y nodejs
 
+# Setup java. Needed for https://github.com/NUARIG/ladle which is used in specs to test LDAP related behavior.
+RUN apt-get install -y openjdk-17-jdk
+
 COPY ./docker/dev/backend/scripts/setup /usr/sbin/setup
 COPY ./docker/dev/backend/scripts/setup-bim /usr/sbin/setup-bim
 COPY ./docker/dev/backend/scripts/run-app /usr/sbin/run-app

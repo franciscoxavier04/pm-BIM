@@ -175,8 +175,7 @@ RSpec/IndexedLet:
 
 # The http verbs in Rack::Test do not accept named parameters (params: params)
 Rails/HttpPositionalArguments:
-  Exclude:
-    - 'spec/requests/api/v3/**/*.rb'
+  Enabled: false
 
 # require_dependency is an obsolete method for Rails applications running in Zeitwerk mode.
 Rails/RequireDependency:

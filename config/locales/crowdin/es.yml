@@ -746,7 +746,7 @@ es:
           automatic_with_children: "Fechas determinadas por paquetes de trabajo secundarios."
           automatic_with_predecessor: "La fecha de inicio la fija un predecesor."
           manual_mobile: "Programado manualmente."
-          manually_scheduled: "Programado manualmente. No afectadas por relaciones."
+          manually_scheduled: "Programado manualmente. Fechas no afectadas por relaciones."
       blankslate:
         title: "Sin predecesores"
         description: "Para activar la programación automática, este paquete de trabajo debe tener al menos un predecesor. Entonces se programará automáticamente para que comience después del predecesor más cercano."
@@ -1152,6 +1152,8 @@ es:
         new_password: "Nueva contraseña"
         password_confirmation: "Confirmación"
         consented_at: "Consentido en"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1792,6 +1794,7 @@ es:
     title: "Título"
     type: "Tipo"
     typeahead: "Autocompletar"
+    uid: "Unique identifier"
     updated_at: "Actualizada el"
     updated_on: "Actualizada el"
     uploader: "Cargador"
@@ -2128,6 +2131,7 @@ es:
       placeholder_users: Usuarios de marcadores de posición
       project_list_sharing: Compartición de la lista de proyectos
       readonly_work_packages: Paquetes de trabajo de solo lectura
+      scim_api: SCIM server API
       sso_auth_providers: Inicio de sesión único
       team_planner_view: Vista del planificador de equipo
       virus_scanning: Análisis de antivirus
@@ -2194,6 +2198,9 @@ es:
       nextcloud_sso:
         title: "Inicio de sesión único para almacenamiento en la nube"
         description: "Habilite una autenticación fluida y segura para su almacenamiento Nextcloud con el inicio de sesión único. Simplifique la gestión del acceso y mejore la comodidad de los usuarios."
+      scim_api:
+        title: "SCIM clients"
+        description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
       virus_scanning:
         description: "Asegúrese de que los archivos cargados en OpenProject se analizan en busca de virus antes de que otros usuarios puedan acceder a ellos."
       placeholder_users:

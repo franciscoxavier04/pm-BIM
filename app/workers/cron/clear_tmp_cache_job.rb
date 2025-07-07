@@ -28,10 +28,10 @@
 
 module Cron
   class ClearTmpCacheJob < ApplicationJob
-    include ::RakeJob
-
+    ##
+    # Clear the tmp/cache directory in case a file caching is configured
     def perform
-      super("tmp:cache:clear")
+      FileUtils.rm_rf(Dir["tmp/cache/[^.]*"], verbose: false)
     end
   end
 end

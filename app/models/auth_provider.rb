@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -32,7 +34,10 @@ class AuthProvider < ApplicationRecord
   has_many :scim_clients, dependent: :restrict_with_error
 
   has_many :user_auth_provider_links, dependent: :destroy
-  has_many :users, through: :user_auth_provider_links
+  has_many :users,
+           -> { where(type: "User") },
+           through: :user_auth_provider_links,
+           source: :principal
 
   validates :display_name, presence: true
   validates :display_name, uniqueness: true

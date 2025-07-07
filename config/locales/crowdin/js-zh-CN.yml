@@ -324,7 +324,7 @@ zh-CN:
     label_added_time_by: '由 <a href=%{authorLink}>%{author}</a> 在 %{age} 添加'
     label_ago: "天前"
     label_all: "所有"
-    label_all_projects: "All projects"
+    label_all_projects: "所有项目"
     label_all_uppercase: "全部"
     label_all_work_packages: "所有工作包"
     label_and: "和"
@@ -642,12 +642,12 @@ zh-CN:
       title: "输入密码以继续"
     pagination:
       no_other_page: "您位于唯一页面上。"
-      pagination_controls: "Pagination controls"
+      pagination_controls: "分页控制"
       pages:
-        next: "Next page"
-        previous: "Previous page"
-        page_number: Page %{number}
-        show_per_page: Show %{number} per page
+        next: "下一页"
+        previous: "上一页"
+        page_number: 页%{number}
+        show_per_page: 每页显示 %{number}
     placeholders:
       default: "-"
       subject: "在此处输入标题"

@@ -1147,6 +1147,8 @@ vi:
         new_password: "Mật khẩu mới"
         password_confirmation: "Xác nhận lại mật khẩu"
         consented_at: "Đồng ý tại"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1773,6 +1775,7 @@ vi:
     title: "Tiêu đề"
     type: "Loại"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Được cập nhật vào lúc"
     updated_on: "Cập nhật vào"
     uploader: "Tải lên"
@@ -2090,6 +2093,7 @@ vi:
       placeholder_users: Placeholder Users
       project_list_sharing: Project List Sharing
       readonly_work_packages: Readonly Work Packages
+      scim_api: SCIM server API
       sso_auth_providers: Single sign-on
       team_planner_view: Team Planner View
       virus_scanning: Antivirus Scanning
@@ -2156,6 +2160,9 @@ vi:
       nextcloud_sso:
         title: "Single Sign-On for Nextcloud Storage"
         description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
+      scim_api:
+        title: "SCIM clients"
+        description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
       virus_scanning:
         description: "Đảm bảo các tệp tải lên trong OpenProject được quét virus trước khi được người dùng khác truy cập."
       placeholder_users:
@@ -2780,7 +2787,7 @@ vi:
   label_filter_add: "Thêm bộ lọc"
   label_filter_by: "Filter by"
   label_filter_any_name_attribute: "Name attributes"
-  label_filter_plural: "Các bộ lọc"
+  label_filter_plural: "Bộ lọc"
   label_filters_toggle: "Hiển thị/ẩn bộ lọc"
   label_float: "Số thực"
   label_folder: "Thư mục"
