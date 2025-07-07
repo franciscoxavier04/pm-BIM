@@ -45,6 +45,7 @@ module WorkPackage::Exports
     #   projectValue:1234:active # Outputs project with id 1234 value for "active"
     #   projectValue:my-project-identifier:active # Outputs project with identifier my-project-identifier value for "active"
     class Attributes < OpenProject::TextFormatting::Matchers::RegexMatcher
+      extend WorkPackage::Exports::Attributes
       DISABLED_PROJECT_RICH_TEXT_FIELDS = %i[description status_explanation status_description].freeze
       DISABLED_WORK_PACKAGE_RICH_TEXT_FIELDS = %i[description].freeze
 
@@ -154,6 +155,8 @@ module WorkPackage::Exports
                   else
                     "cf_#{cf.id}"
                   end
+
+        return "" if cf.nil? && !user_allowed_in_view_attribute?(obj, ar_name)
         return msg_macro_error_rich_text if disabled_rich_text_fields.include?(ar_name.to_sym)
 
         format_attribute_value(ar_name, obj.class, obj)
