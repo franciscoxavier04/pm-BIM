@@ -34,7 +34,8 @@ class My::AlertsForm < ApplicationForm
                 label: I18n.t("activerecord.attributes.user_preference.warn_on_leaving_unsaved")
 
     f.check_box name: :auto_hide_popups,
-                label: I18n.t("activerecord.attributes.user_preference.auto_hide_popups")
+                label: I18n.t("activerecord.attributes.user_preference.auto_hide_popups"),
+                caption: I18n.t("activerecord.attributes.user_preference.auto_hide_popups_caption")
 
     f.submit(name: :submit, label: I18n.t("activerecord.attributes.user_preference.button_update_alerts"), scheme: :default)
   end
