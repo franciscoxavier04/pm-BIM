@@ -28,10 +28,8 @@
 
 module Cron
   class ClearUploadedFilesJob < ApplicationJob
-    include ::RakeJob
-
     def perform
-      super("attachments:clear")
+      Attachment.clean_cached_files!
     end
   end
 end

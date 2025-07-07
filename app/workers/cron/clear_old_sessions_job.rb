@@ -28,8 +28,6 @@
 
 module Cron
   class ClearOldSessionsJob < ApplicationJob
-    include ::RakeJob
-
     def perform
       Sessions::ClearOldSessionsService.call!
     end
