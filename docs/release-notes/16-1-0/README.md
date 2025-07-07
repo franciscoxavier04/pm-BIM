@@ -84,6 +84,7 @@ This makes it easier to represent overlapping tasks and more flexible schedules 
 ![Overlay of editing a successor (after) with a lag of -3 days](openproject-16-1-negative-lag.png)
 
 Please note that negative lags can be counterintuitive:
+
 - A lag of 0 schedules the successor one day after the predecessor’s finish date.
 - A lag of -1 schedules it on the same day.
 - A lag of -2 schedules it one day before, and so on.
