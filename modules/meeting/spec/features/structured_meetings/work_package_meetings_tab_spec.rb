@@ -350,6 +350,7 @@ RSpec.describe "Open the Meetings tab",
         shared_let(:past_meeting) { create(:meeting, project:, start_time: Date.yesterday - 10.hours) }
         shared_let(:first_upcoming_meeting) { create(:meeting, project:) }
         shared_let(:second_upcoming_meeting) { create(:meeting, project:) }
+        shared_let(:in_progress_meeting) { create(:meeting, project:, state: :in_progress) }
         shared_let(:closed_upcoming_meeting) { create(:meeting, project:, state: :closed) }
         shared_let(:ongoing_meeting) do
           create(:meeting, title: "Ongoing", project:, start_time: 1.hour.ago, duration: 4.0)
@@ -404,6 +405,25 @@ RSpec.describe "Open the Meetings tab",
 
           page.within_test_selector("op-meeting-container-#{ongoing_meeting.id}") do
             expect(page).to have_content("Some notes to be added")
+          end
+        end
+
+        it "allows the user to select in progress meetings (Bug #65502)" do
+          work_package_page.visit!
+          switch_to_meetings_tab
+
+          meetings_tab.open_add_to_meeting_dialog
+
+          meetings_tab.fill_and_submit_meeting_dialog(
+            in_progress_meeting,
+            "In progress notes",
+            1
+          )
+
+          meetings_tab.expect_upcoming_counter_to_be(1)
+
+          page.within_test_selector("op-meeting-container-#{in_progress_meeting.id}") do
+            expect(page).to have_content("In progress notes")
           end
         end
 
