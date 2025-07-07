@@ -153,7 +153,7 @@ module Pages::Meetings
     end
 
     def in_agenda_form(&)
-      page.within("#meeting-agenda-items-form-component", &)
+      page.within("#meeting-agenda-items-form-component-new", &)
     end
 
     def assert_agenda_order!(*titles)

@@ -50,6 +50,20 @@ RSpec.describe MeetingAgendaItems::FormComponent, type: :component do
     )
   end
 
+  context "with a new agenda item" do
+    let(:meeting_agenda_item) { MeetingAgendaItem.new(meeting:, meeting_section:) }
+
+    it "renders component wrapper" do
+      expect(rendered_component).to have_element id: "meeting-agenda-items-form-component-new"
+    end
+  end
+
+  context "with an existing agenda item" do
+    it "renders component wrapper" do
+      expect(rendered_component).to have_element id: "meeting-agenda-items-form-component-#{meeting_agenda_item.id}"
+    end
+  end
+
   it "renders form" do
     expect(rendered_component).to have_element :form, method:, action: submit_path
   end
