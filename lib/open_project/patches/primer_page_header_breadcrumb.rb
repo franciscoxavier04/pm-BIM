@@ -31,8 +31,10 @@
 module OpenProject
   module Patches
     module PrimerPageHeaderBreadcrumb
-      def with_breadcrumbs(breadcrumbs, **)
-        super([{ href: home_path, text: helpers.organization_name }] + breadcrumbs, **)
+      def with_breadcrumbs(breadcrumbs, skip_home_on_mobile: false, **)
+        super([{ href: home_path,
+                 text: helpers.organization_name,
+                 skip_for_mobile: skip_home_on_mobile }] + breadcrumbs, **)
       end
     end
   end
