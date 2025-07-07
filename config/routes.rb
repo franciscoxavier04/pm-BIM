@@ -155,6 +155,7 @@ Rails.application.routes.draw do
         put :drop
       end
       collection do
+        get :edit
         put :enable_all
         put :disable_all
       end

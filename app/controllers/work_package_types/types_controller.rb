@@ -35,7 +35,7 @@ module WorkPackageTypes
     layout "admin"
 
     before_action :require_admin
-    before_action :find_type, only: %i[move destroy]
+    before_action :find_type, only: %i[update move destroy]
 
     current_menu_item do
       :types
@@ -58,12 +58,8 @@ module WorkPackageTypes
     end
 
     def edit
-      if params[:tab].blank?
-        redirect_to tab: :settings
-      else
-        type = ::Type.includes(:projects, :custom_fields).find(params[:id])
-        render_edit_tab(type)
-      end
+      type = ::Type.includes(:projects, :custom_fields).find(params[:id])
+      render_edit_tab(type)
     end
 
     def create

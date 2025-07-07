@@ -38,7 +38,7 @@ RSpec.describe "type export configuration tab", :js do
 
   before do
     login_as(admin)
-    visit edit_tab_type_path(id: type.id, tab: "export_configuration")
+    visit edit_type_pdf_export_template_index_path(id: type.id)
   end
 
   def within_pdf_export_template_container(template_id, &)
