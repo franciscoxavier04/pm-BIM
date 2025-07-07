@@ -16,9 +16,11 @@ We released [OpenProject 16.2.0](https://community.openproject.org/versions/2196
 
 ### New header and sidebar with improved navigation and design
 
-- Hamburger sidebar toggle moved from main navigation to sidebar
-- Default color of sidebar changed in light mode
-- Position of search and create button in top bar moved
+OpenProject 16.2 introduces a redesigned header and sidebar that make navigating your projects noticeably easier. The sidebar toggle (hamburger icon) has moved inside the sidebar itself, the default sidebar color in light mode is now lighter and more modern, and the search and create buttons have been repositioned in the top bar for a more intuitive workflow. Together, these changes create a cleaner, more focused interface that helps you find what you need faster and align with the user interface used in [openDesk](/opendesk/).
+
+![OpenProject Home page with the new header and sidebar navigation and design](openproject-16-2-design-updates.png)
+
+Please note that if you have customized the sidebar colors, your individual settings will remain unchanged.
 
 ### Primer design system added to project create and project copy forms
 
