@@ -29,6 +29,8 @@
 require "fileutils"
 
 class LocalFileUploader < CarrierWave::Uploader::Base
+  # CarrierWave 2.x uses ImageProcessing gem for image manipulation
+  include CarrierWave::MiniMagick
   include FileUploader
   storage :file
 

@@ -195,8 +195,8 @@ gem "rack-timeout", "~> 0.7.0", require: "rack/timeout/base"
 
 gem "nokogiri", "~> 1.18.8"
 
-gem "carrierwave", "~> 1.3.4"
-gem "carrierwave_direct", "~> 2.1.0"
+gem "carrierwave", "~> 3.1.1"
+gem "carrierwave_direct", "~> 3.0.0"
 gem "fog-aws"
 
 gem "aws-sdk-core", "~> 3.107"
