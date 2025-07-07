@@ -40,6 +40,8 @@ Please note that the screenshot only displays some of the now supported characte
 
 ### Second level navigation for Relations create menu
 
+![OpenProject work package Relations tab when clicking on +Relation, showing some relations unfolded under 'Other relations'](openproject-user-guide-relations-second-level-navigation.png)
+
 ### Select custom field format earlier when creating a new custom field
 
 ### Work package reminders presented in relative humanized time format
@@ -47,6 +49,8 @@ Please note that the screenshot only displays some of the now supported characte
 ### My time tracking: Collapse future days for week and work week views
 
 ### Option to disable keyboard shortcuts for better accessibility
+
+![OpenProject account settings on interface options, with highlighted option to disable keyboard shortcuts](openproject-user-guide-account-settings-interface.png)
 
 ## Important technical changes
 
