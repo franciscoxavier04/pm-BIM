@@ -42,8 +42,9 @@ module CostReports
     def breadcrumb_items
       [
         ({ href: project_overview_path(@project.id), text: @project.name } if @project.present?),
-        { href: url_for({ controller: "cost_reports", action: :index, project_id: @project }),
-          text: I18n.t(:cost_reports_title), skip_for_mobile: current_section && current_section.header.present? },
+        { href: module_path,
+          text: I18n.t(:cost_reports_title),
+          skip_for_mobile: !current_section || current_section.header.blank? },
         current_breadcrumb_element
       ].compact
     end
@@ -68,6 +69,10 @@ module CostReports
 
     def show_export_button?
       @user.allowed_in_any_work_package?(:export_work_packages, in_project: @project)
+    end
+
+    def module_path
+      @project.present? ? cost_reports_path(@project) : global_cost_reports_path
     end
   end
 end

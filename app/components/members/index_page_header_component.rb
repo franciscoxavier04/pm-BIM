@@ -81,6 +81,7 @@ class Members::IndexPageHeaderComponent < ApplicationComponent
       section.children.find do |menu_query|
         if !!menu_query.selected
           query_name = menu_query.title
+          query_href = menu_query.href
           menu_header = section.header
         end
       end
