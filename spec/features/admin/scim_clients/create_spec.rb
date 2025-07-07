@@ -36,7 +36,7 @@ RSpec.describe "Creating a SCIM client", :js, :selenium, driver: :firefox_de do
 
   current_user { admin }
 
-  it "can create a SCIM client authenticating through JWT", :aggregate_failures do
+  it "can create a SCIM client authenticating through JWT", :aggregate_failures, with_ee: [:scim_api] do
     visit new_admin_scim_client_path
 
     expect(page).to be_axe_clean.within("#content")
@@ -64,7 +64,7 @@ RSpec.describe "Creating a SCIM client", :js, :selenium, driver: :firefox_de do
     expect(created_client.auth_provider_link&.external_id).to eq("123-abc-456-def")
   end
 
-  it "can create a SCIM client authenticating through client credentials" do
+  it "can create a SCIM client authenticating through client credentials", with_ee: [:scim_api] do
     visit new_admin_scim_client_path
 
     fill_in "Name", with: "My SCIM Client"
@@ -79,11 +79,13 @@ RSpec.describe "Creating a SCIM client", :js, :selenium, driver: :firefox_de do
 
     page.within_modal("Client credentials created") do
       expect(page).to have_field("Client ID", with: created_client.oauth_application.uid)
-      expect(page).to have_field("Client secret", with: created_client.oauth_application.secret)
+      plaintext_secret = page.find_field("Client secret").value
+      hashed_secret = created_client.oauth_application.secret
+      expect(Digest::SHA256.hexdigest(plaintext_secret)).to eq(hashed_secret)
     end
   end
 
-  it "can create a SCIM client authenticating through a static access token" do
+  it "can create a SCIM client authenticating through a static access token", with_ee: [:scim_api] do
     visit new_admin_scim_client_path
 
     fill_in "Name", with: "My SCIM Client"
@@ -97,7 +99,10 @@ RSpec.describe "Creating a SCIM client", :js, :selenium, driver: :firefox_de do
     expect(page).to have_current_path(edit_admin_scim_client_path(created_client, first_time_setup: true))
 
     page.within_modal("Token created") do
-      expect(page).to have_field("Token", with: created_client.oauth_application.access_tokens.last.token)
+      plaintext_token = page.find_field("Token").value
+      hashed_token = created_client.oauth_application.access_tokens.last.token
+      expect(plaintext_token).to be_present
+      expect(Digest::SHA256.hexdigest(plaintext_token)).to eq(hashed_token)
     end
   end
 end

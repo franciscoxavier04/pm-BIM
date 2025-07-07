@@ -113,23 +113,23 @@ ru:
     scim_clients:
       authentication_methods:
         sso: "JWT from identity provider"
-        oauth2_client: "OAuth 2.0 client credentials"
-        oauth2_token: "Static access token"
+        oauth2_client: "Учётные данные клиента OAuth 2.0"
+        oauth2_token: "Постоянный токен доступа"
       created_client_credentials_dialog_component:
-        title: "Client credentials created"
-        heading: "Client credentials have been generated"
-        one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
+        title: "Учётные данные созданы"
+        heading: "Учётные данные клиента сгенерированы"
+        one_time_hint: "Это единственный раз, когда Вы увидите секретный ключ. Убедитесь, что вы сохранили его."
       created_token_dialog_component:
-        title: "Token created"
-        heading: "An token has been generated"
-        label_token: "Token"
-        one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
+        title: "Токен доступа создан"
+        heading: "Токен доступа сгенерирован"
+        label_token: "Токен доступа"
+        one_time_hint: "Это единственный раз, когда Вы увидите токен. Убедитесь, что вы сохранили его."
       delete_scim_client_dialog_component:
-        title: "Delete SCIM client"
-        heading: "Are you sure you want to delete this SCIM client?"
-        description: "Users managed by this SCIM client can no longer be updated by it."
+        title: "Удалить клиента SCIM"
+        heading: "Вы уверены, что хотите удалить этого клиента SCIM?"
+        description: "Пользователи, управляемые этим SCIM клиентом, больше не могут быть обновлены им."
       edit:
-        label_delete_scim_client: "Delete SCIM client"
+        label_delete_scim_client: "Удалить клиента SCIM"
       form:
         auth_provider_description: "This is the service that users added by the SCIM provider will use to authenticate in OpenProject."
         authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
@@ -150,16 +150,16 @@ ru:
         blank_slate:
           title: "No SCIM clients configured yet"
           description: "Add clients to see them here"
-        user_count: "Users"
+        user_count: "Пользователи"
       token_list_component:
         description: "The tokens you generate here can be passed by a SCIM client to access the OpenProject SCIM API."
-        heading: "Tokens"
-        label_add_token: "Token"
-        label_aria_add_token: "Add token"
+        heading: "Токены"
+        label_add_token: "Токен"
+        label_aria_add_token: "Добавить токен"
       token_table_component:
         blank_slate:
-          title: "No tokens have been created yet"
-          description: "You can create one now"
+          title: "Пока не создано ни одного токена"
+          description: "Вы можете создать его прямо сейчас"
         expired: "Expired on %{date}"
         revoked: "Revoked on %{date}"
         title: "Access token table"
@@ -699,7 +699,7 @@ ru:
         tab: "Настройка форм"
       projects:
         tab: Проекты
-        enable_all: Enable for all projects
+        enable_all: Использовать во всех проектах
         select_projects: Select projects
         select_projects_description: Select the projects in which you would like to use this type.
       settings:
@@ -958,7 +958,7 @@ ru:
         attribute_name: "Атрибут"
         help_text: "Текст справки"
       auth_provider:
-        scim_clients: "SCIM clients"
+        scim_clients: "Клиенты SCIM"
       capability:
         context: "Контекст"
       changeset:
@@ -1169,6 +1169,8 @@ ru:
         new_password: "Новый пароль"
         password_confirmation: "Подтверждение"
         consented_at: "Согласен с"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Оформление"
         header_alerts: "Оповещения"
@@ -1837,6 +1839,7 @@ ru:
     title: "Заголовок"
     type: "Тип"
     typeahead: "Автозаполнение"
+    uid: "Unique identifier"
     updated_at: "Обновлено"
     updated_on: "Обновлено"
     uploader: "Кто загрузил"
@@ -1995,11 +1998,11 @@ ru:
     text:
       failed: 'Не удалось скопировать проект «%{source_project_name}» в проект «%{target_project_name}».'
       succeeded: 'Скопированный проект «%{source_project_name}» в «%{target_project_name}».'
-    source_project_label: "Project copied"
+    source_project_label: "Проект скопирован"
     copy_options:
       dependencies_label: 'Copy from project'
   create_project:
-    template_label: "Use template"
+    template_label: "Использовать шаблон"
     copy_options:
       dependencies_label: 'Copy from template'
   create_wiki_page: "Добавить новую wiki-страницу"
@@ -2211,6 +2214,7 @@ ru:
       placeholder_users: Пользователи-заполнители
       project_list_sharing: Совместное использование списка проектов
       readonly_work_packages: Пакеты работ только для чтения
+      scim_api: SCIM server API
       sso_auth_providers: Единый вход (SSO)
       team_planner_view: Просмотр командных планировщиков
       virus_scanning: Антивирусное сканирование
@@ -2277,6 +2281,9 @@ ru:
       nextcloud_sso:
         title: "Единый вход для Nextcloud хранения"
         description: "Включите бесшовную и безопасную аутентификацию для вашего Nextcloud хранилища с помощью Single Sign-On. Упростите управление доступом и сделайте удобным для пользователя."
+      scim_api:
+        title: "SCIM clients"
+        description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
       virus_scanning:
         description: "Будьте уверены в том, что загруженные в OpenProject файлы проверены на наличие вирусов, прежде чем они станут доступны другим пользователям."
       placeholder_users:

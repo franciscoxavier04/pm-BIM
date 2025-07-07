@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,45 +27,21 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-require "rake"
 
-##
-# Invoke a rake task while loading the tasks on demand
-# to ensure they are only loaded once.
-module RakeJob
-  attr_reader :task_name, :args
+Rails.application.config.to_prepare do
+  Scimitar.service_provider_configuration = Scimitar::ServiceProviderConfiguration.new(
+    patch: Scimitar::Supportable.supported,
+    authenticationSchemes: [Scimitar::AuthenticationScheme.bearer]
+  )
+  Scimitar.engine_configuration = Scimitar::EngineConfiguration.new(
+    application_controller_mixin: ScimV2::ScimControllerMixins
+  )
 
-  def perform(task_name, *args)
-    @task_name = task_name
-    @args = args
-
-    Rails.logger.info { "Invoking Rake task #{task_name}." }
-    invoke
+  Scimitar::Schema::User.singleton_class.class_eval do
+    prepend ScimitarSchemaExtension
   end
 
-  protected
-
-  def invoke
-    if (task = load_task)
-      task.reenable
-      task.invoke *args
-    else
-      OpenProject.logger.error { "Rake task #{task_name} not found for background job." }
-    end
-  end
-
-  ##
-  # Load tasks if we don't find our task
-  def load_task
-    Rails.application.load_tasks unless task_loaded?
-
-    task_loaded? && Rake::Task[task_name]
-  end
-
-  ##
-  # Returns whether any task is loaded
-  # Will raise NameError or NoMethodError depending on what of rake is (not) loaded
-  def task_loaded?
-    Rake::Task.task_defined?(task_name)
+  Scimitar::Schema::Group.singleton_class.class_eval do
+    prepend ScimitarSchemaExtension
   end
 end

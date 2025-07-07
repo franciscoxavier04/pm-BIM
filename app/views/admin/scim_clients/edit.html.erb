@@ -60,7 +60,7 @@ See COPYRIGHT and LICENSE files for more details.
 <%= render(Admin::ScimClients::TokenListComponent.new(@scim_client)) if @scim_client.authentication_method_oauth2_token? %>
 
 <% if @setup_token %>
-  <%= render(Admin::ScimClients::CreatedTokenDialogComponent.new(@scim_client.access_tokens.first, data: { controller: "auto-show-dialog" })) %>
-<% elsif @setup_client_credentials %>
-  <%= render(Admin::ScimClients::CreatedClientCredentialsDialogComponent.new(@scim_client, data: { controller: "auto-show-dialog" })) %>
+  <%= render(Admin::ScimClients::CreatedTokenDialogComponent.new(@setup_token, data: { controller: "auto-show-dialog" })) %>
+<% elsif @setup_client_secret %>
+  <%= render(Admin::ScimClients::CreatedClientCredentialsDialogComponent.new(@scim_client, plaintext_secret: @setup_client_secret, data: { controller: "auto-show-dialog" })) %>
 <% end %>

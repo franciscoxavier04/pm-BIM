@@ -31,6 +31,7 @@
 module Users
   class SetAttributesService < ::BaseServices::SetAttributes
     include ::HookHelper
+    include ::UserAuthProviderLinksSetter
 
     private
 
@@ -61,23 +62,6 @@ module Users
       ::UserPreferences::SetAttributesService
         .new(user:, model: model.pref, contract_class: ::UserPreferences::UpdateContract)
         .call(pref)
-    end
-
-    def set_user_auth_provider_links(identity_url)
-      if identity_url.present?
-        slug, external_id = identity_url.split(":", 2)
-        if slug.present? && external_id.present?
-          auth_provider_id = AuthProvider.where(slug:).pick(:id)
-          if auth_provider_id.present?
-            model
-              .user_auth_provider_links
-              .find_or_initialize_by(auth_provider_id:)
-              .assign_attributes(external_id:)
-          else
-            raise ActiveRecord::RecordNotFound, "AuthProvider with slug: \"#{slug}\" has been not found"
-          end
-        end
-      end
     end
 
     # rubocop:disable Metrics/AbcSize

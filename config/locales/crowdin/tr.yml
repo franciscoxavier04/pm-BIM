@@ -1154,6 +1154,8 @@ tr:
         new_password: "Yeni parola"
         password_confirmation: "Onay"
         consented_at: "Rızanın alınması"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1794,6 +1796,7 @@ tr:
     title: "Başlık"
     type: "Tür"
     typeahead: "Otomatik tamamla"
+    uid: "Unique identifier"
     updated_at: "Güncelleme tarihi"
     updated_on: "Güncelleme tarihi"
     uploader: "Yükleyici"
@@ -2130,6 +2133,7 @@ tr:
       placeholder_users: Yer Tutucu Kullanıcılar
       project_list_sharing: Proje Listesi Paylaşımı
       readonly_work_packages: Salt Okunur İş Paketleri
+      scim_api: SCIM server API
       sso_auth_providers: Single sign-on
       team_planner_view: Takım Planlayıcı Görünümü
       virus_scanning: Antivirus Scanning
@@ -2196,6 +2200,9 @@ tr:
       nextcloud_sso:
         title: "Single Sign-On for Nextcloud Storage"
         description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
+      scim_api:
+        title: "SCIM clients"
+        description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
       virus_scanning:
         description: "OpenProject'te yüklenen dosyaların diğer kullanıcılar tarafından erişilmeden önce virüslere karşı tarandığından emin olun."
       placeholder_users:

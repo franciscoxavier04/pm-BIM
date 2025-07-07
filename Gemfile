@@ -59,6 +59,8 @@ gem "will_paginate", "~> 4.0.0"
 
 gem "friendly_id", "~> 5.5.0"
 
+gem "scimitar", "~> 2.11"
+
 gem "acts_as_list", "~> 1.2.0"
 gem "acts_as_tree", "~> 2.9.0"
 gem "awesome_nested_set", "~> 3.8.0"
@@ -201,7 +203,7 @@ gem "aws-sdk-core", "~> 3.107"
 # File upload via fog + screenshots on travis
 gem "aws-sdk-s3", "~> 1.91"
 
-gem "openproject-token", "~> 7.2.0"
+gem "openproject-token", "~> 7.3.0"
 
 gem "plaintext", "~> 0.3.2"
 

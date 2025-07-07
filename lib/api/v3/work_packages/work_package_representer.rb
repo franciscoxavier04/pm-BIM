@@ -180,7 +180,7 @@ module API
           next unless represented.type_id
 
           {
-            href: edit_type_path(represented.type_id, tab: "form_configuration"),
+            href: edit_type_form_configuration_path(represented.type_id),
             type: "text/html",
             title: "Configure form"
           }
