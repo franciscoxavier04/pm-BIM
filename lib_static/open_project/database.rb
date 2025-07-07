@@ -97,7 +97,7 @@ module OpenProject
 
         if adapter_name.match?(/mysql/i)
           message << " As MySql used to be supported, there is a migration script to ease the transition " \
-                     "(https://www.openproject.org/deprecating-mysql-support/)."
+                     "(https://www.openproject.org/blog/deprecating-mysql-support/)."
         end
 
         raise UnsupportedDatabaseError.new message
