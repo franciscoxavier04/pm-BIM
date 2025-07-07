@@ -46,15 +46,21 @@ The + Relation menu has been reorganized with a new two-level structure, making 
 
 ### Select custom field format earlier when creating a new custom field
 
-When creating a new custom field or project attribute, you now select the format — such as text, list, or date — right at the beginning. This streamlines the creation process and avoids unnecessary steps, since each type opens directly in the appropriate form. This improvement is especially helpful for administrators who frequently set up new custom fields.
-
-### Work package reminders presented in relative humanized time format
+When creating a new custom field, you now select the format — such as text, list, or date — right at the beginning, on the index page of custom fields and project attributes. This streamlines the creation process and avoids unnecessary steps, since each type opens directly in the appropriate form. This improvement is especially helpful for administrators who frequently set up new custom fields.
 
 ### My time tracking: Collapse future days for week and work week views
+
+
 
 ### Option to disable keyboard shortcuts for better accessibility
 
 ![OpenProject account settings on interface options, with highlighted option to disable keyboard shortcuts](openproject-user-guide-account-settings-interface.png)
+
+### Work package reminders presented in relative humanized time format
+
+When you set a reminder for a work package, OpenProject now confirms this with a **relative, human-friendly time**. Instead of just showing a fixed date and time, the success message will say, for example, *“Reminder set successfully. You will receive a notification tomorrow at 9:00 AM.”* This small improvement makes it easier to quickly understand when your reminder will appear.
+
+![User information that appears when setting a reminder: Reminder set successfully. You will receive a notification for this work package tomorrow.](openproject-16-2-reminder.png)
 
 ## Important technical changes
 
