@@ -149,15 +149,18 @@ See COPYRIGHT and LICENSE files for more details.
       <%= content_tag :div,
                       id: "content",
                       class: "#{initial_classes} #{'content--split' if content_for?(:content_body_right)}" do %>
-        <%= render(OpenProject::Common::MainMenuToggleComponent.new(expanded: false)) %>
         <h1 class="hidden-for-sighted accessibility-helper"><%= t(:label_content) %></h1>
         <% if content_for?(:content_header) %>
           <div id="content-header">
+            <%= render(OpenProject::Common::MainMenuToggleComponent.new(expanded: false)) %>
+
             <%= content_for :content_header %>
           </div>
         <% end %>
 
         <div id="content-body">
+          <%= render(OpenProject::Common::MainMenuToggleComponent.new(expanded: false)) unless content_for?(:content_header) %>
+
           <%= content_for :content_body %>
           <% unless local_assigns[:no_layout_yield] %>
             <%= yield %>
