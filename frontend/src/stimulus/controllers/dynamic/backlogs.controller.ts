@@ -3,7 +3,6 @@ import { Controller } from '@hotwired/stimulus';
 import 'core-vendor/jquery.flot/jquery.flot';
 import 'core-vendor/jquery.flot/excanvas';
 import 'core-vendor/jquery.jeditable.mini';
-import 'core-vendor/jquery.cookie';
 import 'core-vendor/jquery.colorcontrast';
 
 import './backlogs/common';
