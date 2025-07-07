@@ -50,7 +50,9 @@ When creating a new custom field, you now select the format — such as text, li
 
 ### My time tracking: Collapse future days for week and work week views
 
+In the **My time tracking** module, the week and work week views now automatically collapse future and past days while keeping today expanded. This helps you focus on logging time for the current and past days without being distracted by empty future slots. If you view a past week, all days are expanded as before.
 
+![OpenProject's My time tracking module in list view, only Today expanded](user-guide-my-time-tracking-module-list-view.png)
 
 ### Option to disable keyboard shortcuts for better accessibility
 
