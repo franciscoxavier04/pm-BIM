@@ -40,6 +40,8 @@ Please note that the screenshot only displays some of the now supported characte
 
 ### Second level navigation for Relations create menu
 
+The + Relation menu has been reorganized with a new two-level structure, making it clearer and easier to navigate. The most common relations like **Related to**, **Predecessor**, **Successor**, **(New) Child**, and **Parent** are now shown directly, while less frequently used options such as Duplicates, Blocks, or Requires are grouped under Other relations. This helps you see the primary choices at a glance and keep your work package relations more structured.
+
 ![OpenProject work package Relations tab when clicking on +Relation, showing some relations unfolded under 'Other relations'](openproject-user-guide-relations-second-level-navigation.png)
 
 ### Select custom field format earlier when creating a new custom field
