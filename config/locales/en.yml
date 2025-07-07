@@ -2149,6 +2149,9 @@ en:
         one: "1 s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "hour"
         other: "hours"

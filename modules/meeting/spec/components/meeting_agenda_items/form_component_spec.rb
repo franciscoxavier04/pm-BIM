@@ -59,7 +59,7 @@ RSpec.describe MeetingAgendaItems::FormComponent, type: :component do
   end
 
   it "renders duration field" do
-    expect(rendered_component).to have_field "min", type: :number
+    expect(rendered_component).to have_field "Duration", type: :number, placeholder: "mins"
   end
 
   it "renders presenter field" do
