@@ -57,11 +57,6 @@ module WorkPackageTypes
       load_projects_and_types
     end
 
-    def edit
-      type = ::Type.includes(:projects, :custom_fields).find(params[:id])
-      render_edit_tab(type)
-    end
-
     def create
       additional_params = {}
       value = params.dig(:type, :copy_workflow_from)
@@ -82,11 +77,10 @@ module WorkPackageTypes
     def move
       if @type.update(permitted_params.type_move)
         flash[:notice] = I18n.t(:notice_successful_update)
-        redirect_to types_path
       else
         flash.now[:error] = I18n.t(:error_type_could_not_be_saved)
-        render action: :edit, status: :unprocessable_entity
       end
+      redirect_to types_path
     end
 
     def destroy
