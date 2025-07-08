@@ -1166,7 +1166,8 @@ fr:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Bannières d'entreprise masquées"
         impaired: "Mode d'accessibilité"
-        auto_hide_popups: "Masquer automatiquement les notifications de succès"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "M'avertir lorsque je quitte un lot de travaux contenant des modifications non enregistrées"
         theme: "Colour mode"
         time_zone: "Fuseau horaire"
@@ -1239,6 +1240,7 @@ fr:
         error_unauthorized: "est interdit d'accès."
         error_readonly: "a tenté d'être écrit mais n'est pas accessible en écriture."
         error_conflict: "Cette information a été mise a jour par au moin un autre utilisateur pendant la même session"
+        error_not_found: "not found."
         email: "n'est pas une adresse e-mail valide."
         empty: "ne peut pas être vide."
         enterprise_plan_required: "nécessite au minimum l'abonnement %{plan_name}."
@@ -1398,8 +1400,6 @@ fr:
           cannot_be_a_non_working_day: "ne peut pas être un jour non travaillé."
         query:
           attributes:
-            project:
-              error_not_found: "non trouvé"
             public:
               error_unauthorized: "- L’utilisateur n'est pas autorisé à créer des vues publiques."
             group_by:
@@ -1439,10 +1439,8 @@ fr:
             circular_dependency: "La relation créée un cercle de relations."
           attributes:
             to_id:
-              error_not_found: "introuvable ou non visible."
               error_readonly: "ne peut pas être modifié pour les relations existantes."
             from_id:
-              error_not_found: "introuvable ou non visible."
               error_readonly: "ne peut pas être modifié pour les relations existantes."
         repository:
           not_available: "Le fournisseur de gestion de contrôle de sources n'est pas disponible"
@@ -1582,10 +1580,6 @@ fr:
                 description: "La confirmation du mot de passe doit correspondre à celui saisi dans le champ “Nouveau mot de passe”."
             status:
               invalid_on_create: "n’est pas un statut valide pour les nouveaux utilisateurs."
-            ldap_auth_source:
-              error_not_found: "introuvable"
-            auth_source:
-              error_not_found: "introuvable"
         member:
           principal_blank: "Veuillez choisir au moins un utilisateur ou un groupe."
           role_blank: "doit être assigné."
@@ -2076,6 +2070,9 @@ fr:
         one: "1 s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "heure"
         other: "heures"

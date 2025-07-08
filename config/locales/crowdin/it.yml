@@ -1165,7 +1165,8 @@ it:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Banner aziendali nascosti"
         impaired: "Modalità di accesso facilitato"
-        auto_hide_popups: "Nascondi automaticamente le notifiche di successo"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Avvisami quando sto lasciando una macro-attività non salvata"
         theme: "Colour mode"
         time_zone: "Fuso orario"
@@ -1238,6 +1239,7 @@ it:
         error_unauthorized: "potrebbe non essere accessibile."
         error_readonly: "è in sola lettura, pertanto non è stato possibile modificarlo."
         error_conflict: "L'informazione è stata aggiornata da almeno un altro utente nel frattempo."
+        error_not_found: "not found."
         email: "non è un indirizzo email valido"
         empty: "non può essere vuoto."
         enterprise_plan_required: "richiede almeno il %{plan_name}."
@@ -1397,8 +1399,6 @@ it:
           cannot_be_a_non_working_day: "non può essere un giorno non lavorativo."
         query:
           attributes:
-            project:
-              error_not_found: "non trovato"
             public:
               error_unauthorized: "- L'utente non è autorizzato a creare viste pubbliche."
             group_by:
@@ -1438,10 +1438,8 @@ it:
             circular_dependency: "La relazione crea un riferimento circolare."
           attributes:
             to_id:
-              error_not_found: "non trovato o non visibile."
               error_readonly: "non può essere modificato per le relazioni esistenti."
             from_id:
-              error_not_found: "non trovato o non visibile."
               error_readonly: "non può essere modificato per le relazioni esistenti."
         repository:
           not_available: "Il gestore SCM non è disponibile"
@@ -1581,10 +1579,6 @@ it:
                 description: "'Conferma password' deve coincidere con il testo del campo 'Nuova password'."
             status:
               invalid_on_create: "non è uno stato valido per i nuovi utenti."
-            ldap_auth_source:
-              error_not_found: "non trovato"
-            auth_source:
-              error_not_found: "non trovato"
         member:
           principal_blank: "Si prega di scegliere almeno un utente o un gruppo."
           role_blank: "deve essere assegnato."
@@ -2075,6 +2069,9 @@ it:
         one: "1 s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "ora"
         other: "ora"

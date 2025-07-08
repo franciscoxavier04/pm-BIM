@@ -45,7 +45,7 @@
       meeting_agenda_item:
         title: "Tittel"
         author: "Forfatter"
-        duration_in_minutes: "minutter"
+        duration_in_minutes: "Duration"
         description: "Notater"
         presenter: "Foredragsholder"
       meeting_section:

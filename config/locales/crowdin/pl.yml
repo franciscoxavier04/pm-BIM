@@ -1180,7 +1180,8 @@ pl:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Ukryte banery przedsiębiorstwa"
         impaired: "Ułatwienia dostępu"
-        auto_hide_popups: "Automatyczne ukrycie powiadomień o sukcesie"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Ostrzegaj mnie, gdy opuszczam zadanie z niezapisanymi zmianami"
         theme: "Colour mode"
         time_zone: "Strefa czasowa"
@@ -1253,6 +1254,7 @@ pl:
         error_unauthorized: "— nie można uzyskac dostępu."
         error_readonly: "— podjęto próbę zapisu, ale nie jest zapisywalny."
         error_conflict: "Information has been updated by at least one other user in the meantime."
+        error_not_found: "not found."
         email: "nie jest poprawnym adresem e-mail."
         empty: "nie może być puste."
         enterprise_plan_required: "wymaga co najmniej planu %{plan_name}."
@@ -1412,8 +1414,6 @@ pl:
           cannot_be_a_non_working_day: "nie może być dniem wolnym od pracy."
         query:
           attributes:
-            project:
-              error_not_found: "nie znaleziono"
             public:
               error_unauthorized: "– Użytkownik nie ma uprawnień do tworzenia widoków publicznych."
             group_by:
@@ -1453,10 +1453,8 @@ pl:
             circular_dependency: "Relacja tworzy krąg relacji."
           attributes:
             to_id:
-              error_not_found: "nie znaleziono lub niewidoczny."
               error_readonly: "nie można zmienić dla istniejących relacji."
             from_id:
-              error_not_found: "nie znaleziono lub niewidoczny."
               error_readonly: "nie można zmienić dla istniejących relacji."
         repository:
           not_available: "Producent SCM nie jest dostępny"
@@ -1598,10 +1596,6 @@ pl:
                 description: "\"Potwierdzenie hasła\" powinno być zgodne z wartością w polu 'Nowe hasło'."
             status:
               invalid_on_create: "nie jest prawidłowym statusem dla nowych użytkowników."
-            ldap_auth_source:
-              error_not_found: "nie znaleziono"
-            auth_source:
-              error_not_found: "nie znaleziono"
         member:
           principal_blank: "Wybierz co najmniej jeden użytkownik lub Grupa."
           role_blank: "musi być przypisany."
@@ -2152,6 +2146,11 @@ pl:
         many: "%{count} s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        one: "min"
+        few: "mins"
+        many: "mins"
+        other: "mins"
       hour:
         one: "godzina"
         few: "godzin"

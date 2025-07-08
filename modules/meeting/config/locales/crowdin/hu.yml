@@ -45,7 +45,7 @@ hu:
       meeting_agenda_item:
         title: "Cím"
         author: "Szerző"
-        duration_in_minutes: "Perc"
+        duration_in_minutes: "Duration"
         description: "Jegyzet"
         presenter: "Bemutató"
       meeting_section:

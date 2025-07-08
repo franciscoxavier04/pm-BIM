@@ -1176,7 +1176,8 @@ lv:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Pieejamības režīms"
-        auto_hide_popups: "Auto-hide success notifications"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Colour mode"
         time_zone: "Laika josla"
@@ -1249,6 +1250,7 @@ lv:
         error_unauthorized: "may not be accessed."
         error_readonly: "was attempted to be written but is not writable."
         error_conflict: "Information has been updated by at least one other user in the meantime."
+        error_not_found: "not found."
         email: "is not a valid email address."
         empty: "nedrīkst būt tukšs."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1408,8 +1410,6 @@ lv:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "not found"
             public:
               error_unauthorized: "- The user has no permission to create public views."
             group_by:
@@ -1449,10 +1449,8 @@ lv:
             circular_dependency: "The relationship creates a circle of relationships."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "SCM pārdevējs nav pieejams"
@@ -1593,10 +1591,6 @@ lv:
                 description: "Lauka vērtībai \"Paroles apstiprinājums\" jāsakrīt ar lauku \"Jaunā parole\"."
             status:
               invalid_on_create: "is not a valid status for new users."
-            ldap_auth_source:
-              error_not_found: "not found"
-            auth_source:
-              error_not_found: "not found"
         member:
           principal_blank: "Please choose at least one user or group."
           role_blank: "need to be assigned."
@@ -2117,6 +2111,10 @@ lv:
         one: "1 s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        zero: "mins"
+        one: "min"
+        other: "mins"
       hour:
         zero: "stundas"
         one: "stunda"

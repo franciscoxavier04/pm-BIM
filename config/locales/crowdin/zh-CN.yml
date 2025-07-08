@@ -1156,7 +1156,8 @@ zh-CN:
           如果您使用屏幕阅读器或想要避免意外触发快捷键，您可以选择禁用默认 <a href="%{href}">键盘快捷键</a>。
         dismissed_enterprise_banners: "隐藏企业横幅"
         impaired: "辅助功能模式"
-        auto_hide_popups: "自动隐藏成功通知"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "离开未保存更改的工作包时提示我"
         theme: "颜色模式"
         time_zone: "时区"
@@ -1229,6 +1230,7 @@ zh-CN:
         error_unauthorized: "无法访问。"
         error_readonly: "曾尝试被写入，但不可写。"
         error_conflict: "在此期间，至少有一位其他用户更新了信息。"
+        error_not_found: "not found."
         email: "不是一个有效的电子邮件地址。"
         empty: "不能为空。"
         enterprise_plan_required: "至少需要 %{plan_name}。"
@@ -1388,8 +1390,6 @@ zh-CN:
           cannot_be_a_non_working_day: "不能是非工作日。"
         query:
           attributes:
-            project:
-              error_not_found: "未找到"
             public:
               error_unauthorized: "- 用户没有创建公公查询的权限。"
             group_by:
@@ -1429,10 +1429,8 @@ zh-CN:
             circular_dependency: "关系会创建关系的循环。"
           attributes:
             to_id:
-              error_not_found: "找不到或不可见。"
               error_readonly: "无法针对现有关系更改。"
             from_id:
-              error_not_found: "找不到或不可见。"
               error_readonly: "无法针对现有关系更改。"
         repository:
           not_available: "SCM提供商不可用"
@@ -1571,10 +1569,6 @@ zh-CN:
                 description: "“确认密码”应该与“新密码”相同。"
             status:
               invalid_on_create: "不是新用户的有效状态"
-            ldap_auth_source:
-              error_not_found: "未找到"
-            auth_source:
-              error_not_found: "未找到"
         member:
           principal_blank: "请选择至少一个用户或组。"
           role_blank: "需要进行分配。"
@@ -2035,6 +2029,8 @@ zh-CN:
       x_seconds_abbreviated:
         other: "%{count} 秒"
     units:
+      minute_abbreviated:
+        other: "mins"
       hour:
         other: "小时"
       day:

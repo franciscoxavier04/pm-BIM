@@ -44,7 +44,7 @@ vi:
       meeting_agenda_item:
         title: "Tiêu đề"
         author: "Tác giả"
-        duration_in_minutes: "phút"
+        duration_in_minutes: "Duration"
         description: "Ghi chú"
         presenter: "Người trình bày"
       meeting_section:

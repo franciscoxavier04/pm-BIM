@@ -1165,7 +1165,8 @@ ca:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Mode d'accessibilitat"
-        auto_hide_popups: "Oculta automàticament les notificacions de succés"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Avisa quan es deixi un paquet de treball amb canvis no desats"
         theme: "Colour mode"
         time_zone: "Zona horària"
@@ -1238,6 +1239,7 @@ ca:
         error_unauthorized: "no és possible accedir."
         error_readonly: "es va intentar d'escriure-hi però no és modificable."
         error_conflict: "La informació s'ha actualitzat per almenys un altre usuari mentrestant."
+        error_not_found: "not found."
         email: "no és una adreça de correu electrònic vàlida."
         empty: "no pot estar buit."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1397,8 +1399,6 @@ ca:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "no trobat"
             public:
               error_unauthorized: "- L'usuari no té permisos per crear vistes públiques."
             group_by:
@@ -1438,10 +1438,8 @@ ca:
             circular_dependency: "La relació crea un cercle de relacions."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "El proveïdor SCM no està disponible"
@@ -1581,10 +1579,6 @@ ca:
                 description: "'Confirmació de la contrasenya' ha de coincidir amb la introduïda al camp 'Nova contrasenya'."
             status:
               invalid_on_create: "no és un valor vàlid per a nous usuaris."
-            ldap_auth_source:
-              error_not_found: "no trobat"
-            auth_source:
-              error_not_found: "no trobat"
         member:
           principal_blank: "Trieu com a mínim un usuari o grup."
           role_blank: "s'ha d'assignar."
@@ -2075,6 +2069,9 @@ ca:
         one: "1 s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "hora"
         other: "hores"

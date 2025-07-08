@@ -1165,7 +1165,8 @@ pt-BR:
           Você pode optar por desativar os <a href="%{href}">atalhos de teclado</a> padrão se utilizar um leitor de tela ou quiser evitar acionar uma ação acidentalmente com um atalho
         dismissed_enterprise_banners: "Banners empresariais ocultos"
         impaired: "Modo de acessibilidade"
-        auto_hide_popups: "Auto-ocultar notificações de sucesso"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Alertar-me ao sair de um pacote de trabalho sem salvar as alterações"
         theme: "Modo de cor"
         time_zone: "Fuso horário"
@@ -1238,6 +1239,7 @@ pt-BR:
         error_unauthorized: "não pode ser acessado."
         error_readonly: "tentou escrever, mas não é gravável."
         error_conflict: "As informações foram atualizadas por pelo menos um outro usuário nesse meio tempo."
+        error_not_found: "not found."
         email: "não é um endereço de e-mail válido."
         empty: "não pode ser vazio."
         enterprise_plan_required: "requer pelo menos o %{plan_name}."
@@ -1397,8 +1399,6 @@ pt-BR:
           cannot_be_a_non_working_day: "não pode ser um dia não útil."
         query:
           attributes:
-            project:
-              error_not_found: "não encontrado"
             public:
               error_unauthorized: "- O usuário não possui permissão para criar visões públicas."
             group_by:
@@ -1438,10 +1438,8 @@ pt-BR:
             circular_dependency: "O relacionamento cria um círculo de relacionamentos."
           attributes:
             to_id:
-              error_not_found: "não encontrado ou não visível."
               error_readonly: "não pode ser alterado para relações existentes."
             from_id:
-              error_not_found: "não encontrado ou não visível."
               error_readonly: "não pode ser alterado para relações existentes."
         repository:
           not_available: "Fornecedor SCM não está disponível"
@@ -1581,10 +1579,6 @@ pt-BR:
                 description: "'Confirmação de senha' deve coincidir com a entrada no campo 'nova senha'."
             status:
               invalid_on_create: "não é um estado válido para novos usuários."
-            ldap_auth_source:
-              error_not_found: "não encontrado"
-            auth_source:
-              error_not_found: "não encontrado"
         member:
           principal_blank: "Por favor, escolha ao menos um usuário ou grupo."
           role_blank: "precisa ser atribuído."
@@ -2075,6 +2069,9 @@ pt-BR:
         one: "1 s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "hora"
         other: "hora"

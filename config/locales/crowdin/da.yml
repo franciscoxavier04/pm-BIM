@@ -1166,7 +1166,8 @@ da:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Tilgængelighedstilstand"
-        auto_hide_popups: "Auto-hide success notifications"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Colour mode"
         time_zone: "Tidszone"
@@ -1239,6 +1240,7 @@ da:
         error_unauthorized: "kan muligvis ikke tilgås."
         error_readonly: "was attempted to be written but is not writable."
         error_conflict: "Oplysning er opdateret af mindst én anden bruger i mellemtiden."
+        error_not_found: "not found."
         email: "is not a valid email address."
         empty: "må ikke være tomt."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1398,8 +1400,6 @@ da:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "not found"
             public:
               error_unauthorized: "- The user has no permission to create public views."
             group_by:
@@ -1439,10 +1439,8 @@ da:
             circular_dependency: "The relationship creates a circle of relationships."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "SCM-leverandør utilgængelig"
@@ -1582,10 +1580,6 @@ da:
                 description: "'Adgangskodebekræftelse' skal matche input fra feltet 'Ny adgangskode'."
             status:
               invalid_on_create: "is not a valid status for new users."
-            ldap_auth_source:
-              error_not_found: "not found"
-            auth_source:
-              error_not_found: "not found"
         member:
           principal_blank: "Vælg venligst mindst én bruger eller gruppe."
           role_blank: "need to be assigned."
@@ -2076,6 +2070,9 @@ da:
         one: "1 s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "time"
         other: "timer"

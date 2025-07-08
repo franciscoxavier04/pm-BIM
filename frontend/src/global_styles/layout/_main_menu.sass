@@ -233,6 +233,10 @@ a.main-menu--parent-node:not(.Button)
   ul.menu_root
     flex-grow: 1
 
+    > li,
+    .main-menu-item
+      margin-bottom: 2px
+
     &.closed
       overflow: hidden
       li
@@ -265,7 +269,6 @@ a.main-menu--parent-node:not(.Button)
     &.open
       > li
         display: list-item
-        margin-bottom: 2px
 
         .main-menu--children-menu-header
           display: none

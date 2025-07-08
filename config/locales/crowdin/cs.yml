@@ -1184,7 +1184,8 @@ cs:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Režim usnadnění"
-        auto_hide_popups: "Automaticky skrýt oznámení o úspěchu"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Upozornit mě při opuštění pracovního balíčku s neuloženými změnami"
         theme: "Colour mode"
         time_zone: "Časové pásmo"
@@ -1257,6 +1258,7 @@ cs:
         error_unauthorized: "není přístupný."
         error_readonly: "se pokusil být napsán, ale není zapisovatelný."
         error_conflict: "Informace mezitím aktualizoval alespoň jeden další uživatel."
+        error_not_found: "not found."
         email: "není platná e-mailová adresa"
         empty: "nemůže být prázdné."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1416,8 +1418,6 @@ cs:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "nenalezeno"
             public:
               error_unauthorized: "- Uživatel nemá oprávnění k vytváření veřejných zobrazení."
             group_by:
@@ -1457,10 +1457,8 @@ cs:
             circular_dependency: "Vztah vytvoří cyklický vztah."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "Prodejce SCM není k dispozici"
@@ -1602,10 +1600,6 @@ cs:
                 description: "\"Potvrzení hesla\" musí odpovídat vstupu v poli \"Nové heslo\"."
             status:
               invalid_on_create: "není platný stav pro nové uživatele."
-            ldap_auth_source:
-              error_not_found: "nenalezeno"
-            auth_source:
-              error_not_found: "nenalezeno"
         member:
           principal_blank: "Zvolte alespoň jednoho uživatele nebo skupinu."
           role_blank: "musí být přiřazen."
@@ -2156,6 +2150,11 @@ cs:
         many: "%{count} s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        one: "min"
+        few: "mins"
+        many: "mins"
+        other: "mins"
       hour:
         one: "hodina"
         few: "hodiny"

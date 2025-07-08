@@ -1168,7 +1168,8 @@ ka:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Accessibility mode"
-        auto_hide_popups: "Auto-hide success notifications"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Colour mode"
         time_zone: "დროის სარტყელი"
@@ -1241,6 +1242,7 @@ ka:
         error_unauthorized: "may not be accessed."
         error_readonly: "was attempted to be written but is not writable."
         error_conflict: "Information has been updated by at least one other user in the meantime."
+        error_not_found: "not found."
         email: "is not a valid email address."
         empty: "can't be empty."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1400,8 +1402,6 @@ ka:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "ვერ მოიძებნა"
             public:
               error_unauthorized: "- The user has no permission to create public views."
             group_by:
@@ -1441,10 +1441,8 @@ ka:
             circular_dependency: "The relationship creates a circle of relationships."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "SCM vendor is not available"
@@ -1584,10 +1582,6 @@ ka:
                 description: "'Password confirmation' should match the input in the 'New password' field."
             status:
               invalid_on_create: "is not a valid status for new users."
-            ldap_auth_source:
-              error_not_found: "ვერ მოიძებნა"
-            auth_source:
-              error_not_found: "ვერ მოიძებნა"
         member:
           principal_blank: "Please choose at least one user or group."
           role_blank: "need to be assigned."
@@ -2078,6 +2072,9 @@ ka:
         one: "1 წმ"
         other: "%{count} წმ"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "საათი"
         other: "საათი"

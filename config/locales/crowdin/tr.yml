@@ -1167,7 +1167,8 @@ tr:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Erişilebilirlik modu"
-        auto_hide_popups: "Başarılı bildirimleri otomatik olarak gizle"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "İş paketlerinden ayrılırken kaydedilmemiş değişiklik olduğunda beni uyar"
         theme: "Colour mode"
         time_zone: "Zaman dilimi"
@@ -1240,6 +1241,7 @@ tr:
         error_unauthorized: "erişilemez."
         error_readonly: "yazılmaya çalışıldı fakat yazılabilir değil."
         error_conflict: "Bu arada, bilgi en az bir başka kullanıcı tarafından güncellendi."
+        error_not_found: "not found."
         email: "Geçerli bir e-posta adresi değil.\n"
         empty: "boş olamaz."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1399,8 +1401,6 @@ tr:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "bulunamadı"
             public:
               error_unauthorized: "- Kullanıcı herkese açık görünüm oluşturma yetkisine sahip değil."
             group_by:
@@ -1440,10 +1440,8 @@ tr:
             circular_dependency: "İlişki, bir ilişki çemberi oluşturur."
           attributes:
             to_id:
-              error_not_found: "bulunamadı veya görünmüyor."
               error_readonly: "mevcut ilişkiler için değiştirilemez."
             from_id:
-              error_not_found: "bulunamadı veya görünmüyor."
               error_readonly: "mevcut ilişkiler için değiştirilemez."
         repository:
           not_available: "SCM satıcısı yok"
@@ -1583,10 +1581,6 @@ tr:
                 description: "\"Parola onayı\" 'yeni parola' alanı girişi aynı olmalıdır."
             status:
               invalid_on_create: "yeni kullanıcılar için geçerli bir durum değil."
-            ldap_auth_source:
-              error_not_found: "bulunamadı"
-            auth_source:
-              error_not_found: "bulunamadı"
         member:
           principal_blank: "Lütfen en az bir kullanıcı veya grup seçin."
           role_blank: "atanması gerek."
@@ -2077,6 +2071,9 @@ tr:
         one: "1 s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "saat"
         other: "saat"

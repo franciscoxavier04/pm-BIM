@@ -293,11 +293,11 @@ zh-TW:
           text_new_features: "了解新功能和產品更新。"
           learn_about: "瞭解更多新功能的資訊"
           #Include the version to invalidate outdated translations in other locales.
-          #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_1":
+          #Otherwise, e.g. Chinese might still have the translations for 10.0 in the 12.0 release.
+          "16_2":
             standard:
               new_features_html: >
-                本版本包含多項新功能與改進，例如：<br><ul class="%{list_styling_class}"> <li>以階段與階段閘門結構化專案生命週期。</li> <li>會議可匯出為 PDF 格式。</li> <li>為提醒設定智慧預設選項。</li> <li>工作套件日期可使用負延遲（negative lag）。</li> <li>階層自訂欄位可顯示階層樹狀結構。</li> <li>改善日期選擇器的無障礙功能，支援 ARIA live regions。</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>New header and sidebar with improved navigation and design.</li> <li>Smoother experience with Custom fields, Relations, Reminders, Meetings, and My time tracking.</li> <li>Non-latin languages and emojis supported in PDF exports.</li> <li>Option to disable keyboard shortcuts for better accessibility.</li> <li>SCIM server via API (Enterprise add-on).</li> <li>API support for internal comments.</li> </ul>
     ical_sharing_modal:
       title: "訂閱日曆"
       inital_setup_error_message: "更新資料時發生錯誤"

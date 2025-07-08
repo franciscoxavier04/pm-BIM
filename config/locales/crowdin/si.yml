@@ -1168,7 +1168,8 @@ si:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "ප්රවේශ්යතා ප්රකාරය"
-        auto_hide_popups: "ස්වයං සඟවන්න සාර්ථකත්වය දැනුම්දීම්"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "නොගැලවූ වෙනස්කම් සහිත වැඩ පැකේජයකින් පිටවන විට මට අනතුරු අඟවන්න"
         theme: "Colour mode"
         time_zone: "වේලා කලාපය"
@@ -1241,6 +1242,7 @@ si:
         error_unauthorized: "ප්රවේශ විය නොහැක."
         error_readonly: "ලිවීමට උත්සාහ කළ නමුත් එය ලිවිය නොහැක."
         error_conflict: "මේ අතර අවම වශයෙන් එක් පරිශීලකයෙකු විසින් තොරතුරු යාවත්කාලීන කර ඇත."
+        error_not_found: "not found."
         email: "is not a valid email address."
         empty: "හිස් විය නොහැක."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1400,8 +1402,6 @@ si:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "සොයාගත නොහැකි විය"
             public:
               error_unauthorized: "- පරිශීලකයාට මහජන අදහස් නිර්මාණය කිරීමට අවසරයක් නොමැත."
             group_by:
@@ -1441,10 +1441,8 @@ si:
             circular_dependency: "සම්බන්ධතාවය සබඳතා කවයක් නිර්මාණය කරයි."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "SCM වෙළෙන්දා ලබා ගත නොහැක"
@@ -1584,10 +1582,6 @@ si:
                 description: "'මුරපදය තහවුරු කිරීම' 'නව මුරපදය' ක්ෂේත්රයේ ආදානයට ගැලපේ."
             status:
               invalid_on_create: "නව පරිශීලකයින් සඳහා වලංගු තත්වයක් නොවේ."
-            ldap_auth_source:
-              error_not_found: "සොයාගත නොහැකි විය"
-            auth_source:
-              error_not_found: "සොයාගත නොහැකි විය"
         member:
           principal_blank: "කරුණාකර අවම වශයෙන් එක් පරිශීලකයෙකු හෝ කණ්ඩායමක් තෝරන්න."
           role_blank: "පැවරිය යුතුය."
@@ -2078,6 +2072,9 @@ si:
         one: "1 s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "පැය"
         other: "පැය"

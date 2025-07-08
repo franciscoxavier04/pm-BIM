@@ -1160,7 +1160,8 @@ vi:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Viet nam"
-        auto_hide_popups: "Tự động ẩn thông báo thành công"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Cảnh báo tôi khi rời khỏi gói công việc với thay đổi chưa lưu"
         theme: "Colour mode"
         time_zone: "Múi giờ"
@@ -1233,6 +1234,7 @@ vi:
         error_unauthorized: "Có thể không được truy cập."
         error_readonly: "đã bị ghi lại nhưng không thể ghi."
         error_conflict: "Thông tin đã được cập nhật bởi ít nhất một người dùng khác trong thời gian này."
+        error_not_found: "not found."
         email: "không phải là địa chỉ email hợp lệ."
         empty: "không thể để trống"
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1392,8 +1394,6 @@ vi:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "không tìm thấy"
             public:
               error_unauthorized: "-Người dùng không có quyền tạo ra khu vực xem công cộng."
             group_by:
@@ -1433,10 +1433,8 @@ vi:
             circular_dependency: "Mối quan hệ tạo ra một vòng tròn các mối quan hệ."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "Nhà cung cấp SCM không có sẵn"
@@ -1575,10 +1573,6 @@ vi:
                 description: "'Xác nhận mật khẩu ' phải trùng với dữ liệu trong mục 'Mật khẩu mới'."
             status:
               invalid_on_create: "không phải là trạng thái hợp lệ cho người dùng mới."
-            ldap_auth_source:
-              error_not_found: "không tìm thấy"
-            auth_source:
-              error_not_found: "không tìm thấy"
         member:
           principal_blank: "Vui lòng chọn ít nhất một người dùng hoặc nhóm."
           role_blank: "cần được chỉ định."
@@ -2039,6 +2033,8 @@ vi:
       x_seconds_abbreviated:
         other: "%{count} giây"
     units:
+      minute_abbreviated:
+        other: "mins"
       hour:
         other: "hours"
       day:

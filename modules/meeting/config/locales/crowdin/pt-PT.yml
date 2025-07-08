@@ -45,7 +45,7 @@ pt-PT:
       meeting_agenda_item:
         title: "Título"
         author: "Autor"
-        duration_in_minutes: "min"
+        duration_in_minutes: "Duration"
         description: "Notas"
         presenter: "Apresentador"
       meeting_section:
