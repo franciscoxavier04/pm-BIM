@@ -47,9 +47,7 @@ RSpec.describe "Admin Create a new file storage",
     end
 
     it "renders a Nextcloud specific multi-step form for Two-Way OAuth 2.0 by default", :webmock do
-      visit admin_settings_storages_path
-
-      expect(page).to be_axe_clean.within "#content"
+      visit_and_check_a11y admin_settings_storages_path
 
       within(".SubHeader") do
         page.find_test_selector("storages-create-new-provider-button").click
@@ -194,7 +192,7 @@ RSpec.describe "Admin Create a new file storage",
 
     it "renders a Nextcloud specific multi-step form when using OAuth 2.0 SSO", :webmock, with_ee: [:nextcloud_sso] do
       # Same setup as in default case, but without expectations
-      visit admin_settings_storages_path
+      visit_and_check_a11y admin_settings_storages_path
 
       within(".SubHeader") do
         page.find_test_selector("storages-create-new-provider-button").click
@@ -272,7 +270,7 @@ RSpec.describe "Admin Create a new file storage",
 
   context "with OneDrive Storage and enterprise token missing", with_ee: false do
     it "renders enterprise icon and redirects to upsell", :webmock do
-      visit admin_settings_storages_path
+      visit_and_check_a11y admin_settings_storages_path
 
       within(".SubHeader") do
         page.find_test_selector("storages-create-new-provider-button").click
@@ -290,9 +288,7 @@ RSpec.describe "Admin Create a new file storage",
 
   context "with OneDrive Storage", with_ee: %i[one_drive_sharepoint_file_storage] do
     it "renders a One Drive specific multi-step form", :webmock do
-      visit admin_settings_storages_path
-
-      expect(page).to be_axe_clean.within "#content"
+      visit_and_check_a11y admin_settings_storages_path
 
       within(".SubHeader") do
         page.find_test_selector("storages-create-new-provider-button").click
@@ -410,7 +406,7 @@ RSpec.describe "Admin Create a new file storage",
   describe "new page" do
     context "when navigating directly to the page" do
       it "redirects you back to the index page" do
-        visit new_admin_settings_storage_path
+        visit_and_check_a11y new_admin_settings_storage_path
 
         expect(page).to have_current_path(admin_settings_storages_path)
         wait_for { page }.to have_text("Please select a valid storage provider.")
@@ -419,7 +415,7 @@ RSpec.describe "Admin Create a new file storage",
 
     context "when navigating to the page with an invalid provider" do
       it "redirects you back to the index page" do
-        visit new_admin_settings_storage_path(provider: "foobar")
+        visit_and_check_a11y new_admin_settings_storage_path(provider: "foobar")
 
         expect(page).to have_current_path(admin_settings_storages_path)
         wait_for { page }.to have_text("Please select a valid storage provider.")
