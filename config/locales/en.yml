@@ -1832,7 +1832,7 @@ en:
     estimated_time: "Work"
     email: "Email"
     entity_type: "Entity"
-    expires_at: "Expires at"
+    expires_at: "Expires on"
     firstname: "First name"
     filter: "Filter"
     group: "Group"
