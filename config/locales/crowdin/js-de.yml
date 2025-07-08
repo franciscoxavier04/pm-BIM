@@ -646,8 +646,8 @@ de:
       pages:
         next: "Nächste Seite"
         previous: "Vorherige Seite"
-        page_number: Seite %{number}
-        show_per_page: '%{number} pro Seite anzeigen'
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "Titel hier eingeben"

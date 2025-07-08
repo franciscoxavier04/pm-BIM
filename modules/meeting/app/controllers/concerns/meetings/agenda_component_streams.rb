@@ -150,7 +150,7 @@ module Meetings
           render_agenda_item_form_in_section_via_turbo_stream(meeting:, meeting_section:, type:, collapsed:)
         end
 
-        update_new_button_via_turbo_stream(disabled: true)
+        update_new_button_via_turbo_stream(disabled: true) unless meeting_section == meeting.backlog
       end
 
       def render_agenda_item_form_for_empty_meeting_via_turbo_stream(type: :simple)

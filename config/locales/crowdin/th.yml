@@ -1234,6 +1234,7 @@ th:
         error_unauthorized: "may not be accessed."
         error_readonly: "was attempted to be written but is not writable."
         error_conflict: "มีการปรับปรุงข้อมูลจากผู้ใช้อย่างน้อยหนึ่งคนในเวลาเดียวกัน"
+        error_not_found: "not found."
         email: "is not a valid email address."
         empty: "can't be empty."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1393,8 +1394,6 @@ th:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "not found"
             public:
               error_unauthorized: "- The user has no permission to create public views."
             group_by:
@@ -1434,10 +1433,8 @@ th:
             circular_dependency: "The relationship creates a circle of relationships."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "SCM vendor is not available"
@@ -1576,10 +1573,6 @@ th:
                 description: "'รหัสผ่าน' ควรตรงกับข้อมูลใน 'รหัสผ่านใหม่' ฟิลด์"
             status:
               invalid_on_create: "ไม่ใช่สถานะที่ถูกต้องสำหรับผู้ใช้ใหม่"
-            ldap_auth_source:
-              error_not_found: "not found"
-            auth_source:
-              error_not_found: "not found"
         member:
           principal_blank: "โปรดเลือกอย่างน้อยหนึ่งผู้ใช้หรือหนึ่งกลุ่ม"
           role_blank: "need to be assigned."
@@ -1776,6 +1769,7 @@ th:
     title: "ชื่อเรื่อง"
     type: "ประเภท"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "แก้ไขเมื่อ"
     updated_on: "แก้ไขเมื่อ"
     uploader: "Uploader"

@@ -50,7 +50,9 @@ module WorkPackageTypes
         role: :list,
         scheme: :inset,
         ml: 0,
-        "data-pattern-input-target": "suggestions"
+        data: {
+          "pattern-input-target": "suggestions"
+        }
       )
     end
   end

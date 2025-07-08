@@ -1242,6 +1242,7 @@ si:
         error_unauthorized: "ප්රවේශ විය නොහැක."
         error_readonly: "ලිවීමට උත්සාහ කළ නමුත් එය ලිවිය නොහැක."
         error_conflict: "මේ අතර අවම වශයෙන් එක් පරිශීලකයෙකු විසින් තොරතුරු යාවත්කාලීන කර ඇත."
+        error_not_found: "not found."
         email: "is not a valid email address."
         empty: "හිස් විය නොහැක."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1401,8 +1402,6 @@ si:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "සොයාගත නොහැකි විය"
             public:
               error_unauthorized: "- පරිශීලකයාට මහජන අදහස් නිර්මාණය කිරීමට අවසරයක් නොමැත."
             group_by:
@@ -1442,10 +1441,8 @@ si:
             circular_dependency: "සම්බන්ධතාවය සබඳතා කවයක් නිර්මාණය කරයි."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "SCM වෙළෙන්දා ලබා ගත නොහැක"
@@ -1585,10 +1582,6 @@ si:
                 description: "'මුරපදය තහවුරු කිරීම' 'නව මුරපදය' ක්ෂේත්රයේ ආදානයට ගැලපේ."
             status:
               invalid_on_create: "නව පරිශීලකයින් සඳහා වලංගු තත්වයක් නොවේ."
-            ldap_auth_source:
-              error_not_found: "සොයාගත නොහැකි විය"
-            auth_source:
-              error_not_found: "සොයාගත නොහැකි විය"
         member:
           principal_blank: "කරුණාකර අවම වශයෙන් එක් පරිශීලකයෙකු හෝ කණ්ඩායමක් තෝරන්න."
           role_blank: "පැවරිය යුතුය."
@@ -1798,6 +1791,7 @@ si:
     title: "මාතෘකාව"
     type: "වර්ගය"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "යාවත්කාලීන කරන ලදි"
     updated_on: "යාවත්කාලීන කරන ලදි"
     uploader: "උඩුගත කරන්නා"

@@ -81,10 +81,6 @@ module Meetings
       end
     end
 
-    def ical_uid(suffix)
-      "#{Setting.app_title}-#{Setting.host_name}-#{suffix}".dasherize
-    end
-
     def ical_datetime(time, timezone_id)
       Icalendar::Values::DateTime.new time.in_time_zone(timezone_id), "tzid" => timezone_id
     end

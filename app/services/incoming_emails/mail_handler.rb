@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,45 +27,21 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-require "rake"
 
-##
-# Invoke a rake task while loading the tasks on demand
-# to ensure they are only loaded once.
-module RakeJob
-  attr_reader :task_name, :args
+module IncomingEmails
+  class MailHandler < ApplicationMailer
+    ##
+    # Code copied from base class and extended with optional options parameter
+    # as well as force_encoding support.
+    def self.receive(input, options = {})
+      raw_mail = input.dup
+      raw_mail.force_encoding("ASCII-8BIT") if raw_mail.respond_to?(:force_encoding)
 
-  def perform(task_name, *args)
-    @task_name = task_name
-    @args = args
-
-    Rails.logger.info { "Invoking Rake task #{task_name}." }
-    invoke
-  end
-
-  protected
-
-  def invoke
-    if (task = load_task)
-      task.reenable
-      task.invoke *args
-    else
-      OpenProject.logger.error { "Rake task #{task_name} not found for background job." }
+      ActiveSupport::Notifications.instrument("receive.action_mailer") do |payload|
+        mail = Mail.new(raw_mail)
+        set_payload_for_mail(payload, mail)
+        ::IncomingEmails::DispatchService.new(mail, options:).call!
+      end
     end
-  end
-
-  ##
-  # Load tasks if we don't find our task
-  def load_task
-    Rails.application.load_tasks unless task_loaded?
-
-    task_loaded? && Rake::Task[task_name]
-  end
-
-  ##
-  # Returns whether any task is loaded
-  # Will raise NameError or NoMethodError depending on what of rake is (not) loaded
-  def task_loaded?
-    Rake::Task.task_defined?(task_name)
   end
 end
