@@ -33,9 +33,9 @@ module DynamicContentSecurityPolicy
   # Dynamically append sources to CSP directives
   # This replaces the secure_headers named append functionality
   def append_content_security_policy_directives(directives)
-    current_policy = current_content_security_policy
+    policy = current_content_security_policy
     directives.each do |directive, source_values|
-      current_value = current_policy.send(directive) || current_policy.default_src
+      current_value = policy.send(directive) || policy.directives["default-src"]
       new_values =
         if current_value == %w('none') # rubocop:disable Lint/PercentStringArray
           source_values.compact.uniq
@@ -43,7 +43,8 @@ module DynamicContentSecurityPolicy
           (current_value + source_values).compact.uniq
         end
 
-      request.content_security_policy.send(directive, *new_values)
+      policy.send(directive, *new_values)
+      request.content_security_policy = policy
     end
   end
 end
