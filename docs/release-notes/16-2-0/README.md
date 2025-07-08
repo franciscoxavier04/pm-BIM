@@ -56,6 +56,8 @@ In the **My time tracking** module, the week and work week views now automatical
 
 ### Option to disable keyboard shortcuts for better accessibility
 
+OpenProject 16.2 makes the application more accessible by allowing users to **disable keyboard shortcuts**. This is especially helpful for people using assistive technologies, where keyboard shortcuts might interfere with screen readers or other tools. The option can be found under *Account settings → Interface*.
+
 ![OpenProject account settings on interface options, with highlighted option to disable keyboard shortcuts](openproject-user-guide-account-settings-interface.png)
 
 ### Work package reminders presented in relative humanized time format
