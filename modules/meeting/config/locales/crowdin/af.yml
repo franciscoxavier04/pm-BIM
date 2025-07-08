@@ -45,7 +45,7 @@ af:
       meeting_agenda_item:
         title: "Titel"
         author: "Outeur"
-        duration_in_minutes: "min"
+        duration_in_minutes: "Duration"
         description: "Notas"
         presenter: "Presenter"
       meeting_section:

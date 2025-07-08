@@ -45,7 +45,7 @@ fil:
       meeting_agenda_item:
         title: "Pamagat"
         author: "May-akda"
-        duration_in_minutes: "min"
+        duration_in_minutes: "Duration"
         description: "Ang mga tala"
         presenter: "Presenter"
       meeting_section:

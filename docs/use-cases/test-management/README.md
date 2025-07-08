@@ -193,7 +193,7 @@ Here you find an [example for a test run](https://testmanagement.openproject.com
 
 - Define useful roles such as:
   - `Tester`
-  -  `Test Manager`
+  - `Test Manager`
 
 - Add permissions such as:
   - Edit work packages

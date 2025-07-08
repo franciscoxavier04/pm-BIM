@@ -45,7 +45,7 @@ eo:
       meeting_agenda_item:
         title: "Titolo"
         author: "Aŭtoro"
-        duration_in_minutes: "min"
+        duration_in_minutes: "Duration"
         description: "Notoj"
         presenter: "Presenter"
       meeting_section:

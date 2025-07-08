@@ -10,7 +10,7 @@ keywords: development setup docker macos
 
 This guide covers observed nuances with the docker runtime on MacOS. Please ensure you've gone through the general [OpenProject development setup via docker](../docker) guide before proceeding.
 
-### Apple Silicon (M1, M2, M3, M4)
+## Apple Silicon (M1, M2, M3, M4)
 
 Apple transitioned from Intel to Apple Silicon (ARM64) architecture starting in 2020. As a result, some Docker images — particularly those involving browsers like chrome and opera — still do not support ARM64 natively and require emulation via the linux/amd64 platform. However, other components like firefox, and chromium now have official ARM64-compatible images.
 

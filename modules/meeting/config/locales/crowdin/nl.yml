@@ -45,7 +45,7 @@ nl:
       meeting_agenda_item:
         title: "Titel"
         author: "Auteur"
-        duration_in_minutes: "min"
+        duration_in_minutes: "Duration"
         description: "Notities"
         presenter: "Presentator"
       meeting_section:

@@ -205,15 +205,15 @@ ja:
         reset_to_defaults: "デフォルトに戻す"
       working_days:
         calendar:
-          empty_state_header: "Non-working days"
-          empty_state_description: 'No specific non-working days are defined for this year. Click on "+ Non-working day" below to add a date.'
+          empty_state_header: "休業日"
+          empty_state_description: '休業日が定義されていません。「休業日を追加」ボタンをクリックして日付を追加してください。'
           new_date: "(new)"
-        add_non_working_day: "休業日"
+        add_non_working_day: "休業日を追加"
         already_added_error: "A non-working day for this date exists already. There can only be one non-working day created for each unique date."
         change_button: "Save and reschedule"
         change_title: "営業日を変更する"
         removed_title: "You will remove the following days from the non-working days list:"
-        change_description: "Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance."
+        change_description: "営業日とみなす曜日を変更すると、このインスタンス内のすべてのプロジェクトのすべての作業項目の開始日と終了日に影響を与える可能性があります。"
         warning: >
           The changes might take some time to take effect. You will be notified when all relevant work packages and project life cycles have been updated.
           Are you sure you want to continue?
@@ -295,11 +295,11 @@ ja:
           text_new_features: "新しい機能と製品の更新について紹介します。"
           learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
-          #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_1":
+          #Otherwise, e.g. Chinese might still have the translations for 10.0 in the 12.0 release.
+          "16_2":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Structure the project life cycle with phases and phase gates.</li> <li>Export meetings in PDF format.</li> <li>Set smart default options for reminders.</li> <li>Use negative lag for work package dates.</li> <li>Display hierarchy trees for hierarchy custom fields.</li> <li>Benefit from improved accessibility for the date picker with ARIA live regions.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>New header and sidebar with improved navigation and design.</li> <li>Smoother experience with Custom fields, Relations, Reminders, Meetings, and My time tracking.</li> <li>Non-latin languages and emojis supported in PDF exports.</li> <li>Option to disable keyboard shortcuts for better accessibility.</li> <li>SCIM server via API (Enterprise add-on).</li> <li>API support for internal comments.</li> </ul>
     ical_sharing_modal:
       title: "Subscribe to calendar"
       inital_setup_error_message: "An error occured while fetching data."
@@ -547,7 +547,7 @@ ja:
       title: "Notifications"
       no_unread: "No unread notifications"
       reasons:
-        mentioned: "Mentioned"
+        mentioned: "メンションされた"
         watched: "ウォッチャー"
         assigned: "担当者"
         #The enum value is named 'responsible' in the database and that is what is transported through the API
@@ -556,11 +556,11 @@ ja:
         created: "作成日時"
         scheduled: "スケジュール済"
         commented: "コメントしました。"
-        processed: "Processed"
+        processed: "処理済み"
         prioritized: "Prioritized"
-        dateAlert: "Date alert"
-        shared: "Shared"
-        reminder: "Reminder"
+        dateAlert: "日付アラート"
+        shared: "共有"
+        reminder: "通知"
       date_alerts:
         milestone_date: "Milestone date"
         overdue: "期限切れ"
@@ -610,8 +610,8 @@ ja:
               P7D: every week
         reasons:
           mentioned:
-            title: "Mentioned"
-            description: "Receive a notification every time someone mentions me anywhere"
+            title: "メンションされた"
+            description: "メンションされたときに通知を受け取る"
           assignee: "担当者"
           responsible: "責任者"
           shared: "Shared"
@@ -676,7 +676,7 @@ ja:
           title: "Receive email reminders on these days"
         immediate:
           title: "Send me an email reminder"
-          mentioned: "Immediately when someone @mentions me"
+          mentioned: "@mentionするとすぐに"
           personal_reminder: "Immediately when I receive a personal reminder"
         alerts:
           title: "Email alerts for other items (that are not work packages)"

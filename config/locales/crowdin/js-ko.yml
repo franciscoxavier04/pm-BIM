@@ -294,11 +294,11 @@ ko:
           text_new_features: "새로운 기능 및 제품 업데이트에 대해 읽어보십시오."
           learn_about: "새로운 모든 기능에 대해 자세히 알아보기"
           #Include the version to invalidate outdated translations in other locales.
-          #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_1":
+          #Otherwise, e.g. Chinese might still have the translations for 10.0 in the 12.0 release.
+          "16_2":
             standard:
               new_features_html: >
-                이 릴리스에는 다음과 같은 다양한 새로운 기능과 개선 사항이 포함되어 있습니다. <br> <ul class="%{list_styling_class}"> <li>단계 및 단계 게이트를 사용하여 프로젝트 수명 주기를 구성합니다.</li> <li>미팅을 PDF 형식으로 내보냅니다.</li> <li>미리 알림에 대한 스마트 기본 옵션을 설정합니다.</li> <li>작업 패키지 날짜에 음수 지연을 사용합니다.</li> <li>계층 사용자 지정 필드에 대한 계층 트리를 표시합니다.</li> <li>ARIA 라이브 영역에서 날짜 선택기의 개선된 접근성의 이점을 활용합니다.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>New header and sidebar with improved navigation and design.</li> <li>Smoother experience with Custom fields, Relations, Reminders, Meetings, and My time tracking.</li> <li>Non-latin languages and emojis supported in PDF exports.</li> <li>Option to disable keyboard shortcuts for better accessibility.</li> <li>SCIM server via API (Enterprise add-on).</li> <li>API support for internal comments.</li> </ul>
     ical_sharing_modal:
       title: "캘린더 구독"
       inital_setup_error_message: "데이터를 가져오는 중에 오류가 발생했습니다."

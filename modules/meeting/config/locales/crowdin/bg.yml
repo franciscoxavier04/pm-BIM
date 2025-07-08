@@ -45,7 +45,7 @@ bg:
       meeting_agenda_item:
         title: "Заглавие"
         author: "Автор"
-        duration_in_minutes: "мин"
+        duration_in_minutes: "Duration"
         description: "Бележки"
         presenter: "Презентатор"
       meeting_section:

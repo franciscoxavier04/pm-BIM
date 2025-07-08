@@ -1143,6 +1143,8 @@ zh-TW:
         new_password: "新密碼"
         password_confirmation: "確認密碼"
         consented_at: "同意在"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "介面與外觀"
         header_alerts: "提醒"
@@ -1154,7 +1156,8 @@ zh-TW:
           如果您使用螢幕閱讀器，或是想避免不小心觸發快捷操作，可以選擇停用預設的 <a href="%{href}">鍵盤快速鍵</a>。
         dismissed_enterprise_banners: "隱藏的企業版廣告"
         impaired: "協助工具模式"
-        auto_hide_popups: "提醒後自動隱藏"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "離開尚未儲存的工作套件時提示我"
         theme: "顏色模式"
         time_zone: "時區"
@@ -2032,6 +2035,8 @@ zh-TW:
       x_seconds_abbreviated:
         other: "%{count}  秒"
     units:
+      minute_abbreviated:
+        other: "mins"
       hour:
         other: "小時"
       day:
@@ -2086,6 +2091,7 @@ zh-TW:
       placeholder_users: 佔位使用者
       project_list_sharing: 專案清單分享
       readonly_work_packages: 唯讀工作套件
+      scim_api: SCIM server API
       sso_auth_providers: 單一登入
       team_planner_view: 團隊規劃檢視
       virus_scanning: 掃描病毒
@@ -2152,6 +2158,9 @@ zh-TW:
       nextcloud_sso:
         title: "Nextcloud 儲存空間的單一登入(SSO)"
         description: "使用單一登入為您的 Nextcloud 儲存空間啟用無縫且安全的驗證。簡化存取管理並提升使用者便利性。"
+      scim_api:
+        title: "SCIM clients"
+        description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
       virus_scanning:
         description: "確保在其他使用者存取 OpenProject 中上傳的檔案前，對其進行病毒掃描。"
       placeholder_users:

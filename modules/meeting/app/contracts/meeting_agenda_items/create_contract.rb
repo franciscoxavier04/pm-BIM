@@ -37,6 +37,7 @@ module MeetingAgendaItems
     def self.assignable_meetings(user)
       Meeting
         .open
+        .or(Meeting.in_progress)
         .not_templated
         .not_cancelled
         .visible(user)

@@ -75,14 +75,14 @@ Use the guidelines below to understand how phase and gate scheduling behaves.
 
 - Gates are always positioned at the start or end of a phase and follow the phase's dates.
 
-  -  You cannot set gate dates independently — adjusting the phase's start or finish date will automatically move the corresponding gate.
+  - You cannot set gate dates independently — adjusting the phase's start or finish date will automatically move the corresponding gate.
 
-     - Phase fates are never placed inside the phase duration but always at its borders.
-     - Phase gates never overlap or share the same date with other gates.
+    - Phase gates are never placed inside the phase duration but always at its borders.
+    - Phase gates never overlap or share the same date with other gates.
 
   - **Phases and phase gates will follow the order predefined in the system administration** (e.g., *Initiating* must come before *Closing*). Dates for a subsequent phase cannot be before those of any preceding phase. The automatic scheduling enforces this as well.
 
- - Project phases not activated in a project will not be considered at all with regards to constraints. 
+- Project phases not activated in a project will not be considered at all with regards to constraints. 
   - **Child projects** are **not restricted** by the lifecycle dates of their parent project.
 
 #### Automatic scheduling behavior
@@ -112,18 +112,20 @@ Use the guidelines below to understand how phase and gate scheduling behaves.
 #### Activating or deactivating phases
 
 - When a phase is **activated**:
-    - If the phase has a defined duration (both start and finish dates set), the system may adjust the dates to prevent gaps or overlaps.
-    - This can trigger rescheduling of succeeding phases.
+  - If the phase has a defined duration (both start and finish dates set), the system may adjust the dates to prevent gaps or overlaps.
+  - This can trigger rescheduling of succeeding phases.
 - When a phase is **deactivated**:
-   - Its dates are preserved.
-   - Scheduling will skip this phase and move directly to the next active phase.
+  - Its dates are preserved.
+  - Scheduling will skip this phase and move directly to the next active phase.
+
 > [!NOTE]
 > Activating or deactivating phases requires the *Select project phases* permission.
 
 #### Other scheduling triggers
- - **Changes to non-working days** (added or removed) will reschedule all affected phases across all projects to **preserve duration**.
- - **Modifications in global phase configuration** (adding, deleting, reordering) do **not** immediately reschedule existing projects.
- - However, the **first user interaction** with a lifecycle after such changes will trigger a rescheduling to preserve phase durations.
+
+- **Changes to non-working days** (added or removed) will reschedule all affected phases across all projects to **preserve duration**.
+- **Modifications in global phase configuration** (adding, deleting, reordering) do **not** immediately reschedule existing projects.
+- However, the **first user interaction** with a lifecycle after such changes will trigger a rescheduling to preserve phase durations.
 
 ## Project attributes
 

@@ -1152,6 +1152,8 @@ es:
         new_password: "Nueva contraseña"
         password_confirmation: "Confirmación"
         consented_at: "Consentido en"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1163,7 +1165,8 @@ es:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Banners empresariales ocultos"
         impaired: "Modo de accesibilidad"
-        auto_hide_popups: "Auto-ocultar notificaciones satisfactorias"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Avisarme cuando salga de un paquete de trabajo con cambios sin guardar"
         theme: "Colour mode"
         time_zone: "Zona horaria"
@@ -2072,6 +2075,9 @@ es:
         one: "1 s"
         other: "%{count} segundos"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "una hora"
         other: "hora"
@@ -2128,6 +2134,7 @@ es:
       placeholder_users: Usuarios de marcadores de posición
       project_list_sharing: Compartición de la lista de proyectos
       readonly_work_packages: Paquetes de trabajo de solo lectura
+      scim_api: SCIM server API
       sso_auth_providers: Inicio de sesión único
       team_planner_view: Vista del planificador de equipo
       virus_scanning: Análisis de antivirus
@@ -2194,6 +2201,9 @@ es:
       nextcloud_sso:
         title: "Inicio de sesión único para almacenamiento en la nube"
         description: "Habilite una autenticación fluida y segura para su almacenamiento Nextcloud con el inicio de sesión único. Simplifique la gestión del acceso y mejore la comodidad de los usuarios."
+      scim_api:
+        title: "SCIM clients"
+        description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
       virus_scanning:
         description: "Asegúrese de que los archivos cargados en OpenProject se analizan en busca de virus antes de que otros usuarios puedan acceder a ellos."
       placeholder_users:

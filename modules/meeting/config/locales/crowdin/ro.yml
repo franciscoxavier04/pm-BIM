@@ -46,7 +46,7 @@ ro:
       meeting_agenda_item:
         title: "Titlu"
         author: "Autor"
-        duration_in_minutes: "min"
+        duration_in_minutes: "Duration"
         description: "Mențiuni"
         presenter: "Presenter"
       meeting_section:

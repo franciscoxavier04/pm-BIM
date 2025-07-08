@@ -45,7 +45,7 @@ da:
       meeting_agenda_item:
         title: "Titel"
         author: "Forfatter"
-        duration_in_minutes: "min"
+        duration_in_minutes: "Duration"
         description: "Kommentarer"
         presenter: "Presenter"
       meeting_section:

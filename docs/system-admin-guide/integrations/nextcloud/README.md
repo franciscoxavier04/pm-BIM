@@ -6,11 +6,9 @@ description: Set up Nextcloud as a file storage in your OpenProject instance
 keywords: Nextcloud file storage integration
 ---
 
-
-
 # Nextcloud integration setup
 
->  [!IMPORTANT]
+> [!IMPORTANT]
 >
 > The integration between OpenProject and Nextcloud is part of the open source and free of charge **Community edition**, including all file management functionalities.
 > However, please note that setting up the Single Sign-on via OpenID Connect Identity Provider is an Enterprise Add-on and can only be used with [Enterprise cloud](../../../enterprise-guide/enterprise-cloud-guide) or [Enterprise on-premises](../../../enterprise-guide/enterprise-on-premises-guide). This Add-On is available for all installations under the [Enterprise Corporate plan](https://www.openproject.org/pricing/).
@@ -334,7 +332,7 @@ Some administrators setup Nextcloud using a self-signed TLS/SSL certificate with
 
 Add the following environment variable to the OpenProject server and restart it:
 
-```
+```text
 SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
 ```
 

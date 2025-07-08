@@ -1026,7 +1026,7 @@ ja:
           false: "private"
         queries: "クエリ"
         status_code: "プロジェクトステータス"
-        status_explanation: "Project status description"
+        status_explanation: "プロジェクトステータスの説明"
         status_codes:
           not_started: "未着手"
           on_track: "順調"
@@ -1145,6 +1145,8 @@ ja:
         new_password: "新しいパスワード"
         password_confirmation: "確認のため再入力"
         consented_at: "同意しました。"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
@@ -1156,7 +1158,8 @@ ja:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "アクセシビリティモード"
-        auto_hide_popups: "成功通知を自動的に隠す"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "変更を保存せずにワークパッケージから移動するときに警告"
         theme: "Colour mode"
         time_zone: "タイムゾーン"
@@ -1188,7 +1191,7 @@ ja:
         include_non_working_days:
           title: "Working days"
           false: "working days only"
-          true: "include non-working days"
+          true: "休業日を含む"
         journal_internal: Internal Journal
         notify: "Notify" #used in custom actions
         parent: "親項目"
@@ -1449,9 +1452,9 @@ ja:
             base:
               working_days_are_missing: "At least one day of the week must be defined as a working day."
               previous_working_day_changes_unprocessed: "The previous changes to the working days configuration have not been applied yet."
-              hours_per_day_are_missing: "The number of hours per day must be defined."
+              hours_per_day_are_missing: "1日あたりの時間数を設定してください。"
               durations_are_not_positive_numbers: "The durations must be positive numbers."
-              hours_per_day_is_out_of_bounds: "Hours per day can't be more than 24"
+              hours_per_day_is_out_of_bounds: "1 日あたりの時間は 24 を超えることはできません"
         status:
           attributes:
             default_done_ratio:
@@ -1753,7 +1756,7 @@ ja:
     project_ids: "Project IDs"
     project_phase: "Project phase"
     project_phase_definition: "Project phase"
-    reason: "Reason"
+    reason: "理由"
     responsible: "責任者"
     required: "必須"
     recipient: "Recipient"
@@ -1870,7 +1873,7 @@ ja:
   button_rollback: "このバージョンにロールバック"
   button_save: "保存"
   button_save_as: "名前をつけて保存"
-  button_apply_changes: "Apply changes"
+  button_apply_changes: "保存"
   button_save_back: "保存して戻る"
   button_set_reminder: "Set reminder"
   button_show: "表示"
@@ -2034,6 +2037,8 @@ ja:
       x_seconds_abbreviated:
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        other: "mins"
       hour:
         other: "時"
       day:
@@ -2088,6 +2093,7 @@ ja:
       placeholder_users: Placeholder Users
       project_list_sharing: Project List Sharing
       readonly_work_packages: Readonly Work Packages
+      scim_api: SCIM server API
       sso_auth_providers: Single sign-on
       team_planner_view: Team Planner View
       virus_scanning: Antivirus Scanning
@@ -2150,10 +2156,13 @@ ja:
         description: Customize your OpenProject installation with your own logo and colors.
       custom_actions:
         title: "カスタムアクション"
-        description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+        description: "カスタムアクションは、ステータスに基づいて特定のワークパッケージで利用できる、事前に定義されたアクションです。"
       nextcloud_sso:
         title: "Single Sign-On for Nextcloud Storage"
         description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
+      scim_api:
+        title: "SCIM clients"
+        description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       placeholder_users:
@@ -2532,12 +2541,12 @@ ja:
   notifications:
     reasons:
       assigned: "担当者"
-      dateAlert: "Date alert"
-      mentioned: "Mentioned"
+      dateAlert: "日付アラート"
+      mentioned: "メンションされた"
       responsible: "責任者"
-      shared: "Shared"
+      shared: "共有"
       watched: "ウォッチャー"
-      reminder: "Reminder"
+      reminder: "通知"
     facets:
       unread: "Unread"
       unread_title: "Show unread"
@@ -2545,15 +2554,15 @@ ja:
       all_title: "全てを表示"
     menu:
       by_project: "Unread by project"
-      by_reason: "Reason"
-      inbox: "Inbox"
+      by_reason: "理由"
+      inbox: "受信箱"
     send_notifications: "Send notifications for this action"
     work_packages:
       subject:
         created: "The work package was created."
         assigned: "You have been assigned to %{work_package}"
         subscribed: "You subscribed to %{work_package}"
-        mentioned: "You have been mentioned in %{work_package}"
+        mentioned: "あなたは %{work_package}でメンションされました"
         responsible: "You have become accountable for %{work_package}"
         watched: "You are watching %{work_package}"
     query:
@@ -2640,7 +2649,7 @@ ja:
   label_bulk_edit_selected_work_packages: "選択したワークパッケージを一括編集"
   label_bundled: "(バンドル)"
   label_calendar: "カレンダー"
-  label_calendars_and_dates: "Calendars and dates"
+  label_calendars_and_dates: "カレンダーと日付"
   label_calendar_show: "カレンダーを表示"
   label_category: "カテゴリ"
   label_completed: 完了しました
@@ -2806,7 +2815,7 @@ ja:
   label_hierarchy_leaf: "階層枚"
   label_home: "ホーム"
   label_subject_or_id: "タイトルまたはID"
-  label_calendar_subscriptions: "Calendar subscriptions"
+  label_calendar_subscriptions: "カレンダーのサブスクリプション"
   label_identifier: "識別子"
   label_in: "今日から○日後"
   label_in_less_than: "今日から○日後以前"
@@ -3010,7 +3019,7 @@ ja:
   label_project_attributes_settings: "Project attributes settings"
   label_project_storage_plural: "File storages"
   label_project_storage_project_folder: "File storages: Project folders"
-  label_projects_disk_usage_information: "%{count} projects using %{used_disk_space} disk space"
+  label_projects_disk_usage_information: "%{count} プロジェクトが %{used_disk_space} のディスク領域を使用しています"
   label_project_view_all: "全プロジェクトを表示"
   label_project_show_details: "プロジェクトの詳細を表示"
   label_project_hide_details: "プロジェクトの詳細を非表示"
@@ -3198,7 +3207,7 @@ ja:
   label_workflow_copy: "Copy workflow"
   label_workflow_plural: "ワークフロー"
   label_workflow_summary: "サマリ"
-  label_working_days_and_hours: "Working days and hours"
+  label_working_days_and_hours: "稼働日・時間"
   label_x_closed_work_packages_abbr:
     one: "1件完了"
     other: "%{count}件完了"
@@ -3254,13 +3263,13 @@ ja:
     actions: "操作"
     digests:
       including_mention_singular: "including a mention"
-      including_mention_plural: "including %{number_mentioned} mentions"
+      including_mention_plural: "%{number_mentioned} のメンションを含む"
       unread_notification_singular: "1 unread notification"
       unread_notification_plural: "%{number_unread} unread notifications"
       you_have: "You have"
     logo_alt_text: "Logo"
     mention:
-      subject: "%{user_name} mentioned you in #%{id} - %{subject}"
+      subject: "%{user_name} さんが #%{id} - %{subject} であなたをメンションしました"
     notification:
       center: "To notification center"
       see_in_center: "See comment in notification center"
@@ -3270,22 +3279,22 @@ ja:
     work_packages:
       created_at: "Created at %{timestamp} by %{user} "
       login_to_see_all: "Log in to see all notifications."
-      mentioned: "You have been <b>mentioned in a comment</b>"
-      mentioned_by: "%{user} mentioned you in a comment"
+      mentioned: "あなたは<b>コメントでメンション</b>されています"
+      mentioned_by: "%{user} さんがコメントであなたをメンションしました"
       more_to_see:
         other: "There are %{count} more work packages with notifications."
       open_in_browser: "ブラウザで開く"
       reason:
-        watched: "Watched"
-        assigned: "Assigned"
+        watched: "ウォッチ済み"
+        assigned: "割り当て済み"
         responsible: "責任者"
-        mentioned: "Mentioned"
-        shared: "Shared"
+        mentioned: "メンションされた"
+        shared: "共有"
         subscribed: "全て"
         prefix: "Received because of the notification setting: %{reason}"
-        date_alert_start_date: "Date alert"
-        date_alert_due_date: "Date alert"
-        reminder: "Reminder"
+        date_alert_start_date: "日付アラート"
+        date_alert_due_date: "日付アラート"
+        reminder: "通知"
       see_all: "See all"
       updated_at: "Updated at %{timestamp} by %{user}"
     reminder_notifications:
@@ -3462,9 +3471,9 @@ ja:
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "正常に更新しました。"
   notice_unsuccessful_create: "Creation failed."
-  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
+  notice_unsuccessful_create_with_reason: "作成失敗： %{reason}"
   notice_unsuccessful_update: "Update failed."
-  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
+  notice_unsuccessful_update_with_reason: "更新失敗： %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     Successful update. The custom fields of the activated types are automatically activated
     on the work package form. <a href="%{url}" target="_blank">See more</a>.
@@ -3846,23 +3855,23 @@ ja:
   setting_diff_max_lines_displayed: "差分の表示行数の上限"
   setting_omniauth_direct_login_provider: "Direct login SSO provider"
   setting_display_subprojects_work_packages: "デフォルトで子プロジェクトのワークパッケージを親プロジェクトに表示する"
-  setting_duration_format: "Duration format"
-  setting_duration_format_hours_only: "Hours only"
-  setting_duration_format_days_and_hours: "Days and hours"
-  setting_duration_format_instructions: "This defines how Work, Remaining work, and Time spent durations are displayed."
+  setting_duration_format: "期間の形式"
+  setting_duration_format_hours_only: "時間のみ"
+  setting_duration_format_days_and_hours: "日数と時間"
+  setting_duration_format_instructions: "全体作業、残り作業、および経過時間の表示方法を定義します。"
   setting_emails_footer: "電子メールのフッター"
   setting_emails_header: "電子メールのヘッダー"
   setting_email_login: "メールアドレスをログインに使用する"
   setting_enabled_scm: "使用するバージョン管理システム"
   setting_enabled_projects_columns: "Columns in a projects list displayed by default"
   setting_feeds_enabled: "フィードを有効にする"
-  setting_ical_enabled: "Enable iCalendar subscriptions"
+  setting_ical_enabled: "iCalendar サブスクリプションを有効にする"
   setting_feeds_limit: "フィードの項目数の上限"
   setting_file_max_size_displayed: "画面表示するテキストファイルの最大サイズ"
   setting_host_name: "ホスト名"
-  setting_hours_per_day: "Hours per day"
+  setting_hours_per_day: "1日あたりの時間"
   setting_hours_per_day_explanation: >-
-    This defines what is considered a "day" when displaying duration in days and hours (for example, if a day is 8 hours, 32 hours would be 4 days).
+    1営業日あたりの稼働時間を定義します (例えば、 1日が8時間で32時間稼働した場合は4日間です)。
   setting_invitation_expiration_days: "アクティベーションのメールは次で有効期限切れ"
   setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "Progress calculation mode"
@@ -3996,7 +4005,7 @@ ja:
       first_date_of_week_and_year_set: >
         オプション "%{day_of_week_setting_name}" または "%{first_week_setting_name}" が設定されている場合、フロントエンドでの不整合を避けるために、もう一方も設定する必要があります。
       first_week_of_year_text_html: >
-        Select the date of January that is contained in the first week of the year. This value together with first day of the week determines the total number of weeks in a year. For more information, please see our <a href="%{link}" target="_blank">documentation</a> on this topic.
+        年の最初の週に含まれる1月の日付を選択します。 この値は週の最初の日と一緒に年の週の合計数を決定します。 詳細については、このトピックに関する <a href="%{link}" target="_blank">ドキュメント</a> をご覧ください。
     experimental:
       save_confirmation: Caution! Risk of data loss! Only activate experimental features if you do not mind breaking your OpenProject installation and losing all of its data.
       warning_toast: Feature flags are settings that activate features that are still under development. They shall only be used for testing purposes. They shall never be activated on OpenProject installations holding important data. These features will very likely corrupt your data. Use them at your own risk.
@@ -4061,7 +4070,7 @@ ja:
       deletion: "削除"
     working_days:
       section_work_week: "作業週"
-      section_holidays_and_closures: "Holidays and closures"
+      section_holidays_and_closures: "休日と休業日"
     work_packages:
       not_allowed_text: "You do not have the necessary permissions to view this page."
       activities:
@@ -4417,12 +4426,12 @@ ja:
         message: "個人ユーザーとのプロジェクトリストの共有は、エンタープライズアドオンです。"
   working_days:
     info: >
-      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
+      選択されていない曜日は、作業項目やプロジェクトのライフサイクルをスケジュールするときにスキップされます(その日数には含まれません)。 これらはワークパッケージレベルで上書きできます。
     instance_wide_info: >
-      Dates added to the list below are considered non-working and skipped when scheduling work packages.
+      以下のリストに追加された日付は非稼働日とみなされ、ワークパッケージのスケジュール時にスキップされます。
     change_button: "営業日を変更する"
     warning: >
-      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
+      営業日とみなす曜日を変更すると、このインスタンス内のすべてのプロジェクトのすべての作業項目の開始日と終了日に影響を与える可能性があります。
     journal_note:
       changed: _**Working days** changed (%{changes})._
       days:

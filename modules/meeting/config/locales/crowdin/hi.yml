@@ -45,7 +45,7 @@ hi:
       meeting_agenda_item:
         title: "शीर्षक"
         author: "Author"
-        duration_in_minutes: "min"
+        duration_in_minutes: "Duration"
         description: "टिप्पणियाँ"
         presenter: "Presenter"
       meeting_section:

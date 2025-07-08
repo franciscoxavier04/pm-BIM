@@ -112,20 +112,20 @@ zh-CN:
         link: "Webhook"
     scim_clients:
       authentication_methods:
-        sso: "JWT from identity provider"
-        oauth2_client: "OAuth 2.0 client credentials"
-        oauth2_token: "Static access token"
+        sso: "来自身份提供商的 JWT"
+        oauth2_client: "OAuth 2.0 客户端凭据"
+        oauth2_token: "静态访问令牌"
       created_client_credentials_dialog_component:
-        title: "Client credentials created"
-        heading: "Client credentials have been generated"
-        one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
+        title: "客户端凭据已创建"
+        heading: "客户端凭据已生成"
+        one_time_hint: "这是您唯一看到客户端密钥的机会。请务必立即复制。"
       created_token_dialog_component:
-        title: "Token created"
-        heading: "An token has been generated"
-        label_token: "Token"
-        one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
+        title: "令牌已创建"
+        heading: "已生成一个令牌"
+        label_token: "令牌"
+        one_time_hint: "这将是您看到这个令牌的唯一机会, 请务必立即复制它。"
       delete_scim_client_dialog_component:
-        title: "Delete SCIM client"
+        title: "删除 SCIM 客户端"
         heading: "Are you sure you want to delete this SCIM client?"
         description: "Users managed by this SCIM client can no longer be updated by it."
       edit:
@@ -142,19 +142,19 @@ zh-CN:
       new:
         title: "New SCIM client"
       revoke_static_token_dialog_component:
-        confirm_button: "Revoke"
-        title: "Revoke static token"
+        confirm_button: "撤销"
+        title: "撤销静态令牌"
         heading: "Are you sure you want to revoke this token?"
         description: "The SCIM client that uses this token will no longer be able to access OpenProject's SCIM server API."
       table_component:
         blank_slate:
           title: "No SCIM clients configured yet"
           description: "Add clients to see them here"
-        user_count: "Users"
+        user_count: "用户"
       token_list_component:
         description: "The tokens you generate here can be passed by a SCIM client to access the OpenProject SCIM API."
-        heading: "Tokens"
-        label_add_token: "Token"
+        heading: "令牌"
+        label_add_token: "令牌"
         label_aria_add_token: "Add token"
       token_table_component:
         blank_slate:
@@ -676,9 +676,9 @@ zh-CN:
         tab: "表单配置"
       projects:
         tab: 项目
-        enable_all: Enable for all projects
-        select_projects: Select projects
-        select_projects_description: Select the projects in which you would like to use this type.
+        enable_all: 适用于所有项目
+        select_projects: 选择项目
+        select_projects_description: 选择您想要使用此类型的项目。
       settings:
         tab: "设置"
         type_color_text: 所选颜色用于在甘特图或工作包表中区分不同类型。因此建议使用鲜艳的颜色。
@@ -1143,6 +1143,8 @@ zh-CN:
         new_password: "新密码"
         password_confirmation: "确认"
         consented_at: "同意在"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "外观和体验"
         header_alerts: "提醒"
@@ -1154,7 +1156,8 @@ zh-CN:
           如果您使用屏幕阅读器或想要避免意外触发快捷键，您可以选择禁用默认 <a href="%{href}">键盘快捷键</a>。
         dismissed_enterprise_banners: "隐藏企业横幅"
         impaired: "辅助功能模式"
-        auto_hide_popups: "自动隐藏成功通知"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "离开未保存更改的工作包时提示我"
         theme: "颜色模式"
         time_zone: "时区"
@@ -2032,6 +2035,8 @@ zh-CN:
       x_seconds_abbreviated:
         other: "%{count} 秒"
     units:
+      minute_abbreviated:
+        other: "mins"
       hour:
         other: "小时"
       day:
@@ -2086,6 +2091,7 @@ zh-CN:
       placeholder_users: 占位符用户
       project_list_sharing: 项目列表共享
       readonly_work_packages: 只读工作包
+      scim_api: SCIM server API
       sso_auth_providers: 单点登录
       team_planner_view: 工作组规划器视图
       virus_scanning: 反病毒扫描
@@ -2152,6 +2158,9 @@ zh-CN:
       nextcloud_sso:
         title: "Nextcloud存储的单点登录(SSO)"
         description: "使用单点登录为您的 Nextcloud 存储启用无缝且安全的身份验证。简化访问管理并提升用户便利性。"
+      scim_api:
+        title: "SCIM clients"
+        description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
       virus_scanning:
         description: "确保在 OpenProject 中上传的文件在被其他用户访问之前进行病毒扫描。"
       placeholder_users:
@@ -3181,7 +3190,7 @@ zh-CN:
   label_work_package_attachments: "工作包附件"
   label_work_package_category_new: "新的类别"
   label_work_package_category_plural: "工作包类别"
-  label_work_package_comments: "Work package comments"
+  label_work_package_comments: "工作包评论"
   label_work_package_hierarchy: "工作包的层次结构"
   label_work_package_new: "新工作包"
   label_work_package_edit: "编辑工作包 %{name}"

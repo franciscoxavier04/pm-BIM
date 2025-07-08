@@ -49,7 +49,7 @@ ar:
       meeting_agenda_item:
         title: "العنوان"
         author: "المؤلف"
-        duration_in_minutes: "min"
+        duration_in_minutes: "Duration"
         description: "ملاحظات"
         presenter: "Presenter"
       meeting_section:

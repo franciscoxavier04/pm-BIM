@@ -46,7 +46,7 @@ sr:
       meeting_agenda_item:
         title: "Title"
         author: "Author"
-        duration_in_minutes: "min"
+        duration_in_minutes: "Duration"
         description: "Notes"
         presenter: "Presenter"
       meeting_section:

@@ -45,7 +45,7 @@ de:
       meeting_agenda_item:
         title: "Titel"
         author: "Autor"
-        duration_in_minutes: "Min."
+        duration_in_minutes: "Duration"
         description: "Anmerkungen"
         presenter: "Referent"
       meeting_section:

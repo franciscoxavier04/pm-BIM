@@ -1152,6 +1152,8 @@ pt-BR:
         new_password: "Nova senha"
         password_confirmation: "Confirmação"
         consented_at: "Consentido em"
+      group:
+        identity_url: "Identity URL"
       user_preference:
         header_look_and_feel: "Aparência e usabilidade"
         header_alerts: "Alertas"
@@ -1163,7 +1165,8 @@ pt-BR:
           Você pode optar por desativar os <a href="%{href}">atalhos de teclado</a> padrão se utilizar um leitor de tela ou quiser evitar acionar uma ação acidentalmente com um atalho
         dismissed_enterprise_banners: "Banners empresariais ocultos"
         impaired: "Modo de acessibilidade"
-        auto_hide_popups: "Auto-ocultar notificações de sucesso"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Alertar-me ao sair de um pacote de trabalho sem salvar as alterações"
         theme: "Modo de cor"
         time_zone: "Fuso horário"
@@ -2072,6 +2075,9 @@ pt-BR:
         one: "1 s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "hora"
         other: "hora"
@@ -2128,6 +2134,7 @@ pt-BR:
       placeholder_users: Usuários Genéricos
       project_list_sharing: Compartilhamento de Lista de Projetos
       readonly_work_packages: Pacotes de Trabalho somente leitura
+      scim_api: SCIM server API
       sso_auth_providers: Autenticação única
       team_planner_view: Planejador de Equipes
       virus_scanning: Verificação de antivírus
@@ -2194,6 +2201,9 @@ pt-BR:
       nextcloud_sso:
         title: "Autenticação única para o armazenamento do Nextcloud"
         description: "Ative a autenticação segura e contínua para o seu armazenamento Nextcloud com Autenticação única. Simplifique o gerenciamento de acessos e melhore a experiência do usuário."
+      scim_api:
+        title: "SCIM clients"
+        description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
       virus_scanning:
         description: "Garantir que os arquivos carregados no OpenProject sejam verificados quanto à presença de vírus antes de serem acessados por outros usuários."
       placeholder_users:
