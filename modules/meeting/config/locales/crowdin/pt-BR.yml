@@ -45,7 +45,7 @@ pt-BR:
       meeting_agenda_item:
         title: "Título"
         author: "Autor"
-        duration_in_minutes: "Duration"
+        duration_in_minutes: "Duração"
         description: "Anotações"
         presenter: "Apresentador"
       meeting_section:
@@ -350,7 +350,7 @@ pt-BR:
   permission_delete_meetings: "Excluir reuniões"
   permission_view_meetings: "Visualizar reuniões"
   permission_manage_agendas: "Gerenciar agendas"
-  permission_manage_agendas_explanation: "Allows creating, editing and removing agenda items"
+  permission_manage_agendas_explanation: "Permite criar, editar e remover itens da agenda"
   permission_manage_outcomes: "Gerenciar resultados"
   permission_send_meeting_invites_and_outcomes: "Enviar convites para a reunião e resultados aos participantes"
   project_module_meetings: "Reuniões"

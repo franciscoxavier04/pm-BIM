@@ -323,7 +323,7 @@ de:
     label_added_time_by: 'Hinzugefügt von <a href="%{authorLink}">%{author}</a> am %{age}'
     label_ago: "Tage her"
     label_all: "alle"
-    label_all_projects: "All projects"
+    label_all_projects: "Alle Projekte"
     label_all_uppercase: "Alle"
     label_all_work_packages: "alle Arbeitspakete"
     label_and: "und"
@@ -642,10 +642,10 @@ de:
       title: "Geben Sie Ihr Kennwort ein, um fortzufahren"
     pagination:
       no_other_page: "Sie befinden sich auf der einzigen Seite."
-      pagination_controls: "Pagination controls"
+      pagination_controls: "Paginierungs-Steuerung"
       pages:
-        next: "Next page"
-        previous: "Previous page"
+        next: "Nächste Seite"
+        previous: "Vorherige Seite"
         page_number: Page %{number}
         show_per_page: Show %{number} per page
     placeholders:
