@@ -56,7 +56,7 @@ See COPYRIGHT and LICENSE files for more details.
 <%= with_enterprise_banner_guard(
   :scim_api,
   variant: :medium,
-  image: "enterprise/automatically-generated-subjects.png" # TODO: exchange for correct image
+  image: "enterprise/scim-api.png"
 ) do
   render(Admin::ScimClients::TableComponent.new(rows: @scim_clients))
 end %>
