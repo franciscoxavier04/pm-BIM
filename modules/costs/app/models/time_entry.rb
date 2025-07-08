@@ -117,7 +117,7 @@ class TimeEntry < ApplicationRecord
   def ongoing_hours
     return nil unless ongoing?
 
-    (Time.zone.now.to_i - created_at.to_i) / SECONDS_PER_HOUR
+    ((Time.zone.now.to_i - created_at.to_i) / SECONDS_PER_HOUR).round(2)
   end
 
   def start_time=(value)
@@ -150,6 +150,10 @@ class TimeEntry < ApplicationRecord
 
   def has_start_and_end_time?
     start_time.present?
+  end
+
+  def hours_for_calculation
+    ongoing? ? ongoing_hours : hours
   end
 
   def start_timestamp # rubocop:disable Metrics/AbcSize

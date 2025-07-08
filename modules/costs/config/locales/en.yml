@@ -105,6 +105,7 @@ en:
   button_log_time: "Log"
   button_add_activity: "Activity"
   button_add_time_entry: "Log time"
+  button_stop_timer: "Stop timer"
 
   caption_booked_on_project: "Booked on project"
   caption_default: "Default"
@@ -187,6 +188,7 @@ en:
   label_day: "Day"
   label_today_capitalized: "Today"
   label_view_mode_switcher: "Change view"
+  label_timer_since: "Started at %{time}"
 
   placeholder_activity_select_work_package_first: Work package selection is required first
 
