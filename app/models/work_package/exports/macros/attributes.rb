@@ -160,7 +160,6 @@ module WorkPackage::Exports
         format_attribute_value(attribute_name, obj.class, obj)
       end
 
-
       def self.can_view_attribute?(custom_field, obj, attribute_name)
         !(custom_field.nil? && !user_allowed_view_attribute?(obj, attribute_name))
       end
