@@ -35,13 +35,12 @@ module PaginationHelper
   SHOW_MORE_DEFAULT_INCREMENT = 20
   SHOW_MORE_MAX_LIMIT = 1000
 
-  def pagination_links_full(paginator, options = {})
+  def pagination_links_full(paginator, params: {}, allowed_params: nil, per_page_links: true, **)
     return unless paginator.total_entries > 0
 
-    options.with_defaults!(default_options)
     content_tag(:div, class: "op-pagination") do
-      concat pagination_pages_section(paginator, options)
-      concat pagination_options_section(paginator, options) if options[:per_page_links]
+      concat pagination_pages_section(paginator, renderer: LinkRenderer, params:, allowed_params:, **)
+      concat pagination_options_section(paginator, params:, allowed_params:) if per_page_links
     end
   end
 
@@ -198,23 +197,23 @@ module PaginationHelper
 
   private
 
-  def pagination_pages_section(paginator, options)
+  def pagination_pages_section(paginator, **)
     content_tag(:nav, class: "op-pagination--pages", aria: { label: I18n.t(:"js.pagination.page_navigation") }) do
-      pagination_entries(paginator, options)
+      pagination_entries(paginator, **)
     end
   end
 
-  def pagination_options_section(paginator, options)
+  def pagination_options_section(paginator, params:, allowed_params:)
     per_page_options = Setting.per_page_options_array
     return "".html_safe if per_page_options.empty?
 
-    allowed_params = options[:allowed_params] || %w[filters sortBy]
+    allowed_params ||= %w[filters sortBy]
     content_tag(:div, class: "op-pagination--options") do
       content_tag(:nav, aria: { label: I18n.t(:"js.pagination.per_page_navigation") }) do
         pagination_options_list(
           per_page_options,
-          paginator.per_page,
-          options[:params].merge(safe_query_params(allowed_params))
+          current_per_page: paginator.per_page,
+          **params.merge(safe_query_params(allowed_params))
         )
       end
     end
@@ -222,22 +221,22 @@ module PaginationHelper
 
   ##
   # Builds the pagination nav with pages and range
-  def pagination_entries(paginator, options)
+  def pagination_entries(paginator, **)
     page_first = paginator.offset + 1
     page_last = paginator.offset + paginator.length
     total = paginator.total_entries
 
     content_tag(:ul, class: "op-pagination--items op-pagination--items_start", role: "presentation") do
-      concat will_paginate(paginator, options)
+      concat will_paginate(paginator, **)
       concat content_tag(:li, "(#{page_first} - #{page_last}/#{total})", class: "op-pagination--range")
     end
   end
 
-  def pagination_options_list(per_pages, current_per_page, options)
+  def pagination_options_list(per_pages, current_per_page:, **)
     content_tag(:ul, class: "op-pagination--items op-pagination--items_end", role: "presentation") do
       safe_join [
         content_tag(:li, I18n.t(:label_per_page), class: "op-pagination--label"),
-        per_pages.map { |per_page| pagination_options_item(per_page, per_page == current_per_page, options) }
+        per_pages.map { |per_page| pagination_options_item(per_page, current: per_page == current_per_page, **) }
       ]
     end
   end
@@ -245,7 +244,7 @@ module PaginationHelper
   ##
   # Constructs the 'n items per page' entries
   # determined from available options in the settings.
-  def pagination_options_item(per_page, current, options)
+  def pagination_options_item(per_page, current:, **options)
     label = I18n.t("js.pagination.pages.show_per_page", number: per_page)
     content_tag(:li, class: ["op-pagination--item", { "op-pagination--item_current": current }]) do
       link_to_unless(
@@ -257,13 +256,5 @@ module PaginationHelper
         content_tag(:span, per_page, aria: { label:, current: "page" }, tabindex: 0)
       end
     end
-  end
-
-  def default_options
-    {
-      renderer: LinkRenderer,
-      per_page_links: true,
-      params: {}
-    }
   end
 end
