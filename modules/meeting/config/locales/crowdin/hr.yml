@@ -46,7 +46,7 @@ hr:
       meeting_agenda_item:
         title: "Naziv"
         author: "Autor"
-        duration_in_minutes: "min"
+        duration_in_minutes: "Duration"
         description: "Bilješke"
         presenter: "Presenter"
       meeting_section:

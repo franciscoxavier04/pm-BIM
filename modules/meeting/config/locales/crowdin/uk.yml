@@ -47,7 +47,7 @@ uk:
       meeting_agenda_item:
         title: "Назва "
         author: "Автор"
-        duration_in_minutes: "хв"
+        duration_in_minutes: "Duration"
         description: "Нотатки"
         presenter: "Доповідач"
       meeting_section:

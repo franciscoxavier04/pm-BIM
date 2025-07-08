@@ -44,7 +44,7 @@ ms:
       meeting_agenda_item:
         title: "Tajuk"
         author: "Pengarang"
-        duration_in_minutes: "min"
+        duration_in_minutes: "Duration"
         description: "Nota-nota"
         presenter: "Penyampai"
       meeting_section:

@@ -45,7 +45,7 @@ el:
       meeting_agenda_item:
         title: "Τίτλος"
         author: "Συγγραφέας"
-        duration_in_minutes: "min"
+        duration_in_minutes: "Duration"
         description: "Παρατηρήσεις"
         presenter: "Presenter"
       meeting_section:

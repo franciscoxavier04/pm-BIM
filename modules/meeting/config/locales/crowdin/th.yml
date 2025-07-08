@@ -44,7 +44,7 @@ th:
       meeting_agenda_item:
         title: "ชื่อเรื่อง"
         author: "ผู้เขียน"
-        duration_in_minutes: "min"
+        duration_in_minutes: "Duration"
         description: "หมายเหตุ"
         presenter: "Presenter"
       meeting_section:

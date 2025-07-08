@@ -293,11 +293,11 @@ ru:
           text_new_features: "Читайте о новых возможностях и обновлениях продуктов."
           learn_about: "Узнайте больше о всех новых функциях"
           #Include the version to invalidate outdated translations in other locales.
-          #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_1":
+          #Otherwise, e.g. Chinese might still have the translations for 10.0 in the 12.0 release.
+          "16_2":
             standard:
               new_features_html: >
-                Релиз содержит различные новые функции и улучшения, например <br> <ul class="%{list_styling_class}"> <li>Структура жизненного цикла проекта с этапами и стадиями.</li> <li>Экспорт совещаний в формате PDF.</li> <li>Установка смарт-параметров по умолчанию для напоминаний.</li> <li>Использование отрицательной задержки для даты пакета работ.</li> <li>Отображение иерархических деревьев для иерархии пользовательских полей.</li> <li>Улучшение доступности для выбора даты с ARIA регионами.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>New header and sidebar with improved navigation and design.</li> <li>Smoother experience with Custom fields, Relations, Reminders, Meetings, and My time tracking.</li> <li>Non-latin languages and emojis supported in PDF exports.</li> <li>Option to disable keyboard shortcuts for better accessibility.</li> <li>SCIM server via API (Enterprise add-on).</li> <li>API support for internal comments.</li> </ul>
     ical_sharing_modal:
       title: "Подписаться на календарь"
       inital_setup_error_message: "Произошла ошибка при получении данных."

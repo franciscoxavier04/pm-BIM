@@ -45,7 +45,7 @@ ka:
       meeting_agenda_item:
         title: "სათაური"
         author: "ავტორი"
-        duration_in_minutes: "min"
+        duration_in_minutes: "Duration"
         description: "შენიშვნები"
         presenter: "Presenter"
       meeting_section:

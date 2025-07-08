@@ -45,7 +45,7 @@ et:
       meeting_agenda_item:
         title: "Pealkiri"
         author: "Autor"
-        duration_in_minutes: "min"
+        duration_in_minutes: "Duration"
         description: "Märkmed"
         presenter: "Esitleja"
       meeting_section:

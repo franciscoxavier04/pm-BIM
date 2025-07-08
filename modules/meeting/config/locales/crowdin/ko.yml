@@ -44,7 +44,7 @@ ko:
       meeting_agenda_item:
         title: "제목"
         author: "작성자"
-        duration_in_minutes: "분"
+        duration_in_minutes: "Duration"
         description: "메모"
         presenter: "발표자"
       meeting_section:

@@ -293,11 +293,11 @@ es:
           text_new_features: "Obtenga información sobre nuevas funciones y actualizaciones de productos."
           learn_about: "Más información sobre todas las nuevas funciones"
           #Include the version to invalidate outdated translations in other locales.
-          #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_1":
+          #Otherwise, e.g. Chinese might still have the translations for 10.0 in the 12.0 release.
+          "16_2":
             standard:
               new_features_html: >
-                La versión contiene varias nuevas funciones y mejoras, como <br> <ul class="%{list_styling_class}"> <li>Estructura el ciclo de vida del proyecto con fases y puertas de fase.</li> <li>Exportar reuniones en formato PDF.</li> <li>Establecer opciones predeterminadas inteligentes para recordatorios.</li> <li>Usar un retraso negativo en las fechas del paquete de trabajo.</li> <li>Mostrar árboles de jerarquía para campos personalizados de jerarquía.</li> <li>Benefíciese de una accesibilidad mejorada en el selector de fechas con regiones en vivo de ARIA</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>New header and sidebar with improved navigation and design.</li> <li>Smoother experience with Custom fields, Relations, Reminders, Meetings, and My time tracking.</li> <li>Non-latin languages and emojis supported in PDF exports.</li> <li>Option to disable keyboard shortcuts for better accessibility.</li> <li>SCIM server via API (Enterprise add-on).</li> <li>API support for internal comments.</li> </ul>
     ical_sharing_modal:
       title: "Suscribirse al calendario"
       inital_setup_error_message: "Se ha producido un error al obtener los datos."

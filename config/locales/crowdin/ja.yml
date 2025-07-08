@@ -1158,7 +1158,8 @@ ja:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "アクセシビリティモード"
-        auto_hide_popups: "成功通知を自動的に隠す"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "変更を保存せずにワークパッケージから移動するときに警告"
         theme: "Colour mode"
         time_zone: "タイムゾーン"
@@ -2036,6 +2037,8 @@ ja:
       x_seconds_abbreviated:
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        other: "mins"
       hour:
         other: "時"
       day:

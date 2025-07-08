@@ -1182,7 +1182,8 @@ ru:
           Вы можете отключить <a href="%{href}">горячие клавиши</a> по умолчанию, если Вы пользуетесь программой чтения с экрана или хотите избежать случайного запуска действия с помощью сочетания клавиш.
         dismissed_enterprise_banners: "Скрытые корпоративные баннеры"
         impaired: "Режим отображения для людей с ограниченными возможностями"
-        auto_hide_popups: "Автоматически скрывать уведомления об успешных действиях"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "При покидании рабочего пакета предупреждать о не сохраненных изменениях"
         theme: "Цветовой режим"
         time_zone: "Часовой пояс"
@@ -2153,6 +2154,11 @@ ru:
         many: "%{count} секунд"
         other: "%{count} секунд"
     units:
+      minute_abbreviated:
+        one: "min"
+        few: "mins"
+        many: "mins"
+        other: "mins"
       hour:
         one: "час"
         few: "час"

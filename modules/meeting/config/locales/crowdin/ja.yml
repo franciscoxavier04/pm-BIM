@@ -44,7 +44,7 @@ ja:
       meeting_agenda_item:
         title: "タイトル"
         author: "作成者"
-        duration_in_minutes: "分"
+        duration_in_minutes: "Duration"
         description: "注記"
         presenter: "発表者"
       meeting_section:

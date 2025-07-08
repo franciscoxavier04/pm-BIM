@@ -45,7 +45,7 @@ fa:
       meeting_agenda_item:
         title: "عنوان"
         author: "نویسنده"
-        duration_in_minutes: "min"
+        duration_in_minutes: "Duration"
         description: "یادداشت ها"
         presenter: "Presenter"
       meeting_section:

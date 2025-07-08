@@ -1164,7 +1164,8 @@ el:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Λειτουργία προσβασιμότητας"
-        auto_hide_popups: "Αυτόματη απόκρυψη ειδοποιήσεων επιτυχίας"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Προειδοποιήστε με όταν φεύγω από ένα πακέτο εργασίας με μη αποθηκευμένες αλλαγές"
         theme: "Colour mode"
         time_zone: "Ζώνη Ώρας"
@@ -2073,6 +2074,9 @@ el:
         one: "1 s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "ώρα"
         other: "ώρες"

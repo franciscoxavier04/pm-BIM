@@ -1165,7 +1165,8 @@ es:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Banners empresariales ocultos"
         impaired: "Modo de accesibilidad"
-        auto_hide_popups: "Auto-ocultar notificaciones satisfactorias"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Avisarme cuando salga de un paquete de trabajo con cambios sin guardar"
         theme: "Colour mode"
         time_zone: "Zona horaria"
@@ -2074,6 +2075,9 @@ es:
         one: "1 s"
         other: "%{count} segundos"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "una hora"
         other: "hora"

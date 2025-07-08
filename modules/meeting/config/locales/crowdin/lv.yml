@@ -46,7 +46,7 @@ lv:
       meeting_agenda_item:
         title: "Virsraksts"
         author: "Autors"
-        duration_in_minutes: "min"
+        duration_in_minutes: "Duration"
         description: "Piezīmes"
         presenter: "Presenter"
       meeting_section:

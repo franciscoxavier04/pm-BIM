@@ -45,7 +45,7 @@ ne:
       meeting_agenda_item:
         title: "Title"
         author: "Author"
-        duration_in_minutes: "min"
+        duration_in_minutes: "Duration"
         description: "द्रष्टव्यहरु"
         presenter: "Presenter"
       meeting_section:
