@@ -47,8 +47,9 @@ module FullCalendar
       end
     end
 
-    def additional_attributes
+    def additional_attributes # rubocop:disable Metrics/AbcSize
       {
+        durationEditable: time_entry.start_time.present?,
         hours: time_entry.hours,
         typeId: time_entry.work_package.type_id,
         workPackageId: time_entry.work_package.id,

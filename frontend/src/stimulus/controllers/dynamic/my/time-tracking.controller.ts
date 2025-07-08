@@ -210,6 +210,9 @@ export default class MyTimeTrackingController extends Controller {
           );
         }
 
+        // mark the event explicitly as resizable if it is not an all day event
+        info.event.setProp('durationEditable', !info.event.allDay);
+
         this.calendar.setOption('defaultTimedEventDuration', this.DEFAULT_TIMED_EVENT_DURATION);
       },
       eventClick: (info) => {
