@@ -1229,6 +1229,7 @@ zh-TW:
         error_unauthorized: "無法被存取。"
         error_readonly: "被嘗試寫入但是無法寫入。"
         error_conflict: "在此同時，資訊已經被至少一個使用者更新"
+        error_not_found: "not found."
         email: "不是一個有效的電子郵件地址。 "
         empty: "不可為空"
         enterprise_plan_required: "最少需要 %{plan_name}。"
@@ -1388,8 +1389,6 @@ zh-TW:
           cannot_be_a_non_working_day: "不能是非工作日。"
         query:
           attributes:
-            project:
-              error_not_found: "未找到"
             public:
               error_unauthorized: "- 此用戶沒有建立公共查詢的權限。"
             group_by:
@@ -1429,10 +1428,8 @@ zh-TW:
             circular_dependency: "無限迴圈的關聯。"
           attributes:
             to_id:
-              error_not_found: "未找到或不可見。"
               error_readonly: "無法變更現有的關係。"
             from_id:
-              error_not_found: "未找到或不可見。"
               error_readonly: "無法變更現有的關係。"
         repository:
           not_available: "版本控制無法使用"
@@ -1571,10 +1568,6 @@ zh-TW:
                 description: "‘確認密碼’ 應該要符合 '新密碼'"
             status:
               invalid_on_create: "不是新用戶的有效狀態"
-            ldap_auth_source:
-              error_not_found: "未找到"
-            auth_source:
-              error_not_found: "未找到"
         member:
           principal_blank: "請至少選擇一個使用者或群組。"
           role_blank: "需要被指定"

@@ -1238,6 +1238,7 @@ pt-BR:
         error_unauthorized: "não pode ser acessado."
         error_readonly: "tentou escrever, mas não é gravável."
         error_conflict: "As informações foram atualizadas por pelo menos um outro usuário nesse meio tempo."
+        error_not_found: "not found."
         email: "não é um endereço de e-mail válido."
         empty: "não pode ser vazio."
         enterprise_plan_required: "requer pelo menos o %{plan_name}."
@@ -1397,8 +1398,6 @@ pt-BR:
           cannot_be_a_non_working_day: "não pode ser um dia não útil."
         query:
           attributes:
-            project:
-              error_not_found: "não encontrado"
             public:
               error_unauthorized: "- O usuário não possui permissão para criar visões públicas."
             group_by:
@@ -1438,10 +1437,8 @@ pt-BR:
             circular_dependency: "O relacionamento cria um círculo de relacionamentos."
           attributes:
             to_id:
-              error_not_found: "não encontrado ou não visível."
               error_readonly: "não pode ser alterado para relações existentes."
             from_id:
-              error_not_found: "não encontrado ou não visível."
               error_readonly: "não pode ser alterado para relações existentes."
         repository:
           not_available: "Fornecedor SCM não está disponível"
@@ -1581,10 +1578,6 @@ pt-BR:
                 description: "'Confirmação de senha' deve coincidir com a entrada no campo 'nova senha'."
             status:
               invalid_on_create: "não é um estado válido para novos usuários."
-            ldap_auth_source:
-              error_not_found: "não encontrado"
-            auth_source:
-              error_not_found: "não encontrado"
         member:
           principal_blank: "Por favor, escolha ao menos um usuário ou grupo."
           role_blank: "precisa ser atribuído."

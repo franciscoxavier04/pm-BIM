@@ -1233,6 +1233,7 @@ de:
         error_unauthorized: "kann nicht zugegriffen werden."
         error_readonly: "wurde versucht zu beschreiben, ist aber nicht beschreibbar."
         error_conflict: "Die Informationen wurde zwischenzeitlich durch andere Benutzer geändert."
+        error_not_found: "not found."
         email: "ist keine gültige E-Mail-Adresse."
         empty: "muss ausgefüllt werden."
         enterprise_plan_required: "benötigt mindestens %{plan_name}."
@@ -1392,8 +1393,6 @@ de:
           cannot_be_a_non_working_day: "kann kein arbeitsfreier Tag sein."
         query:
           attributes:
-            project:
-              error_not_found: "nicht gefunden"
             public:
               error_unauthorized: "- Der Nutzer hat nicht die Berechtigung öffentliche Ansichten zu erstellen."
             group_by:
@@ -1433,10 +1432,8 @@ de:
             circular_dependency: "Die Beziehung erzeugt eine zirkuläre Abhängigkeit."
           attributes:
             to_id:
-              error_not_found: "nicht gefunden oder nicht sichtbar."
               error_readonly: "kann für bestehende Beziehungen nicht geändert werden."
             from_id:
-              error_not_found: "nicht gefunden oder nicht sichtbar."
               error_readonly: "kann für bestehende Beziehungen nicht geändert werden."
         repository:
           not_available: "SCM-Anbieter ist nicht verfügbar"
@@ -1576,10 +1573,6 @@ de:
                 description: "\"Kennwortbestätigung\" sollte mit \"Neues Kennwort\" übereinstimmen."
             status:
               invalid_on_create: "ist kein gültiger Status für neue Benutzer."
-            ldap_auth_source:
-              error_not_found: "nicht gefunden"
-            auth_source:
-              error_not_found: "nicht gefunden"
         member:
           principal_blank: "Bitte wählen Sie mindestens einen Benutzer oder eine Gruppe."
           role_blank: "muss zugeordnet werden."

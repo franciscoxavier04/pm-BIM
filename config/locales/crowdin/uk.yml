@@ -1250,6 +1250,7 @@ uk:
         error_unauthorized: "– можливо, немає доступу."
         error_readonly: "– було здійснено спробу запису, але елемент недоступний для запису."
         error_conflict: "Інформація була оновлена принаймні один інший користувач в той же час."
+        error_not_found: "not found."
         email: "– це не дійсна електронна адреса."
         empty: "не може бути порожнім."
         enterprise_plan_required: "потрібен принаймні план %{plan_name}."
@@ -1409,8 +1410,6 @@ uk:
           cannot_be_a_non_working_day: "не може припадати на неробочий день."
         query:
           attributes:
-            project:
-              error_not_found: "не знайдено"
             public:
               error_unauthorized: "- Користувач не має дозволу на створення загальнодоступних переглядів."
             group_by:
@@ -1450,10 +1449,8 @@ uk:
             circular_dependency: "Відносини створюють коло відносин."
           attributes:
             to_id:
-              error_not_found: "не знайдено або приховано."
               error_readonly: "не можна змінити для наявних зв’язків."
             from_id:
-              error_not_found: "не знайдено або приховано."
               error_readonly: "не можна змінити для наявних зв’язків."
         repository:
           not_available: "Постачальник SCM недоступний"
@@ -1595,10 +1592,6 @@ uk:
                 description: "\"Підтвердження пароля\" має відповідати введеному в полі \"Новий пароль\"."
             status:
               invalid_on_create: "не є дійсним статусом для нових користувачів."
-            ldap_auth_source:
-              error_not_found: "не знайдено"
-            auth_source:
-              error_not_found: "не знайдено"
         member:
           principal_blank: "Виберіть принаймні одного користувача або групу."
           role_blank: "повинні бути призначені."
