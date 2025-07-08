@@ -66,17 +66,25 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
     )
   end
   shared_let(:formatter) { Class.new { extend WorkPackage::PDFExport::Common::Macro } }
-  shared_let(:user) do
-    create(:user, member_with_permissions: { project => %i[view_work_packages view_project_attributes view_project] })
+  let(:additional_permissions) { [] }
+  let(:user) do
+    create(
+      :user,
+      member_with_permissions: {
+        project => %i[view_work_packages view_project_attributes view_project] + additional_permissions
+      }
+    )
   end
-  let!(:markdown) { "" }
+  let(:markdown) { "" }
 
   before do
     User.current = user
   end
 
   subject(:formatted) do
-    formatter.apply_markdown_field_macros(markdown, { work_package: work_package, project: project, user: })
+    formatter
+      .apply_markdown_field_macros(markdown, { work_package: work_package, project: project, user: })
+      .sub("\n", "")
   end
 
   describe "empty text" do
@@ -91,7 +99,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
 
       it "ignores the tag" do
         expect(formatted).to eq("<mention class=\"mention\" data-id=\"185\" " +
-                                "data-type=\"work_package\" data-text=\"#185\">\\#185</mention>\n")
+                                "data-type=\"work_package\" data-text=\"#185\">\\#185</mention>")
       end
     end
 
@@ -100,7 +108,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
 
       it "contains correct data" do
         expect(formatted).to eq("<mention class=\"mention\" data-id=\"185\" " +
-                                "data-type=\"work_package\" data-text=\"#185\">#185</mention>\n")
+                                "data-type=\"work_package\" data-text=\"#185\">#185</mention>")
       end
     end
 
@@ -109,7 +117,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
 
       it "contains correct data" do
         expect(formatted).to eq("**<mention class=\"mention\" data-id=\"185\" " +
-                                "data-type=\"work_package\" data-text=\"#185\">#185</mention>**\n")
+                                "data-type=\"work_package\" data-text=\"#185\">#185</mention>**")
       end
     end
 
@@ -118,7 +126,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
 
       it "contains correct data" do
         expect(formatted).to eq("~~<mention class=\"mention\" data-id=\"185\" " +
-                                "data-type=\"work_package\" data-text=\"#185\">#185</mention>~~\n")
+                                "data-type=\"work_package\" data-text=\"#185\">#185</mention>~~")
       end
     end
 
@@ -127,7 +135,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
 
       it "contains correct data" do
         expect(formatted).to eq("<table><tr><td><p><s><mention class=\"mention\" data-id=\"185\" " +
-                                "data-type=\"work_package\" data-text=\"##185\">##185</mention></s></p></td></tr></table>\n")
+                                "data-type=\"work_package\" data-text=\"##185\">##185</mention></s></p></td></tr></table>")
       end
     end
   end
@@ -137,7 +145,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "workPackageValue:subject" }
 
       it "outputs the attribute value" do
-        expect(formatted).to eq("Work package 1\n")
+        expect(formatted).to eq("Work package 1")
       end
     end
 
@@ -145,7 +153,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "workPackageValue:185:subject" }
 
       it "outputs the attribute value for the specified work package" do
-        expect(formatted).to eq("Work package 1\n")
+        expect(formatted).to eq("Work package 1")
       end
     end
 
@@ -161,7 +169,44 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "workPackageValue:status" }
 
       it "outputs the status name" do
-        expect(formatted).to eq("In Progress\n")
+        expect(formatted).to eq("In Progress")
+      end
+    end
+
+    describe "with project_phase attribute" do
+      let(:project_phase_active) { true }
+      let(:phase_definition) { create(:project_phase_definition, name: "Test Phase") }
+      let!(:project_phase) do
+        create(:project_phase, project: project, definition: phase_definition, active: project_phase_active)
+      end
+      let(:markdown) { "workPackageValue:project_phase" }
+
+      before do
+        work_package.update!(project_phase_definition_id: phase_definition.id)
+      end
+
+      describe "without the permission" do
+        it "outputs nothing" do
+          expect(formatted).to eq("")
+        end
+      end
+
+      describe "with the permission" do
+        let(:additional_permissions) { [:view_project_phases] }
+
+        describe "with active phase" do
+          it "outputs the project phase name" do
+            expect(formatted).to eq("Test Phase")
+          end
+        end
+
+        describe "without active phase" do
+          let(:project_phase_active) { false }
+
+          it "outputs the project phase name" do
+            expect(formatted).to eq("")
+          end
+        end
       end
     end
 
@@ -169,7 +214,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "workPackageValue:\"Custom Field 1\"" }
 
       it "outputs the custom field value" do
-        expect(formatted).to eq("Custom value 1\n")
+        expect(formatted).to eq("Custom value 1")
       end
     end
 
@@ -177,7 +222,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "workPackageValue:185:\"Custom Field 1\"" }
 
       it "outputs the custom field value for the specified work package" do
-        expect(formatted).to eq("Custom value 1\n")
+        expect(formatted).to eq("Custom value 1")
       end
     end
 
@@ -185,7 +230,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "workPackageValue:nonexistent_attribute" }
 
       it "outputs an empty value" do
-        expect(formatted).to eq(" \n")
+        expect(formatted).to eq(" ")
       end
     end
 
@@ -193,7 +238,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "**workPackageValue:subject**" }
 
       it "preserves the markdown formatting" do
-        expect(formatted).to eq("**Work package 1**\n")
+        expect(formatted).to eq("**Work package 1**")
       end
     end
 
@@ -201,7 +246,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "<table><tr><td>workPackageValue:subject</td></tr></table>" }
 
       it "processes the macro inside HTML" do
-        expect(formatted).to eq("<table><tr><td>Work package 1</td></tr></table>\n")
+        expect(formatted).to eq("<table><tr><td>Work package 1</td></tr></table>")
       end
     end
   end
@@ -211,7 +256,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "workPackageLabel:subject" }
 
       it "outputs the attribute label" do
-        expect(formatted).to eq("Subject\n")
+        expect(formatted).to eq("Subject")
       end
     end
 
@@ -219,7 +264,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "workPackageLabel:185:subject" }
 
       it "outputs the attribute label for the specified work package" do
-        expect(formatted).to eq("Subject\n")
+        expect(formatted).to eq("Subject")
       end
     end
 
@@ -227,7 +272,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "workPackageLabel:999:subject" }
 
       it "outputs a humanized form" do
-        expect(formatted).to include("Subject")
+        expect(formatted).to eq("Subject")
       end
     end
 
@@ -235,7 +280,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "workPackageLabel:status" }
 
       it "outputs the status label" do
-        expect(formatted).to eq("Status\n")
+        expect(formatted).to eq("Status")
       end
     end
 
@@ -243,7 +288,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "workPackageLabel:\"Custom Field 1\"" }
 
       it "outputs the custom field name" do
-        expect(formatted).to include("Custom Field 1")
+        expect(formatted).to eq("Custom Field 1")
       end
     end
 
@@ -251,7 +296,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "workPackageLabel:185:\"Custom Field 1\"" }
 
       it "outputs the custom field name for the specified work package" do
-        expect(formatted).to include("Custom Field 1")
+        expect(formatted).to eq("Custom Field 1")
       end
     end
 
@@ -259,7 +304,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "workPackageLabel:nonexistent_attribute" }
 
       it "outputs the humanized attribute name" do
-        expect(formatted).to include("nonexistent_attribute")
+        expect(formatted).to eq("nonexistent_attribute")
       end
     end
 
@@ -267,7 +312,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "**workPackageLabel:subject**" }
 
       it "preserves the markdown formatting" do
-        expect(formatted).to include("**Subject**")
+        expect(formatted).to eq("**Subject**")
       end
     end
 
@@ -275,7 +320,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "<table><tr><td>workPackageLabel:subject</td></tr></table>" }
 
       it "processes the macro inside HTML" do
-        expect(formatted).to eq("<table><tr><td>Subject</td></tr></table>\n")
+        expect(formatted).to eq("<table><tr><td>Subject</td></tr></table>")
       end
     end
   end
@@ -285,7 +330,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "projectValue:name" }
 
       it "outputs the attribute value" do
-        expect(formatted).to eq("#{project.name}\n")
+        expect(formatted).to eq(project.name)
       end
     end
 
@@ -293,7 +338,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "projectValue:#{project.id}:name" }
 
       it "outputs the attribute value for the specified project" do
-        expect(formatted).to eq("#{project.name}\n")
+        expect(formatted).to eq(project.name)
       end
     end
 
@@ -301,7 +346,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "projectValue:\"#{project.identifier}\":name" }
 
       it "outputs the attribute value for the specified project" do
-        expect(formatted).to eq("#{project.name}\n")
+        expect(formatted).to eq(project.name)
       end
     end
 
@@ -317,7 +362,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "projectValue:status_code" }
 
       it "outputs the status code" do
-        expect(formatted).to include(project.status_code)
+        expect(formatted).to eq(project.status_code)
       end
     end
 
@@ -325,7 +370,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "projectValue:\"Project Custom Field 1\"" }
 
       it "outputs the custom field value" do
-        expect(formatted).to eq("Project custom value 1\n")
+        expect(formatted).to eq("Project custom value 1")
       end
     end
 
@@ -333,7 +378,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "projectValue:#{project.id}:\"Project Custom Field 1\"" }
 
       it "outputs the custom field value for the specified project" do
-        expect(formatted).to eq("Project custom value 1\n")
+        expect(formatted).to eq("Project custom value 1")
       end
     end
 
@@ -341,7 +386,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "projectValue:nonexistent_attribute" }
 
       it "outputs an empty value" do
-        expect(formatted).to eq(" \n")
+        expect(formatted).to eq(" ")
       end
     end
 
@@ -349,7 +394,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "**projectValue:name**" }
 
       it "preserves the markdown formatting" do
-        expect(formatted).to eq("**#{project.name}**\n")
+        expect(formatted).to eq("**#{project.name}**")
       end
     end
 
@@ -357,7 +402,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "<table><tr><td>projectValue:name</td></tr></table>" }
 
       it "processes the macro inside HTML" do
-        expect(formatted).to eq("<table><tr><td>#{project.name}</td></tr></table>\n")
+        expect(formatted).to eq("<table><tr><td>#{project.name}</td></tr></table>")
       end
     end
   end
@@ -367,7 +412,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "projectLabel:name" }
 
       it "outputs the attribute label" do
-        expect(formatted).to eq("Name\n")
+        expect(formatted).to eq("Name")
       end
     end
 
@@ -375,7 +420,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "projectLabel:#{project.id}:name" }
 
       it "outputs the attribute label for the specified project" do
-        expect(formatted).to eq("Name\n")
+        expect(formatted).to eq("Name")
       end
     end
 
@@ -383,7 +428,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "projectLabel:\"#{project.identifier}\":name" }
 
       it "outputs the attribute label for the specified project" do
-        expect(formatted).to eq("Name\n")
+        expect(formatted).to eq("Name")
       end
     end
 
@@ -391,7 +436,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "projectLabel:999:name" }
 
       it "outputs the attribute label" do
-        expect(formatted).to eq("Name\n")
+        expect(formatted).to eq("Name")
       end
     end
 
@@ -399,7 +444,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "projectLabel:status_code" }
 
       it "outputs the status label" do
-        expect(formatted).to eq("Project status\n")
+        expect(formatted).to eq("Project status")
       end
     end
 
@@ -407,7 +452,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "projectLabel:\"Project Custom Field 1\"" }
 
       it "outputs the custom field name" do
-        expect(formatted).to eq("Project Custom Field 1\n")
+        expect(formatted).to eq("Project Custom Field 1")
       end
     end
 
@@ -415,7 +460,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "projectLabel:#{project.id}:\"Project Custom Field 1\"" }
 
       it "outputs the custom field name for the specified project" do
-        expect(formatted).to include("Project Custom Field 1")
+        expect(formatted).to eq("Project Custom Field 1")
       end
     end
 
@@ -423,7 +468,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "projectLabel:nonexistent_attribute" }
 
       it "outputs the humanized attribute name" do
-        expect(formatted).to include("nonexistent_attribute")
+        expect(formatted).to eq("nonexistent_attribute")
       end
     end
 
@@ -431,7 +476,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "**projectLabel:name**" }
 
       it "preserves the markdown formatting" do
-        expect(formatted).to eq("**Name**\n")
+        expect(formatted).to eq("**Name**")
       end
     end
 
@@ -439,7 +484,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "<table><tr><td>projectLabel:name</td></tr></table>" }
 
       it "processes the macro inside HTML" do
-        expect(formatted).to eq("<table><tr><td>Name</td></tr></table>\n")
+        expect(formatted).to eq("<table><tr><td>Name</td></tr></table>")
       end
     end
   end
