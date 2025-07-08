@@ -45,6 +45,12 @@ def register_chrome(language, name: :"chrome_#{language}", headless: "new", over
     # Useful for parallel test runs.
     options.add_argument("disable-renderer-backgrounding")
 
+    # Use unique user data directory for each parallel test process
+    # This prevents "user data directory is already in use" errors in CI
+    test_env_number = ENV.fetch("TEST_ENV_NUMBER", "1")
+    user_data_dir = "/tmp/chrome-user-data-#{test_env_number}-#{Process.pid}"
+    options.add_argument("--user-data-dir=#{user_data_dir}")
+
     options.add_preference(:download,
                            directory_upgrade: true,
                            prompt_for_download: false,

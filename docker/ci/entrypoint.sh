@@ -22,6 +22,8 @@ cleanup() {
 	exit_code=$?
 	echo "CLEANUP"
 	rm -rf tmp/cache/parallel*
+	# Clean up Chrome user data directories created for parallel tests
+	rm -rf /tmp/chrome-user-data-*
 
 	if [ ! $exit_code -eq "0" ]; then
 		echo "ERROR: exit code $exit_code"
