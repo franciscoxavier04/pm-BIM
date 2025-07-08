@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,38 +28,18 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-Rails.application.routes.draw do
-  scope "projects/:project_id" do
-    resources :cost_reports, except: :create do
-      collection do
-        match :index, via: %i[get post]
-        get "menu" => "cost_reports/menus#show", as: :menu_project
-      end
-
-      member do
-        get :index, as: :project
-        post :update
-        post :rename
+module OpenProject
+  module Patches
+    module PrimerPageHeaderBreadcrumb
+      def with_breadcrumbs(breadcrumbs, skip_home_on_mobile: false, **)
+        super([{ href: home_path,
+                 text: helpers.organization_name,
+                 skip_for_mobile: skip_home_on_mobile }] + breadcrumbs, **)
       end
     end
   end
+end
 
-  namespace :cost_reports do
-    resource :menu, only: %[show]
-  end
-
-  resources :cost_reports, except: :create do
-    collection do
-      match :index, via: %i[get post], as: :global
-      post :save_as, action: :create
-      get :drill_down
-      match :available_values, via: %i[get post]
-    end
-
-    member do
-      get :index, as: :global
-      post :update
-      post :rename
-    end
-  end
+OpenProject::Patches.patch_gem_version "openproject-primer_view_components", "0.70.3" do
+  Primer::OpenProject::PageHeader.prepend OpenProject::Patches::PrimerPageHeaderBreadcrumb
 end

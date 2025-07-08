@@ -179,6 +179,7 @@ export class IFCViewerPageComponent extends PartitionedQuerySpacePageComponent i
 
   breadcrumbItems() {
     return [
+      { href: this.pathHelperService.homePath(), text: this.titleService.appTitle },
       { href: this.pathHelperService.projectPath(this.currentProject.identifier as string), text: (this.currentProject.name) },
       { href: this.pathHelperService.projectBCFPath(this.currentProject.identifier as string), text: this.I18n.t('js.bcf.label_bcf') },
       this.selectedTitle?? '',

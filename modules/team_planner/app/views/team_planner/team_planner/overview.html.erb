@@ -3,8 +3,7 @@
   render Primer::OpenProject::PageHeader.new do |header|
     header.with_title { t("team_planner.label_team_planner_plural") }
     header.with_breadcrumbs(
-      [{ href: home_path, text: organization_name },
-       t("team_planner.label_team_planner_plural")]
+      [t("team_planner.label_team_planner_plural")]
     )
   end
 %>
