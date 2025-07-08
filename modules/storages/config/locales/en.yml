@@ -82,6 +82,7 @@ en:
     edit_project_folder:
       label: Edit project folder
     open:
+      contact_admin: Please contact your administrator to resolve this error.
       remote_identity_error: An unexpected error occurred while connecting to the storage.
     project_folder_mode:
       automatic: Automatically managed
