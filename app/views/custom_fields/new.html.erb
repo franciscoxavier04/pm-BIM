@@ -36,7 +36,8 @@ See COPYRIGHT and LICENSE files for more details.
       [{ href: admin_index_path, text: t(:label_administration) },
        { href: custom_fields_path, text: t(:label_custom_field_plural) },
        { href: custom_fields_path(tab: @custom_field.type), text: I18n.t(@custom_field.type_name) },
-       t(:label_custom_field_new)]
+       nested_breadcrumb_element(label_for_custom_field_format(@custom_field.field_format), t(:label_custom_field_new))],
+      selected_item_font_weight: :normal
     )
   end
 %>

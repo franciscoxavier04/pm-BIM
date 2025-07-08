@@ -344,7 +344,7 @@ export class PathHelperService {
     return `${this.workPackagesPath(null)}/move/new`;
   }
 
-  public workPackagesBulkCopyPath() {
+  public workPackagesBulkDuplicatePath() {
     return `${this.workPackagesBulkMovePath()}?copy=true`;
   }
 
