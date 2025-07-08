@@ -31,11 +31,105 @@
 require "spec_helper"
 
 RSpec.describe Query::Results, "sums" do
-  let(:project) do
+  shared_let(:int_cf) do
+    create(:integer_wp_custom_field)
+  end
+  shared_let(:float_cf) do
+    create(:float_wp_custom_field)
+  end
+  shared_let(:type) do
+    create(:type) do |t|
+      t.custom_fields << int_cf
+      t.custom_fields << float_cf
+    end
+  end
+  shared_let(:project) do
     create(:project) do |p|
+      p.types << type
       p.work_package_custom_fields << int_cf
       p.work_package_custom_fields << float_cf
     end
+  end
+  shared_let(:other_project) do
+    create(:project) do |p|
+      p.types << type
+      p.work_package_custom_fields << int_cf
+      p.work_package_custom_fields << float_cf
+    end
+  end
+  shared_let(:current_user) do
+    create(:user, member_with_permissions: {
+             project => %i[view_work_packages view_cost_entries view_time_entries view_cost_rates view_hourly_rates]
+           })
+  end
+  shared_let(:priority) { create(:priority, name: "Normal") }
+  shared_let(:status_new) { create(:status, name: "New") }
+
+  before_all do
+    set_factory_default(:user, current_user)
+    set_factory_default(:priority, priority)
+    set_factory_default(:project, project)
+    set_factory_default(:project_with_types, project)
+    set_factory_default(:status, status_new)
+  end
+
+  shared_let(:work_package1) do
+    create(:work_package,
+           type:,
+           estimated_hours: 10,
+           remaining_hours: 9,
+           done_ratio: 10,
+           int_cf.attribute_name => 10,
+           float_cf.attribute_name => 3.414,
+           story_points: 7) do |wp|
+             wp.cost_entries << create(:cost_entry,
+                                       work_package: wp,
+                                       overridden_costs: 200)
+             wp.time_entries << create(:time_entry,
+                                       work_package: wp,
+                                       overridden_costs: 300)
+           end
+  end
+  shared_let(:work_package2) do
+    create(:work_package,
+           type:,
+           assigned_to: current_user,
+           estimated_hours: 5,
+           remaining_hours: 2.5,
+           done_ratio: 50,
+           int_cf.attribute_name => 10,
+           float_cf.attribute_name => 3.414,
+           story_points: 7) do |wp|
+             wp.cost_entries << create(:cost_entry,
+                                       work_package: wp,
+                                       overridden_costs: 200)
+             wp.time_entries << create(:time_entry,
+                                       work_package: wp,
+                                       overridden_costs: 300)
+           end
+  end
+  shared_let(:work_package3) do
+    create(:work_package,
+           type:,
+           assigned_to: current_user,
+           responsible: current_user,
+           estimated_hours: 5,
+           remaining_hours: 2.5,
+           done_ratio: 50,
+           int_cf.attribute_name => 10,
+           float_cf.attribute_name => 3.414,
+           story_points: 7)
+  end
+  shared_let(:invisible_work_package1) do
+    create(:work_package,
+           type:,
+           project: other_project,
+           estimated_hours: 5,
+           remaining_hours: 3,
+           done_ratio: 40,
+           int_cf.attribute_name => 10,
+           float_cf.attribute_name => 3.414,
+           story_points: 7)
   end
   let(:estimated_hours_column) { query.displayable_columns.detect { |c| c.name.to_s == "estimated_hours" } }
   let(:int_cf_column) { query.displayable_columns.detect { |c| c.name.to_s == int_cf.column_name } }
@@ -46,102 +140,6 @@ RSpec.describe Query::Results, "sums" do
   let(:remaining_hours_column) { query.displayable_columns.detect { |c| c.name.to_s == "remaining_hours" } }
   let(:done_ratio_column) { query.displayable_columns.detect { |c| c.name.to_s == "done_ratio" } }
   let(:story_points_column) { query.displayable_columns.detect { |c| c.name.to_s == "story_points" } }
-  let(:other_project) do
-    create(:project) do |p|
-      p.work_package_custom_fields << int_cf
-      p.work_package_custom_fields << float_cf
-    end
-  end
-  let!(:work_package1) do
-    create(:work_package,
-           type:,
-           project:,
-           estimated_hours: 10,
-           int_cf.attribute_name => 10,
-           float_cf.attribute_name => 3.414,
-           remaining_hours: 9,
-           story_points: 7)
-  end
-  let!(:work_package2) do
-    create(:work_package,
-           type:,
-           project:,
-           assigned_to: current_user,
-           estimated_hours: 5,
-           int_cf.attribute_name => 10,
-           float_cf.attribute_name => 3.414,
-           remaining_hours: 2.5,
-           story_points: 7)
-  end
-  let!(:work_package3) do
-    create(:work_package,
-           type:,
-           project:,
-           assigned_to: current_user,
-           responsible: current_user,
-           estimated_hours: 5,
-           int_cf.attribute_name => 10,
-           float_cf.attribute_name => 3.414,
-           remaining_hours: 2.5,
-           story_points: 7)
-  end
-  let!(:invisible_work_package1) do
-    create(:work_package,
-           type:,
-           project: other_project,
-           estimated_hours: 5,
-           int_cf.attribute_name => 10,
-           float_cf.attribute_name => 3.414,
-           remaining_hours: 3,
-           story_points: 7)
-  end
-  let!(:cost_entry1) do
-    create(:cost_entry,
-           project:,
-           work_package: work_package1,
-           user: current_user,
-           overridden_costs: 200)
-  end
-  let!(:cost_entry2) do
-    create(:cost_entry,
-           project:,
-           work_package: work_package2,
-           user: current_user,
-           overridden_costs: 200)
-  end
-  let!(:time_entry1) do
-    create(:time_entry,
-           project:,
-           work_package: work_package1,
-           user: current_user,
-           overridden_costs: 300)
-  end
-  let!(:time_entry2) do
-    create(:time_entry,
-           project:,
-           work_package: work_package2,
-           user: current_user,
-           overridden_costs: 300)
-  end
-  let(:int_cf) do
-    create(:integer_wp_custom_field)
-  end
-  let(:float_cf) do
-    create(:float_wp_custom_field)
-  end
-  let(:type) do
-    create(:type) do |t|
-      t.custom_fields << int_cf
-      t.custom_fields << float_cf
-      project.types << t
-    end
-  end
-  let(:current_user) do
-    create(:user, member_with_permissions: { project => permissions })
-  end
-  let(:permissions) do
-    %i[view_work_packages view_cost_entries view_time_entries view_cost_rates view_hourly_rates]
-  end
   let(:group_by) { nil }
   let(:query) do
     build(:query,
