@@ -12,7 +12,7 @@
   <% end %>
   <% d.with_footer(variant: :large) do %>
     <% flex_layout(justify_content: :flex_end, classes: "time-entry-dialog-footer-buttons") do |flex| %>
-      <% if time_entry.persisted? %>
+      <% if can_delete_time_entry? %>
         <% flex.with_column do %>
           <%= render(
                 Primer::Beta::Button.new(

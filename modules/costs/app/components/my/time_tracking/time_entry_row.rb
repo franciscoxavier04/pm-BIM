@@ -54,6 +54,25 @@ module My
           ) do |item|
             item.with_leading_visual_icon(icon: :pencil)
           end
+
+          if can_delete_time_entry?
+
+            menu.with_item(
+              scheme: :danger,
+              content_arguments: {
+                data: {
+                  "turbo" => true,
+                  "turbo-method" => :delete,
+                  "turbo-confirm" => t("js.text_are_you_sure")
+                }
+              },
+              href: time_entry_path(time_entry, no_dialog: true),
+              label: t("label_delete"),
+              tag: :a
+            ) do |item|
+              item.with_leading_visual_icon(icon: :trash)
+            end
+          end
         end
       end
 
@@ -102,6 +121,10 @@ module My
 
       def time_entry
         model
+      end
+
+      def can_delete_time_entry?
+        TimeEntries::DeleteContract.new(time_entry, User.current).valid?
       end
     end
   end
