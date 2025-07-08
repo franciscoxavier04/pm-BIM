@@ -31,7 +31,6 @@ import { DOCUMENT } from '@angular/common';
 import { OpModalService } from 'core-app/shared/components/modal/modal.service';
 import { CurrentProjectService } from 'core-app/core/current-project/current-project.service';
 import { InviteUserModalComponent } from './invite-user.component';
-import ClickEvent = JQuery.ClickEvent;
 
 const attributeName = 'invite-user-modal-augment';
 
@@ -51,7 +50,7 @@ export class OpInviteUserModalAugmentService {
    * Create initial listeners for Rails-rendered modals
    */
   public setupListener() {
-    const matches = this.documentElement.querySelectorAll('[' + attributeName + ']');
+    const matches = this.documentElement.querySelectorAll(`[${attributeName}]`);
     for (let i = 0; i < matches.length; ++i) {
       const el = matches[i] as HTMLElement;
       el.addEventListener('click', this.spawnModal.bind(this));
