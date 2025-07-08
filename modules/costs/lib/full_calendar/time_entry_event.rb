@@ -34,11 +34,19 @@ module FullCalendar
 
     class << self
       def from_time_entry(time_entry)
+        starts_at = time_entry.start_timestamp || time_entry.spent_on
+        ends_at = time_entry.end_timestamp || time_entry.spent_on
+
+        if time_entry.ongoing?
+          starts_at = time_entry.created_at
+          ends_at = Time.current
+        end
+
         event = new(
           id: time_entry.id,
-          starts_at: time_entry.start_timestamp || time_entry.spent_on,
-          ends_at: time_entry.end_timestamp || time_entry.spent_on,
-          all_day: time_entry.start_time.blank?,
+          starts_at: starts_at,
+          ends_at: ends_at,
+          all_day: !time_entry.ongoing? && time_entry.start_time.blank?,
           title: "#{time_entry.project.name}: ##{time_entry.work_package.id} #{time_entry.work_package.subject}"
         )
         event.time_entry = time_entry
@@ -50,12 +58,13 @@ module FullCalendar
     def additional_attributes # rubocop:disable Metrics/AbcSize
       {
         durationEditable: time_entry.start_time.present?,
-        hours: time_entry.hours,
+        hours: time_entry.hours_for_calculation,
         typeId: time_entry.work_package.type_id,
         workPackageId: time_entry.work_package.id,
         workPackageSubject: time_entry.work_package.subject,
         projectId: time_entry.project.id,
-        projectName: time_entry.project.name
+        projectName: time_entry.project.name,
+        ongoing: time_entry.ongoing?
       }
     end
   end

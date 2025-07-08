@@ -10,6 +10,7 @@ import { PathHelperService } from 'core-app/core/path-helper/path-helper.service
 import moment from 'moment';
 import allLocales from '@fullcalendar/core/locales-all';
 import { renderStreamMessage } from '@hotwired/turbo';
+import { opStopwatchStopIconData, toDOMString } from '@openproject/octicons-angular';
 
 export default class MyTimeTrackingController extends Controller {
   private turboRequests:TurboRequestsService;
@@ -98,15 +99,22 @@ export default class MyTimeTrackingController extends Controller {
       hiddenDays: this.hiddenDays(),
       firstDay: this.startOfWeekValue,
       eventClassNames(info) {
-        return [
+        const classes = [
           'calendar-time-entry-event',
           `__hl_type_${info.event.extendedProps.typeId}`,
           '__hl_border_top',
           'ellipsis',
         ];
+
+        if (info.event.extendedProps.ongoing) {
+          classes.push('calendar-time-entry-event-ongoing');
+        }
+
+        return classes;
       },
       eventContent: (info) => {
         let timeDetails = '';
+        let stopTimerButton = '';
         let duration = info.event.extendedProps.hours as number;
 
         if (info.isResizing && info.event.start && info.event.end) {
@@ -118,10 +126,22 @@ export default class MyTimeTrackingController extends Controller {
           timeDetails = `<div class="fc-event-times" title="${time}">${time}</div>`;
         }
 
+        if (info.event.extendedProps.ongoing) {
+          stopTimerButton = toDOMString(
+        opStopwatchStopIconData,
+        'small',
+        { 'aria-hidden': 'true', class: 'octicon stop-timer-button' },
+      );
+        }
+
         return {
           html: `
            <div class="fc-event-main-frame">
-             <div class="fc-event-time">${this.displayDuration(duration)}</div>
+             <div class="fc-event-time">
+             ${stopTimerButton}
+
+              ${this.displayDuration(duration)}
+             </div>
              <div class="fc-event-title-container">
                 <div class="fc-event-title fc-event-wp" title="${info.event.extendedProps.workPackageSubject}">
                   <a class="Link--primary Link" href="${this.pathHelper.workPackageShortPath(info.event.extendedProps.workPackageId as string)}">
@@ -185,6 +205,10 @@ export default class MyTimeTrackingController extends Controller {
         }
 
         if (!dropInfo.allDay && draggedEvent?.allDay && !this.allowTimesValue) {
+          return false;
+        }
+
+        if (draggedEvent?.extendedProps.ongoing) {
           return false;
         }
 
