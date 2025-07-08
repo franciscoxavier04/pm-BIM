@@ -131,15 +131,6 @@ RSpec.describe Query::Results, "sums" do
            float_cf.attribute_name => 3.414,
            story_points: 7)
   end
-  let(:estimated_hours_column) { query.displayable_columns.detect { |c| c.name.to_s == "estimated_hours" } }
-  let(:int_cf_column) { query.displayable_columns.detect { |c| c.name.to_s == int_cf.column_name } }
-  let(:float_cf_column) { query.displayable_columns.detect { |c| c.name.to_s == float_cf.column_name } }
-  let(:material_costs_column) { query.displayable_columns.detect { |c| c.name.to_s == "material_costs" } }
-  let(:labor_costs_column) { query.displayable_columns.detect { |c| c.name.to_s == "labor_costs" } }
-  let(:overall_costs_column) { query.displayable_columns.detect { |c| c.name.to_s == "overall_costs" } }
-  let(:remaining_hours_column) { query.displayable_columns.detect { |c| c.name.to_s == "remaining_hours" } }
-  let(:done_ratio_column) { query.displayable_columns.detect { |c| c.name.to_s == "done_ratio" } }
-  let(:story_points_column) { query.displayable_columns.detect { |c| c.name.to_s == "story_points" } }
   let(:group_by) { nil }
   let(:query) do
     build(:query,
@@ -154,18 +145,22 @@ RSpec.describe Query::Results, "sums" do
     login_as(current_user)
   end
 
+  def stringify_column_keys(sums_hash)
+    sums_hash.transform_keys { |column| column.name.to_s }
+  end
+
   describe "#all_total_sums" do
     it "is a hash of all summable columns" do
-      expect(query_results.all_total_sums)
-        .to eq(estimated_hours_column => 20.0,
-               int_cf_column => 30,
-               float_cf_column => 10.24,
-               material_costs_column => 400.0,
-               labor_costs_column => 600.0,
-               overall_costs_column => 1000.0,
-               remaining_hours_column => 14.0,
-               done_ratio_column => 30,
-               story_points_column => 21)
+      expect(stringify_column_keys(query_results.all_total_sums))
+        .to eq("estimated_hours" => 20.0,
+               int_cf.column_name => 30,
+               float_cf.column_name => 10.24,
+               "material_costs" => 400.0,
+               "labor_costs" => 600.0,
+               "overall_costs" => 1000.0,
+               "remaining_hours" => 14.0,
+               "done_ratio" => 30,
+               "story_points" => 21)
     end
 
     context "when filtering" do
@@ -174,16 +169,16 @@ RSpec.describe Query::Results, "sums" do
       end
 
       it "is a hash of all summable columns and includes only the work packages matching the filter" do
-        expect(query_results.all_total_sums)
-          .to eq(estimated_hours_column => 10.0,
-                 int_cf_column => 20,
-                 float_cf_column => 6.83,
-                 material_costs_column => 200.0,
-                 labor_costs_column => 300.0,
-                 overall_costs_column => 500.0,
-                 remaining_hours_column => 5.0,
-                 done_ratio_column => 50,
-                 story_points_column => 14)
+        expect(stringify_column_keys(query_results.all_total_sums))
+          .to eq("estimated_hours" => 10.0,
+                 int_cf.column_name => 20,
+                 float_cf.column_name => 6.83,
+                 "material_costs" => 200.0,
+                 "labor_costs" => 300.0,
+                 "overall_costs" => 500.0,
+                 "remaining_hours" => 5.0,
+                 "done_ratio" => 50,
+                 "story_points" => 14)
       end
     end
   end
@@ -194,26 +189,26 @@ RSpec.describe Query::Results, "sums" do
 
       it "is a hash of sums grouped by user values (and nil) and grouped columns" do
         expect(query_results.all_group_sums.keys).to contain_exactly(current_user, nil)
-        expect(query_results.all_group_sums[current_user])
-          .to eq(estimated_hours_column => 10.0,
-                 int_cf_column => 20,
-                 float_cf_column => 6.83,
-                 material_costs_column => 200.0,
-                 labor_costs_column => 300.0,
-                 overall_costs_column => 500.0,
-                 remaining_hours_column => 5.0,
-                 done_ratio_column => 50,
-                 story_points_column => 14)
-        expect(query_results.all_group_sums[nil])
-          .to eq(estimated_hours_column => 10.0,
-                 int_cf_column => 10,
-                 float_cf_column => 3.41,
-                 material_costs_column => 200.0,
-                 labor_costs_column => 300.0,
-                 overall_costs_column => 500.0,
-                 remaining_hours_column => 9.0,
-                 done_ratio_column => 10,
-                 story_points_column => 7)
+        expect(stringify_column_keys(query_results.all_group_sums[current_user]))
+          .to eq("estimated_hours" => 10.0,
+                 int_cf.column_name => 20,
+                 float_cf.column_name => 6.83,
+                 "material_costs" => 200.0,
+                 "labor_costs" => 300.0,
+                 "overall_costs" => 500.0,
+                 "remaining_hours" => 5.0,
+                 "done_ratio" => 50,
+                 "story_points" => 14)
+        expect(stringify_column_keys(query_results.all_group_sums[nil]))
+          .to eq("estimated_hours" => 10.0,
+                 int_cf.column_name => 10,
+                 float_cf.column_name => 3.41,
+                 "material_costs" => 200.0,
+                 "labor_costs" => 300.0,
+                 "overall_costs" => 500.0,
+                 "remaining_hours" => 9.0,
+                 "done_ratio" => 10,
+                 "story_points" => 7)
       end
 
       context "when filtering" do
@@ -223,16 +218,16 @@ RSpec.describe Query::Results, "sums" do
 
         it "is a hash of sums grouped by user values and grouped columns" do
           expect(query_results.all_group_sums.keys).to contain_exactly(current_user)
-          expect(query_results.all_group_sums[current_user])
-            .to eq(estimated_hours_column => 5.0,
-                   int_cf_column => 10,
-                   float_cf_column => 3.41,
-                   material_costs_column => 0.0,
-                   labor_costs_column => 0.0,
-                   overall_costs_column => 0.0,
-                   remaining_hours_column => 2.5,
-                   done_ratio_column => 50,
-                   story_points_column => 7)
+          expect(stringify_column_keys(query_results.all_group_sums[current_user]))
+            .to eq("estimated_hours" => 5.0,
+                   int_cf.column_name => 10,
+                   float_cf.column_name => 3.41,
+                   "material_costs" => 0.0,
+                   "labor_costs" => 0.0,
+                   "overall_costs" => 0.0,
+                   "remaining_hours" => 2.5,
+                   "done_ratio" => 50,
+                   "story_points" => 7)
         end
       end
     end
@@ -242,26 +237,26 @@ RSpec.describe Query::Results, "sums" do
 
       it "is a hash of sums grouped by done_ratio values and grouped columns" do
         expect(query_results.all_group_sums.keys).to contain_exactly(50, 10)
-        expect(query_results.all_group_sums[50])
-          .to eq(estimated_hours_column => 10.0,
-                 int_cf_column => 20,
-                 float_cf_column => 6.83,
-                 material_costs_column => 200.0,
-                 labor_costs_column => 300.0,
-                 overall_costs_column => 500.0,
-                 remaining_hours_column => 5.0,
-                 done_ratio_column => 50,
-                 story_points_column => 14)
-        expect(query_results.all_group_sums[10])
-           .to eq(estimated_hours_column => 10.0,
-                  int_cf_column => 10,
-                  float_cf_column => 3.41,
-                  material_costs_column => 200.0,
-                  labor_costs_column => 300.0,
-                  overall_costs_column => 500.0,
-                  remaining_hours_column => 9.0,
-                  done_ratio_column => 10,
-                  story_points_column => 7)
+        expect(stringify_column_keys(query_results.all_group_sums[50]))
+          .to eq("estimated_hours" => 10.0,
+                 int_cf.column_name => 20,
+                 float_cf.column_name => 6.83,
+                 "material_costs" => 200.0,
+                 "labor_costs" => 300.0,
+                 "overall_costs" => 500.0,
+                 "remaining_hours" => 5.0,
+                 "done_ratio" => 50,
+                 "story_points" => 14)
+        expect(stringify_column_keys(query_results.all_group_sums[10]))
+           .to eq("estimated_hours" => 10.0,
+                  int_cf.column_name => 10,
+                  float_cf.column_name => 3.41,
+                  "material_costs" => 200.0,
+                  "labor_costs" => 300.0,
+                  "overall_costs" => 500.0,
+                  "remaining_hours" => 9.0,
+                  "done_ratio" => 10,
+                  "story_points" => 7)
       end
 
       context "when filtering" do
@@ -271,16 +266,16 @@ RSpec.describe Query::Results, "sums" do
 
         it "is a hash of sums grouped by done_ratio values and grouped columns" do
           expect(query_results.all_group_sums.keys).to contain_exactly(50)
-          expect(query_results.all_group_sums[50])
-            .to eq(estimated_hours_column => 5.0,
-                   int_cf_column => 10,
-                   float_cf_column => 3.41,
-                   material_costs_column => 0.0,
-                   labor_costs_column => 0.0,
-                   overall_costs_column => 0.0,
-                   remaining_hours_column => 2.5,
-                   done_ratio_column => 50,
-                   story_points_column => 7)
+          expect(stringify_column_keys(query_results.all_group_sums[50]))
+            .to eq("estimated_hours" => 5.0,
+                   int_cf.column_name => 10,
+                   float_cf.column_name => 3.41,
+                   "material_costs" => 0.0,
+                   "labor_costs" => 0.0,
+                   "overall_costs" => 0.0,
+                   "remaining_hours" => 2.5,
+                   "done_ratio" => 50,
+                   "story_points" => 7)
         end
       end
     end
