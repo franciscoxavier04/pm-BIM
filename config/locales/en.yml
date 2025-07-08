@@ -1519,8 +1519,10 @@ en:
             circular_dependency: "The relationship creates a circle of relationships."
           attributes:
             to_id:
+              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
+              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "SCM vendor is not available"
