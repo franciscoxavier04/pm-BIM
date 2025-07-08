@@ -215,6 +215,14 @@ class WorkPackage < ApplicationRecord
     Setting.work_package_done_ratio == "field"
   end
 
+  def self.work_weighted_average_mode?
+    Setting.total_percent_complete_mode == "work_weighted_average"
+  end
+
+  def self.simple_average_mode?
+    Setting.total_percent_complete_mode == "simple_average"
+  end
+
   def self.complete_on_status_closed?
     Setting.percent_complete_on_status_closed == "set_100p"
   end
