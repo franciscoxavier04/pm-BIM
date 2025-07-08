@@ -351,8 +351,6 @@ Click the **Download** button to generated a PDF. First page of the PDF is the t
 
 ![An example of a meeting exported as a PDF file in OpenProject meetings module](openproject_userguide_meetings_pdf_export_file.png)
 
- 	
-
 ## Copy a meeting
 
 You can copy an existing meeting. This is useful if you have recurring meetings. To copy a meeting, click on the three dots in the top right corner and select **Copy**.

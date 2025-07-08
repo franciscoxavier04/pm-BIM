@@ -1165,7 +1165,8 @@ pt-PT:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Faixas de empresas ocultas"
         impaired: "Modo de acessibilidade"
-        auto_hide_popups: "Ocultar automaticamente notificações de sucesso"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Alertar-me quando sair de um pacote de trabalho sem guardar as alterações"
         theme: "Modo de cor"
         time_zone: "Fuso horário"
@@ -2068,6 +2069,9 @@ pt-PT:
         one: "1 segundo"
         other: "%{count} segundos"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "hora"
         other: "horas"

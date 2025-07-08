@@ -47,7 +47,7 @@ sk:
       meeting_agenda_item:
         title: "Nadpis"
         author: "Autor"
-        duration_in_minutes: "min"
+        duration_in_minutes: "Duration"
         description: "Poznámky"
         presenter: "Presenter"
       meeting_section:

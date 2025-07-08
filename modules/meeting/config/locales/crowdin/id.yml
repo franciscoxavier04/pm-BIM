@@ -44,7 +44,7 @@ id:
       meeting_agenda_item:
         title: "Judul"
         author: "Penulis"
-        duration_in_minutes: "menit"
+        duration_in_minutes: "Duration"
         description: "Note"
         presenter: "Pembawa acara"
       meeting_section:

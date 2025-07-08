@@ -45,7 +45,7 @@ tr:
       meeting_agenda_item:
         title: "Başlık"
         author: "Yazar"
-        duration_in_minutes: "dakika"
+        duration_in_minutes: "Duration"
         description: "Notlar"
         presenter: "Sunucu"
       meeting_section:

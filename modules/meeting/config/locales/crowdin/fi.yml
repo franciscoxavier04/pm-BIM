@@ -45,7 +45,7 @@ fi:
       meeting_agenda_item:
         title: "Otsikko"
         author: "Tekijä"
-        duration_in_minutes: "min"
+        duration_in_minutes: "Duration"
         description: "Kommentit"
         presenter: "Presenter"
       meeting_section:

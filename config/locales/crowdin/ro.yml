@@ -1176,7 +1176,8 @@ ro:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Mod accesibilitate"
-        auto_hide_popups: "Ascunde automat notificările de succes"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Avertizează când părăsesc un pachet de lucru cu modificări nesalvate"
         theme: "Colour mode"
         time_zone: "Fus orar"
@@ -2110,6 +2111,10 @@ ro:
         few: "%{count} s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        one: "min"
+        few: "mins"
+        other: "mins"
       hour:
         one: "oră"
         few: "ore"

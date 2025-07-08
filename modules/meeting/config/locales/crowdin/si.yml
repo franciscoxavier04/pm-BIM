@@ -45,7 +45,7 @@ si:
       meeting_agenda_item:
         title: "මාතෘකාව"
         author: "කර්තෘ"
-        duration_in_minutes: "min"
+        duration_in_minutes: "Duration"
         description: "සටහන්"
         presenter: "Presenter"
       meeting_section:

@@ -45,7 +45,7 @@ sv:
       meeting_agenda_item:
         title: "Titel"
         author: "Upphovsman"
-        duration_in_minutes: "min"
+        duration_in_minutes: "Duration"
         description: "Anteckningar"
         presenter: "Presenter"
       meeting_section:

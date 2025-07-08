@@ -1160,7 +1160,8 @@ th:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "โหมดสำหรับผู้พิการ"
-        auto_hide_popups: "Auto-hide success notifications"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Colour mode"
         time_zone: "โซนเวลา"
@@ -2032,6 +2033,8 @@ th:
       x_seconds_abbreviated:
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        other: "mins"
       hour:
         other: "ชั่วโมง"
       day:

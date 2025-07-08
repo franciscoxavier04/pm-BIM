@@ -1160,7 +1160,8 @@ ko:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "숨겨진 엔터프라이즈 배너"
         impaired: "액세스 모드"
-        auto_hide_popups: "자동 숨김 성공 알림"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "저장하지 않고 작업 패키지를 벗어날 때 알려주세요."
         theme: "Colour mode"
         time_zone: "표준 시간대"
@@ -2032,6 +2033,8 @@ ko:
       x_seconds_abbreviated:
         other: "%{count}초"
     units:
+      minute_abbreviated:
+        other: "mins"
       hour:
         other: "시간"
       day:

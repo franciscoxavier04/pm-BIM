@@ -1167,7 +1167,8 @@ hu:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Kisegítő mód"
-        auto_hide_popups: "Siker értesítések automatikus elrejtése"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Figyelmeztess, ha úgy hagyom el a munkacsomagot, hogy nem mentett változások vannak rajta"
         theme: "Colour mode"
         time_zone: "Idő zóna"
@@ -2070,6 +2071,9 @@ hu:
         one: "1 mp"
         other: "%{count} mp"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "óra"
         other: "óra"

@@ -53,6 +53,12 @@ OpenProject has multiple file format options for exporting work packages, includ
 
 OpenProject has multiple options for exporting work packages in PDF format. These include table, report and Gantt chart. 
 
+> [!TIP]
+>
+> OpenProject PDF export supports commonly used character sets, including multilingual fonts with different alphabets, various symbols (mathematical, technical) and emojis.
+>
+![Example of a PDF export in OpenProject that includes lorem ipsum text in multiple languages and mathematical symbols](openproject-user-guide-wp-export-multilingual-symbols-example.png)
+
 #### PDF Table
 
 PDF Table exports the work package table displaying work packages as single rows with the selected columns for the work package table. Work package IDs are linked to the respective work packages. Clicking on a work package ID will lead you directly to the work package in OpenProject.

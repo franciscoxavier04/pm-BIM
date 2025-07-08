@@ -1200,7 +1200,8 @@ ar:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "نمط إمكانية الدخول"
-        auto_hide_popups: "Auto-hide success notifications"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Colour mode"
         time_zone: "المنطقة الزمنية"
@@ -2227,6 +2228,13 @@ ar:
         many: "%{count} s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        zero: "mins"
+        one: "min"
+        two: "mins"
+        few: "mins"
+        many: "mins"
+        other: "mins"
       hour:
         zero: "ساعه"
         one: "الساعة"

@@ -44,7 +44,7 @@ zh-TW:
       meeting_agenda_item:
         title: "標題"
         author: "會議發起者"
-        duration_in_minutes: "分鐘"
+        duration_in_minutes: "Duration"
         description: "備註"
         presenter: "簡報者"
       meeting_section:
