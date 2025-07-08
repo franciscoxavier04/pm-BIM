@@ -140,7 +140,7 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
     current_part = { type: :attribute, list: [] }
     parts = [current_part]
     group.attributes.each do |form_key|
-      if !CustomField.custom_field_attribute?(form_key) && !user_allowed_in_view_attribute?(work_package, form_key)
+      if !CustomField.custom_field_attribute?(form_key) && !user_allowed_view_attribute?(work_package, form_key)
         next
       end
 

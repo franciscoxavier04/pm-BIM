@@ -156,7 +156,7 @@ module WorkPackage::Exports
                     "cf_#{cf.id}"
                   end
 
-        return "" if cf.nil? && !user_allowed_in_view_attribute?(obj, ar_name)
+        return "" if cf.nil? && !user_allowed_view_attribute?(obj, ar_name)
         return msg_macro_error_rich_text if disabled_rich_text_fields.include?(ar_name.to_sym)
 
         format_attribute_value(ar_name, obj.class, obj)
