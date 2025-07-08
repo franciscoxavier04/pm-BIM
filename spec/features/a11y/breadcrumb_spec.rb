@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "Breadcrumbs", :js do
+RSpec.describe "Breadcrumbs (#63777)", :js do
   let(:user) { create(:admin) }
   let(:project) { create(:project) }
 
@@ -40,29 +40,29 @@ RSpec.describe "Breadcrumbs", :js do
 
   context "when being on an index page which is not the home screen" do
     it "does not create a loop in the mobile back links" do
-      visit project_path(project)
+      visit projects_path
 
       within ".PageHeader-breadcrumbs" do
         expect(page).to have_link href: "#", text: "Active projects", aria: { current: "page" }
         expect(page).to have_link href: "/projects", text: "Projects"
         expect(page).to have_link href: "/", text: "OpenProject"
-
-        expect(page).to have_css ".PageHeader-parentLink", href: "/", text: "OpenProject"
       end
+
+      expect(page).to have_link href: "/", text: "OpenProject", class: "PageHeader-parentLink", visible: :hidden
     end
   end
 
   context "when being on an non-index page" do
     it "does show the index page as mobile back link" do
-      visit project_path(project, { query_id: "my" })
+      visit projects_path({ query_id: "my" })
 
       within ".PageHeader-breadcrumbs" do
         expect(page).to have_link href: "#", text: "My projects", aria: { current: "page" }
         expect(page).to have_link href: "/projects", text: "Projects"
         expect(page).to have_link href: "/", text: "OpenProject"
-
-        expect(page).to have_css ".PageHeader-parentLink", href: "/projects", text: "Projects"
       end
+
+      expect(page).to have_link href: "/projects", text: "Projects", class: "PageHeader-parentLink", visible: :hidden
     end
   end
 
