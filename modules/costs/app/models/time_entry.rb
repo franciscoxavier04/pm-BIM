@@ -160,10 +160,11 @@ class TimeEntry < ApplicationRecord
     time_zone_object.local(spent_on.year, spent_on.month, spent_on.day, start_time / 60, start_time % 60)
   end
 
-  def end_timestamp
+  def end_timestamp # rubocop:disable Metrics/AbcSize
     return nil if start_time.blank?
     return nil if time_zone.blank?
     return nil if spent_on.blank?
+    return nil if hours.blank? && !ongoing?
 
     if ongoing?
       start_timestamp + ongoing_hours.hours
