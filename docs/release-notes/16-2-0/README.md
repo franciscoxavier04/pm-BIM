@@ -24,7 +24,7 @@ Please note that if you have customized the sidebar colors, your individual sett
 
 ### Primer design system added to project create and project copy forms
 
-The forms for [creating and copying projects](../../getting-started/projects/#create-a-new-project) now use OpenProject’s [Primer design system](../../blog/primer-design-system/), providing a cleaner and more consistent interface. This improves accessibility and ensures the process remains just as familiar.
+The forms for [creating and copying projects](../../getting-started/projects/#create-a-new-project) now use OpenProject’s [Primer design system](../../../blog/primer-design-system/), providing a cleaner and more consistent interface. This improves accessibility and ensures the process remains just as familiar.
 
 If you create a project **based on a template**, you will immediately be able to choose which modules and parts you want to copy and which to skip. Also, the option to activate sending email notifications during the project copy is much more visible. Before 16.2, you had to click on Copy Options to unfold.
 
