@@ -24,6 +24,9 @@ import { SuccessComponent } from './success/success.component';
 export function initializeServices(injector:Injector) {
   return function () {
     const inviteUserAugmentService = injector.get(OpInviteUserModalAugmentService);
+    document.addEventListener('turbo:load', () => {
+      inviteUserAugmentService.setupListener();
+    });
     inviteUserAugmentService.setupListener();
   };
 }
