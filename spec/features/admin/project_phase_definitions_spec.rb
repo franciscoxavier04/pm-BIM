@@ -114,8 +114,6 @@ RSpec.describe "Projects phase definition settings", :js do
       fill_in "Name", with: "Initiating"
       definitions_page.select_color("Gold")
 
-      click_on "Phase gates"
-
       check "Start phase gate"
       fill_in "Start phase gate name", with: "Ready to Initiate"
       check "Finish phase gate"
