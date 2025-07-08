@@ -64,25 +64,7 @@ class WithDirectUploads
 
   def around(example)
     example.metadata[:javascript_driver] = example.metadata[:driver] = :chrome_billy
-
-    # Temporarily modify CSP for direct uploads testing
-    original_csp = Rails.application.config.content_security_policy
-
-    Rails.application.config.content_security_policy do |policy|
-      # Copy existing policy and add test bucket domain
-      original_csp.call(policy) if original_csp
-
-      # Add test bucket to connect_src and form_action for direct uploads
-      policy.connect_src(*(policy.instance_variable_get(:@directives)[:connect_src] || []), "test-bucket.s3.amazonaws.com")
-      policy.form_action(*(policy.instance_variable_get(:@directives)[:form_action] || []), "test-bucket.s3.amazonaws.com")
-    end
-
-    begin
-      example.run
-    ensure
-      # Restore original CSP configuration
-      Rails.application.config.content_security_policy = original_csp
-    end
+    example.run
   end
 
   def mock_attachment

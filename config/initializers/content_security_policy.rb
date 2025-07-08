@@ -67,11 +67,19 @@ Rails.application.config.after_initialize do
         assets_src += ["https://www.ssa.gov"]
       end
 
+      form_action = default_src
+
+      # Allow test s3 bucket for direct uploads in tests
+      if Rails.env.test?
+        connect_src += ["test-bucket.s3.amazonaws.com"]
+        form_action += ["test-bucket.s3.amazonaws.com"]
+      end
+
       # Configure CSP directives
       policy.default_src(*default_src)
       policy.base_uri("'self'")
       policy.font_src(*assets_src, "data:", "'self'")
-      policy.form_action(*default_src)
+      policy.form_action(*form_action)
       policy.frame_src(*frame_src, "'self'")
       policy.frame_ancestors("'self'")
       policy.img_src("*", "data:", "blob:")
