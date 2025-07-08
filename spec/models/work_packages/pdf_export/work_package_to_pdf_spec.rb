@@ -71,6 +71,10 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
            # cf_disabled_in_project.id not included == disabled
            work_package_custom_field_ids: [cf_long_text.id, cf_empty_long_text.id, cf_global_bool.id, cf_link.id])
   end
+  let(:phase_definition) { create(:project_phase_definition, name: "Test Phase") }
+  let!(:project_phase) do
+    create(:project_phase, project: project, definition: phase_definition, active: true)
+  end
   let(:forbidden_project) do
     create(:project,
            name: "Forbidden project",
@@ -88,7 +92,9 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
   end
   let(:user) do
     create(:user,
-           member_with_permissions: { project => %w[view_work_packages export_work_packages view_project_attributes] })
+           member_with_permissions: {
+             project => %w[view_work_packages export_work_packages view_project_attributes view_project_phases]
+           })
   end
   let(:another_user) do
     create(:user, firstname: "Secret User")
