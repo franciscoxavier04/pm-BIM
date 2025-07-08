@@ -25,12 +25,14 @@ Rails.application.config.after_initialize do
       default_src += OpenProject::Configuration.remote_storage_hosts
 
       # Chargebee self-service
-      frame_src += [
+      chargebee_src = [
         "https://js.chargebee.com/",
         "#{OpenProject::Configuration.enterprise_chargebee_site}.chargebee.com"
       ]
 
-      default_src << "#{OpenProject::Configuration.enterprise_chargebee_site}.chargebee.com"
+      assets_src += chargebee_src
+      frame_src += chargebee_src
+      default_src += chargebee_src
 
       # Allow requests to CLI in dev mode
       connect_src = default_src + [OpenProject::Configuration.enterprise_trial_creation_host]
@@ -41,6 +43,13 @@ Rails.application.config.after_initialize do
 
       if OpenProject::Configuration.appsignal_frontend_key
         connect_src += ["https://appsignal-endpoint.net"]
+      end
+
+      # Allow connections to S3 for BIM
+      if OpenProject::Configuration.fog_directory.present?
+        connect_src += [
+          "#{OpenProject::Configuration.fog_directory}.s3-#{OpenProject::Configuration.fog_credentials[:region]}.amazonaws.com"
+        ]
       end
 
       # Add proxy configuration for Angular CLI to csp
