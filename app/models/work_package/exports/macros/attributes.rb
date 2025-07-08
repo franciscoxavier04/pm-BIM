@@ -150,20 +150,31 @@ module WorkPackage::Exports
       end
 
       def self.resolve_value(obj, attribute, disabled_rich_text_fields)
-        cf = obj.available_custom_fields.find { |pcf| pcf.name == attribute }
+        custom_field = find_custom_field(obj, attribute)
+        return msg_macro_error_rich_text if custom_field&.formattable?
 
-        return msg_macro_error_rich_text if cf&.formattable?
+        attribute_name = convert_to_attribute_name(custom_field, attribute, obj)
+        return "" unless can_view_attribute?(custom_field, obj, attribute_name)
+        return msg_macro_error_rich_text if disabled_rich_text_fields.include?(attribute_name.to_sym)
 
-        ar_name = if cf.nil?
-                    ::API::Utilities::PropertyNameConverter.to_ar_name(attribute.to_sym, context: obj)
-                  else
-                    "cf_#{cf.id}"
-                  end
+        format_attribute_value(attribute_name, obj.class, obj)
+      end
 
-        return "" if cf.nil? && !user_allowed_view_attribute?(obj, ar_name)
-        return msg_macro_error_rich_text if disabled_rich_text_fields.include?(ar_name.to_sym)
 
-        format_attribute_value(ar_name, obj.class, obj)
+      def self.can_view_attribute?(custom_field, obj, attribute_name)
+        !(custom_field.nil? && !user_allowed_view_attribute?(obj, attribute_name))
+      end
+
+      def self.convert_to_attribute_name(custom_field, attribute, obj)
+        if custom_field.nil?
+          ::API::Utilities::PropertyNameConverter.to_ar_name(attribute.to_sym, context: obj)
+        else
+          "cf_#{custom_field.id}"
+        end
+      end
+
+      def self.find_custom_field(obj, attribute)
+        obj.available_custom_fields.find { |pcf| pcf.name == attribute }
       end
 
       def self.format_attribute_value(ar_name, model, obj)

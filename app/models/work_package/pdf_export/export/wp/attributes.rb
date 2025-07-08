@@ -140,9 +140,7 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
     current_part = { type: :attribute, list: [] }
     parts = [current_part]
     group.attributes.each do |form_key|
-      if !CustomField.custom_field_attribute?(form_key) && !user_allowed_view_attribute?(work_package, form_key)
-        next
-      end
+      next if skip_attribute?(form_key, work_package)
 
       if allowed_long_text_custom_field?(form_key, work_package)
         cf = form_key_to_custom_field(form_key)
@@ -160,6 +158,10 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
       end
     end
     parts
+  end
+
+  def skip_attribute?(form_key, work_package)
+    !CustomField.custom_field_attribute?(form_key) && !user_allowed_view_attribute?(work_package, form_key)
   end
 
   def allowed_long_text_custom_field?(form_key, work_package)
