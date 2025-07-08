@@ -105,6 +105,10 @@ module WorkPackage::Exports
         model.human_attribute_name(
           ::API::Utilities::PropertyNameConverter.to_ar_name(attribute.to_sym, context: model.new)
         )
+      rescue I18n::MissingTranslationData
+        # If the translation is missing, we return the attribute name as a fallback
+        # # This can happen if the attribute is a custom field, the attribute is not translated or does not exist
+        attribute.to_s
       end
 
       def self.resolve_work_package_match(id, type, attribute, user)
