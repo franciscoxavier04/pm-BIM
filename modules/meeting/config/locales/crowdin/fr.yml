@@ -265,6 +265,10 @@ fr:
     placeholder_title: "Nouvelle section"
     empty_text: "Faites glisser des éléments ici ou créez-en un nouveau"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Time zone difference"
+      description: >
+        The dates below are referencing the time zone of the meeting series (%{actual_zone}), not your local time zone (%{user_zone}).
     ended_blankslate:
       title: "La série de réunions est terminée"
       message: "Cette série de réunions est terminée. Il n'y a pas de prochaines réunions. "

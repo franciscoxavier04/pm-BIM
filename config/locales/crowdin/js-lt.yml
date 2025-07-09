@@ -645,7 +645,8 @@ lt:
       title: "Norėdami tęsti, patvirtinkite savo slaptažodį"
     pagination:
       no_other_page: "Jūs esate vieninteliame puslapyje."
-      pagination_controls: "Pagination controls"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "Next page"
         previous: "Previous page"
@@ -829,10 +830,10 @@ lt:
         mixed: "Mišrus"
     work_packages:
       bulk_actions:
-        move: "Masinis projekto pakeitimas"
         edit: "Masinis redagavimas"
-        copy: "Masinis kopijavimas"
         delete: "Masinis trynimas"
+        duplicate: "Bulk duplicate"
+        move: "Masinis projekto pakeitimas"
       button_clear: "Valyti"
       comment_added: "Komentaras sėkmingai pridėtas."
       comment_send_failed: "Įvyko klaida. Neįmanoma pateikti komentaro."
@@ -876,8 +877,8 @@ lt:
         header_no_type: "Naujas darbų paketas (tipas dar nenurodytas)"
         header_with_parent: "Naujas %{type} (%{parent_type} #%{id} tėvo vaikas)"
         button: "Kurti"
-      copy:
-        title: "Kopijuoti darbų paketą"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Rodyti hierarchijos režimą"
         hide: "Slėpti hierarchijos režimą"

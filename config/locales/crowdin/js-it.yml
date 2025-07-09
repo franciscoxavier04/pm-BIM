@@ -643,7 +643,8 @@ it:
       title: "Confermare la password per continuare"
     pagination:
       no_other_page: "Sei nella pagina unica."
-      pagination_controls: "Pagination controls"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "Next page"
         previous: "Previous page"
@@ -827,10 +828,10 @@ it:
         mixed: "Misto"
     work_packages:
       bulk_actions:
-        move: "Modifica complessiva del progetto"
         edit: "Modifica di massa"
-        copy: "Copia di massa"
         delete: "Eliminazione di massa"
+        duplicate: "Bulk duplicate"
+        move: "Modifica complessiva del progetto"
       button_clear: "Pulisci"
       comment_added: "Il commento è stato aggiunto con successo."
       comment_send_failed: "Si è verificato un errore. Impossibile inviare il commento."
@@ -874,8 +875,8 @@ it:
         header_no_type: "Nuova macro-attività (Tipo non inserito)"
         header_with_parent: "Nuovo %{type} (Figlio di %{parent_type} #%{id})"
         button: "Crea"
-      copy:
-        title: "Copia macro-attività"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Visualizza modalità gerarchica"
         hide: "Nascondi modalità gerarchica"

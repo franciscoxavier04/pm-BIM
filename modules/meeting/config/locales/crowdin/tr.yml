@@ -265,6 +265,10 @@ tr:
     placeholder_title: "Yeni bölüm"
     empty_text: "Maddeleri buraya sürükleyin ya da yeni bir tane oluşturun"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Time zone difference"
+      description: >
+        The dates below are referencing the time zone of the meeting series (%{actual_zone}), not your local time zone (%{user_zone}).
     ended_blankslate:
       title: "Toplantı serisi sona erdi"
       message: "Bu toplantı serisi sona ermiştir. Gelecek toplantı yoktur. "

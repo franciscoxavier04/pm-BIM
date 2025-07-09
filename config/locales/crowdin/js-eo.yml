@@ -643,7 +643,8 @@ eo:
       title: "Konfirmu vian pasvorton por daŭrigi"
     pagination:
       no_other_page: "You are on the only page."
-      pagination_controls: "Pagination controls"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "Next page"
         previous: "Previous page"
@@ -827,10 +828,10 @@ eo:
         mixed: "Mixed"
     work_packages:
       bulk_actions:
-        move: "Bulk change of project"
         edit: "Bulk edit"
-        copy: "Bulk copy"
         delete: "Bulk delete"
+        duplicate: "Bulk duplicate"
+        move: "Bulk change of project"
       button_clear: "Malplenigi"
       comment_added: "La komento estis sukcese aldonita."
       comment_send_failed: "Eraro okazis. Ne eblis aldoni la komenton."
@@ -874,8 +875,8 @@ eo:
         header_no_type: "New work package (Type not yet set)"
         header_with_parent: "Nova %{type} (Filo de %{parent_type} #%{id})"
         button: "Krei"
-      copy:
-        title: "Kopii laborpakaĵon"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Montri hierarkian reĝimon"
         hide: "Kaŝi hierarkian reĝimon"
