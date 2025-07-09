@@ -94,22 +94,27 @@ module WorkPackage::PDFExport::Export::Markdown
         # clear the text content, so it does not get rendered
         next_node.string_content = ""
       end
-      wp_mention_macro(tag.attr("data-text") || "", id, opts)
+      wp_mention_macro(tag.attr("data-text") || "", id.delete("#"), opts)
+    end
+
+    def expand_wp_mention(work_package, content)
+      count = content.count("#")
+      if count > 1
+        # ##1234: {Type} #{ID}: {Subject}
+        content = "#{work_package.type} ##{work_package.id}: #{work_package.subject}"
+        if count == 3
+          # ###1234: {Status} {Type} #{ID}: {Subject} ({Start Date} - {End Date})
+          content = "#{work_package.status.name} #{content}#{work_package_dates(work_package)}"
+        end
+      end
+      content
     end
 
     def wp_mention_macro(content, id, opts)
-      count = content.count("#")
-      if count > 1
-        work_package = WorkPackage.find_by(id: id)
-        unless work_package.nil? || !work_package.visible?
-          # ##1234: {Type} #{ID}: {Subject}
-          content = "#{work_package.type} ##{work_package.id}: #{work_package.subject}"
-          if count == 3
-            # ###1234: {Status} {Type} #{ID}: {Subject} ({Start Date} - {End Date})
-            content = "#{work_package.status.name} #{content}#{work_package_dates(work_package)}"
-          end
-        end
-      end
+      work_package = WorkPackage.find_by(id: id)
+      return [text_hash(content, opts)] if work_package.nil? || !work_package.visible?
+
+      content = expand_wp_mention(work_package, content)
       [text_hash(content, opts.merge({ link: url_helpers.work_package_url(id) }))]
     end
 
