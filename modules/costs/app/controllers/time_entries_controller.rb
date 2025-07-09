@@ -45,7 +45,7 @@ class TimeEntriesController < ApplicationController
 
   def dialog
     @show_work_package = params[:work_package_id].blank?
-    @show_user = show_user_input_in_dialog
+    @show_user = show_user_input_in_dialog?
     @limit_to_project_id = @project&.id
 
     prefill_time_entry_from_params
@@ -122,7 +122,7 @@ class TimeEntriesController < ApplicationController
     respond_with_turbo_streams(status: call.success? ? :ok : :bad_request)
   end
 
-  def destroy
+  def destroy # rubocop:disable Metrics/AbcSize
     call = TimeEntries::DeleteService.new(user: current_user, model: @time_entry).call
 
     @time_entry = call.result
@@ -177,7 +177,7 @@ class TimeEntriesController < ApplicationController
     end
   end
 
-  def show_user_input_in_dialog
+  def show_user_input_in_dialog?
     return false if params[:onlyMe] == "true"
 
     if @project
