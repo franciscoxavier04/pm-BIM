@@ -642,8 +642,7 @@ pt-BR:
       title: "Confirme sua senha para continuar"
     pagination:
       no_other_page: "Você está na página única."
-      page_navigation: "Pagination navigation"
-      per_page_navigation: 'Items per page selection'
+      pagination_controls: "Controles de paginação"
       pages:
         next: "Próxima página"
         previous: "Página anterior"

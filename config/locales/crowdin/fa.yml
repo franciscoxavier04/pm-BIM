@@ -1242,6 +1242,7 @@ fa:
         error_unauthorized: "may not be accessed."
         error_readonly: "was attempted to be written but is not writable."
         error_conflict: "Information has been updated by at least one other user in the meantime."
+        error_not_found: "not found."
         email: "آدرس ایمیل معتبر نیست."
         empty: "can't be empty."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1401,8 +1402,6 @@ fa:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "یافت نشد"
             public:
               error_unauthorized: "- The user has no permission to create public views."
             group_by:
@@ -1442,10 +1441,8 @@ fa:
             circular_dependency: "رابطه دایره روابط ایجاد می کند."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "SCM vendor is not available"
@@ -1585,10 +1582,6 @@ fa:
                 description: "'Password confirmation' should match the input in the 'New password' field."
             status:
               invalid_on_create: "is not a valid status for new users."
-            ldap_auth_source:
-              error_not_found: "یافت نشد"
-            auth_source:
-              error_not_found: "یافت نشد"
         member:
           principal_blank: "لطفا حداقل یک کاربر یا گروه را انتخاب کنید."
           role_blank: "need to be assigned."
@@ -1798,6 +1791,7 @@ fa:
     title: "عنوان"
     type: "نوع"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "به روز شده"
     updated_on: "به روز شده"
     uploader: "Uploader"

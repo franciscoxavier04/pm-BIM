@@ -1,0 +1,49 @@
+name: downstream-ci
+on:
+  push:
+    branches:
+      - dev
+      - release/*
+    paths-ignore:
+      - 'docs/**'
+      - 'help/**'
+  pull_request:
+    types: [opened, reopened, synchronize]
+    paths-ignore:
+      - 'docs/**'
+      - 'help/**'
+      - 'packaging/**'
+      - '.pkgr.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  trigger_saas_tests:
+    permissions:
+      contents: none
+    if: github.repository == 'opf/openproject'
+    name: SaaS tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger SaaS Tests
+        env:
+          TOKEN: ${{ secrets.OPENPROJECT_CI_TOKEN }}
+          REPOSITORY: opf/saas-openproject
+          WORKFLOW_ID: test-saas.yml
+        # ref:
+        #   * on push this will be `dev` or a specific release branch (e.g. release/16.1) - there is always a matching branch for that downstream
+        #   * on pull_request we use the PR branch's base (e.g. dev or a release branch) to match the above
+        # core_ref:
+        #   * the name of the core branch that has to be checked out downstream to run the tests
+        #   * that is either dev, release/16.1 (for instance), or the pull request's branch name
+        run: |
+          if [[ ! "${{ github.base_ref || github.ref_name }}" =~ dev|release/.+ ]]; then
+            echo "Base branch is not dev or release branch. Cannot check downstream tests."
+            exit 0
+          fi
+
+          curl -i --fail-with-body -H"authorization: Bearer $TOKEN" \
+            -XPOST -H"Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/$REPOSITORY/actions/workflows/$WORKFLOW_ID/dispatches \
+            -d '{"ref": "${{ github.base_ref || github.ref_name }}", "inputs": { "core_ref" : "${{ github.ref_name }}" }}'

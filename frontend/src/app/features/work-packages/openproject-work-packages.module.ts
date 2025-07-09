@@ -292,7 +292,7 @@ import { UserLinkComponent } from 'core-app/shared/components/user-link/user-lin
 import {
   WorkPackageWatcherButtonComponent,
 } from 'core-app/features/work-packages/components/wp-watcher-button/wp-watcher-button.component';
-import { WpResizerDirective } from 'core-app/shared/components/resizer/resizer/wp-resizer.component';
+import { WpResizerComponent } from 'core-app/shared/components/resizer/resizer/wp-resizer.component';
 import {
   GroupDescriptor,
   WorkPackageSingleViewComponent,
@@ -511,7 +511,7 @@ import {
     WorkPackagesTableConfigMenuComponent,
     WorkPackageTablePaginationComponent,
 
-    WpResizerDirective,
+    WpResizerComponent,
 
     WorkPackageTableSumsRowController,
 
@@ -655,7 +655,7 @@ import {
     WorkPackageFilterContainerComponent,
     QueryFiltersComponent,
 
-    WpResizerDirective,
+    WpResizerComponent,
     WorkPackageBreadcrumbComponent,
     WorkPackageBreadcrumbParentComponent,
     WorkPackageSplitViewToolbarComponent,

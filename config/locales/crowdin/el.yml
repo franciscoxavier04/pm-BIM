@@ -1238,6 +1238,7 @@ el:
         error_unauthorized: "δεν είναι δυνατή η πρόσβαση."
         error_readonly: "επιχειρήθηκε να εγγραφεί αλλά δεν ήταν εγγράψιμο."
         error_conflict: "Οι πληροφορίες ενημερώθηκαν από τουλάχιστον έναν ακόμα χρήστη στο εν τω μεταξύ."
+        error_not_found: "not found."
         email: "is not a valid email address."
         empty: "δεν μπορεί να είναι κενό."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1397,8 +1398,6 @@ el:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "δεν βρέθηκε"
             public:
               error_unauthorized: "- Ο χρήστης δεν έχει δικαίωμα να δημιουργήσει δημόσιες προβολές."
             group_by:
@@ -1438,10 +1437,8 @@ el:
             circular_dependency: "Η σχέση αυτή δημιουργεί έναν κύκλο σχέσεων."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "Ο προμηθευτής SCM δεν είναι διαθέσιμος"
@@ -1581,10 +1578,6 @@ el:
                 description: "Ο 'Κωδικός Επιβεβαίωσης' θα πρέπει να ταιριάζει με την είσοδο του πεδίου 'Νέος Κωδικός'."
             status:
               invalid_on_create: "δεν είναι έγκυρη κατάσταση για νέους χρήστες."
-            ldap_auth_source:
-              error_not_found: "δεν βρέθηκε"
-            auth_source:
-              error_not_found: "δεν βρέθηκε"
         member:
           principal_blank: "Παρακαλούμε επιλέξτε τουλάχιστον ένα χρήστη ή ομάδα."
           role_blank: "πρέπει να ανατεθεί."
@@ -1794,6 +1787,7 @@ el:
     title: "Τίτλος"
     type: "Τύπος"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Τροποποιήθηκε"
     updated_on: "Τροποποιήθηκε"
     uploader: "Μεταφορτώθηκε από"

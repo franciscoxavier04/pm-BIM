@@ -34,6 +34,7 @@ class RecurringMeeting < ApplicationRecord
   # Magical maximum of interval, derived from other calendars
   MAX_INTERVAL = 100
   include ::Meeting::VirtualStartTime
+  include ::Meeting::MeetingUid
   include Redmine::I18n
 
   belongs_to :project

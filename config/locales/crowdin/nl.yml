@@ -1238,6 +1238,7 @@ nl:
         error_unauthorized: "geen toegang."
         error_readonly: "werd geprobeerd te schrijven maar is niet schrijfbaar."
         error_conflict: "Informatie is in de tussentijd door ten minste één andere gebruiker bijgewerkt."
+        error_not_found: "not found."
         email: "is geen geldig e-mailadres."
         empty: "mag niet leeg zijn."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1397,8 +1398,6 @@ nl:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "niet gevonden"
             public:
               error_unauthorized: "-De gebruiker heeft geen toestemming om openbare overzichten te maken."
             group_by:
@@ -1438,10 +1437,8 @@ nl:
             circular_dependency: "De relatie wordt gemaakt van een kring van relaties."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "SCM-leverancier is niet beschikbaar"
@@ -1581,10 +1578,6 @@ nl:
                 description: "'Wachtwoordbevestiging' moet hetzelfde zijn als de invoer bij het 'Nieuw wachtwoord'-veld."
             status:
               invalid_on_create: "is niet een geldige status voor nieuwe gebruikers."
-            ldap_auth_source:
-              error_not_found: "niet gevonden"
-            auth_source:
-              error_not_found: "niet gevonden"
         member:
           principal_blank: "Kies ten minste één gebruiker of groep."
           role_blank: "moet worden toegewezen."
@@ -1794,6 +1787,7 @@ nl:
     title: "Titel"
     type: "Type"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Bijgewerkt op"
     updated_on: "Bijgewerkt op"
     uploader: "Uploader"
