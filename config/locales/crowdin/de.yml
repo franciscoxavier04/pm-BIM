@@ -112,39 +112,39 @@ de:
         link: "Webhook"
     scim_clients:
       authentication_methods:
-        sso: "JWT from identity provider"
+        sso: "JWT vom Identitätsanbieter"
         oauth2_client: "OAuth 2.0 client credentials"
-        oauth2_token: "Static access token"
+        oauth2_token: "Statisches Zugriffstoken"
       created_client_credentials_dialog_component:
         title: "Client credentials created"
         heading: "Client credentials have been generated"
-        one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
+        one_time_hint: "Dies ist das einzige Mal, dass dieses Token angezeigt wird. Stellen Sie sicher, dass Sie es jetzt kopieren."
       created_token_dialog_component:
-        title: "Token created"
+        title: "Token erstellt"
         heading: "An token has been generated"
         label_token: "Token"
-        one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
+        one_time_hint: "Dies ist das einzige Mal, dass dieses Token angezeigt wird. Stellen Sie sicher, dass Sie es jetzt kopieren."
       delete_scim_client_dialog_component:
-        title: "Delete SCIM client"
-        heading: "Are you sure you want to delete this SCIM client?"
-        description: "Users managed by this SCIM client can no longer be updated by it."
+        title: "SCIM-Client löschen"
+        heading: "Sind Sie sicher, dass Sie diesen SCIM-Client löschen möchten?"
+        description: "Von diesem SCIM-Client verwaltete Benutzer können nicht mehr von ihm aktualisiert werden."
       edit:
         label_delete_scim_client: "SCIM-Client löschen"
       form:
         auth_provider_description: "This is the service that users added by the SCIM provider will use to authenticate in OpenProject."
         authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM clients</a> for more information on these configuration options.'
+        description_html: 'Weitere Informationen zu diesen Konfigurationsoptionen finden Sie in unserer <a href="%{docs_url}">Dokumentation zur Konfiguration von SCIM-Clients</a>.'
         jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
-        name_description: "Choose a name that will help other admins better understand why this client was configured."
+        name_description: "Wählen Sie einen Namen, der anderen Administratoren hilft, besser zu verstehen, warum dieser Client konfiguriert wurde."
       index:
         description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
         label_create_button: "SCIM-Client hinzufügen"
       new:
         title: "Neuer SCIM-Client"
       revoke_static_token_dialog_component:
-        confirm_button: "Revoke"
-        title: "Revoke static token"
-        heading: "Are you sure you want to revoke this token?"
+        confirm_button: "Widerrufen"
+        title: "Statisches Token widerrufen"
+        heading: "Sind Sie sicher, dass Sie dieses Token widerrufen möchten?"
         description: "The SCIM client that uses this token will no longer be able to access OpenProject's SCIM server API."
       table_component:
         blank_slate:
@@ -158,10 +158,10 @@ de:
         label_aria_add_token: "Token hinzufügen"
       token_table_component:
         blank_slate:
-          title: "No tokens have been created yet"
-          description: "You can create one now"
-        expired: "Expired on %{date}"
-        revoked: "Revoked on %{date}"
+          title: "Es sind noch keine Token erstellt worden"
+          description: "Sie können jetzt eins erstellen"
+        expired: "Abgelaufen am %{date}"
+        revoked: "Widerrufen am %{date}"
         title: "Access token table"
   authentication:
     login_and_registration: "Anmeldung und Registrierung"
@@ -326,7 +326,7 @@ de:
       admin_only: "Das Attribut ist nur für Administratoren sichtbar. Nutzer ohne Adminrechte können dieses Attribut nicht sehen oder bearbeiten."
       is_filter: >
         Erlaubt das benutzerdefinierte Feld in einem Filter in der Arbeitspaket-Ansicht zu verwenden. Beachten Sie, dass, nur wenn "Für alle Projekte" ausgewählt ist, das benutzerdefinierte Feld in globalen Ansichten angezeigt wird.
-      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
+      formula: "Fügen Sie numerische Werte hinzu oder geben Sie / ein, um nach einem Attribut oder einem mathematischen Operator zu suchen."
     tab:
       no_results_title_text: Zur Zeit existieren keine benutzerdefinierten Felder.
       no_results_content_text: Neues benutzerdefiniertes Feld anlegen
@@ -340,7 +340,7 @@ de:
       not_found: "nicht gefunden."
       rules:
         copy_workflow_from:
-          workflow_missing: "has no own workflow."
+          workflow_missing: "hat keinen eigenen Workflow."
         item:
           root_item: "kann keine Hierarchiewurzel sein."
           not_persisted: "muss ein bereits vorhandenes Element sein."
@@ -352,7 +352,7 @@ de:
           not_descendant: "muss ein Unterelement der Hierarchiewurzel sein."
     rules:
       copy_workflow_from: "Type for workflow copy"
-      enabled: "Enabled"
+      enabled: "Aktiviert"
       depth: "Tiefe"
       item: "Element"
       label: "Bezeichnung"
@@ -680,8 +680,8 @@ de:
         tab: "Formularkonfiguration"
       projects:
         tab: Projekte
-        enable_all: Enable for all projects
-        select_projects: Select projects
+        enable_all: Für alle Projekte aktivieren
+        select_projects: Projekte auswählen
         select_projects_description: Select the projects in which you would like to use this type.
       settings:
         tab: "Einstellungen"
@@ -936,7 +936,7 @@ de:
         attribute_name: "Attribut"
         help_text: "Hilfe-Text"
       auth_provider:
-        scim_clients: "SCIM clients"
+        scim_clients: "SCIM-Clients"
       capability:
         context: "Kontext"
       changeset:
@@ -950,7 +950,7 @@ de:
         default_value: "Standardwert"
         editable: "Bearbeitbar"
         field_format: "Format"
-        formula: "Formula"
+        formula: "Formel"
         is_filter: "Als Filter benutzen"
         is_for_all: "Für alle Projekte"
         is_required: "Erforderlich"
@@ -1102,8 +1102,8 @@ de:
       role:
         permissions: "Berechtigungen"
       scim_client:
-        auth_provider: "Authentication provider"
-        authentication_method: "Authentication method"
+        auth_provider: "Authentifizierungsanbieter"
+        authentication_method: "Authentifizierungsmethode"
         jwt_sub: "Subject claim"
       status:
         is_closed: "Arbeitspaket geschlossen"
@@ -1121,7 +1121,7 @@ de:
         ongoing: "Fortlaufend"
       type:
         description: "Standardtext für Beschreibung"
-        attribute_groups: "Form configuration"
+        attribute_groups: "Formular-Konfiguration"
         is_in_roadmap: "In Roadmap standardmäßig angezeigt"
         is_default: "Typ für neue Projekte standardmäßig aktiviert"
         is_milestone: "Ist ein Meilenstein"
@@ -1234,7 +1234,7 @@ de:
         error_unauthorized: "kann nicht zugegriffen werden."
         error_readonly: "wurde versucht zu beschreiben, ist aber nicht beschreibbar."
         error_conflict: "Die Informationen wurde zwischenzeitlich durch andere Benutzer geändert."
-        error_not_found: "not found."
+        error_not_found: "nicht gefunden."
         email: "ist keine gültige E-Mail-Adresse."
         empty: "muss ausgefüllt werden."
         enterprise_plan_required: "benötigt mindestens %{plan_name}."
@@ -1252,7 +1252,7 @@ de:
         inclusion: "ist nicht auf einen erlaubten Wert gesetzt."
         inclusion_nested: "ist nicht auf einen der erlaubten Werte im Pfad '%{path} ' gesetzt."
         invalid: "ist ungültig."
-        invalid_characters: "contains invalid characters."
+        invalid_characters: "enthält ungültige Zeichen."
         invalid_url: "ist keine gültige URL."
         invalid_url_scheme: "ist kein unterstütztes Protokoll (erlaubt: %{allowed_schemes})."
         less_than_or_equal_to: "muss kleiner oder gleich %{count} sein."
@@ -1333,7 +1333,7 @@ de:
           failed_to_create: "Testversion konnte nicht erstellt werden (%{status})"
           general_consent: "Bitte akzeptieren Sie die Nutzungs- und Vertragsbedingungen."
         enterprise_token:
-          only_one_trial: "Only one trial token can be active. Please delete the previous trial token before adding another."
+          only_one_trial: "Es kann nur ein Test-Token aktiv sein. Bitte löschen Sie den vorherigen Test-Token, bevor Sie einen weiteren hinzufügen."
           unreadable: "kann nicht gelesen werden. Ist dies ein Enterprise edition Support Token?"
           already_added: "Dieser Token wurde bereits hinzugefügt."
         grids/grid:
@@ -1630,8 +1630,8 @@ de:
         one: "Rolle"
         other: "Rollen"
       scim_client:
-        one: "SCIM client"
-        other: "SCIM clients"
+        one: "SCIM-client"
+        other: "SCIM-clients"
       status: "Arbeitspaket-Status"
       token/api:
         one: Zugangs-Token
@@ -1783,7 +1783,7 @@ de:
     title: "Titel"
     type: "Typ"
     typeahead: "Autovervollständigung"
-    uid: "Unique identifier"
+    uid: "Eindeutige Kennung"
     updated_at: "Aktualisiert am"
     updated_on: "Aktualisiert am"
     uploader: "Bereitgestellt von"
@@ -1897,7 +1897,7 @@ de:
   button_unwatch: "Nicht beobachten"
   button_update: "Aktualisieren"
   button_upgrade: "Upgraden"
-  button_buy_now: "Buy now"
+  button_buy_now: "Jetzt kaufen"
   button_upload: "Hochladen"
   button_view: "Anzeigen"
   button_watch: "Beobachten"
@@ -1942,13 +1942,13 @@ de:
     text:
       failed: 'Das Projekt "%{source_project_name}" konnte nicht nach "%{target_project_name}" kopiert werden.'
       succeeded: 'Das Projekt "%{source_project_name}" wurde nach "%{target_project_name}" kopiert.'
-    source_project_label: "Project copied"
+    source_project_label: "Projekt kopiert"
     copy_options:
-      dependencies_label: 'Copy from project'
+      dependencies_label: 'Projekt kopieren'
   create_project:
-    template_label: "Use template"
+    template_label: "Vorlage verwenden"
     copy_options:
-      dependencies_label: 'Copy from template'
+      dependencies_label: 'Aus Vorlage erstellen'
   create_wiki_page: "Neue Wikiseite anlegen"
   create_wiki_page_button: "Wiki-Seite"
   date:
@@ -2207,9 +2207,9 @@ de:
         description: " "
     teaser:
       title:
-        one: "One day left of %{trial_plan} trial token"
-        other: "%{count} days left of %{trial_plan} trial token"
-      description: "You have access to all %{trial_plan} features."
+        one: "Ein Tag des %{trial_plan} Test-Token verbleibend"
+        other: "%{count} verbleibende Tage des %{trial_plan} Test-Tokens"
+      description: "Sie haben Zugriff auf alle Funktionen von %{trial_plan}."
     trial:
       not_found: "Sie haben einen Test-Token angefordert, aber diese Anfrage ist nicht mehr abrufbar. Bitte versuchen Sie es erneut."
       wait_for_confirmation: "Wir haben Ihnen eine E-Mail zur Bestätigung geschickt, um den Token der Testversion abzurufen."
@@ -2689,7 +2689,7 @@ de:
   label_select_main_menu_item: Neuen Hauptmenüpunkt auwählen
   label_required_disk_storage: "Erforderlicher Festplattenspeicher"
   label_send_invitation: Einladung senden
-  label_calculated_value: "Calculated value"
+  label_calculated_value: "Berechneter Wert"
   label_change_plural: "Änderungen"
   label_change_properties: "Eigenschaften ändern"
   label_change_status: "Statuswechsel"
@@ -2825,7 +2825,7 @@ de:
   label_follows: "folgt"
   label_force_user_language_to_default: "Setze Sprache für Nutzer, die eine nicht erlaubte Sprache gewählt haben, auf die Standard-Sprache"
   label_form_configuration: "Formularkonfiguration"
-  label_formula: "Formula"
+  label_formula: "Formel"
   label_gantt_chart: "Gantt-Diagramm"
   label_gantt_chart_plural: "Gantt Diagramme"
   label_general: "Allgemein"
@@ -3223,7 +3223,7 @@ de:
   label_work_package_attachments: "Anhänge des Arbeitspakets"
   label_work_package_category_new: "Neue Kategorie"
   label_work_package_category_plural: "Arbeitspaket-Kategorien"
-  label_work_package_comments: "Work package comments"
+  label_work_package_comments: "Arbeitspaket-Kommentare"
   label_work_package_hierarchy: "Arbeitspakethierarchie"
   label_work_package_new: "Neues Arbeitspaket"
   label_work_package_edit: "Arbeitspaket %{name} editieren"

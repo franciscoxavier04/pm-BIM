@@ -297,7 +297,7 @@ ru:
           "16_2":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>New header and sidebar with improved navigation and design.</li> <li>Smoother experience with Custom fields, Relations, Reminders, Meetings, and My time tracking.</li> <li>Non-latin languages and emojis supported in PDF exports.</li> <li>Option to disable keyboard shortcuts for better accessibility.</li> <li>SCIM server via API (Enterprise add-on).</li> <li>API support for internal comments.</li> </ul>
+                Релиз содержит различные новые возможности и улучшения, например, <br>. <ul class="%{list_styling_class}"> <li>Новый заголовок и боковая панель с улучшенной навигацией и дизайном.</li> <li>Более плавная работа с пользовательскими полями, отношениями, напоминаниями, совещаниями и отслеживанием моих трудозатрат.</li> <li>Поддержка нелатинских языков и эмодзи в экспорте PDF.</li> <li>Опция отключения горячих клавиш для улучшения доступности.</li> <li>Сервер SCIM через API.</li> <li>Поддержка API для внутренних комментариев.</li> </ul>
     ical_sharing_modal:
       title: "Подписаться на календарь"
       inital_setup_error_message: "Произошла ошибка при получении данных."

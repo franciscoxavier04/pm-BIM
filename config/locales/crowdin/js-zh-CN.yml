@@ -298,7 +298,7 @@ zh-CN:
           "16_2":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>New header and sidebar with improved navigation and design.</li> <li>Smoother experience with Custom fields, Relations, Reminders, Meetings, and My time tracking.</li> <li>Non-latin languages and emojis supported in PDF exports.</li> <li>Option to disable keyboard shortcuts for better accessibility.</li> <li>SCIM server via API (Enterprise add-on).</li> <li>API support for internal comments.</li> </ul>
+                该版本包含多种新功能和改进，如<br> <ul class="%{list_styling_class}"> <li>改进了导航和设计的新标题栏和侧边栏。</li> <li>“自定义字段”、“关系”、“提醒”、“会议”和“我的时间跟踪”的体验更加丝滑。</li> <li>PDF导出支持非拉丁语系语言和表情符号。</li> <li>可配置禁用键盘快捷键，以提高可访问性。</li> <li>通过API访问SCIM服务器（企业插件）。</li> <li>针对内部注释的API支持。</li> </ul>
     ical_sharing_modal:
       title: "订阅日历"
       inital_setup_error_message: "获取数据时发生错误。"

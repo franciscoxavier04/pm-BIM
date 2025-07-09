@@ -297,7 +297,7 @@ de:
           "16_2":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>New header and sidebar with improved navigation and design.</li> <li>Smoother experience with Custom fields, Relations, Reminders, Meetings, and My time tracking.</li> <li>Non-latin languages and emojis supported in PDF exports.</li> <li>Option to disable keyboard shortcuts for better accessibility.</li> <li>SCIM server via API (Enterprise add-on).</li> <li>API support for internal comments.</li> </ul>
+                Die Version enthält verschiedene neue Funktionen und Verbesserungen, wie z.B. <br> <ul class="%{list_styling_class}"> <li>Neue Kopfzeile und Seitenleiste mit verbesserter Navigation und Design.</li> <li>Benutzerdefinierte Felder, Beziehungen, Erinnerungen, Besprechungen und Meine Zeiterfassung wurden verbessert.</li> <li>Unterstützung von nicht-lateinischen Sprachen und Emojis beim PDF-Export.</li> <li>Option zur Deaktivierung von Tastaturkürzeln für eine verbesserte Accessibility.</li> <li>SCIM-Server über API (Enterprise Add-on).</li> <li>API-Unterstützung für interne Kommentare.</li> </ul>
     ical_sharing_modal:
       title: "Kalender abonnieren"
       inital_setup_error_message: "Beim Abrufen der Daten ist ein Fehler aufgetreten."
@@ -646,8 +646,8 @@ de:
       pages:
         next: "Nächste Seite"
         previous: "Vorherige Seite"
-        page_number: Page %{number}
-        show_per_page: Show %{number} per page
+        page_number: Seite %{number}
+        show_per_page: '%{number} pro Seite anzeigen'
     placeholders:
       default: "-"
       subject: "Titel hier eingeben"
@@ -695,7 +695,7 @@ de:
           first_day: "Erster Tag"
           last_day: "Letzter Tag"
     text_are_you_sure: "Sind Sie sicher?"
-    breadcrumb: "Breadcrumb"
+    breadcrumb: "Navigationspfad"
     text_data_lost: "Alle eingegebenen Daten gehen verloren."
     text_user_wrote: "%{value} schrieb:"
     types:

@@ -47,7 +47,7 @@ ru:
       meeting_agenda_item:
         title: "Заголовок"
         author: "Автор"
-        duration_in_minutes: "Duration"
+        duration_in_minutes: "Продолжительность"
         description: "Примечания"
         presenter: "Ведущий"
       meeting_section:

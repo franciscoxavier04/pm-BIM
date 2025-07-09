@@ -44,7 +44,7 @@ zh-CN:
       meeting_agenda_item:
         title: "标题"
         author: "作者"
-        duration_in_minutes: "Duration"
+        duration_in_minutes: "时长"
         description: "备注"
         presenter: "演讲者"
       meeting_section:
