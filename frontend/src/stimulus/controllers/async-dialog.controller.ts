@@ -34,10 +34,20 @@ import { TurboHelpers } from '../../turbo/helpers';
 
 export default class AsyncDialogController extends ApplicationController {
   connect() {
-    this.element.addEventListener('click', (e) => {
-      e.preventDefault();
+    this.element.addEventListener('click', (event:MouseEvent) => this.handleClick(event));
+    this.element.addEventListener('keydown', (event:KeyboardEvent) => this.handleKeydown(event));
+  }
+
+  handleClick(event:MouseEvent) {
+    event.preventDefault();
+    this.triggerTurboStream();
+  }
+
+  handleKeydown(event:KeyboardEvent) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
       this.triggerTurboStream();
-    });
+    }
   }
 
   triggerTurboStream():void {
