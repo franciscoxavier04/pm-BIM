@@ -66,7 +66,7 @@ module FrontendAssetHelper
   end
 
   def nonced_javascript_include_tag(path, **)
-    javascript_include_tag(path, nonce: content_security_policy_script_nonce, **)
+    javascript_include_tag(path, nonce: content_security_policy_nonce, **)
   end
 
   private

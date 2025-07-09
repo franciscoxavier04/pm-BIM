@@ -138,9 +138,6 @@ gem "rack-protection", "~> 3.2.0"
 # https://github.com/kickstarter/rack-attack
 gem "rack-attack", "~> 6.7.0"
 
-# CSP headers
-gem "secure_headers", "~> 7.1.0"
-
 # Browser detection for incompatibility checks
 gem "browser", "~> 6.2.0"
 
