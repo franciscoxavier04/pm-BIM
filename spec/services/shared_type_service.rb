@@ -301,7 +301,7 @@ RSpec.shared_examples_for "type service" do
       end
 
       it "returns the errors of the type" do
-        expect(subject.errors).to be_kind_of(ActiveModel::Errors)
+        expect(subject.errors).to be_a(ActiveModel::Errors)
       end
 
       describe "custom fields" do

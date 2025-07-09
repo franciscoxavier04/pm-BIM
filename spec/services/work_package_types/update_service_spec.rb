@@ -38,10 +38,9 @@ module WorkPackageTypes
 
     let(:model) { create(:type, name: "Types-R-Us") }
     let(:type) { model }
+    let(:service_call) { service.call(params) }
 
     subject(:service) { described_class.new(user:, model:) }
-
-    let(:service_call) { service.call(params) }
 
     it_behaves_like "type service"
 
