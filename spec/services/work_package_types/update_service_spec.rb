@@ -29,6 +29,7 @@
 #++
 
 require "spec_helper"
+require "services/shared_type_service"
 require "services/base_services/behaves_like_update_service"
 
 module WorkPackageTypes
@@ -36,8 +37,13 @@ module WorkPackageTypes
     shared_let(:user) { create(:admin) }
 
     let(:model) { create(:type, name: "Types-R-Us") }
+    let(:type) { model }
 
     subject(:service) { described_class.new(user:, model:) }
+
+    let(:service_call) { service.call(params) }
+
+    it_behaves_like "type service"
 
     it_behaves_like "BaseServices update service" do
       let(:factory) { :type }
@@ -58,6 +64,7 @@ module WorkPackageTypes
       # NOTE: This still applies changes to the model... which is far from ideal - 2025-06-23 @mereghost
       result = service.call(params)
       expect(result).to be_failure
+      expect(result.errors.full_messages).to be_present
     end
   end
 end
