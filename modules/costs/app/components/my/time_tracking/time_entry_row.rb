@@ -38,7 +38,7 @@ module My
       end
 
       def action_menu
-        return nil unless User.current.allowed_in_work_package?(:edit_own_time_entries, time_entry.work_package)
+        return nil if !(can_modify_time_entry? || can_delete_time_entry?)
 
         render(Primer::Alpha::ActionMenu.new) do |menu|
           menu.with_show_button(icon: "kebab-horizontal", "aria-label": t("label_more"), scheme: :invisible)
@@ -178,6 +178,10 @@ module My
 
       def can_delete_time_entry?
         TimeEntries::DeleteContract.new(time_entry, User.current).valid?
+      end
+
+      def can_modify_time_entry?
+        TimeEntries::UpdateContract.new(time_entry, User.current).valid?
       end
     end
   end
