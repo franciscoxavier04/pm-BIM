@@ -171,6 +171,12 @@ export default class TimeEntryController extends Controller {
     // Parse input through our chronic duration parser and then reformat as hours that can be nicely parsed on the
     // backend
     const hours = this.parsedHourInput();
+
+    if (hours === 0) {
+      this.hoursInputTarget.value = '';
+      return;
+    }
+
     this.hoursInputTarget.value = outputChronicDuration(hours, { format: 'hours_only' }) || '';
 
     this.datesChanged(this.hoursInputTarget);
