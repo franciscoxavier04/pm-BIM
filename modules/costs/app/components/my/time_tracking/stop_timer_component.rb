@@ -41,7 +41,7 @@ module My
             underline: false
           )
         ) do
-          render(Primer::Beta::Octicon.new(icon: "op-stopwatch-stop", "aria-label": t("button_stop_timer")))
+          render(Primer::Beta::Octicon.new(icon: "op-stopwatch-stop", "aria-label": t("button_stop_timer"), mr: 1))
         end
       end
     end
