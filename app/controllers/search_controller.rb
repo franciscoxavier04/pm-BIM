@@ -49,7 +49,7 @@ class SearchController < ApplicationController
 
     provision_gon
 
-    render layout: layout_non_or_no_menu
+    render "index", locals: { menu_name: project_or_global_menu }
   end
 
   private

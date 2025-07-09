@@ -41,6 +41,8 @@ import { GlobalSearchService } from 'core-app/core/global_search/services/global
 import { CurrentProjectService } from 'core-app/core/current-project/current-project.service';
 import { InjectField } from 'core-app/shared/helpers/angular/inject-field.decorator';
 import { UntilDestroyedMixin } from 'core-app/shared/helpers/angular/until-destroyed.mixin';
+import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
+import { OpTitleService } from 'core-app/core/html/op-title.service';
 
 @Component({
   selector: 'opce-global-search-title',
@@ -71,6 +73,8 @@ export class GlobalSearchTitleComponent extends UntilDestroyedMixin implements O
     readonly globalSearchService:GlobalSearchService,
     readonly I18n:I18nService,
     readonly injector:Injector,
+    protected readonly pathHelper:PathHelperService,
+    protected readonly titleService:OpTitleService,
   ) {
     super();
   }
@@ -93,6 +97,23 @@ export class GlobalSearchTitleComponent extends UntilDestroyedMixin implements O
 
         this.cdRef.detectChanges();
       });
+  }
+
+  breadcrumbItems() {
+    const items = [];
+    items.push({
+      href: this.pathHelper.homePath(),
+      text: this.titleService.appTitle,
+    });
+    if (this.currentProjectService?.identifier) {
+      items.push({
+        href: this.pathHelper.projectPath(this.currentProjectService.identifier),
+        text: this.currentProjectService.name,
+      });
+    }
+    items.push(this.searchTitle);
+
+    return items;
   }
 
   private projectText(scope:string):string {
