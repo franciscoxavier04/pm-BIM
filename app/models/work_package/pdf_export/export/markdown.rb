@@ -94,7 +94,7 @@ module WorkPackage::PDFExport::Export::Markdown
         # clear the text content, so it does not get rendered
         next_node.string_content = ""
       end
-      wp_mention_macro(tag.attr("data-text") || "", id.delete("#"), opts)
+      wp_mention_macro(tag.attr("data-text") || "", id[/\d+/], opts)
     end
 
     def expand_wp_mention(work_package, content)
