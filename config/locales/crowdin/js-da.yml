@@ -642,7 +642,8 @@ da:
       title: "Confirm your password to continue"
     pagination:
       no_other_page: "You are on the only page."
-      pagination_controls: "Pagination controls"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "Next page"
         previous: "Previous page"
@@ -826,10 +827,10 @@ da:
         mixed: "Mixed"
     work_packages:
       bulk_actions:
-        move: "Bulk change of project"
         edit: "Bulk edit"
-        copy: "Bulk copy"
         delete: "Bulk delete"
+        duplicate: "Bulk duplicate"
+        move: "Bulk change of project"
       button_clear: "Ryd"
       comment_added: "Kommentaren blev tilføjet."
       comment_send_failed: "En fejl opstod. Kunne ikke indsende kommentaren."
@@ -873,8 +874,8 @@ da:
         header_no_type: "New work package (Type not yet set)"
         header_with_parent: "New %{type} (Child of %{parent_type} #%{id})"
         button: "Opret"
-      copy:
-        title: "Copy work package"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Show hierarchy mode"
         hide: "Hide hierarchy mode"

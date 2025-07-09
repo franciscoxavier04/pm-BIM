@@ -297,7 +297,7 @@ pt-BR:
           "16_2":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>New header and sidebar with improved navigation and design.</li> <li>Smoother experience with Custom fields, Relations, Reminders, Meetings, and My time tracking.</li> <li>Non-latin languages and emojis supported in PDF exports.</li> <li>Option to disable keyboard shortcuts for better accessibility.</li> <li>SCIM server via API (Enterprise add-on).</li> <li>API support for internal comments.</li> </ul>
+                A versão contém vários novos recursos e aprimoramentos, como <br> <ul class="%{list_styling_class}"> <li>Novo cabeçalho e barra lateral com navegação e design aprimorados.</li> <li>Experiência mais suave com campos personalizados, relações, lembretes, reuniões e controle do meu tempo.</li> <li>Suporte a idiomas não latinos e emojis nas exportações de PDF.</li> <li>Opção para desativar os atalhos de teclado para melhorar a acessibilidade.</li> <li>Servidor SCIM via API (complemento Enterprise).</li> <li>Suporte à API para comentários internos.</li> </ul>
     ical_sharing_modal:
       title: "Assinar calendário"
       inital_setup_error_message: "Ocorreu um erro ao buscar dados."
@@ -323,7 +323,7 @@ pt-BR:
     label_added_time_by: 'Adicionado por <a href="%{authorLink}">%{author}</a> em %{age}'
     label_ago: "dias atrás"
     label_all: "todos"
-    label_all_projects: "All projects"
+    label_all_projects: "Todos os projetos"
     label_all_uppercase: "Todos"
     label_all_work_packages: "todos pacotes de trabalho"
     label_and: "e"
@@ -642,12 +642,12 @@ pt-BR:
       title: "Confirme sua senha para continuar"
     pagination:
       no_other_page: "Você está na página única."
-      pagination_controls: "Pagination controls"
+      pagination_controls: "Controles de paginação"
       pages:
-        next: "Next page"
-        previous: "Previous page"
-        page_number: Page %{number}
-        show_per_page: Show %{number} per page
+        next: "Próxima página"
+        previous: "Página anterior"
+        page_number: Página %{number}
+        show_per_page: Mostrar %{number} por página
     placeholders:
       default: "-"
       subject: "Informe o assunto aqui"
@@ -695,7 +695,7 @@ pt-BR:
           first_day: "Primeiro dia"
           last_day: "Último dia"
     text_are_you_sure: "Você tem certeza?"
-    breadcrumb: "Breadcrumb"
+    breadcrumb: "Rota de navegação"
     text_data_lost: "Todos os dados inseridos serão perdidos."
     text_user_wrote: "%{value} escreveu:"
     types:
@@ -780,7 +780,7 @@ pt-BR:
     autocompleter:
       placeholder: "Escreva para pesquisar"
       notFoundText: "Nenhum item encontrado"
-      search: "Search"
+      search: "Pesquisar"
       project:
         placeholder: "Selecionar projeto"
     repositories:
@@ -826,10 +826,10 @@ pt-BR:
         mixed: "Misturado"
     work_packages:
       bulk_actions:
-        move: "Mudança em massa de projeto"
         edit: "Edição em massa"
-        copy: "Cópia em massa"
         delete: "Exclusão em massa"
+        duplicate: "Bulk duplicate"
+        move: "Mudança em massa de projeto"
       button_clear: "Limpar"
       comment_added: "O comentário foi adicionado com sucesso."
       comment_send_failed: "Ocorreu um erro. Não foi possível enviar o comentário."
@@ -873,8 +873,8 @@ pt-BR:
         header_no_type: "Novo pacote de trabalho (Tipo ainda não definido)"
         header_with_parent: "Novo %{type} (Filho de %{parent_type} #%{id})"
         button: "Criar"
-      copy:
-        title: "Copiar pacote de trabalho"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Mostrar o modo de hierarquia"
         hide: "Ocultar o modo de hierarquia"

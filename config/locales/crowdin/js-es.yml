@@ -642,7 +642,8 @@ es:
       title: "Confirma tu contraseña para continuar"
     pagination:
       no_other_page: "Usted está en la única página."
-      pagination_controls: "Pagination controls"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "Next page"
         previous: "Previous page"
@@ -826,10 +827,10 @@ es:
         mixed: "Mixto"
     work_packages:
       bulk_actions:
-        move: "Cambio masivo del proyecto"
         edit: "Edición en masa"
-        copy: "Copia en masa"
         delete: "Eliminación en masa"
+        duplicate: "Bulk duplicate"
+        move: "Cambio masivo del proyecto"
       button_clear: "Eliminar"
       comment_added: "El comentario fue añadido con éxito."
       comment_send_failed: "Ha ocurrido un error. No se pudo añadir el comentario."
@@ -873,8 +874,8 @@ es:
         header_no_type: "Nuevo paquete de trabajo (tipo aún no establecido)"
         header_with_parent: "Nuevo %{type} (Sub-elemento de %{parent_type} #%{id})"
         button: "Crear"
-      copy:
-        title: "Copiar paquete de trabajo"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Mostrar modo de jerarquía"
         hide: "Ocultar modo de jerarquía"

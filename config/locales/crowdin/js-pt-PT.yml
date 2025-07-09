@@ -643,7 +643,8 @@ pt-PT:
       title: "Confirme a sua palavra-passe para continuar"
     pagination:
       no_other_page: "Mais nenhuma página a apresentar."
-      pagination_controls: "Pagination controls"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "Next page"
         previous: "Previous page"
@@ -827,10 +828,10 @@ pt-PT:
         mixed: "Misturado"
     work_packages:
       bulk_actions:
-        move: "Mudança em massa de projeto"
         edit: "Editar vários"
-        copy: "Copiar vários"
         delete: "Apagar vários"
+        duplicate: "Bulk duplicate"
+        move: "Mudança em massa de projeto"
       button_clear: "Limpar"
       comment_added: "O comentário foi adicionado com sucesso."
       comment_send_failed: "Ocorreu um erro. Não foi possível submeter o comentário."
@@ -874,8 +875,8 @@ pt-PT:
         header_no_type: "Novo pacote de trabalho (tipo ainda não definido)"
         header_with_parent: "Nova %{type} (Filho de %{parent_type} #%{id})"
         button: "Criar"
-      copy:
-        title: "Copiar pacote de trabalho"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Mostrar modo de hierarquia"
         hide: "Ocultar modo de hierarquia"

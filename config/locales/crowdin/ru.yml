@@ -112,7 +112,7 @@ ru:
         link: "вебхук"
     scim_clients:
       authentication_methods:
-        sso: "JWT from identity provider"
+        sso: "JWT от поставщика идентификации"
         oauth2_client: "Учётные данные клиента OAuth 2.0"
         oauth2_token: "Постоянный токен доступа"
       created_client_credentials_dialog_component:
@@ -131,28 +131,28 @@ ru:
       edit:
         label_delete_scim_client: "Удалить клиента SCIM"
       form:
-        auth_provider_description: "This is the service that users added by the SCIM provider will use to authenticate in OpenProject."
-        authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM clients</a> for more information on these configuration options.'
-        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
-        name_description: "Choose a name that will help other admins better understand why this client was configured."
+        auth_provider_description: "Это служба, которую пользователи, добавленные провайдером SCIM, будут использовать для аутентификации в OpenProject."
+        authentication_method_description_html: "Вот как клиент SCIM аутентифицируется в OpenProject. Пожалуйста, убедитесь, что токены OAuth включают область <code>scim_v2</code>."
+        description_html: 'Пожалуйста, обратитесь к нашей <a href="%{docs_url}">документации по настройке клиентов SCIM</a>.'
+        jwt_sub_description_html: 'Например, для Keycloak это UUID учетной записи службы, связанной с клиентом SCIM. Обратитесь к <a href="%{docs_url}">нашей документации</a>, для поиска необходимых тем.'
+        name_description: "Выберите имя, которое поможет другим администраторам лучше понять, зачем был настроен этот клиент."
       index:
-        description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
-        label_create_button: "Add SCIM client"
+        description: "Клиенты SCIM, настроенные здесь, могут взаимодействовать с API сервера SCIM для предоставления, обновления и удаления учетных записей и групп пользователей."
+        label_create_button: "Добавить клиента SCIM"
       new:
-        title: "New SCIM client"
+        title: "Новый клиент SCIM"
       revoke_static_token_dialog_component:
-        confirm_button: "Revoke"
-        title: "Revoke static token"
-        heading: "Are you sure you want to revoke this token?"
-        description: "The SCIM client that uses this token will no longer be able to access OpenProject's SCIM server API."
+        confirm_button: "Отменить"
+        title: "Отменить статический токен"
+        heading: "Вы уверены, что хотите отменить этот токен?"
+        description: "Клиент SCIM, использующий этот токен, больше не сможет получить доступ к API сервера SCIM."
       table_component:
         blank_slate:
-          title: "No SCIM clients configured yet"
-          description: "Add clients to see them here"
+          title: "Клиенты SCIM еще не настроены"
+          description: "Добавьте клиентов, чтобы увидеть их здесь"
         user_count: "Пользователи"
       token_list_component:
-        description: "The tokens you generate here can be passed by a SCIM client to access the OpenProject SCIM API."
+        description: "Токены, которые Вы генерируете здесь, могут быть переданы SCIM-клиенту для доступа к API серверу SCIM."
         heading: "Токены"
         label_add_token: "Токен"
         label_aria_add_token: "Добавить токен"
@@ -160,9 +160,9 @@ ru:
         blank_slate:
           title: "Пока не создано ни одного токена"
           description: "Вы можете создать его прямо сейчас"
-        expired: "Expired on %{date}"
-        revoked: "Revoked on %{date}"
-        title: "Access token table"
+        expired: "Истекает %{date}"
+        revoked: "Отменено %{date}"
+        title: "Таблица токенов доступа"
   authentication:
     login_and_registration: "Войти и зарегистрироваться"
   announcements:
@@ -700,8 +700,8 @@ ru:
       projects:
         tab: Проекты
         enable_all: Использовать во всех проектах
-        select_projects: Select projects
-        select_projects_description: Select the projects in which you would like to use this type.
+        select_projects: Выберите проекты
+        select_projects_description: Выберите проекты, в которых вы хотели бы использовать этот тип.
       settings:
         tab: "Параметры"
         type_color_text: "Выбранный цвет выделяет разные типы\nна диаграммах Ганта или таблицах пакетов работ. Поэтому рекомендуется использовать насыщенный цвет."
@@ -1124,9 +1124,9 @@ ru:
       role:
         permissions: "Разрешения"
       scim_client:
-        auth_provider: "Authentication provider"
-        authentication_method: "Authentication method"
-        jwt_sub: "Subject claim"
+        auth_provider: "Провайдер аутентификации"
+        authentication_method: "Метод аутентификации"
+        jwt_sub: "Необходима тема"
       status:
         is_closed: "Пакет работ закрыт"
         is_readonly: "Пакет работ только для просмотра"
@@ -1170,7 +1170,7 @@ ru:
         password_confirmation: "Подтверждение"
         consented_at: "Согласен с"
       group:
-        identity_url: "Identity URL"
+        identity_url: "URL идентификации"
       user_preference:
         header_look_and_feel: "Оформление"
         header_alerts: "Оповещения"
@@ -1182,8 +1182,8 @@ ru:
           Вы можете отключить <a href="%{href}">горячие клавиши</a> по умолчанию, если Вы пользуетесь программой чтения с экрана или хотите избежать случайного запуска действия с помощью сочетания клавиш.
         dismissed_enterprise_banners: "Скрытые корпоративные баннеры"
         impaired: "Режим отображения для людей с ограниченными возможностями"
-        auto_hide_popups: "Automatically hide success banners"
-        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
+        auto_hide_popups: "Автоматически скрывать успешные баннеры"
+        auto_hide_popups_caption: "Когда эта функция включена, зеленые успешные баннеры автоматически исчезают через 5 секунд."
         warn_on_leaving_unsaved: "При покидании рабочего пакета предупреждать о не сохраненных изменениях"
         theme: "Цветовой режим"
         time_zone: "Часовой пояс"
@@ -1256,7 +1256,7 @@ ru:
         error_unauthorized: "не доступен."
         error_readonly: "запись не разрешена."
         error_conflict: "Информация была обновлена одновременно с вами  по крайней мере одним пользователем."
-        error_not_found: "not found."
+        error_not_found: "не найдено."
         email: "неверный адрес электронной почты."
         empty: "не может быть пустым."
         enterprise_plan_required: "требует хотя бы %{plan_name}."
@@ -1668,7 +1668,7 @@ ru:
         many: "Роль"
         other: "Роль"
       scim_client:
-        one: "SCIM client"
+        one: "Клиент SCIM"
         few: "SCIM clients"
         many: "SCIM clients"
         other: "SCIM clients"
@@ -1784,7 +1784,7 @@ ru:
     estimated_time: "Предполагаемое время"
     email: "Электронная почта"
     entity_type: "Тип сущности"
-    expires_at: "Срок действия до"
+    expires_at: "Expires on"
     firstname: "Имя"
     filter: "Фильтр"
     group: "Группа"
@@ -1833,7 +1833,7 @@ ru:
     title: "Заголовок"
     type: "Тип"
     typeahead: "Автозаполнение"
-    uid: "Unique identifier"
+    uid: "Уникальный идентификатор"
     updated_at: "Обновлено"
     updated_on: "Обновлено"
     uploader: "Кто загрузил"
@@ -1900,7 +1900,6 @@ ru:
   button_copy: "Копировать"
   button_copy_to_clipboard: "Копировать в буфер обмена"
   button_copy_link_to_clipboard: "Копировать ссылку в буфер обмена"
-  button_copy_and_follow: "Скопировать и продолжить"
   button_create: "Создать"
   button_create_and_continue: "Создать и продолжить"
   button_decline: "Отклонить"
@@ -1909,6 +1908,7 @@ ru:
   button_delete_watcher: "Удаление наблюдателя %{name}"
   button_download: "Скачать"
   button_duplicate: "Дублировать"
+  button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Правка"
   button_edit_associated_wikipage: "Редактирование связанной wiki-страницы: %{page_title}"
   button_expand_all: "Развернуть все"
@@ -1994,11 +1994,11 @@ ru:
       succeeded: 'Скопированный проект «%{source_project_name}» в «%{target_project_name}».'
     source_project_label: "Проект скопирован"
     copy_options:
-      dependencies_label: 'Copy from project'
+      dependencies_label: 'Копировать из проекта'
   create_project:
     template_label: "Использовать шаблон"
     copy_options:
-      dependencies_label: 'Copy from template'
+      dependencies_label: 'Копировать из шаблона'
   create_wiki_page: "Добавить новую wiki-страницу"
   create_wiki_page_button: "Wiki-страница"
   date:
@@ -2152,7 +2152,7 @@ ru:
         one: "min"
         few: "mins"
         many: "mins"
-        other: "mins"
+        other: "минуты"
       hour:
         one: "час"
         few: "час"
@@ -2213,7 +2213,7 @@ ru:
       placeholder_users: Пользователи-заполнители
       project_list_sharing: Совместное использование списка проектов
       readonly_work_packages: Пакеты работ только для чтения
-      scim_api: SCIM server API
+      scim_api: API сервера SCIM
       sso_auth_providers: Единый вход (SSO)
       team_planner_view: Просмотр командных планировщиков
       virus_scanning: Антивирусное сканирование
@@ -2281,8 +2281,8 @@ ru:
         title: "Единый вход для Nextcloud хранения"
         description: "Включите бесшовную и безопасную аутентификацию для вашего Nextcloud хранилища с помощью Single Sign-On. Упростите управление доступом и сделайте удобным для пользователя."
       scim_api:
-        title: "SCIM clients"
-        description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
+        title: "Клиенты SCIM"
+        description: "Автоматизируйте управление пользователями в OpenProject, легко интегрируя внешние службы идентификации, такие как Microsoft Entra или Keycloak, через наш сервер API SCIM."
       virus_scanning:
         description: "Будьте уверены в том, что загруженные в OpenProject файлы проверены на наличие вирусов, прежде чем они станут доступны другим пользователям."
       placeholder_users:
@@ -3660,7 +3660,7 @@ ru:
   permission_comment_news: "Комментировать новость"
   permission_commit_access: "Возможность чтения/записи в репозиторий (commit)"
   permission_copy_projects: "Копировать проект"
-  permission_copy_work_packages: "Копировать пакеты работ"
+  permission_copy_work_packages: "Duplicate work packages"
   permission_create_backup: "Создание резервных копий"
   permission_delete_work_package_watchers: "Удалить наблюдателей"
   permission_delete_work_packages: "Удалить пакеты работ"

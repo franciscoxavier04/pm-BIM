@@ -643,7 +643,8 @@ ro:
       title: "Vă rugăm să confirmați parola dumneavoastră pentru a continua"
     pagination:
       no_other_page: "Sunteți pe pagina unică."
-      pagination_controls: "Pagination controls"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "Next page"
         previous: "Previous page"
@@ -827,10 +828,10 @@ ro:
         mixed: "Amestecat"
     work_packages:
       bulk_actions:
-        move: "Modificare identificator proiect"
         edit: "Editează mai multe elemente"
-        copy: "Copiază mai multe elemente"
         delete: "Șterge mai multe element"
+        duplicate: "Bulk duplicate"
+        move: "Modificare identificator proiect"
       button_clear: "Șterge"
       comment_added: "Comentariul a fost adăugat cu succes."
       comment_send_failed: "A apărut o eroare. Comentariul nu a putut fi salvat."
@@ -874,8 +875,8 @@ ro:
         header_no_type: "Nou pachet de lucru (Tipul incă nu a fost stabilit)"
         header_with_parent: "Nou %{type} (Copil al %{parent_type} #%{id})"
         button: "Creează"
-      copy:
-        title: "Copiază pachet de lucru"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Afișați modul ierarhic"
         hide: "Ascundeți modul ierarhic"

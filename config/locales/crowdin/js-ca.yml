@@ -643,7 +643,8 @@ ca:
       title: "Confirma la teva contrasenya per continuar"
     pagination:
       no_other_page: "Estàs en la pàgina única."
-      pagination_controls: "Pagination controls"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "Next page"
         previous: "Previous page"
@@ -827,10 +828,10 @@ ca:
         mixed: "Mixed"
     work_packages:
       bulk_actions:
-        move: "Canvi massiu de projecte"
         edit: "Edició massiva"
-        copy: "Còpia massiva"
         delete: "Eliminació massiva"
+        duplicate: "Bulk duplicate"
+        move: "Canvi massiu de projecte"
       button_clear: "Neteja"
       comment_added: "El comentari s'ha afegit correctament."
       comment_send_failed: "S'ha produït un error. No s'ha pogut sotmetre el comentari."
@@ -874,8 +875,8 @@ ca:
         header_no_type: "Nou paquet de treball (Classe no establerta encara)"
         header_with_parent: "Nou %{type} (Fill de %{parent_type} #%{id})"
         button: "Crear"
-      copy:
-        title: "Copiar paquet de treball"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Mostra el mode de jerarquia"
         hide: "Amaga el mode de jerarquia"

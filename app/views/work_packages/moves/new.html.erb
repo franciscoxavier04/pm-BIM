@@ -27,9 +27,9 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<% html_title @copy ? t(:button_copy) : t(:button_move), t("activerecord.models.work_package") %>
+<% html_title @copy ? t(:button_duplicate) : t(:button_move), t("activerecord.models.work_package") %>
 
-<h2><%= @copy ? t(:button_copy) : t(:button_move) %></h2>
+<h2><%= @copy ? t(:button_duplicate) : t(:button_move) %></h2>
 <ul>
   <% @work_packages.each do |work_package| -%>
     <li>
@@ -210,8 +210,8 @@ See COPYRIGHT and LICENSE files for more details.
   </section>
   <% if @copy %>
     <%= hidden_field_tag("copy") %>
-    <%= styled_submit_tag t(:button_copy), class: "-primary" %>
-    <%= styled_submit_tag t(:button_copy_and_follow), name: "follow", class: "-primary" %>
+    <%= styled_submit_tag t(:button_duplicate), class: "-primary" %>
+    <%= styled_submit_tag t(:button_duplicate_and_follow), name: "follow", class: "-primary" %>
   <% else %>
     <%= styled_submit_tag t(:button_move), class: "-primary" %>
     <%= styled_submit_tag t(:button_move_and_follow), name: "follow", class: "-primary" %>

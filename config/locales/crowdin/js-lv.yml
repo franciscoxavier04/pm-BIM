@@ -644,7 +644,8 @@ lv:
       title: "Confirm your password to continue"
     pagination:
       no_other_page: "Jūs esat vienīgajā lapā."
-      pagination_controls: "Pagination controls"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "Next page"
         previous: "Previous page"
@@ -828,10 +829,10 @@ lv:
         mixed: "Mixed"
     work_packages:
       bulk_actions:
-        move: "Bulk change of project"
         edit: "Bulk edit"
-        copy: "Bulk copy"
         delete: "Bulk delete"
+        duplicate: "Bulk duplicate"
+        move: "Bulk change of project"
       button_clear: "Notīrīt"
       comment_added: "Komentārs veiksmīgi pievienots."
       comment_send_failed: "Radusies kļūda. Nevar iesniegt komentāru."
@@ -875,8 +876,8 @@ lv:
         header_no_type: "New work package (Type not yet set)"
         header_with_parent: "New %{type} (Child of %{parent_type} #%{id})"
         button: "Izveidot"
-      copy:
-        title: "Copy work package"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Show hierarchy mode"
         hide: "Hide hierarchy mode"

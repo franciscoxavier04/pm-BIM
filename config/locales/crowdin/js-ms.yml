@@ -642,7 +642,8 @@ ms:
       title: "Sahkan kata laluan anda untuk teruskan"
     pagination:
       no_other_page: "Anda berada di satu-satunya halaman."
-      pagination_controls: "Pagination controls"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "Next page"
         previous: "Previous page"
@@ -826,10 +827,10 @@ ms:
         mixed: "Bercampur"
     work_packages:
       bulk_actions:
-        move: "Perubahan projek secara pukal"
         edit: "Edit pukal"
-        copy: "Salinan pukal"
         delete: "Pemadaman pukal"
+        duplicate: "Bulk duplicate"
+        move: "Perubahan projek secara pukal"
       button_clear: "Kosongkan"
       comment_added: "Komen telah berjaya ditambahkan."
       comment_send_failed: "Ralat telah berlaku. Tidak dapat menghantar komen."
@@ -873,8 +874,8 @@ ms:
         header_no_type: "Pakej kerja baharu (Jenis belum ditetapkan)"
         header_with_parent: "%{type} baharu (Anak kepada %{parent_type} #%{id})"
         button: "Cipta"
-      copy:
-        title: "Salin pakej kerja"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Paparkan mod hierarki"
         hide: "Sembunyikan mod hierarki"

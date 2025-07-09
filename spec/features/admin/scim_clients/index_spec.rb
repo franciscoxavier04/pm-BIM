@@ -44,6 +44,10 @@ RSpec.describe "Listing SCIM clients", :js, :selenium, driver: :firefox_de do
 
       expect(page).to have_enterprise_banner(:corporate)
       expect(page).to have_no_test_selector("Admin::ScimClients::TableComponent")
+
+      within(".SubHeader") do
+        expect(page).to have_no_link("SCIM client")
+      end
     end
   end
 

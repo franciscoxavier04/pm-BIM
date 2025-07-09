@@ -95,7 +95,7 @@ export class SpotDropModalComponent implements OnDestroy {
 
   @ViewChild('anchor') anchor:ElementRef;
 
-  @ViewChild('body') body:TemplateRef<any>;
+  @ViewChild('body') body:TemplateRef<unknown>;
 
   @ViewChild('focusGrabber') focusGrabber:ElementRef;
 
@@ -158,9 +158,9 @@ export class SpotDropModalComponent implements OnDestroy {
           window.addEventListener('resize', this.onResize);
           window.addEventListener('orientationchange', this.onResize);
 
-          const focusCatcherContainer = document.querySelectorAll("[data-modal-focus-catcher-container='true']")[0];
+          const focusCatcherContainer = document.querySelector<HTMLElement>("[data-modal-focus-catcher-container='true']");
           if (focusCatcherContainer) {
-            (findAllFocusableElementsWithin(focusCatcherContainer as HTMLElement)[0])?.focus();
+            (findAllFocusableElementsWithin(focusCatcherContainer)[0])?.focus();
           } else {
             // Index 1 because the element at index 0 is the trigger button to open the modal
             (findAllFocusableElementsWithin(document.querySelector('.spot-drop-modal-portal')!)[1])?.focus();

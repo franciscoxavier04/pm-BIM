@@ -47,7 +47,7 @@ ru:
       meeting_agenda_item:
         title: "Заголовок"
         author: "Автор"
-        duration_in_minutes: "Duration"
+        duration_in_minutes: "Продолжительность"
         description: "Примечания"
         presenter: "Ведущий"
       meeting_section:
@@ -273,6 +273,10 @@ ru:
     placeholder_title: "Новый раздел"
     empty_text: "Перенесите элементы сюда или создайте новые"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Time zone difference"
+      description: >
+        The dates below are referencing the time zone of the meeting series (%{actual_zone}), not your local time zone (%{user_zone}).
     ended_blankslate:
       title: "Серия совещаний закончена"
       message: "Эта серия совещаний подошла к концу. Предстоящих совещаний не будет. "

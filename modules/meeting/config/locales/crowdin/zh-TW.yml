@@ -261,6 +261,10 @@ zh-TW:
     placeholder_title: "新增章節"
     empty_text: "將項目拖曳至此處或建立新項目"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Time zone difference"
+      description: >
+        The dates below are referencing the time zone of the meeting series (%{actual_zone}), not your local time zone (%{user_zone}).
     ended_blankslate:
       title: "系列會議結束"
       message: "本系列會議已結束。沒有接下來的會議。 "

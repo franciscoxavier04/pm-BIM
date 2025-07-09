@@ -41,7 +41,6 @@ import { StateService } from '@uirouter/core';
   selector: 'op-refresh-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export class RefreshButtonComponent {
   public text = {
     refresh: this.I18n.t('js.bcf.refresh'),

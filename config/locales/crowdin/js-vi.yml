@@ -642,7 +642,8 @@ vi:
       title: "Xác nhận mật khẩu của bạn để tiếp tục"
     pagination:
       no_other_page: "Bạn đang ở trang duy nhất."
-      pagination_controls: "Pagination controls"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "Next page"
         previous: "Previous page"
@@ -826,10 +827,10 @@ vi:
         mixed: "Lẫn lộn"
     work_packages:
       bulk_actions:
-        move: "Thay đổi hàng loạt dự án"
         edit: "Chỉnh sửa hàng loạt"
-        copy: "Sao chép hàng loạt"
         delete: "Xóa hàng loạt"
+        duplicate: "Bulk duplicate"
+        move: "Thay đổi hàng loạt dự án"
       button_clear: "Xóa"
       comment_added: "Bình luận đã được thêm thành công."
       comment_send_failed: "Đã xảy ra lỗi. Không thể gửi bình luận."
@@ -873,8 +874,8 @@ vi:
         header_no_type: "Gói công việc mới (Loại chưa được đặt)"
         header_with_parent: "Mới %{type} (Con của %{parent_type} #%{id})"
         button: "Tạo"
-      copy:
-        title: "Sao chép gói công việc"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Hiển thị chế độ phân cấp"
         hide: "Ẩn chế độ phân cấp"
