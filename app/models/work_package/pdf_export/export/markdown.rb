@@ -112,7 +112,7 @@ module WorkPackage::PDFExport::Export::Markdown
       return [text_hash(content, opts)] if id.blank?
 
       work_package = WorkPackage.find_by(id: id)
-      return [text_hash(content, opts)] if work_package.nil? || !work_package.visible?
+      return [text_hash(content, opts)] unless work_package&.visible?
 
       content = expand_wp_mention(work_package, content)
       [text_hash(content, opts.merge({ link: url_helpers.work_package_url(id) }))]
