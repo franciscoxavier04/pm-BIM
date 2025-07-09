@@ -54,10 +54,7 @@ This is an example of new project attribute with a format *Text*.
 
 - **Admin-only**: If you enable this, the project attribute will only be visible to administrators. All other users will not see it, even if it is activated in a project.
 
-> [!TIP]
-> This is enabled by default. Only disable this if you want this field to be invisible to non-admin users.
-
-- **Searchable**: Checking this makes this project attribute (and its value) available as a filter in project lists.
+**Searchable**: Checking this makes this project attribute (and its value) available as a filter in project lists.
 
 ## Modify project attributes
 
