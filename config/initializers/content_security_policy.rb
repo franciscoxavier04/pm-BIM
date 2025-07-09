@@ -25,10 +25,7 @@ Rails.application.config.after_initialize do
       default_src += OpenProject::Configuration.remote_storage_hosts
 
       # Chargebee self-service
-      chargebee_src = [
-        "https://js.chargebee.com/",
-        "#{OpenProject::Configuration.enterprise_chargebee_site}.chargebee.com"
-      ]
+      chargebee_src = ["https://*.chargebee.com"]
 
       assets_src += chargebee_src
       frame_src += chargebee_src
