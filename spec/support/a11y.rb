@@ -29,3 +29,14 @@
 #++
 
 require "axe-rspec"
+
+# Visits the page at the given path and checks it for accessibility problems
+def visit_and_check_a11y(path, skipping: [], except_elements: [])
+  visit path
+  check_a11y_within("#content", skipping:, except_elements:)
+end
+
+# Checks for accessibility errors within a specified region of the page
+def check_a11y_within(selector, skipping: [], except_elements: [])
+  expect(page).to be_axe_clean.within(selector).skipping(*skipping).except(*except_elements)
+end

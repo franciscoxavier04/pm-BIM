@@ -37,10 +37,9 @@ RSpec.describe "Listing SCIM clients", :js, :selenium, driver: :firefox_de do
 
   context "when using an insufficient enterprise token" do
     it "renders an enterprise banner and no table" do
-      visit admin_scim_clients_path
-
-      expect(page).to be_axe_clean.within("#content")
-                                  .skipping("color-contrast") # https://community.openproject.org/wp/65507
+      visit_and_check_a11y(admin_scim_clients_path, skipping: [
+                             "color-contrast" # https://community.openproject.org/wp/65507
+                           ])
 
       expect(page).to have_enterprise_banner(:corporate)
       expect(page).to have_no_test_selector("Admin::ScimClients::TableComponent")
@@ -53,9 +52,7 @@ RSpec.describe "Listing SCIM clients", :js, :selenium, driver: :firefox_de do
 
   context "when there are no SCIM clients", with_ee: [:scim_api] do
     it "renders a proper blank slate" do
-      visit admin_scim_clients_path
-
-      expect(page).to be_axe_clean.within "#content"
+      visit_and_check_a11y admin_scim_clients_path
 
       expect(page).not_to have_enterprise_banner
       within_test_selector("Admin::ScimClients::TableComponent") do
@@ -75,9 +72,7 @@ RSpec.describe "Listing SCIM clients", :js, :selenium, driver: :firefox_de do
     let!(:sso_client) { create(:scim_client) }
 
     it "renders a proper clients table" do
-      visit admin_scim_clients_path
-
-      expect(page).to be_axe_clean.within "#content"
+      visit_and_check_a11y admin_scim_clients_path
 
       expect(page).not_to have_enterprise_banner
       within_test_selector("Admin::ScimClients::TableComponent") do

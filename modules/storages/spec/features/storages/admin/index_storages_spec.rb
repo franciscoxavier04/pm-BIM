@@ -44,7 +44,9 @@ RSpec.describe "Admin List File storages",
     shared_let(:one_drive_storage) { create(:one_drive_storage) }
 
     before do
-      visit admin_settings_storages_path
+      visit_and_check_a11y(admin_settings_storages_path, except_elements: [
+                             "opce-principal" # https://community.openproject.org/wp/64230
+                           ])
     end
 
     it "renders a list of all storages" do
@@ -53,28 +55,17 @@ RSpec.describe "Admin List File storages",
         expect(page).to have_list_item(one_drive_storage.name)
       end
     end
-
-    it "renders content that is accessible" do
-      expect(page)
-        .to be_axe_clean
-              .within("#content")
-              .excluding("opce-principal")
-    end
   end
 
   context "with no storages" do
     before do
-      visit admin_settings_storages_path
+      visit_and_check_a11y admin_settings_storages_path
     end
 
     it "renders a blank slate" do
       expect(page).to have_title("Files")
       expect(page.find(".PageHeader-title")).to have_text("External file storages")
       expect(page).to have_text("You don't have any storages yet.")
-    end
-
-    it "renders content that is accessible" do
-      expect(page).to be_axe_clean.within("#content")
     end
   end
 end
