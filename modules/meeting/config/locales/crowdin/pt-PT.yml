@@ -265,6 +265,10 @@ pt-PT:
     placeholder_title: "Nova secção"
     empty_text: "Arraste itens para aqui ou crie um novo"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Time zone difference"
+      description: >
+        The dates below are referencing the time zone of the meeting series (%{actual_zone}), not your local time zone (%{user_zone}).
     ended_blankslate:
       title: "A série de reuniões terminou"
       message: "Esta série de reuniões chegou ao fim. Não existem mais reuniões. "

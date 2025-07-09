@@ -297,7 +297,7 @@ ru:
           "16_2":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>New header and sidebar with improved navigation and design.</li> <li>Smoother experience with Custom fields, Relations, Reminders, Meetings, and My time tracking.</li> <li>Non-latin languages and emojis supported in PDF exports.</li> <li>Option to disable keyboard shortcuts for better accessibility.</li> <li>SCIM server via API (Enterprise add-on).</li> <li>API support for internal comments.</li> </ul>
+                Релиз содержит различные новые возможности и улучшения, например, <br>. <ul class="%{list_styling_class}"> <li>Новый заголовок и боковая панель с улучшенной навигацией и дизайном.</li> <li>Более плавная работа с пользовательскими полями, отношениями, напоминаниями, совещаниями и отслеживанием моих трудозатрат.</li> <li>Поддержка нелатинских языков и эмодзи в экспорте PDF.</li> <li>Опция отключения горячих клавиш для улучшения доступности.</li> <li>Сервер SCIM через API.</li> <li>Поддержка API для внутренних комментариев.</li> </ul>
     ical_sharing_modal:
       title: "Подписаться на календарь"
       inital_setup_error_message: "Произошла ошибка при получении данных."
@@ -644,7 +644,8 @@ ru:
       title: "Для продолжения введите свой пароль"
     pagination:
       no_other_page: "Вы находитесь на единственной странице."
-      pagination_controls: "Управление постраничным отображением"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "Следующая страница"
         previous: "Предыдущая страница"
@@ -828,10 +829,10 @@ ru:
         mixed: "Смешанное"
     work_packages:
       bulk_actions:
-        move: "Массовое изменение проекта"
         edit: "Массовое изменение"
-        copy: "Массовое копирование"
         delete: "Массовое удаление"
+        duplicate: "Bulk duplicate"
+        move: "Массовое изменение проекта"
       button_clear: "Очистить"
       comment_added: "Комментарий успешно добавлен."
       comment_send_failed: "Произошла ошибка. Не удалось отправить комментарий."
@@ -875,8 +876,8 @@ ru:
         header_no_type: "Новый пакет работ (Тип еще не установлен)"
         header_with_parent: "Новый %{type} (дочерний пакет работ %{parent_type} № %{id})"
         button: "Создать"
-      copy:
-        title: "Копировать пакет работ"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Скрыть режим иерархии"
         hide: "Скрыть режим иерархии"

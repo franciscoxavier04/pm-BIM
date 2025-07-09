@@ -261,6 +261,10 @@ ko:
     placeholder_title: "새 섹션"
     empty_text: "항목을 여기에 끌어오거나 새로 만들기"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Time zone difference"
+      description: >
+        The dates below are referencing the time zone of the meeting series (%{actual_zone}), not your local time zone (%{user_zone}).
     ended_blankslate:
       title: "미팅 시리즈 종료됨"
       message: "이 미팅 시리즈는 종료되었습니다. 향후 미팅이 없습니다. "

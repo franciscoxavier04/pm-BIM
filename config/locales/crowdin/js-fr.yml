@@ -643,7 +643,8 @@ fr:
       title: "Confirmez votre mot de passe pour continuer"
     pagination:
       no_other_page: "Vous êtes sur la seule page."
-      pagination_controls: "Pagination controls"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "Next page"
         previous: "Previous page"
@@ -827,10 +828,10 @@ fr:
         mixed: "Mixte"
     work_packages:
       bulk_actions:
-        move: "Changement de projet en bloc"
         edit: "Édition en bloc"
-        copy: "Copier en bloc"
         delete: "Supprimer en bloc"
+        duplicate: "Bulk duplicate"
+        move: "Changement de projet en bloc"
       button_clear: "Effacer"
       comment_added: "Le commentaire a été ajouté avec succès."
       comment_send_failed: "Une erreur s'est produite. Impossible de soumettre le commentaire."
@@ -874,8 +875,8 @@ fr:
         header_no_type: "Nouveau lot de travaux (type non encore spécifié)"
         header_with_parent: "Nouveau %{type} (enfant de %{parent_type} #%{id})"
         button: "Créer"
-      copy:
-        title: "Copier le lot de travaux"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Afficher le mode hiérarchie"
         hide: "Masquer le mode hiérarchie"

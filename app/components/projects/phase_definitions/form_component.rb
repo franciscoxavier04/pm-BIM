@@ -31,23 +31,5 @@ module Projects::PhaseDefinitions
   class FormComponent < ApplicationComponent
     include OpPrimer::ComponentHelpers
     include OpPrimer::FormHelpers
-
-    def selected?(tabname)
-      tabname == if no_errors || details_tab_errors.any?
-                   :details
-                 else
-                   :phase_gates
-                 end
-    end
-
-    private
-
-    def no_errors
-      model.errors.empty?
-    end
-
-    def details_tab_errors
-      model.errors.attribute_names & %i[name color]
-    end
   end
 end

@@ -643,7 +643,8 @@
       title: "Bekreft ditt passord for å fortsette"
     pagination:
       no_other_page: "Du er på den eneste siden."
-      pagination_controls: "Pagination controls"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "Next page"
         previous: "Previous page"
@@ -827,10 +828,10 @@
         mixed: "Blandet"
     work_packages:
       bulk_actions:
-        move: "Endre prosjekt i bulk"
         edit: "Bulk redigere"
-        copy: "Bulk kopiering"
         delete: "Bulk slette"
+        duplicate: "Bulk duplicate"
+        move: "Endre prosjekt i bulk"
       button_clear: "Nullstill"
       comment_added: "Kommentaren ble lagt til."
       comment_send_failed: "En feil har oppstått.  Kommentaren kunne ikke sendes inn."
@@ -874,8 +875,8 @@
         header_no_type: "Ny arbeidspakke (type ikke satt ennå)"
         header_with_parent: "Ny %{type} (Undertype av %{parent_type} #%{id})"
         button: "Opprett"
-      copy:
-        title: "Kopier arbeidspakke"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Vis hierarki modus"
         hide: "Skjul hierarkimodus"

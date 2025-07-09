@@ -697,7 +697,8 @@ en:
 
     pagination:
       no_other_page: "You are on the only page."
-      pagination_controls: "Pagination controls"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "Next page"
         previous: "Previous page"

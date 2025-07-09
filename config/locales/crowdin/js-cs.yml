@@ -645,7 +645,8 @@ cs:
       title: "Pro pokračování potvrďte vaše heslo"
     pagination:
       no_other_page: "Jste na jediné stránce."
-      pagination_controls: "Pagination controls"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "Next page"
         previous: "Previous page"
@@ -829,10 +830,10 @@ cs:
         mixed: "Smíšená"
     work_packages:
       bulk_actions:
-        move: "Hromadná změna projektu"
         edit: "Hromadná úprava"
-        copy: "Hromadné kopírování"
         delete: "Hromadné odstranění"
+        duplicate: "Bulk duplicate"
+        move: "Hromadná změna projektu"
       button_clear: "Vyčistit"
       comment_added: "Komentář byl úspěšně přidán."
       comment_send_failed: "Došlo k chybě. Nelze odeslat komentář."
@@ -876,8 +877,8 @@ cs:
         header_no_type: "Nový pracovní balíček (ještě není nastaven typ)"
         header_with_parent: "Nový %{type} (podřazený %{parent_type} #%{id})"
         button: "Vytvořit"
-      copy:
-        title: "Kopírovat pracovní balíček"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Zobrazit režim hierarchie"
         hide: "Skrýt režim hierarchie"

@@ -265,6 +265,10 @@ nl:
     placeholder_title: "Nieuwe Sectie"
     empty_text: "Sleep items hierheen of maak een nieuwe"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Time zone difference"
+      description: >
+        The dates below are referencing the time zone of the meeting series (%{actual_zone}), not your local time zone (%{user_zone}).
     ended_blankslate:
       title: "Vergaderreeks geëindigd"
       message: "Deze serie vergaderingen zijn afgelopen. Er zijn geen aanstaande vergaderingen. "
