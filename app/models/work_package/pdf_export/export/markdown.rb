@@ -86,15 +86,12 @@ module WorkPackage::PDFExport::Export::Markdown
       # <mention class="mention" data-id="185" data-type="work_package" data-text="#185">#185</mention>
       # <mention class="mention" data-id="185" data-type="work_package" data-text="##185">##185</mention>
       # <mention class="mention" data-id="185" data-type="work_package" data-text="###185">###185</mention>
-      id = tag.attr("data-id")
-      return [] if id.blank?
-
       next_node = node&.next # there is no markdown node in a html table
       if next_node && next_node.type == :text && next_node.respond_to?(:string_content)
         # clear the text content, so it does not get rendered
         next_node.string_content = ""
       end
-      wp_mention_macro(tag.attr("data-text") || "", id[/\d+/], opts)
+      wp_mention_macro(tag.attr("data-text") || "", tag.attr("data-id") || "", opts)
     end
 
     def expand_wp_mention(work_package, content)
@@ -111,6 +108,9 @@ module WorkPackage::PDFExport::Export::Markdown
     end
 
     def wp_mention_macro(content, id, opts)
+      id = id[/\d+/]
+      return [text_hash(content, opts)] if id.blank?
+
       work_package = WorkPackage.find_by(id: id)
       return [text_hash(content, opts)] if work_package.nil? || !work_package.visible?
 
