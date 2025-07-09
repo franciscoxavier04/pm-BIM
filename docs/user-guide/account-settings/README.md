@@ -78,11 +78,11 @@ Under **Interface** section of project settings you can adjust the color mode, a
 
 ### Look and feel
 
-Under *Look and feel* section of **Interface** in profile settings you can select which display mode you would like to activate and change the order in which comments are displayed in the **Activity list** for work packages.
+In the **Look and feel** section under **Interface** in your profile settings (accessible via the left-hand menu), you can select your preferred display mode and adjust the order in which comments appear in the **Activity list** for work packages.
 
-You can also **Disable keyboard shortcuts** if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
+You can also **disable keyboard shortcuts** . This is useful if you rely on a screen reader or want to avoid triggering actions by accident.
 
-Pressing the **Update look and feel** button will save your changes.
+Click **Update look and feel** to save your changes.
 
 !["Look and feel" section under Interface settings in OpenProject account settings](openproject_account_settings_interface_look_and_feel.png)
 
