@@ -95,16 +95,15 @@ module WorkPackage::PDFExport::Export::Markdown
     end
 
     def expand_wp_mention(work_package, content)
-      count = content.count("#")
-      if count > 1
-        # ##1234: {Type} #{ID}: {Subject}
-        content = "#{work_package.type} ##{work_package.id}: #{work_package.subject}"
-        if count == 3
-          # ###1234: {Status} {Type} #{ID}: {Subject} ({Start Date} - {End Date})
-          content = "#{work_package.status.name} #{content}#{work_package_dates(work_package)}"
-        end
-      end
-      content
+      detail_level = content.count("#")
+      return content if detail_level == 1
+
+      # ##1234: {Type} #{ID}: {Subject}
+      content = "#{work_package.type} ##{work_package.id}: #{work_package.subject}"
+      return content if detail_level == 2
+
+      # ###1234: {Status} {Type} #{ID}: {Subject} ({Start Date} - {End Date})
+      "#{work_package.status.name} #{content}#{work_package_dates(work_package)}"
     end
 
     def wp_mention_macro(content, id, opts)
