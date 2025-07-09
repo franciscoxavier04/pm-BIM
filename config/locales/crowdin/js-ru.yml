@@ -644,7 +644,8 @@ ru:
       title: "Для продолжения введите свой пароль"
     pagination:
       no_other_page: "Вы находитесь на единственной странице."
-      pagination_controls: "Управление постраничным отображением"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "Следующая страница"
         previous: "Предыдущая страница"
@@ -828,10 +829,10 @@ ru:
         mixed: "Смешанное"
     work_packages:
       bulk_actions:
-        move: "Массовое изменение проекта"
         edit: "Массовое изменение"
-        copy: "Массовое копирование"
         delete: "Массовое удаление"
+        duplicate: "Bulk duplicate"
+        move: "Массовое изменение проекта"
       button_clear: "Очистить"
       comment_added: "Комментарий успешно добавлен."
       comment_send_failed: "Произошла ошибка. Не удалось отправить комментарий."
@@ -875,8 +876,8 @@ ru:
         header_no_type: "Новый пакет работ (Тип еще не установлен)"
         header_with_parent: "Новый %{type} (дочерний пакет работ %{parent_type} № %{id})"
         button: "Создать"
-      copy:
-        title: "Копировать пакет работ"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Скрыть режим иерархии"
         hide: "Скрыть режим иерархии"

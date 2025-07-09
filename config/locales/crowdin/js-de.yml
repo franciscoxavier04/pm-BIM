@@ -826,10 +826,10 @@ de:
         mixed: "Gemischt"
     work_packages:
       bulk_actions:
-        move: "In anderes Projekt verschieben"
         edit: "Arbeitspakete bearbeiten"
-        copy: "Arbeitspakete kopieren"
         delete: "Arbeitspakete löschen"
+        duplicate: "Bulk duplicate"
+        move: "In anderes Projekt verschieben"
       button_clear: "Zurücksetzen"
       comment_added: "Der Kommentar wurde erfolgreich hinzugefügt."
       comment_send_failed: "Ein Fehler ist aufgetreten. Der Kommentar konnte nicht gespeichert werden."
@@ -873,8 +873,8 @@ de:
         header_no_type: "Neues Arbeitspaket (Typ noch nicht gesetzt)"
         header_with_parent: "Neu: %{type} (Kind von %{parent_type} #%{id})"
         button: "Erstellen"
-      copy:
-        title: "Arbeitspaket kopieren"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Hierarchie-Modus anzeigen"
         hide: "Hierarchie-Modus verbergen"

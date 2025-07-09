@@ -32,7 +32,6 @@ import { PathHelperService } from 'core-app/core/path-helper/path-helper.service
 import { HalResource } from 'core-app/features/hal/resources/hal-resource';
 
 @Injectable({ providedIn: 'root' })
-
 export class HierarchyQueryLinkHelperService {
   constructor(
     private pathHelper:PathHelperService,

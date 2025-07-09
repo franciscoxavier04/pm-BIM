@@ -19,7 +19,7 @@ Here, you can manage the **REST web service** to selectively control whether for
 
 ### Documentation
 
-If the **docs page** is enabled you can get an interactive view of the [APIv3 documentation](https://qa.openproject-edge.com/api/docs).
+If the **docs page** is enabled you can get an interactive view of the [APIv3 documentation](https://www.openproject.org/docs/api/introduction).
 
 ### Cross-Origin Resource Sharing (CORS)
 

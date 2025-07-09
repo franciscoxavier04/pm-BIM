@@ -645,7 +645,8 @@ pl:
       title: "Potwierdź hasło aby kontynuować"
     pagination:
       no_other_page: "Jesteś na jedynej stronie."
-      pagination_controls: "Pagination controls"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "Next page"
         previous: "Previous page"
@@ -829,10 +830,10 @@ pl:
         mixed: "Mieszane"
     work_packages:
       bulk_actions:
-        move: "Masowa zmiana projektu"
         edit: "Masowa edycja"
-        copy: "Masowe kopiowanie"
         delete: "Masowe usuwanie"
+        duplicate: "Bulk duplicate"
+        move: "Masowa zmiana projektu"
       button_clear: "Wyczyść"
       comment_added: "Komentarz został dodany pomyślnie."
       comment_send_failed: "Wystąpił błąd. Nie można zamieścić komentarza."
@@ -876,8 +877,8 @@ pl:
         header_no_type: "Nowy pakiet roboczy (typ jeszcze nie ustawiony)"
         header_with_parent: "Nowy %{type} (podrzędny %{parent_type} #%{id})"
         button: "Utwórz"
-      copy:
-        title: "Kopiuj pakiet roboczy"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Pokaż tryb hierarchii"
         hide: "Ukryj tryb hierarchii"

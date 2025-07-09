@@ -641,7 +641,8 @@ zh-TW:
       title: "確認您的密碼以便繼續"
     pagination:
       no_other_page: "您位於唯一頁面上。"
-      pagination_controls: "分頁控制"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "下一頁"
         previous: "上一頁"
@@ -825,10 +826,10 @@ zh-TW:
         mixed: "混合"
     work_packages:
       bulk_actions:
-        move: "專案整批變動"
         edit: "整批編輯"
-        copy: "整批複製"
         delete: "整批刪除"
+        duplicate: "Bulk duplicate"
+        move: "專案整批變動"
       button_clear: "清除"
       comment_added: "留言成功"
       comment_send_failed: "發生錯誤。無法留言。"
@@ -872,8 +873,8 @@ zh-TW:
         header_no_type: "新增工作套件(類型尚未設置)"
         header_with_parent: "新 %{type} (%{parent_type}＃%{id} 子元素)"
         button: "建立"
-      copy:
-        title: "複製工作套件"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "顯示層次結構模式"
         hide: "隱藏層次結構模式"

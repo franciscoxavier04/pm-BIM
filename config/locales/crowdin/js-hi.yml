@@ -643,7 +643,8 @@ hi:
       title: "Confirm your password to continue"
     pagination:
       no_other_page: "You are on the only page."
-      pagination_controls: "Pagination controls"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "Next page"
         previous: "Previous page"
@@ -827,10 +828,10 @@ hi:
         mixed: "Mixed"
     work_packages:
       bulk_actions:
-        move: "Bulk change of project"
         edit: "एकमुश्त सम्पादित करें"
-        copy: "एकमुश्त प्रतिलिपी बनाएँ"
         delete: "एकमुश्त हटाएँ"
+        duplicate: "Bulk duplicate"
+        move: "Bulk change of project"
       button_clear: "खाली करें"
       comment_added: "The comment was successfully added."
       comment_send_failed: "An error has occurred. Could not submit the comment."
@@ -874,8 +875,8 @@ hi:
         header_no_type: "New work package (Type not yet set)"
         header_with_parent: "New %{type} (Child of %{parent_type} #%{id})"
         button: "रचना करें"
-      copy:
-        title: "कार्य पैकेज की प्रतिलिपी बनाएँ"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Show hierarchy mode"
         hide: "Hide hierarchy mode"

@@ -643,7 +643,8 @@ tr:
       title: "Devam etmek için parolanızı doğrulayın"
     pagination:
       no_other_page: "Geçerli tek sayfadasınız."
-      pagination_controls: "Pagination controls"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "Next page"
         previous: "Previous page"
@@ -827,10 +828,10 @@ tr:
         mixed: "Karışık"
     work_packages:
       bulk_actions:
-        move: "Projenin toplu değişimi"
         edit: "Toplu düzenle"
-        copy: "Toplu kopyala"
         delete: "Toplu silme"
+        duplicate: "Bulk duplicate"
+        move: "Projenin toplu değişimi"
       button_clear: "Temizle"
       comment_added: "Yorum başarıyla eklendi."
       comment_send_failed: "Bir hata oluştu. Yorum gönderilemedi."
@@ -874,8 +875,8 @@ tr:
         header_no_type: "Yeni iş paketi (türü henüz ayarlanmadı)"
         header_with_parent: "Yeni %{type} (%{parent_type} #%{id} altında)"
         button: "Oluştur"
-      copy:
-        title: "İş paketini kopyala"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Hiyerarşiyi göster"
         hide: "Hiyerarşiyi gizle"

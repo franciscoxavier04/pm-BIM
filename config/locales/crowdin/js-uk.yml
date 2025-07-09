@@ -645,7 +645,8 @@ uk:
       title: "Підтвердіть ваш пароль щоб продовжити"
     pagination:
       no_other_page: "Ви знаходитесь на єдиній сторінці."
-      pagination_controls: "Pagination controls"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "Next page"
         previous: "Previous page"
@@ -829,10 +830,10 @@ uk:
         mixed: "Різні"
     work_packages:
       bulk_actions:
-        move: "Групова зміна проєкту"
         edit: "Масове редагування"
-        copy: "Масова копія"
         delete: "Масове видалення"
+        duplicate: "Bulk duplicate"
+        move: "Групова зміна проєкту"
       button_clear: "Очистити"
       comment_added: "Коментар був успішно доданий."
       comment_send_failed: "Сталася помилка. Не вдалося додати коментар."
@@ -876,8 +877,8 @@ uk:
         header_no_type: "Новий робочий пакет (Тип ще не встановлено)"
         header_with_parent: "Новий %{type} (дочірній елемент %{parent_type} #%{id})"
         button: "Створити"
-      copy:
-        title: "Копіювати робочий пакет"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Показати режим ієрархії"
         hide: "Приховати режим ієрархії"

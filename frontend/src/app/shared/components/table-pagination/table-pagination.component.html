@@ -1,5 +1,5 @@
 <div class="op-pagination" *ngIf="pagination && isVisible && pagination.total">
-  <nav class="op-pagination--pages" [attr.aria-label]="text.pagination_controls">
+  <nav class="op-pagination--pages" [attr.aria-label]="text.page_navigation">
     <ul class="op-pagination--items op-pagination--items_start" role="presentation">
 
       <li [hidden]="pagination.page === 1 || !showPageSelections" class="op-pagination--item">
@@ -48,7 +48,7 @@
             [textContent]="pageNumber"
           ></button>
         </li>
-        <li *ngIf="postPageNumbers.length" class="op-pagination--space">…</li>
+        <li *ngIf="postPageNumbers.length" class="op-pagination--space" role="separator">…</li>
       </ng-container>
 
       <ng-container *ngIf="postPageNumbers.length">
@@ -91,21 +91,19 @@
   </nav>
 
   <div class="op-pagination--options" *ngIf="showPerPageOptions()">
-    <nav [attr.aria-label]="text.pagination_controls">
+    <nav [attr.aria-label]="text.per_page_navigation">
       <ul
         class="op-pagination--items op-pagination--items_end"
         role="presentation">
         <li
           class="op-pagination--label"
-          title="{{ text.per_page }}"
-          role="presentation"
+          [attr.aria-label]="text.per_page"
           [textContent]="text.per_page">
         </li>
         <li
           *ngFor="let perPageOption of perPageOptions"
           class="op-pagination--item"
-          [ngClass]="{ 'op-pagination--item_current': perPageOption === pagination.perPage }"
-          role="presentation">
+          [ngClass]="{ 'op-pagination--item_current': perPageOption === pagination.perPage }">
           <span *ngIf="perPageOption !== pagination.perPage">
             <button
               class="op-pagination--item-link"
