@@ -158,7 +158,7 @@ module WorkPackage::PDFExport::Export::Markdown
       [result, opts]
     end
 
-    def handle_unknown_html_tag(_tag, _node, opts)
+    def handle_unknown_html_tag(tag, node, opts)
       if tag.name == "mention"
         handle_mention_html_tag(tag, node, opts)
       else
