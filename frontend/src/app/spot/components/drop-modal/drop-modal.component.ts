@@ -11,7 +11,6 @@ import {
   TemplateRef,
   ViewChild,
 } from '@angular/core';
-import { KeyCodes } from 'core-app/shared/helpers/keyCodes.enum';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { findAllFocusableElementsWithin } from 'core-app/shared/helpers/focus-helpers';
 import { SpotDropModalTeleportationService } from './drop-modal-teleportation.service';
@@ -218,7 +217,7 @@ export class SpotDropModalComponent implements OnDestroy {
   }
 
   private escapeCallback = (evt:KeyboardEvent) => {
-    if (evt.keyCode === KeyCodes.ESCAPE) {
+    if (evt.key === 'Escape') {
       this.close();
     }
   };

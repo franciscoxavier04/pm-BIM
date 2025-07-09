@@ -122,7 +122,7 @@ export class WorkPackageRelationRowComponent extends UntilDestroyedMixin impleme
   }
 
   public handleDescriptionKey($event:JQuery.TriggeredEvent) {
-    if ($event.which === 27) {
+    if ($event.key === 'Escape') {
       this.cancelDescriptionEdit();
     }
   }
