@@ -2,8 +2,8 @@
 
 class AddEntityToTimeEntry < ActiveRecord::Migration[8.0]
   def up
-    add_reference :time_entries, :entity, polymorphic: true, index: true
-    add_reference :time_entry_journals, :entity, polymorphic: true, index: true
+    add_reference :time_entries, :entity, polymorphic: true
+    add_reference :time_entry_journals, :entity, polymorphic: true
 
     execute <<~SQL.squish
       UPDATE time_entries

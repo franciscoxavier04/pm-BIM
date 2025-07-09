@@ -2,7 +2,7 @@
 
 class AddEntityToCostEntry < ActiveRecord::Migration[8.0]
   def up
-    add_reference :cost_entries, :entity, polymorphic: true, index: true
+    add_reference :cost_entries, :entity, polymorphic: true
     change_column_null :cost_entries, :work_package_id, true
 
     execute <<~SQL.squish
