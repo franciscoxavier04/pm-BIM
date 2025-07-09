@@ -34,13 +34,7 @@ module FullCalendar
 
     class << self
       def from_time_entry(time_entry)
-        starts_at = time_entry.start_timestamp || time_entry.spent_on
-        ends_at = time_entry.end_timestamp || time_entry.spent_on
-
-        if time_entry.ongoing?
-          starts_at = time_entry.created_at
-          ends_at = Time.current
-        end
+        starts_at, ends_at = start_and_end_time_from_time_entry(time_entry)
 
         event = new(
           id: time_entry.id,
@@ -52,6 +46,17 @@ module FullCalendar
         event.time_entry = time_entry
 
         event
+      end
+
+      def start_and_end_time_from_time_entry(time_entry)
+        if time_entry.ongoing?
+          [time_entry.created_at, Time.current]
+        else
+          [
+            time_entry.start_timestamp || time_entry.spent_on,
+            time_entry.end_timestamp || time_entry.spent_on
+          ]
+        end
       end
     end
 
