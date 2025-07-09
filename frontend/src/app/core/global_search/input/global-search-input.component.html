@@ -1,14 +1,26 @@
-<div class="top-menu-search">
+<div class="top-menu-search" [attr.aria-label]="placeholder">
+
   <button
     *ngIf="expanded"
     (click)="toggleMobileSearch()"
     class="top-menu-search--back-button"
     href="#"
-    title="{{text.close_search}}"
+    [attr.title]="text.close_search"
+    [attr.aria-label]="text.close_search"
   >
     <i class="icon-arrow-left1" aria-hidden="true"></i>
   </button>
-
+  <button
+    role="button"
+    #btn
+    id="top-menu-search-button"
+    class="top-menu-search--button search-form-normal"
+    [attr.aria-label]="text.search || 'Search'"
+    [class.-input-focused]="expanded"
+    (click)="handleClick($event)"
+  >
+    <op-icon icon-classes="icon5 icon-search ellipsis"></op-icon>
+  </button>
   <op-autocompleter
     #select
     [defaultData]="false"
@@ -75,9 +87,7 @@
                 {{ item.project.name }}
               </span>
             </div>
-            <span
-              class="global-search--wp-subject"
-            >
+            <span class="global-search--wp-subject">
               {{ item.subject }}
             </span>
           </div>
@@ -85,17 +95,4 @@
       </ng-template>
     </ng-template>
   </op-autocompleter>
-
-  <button
-    role="button"
-    #btn
-    id="top-menu-search-button"
-    class="top-menu-search--button search-form-normal"
-    [attr.aria-label]="text.search"
-    [class.-input-focused]="expanded"
-    (click)="handleClick($event)"
-
-  >
-    <op-icon icon-classes="icon5 icon-search ellipsis"></op-icon>
-  </button>
 </div>
