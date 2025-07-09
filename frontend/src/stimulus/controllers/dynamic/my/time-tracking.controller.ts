@@ -95,6 +95,8 @@ export default class MyTimeTrackingController extends Controller {
       eventMinHeight: 30,
       eventMaxStack: 2,
       nowIndicator: true,
+      slotDuration: '00:15:00',
+      slotLabelInterval: '01:00',
       businessHours: { daysOfWeek: this.workingDaysValue, startTime: '00:00', endTime: '24:00' },
       hiddenDays: this.hiddenDays(),
       firstDay: this.startOfWeekValue,
@@ -127,21 +129,13 @@ export default class MyTimeTrackingController extends Controller {
         }
 
         if (info.event.extendedProps.ongoing) {
-          stopTimerButton = toDOMString(
-        opStopwatchStopIconData,
-        'small',
-        { 'aria-hidden': 'true', class: 'octicon stop-timer-button' },
-      );
+          stopTimerButton = toDOMString(opStopwatchStopIconData, 'small', { 'aria-hidden': 'true', class: 'octicon stop-timer-button' });
         }
 
         return {
           html: `
            <div class="fc-event-main-frame">
-             <div class="fc-event-time">
-             ${stopTimerButton}
-
-              ${this.displayDuration(duration)}
-             </div>
+             <div class="fc-event-time">${stopTimerButton} ${this.displayDuration(duration)}</div>
              <div class="fc-event-title-container">
                 <div class="fc-event-title fc-event-wp" title="${info.event.extendedProps.workPackageSubject}">
                   <a class="Link--primary Link" href="${this.pathHelper.workPackageShortPath(info.event.extendedProps.workPackageId as string)}">
