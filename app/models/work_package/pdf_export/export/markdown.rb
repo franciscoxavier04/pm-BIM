@@ -173,7 +173,7 @@ module WorkPackage::PDFExport::Export::Markdown
   end
 
   def markdown_writer(styling_yml)
-    @markdown_writer ||= MD2PDFExport.new(styling_yml, pdf, hyphenation_language)
+    MD2PDFExport.new(styling_yml, pdf, hyphenation_language)
   end
 
   def write_markdown!(markdown, styling_yml)
