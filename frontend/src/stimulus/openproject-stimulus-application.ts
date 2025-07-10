@@ -29,8 +29,7 @@ export class OpenProjectStimulusApplication extends Application {
    *
    * This is useful for plugins that want to define new dynamic controllers.
    * How to use this: In your plugin's main.ts, call this
-   *
-   * ```typescript
+   * @example
    * OpenProjectStimulusApplication.preregisterDynamic(
    *   'test',
    *   () => import('./test.controller')
