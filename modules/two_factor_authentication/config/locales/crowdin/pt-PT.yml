@@ -123,7 +123,7 @@ pt-PT:
       2fa_from_webauthn: Indique o dispositivo WebAuthn <strong>%{device_name}</strong>. Se for baseado em USB, certifique-se de que o liga e toca nele. Em seguida, clique no botão de início de sessão.
       webauthn:
         title: "WebAuthn"
-        description: Register a FIDO2 device (like YubiKey) or the secure enclave of your mobile device.
+        description: Registe um dispositivo FIDO2 (como a YubiKey) ou a codificação segura do seu dispositivo móvel.
         further_steps: Depois de ter escolhido um nome, pode clicar no botão Continuar. O seu navegador irá pedir-lhe para apresentar o seu dispositivo WebAuthn. Quando o tiver feito, o registo do dispositivo está concluído.
       totp:
         title: "Autenticador baseado em aplicação"

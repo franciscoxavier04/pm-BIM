@@ -642,7 +642,8 @@ de:
       title: "Geben Sie Ihr Kennwort ein, um fortzufahren"
     pagination:
       no_other_page: "Sie befinden sich auf der einzigen Seite."
-      pagination_controls: "Paginierungs-Steuerung"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "Nächste Seite"
         previous: "Vorherige Seite"

@@ -99,12 +99,12 @@ pl:
         upgrade: "Zmień plan teraz"
         contact: "Skontaktuj się z nami, aby uzyskać demo"
       status:
-        expired: "Expired"
-        expiring_soon: "Expiring soon"
-        in_grace_period: "In grace period"
-        invalid_domain: "Invalid domain"
-        not_active: "Not active"
-        trial: "Trial"
+        expired: "Ważność wygasła"
+        expiring_soon: "Wkrótce wygasa"
+        in_grace_period: "W okresie karencji"
+        invalid_domain: "Nieprawidłowa domena"
+        not_active: "Nieaktywny"
+        trial: "Wersja próbna"
     jemalloc_allocator: Alokator pamięci Jemalloc
     journal_aggregation:
       explanation:
@@ -112,21 +112,21 @@ pl:
         link: "webhook"
     scim_clients:
       authentication_methods:
-        sso: "JWT from identity provider"
-        oauth2_client: "OAuth 2.0 client credentials"
-        oauth2_token: "Static access token"
+        sso: "JWT od dostawcy tożsamości"
+        oauth2_client: "Poświadczenia klienta OAuth 2.0"
+        oauth2_token: "Statyczny token dostępu"
       created_client_credentials_dialog_component:
-        title: "Client credentials created"
-        heading: "Client credentials have been generated"
-        one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
+        title: "Utworzono poświadczenia klienta"
+        heading: "Wygenerowano poświadczenia klienta"
+        one_time_hint: "To jedyny raz, kiedy zobaczysz klucz tajny klienta. Koniecznie skopiuj go teraz."
       created_token_dialog_component:
-        title: "Token created"
-        heading: "An token has been generated"
+        title: "Utworzono token"
+        heading: "Token został wygenerowany"
         label_token: "Token"
-        one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
+        one_time_hint: "Jest to jedyny raz, gdy zobaczysz ten token. Koniecznie skopiuj go teraz."
       delete_scim_client_dialog_component:
-        title: "Delete SCIM client"
-        heading: "Are you sure you want to delete this SCIM client?"
+        title: "Usuń klienta SCIM"
+        heading: "Czy na pewno chcesz usunąć tego klienta SCIM?"
         description: "Users managed by this SCIM client can no longer be updated by it."
       edit:
         label_delete_scim_client: "Delete SCIM client"

@@ -85,7 +85,7 @@ pl:
         time_entry:
           invalid_time: "musi zawierać się między 00:00 a 23:59."
           cannot_log_for_this_work_package: "Nie można zarejestrować czasu dla tego pakietu roboczego."
-          duplicate_ongoing: "An ongoing time entry already exists for this user."
+          duplicate_ongoing: "Wpis bieżącej godziny już istnieje dla tego użytkownika."
         work_package:
           is_not_a_valid_target_for_cost_entries: "Zestaw zadań #%{id} nie jest poprawnym celem do ponownego rozpisania kosztów."
           nullify_is_not_valid_for_cost_entries: "Pozycje kosztów nie mogą być przypisane do projektu."

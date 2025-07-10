@@ -366,7 +366,7 @@ pl:
   permission_delete_meetings: "Usuń spotkania"
   permission_view_meetings: "Zobacz spotkania"
   permission_manage_agendas: "Zarządzaj planami"
-  permission_manage_agendas_explanation: "Allows creating, editing and removing agenda items"
+  permission_manage_agendas_explanation: "Umożliwia tworzenie, edytowanie i usuwanie pozycji planu spotkania"
   permission_manage_outcomes: "Zarządzaj wynikami"
   permission_send_meeting_invites_and_outcomes: "Wysyłaj zaproszenia na spotkania i ich wyniki do uczestników"
   project_module_meetings: "Spotkania"
