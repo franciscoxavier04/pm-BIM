@@ -50,8 +50,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       status_code: "on_track",
       work_package_custom_fields: [custom_field],
       project_custom_fields: [project_custom_field],
-      custom_field_values: { project_custom_field.id => "Project custom value 1" },
-      &:save!
+      custom_field_values: { project_custom_field.id => "Project custom value 1" }
     )
   end
   shared_let(:work_package) do
@@ -60,8 +59,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       subject: "Work package 1",
       type: type_task,
       status: create(:status, name: "In Progress"), project: project,
-      custom_field_values: { custom_field.id => "Custom value 1" },
-      &:save!
+      custom_field_values: { custom_field.id => "Custom value 1" }
     )
   end
   shared_let(:formatter) { Class.new { extend WorkPackage::PDFExport::Common::Macro } }
