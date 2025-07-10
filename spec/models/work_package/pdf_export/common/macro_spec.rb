@@ -67,10 +67,22 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       :work_package,
       subject: "Work package 1",
       type: type_task,
-      status: create(:status, name: "In Progress"), project: project,
+      status: create(:status, name: "In Progress"),
+      project: project,
       custom_field_values: {
         custom_field.id => "Custom value 1",
         formatted_custom_field.id => "**Formatted** _text_ content"
+      }
+    )
+  end
+  shared_let(:other_work_package) do
+    create(
+      :work_package,
+      subject: "Work package 2",
+      project: project,
+      type: type_task,
+      custom_field_values: {
+        custom_field.id => "Custom value 2"
       }
     )
   end
@@ -119,12 +131,12 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       it "loops the tag through" do
         # note: escaped backslash in the tag text for correct markdown rendering
         expect(formatted).to eq(
-          "<mention class=\"mention\" data-id=\"#{
-            work_package.id
-          }\" data-type=\"work_package\" data-text=\"##{
-            work_package.id
-          }\">\\##{work_package.id}</mention>"
-        )
+                               "<mention class=\"mention\" data-id=\"#{
+                                 work_package.id
+                               }\" data-type=\"work_package\" data-text=\"##{
+                                 work_package.id
+                               }\">\\##{work_package.id}</mention>"
+                             )
       end
     end
 
@@ -175,6 +187,14 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
 
       it "outputs the attribute value for the specified work package" do
         expect(formatted).to eq("Work package 1")
+      end
+    end
+
+    describe "withh another work package ID and attribute" do
+      let(:markdown) { "workPackageValue:#{other_work_package.id}:subject" }
+
+      it "outputs the attribute value for the specified work package" do
+        expect(formatted).to eq("Work package 2")
       end
     end
 
@@ -246,6 +266,14 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       end
     end
 
+    describe "with another work package ID and custom field" do
+      let(:markdown) { "workPackageValue:#{other_work_package.id}:\"Custom Field 1\"" }
+
+      it "outputs the custom field value for the specified work package" do
+        expect(formatted).to eq("Custom value 2")
+      end
+    end
+
     describe "with formatted custom field" do
       let(:markdown) { 'workPackageValue:"Custom Formatted Field"' }
 
@@ -264,6 +292,14 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
 
     describe "with non-existent attribute" do
       let(:markdown) { "workPackageValue:nonexistent_attribute" }
+
+      it "outputs an empty value" do
+        expect(formatted).to eq(" ")
+      end
+    end
+
+    describe "with another work package id and a non-existent attribute" do
+      let(:markdown) { "workPackageValue:#{other_work_package.id}:nonexistent_attribute" }
 
       it "outputs an empty value" do
         expect(formatted).to eq(" ")
