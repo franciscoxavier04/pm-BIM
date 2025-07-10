@@ -40,6 +40,15 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       types: [type_task]
     )
   end
+  shared_let(:formatted_custom_field) do
+    create(
+      :work_package_custom_field,
+      name: "Custom Formatted Field",
+      field_format: "text",
+      is_for_all: true,
+      types: [type_task]
+    )
+  end
   shared_let(:project_custom_field_section) { create(:project_custom_field_section) }
   shared_let(:project_custom_field) do
     create(:string_project_custom_field, name: "Project Custom Field 1", project_custom_field_section:)
@@ -48,7 +57,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
     create(
       :project,
       status_code: "on_track",
-      work_package_custom_fields: [custom_field],
+      work_package_custom_fields: [custom_field, formatted_custom_field],
       project_custom_fields: [project_custom_field],
       custom_field_values: { project_custom_field.id => "Project custom value 1" }
     )
@@ -59,7 +68,10 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       subject: "Work package 1",
       type: type_task,
       status: create(:status, name: "In Progress"), project: project,
-      custom_field_values: { custom_field.id => "Custom value 1" }
+      custom_field_values: {
+        custom_field.id => "Custom value 1",
+        formatted_custom_field.id => "**Formatted** _text_ content"
+      }
     )
   end
   shared_let(:formatter) { Class.new { extend WorkPackage::PDFExport::Common::Macro } }
@@ -231,6 +243,22 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
 
       it "outputs the custom field value for the specified work package" do
         expect(formatted).to eq("Custom value 1")
+      end
+    end
+
+    describe "with formatted custom field" do
+      let(:markdown) { 'workPackageValue:"Custom Formatted Field"' }
+
+      it "outputs an error message for rich text" do
+        expect(formatted).to include(I18n.t("export.macro.rich_text_unsupported"))
+      end
+    end
+
+    describe "with specific work package ID and formatted custom field" do
+      let(:markdown) { "workPackageValue:#{work_package.id}:\"Custom Formatted Field\"" }
+
+      it "outputs an error message for rich text" do
+        expect(formatted).to include(I18n.t("export.macro.rich_text_unsupported"))
       end
     end
 
