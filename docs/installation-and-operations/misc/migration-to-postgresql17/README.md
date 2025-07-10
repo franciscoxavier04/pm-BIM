@@ -8,6 +8,7 @@ If you prefer doing the upgrade using the [in-place method](https://www.postgres
 
 ## Docker Compose
 
+> [!IMPORTANT]
 > Please follow this section only if you have installed OpenProject using [this procedure](../../installation/docker/).
 > Before attempting the upgrade, please ensure you have performed a backup of your installation by following the [backup guide](../../operation/backing-up/).
 
@@ -89,6 +90,7 @@ Verify everything works correctly by visiting your OpenProject instance in the b
 
 ## Docker All-in-One
 
+> [!IMPORTANT]
 > Please follow this section only if you have installed OpenProject using [this procedure](../../installation/docker/#all-in-one-container).
 > Before attempting the upgrade, please ensure you have performed a backup of your installation by following the [backup guide](../../operation/backing-up/).
 
@@ -179,6 +181,7 @@ Visit your OpenProject instance to confirm everything works as expected.
 
 ## Package-Based Installation
 
+> [!IMPORTANT]
 > Please follow this section only if you have installed OpenProject using [this procedure](../../installation/packaged/).
 > Before attempting the upgrade, please ensure you have performed a backup of your installation by following the [backup guide](../../operation/backing-up/).
 
