@@ -155,7 +155,7 @@ module My
 
       def ongoing_time
         I18n.t("label_timer_since",
-               time: I18n.l(time_entry.created_at, format: :time))
+               time: I18n.l(time_entry.created_at.in_time_zone(time_entry.time_zone), format: :time))
       end
 
       def time_range # rubocop:disable Metrics/AbcSize
