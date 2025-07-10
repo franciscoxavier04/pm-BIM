@@ -274,9 +274,9 @@ ru:
     empty_text: "Перенесите элементы сюда или создайте новые"
   recurring_meeting:
     time_zone_difference_banner:
-      title: "Time zone difference"
+      title: "Разница часового пояса"
       description: >
-        The dates below are referencing the time zone of the meeting series (%{actual_zone}), not your local time zone (%{user_zone}).
+        Приведенные ниже даты относятся к часовому поясу серии совещаний (%{actual_zone}), а не к Вашему местному часовому поясу (%{user_zone}).
     ended_blankslate:
       title: "Серия совещаний закончена"
       message: "Эта серия совещаний подошла к концу. Предстоящих совещаний не будет. "

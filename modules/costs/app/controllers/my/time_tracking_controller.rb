@@ -125,7 +125,7 @@ module My
       @time_entries = TimeEntry
         .preload(:project, :activity, :entity)
         .where(project_id: Project.visible.select(:id))
-        .where(user: User.current, spent_on: time_scope, ongoing: false)
+        .where(user: User.current, spent_on: time_scope)
         .order(:spent_on, :start_time, :hours)
     end
 

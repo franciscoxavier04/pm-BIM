@@ -46,8 +46,7 @@ class Version < ApplicationRecord
   validates :status, inclusion: { in: VERSION_STATUSES }
   validate :validate_start_date_before_effective_date
 
-  scopes :order_by_semver_name,
-         :rolled_up,
+  scopes :rolled_up,
          :shared_with
 
   # Returns versions that are either:

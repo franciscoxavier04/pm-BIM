@@ -120,31 +120,13 @@ module Storages
     end
 
     def oauth_access_granted?(user)
-      selector = Peripherals::StorageInteraction::AuthenticationMethodSelector.new(
-        storage: self,
-        user:
-      )
-      case selector.authentication_method
-      when :sso
-        true
-      when :storage_oauth
+      (user.authentication_provider.is_a?(OpenIDConnect::Provider) && authenticate_via_idp?) ||
         OAuthClientToken.exists?(user:, oauth_client:)
-      end
     end
 
     def health_notifications_should_be_sent?
       # it is a fallback for already created storages without health_notifications_enabled configured.
       (health_notifications_enabled.nil? && automatic_management_enabled?) || health_notifications_enabled?
-    end
-
-    def automatically_managed?
-      ActiveSupport::Deprecation.new.warn(
-        "`#automatically_managed?` is deprecated. Use `#automatic_management_enabled?` instead. " \
-        "NOTE: The new method name better reflects the actual behavior of the storage. " \
-        "It's not the storage that is automatically managed, rather the Project (Storage) Folder is. " \
-        "A storage only has this feature enabled or disabled."
-      )
-      super
     end
 
     def automatic_management_enabled?
@@ -240,13 +222,8 @@ module Storages
     end
 
     def extract_origin_user_id(token)
-      auth_strategy = ::Storages::Peripherals::Registry
-                        .resolve("#{self}.authentication.specific_bearer_token")
-                        .with_token(token.access_token)
-      ::Storages::Peripherals::Registry
-        .resolve("#{self}.queries.user")
-        .call(auth_strategy:, storage: self)
-        .map { |user| user[:id] } # rubocop:disable Rails/Pluck
+      auth_strategy = Adapters::Input::Strategy.build(key: :bearer_token, token: token.access_token)
+      Adapters::Registry.resolve("#{self}.queries.user").call(auth_strategy:, storage: self).fmap { it[:id] }
     end
   end
 end

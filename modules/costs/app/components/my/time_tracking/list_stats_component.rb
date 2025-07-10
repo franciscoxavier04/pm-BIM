@@ -47,7 +47,7 @@ module My
       end
 
       def total_hours
-        total_hours = time_entries.sum(&:hours).round(2)
+        total_hours = time_entries.sum(&:hours_for_calculation).round(2)
         DurationConverter.output(total_hours, format: :hours_and_minutes).presence || "0h"
       end
 

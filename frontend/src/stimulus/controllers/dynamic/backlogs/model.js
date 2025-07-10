@@ -121,7 +121,7 @@ RB.Model = (function ($) {
         },
         ],
         close: function (e, ui) {
-          if (e.which === 1 || e.which === 27) {
+          if (e.type === 'click' || (e.type === 'keydown' && e.key === 'Escape')) {
             self.cancelEdit();
           }
         },
