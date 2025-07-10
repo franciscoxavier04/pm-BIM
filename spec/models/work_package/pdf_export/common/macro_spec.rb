@@ -252,6 +252,16 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
   end
 
   describe "workPackageLabel macro" do
+    let!(:original_setting) { ActiveModel::Translation.raise_on_missing_translations }
+
+    before do
+      ActiveModel::Translation.raise_on_missing_translations = false
+    end
+
+    after do
+      ActiveModel::Translation.raise_on_missing_translations = original_setting
+    end
+
     describe "with current work package attribute" do
       let(:markdown) { "workPackageLabel:subject" }
 
@@ -288,7 +298,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "workPackageLabel:\"Custom Field 1\"" }
 
       it "outputs the custom field name" do
-        expect(formatted).to eq("Custom Field 1")
+        expect(formatted).to eq("Custom field 1")
       end
     end
 
@@ -296,7 +306,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "workPackageLabel:185:\"Custom Field 1\"" }
 
       it "outputs the custom field name for the specified work package" do
-        expect(formatted).to eq("Custom Field 1")
+        expect(formatted).to eq("Custom field 1")
       end
     end
 
@@ -304,7 +314,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "workPackageLabel:nonexistent_attribute" }
 
       it "outputs the humanized attribute name" do
-        expect(formatted).to eq("nonexistent_attribute")
+        expect(formatted).to eq("Nonexistent attribute")
       end
     end
 
@@ -408,6 +418,16 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
   end
 
   describe "projectLabel macro" do
+    let!(:original_setting) { ActiveModel::Translation.raise_on_missing_translations }
+
+    before do
+      ActiveModel::Translation.raise_on_missing_translations = false
+    end
+
+    after do
+      ActiveModel::Translation.raise_on_missing_translations = original_setting
+    end
+
     describe "with current project attribute" do
       let(:markdown) { "projectLabel:name" }
 
@@ -452,7 +472,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "projectLabel:\"Project Custom Field 1\"" }
 
       it "outputs the custom field name" do
-        expect(formatted).to eq("Project Custom Field 1")
+        expect(formatted).to eq("Project custom field 1")
       end
     end
 
@@ -460,7 +480,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "projectLabel:#{project.id}:\"Project Custom Field 1\"" }
 
       it "outputs the custom field name for the specified project" do
-        expect(formatted).to eq("Project Custom Field 1")
+        expect(formatted).to eq("Project custom field 1")
       end
     end
 
@@ -468,7 +488,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       let(:markdown) { "projectLabel:nonexistent_attribute" }
 
       it "outputs the humanized attribute name" do
-        expect(formatted).to eq("nonexistent_attribute")
+        expect(formatted).to eq("Nonexistent attribute")
       end
     end
 
