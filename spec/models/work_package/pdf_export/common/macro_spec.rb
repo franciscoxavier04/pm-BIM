@@ -57,7 +57,6 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
   shared_let(:work_package) do
     create(
       :work_package,
-      id: 185,
       subject: "Work package 1",
       type: type_task,
       status: create(:status, name: "In Progress"), project: project,
@@ -94,48 +93,58 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
   end
 
   describe "wp mention macro" do
+    let(:expected_tag) {
+      "<mention class=\"mention\" data-id=\"#{
+        work_package.id
+      }\" data-type=\"work_package\" data-text=\"##{
+        work_package.id
+      }\">##{
+        work_package.id
+      }</mention>"
+    }
     describe "with tag" do
-      let(:markdown) { '<mention class="mention" data-id="185" data-type="work_package" data-text="#185">#185</mention>' }
+      let(:markdown) { expected_tag }
 
-      it "ignores the tag" do
-        expect(formatted).to eq("<mention class=\"mention\" data-id=\"185\" " +
-                                "data-type=\"work_package\" data-text=\"#185\">\\#185</mention>")
+      it "loops the tag through" do
+        expect(formatted).to eq(
+          "<mention class=\"mention\" data-id=\"#{
+            work_package.id
+          }\" data-type=\"work_package\" data-text=\"##{
+            work_package.id
+          }\">\\##{work_package.id}</mention>" # note: escaped backslash in the tag text for correct markdown rendering
+          )
       end
     end
 
     describe "with plain" do
-      let(:markdown) { "#185" }
+      let(:markdown) { "##{work_package.id}" }
 
       it "contains correct data" do
-        expect(formatted).to eq("<mention class=\"mention\" data-id=\"185\" " +
-                                "data-type=\"work_package\" data-text=\"#185\">#185</mention>")
+        expect(formatted).to eq(expected_tag)
       end
     end
 
     describe "with markdown formating bold" do
-      let(:markdown) { "\n**#185**\n" }
+      let(:markdown) { "\n**##{work_package.id}**\n" }
 
       it "contains correct data" do
-        expect(formatted).to eq("**<mention class=\"mention\" data-id=\"185\" " +
-                                "data-type=\"work_package\" data-text=\"#185\">#185</mention>**")
+        expect(formatted).to eq("**#{expected_tag}**")
       end
     end
 
     describe "with markdown formating strikethrough" do
-      let(:markdown) { "~~#185~~" }
+      let(:markdown) { "~~##{work_package.id}~~" }
 
       it "contains correct data" do
-        expect(formatted).to eq("~~<mention class=\"mention\" data-id=\"185\" " +
-                                "data-type=\"work_package\" data-text=\"#185\">#185</mention>~~")
+        expect(formatted).to eq("~~#{expected_tag}~~")
       end
     end
 
     describe "with strikethrough in table" do
-      let(:markdown) { "<table><tr><td><p><s>##185</s></p></td></tr></table>" }
+      let(:markdown) { "<table><tr><td><p><s>##{work_package.id}</s></p></td></tr></table>" }
 
       it "contains correct data" do
-        expect(formatted).to eq("<table><tr><td><p><s><mention class=\"mention\" data-id=\"185\" " +
-                                "data-type=\"work_package\" data-text=\"##185\">##185</mention></s></p></td></tr></table>")
+        expect(formatted).to eq("<table><tr><td><p><s>#{expected_tag}</s></p></td></tr></table>")
       end
     end
   end
@@ -150,7 +159,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
     end
 
     describe "with specific work package ID and attribute" do
-      let(:markdown) { "workPackageValue:185:subject" }
+      let(:markdown) { "workPackageValue:#{work_package.id}:subject" }
 
       it "outputs the attribute value for the specified work package" do
         expect(formatted).to eq("Work package 1")
@@ -219,7 +228,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
     end
 
     describe "with specific work package ID and custom field" do
-      let(:markdown) { "workPackageValue:185:\"Custom Field 1\"" }
+      let(:markdown) { "workPackageValue:#{work_package.id}:\"Custom Field 1\"" }
 
       it "outputs the custom field value for the specified work package" do
         expect(formatted).to eq("Custom value 1")
@@ -271,7 +280,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
     end
 
     describe "with specific work package ID and attribute" do
-      let(:markdown) { "workPackageLabel:185:subject" }
+      let(:markdown) { "workPackageLabel:#{work_package.id}:subject" }
 
       it "outputs the attribute label for the specified work package" do
         expect(formatted).to eq("Subject")
@@ -303,7 +312,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
     end
 
     describe "with specific work package ID and custom field" do
-      let(:markdown) { "workPackageLabel:185:\"Custom Field 1\"" }
+      let(:markdown) { "workPackageLabel:#{work_package.id}:\"Custom Field 1\"" }
 
       it "outputs the custom field name for the specified work package" do
         expect(formatted).to eq("Custom field 1")
