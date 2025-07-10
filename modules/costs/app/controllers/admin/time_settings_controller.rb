@@ -27,45 +27,26 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+module Admin
+  class TimeSettingsController < SettingsController
+    menu_item :costs_settings
 
-module CustomActions::Actions::Strategies::UserCustomField
-  include ::CustomActions::Actions::Strategies::CustomField
-  include ::CustomActions::Actions::Strategies::MeAssociated
+    before_action :validate_times_enabled_for_enforcement, only: :update
 
-  def type
-    :user
-  end
-
-  def apply(work_package)
-    if work_package.respond_to?(custom_field.attribute_setter)
-      work_package.send(custom_field.attribute_setter, transformed_values(work_package))
+    def update # rubocop:disable Lint/UselessMethodDefinition
+      super
     end
-  end
 
-  def transformed_values(work_package)
-    if single_value?
-      transformed_value values.first
-    else
-      me_handled = values.map { transformed_value(it) }
-      me_handled & available_principal_ids_for(work_package)
+    private
+
+    def validate_times_enabled_for_enforcement
+      allow_times = ActiveRecord::Type::Boolean.new.cast(settings_params[:allow_tracking_start_and_end_times])
+      force_times = ActiveRecord::Type::Boolean.new.cast(settings_params[:enforce_tracking_start_and_end_times])
+
+      if force_times && !allow_times
+        flash[:error] = I18n.t("setting_enforce_without_allow")
+        redirect_to action: :show
+      end
     end
-  end
-
-  def transformed_value(value)
-    if value == current_user_value_key
-      User.current.id if User.current.logged?
-    else
-      value
-    end
-  end
-
-  def single_value? = !multi_value?
-
-  def available_principal_ids_for(work_package)
-    custom_field.possible_values_options(work_package).map { |_, value| value.empty? ? nil : value.to_i }
-  end
-
-  def available_principles
-    custom_field.possible_values_options.map { |label, value| [value.empty? ? nil : value.to_i, label] }
   end
 end

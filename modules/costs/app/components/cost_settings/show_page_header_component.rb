@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2010-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -26,46 +26,31 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-module CustomActions::Actions::Strategies::UserCustomField
-  include ::CustomActions::Actions::Strategies::CustomField
-  include ::CustomActions::Actions::Strategies::MeAssociated
-
-  def type
-    :user
-  end
-
-  def apply(work_package)
-    if work_package.respond_to?(custom_field.attribute_setter)
-      work_package.send(custom_field.attribute_setter, transformed_values(work_package))
+module CostSettings
+  class ShowPageHeaderComponent < ApplicationComponent
+    def breadcrumb_items
+      [
+        { href: admin_index_path, text: t("label_administration") },
+        { href: admin_time_settings_path, text: t(:project_module_costs), skip_for_mobile: true },
+        t(:label_defaults)
+      ]
     end
-  end
 
-  def transformed_values(work_package)
-    if single_value?
-      transformed_value values.first
-    else
-      me_handled = values.map { transformed_value(it) }
-      me_handled & available_principal_ids_for(work_package)
+    def tabs
+      [
+        {
+          name: "time",
+          path: admin_time_settings_path,
+          label: t(:label_time)
+        },
+        {
+          name: "costs",
+          path: admin_costs_settings_path,
+          label: t(:label_costs)
+        }
+      ]
     end
-  end
-
-  def transformed_value(value)
-    if value == current_user_value_key
-      User.current.id if User.current.logged?
-    else
-      value
-    end
-  end
-
-  def single_value? = !multi_value?
-
-  def available_principal_ids_for(work_package)
-    custom_field.possible_values_options(work_package).map { |_, value| value.empty? ? nil : value.to_i }
-  end
-
-  def available_principles
-    custom_field.possible_values_options.map { |label, value| [value.empty? ? nil : value.to_i, label] }
   end
 end
