@@ -30,30 +30,19 @@
 
 module My
   module TimeTracking
-    class ListStatsComponent < OpPrimer::BorderBoxTableComponent
-      include OpTurbo::Streamable
-
-      options :time_entries, :date
-
-      def wrapper_key
-        "time-entries-list-stats-#{date.iso8601}"
-      end
+    class StopTimerComponent < ApplicationComponent
+      options :time_entry
 
       def call
-        component_wrapper do
-          render(Primer::Beta::Text.new(color: :muted)) { "#{entry_count} - " } +
-          render(Primer::Beta::Text.new) { total_hours }
+        render(
+          Primer::Beta::Link.new(
+            href: dialog_time_entry_path(time_entry, onlyMe: true),
+            data: { "turbo-stream" => true },
+            underline: false
+          )
+        ) do
+          render(Primer::Beta::Octicon.new(icon: "op-stopwatch-stop", "aria-label": t("button_stop_timer"), mr: 1))
         end
-      end
-
-      def total_hours
-        total_hours = time_entries.sum(&:hours_for_calculation).round(2)
-        DurationConverter.output(total_hours, format: :hours_and_minutes).presence || "0h"
-      end
-
-      def entry_count
-        entries_count = time_entries.size
-        "#{entries_count} #{TimeEntry.model_name.human(count: entries_count)}"
       end
     end
   end

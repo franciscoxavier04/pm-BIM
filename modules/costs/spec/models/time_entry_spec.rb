@@ -522,6 +522,11 @@ RSpec.describe TimeEntry do
       expect(time_entry.end_timestamp).to be_nil
     end
 
+    it "returns nil if hours are nil" do
+      time_entry.hours = nil
+      expect(time_entry.end_timestamp).to be_nil
+    end
+
     it "generates a proper timestamp from the stored information" do
       time_entry.start_time = 8 * 60
       time_entry.hours = 2.5
