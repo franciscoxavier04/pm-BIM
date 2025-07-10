@@ -195,8 +195,8 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       end
 
       describe "without the permission" do
-        it "outputs nothing" do
-          expect(formatted).to eq("")
+        it "outputs a single space" do
+          expect(formatted).to eq(" ")
         end
       end
 
@@ -213,7 +213,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
           let(:project_phase_active) { false }
 
           it "outputs the project phase name" do
-            expect(formatted).to eq("")
+            expect(formatted).to eq(" ")
           end
         end
       end

@@ -161,7 +161,7 @@ module WorkPackage::Exports
         return msg_macro_error_rich_text if custom_field&.formattable?
 
         attribute_name = convert_to_attribute_name(custom_field, attribute, obj)
-        return "" unless can_view_attribute?(custom_field, obj, attribute_name)
+        return " " unless can_view_attribute?(custom_field, obj, attribute_name)
         return msg_macro_error_rich_text if disabled_rich_text_fields.include?(attribute_name.to_sym)
 
         format_attribute_value(attribute_name, obj.class, obj)
