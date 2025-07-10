@@ -30,14 +30,14 @@
 
 module WorkPackage::Exports
   module Attributes
-    def user_allowed_view_wp_project_phase?(work_package)
+    def allowed_to_view_wp_project_phase?(work_package)
       User.current.allowed_in_project?(:view_project_phases, work_package.project) &&
         work_package.project.phases.active.any?
     end
 
-    def user_allowed_view_attribute?(obj, attribute_name)
+    def allowed_to_view_attribute?(obj, attribute_name)
       if attribute_name.to_sym == :project_phase && obj.is_a?(WorkPackage)
-        user_allowed_view_wp_project_phase?(obj)
+        allowed_to_view_wp_project_phase?(obj)
       else
         true
       end

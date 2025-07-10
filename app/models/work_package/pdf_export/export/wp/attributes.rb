@@ -161,7 +161,7 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
   end
 
   def show_attribute?(form_key, work_package)
-    CustomField.custom_field_attribute?(form_key) || user_allowed_view_attribute?(work_package, form_key)
+    CustomField.custom_field_attribute?(form_key) || allowed_to_view_attribute?(work_package, form_key)
   end
 
   def allowed_long_text_custom_field?(form_key, work_package)
