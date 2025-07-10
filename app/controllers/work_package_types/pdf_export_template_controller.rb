@@ -31,9 +31,17 @@
 module WorkPackageTypes
   class PdfExportTemplateController < ApplicationController
     include OpTurbo::ComponentStream
+    layout "admin"
+
     before_action :require_admin
-    before_action :find_type, only: %i[toggle drop enable_all disable_all]
+    before_action :find_type, only: %i[edit toggle drop enable_all disable_all]
     before_action :find_template, only: %i[toggle drop]
+
+    current_menu_item do
+      :types
+    end
+
+    def edit; end
 
     def enable_all
       return render_404_turbo_stream if @type.nil?

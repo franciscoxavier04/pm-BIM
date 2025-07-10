@@ -28,34 +28,33 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
-require "services/shared_type_service"
+module WorkPackageTypes
+  module Types
+    class TableComponent < ::TableComponent
+      columns :name, :color, :workflow_warning, :default, :milestone, :sort
 
-RSpec.describe CreateTypeService do
-  let(:type) { instance.type }
-  let(:user) { build_stubbed(:admin) }
-
-  let(:instance) { described_class.new(user) }
-  let(:service_call) { instance.call({ name: "foo" }.merge(params), {}) }
-
-  it_behaves_like "type service" do
-    describe "default attribute_groups" do
-      context "for a milestone type" do
-        let(:params) { { is_milestone: true } }
-
-        it "does not include the progress attribute group" do
-          expect(service_call.result.attribute_groups.map(&:key))
-            .to eql %i[people details costs]
-        end
+      def headers
+        [
+          [:name, { caption: Type.human_attribute_name(:name) }],
+          [:color, { caption: Type.human_attribute_name(:color) }],
+          [:workflow_warning, { caption: "Workflow" }],
+          [:default, { caption: I18n.t(:label_active_in_new_projects) }],
+          [:milestone, { caption: Type.human_attribute_name(:is_milestone) }],
+          [:sort, { caption: I18n.t(:button_sort) }]
+        ]
       end
 
-      context "for a non milestone type" do
-        let(:params) { { is_milestone: false } }
+      def header_options(name)
+        headers_hash = headers.to_h
+        headers_hash[name.to_sym] || { caption: name.to_s }
+      end
 
-        it "does include the progress attribute group" do
-          expect(service_call.result.attribute_groups.map(&:key))
-            .to eql %i[people estimates_and_progress details costs]
-        end
+      def mobile_title
+        I18n.t(:label_type_plural)
+      end
+
+      def sortable?
+        false
       end
     end
   end

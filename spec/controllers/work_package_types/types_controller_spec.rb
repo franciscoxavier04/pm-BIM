@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe TypesController do
+RSpec.describe WorkPackageTypes::TypesController do
   let(:project) do
     create(:project,
            work_package_custom_fields: [custom_field_2])
@@ -222,8 +222,7 @@ RSpec.describe TypesController do
           post :move, params:
         end
 
-        it { expect(response).not_to be_redirect }
-        it { expect(response).to render_template("edit") }
+        it { expect(response).to redirect_to(types_path) }
 
         it "has an unsuccessful move flash" do
           expect(flash[:error]).to eq(I18n.t(:error_type_could_not_be_saved))
