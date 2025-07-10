@@ -168,7 +168,7 @@ module WorkPackage::Exports
       end
 
       def self.can_view_attribute?(custom_field, obj, attribute_name)
-        !(custom_field.nil? && !allowed_to_view_attribute?(obj, attribute_name))
+        custom_field || allowed_to_view_attribute?(obj, attribute_name)
       end
 
       def self.convert_to_attribute_name(custom_field, attribute, obj)
