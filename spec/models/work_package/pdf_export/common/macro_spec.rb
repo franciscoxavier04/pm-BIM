@@ -95,6 +95,26 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       }
     )
   end
+  shared_let(:restricted_other_project) do
+    create(
+      :project,
+      name: "Other Project",
+      work_package_custom_fields: [custom_field, formatted_custom_field],
+      project_custom_fields: [project_custom_field],
+      custom_field_values: { project_custom_field.id => "Project custom value 3" }
+    )
+  end
+  shared_let(:restricted_work_package) do
+    create(
+      :work_package,
+      subject: "Work package 3",
+      project: restricted_other_project,
+      type: type_task,
+      custom_field_values: {
+        custom_field.id => "Custom value 3"
+      }
+    )
+  end
   shared_let(:formatter) { Class.new { extend WorkPackage::PDFExport::Common::Macro } }
   let(:additional_permissions) { [] }
   let(:user) do
@@ -205,6 +225,30 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
 
       it "outputs the attribute value for the specified work package" do
         expect(formatted).to eq("Work package 2")
+      end
+    end
+
+    describe "with restricted work package ID and attribute" do
+      let(:markdown) { "workPackageValue:#{restricted_work_package.id}:subject" }
+
+      it "outputs an error message" do
+        expect(formatted).to include("Macro error, resource not found")
+      end
+    end
+
+    describe "with restricted work package ID and custom field" do
+      let(:markdown) { "workPackageValue:#{restricted_work_package.id}:\"Custom Field 1\"" }
+
+      it "outputs an error message" do
+        expect(formatted).to include("Macro error, resource not found")
+      end
+    end
+
+    describe "with restricted work package ID and formatted custom field" do
+      let(:markdown) { "workPackageValue:#{restricted_work_package.id}:\"Custom Formatted Field\"" }
+
+      it "outputs an error message" do
+        expect(formatted).to include("Macro error, resource not found")
       end
     end
 
@@ -460,6 +504,30 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
 
     describe "with non-existent project ID" do
       let(:markdown) { "projectValue:999:name" }
+
+      it "outputs an error message" do
+        expect(formatted).to include("Macro error, resource not found")
+      end
+    end
+
+    describe "with restricted project ID" do
+      let(:markdown) { "projectValue:#{restricted_other_project.id}:name" }
+
+      it "outputs an error message" do
+        expect(formatted).to include("Macro error, resource not found")
+      end
+    end
+
+    describe "with restricted project identifier" do
+      let(:markdown) { "projectValue:\"#{restricted_other_project.identifier}\":name" }
+
+      it "outputs an error message" do
+        expect(formatted).to include("Macro error, resource not found")
+      end
+    end
+
+    describe "with restricted project ID and custom field" do
+      let(:markdown) { "projectValue:#{restricted_other_project.id}:\"Project Custom Field 1\"" }
 
       it "outputs an error message" do
         expect(formatted).to include("Macro error, resource not found")
