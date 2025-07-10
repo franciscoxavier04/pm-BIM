@@ -102,10 +102,21 @@ module WorkPackage::Exports
       end
 
       def self.resolve_label(model, attribute)
-        model.human_attribute_name(
-          ::API::Utilities::PropertyNameConverter.to_ar_name(attribute.to_sym, context: model.new)
-        )
+        model.human_attribute_name(to_ar_name(attribute, model.new))
       end
+
+      def self.to_ar_name(attribute, context)
+        ::API::Utilities::PropertyNameConverter.to_ar_name(attribute.to_sym, context:)
+      end
+
+      ##
+      # Resolves a work package or project match based on the type and id.
+      # Returns the formatted value or an error message if not found.
+      #
+      # @param id [String] The ID of the work package or project.
+      # @param type [String] The type of the match (label or value).
+      # @param attribute [String] The attribute to resolve.
+      # @param user [User] The user context for visibility checks.
 
       def self.resolve_work_package_match(id, type, attribute, user)
         return resolve_label_work_package(attribute) if type == "label"
@@ -162,7 +173,7 @@ module WorkPackage::Exports
 
       def self.convert_to_attribute_name(custom_field, attribute, obj)
         if custom_field.nil?
-          ::API::Utilities::PropertyNameConverter.to_ar_name(attribute.to_sym, context: obj)
+          to_ar_name(attribute, obj)
         else
           "cf_#{custom_field.id}"
         end
