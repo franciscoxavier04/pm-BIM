@@ -45,7 +45,7 @@ es:
       meeting_agenda_item:
         title: "Título"
         author: "Autor"
-        duration_in_minutes: "Duration"
+        duration_in_minutes: "Duración"
         description: "Notas"
         presenter: "Responsable"
       meeting_section:
@@ -266,9 +266,9 @@ es:
     empty_text: "Arrastre los elementos aquí o cree uno nuevo"
   recurring_meeting:
     time_zone_difference_banner:
-      title: "Time zone difference"
+      title: "Diferencia de zona horaria"
       description: >
-        The dates below are referencing the time zone of the meeting series (%{actual_zone}), not your local time zone (%{user_zone}).
+        Las fechas de abajo se refieren a la zona horaria de la serie de reuniones (%{actual_zone}), no a su zona horaria local (%{user_zone}).
     ended_blankslate:
       title: "Serie de reuniones finalizada"
       message: "Esta serie de reuniones ha llegado a su fin. No hay reuniones programadas. "
