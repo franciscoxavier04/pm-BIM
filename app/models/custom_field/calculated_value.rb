@@ -76,8 +76,7 @@ module CustomField::CalculatedValue
 
       # WP-64348: check for valid (i.e., visible & enabled) custom field references (see #cf_ids_used_in_formula)
 
-      calculation_result = perform_calculation
-      unless calculation_result
+      unless formula_parses_to_ast?
         errors.add(:formula, :invalid)
         return
       end
@@ -116,17 +115,12 @@ module CustomField::CalculatedValue
 
     private
 
-    def perform_calculation
+    def formula_parses_to_ast?
       # Dentaku will return nil if the formula is invalid.
       # Accept both cf_123 and {{cf_123}} in the formula string
       formula_for_eval = formula_string.gsub(/\{\{(cf_\d+)}}/, '\1')
 
-      variables = cf_ids_used_in_formula(formula_for_eval).map do |cf_id|
-        # TODO: insert real value here instead of hardcoded number
-        ["cf_#{cf_id}", 1]
-      end
-
-      Dentaku::Calculator.new.evaluate(formula_for_eval, variables.to_h)
+      Dentaku::Calculator.new.dependencies(formula_for_eval)
     end
 
     def formula_contains_only_allowed_characters?
