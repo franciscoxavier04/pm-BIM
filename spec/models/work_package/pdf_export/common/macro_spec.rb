@@ -125,7 +125,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
     end
 
     describe "with markdown formating bold" do
-      let(:markdown) { "\n**##{work_package.id}**\n" }
+      let(:markdown) { "**##{work_package.id}**" }
 
       it "contains correct data" do
         expect(formatted).to eq("**#{expected_tag}**")
