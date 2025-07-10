@@ -62,6 +62,15 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       custom_field_values: { project_custom_field.id => "Project custom value 1" }
     )
   end
+  shared_let(:other_project) do
+    create(
+      :project,
+      name: "Other Project",
+      work_package_custom_fields: [custom_field, formatted_custom_field],
+      project_custom_fields: [project_custom_field],
+      custom_field_values: { project_custom_field.id => "Project custom value 2" }
+    )
+  end
   shared_let(:work_package) do
     create(
       :work_package,
@@ -79,7 +88,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
     create(
       :work_package,
       subject: "Work package 2",
-      project: project,
+      project: other_project,
       type: type_task,
       custom_field_values: {
         custom_field.id => "Custom value 2"
@@ -92,7 +101,8 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
     create(
       :user,
       member_with_permissions: {
-        project => %i[view_work_packages view_project_attributes view_project] + additional_permissions
+        project => %i[view_work_packages view_project_attributes view_project] + additional_permissions,
+        other_project => %i[view_work_packages view_project_attributes view_project] + additional_permissions
       }
     )
   end
@@ -131,12 +141,12 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       it "loops the tag through" do
         # note: escaped backslash in the tag text for correct markdown rendering
         expect(formatted).to eq(
-                               "<mention class=\"mention\" data-id=\"#{
+          "<mention class=\"mention\" data-id=\"#{
                                  work_package.id
                                }\" data-type=\"work_package\" data-text=\"##{
                                  work_package.id
                                }\">\\##{work_package.id}</mention>"
-                             )
+        )
       end
     end
 
@@ -424,11 +434,27 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       end
     end
 
+    describe "with other project ID and attribute" do
+      let(:markdown) { "projectValue:#{other_project.id}:name" }
+
+      it "outputs the attribute value for the specified project" do
+        expect(formatted).to eq(other_project.name)
+      end
+    end
+
     describe "with specific project identifier and attribute" do
       let(:markdown) { "projectValue:\"#{project.identifier}\":name" }
 
       it "outputs the attribute value for the specified project" do
         expect(formatted).to eq(project.name)
+      end
+    end
+
+    describe "with other project identifier and attribute" do
+      let(:markdown) { "projectValue:\"#{other_project.identifier}\":name" }
+
+      it "outputs the attribute value for the specified project" do
+        expect(formatted).to eq(other_project.name)
       end
     end
 
@@ -461,6 +487,14 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
 
       it "outputs the custom field value for the specified project" do
         expect(formatted).to eq("Project custom value 1")
+      end
+    end
+
+    describe "with other project ID and custom field" do
+      let(:markdown) { "projectValue:#{other_project.id}:\"Project Custom Field 1\"" }
+
+      it "outputs the custom field value for the specified project" do
+        expect(formatted).to eq("Project custom value 2")
       end
     end
 
