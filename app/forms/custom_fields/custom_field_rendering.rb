@@ -94,6 +94,8 @@ module CustomFields::CustomFieldRendering
       CustomFields::Inputs::SingleUserSelectList.new(builder, **form_args)
     when "version"
       CustomFields::Inputs::SingleVersionSelectList.new(builder, **form_args)
+    when "calculated_value"
+      CustomFields::Inputs::CalculatedValue.new(builder, **form_args)
     else
       raise "Unhandled custom field format #{custom_field.field_format}"
     end
