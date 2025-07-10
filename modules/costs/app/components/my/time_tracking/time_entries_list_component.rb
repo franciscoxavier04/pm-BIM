@@ -44,10 +44,13 @@ module My
       end
 
       def has_actions?
-        can_create_time_entry? && options[:mode] != :month
+        true
       end
 
       def action_row_header_content
+        return unless can_create_time_entry?
+        return if options[:mode] == :month
+
         render(Primer::Beta::IconButton.new(
                  icon: "plus",
                  scheme: :invisible,
