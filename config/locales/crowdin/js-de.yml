@@ -293,11 +293,11 @@ de:
           text_new_features: "Lesen Sie über neue Funktionen und Updates."
           learn_about: "Erfahren Sie mehr über die neuen Funktionen"
           #Include the version to invalidate outdated translations in other locales.
-          #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_1":
+          #Otherwise, e.g. Chinese might still have the translations for 10.0 in the 12.0 release.
+          "16_2":
             standard:
               new_features_html: >
-                Die Version enthält verschiedene neue Funktionen und Verbesserungen wie <br> <ul class="%{list_styling_class}"> <li>Strukturieren Sie den Projektlebenszyklus mit Phasen und Phasen-Gates.</li> <li>Meetings im PDF-Format exportieren.</li> <li>Setzen Sie leichter Erinnerungen.</li> <li>Benutzen Sie negative Verzögerung für Arbeitspaketdaten.</li> <li>Bäume für benutzerdefinierte Hierarchiefelder anzeigen.</li> <li>Profitieren Sie von einer verbesserten Zugänglichkeit für die Datumsauswahl mit ARIA Live-Regionen.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>New header and sidebar with improved navigation and design.</li> <li>Smoother experience with Custom fields, Relations, Reminders, Meetings, and My time tracking.</li> <li>Non-latin languages and emojis supported in PDF exports.</li> <li>Option to disable keyboard shortcuts for better accessibility.</li> <li>SCIM server via API (Enterprise add-on).</li> <li>API support for internal comments.</li> </ul>
     ical_sharing_modal:
       title: "Kalender abonnieren"
       inital_setup_error_message: "Beim Abrufen der Daten ist ein Fehler aufgetreten."
@@ -323,7 +323,7 @@ de:
     label_added_time_by: 'Hinzugefügt von <a href="%{authorLink}">%{author}</a> am %{age}'
     label_ago: "Tage her"
     label_all: "alle"
-    label_all_projects: "All projects"
+    label_all_projects: "Alle Projekte"
     label_all_uppercase: "Alle"
     label_all_work_packages: "alle Arbeitspakete"
     label_and: "und"
@@ -642,12 +642,13 @@ de:
       title: "Geben Sie Ihr Kennwort ein, um fortzufahren"
     pagination:
       no_other_page: "Sie befinden sich auf der einzigen Seite."
-      pagination_controls: "Pagination controls"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
-        next: "Next page"
-        previous: "Previous page"
-        page_number: Page %{number}
-        show_per_page: Show %{number} per page
+        next: "Nächste Seite"
+        previous: "Vorherige Seite"
+        page_number: Seite %{number}
+        show_per_page: '%{number} pro Seite anzeigen'
     placeholders:
       default: "-"
       subject: "Titel hier eingeben"
@@ -695,7 +696,7 @@ de:
           first_day: "Erster Tag"
           last_day: "Letzter Tag"
     text_are_you_sure: "Sind Sie sicher?"
-    breadcrumb: "Breadcrumb"
+    breadcrumb: "Navigationspfad"
     text_data_lost: "Alle eingegebenen Daten gehen verloren."
     text_user_wrote: "%{value} schrieb:"
     types:
@@ -826,10 +827,10 @@ de:
         mixed: "Gemischt"
     work_packages:
       bulk_actions:
-        move: "In anderes Projekt verschieben"
         edit: "Arbeitspakete bearbeiten"
-        copy: "Arbeitspakete kopieren"
         delete: "Arbeitspakete löschen"
+        duplicate: "Bulk duplicate"
+        move: "In anderes Projekt verschieben"
       button_clear: "Zurücksetzen"
       comment_added: "Der Kommentar wurde erfolgreich hinzugefügt."
       comment_send_failed: "Ein Fehler ist aufgetreten. Der Kommentar konnte nicht gespeichert werden."
@@ -873,8 +874,8 @@ de:
         header_no_type: "Neues Arbeitspaket (Typ noch nicht gesetzt)"
         header_with_parent: "Neu: %{type} (Kind von %{parent_type} #%{id})"
         button: "Erstellen"
-      copy:
-        title: "Arbeitspaket kopieren"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Hierarchie-Modus anzeigen"
         hide: "Hierarchie-Modus verbergen"

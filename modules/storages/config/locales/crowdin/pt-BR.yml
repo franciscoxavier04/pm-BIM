@@ -28,7 +28,7 @@ pt-BR:
         host: Servidor
         name: Nome
         provider_type: Tipo de provedor
-        tenant: ID do diretório (locatário)
+        tenant: ID do diretório (cliente)
     errors:
       messages:
         invalid_host_url: não é um URL válido.
@@ -269,7 +269,7 @@ pt-BR:
           header: Configuração
           host_url_accessible: URL do host acessível
           storage_configured: Configuração concluída
-          tenant_id: ID do locatário
+          tenant_id: ID do cliente
         failures:
           one: "%{count} teste falhou"
           other: "%{count} testes falharam"

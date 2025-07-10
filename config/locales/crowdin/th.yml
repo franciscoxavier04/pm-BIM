@@ -1160,7 +1160,8 @@ th:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "โหมดสำหรับผู้พิการ"
-        auto_hide_popups: "Auto-hide success notifications"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Colour mode"
         time_zone: "โซนเวลา"
@@ -1726,7 +1727,7 @@ th:
     estimated_time: "Work"
     email: "อีเมล"
     entity_type: "Entity"
-    expires_at: "Expires at"
+    expires_at: "Expires on"
     firstname: "ชื่อ"
     filter: "ตัวกรอง"
     group: "กลุ่ม"
@@ -1841,7 +1842,6 @@ th:
   button_copy: "คัดลอก"
   button_copy_to_clipboard: "คัดลอกไปยังคลิปบอร์ด"
   button_copy_link_to_clipboard: "Copy link to clipboard"
-  button_copy_and_follow: "คัดลอก และปฏิบัติตาม"
   button_create: "สร้าง"
   button_create_and_continue: "สร้าง และดำเนินการต่อ"
   button_decline: "Decline"
@@ -1850,6 +1850,7 @@ th:
   button_delete_watcher: "ลบผู้ดูข้อมูล คุณ %{name}"
   button_download: "ดาวน์โหลด"
   button_duplicate: "ทำซ้ำ"
+  button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "แก้ไข"
   button_edit_associated_wikipage: "แก้ไขหน้าวิกิที่เกี่ยวข้อง: %{page_title}"
   button_expand_all: "ขยายทั้งหมด"
@@ -2038,6 +2039,8 @@ th:
       x_seconds_abbreviated:
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        other: "mins"
       hour:
         other: "ชั่วโมง"
       day:
@@ -3531,7 +3534,7 @@ th:
   permission_comment_news: "แสดงความคิดเห็นเกี่ยวกับข่าว"
   permission_commit_access: "Read/write access to repository (commit)"
   permission_copy_projects: "คัดลอกโครงการ"
-  permission_copy_work_packages: "Copy work packages"
+  permission_copy_work_packages: "Duplicate work packages"
   permission_create_backup: "Create backups"
   permission_delete_work_package_watchers: "ลบผู้เฝ้าดู"
   permission_delete_work_packages: "ลบชุดภารกิจ"

@@ -293,11 +293,11 @@ ro:
           text_new_features: "Citește despre noile caracteristici și actualizări de produse."
           learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
-          #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_1":
+          #Otherwise, e.g. Chinese might still have the translations for 10.0 in the 12.0 release.
+          "16_2":
             standard:
               new_features_html: >
-                Publicarea conține diverse caracteristici noi și îmbunătățiri, cum ar fi <br> <ul class="%{list_styling_class}"> <li>Structura ciclul de viață al proiectului cu etape și faze.</li> <li>Ședințe la export în format PDF.</li> <li>Setează opțiuni implicite inteligente pentru mementouri.</li> <li>Utilizați decalajul negativ pentru pachetele de lucru.</li> <li>Afișați copaci ierarhici pentru câmpuri personalizate ierarhice.</li> <li>Beneficiază de o mai bună accesibilitate pentru selectorul de date cu regiunile vii ARIA</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>New header and sidebar with improved navigation and design.</li> <li>Smoother experience with Custom fields, Relations, Reminders, Meetings, and My time tracking.</li> <li>Non-latin languages and emojis supported in PDF exports.</li> <li>Option to disable keyboard shortcuts for better accessibility.</li> <li>SCIM server via API (Enterprise add-on).</li> <li>API support for internal comments.</li> </ul>
     ical_sharing_modal:
       title: "Subscribe to calendar"
       inital_setup_error_message: "An error occured while fetching data."
@@ -643,7 +643,8 @@ ro:
       title: "Vă rugăm să confirmați parola dumneavoastră pentru a continua"
     pagination:
       no_other_page: "Sunteți pe pagina unică."
-      pagination_controls: "Pagination controls"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "Next page"
         previous: "Previous page"
@@ -827,10 +828,10 @@ ro:
         mixed: "Amestecat"
     work_packages:
       bulk_actions:
-        move: "Modificare identificator proiect"
         edit: "Editează mai multe elemente"
-        copy: "Copiază mai multe elemente"
         delete: "Șterge mai multe element"
+        duplicate: "Bulk duplicate"
+        move: "Modificare identificator proiect"
       button_clear: "Șterge"
       comment_added: "Comentariul a fost adăugat cu succes."
       comment_send_failed: "A apărut o eroare. Comentariul nu a putut fi salvat."
@@ -874,8 +875,8 @@ ro:
         header_no_type: "Nou pachet de lucru (Tipul incă nu a fost stabilit)"
         header_with_parent: "Nou %{type} (Copil al %{parent_type} #%{id})"
         button: "Creează"
-      copy:
-        title: "Copiază pachet de lucru"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Afișați modul ierarhic"
         hide: "Ascundeți modul ierarhic"

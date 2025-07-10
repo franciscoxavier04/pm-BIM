@@ -45,7 +45,7 @@ export type BreadcrumbItem =
 })
 export class OpBreadcrumbsComponent {
   @Input() items:BreadcrumbItem[] = [];
-  @Input() lastItemSection:string | null = null;
+  @Input() lastItemSection?:string | null = null;
 
   constructor(
     readonly I18n:I18nService,

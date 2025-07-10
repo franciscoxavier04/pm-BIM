@@ -1168,7 +1168,8 @@ fa:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "حالت دسترسی"
-        auto_hide_popups: "پنهان کردن خودکار اعلان های موفقیت"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Colour mode"
         time_zone: "منطقه زمانی"
@@ -1748,7 +1749,7 @@ fa:
     estimated_time: "Work"
     email: "Email"
     entity_type: "Entity"
-    expires_at: "Expires at"
+    expires_at: "Expires on"
     firstname: "نام"
     filter: "فیلتر"
     group: "گروه"
@@ -1863,7 +1864,6 @@ fa:
   button_copy: "کپی"
   button_copy_to_clipboard: "Copy to clipboard"
   button_copy_link_to_clipboard: "Copy link to clipboard"
-  button_copy_and_follow: "کپی کنید و دنبال کردن"
   button_create: "ایجاد"
   button_create_and_continue: "ذخیره و ادامه"
   button_decline: "Decline"
@@ -1872,6 +1872,7 @@ fa:
   button_delete_watcher: "Delete watcher %{name}"
   button_download: "Download"
   button_duplicate: "نسخه برداری"
+  button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "ویرایش"
   button_edit_associated_wikipage: "ویرایش صفحه ویکی مرتبط: %{page_title}"
   button_expand_all: "باز کردن همه"
@@ -2077,6 +2078,9 @@ fa:
         one: "1 s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "hour"
         other: "ساعت"
@@ -3575,7 +3579,7 @@ fa:
   permission_comment_news: "Comment news"
   permission_commit_access: "Read/write access to repository (commit)"
   permission_copy_projects: "Copy projects"
-  permission_copy_work_packages: "نسخه‌برداری بسته‌های کاری"
+  permission_copy_work_packages: "Duplicate work packages"
   permission_create_backup: "Create backups"
   permission_delete_work_package_watchers: "Delete watchers"
   permission_delete_work_packages: "Delete work packages"

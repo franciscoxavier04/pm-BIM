@@ -45,7 +45,7 @@ de:
       meeting_agenda_item:
         title: "Titel"
         author: "Autor"
-        duration_in_minutes: "Min."
+        duration_in_minutes: "Dauer"
         description: "Anmerkungen"
         presenter: "Referent"
       meeting_section:
@@ -265,6 +265,10 @@ de:
     placeholder_title: "Neuer Abschnitt"
     empty_text: "Neue Agendapunkte hierhin bewegen oder neu erstellen"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Time zone difference"
+      description: >
+        The dates below are referencing the time zone of the meeting series (%{actual_zone}), not your local time zone (%{user_zone}).
     ended_blankslate:
       title: "Terminserie beendet"
       message: "Diese Terminserie ist beendet. Es finden keine weiteren Ereignisse statt. "

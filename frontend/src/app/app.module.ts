@@ -217,13 +217,16 @@ export function initializeServices(injector:Injector) {
     // Conditionally add the Revit Add-In settings button
     injector.get(RevitAddInSettingsButtonService);
 
-    topMenuService.register();
-    contextMenu.register();
-
-    // Re-register on turbo:load
-    document.addEventListener('turbo:load', () => {
+    const runOnRenderAndLoad = () => {
       topMenuService.register();
       contextMenu.register();
+    };
+    runOnRenderAndLoad();
+
+    // Register on turbo:render, turbo:load
+    document.addEventListener('turbo:render', runOnRenderAndLoad);
+    document.addEventListener('turbo:load', () => {
+      runOnRenderAndLoad();
       currentProject.detect();
     });
 

@@ -1168,7 +1168,8 @@ eo:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Faciliga reĝimo"
-        auto_hide_popups: "Auto-hide success notifications"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Colour mode"
         time_zone: "Horzono"
@@ -1748,7 +1749,7 @@ eo:
     estimated_time: "Work"
     email: "Retpoŝto"
     entity_type: "Entity"
-    expires_at: "Senvalidiĝas la"
+    expires_at: "Expires on"
     firstname: "Nomo"
     filter: "Filtrilo"
     group: "Grupo"
@@ -1863,7 +1864,6 @@ eo:
   button_copy: "Kopii"
   button_copy_to_clipboard: "Kopii al la tondujo"
   button_copy_link_to_clipboard: "Copy link to clipboard"
-  button_copy_and_follow: "Copy and follow"
   button_create: "Krei"
   button_create_and_continue: "Krei kaj daŭrigi"
   button_decline: "Malakcepti"
@@ -1872,6 +1872,7 @@ eo:
   button_delete_watcher: "Forigi la observanton %{name}"
   button_download: "Elŝuti"
   button_duplicate: "Duobligi"
+  button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Redakti"
   button_edit_associated_wikipage: "Redakti ligitan vikipaĝon: %{page_title}"
   button_expand_all: "Etendi ĉion"
@@ -2077,6 +2078,9 @@ eo:
         one: "1 s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "horo"
         other: "horoj"
@@ -3575,7 +3579,7 @@ eo:
   permission_comment_news: "Comment news"
   permission_commit_access: "Read/write access to repository (commit)"
   permission_copy_projects: "Copy projects"
-  permission_copy_work_packages: "Copy work packages"
+  permission_copy_work_packages: "Duplicate work packages"
   permission_create_backup: "Create backups"
   permission_delete_work_package_watchers: "Delete watchers"
   permission_delete_work_packages: "Delete work packages"

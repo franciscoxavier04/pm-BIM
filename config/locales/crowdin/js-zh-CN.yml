@@ -294,11 +294,11 @@ zh-CN:
           text_new_features: "了解新功能和产品更新。"
           learn_about: "详细了解所有新功能"
           #Include the version to invalidate outdated translations in other locales.
-          #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_1":
+          #Otherwise, e.g. Chinese might still have the translations for 10.0 in the 12.0 release.
+          "16_2":
             standard:
               new_features_html: >
-                该版本包含各种新功能和改进，例如<br><ul class="%{list_styling_class}"><li>使用阶段和阶段关口构建项目生命周期。</li><li>以 PDF 格式导出会议。</li><li>为提醒设置智能默认选项。</li><li>对工作包日期使用负滞后。</li><li>为层次结构自定义字段显示结构树。</li><li>受益于 ARIA 实时区域日期选择器的无障碍功能改进。</li> </ul>
+                该版本包含多种新功能和改进，如<br> <ul class="%{list_styling_class}"> <li>改进了导航和设计的新标题栏和侧边栏。</li> <li>“自定义字段”、“关系”、“提醒”、“会议”和“我的时间跟踪”的体验更加丝滑。</li> <li>PDF导出支持非拉丁语系语言和表情符号。</li> <li>可配置禁用键盘快捷键，以提高可访问性。</li> <li>通过API访问SCIM服务器（企业插件）。</li> <li>针对内部注释的API支持。</li> </ul>
     ical_sharing_modal:
       title: "订阅日历"
       inital_setup_error_message: "获取数据时发生错误。"
@@ -642,7 +642,8 @@ zh-CN:
       title: "输入密码以继续"
     pagination:
       no_other_page: "您位于唯一页面上。"
-      pagination_controls: "分页控制"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "下一页"
         previous: "上一页"
@@ -826,10 +827,10 @@ zh-CN:
         mixed: "混合"
     work_packages:
       bulk_actions:
-        move: "批量更改项目"
         edit: "批量编辑"
-        copy: "批量复制"
         delete: "批量删除"
+        duplicate: "Bulk duplicate"
+        move: "批量更改项目"
       button_clear: "清除"
       comment_added: "注释已成功添加。"
       comment_send_failed: "出错。无法提交评论。"
@@ -873,8 +874,8 @@ zh-CN:
         header_no_type: "新工作包(类型尚未设置)"
         header_with_parent: "新的 %{type} （%{parent_type} #%{id} 子）"
         button: "创建"
-      copy:
-        title: "复制工作包"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "显示层次结构模式"
         hide: "隐藏层次结构模式"

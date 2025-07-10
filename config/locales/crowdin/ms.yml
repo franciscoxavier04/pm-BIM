@@ -1158,7 +1158,8 @@ ms:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Mod ketercapaian"
-        auto_hide_popups: "Pemberitahuan kejayaan auto-sembunyi"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Beri amaran kepada saya apabila meninggalkan pakej kerja dengan perubahan yang belum disimpan."
         theme: "Colour mode"
         time_zone: "Zon waktu"
@@ -1724,7 +1725,7 @@ ms:
     estimated_time: "Kerja"
     email: "E-mel"
     entity_type: "Entity"
-    expires_at: "Tamat tempoh pada"
+    expires_at: "Expires on"
     firstname: "Nama pertama"
     filter: "Penyaring"
     group: "Kumpulan"
@@ -1839,7 +1840,6 @@ ms:
   button_copy: "Salin"
   button_copy_to_clipboard: "Salin ke papan klip"
   button_copy_link_to_clipboard: "Salin pautan ke papan klip"
-  button_copy_and_follow: "Salin dan ikut"
   button_create: "Cipta"
   button_create_and_continue: "Simpan dan teruskan"
   button_decline: "Tolak"
@@ -1848,6 +1848,7 @@ ms:
   button_delete_watcher: "Buang pemerhati %{name}"
   button_download: "Muat turun"
   button_duplicate: "Duplikasi"
+  button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Edit"
   button_edit_associated_wikipage: "Edit halaman Wiki berkaitan: %{page_title}"
   button_expand_all: "Kembangkan semua"
@@ -2036,6 +2037,8 @@ ms:
       x_seconds_abbreviated:
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        other: "mins"
       hour:
         other: "jam"
       day:
@@ -3528,7 +3531,7 @@ ms:
   permission_comment_news: "Komen berita"
   permission_commit_access: "Baca/tulis akses ke repositori (komit)"
   permission_copy_projects: "Salin projek"
-  permission_copy_work_packages: "Salin pakej kerja"
+  permission_copy_work_packages: "Duplicate work packages"
   permission_create_backup: "Cipta sandaran"
   permission_delete_work_package_watchers: "Buang pemerhati"
   permission_delete_work_packages: "Padam pakej kerja"

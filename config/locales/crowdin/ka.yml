@@ -1168,7 +1168,8 @@ ka:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Accessibility mode"
-        auto_hide_popups: "Auto-hide success notifications"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Colour mode"
         time_zone: "დროის სარტყელი"
@@ -1748,7 +1749,7 @@ ka:
     estimated_time: "სამუშაო"
     email: "ელფოსტა"
     entity_type: "Entity"
-    expires_at: "ვადა"
+    expires_at: "Expires on"
     firstname: "სახელი"
     filter: "ფილტრი"
     group: "ჯგუფები"
@@ -1863,7 +1864,6 @@ ka:
   button_copy: "კოპირება"
   button_copy_to_clipboard: "Copy to clipboard"
   button_copy_link_to_clipboard: "Copy link to clipboard"
-  button_copy_and_follow: "Copy and follow"
   button_create: "შექმნა"
   button_create_and_continue: "Create and continue"
   button_decline: "უარყოფა"
@@ -1872,6 +1872,7 @@ ka:
   button_delete_watcher: "Delete watcher %{name}"
   button_download: "გადმოწერა"
   button_duplicate: "დუბლირება"
+  button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "ჩასწორება"
   button_edit_associated_wikipage: "Edit associated Wiki page: %{page_title}"
   button_expand_all: "ყველას გაშლა"
@@ -2077,6 +2078,9 @@ ka:
         one: "1 წმ"
         other: "%{count} წმ"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "საათი"
         other: "საათი"
@@ -3575,7 +3579,7 @@ ka:
   permission_comment_news: "კომენტარი სიახლეებზე"
   permission_commit_access: "Read/write access to repository (commit)"
   permission_copy_projects: "პროექტების კოპირება"
-  permission_copy_work_packages: "Copy work packages"
+  permission_copy_work_packages: "Duplicate work packages"
   permission_create_backup: "მარქაფების შექმნა"
   permission_delete_work_package_watchers: "Delete watchers"
   permission_delete_work_packages: "Delete work packages"

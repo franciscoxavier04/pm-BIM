@@ -1156,7 +1156,8 @@ zh-TW:
           如果您使用螢幕閱讀器，或是想避免不小心觸發快捷操作，可以選擇停用預設的 <a href="%{href}">鍵盤快速鍵</a>。
         dismissed_enterprise_banners: "隱藏的企業版廣告"
         impaired: "協助工具模式"
-        auto_hide_popups: "提醒後自動隱藏"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "離開尚未儲存的工作套件時提示我"
         theme: "顏色模式"
         time_zone: "時區"
@@ -1722,7 +1723,7 @@ zh-TW:
     estimated_time: "工時"
     email: "電子郵件"
     entity_type: "實體"
-    expires_at: "過期於"
+    expires_at: "Expires on"
     firstname: "名字"
     filter: "篩選條件"
     group: "群組"
@@ -1837,7 +1838,6 @@ zh-TW:
   button_copy: "複製"
   button_copy_to_clipboard: "複製到剪貼簿"
   button_copy_link_to_clipboard: "複製到剪貼簿"
-  button_copy_and_follow: "複製並跟隨"
   button_create: "建立"
   button_create_and_continue: "建立並繼續"
   button_decline: "拒絕"
@@ -1846,6 +1846,7 @@ zh-TW:
   button_delete_watcher: "刪除監看者 %{name}"
   button_download: "下載"
   button_duplicate: "複本"
+  button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "編輯"
   button_edit_associated_wikipage: "編輯關聯的維基頁面：%{page_title}"
   button_expand_all: "全部展開"
@@ -2034,6 +2035,8 @@ zh-TW:
       x_seconds_abbreviated:
         other: "%{count}  秒"
     units:
+      minute_abbreviated:
+        other: "mins"
       hour:
         other: "小時"
       day:
@@ -3525,7 +3528,7 @@ zh-TW:
   permission_comment_news: "在「最新消息」留言"
   permission_commit_access: "讀/寫 權限版本庫 (Commit)"
   permission_copy_projects: "複製專案"
-  permission_copy_work_packages: "複製工作套件"
+  permission_copy_work_packages: "Duplicate work packages"
   permission_create_backup: "建立備份"
   permission_delete_work_package_watchers: "刪除監看者"
   permission_delete_work_packages: "刪除工作套件"

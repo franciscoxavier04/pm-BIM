@@ -294,11 +294,11 @@ tr:
           text_new_features: "Yeni özellikler ve ürün güncellemeleri hakkında bilgi edinin."
           learn_about: "Tüm yeni özellikler hakkında daha fazla bilgi edinin"
           #Include the version to invalidate outdated translations in other locales.
-          #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_1":
+          #Otherwise, e.g. Chinese might still have the translations for 10.0 in the 12.0 release.
+          "16_2":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Structure the project life cycle with phases and phase gates.</li> <li>Export meetings in PDF format.</li> <li>Set smart default options for reminders.</li> <li>Use negative lag for work package dates.</li> <li>Display hierarchy trees for hierarchy custom fields.</li> <li>Benefit from improved accessibility for the date picker with ARIA live regions.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>New header and sidebar with improved navigation and design.</li> <li>Smoother experience with Custom fields, Relations, Reminders, Meetings, and My time tracking.</li> <li>Non-latin languages and emojis supported in PDF exports.</li> <li>Option to disable keyboard shortcuts for better accessibility.</li> <li>SCIM server via API (Enterprise add-on).</li> <li>API support for internal comments.</li> </ul>
     ical_sharing_modal:
       title: "Takvime abone ol"
       inital_setup_error_message: "Veri alınırken bir hata oluştu."
@@ -643,7 +643,8 @@ tr:
       title: "Devam etmek için parolanızı doğrulayın"
     pagination:
       no_other_page: "Geçerli tek sayfadasınız."
-      pagination_controls: "Pagination controls"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "Next page"
         previous: "Previous page"
@@ -827,10 +828,10 @@ tr:
         mixed: "Karışık"
     work_packages:
       bulk_actions:
-        move: "Projenin toplu değişimi"
         edit: "Toplu düzenle"
-        copy: "Toplu kopyala"
         delete: "Toplu silme"
+        duplicate: "Bulk duplicate"
+        move: "Projenin toplu değişimi"
       button_clear: "Temizle"
       comment_added: "Yorum başarıyla eklendi."
       comment_send_failed: "Bir hata oluştu. Yorum gönderilemedi."
@@ -874,8 +875,8 @@ tr:
         header_no_type: "Yeni iş paketi (türü henüz ayarlanmadı)"
         header_with_parent: "Yeni %{type} (%{parent_type} #%{id} altında)"
         button: "Oluştur"
-      copy:
-        title: "İş paketini kopyala"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Hiyerarşiyi göster"
         hide: "Hiyerarşiyi gizle"

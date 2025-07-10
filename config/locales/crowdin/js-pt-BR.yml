@@ -293,11 +293,11 @@ pt-BR:
           text_new_features: "Ler sobre os novos recursos e atualizações de produtos."
           learn_about: "Saiba mais sobre todos os novos recursos"
           #Include the version to invalidate outdated translations in other locales.
-          #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_1":
+          #Otherwise, e.g. Chinese might still have the translations for 10.0 in the 12.0 release.
+          "16_2":
             standard:
               new_features_html: >
-                A versão inclui diversos novos recursos e melhorias, como:<br> <ul class="%{list_styling_class}"> <li>Estruturar o ciclo de vida do projeto com fases e marcos de aprovação.</li> <li>Exportar reuniões em formato PDF.</li> <li>Definir opções padrão inteligentes para lembretes.</li> <li>Usar atraso negativo nas datas dos pacotes de trabalho.</li> <li>Exibir árvores hierárquicas para campos personalizados hierárquicos.</li> <li>Aproveitar a acessibilidade aprimorada do seletor de datas com regiões ARIA ao vivo.</li> </ul>
+                A versão inclui vários novos recursos e melhorias, tais como <br> <ul class="%{list_styling_class}"> <li>Novo cabeçalho e barra lateral com navegação e design aprimorados.</li> <li>Experiência mais fluida com Campos personalizados, Relações, Lembretes, Reuniões e Meu acompanhamento de tempo.</li> <li>Suporte a idiomas não latinos e emojis em exportações PDF.</li> <li>Opção para desativar atalhos de teclado para melhor acessibilidade.</li> <li>Servidor SCIM via API (add-on Enterprise).</li> <li>Suporte à API para comentários internos.</li> </ul>
     ical_sharing_modal:
       title: "Assinar calendário"
       inital_setup_error_message: "Ocorreu um erro ao buscar dados."
@@ -323,7 +323,7 @@ pt-BR:
     label_added_time_by: 'Adicionado por <a href="%{authorLink}">%{author}</a> em %{age}'
     label_ago: "dias atrás"
     label_all: "todos"
-    label_all_projects: "All projects"
+    label_all_projects: "Todos os projetos"
     label_all_uppercase: "Todos"
     label_all_work_packages: "todos pacotes de trabalho"
     label_and: "e"
@@ -642,12 +642,13 @@ pt-BR:
       title: "Confirme sua senha para continuar"
     pagination:
       no_other_page: "Você está na página única."
-      pagination_controls: "Pagination controls"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
-        next: "Next page"
-        previous: "Previous page"
-        page_number: Page %{number}
-        show_per_page: Show %{number} per page
+        next: "Próxima página"
+        previous: "Página anterior"
+        page_number: Página %{number}
+        show_per_page: Exibir %{number} por página
     placeholders:
       default: "-"
       subject: "Informe o assunto aqui"
@@ -695,7 +696,7 @@ pt-BR:
           first_day: "Primeiro dia"
           last_day: "Último dia"
     text_are_you_sure: "Você tem certeza?"
-    breadcrumb: "Breadcrumb"
+    breadcrumb: "Trilha de navegação"
     text_data_lost: "Todos os dados inseridos serão perdidos."
     text_user_wrote: "%{value} escreveu:"
     types:
@@ -780,7 +781,7 @@ pt-BR:
     autocompleter:
       placeholder: "Escreva para pesquisar"
       notFoundText: "Nenhum item encontrado"
-      search: "Search"
+      search: "Pesquisar"
       project:
         placeholder: "Selecionar projeto"
     repositories:
@@ -826,10 +827,10 @@ pt-BR:
         mixed: "Misturado"
     work_packages:
       bulk_actions:
-        move: "Mudança em massa de projeto"
         edit: "Edição em massa"
-        copy: "Cópia em massa"
         delete: "Exclusão em massa"
+        duplicate: "Bulk duplicate"
+        move: "Mudança em massa de projeto"
       button_clear: "Limpar"
       comment_added: "O comentário foi adicionado com sucesso."
       comment_send_failed: "Ocorreu um erro. Não foi possível enviar o comentário."
@@ -873,8 +874,8 @@ pt-BR:
         header_no_type: "Novo pacote de trabalho (Tipo ainda não definido)"
         header_with_parent: "Novo %{type} (Filho de %{parent_type} #%{id})"
         button: "Criar"
-      copy:
-        title: "Copiar pacote de trabalho"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Mostrar o modo de hierarquia"
         hide: "Ocultar o modo de hierarquia"

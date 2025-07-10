@@ -1167,7 +1167,8 @@ hu:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Kisegítő mód"
-        auto_hide_popups: "Siker értesítések automatikus elrejtése"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Figyelmeztess, ha úgy hagyom el a munkacsomagot, hogy nem mentett változások vannak rajta"
         theme: "Colour mode"
         time_zone: "Idő zóna"
@@ -1747,7 +1748,7 @@ hu:
     estimated_time: "Munka"
     email: "Email"
     entity_type: "Entity"
-    expires_at: "Lejárat ekkor"
+    expires_at: "Expires on"
     firstname: "Keresztnév"
     filter: "Szűrő"
     group: "Csoport"
@@ -1862,7 +1863,6 @@ hu:
   button_copy: "Másol"
   button_copy_to_clipboard: "Másolás a vágólapra"
   button_copy_link_to_clipboard: "Hivatkozás másolása a vágólapra"
-  button_copy_and_follow: "Másol és folytat"
   button_create: "Létrehoz"
   button_create_and_continue: "Létrehoz és folytat"
   button_decline: "Elutasít"
@@ -1871,6 +1871,7 @@ hu:
   button_delete_watcher: "Megfigyelő törlése %{name}"
   button_download: "Letöltés"
   button_duplicate: "Másolás ide"
+  button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Szerkesztés"
   button_edit_associated_wikipage: "A hozzárendelt Wiki oldal: %{page_title} szerkesztése"
   button_expand_all: "Az összes kibontása"
@@ -2076,6 +2077,9 @@ hu:
         one: "1 mp"
         other: "%{count} mp"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "óra"
         other: "óra"
@@ -3573,7 +3577,7 @@ hu:
   permission_comment_news: "Megjegyzések írása a hírekehez"
   permission_commit_access: "Olvasási és írási jog a tárolóhoz (commit)"
   permission_copy_projects: "Projekt másolása"
-  permission_copy_work_packages: "Copy work packages"
+  permission_copy_work_packages: "Duplicate work packages"
   permission_create_backup: "Biztonsági mentés létrehozása"
   permission_delete_work_package_watchers: "Megfigyelők törlése"
   permission_delete_work_packages: "Törölje a feladatcsoportokat"

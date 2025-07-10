@@ -45,7 +45,7 @@
       meeting_agenda_item:
         title: "Tittel"
         author: "Forfatter"
-        duration_in_minutes: "minutter"
+        duration_in_minutes: "Duration"
         description: "Notater"
         presenter: "Foredragsholder"
       meeting_section:
@@ -265,6 +265,10 @@
     placeholder_title: "Ny seksjon"
     empty_text: "Dra punkter hit eller opprett et nytt"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Time zone difference"
+      description: >
+        The dates below are referencing the time zone of the meeting series (%{actual_zone}), not your local time zone (%{user_zone}).
     ended_blankslate:
       title: "Meeting series ended"
       message: "This meeting series has come to an end. There are no upcoming meetings. "

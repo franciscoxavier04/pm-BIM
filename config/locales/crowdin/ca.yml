@@ -1165,7 +1165,8 @@ ca:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Mode d'accessibilitat"
-        auto_hide_popups: "Oculta automàticament les notificacions de succés"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Avisa quan es deixi un paquet de treball amb canvis no desats"
         theme: "Colour mode"
         time_zone: "Zona horària"
@@ -1745,7 +1746,7 @@ ca:
     estimated_time: "Treball"
     email: "Correu electrònic"
     entity_type: "Entity"
-    expires_at: "Caduca el"
+    expires_at: "Expires on"
     firstname: "Nom"
     filter: "Filtre"
     group: "Grup"
@@ -1860,7 +1861,6 @@ ca:
   button_copy: "Copiar"
   button_copy_to_clipboard: "Copiar al porta-retalls"
   button_copy_link_to_clipboard: "Copy link to clipboard"
-  button_copy_and_follow: "Copiar i continuar"
   button_create: "Crear"
   button_create_and_continue: "Crear i continuar"
   button_decline: "Rebutja"
@@ -1869,6 +1869,7 @@ ca:
   button_delete_watcher: "Suprimir l'observador %{name}"
   button_download: "Descàrrega"
   button_duplicate: "Duplicar"
+  button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Editar"
   button_edit_associated_wikipage: "Editar pàgines Wiki associades: %{page_title}"
   button_expand_all: "Expandeix tot"
@@ -2074,6 +2075,9 @@ ca:
         one: "1 s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "hora"
         other: "hores"
@@ -3568,7 +3572,7 @@ ca:
   permission_comment_news: "Comentar noticies"
   permission_commit_access: "Accés de lectura/escriptura al repositori (commit)"
   permission_copy_projects: "Copiar projectes"
-  permission_copy_work_packages: "Copia paquets de treball"
+  permission_copy_work_packages: "Duplicate work packages"
   permission_create_backup: "Create backups"
   permission_delete_work_package_watchers: "Suprimir observadors"
   permission_delete_work_packages: "Eliminar paquets de treball"

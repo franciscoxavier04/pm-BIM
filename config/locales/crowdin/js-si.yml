@@ -294,11 +294,11 @@ si:
           text_new_features: "නව විශේෂාංග සහ නිෂ්පාදන යාවත්කාලීන කිරීම් ගැන කියවන්න."
           learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
-          #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_1":
+          #Otherwise, e.g. Chinese might still have the translations for 10.0 in the 12.0 release.
+          "16_2":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Structure the project life cycle with phases and phase gates.</li> <li>Export meetings in PDF format.</li> <li>Set smart default options for reminders.</li> <li>Use negative lag for work package dates.</li> <li>Display hierarchy trees for hierarchy custom fields.</li> <li>Benefit from improved accessibility for the date picker with ARIA live regions.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>New header and sidebar with improved navigation and design.</li> <li>Smoother experience with Custom fields, Relations, Reminders, Meetings, and My time tracking.</li> <li>Non-latin languages and emojis supported in PDF exports.</li> <li>Option to disable keyboard shortcuts for better accessibility.</li> <li>SCIM server via API (Enterprise add-on).</li> <li>API support for internal comments.</li> </ul>
     ical_sharing_modal:
       title: "Subscribe to calendar"
       inital_setup_error_message: "An error occured while fetching data."
@@ -643,7 +643,8 @@ si:
       title: "දිගටම කරගෙන යාමට ඔබගේ මුරපදය තහවුරු කරන්න"
     pagination:
       no_other_page: "ඔබ සිටින්නේ එකම පිටුවේ ය."
-      pagination_controls: "Pagination controls"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "Next page"
         previous: "Previous page"
@@ -827,10 +828,10 @@ si:
         mixed: "Mixed"
     work_packages:
       bulk_actions:
-        move: "ව්යාපෘතියේ තොග වෙනසක්"
         edit: "තොග සංස්කරණය"
-        copy: "තොග පිටපතක්"
         delete: "තොග මකන්න"
+        duplicate: "Bulk duplicate"
+        move: "ව්යාපෘතියේ තොග වෙනසක්"
       button_clear: "පැහැදිලි"
       comment_added: "අදහස් දැක්වීම සාර්ථකව එකතු කරන ලදී."
       comment_send_failed: "දෝෂයක් සිදුවී ඇත. අදහස ඉදිරිපත් කළ නොහැකි විය."
@@ -874,8 +875,8 @@ si:
         header_no_type: "නව වැඩ පැකේජය (ටයිප් තවමත් සකසා නැත)"
         header_with_parent: "නව %{type} ( %{parent_type} #%{id}දරුවා)"
         button: "සාදන්න"
-      copy:
-        title: "වැඩ පැකේජය පිටපත් කරන්න"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "ධූරාවලිය මාදිලිය පෙන්වන්න"
         hide: "ධූරාවලිය මාදිලිය සඟවන්න"

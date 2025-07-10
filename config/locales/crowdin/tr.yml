@@ -1167,7 +1167,8 @@ tr:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Erişilebilirlik modu"
-        auto_hide_popups: "Başarılı bildirimleri otomatik olarak gizle"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "İş paketlerinden ayrılırken kaydedilmemiş değişiklik olduğunda beni uyar"
         theme: "Colour mode"
         time_zone: "Zaman dilimi"
@@ -1747,7 +1748,7 @@ tr:
     estimated_time: "Çalışma"
     email: "E-posta"
     entity_type: "Varlık"
-    expires_at: "Bitiş zamanı"
+    expires_at: "Expires on"
     firstname: "İsim"
     filter: "Filtre"
     group: "Grup"
@@ -1862,7 +1863,6 @@ tr:
   button_copy: "Kopyala"
   button_copy_to_clipboard: "Panoya kopyala"
   button_copy_link_to_clipboard: "Bağlantıyı panoya kopyala"
-  button_copy_and_follow: "Kopyala ve takip et"
   button_create: "Oluştur"
   button_create_and_continue: "Oluştur ve devam et"
   button_decline: "Reddet"
@@ -1871,6 +1871,7 @@ tr:
   button_delete_watcher: "%{name} isimli takip edeni sil"
   button_download: "İndir"
   button_duplicate: "Çoğalt"
+  button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Düzenle"
   button_edit_associated_wikipage: "İlişkili Wiki sayfasını düzenle: %{page_title}"
   button_expand_all: "Tümünü genişlet"
@@ -2076,6 +2077,9 @@ tr:
         one: "1 s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "saat"
         other: "saat"
@@ -3572,7 +3576,7 @@ tr:
   permission_comment_news: "Haberlere yorum yazmak"
   permission_commit_access: "Depoya okuma / yazma erişimi (tamamlama)"
   permission_copy_projects: "Proje kopyalamak"
-  permission_copy_work_packages: "İş paketlerini kopyala"
+  permission_copy_work_packages: "Duplicate work packages"
   permission_create_backup: "Yedek oluşturma"
   permission_delete_work_package_watchers: "Takipçi sil"
   permission_delete_work_packages: "İş paketi silmek"

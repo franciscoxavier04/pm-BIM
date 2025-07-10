@@ -3,25 +3,82 @@ title: OpenProject 16.2.0
 sidebar_navigation:
     title: 16.2.0
 release_version: 16.2.0
-release_date: 2025-07-03
+release_date: 2025-07-16
 ---
 
 # OpenProject 16.2.0
 
-Release date: 2025-07-03
+Release date: 2025-07-16
 
-We released OpenProject [OpenProject 16.2.0](https://community.openproject.org/versions/2196).
-The release contains several bug fixes and we recommend updating to the newest version.
-In these Release Notes, we will give an overview of important feature changes.
-At the end, you will find a complete list of all changes and bug fixes.
+We released [OpenProject 16.2.0](https://community.openproject.org/versions/2196). The release contains several bug fixes and we recommend updating to the newest version. In these Release Notes, we will give an overview of important feature changes and important technical changes. At the end, you will find a complete list of all changes and bug fixes. 
 
 ## Important feature changes
 
-<!-- Inform about the major features in this section -->
+### New header and sidebar with improved navigation and design
 
-## Important updates and breaking changes
+OpenProject 16.2 introduces a redesigned header and sidebar that make navigating your projects noticeably easier. The sidebar toggle (hamburger icon) has moved inside the sidebar itself, the default sidebar color in light mode is now lighter and more modern, and the search and create buttons have been repositioned in the top bar for a more intuitive workflow. Together, these changes create a cleaner, more focused interface that helps you find what you need faster and align with the user interface used in [openDesk](https://www.openproject.org/opendesk/).
 
-<!-- Remove this section if empty, add to it in pull requests linking to tickets and provide information -->
+![OpenProject Home page with the new header and sidebar navigation and design](openproject-16-2-design-updates.png)
+
+Please note that if you have customized the sidebar colors, your individual settings will remain unchanged.
+
+### Primer design system added to project create and project copy forms
+
+The forms for [creating and copying projects](../../getting-started/projects/#create-a-new-project) now use the [Primer design system](https://www.openproject.org/blog/primer-design-system/), providing a cleaner and more consistent interface. This improves accessibility and ensures the process remains just as familiar.
+
+If you create a project **based on a template**, you will immediately be able to choose which modules and parts you want to copy and which to skip. Also, the option to activate sending email notifications during the project copy is much more visible. Before 16.2, you had to click on Copy Options to unfold.
+
+![OpenProject screenshot: Create new project, with options to choose what to copy from a template](openproject-16-2-create-project.png)
+
+### Non-latin languages and emojis supported in PDF exports for work packages
+
+PDF work package exports in OpenProject now support **non-latin characters and emojis**. This means that project information written in scripts such as Chinese, Arabic, Cyrillic, or accented characters — as well as any emojis you use in work packages, meetings, or descriptions — will display correctly in exported PDF files. This ensures that documents generated from OpenProject reflect your content accurately, no matter which language or symbols you use.
+
+![PDF export extract from an OpenProject work package that contains emojis, symbols and non-latin characters](openproject-16-2-pdf-export.png)
+
+Please note that the screenshot only displays some of the now supported characters.
+
+### Second level navigation for Relations create menu
+
+The + Relation menu has been reorganized with a new two-level structure, making it clearer and easier to navigate. The most common relations like **Related to**, **Predecessor**, **Successor**, **(New) Child**, and **Parent** are now shown directly, while less frequently used options such as Duplicates, Blocks, or Requires are grouped under Other relations. This helps you see the primary choices at a glance and keep your work package relations more structured.
+
+![OpenProject work package Relations tab when clicking on +Relation, showing some relations unfolded under 'Other relations'](openproject-user-guide-relations-second-level-navigation.png)
+
+### Select custom field format earlier when creating a new custom field
+
+When creating a new custom field, you now select the format — such as text, list, or date — right at the beginning, on the index page of custom fields and project attributes. This streamlines the creation process and avoids unnecessary steps, since each type opens directly in the appropriate form. This improvement is especially helpful for administrators who frequently set up new custom fields.
+
+### My time tracking: Collapse future days for week and work week views
+
+In the **My time tracking** module, the week and work week views now automatically collapse future and past days while keeping today expanded. This helps you focus on logging time for the current and past days without being distracted by empty future slots. If you view a past week, all days are expanded as before.
+
+![OpenProject's My time tracking module in list view, only Today expanded](user-guide-my-time-tracking-module-list-view.png)
+
+### Option to disable keyboard shortcuts for better accessibility
+
+OpenProject 16.2 makes the application more accessible by allowing users to **disable keyboard shortcuts**. This is especially helpful for people using assistive technologies, where keyboard shortcuts might interfere with screen readers or other tools. The option can be found under *Account settings → Interface*.
+
+![OpenProject account settings on interface options, with highlighted option to disable keyboard shortcuts](openproject-user-guide-account-settings-interface.png)
+
+### Work package reminders presented in relative humanized time format
+
+When you set a reminder for a work package, OpenProject now confirms this with a **relative, human-friendly time**. Instead of just showing a fixed date and time, the success message will say, for example, *“Reminder set successfully. You will receive a notification tomorrow at 9:00 AM.”* This small improvement makes it easier to quickly understand when your reminder will appear.
+
+![User information that appears when setting a reminder: Reminder set successfully. You will receive a notification for this work package tomorrow.](openproject-16-2-reminder.png)
+
+## Important technical changes
+
+### SCIM server functionality added to OpenProject via SCIM API (Enterprise add-on)
+
+OpenProject 16.2 adds a **SCIM server API**, available as an Enterprise add-on in the Corporate plan. This allows Identity Providers (IdPs) such as Keycloak to keep user data in OpenProject synchronized automatically. Administrators can manage SCIM clients directly in OpenProject, configure authentication methods, and revoke tokens when needed. This makes it much easier to maintain consistent user records across your systems.
+
+### API support for internal comments
+
+The API has been extended to fully support **internal comments on work packages**. You can now check via the Capabilities API whether a user can create, view, or edit internal comments. This helps external apps and integrations, such as mobile clients, support internal team discussions securely.
+
+### Commenting on work packages fires a webhook
+
+When a comment is added to a work package, it now triggers a webhook. This enables external systems to react in real time to comments in OpenProject, for example by updating dashboards or notifying integrated tools.
 
 <!--more-->
 
@@ -125,12 +182,12 @@ At the end, you will find a complete list of all changes and bug fixes.
 
 ## Contributions
 
-A very special thank you goes to our sponsors for this release.
-Also a big thanks to our Community members for reporting bugs and helping us identify and provide fixes.
-Special thanks for reporting and finding bugs go to Michael Lathion, Jason Culligan, Sven Kunze, Gábor Alexovics.
+A very special thank you goes to City of Cologne, Deutsche Bahn and ZenDiS for sponsoring released or upcoming features. Your support, alongside the efforts of our amazing Community, helps drive these innovations. Also a big thanks to our Community members for reporting bugs and helping us identify and provide fixes. Special thanks for reporting and finding bugs go to Michael Lathion, Jason Culligan, Sven Kunze, and Gábor Alexovics.
 
-Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings!
-Would you like to help out with translations yourself?
-Then take a look at our translation guide and find out exactly how you can contribute.
-It is very much appreciated!
+Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings! This release we would like to particularly thank the following users:
 
+- [William](https://crowdin.com/profile/williamfromtw), for a great number of translations into Chinese Traditional.
+- [rmiyata](https://crowdin.com/profile/rmiyata), for a great number of translations into Japanese.
+- [rubenpedrolopez](https://crowdin.com/profile/rubenpedrolopez), for a great number of translations into Spanish.
+
+Would you like to help out with translations yourself? Then take a look at our [translation guide](../../contributions-guide/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!

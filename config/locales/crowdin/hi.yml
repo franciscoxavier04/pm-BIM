@@ -1167,7 +1167,8 @@ hi:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "पहुँच क्षमता"
-        auto_hide_popups: "Auto-hide success notifications"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Colour mode"
         time_zone: "समय क्षेत्र"
@@ -1747,7 +1748,7 @@ hi:
     estimated_time: "Work"
     email: "ईमेल"
     entity_type: "Entity"
-    expires_at: "Expires at"
+    expires_at: "Expires on"
     firstname: "First name"
     filter: "Filter"
     group: "समूह"
@@ -1862,7 +1863,6 @@ hi:
   button_copy: "प्रतिलिपि बनाएँ"
   button_copy_to_clipboard: "Copy to clipboard"
   button_copy_link_to_clipboard: "Copy link to clipboard"
-  button_copy_and_follow: "Copy and follow"
   button_create: "रचना करें"
   button_create_and_continue: "सहेजें और जारी रखें"
   button_decline: "Decline"
@@ -1871,6 +1871,7 @@ hi:
   button_delete_watcher: "द्रष्टा हटाएं %{name}"
   button_download: "डाउनलोड"
   button_duplicate: "प्रतिलिपि"
+  button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "संपादित करें"
   button_edit_associated_wikipage: "संबद्ध विकी पृष्ठ संपादित करें: %{page_title}"
   button_expand_all: "सभी विस्तृत करें"
@@ -2076,6 +2077,9 @@ hi:
         one: "1 s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "घंटा"
         other: "hours"
@@ -3574,7 +3578,7 @@ hi:
   permission_comment_news: "Comment news"
   permission_commit_access: "Read/write access to repository (commit)"
   permission_copy_projects: "Copy projects"
-  permission_copy_work_packages: "Copy work packages"
+  permission_copy_work_packages: "Duplicate work packages"
   permission_create_backup: "Create backups"
   permission_delete_work_package_watchers: "Delete watchers"
   permission_delete_work_packages: "Delete work packages"

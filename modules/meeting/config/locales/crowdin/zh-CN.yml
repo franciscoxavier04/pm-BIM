@@ -44,7 +44,7 @@ zh-CN:
       meeting_agenda_item:
         title: "标题"
         author: "作者"
-        duration_in_minutes: "分钟"
+        duration_in_minutes: "时长"
         description: "备注"
         presenter: "演讲者"
       meeting_section:
@@ -261,6 +261,10 @@ zh-CN:
     placeholder_title: "新建章节"
     empty_text: "拖动项目到此处或创建一个新项目"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Time zone difference"
+      description: >
+        The dates below are referencing the time zone of the meeting series (%{actual_zone}), not your local time zone (%{user_zone}).
     ended_blankslate:
       title: "结束"
       message: "本系列会议已经结束，没有即将举行的会议。 "

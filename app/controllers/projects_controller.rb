@@ -56,6 +56,10 @@ class ProjectsController < ApplicationController
     :projects
   end
 
+  current_menu_item :copy_form do
+    :settings_general
+  end
+
   def index # rubocop:disable Metrics/AbcSize
     respond_to do |format|
       format.html do

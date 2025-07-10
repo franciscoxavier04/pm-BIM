@@ -1166,7 +1166,8 @@ fr:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Bannières d'entreprise masquées"
         impaired: "Mode d'accessibilité"
-        auto_hide_popups: "Masquer automatiquement les notifications de succès"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "M'avertir lorsque je quitte un lot de travaux contenant des modifications non enregistrées"
         theme: "Colour mode"
         time_zone: "Fuseau horaire"
@@ -1746,7 +1747,7 @@ fr:
     estimated_time: "Travail"
     email: "E-mail"
     entity_type: "Entité"
-    expires_at: "Expire le"
+    expires_at: "Expires on"
     firstname: "Prénom"
     filter: "Filtrer"
     group: "Groupe"
@@ -1861,7 +1862,6 @@ fr:
   button_copy: "Copier"
   button_copy_to_clipboard: "Copier dans le presse-papiers"
   button_copy_link_to_clipboard: "Copier le lien dans le presse-papiers"
-  button_copy_and_follow: "Copier et suivre"
   button_create: "Créer"
   button_create_and_continue: "Créer et continuer"
   button_decline: "Refuser"
@@ -1870,6 +1870,7 @@ fr:
   button_delete_watcher: "Supprimer l'observateur %{name}"
   button_download: "Télécharger"
   button_duplicate: "Dupliquer"
+  button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Éditer"
   button_edit_associated_wikipage: "Éditer la page wiki associée : %{page_title}"
   button_expand_all: "Tout déplier"
@@ -2075,6 +2076,9 @@ fr:
         one: "1 s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "heure"
         other: "heures"
@@ -3573,7 +3577,7 @@ fr:
   permission_comment_news: "Commenter les actualités"
   permission_commit_access: "Accès au dépôt en lecture/écriture (« commit »)"
   permission_copy_projects: "Copier des projets"
-  permission_copy_work_packages: "Copier lots de travaux"
+  permission_copy_work_packages: "Duplicate work packages"
   permission_create_backup: "Créer des sauvegardes"
   permission_delete_work_package_watchers: "Supprimer des observateurs"
   permission_delete_work_packages: "Supprimer des lots de travaux"

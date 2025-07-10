@@ -293,11 +293,11 @@ el:
           text_new_features: "Διαβάστε για τις νέες λειτουργίες και τις ενημερώσεις προϊόντων."
           learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
-          #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_1":
+          #Otherwise, e.g. Chinese might still have the translations for 10.0 in the 12.0 release.
+          "16_2":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Structure the project life cycle with phases and phase gates.</li> <li>Export meetings in PDF format.</li> <li>Set smart default options for reminders.</li> <li>Use negative lag for work package dates.</li> <li>Display hierarchy trees for hierarchy custom fields.</li> <li>Benefit from improved accessibility for the date picker with ARIA live regions.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>New header and sidebar with improved navigation and design.</li> <li>Smoother experience with Custom fields, Relations, Reminders, Meetings, and My time tracking.</li> <li>Non-latin languages and emojis supported in PDF exports.</li> <li>Option to disable keyboard shortcuts for better accessibility.</li> <li>SCIM server via API (Enterprise add-on).</li> <li>API support for internal comments.</li> </ul>
     ical_sharing_modal:
       title: "Subscribe to calendar"
       inital_setup_error_message: "An error occured while fetching data."
@@ -642,7 +642,8 @@ el:
       title: "Επιβεβαιώστε τον κωδικό πρόσβασης σας για να συνεχίσετε"
     pagination:
       no_other_page: "Βρίσκεστε στη μοναδική σελίδα."
-      pagination_controls: "Pagination controls"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "Next page"
         previous: "Previous page"
@@ -826,10 +827,10 @@ el:
         mixed: "Mixed"
     work_packages:
       bulk_actions:
-        move: "Μαζική αλλαγή του έργου"
         edit: "Μαζική επεξεργασία"
-        copy: "Μαζική αντιγραφή"
         delete: "Μαζική διαγραφή"
+        duplicate: "Bulk duplicate"
+        move: "Μαζική αλλαγή του έργου"
       button_clear: "Εκκαθάριση"
       comment_added: "Το σχόλιο προστέθηκε με επιτυχία."
       comment_send_failed: "Παρουσιάστηκε ένα σφάλμα. Δεν ήταν δυνατή η υποβολή του σχολίου."
@@ -873,8 +874,8 @@ el:
         header_no_type: "Καινούργιο πακέτο εργασίας (Ο τύπος δεν έχει οριστεί ακόμη)"
         header_with_parent: "Νέο %{type} (Παιδί του %{parent_type} #%{id})"
         button: "Δημιουργία"
-      copy:
-        title: "Αντιγραφή πακέτου εργασίας"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Εμφάνιση λειτουργίας ιεραρχίας"
         hide: "Απόκρυψη λειτουργίας ιεραρχίας"

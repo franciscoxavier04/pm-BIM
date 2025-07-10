@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -172,8 +174,8 @@ class WorkPackages::UpdateAncestorsService < BaseServices::BaseCallable
     return if initiator_work_package.parent_id.nil?
     return if initiator_work_package.parent_id != work_package.id
 
-    # it only applies if there is no bulk copy in progress: if it's a copy, the copy must stay exact
-    return if state.bulk_copy_in_progress
+    # it only applies if there is no bulk duplicate in progress: if it's a copy, the copy must stay exact
+    return if state.bulk_duplicate_in_progress
 
     # it only applies if the parent is manually scheduled
     return if work_package.schedule_automatically?

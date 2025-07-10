@@ -123,7 +123,7 @@ vi:
       2fa_from_webauthn: Vui lòng cung cấp thiết bị WebAuthn <strong>%{device_name}</strong>. Nếu thiết bị dựa trên USB, hãy đảm bảo cắm vào và chạm vào nó. Sau đó nhấp vào nút đăng nhập.
       webauthn:
         title: "WebAuthn"
-        description: Đăng ký một thiết bị FIDO2 (như YubiKey) hoặc vùng bảo mật trong thiết bị di động của bạn.
+        description: Register a FIDO2 device (like YubiKey) or the secure enclave of your mobile device.
         further_steps: Sau khi bạn chọn tên, bạn có thể nhấp vào nút Tiếp tục. Trình duyệt của bạn sẽ yêu cầu bạn xuất trình thiết bị WebAuthn của bạn. Khi bạn đã làm như vậy, bạn đã hoàn tất việc đăng ký thiết bị.
       totp:
         title: "Xác thực dựa trên ứng dụng"

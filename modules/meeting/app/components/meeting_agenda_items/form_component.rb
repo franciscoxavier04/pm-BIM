@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -48,7 +49,7 @@ module MeetingAgendaItems
     end
 
     def wrapper_uniq_by
-      @meeting_agenda_item.id
+      @meeting_agenda_item.persisted? ? @meeting_agenda_item.id : "new"
     end
 
     def render?

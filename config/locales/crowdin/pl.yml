@@ -99,12 +99,12 @@ pl:
         upgrade: "Zmień plan teraz"
         contact: "Skontaktuj się z nami, aby uzyskać demo"
       status:
-        expired: "Expired"
-        expiring_soon: "Expiring soon"
-        in_grace_period: "In grace period"
-        invalid_domain: "Invalid domain"
-        not_active: "Not active"
-        trial: "Trial"
+        expired: "Ważność wygasła"
+        expiring_soon: "Wkrótce wygasa"
+        in_grace_period: "W okresie karencji"
+        invalid_domain: "Nieprawidłowa domena"
+        not_active: "Nieaktywny"
+        trial: "Wersja próbna"
     jemalloc_allocator: Alokator pamięci Jemalloc
     journal_aggregation:
       explanation:
@@ -112,21 +112,21 @@ pl:
         link: "webhook"
     scim_clients:
       authentication_methods:
-        sso: "JWT from identity provider"
-        oauth2_client: "OAuth 2.0 client credentials"
-        oauth2_token: "Static access token"
+        sso: "JWT od dostawcy tożsamości"
+        oauth2_client: "Poświadczenia klienta OAuth 2.0"
+        oauth2_token: "Statyczny token dostępu"
       created_client_credentials_dialog_component:
-        title: "Client credentials created"
-        heading: "Client credentials have been generated"
-        one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
+        title: "Utworzono poświadczenia klienta"
+        heading: "Wygenerowano poświadczenia klienta"
+        one_time_hint: "To jedyny raz, kiedy zobaczysz klucz tajny klienta. Koniecznie skopiuj go teraz."
       created_token_dialog_component:
-        title: "Token created"
-        heading: "An token has been generated"
+        title: "Utworzono token"
+        heading: "Token został wygenerowany"
         label_token: "Token"
-        one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
+        one_time_hint: "Jest to jedyny raz, gdy zobaczysz ten token. Koniecznie skopiuj go teraz."
       delete_scim_client_dialog_component:
-        title: "Delete SCIM client"
-        heading: "Are you sure you want to delete this SCIM client?"
+        title: "Usuń klienta SCIM"
+        heading: "Czy na pewno chcesz usunąć tego klienta SCIM?"
         description: "Users managed by this SCIM client can no longer be updated by it."
       edit:
         label_delete_scim_client: "Delete SCIM client"
@@ -1180,7 +1180,8 @@ pl:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Ukryte banery przedsiębiorstwa"
         impaired: "Ułatwienia dostępu"
-        auto_hide_popups: "Automatyczne ukrycie powiadomień o sukcesie"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Ostrzegaj mnie, gdy opuszczam zadanie z niezapisanymi zmianami"
         theme: "Colour mode"
         time_zone: "Strefa czasowa"
@@ -1788,7 +1789,7 @@ pl:
     estimated_time: "Praca"
     email: "Adres e-mail"
     entity_type: "Podmiot"
-    expires_at: "Wygasa"
+    expires_at: "Expires on"
     firstname: "Imię"
     filter: "Filtr"
     group: "Grupa"
@@ -1903,7 +1904,6 @@ pl:
   button_copy: "Kopiuj"
   button_copy_to_clipboard: "Skopiuj do schowka"
   button_copy_link_to_clipboard: "Kopiuj link do schowka"
-  button_copy_and_follow: "Skopiuj i wykonaj"
   button_create: "Utwórz"
   button_create_and_continue: "Utwórz i kontynuuj"
   button_decline: "Odrzuć"
@@ -1912,6 +1912,7 @@ pl:
   button_delete_watcher: "Usunąć obserwatora %{name}"
   button_download: "Pobierz"
   button_duplicate: "Duplikat"
+  button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Edycja"
   button_edit_associated_wikipage: "Edytuj powiązaną stronę Wiki: %{page_title}"
   button_expand_all: "Rozwiń wszystkie"
@@ -2151,6 +2152,11 @@ pl:
         many: "%{count} s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        one: "min"
+        few: "mins"
+        many: "mins"
+        other: "mins"
       hour:
         one: "godzina"
         few: "godzin"
@@ -3658,7 +3664,7 @@ pl:
   permission_comment_news: "Komentowanie Nowości"
   permission_commit_access: "Dostęp odczytu i zapisu do repozytorium (wykonanie)"
   permission_copy_projects: "Kopiowanie projektów"
-  permission_copy_work_packages: "Kopiuj Zestaw Zadań"
+  permission_copy_work_packages: "Duplicate work packages"
   permission_create_backup: "Utwórz kopie zapasowe"
   permission_delete_work_package_watchers: "Usuwanie obserwatorów"
   permission_delete_work_packages: "Usuwanie pakietów roboczych"
