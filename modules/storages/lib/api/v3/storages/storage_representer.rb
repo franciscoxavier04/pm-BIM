@@ -263,11 +263,7 @@ module API::V3::Storages
     end
 
     def show_authorize_link?
-      selector = Storages::Peripherals::StorageInteraction::AuthenticationMethodSelector.new(
-        user: current_user, storage: represented
-      )
-
-      selector.storage_oauth? &&
+      represented.authenticate_via_storage? &&
         represented.oauth_client.present? &&
         authorization_state.in?(%i[not_connected failed_authorization])
     end
@@ -281,8 +277,7 @@ module API::V3::Storages
     end
 
     def authorization_state
-      ::Storages::Peripherals::StorageInteraction::Authentication.authorization_state(storage: represented,
-                                                                                      user: current_user)
+      ::Storages::Adapters::Authentication.authorization_state(storage: represented, user: current_user)
     end
   end
 end
