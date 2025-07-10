@@ -184,14 +184,13 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
 
     describe "with project_phase attribute" do
       let(:project_phase_active) { true }
-      let(:phase_definition) { create(:project_phase_definition, name: "Test Phase") }
       let!(:project_phase) do
-        create(:project_phase, project: project, definition: phase_definition, active: project_phase_active)
+        create(:project_phase, project: project, active: project_phase_active)
       end
       let(:markdown) { "workPackageValue:project_phase" }
 
       before do
-        work_package.update!(project_phase_definition_id: phase_definition.id)
+        work_package.update!(project_phase_definition_id: project_phase.definition.id)
       end
 
       describe "without the permission" do
@@ -205,7 +204,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
 
         describe "with active phase" do
           it "outputs the project phase name" do
-            expect(formatted).to eq("Test Phase")
+            expect(formatted).to eq(project_phase.name)
           end
         end
 
