@@ -50,7 +50,10 @@ module FullCalendar
 
       def start_and_end_time_from_time_entry(time_entry)
         if time_entry.ongoing?
-          [time_entry.created_at, Time.current]
+          [
+            time_entry.created_at.in_time_zone(time_entry.time_zone),
+            Time.current.in_time_zone(time_entry.time_zone)
+          ]
         else
           [
             time_entry.start_timestamp || time_entry.spent_on,
