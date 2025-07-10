@@ -61,26 +61,26 @@ RSpec.describe "SCIM API Groups", with_ee: [:scim_api] do
         get "/scim_v2/Groups", {}, headers
 
         response_body = JSON.parse(last_response.body)
-        expect(response_body).to match("Resources" => contain_exactly({ "displayName" => group.name,
-                                                                        "externalId" => external_group_id,
-                                                                        "id" => group.id.to_s,
-                                                                        "members" => [{ "value" => user.id.to_s }],
-                                                                        "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
-                                                                                    "created" => group.created_at.iso8601,
-                                                                                    "lastModified" => group.updated_at.iso8601,
-                                                                                    "resourceType" => "Group" },
-                                                                        "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] }, { "displayName" => group_without_external_id.name,
-                                                                                                                                          "id" => group_without_external_id.id.to_s,
-                                                                                                                                          "members" => [{ "value" => user.id.to_s }],
-                                                                                                                                          "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group_without_external_id.id}",
-                                                                                                                                                      "created" => group_without_external_id.created_at.iso8601,
-                                                                                                                                                      "lastModified" => group_without_external_id.updated_at.iso8601,
-                                                                                                                                                      "resourceType" => "Group" },
-                                                                                                                                          "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] }),
-                                       "itemsPerPage" => 100,
-                                       "schemas" => ["urn:ietf:params:scim:api:messages:2.0:ListResponse"],
-                                       "startIndex" => 1,
-                                       "totalResults" => 2)
+        expect(response_body).to match({ "Resources" => contain_exactly({ "displayName" => group.name,
+                                                                          "externalId" => external_group_id,
+                                                                          "id" => group.id.to_s,
+                                                                          "members" => [{ "value" => user.id.to_s }],
+                                                                          "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
+                                                                                      "created" => group.created_at.iso8601,
+                                                                                      "lastModified" => group.updated_at.iso8601,
+                                                                                      "resourceType" => "Group" },
+                                                                          "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] }, { "displayName" => group_without_external_id.name,
+                                                                                                                                            "id" => group_without_external_id.id.to_s,
+                                                                                                                                            "members" => [{ "value" => user.id.to_s }],
+                                                                                                                                            "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group_without_external_id.id}",
+                                                                                                                                                        "created" => group_without_external_id.created_at.iso8601,
+                                                                                                                                                        "lastModified" => group_without_external_id.updated_at.iso8601,
+                                                                                                                                                        "resourceType" => "Group" },
+                                                                                                                                            "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] }),
+                                         "itemsPerPage" => 100,
+                                         "schemas" => ["urn:ietf:params:scim:api:messages:2.0:ListResponse"],
+                                         "startIndex" => 1,
+                                         "totalResults" => 2 })
       end
 
       it "filters results" do
@@ -88,29 +88,29 @@ RSpec.describe "SCIM API Groups", with_ee: [:scim_api] do
         get "/scim_v2/Groups?filter=#{filter}", {}, headers
 
         response_body = JSON.parse(last_response.body)
-        expect(response_body).to eq("Resources" => [{ "displayName" => group.name,
-                                                      "externalId" => external_group_id,
-                                                      "id" => group.id.to_s,
-                                                      "members" => [{ "value" => user.id.to_s }],
-                                                      "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
-                                                                  "created" => group.created_at.iso8601,
-                                                                  "lastModified" => group.updated_at.iso8601,
-                                                                  "resourceType" => "Group" },
-                                                      "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] }],
-                                    "itemsPerPage" => 100,
-                                    "schemas" => ["urn:ietf:params:scim:api:messages:2.0:ListResponse"],
-                                    "startIndex" => 1,
-                                    "totalResults" => 1)
+        expect(response_body).to eq({ "Resources" => [{ "displayName" => group.name,
+                                                        "externalId" => external_group_id,
+                                                        "id" => group.id.to_s,
+                                                        "members" => [{ "value" => user.id.to_s }],
+                                                        "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
+                                                                    "created" => group.created_at.iso8601,
+                                                                    "lastModified" => group.updated_at.iso8601,
+                                                                    "resourceType" => "Group" },
+                                                        "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] }],
+                                      "itemsPerPage" => 100,
+                                      "schemas" => ["urn:ietf:params:scim:api:messages:2.0:ListResponse"],
+                                      "startIndex" => 1,
+                                      "totalResults" => 1 })
 
         filter = ERB::Util.url_encode('displayName Eq "NONEXISTENT GROUP NAME"')
         get "/scim_v2/Groups?filter=#{filter}", {}, headers
 
         response_body = JSON.parse(last_response.body)
-        expect(response_body).to eq("Resources" => [],
-                                    "itemsPerPage" => 100,
-                                    "schemas" => ["urn:ietf:params:scim:api:messages:2.0:ListResponse"],
-                                    "startIndex" => 1,
-                                    "totalResults" => 0)
+        expect(response_body).to eq({ "Resources" => [],
+                                      "itemsPerPage" => 100,
+                                      "schemas" => ["urn:ietf:params:scim:api:messages:2.0:ListResponse"],
+                                      "startIndex" => 1,
+                                      "totalResults" => 0 })
       end
     end
 
@@ -120,9 +120,8 @@ RSpec.describe "SCIM API Groups", with_ee: [:scim_api] do
 
         response_body = JSON.parse(last_response.body)
         expect(response_body).to eq(
-          "detail" => "Requires authentication",
-          "schemas" => ["urn:ietf:params:scim:api:messages:2.0:Error"],
-          "status" => "401"
+          { "detail" => "Requires authentication", "schemas" => ["urn:ietf:params:scim:api:messages:2.0:Error"],
+            "status" => "401" }
         )
         expect(last_response).to have_http_status(401)
       end
@@ -136,29 +135,29 @@ RSpec.describe "SCIM API Groups", with_ee: [:scim_api] do
         get "/scim_v2/Groups/#{group.id}", {}, headers
 
         response_body = JSON.parse(last_response.body)
-        expect(response_body).to eq("displayName" => group.name,
-                                    "externalId" => external_group_id,
-                                    "id" => group.id.to_s,
-                                    "members" => [{ "value" => user.id.to_s }],
-                                    "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
-                                                "created" => group.created_at.iso8601,
-                                                "lastModified" => group.updated_at.iso8601,
-                                                "resourceType" => "Group" },
-                                    "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"])
+        expect(response_body).to eq({ "displayName" => group.name,
+                                      "externalId" => external_group_id,
+                                      "id" => group.id.to_s,
+                                      "members" => [{ "value" => user.id.to_s }],
+                                      "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
+                                                  "created" => group.created_at.iso8601,
+                                                  "lastModified" => group.updated_at.iso8601,
+                                                  "resourceType" => "Group" },
+                                      "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] })
       end
 
       it "excludes specified attributes" do
         get "/scim_v2/Groups/#{group.id}?excludedAttributes=members", {}, headers
 
         response_body = JSON.parse(last_response.body)
-        expect(response_body).to eq("displayName" => group.name,
-                                    "externalId" => external_group_id,
-                                    "id" => group.id.to_s,
-                                    "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
-                                                "created" => group.created_at.iso8601,
-                                                "lastModified" => group.updated_at.iso8601,
-                                                "resourceType" => "Group" },
-                                    "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"])
+        expect(response_body).to eq({ "displayName" => group.name,
+                                      "externalId" => external_group_id,
+                                      "id" => group.id.to_s,
+                                      "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
+                                                  "created" => group.created_at.iso8601,
+                                                  "lastModified" => group.updated_at.iso8601,
+                                                  "resourceType" => "Group" },
+                                      "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] })
         expect(response_body["members"]).to be_nil
       end
     end
@@ -169,9 +168,8 @@ RSpec.describe "SCIM API Groups", with_ee: [:scim_api] do
 
         response_body = JSON.parse(last_response.body)
         expect(response_body).to eq(
-          "detail" => "Requires authentication",
-          "schemas" => ["urn:ietf:params:scim:api:messages:2.0:Error"],
-          "status" => "401"
+          { "detail" => "Requires authentication", "schemas" => ["urn:ietf:params:scim:api:messages:2.0:Error"],
+            "status" => "401" }
         )
         expect(last_response).to have_http_status(401)
       end
@@ -194,15 +192,15 @@ RSpec.describe "SCIM API Groups", with_ee: [:scim_api] do
 
         response_body = JSON.parse(last_response.body)
         group = Group.find_by(name: group_name)
-        expect(response_body).to eq("displayName" => group.name,
-                                    "externalId" => external_group_id,
-                                    "id" => group.id.to_s,
-                                    "members" => [{ "value" => user.id.to_s }],
-                                    "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
-                                                "created" => group.created_at.iso8601,
-                                                "lastModified" => group.updated_at.iso8601,
-                                                "resourceType" => "Group" },
-                                    "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"])
+        expect(response_body).to eq({ "displayName" => group.name,
+                                      "externalId" => external_group_id,
+                                      "id" => group.id.to_s,
+                                      "members" => [{ "value" => user.id.to_s }],
+                                      "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
+                                                  "created" => group.created_at.iso8601,
+                                                  "lastModified" => group.updated_at.iso8601,
+                                                  "resourceType" => "Group" },
+                                      "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] })
       end
 
       it "creates group without members specified" do
@@ -216,15 +214,15 @@ RSpec.describe "SCIM API Groups", with_ee: [:scim_api] do
 
         response_body = JSON.parse(last_response.body)
         group = Group.find_by(name: group_name)
-        expect(response_body).to eq("displayName" => group.name,
-                                    "externalId" => external_group_id,
-                                    "id" => group.id.to_s,
-                                    "members" => [],
-                                    "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
-                                                "created" => group.created_at.iso8601,
-                                                "lastModified" => group.updated_at.iso8601,
-                                                "resourceType" => "Group" },
-                                    "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"])
+        expect(response_body).to eq({ "displayName" => group.name,
+                                      "externalId" => external_group_id,
+                                      "id" => group.id.to_s,
+                                      "members" => [],
+                                      "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
+                                                  "created" => group.created_at.iso8601,
+                                                  "lastModified" => group.updated_at.iso8601,
+                                                  "resourceType" => "Group" },
+                                      "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] })
       end
     end
 
@@ -234,9 +232,8 @@ RSpec.describe "SCIM API Groups", with_ee: [:scim_api] do
 
         response_body = JSON.parse(last_response.body)
         expect(response_body).to eq(
-          "detail" => "Requires authentication",
-          "schemas" => ["urn:ietf:params:scim:api:messages:2.0:Error"],
-          "status" => "401"
+          { "detail" => "Requires authentication", "schemas" => ["urn:ietf:params:scim:api:messages:2.0:Error"],
+            "status" => "401" }
         )
         expect(last_response).to have_http_status(401)
       end
@@ -255,15 +252,15 @@ RSpec.describe "SCIM API Groups", with_ee: [:scim_api] do
         get "/scim_v2/Groups/#{group.id}", "", headers
 
         response_body = JSON.parse(last_response.body)
-        expect(response_body).to eq("displayName" => group.name,
-                                    "externalId" => external_group_id,
-                                    "id" => group.id.to_s,
-                                    "members" => [{ "value" => user.id.to_s }],
-                                    "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
-                                                "created" => group.created_at.iso8601,
-                                                "lastModified" => group.updated_at.iso8601,
-                                                "resourceType" => "Group" },
-                                    "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"])
+        expect(response_body).to eq({ "displayName" => group.name,
+                                      "externalId" => external_group_id,
+                                      "id" => group.id.to_s,
+                                      "members" => [{ "value" => user.id.to_s }],
+                                      "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
+                                                  "created" => group.created_at.iso8601,
+                                                  "lastModified" => group.updated_at.iso8601,
+                                                  "resourceType" => "Group" },
+                                      "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] })
 
         perform_enqueued_jobs
         assert_performed_jobs 1
@@ -272,9 +269,9 @@ RSpec.describe "SCIM API Groups", with_ee: [:scim_api] do
 
         response_body = JSON.parse(last_response.body)
         expect(response_body).to eq(
-          "detail" => "Resource \"#{group.id}\" not found",
-          "schemas" => ["urn:ietf:params:scim:api:messages:2.0:Error"],
-          "status" => "404"
+          { "detail" => "Resource \"#{group.id}\" not found",
+            "schemas" => ["urn:ietf:params:scim:api:messages:2.0:Error"],
+            "status" => "404" }
         )
       end
     end
@@ -285,9 +282,8 @@ RSpec.describe "SCIM API Groups", with_ee: [:scim_api] do
 
         response_body = JSON.parse(last_response.body)
         expect(response_body).to eq(
-          "detail" => "Requires authentication",
-          "schemas" => ["urn:ietf:params:scim:api:messages:2.0:Error"],
-          "status" => "401"
+          { "detail" => "Requires authentication", "schemas" => ["urn:ietf:params:scim:api:messages:2.0:Error"],
+            "status" => "401" }
         )
         expect(last_response).to have_http_status(401)
       end
@@ -315,15 +311,15 @@ RSpec.describe "SCIM API Groups", with_ee: [:scim_api] do
 
         response_body = JSON.parse(last_response.body)
         group.reload
-        expect(response_body).to match("displayName" => group.name,
-                                       "externalId" => new_external_group_id,
-                                       "id" => group.id.to_s,
-                                       "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
-                                                   "created" => group.created_at.iso8601,
-                                                   "lastModified" => group.updated_at.iso8601,
-                                                   "resourceType" => "Group" },
-                                       "members" => contain_exactly({ "value" => user.id.to_s }, { "value" => admin.id.to_s }),
-                                       "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"])
+        expect(response_body).to match({ "displayName" => group.name,
+                                         "externalId" => new_external_group_id,
+                                         "id" => group.id.to_s,
+                                         "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
+                                                     "created" => group.created_at.iso8601,
+                                                     "lastModified" => group.updated_at.iso8601,
+                                                     "resourceType" => "Group" },
+                                         "members" => contain_exactly({ "value" => user.id.to_s }, { "value" => admin.id.to_s }),
+                                         "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] })
       end
     end
 
@@ -333,9 +329,8 @@ RSpec.describe "SCIM API Groups", with_ee: [:scim_api] do
 
         response_body = JSON.parse(last_response.body)
         expect(response_body).to eq(
-          "detail" => "Requires authentication",
-          "schemas" => ["urn:ietf:params:scim:api:messages:2.0:Error"],
-          "status" => "401"
+          { "detail" => "Requires authentication", "schemas" => ["urn:ietf:params:scim:api:messages:2.0:Error"],
+            "status" => "401" }
         )
         expect(last_response).to have_http_status(401)
       end
@@ -360,15 +355,15 @@ RSpec.describe "SCIM API Groups", with_ee: [:scim_api] do
 
         response_body = JSON.parse(last_response.body)
         group.reload
-        expect(response_body).to eq("displayName" => group.name,
-                                    "externalId" => new_external_group_id,
-                                    "id" => group.id.to_s,
-                                    "members" => [{ "value" => user.id.to_s }],
-                                    "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
-                                                "created" => group.created_at.iso8601,
-                                                "lastModified" => group.updated_at.iso8601,
-                                                "resourceType" => "Group" },
-                                    "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"])
+        expect(response_body).to eq({ "displayName" => group.name,
+                                      "externalId" => new_external_group_id,
+                                      "id" => group.id.to_s,
+                                      "members" => [{ "value" => user.id.to_s }],
+                                      "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
+                                                  "created" => group.created_at.iso8601,
+                                                  "lastModified" => group.updated_at.iso8601,
+                                                  "resourceType" => "Group" },
+                                      "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] })
       end
 
       it "supports replacing of members" do
@@ -390,15 +385,15 @@ RSpec.describe "SCIM API Groups", with_ee: [:scim_api] do
 
         response_body = JSON.parse(last_response.body)
         group.reload
-        expect(response_body).to eq("displayName" => group.name,
-                                    "externalId" => external_group_id,
-                                    "id" => group.id.to_s,
-                                    "members" => [{ "value" => user2.id.to_s }],
-                                    "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
-                                                "created" => group.created_at.iso8601,
-                                                "lastModified" => group.updated_at.iso8601,
-                                                "resourceType" => "Group" },
-                                    "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"])
+        expect(response_body).to eq({ "displayName" => group.name,
+                                      "externalId" => external_group_id,
+                                      "id" => group.id.to_s,
+                                      "members" => [{ "value" => user2.id.to_s }],
+                                      "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
+                                                  "created" => group.created_at.iso8601,
+                                                  "lastModified" => group.updated_at.iso8601,
+                                                  "resourceType" => "Group" },
+                                      "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] })
       end
 
       it "supports adding of a member" do
@@ -418,16 +413,16 @@ RSpec.describe "SCIM API Groups", with_ee: [:scim_api] do
 
         response_body = JSON.parse(last_response.body)
         group.reload
-        expect(response_body).to eq("displayName" => group.name,
-                                    "externalId" => external_group_id,
-                                    "id" => group.id.to_s,
-                                    "members" => [{ "value" => user1.id.to_s },
-                                                  { "value" => user2.id.to_s }],
-                                    "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
-                                                "created" => group.created_at.iso8601,
-                                                "lastModified" => group.updated_at.iso8601,
-                                                "resourceType" => "Group" },
-                                    "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"])
+        expect(response_body).to eq({ "displayName" => group.name,
+                                      "externalId" => external_group_id,
+                                      "id" => group.id.to_s,
+                                      "members" => [{ "value" => user1.id.to_s },
+                                                    { "value" => user2.id.to_s }],
+                                      "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
+                                                  "created" => group.created_at.iso8601,
+                                                  "lastModified" => group.updated_at.iso8601,
+                                                  "resourceType" => "Group" },
+                                      "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] })
       end
 
       it "supports removal of a member" do
@@ -446,15 +441,15 @@ RSpec.describe "SCIM API Groups", with_ee: [:scim_api] do
 
         response_body = JSON.parse(last_response.body)
         group.reload
-        expect(response_body).to eq("displayName" => group.name,
-                                    "externalId" => external_group_id,
-                                    "id" => group.id.to_s,
-                                    "members" => [],
-                                    "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
-                                                "created" => group.created_at.iso8601,
-                                                "lastModified" => group.updated_at.iso8601,
-                                                "resourceType" => "Group" },
-                                    "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"])
+        expect(response_body).to eq({ "displayName" => group.name,
+                                      "externalId" => external_group_id,
+                                      "id" => group.id.to_s,
+                                      "members" => [],
+                                      "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
+                                                  "created" => group.created_at.iso8601,
+                                                  "lastModified" => group.updated_at.iso8601,
+                                                  "resourceType" => "Group" },
+                                      "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] })
       end
 
       it "supports removal of a member with exclusion of members list from the response" do
@@ -473,14 +468,14 @@ RSpec.describe "SCIM API Groups", with_ee: [:scim_api] do
 
         response_body = JSON.parse(last_response.body)
         group.reload
-        expect(response_body).to eq("displayName" => group.name,
-                                    "externalId" => external_group_id,
-                                    "id" => group.id.to_s,
-                                    "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
-                                                "created" => group.created_at.iso8601,
-                                                "lastModified" => group.updated_at.iso8601,
-                                                "resourceType" => "Group" },
-                                    "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"])
+        expect(response_body).to eq({ "displayName" => group.name,
+                                      "externalId" => external_group_id,
+                                      "id" => group.id.to_s,
+                                      "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
+                                                  "created" => group.created_at.iso8601,
+                                                  "lastModified" => group.updated_at.iso8601,
+                                                  "resourceType" => "Group" },
+                                      "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] })
       end
     end
 
@@ -490,9 +485,8 @@ RSpec.describe "SCIM API Groups", with_ee: [:scim_api] do
 
         response_body = JSON.parse(last_response.body)
         expect(response_body).to eq(
-          "detail" => "Requires authentication",
-          "schemas" => ["urn:ietf:params:scim:api:messages:2.0:Error"],
-          "status" => "401"
+          { "detail" => "Requires authentication", "schemas" => ["urn:ietf:params:scim:api:messages:2.0:Error"],
+            "status" => "401" }
         )
       end
     end
