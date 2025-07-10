@@ -38,7 +38,7 @@ module TimeEntries
       ##
       # Update project context if moving time entry
       if no_project_or_context_changed?
-        model.project = model.work_package&.project
+        model.project = model.entity&.project
       end
 
       set_default_attributes(params) if model.new_record?
@@ -78,7 +78,7 @@ module TimeEntries
 
     def no_project_or_context_changed?
       !model.project ||
-        (model.work_package && model.work_package_id_changed? && !model.project_id_changed?)
+        (model.entity && model.entity_changed? && !model.project_id_changed?)
     end
 
     def ensure_start_time_for_onging_entries

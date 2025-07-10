@@ -144,7 +144,7 @@ RSpec.describe "history",
     history_page.expect_event('Agenda item "My agenda item"',
                               timestamp: format_time(item.created_at.utc),
                               actor: user.name,
-                              action: "created by")
+                              action: "added by")
 
     within("li.op-activity-list--item", match: :first) do
       expect(page).to have_css(".op-activity-list--item-title", text: 'Agenda item "My agenda item"')
@@ -209,7 +209,7 @@ RSpec.describe "history",
 
     item = history_page.first_item
     expect(item).to have_css(".op-activity-list--item-title", text: 'Agenda item "Second"')
-    expect(item).to have_css(".op-activity-list--item-subtitle", text: "deleted by")
+    expect(item).to have_css(".op-activity-list--item-subtitle", text: "removed by")
     expect(item).to have_css(".op-activity-list--item-subtitle", text: user.name)
 
     # Add linked work package

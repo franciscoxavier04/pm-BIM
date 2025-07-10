@@ -29,7 +29,7 @@
 #++
 
 module TimeEntries
-  class WorkPackageForm < ApplicationForm
+  class EntityForm < ApplicationForm
     def initialize(visible: true, limit_to_project_id: nil)
       super()
       @visible = visible
@@ -39,16 +39,18 @@ module TimeEntries
     form do |f|
       f.hidden name: :show_work_package, value: @visible
       f.hidden name: :limit_to_project_id, value: @limit_to_project_id
+      # TODO: Use global ID in the autocompleter
+      f.hidden name: :entity_type, value: "WorkPackage"
 
       if show_work_package_field?
-        f.work_package_autocompleter name: :work_package_id,
+        f.work_package_autocompleter name: :entity_id,
                                      label: TimeEntry.human_attribute_name(:work_package),
-                                     required: work_package_required?,
+                                     required: entity_required?,
                                      validation_message: work_package_validation_error,
                                      autocomplete_options: {
                                        defaultData: false,
                                        component: "opce-time-entries-work-package-autocompleter",
-                                       hiddenFieldAction: "change->time-entry#workPackageChanged",
+                                       hiddenFieldAction: "change->time-entry#entityChanged",
                                        focusDirectly: false,
                                        append_to: "#time-entry-dialog",
                                        url: work_package_completer_url,
@@ -56,14 +58,14 @@ module TimeEntries
                                        filters: work_package_completer_filters
                                      }
       else
-        f.hidden name: :work_package_id, value: model.work_package_id
+        f.hidden name: :entity_id, value: model.entity_id
       end
     end
 
     private
 
     def show_work_package_field?
-      return true if model.work_package_id.nil?
+      return true if model.entity_id.nil?
 
       @visible
     end
@@ -82,7 +84,7 @@ module TimeEntries
     #
     # We're still discussing if we make the work package mandatory, then this will become obsolete and
     # probably be removed.
-    def work_package_required?
+    def entity_required?
       model.project.blank?
     end
 
@@ -90,7 +92,7 @@ module TimeEntries
       if model.errors[:project_id].present?
         model.errors[:project_id].first
       else
-        model.errors[:work_package]&.first
+        model.errors[:entities]&.first
       end
     end
 
