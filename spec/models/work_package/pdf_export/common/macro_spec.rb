@@ -91,7 +91,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
   end
 
   describe "wp mention macro" do
-    let(:expected_tag) {
+    let(:expected_tag) do
       "<mention class=\"mention\" data-id=\"#{
         work_package.id
       }\" data-type=\"work_package\" data-text=\"##{
@@ -99,18 +99,20 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       }\">##{
         work_package.id
       }</mention>"
-    }
+    end
+
     describe "with tag" do
       let(:markdown) { expected_tag }
 
       it "loops the tag through" do
+        # note: escaped backslash in the tag text for correct markdown rendering
         expect(formatted).to eq(
           "<mention class=\"mention\" data-id=\"#{
             work_package.id
           }\" data-type=\"work_package\" data-text=\"##{
             work_package.id
-          }\">\\##{work_package.id}</mention>" # note: escaped backslash in the tag text for correct markdown rendering
-          )
+          }\">\\##{work_package.id}</mention>"
+        )
       end
     end
 
@@ -217,7 +219,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
     end
 
     describe "with custom field by name" do
-      let(:markdown) { "workPackageValue:\"Custom Field 1\"" }
+      let(:markdown) { 'workPackageValue:"Custom Field 1"' }
 
       it "outputs the custom field value" do
         expect(formatted).to eq("Custom value 1")
@@ -301,7 +303,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
     end
 
     describe "with custom field by name" do
-      let(:markdown) { "workPackageLabel:\"Custom Field 1\"" }
+      let(:markdown) { 'workPackageLabel:"Custom Field 1"' }
 
       it "outputs the custom field name" do
         expect(formatted).to eq("Custom field 1")
@@ -383,7 +385,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
     end
 
     describe "with custom field by name" do
-      let(:markdown) { "projectValue:\"Project Custom Field 1\"" }
+      let(:markdown) { 'projectValue:"Project Custom Field 1"' }
 
       it "outputs the custom field value" do
         expect(formatted).to eq("Project custom value 1")
@@ -475,7 +477,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
     end
 
     describe "with custom field by name" do
-      let(:markdown) { "projectLabel:\"Project Custom Field 1\"" }
+      let(:markdown) { 'projectLabel:"Project Custom Field 1"' }
 
       it "outputs the custom field name" do
         expect(formatted).to eq("Project custom field 1")
