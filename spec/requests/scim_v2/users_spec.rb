@@ -93,30 +93,37 @@ RSpec.describe "SCIM API Users", with_ee: [:scim_api] do
                                        "totalResults" => 4)
       end
 
-      it "filters results by familyName" do
-        filter_with_existing_rows = ERB::Util.url_encode("familyName Eq \"#{user.lastname}\"")
+      it "filters results by familyName case-insensitively" do
+        expected_body = { "Resources" => [{ "active" => true,
+                                            "emails" => [{ "primary" => true,
+                                                           "type" => "work",
+                                                           "value" => user.mail }],
+                                            "externalId" => external_user_id,
+                                            "groups" => [{ "value" => group.id.to_s }],
+                                            "id" => user.id.to_s,
+                                            "meta" => { "created" => user.created_at.iso8601,
+                                                        "lastModified" => user.updated_at.iso8601,
+                                                        "location" => "http://test.host/scim_v2/Users/#{user.id}",
+                                                        "resourceType" => "User" },
+                                            "name" => { "familyName" => user.lastname,
+                                                        "givenName" => user.firstname },
+                                            "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:User"],
+                                            "userName" => user.login }],
+                          "itemsPerPage" => 100,
+                          "schemas" => ["urn:ietf:params:scim:api:messages:2.0:ListResponse"],
+                          "startIndex" => 1,
+                          "totalResults" => 1 }
+        filter_with_existing_rows = ERB::Util.url_encode("familyName Eq \"#{user.lastname.upcase}\"")
         get "/scim_v2/Users?filter=#{filter_with_existing_rows}", {}, headers
 
         response_body = JSON.parse(last_response.body)
-        expect(response_body).to eq("Resources" => [{ "active" => true,
-                                                      "emails" => [{ "primary" => true,
-                                                                     "type" => "work",
-                                                                     "value" => user.mail }],
-                                                      "externalId" => external_user_id,
-                                                      "groups" => [{ "value" => group.id.to_s }],
-                                                      "id" => user.id.to_s,
-                                                      "meta" => { "created" => user.created_at.iso8601,
-                                                                  "lastModified" => user.updated_at.iso8601,
-                                                                  "location" => "http://test.host/scim_v2/Users/#{user.id}",
-                                                                  "resourceType" => "User" },
-                                                      "name" => { "familyName" => user.lastname,
-                                                                  "givenName" => user.firstname },
-                                                      "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:User"],
-                                                      "userName" => user.login }],
-                                    "itemsPerPage" => 100,
-                                    "schemas" => ["urn:ietf:params:scim:api:messages:2.0:ListResponse"],
-                                    "startIndex" => 1,
-                                    "totalResults" => 1)
+        expect(response_body).to eq(expected_body)
+
+        filter_with_existing_rows = ERB::Util.url_encode("familyName Eq \"#{user.lastname.downcase}\"")
+        get "/scim_v2/Users?filter=#{filter_with_existing_rows}", {}, headers
+
+        response_body = JSON.parse(last_response.body)
+        expect(response_body).to eq(expected_body)
 
         filter_with_nonexisting_rows = ERB::Util.url_encode('familyName Eq "NONEXISTENT USER LASTNAME"')
         get "/scim_v2/Users?filter=#{filter_with_nonexisting_rows}", {}, headers
@@ -129,7 +136,7 @@ RSpec.describe "SCIM API Users", with_ee: [:scim_api] do
                                     "totalResults" => 0)
       end
 
-      it "filters results by externalId" do
+      it "filters results by externalId case-sesitively" do
         filter_with_existing_rows = ERB::Util.url_encode("externalId Eq \"#{external_user_id}\"")
         get "/scim_v2/Users?filter=#{filter_with_existing_rows}", {}, headers
 
@@ -154,7 +161,7 @@ RSpec.describe "SCIM API Users", with_ee: [:scim_api] do
                                     "startIndex" => 1,
                                     "totalResults" => 1)
 
-        filter_with_nonexisting_rows = ERB::Util.url_encode('externalId Eq "NONEXISTENT EXTERNAL ID"')
+        filter_with_nonexisting_rows = ERB::Util.url_encode("externalId Eq \"#{external_user_id.upcase}\"")
         get "/scim_v2/Users?filter=#{filter_with_nonexisting_rows}", {}, headers
 
         response_body = JSON.parse(last_response.body)
@@ -262,7 +269,7 @@ RSpec.describe "SCIM API Users", with_ee: [:scim_api] do
         request_body = {
           "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:User"],
           "externalId" => external_user_id,
-          "userName" => user.login,
+          "userName" => "NewUserName",
           "name" => {
             "givenName" => "John",
             "familyName" => "Doe"
@@ -288,7 +295,7 @@ RSpec.describe "SCIM API Users", with_ee: [:scim_api] do
         request_body = {
           "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:User"],
           "externalId" => external_user_id,
-          "userName" => user.login,
+          "userName" => "NewUserName",
           "name" => {
             "givenName" => "John"
           },

@@ -92,15 +92,13 @@ module ScimV2
 
       def raise_result_errors_for_scim(result)
         result.on_failure do |result|
-          uniqueness_error = result.errors.find { |e| e.type == :taken }
-          unauthorized_error = result.errors.find { |e| e.type == :error_unauthorized }
-          if uniqueness_error.present?
+          if uniqueness_error?(result)
             raise Scimitar::ErrorResponse.new(
               status: 409,
               scimType: "uniqueness",
               detail: "Operation failed due to a uniqueness constraint: #{result.message}"
             )
-          elsif unauthorized_error.present?
+          elsif authorization_error?(result)
             raise Scimitar::ErrorResponse.new(
               status: 403,
               detail: "Action forbidden: insufficient permissions."
@@ -109,6 +107,14 @@ module ScimV2
             raise result.message
           end
         end
+      end
+
+      def uniqueness_error?(result)
+        result.errors.any? { |e| e.type == :taken }
+      end
+
+      def authorization_error?(result)
+        result.errors.any? { |e| e.type == :error_unauthorized }
       end
     end
   end
