@@ -39,22 +39,29 @@ module Projects::Concerns
         changed_cf_ids = changed_custom_values.map(&:custom_field_id)
         affected_cfs = model.available_custom_fields.affected_calculated_fields(changed_cf_ids)
 
-        if affected_cfs.present?
-          given_cf_ids = affected_cfs.flat_map(&:formula_referenced_custom_field_ids).uniq - affected_cfs.map(&:id)
-          given_cvs = model.custom_field_values.select { it.custom_field_id.in?(given_cf_ids) }
-          given = given_cvs.to_h { [it.custom_field.column_name, it.typed_value] }
-
-          to_compute = affected_cfs.to_h { [it.column_name, it.formula_string] }
-
-          calculator = Dentaku::Calculator.new
-          calculator.store(given)
-          result = calculator.solve(to_compute) { nil }.transform_keys { it.delete_prefix("cf_") }
-
-          model.custom_field_values = result
-        end
+        update_calculated_value_fields(affected_cfs) if affected_cfs.present?
       end
 
       super
+    end
+
+    def update_calculated_value_fields(cfs)
+      given = calculated_value_fields_referenced_values(cfs)
+      to_compute = cfs.to_h { [it.column_name, it.formula_string] }
+
+      calculator = Dentaku::Calculator.new
+      calculator.store(given)
+      result = calculator.solve(to_compute) { nil }.transform_keys { it.delete_prefix("cf_") }
+
+      model.custom_field_values = result
+    end
+
+    def calculated_value_fields_referenced_values(cfs)
+      given_cf_ids = cfs.flat_map(&:formula_referenced_custom_field_ids).uniq - cfs.map(&:id)
+      model
+        .custom_field_values
+        .select { it.custom_field_id.in?(given_cf_ids) }
+        .to_h { [it.custom_field.column_name, it.typed_value] }
     end
   end
 end
