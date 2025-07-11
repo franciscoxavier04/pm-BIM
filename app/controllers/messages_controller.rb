@@ -51,12 +51,12 @@ class MessagesController < ApplicationController
       @offset = 1 + (offset / REPLIES_PER_PAGE)
     end
 
-    @replies = @topic
-               .children
-               .includes(:author, :attachments, :project, forum: :project)
-               .order(created_at: :asc)
-               .page(@offset)
-               .per_page(per_page_param)
+    @pagy, @replies = pagy(
+      @topic
+        .children
+        .includes(:author, :attachments, :project, forum: :project)
+        .order(created_at: :asc)
+    )
 
     @reply = Message.new(subject: "RE: #{@message.subject}", parent: @topic, forum: @topic.forum)
     render action: "show", layout: !request.xhr?

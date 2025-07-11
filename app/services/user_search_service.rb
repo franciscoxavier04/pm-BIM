@@ -90,8 +90,6 @@ class UserSearchService
     # currently, the sort/paging-helpers are highly dependent on being included in a controller
     # and having access to things like the session or the params: this makes it harder
     # to test outside a controller and especially hard to re-use this functionality
-    # .page(page_param)
-    # .per_page(per_page_param)
     # .order(sort_clause)
   end
 end

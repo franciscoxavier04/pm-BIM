@@ -150,10 +150,7 @@ class RepositoriesController < ApplicationController
   end
 
   def revisions
-    @changesets = @repository.changesets
-                  .includes(:user, :repository)
-                  .page(page_param)
-                  .per_page(per_page_param)
+    @pagy, @changesets = pagy(@repository.changesets.includes(:user, :repository))
 
     respond_to do |format|
       format.html do

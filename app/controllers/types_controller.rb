@@ -37,7 +37,7 @@ class TypesController < ApplicationController
   before_action :find_type, only: %i[update move destroy]
 
   def index
-    @types = ::Type.page(page_param).per_page(per_page_param)
+    @pagy, @types = pagy(::Type.all)
   end
 
   def type

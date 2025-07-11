@@ -40,13 +40,15 @@ module Projects::Exports
     end
 
     def projects
-      @projects ||= query
-        .results
-        .with_required_storage
-        .with_latest_activity
-        .includes(:custom_values)
-        .page(page)
-        .per_page(Setting.work_packages_projects_export_limit.to_i)
+      @projects ||= Pagy.new(
+        query
+          .results
+          .with_required_storage
+          .with_latest_activity
+          .includes(:custom_values),
+        page: page,
+        limit: Setting.work_packages_projects_export_limit.to_i
+      )
     end
 
     private

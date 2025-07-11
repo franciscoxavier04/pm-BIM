@@ -54,9 +54,8 @@ module Storages::ProjectStorages::Projects
 
     # Overwritten to avoid loading data that is not needed in this context
     def projects(query)
-      @projects ||= query
-        .results
-        .paginate(page: helpers.page_param(params), per_page: helpers.per_page_param(params))
+      _, @projects = pagy(query.results)
+      @projects
     end
 
     # Load the project_storages for the current paginated batch of projects grouped

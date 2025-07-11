@@ -42,9 +42,7 @@ class NewsController < ApplicationController
   def index
     scope = @project ? @project.news : News.all
 
-    @newss = scope.merge(News.latest_for(current_user, count: 0))
-                  .page(page_param)
-                  .per_page(per_page_param)
+    @pagy, @newss = pagy(scope.merge(News.latest_for(current_user, count: 0)))
 
     respond_to do |format|
       format.html do

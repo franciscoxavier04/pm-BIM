@@ -62,7 +62,7 @@ class BudgetsController < ApplicationController
     sort_init "id", "desc"
     sort_update default_budget_sort
 
-    @budgets = visible_sorted_budgets
+    @pagy, @budgets = pagy(visible_sorted_budgets)
 
     respond_to do |format|
       format.html do
@@ -102,6 +102,10 @@ class BudgetsController < ApplicationController
     render action: :new, layout: !request.xhr?
   end
 
+  def edit
+    @budget.attributes = permitted_params.budget if params[:budget]
+  end
+
   def create
     call = attachable_create_call ::Budgets::CreateService,
                                   args: permitted_params.budget.merge(project: @project)
@@ -113,10 +117,6 @@ class BudgetsController < ApplicationController
     else
       render action: "new", status: :unprocessable_entity, layout: !request.xhr?
     end
-  end
-
-  def edit
-    @budget.attributes = permitted_params.budget if params[:budget]
   end
 
   def update
@@ -248,8 +248,6 @@ class BudgetsController < ApplicationController
       .order(sort_clause)
       .includes(:author)
       .where(project_id: @project.id)
-      .page(page_param)
-      .per_page(per_page_param)
   end
 
   def check_and_update_belonging_work_packages

@@ -164,9 +164,12 @@ module Projects
                   .with_latest_activity
       end
 
-      scope
-        .includes(:custom_values, :enabled_modules)
-        .paginate(page: helpers.page_param(params), per_page: helpers.per_page_param(params))
+      _, paginated = pagy(
+        scope.includes(:custom_values, :enabled_modules),
+        page: helpers.page_param(params),
+        limit: helpers.per_page_param(params)
+      )
+      paginated
     end
 
     def projects_with_levels_order_sensitive(projects, &)

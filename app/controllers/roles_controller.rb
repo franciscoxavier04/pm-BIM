@@ -37,9 +37,7 @@ class RolesController < ApplicationController
   menu_item :permissions_report, only: :report
 
   def index
-    @roles = roles_scope
-             .page(page_param)
-             .per_page(per_page_param)
+    @pagy, @roles = pagy(roles_scope)
 
     render action: "index", layout: false if request.xhr?
   end

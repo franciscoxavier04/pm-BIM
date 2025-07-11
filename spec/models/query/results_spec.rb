@@ -394,11 +394,7 @@ RSpec.describe Query::Results do
         end
 
         it "returns all work packages of project 2" do
-          work_packages = query
-                          .results
-                          .work_packages
-                          .page(1)
-                          .per_page(10)
+          _, work_packages = Pagy.new(query.results.work_packages, page: 1, limit: 10)
 
           expect(work_packages).to contain_exactly(wp_p2, wp2_p2)
         end
@@ -412,11 +408,7 @@ RSpec.describe Query::Results do
         end
 
         it "returns all work packages of project 2" do
-          work_packages = query
-                          .results
-                          .work_packages
-                          .page(1)
-                          .per_page(10)
+          _, work_packages = Pagy.new(query.results.work_packages, page: 1, limit: 10)
 
           expect(work_packages).to contain_exactly(wp_p2, wp2_p2)
         end

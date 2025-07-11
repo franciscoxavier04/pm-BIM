@@ -41,12 +41,13 @@ class Storages::ProjectSettings::ProjectStorageMembersController < Projects::Set
   model_object Storages::ProjectStorage
 
   def index
-    @project_users = Member
-                   .of_project(@project)
-                   .joins(:principal)
-                   .preload(roles: :role_permissions, principal: :remote_identities)
-                   .where(principal: { type: "User" })
-                   .paginate(page: page_param, per_page: per_page_param)
+    @project_users = pagy(
+      Member
+        .of_project(@project)
+        .joins(:principal)
+        .preload(roles: :role_permissions, principal: :remote_identities)
+        .where(principal: { type: "User" })
+    )
 
     render "/storages/project_settings/project_storage_members/index"
   end

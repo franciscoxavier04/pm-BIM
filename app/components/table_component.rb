@@ -31,6 +31,8 @@
 ##
 # Abstract view component. Subclass this for a concrete table.
 class TableComponent < ApplicationComponent
+  include Pagy::Frontend
+
   def initialize(rows: [], **)
     super(rows, **)
   end
@@ -140,9 +142,8 @@ class TableComponent < ApplicationComponent
   end
 
   def paginate_collection(query)
-    query
-      .page(helpers.page_param(controller.params))
-      .per_page(helpers.per_page_param)
+    _, paginated = pagy(query)
+    paginated
   end
 
   def test_selector

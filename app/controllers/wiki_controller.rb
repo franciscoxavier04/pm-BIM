@@ -250,12 +250,12 @@ class WikiController < ApplicationController
   # show page history
   def history
     # don't load text
-    @versions = @page
-                .journals
-                .select(:id, :user_id, :notes, :created_at, :version)
-                .order(Arel.sql("version DESC"))
-                .page(page_param)
-                .per_page(per_page_param)
+    @pagy, @versions = pagy(
+      @page
+        .journals
+        .select(:id, :user_id, :notes, :created_at, :version)
+        .order(Arel.sql("version DESC"))
+    )
 
     render layout: !request.xhr?
   end
@@ -343,6 +343,7 @@ class WikiController < ApplicationController
   def show_create?
     @editable && @page && User.current.allowed_in_project?(:edit_wiki_pages, @project)
   end
+
   private
 
   def locked?

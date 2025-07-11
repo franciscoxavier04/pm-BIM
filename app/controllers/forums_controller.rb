@@ -75,12 +75,12 @@ class ForumsController < ApplicationController
   end
 
   def set_topics
-    @topics =  @forum
-               .topics
-               .order(["#{Message.table_name}.sticked_on ASC", sort_clause].compact.join(", "))
-               .includes(:author, last_reply: :author)
-               .page(page_param)
-               .per_page(per_page_param)
+    @pagy, @topics = pagy(
+      @forum
+        .topics
+        .order(["#{Message.table_name}.sticked_on ASC", sort_clause].compact.join(", "))
+        .includes(:author, last_reply: :author)
+    )
   end
 
   def new; end

@@ -242,15 +242,10 @@ class WorkPackagesController < ApplicationController
 
   def load_work_packages
     @results = @query.results
-    @work_packages =
-      if @query.valid?
-        @results
-          .work_packages
-          .page(page_param)
-          .per_page(per_page_param)
-      else
-        []
-      end
+
+    @pagy, @work_packages = pagy(
+      @query.valid? ? @results.work_packages : WorkPackage.none
+    )
   end
 
   def login_back_url_params

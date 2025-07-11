@@ -52,11 +52,12 @@ module WorkPackage::Exports
     end
 
     def get_work_packages
-      query
-        .results
-        .work_packages
-        .page(page)
-        .per_page(Setting.work_packages_projects_export_limit.to_i)
+      _, work_packages = Pagy.new(
+        query.results.work_packages,
+        page:,
+        limit: Setting.work_packages_projects_export_limit.to_i
+      )
+      work_packages
     end
   end
 end
