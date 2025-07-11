@@ -137,7 +137,7 @@ export class TablePaginationComponent extends UntilDestroyedMixin implements OnI
       const lowerBound = this.pagination.getLowerPageBound();
       const upperBound = this.pagination.getUpperPageBound(this.pagination.total);
 
-      this.currentRange = `(${lowerBound} - ${upperBound}/${totalItems})`;
+      this.currentRange = `(${lowerBound} - ${upperBound}/${totalItems})`;
     } else {
       this.currentRange = '(0 - 0/0)';
     }

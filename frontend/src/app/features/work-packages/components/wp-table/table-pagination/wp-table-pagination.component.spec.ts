@@ -114,7 +114,7 @@ describe('wpTablePagination Directive', () => {
         app.pagination = new PaginationInstance(1, 11, 10);
         app.update();
         fixture.detectChanges();
-        expect(pageString(element)).toEqual('(1 - 10/11)');
+        expect(pageString(element)).toEqual('(1 - 10/11)');
       }));
 
     describe('"next" link', () => {
