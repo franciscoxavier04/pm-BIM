@@ -142,6 +142,7 @@ ru:
               conflict: 'Пользователь %{user} не может быть удален из группы %{group} по следующей причине: %{reason}'
               failed_to_remove: 'Пользователь %{user} не может быть удален из группы %{group} по следующей причине: %{reason}'
             rename_project_folder:
+              conflict: OpenProject could not rename the project folder to %{current_path} as a folder with the same name already exists
               forbidden: Пользователь OpenProject не имеет доступа к папке %{current_path}.
               not_found: "%{current_path} не найден."
             set_folders_permissions:

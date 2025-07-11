@@ -31,6 +31,9 @@ vi:
         spent: "Đã chi"
         spent_on: "Ngày"
         logged_by: "Đã ghi bởi"
+        entity: Logged for
+        entity_id: Logged for
+        entity_gid: Logged for
       cost_type:
         unit: "Tên đơn vị"
         unit_plural: "Tên đơn vị đa năng"
@@ -58,6 +61,9 @@ vi:
         start_time: Thời gian bắt đầu
         end_time: Thời gian hoàn thành
         time: Thời gian
+        entity: Logged for
+        entity_id: Logged for
+        entity_gid: Logged for
     models:
       time_entry:
         other: "Time entries"
@@ -91,6 +97,7 @@ vi:
   button_log_time: "Nhật ký"
   button_add_activity: "Hoạt động"
   button_add_time_entry: "Thời gian truy cập"
+  button_stop_timer: "Stop timer"
   caption_booked_on_project: "Đã ghi trên dự án"
   caption_default: "Mặc định"
   caption_default_rate_history_for: "Lịch sử tỷ lệ mặc định cho %{user}"
@@ -169,6 +176,7 @@ vi:
   label_day: "Ngày"
   label_today_capitalized: "Hôm nay"
   label_view_mode_switcher: "Change view"
+  label_timer_since: "Started at %{time}"
   placeholder_activity_select_work_package_first: Phải chọn gói công việc trước đã
   notice_something_wrong: "Đã xảy ra lỗi. Vui lòng thử lại."
   notice_successful_restore: "Khôi phục thành công."
@@ -176,6 +184,7 @@ vi:
   notice_cost_logged_successfully: "Chi phí đơn vị đã được ghi lại thành công."
   notice_different_time_zones: "Người dùng này có múi giờ khác (%{tz}). Nhật ký sẽ được ghi lại theo múi giờ của họ."
   notice_time_entry_update_failed: "Failed to update time entry. Errors: %{errors}"
+  notice_time_entry_delete_failed: "Failed to delete time entry. Errors: %{errors}"
   permission_edit_cost_entries: "Chỉnh sửa chi phí đơn vị đã ghi"
   permission_edit_own_cost_entries: "Chỉnh sửa chi phí đơn vị đã ghi của chính mình"
   permission_edit_hourly_rates: "Chỉnh sửa tỷ lệ theo giờ"

@@ -31,6 +31,9 @@ hu:
         spent: "Elköltve"
         spent_on: "Dátum"
         logged_by: "Naplózta"
+        entity: Logged for
+        entity_id: Logged for
+        entity_gid: Logged for
       cost_type:
         unit: "Egység neve"
         unit_plural: "Többes számú egység neve"
@@ -58,6 +61,9 @@ hu:
         start_time: Kezdés
         end_time: Finish time
         time: Idő
+        entity: Logged for
+        entity_id: Logged for
+        entity_gid: Logged for
     models:
       time_entry:
         one: "Belépési idő"
@@ -95,6 +101,7 @@ hu:
   button_log_time: "Log"
   button_add_activity: "Tevékenység"
   button_add_time_entry: "Eltöltött idő rögzítése"
+  button_stop_timer: "Stop timer"
   caption_booked_on_project: "Foglalt projekt"
   caption_default: "Alapértelmezett"
   caption_default_rate_history_for: "Alapértelmezett díj történet %{user}-nek"
@@ -173,6 +180,7 @@ hu:
   label_day: "Nap"
   label_today_capitalized: "Ma"
   label_view_mode_switcher: "Change view"
+  label_timer_since: "Started at %{time}"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Valami hiba történt. Kérlek próbáld újra."
   notice_successful_restore: "Sikeres visszaállítás."
@@ -180,6 +188,7 @@ hu:
   notice_cost_logged_successfully: "Egységköltség sikeresen naplózva."
   notice_different_time_zones: "This user has a different time zone (%{tz}). Time will be logged using their time zone."
   notice_time_entry_update_failed: "Failed to update time entry. Errors: %{errors}"
+  notice_time_entry_delete_failed: "Failed to delete time entry. Errors: %{errors}"
   permission_edit_cost_entries: "Könyvelt egységköltségek szerkesztése"
   permission_edit_own_cost_entries: "Saját könyvelt egységköltségek szerkesztése"
   permission_edit_hourly_rates: "Órabérek szerkesztése"

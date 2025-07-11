@@ -142,6 +142,7 @@ zh-TW:
               conflict: '使用者 %{user} 無法從 %{group} 群組中移除，原因如下： %{reason}'
               failed_to_remove: '使用者 %{user} 無法從 %{group} 群組中移除，原因如下： %{reason}'
             rename_project_folder:
+              conflict: OpenProject could not rename the project folder to %{current_path} as a folder with the same name already exists
               forbidden: OpenProject 使用者無法存取 %{current_path} 資料夾。
               not_found: "%{current_path} 沒有找到。"
             set_folders_permissions:

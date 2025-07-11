@@ -31,6 +31,9 @@ th:
         spent: "Spent"
         spent_on: "วันที่"
         logged_by: "Logged by"
+        entity: Logged for
+        entity_id: Logged for
+        entity_gid: Logged for
       cost_type:
         unit: "Unit name"
         unit_plural: "ชื่อหน่วย"
@@ -58,6 +61,9 @@ th:
         start_time: Start time
         end_time: Finish time
         time: Time
+        entity: Logged for
+        entity_id: Logged for
+        entity_gid: Logged for
     models:
       time_entry:
         other: "Time entries"
@@ -91,6 +97,7 @@ th:
   button_log_time: "Log"
   button_add_activity: "กิจกรรม"
   button_add_time_entry: "เวลาที่ถูกบันทึก"
+  button_stop_timer: "Stop timer"
   caption_booked_on_project: "Booked on project"
   caption_default: "ค่าเริ่มต้น"
   caption_default_rate_history_for: "Default rate history for %{user}"
@@ -169,6 +176,7 @@ th:
   label_day: "วันที่"
   label_today_capitalized: "Today"
   label_view_mode_switcher: "Change view"
+  label_timer_since: "Started at %{time}"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Something went wrong. Please try again."
   notice_successful_restore: "Successful restore."
@@ -176,6 +184,7 @@ th:
   notice_cost_logged_successfully: "Unit cost logged successfully."
   notice_different_time_zones: "This user has a different time zone (%{tz}). Time will be logged using their time zone."
   notice_time_entry_update_failed: "Failed to update time entry. Errors: %{errors}"
+  notice_time_entry_delete_failed: "Failed to delete time entry. Errors: %{errors}"
   permission_edit_cost_entries: "Edit booked unit costs"
   permission_edit_own_cost_entries: "Edit own booked unit costs"
   permission_edit_hourly_rates: "Edit hourly rates"

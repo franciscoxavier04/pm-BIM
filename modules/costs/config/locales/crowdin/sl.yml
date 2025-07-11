@@ -31,6 +31,9 @@ sl:
         spent: "Porabljeno"
         spent_on: "Datum"
         logged_by: "Logged by"
+        entity: Logged for
+        entity_id: Logged for
+        entity_gid: Logged for
       cost_type:
         unit: "Ime enote"
         unit_plural: "Pluralizirano ime enote"
@@ -58,6 +61,9 @@ sl:
         start_time: Start time
         end_time: Finish time
         time: Čas
+        entity: Logged for
+        entity_id: Logged for
+        entity_gid: Logged for
     models:
       time_entry:
         one: "Vnos časa"
@@ -103,6 +109,7 @@ sl:
   button_log_time: "Log"
   button_add_activity: "Aktivnost"
   button_add_time_entry: "Beleži čas"
+  button_stop_timer: "Stop timer"
   caption_booked_on_project: "Rezervirano na projektu"
   caption_default: "Privzeto"
   caption_default_rate_history_for: "Zgodovina privzetih tečajev za %{user}"
@@ -181,6 +188,7 @@ sl:
   label_day: "Dan"
   label_today_capitalized: "Danes"
   label_view_mode_switcher: "Change view"
+  label_timer_since: "Started at %{time}"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "nekaj je šlo narobe. Prosim poskusite ponovno."
   notice_successful_restore: "Uspešna obnovitev."
@@ -188,6 +196,7 @@ sl:
   notice_cost_logged_successfully: "Stroški na enoto so bili uspešno prijavljeni."
   notice_different_time_zones: "This user has a different time zone (%{tz}). Time will be logged using their time zone."
   notice_time_entry_update_failed: "Failed to update time entry. Errors: %{errors}"
+  notice_time_entry_delete_failed: "Failed to delete time entry. Errors: %{errors}"
   permission_edit_cost_entries: "Uredite rezervirane stroške na enoto"
   permission_edit_own_cost_entries: "Uredite lastne rezervirane stroške na enoto"
   permission_edit_hourly_rates: "Urejanje urnih postavk"

@@ -31,6 +31,9 @@ bg:
         spent: "Отменено"
         spent_on: "Дата"
         logged_by: "Влязъл от"
+        entity: Logged for
+        entity_id: Logged for
+        entity_gid: Logged for
       cost_type:
         unit: "Име на единица"
         unit_plural: "Плурализирано име на единица"
@@ -58,6 +61,9 @@ bg:
         start_time: Начален час
         end_time: Finish time
         time: Час
+        entity: Logged for
+        entity_id: Logged for
+        entity_gid: Logged for
     models:
       time_entry:
         one: "Time entry"
@@ -95,6 +101,7 @@ bg:
   button_log_time: "Log"
   button_add_activity: "Активност"
   button_add_time_entry: "Отчетено време"
+  button_stop_timer: "Stop timer"
   caption_booked_on_project: "Разходи за единична регистрация"
   caption_default: "По подразбиране"
   caption_default_rate_history_for: "История на тарифите по подразбиране за %{user}"
@@ -173,6 +180,7 @@ bg:
   label_day: "Ден"
   label_today_capitalized: "Днес"
   label_view_mode_switcher: "Change view"
+  label_timer_since: "Started at %{time}"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Нещо се обърка. Моля, опитайте отново."
   notice_successful_restore: "Успешно възстановяване."
@@ -180,6 +188,7 @@ bg:
   notice_cost_logged_successfully: "Единичната цена е регистрирана успешно."
   notice_different_time_zones: "This user has a different time zone (%{tz}). Time will be logged using their time zone."
   notice_time_entry_update_failed: "Failed to update time entry. Errors: %{errors}"
+  notice_time_entry_delete_failed: "Failed to delete time entry. Errors: %{errors}"
   permission_edit_cost_entries: "Редактирайте резервираните единични разходи"
   permission_edit_own_cost_entries: "Редактирайте собствените резервирани единични разходи"
   permission_edit_hourly_rates: "Редактирайте почасовите ставки"

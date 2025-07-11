@@ -325,7 +325,7 @@ uk:
       admin_only: "Установіть прапорець, щоб зробити цей атрибут видимим лише для адміністраторів. Користувачі без прав адміністратора не зможуть переглядати або редагувати його."
       is_filter: >
         Дозвольте відображати користувацьке поле у фільтрі в поданнях пакета робіт. Зверніть увагу: користувацьке поле відображатиметься в глобальних поданнях, лише якщо встановлено прапорець «Для всіх проєктів».
-      formula: "Додайте числові значення або введіть \"/\" для пошуку атрибута чи математичного оператора."
+      formula: "Додайте числові значення або введіть «/» для пошуку атрибута чи математичного оператора."
     tab:
       no_results_title_text: Наразі немає спеціальних полів.
       no_results_content_text: Створіть нове спеціальне поле
@@ -637,11 +637,11 @@ uk:
   priorities:
     edit:
       priority_color_text: |
-        Click to assign or change the color of this priority.
-        It can be used for highlighting work packages in the table.
+        Натисніть, щоб призначити або змінити колір для цього пріоритету.
+        Його можна використовувати для виділення пакетів роботи в таблиці.
     admin:
       default:
-        caption: Making this priority default will override the previous default priority.
+        caption: Якщо зробити цей пріоритет стандартним, він замінить попередній стандартний пріоритет.
   reactions:
     action_title: "Реакція"
     add_reaction: "Додати реакцію"
@@ -695,9 +695,9 @@ uk:
         tab: "Конфігурація форми"
       projects:
         tab: Проєкти
-        enable_all: Enable for all projects
-        select_projects: Select projects
-        select_projects_description: Select the projects in which you would like to use this type.
+        enable_all: Використовувати у всіх проєктах
+        select_projects: Вибрати проєкти
+        select_projects_description: Виберіть проєкти, у яких ви хочете використовувати цей тип.
       settings:
         tab: "Налаштування"
         type_color_text: "Цей колір використовується для виділення різних типів \nна діаграмах Ґанта або в таблицях пакетів робіт. Тому рекомендуємо вибрати насичений колір."
@@ -1177,8 +1177,8 @@ uk:
           Ви можете вимкнути стандартні <a href="%{href}">комбінації клавіш</a>, якщо використовуєте невізуальний екран або хочете, щоб відповідні дії не запускалися, коли ви натискаєте ці комбінації клавіш випадково.
         dismissed_enterprise_banners: "Приховані банери Enterprise"
         impaired: "Режим спеціальних можливостей"
-        auto_hide_popups: "Automatically hide success banners"
-        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
+        auto_hide_popups: "Автоматично приховувати банери про успішне виконання"
+        auto_hide_popups_caption: "Якщо ввімкнено, зелені банери про успішне виконання автоматично зникатимуть через 5 секунд."
         warn_on_leaving_unsaved: "Попереджати мене, коли залишив робочий пакет із незбереженими змінами"
         theme: "Колірний режим"
         time_zone: "Часовий пояс"
@@ -1312,7 +1312,7 @@ uk:
           attributes:
             content_type:
               blank: "Тип контенту файлу не може бути пустий."
-              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
+              not_allowlisted: "Файл відхилено автоматичним фільтром. Завантаження «%{value}» не дозволено."
               format: "%{message}"
         capability:
           context:
@@ -1989,11 +1989,11 @@ uk:
       succeeded: 'Скопіював проект "%{source_project_name}" до "%{target_project_name}".'
     source_project_label: "Проєкт скопійовано"
     copy_options:
-      dependencies_label: 'Скопіювати з проєкту'
+      dependencies_label: 'Копіювати з проєкту'
   create_project:
     template_label: "Використовувати шаблон"
     copy_options:
-      dependencies_label: 'Копіювати з шаблону'
+      dependencies_label: 'Копіювати з шаблона'
   create_wiki_page: "Створити нову вікісторінку"
   create_wiki_page_button: "Сторінка Wiki"
   date:
@@ -2208,7 +2208,7 @@ uk:
       placeholder_users: Прототипи користувачів
       project_list_sharing: Спільне використання списку проєктів
       readonly_work_packages: Пакети робіт лише для читання
-      scim_api: SCIM server API
+      scim_api: API сервера SCIM
       sso_auth_providers: Єдиний вхід
       team_planner_view: Подання командного планувальника
       virus_scanning: Пошук вірусів
@@ -2276,8 +2276,8 @@ uk:
         title: "Єдиний вхід для сховища Nextcloud"
         description: "Увімкніть швидку й безпечну автентифікацію для свого сховища Nextcloud завдяки технології єдиного входу. Спростіть керування доступом і покращте взаємодію користувачів зі своїм продуктом."
       scim_api:
-        title: "SCIM clients"
-        description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
+        title: "Клієнти SCIM"
+        description: "Автоматизуйте управління користувачами в OpenProject, інтегрувавши зовнішні сервіси для керування ідентичностями, такі як Microsoft Entra або Keycloak, через API сервера SCIM. Ця можливість доступна, починаючи з корпоративного плану Enterprise."
       virus_scanning:
         description: "Переконайтеся, що вивантажені в OpenProject файли перевіряються на віруси перед тим, як стають доступними для інших користувачів."
       placeholder_users:
@@ -2309,14 +2309,14 @@ uk:
       welcome_title: "Стислий огляд функцій"
       welcome_description: "Отримайте стислий огляд функцій для управління проєктами й командної роботи у версії OpenProject Enterprise."
       confirmation_info: >
-        We sent you an email on %{date} to %{email} with all the information to start the free trial of OpenProject Enterprise. Please check your inbox and click the confirmation link provided to start your 14-day free trial.
+        Ми надіслали вам листа %{date} на адресу %{email} з усією інформацією, потрібною, щоб почати користуватися безкоштовною пробною версією OpenProject Enterprise. Знайдіть його у своїй пошті й перейдіть за посиланням для підтвердження, щоб розпочати безплатний 14-денний пробний період.
       confirmation_subline: >
-        Please, check your inbox and follow the steps to start your 14-day free trial.
-      domain_caption: The token will be valid for your currently configured host name.
+        Перевірте свою пошту й виконайте вказівки, щоб розпочати безплатний 14-денний пробний період.
+      domain_caption: Токен буде дійсним для вашого поточного імені хосту.
       receive_newsletter_html: >
-        I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
+        Я хочу отримувати <a target="_blank" href="https://www.openproject.org/newsletter/">інформаційний бюлетень</a> OpenProject.
       consent_html: >
-        I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
+        Я погоджуюся з <a target="_blank" href="https://www.openproject.org/terms-of-service/">умовами надання послуг</a> і <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">політикою конфіденційності</a>.
   enumeration_activities: "Дії щодо відстеження часу"
   enumeration_work_package_priorities: "Пріоритети робочого пакету"
   enumeration_reported_project_statuses: "Повідомлення про статус проекту"
@@ -2776,7 +2776,7 @@ uk:
   label_select_main_menu_item: Виберіть новий пункт головного меню
   label_required_disk_storage: "Необхідне місце на диску"
   label_send_invitation: Надіслати запрошення
-  label_calculated_value: "Calculated value"
+  label_calculated_value: "Розраховане значення"
   label_change_plural: "Зміни"
   label_change_properties: "Змінити властивості"
   label_change_status: "Змінити статус"
@@ -2912,7 +2912,7 @@ uk:
   label_follows: "слідкувати"
   label_force_user_language_to_default: "Встановити мову користувачів, які мають не підтримувану мову, за умовчанням"
   label_form_configuration: "Конфігурація форми"
-  label_formula: "Formula"
+  label_formula: "Формула"
   label_gantt_chart: "Діаграма Ґанта"
   label_gantt_chart_plural: "Діаграми Ґанта"
   label_general: "Загальні"
@@ -2949,7 +2949,7 @@ uk:
   label_information_plural: "Інформація"
   label_installation_guides: "Інструкції зі встановлення"
   label_integer: "Ціле число"
-  label_interface: "Interface"
+  label_interface: "Інтерфейс"
   label_internal: "Власне"
   label_introduction_video: "Введення відео"
   label_invite_user: "Запросити користувача"
@@ -3654,7 +3654,7 @@ uk:
   permission_comment_news: "Коментування новин"
   permission_commit_access: "Доступ для читання/запису до сховища (фіксація)"
   permission_copy_projects: "Копіювати проекти"
-  permission_copy_work_packages: "Duplicate work packages"
+  permission_copy_work_packages: "Дублювати пакети робіт"
   permission_create_backup: "Створення резервних копій"
   permission_delete_work_package_watchers: "Видалення спостерігачів"
   permission_delete_work_packages: "Видалити робочі пакети"
@@ -4174,7 +4174,7 @@ uk:
       phase_gates: "Контрольні точки етапів"
       new:
         description: "Зміни цього етапу проєкту відображатимуться в усіх проєктах із цим етапом."
-        heading: "New phase"
+        heading: "Новий етап"
       both_gate: "Початкова й кінцева контрольні точки"
       no_gate: "Немає контрольної точки"
       start_gate: "Початкова контрольна точка"
@@ -4479,7 +4479,7 @@ uk:
     reminders:
       label_remind_at: "Дата"
       note_placeholder: "Навіщо ви встановлюєте це нагадування?"
-      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
+      create_success_message: "Нагадування встановлено. Ви отримаєте сповіщення про цей пакет робіт у такий час: %{reminder_time}."
       success_update_message: "Нагадування оновлено."
       success_deletion_message: "Нагадування видалено."
   sharing:
@@ -4551,12 +4551,12 @@ uk:
         message: "Надавати спільний доступ до списків проєктів окремим користувачам можна за допомогою доповнення версії Enterprise."
   working_days:
     info: >
-      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
+      Під час планування пакетів робіт і життєвих циклів проєктів невибрані дні пропускаються (і не включаються в кількість днів). Це налаштування можна змінити на рівні пакета робіт.
     instance_wide_info: >
       Під час планування пакетів робіт дати, додані в список нижче, вважаються неробочим днями й пропускаються.
     change_button: "Змінити робочі дні"
     warning: >
-      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
+      Якщо змінити дні тижня, які вважаються робочими чи неробочими, це може вплинути на дати початку й завершення всіх пакетів робіт і життєвих циклів проєктів в усіх проєктах цього екземпляра.
     journal_note:
       changed: _**Робочі дні** змінено (%{changes})._
       days:

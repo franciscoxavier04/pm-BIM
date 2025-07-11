@@ -31,6 +31,9 @@ sv:
         spent: "Spenderat"
         spent_on: "Datum"
         logged_by: "Logged by"
+        entity: Logged for
+        entity_id: Logged for
+        entity_gid: Logged for
       cost_type:
         unit: "Enhetsnamn"
         unit_plural: "Enhetsnamn plural"
@@ -58,6 +61,9 @@ sv:
         start_time: Start time
         end_time: Finish time
         time: Tid
+        entity: Logged for
+        entity_id: Logged for
+        entity_gid: Logged for
     models:
       time_entry:
         one: "Tidspost"
@@ -95,6 +101,7 @@ sv:
   button_log_time: "Log"
   button_add_activity: "Aktivitet"
   button_add_time_entry: "Logga tid"
+  button_stop_timer: "Stop timer"
   caption_booked_on_project: "Bokade på projekt"
   caption_default: "Standard"
   caption_default_rate_history_for: "Historiskt standardtimpris för %{user}"
@@ -173,6 +180,7 @@ sv:
   label_day: "Dag"
   label_today_capitalized: "Today"
   label_view_mode_switcher: "Change view"
+  label_timer_since: "Started at %{time}"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Ett fel inträffade. Försök igen."
   notice_successful_restore: "Lyckad återställning."
@@ -180,6 +188,7 @@ sv:
   notice_cost_logged_successfully: "Enhetskostnaden loggad framgångsrikt."
   notice_different_time_zones: "This user has a different time zone (%{tz}). Time will be logged using their time zone."
   notice_time_entry_update_failed: "Failed to update time entry. Errors: %{errors}"
+  notice_time_entry_delete_failed: "Failed to delete time entry. Errors: %{errors}"
   permission_edit_cost_entries: "Redigera bokade enhetskostnader"
   permission_edit_own_cost_entries: "Redigera egna bokade enhetskostnader"
   permission_edit_hourly_rates: "Redigera timpriser"

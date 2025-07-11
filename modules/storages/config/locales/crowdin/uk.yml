@@ -142,6 +142,7 @@ uk:
               conflict: 'Користувача %{user} не вдалося вилучити з групи «%{group}» з такої причини: %{reason}'
               failed_to_remove: 'Користувача %{user} не вдалося вилучити з групи «%{group}» з такої причини: %{reason}'
             rename_project_folder:
+              conflict: OpenProject could not rename the project folder to %{current_path} as a folder with the same name already exists
               forbidden: Користувач OpenProject не має доступу до папки %{current_path}.
               not_found: "%{current_path} не знайдено."
             set_folders_permissions:

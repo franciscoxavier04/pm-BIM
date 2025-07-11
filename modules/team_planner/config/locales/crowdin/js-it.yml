@@ -3,7 +3,7 @@ it:
   js:
     team_planner:
       add_existing: 'Aggiungi esistente'
-      label_team_planner_plural: 'Team planners'
+      label_team_planner_plural: 'Organizzatori di gruppo'
       add_existing_title: 'Aggiungi macro-attività esistenti'
       create_label: 'Pianificatore di team'
       create_title: 'Crea nuovo pianificatore di team'

@@ -31,6 +31,9 @@ hr:
         spent: "Potrošeno"
         spent_on: "Datum"
         logged_by: "Logged by"
+        entity: Logged for
+        entity_id: Logged for
+        entity_gid: Logged for
       cost_type:
         unit: "Naziv jedinice"
         unit_plural: "Višestruki nazivi jedinica"
@@ -58,6 +61,9 @@ hr:
         start_time: Start time
         end_time: Finish time
         time: Vrijeme
+        entity: Logged for
+        entity_id: Logged for
+        entity_gid: Logged for
     models:
       time_entry:
         one: "Time entry"
@@ -99,6 +105,7 @@ hr:
   button_log_time: "Log"
   button_add_activity: "Aktivnost"
   button_add_time_entry: "Vrijeme pristupa"
+  button_stop_timer: "Stop timer"
   caption_booked_on_project: "Na projektu"
   caption_default: "Zadana vrijednost"
   caption_default_rate_history_for: "Povijest uobičajene satnice za %{user}"
@@ -177,6 +184,7 @@ hr:
   label_day: "Dan"
   label_today_capitalized: "Today"
   label_view_mode_switcher: "Change view"
+  label_timer_since: "Started at %{time}"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Nešto je pošlo po zlu. Molimo pokušajte ponovno."
   notice_successful_restore: "Uspješno vraćanje."
@@ -184,6 +192,7 @@ hr:
   notice_cost_logged_successfully: "Jedinični trošak uspješno zabilježen."
   notice_different_time_zones: "This user has a different time zone (%{tz}). Time will be logged using their time zone."
   notice_time_entry_update_failed: "Failed to update time entry. Errors: %{errors}"
+  notice_time_entry_delete_failed: "Failed to delete time entry. Errors: %{errors}"
   permission_edit_cost_entries: "Uredite zabilježene jedinične troškove"
   permission_edit_own_cost_entries: "Uredite vlastite zabilježene jedinične troškove"
   permission_edit_hourly_rates: "Uredite satnice"

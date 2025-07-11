@@ -31,6 +31,9 @@ nl:
         spent: "Uitgegeven"
         spent_on: "Datum"
         logged_by: "Gelogd door"
+        entity: Logged for
+        entity_id: Logged for
+        entity_gid: Logged for
       cost_type:
         unit: "Naam eenheid"
         unit_plural: "Vermeerderde eenheid naam"
@@ -58,6 +61,9 @@ nl:
         start_time: Starttijd
         end_time: Eindtijd
         time: Tijd
+        entity: Logged for
+        entity_id: Logged for
+        entity_gid: Logged for
     models:
       time_entry:
         one: "Tijd invoer"
@@ -95,6 +101,7 @@ nl:
   button_log_time: "Registreer"
   button_add_activity: "Activiteit"
   button_add_time_entry: "Gelogde tijd"
+  button_stop_timer: "Stop timer"
   caption_booked_on_project: "Gereserveerd op project"
   caption_default: "Standaard"
   caption_default_rate_history_for: "Standaard tarief geschiedenis voor %{user}"
@@ -173,6 +180,7 @@ nl:
   label_day: "Dag"
   label_today_capitalized: "Vandaag"
   label_view_mode_switcher: "Change view"
+  label_timer_since: "Started at %{time}"
   placeholder_activity_select_work_package_first: Eerst moet u een werkpakket selecteren
   notice_something_wrong: "Er is iets fout gegaan. Probeer het opnieuw."
   notice_successful_restore: "Herstel geslaagd."
@@ -180,6 +188,7 @@ nl:
   notice_cost_logged_successfully: "Kosten eenheid succesvol geregistreerd."
   notice_different_time_zones: "Deze gebruiker heeft een andere tijdzone (%{tz}). De tijd wordt geregistreerd met hun tijdzone."
   notice_time_entry_update_failed: "Failed to update time entry. Errors: %{errors}"
+  notice_time_entry_delete_failed: "Failed to delete time entry. Errors: %{errors}"
   permission_edit_cost_entries: "Geboekte kosten per eenheid bewerken"
   permission_edit_own_cost_entries: "Eigen geboekte kosten per eenheid bewerken"
   permission_edit_hourly_rates: "Bewerk uurtarieven"

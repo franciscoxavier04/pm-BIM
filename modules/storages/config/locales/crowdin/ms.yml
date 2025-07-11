@@ -142,6 +142,7 @@ ms:
               conflict: 'Pengguna %{user} tidak dapat dialih keluar daripada kumpulan %{group} atas sebab berikut: %{reason}'
               failed_to_remove: 'Pengguna %{user} tidak dapat dialih keluar daripada kumpulan %{group} atas sebab berikut: %{reason}'
             rename_project_folder:
+              conflict: OpenProject could not rename the project folder to %{current_path} as a folder with the same name already exists
               forbidden: Pengguna OpenProject tidak mempunyai akses kepada folder %{current_path}.
               not_found: "%{current_path} tidak ditemui."
             set_folders_permissions:

@@ -142,6 +142,7 @@
               conflict: 'Brukeren %{user} kunne ikke fjernes fra %{group} gruppen av følgende årsak: %{reason}'
               failed_to_remove: 'Brukeren %{user} kunne ikke fjernes fra %{group} gruppen av følgende årsak: %{reason}'
             rename_project_folder:
+              conflict: OpenProject could not rename the project folder to %{current_path} as a folder with the same name already exists
               forbidden: OpenProject bruker har ikke tilgang til %{current_path} mappe.
               not_found: "%{current_path} ble ikke funnet."
             set_folders_permissions:

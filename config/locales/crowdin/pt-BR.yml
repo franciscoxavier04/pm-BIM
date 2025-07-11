@@ -1739,7 +1739,7 @@ pt-BR:
     estimated_time: "Trabalho"
     email: "E-mail"
     entity_type: "Entidade"
-    expires_at: "Expires on"
+    expires_at: "Expira em"
     firstname: "Nome"
     filter: "Filtro"
     group: "Grupo"
@@ -1863,7 +1863,7 @@ pt-BR:
   button_delete_watcher: "Excluir observador %{name}"
   button_download: "Baixar"
   button_duplicate: "Duplicar"
-  button_duplicate_and_follow: "Duplicate and follow"
+  button_duplicate_and_follow: "Duplicar e seguir"
   button_edit: "Editar"
   button_edit_associated_wikipage: "Editar página wiki associada: %{page_title}"
   button_expand_all: "Expandir todos"
@@ -1955,7 +1955,7 @@ pt-BR:
     copy_options:
       dependencies_label: 'Copiar do modelo'
   create_wiki_page: "Criar nova página wiki"
-  create_wiki_page_button: "Página wiki"
+  create_wiki_page_button: "Página Wiki"
   date:
     abbr_day_names:
       - "Dom"
@@ -3569,7 +3569,7 @@ pt-BR:
   permission_comment_news: "Comentar notícias"
   permission_commit_access: "Acesso de leitura/gravação para o repositório (commit)"
   permission_copy_projects: "Copiar projetos"
-  permission_copy_work_packages: "Duplicate work packages"
+  permission_copy_work_packages: "Duplicar pacotes de trabalho"
   permission_create_backup: "Criar backups"
   permission_delete_work_package_watchers: "Excluir observadores"
   permission_delete_work_packages: "Excluir pacotes de trabalho"

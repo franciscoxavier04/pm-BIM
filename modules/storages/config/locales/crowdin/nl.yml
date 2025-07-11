@@ -142,6 +142,7 @@ nl:
               conflict: 'The user %{user} could not be removed from the %{group} group for the following reason: %{reason}'
               failed_to_remove: 'The user %{user} could not be removed from the %{group} group for the following reason: %{reason}'
             rename_project_folder:
+              conflict: OpenProject could not rename the project folder to %{current_path} as a folder with the same name already exists
               forbidden: OpenProject gebruiker heeft geen toegang tot de map %{current_path} .
               not_found: "%{current_path} is niet gevonden."
             set_folders_permissions:

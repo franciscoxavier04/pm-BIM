@@ -142,6 +142,7 @@ pt-PT:
               conflict: 'Não foi possível remover o utilizador %{user} do grupo %{group} pelo seguinte motivo: %{reason}'
               failed_to_remove: 'Não foi possível remover o utilizador %{user} do grupo %{group} pelo seguinte motivo: %{reason}'
             rename_project_folder:
+              conflict: OpenProject could not rename the project folder to %{current_path} as a folder with the same name already exists
               forbidden: "O utilizador do OpenProject não tem acesso à pasta %{current_path}.\n"
               not_found: "%{current_path} não foi encontrado."
             set_folders_permissions:
