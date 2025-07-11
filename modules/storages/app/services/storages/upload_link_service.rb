@@ -60,7 +60,6 @@ module Storages
                            .call(storage: @storage, auth_strategy:, input_data:)
                            .alt_map do |error|
         add_error(:base, error, options: { storage_name: @storage.name, folder: input_data.folder_id })
-        @result.success = false
       end
     end
 

@@ -43,9 +43,7 @@ module EnterpriseEdition
     def set_system_arguments(system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:tag] = :div
-      @system_arguments[:mx] = 2
-      @system_arguments[:mt] = 2
-      @system_arguments[:mb] = 3
+      @system_arguments[:my] = 2
       @system_arguments[:id] = "op-enterprise-banner-teaser"
       @system_arguments[:test_selector] = "op-enterprise-banner"
       @system_arguments[:classes] = class_names(

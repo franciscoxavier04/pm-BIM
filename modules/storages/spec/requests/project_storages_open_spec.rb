@@ -101,7 +101,10 @@ RSpec.describe "projects/:project_id/project_storages/:id/open", :webmock do
       expect(last_response.headers["Location"]).to eq("http://test.host/projects/#{project.id}")
 
       flash = Sessions::UserSession.last.data.dig("flash", "flashes")
-      expect(flash["error"]).to eq("error")
+      expect(flash["error"]).to eq([
+                                     "error",
+                                     "Please contact your administrator to resolve this error."
+                                   ])
     end
   end
 
@@ -216,7 +219,7 @@ RSpec.describe "projects/:project_id/project_storages/:id/open", :webmock do
         expect(last_response.headers["Location"]).to eq("http://test.host/projects/#{project.id}")
 
         flash = Sessions::UserSession.last.data.dig("flash", "flashes")
-        expect(flash["error"]).to eq(["Nope, sorry!"])
+        expect(flash["error"]).to eq(["Nope, sorry!", "Please contact your administrator to resolve this error."])
       end
     end
 

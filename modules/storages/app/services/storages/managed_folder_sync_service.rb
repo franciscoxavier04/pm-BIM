@@ -46,7 +46,7 @@ module Storages
     def call
       with_tagged_logger([self.class.name, "storage-#{@storage.id}"]) do
         info "Starting AMPF Sync for Storage #{@storage.id}"
-        prepare_remote_folders.on_failure { return epilogue }
+        prepare_remote_folders
         apply_permissions_to_folders
         epilogue
       end
