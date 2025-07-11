@@ -1,0 +1,28 @@
+<%=
+  grid_layout("op-documents-list--row", tag: :div, align_items: :center) do |grid|
+    grid.with_area(:title, tag: :div, mr: 3, classes: "ellipsis") do
+      render(
+        Primer::Beta::Link.new(
+          href: url_helpers.url_for({ controller: "/documents", action: "show", id: document }),
+          font_weight: :bold,
+          mr: 1,
+          data: { "test-selector": "document-title" }
+        )
+      ) do
+        document.title
+      end
+    end
+
+    grid.with_area(:author, tag: :div, color: :subtle, mr: 3, font_weight: :light, data: { "test-selector": "document-author" }, classes: "ellipsis") do
+      render(Users::AvatarComponent.new(user: User.current, size: :mini, link: false, show_name: true, name_classes: "hidden-for-tablet-and-small-laptops"))
+    end
+
+    grid.with_area(:category, tag: :div, color: :subtle, mr: 3, hide: :sm, data: { "test-selector": "document-category" }) do
+      render(Primer::Beta::Truncate.new(font_weight: :light)) { document.category.name }
+    end
+
+    grid.with_area(:updated_at, tag: :div, color: :subtle) do
+      render(Primer::Beta::Text.new(font_weight: :light)) { updated_at_time(document) }
+    end
+  end
+%>

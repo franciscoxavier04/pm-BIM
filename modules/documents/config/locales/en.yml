@@ -45,6 +45,14 @@ en:
   enumeration_doc_categories: "Document categories"
 
   documents:
+    documents_list_blank_slate:
+      heading: "Welcome to %{project_name} documents"
+      description: "Documents are a great way to share information with your team. You can add documents to your project to help you manage your work."
+
+    label_author: "Author"
+    label_category: "Category"
+    label_updated_at: "Updated at"
+
     label_attachment_author: "Attachment author"
     label_categories: "Categories"
     new_category: "New category"
