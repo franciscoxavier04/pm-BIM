@@ -7,7 +7,7 @@
           class="op-pagination--item-link op-pagination--item-link_prev"
           type="button"
           (click)="showPage(pagination.page - 1)"
-          rel="prev start">
+          data-rel="prev">
           <svg chevron-left-icon size="xsmall" class="op-pagination--item-link-icon op-pagination--item-link-icon_prev" />
           {{text.label_previous}}
         </button>
@@ -20,7 +20,7 @@
             class="op-pagination--item-link"
             type="button"
             (click)="showPage(pageNumber)"
-            rel="next"
+            data-rel="prev"
             [attr.aria-label]="text.page_number(pageNumber)"
             [textContent]="pageNumber"
           ></button>
@@ -47,7 +47,7 @@
             type="button"
             *ngIf="pageNumber !== pagination.page"
             (click)="showPage(pageNumber)"
-            rel="next"
+            data-rel="next"
             [attr.aria-label]="text.page_number(pageNumber)"
             [textContent]="pageNumber"
           ></button>
@@ -64,7 +64,7 @@
             class="op-pagination--item-link"
             type="button"
             (click)="showPage(pageNumber)"
-            rel="next"
+            data-rel="next"
             [attr.aria-label]="text.page_number(pageNumber)"
             [textContent]="pageNumber"
           ></button>
@@ -77,7 +77,7 @@
           class="op-pagination--item-link op-pagination--item-link_next"
           type="button"
           (click)="showPage(pagination.page + 1)"
-          rel="next">
+          data-rel="next">
           {{text.label_next}}
           <svg chevron-right-icon size="xsmall" class="op-pagination--item-link-icon op-pagination--item-link-icon_next" />
         </button>
