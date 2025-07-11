@@ -475,7 +475,7 @@ class MeetingsController < ApplicationController
       params
         .require(:meeting)
         .permit(:title, :location, :start_time, :project_id,
-                :duration, :start_date, :start_time_hour,
+                :duration, :start_date, :start_time_hour, :notify,
                 participants_attributes: %i[email name invited attended user user_id meeting id])
     end
   end
