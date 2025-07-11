@@ -115,7 +115,10 @@ export class WorkPackageRelationsComponent extends UntilDestroyedMixin implement
 
   private async updateFrontendData(event:CustomEvent) {
     if (event) {
-      const form = event.target as HTMLFormElement;
+      // A turbo:submit-end event *has* a `formSubmission` property, but I do not
+      // know how to avoid the eslint type warning. Please if you know, fix it.
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      const form = event.detail.formSubmission.formElement as HTMLFormElement;
       const updateWorkPackage = !!form.dataset?.updateWorkPackage;
 
       if (updateWorkPackage) {
