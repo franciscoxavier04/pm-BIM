@@ -30,7 +30,7 @@ module CustomField::OrderStatements
   ORDER_JOIN_METHOD_BY_FIELD_FORMAT = {
     join_for_order_by_string_sql: %w[string date bool link],
     join_for_order_by_int_sql: %w[int],
-    join_for_order_by_float_sql: %w[float],
+    join_for_order_by_float_sql: %w[float calculated_value],
     join_for_order_by_list_sql: %w[list],
     join_for_order_by_user_sql: %w[user],
     join_for_order_by_version_sql: %w[version],
