@@ -128,7 +128,7 @@ class Storages::ProjectStoragesController < ApplicationController
   end
 
   def show_error(message)
-    flash[:error] = message
+    flash[:error] = Array(message) + [I18n.t("project_storages.open.contact_admin")]
     redirect_back(fallback_location: project_path(id: @project_storage.project_id))
   end
 end
