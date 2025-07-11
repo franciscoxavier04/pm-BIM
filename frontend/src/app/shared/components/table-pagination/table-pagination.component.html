@@ -81,7 +81,7 @@
         </button>
       </li>
       <li class="op-pagination--range">
-        <span [textContent]="currentRange"></span>
+        {{currentRange}}
         <span *ngIf="pageNumbers.length === 1"
           id="op-pagination-empty-text"
           tabindex="0"
@@ -109,15 +109,14 @@
           *ngFor="let perPageOption of perPageOptions"
           class="op-pagination--item"
           [ngClass]="{ 'op-pagination--item_current': perPageOption === pagination.perPage }">
-          <span *ngIf="perPageOption !== pagination.perPage">
-            <button
-              class="op-pagination--item-link"
-              type="button"
-              (click)="selectPerPage(perPageOption)"
-              [textContent]="perPageOption"
-              [attr.aria-label]="text.show_per_page(perPageOption)"
-            ></button>
-          </span>
+          <button
+            *ngIf="perPageOption !== pagination.perPage"
+            class="op-pagination--item-link"
+            type="button"
+            (click)="selectPerPage(perPageOption)"
+            [textContent]="perPageOption"
+            [attr.aria-label]="text.show_per_page(perPageOption)"
+          ></button>
           <span *ngIf="perPageOption === pagination.perPage"
             tabindex="0"
             aria-current="true"
