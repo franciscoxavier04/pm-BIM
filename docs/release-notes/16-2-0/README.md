@@ -74,7 +74,7 @@ When you set a reminder for a work package, OpenProject now confirms this with a
 
 OpenProject 16.2 adds a **SCIM server API**, available as an Enterprise add-on in the Corporate plan. This allows Identity Providers (IdPs) such as Keycloak to keep user data in OpenProject synchronized automatically. Administrators can manage SCIM clients directly in OpenProject, configure authentication methods, and revoke tokens when needed. This makes it much easier to maintain consistent user records across your systems.
 
-![OpenProject administration with option to add a new SCIM client](<openproject-16-2-scim api.png>)
+![OpenProject administration with option to add a new SCIM client](openproject-16-2-scim-api.png)
 
 ### API support for internal comments
 
