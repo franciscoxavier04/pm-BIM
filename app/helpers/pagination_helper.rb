@@ -143,7 +143,7 @@ module PaginationHelper
     total = paginator.total_entries
 
     content_tag(:ul, class: "op-pagination--items op-pagination--items_start", role: "presentation") do
-      concat will_paginate(paginator, **)
+      concat will_paginate(paginator, **, container: false)
       concat content_tag(:li, "(#{page_first} - #{page_last}/#{total})", class: "op-pagination--range")
     end
   end

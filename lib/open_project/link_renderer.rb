@@ -30,12 +30,6 @@
 
 module OpenProject
   class LinkRenderer < ::WillPaginate::ActionView::LinkRenderer
-    def to_html
-      pagination.inject("") do |html, item|
-        html + (item.is_a?(Integer) ? page_number(item) : send(item))
-      end.html_safe
-    end
-
     protected
 
     def merge_get_params(url_params)
