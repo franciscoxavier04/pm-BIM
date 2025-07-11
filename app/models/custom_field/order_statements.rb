@@ -27,15 +27,15 @@
 #++
 
 module CustomField::OrderStatements
-  ORDER_JOIN_METHOD_BY_FIELD_FORMAT = {
-    join_for_order_by_string_sql: %w[string date bool link],
-    join_for_order_by_int_sql: %w[int],
-    join_for_order_by_float_sql: %w[float calculated_value],
-    join_for_order_by_list_sql: %w[list],
-    join_for_order_by_user_sql: %w[user],
-    join_for_order_by_version_sql: %w[version],
-    join_for_order_by_hierarchy_sql: %w[hierarchy]
-  }.flat_map { |method_name, field_formats| field_formats.map { [it, method_name] } }.to_h
+  ORDER_JOIN_METHOD_BY_FIELD_FORMAT = OpenProject::MultiKeyHash.expand(
+    %w[string date bool link] => :join_for_order_by_string_sql,
+    "int" => :join_for_order_by_int_sql,
+    %w[float calculated_value] => :join_for_order_by_float_sql,
+    "list" => :join_for_order_by_list_sql,
+    "user" => :join_for_order_by_user_sql,
+    "version" => :join_for_order_by_version_sql,
+    "hierarchy" => :join_for_order_by_hierarchy_sql
+  ).freeze
 
   # Returns the expression to use in ORDER BY clause to sort objects by their
   # value of the custom field.
