@@ -34,6 +34,10 @@ See COPYRIGHT and LICENSE files for more details.
       [{ href: project_overview_path(@project.id), text: @project.name },
        t(:label_document_plural)]
     )
+
+    if OpenProject::FeatureDecisions.block_note_editor_active?
+      header.with_description { I18n.t("documents.documents_list_blank_slate.description") }
+    end
   end
 %>
 
