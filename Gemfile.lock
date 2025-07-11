@@ -860,7 +860,7 @@ GEM
       actionview
       openproject-octicons (= 19.25.0)
       railties
-    openproject-primer_view_components (0.70.3)
+    openproject-primer_view_components (0.70.4)
       actionview (>= 7.1.0)
       activesupport (>= 7.1.0)
       openproject-octicons (>= 19.25.0)
@@ -1121,7 +1121,7 @@ GEM
     rubocop-factory_bot (2.27.1)
       lint_roller (~> 1.1)
       rubocop (~> 1.72, >= 1.72.1)
-    rubocop-openproject (0.2.0)
+    rubocop-openproject (0.3.0)
       rubocop
     rubocop-performance (1.25.0)
       lint_roller (~> 1.1)
@@ -1451,7 +1451,7 @@ DEPENDENCIES
   openproject-octicons (~> 19.25.0)
   openproject-octicons_helper (~> 19.25.0)
   openproject-openid_connect!
-  openproject-primer_view_components (~> 0.70.3)
+  openproject-primer_view_components (~> 0.70.4)
   openproject-recaptcha!
   openproject-reporting!
   openproject-storages!
@@ -1823,7 +1823,7 @@ CHECKSUMS
   openproject-octicons (19.25.0) sha256=16fc221375e693f0e893b1c208286f2d7719ae4dfe080c5415642b221f51f550
   openproject-octicons_helper (19.25.0) sha256=9b1778a67b0015ebe84ca0471f74e31004b985a8dcaaa443f7a2ac365b0a4e2d
   openproject-openid_connect (1.0.0)
-  openproject-primer_view_components (0.70.3) sha256=ccfa81b533f66d6fa1a7268d38e5350d33717685e6cfe175f19816544ca080e2
+  openproject-primer_view_components (0.70.4) sha256=997bfdb3a3f72e44035b94024f499854dd870ef92fe7bc9e4e654050b70926ee
   openproject-recaptcha (1.0.0)
   openproject-reporting (1.0.0)
   openproject-storages (1.0.0)
@@ -1924,7 +1924,7 @@ CHECKSUMS
   rubocop-ast (1.45.1) sha256=94042e49adc17f187ba037b33f941ba7398fede77cdf4bffafba95190a473a3e
   rubocop-capybara (2.22.1) sha256=ced88caef23efea53f46e098ff352f8fc1068c649606ca75cb74650970f51c0c
   rubocop-factory_bot (2.27.1) sha256=9d744b5916778c1848e5fe6777cc69855bd96548853554ec239ba9961b8573fe
-  rubocop-openproject (0.2.0) sha256=2300ed6b638a34a9368b458dc5fb618ae396da6a27670b50519ad1e3cea65ccb
+  rubocop-openproject (0.3.0) sha256=9554496e7ef0a2cf65dc2b32bee1bfa223b4f9ae058a5c603489d34e9001a828
   rubocop-performance (1.25.0) sha256=6f7d03568a770054117a78d0a8e191cefeffb703b382871ca7743831b1a52ec1
   rubocop-rails (2.32.0) sha256=9fcc623c8722fe71e835e99c4a18b740b5b0d3fb69915d7f0777f00794b30490
   rubocop-rspec (3.6.0) sha256=c0e4205871776727e54dee9cc91af5fd74578001551ba40e1fe1a1ab4b404479
