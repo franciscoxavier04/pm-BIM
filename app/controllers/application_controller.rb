@@ -56,6 +56,7 @@ class ApplicationController < ActionController::Base
   include OpenProjectErrorHelper
   include Security::DefaultUrlOptions
   include OpModalFlashable
+  include Pagy::Backend
 
   layout "base"
 
