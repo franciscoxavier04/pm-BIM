@@ -83,10 +83,10 @@ RSpec.describe Query::Results, "sums" do
            float_cf.attribute_name => 3.414,
            story_points: 7) do |wp|
              wp.cost_entries << create(:cost_entry,
-                                       work_package: wp,
+                                       entity: wp,
                                        overridden_costs: 200)
              wp.time_entries << create(:time_entry,
-                                       work_package: wp,
+                                       entity: wp,
                                        overridden_costs: 300)
            end
   end
@@ -101,10 +101,10 @@ RSpec.describe Query::Results, "sums" do
            float_cf.attribute_name => 3.414,
            story_points: 7) do |wp|
              wp.cost_entries << create(:cost_entry,
-                                       work_package: wp,
+                                       entity: wp,
                                        overridden_costs: 200)
              wp.time_entries << create(:time_entry,
-                                       work_package: wp,
+                                       entity: wp,
                                        overridden_costs: 300)
            end
   end
