@@ -21,6 +21,7 @@
             type="button"
             (click)="showPage(pageNumber)"
             rel="next"
+            [attr.aria-label]="text.page_number(pageNumber)"
             [textContent]="pageNumber"
           ></button>
         </li>
@@ -64,6 +65,7 @@
             type="button"
             (click)="showPage(pageNumber)"
             rel="next"
+            [attr.aria-label]="text.page_number(pageNumber)"
             [textContent]="pageNumber"
           ></button>
         </li>
