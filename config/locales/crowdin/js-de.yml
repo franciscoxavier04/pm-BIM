@@ -875,7 +875,7 @@ de:
         header_with_parent: "Neu: %{type} (Kind von %{parent_type} #%{id})"
         button: "Erstellen"
       duplicate:
-        title: "Duplicate work package"
+        title: "Arbeitspaket duplizieren"
       hierarchy:
         show: "Hierarchie-Modus anzeigen"
         hide: "Hierarchie-Modus verbergen"

@@ -212,10 +212,10 @@ uk:
         change_button: "Зберегти й перепланувати"
         change_title: "Змінення робочих днів"
         removed_title: "Ви вилучите ці дні зі списку неробочих:"
-        change_description: "Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance."
+        change_description: "Якщо змінити дні тижня, які вважаються робочими чи неробочими, це може вплинути на дати початку й завершення всіх пакетів робіт і життєвих циклів проєктів в усіх проєктах цього екземпляра."
         warning: >
-          The changes might take some time to take effect. You will be notified when all relevant work packages and project life cycles have been updated.
-          Are you sure you want to continue?
+          Застосування змін може тривати деякий час. Ви отримаєте сповіщення, коли всі відповідні пакети робіт і життєві цикли проєктів буде оновлено.
+          Продовжити?
       work_packages_settings:
         warning_progress_calculation_mode_change_from_status_to_field_html: >-
           Якщо перейти з режиму обчислення прогресу на основі статусу на режим на основі роботи, атрибут <i>% завершення</i> стане доступним для редагування полем. Якщо визначено атрибути <i>Робота</i> й <i>Залишок роботи</i>, їх значення буде також пов’язано з атрибутом <i>% завершення</i>. Змінення значення атрибута <i>Залишок роботи</i> призводить до оновлення атрибута <i>% завершення</i>.
@@ -298,7 +298,7 @@ uk:
           "16_2":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>New header and sidebar with improved navigation and design.</li> <li>Smoother experience with Custom fields, Relations, Reminders, Meetings, and My time tracking.</li> <li>Non-latin languages and emojis supported in PDF exports.</li> <li>Option to disable keyboard shortcuts for better accessibility.</li> <li>SCIM server via API (Enterprise add-on).</li> <li>API support for internal comments.</li> </ul>
+                Реліз містить різні нові функції і покращення, як-от: <br> <ul class="%{list_styling_class}"> <li>нова шапка й бічна панель із покращеною навігацією та дизайном;</li> <li>поліпшена робота з користувацькими полями, зв’язками, нагадуваннями, нарадами й функцією «Мій облік часу».</li> <li>підтримка мов, що використовують нелатинські літери, і смайликів при експорті PDF-файлів;</li> <li>можливість відключити комбінації клавіш для кращої доступності;</li> <li>сервер SCIM через API (надбудова Enterprise);</li> <li>підтримка API для внутрішніх коментарів.</li> </ul>
     ical_sharing_modal:
       title: "Підписатися на календар"
       inital_setup_error_message: "Під час отримання даних сталася помилка."
@@ -324,7 +324,7 @@ uk:
     label_added_time_by: 'Додано користувачем <a href="%{authorLink}">%{author}</a> о %{age}'
     label_ago: "днів тому"
     label_all: "всі"
-    label_all_projects: "All projects"
+    label_all_projects: "Усі проєкти"
     label_all_uppercase: "Усі"
     label_all_work_packages: "всі пакети в роботі"
     label_and: "і"
@@ -645,13 +645,13 @@ uk:
       title: "Підтвердіть ваш пароль щоб продовжити"
     pagination:
       no_other_page: "Ви знаходитесь на єдиній сторінці."
-      page_navigation: "Pagination navigation"
-      per_page_navigation: 'Items per page selection'
+      page_navigation: "Навігація сторінками"
+      per_page_navigation: 'Кількість елементів на сторінку'
       pages:
-        next: "Next page"
-        previous: "Previous page"
-        page_number: Page %{number}
-        show_per_page: Show %{number} per page
+        next: "Наступна сторінка"
+        previous: "Попередня сторінка"
+        page_number: Сторінка %{number}
+        show_per_page: Показати %{number} на сторінці
     placeholders:
       default: "-"
       subject: "Введіть тему тут"
@@ -699,7 +699,7 @@ uk:
           first_day: "Перший день"
           last_day: "Останній день"
     text_are_you_sure: "Ви впевненені?"
-    breadcrumb: "Breadcrumb"
+    breadcrumb: "Ланцюжок навігації"
     text_data_lost: "Усі введені дані буде втрачено."
     text_user_wrote: "%{value} написав(-ла):"
     types:
@@ -784,7 +784,7 @@ uk:
     autocompleter:
       placeholder: "Введіть для пошуку"
       notFoundText: "Елементів не знайдено"
-      search: "Search"
+      search: "Пошук"
       project:
         placeholder: "Виберіть проєкт"
     repositories:
@@ -832,7 +832,7 @@ uk:
       bulk_actions:
         edit: "Масове редагування"
         delete: "Масове видалення"
-        duplicate: "Bulk duplicate"
+        duplicate: "Групове дублювання"
         move: "Групова зміна проєкту"
       button_clear: "Очистити"
       comment_added: "Коментар успішно додано."
@@ -878,7 +878,7 @@ uk:
         header_with_parent: "Новий %{type} (дочірній елемент %{parent_type} #%{id})"
         button: "Створити"
       duplicate:
-        title: "Duplicate work package"
+        title: "Дублювати пакет робіт"
       hierarchy:
         show: "Показати режим ієрархії"
         hide: "Приховати режим ієрархії"

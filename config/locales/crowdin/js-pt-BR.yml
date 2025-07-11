@@ -642,8 +642,8 @@ pt-BR:
       title: "Confirme sua senha para continuar"
     pagination:
       no_other_page: "Você está na página única."
-      page_navigation: "Pagination navigation"
-      per_page_navigation: 'Items per page selection'
+      page_navigation: "Navegação de página"
+      per_page_navigation: 'Itens por seleção de página'
       pages:
         next: "Próxima página"
         previous: "Página anterior"
@@ -829,7 +829,7 @@ pt-BR:
       bulk_actions:
         edit: "Edição em massa"
         delete: "Exclusão em massa"
-        duplicate: "Bulk duplicate"
+        duplicate: "Duplicar em lote"
         move: "Mudança em massa de projeto"
       button_clear: "Limpar"
       comment_added: "O comentário foi adicionado com sucesso."
@@ -875,7 +875,7 @@ pt-BR:
         header_with_parent: "Novo %{type} (Filho de %{parent_type} #%{id})"
         button: "Criar"
       duplicate:
-        title: "Duplicate work package"
+        title: "Duplicar pacote de trabalho"
       hierarchy:
         show: "Mostrar o modo de hierarquia"
         hide: "Ocultar o modo de hierarquia"

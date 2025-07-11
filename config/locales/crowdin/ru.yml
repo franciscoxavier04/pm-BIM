@@ -2155,10 +2155,10 @@ ru:
         other: "%{count} секунд"
     units:
       minute_abbreviated:
-        one: "min"
+        one: "мин"
         few: "mins"
         many: "mins"
-        other: "минуты"
+        other: "мин"
       hour:
         one: "час"
         few: "час"
