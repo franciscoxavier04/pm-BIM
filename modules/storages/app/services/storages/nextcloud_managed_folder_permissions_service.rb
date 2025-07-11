@@ -83,7 +83,7 @@ module Storages
     def add_remove_users_to_group(group, username)
       remote_users = remote_group_users.result_or do |error|
         log_storage_error(error, group:)
-        return add_error(:remote_group_users, error, options: { group: }).fail!
+        return add_error(:remote_group_users, error, options: { group: })
       end
 
       local_users = remote_identities.order(:id).pluck(:origin_user_id)

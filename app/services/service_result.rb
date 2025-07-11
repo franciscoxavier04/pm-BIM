@@ -143,6 +143,8 @@ class ServiceResult
     merge_success!(other) unless without_success
     merge_errors!(other)
     merge_dependent!(other)
+
+    self
   end
 
   ##

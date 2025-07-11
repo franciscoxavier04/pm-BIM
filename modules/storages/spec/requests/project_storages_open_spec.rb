@@ -117,7 +117,10 @@ RSpec.describe "projects/:project_id/project_storages/:id/open" do
       expect(last_response.headers["Location"]).to eq("http://test.host/projects/#{project.id}")
 
       flash = Sessions::UserSession.last.data.dig("flash", "flashes")
-      expect(flash["error"]).to eq("400 | Request made outside opening hours.")
+      expect(flash["error"]).to eq([
+                                     "400 | Request made outside opening hours.",
+                                     "Please contact your administrator to resolve this error."
+                                   ])
     end
   end
 
@@ -216,7 +219,7 @@ RSpec.describe "projects/:project_id/project_storages/:id/open" do
         expect(last_response.headers["Location"]).to eq("http://test.host/projects/#{project.id}")
 
         flash = Sessions::UserSession.last.data.dig("flash", "flashes")
-        expect(flash["error"]).to eq(["Nope, sorry!"])
+        expect(flash["error"]).to eq(["Nope, sorry!", "Please contact your administrator to resolve this error."])
       end
     end
 

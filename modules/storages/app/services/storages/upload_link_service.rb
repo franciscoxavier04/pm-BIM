@@ -61,7 +61,6 @@ module Storages
                            .on_failure do |error|
         add_error(:base, error.errors, options: { storage_name: @storage.name, folder: upload_data.folder_id })
         log_storage_error(error.errors)
-        @result.success = false
       end
     end
 
