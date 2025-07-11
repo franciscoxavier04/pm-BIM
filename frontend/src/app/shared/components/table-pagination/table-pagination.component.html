@@ -7,9 +7,9 @@
           class="op-pagination--item-link op-pagination--item-link_prev"
           type="button"
           (click)="showPage(pagination.page - 1)"
-          rel="prev start"
-          [attr.aria-label]="text.label_previous">
-          &#60;
+          rel="prev start">
+          <svg chevron-left-icon size="xsmall" class="op-pagination--item-link-icon op-pagination--item-link-icon_prev" />
+          {{text.label_previous}}
         </button>
       </li>
 
@@ -66,12 +66,12 @@
       <li [hidden]="!(pagination.total && pagination.page < pageNumbers[pageNumbers.length - 1])"
           class="op-pagination--item">
         <button
+          class="op-pagination--item-link op-pagination--item-link_next"
           type="button"
           (click)="showPage(pagination.page + 1)"
-          rel="next"
-          class="op-pagination--item-link op-pagination--item-link_next"
-          [attr.aria-label]="text.label_next">
-          &#62;
+          rel="next">
+          {{text.label_next}}
+          <svg chevron-right-icon size="xsmall" class="op-pagination--item-link-icon op-pagination--item-link-icon_next" />
         </button>
       </li>
       <li class="op-pagination--range">

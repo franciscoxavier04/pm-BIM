@@ -82,11 +82,22 @@ RSpec.describe PaginationHelper do
     end
 
     it "has a next_page reference" do
-      expect(pagination).to have_css(".op-pagination--item_next")
+      expect(pagination).to have_css(".op-pagination--item_next", text: "Next")
     end
 
-    it "does not have a previous_page reference" do
-      expect(pagination).to have_no_css(".op-pagination--item_prev")
+    it "has a next page link" do
+      expect(pagination).to have_link "Next" do |link|
+        expect(link).to have_octicon :"chevron-right"
+        expect(link["rel"]).to eq "next"
+      end
+    end
+
+    it "does not have a previous page reference" do
+      expect(pagination).to have_no_css(".op-pagination--item_prev", text: "Previous")
+    end
+
+    it "does not have a previous page link" do
+      expect(pagination).to have_no_link "Previous"
     end
 
     it "has links to every page except the current one" do

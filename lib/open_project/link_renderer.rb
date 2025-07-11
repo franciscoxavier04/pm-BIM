@@ -30,6 +30,8 @@
 
 module OpenProject
   class LinkRenderer < ::WillPaginate::ActionView::LinkRenderer
+    include ActionView::Helpers::OutputSafetyHelper
+
     protected
 
     def merge_get_params(url_params)
@@ -56,12 +58,26 @@ module OpenProject
 
     def previous_page
       num = @collection.current_page > 1 && (@collection.current_page - 1)
-      previous_or_next_page(num, I18n.t(:label_previous), "prev")
+      previous_or_next_page(
+        num,
+        safe_join_components(
+          render_octicon(:"chevron-left", class_suffix: "prev"),
+          I18n.t(:label_previous)
+        ),
+        "prev"
+      )
     end
 
     def next_page
       num = @collection.current_page < total_pages && (@collection.current_page + 1)
-      previous_or_next_page(num, I18n.t(:label_next), "next")
+      previous_or_next_page(
+        num,
+        safe_join_components(
+          I18n.t(:label_next),
+          render_octicon(:"chevron-right", class_suffix: "next")
+        ),
+        "next"
+      )
     end
 
     def previous_or_next_page(page, text, class_suffix)
@@ -104,6 +120,21 @@ module OpenProject
 
     def turbo?
       @options[:turbo]
+    end
+
+    def safe_join_components(*components)
+      safe_join(components, " ")
+    end
+
+    def render_octicon(icon_name, class_suffix:, **)
+      @template.render(
+        Primer::Beta::Octicon.new(
+          icon_name,
+          size: :xsmall,
+          classes: ["op-pagination--item-link-icon", "op-pagination--item-link-icon_#{class_suffix}"],
+          **
+        )
+      )
     end
   end
 end
