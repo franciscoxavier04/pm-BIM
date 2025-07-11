@@ -84,7 +84,7 @@ module OpenProject
       if page
         tag(:li,
             link(text, page, { class: "op-pagination--item-link op-pagination--item-link_#{class_suffix}" }),
-            class: "op-pagination--item op-pagination--item_#{class_suffix}")
+            class: "op-pagination--item")
       else
         ""
       end

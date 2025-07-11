@@ -81,19 +81,11 @@ RSpec.describe PaginationHelper do
       expect(pagination).to have_css "ul.op-pagination--items[role=presentation]", count: 2
     end
 
-    it "has a next_page reference" do
-      expect(pagination).to have_css(".op-pagination--item_next", text: "Next")
-    end
-
     it "has a next page link" do
       expect(pagination).to have_link "Next" do |link|
         expect(link).to have_octicon :"chevron-right"
         expect(link["rel"]).to eq "next"
       end
-    end
-
-    it "does not have a previous page reference" do
-      expect(pagination).to have_no_css(".op-pagination--item_prev", text: "Previous")
     end
 
     it "does not have a previous page link" do
@@ -194,12 +186,12 @@ RSpec.describe PaginationHelper do
       let(:current_page) { 1 }
 
       it "deactivates the previous page link" do
-        expect(pagination).to have_no_css(".op-pagination--item_prev")
+        expect(pagination).to have_no_link "Previous"
       end
 
       it "has a link to the next page" do
         path = work_packages_path(page: current_page + 1)
-        expect(pagination).to have_css(".op-pagination--item_next a[href='#{path}']")
+        expect(pagination).to have_link "Next", href: path
       end
     end
 
@@ -207,12 +199,12 @@ RSpec.describe PaginationHelper do
       let(:current_page) { (total_entries / per_page) + 1 }
 
       it "deactivates the next page link" do
-        expect(pagination).to have_no_css(".op-pagination--item_next")
+        expect(pagination).to have_no_link "Next"
       end
 
       it "has a link to the previous page" do
         path = work_packages_path(page: current_page - 1)
-        expect(pagination).to have_css(".op-pagination--item_prev a[href='#{path}']")
+        expect(pagination).to have_link "Previous", href: path
       end
     end
 
