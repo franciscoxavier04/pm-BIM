@@ -53,7 +53,10 @@ module OpenProject
     end
 
     def gap
-      tag(:li, "&#x2026;", class: "op-pagination--space", role: "separator")
+      tag(:li,
+          tag(:span, "&#x2026;", "aria-hidden": "true") +
+          tag(:span, I18n.t(:"js.pagination.pages_skipped"), class: "sr-only"),
+          class: "op-pagination--space")
     end
 
     def previous_page

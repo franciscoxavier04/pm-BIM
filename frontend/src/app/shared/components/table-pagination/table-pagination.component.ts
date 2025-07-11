@@ -65,6 +65,7 @@ export class TablePaginationComponent extends UntilDestroyedMixin implements OnI
     label_next: this.I18n.t('js.label_next'),
     per_page: this.I18n.t('js.label_per_page'),
     no_other_page: this.I18n.t('js.pagination.no_other_page'),
+    pages_skipped: this.I18n.t('js.pagination.pages_skipped'),
     page_navigation: this.I18n.t('js.pagination.page_navigation'),
     per_page_navigation: this.I18n.t('js.pagination.per_page_navigation'),
     page_number: (num:number) => this.I18n.t('js.pagination.pages.page_number', { number: num }),

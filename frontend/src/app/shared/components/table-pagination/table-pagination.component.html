@@ -24,7 +24,10 @@
             [textContent]="pageNumber"
           ></button>
         </li>
-        <li class="op-pagination--space">…</li>
+        <li class="op-pagination--space">
+          <span class="sr-only" [textContent]="text.pages_skipped"></span>
+          <span aria-hidden="true">…</span>
+        </li>
       </ng-container>
 
       <ng-container *ngIf="pageNumbers.length > 1">
@@ -48,7 +51,10 @@
             [textContent]="pageNumber"
           ></button>
         </li>
-        <li *ngIf="postPageNumbers.length" class="op-pagination--space" role="separator">…</li>
+        <li class="op-pagination--space">
+          <span class="sr-only" [textContent]="text.pages_skipped"></span>
+          <span aria-hidden="true">…</span>
+        </li>
       </ng-container>
 
       <ng-container *ngIf="postPageNumbers.length">
