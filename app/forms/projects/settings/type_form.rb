@@ -36,7 +36,7 @@ module Projects
           label: attribute_name(:type)
         ) do |list|
           Project.types.each_key do |label|
-            list.option(label: label, value: label)
+            list.option(label: I18n.t("activerecord.attributes.project.type_enum.#{label}"), value: label)
           end
         end
       end

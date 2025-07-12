@@ -1116,7 +1116,7 @@ en:
         queries: "Queries"
         status_code: "Project status"
         status_explanation: "Project status description"
-        type: "Project type"
+        type: "Organizational entity type"
         type_enum:
           project: "Project"
           program: "Program"
