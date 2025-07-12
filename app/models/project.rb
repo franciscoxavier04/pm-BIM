@@ -46,6 +46,13 @@ class Project < ApplicationRecord
   # reserved identifiers
   RESERVED_IDENTIFIERS = %w[new menu queries export_list_modal].freeze
 
+  enum :type, {
+    project: 0,
+    program: 1,
+    portfolio: 2
+  }
+  self.inheritance_column = nil
+
   has_many :members, -> {
     # TODO: check whether this should
     # remain to be limited to User only

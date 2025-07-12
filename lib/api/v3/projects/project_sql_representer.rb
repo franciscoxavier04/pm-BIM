@@ -123,6 +123,17 @@ module API
         property :active
 
         property :public
+
+        property :type,
+                 representation: ->(*) {
+                   <<~SQL.squish
+                     CASE
+                     WHEN type = 0 then 'project'
+                     WHEN type = 1 then 'program'
+                     WHEN type = 2 then 'portfolio'
+                     END
+                   SQL
+                 }
       end
     end
   end

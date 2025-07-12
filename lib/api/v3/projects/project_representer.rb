@@ -187,6 +187,7 @@ module API
 
         property :active
         property :public
+        property :type
 
         formattable_property :description,
                              cache_if: current_user_view_allowed_lambda

@@ -22,6 +22,7 @@ export interface IProject {
   name:string;
   public:boolean;
   active:boolean;
+  type:string;
   statusExplanation:IFormattable;
   description:IFormattable;
 
