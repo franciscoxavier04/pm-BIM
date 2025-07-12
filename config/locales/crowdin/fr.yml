@@ -1163,7 +1163,7 @@ fr:
         comments_sorting: "Afficher l'activité du lot de travaux triée par"
         disable_keyboard_shortcuts: "Désactiver les raccourcis clavier"
         disable_keyboard_shortcuts_caption_html: |-
-          Vous pouvez choisir de désactiver les <a href="%{href}">raccourcis clavier</a> par défaut si vous utilisez un lecteur d'écran ou si vous voulez éviter de déclencher accidentellement une action avec un raccourci.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Bannières d'entreprise masquées"
         impaired: "Mode d'accessibilité"
         auto_hide_popups: "Masquer automatiquement les bannières de réussite"

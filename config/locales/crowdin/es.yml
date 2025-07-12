@@ -99,12 +99,12 @@ es:
         upgrade: "Actualizar ahora"
         contact: "Contáctenos para una demostración"
       status:
-        expired: ""
-        expiring_soon: ""
-        in_grace_period: ""
-        invalid_domain: ""
-        not_active: ""
-        trial: ""
+        expired: "Caducado"
+        expiring_soon: "Caduca pronto"
+        in_grace_period: "En periodo de gracia"
+        invalid_domain: "Dominio no válido"
+        not_active: "No activo"
+        trial: "Prueba"
     jemalloc_allocator: Asignador de memoria Jemalloc
     journal_aggregation:
       explanation:
@@ -1162,7 +1162,7 @@ es:
         comments_sorting: "Mostrar la actividad del paquete de trabajo ordenada por"
         disable_keyboard_shortcuts: "Deshabilitar atajos de teclado"
         disable_keyboard_shortcuts_caption_html: |-
-          Puede optar por deshabilitar los <a href="%{href}">atajos de teclado</a> predeterminados si utiliza un lector de pantalla o desea evitar activar accidentalmente una acción con un atajo.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Banners empresariales ocultos"
         impaired: "Modo de accesibilidad"
         auto_hide_popups: "Ocultar automáticamente los banners de éxito"
@@ -3532,7 +3532,7 @@ es:
   #Default format for numbers
   number:
     format:
-      delimiter: "."
+      delimiter: ","
       precision: 3
       separator: "."
     human:

@@ -1157,7 +1157,7 @@ ko:
         comments_sorting: "다음을 기준으로 작업 패키지 활동을 정렬하여 표시:"
         disable_keyboard_shortcuts: "키보드 바로 가기 비활성화"
         disable_keyboard_shortcuts_caption_html: |-
-          화면 리더를 사용하는 경우나 바로 가기로 실수로 작업을 트리거하지 않게 방지하려는 경우 기본 <a href="%{href}">키보드 바로 가기</a>를 비활성화하도록 선택할 수 있습니다.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "숨겨진 엔터프라이즈 배너"
         impaired: "액세스 모드"
         auto_hide_popups: "성공 배너 자동으로 숨기기"
@@ -2111,7 +2111,7 @@ ko:
       plan_text_html: "%{plan_name}부터 사용 가능합니다."
       unlimited: "무제한"
       already_have_token: >
-        이미 토큰이 있으신가요? 아래 버튼을 사용하여 토큰을 추가하여 예약한 Enterprise 플랜으로 업그레이드하세요.
+        이미 토큰이 있으신가요? 아래 버튼을 사용하여 토큰을 추가하고 예약한 Enterprise 플랜으로 업그레이드하세요.
       hide_banner: "이 배너 숨기기"
       homescreen_description: >
         Enterprise 플랜은 현재 사용 중인 Community 버전의 OpenProject를 확장합니다. 여기에는 추가 기능, 기타 기능 및 전문가 지원이 포함되어 있으므로 모든 규모의 조직이 함께 탁월한 성과를 달성할 수 있습니다.
@@ -2185,13 +2185,13 @@ ko:
       not_found: "평가판 토큰을 요청했지만 해당 요청은 더 이상 사용할 수 없습니다. 다시 시도해 주세요."
       wait_for_confirmation: "평가판 토큰을 받을 수 있도록 주소를 확인하기 위한 이메일을 보내드렸습니다."
       already_retrieved: >
-        평가판 Enterprise 토큰이 이미 검색되었습니다. 이메일에서 토큰이 첨부되었는지 확인하세요. 새 토큰이 필요한 경우 지원팀에 문의하세요.
-      successfully_saved: "평가판 Enterprise 토큰을 검색했습니다."
+        평가판 Enterprise 토큰을 이미 가져왔습니다. 이메일에서 토큰이 첨부되어 있는지 확인하세요. 새 토큰이 필요한 경우 지원팀에 문의하세요.
+      successfully_saved: "평가판 Enterprise 토큰을 가져왔습니다."
       token_sent: "평가판 토큰 요청함"
       request_again: "다시 요청"
       resend_action: "확인 이메일 다시 보내기"
       welcome_title: "빠른 기능 개요"
-      welcome_description: "OpenProject Enterprise Edition으로 프로젝트 관리 및 팀 공동 작업에 대한 간략한 개요를 가져올 수 있습니다."
+      welcome_description: "OpenProject Enterprise Edition에서 프로젝트 관리 및 팀 공동 작업에 대한 간략한 개요를 확인할 수 있습니다."
       confirmation_info: >
         OpenProject Enterprise 무료 평가판을 시작하기 위한 모든 정보가 포함된 이메일을 %{date}, %{email}에 보내드렸습니다. 받은 편지함을 확인하고 제공된 확인 링크를 클릭하여 14일 무료 평가판을 시작하세요.
       confirmation_subline: >
@@ -4431,7 +4431,7 @@ ko:
       아래 목록에 추가된 날짜는 휴무로 간주되며 작업 패키지를 예약할 때 건너뜁니다.
     change_button: "근무일 변경"
     warning: >
-      근무일 또는 휴무일로 간주되는 요일을 변경하면 이 인스턴스의 모든 프로젝트에 있는 모든 작업 패키지와 프로젝트 수명 주기의 시작 날짜 및 완료 날짜에 영향을 미칠 수 있습니다.
+      근무일 또는 휴무일로 간주되는 요일을 변경하면 이 인스턴스의 모든 프로젝트에 있는 모든 작업 패키지와 수명 주기의 시작 날짜 및 완료 날짜에 영향을 미칠 수 있습니다.
     journal_note:
       changed: _**근무일**이 변경되었습니다(%{changes})._
       days:
