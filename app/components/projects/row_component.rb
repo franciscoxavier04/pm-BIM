@@ -127,7 +127,17 @@ module Projects
     end
 
     def name
-      content = content_tag(:i, "", class: "projects-table--hierarchy-icon")
+      content = "".html_safe
+
+      icon = if project.project?
+               :project
+             elsif project.portfolio?
+               :briefcase
+             elsif project.program?
+               :versions
+             end
+
+      content << render(Primer::Beta::Octicon.new(icon: icon, "aria-label": "Portfolio", color: :muted, size: :xsmall))
 
       if project.archived?
         content << " "
@@ -215,7 +225,7 @@ module Projects
 
     def additional_css_class(column)
       if column.attribute == :name
-        "project--hierarchy #{project.archived? ? 'archived' : ''}"
+        "project--hierarchy #{'archived' if project.archived?}"
       elsif %i[status_explanation description].include?(column.attribute)
         "project-long-text-container"
       elsif column.attribute == :favored
