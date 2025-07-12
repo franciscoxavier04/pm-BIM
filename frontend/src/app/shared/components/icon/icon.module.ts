@@ -58,6 +58,9 @@ import {
   EyeIconComponent,
   EyeClosedIconComponent,
   ArrowLeftIconComponent,
+  BriefcaseIconComponent,
+  ProjectIconComponent,
+  VersionsIconComponent,
 } from '@openproject/octicons-angular';
 
 @NgModule({
@@ -123,6 +126,9 @@ import {
     EyeIconComponent,
     EyeClosedIconComponent,
     ArrowLeftIconComponent,
+    BriefcaseIconComponent,
+    ProjectIconComponent,
+    VersionsIconComponent,
   ],
   declarations: [
     OpIconComponent,
@@ -189,6 +195,9 @@ import {
     EyeIconComponent,
     EyeClosedIconComponent,
     ArrowLeftIconComponent,
+    BriefcaseIconComponent,
+    ProjectIconComponent,
+    VersionsIconComponent,
   ],
 })
 export class IconModule {}
