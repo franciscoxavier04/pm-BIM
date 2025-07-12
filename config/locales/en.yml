@@ -1115,6 +1115,11 @@ en:
         queries: "Queries"
         status_code: "Project status"
         status_explanation: "Project status description"
+        type: "Project type"
+        type_enum:
+          project: "Project"
+          program: "Program"
+          portfolio: "Portfolio"
         status_codes:
           not_started: "Not started"
           on_track: "On track"
@@ -3161,6 +3166,7 @@ en:
   label_project_settings: "Project settings"
   label_project_attributes_settings: "Project attributes settings"
   label_project_storage_plural: "File storages"
+  label_project_type: "Organizational entity"
   label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} projects using %{used_disk_space} disk space"
   label_project_view_all: "View all projects"

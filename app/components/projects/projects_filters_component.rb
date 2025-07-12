@@ -60,6 +60,7 @@ class Projects::ProjectsFiltersComponent < Filter::FilterComponent
       Queries::Projects::Filters::PublicFilter,
       Queries::Projects::Filters::TemplatedFilter,
       Queries::Projects::Filters::TypeFilter,
+      Queries::Projects::Filters::WorkPackageTypeFilter,
       Queries::Projects::Filters::ParentFilter
     ]
 

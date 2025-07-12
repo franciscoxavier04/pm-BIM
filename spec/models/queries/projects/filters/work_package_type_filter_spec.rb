@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# -- copyright
+#-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,30 +26,27 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-# ++
+#++
 
 require "spec_helper"
 
-RSpec.describe Queries::Projects::Filters::TypeFilter do
+RSpec.describe Queries::Projects::Filters::WorkPackageTypeFilter do
   it_behaves_like "basic query filter" do
-    let(:class_key) { :type }
+    let(:class_key) { :type_id }
     let(:type) { :list }
     let(:model) { Project }
-    let(:attribute) { :type }
-    let(:values) { ["1"] }
+    let(:attribute) { :type_id }
+    let(:values) { ["3"] }
     let(:admin) { build_stubbed(:admin) }
     let(:user) { build_stubbed(:user) }
 
     before do
-      allow(Project).to receive(:types).and_return({ "project" => 0, "program" => 1, "portfolio" => 2 })
-      allow(I18n).to receive(:t).with("activerecord.attributes.project.type_enum.project").and_return("Project")
-      allow(I18n).to receive(:t).with("activerecord.attributes.project.type_enum.program").and_return("Program")
-      allow(I18n).to receive(:t).with("activerecord.attributes.project.type_enum.portfolio").and_return("Portfolio")
+      allow(Type).to receive(:pluck).with(:name, :id).and_return([["Foo", "1234"]])
     end
 
     describe "#allowed_values" do
       it "is a list of the possible values" do
-        expect(instance.allowed_values.map(&:second)).to contain_exactly(0, 1, 2)
+        expect(instance.allowed_values).to contain_exactly(["Foo", "1234"])
       end
     end
   end

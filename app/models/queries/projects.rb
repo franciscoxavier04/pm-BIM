@@ -49,6 +49,7 @@ module Queries::Projects
     filter Filters::PublicFilter
     filter Filters::TemplatedFilter
     filter Filters::TypeFilter
+    filter Filters::WorkPackageTypeFilter
     filter Filters::TypeaheadFilter
     filter Filters::UserActionFilter
     filter Filters::VisibleFilter

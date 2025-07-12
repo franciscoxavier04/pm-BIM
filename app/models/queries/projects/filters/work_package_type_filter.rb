@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# -- copyright
+#-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,31 +26,40 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-# ++
+#++
 
-require "spec_helper"
+class Queries::Projects::Filters::WorkPackageTypeFilter < Queries::Projects::Filters::Base
+  def allowed_values
+    @allowed_values ||= Type.pluck(:name, :id)
+  end
 
-RSpec.describe Queries::Projects::Filters::TypeFilter do
-  it_behaves_like "basic query filter" do
-    let(:class_key) { :type }
-    let(:type) { :list }
-    let(:model) { Project }
-    let(:attribute) { :type }
-    let(:values) { ["1"] }
-    let(:admin) { build_stubbed(:admin) }
-    let(:user) { build_stubbed(:user) }
+  def joins
+    :types
+  end
 
-    before do
-      allow(Project).to receive(:types).and_return({ "project" => 0, "program" => 1, "portfolio" => 2 })
-      allow(I18n).to receive(:t).with("activerecord.attributes.project.type_enum.project").and_return("Project")
-      allow(I18n).to receive(:t).with("activerecord.attributes.project.type_enum.program").and_return("Program")
-      allow(I18n).to receive(:t).with("activerecord.attributes.project.type_enum.portfolio").and_return("Portfolio")
-    end
+  def where
+    operator_strategy.sql_for_field(values, Type.table_name, :id)
+  end
 
-    describe "#allowed_values" do
-      it "is a list of the possible values" do
-        expect(instance.allowed_values.map(&:second)).to contain_exactly(0, 1, 2)
-      end
-    end
+  def type
+    :list
+  end
+
+  def human_name
+    "Work package type"
+  end
+
+  def self.key
+    :type_id
+  end
+
+  private
+
+  def type_strategy
+    # Instead of getting the IDs of all the projects a user is allowed
+    # to see we only check that the value is an integer. Non valid ids
+    # will then simply create an empty result but will not cause any
+    # harm.
+    @type_strategy ||= ::Queries::Filters::Strategies::IntegerList.new(self)
   end
 end

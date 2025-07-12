@@ -82,7 +82,8 @@ module Filter
       when Queries::Filters::Shared::CustomFields::ListOptional
         { autocomplete_options: custom_field_list_autocomplete_options(filter) }
       when Queries::Projects::Filters::ProjectStatusFilter,
-           Queries::Projects::Filters::TypeFilter
+           Queries::Projects::Filters::TypeFilter,
+           Queries::Projects::Filters::WorkPackageTypeFilter
         { autocomplete_options: list_autocomplete_options(filter) }
       else
         {}

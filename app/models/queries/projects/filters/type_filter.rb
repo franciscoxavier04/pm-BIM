@@ -1,4 +1,6 @@
-#-- copyright
+# frozen_string_literal: true
+
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -24,19 +26,11 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
 class Queries::Projects::Filters::TypeFilter < Queries::Projects::Filters::Base
   def allowed_values
-    @allowed_values ||= Type.pluck(:name, :id)
-  end
-
-  def joins
-    :types
-  end
-
-  def where
-    operator_strategy.sql_for_field(values, Type.table_name, :id)
+    @allowed_values ||= Project.types.map { |name, id| [I18n.t("activerecord.attributes.project.type_enum.#{name}"), id] }
   end
 
   def type
@@ -44,16 +38,14 @@ class Queries::Projects::Filters::TypeFilter < Queries::Projects::Filters::Base
   end
 
   def self.key
-    :type_id
+    :type
   end
 
-  private
+  def where
+    operator_strategy.sql_for_field(values, Project.table_name, :type)
+  end
 
-  def type_strategy
-    # Instead of getting the IDs of all the projects a user is allowed
-    # to see we only check that the value is an integer. Non valid ids
-    # will then simply create an empty result but will not cause any
-    # harm.
-    @type_strategy ||= ::Queries::Filters::Strategies::IntegerList.new(self)
+  def human_name
+    I18n.t("label_project_type")
   end
 end
