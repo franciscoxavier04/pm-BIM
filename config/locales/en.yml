@@ -1100,6 +1100,7 @@ en:
       oauth_client:
         client: "Client ID"
       project:
+        ancestor: "Descendants of" # used for filtering of projects that are descendants of a given work package
         active_value:
           true: "unarchived"
           false: "archived"
