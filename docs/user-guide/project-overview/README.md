@@ -21,7 +21,7 @@ The **Project overview** page is a dashboard with important information about yo
 | [Project status](#project-status)                            | Set your project status                                      |
 | [Available project overview widgets](#available-project-overview-widgets) | What kind of widgets can I add to the project overview?      |
 | [Resize and reorder widgets](#resize-and-reorder-widgets) | How can I re-order or re-size the widgets?                   |
-| [Remove widgets](#remove-widget-from-project-overview-page)  | How can I remove widgets from the project overview page?     |
+| [Remove widgets](#remove-widgets-from-project-overview-page)  | How can I remove widgets from the project overview page?     |
 
 ## What is the project overview?
 
@@ -203,7 +203,7 @@ The description can be added or changed in the [project settings](../projects/pr
 
 ![Project description widget displayed on a project overview page in OpenProject](openproject_user_guide_project_overview_project_project_description_widget.png)
 
-### Project status widget
+### Project status
 
 Add your project status as a widget to display at a glance whether your project is on track, off track or at risk. You can set your project status and give a detailed description.
 
