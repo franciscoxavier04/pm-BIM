@@ -81,6 +81,7 @@ es:
     edit_project_folder:
       label: Editar la carpeta del proyecto
     open:
+      contact_admin: Please contact your administrator to resolve this error.
       remote_identity_error: Se ha producido un error inesperado al conectarse al almacenamiento.
     project_folder_mode:
       automatic: Gestionado automáticamente
@@ -128,7 +129,7 @@ es:
               conflict: 'El usuario %{user} no se ha podido añadir al grupo %{group} por la siguiente razón: %{reason}'
               failed_to_add: 'El usuario %{user} no se ha podido añadir al grupo %{group} por la siguiente razón: %{reason}'
             create_folder:
-              conflict: La dirección %{folder_name} ya existe en %{parent_location}.
+              conflict: The folder %{folder_name} already exists on %{parent_location}.
               not_found: "No se encontró %{parent_location}."
             ensure_root_folder_permissions:
               not_found: "No se ha encontrado %{group_folder}. Compruebe la configuración de su carpeta de grupo Nextcloud."
@@ -142,7 +143,7 @@ es:
               conflict: 'El usuario %{user} no se ha podido eliminar del grupo %{group} por la siguiente razón: %{reason}'
               failed_to_remove: 'El usuario %{user} no se ha podido eliminar del grupo %{group} por la siguiente razón: %{reason}'
             rename_project_folder:
-              conflict: OpenProject could not rename the project folder to %{current_path} as a folder with the same name already exists
+              conflict: OpenProject no ha podido renombrar la carpeta del proyecto en %{current_path} puesto que ya existe una carpeta con el mismo nombre
               forbidden: El usuario de OpenProject no tiene acceso a la carpeta %{current_path}.
               not_found: "No se encontró %{current_path}."
             set_folders_permissions:

@@ -81,6 +81,7 @@ pt-PT:
     edit_project_folder:
       label: Editar pasta do projeto
     open:
+      contact_admin: Please contact your administrator to resolve this error.
       remote_identity_error: Ocorreu um erro inesperado durante a ligação ao armazenamento.
     project_folder_mode:
       automatic: Gerido automaticamente
@@ -128,7 +129,7 @@ pt-PT:
               conflict: 'Não foi possível adicionar o utilizador %{user} ao grupo %{group} pelo seguinte motivo: %{reason}'
               failed_to_add: 'Não foi possível adicionar o utilizador %{user} ao grupo %{group} pelo seguinte motivo: %{reason}'
             create_folder:
-              conflict: A pasta %{folder_name} já existe em %{parent_location}.
+              conflict: The folder %{folder_name} already exists on %{parent_location}.
               not_found: "%{parent_location} não foi encontrado."
             ensure_root_folder_permissions:
               not_found: "%{group_folder} não foi encontrado. Verifique a configuração da pasta de grupo do Nextcloud."

@@ -81,6 +81,7 @@ nl:
     edit_project_folder:
       label: Edit project folder
     open:
+      contact_admin: Please contact your administrator to resolve this error.
       remote_identity_error: An unexpected error occurred while connecting to the storage.
     project_folder_mode:
       automatic: Automatisch beheerd
@@ -128,7 +129,7 @@ nl:
               conflict: 'De gebruiker %{user} kon niet worden toegevoegd aan de groep %{group} om de volgende reden: %{reason}'
               failed_to_add: 'De gebruiker %{user} kon niet worden toegevoegd aan de groep %{group} om de volgende reden: %{reason}'
             create_folder:
-              conflict: De %{folder_name} bestaat al op %{parent_location}.
+              conflict: The folder %{folder_name} already exists on %{parent_location}.
               not_found: "%{parent_location} wasn't found."
             ensure_root_folder_permissions:
               not_found: "%{group_folder} wasn't found. Please check your Nextcloud Group Folder setup."

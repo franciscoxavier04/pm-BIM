@@ -1177,7 +1177,7 @@ pl:
         comments_sorting: "Wyświetl działania pakietu roboczego posortowane według"
         disable_keyboard_shortcuts: "Wyłącz skróty klawiaturowe"
         disable_keyboard_shortcuts_caption_html: |-
-          Jeśli używasz czytnika ekranu lub chcesz uniknąć przypadkowego uruchomienia działania za pomocą skrótu, możesz wyłączyć domyślne <a href="%{href}">skróty klawiaturowe</a>.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Ukryte banery przedsiębiorstwa"
         impaired: "Ułatwienia dostępu"
         auto_hide_popups: "Automatycznie ukrywaj banery sukcesu"

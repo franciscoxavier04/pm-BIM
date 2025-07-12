@@ -81,6 +81,7 @@ ko:
     edit_project_folder:
       label: 프로젝트 폴더 편집
     open:
+      contact_admin: Please contact your administrator to resolve this error.
       remote_identity_error: 저장소에 연결하는 동안 예기치 않은 오류가 발생했습니다.
     project_folder_mode:
       automatic: 자동으로 관리됨
@@ -128,7 +129,7 @@ ko:
               conflict: '다음과 같은 이유로 %{user} 사용자를 %{group} 그룹에 추가할 수 없습니다: %{reason}'
               failed_to_add: '다음과 같은 이유로 %{user} 사용자를 %{group} 그룹에 추가할 수 없습니다: %{reason}'
             create_folder:
-              conflict: '%{folder_name}은(는) 이미 %{parent_location}에 있습니다.'
+              conflict: The folder %{folder_name} already exists on %{parent_location}.
               not_found: "%{parent_location}을(를) 찾을 수 없습니다."
             ensure_root_folder_permissions:
               not_found: "%{group_folder}을(를) 찾을 수 없습니다. Nextcloud 그룹 폴더 설정을 확인하세요."
@@ -142,7 +143,7 @@ ko:
               conflict: '다음과 같은 이유로 %{user} 사용자를 %{group} 그룹에서 제거할 수 없습니다: %{reason}'
               failed_to_remove: '다음과 같은 이유로 %{user} 사용자를 %{group} 그룹에서 제거할 수 없습니다: %{reason}'
             rename_project_folder:
-              conflict: OpenProject could not rename the project folder to %{current_path} as a folder with the same name already exists
+              conflict: 같은 이름의 폴더가 이미 있으므로 OpenProject에서 프로젝트 폴더의 이름을 %{current_path}(으)로 바꿀 수 없습니다
               forbidden: OpenProject 사용자에게 %{current_path} 폴더에 대한 액세스 권한이 없습니다.
               not_found: "%{current_path}을(를) 찾을 수 없습니다."
             set_folders_permissions:

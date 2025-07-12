@@ -1162,7 +1162,7 @@ pt-BR:
         comments_sorting: "Exibir atividade do pacote de trabalho classificada por"
         disable_keyboard_shortcuts: "Desativar atalhos de teclado"
         disable_keyboard_shortcuts_caption_html: |-
-          Você pode optar por desativar os <a href="%{href}">atalhos de teclado</a> padrão caso use leitor de tela ou queira evitar acionar ações acidentalmente com atalhos.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Banners empresariais ocultos"
         impaired: "Modo de acessibilidade"
         auto_hide_popups: "Ocultar automaticamente as notificações de sucesso"

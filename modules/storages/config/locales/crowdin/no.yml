@@ -81,6 +81,7 @@
     edit_project_folder:
       label: Rediger prosjektmappe
     open:
+      contact_admin: Please contact your administrator to resolve this error.
       remote_identity_error: An unexpected error occurred while connecting to the storage.
     project_folder_mode:
       automatic: Automatisk administrert
@@ -128,7 +129,7 @@
               conflict: 'Brukeren %{user} kunne ikke bli lagt til i %{group} gruppen av følgende årsak: %{reason}'
               failed_to_add: 'Brukeren %{user} kunne ikke bli lagt til i %{group} gruppen av følgende årsak: %{reason}'
             create_folder:
-              conflict: '%{folder_name} finnes allerede på %{parent_location}.'
+              conflict: The folder %{folder_name} already exists on %{parent_location}.
               not_found: "%{parent_location} ble ikke funnet."
             ensure_root_folder_permissions:
               not_found: "%{group_folder} ble ikke funnet. Sjekk din Nextcloud gruppe mappeoppsett."
