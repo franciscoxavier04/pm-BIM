@@ -11,7 +11,7 @@ keywords: Agile Boards
 This document provides an initial introduction to the boards in OpenProject, i.e. how to use a Kanban board to manage your tasks in an agile way. To learn more about working with Boards in OpenProject, please visit our [user guide for boards](../../user-guide/agile-boards).
 
 > [!NOTE]
-> The basic agile boards are included in the OpenProject Community edition. OpenProject advanced Action boards are an Enterprise add-on and can only be used  with [Enterprise cloud](../../enterprise-guide/enterprise-cloud-guide) or [Enterprise on-premises](../../enterprise-guide/enterprise-on-premises-guide). An upgrade from the free Community edition is easily possible.
+> The basic agile boards are included in the OpenProject Community edition. OpenProject advanced Action boards are an Enterprise add-on and can only be used with [Enterprise cloud](../../enterprise-guide/enterprise-cloud-guide) or [Enterprise on-premises](../../enterprise-guide/enterprise-on-premises-guide). An upgrade from the free Community edition is easily possible.
 
 <div class="glossary">
 
@@ -30,13 +30,13 @@ This document provides an initial introduction to the boards in OpenProject, i.e
 
 Agile Boards in OpenProject support teams in their agile project management methodology, e.g. Scrum or Kanban.
 
-You can create as many flexible boards as you want with both lists and cards on it. A list usually represents a workflow, e.g. status or version of a work package. The cards are work packages, e.g. tasks, on this list.
+You can create as many flexible boards as you want with both lists and cards on them. A list usually represents a workflow, e.g. status or version of a work package. The cards are work packages, e.g. tasks, on these lists.
 
 ## Manage your work in a Board
 
 To manage your work in an agile board, open the boards module in the project menu. Choose a board from the list where you want to work on. Open it by double clicking the board's title.
 
-You can prioritize cards within a list via drag and drop, add new cards and update cards status directly in a board. To edit the details of a card, double click it. 
+You can prioritize cards within a list via drag and drop, add new cards and update a card's status directly in a board. To edit the details of a card, double click it. 
 
 ![A gif showing how to open and edit a board in OpenProject](openproject_getting_started_boards.gif)
 

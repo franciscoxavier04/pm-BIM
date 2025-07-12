@@ -48,13 +48,13 @@ Click the **+ Member** button in the top right corner.
 
 Type the name of the user, placeholder user or group which you want to add. You can also choose several members at once. **Assign a role** to the new member(s) and click the blue **Add** button.
 
-Please note that you will have to click on the new member's name or press the Enter key before clicking the Add button.
+Please note that you will have to click the new member's name or press the Enter key before clicking the Add button.
 
 ![Search bar for user selection to invite project members in OpenProject](openproject_getting_started_add_existing_user_as_member.png)
 
 ## Invite new members
 
-You can also invite users who do not have an OpenProject account, yet. There are different ways to do it.
+You can also invite users who do not yet have an OpenProject account. There are different ways to do it.
 
 **Invite in members module**
 
@@ -70,15 +70,15 @@ An email invitation will be sent out to the user with a link to [create an accou
 
 In the header menu that is always present, you find a **plus** icon that allows you to create projects, work packages and invite users from wherever in the application you are.
 
-![Buton to invite new users in the header navigation of OpenProject](openproject_getting_started_invite_new_user_header_navigation.png)
+![Button to invite new users in the header navigation of OpenProject](openproject_getting_started_invite_new_user_header_navigation.png)
 
-Once you clicked the **Invite user**, a dialogue will open. Here you can select the project, to which you want to invite new members and which roles they get.
+Once you click the **Invite user**, a dialogue will open. Here you can select the project, to which you want to invite new members and which roles they get.
 
 ![Pop up form to invite new user in OpenProject](openproject_getting_started_invite_new_user_popover_form.png)
 
 **Invite within a work package**
 
-When you are working in the work package table, you can also invite users from there. For example when you want to set an assignee for a work package that has not got access to OpenProject yet, you can select the Invite option from the drop down menu. The same applies to the column Accountable or custom fields for your project.
+When you are working in the work package table, you can also invite users from there. For example when you want to set an assignee for a work package that does not yet have access to OpenProject, you can select the Invite option from the drop down menu. The same applies to the column Accountable or the custom fields for your project.
 
 ![Invite a user from a work package assignee field in OpenProject](openproject_getting_started_invite_new_user_from_work_package.png)
 
@@ -101,7 +101,7 @@ Find out more about the management of groups [here](../../system-admin-guide/use
 
 ## Behavior of placeholder users as project members
 
-Placeholder will look slightly different from regular users in a project member list:
+Placeholder users will look slightly different from regular users in a project member list:
 
 - will be shown without email address
 - can't be part of a group, i.e. they will be shown without group affiliation

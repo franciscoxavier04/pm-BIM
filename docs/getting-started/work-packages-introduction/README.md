@@ -23,11 +23,11 @@ For further documentation, please visit our [user guide for work packages](../..
 
 ## What is a work package?
 
-A work package in OpenProject can basically be everything you need to keep track off within your projects. It can be e.g. a task, a feature, a bug, a risk, a milestone or a project phase. These different kinds of work packages are called **work package types**.
+A work package in OpenProject can basically be everything you need to keep track of within your projects. It can be e.g. a task, a feature, a bug, a risk, a milestone or a project phase. These different kinds of work packages are called **work package types**.
 
 ## Create a new work package
 
-To get started, create a new work package in your project, [open the project](../projects/#open-an-existing-project) with the project drop-down menu, navigate to the **module work packages** in the project menu.
+To get started, create a new work package in your project, [open the project](../projects/#open-an-existing-project) with the project drop-down menu, navigate to the **work packages module** in the project menu.
 
 Within the work packages module, click the + Create button to create a new work package. In the drop down menu, choose which type of work package you want to create, e.g. a task or a milestone. 
 
@@ -65,7 +65,7 @@ To open and edit an existing work package from the table, select the work packag
 
 By clicking through the list on the left hand side you will see the details of each work package on the right in the split screen.
 
-Click in any of the fields to **update a work package**, e.g. description. Click the checkmark at the bottom of the input field to save changes.
+Click any of the fields to **update a work package**, e.g. description. Click the checkmark at the bottom of the input field to save changes.
 
 ![Update a work package in a split screen view in OpenProject](openproject_getting_started_work_packages_wp_detailed_view_edit.png)
 
@@ -83,6 +83,6 @@ You can also insert a comment at the end of the Activity list.
 
 ![Activity tab in a detailed view of a work package in OpenProject](openproject_getting_started_work_packages_activity_tab.png)
 
-To notify other people about changes in your work packages activities, you can comment and type an **@** in front of the username you want to inform and when you publish your message the person you have tagged will get a notification in OpenProject. The aggregation of changes in the Activity list can be configured in the [system administration](../../system-admin-guide/calendars-and-dates/#date-format).
+To notify other people about changes in your work packages activities, you can comment and type an **@** in front of the username you want to inform. When you publish your message, the person you have tagged will get a notification. The aggregation of changes in the Activity list can be configured in the [system administration](../../system-admin-guide/calendars-and-dates/#date-format).
 
 To find out more about the work package functionalities, please visit our detailed [user guide for work packages](../../user-guide/work-packages).

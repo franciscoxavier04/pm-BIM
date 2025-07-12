@@ -50,7 +50,7 @@ You can change the position of a widget on the dashboard with drag and drop.
 
 Click the dots next to the title and drag it to the new place.
 
-![Move a widget by drag and drap on My page in OpenProject](openproject_getting_started_my_page_move_widget.png)
+![Move a widget by drag and drop on My page in OpenProject](openproject_getting_started_my_page_move_widget.png)
 
 ### Change the size of a widget
 

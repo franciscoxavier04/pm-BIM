@@ -47,7 +47,7 @@ Projects and subprojects are displayed according to their hierarchy in the drop-
 
 Alternatively, you can open the list of all existing projects using the [**Global modules**](../../user-guide/home/global-modules/#projects) menu.
 
-Also, you will see your newest and favored projects on the application landing page in the **Projects** section. Here you can simply click on one of the projects to open it. Alternatively, select fovorite projects from the **All projects** dropdown menu by using the respective switch.
+Also, you will see your newest and favored projects on the application landing page in the **Projects** section. Here you can simply click on one of the projects to open it. Alternatively, select favorite projects from the **All projects** dropdown menu by using the respective switch.
 
 ![Favorite projects displayed on OpenProject overview page](openproject_getting_started_favorite_projects.png)
 
@@ -57,7 +57,7 @@ To create a new project, click the green button **+ Project** directly on the sy
 
 ![+Project button to create a new project on the OpenProject overview page](openproject_getting_started_new_project_button.png)
 
-- You can either create a completely new project, create a subproject of an existing project or create a (sub)project from a template. For the latter option, choose a [template](../../user-guide/projects/project-templates/#create-a-project-template) using the drop-down menu.
+- You can either create a completely new project, a subproject of an existing project or a (sub)project from a template. For the latter option, choose a [template](../../user-guide/projects/project-templates/#create-a-project-template) using the drop-down menu.
 - Enter a **name** for your project and click the **Create** button.
 - Integrate the project into the existing project hierarchy by defining it as a subproject of an existing project.
 - The **Advanced Settings** allow for further configuration, e.g. description, URL, etc.
