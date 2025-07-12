@@ -27,15 +27,9 @@
 #++
 
 class Queries::Projects::Filters::ParentFilter < Queries::Projects::Filters::Base
-  def type
-    :list_optional
-  end
+  include Queries::Filters::Shared::ProjectFilter::Optional
 
   def self.key
     :parent_id
-  end
-
-  def allowed_values
-    @allowed_values ||= ::Project.visible.pluck(:id).map { |id| [id, id.to_s] }
   end
 end
