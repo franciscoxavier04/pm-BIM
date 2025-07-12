@@ -47,7 +47,7 @@ pl:
       meeting_agenda_item:
         title: "Tytuł"
         author: "Autor"
-        duration_in_minutes: "Duration"
+        duration_in_minutes: "Czas trwania"
         description: "Notatki"
         presenter: "Prezenter"
       meeting_section:
@@ -274,9 +274,9 @@ pl:
     empty_text: "Przeciągnij elementy tutaj lub utwórz nowe"
   recurring_meeting:
     time_zone_difference_banner:
-      title: "Time zone difference"
+      title: "Różnica strefy czasowej"
       description: >
-        The dates below are referencing the time zone of the meeting series (%{actual_zone}), not your local time zone (%{user_zone}).
+        Poniższe daty odnoszą się do strefy czasowej serii spotkań (%{actual_zone}), a nie do Twojej lokalnej strefy czasowej (%{user_zone}).
     ended_blankslate:
       title: "Seria spotkań zakończyła się"
       message: "Ta seria spotkań dobiegła końca. Nie ma nadchodzących spotkań. "
@@ -366,7 +366,7 @@ pl:
   permission_delete_meetings: "Usuń spotkania"
   permission_view_meetings: "Zobacz spotkania"
   permission_manage_agendas: "Zarządzaj planami"
-  permission_manage_agendas_explanation: "Allows creating, editing and removing agenda items"
+  permission_manage_agendas_explanation: "Umożliwia tworzenie, edytowanie i usuwanie pozycji planu spotkania"
   permission_manage_outcomes: "Zarządzaj wynikami"
   permission_send_meeting_invites_and_outcomes: "Wysyłaj zaproszenia na spotkania i ich wyniki do uczestników"
   project_module_meetings: "Spotkania"

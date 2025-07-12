@@ -37,20 +37,7 @@ Work package relations indicate that work packages address a similar topic or cr
 
 You can select one of the following relations:
 
-- **Create new child** - This option lets you create a new package and automatically adds it as a child to the current (parent) work package.
-
-- **Child** - This option allows you to add an existing work package as a child to the current (parent) work package.
-
 - **Related to** - This option adds a link from the work package A to work package B, so that project members can immediately see the connection, even if the work packages are not members of the same hierarchy.
-
-- **Parent**  - This option makes the related work package a parent of the current (child) work package.
-
-- **Duplicates / Duplicated by** - This option indicates that the work package B duplicates a work package A in one way or another, for example both address the same task. This can be useful if you have the same work package that needs to be a part of a closed and public projects at the same time. The connection in this case is only semantic, the changes you make in work package A will need to be adapted in work package B manually.
-
-> [!NOTE]
-> Some changes in statuses will be adjusted automatically for the duplicated work package. Specifically, if the status of a work package A is set to be "closed" (or set to any status that is defined to count as "closed" in the  [system settings](../../../system-admin-guide/manage-work-packages/work-package-status/), for example "rejected" often counts as a "closed" status), the status of the work package B will change to "closed". Note that this is direction dependent. Only if the work package A is closed will the work package B be closed as well, not the other way around.
-
-- **Blocks / Blocked by** - This option defines status change restrictions between two work packages. If you set a work package A to be blocking work package B, the status of work package B cannot be set to closed or resolved until the work package A is closed.
 
 - **Predecessor (before)/ Successor (after)** - Defines a chronological relation between two work packages. For example, if you set a work package A to precede a work package B, the start date of B has to be at least a day after the finish date of A.
   Please note: If work package B is in [manual scheduling mode](../../gantt-chart/scheduling/#manual-scheduling), changing the finish date of work package A will have no effect on work package B.
@@ -70,6 +57,21 @@ Only working days are considered when calculating lag. For example, if the prede
 You can always edit the *Description* and *Lag* fields at a later time.
 
 ![Add a successor work package in OpenProject](openproject_user_guide_relations_tab_edit_lag.png)
+
+- **Create new child** - This option lets you create a new package and automatically adds it as a child to the current (parent) work package.
+
+- **Child** - This option allows you to add an existing work package as a child to the current (parent) work package.
+
+- **Parent**  - This option makes the related work package a parent of the current (child) work package.
+
+- **Other relations** - Clicking *other relations* opens second level navigation with additional relations options. They include: 
+
+- **Duplicates / Duplicated by** - This option indicates that the work package B duplicates a work package A in one way or another, for example both address the same task. This can be useful if you have the same work package that needs to be a part of a closed and public projects at the same time. The connection in this case is only semantic, the changes you make in work package A will need to be adapted in work package B manually.
+
+> [!NOTE]
+> Some changes in statuses will be adjusted automatically for the duplicated work package. Specifically, if the status of a work package A is set to be "closed" (or set to any status that is defined to count as "closed" in the  [system settings](../../../system-admin-guide/manage-work-packages/work-package-status/), for example "rejected" often counts as a "closed" status), the status of the work package B will change to "closed". Note that this is direction dependent. Only if the work package A is closed will the work package B be closed as well, not the other way around.
+
+- **Blocks / Blocked by** - This option defines status change restrictions between two work packages. If you set a work package A to be blocking work package B, the status of work package B cannot be set to closed or resolved until the work package A is closed.
 
 - **Includes / Part of** - Defines if work package A includes or is part of work package B. This relation type can be used for example when you have a roll-out work package and work packages which should be shown as included without using hierarchical relationships. There is no additional effect.
 

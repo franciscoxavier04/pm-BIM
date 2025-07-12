@@ -123,7 +123,7 @@ ru:
       2fa_from_webauthn: Пожалуйста, укажите устройство WebAuthn <strong>%{device_name}</strong>. Если это устройство на базе USB, обязательно подключите его и прикоснитесь к нему. Затем нажмите кнопку входа.
       webauthn:
         title: "WebAuthn"
-        description: Register a FIDO2 device (like YubiKey) or the secure enclave of your mobile device.
+        description: Зарегистрируйте устройство FIDO2 (например, YubiKey) или Ваше мобильное устройство.
         further_steps: После выбора имени, можете нажать кнопку Продолжить. Ваш браузер предложит Вам представить Ваше устройство WebAuthn. Когда Вы это сделаете, регистрация устройства будет завершена.
       totp:
         title: "Приложение-Аутентификатор"

@@ -40,7 +40,6 @@ RSpec.describe "Creating a SCIM client", :js, :selenium, driver: :firefox_de do
     visit new_admin_scim_client_path
 
     expect(page).to be_axe_clean.within("#content")
-                                .skipping("link-in-text-block") # https://community.openproject.org/wp/65252
 
     expect(page).to have_no_field("Subject claim")
     select "JWT from identity provider", from: "Authentication method"

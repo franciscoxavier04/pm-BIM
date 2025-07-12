@@ -1179,7 +1179,7 @@ ru:
         comments_sorting: "Отображение активности пакета работ, отсортированной по"
         disable_keyboard_shortcuts: "Отключить горячие клавиши"
         disable_keyboard_shortcuts_caption_html: |-
-          Вы можете отключить <a href="%{href}">горячие клавиши</a> по умолчанию, если Вы пользуетесь программой чтения с экрана или хотите избежать случайного запуска действия с помощью сочетания клавиш.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Скрытые корпоративные баннеры"
         impaired: "Режим отображения для людей с ограниченными возможностями"
         auto_hide_popups: "Автоматически скрывать успешные баннеры"
@@ -1791,7 +1791,7 @@ ru:
     estimated_time: "Предполагаемое время"
     email: "Электронная почта"
     entity_type: "Тип сущности"
-    expires_at: "Expires on"
+    expires_at: "Истекает"
     firstname: "Имя"
     filter: "Фильтр"
     group: "Группа"
@@ -1914,7 +1914,7 @@ ru:
   button_delete_watcher: "Удаление наблюдателя %{name}"
   button_download: "Скачать"
   button_duplicate: "Дублировать"
-  button_duplicate_and_follow: "Duplicate and follow"
+  button_duplicate_and_follow: "Дублировать и следить"
   button_edit: "Правка"
   button_edit_associated_wikipage: "Редактирование связанной wiki-страницы: %{page_title}"
   button_expand_all: "Развернуть все"
@@ -2155,10 +2155,10 @@ ru:
         other: "%{count} секунд"
     units:
       minute_abbreviated:
-        one: "min"
+        one: "мин"
         few: "mins"
         many: "mins"
-        other: "минуты"
+        other: "мин"
       hour:
         one: "час"
         few: "час"
@@ -3666,7 +3666,7 @@ ru:
   permission_comment_news: "Комментировать новость"
   permission_commit_access: "Возможность чтения/записи в репозиторий (commit)"
   permission_copy_projects: "Копировать проект"
-  permission_copy_work_packages: "Duplicate work packages"
+  permission_copy_work_packages: "Дублировать пакеты работ"
   permission_create_backup: "Создание резервных копий"
   permission_delete_work_package_watchers: "Удалить наблюдателей"
   permission_delete_work_packages: "Удалить пакеты работ"

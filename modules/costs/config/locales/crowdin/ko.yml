@@ -73,7 +73,7 @@ ko:
         time_entry:
           invalid_time: "- 00:00에서 23:59 사이여야 합니다."
           cannot_log_for_this_work_package: "이 작업 패키지에 대한 시간을 기록할 수 없습니다."
-          duplicate_ongoing: "An ongoing time entry already exists for this user."
+          duplicate_ongoing: "이 사용자에 대해 진행 중인 시간 항목이 이미 존재합니다."
         work_package:
           is_not_a_valid_target_for_cost_entries: "작업 패키지 #%{id}은(는) 비용 항목 재할당에 올바른 대상이 아닙니다."
           nullify_is_not_valid_for_cost_entries: "비용 항목은 프로젝트에 할당할 수 없습니다."

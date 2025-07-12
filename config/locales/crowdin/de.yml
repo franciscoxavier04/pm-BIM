@@ -1157,7 +1157,7 @@ de:
         comments_sorting: "Arbeits­paket­aktivität anzeigen, sortiert nach"
         disable_keyboard_shortcuts: "Tastaturkürzel deaktivieren"
         disable_keyboard_shortcuts_caption_html: |-
-          Sie können die standardmäßigen <a href="%{href}">Tastenkombinationen</a> deaktivieren, wenn Sie einen Screenreader verwenden oder unbeabsichtigtes Auslösen einer Aktion durch eine Tastenkombination vermeiden möchten.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Ausgeblendete Unternehmensbanner"
         impaired: "Für die barrierefreie Nutzung optimierte Oberfläche"
         auto_hide_popups: "Automatically hide success banners"
@@ -1741,7 +1741,7 @@ de:
     estimated_time: "Aufwand"
     email: "E-Mail"
     entity_type: "Entität"
-    expires_at: "Expires on"
+    expires_at: "Verfällt am"
     firstname: "Vorname"
     filter: "Filter"
     group: "Gruppe"
@@ -1864,7 +1864,7 @@ de:
   button_delete_watcher: "Lösche Beobachter %{name}"
   button_download: "Download"
   button_duplicate: "Duplizieren"
-  button_duplicate_and_follow: "Duplicate and follow"
+  button_duplicate_and_follow: "Duplizieren und folgen"
   button_edit: "Bearbeiten"
   button_edit_associated_wikipage: "Zugehörige Wikiseite bearbeiten: %{page_title}"
   button_expand_all: "Alle ausklappen"
