@@ -32,3 +32,7 @@ You can create a new project by using an existing template. This causes the prop
 Another way for using a template project would be to [copy it](../#copy-a-project).
 
 <video src="https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject-Project-Templates.mp4"></video>
+
+https://www.openproject.org/blog/create-configure-manage-projects-openproject/
+
+https://www.openproject.org/blog/project-templates/
