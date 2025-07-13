@@ -13,15 +13,15 @@ Your projects can be available publicly or internally. OpenProject does not limi
 
 | Topic                                                        | Content                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [Select a project](../../getting-started/projects/#open-an-existing-project) | Open a project which you want to work at.                    |
+| [Select a project](../../getting-started/projects/#open-an-existing-project) | Open a project which you want to work on.                    |
 | [Create a new project](../../getting-started/projects/#create-a-new-project) | Find out how to create a new project in OpenProject.         |
 | [Create a subproject](/project-settings/#create-a-subproject) | Create a subproject of an existing project.                  |
 | [Project structure](#project-structure)                      | Find out how to set up a project structure.                  |
 | [Project settings](/project-settings)                        | Configure further settings for your projects, such as description, project hierarchy structure, or setting it to public. |
 | [Project lists](/project-lists)                              |                                                              |
-| [Change the project hierarchy](/project-settings/change-the-project-hierarchy) | You can change the hierarchy by selecting the parent project ("subproject of"). |
-| [Set a project to public](/project-settings/#make-a-project-to-public) | Make a project accessible for (at least) all users within your instance. |
-| [Create a project template](./project-templates/#create-a-project-template) | Configure a project and set it as template to copy it for future projects. |
+| [Change the project hierarchy](/project-settings/#change-the-project-hierarchy) | You can change the hierarchy by selecting the parent project ("subproject of"). |
+| [Set a project to public](/project-settings/#make-a-project-to-public) | Make a project accessible to (at least) all users within your instance. |
+| [Create a project template](./project-templates/#create-a-project-template) | Configure a project and set it as a template to copy it for future projects. |
 | [Use a project template](./project-templates/#use-a-project-template) | Create a new project based on an existing template project.  |
 | [Copy a project](/project-settings/#copy-a-project)          | Copy an existing project.                                    |
 | [Archive a project](/project-settings/#archive-a-project)    | Find out how to archive completed projects.                  |
@@ -31,7 +31,7 @@ Your projects can be available publicly or internally. OpenProject does not limi
 
 ## Project structure
 
-Projects build a structure in OpenProject. You can have parent projects and sub-projects. A project can represent an organizational unit of a company, e.g. to have issues separated:
+Projects form a structure in OpenProject. You can have parent projects and sub-projects. A project can represent an organizational unit of a company, e.g. to have issues separated:
 
 * Company (Parent project)
   * Marketing (Sub-project)
@@ -40,38 +40,36 @@ Projects build a structure in OpenProject. You can have parent projects and sub-
   * IT
   * ...
 
-Also, projects can be for overarching teams working on one topic:
+Projects can also be for overarching teams working on one topic:
 
 * Launch a new product
   * Design
   * Development
   * ...
 
-Or, a project can be to separate products or customers.
+Or, a project can be used to separate products or customers.
 
 * Product A
   * Customer A
   * Customer B
   * Customer C
 
-OpenProject, for example, uses the projects to structure the different modules/plugin development:
-
-![project hierarchy select project](image-20220728200830893.png)
+![Example of a project hierarchy shown in "Projects" dropdown menu in OpenProject](openproject_user_guide_projects_project_structure_example.png)
 
 > [!NOTE]
-> You have to be a [member](../members/#add-members) of a project in order to see the project and to work in a project.
+> You must be a [member](../members/#add-members) of a project  to view and work in it.
 
 ## Select a project
 
-Find out in our Getting started guide [how to open an existing project](../../getting-started/projects/#open-an-existing-project) in OpenProject.
+Find out  [how to open an existing project](../../getting-started/projects/#open-an-existing-project) in OpenProject in our *Getting started* guide.
 
 ## Create a new project
 
-Find out in our Getting started guide how to [create a new project](../../getting-started/projects/#create-a-new-project) in OpenProject.
+Find out how to [create a new project](../../getting-started/projects/#create-a-new-project) in OpenProject in our *Getting started* guide.
 
 ## Create a subproject
 
-Find out how to [create a subproject](/project-settings) in OpenProject. 
+Find out how to [create a subproject](/project-settings) in OpenProject in our *Project settings* guide.
 
 ## Project Settings
 
