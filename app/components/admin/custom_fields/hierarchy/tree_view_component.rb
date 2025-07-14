@@ -50,7 +50,7 @@ module Admin
             if child_hash.empty?
               tree.with_leaf(**item_options(item))
             else
-              expanded = child_hash.any? { |child, _| current?(child) }
+              expanded = current?(item) || child_hash.any? { |child, _| current?(child) }
 
               tree.with_sub_tree(expanded: expanded, **item_options(item)) do |sub_tree|
                 add_sub_tree(sub_tree, child_hash)

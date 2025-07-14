@@ -31,14 +31,4 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%= render(Admin::CustomFields::EditFormHeaderComponent.new(custom_field: @custom_field, selected: :items)) %>
 
-<%=
-  render(Primer::Alpha::Layout.new(stacking_breakpoint: :md, classes: "custom-fields-hierarchy-page")) do |content|
-    content.with_main do
-      render(Admin::CustomFields::Hierarchy::ItemsComponent.new(item: @active_item))
-    end
-
-    content.with_sidebar(row_placement: :start, col_placement: :start, border: true, border_bottom: 0, p: 3, classes: "custom-fields-hierarchy-page--sidebar") do
-      render(Admin::CustomFields::Hierarchy::TreeViewComponent.new(custom_field: @custom_field, active_item: @active_item))
-    end
-  end
-%>
+<%= render(Admin::CustomFields::Hierarchy::ItemsComponent.new(item: @active_item)) %>

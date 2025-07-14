@@ -36,7 +36,7 @@ module Admin
 
         def item_options
           options = { url:, method: http_verb, data: { test_selector: "op-custom-fields--new-item-form" } }
-          options[:data][:turbo_frame] = ItemsComponent.wrapper_key if model.new_record?
+          options[:data][:turbo_frame] = ItemsComponent.wrapper_key
 
           options
         end
