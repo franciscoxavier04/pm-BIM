@@ -48,8 +48,7 @@ import '@uirouter/angular';
 import 'core-vendor/jquery-ui-1.14.1/jquery-ui';
 
 import moment from 'moment';
-import 'moment/locale/de';
-import 'moment/locale/en-gb';
+import './init-moment-locales';
 
 import 'jquery.caret';
 // Text highlight for autocompleter
