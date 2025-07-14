@@ -36,6 +36,8 @@ module BaseServices
       unless service_result.result.save
         service_result.errors = service_result.result.errors
         service_result.success = false
+
+        Rails.logger.info("Failed saving: #{service_result.result.errors.inspect}")
       end
 
       service_result

@@ -59,6 +59,8 @@ class WikiPages::CopyService
   end
 
   def create(attributes)
+    Rails.logger.info("Copying wiki page: #{attributes.inspect}")
+
     WikiPages::CreateService
       .new(user:,
            contract_class:)

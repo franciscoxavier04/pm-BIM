@@ -44,7 +44,7 @@ module Projects::Copy
 
     def copy_dependency(params:)
       # Check that the source project has a wiki first
-      return if source.wiki.nil?
+      return if source.wiki.nil? || String(ENV["SKIP_COPYING_WIKIS"]) == "true"
 
       target.wiki = target.build_wiki(source.wiki.attributes.dup.except("id", "project_id"))
       target.wiki.wiki_menu_items.delete_all
