@@ -81,7 +81,7 @@ zh-TW:
     edit_project_folder:
       label: 編輯專案資料夾
     open:
-      contact_admin: Please contact your administrator to resolve this error.
+      contact_admin: 請聯絡您的管理員解決此錯誤。
       remote_identity_error: 連線到儲存裝置時發生了意外錯誤。
     project_folder_mode:
       automatic: 自動管理
@@ -129,7 +129,7 @@ zh-TW:
               conflict: '使用者 %{user} 無法加入 %{group} 群組，原因如下： %{reason}'
               failed_to_add: '使用者 %{user} 無法加入 %{group} 群組，原因如下： %{reason}'
             create_folder:
-              conflict: The folder %{folder_name} already exists on %{parent_location}.
+              conflict: 資料夾 %{folder_name} 已存在於 %{parent_location}上。
               not_found: "%{parent_location} 沒有找到。"
             ensure_root_folder_permissions:
               not_found: "%{group_folder} 未找到。請檢查您的 Nextcloud 群組資料夾設定。"

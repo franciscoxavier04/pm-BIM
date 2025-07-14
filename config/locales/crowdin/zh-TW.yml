@@ -1153,7 +1153,7 @@ zh-TW:
         comments_sorting: "顯示工作套件活動，排序方式為"
         disable_keyboard_shortcuts: "停用鍵盤快速鍵"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
+          如果你使用螢幕閱讀器，或想避免不小心觸發快捷鍵操作，你可以選擇停用預設的<a href="%{href}">鍵盤快捷鍵</a>。
         dismissed_enterprise_banners: "隱藏的企業版廣告"
         impaired: "協助工具模式"
         auto_hide_popups: "自動關閉成功通知"
