@@ -1157,10 +1157,11 @@ vi:
         comments_sorting: "Display work package activity sorted by"
         disable_keyboard_shortcuts: "Disable keyboard shortcuts"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Viet nam"
-        auto_hide_popups: "Tự động ẩn thông báo thành công"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Cảnh báo tôi khi rời khỏi gói công việc với thay đổi chưa lưu"
         theme: "Colour mode"
         time_zone: "Múi giờ"
@@ -1726,7 +1727,7 @@ vi:
     estimated_time: "Công việc"
     email: "Thư điện tử"
     entity_type: "Entity"
-    expires_at: "Hết hạn vào"
+    expires_at: "Expires on"
     firstname: "Tên"
     filter: "Bộ lọc"
     group: "Nhóm"
@@ -1841,7 +1842,6 @@ vi:
   button_copy: "Sao chép"
   button_copy_to_clipboard: "Sao chép vào bảng tạm"
   button_copy_link_to_clipboard: "Sao chép liên kết vào clipboard"
-  button_copy_and_follow: "Sao chép và làm theo"
   button_create: "Tạo mới"
   button_create_and_continue: "Tạo và tiếp tục"
   button_decline: "Từ chối"
@@ -1850,6 +1850,7 @@ vi:
   button_delete_watcher: "Xóa watcher %{name}"
   button_download: "Tải"
   button_duplicate: "Nhân đôi"
+  button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Chỉnh sửa"
   button_edit_associated_wikipage: "Chỉnh sửa trang Wiki liên quan: %{page_title}"
   button_expand_all: "Mở rộng tất cả"
@@ -2038,6 +2039,8 @@ vi:
       x_seconds_abbreviated:
         other: "%{count} giây"
     units:
+      minute_abbreviated:
+        other: "mins"
       hour:
         other: "hours"
       day:
@@ -3531,7 +3534,7 @@ vi:
   permission_comment_news: "Chú thích vào tin mới"
   permission_commit_access: "Quyền đọc/ghi vào kho (cam kết)"
   permission_copy_projects: "Sao chép dự án"
-  permission_copy_work_packages: "Sao chép gói công việc"
+  permission_copy_work_packages: "Duplicate work packages"
   permission_create_backup: "Tạo bản sao lưu"
   permission_delete_work_package_watchers: "Xóa người xem"
   permission_delete_work_packages: "Xóa gói công việc"

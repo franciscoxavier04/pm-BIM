@@ -1163,10 +1163,11 @@ da:
         comments_sorting: "Display work package activity sorted by"
         disable_keyboard_shortcuts: "Disable keyboard shortcuts"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Tilgængelighedstilstand"
-        auto_hide_popups: "Auto-hide success notifications"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Colour mode"
         time_zone: "Tidszone"
@@ -1746,7 +1747,7 @@ da:
     estimated_time: "Work"
     email: "E-mail"
     entity_type: "Entity"
-    expires_at: "Expires at"
+    expires_at: "Expires on"
     firstname: "Fornavn"
     filter: "Filter"
     group: "Gruppe"
@@ -1861,7 +1862,6 @@ da:
   button_copy: "Kopier"
   button_copy_to_clipboard: "Kopiér til Udklipsholder"
   button_copy_link_to_clipboard: "Copy link to clipboard"
-  button_copy_and_follow: "Kopier og følg"
   button_create: "Opret"
   button_create_and_continue: "Opret og fortsæt"
   button_decline: "Decline"
@@ -1870,6 +1870,7 @@ da:
   button_delete_watcher: "Slet tilsynsførende %{name}"
   button_download: "Hent"
   button_duplicate: "Lav dublet"
+  button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Rediger"
   button_edit_associated_wikipage: "Rediger tilknyttet wiki-side: %{page_title}"
   button_expand_all: "Fold alle ud"
@@ -2075,6 +2076,9 @@ da:
         one: "1 s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "time"
         other: "timer"
@@ -3573,7 +3577,7 @@ da:
   permission_comment_news: "Kommenter nyheder"
   permission_commit_access: "Read/write access to repository (commit)"
   permission_copy_projects: "Kopiér projekter"
-  permission_copy_work_packages: "Kopiér arbejdspakker"
+  permission_copy_work_packages: "Duplicate work packages"
   permission_create_backup: "Create backups"
   permission_delete_work_package_watchers: "Slet tilsynsførende"
   permission_delete_work_packages: "Slet arbejdspakker"

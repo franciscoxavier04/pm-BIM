@@ -46,7 +46,6 @@ import { fromEvent } from 'rxjs';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export class WpResizerDirective extends UntilDestroyedMixin implements OnInit, AfterViewInit {
   @Input() elementClass:string;
 

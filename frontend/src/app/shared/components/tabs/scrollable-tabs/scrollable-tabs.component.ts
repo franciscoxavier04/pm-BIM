@@ -30,7 +30,6 @@ import { InjectField } from 'core-app/shared/helpers/angular/inject-field.decora
   styleUrls: ['./scrollable-tabs.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export class ScrollableTabsComponent extends UntilDestroyedMixin implements AfterViewInit, OnChanges {
   @ViewChild('scrollContainer', { static: true }) scrollContainer:ElementRef;
 

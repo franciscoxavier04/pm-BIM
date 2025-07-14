@@ -382,7 +382,7 @@ RSpec.describe Storages::NextcloudManagedFolderPermissionsService, :webmock do
     context "when adding users to remote group fails" do
       let(:add_user_to_group_service) { double(call: ServiceResult.failure(errors: Storages::StorageError.new(code: 418))) } # rubocop:disable RSpec/VerifiedDoubles
 
-      it { is_expected.to be_success }
+      it { is_expected.to be_failure }
 
       it "has errors" do
         expect(service_call.errors).to be_present
@@ -405,7 +405,7 @@ RSpec.describe Storages::NextcloudManagedFolderPermissionsService, :webmock do
     context "when removing users from remote group fails" do
       let(:remove_user_from_group_service) { double(call: ServiceResult.failure(errors: Storages::StorageError.new(code: 418))) } # rubocop:disable RSpec/VerifiedDoubles
 
-      it { is_expected.to be_success }
+      it { is_expected.to be_failure }
 
       it "has errors" do
         expect(service_call.errors).to be_present
@@ -428,7 +428,7 @@ RSpec.describe Storages::NextcloudManagedFolderPermissionsService, :webmock do
     context "when setting permissions fails" do
       let(:set_permissions_service) { double(call: ServiceResult.failure(errors: Storages::StorageError.new(code: 418))) } # rubocop:disable RSpec/VerifiedDoubles
 
-      it { is_expected.to be_success }
+      it { is_expected.to be_failure }
 
       it "has errors" do
         expect(service_call.errors).to be_present

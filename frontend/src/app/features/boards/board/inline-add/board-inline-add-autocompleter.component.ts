@@ -60,7 +60,6 @@ import { HalResourceService } from 'core-app/features/hal/services/hal-resource.
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./board-inline-add-autocompleter.sass'],
 })
-
 export class BoardInlineAddAutocompleterComponent implements AfterViewInit {
   readonly text = {
     placeholder: this.I18n.t('js.relations_autocomplete.placeholder'),

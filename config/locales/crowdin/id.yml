@@ -1153,10 +1153,11 @@ id:
         comments_sorting: "Display work package activity sorted by"
         disable_keyboard_shortcuts: "Disable keyboard shortcuts"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Mode aksesibel"
-        auto_hide_popups: "Pemberitahuan Auto-hide sukses"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Ingatkan saya ketika meninggalkan sebuah paket kerja dengan perubahan yang belum disimpan"
         theme: "Colour mode"
         time_zone: "Time Zone"
@@ -1722,7 +1723,7 @@ id:
     estimated_time: "Work"
     email: "Email"
     entity_type: "Entity"
-    expires_at: "Berakhir masa berlaku pada"
+    expires_at: "Expires on"
     firstname: "Nama depan"
     filter: "Filter"
     group: "Grup"
@@ -1837,7 +1838,6 @@ id:
   button_copy: "Salin"
   button_copy_to_clipboard: "Copy to clipboard"
   button_copy_link_to_clipboard: "Copy link to clipboard"
-  button_copy_and_follow: "Salin dan amati"
   button_create: "Buat baru"
   button_create_and_continue: "Buat baru dan lanjut"
   button_decline: "Tolak"
@@ -1846,6 +1846,7 @@ id:
   button_delete_watcher: "Hapus pemantau, %{name}"
   button_download: "Download"
   button_duplicate: "Duplikasi"
+  button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Edit"
   button_edit_associated_wikipage: "Edit Wiki terkait: %{page_title}"
   button_expand_all: "Buka semua"
@@ -2034,6 +2035,8 @@ id:
       x_seconds_abbreviated:
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        other: "mins"
       hour:
         other: "jam"
       day:
@@ -3526,7 +3529,7 @@ id:
   permission_comment_news: "Komentar berita"
   permission_commit_access: "Read/write access to repository (commit)"
   permission_copy_projects: "Copy Project"
-  permission_copy_work_packages: "Salin paket kerja"
+  permission_copy_work_packages: "Duplicate work packages"
   permission_create_backup: "Create backups"
   permission_delete_work_package_watchers: "Hapus pemantau"
   permission_delete_work_packages: "Hapus Paket-Penugasan"

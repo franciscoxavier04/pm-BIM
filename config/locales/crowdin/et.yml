@@ -1165,10 +1165,11 @@ et:
         comments_sorting: "Display work package activity sorted by"
         disable_keyboard_shortcuts: "Disable keyboard shortcuts"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Hõlbustusfunktsioonidega režiim"
-        auto_hide_popups: "Auto-hide success notifications"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Colour mode"
         time_zone: "Ajavöönd"
@@ -1748,7 +1749,7 @@ et:
     estimated_time: "Töö"
     email: "E-posti aadress"
     entity_type: "Entity"
-    expires_at: "Aegub"
+    expires_at: "Expires on"
     firstname: "Eesnimi"
     filter: "Filter"
     group: "Grupp"
@@ -1863,7 +1864,6 @@ et:
   button_copy: "Kopeeri"
   button_copy_to_clipboard: "Kopeeri vahemällu"
   button_copy_link_to_clipboard: "Copy link to clipboard"
-  button_copy_and_follow: "Kopeeri ja järgne"
   button_create: "Loo uus"
   button_create_and_continue: "Loo uus ja jätka"
   button_decline: "Keeldu"
@@ -1872,6 +1872,7 @@ et:
   button_delete_watcher: "Kustuta jälgija %{name}"
   button_download: "Laadi alla"
   button_duplicate: "Duplitseeri"
+  button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Muuda"
   button_edit_associated_wikipage: "Muuda seotud vikilehte \"%{page_title}\""
   button_expand_all: "Laienda kõik"
@@ -2077,6 +2078,9 @@ et:
         one: "1 s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "tund"
         other: "tundi"
@@ -3575,7 +3579,7 @@ et:
   permission_comment_news: "Uudiseid kommenteerida"
   permission_commit_access: "Read/write access to repository (commit)"
   permission_copy_projects: "Kopeerida projekte"
-  permission_copy_work_packages: "Copy work packages"
+  permission_copy_work_packages: "Duplicate work packages"
   permission_create_backup: "Create backups"
   permission_delete_work_package_watchers: "Jälgijaid eemaldada"
   permission_delete_work_packages: "Teemasid kustutada"

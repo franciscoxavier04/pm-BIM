@@ -293,11 +293,12 @@ zh-TW:
           text_new_features: "了解新功能和產品更新。"
           learn_about: "瞭解更多新功能的資訊"
           #Include the version to invalidate outdated translations in other locales.
-          #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_1":
+          #Otherwise, e.g. Chinese might still have the translations for 10.0 in the 12.0 release.
+          "16_2":
             standard:
               new_features_html: >
-                本版本包含多項新功能與改進，例如：<br><ul class="%{list_styling_class}"> <li>以階段與階段閘門結構化專案生命週期。</li> <li>會議可匯出為 PDF 格式。</li> <li>為提醒設定智慧預設選項。</li> <li>工作套件日期可使用負延遲（negative lag）。</li> <li>階層自訂欄位可顯示階層樹狀結構。</li> <li>改善日期選擇器的無障礙功能，支援 ARIA live regions。</li> </ul>
+                <br>
+                <ul class="%{list_styling_class}"> <li>全新標頭與側邊欄，提供更佳的導航與設計體驗。</li> <li>自訂欄位、關聯、提醒、會議與我的時間追蹤功能更順暢。</li> <li>PDF 匯出支援非拉丁文字與表情符號。</li> <li>可選擇關閉快捷鍵以提升無障礙使用體驗。</li> <li>透過 API 提供 SCIM 伺服器功能（企業加值模組）。</li> <li>API 支援內部評論。</li> </ul>
     ical_sharing_modal:
       title: "訂閱日曆"
       inital_setup_error_message: "更新資料時發生錯誤"
@@ -641,7 +642,8 @@ zh-TW:
       title: "確認您的密碼以便繼續"
     pagination:
       no_other_page: "您位於唯一頁面上。"
-      pagination_controls: "分頁控制"
+      page_navigation: "分頁導航"
+      per_page_navigation: '每頁顯示項目數選擇'
       pages:
         next: "下一頁"
         previous: "上一頁"
@@ -825,10 +827,10 @@ zh-TW:
         mixed: "混合"
     work_packages:
       bulk_actions:
-        move: "專案整批變動"
         edit: "整批編輯"
-        copy: "整批複製"
         delete: "整批刪除"
+        duplicate: "大量複製"
+        move: "專案整批變動"
       button_clear: "清除"
       comment_added: "留言成功"
       comment_send_failed: "發生錯誤。無法留言。"
@@ -872,7 +874,7 @@ zh-TW:
         header_no_type: "新增工作套件(類型尚未設置)"
         header_with_parent: "新 %{type} (%{parent_type}＃%{id} 子元素)"
         button: "建立"
-      copy:
+      duplicate:
         title: "複製工作套件"
       hierarchy:
         show: "顯示層次結構模式"

@@ -1161,10 +1161,11 @@ el:
         comments_sorting: "Display work package activity sorted by"
         disable_keyboard_shortcuts: "Disable keyboard shortcuts"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Λειτουργία προσβασιμότητας"
-        auto_hide_popups: "Αυτόματη απόκρυψη ειδοποιήσεων επιτυχίας"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Προειδοποιήστε με όταν φεύγω από ένα πακέτο εργασίας με μη αποθηκευμένες αλλαγές"
         theme: "Colour mode"
         time_zone: "Ζώνη Ώρας"
@@ -1744,7 +1745,7 @@ el:
     estimated_time: "Work"
     email: "Email"
     entity_type: "Entity"
-    expires_at: "Λήγει στις"
+    expires_at: "Expires on"
     firstname: "Όνομα"
     filter: "Φίλτρο"
     group: "Ομάδα"
@@ -1859,7 +1860,6 @@ el:
   button_copy: "Αντιγραφή"
   button_copy_to_clipboard: "Αντιγραφή στο πρόχειρο"
   button_copy_link_to_clipboard: "Copy link to clipboard"
-  button_copy_and_follow: "Αντιγραφή και ακολούθηση"
   button_create: "Δημιουργία"
   button_create_and_continue: "Δημιουργία και συνέχεια"
   button_decline: "Απόρριψη"
@@ -1868,6 +1868,7 @@ el:
   button_delete_watcher: "Διαγραφή παρατηρητή %{name}"
   button_download: "Λήψη"
   button_duplicate: "Δημιουργία αντιγράφου"
+  button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Επεξεργασία"
   button_edit_associated_wikipage: "Επεξεργασία της συσχετιζόμενης σελίδας Wiki: %{page_title}"
   button_expand_all: "Ανάπτυξη όλων"
@@ -2073,6 +2074,9 @@ el:
         one: "1 s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "ώρα"
         other: "ώρες"
@@ -3570,7 +3574,7 @@ el:
   permission_comment_news: "Σχολιασμός νέων"
   permission_commit_access: "Πρόσβαση ανάγνωσης/εγγραφής στο αποθετήριο (δέσμευση)"
   permission_copy_projects: "Αντιγραφή έργων"
-  permission_copy_work_packages: "Αντιγραφή πακέτων εργασίας"
+  permission_copy_work_packages: "Duplicate work packages"
   permission_create_backup: "Create backups"
   permission_delete_work_package_watchers: "Διαγραφή παρατηρητών"
   permission_delete_work_packages: "Διαγραφή πακέτων εργασίας"

@@ -81,6 +81,7 @@ zh-CN:
     edit_project_folder:
       label: 编辑项目文件夹
     open:
+      contact_admin: Please contact your administrator to resolve this error.
       remote_identity_error: 连接到存储时发生意外错误。
     project_folder_mode:
       automatic: 自动托管
@@ -128,7 +129,7 @@ zh-CN:
               conflict: '由于以下原因，无法将用户 %{user} 添加到 %{group} 组： %{reason}'
               failed_to_add: '由于以下原因，无法将用户 %{user} 添加到 %{group} 组： %{reason}'
             create_folder:
-              conflict: '%{folder_name} 已经存在于 %{parent_location} 上。'
+              conflict: The folder %{folder_name} already exists on %{parent_location}.
               not_found: "未找到 %{parent_location} 。"
             ensure_root_folder_permissions:
               not_found: "未找到 %{group_folder} 。请检查您的 Nextcloud 组文件夹设置。"
@@ -237,7 +238,7 @@ zh-CN:
         download_report: 下载
         rerun_checks: 重新运行所有检查
         run_checks: 现在运行检查
-      checked: '上次检查于 %{datetime}'
+      checked: '上次检查时间：%{datetime}'
       checks:
         ampf_configuration:
           client_folder_creation: 自动创建文件夹

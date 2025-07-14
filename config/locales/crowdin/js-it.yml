@@ -212,10 +212,10 @@ it:
         change_button: "Salva e riprogramma"
         change_title: "Cambia giorni lavorativi"
         removed_title: "Rimuoverai i seguenti giorni dall'elenco dei giorni non lavorativi:"
-        change_description: "Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance."
+        change_description: "Cambiare quali giorni della settimana sono considerati giorni lavorativi o giorni non lavorativi può influenzare l'inizio e la fine di tutte le macro-attività e i cicli di vita in tutti i progetti in questo caso."
         warning: >
-          The changes might take some time to take effect. You will be notified when all relevant work packages and project life cycles have been updated.
-          Are you sure you want to continue?
+          L'applicazione delle modifiche potrebbe richiedere del tempo. Riceverai una notifica quando tutte le macro-attività e i cicli di vita dei progetti pertinenti saranno aggiornati.
+          Vuoi davvero continuare?
       work_packages_settings:
         warning_progress_calculation_mode_change_from_status_to_field_html: >-
           La modifica della modalità di calcolo dei progressi da basata sullo stato a basata sul lavoro renderà il campo <i>% completamento</i> liberamente modificabile. Se inserisci facoltativamente valori per <i>Lavoro</i> o <i>Lavoro residuo</i>, questi verranno collegati anche a <i>% completamento</i>. La modifica di <i>Lavoro residuo</i> può quindi aggiornare <i>% completamento</i>.
@@ -294,11 +294,11 @@ it:
           text_new_features: "Informati sulle nuove funzionalità e sugli aggiornamenti dei prodotti."
           learn_about: "Scopri di più su tutte le nuove funzionalità"
           #Include the version to invalidate outdated translations in other locales.
-          #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_1":
+          #Otherwise, e.g. Chinese might still have the translations for 10.0 in the 12.0 release.
+          "16_2":
             standard:
               new_features_html: >
-                Questa versione contiene diverse nuove funzionalità e miglioramenti, come <br> <ul class="%{list_styling_class}"> <li>Struttura del ciclo di vita del progetto con fasi e controlli di fase.</li> <li>Esportazione delle riunioni in formato PDF.</li> <li>Impostazione di opzioni smart predefinite per i promemoria.</li> <li>Utilizzo di un ritardo negativo per le date delle macro-attività.</li> <li>Visualizzazione di alberi gerarchici per i campi personalizzati della gerarchia.</li> <li>Approfitta di un'accessibilità migliorata per il selettore data con le regioni live ARIA.</li> </ul>
+                Questa versione contiene diverse nuove funzionalità e miglioramenti, come <br> <ul class="%{list_styling_class}"> <li>Nuova intestazione e barra laterale con navigazione e design migliorati.</li> <li>Esperienza più fluida con Campi personalizzati, Relazioni, Promemoria, Riunioni e Monitoraggio del tempo.</li> <li>Lingue non latine ed emoji supportate nelle esportazioni PDF.</li> <li>Opzione per disattivare le scorciatoie da tastiera per una migliore accessibilità.</li> <li>Server SCIM tramite API (componente aggiuntivo Enterprise).</li> <li>Supporto API per commenti interni.</li> </ul>
     ical_sharing_modal:
       title: "Iscriviti al calendario"
       inital_setup_error_message: "Si è verificato un errore recuperando i dati."
@@ -324,7 +324,7 @@ it:
     label_added_time_by: 'Aggiunto da <a href="%{authorLink}">%{author}</a> alle %{age}'
     label_ago: "giorni fa"
     label_all: "tutti"
-    label_all_projects: "All projects"
+    label_all_projects: "Tutti i progetti"
     label_all_uppercase: "Tutti"
     label_all_work_packages: "tutte le macro-attività"
     label_and: "e"
@@ -643,12 +643,13 @@ it:
       title: "Confermare la password per continuare"
     pagination:
       no_other_page: "Sei nella pagina unica."
-      pagination_controls: "Pagination controls"
+      page_navigation: "Navigazione pagine"
+      per_page_navigation: 'Selezione di elementi per pagina'
       pages:
-        next: "Next page"
-        previous: "Previous page"
-        page_number: Page %{number}
-        show_per_page: Show %{number} per page
+        next: "Pagina successiva"
+        previous: "Pagina precedente"
+        page_number: Pagina %{number}
+        show_per_page: Mostra %{number} per pagina
     placeholders:
       default: "-"
       subject: "Inserisci l'oggetto qui"
@@ -696,7 +697,7 @@ it:
           first_day: "Primo giorno "
           last_day: "Ultimo giorno"
     text_are_you_sure: "Sei sicuro/a?"
-    breadcrumb: "Breadcrumb"
+    breadcrumb: "Percorso di navigazione"
     text_data_lost: "Tutti i dati inseriti andranno persi."
     text_user_wrote: "%{value} ha scritto:"
     types:
@@ -781,7 +782,7 @@ it:
     autocompleter:
       placeholder: "Digita per cercare"
       notFoundText: "Nessun elemento trovato"
-      search: "Search"
+      search: "Cerca"
       project:
         placeholder: "Seleziona progetto"
     repositories:
@@ -827,10 +828,10 @@ it:
         mixed: "Misto"
     work_packages:
       bulk_actions:
-        move: "Modifica complessiva del progetto"
         edit: "Modifica di massa"
-        copy: "Copia di massa"
         delete: "Eliminazione di massa"
+        duplicate: "Duplicazione collettiva"
+        move: "Modifica complessiva del progetto"
       button_clear: "Pulisci"
       comment_added: "Il commento è stato aggiunto con successo."
       comment_send_failed: "Si è verificato un errore. Impossibile inviare il commento."
@@ -874,8 +875,8 @@ it:
         header_no_type: "Nuova macro-attività (Tipo non inserito)"
         header_with_parent: "Nuovo %{type} (Figlio di %{parent_type} #%{id})"
         button: "Crea"
-      copy:
-        title: "Copia macro-attività"
+      duplicate:
+        title: "Duplica macro-attività"
       hierarchy:
         show: "Visualizza modalità gerarchica"
         hide: "Nascondi modalità gerarchica"

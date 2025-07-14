@@ -29,6 +29,8 @@
 #++
 
 module WorkPackage::PDFExport::Export::Wp::Attributes
+  include WorkPackage::Exports::Attributes
+
   def write_attributes!(work_package)
     work_package
       .type.attribute_groups
@@ -138,6 +140,8 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
     current_part = { type: :attribute, list: [] }
     parts = [current_part]
     group.attributes.each do |form_key|
+      next unless show_attribute?(form_key, work_package)
+
       if allowed_long_text_custom_field?(form_key, work_package)
         cf = form_key_to_custom_field(form_key)
         if current_part[:type] == :long_text
@@ -154,6 +158,10 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
       end
     end
     parts
+  end
+
+  def show_attribute?(form_key, work_package)
+    CustomField.custom_field_attribute?(form_key) || allowed_to_view_attribute?(work_package, form_key)
   end
 
   def allowed_long_text_custom_field?(form_key, work_package)

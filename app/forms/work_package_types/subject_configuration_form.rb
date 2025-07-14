@@ -94,7 +94,7 @@ module WorkPackageTypes
     end
 
     def make_link(href, link_text)
-      render(Primer::Beta::Link.new(href:, target: "_blank")) { link_text }
+      render(Primer::Beta::Link.new(href:, target: "_blank", underline: true)) { link_text }
     end
   end
 end

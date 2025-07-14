@@ -1165,10 +1165,11 @@ si:
         comments_sorting: "Display work package activity sorted by"
         disable_keyboard_shortcuts: "Disable keyboard shortcuts"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "ප්රවේශ්යතා ප්රකාරය"
-        auto_hide_popups: "ස්වයං සඟවන්න සාර්ථකත්වය දැනුම්දීම්"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "නොගැලවූ වෙනස්කම් සහිත වැඩ පැකේජයකින් පිටවන විට මට අනතුරු අඟවන්න"
         theme: "Colour mode"
         time_zone: "වේලා කලාපය"
@@ -1748,7 +1749,7 @@ si:
     estimated_time: "Work"
     email: "ඊ-තැපැල්"
     entity_type: "Entity"
-    expires_at: "කල් ඉකුත්"
+    expires_at: "Expires on"
     firstname: "මුල් නම"
     filter: "පෙරහන්"
     group: "කණ්ඩායම"
@@ -1863,7 +1864,6 @@ si:
   button_copy: "පිටපත් කරන්න"
   button_copy_to_clipboard: "පසුරු පුවරුවට පිටපත් කරන්න"
   button_copy_link_to_clipboard: "Copy link to clipboard"
-  button_copy_and_follow: "පිටපත් කර අනුගමනය කරන්න"
   button_create: "සාදන්න"
   button_create_and_continue: "සාදන්න සහ ඉදිරියට යන්න"
   button_decline: "පරිහානිය"
@@ -1872,6 +1872,7 @@ si:
   button_delete_watcher: "මුරකරු මකන්න %{name}"
   button_download: "බාගත කරන්න"
   button_duplicate: "අනුපිටපත්"
+  button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "සංස්කරණය කරන්න"
   button_edit_associated_wikipage: "ආශ්රිත විකි පිටුව සංස්කරණය කරන්න: %{page_title}"
   button_expand_all: "සියල්ල පුළුල්"
@@ -2077,6 +2078,9 @@ si:
         one: "1 s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "පැය"
         other: "පැය"
@@ -3575,7 +3579,7 @@ si:
   permission_comment_news: "අදහස් ප්රවෘත්ති"
   permission_commit_access: "කියවීමට/ගබඩාවට ප්රවේශ වීම (කැප කිරීම)"
   permission_copy_projects: "ව්යාපෘති පිටපත් කරන්න"
-  permission_copy_work_packages: "වැඩ පැකේජ පිටපත් කරන්න"
+  permission_copy_work_packages: "Duplicate work packages"
   permission_create_backup: "Create backups"
   permission_delete_work_package_watchers: "මුරකරුවන් මකන්න"
   permission_delete_work_packages: "වැඩ පැකේජ මකන්න"

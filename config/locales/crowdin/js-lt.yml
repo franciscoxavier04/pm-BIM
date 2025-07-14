@@ -294,11 +294,11 @@ lt:
           text_new_features: "Skaitykite apie naujas savybes ir produkto atnaujinimus."
           learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
-          #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_1":
+          #Otherwise, e.g. Chinese might still have the translations for 10.0 in the 12.0 release.
+          "16_2":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Structure the project life cycle with phases and phase gates.</li> <li>Export meetings in PDF format.</li> <li>Set smart default options for reminders.</li> <li>Use negative lag for work package dates.</li> <li>Display hierarchy trees for hierarchy custom fields.</li> <li>Benefit from improved accessibility for the date picker with ARIA live regions.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>New header and sidebar with improved navigation and design.</li> <li>Smoother experience with Custom fields, Relations, Reminders, Meetings, and My time tracking.</li> <li>Non-latin languages and emojis supported in PDF exports.</li> <li>Option to disable keyboard shortcuts for better accessibility.</li> <li>SCIM server via API (Enterprise add-on).</li> <li>API support for internal comments.</li> </ul>
     ical_sharing_modal:
       title: "Prenumeruoti kalendorių"
       inital_setup_error_message: "Gaunant duomenis įvyko klaida."
@@ -645,7 +645,8 @@ lt:
       title: "Norėdami tęsti, patvirtinkite savo slaptažodį"
     pagination:
       no_other_page: "Jūs esate vieninteliame puslapyje."
-      pagination_controls: "Pagination controls"
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
         next: "Next page"
         previous: "Previous page"
@@ -829,10 +830,10 @@ lt:
         mixed: "Mišrus"
     work_packages:
       bulk_actions:
-        move: "Masinis projekto pakeitimas"
         edit: "Masinis redagavimas"
-        copy: "Masinis kopijavimas"
         delete: "Masinis trynimas"
+        duplicate: "Bulk duplicate"
+        move: "Masinis projekto pakeitimas"
       button_clear: "Valyti"
       comment_added: "Komentaras sėkmingai pridėtas."
       comment_send_failed: "Įvyko klaida. Neįmanoma pateikti komentaro."
@@ -876,8 +877,8 @@ lt:
         header_no_type: "Naujas darbų paketas (tipas dar nenurodytas)"
         header_with_parent: "Naujas %{type} (%{parent_type} #%{id} tėvo vaikas)"
         button: "Kurti"
-      copy:
-        title: "Kopijuoti darbų paketą"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Rodyti hierarchijos režimą"
         hide: "Slėpti hierarchijos režimą"

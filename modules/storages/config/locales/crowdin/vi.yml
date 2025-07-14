@@ -81,6 +81,7 @@ vi:
     edit_project_folder:
       label: Sửa thư mục dự án
     open:
+      contact_admin: Please contact your administrator to resolve this error.
       remote_identity_error: An unexpected error occurred while connecting to the storage.
     project_folder_mode:
       automatic: Được quản lý tự động
@@ -128,7 +129,7 @@ vi:
               conflict: 'Không thể thêm người dùng %{user} vào nhóm %{group} vì lý do sau: %{reason}'
               failed_to_add: 'Không thể thêm người dùng %{user} vào nhóm %{group} vì lý do sau: %{reason}'
             create_folder:
-              conflict: '%{folder_name} đã tồn tại ở %{parent_location}.'
+              conflict: The folder %{folder_name} already exists on %{parent_location}.
               not_found: "Không tìm thấy %{parent_location}."
             ensure_root_folder_permissions:
               not_found: "Không tìm thấy %{group_folder}. Vui lòng kiểm tra thiết lập Thư mục nhóm Nextcloud của bạn."

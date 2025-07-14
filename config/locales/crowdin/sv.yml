@@ -1165,10 +1165,11 @@ sv:
         comments_sorting: "Display work package activity sorted by"
         disable_keyboard_shortcuts: "Disable keyboard shortcuts"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Tillgänglighetsläge"
-        auto_hide_popups: "Dölj automatiskt meddelanden om åtgärder som lyckats"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Varna mig när jag lämnar ett arbetspaket med osparade ändringar"
         theme: "Colour mode"
         time_zone: "Tidszon"
@@ -1748,7 +1749,7 @@ sv:
     estimated_time: "Work"
     email: "E-post"
     entity_type: "Entity"
-    expires_at: "Förfaller den"
+    expires_at: "Expires on"
     firstname: "Förnamn"
     filter: "Filter"
     group: "Grupp"
@@ -1863,7 +1864,6 @@ sv:
   button_copy: "Kopiera"
   button_copy_to_clipboard: "Kopiera till Urklipp"
   button_copy_link_to_clipboard: "Kopiera länk till urklipp"
-  button_copy_and_follow: "Kopiera och följ"
   button_create: "Skapa"
   button_create_and_continue: "Skapa och fortsätt"
   button_decline: "Avslå"
@@ -1872,6 +1872,7 @@ sv:
   button_delete_watcher: "Ta bort bevakare %{name}"
   button_download: "Ladda ner"
   button_duplicate: "Duplicera"
+  button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Redigera"
   button_edit_associated_wikipage: "Redigerade associerad wikisida: %{page_title}"
   button_expand_all: "Expandera alla"
@@ -2077,6 +2078,9 @@ sv:
         one: "1 s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "timme"
         other: "timmar"
@@ -3575,7 +3579,7 @@ sv:
   permission_comment_news: "Kommentera nyhet"
   permission_commit_access: "Läs- och skrivbehörighet till databasen (incheckning)"
   permission_copy_projects: "Kopiera projekt"
-  permission_copy_work_packages: "Kopiera arbetspaket"
+  permission_copy_work_packages: "Duplicate work packages"
   permission_create_backup: "Create backups"
   permission_delete_work_package_watchers: "Ta bort bevakare"
   permission_delete_work_packages: "Ta bort arbetspaket"

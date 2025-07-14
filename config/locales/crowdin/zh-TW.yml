@@ -677,9 +677,9 @@ zh-TW:
         tab: "表單設置"
       projects:
         tab: 專案
-        enable_all: Enable for all projects
-        select_projects: Select projects
-        select_projects_description: Select the projects in which you would like to use this type.
+        enable_all: 在所有專案中啟用
+        select_projects: 選取專案
+        select_projects_description: 選擇要使用此類型的專案。
       settings:
         tab: "設定"
         type_color_text: 選取的顏色可區分甘特圖或工作套件表格中的不同類型。因此建議使用強烈的顏色。
@@ -1144,7 +1144,7 @@ zh-TW:
         password_confirmation: "確認密碼"
         consented_at: "同意在"
       group:
-        identity_url: "Identity URL"
+        identity_url: "身份識別 URL"
       user_preference:
         header_look_and_feel: "介面與外觀"
         header_alerts: "提醒"
@@ -1153,10 +1153,11 @@ zh-TW:
         comments_sorting: "顯示工作套件活動，排序方式為"
         disable_keyboard_shortcuts: "停用鍵盤快速鍵"
         disable_keyboard_shortcuts_caption_html: |-
-          如果您使用螢幕閱讀器，或是想避免不小心觸發快捷操作，可以選擇停用預設的 <a href="%{href}">鍵盤快速鍵</a>。
+          如果你使用螢幕閱讀器，或想避免不小心觸發快捷鍵操作，你可以選擇停用預設的<a href="%{href}">鍵盤快捷鍵</a>。
         dismissed_enterprise_banners: "隱藏的企業版廣告"
         impaired: "協助工具模式"
-        auto_hide_popups: "提醒後自動隱藏"
+        auto_hide_popups: "自動關閉成功通知"
+        auto_hide_popups_caption: "啟用時，綠色的成功通知會在 5 秒內自動關閉。"
         warn_on_leaving_unsaved: "離開尚未儲存的工作套件時提示我"
         theme: "顏色模式"
         time_zone: "時區"
@@ -1722,7 +1723,7 @@ zh-TW:
     estimated_time: "工時"
     email: "電子郵件"
     entity_type: "實體"
-    expires_at: "過期於"
+    expires_at: "失效於"
     firstname: "名字"
     filter: "篩選條件"
     group: "群組"
@@ -1837,7 +1838,6 @@ zh-TW:
   button_copy: "複製"
   button_copy_to_clipboard: "複製到剪貼簿"
   button_copy_link_to_clipboard: "複製到剪貼簿"
-  button_copy_and_follow: "複製並跟隨"
   button_create: "建立"
   button_create_and_continue: "建立並繼續"
   button_decline: "拒絕"
@@ -1846,6 +1846,7 @@ zh-TW:
   button_delete_watcher: "刪除監看者 %{name}"
   button_download: "下載"
   button_duplicate: "複本"
+  button_duplicate_and_follow: "複製並追蹤"
   button_edit: "編輯"
   button_edit_associated_wikipage: "編輯關聯的維基頁面：%{page_title}"
   button_expand_all: "全部展開"
@@ -2034,6 +2035,8 @@ zh-TW:
       x_seconds_abbreviated:
         other: "%{count}  秒"
     units:
+      minute_abbreviated:
+        other: "分鐘"
       hour:
         other: "小時"
       day:
@@ -2088,7 +2091,7 @@ zh-TW:
       placeholder_users: 佔位使用者
       project_list_sharing: 專案清單分享
       readonly_work_packages: 唯讀工作套件
-      scim_api: SCIM server API
+      scim_api: SCIM 伺服器 API
       sso_auth_providers: 單一登入
       team_planner_view: 團隊規劃檢視
       virus_scanning: 掃描病毒
@@ -2156,8 +2159,8 @@ zh-TW:
         title: "Nextcloud 儲存空間的單一登入(SSO)"
         description: "使用單一登入為您的 Nextcloud 儲存空間啟用無縫且安全的驗證。簡化存取管理並提升使用者便利性。"
       scim_api:
-        title: "SCIM clients"
-        description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
+        title: "SCIM 用戶端"
+        description: "透過我們的 SCIM Server API，將 OpenProject 與 Microsoft Entra 或 Keycloak 等外部身分識別服務無縫整合，自動化使用者管理功能。此功能自企業版訂閱方案起提供。"
       virus_scanning:
         description: "確保在其他使用者存取 OpenProject 中上傳的檔案前，對其進行病毒掃描。"
       placeholder_users:

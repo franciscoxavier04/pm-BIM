@@ -1180,10 +1180,11 @@ sl:
         comments_sorting: "Display work package activity sorted by"
         disable_keyboard_shortcuts: "Disable keyboard shortcuts"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Dostopnost"
-        auto_hide_popups: "Samodejno skrij obvestila o uspehu"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Opozori me, kadar zapuščam stran z neshranjenim besedilom"
         theme: "Colour mode"
         time_zone: "Časovni pas"
@@ -1791,7 +1792,7 @@ sl:
     estimated_time: "Work"
     email: "E-pošta"
     entity_type: "Entity"
-    expires_at: "Izteče ob"
+    expires_at: "Expires on"
     firstname: "Ime"
     filter: "Filtriraj"
     group: "Skupina"
@@ -1906,7 +1907,6 @@ sl:
   button_copy: "Kopiraj"
   button_copy_to_clipboard: "Kopiraj v odložišče"
   button_copy_link_to_clipboard: "Copy link to clipboard"
-  button_copy_and_follow: "Kopiraj in sledi"
   button_create: "Ustvari"
   button_create_and_continue: "Ustvari in nadaljuj"
   button_decline: "Zavrni"
@@ -1915,6 +1915,7 @@ sl:
   button_delete_watcher: "Odstrani spremljevalca %{name}"
   button_download: "Prenesi"
   button_duplicate: "Podvoji"
+  button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Uredi"
   button_edit_associated_wikipage: "Uredi povezano Wiki stran: %{page_title}"
   button_expand_all: "Razširi vse"
@@ -2154,6 +2155,11 @@ sl:
         few: "%{count} s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        one: "min"
+        two: "mins"
+        few: "mins"
+        other: "mins"
       hour:
         one: "ura"
         two: "ure"
@@ -3662,7 +3668,7 @@ sl:
   permission_comment_news: "Komentiraj novice"
   permission_commit_access: "Beri/piši dostop do skladišča (storiti)"
   permission_copy_projects: "Kopiraj projekte"
-  permission_copy_work_packages: "Kopiraj delovne pakete"
+  permission_copy_work_packages: "Duplicate work packages"
   permission_create_backup: "Create backups"
   permission_delete_work_package_watchers: "Izbriši opazovalce"
   permission_delete_work_packages: "Izbriši delovni paket"

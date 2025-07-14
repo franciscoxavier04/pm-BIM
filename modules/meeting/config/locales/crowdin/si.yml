@@ -45,7 +45,7 @@ si:
       meeting_agenda_item:
         title: "මාතෘකාව"
         author: "කර්තෘ"
-        duration_in_minutes: "min"
+        duration_in_minutes: "Duration"
         description: "සටහන්"
         presenter: "Presenter"
       meeting_section:
@@ -265,6 +265,10 @@ si:
     placeholder_title: "New section"
     empty_text: "Drag items here or create a new one"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Time zone difference"
+      description: >
+        The dates below are referencing the time zone of the meeting series (%{actual_zone}), not your local time zone (%{user_zone}).
     ended_blankslate:
       title: "Meeting series ended"
       message: "This meeting series has come to an end. There are no upcoming meetings. "

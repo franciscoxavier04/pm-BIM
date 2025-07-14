@@ -72,7 +72,7 @@ RSpec.describe "Meetings autofocus", :js do
     ## without sections
     # add item
     show_page.add_agenda_item do
-      show_page.expect_focused_input("meeting_agenda_item_title")
+      show_page.expect_focused_input("form_new_meeting_agenda_item_title")
 
       fill_in "Title", with: "My agenda item"
     end
@@ -92,7 +92,7 @@ RSpec.describe "Meetings autofocus", :js do
 
     # edit item
     show_page.edit_agenda_item(item) do
-      show_page.expect_focused_input("meeting_agenda_item_title")
+      show_page.expect_focused_input("form_#{item.id}_meeting_agenda_item_title")
 
       fill_in "Title", with: "Updated title"
       click_on "Save"
@@ -101,7 +101,7 @@ RSpec.describe "Meetings autofocus", :js do
 
     # add second item
     show_page.add_agenda_item do
-      show_page.expect_focused_input("meeting_agenda_item_title")
+      show_page.expect_focused_input("form_new_meeting_agenda_item_title")
 
       fill_in "Title", with: "Second"
     end
@@ -134,7 +134,7 @@ RSpec.describe "Meetings autofocus", :js do
 
     # add wp item
     show_page.add_agenda_item(type: WorkPackage) do
-      show_page.expect_focused_input("meeting_agenda_item_work_package_id")
+      show_page.expect_focused_input("form_new_meeting_agenda_item_work_package_id")
 
       select_autocomplete(find_test_selector("op-agenda-items-wp-autocomplete"),
                           query: "task",
@@ -147,7 +147,7 @@ RSpec.describe "Meetings autofocus", :js do
 
     # edit wp item
     show_page.edit_agenda_item(wp_item) do
-      show_page.expect_focused_input("meeting_agenda_item_work_package_id")
+      show_page.expect_focused_input("form_#{wp_item.id}_meeting_agenda_item_work_package_id")
       click_on "Cancel"
     end
 
@@ -185,7 +185,7 @@ RSpec.describe "Meetings autofocus", :js do
     ## inside a section
     # add item
     show_page.add_agenda_item do
-      show_page.expect_focused_input("meeting_agenda_item_title")
+      show_page.expect_focused_input("form_new_meeting_agenda_item_title")
 
       fill_in "Title", with: "My agenda item"
     end
@@ -205,7 +205,7 @@ RSpec.describe "Meetings autofocus", :js do
 
     # edit item
     show_page.edit_agenda_item(item) do
-      show_page.expect_focused_input("meeting_agenda_item_title")
+      show_page.expect_focused_input("form_#{item.id}_meeting_agenda_item_title")
 
       fill_in "Title", with: "Updated title"
       click_on "Save"
@@ -214,7 +214,7 @@ RSpec.describe "Meetings autofocus", :js do
 
     # add second item
     show_page.add_agenda_item do
-      show_page.expect_focused_input("meeting_agenda_item_title")
+      show_page.expect_focused_input("form_new_meeting_agenda_item_title")
 
       fill_in "Title", with: "Second"
     end
@@ -247,7 +247,7 @@ RSpec.describe "Meetings autofocus", :js do
 
     # add wp item
     show_page.add_agenda_item(type: WorkPackage) do
-      show_page.expect_focused_input("meeting_agenda_item_work_package_id")
+      show_page.expect_focused_input("form_new_meeting_agenda_item_work_package_id")
 
       select_autocomplete(find_test_selector("op-agenda-items-wp-autocomplete"),
                           query: "task",
@@ -260,7 +260,7 @@ RSpec.describe "Meetings autofocus", :js do
 
     # edit wp item
     show_page.edit_agenda_item(wp_item) do
-      show_page.expect_focused_input("meeting_agenda_item_work_package_id")
+      show_page.expect_focused_input("form_#{wp_item.id}_meeting_agenda_item_work_package_id")
       click_on "Cancel"
     end
 
@@ -279,7 +279,7 @@ RSpec.describe "Meetings autofocus", :js do
 
     # add item
     show_page.add_agenda_item_to_backlog do
-      show_page.expect_focused_input("meeting_agenda_item_title")
+      show_page.expect_focused_input("form_new_meeting_agenda_item_title")
 
       fill_in "Title", with: "My agenda item"
     end
@@ -299,7 +299,7 @@ RSpec.describe "Meetings autofocus", :js do
 
     # edit item
     show_page.edit_agenda_item(item) do
-      show_page.expect_focused_input("meeting_agenda_item_title")
+      show_page.expect_focused_input("form_#{item.id}_meeting_agenda_item_title")
 
       fill_in "Title", with: "Updated title"
       click_on "Save"
@@ -308,7 +308,7 @@ RSpec.describe "Meetings autofocus", :js do
 
     # add second item
     show_page.add_agenda_item_to_backlog do
-      show_page.expect_focused_input("meeting_agenda_item_title")
+      show_page.expect_focused_input("form_new_meeting_agenda_item_title")
 
       fill_in "Title", with: "Second"
     end
@@ -317,7 +317,7 @@ RSpec.describe "Meetings autofocus", :js do
 
     # add wp item
     show_page.add_agenda_item_to_backlog(type: WorkPackage) do
-      show_page.expect_focused_input("meeting_agenda_item_work_package_id")
+      show_page.expect_focused_input("form_new_meeting_agenda_item_work_package_id")
 
       select_autocomplete(find_test_selector("op-agenda-items-wp-autocomplete"),
                           query: "task",
@@ -330,7 +330,7 @@ RSpec.describe "Meetings autofocus", :js do
 
     # edit wp item
     show_page.edit_agenda_item(wp_item) do
-      show_page.expect_focused_input("meeting_agenda_item_work_package_id")
+      show_page.expect_focused_input("form_#{wp_item.id}_meeting_agenda_item_work_package_id")
       click_on "Cancel"
     end
 

@@ -52,6 +52,9 @@
     padding-left: 15px
     padding-right: 15px
 
+  #content-body
+    position: static
+
   .hidden-for-mobile
     display: none !important
 
@@ -74,6 +77,13 @@
     background-color: var(--body-background)
     padding-top: var(--main-menu-toggler-top-spacing)
     margin-top: calc(var(--main-menu-toggler-top-spacing) * -1)
+
+  // Hide the header, when the content-bodyRight is shown, because it has it's own header.
+  // Otherwise, the sticky header would lay on top of the split screen
+  #content:has(#content-bodyRight > *)
+    page-header,
+    sub-header
+      display: none
 
   .work-packages--show-view .toolbar-container
     margin-bottom: 0

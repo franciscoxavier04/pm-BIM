@@ -1165,10 +1165,11 @@ fi:
         comments_sorting: "Display work package activity sorted by"
         disable_keyboard_shortcuts: "Disable keyboard shortcuts"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Helppokäyttötoimintojen tila"
-        auto_hide_popups: "Piilota ilmoitukset onnistuneista toiminnoista"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Varoita tallentamattomista muutoksista"
         theme: "Colour mode"
         time_zone: "Aikavyöhyke"
@@ -1748,7 +1749,7 @@ fi:
     estimated_time: "Work"
     email: "Sähköposti"
     entity_type: "Entity"
-    expires_at: "Vanhentuu"
+    expires_at: "Expires on"
     firstname: "Etunimi"
     filter: "Suodata"
     group: "Ryhmä"
@@ -1863,7 +1864,6 @@ fi:
   button_copy: "Kopioi"
   button_copy_to_clipboard: "Kopioi leikepöydälle"
   button_copy_link_to_clipboard: "Copy link to clipboard"
-  button_copy_and_follow: "Kopioi ja seuraa"
   button_create: "Uusi"
   button_create_and_continue: "Luo ja jatka"
   button_decline: "Hylkää"
@@ -1872,6 +1872,7 @@ fi:
   button_delete_watcher: "Poista seuraaja %{name}"
   button_download: "Lataa"
   button_duplicate: "Luo kopio"
+  button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Muokkaa"
   button_edit_associated_wikipage: "Muokkaa liitettyä Wiki-sivua: %{page_title}"
   button_expand_all: "Laajenna kaikki"
@@ -2077,6 +2078,9 @@ fi:
         one: "1 s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        one: "min"
+        other: "mins"
       hour:
         one: "tunti"
         other: "tuntia"
@@ -3575,7 +3579,7 @@ fi:
   permission_comment_news: "Kommentoi uutisia"
   permission_commit_access: "Tee pääsyoikeus"
   permission_copy_projects: "Kopioi projekteja"
-  permission_copy_work_packages: "Kopioi tehtäviä"
+  permission_copy_work_packages: "Duplicate work packages"
   permission_create_backup: "Create backups"
   permission_delete_work_package_watchers: "Poista seuraajia"
   permission_delete_work_packages: "Poista tehtäviä"

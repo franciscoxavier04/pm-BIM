@@ -1173,10 +1173,11 @@ ro:
         comments_sorting: "Display work package activity sorted by"
         disable_keyboard_shortcuts: "Disable keyboard shortcuts"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Mod accesibilitate"
-        auto_hide_popups: "Ascunde automat notificările de succes"
+        auto_hide_popups: "Automatically hide success banners"
+        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
         warn_on_leaving_unsaved: "Avertizează când părăsesc un pachet de lucru cu modificări nesalvate"
         theme: "Colour mode"
         time_zone: "Fus orar"
@@ -1770,7 +1771,7 @@ ro:
     estimated_time: "Muncă"
     email: "E-mail"
     entity_type: "Entity"
-    expires_at: "Expiră la"
+    expires_at: "Expires on"
     firstname: "Prenume"
     filter: "Filtrează"
     group: "Grup"
@@ -1885,7 +1886,6 @@ ro:
   button_copy: "Copiază"
   button_copy_to_clipboard: "Copiază în clipboard"
   button_copy_link_to_clipboard: "Copiază link-ul în clipboard"
-  button_copy_and_follow: "Copiază și continuă"
   button_create: "Creează"
   button_create_and_continue: "Creează și continuă"
   button_decline: "Refuză"
@@ -1894,6 +1894,7 @@ ro:
   button_delete_watcher: "Ștergere observator %{name}"
   button_download: "Descărcare"
   button_duplicate: "Duplicare"
+  button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Editare"
   button_edit_associated_wikipage: "Editare pagină wiki asociată: %{page_title}"
   button_expand_all: "Extindere totală"
@@ -2116,6 +2117,10 @@ ro:
         few: "%{count} s"
         other: "%{count} s"
     units:
+      minute_abbreviated:
+        one: "min"
+        few: "mins"
+        other: "mins"
       hour:
         one: "oră"
         few: "ore"
@@ -3618,7 +3623,7 @@ ro:
   permission_comment_news: "Comentare noutăți"
   permission_commit_access: "Acces de citire/scriere la repo (încărcare)"
   permission_copy_projects: "Copiază proiecte"
-  permission_copy_work_packages: "Copierea pachetelor de lucru"
+  permission_copy_work_packages: "Duplicate work packages"
   permission_create_backup: "Creează copie de rezervă"
   permission_delete_work_package_watchers: "Eliminare observatori"
   permission_delete_work_packages: "Ștergere pachete de lucru"
