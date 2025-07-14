@@ -12,6 +12,9 @@ OpenProject supports automated user synchronization via SCIM API, enabling  seam
 > [!NOTE] 
 > SCIM provisioning is an Enterprise add-on. [Click here for more information](https://www.openproject.org/enterprise-edition/) on the OpenProject Enterprise edition.
 
+> [!NOTE]
+> For users deletion to work please make sure the box **User accounts deletable by admins** in **Administration** -> **Users and permissions** -> **User settings** is checked.
+
 To activate and configure SCIM user and group provisioning in OpenProject, navigate to *Administration* -> *Authentication* and select *SCIM clients* from the left-hand menu.
 
 ## Configure a new SCIM client.
