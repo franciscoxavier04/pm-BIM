@@ -33,7 +33,8 @@ class AttributeHelpText::Project < AttributeHelpText
     attributes = API::V3::Projects::Schemas::ProjectSchemaRepresenter
       .representable_definitions
       .reject { |key, _| skip.include?(key.to_s) }
-      .transform_values { |definition| definition[:name_source].call }
+      .filter_map { |_, definition| definition[:name_source] }
+      .map(&:call)
 
     ProjectCustomField.find_each do |field|
       attributes[field.attribute_name] = field.name
