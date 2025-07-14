@@ -36,6 +36,22 @@ module BmdsHackathon
       @kpi_type ||= Type.find_by!(name: "KPI")
     end
 
+    def risk_type
+      @risk_type ||= Type.find_by!(name: "Risiko")
+    end
+
+    def risk_likelihood_cf
+      @risk_likelihood_cf ||= CustomField.find_by!(name: "Eintrittswahrscheinlichkeit")
+    end
+
+    def risk_impact_cf
+      @risk_impact_cf ||= CustomField.find_by!(name: "Auswirkung")
+    end
+
+    def risk_level_cf
+      @risk_level_cf ||= CustomField.find_by!(name: "Risiko-Level")
+    end
+
     def kpi_target_cf
       @kpi_target_cf ||= CustomField.find_by!(name: "Zielwert")
     end

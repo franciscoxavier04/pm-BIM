@@ -29,7 +29,8 @@ class HackathonSeeder < CompositeSeeder
   def data_seeder_classes
     [
       HackathonData::KpiSeeder,
-      HackathonData::ProblemSeeder
+      HackathonData::ProblemSeeder,
+      HackathonData::RiskSeeder
     ]
   end
 
