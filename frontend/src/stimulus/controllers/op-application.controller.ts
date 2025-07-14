@@ -63,7 +63,7 @@ export class OpApplicationController extends ApplicationController {
 
     // Default: Try to load the controller from dynamic/ subfolder.
     const path = this.derivePath(controller);
-    return await import(/* webpackChunkName: "[request]" */ `./dynamic/${path}.controller`) as Promise<{
+    return await import(`./dynamic/${path}.controller.ts`) as Promise<{
       default:ControllerConstructor
     }>;
   }
