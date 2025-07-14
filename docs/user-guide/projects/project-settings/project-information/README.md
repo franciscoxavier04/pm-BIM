@@ -46,9 +46,9 @@ Further, in the top right corner you can:
 
 ## Create a subproject
 
-To create a subproject for an existing project, navigate to [*Project settings*](#project-settings) -> *Information* and click on the green **+ Subproject** button.
+To create a subproject for an existing project, navigate to [*Project settings*](../) -> *Information* and click on the green **+ Subproject** button.
 
-Then follow the instructions to [create a new project](../../getting-started/projects/#create-a-new-project).
+Then follow the instructions to [create a new project](../../../../getting-started/projects/#create-a-new-project).
 
 ![Form to create a subproject in OpenProject](openproject_user_guide_project_settings_information_subproject_form.png)
 
@@ -74,7 +74,8 @@ You can copy an existing project by navigating to the *Project settings -> Proje
 
 ![Copy a project under project settings in OpenProject](openproject_user_guide_project_settings_information_copy_project.png)
 
-Under the **Copy from project** section you can select what additional project data and settings, such as versions, work package categories, attachments, project life cycle and project members should be copied as well. You can copy existing [boards](../agile-boards) (apart from the Subproject board) and the [Project overview](../project-overview/#project-overview) dashboards along with your project, too. 
+Under the **Copy from project** section you can select what additional project data and settings, such as versions, work package categories, attachments, project life cycle and project members should be copied as well. 
+You can copy existing [boards](../../../agile-boards/) (apart from the Subproject board) and the [Project overview](../../../project-overview/#project-overview) dashboards along with your project, too. 
 
 Select which modules and settings you want to copy and whether or not you want to notify users via email during copying.
 
@@ -117,11 +118,11 @@ In order to archive a project, navigate to the *Project settings -> Project info
 
 ![Archive a project under project settings in OpenProject](openproject_user_guide_project_settings_information_archive_project.png)
 
-Once archived, a project can no longer be selected from the project list accessible via header navigation. It is still visible in the **[Project lists](./project-lists)** dashboard if you set the "Active" filter to "off" (move slider to the left). You can unarchive the project there, too, using the three dots at the right end of a row and clicking **Unarchive**.
+Once archived, a project can no longer be selected from the project list accessible via header navigation. It is still visible in the [Project lists](../../project-lists/) dashboard if you set the "Active" filter to "off" (move slider to the left). You can unarchive the project there, too, using the three dots at the right end of a row and clicking **Unarchive**.
 
 ![An archived project shown in projects list in OpenProject](openproject_user_guide_project_settings_information_archived_project_projects_list.png)
 
-You can also archive a project directly on the [project overview page.](../project-overview/#archive-a-project) 
+You can also archive a project directly on the [project overview page.](../../../project-overview/#archive-a-project) 
 
 ## Change the project hierarchy
 
@@ -131,11 +132,11 @@ To change the project's hierarchy, navigate to the *Project settings -> Informat
 
 ## Delete a project
 
-If you want to delete a project, navigate to the [Project settings](project-settings). Click the button **Delete project** on the top right of the page.
+If you want to delete a project, navigate to the [Project settings](../../project-settings/). Click the button **Delete project** on the top right of the page.
 
 ![delete a project](openproject_user_guide_project_settings_information_delete_project.png)
 
-You can also delete a project via the [projects overview list](./project-lists/).
+You can also delete a project via the [projects overview list](../../project-lists/).
 
 > [!NOTE]
 > Deleting projects is only available for System administrators.

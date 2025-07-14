@@ -50,7 +50,14 @@ Each project is displayed in a single line, starting with the **Favorite** colum
 
 ![Open a project description in the project lists view in OpenProject](expand-link-project-description.png)
 
-With the horizontal **three dots** icon on the right side of the list you can open **further features**, such as [creating a new subproject](../#create-a-subproject), [project settings](../project-settings), [add a project to favorites](../../project-overview/#mark-a-project-as-favorite), [archiving a project](../#archive-a-project), [copying](../#copy-a-project) and [deleting a project](../#delete-a-project). Please note that you have to be a System Administrator in OpenProject to access these features. Find out how to un-archive projects [here](../#archive-a-project).
+With the horizontal **three dots** icon on the right side of the list you can open **further features**, 
+such as [creating a new subproject](../#create-a-subproject), [project settings](../project-settings), 
+[add a project to favorites](../../project-overview/#mark-a-project-as-favorite), 
+[archiving a project](../project-settings/project-information/#archive-a-project), 
+[copying](../project-settings/project-information/#copy-a-project) and 
+[deleting a project](../project-settings/project-information/#delete-a-project). 
+Please note that you have to be a System Administrator in OpenProject to access these features. 
+Find out how to un-archive projects [here](../project-settings/project-information/#archive-a-project).
 
 ![new subproject project list](new-subproject-project-list.png)
 
