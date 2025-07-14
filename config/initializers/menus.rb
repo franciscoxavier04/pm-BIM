@@ -584,6 +584,17 @@ Redmine::MenuManager.map :admin_menu do |menu|
 end
 
 Redmine::MenuManager.map :project_menu do |menu|
+  menu.push :portfolio,
+            { controller: "/portfolio_managements", action: "show" },
+            if: ->(project) { project.portfolio? || project.program? },
+            icon: "briefcase",
+            caption: "Portfolio management"
+
+  menu.push :projects_query_select,
+            { controller: "/portfolio_managements", action: "show" },
+            parent: :portfolio,
+            partial: "portfolio_managements/menus/menu"
+
   menu.push :activity,
             { controller: "/activities", action: "index" },
             if: ->(project) { project.module_enabled?("activity") },
