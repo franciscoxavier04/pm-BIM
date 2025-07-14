@@ -94,3 +94,9 @@ Once you click **Create**, client credentials (client ID and secret) will be gen
 If in [Step 3](#step-3-choose-an-authentication-method) you selected **JWT from identity provider**, you will have to specify **Subject claim** contained in the authentication JWT.
 
 ![Add SCIM client. Creation form. JWT from identity provider. Specify Subject claim.](add_scim_9.png) 
+
+This authentication method is intended exclusively for use with OpenID Connect setups.
+The SCIM client must be able to obtain a JWT from the OpenID Connect provider (e.g., Keycloak) that meets all of the following conditions:
+1. The `sub`  claim contains the value specified in the Subject Claim configuration.
+2. The `aud`  claim includes the Client ID from your OpenID Connect provider configuration.
+3. The `scope` claim includes `scim_v2`.
