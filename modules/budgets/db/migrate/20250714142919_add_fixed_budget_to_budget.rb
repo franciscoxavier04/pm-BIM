@@ -28,20 +28,9 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-FactoryBot.define do
-  factory :budget do
-    sequence(:subject) { |n| "Budget No. #{n}" }
-    sequence(:description) { |n| "I am Budget No. #{n}" }
-    project
-    author factory: :user
-    fixed_date { Date.current }
-    created_at { 3.days.ago }
-    updated_at { 3.days.ago }
-
-    traits_for_enum(:state)
-
-    trait :fixed do
-      fixed_budget { BigDecimal(250000000) }
-    end
+class AddFixedBudgetToBudget < ActiveRecord::Migration[8.0]
+  def change
+    add_column :budgets, :fixed_budget, :decimal, precision: 20, scale: 2, null: true, default: nil
+    add_column :budget_journals, :fixed_budget, :decimal, precision: 20, scale: 2, null: true, default: nil
   end
 end

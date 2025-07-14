@@ -46,6 +46,13 @@ class Budget < ApplicationRecord
   has_many :cost_entries, through: :work_packages
   has_many :time_entries, through: :work_packages
 
+  has_many :parent_budget_relations, class_name: "BudgetRelation", foreign_key: "parent_id", dependent: :destroy,
+                                     inverse_of: :parent
+  has_many :parent_budgets, through: :parent_budget_relations, source: :child
+
+  has_many :child_budget_relations, class_name: "BudgetRelation", foreign_key: "child_id", dependent: :destroy, inverse_of: :child
+  has_many :child_budgets, through: :child_budget_relations, source: :parent
+
   include ActiveModel::ForbiddenAttributesProtection
 
   acts_as_attachable
@@ -55,9 +62,17 @@ class Budget < ApplicationRecord
                 title: Proc.new { |o| "#{I18n.t(:label_budget)} ##{o.id}: #{o.subject}" },
                 url: Proc.new { |o| { controller: "budgets", action: "show", id: o.id } }
 
-  validates_presence_of :subject, :project, :author, :fixed_date
-  validates_length_of :subject, maximum: 255
-  validates_length_of :subject, minimum: 1
+  validates :subject, :project, :author, :fixed_date, presence: true
+  validates :subject, length: { maximum: 255 }
+  validates :subject, length: { minimum: 1 }
+
+  enum :state, {
+    planned: "planned",
+    draft: "draft",
+    submitted: "submitted",
+    approved: "approved",
+    rejected: "rejected"
+  }, validate: { allow_nil: true }
 
   class << self
     def visible(user)
@@ -79,7 +94,8 @@ class Budget < ApplicationRecord
     protected
 
     def copy_attributes(source)
-      source.attributes.slice("project_id", "subject", "description", "fixed_date").merge("author" => User.current)
+      source.attributes.slice("project_id", "subject", "description", "fixed_date", "state",
+                              "fixed_budget").merge("author" => User.current)
     end
 
     def copy_budget_items(source, sink, items:)
@@ -97,8 +113,16 @@ class Budget < ApplicationRecord
     end
   end
 
+  def fixed_budget?
+    fixed_budget.present? && fixed_budget > 0
+  end
+
   def budget
-    material_budget + labor_budget
+    if fixed_budget?
+      fixed_budget
+    else
+      material_budget + labor_budget
+    end
   end
 
   def type_label

@@ -28,20 +28,9 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-FactoryBot.define do
-  factory :budget do
-    sequence(:subject) { |n| "Budget No. #{n}" }
-    sequence(:description) { |n| "I am Budget No. #{n}" }
-    project
-    author factory: :user
-    fixed_date { Date.current }
-    created_at { 3.days.ago }
-    updated_at { 3.days.ago }
+class BudgetRelation < ApplicationRecord
+  belongs_to :parent_budget, class_name: "Budget"
+  belongs_to :child_budget, class_name: "Budget"
 
-    traits_for_enum(:state)
-
-    trait :fixed do
-      fixed_budget { BigDecimal(250000000) }
-    end
-  end
+  enum :relation_type, { add: "add", subtract: "subtract" }
 end
