@@ -28,37 +28,59 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module WorkPackage::PDFExport::Export::Wp::Styles
+module Projects::Exports::PDFExport::Styles
   class PDFStyles
     include MarkdownToPDF::Common
     include MarkdownToPDF::StyleHelper
     include WorkPackage::PDFExport::Common::Styles
-    include WorkPackage::PDFExport::Common::Logo
     include WorkPackage::PDFExport::Common::StylesPage
-    include WorkPackage::PDFExport::Common::StylesMarkdown
-    include WorkPackage::PDFExport::Common::StylesWpTable
-    include WorkPackage::PDFExport::Common::StylesAttributesTable
 
-    def wp_margins
-      resolve_margin(@styles[:work_package])
+    def project_title
+      resolve_font(@styles.dig(:project, :title))
     end
 
-    def wp_subject(level)
-      resolve_font(@styles.dig(:work_package, :subject)).merge(
-        resolve_font(@styles.dig(:work_package, :"subject_level_#{level}"))
+    def project_title_margins
+      resolve_margin(@styles.dig(:project, :title))
+    end
+
+    def project_margins
+      resolve_margin(@styles[:project])
+    end
+
+    def toc_title
+      resolve_font(@styles.dig(:toc, :title))
+    end
+
+    def toc_title_margins
+      resolve_margin(@styles.dig(:toc, :title))
+    end
+
+    def toc_max_depth
+      @styles.dig(:toc, :max_depth) || 4
+    end
+
+    def toc_margins
+      resolve_margin(@styles[:toc])
+    end
+
+    def toc_indent_mode
+      @styles.dig(:toc, :indent_mode)
+    end
+
+    def toc_item(level)
+      resolve_font(@styles.dig(:toc, :item)).merge(
+        resolve_font(@styles.dig(:toc, :"item_level_#{level}"))
       )
     end
 
-    def wp_detail_subject_margins
-      resolve_margin(@styles.dig(:work_package, :subject))
+    def toc_item_subject_indent
+      resolve_pt(@styles.dig(:toc, :subject_indent), 4)
     end
 
-    def inline_error
-      resolve_font(@styles[:inline_error])
-    end
-
-    def inline_hint
-      resolve_font(@styles[:inline_hint])
+    def toc_item_margins(level)
+      resolve_margin(@styles.dig(:toc, :item)).merge(
+        resolve_margin(@styles.dig(:toc, :"item_level_#{level}"))
+      )
     end
   end
 
