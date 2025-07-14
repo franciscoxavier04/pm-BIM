@@ -55,4 +55,17 @@
   end
 %>
 
-<openproject-base></openproject-base>
+<% if @project.type == "portfolio" %>
+  <%=
+    render(Primer::Alpha::Layout.new) do |content|
+      content.with_main do
+        render Overviews::Portfolios::ShowComponent.new(project: @project)
+      end
+      content.with_sidebar(col_placement: :end, row_placement: :end) do
+        render Overviews::ProjectCustomFields::SidePanelComponent.new(project: @project)
+      end
+    end
+  %>
+<% else %>
+  <openproject-base></openproject-base>
+<% end %>
