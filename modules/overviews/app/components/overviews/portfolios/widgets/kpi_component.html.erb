@@ -47,7 +47,10 @@ See COPYRIGHT and LICENSE files for more details.
 
         flex.with_column(style: "width: 25%") do
           render(Primer::Beta::ProgressBar.new(size: :large)) do |component|
-            component.with_item(percentage: helpers.kpi_percentage(work_package) * 100)
+            component.with_item(
+              classes: "__hl_background_status_#{work_package.status_id}",
+              percentage: helpers.kpi_percentage(work_package) * 100
+            )
           end
         end
       end
