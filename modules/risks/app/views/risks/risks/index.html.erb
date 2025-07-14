@@ -1,0 +1,245 @@
+<div class="risk-matrix-container">
+  <h2>Risikomatrix</h2>
+
+  <div class="matrix-wrapper">
+    <table class="risk-matrix">
+      <thead>
+        <tr>
+          <th class="matrix-corner"></th>
+          <th colspan="<%= @impact_options.length %>" class="impact-header">
+            Auswirkung
+          </th>
+        </tr>
+        <tr>
+          <th class="likelihood-header">
+            <div>Eintrittswahrscheinlichkeit</div>
+          </th>
+          <% @impact_options.each_with_index do |impact, _| %>
+            <th class="impact-label">
+              <%= impact.value %>
+            </th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @likelihood_options.reverse.each_with_index do |likelihood, likelihood_index| %>
+          <tr>
+            <th class="likelihood-label">
+              <%= likelihood.value %>
+            </th>
+             <% @impact_options.each_with_index do |impact, impact_index| %>
+               <%
+                 work_package_count = @risk_counts[[likelihood.id, impact.id]]
+                 likelihood_value = @likelihood_options.length - likelihood_index
+                 impact_value = impact_index + 1
+                 risk_score = likelihood_value * impact_value
+                 risk_class = case risk_score
+                             when 1..6
+                               'low-risk'
+                             when 7..15
+                               'medium-risk'
+                             when 16..25
+                               'high-risk'
+                             else
+                               'medium-risk'
+                             end
+               %>
+               <td class="risk-cell <%= risk_class %>">
+                 <span class="risk-count">
+                   <%= work_package_count %>
+                 </span>
+               </td>
+             <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+     <div class="risk-legend">
+     <h3>Risikostufen</h3>
+     <p class="legend-description">Zahlen zeigen die Anzahl der Arbeitspakete in jeder Kategorie</p>
+     <div class="legend-items">
+       <div class="legend-item">
+         <span class="legend-color low-risk"></span>
+         <span>Niedriges Risiko (1-6)</span>
+       </div>
+       <div class="legend-item">
+         <span class="legend-color medium-risk"></span>
+         <span>Mittleres Risiko (7-15)</span>
+       </div>
+       <div class="legend-item">
+         <span class="legend-color high-risk"></span>
+         <span>Hohes Risiko (16-25)</span>
+       </div>
+     </div>
+     <div class="risk-total">
+       <strong>Gesamtanzahl Risiken: <%= @risk_work_packages.count %></strong>
+     </div>
+   </div>
+</div>
+
+<style>
+  .risk-matrix-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .risk-matrix-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+  }
+
+  .matrix-wrapper {
+    overflow-x: auto;
+    margin-bottom: 30px;
+  }
+
+  .risk-matrix {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    background: white;
+  }
+
+  .risk-matrix th,
+  .risk-matrix td {
+    border: 2px solid #ddd;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .matrix-corner {
+    background: #f8f9fa;
+    width: 120px;
+  }
+
+  .impact-header {
+    background: #e9ecef;
+    padding: 15px;
+    font-size: 16px;
+    color: #495057;
+  }
+
+  .likelihood-header {
+    background: #e9ecef;
+    width: 120px;
+    position: relative;
+    padding: 40px 10px;
+  }
+
+  .impact-label,
+  .likelihood-label {
+    background: #f8f9fa;
+    padding: 12px 8px;
+    font-size: 14px;
+    color: #495057;
+    min-width: 80px;
+  }
+
+  .risk-cell {
+    width: 80px;
+    height: 60px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .risk-cell:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  .risk-count {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  }
+
+  .low-risk {
+    background: linear-gradient(135deg, #28a745, #20c997);
+  }
+
+  .medium-risk {
+    background: linear-gradient(135deg, #ffc107, #fd7e14);
+  }
+
+  .high-risk {
+    background: linear-gradient(135deg, #dc3545, #e83e8c);
+  }
+
+     .risk-legend {
+     text-align: center;
+   }
+
+   .risk-legend h3 {
+     margin-bottom: 15px;
+     color: #333;
+   }
+
+   .legend-description {
+     font-size: 14px;
+     color: #666;
+     margin-bottom: 20px;
+     font-style: italic;
+   }
+
+  .legend-items {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+  }
+
+     .legend-color {
+     width: 20px;
+     height: 20px;
+     border-radius: 4px;
+     border: 1px solid #ddd;
+   }
+
+   .risk-total {
+     margin-top: 20px;
+     padding: 15px;
+     background: #f8f9fa;
+     border-radius: 8px;
+     font-size: 16px;
+     color: #495057;
+   }
+
+  @media (max-width: 768px) {
+    .risk-matrix-container {
+      padding: 10px;
+    }
+
+    .risk-matrix th,
+    .risk-matrix td {
+      font-size: 12px;
+      padding: 8px 4px;
+    }
+
+    .risk-cell {
+      width: 60px;
+      height: 50px;
+    }
+
+    .risk-count {
+      font-size: 14px;
+    }
+
+    .legend-items {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
