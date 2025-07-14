@@ -29,6 +29,7 @@
  */
 
 import { Controller } from '@hotwired/stimulus';
+import dragula from 'dragula';
 import jQuery from 'jquery';
 import 'tablesorter';
 
@@ -565,10 +566,9 @@ export default class PageController extends Controller {
   }
 
   private recreateSortables() {
-    const containers = jQuery('.group-by--selected-elements').toArray();
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-explicit-any
-    (dragula as any)(containers, {
-      mirrorContainer: document.getElementById('group-by--area'),
+    const containers = Array.from(document.querySelectorAll('.group-by--selected-elements'));
+    dragula(containers, {
+      mirrorContainer: document.getElementById('group-by--area')!,
     });
   }
 
