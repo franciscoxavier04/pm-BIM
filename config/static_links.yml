@@ -160,6 +160,8 @@ sysadmin_docs:
     href: https://www.openproject.org/docs/system-admin-guide/authentication/openid-providers/#step-7-claims
   saml:
     href: https://www.openproject.org/docs/system-admin-guide/authentication/saml/
+  scim:
+    href: https://www.openproject.org/docs/system-admin-guide/authentication/scim/
 text_formatting:
   href: https://www.openproject.org/docs/user-guide/wysiwyg/
   label: :setting_text_formatting
