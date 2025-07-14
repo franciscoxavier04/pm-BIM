@@ -49,6 +49,10 @@ module WorkPackage::PDFExport::Common::StylesPage
     resolve_pt(@styles.dig(:page_logo, :height), 20)
   end
 
+  def page_logo_offset
+    resolve_pt(@styles.dig(:page_logo, :offset), 0)
+  end
+
   def page_logo_align
     @styles.dig(:page_logo, :align) || :right
   end
