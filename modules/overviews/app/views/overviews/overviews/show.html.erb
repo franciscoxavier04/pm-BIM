@@ -62,7 +62,7 @@
         render Overviews::Portfolios::ShowComponent.new(project: @project)
       end
       content.with_sidebar(col_placement: :end, row_placement: :end) do
-        render Overviews::ProjectCustomFields::SidePanelComponent.new(project: @project)
+        render Overviews::Portfolios::SidePanelComponent.new(project: @project)
       end
     end
   %>
