@@ -29,7 +29,7 @@
 ---
 en:
   plugin_budgets_engine:
-    name: 'Budgets'
+    name: "Budgets"
 
   activerecord:
     attributes:
@@ -45,6 +45,7 @@ en:
         type: "Cost type"
         labor_budget: "Planned labor costs"
         material_budget: "Planned unit costs"
+        fixed_budget: "Fixed budget"
       work_package:
         budget_subject: "Budget title"
     models:
@@ -81,7 +82,7 @@ en:
   label_budget_plural: "Budgets"
   label_budget_id: "Budget #%{id}"
   label_deliverable: "Budget"
-  label_example_placeholder: 'e.g., %{decimal}'
+  label_example_placeholder: "e.g., %{decimal}"
   label_view_all_budgets: "View all budgets"
   label_yes: "Yes"
 
