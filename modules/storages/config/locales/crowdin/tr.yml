@@ -81,6 +81,7 @@ tr:
     edit_project_folder:
       label: Proje türünü düzenle
     open:
+      contact_admin: Please contact your administrator to resolve this error.
       remote_identity_error: An unexpected error occurred while connecting to the storage.
     project_folder_mode:
       automatic: Otomatik olarak yönetilir
@@ -128,7 +129,7 @@ tr:
               conflict: 'The user %{user} could not be added to the %{group} group for the following reason: %{reason}'
               failed_to_add: 'The user %{user} could not be added to the %{group} group for the following reason: %{reason}'
             create_folder:
-              conflict: The %{folder_name} already exists on %{parent_location}.
+              conflict: The folder %{folder_name} already exists on %{parent_location}.
               not_found: "%{parent_location} bulunamadı."
             ensure_root_folder_permissions:
               not_found: "%{group_folder} bulunamadı. Lütfen Nextcloud Grup Klasörü kurulumunuzu kontrol edin."
