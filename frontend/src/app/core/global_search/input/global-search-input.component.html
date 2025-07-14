@@ -2,6 +2,7 @@
 
   <button
     *ngIf="expanded"
+    type="button"
     (click)="toggleMobileSearch()"
     class="top-menu-search--back-button"
     href="#"
@@ -11,7 +12,7 @@
     <i class="icon-arrow-left1" aria-hidden="true"></i>
   </button>
   <button
-    role="button"
+    type="button"
     #btn
     id="top-menu-search-button"
     class="top-menu-search--button search-form-normal"
