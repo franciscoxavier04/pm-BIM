@@ -78,13 +78,13 @@ module My
 
       def subject
         render(Primer::Beta::Link.new(href: project_work_package_path(time_entry.project, time_entry.work_package),
-                                      underline: false)) do
+                                      underline: true)) do
           "##{time_entry.work_package.id}"
         end + " - #{time_entry.work_package.subject}"
       end
 
       def project
-        render(Primer::Beta::Link.new(href: project_path(time_entry.project), underline: false)) do
+        render(Primer::Beta::Link.new(href: project_path(time_entry.project), underline: true)) do
           time_entry.project.name
         end
       end

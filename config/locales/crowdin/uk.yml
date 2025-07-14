@@ -1174,7 +1174,7 @@ uk:
         comments_sorting: "Відображати дії з пакетів робіт, відсортовані за"
         disable_keyboard_shortcuts: "Вимкнути комбінації клавіш"
         disable_keyboard_shortcuts_caption_html: |-
-          Ви можете вимкнути стандартні <a href="%{href}">комбінації клавіш</a>, якщо використовуєте невізуальний екран або хочете, щоб відповідні дії не запускалися, коли ви натискаєте ці комбінації клавіш випадково.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Приховані банери Enterprise"
         impaired: "Режим спеціальних можливостей"
         auto_hide_popups: "Автоматично приховувати банери про успішне виконання"
