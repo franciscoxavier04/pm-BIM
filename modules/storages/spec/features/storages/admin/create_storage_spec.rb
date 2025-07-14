@@ -56,7 +56,7 @@ RSpec.describe "Admin Create a new file storage",
         within_test_selector("storages-select-provider-action-menu") { click_on("Nextcloud") }
       end
 
-      expect(page).to have_current_path(new_admin_settings_storage_path(provider: "nextcloud"))
+      wait_for { page }.to have_current_path(new_admin_settings_storage_path(provider: "nextcloud"))
 
       aggregate_failures "New provider view" do
         # Page Header
@@ -201,6 +201,8 @@ RSpec.describe "Admin Create a new file storage",
         within_test_selector("storages-select-provider-action-menu") { click_on("Nextcloud") }
       end
 
+      wait_for { page }.to have_current_path(new_admin_settings_storage_path(provider: "nextcloud"))
+
       within_test_selector("storage-general-info-form") do
         expect(page).not_to have_enterprise_banner
 
@@ -276,15 +278,14 @@ RSpec.describe "Admin Create a new file storage",
 
       within(".SubHeader") do
         page.find_test_selector("storages-create-new-provider-button").click
-
         within_test_selector("storages-select-provider-action-menu") do
           expect(page).to have_css(".octicon-op-enterprise-addons")
           click_on("OneDrive")
         end
       end
 
-      expect(page).to have_current_path(upsell_admin_settings_storages_path)
-      wait_for { page }.to have_text("OneDrive integration")
+      wait_for { page }.to have_current_path(upsell_admin_settings_storages_path)
+      expect(page).to have_text("OneDrive integration")
     end
   end
 
