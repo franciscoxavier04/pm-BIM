@@ -33,6 +33,13 @@ class DocumentCategory < Enumeration
 
   OptionName = :enumeration_doc_categories
 
+  class << self
+    def project_status_report
+      # POST-HACKATHON: How would we make searching and finding a common category like this possible?
+      find_or_create_by!(name: "Statusbericht")
+    end
+  end
+
   def option_name
     OptionName
   end
