@@ -82,7 +82,7 @@
           <svg chevron-right-icon size="xsmall" class="op-pagination--item-link-icon op-pagination--item-link-icon_next" />
         </button>
       </li>
-      <li class="op-pagination--range">
+      <li class="op-pagination--range" aria-live="polite">
         {{currentRange}}
         <span *ngIf="pageNumbers.length === 1"
           id="op-pagination-empty-text"

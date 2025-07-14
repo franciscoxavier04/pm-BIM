@@ -144,7 +144,12 @@ module PaginationHelper
 
     content_tag(:ul, class: "op-pagination--items op-pagination--items_start", role: "presentation") do
       concat will_paginate(paginator, **, container: false)
-      concat content_tag(:li, "(#{page_first} - #{page_last}/#{total})", class: "op-pagination--range")
+      concat content_tag(
+        :li,
+        "(#{page_first} - #{page_last}/#{total})",
+        class: "op-pagination--range",
+        aria: { live: "polite" }
+      )
     end
   end
 
