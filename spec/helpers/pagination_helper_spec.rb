@@ -116,7 +116,7 @@ RSpec.describe PaginationHelper do
     it "shows the range of the entries displayed" do
       range = "(#{(current_page * per_page) - per_page + 1} - " +
               "#{current_page * per_page}/#{total_entries})"
-      expect(pagination).to have_css(".op-pagination--range", text: range)
+      expect(pagination).to have_css(".op-pagination--range", text: range, aria: { live: "polite" })
     end
 
     it "has different urls if the params are specified as options" do
