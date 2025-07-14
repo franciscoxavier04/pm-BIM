@@ -32,7 +32,7 @@ A configuration form for your SCIM client will open, in which you can adjust the
 
 ### Step 2. Choose an **Authentication provider**. 
    This is the service that users added by the SCIM provider will use to authenticate in OpenProject.
-   It must have been configured before creating the SCIM client. It can be an [OIDC provider](../system-admin-guide/authentication/openid-providers/) or a [SAML provider](../system-admin-guide/authentication/saml/).
+   It must have been configured before creating the SCIM client. It can be an [OIDC provider](../openid-providers/) or a [SAML provider](../saml/).
 
    ![A SCIM client creation form in OpenProject administration, with the "Authentication provider" field highlighted and filled out](add_scim_3.png) 
 
