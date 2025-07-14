@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { renderStreamMessage } from '@hotwired/turbo';
 import { ToastService } from 'core-app/shared/components/toaster/toast.service';
 import { debugLog } from 'core-app/shared/helpers/debug_output';
-import { TurboHelpers } from 'turbo/helpers';
+import { TurboHelpers } from 'core-turbo/helpers';
 
 @Injectable({ providedIn: 'root' })
 export class TurboRequestsService {

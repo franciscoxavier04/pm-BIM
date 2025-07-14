@@ -11,7 +11,7 @@ import {
   platformBrowserDynamicTesting,
 } from '@angular/platform-browser-dynamic/testing';
 import { I18n } from 'i18n-js';
-import { registerDialogStreamAction } from 'turbo/dialog-stream-action';
+import { registerDialogStreamAction } from 'core-turbo/dialog-stream-action';
 
 registerDialogStreamAction();
 

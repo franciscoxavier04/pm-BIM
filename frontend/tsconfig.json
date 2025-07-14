@@ -22,6 +22,7 @@
       "core-app/*": ["./src/app/*"],
       "core-components/*": ["./src/app/components/*"],
       "core-stimulus/*": ["./src/stimulus/*"],
+      "core-turbo/*": ["./src/turbo/*"],
       "core-typings/*": ["./src/typings/*"],
       "core-vendor/*": ["./src/vendor/*"]
     }
