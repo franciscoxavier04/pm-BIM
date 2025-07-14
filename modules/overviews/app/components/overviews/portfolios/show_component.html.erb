@@ -5,7 +5,7 @@
     end
 
     grid.with_area(:subportfolio, tag: :div) do
-      "Pellentesque leo libero, cursus id molestie vel, pellentesque eu erat. Cras quis condimentum ligula. Aenean bibendum erat sed purus posuere rutrum. Aliquam nec lacus aliquam, convallis nisl nec, interdum odio. Aenean diam purus, dictum ut porttitor vel, venenatis et massa. Aenean scelerisque velit non ligula interdum, convallis efficitur magna suscipit. Aliquam eget aliquet diam, et malesuada dolor. Cras gravida mauris eu scelerisque consequat. Sed posuere magna ut venenatis suscipit. Nunc pellentesque et diam vel vestibulum. Nam a nulla a est ullamcorper facilisis."
+      render(Overviews::Portfolios::Widgets::SubportfoliosComponent.new(project: @project))
     end
 
     grid.with_area(:budget, tag: :div) do

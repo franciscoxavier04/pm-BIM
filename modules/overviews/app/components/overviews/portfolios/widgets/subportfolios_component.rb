@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,30 +26,18 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
 module Overviews
   module Portfolios
-    class SidePanel::StatusComponent < ApplicationComponent
-      include ApplicationHelper
-      include OpTurbo::Streamable
-      include OpPrimer::ComponentHelpers
+    module Widgets
+      class SubportfoliosComponent < ApplicationComponent
+        include OpPrimer::ComponentHelpers
+        include ApplicationHelper
 
-      def initialize(project:, current_user: User.current)
-        super
-
-        @project = project
-        @current_user = current_user
-      end
-
-      private
-
-      def status_button
-        render(Projects::StatusButtonComponent.new(project: @project, user: @current_user))
-      end
-
-      def status_description
-        @project.status_explanation
+        def initialize(model = nil, **)
+          super(model, **)
+        end
       end
     end
   end
