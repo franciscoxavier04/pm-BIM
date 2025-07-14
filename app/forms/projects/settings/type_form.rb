@@ -31,12 +31,19 @@ module Projects
   module Settings
     class TypeForm < ApplicationForm
       form do |f|
-        f.select_list(
-          name: :type,
-          label: attribute_name(:type)
-        ) do |list|
-          Project.types.each_key do |label|
-            list.option(label: I18n.t("activerecord.attributes.project.type_enum.#{label}"), value: label)
+        if model.new_record?
+          # Hide the type field when creating a new project, as the type is determined via GET parameter.
+          f.hidden(name: :type)
+        else
+          # Offer changing the type of existing projects when editing them. Otherwise, there would be no way
+          # for users to change the type of project.
+          f.select_list(
+            name: :type,
+            label: attribute_name(:type)
+          ) do |list|
+            Project.types.each_key do |label|
+              list.option(label: I18n.t("activerecord.attributes.project.type_enum.#{label}"), value: label)
+            end
           end
         end
       end
