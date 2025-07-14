@@ -28,11 +28,6 @@
 
 FactoryBot.define do
   factory :time_entry do
-    transient do
-      # detect incorrect usage of `work_package` parameter instead of `entity`
-      work_package { nil }
-    end
-
     user
     entity factory: :work_package
     spent_on { Time.zone.today }
@@ -40,13 +35,8 @@ FactoryBot.define do
     hours { 1.0 }
     logged_by { user }
 
-    after(:build) do |time_entry, evaluator|
+    after(:build) do |time_entry|
       time_entry.project ||= time_entry.entity.project
-
-      if evaluator.work_package.present?
-        raise "Please update parameter `work_package` to `entity`. " \
-              "A time entry can reference objects like work packages, meetings, etc."
-      end
     end
 
     after(:create) do |time_entry|

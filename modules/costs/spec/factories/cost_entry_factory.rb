@@ -28,11 +28,6 @@
 
 FactoryBot.define do
   factory :cost_entry do
-    transient do
-      # detect incorrect usage of `work_package` parameter instead of `entity`
-      work_package { nil }
-    end
-
     project
     user
     entity factory: :work_package
@@ -40,13 +35,6 @@ FactoryBot.define do
     spent_on { Date.current }
     units { 1 }
     comments { "" }
-
-    after(:build) do |_cost_entry, evaluator|
-      if evaluator.work_package.present?
-        raise "Please update parameter `work_package` to `entity`. " \
-              "A cost entry can reference objects like work packages, meetings, etc."
-      end
-    end
 
     before(:create) do |ce|
       ce.project = ce.entity.project
