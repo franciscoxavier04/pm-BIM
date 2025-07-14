@@ -16,6 +16,7 @@
     #btn
     id="top-menu-search-button"
     class="top-menu-search--button search-form-normal"
+    [attr.title]="text.search"
     [attr.aria-label]="text.search"
     [class.-input-focused]="expanded"
     (click)="handleClick($event)"
