@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,15 +27,17 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-class HackathonSeeder < CompositeSeeder
-  def data_seeder_classes
-    [
-      HackathonData::KpiSeeder,
-      HackathonData::ProblemSeeder
-    ]
-  end
 
-  def namespace
-    "HackathonData"
+module HackathonData
+  class ProblemSeeder < Seeder
+    def seed_data!
+      Rails.logger.debug "*** Seeding Problem work package type"
+
+      Type.create!(name: "Problem")
+    end
+
+    def applicable?
+      Type.where(name: "Problem").none?
+    end
   end
 end
