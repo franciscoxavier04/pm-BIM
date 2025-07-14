@@ -13,7 +13,7 @@
     end
 
     grid.with_area(:problems, tag: :div) do
-      "Duis vel augue nec risus posuere dapibus egestas nec justo. Suspendisse diam odio, sodales in pulvinar id, tempus non arcu. Maecenas tempor cursus lacus vel fringilla. Proin mauris tortor, eleifend eget dictum sed, tristique nec nulla. Aliquam erat volutpat. Phasellus nec faucibus mauris. Aenean placerat erat odio, nec ultricies felis aliquam vitae. Maecenas quis nunc augue. Donec turpis risus, rhoncus et est nec, congue venenatis metus. Ut pretium sit amet dolor sed ornare."
+      render(Overviews::Portfolios::Widgets::ProblemsComponent.new(project: @project))
     end
   end
 %>
