@@ -90,6 +90,36 @@ Redmine::MenuManager.map :quick_add_menu do |menu|
                 User.current.allowed_in_project?(:add_subprojects, project)
             }
 
+  menu.push :new_program,
+            ->(project) {
+              { controller: "/projects", action: :new, project_id: nil, type: "program", parent_id: project&.id }
+            },
+            caption: ->(_) { I18n.t("activerecord.attributes.project.type_enum.program") },
+            icon: "plus",
+            html: {
+              aria: { label: I18n.t(:label_project_program_new) },
+              title: I18n.t(:label_project_program_new)
+            },
+            if: ->(project) {
+              User.current.allowed_globally?(:add_project) ||
+                User.current.allowed_in_project?(:add_subprojects, project)
+            }
+
+  menu.push :new_portfolio,
+            ->(project) {
+              { controller: "/projects", action: :new, project_id: nil, type: "portfolio", parent_id: project&.id }
+            },
+            caption: ->(_) { I18n.t("activerecord.attributes.project.type_enum.portfolio") },
+            icon: "plus",
+            html: {
+              aria: { label: I18n.t(:label_project_portfolio_new) },
+              title: I18n.t(:label_project_portfolio_new)
+            },
+            if: ->(project) {
+              User.current.allowed_globally?(:add_project) ||
+                User.current.allowed_in_project?(:add_subprojects, project)
+            }
+
   menu.push :invite_user,
             nil,
             caption: :label_invite_user,
