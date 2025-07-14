@@ -1,7 +1,7 @@
 ---
 sidebar_navigation:
   title: SAML single sign-on
-  priority: 100
+  priority: 700
 description: How to set up SAML integration for SSO with OpenProject.
 keywords: SAML, SSO, single sign-on, authentication
 ---
