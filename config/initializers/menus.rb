@@ -75,15 +75,15 @@ Redmine::MenuManager.map :top_menu do |menu|
 end
 
 Redmine::MenuManager.map :quick_add_menu do |menu|
-  menu.push :new_project,
+  menu.push :new_portfolio,
             ->(project) {
-              { controller: "/projects", action: :new, project_id: nil, parent_id: project&.id }
+              { controller: "/projects", action: :new, project_id: nil, type: "portfolio", parent_id: project&.id }
             },
-            caption: ->(_) { Project.model_name.human },
-            icon: "plus",
+            caption: ->(_) { I18n.t("activerecord.attributes.project.type_enum.portfolio") },
+            icon: "briefcase",
             html: {
-              aria: { label: I18n.t(:label_project_new) },
-              title: I18n.t(:label_project_new)
+              aria: { label: I18n.t(:label_project_portfolio_new) },
+              title: I18n.t(:label_project_portfolio_new)
             },
             if: ->(project) {
               User.current.allowed_globally?(:add_project) ||
@@ -95,7 +95,7 @@ Redmine::MenuManager.map :quick_add_menu do |menu|
               { controller: "/projects", action: :new, project_id: nil, type: "program", parent_id: project&.id }
             },
             caption: ->(_) { I18n.t("activerecord.attributes.project.type_enum.program") },
-            icon: "plus",
+            icon: "versions",
             html: {
               aria: { label: I18n.t(:label_project_program_new) },
               title: I18n.t(:label_project_program_new)
@@ -105,15 +105,15 @@ Redmine::MenuManager.map :quick_add_menu do |menu|
                 User.current.allowed_in_project?(:add_subprojects, project)
             }
 
-  menu.push :new_portfolio,
+  menu.push :new_project,
             ->(project) {
-              { controller: "/projects", action: :new, project_id: nil, type: "portfolio", parent_id: project&.id }
+              { controller: "/projects", action: :new, project_id: nil, parent_id: project&.id }
             },
-            caption: ->(_) { I18n.t("activerecord.attributes.project.type_enum.portfolio") },
-            icon: "plus",
+            caption: ->(_) { Project.model_name.human },
+            icon: "project",
             html: {
-              aria: { label: I18n.t(:label_project_portfolio_new) },
-              title: I18n.t(:label_project_portfolio_new)
+              aria: { label: I18n.t(:label_project_new) },
+              title: I18n.t(:label_project_new)
             },
             if: ->(project) {
               User.current.allowed_globally?(:add_project) ||
