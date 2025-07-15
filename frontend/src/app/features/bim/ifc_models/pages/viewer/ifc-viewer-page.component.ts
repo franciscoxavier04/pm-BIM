@@ -26,13 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Injector,
-  OnInit,
-  ViewEncapsulation,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Injector, OnInit, ViewEncapsulation } from '@angular/core';
 import {
   PartitionedQuerySpacePageComponent,
   ToolbarButtonComponentDefinition,
@@ -176,16 +170,17 @@ export class IFCViewerPageComponent extends PartitionedQuerySpacePageComponent i
       .subscribe((query) => {
         const dr = query.displayRepresentation || bcfSplitViewCardsIdentifier;
         this.filterAllowed = dr !== bcfViewerViewIdentifier;
-        this.hideSplitScreen(dr as BcfViewState);
+        // When changing the query space by selecting a dropdown option, handle the split screen
+        // and hide it for full views.
+        this.hideSplitScreenForFullViews(dr as BcfViewState);
         this.cdRef.detectChanges();
       });
 
     this.$transitions.onSuccess({}, (transition):void => {
-      const toState = transition.to();
-
-      if (toState.name === 'bim.partitioned.list') {
+      // When going back from "details" route to "list" route handle the split screen right side
+      if (transition.to().name === 'bim.partitioned.list') {
         const dr = this.querySpace.query.value?.displayRepresentation;
-        this.hideSplitScreen((dr || bcfTableViewIdentifier) as BcfViewState);
+        this.hideSplitScreenForFullViews((dr || bcfTableViewIdentifier) as BcfViewState);
       }
     });
   }
@@ -216,7 +211,7 @@ export class IFCViewerPageComponent extends PartitionedQuerySpacePageComponent i
       });
   }
 
-  private hideSplitScreen(dr:BcfViewState):void {
+  private hideSplitScreenForFullViews(dr:BcfViewState):void {
     if ([bcfViewerViewIdentifier, bcfCardsViewIdentifier, bcfTableViewIdentifier].includes(dr)) {
       document.documentElement.style.setProperty('--split-screen-width', '0');
     }
