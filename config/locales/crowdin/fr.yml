@@ -121,7 +121,7 @@ fr:
         one_time_hint: "C'est la seule fois que vous verrez le secret client. Pensez à le copier maintenant."
       created_token_dialog_component:
         title: "Jeton créé"
-        heading: "Un jeton a été généré"
+        heading: "A token has been generated"
         label_token: "Jeton"
         one_time_hint: "C'est la seule fois que vous verrez ce jeton. Pensez à le copier maintenant."
       delete_scim_client_dialog_component:

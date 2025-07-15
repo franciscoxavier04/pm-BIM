@@ -121,7 +121,7 @@ it:
         one_time_hint: "Questa è l'unica volta in cui vedrai il segreto del client. Assicurati di copiarlo adesso."
       created_token_dialog_component:
         title: "Token creato"
-        heading: "È stato generato un token"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "Questa è l'unica volta in cui vedrai questo token. Assicurati di copiarlo adesso."
       delete_scim_client_dialog_component:
