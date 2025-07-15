@@ -32,16 +32,20 @@ import { Controller } from '@hotwired/stimulus';
 
 export default class ExpandableListController extends Controller {
   static targets = ['hiddenElements', 'showButton'];
-  declare readonly hiddenElementsTarget:HTMLElement;
+  declare readonly hiddenElementsTargets:HTMLElement[];
   declare readonly showButtonTarget:HTMLElement;
 
   showElements():void {
-    this.hiddenElementsTarget.classList.remove('d-none');
+    this.hiddenElementsTargets.forEach((el) => {
+      el.classList.remove('d-none');
+    });
     this.showButtonTarget.classList.add('d-none');
   }
 
   hideElements():void {
-    this.hiddenElementsTarget.classList.add('d-none');
+    this.hiddenElementsTargets.forEach((el) => {
+      el.classList.add('d-none');
+    });
     this.showButtonTarget.classList.remove('d-none');
   }
 }

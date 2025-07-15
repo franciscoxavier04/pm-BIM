@@ -43,6 +43,7 @@ module Overviews
           super(model, **)
 
           @project = project
+          @cutoff_limit = 5
           @wps = WorkPackage
                     .visible
                     .where(type: Type.where(name: ["Risiko", "Problem"]))

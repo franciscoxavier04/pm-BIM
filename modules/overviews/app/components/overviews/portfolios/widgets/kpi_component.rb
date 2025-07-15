@@ -45,6 +45,7 @@ module Overviews
           super(model, **)
 
           @project = project
+          @cutoff_limit = 5
           @kpis = WorkPackage
             .visible
             .where(type: ::BmdsHackathon::References.kpi_type)
