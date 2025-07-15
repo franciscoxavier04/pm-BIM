@@ -30,12 +30,21 @@
 
 module Risks
   class MatrixComponent < ViewComponent::Base
-    attr_reader :project, :likelihood_options, :impact_options, :risk_counts, :risk_work_packages
+    attr_reader :project, :params,
+                :likelihood_options, :impact_options, :risk_counts, :risk_work_packages
 
-    def initialize(project:, likelihood_options:, impact_options:, risk_counts:, risk_work_packages:, selected_likelihood:, selected_impact:)
+    def initialize(project:,
+                   params:,
+                   likelihood_options:,
+                   impact_options:,
+                   risk_counts:,
+                   risk_work_packages:,
+                   selected_likelihood:,
+                   selected_impact:)
       super
 
       @project = project
+      @params = params
       @likelihood_options = likelihood_options
       @impact_options = impact_options
       @risk_counts = risk_counts
