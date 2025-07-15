@@ -14,6 +14,10 @@ We released [OpenProject 16.2.0](https://community.openproject.org/versions/2196
 
 ## Important feature changes
 
+Take a look at our release video showing the most important features introduced in OpenProject 16.2.0:
+  
+![Release video of OpenProject 16.2](https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject_16_2_release.mp4)
+
 ### New header and sidebar with improved navigation and design
 
 OpenProject 16.2 introduces a redesigned header and sidebar that make navigating your projects noticeably easier. The sidebar toggle (hamburger icon) has moved inside the sidebar itself, the default sidebar color in light mode is now lighter and more modern, and the search and create buttons have been repositioned in the top bar for a more intuitive workflow. Together, these changes create a cleaner, more focused interface that helps you find what you need faster and align with the user interface used in [openDesk](https://www.openproject.org/opendesk/).
@@ -26,7 +30,7 @@ Please note that if you have customized the sidebar colors, your individual sett
 
 The forms for [creating and copying projects](../../getting-started/projects/#create-a-new-project) now use the [Primer design system](https://www.openproject.org/blog/primer-design-system/), providing a cleaner and more consistent interface. This improves accessibility and ensures the process remains just as familiar.
 
-If you create a project **based on a template**, you will immediately be able to choose which modules and parts you want to copy and which to skip. Also, the option to activate sending email notifications during the project copy is much more visible. Before 16.2, you had to click on Copy Options to unfold.
+If you **copy** a project or create a project **based on a template**, you will immediately be able to choose which modules and parts you want to copy and which to skip. Also, the option to activate sending email notifications during the project copy is much more visible. Before 16.2, you had to click on Copy Options to unfold.
 
 ![OpenProject screenshot: Create new project, with options to choose what to copy from a template](openproject-16-2-create-project.png)
 
@@ -46,11 +50,13 @@ The + Relation menu has been reorganized with a new two-level structure, making 
 
 ![OpenProject work package Relations tab when clicking on +Relation, showing some relations unfolded under 'Other relations'](openproject-user-guide-relations-second-level-navigation.png)
 
-### Select custom field format earlier when creating a new custom field
+[Read more about relations in OpenProject](../../user-guide/work-packages/work-package-relations-hierarchies/).
 
-When creating a new custom field, you now select the format — such as text, list, or date — right at the beginning, on the index page of custom fields and project attributes. This streamlines the creation process and avoids unnecessary steps, since each type opens directly in the appropriate form. This improvement is especially helpful for administrators who frequently set up new custom fields.
+### Select formats for custom fields and project attributes earlier in creation process
 
-[Read more about how to manage custom fields in OpenProject](../../system-admin-guide/custom-fields/).
+When creating a new custom field, you can now select the format — such as text, list, or date — right at the beginning, on the index page of custom fields and project attributes. The same applies to project attributes. This streamlines the creation process and avoids unnecessary steps, since each type opens directly in the appropriate form. This improvement is especially helpful for administrators who frequently set up new custom fields or project attributes.
+
+Read more about how to manage [custom fields](../../system-admin-guide/custom-fields/) and [project attributes](../../user-guide/projects/project-settings/project-attributes/) in OpenProject.
 
 ![OpenProject administration to add a new custom field: Dropdown lets you choose the type during the first step](openproject-16-2-custom-field-type.png)
 
@@ -63,6 +69,8 @@ In the **My time tracking** module, the week and work week views now automatical
 
 ![OpenProject's My time tracking module in list view, only Today expanded](user-guide-my-time-tracking-module-list-view.png)
 
+[Learn more about the My time tracking module in our documentation](../../user-guide/time-and-costs/my-time-tracking/).
+
 ### Option to disable keyboard shortcuts for better accessibility
 
 OpenProject 16.2 makes the application more accessible by allowing users to **disable keyboard shortcuts**. This is especially helpful for people using assistive technologies, where keyboard shortcuts might interfere with screen readers or other tools. The option can be found under *Account settings → Interface*.
@@ -71,9 +79,11 @@ OpenProject 16.2 makes the application more accessible by allowing users to **di
 
 ### Work package reminders presented in relative humanized time format
 
-When you set a reminder for a work package, OpenProject now confirms this with a **relative, human-friendly time**. Instead of just showing a fixed date and time, the success message will say, for example, *“Reminder set successfully. You will receive a notification tomorrow at 9:00 AM.”* This small improvement makes it easier to quickly understand when your reminder will appear.
+When you set a reminder for a work package, OpenProject now confirms this with a **relative, human-friendly time**. Instead of just showing a fixed date and time, the success message will say, for example, *“Reminder set successfully. You will receive a notification for this work package tomorrow.”* This small improvement makes it easier to quickly understand when your reminder will appear.
 
 ![User information that appears when setting a reminder: Reminder set successfully. You will receive a notification for this work package tomorrow.](openproject-16-2-reminder.png)
+
+[Learn more about work package reminders in OpenProject](../../user-guide/work-packages/edit-work-package/#work-package-reminders).
 
 ## Important technical changes
 
@@ -82,6 +92,8 @@ When you set a reminder for a work package, OpenProject now confirms this with a
 OpenProject 16.2 adds a **SCIM server API**, available as an Enterprise add-on in the Corporate plan. This allows Identity Providers (IdPs) such as Keycloak to keep user data in OpenProject synchronized automatically. Administrators can manage SCIM clients directly in OpenProject, configure authentication methods, and revoke tokens when needed. This makes it much easier to maintain consistent user records across your systems.
 
 ![OpenProject administration with option to add a new SCIM client](openproject-16-2-scim-api.png)
+
+[Learn more about authentication methods with OpenProject](../../system-admin-guide/authentication/).
 
 ### API support for internal comments
 
