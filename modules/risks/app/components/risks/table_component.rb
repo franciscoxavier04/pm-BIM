@@ -28,36 +28,43 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module BmdsHackathon
-  module References
-    module_function
+module Risks
+  class TableComponent < ::OpPrimer::BorderBoxTableComponent
+    options :current_project
 
-    def kpi_type
-      @kpi_type ||= Type.find_by!(name: "KPI")
+    columns :risk, :probability, :impact, :level
+
+    mobile_labels :risk
+
+    main_column :risk
+
+    def sortable?
+      false
     end
 
-    def risk_type
-      @risk_type ||= Type.find_by!(name: "Risiko")
+    def paginated?
+      false
     end
 
-    def risk_likelihood_cf
-      @risk_likelihood_cf ||= CustomField.find_by!(name: "Eintrittswahrscheinlichkeit")
+    def has_actions?
+      false
     end
 
-    def risk_impact_cf
-      @risk_impact_cf ||= CustomField.find_by!(name: "Auswirkung")
+    def mobile_title
+      "Risiken"
     end
 
-    def risk_level_cf
-      @risk_level_cf ||= CustomField.find_by!(name: "Risiko-Level")
+    def headers
+      @headers ||= [
+        [:risk, { caption: "Risiko" }],
+        [:probability, { caption: "Eintrittswahrscheinlichkeit" }],
+        [:impact, { caption: "Auswirkung" }],
+        [:level, { caption: "Risiko-Level" }]
+      ].compact
     end
 
-    def kpi_target_cf
-      @kpi_target_cf ||= CustomField.find_by!(name: "Zielwert")
-    end
-
-    def kpi_current_cf
-      @kpi_current_cf ||= CustomField.find_by!(name: "Istwert")
+    def columns
+      @columns ||= headers.map(&:first)
     end
   end
 end

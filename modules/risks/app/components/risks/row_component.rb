@@ -28,36 +28,37 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module BmdsHackathon
-  module References
-    module_function
+module Risks
+  class RowComponent < ::OpPrimer::BorderBoxRowComponent
+    delegate :current_project, to: :table
 
-    def kpi_type
-      @kpi_type ||= Type.find_by!(name: "KPI")
+    def work_package
+      model
     end
 
-    def risk_type
-      @risk_type ||= Type.find_by!(name: "Risiko")
+    def risk
+      render(Primer::OpenProject::FlexLayout.new(justify_content: :space_between, align_items: :center)) do |flex|
+        flex.with_column(flex_layout: true) do |wp_flex|
+          wp_flex.with_row do
+            render(WorkPackages::InfoLineComponent.new(work_package:))
+          end
+          wp_flex.with_row do
+            render(Primer::Beta::Text.new(font_weight: :bold)) { work_package.subject }
+          end
+        end
+      end
     end
 
-    def risk_likelihood_cf
-      @risk_likelihood_cf ||= CustomField.find_by!(name: "Eintrittswahrscheinlichkeit")
+    def probability
+      work_package.typed_custom_value_for(BmdsHackathon::References.risk_likelihood_cf)
     end
 
-    def risk_impact_cf
-      @risk_impact_cf ||= CustomField.find_by!(name: "Auswirkung")
+    def impact
+      work_package.typed_custom_value_for(BmdsHackathon::References.risk_impact_cf)
     end
 
-    def risk_level_cf
-      @risk_level_cf ||= CustomField.find_by!(name: "Risiko-Level")
-    end
-
-    def kpi_target_cf
-      @kpi_target_cf ||= CustomField.find_by!(name: "Zielwert")
-    end
-
-    def kpi_current_cf
-      @kpi_current_cf ||= CustomField.find_by!(name: "Istwert")
+    def level
+      work_package.typed_custom_value_for(BmdsHackathon::References.risk_level_cf)
     end
   end
 end
