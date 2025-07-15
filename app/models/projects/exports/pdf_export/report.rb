@@ -71,7 +71,7 @@ module Projects::Exports::PDFExport
                    .reject { |s| s.is_a?(Queries::Selects::NotExistingSelect) }
     end
 
-    def write_project_detail_content(project)
+    def write_project_detail_content(project) # rubocop:disable Metrics/AbcSize, Metrics/PerceivedComplexity
       return if selects.empty?
 
       entries = []
