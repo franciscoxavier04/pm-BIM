@@ -98,15 +98,6 @@ export class BcfListComponent extends WorkPackageListViewComponent implements Un
       && (viewerState === 'table' || viewerState === 'splitTable');
   }
 
-  public showResizerInCardView():boolean {
-    if (this.noResults && this.ifcModelsService.models.length === 0) {
-      return false;
-    }
-
-    return this.bcfView.currentViewerState() === 'splitCards'
-      || this.bcfView.currentViewerState() === 'splitTable';
-  }
-
   handleWorkPackageClicked(event:{ workPackageId:string; double:boolean }):void {
     const { workPackageId, double } = event;
 

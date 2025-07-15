@@ -44,9 +44,12 @@ import {
   ZenModeButtonComponent,
 } from 'core-app/features/work-packages/components/wp-buttons/zen-mode-toggle-button/zen-mode-toggle-button.component';
 import {
+  bcfCardsViewIdentifier,
   bcfSplitViewCardsIdentifier,
+  bcfTableViewIdentifier,
   bcfViewerViewIdentifier,
   BcfViewService,
+  BcfViewState,
 } from 'core-app/features/bim/ifc_models/pages/viewer/bcf-view.service';
 import {
   BcfViewToggleButtonComponent,
@@ -173,16 +176,32 @@ export class IFCViewerPageComponent extends PartitionedQuerySpacePageComponent i
       .subscribe((query) => {
         const dr = query.displayRepresentation || bcfSplitViewCardsIdentifier;
         this.filterAllowed = dr !== bcfViewerViewIdentifier;
+        this.hideSplitScreen(dr as BcfViewState);
         this.cdRef.detectChanges();
       });
+
+    this.$transitions.onSuccess({}, (transition):void => {
+      const toState = transition.to();
+
+      if (toState.name === 'bim.partitioned.list') {
+        const dr = this.querySpace.query.value?.displayRepresentation;
+        this.hideSplitScreen((dr || bcfTableViewIdentifier) as BcfViewState);
+      }
+    });
   }
 
   breadcrumbItems() {
     return [
       { href: this.pathHelperService.homePath(), text: this.titleService.appTitle },
-      { href: this.pathHelperService.projectPath(this.currentProject.identifier as string), text: (this.currentProject.name) },
-      { href: this.pathHelperService.projectBCFPath(this.currentProject.identifier as string), text: this.I18n.t('js.bcf.label_bcf') },
-      this.selectedTitle?? '',
+      {
+        href: this.pathHelperService.projectPath(this.currentProject.identifier as string),
+        text: (this.currentProject.name),
+      },
+      {
+        href: this.pathHelperService.projectBCFPath(this.currentProject.identifier as string),
+        text: this.I18n.t('js.bcf.label_bcf'),
+      },
+      this.selectedTitle ?? '',
     ];
   }
 
@@ -195,5 +214,11 @@ export class IFCViewerPageComponent extends PartitionedQuerySpacePageComponent i
         this.bcfView.initialize(query, query.results);
         return query;
       });
+  }
+
+  private hideSplitScreen(dr:BcfViewState):void {
+    if ([bcfViewerViewIdentifier, bcfCardsViewIdentifier, bcfTableViewIdentifier].includes(dr)) {
+      document.documentElement.style.setProperty('--split-screen-width', '0');
+    }
   }
 }
