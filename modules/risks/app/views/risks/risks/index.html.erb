@@ -1,6 +1,45 @@
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { "Risiken" }
+    header.with_breadcrumbs(
+      [
+        ({ href: project_overview_path(@project.id), text: @project.name } if @project),
+        "Risiken",
+      ].compact
+    )
+  end
+%>
+
 <%= render(Risks::TableComponent.new(
   likelihood_options: @likelihood_options,
   impact_options: @impact_options,
   risk_counts: @risk_counts,
   risk_work_packages: @risk_work_packages
 )) %>
+
+<%=
+  render(Primer::Beta::BorderBox.new) do |component|
+    component.with_header do
+      render(Primer::OpenProject::BorderBox::CollapsibleHeader.new(box: component)) do |header|
+        header.with_count(count: @risk_work_packages.count)
+        header.with_title { "Risiken" }
+        header.with_description { "Oben ausgewählte Risiken werden hier aufgelistet" }
+      end
+    end
+
+    @risk_work_packages.find_each do |work_package|
+      component.with_row do
+        render(Primer::OpenProject::FlexLayout.new(justify_content: :space_between, align_items: :center)) do |flex|
+          flex.with_column(flex_layout: true) do |wp_flex|
+            wp_flex.with_row do
+              render(WorkPackages::InfoLineComponent.new(work_package:))
+            end
+            wp_flex.with_row do
+              render(Primer::Beta::Text.new(font_weight: :bold)) { work_package.subject }
+            end
+          end
+        end
+      end
+    end
+  end
+%>
