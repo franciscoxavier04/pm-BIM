@@ -38,6 +38,7 @@ class CustomValue < ApplicationRecord
   after_create :activate_custom_field_in_customized_project, if: -> { customized.is_a?(Project) }
 
   delegate :typed_value,
+           :numeric_value,
            :formatted_value,
            to: :strategy
 

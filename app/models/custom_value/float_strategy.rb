@@ -35,6 +35,8 @@ class CustomValue::FloatStrategy < CustomValue::FormatStrategy
     end
   end
 
+  def numeric_value = typed_value
+
   def formatted_value
     number_with_delimiter(value.to_s)
   end
