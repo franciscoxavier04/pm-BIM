@@ -1101,6 +1101,7 @@ en:
         client: "Client ID"
       project:
         ancestor: "Descendants of" # used for filtering of projects that are descendants of a given work package
+        ancestor_or_self: "Project including descendants" # used for filtering of projects that are descendants of a given work package including the project itself
         active_value:
           true: "unarchived"
           false: "archived"
