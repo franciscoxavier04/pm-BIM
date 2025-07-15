@@ -76,7 +76,7 @@ See COPYRIGHT and LICENSE files for more details.
         )
         component.with_attribute(
           key: Budget.human_attribute_name(:budget),
-          value: number_to_currency(@budget.budget)
+          value: content_tag(:strong, number_to_currency(@budget.budget))
         )
         component.with_attribute(
           key: Budget.human_attribute_name(:spent),
@@ -84,7 +84,7 @@ See COPYRIGHT and LICENSE files for more details.
         )
         component.with_attribute(
           key: Budget.human_attribute_name(:available),
-          value: number_to_currency(@budget.available)
+          value: content_tag(:strong, number_to_currency(@budget.available))
         )
       end %>
     </div>
