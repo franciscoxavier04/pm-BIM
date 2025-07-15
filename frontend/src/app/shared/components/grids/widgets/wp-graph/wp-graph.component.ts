@@ -77,7 +77,7 @@ export class WidgetWpGraphComponent extends AbstractWidgetComponent implements O
       });
   }
 
-  public get chartOptions() {
+  public get chartOptions():ChartOptions {
     return this.graphConfiguration.chartOptions;
   }
 
