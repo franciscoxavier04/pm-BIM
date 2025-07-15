@@ -2970,7 +2970,7 @@ ko:
   label_password_rule_special: "특수 문자"
   label_password_rule_uppercase: "대문자"
   label_path_encoding: "경로 인코딩"
-  label_per_page: "페이지당"
+  label_per_page: "Per page:"
   label_people: "사용자"
   label_permissions: "권한"
   label_permissions_report: "권한 보고서"

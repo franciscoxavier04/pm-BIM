@@ -643,11 +643,10 @@ it:
       title: "Confermare la password per continuare"
     pagination:
       no_other_page: "Sei nella pagina unica."
+      pages_skipped: "Pages skipped."
       page_navigation: "Navigazione pagine"
       per_page_navigation: 'Selezione di elementi per pagina'
       pages:
-        next: "Pagina successiva"
-        previous: "Pagina precedente"
         page_number: Pagina %{number}
         show_per_page: Mostra %{number} per pagina
     placeholders:

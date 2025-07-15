@@ -644,11 +644,10 @@ sl:
       title: "Potrdite svoje geslo za nadaljevanje"
     pagination:
       no_other_page: "Ste na edini strani. "
+      pages_skipped: "Pages skipped."
       page_navigation: "Pagination navigation"
       per_page_navigation: 'Items per page selection'
       pages:
-        next: "Next page"
-        previous: "Previous page"
         page_number: Page %{number}
         show_per_page: Show %{number} per page
     placeholders:
