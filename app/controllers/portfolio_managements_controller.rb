@@ -56,7 +56,8 @@ class PortfolioManagementsController < ApplicationController
 
       format.turbo_stream do
         replace_via_turbo_stream(
-          component: Projects::IndexPageHeaderComponent.new(query: @query, current_user:, state: :show, params:)
+          component: PortfolioManagements::IndexPageHeaderComponent.new(project: @project, query: @query, current_user:,
+                                                                        state: :show, params:)
         )
         update_via_turbo_stream(
           component: Filter::FilterButtonComponent.new(query: @query, disable_buttons: false)
@@ -66,8 +67,10 @@ class PortfolioManagementsController < ApplicationController
         current_url = url_for(params.permit(:controller, :action, :query_id, :filters, :columns, :sortBy, :page, :per_page))
         turbo_streams << turbo_stream.push_state(current_url)
         turbo_streams << turbo_stream.turbo_frame_set_src(
-          "projects_sidemenu",
-          projects_menu_url(query_id: @query.id, controller_path: "projects")
+          "portfolio_management_sidemenu",
+          project_portfolio_management_menu_url(query_id: @query.id,
+                                                project_id: @project.id,
+                                                controller_path: "portfolio_management")
         )
 
         turbo_streams << turbo_stream.replace("flash-messages", helpers.render_flash_messages)
