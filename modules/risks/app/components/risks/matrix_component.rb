@@ -28,36 +28,53 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module BmdsHackathon
-  module References
-    module_function
+module Risks
+  class MatrixComponent < ViewComponent::Base
+    attr_reader :project, :params,
+                :likelihood_options, :impact_options, :risk_counts, :risk_work_packages
 
-    def kpi_type
-      @kpi_type ||= Type.find_by!(name: "KPI")
+    def initialize(project:,
+                   params:,
+                   likelihood_options:,
+                   impact_options:,
+                   risk_counts:,
+                   risk_work_packages:,
+                   selected_likelihood:,
+                   selected_impact:)
+      super
+
+      @project = project
+      @params = params
+      @likelihood_options = likelihood_options
+      @impact_options = impact_options
+      @risk_counts = risk_counts
+      @risk_work_packages = risk_work_packages
+
+      @selected_likelihood = params[:likelihood].to_i
+      @selected_impact = params[:impact].to_i
     end
 
-    def risk_type
-      @risk_type ||= Type.find_by!(name: "Risiko")
+    private
+
+    def risk_class(likelihood, impact)
+      risk_score = likelihood.value.to_i * impact.value.to_i
+
+      case risk_score
+      when 1..6
+        "low-risk"
+      when 7..15
+        "medium-risk"
+      else
+        "high-risk"
+      end
     end
 
-    def risk_likelihood_cf
-      @risk_likelihood_cf ||= CustomField.find_by!(name: "Eintrittswahrscheinlichkeit")
+    def work_package_count(likelihood, impact)
+      risk_counts[[likelihood.id, impact.id]] || 0
     end
 
-    def risk_impact_cf
-      @risk_impact_cf ||= CustomField.find_by!(name: "Auswirkung")
-    end
-
-    def risk_level_cf
-      @risk_level_cf ||= CustomField.find_by!(name: "Risiko-Level")
-    end
-
-    def kpi_target_cf
-      @kpi_target_cf ||= CustomField.find_by!(name: "Zielwert")
-    end
-
-    def kpi_current_cf
-      @kpi_current_cf ||= CustomField.find_by!(name: "Istwert")
+    def selected(likelihood, impact)
+      "risk-selected" if @selected_likelihood == likelihood.id && @selected_impact == impact.id
     end
   end
 end

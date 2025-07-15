@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,17 +27,38 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-class HackathonSeeder < CompositeSeeder
-  def data_seeder_classes
-    [
-      HackathonData::KpiSeeder,
-      HackathonData::ProblemSeeder,
-      HackathonData::RankSeeder,
-      HackathonData::RiskSeeder
-    ]
-  end
 
-  def namespace
-    "HackathonData"
+module Risks
+  class RowComponent < ::OpPrimer::BorderBoxRowComponent
+    delegate :current_project, to: :table
+
+    def work_package
+      model
+    end
+
+    def risk
+      render(Primer::OpenProject::FlexLayout.new(justify_content: :space_between, align_items: :center)) do |flex|
+        flex.with_column(flex_layout: true) do |wp_flex|
+          wp_flex.with_row do
+            render(WorkPackages::InfoLineComponent.new(work_package:))
+          end
+          wp_flex.with_row do
+            render(Primer::Beta::Text.new(font_weight: :bold)) { work_package.subject }
+          end
+        end
+      end
+    end
+
+    def probability
+      work_package.typed_custom_value_for(BmdsHackathon::References.risk_likelihood_cf)
+    end
+
+    def impact
+      work_package.typed_custom_value_for(BmdsHackathon::References.risk_impact_cf)
+    end
+
+    def level
+      work_package.typed_custom_value_for(BmdsHackathon::References.risk_level_cf)
+    end
   end
 end

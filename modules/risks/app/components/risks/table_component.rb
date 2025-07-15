@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,17 +27,44 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-class HackathonSeeder < CompositeSeeder
-  def data_seeder_classes
-    [
-      HackathonData::KpiSeeder,
-      HackathonData::ProblemSeeder,
-      HackathonData::RankSeeder,
-      HackathonData::RiskSeeder
-    ]
-  end
 
-  def namespace
-    "HackathonData"
+module Risks
+  class TableComponent < ::OpPrimer::BorderBoxTableComponent
+    options :current_project
+
+    columns :risk, :probability, :impact, :level
+
+    mobile_labels :risk
+
+    main_column :risk
+
+    def sortable?
+      false
+    end
+
+    def paginated?
+      false
+    end
+
+    def has_actions?
+      false
+    end
+
+    def mobile_title
+      "Risiken"
+    end
+
+    def headers
+      @headers ||= [
+        [:risk, { caption: "Risiko" }],
+        [:probability, { caption: "Eintrittswahrscheinlichkeit" }],
+        [:impact, { caption: "Auswirkung" }],
+        [:level, { caption: "Risiko-Level" }]
+      ].compact
+    end
+
+    def columns
+      @columns ||= headers.map(&:first)
+    end
   end
 end
