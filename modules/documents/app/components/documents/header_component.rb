@@ -27,29 +27,36 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+#
+module Documents
+  class HeaderComponent < ApplicationComponent
+    include OpTurbo::Streamable
+    include OpPrimer::ComponentHelpers
+    include Redmine::I18n
 
-Rails.application.routes.draw do
-  resources :projects, only: [] do
-    resources :documents, only: %i[create new index]
-  end
+    alias_method :document, :model
 
-  resources :documents, except: %i[create new index] do
-    member do
-      get :edit_title
-      put :update_title
-      get :cancel_edit
-      get :delete_dialog
+    options :project, :state
+
+    private
+
+    def description_content
+      safe_join [
+        document.category.name,
+        " - ",
+        I18n.t("documents.last_updated_at", time: updated_at_time).html_safe
+      ]
     end
-  end
 
-  namespace :admin do
-    namespace :settings do
-      resources :document_categories, except: [:show] do
-        member do
-          put :move
-          get :reassign
-        end
-      end
+    def allowed_to?(action, controller: "documents")
+      User.current.allowed_in_project?({ controller:, action: }, project)
+    end
+
+    def updated_at_time
+      OpPrimer::RelativeTimeComponent.new(
+        datetime: in_user_zone(document.updated_at),
+        month: :long
+      ).render_in(view_context)
     end
   end
 end
