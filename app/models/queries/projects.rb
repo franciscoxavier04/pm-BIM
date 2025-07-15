@@ -54,6 +54,7 @@ module Queries::Projects
     filter Filters::TypeaheadFilter
     filter Filters::UserActionFilter
     filter Filters::VisibleFilter
+    filter Filters::PortfolioProposalFilter
 
     order Orders::CustomFieldOrder
     order Orders::DefaultOrder
