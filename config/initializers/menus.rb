@@ -79,7 +79,7 @@ Redmine::MenuManager.map :quick_add_menu do |menu|
             ->(project) {
               { controller: "/projects", action: :new, project_id: nil, project_type: "portfolio", parent_id: project&.id }
             },
-            caption: ->(_) { I18n.t("activerecord.attributes.project.type_enum.portfolio") },
+            caption: ->(_) { I18n.t("activerecord.attributes.project.project_type_enum.portfolio") },
             icon: "briefcase",
             html: {
               aria: { label: I18n.t(:label_project_portfolio_new) },
@@ -94,7 +94,7 @@ Redmine::MenuManager.map :quick_add_menu do |menu|
             ->(project) {
               { controller: "/projects", action: :new, project_id: nil, project_type: "program", parent_id: project&.id }
             },
-            caption: ->(_) { I18n.t("activerecord.attributes.project.type_enum.program") },
+            caption: ->(_) { I18n.t("activerecord.attributes.project.project_type_enum.program") },
             icon: "versions",
             html: {
               aria: { label: I18n.t(:label_project_program_new) },

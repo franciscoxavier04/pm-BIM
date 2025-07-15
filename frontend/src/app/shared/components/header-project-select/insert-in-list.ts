@@ -26,7 +26,7 @@ export const insertInList = (
         disabled: false,
         children: [],
         position: 0,
-        type: project.type,
+        type: project.project_type,
       },
     ];
   }
@@ -58,7 +58,7 @@ export const insertInList = (
       disabled: true,
       children: insertInList(projects, project, [], visibleAncestors.slice(1)),
       position: 0,
-      type: project.type,
+      type: project.project_type,
     },
   ];
 };

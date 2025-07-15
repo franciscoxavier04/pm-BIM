@@ -33,16 +33,16 @@ module Projects
       form do |f|
         if model.new_record?
           # Hide the type field when creating a new project, as the type is determined via GET parameter.
-          f.hidden(name: :type)
+          f.hidden(name: :project_type)
         else
           # Offer changing the type of existing projects when editing them. Otherwise, there would be no way
           # for users to change the type of project.
           f.select_list(
-            name: :type,
-            label: attribute_name(:type)
+            name: :project_type,
+            label: attribute_name(:project_type)
           ) do |list|
-            Project.types.each_key do |label|
-              list.option(label: I18n.t("activerecord.attributes.project.type_enum.#{label}"), value: label)
+            Project.project_types.each_key do |label|
+              list.option(label: I18n.t("activerecord.attributes.project.project_type_enum.#{label}"), value: label)
             end
           end
         end
