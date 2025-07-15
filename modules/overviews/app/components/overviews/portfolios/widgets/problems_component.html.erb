@@ -48,13 +48,18 @@ See COPYRIGHT and LICENSE files for more details.
       elsif wps.count <= @cutoff_limit
         wps.find_each do |work_package|
           component.with_row do
-            render(Primer::OpenProject::FlexLayout.new(justify_content: :space_between, align_items: :center)) do |flex|
-              flex.with_column(flex_layout: true) do |wp_flex|
-                wp_flex.with_row do
-                  render(WorkPackages::InfoLineComponent.new(work_package:))
-                end
-                wp_flex.with_row do
-                  render(Primer::Beta::Text.new(font_weight: :bold)) { work_package.subject }
+            render(Primer::OpenProject::FlexLayout.new) do |flex|
+              flex.with_row do
+                render(WorkPackages::InfoLineComponent.new(work_package:))
+              end
+              flex.with_row do
+                render(Primer::Beta::Text.new(font_weight: :bold)) { work_package.subject }
+              end
+              flex.with_row(flex_layout: true) do |risk_flex|
+                unless risk_level_for(work_package).nil?
+                  risk_flex.with_column(mr: 3) do
+                    render(Primer::Beta::Text.new(color: :muted)) { "Risiko-Level: #{risk_level_for(work_package)}" }
+                  end
                 end
               end
             end
@@ -63,28 +68,38 @@ See COPYRIGHT and LICENSE files for more details.
       elsif wps.count > @cutoff_limit
         wps.take(@cutoff_limit).each do |work_package|
           component.with_row do
-            render(Primer::OpenProject::FlexLayout.new(justify_content: :space_between, align_items: :center)) do |flex|
-              flex.with_column(flex_layout: true) do |wp_flex|
-                wp_flex.with_row do
-                  render(WorkPackages::InfoLineComponent.new(work_package:))
-                end
-                wp_flex.with_row do
-                  render(Primer::Beta::Text.new(font_weight: :bold)) { work_package.subject }
+            render(Primer::OpenProject::FlexLayout.new) do |flex|
+              flex.with_row do
+                render(WorkPackages::InfoLineComponent.new(work_package:))
+              end
+              flex.with_row do
+                render(Primer::Beta::Text.new(font_weight: :bold)) { work_package.subject }
+              end
+              flex.with_row(flex_layout: true) do |risk_flex|
+                unless risk_level_for(work_package).nil?
+                  risk_flex.with_column(mr: 3) do
+                    render(Primer::Beta::Text.new(color: :muted)) { "Risiko-Level: #{risk_level_for(work_package)}" }
+                  end
                 end
               end
             end
           end
         end
 
-        wps[@cutoff_limit..].each do |item|
+        wps[@cutoff_limit..].each do |work_package|
           component.with_row(display: :none, data: { "expandable-list-target": "hiddenElements" }) do
-            render(Primer::OpenProject::FlexLayout.new(justify_content: :space_between, align_items: :center)) do |flex|
-              flex.with_column(flex_layout: true) do |wp_flex|
-                wp_flex.with_row do
-                  render(WorkPackages::InfoLineComponent.new(work_package: item))
-                end
-                wp_flex.with_row do
-                  render(Primer::Beta::Text.new(font_weight: :bold)) { item.subject }
+            render(Primer::OpenProject::FlexLayout.new) do |flex|
+              flex.with_row do
+                render(WorkPackages::InfoLineComponent.new(work_package:))
+              end
+              flex.with_row do
+                render(Primer::Beta::Text.new(font_weight: :bold)) { work_package.subject }
+              end
+              flex.with_row(flex_layout: true) do |risk_flex|
+                unless risk_level_for(work_package).nil?
+                  risk_flex.with_column(mr: 3) do
+                    render(Primer::Beta::Text.new(color: :muted)) { "Risiko-Level: #{risk_level_for(work_package)}" }
+                  end
                 end
               end
             end
