@@ -44,8 +44,16 @@ module BmdsHackathon
       @risk_likelihood_cf ||= CustomField.find_by!(name: "Eintrittswahrscheinlichkeit")
     end
 
+    def risk_likelihood_attribute
+      @risk_likelihood_attribute ||= risk_likelihood_cf.attribute_name.to_sym
+    end
+
     def risk_impact_cf
       @risk_impact_cf ||= CustomField.find_by!(name: "Auswirkung")
+    end
+
+    def risk_impact_attribute
+      @risk_impact_attribute ||= risk_impact_cf.attribute_name.to_sym
     end
 
     def risk_level_cf

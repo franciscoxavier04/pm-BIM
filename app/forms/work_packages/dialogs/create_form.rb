@@ -116,10 +116,9 @@ module WorkPackages::Dialogs
       @custom_fields ||= begin
         required = work_package.available_custom_fields.select(&:required?)
         if work_package.type == BmdsHackathon::References.risk_type
-          risk_cfs= [
+          risk_cfs = [
             BmdsHackathon::References.risk_likelihood_cf,
-            BmdsHackathon::References.risk_impact_cf,
-            BmdsHackathon::References.risk_level_cf
+            BmdsHackathon::References.risk_impact_cf
           ]
 
           risk_cfs + required
