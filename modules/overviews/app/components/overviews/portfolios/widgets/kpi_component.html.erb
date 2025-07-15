@@ -40,7 +40,7 @@ See COPYRIGHT and LICENSE files for more details.
       if kpis.none?
         component.with_row do
           render(Primer::Beta::Blankslate.new) do |component|
-            component.with_heading(tag: :h2) { "No KPIs yet" }
+            component.with_heading(tag: :h2) { "Keine KPIs definiert" }
           end
         end
       elsif kpis.count <= @cutoff_limit

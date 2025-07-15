@@ -42,7 +42,7 @@ See COPYRIGHT and LICENSE files for more details.
       if wps.none?
         component.with_row do
           render(Primer::Beta::Blankslate.new) do |component|
-            component.with_heading(tag: :h2) { "No Risks yet" }
+            component.with_heading(tag: :h2) { "Keine Risiken bekannt" }
           end
         end
       elsif wps.count <= @cutoff_limit
