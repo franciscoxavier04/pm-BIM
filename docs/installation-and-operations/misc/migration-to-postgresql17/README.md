@@ -328,7 +328,13 @@ PGPASSWORD=$(cat "${POSTGRES_POSTGRES_PASSWORD_FILE:-/dev/null}" && echo "$POSTG
 mv /bitnami/postgresql/data /bitnami/postgresql/data-old
 ```
 
-4. Upgrade the Bitnami PostgreSQL chart to the desired version.
+4. Change the Bitnami PostgreSQL version by adding the following lines to you values.yaml.
+
+```yaml
+postgresql:
+  image:
+    tag: 17.5.0-debian-12-r16
+```
 
 5. Restore the Database:
 
