@@ -28,7 +28,7 @@
  * ++
  */
 
-import { ApplicationController } from 'stimulus-use';
+import { ApplicationController, useMeta } from 'stimulus-use';
 import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
 
 export default class extends ApplicationController {
@@ -39,7 +39,13 @@ export default class extends ApplicationController {
 
   declare unsavedChangesConfirmationMessageValue:string;
 
+  static metaNames = ['csrf-token'];
+
+  declare readonly csrfToken:string;
+
   async connect():Promise<void> {
+    useMeta(this, { suffix: false });
+
     window.addEventListener('beforeunload', this.boundBeforeUnloadHandler);
 
     const context = await window.OpenProject.getPluginContext();
@@ -85,7 +91,7 @@ export default class extends ApplicationController {
     void this.turboRequests.request(url, {
       method: 'PUT',
       headers: {
-        'X-CSRF-Token': (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement).content,
+        'X-CSRF-Token': this.csrfToken,
         Accept: 'text/vnd.turbo-stream.html',
       },
     });

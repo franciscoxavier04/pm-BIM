@@ -11,6 +11,7 @@ import moment from 'moment';
 import allLocales from '@fullcalendar/core/locales-all';
 import { renderStreamMessage } from '@hotwired/turbo';
 import { opStopwatchStopIconData, toDOMString } from '@openproject/octicons-angular';
+import { useMeta } from 'stimulus-use';
 
 export default class MyTimeTrackingController extends Controller {
   private turboRequests:TurboRequestsService;
@@ -33,6 +34,8 @@ export default class MyTimeTrackingController extends Controller {
     timeZone: String,
   };
 
+  static metaNames = ['csrf-token'];
+
   declare readonly calendarTarget:HTMLElement;
   declare readonly hasCalendarTarget:boolean;
   declare readonly modeValue:string;
@@ -47,12 +50,14 @@ export default class MyTimeTrackingController extends Controller {
   declare readonly workingDaysValue:number[];
   declare readonly startOfWeekValue:number;
   declare readonly timeZoneValue:string;
+  declare readonly csrfToken:string;
 
   private calendar:Calendar;
   private DEFAULT_TIMED_EVENT_DURATION = '01:00';
   private boundListener = this.dialogCloseListener.bind(this);
 
   async connect() {
+    useMeta(this, { suffix: false });
     const context = await window.OpenProject.getPluginContext();
     this.turboRequests = context.services.turboRequests;
     this.pathHelper = context.services.pathHelperService;
@@ -360,13 +365,11 @@ export default class MyTimeTrackingController extends Controller {
   }
 
   updateTimeEntry(timeEntryId:string, spentOn:string, startTime:string | null, hours:number, revertFunction:() => void) {
-    const csrfToken = document.querySelector<HTMLMetaElement>('meta[name="csrf-token"]')?.content || '';
-
     fetch(this.pathHelper.timeEntryUpdate(timeEntryId), {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
-        'X-CSRF-Token': csrfToken,
+        'X-CSRF-Token': this.csrfToken,
       },
       body: JSON.stringify({
         time_entry: {
