@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,40 +28,17 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 module Projects::Exports
-  class QueryExporter < Exports::Exporter
-    self.model = Project
+  module Formatters
+    class Favored < ::Exports::Formatters::Default
+      def self.apply?(attribute, export_format)
+        export_format == :pdf && attribute.to_sym == :favored
+      end
 
-    alias :query :object
-
-    def columns
-      @columns ||= selected_columns
-    end
-
-    def page
-      options[:page] || 1
-    end
-
-    def projects
-      @projects ||= all_projects
-        .page(page)
-        .per_page(Setting.work_packages_projects_export_limit.to_i)
-    end
-
-    def all_projects
-      query
-        .results
-        .with_required_storage
-        .with_latest_activity
-        .includes(:custom_values)
-    end
-
-    private
-
-    def selected_columns
-      query
-        .selects
-        .reject { |s| s.is_a?(Queries::Selects::NotExistingSelect) }
-        .map { |s| { name: s.attribute, caption: s.caption } }
+      ##
+      # Takes a project and returns yes/no depending on the favored attribute
+      def format(project, **)
+        project.favored_by?(User.current) ? I18n.t(:general_text_Yes) : I18n.t(:general_text_No)
+      end
     end
   end
 end

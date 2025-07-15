@@ -452,6 +452,111 @@
               "$ref": "#/$defs/margin"
             }
           ]
+        },
+        "markdown_label": {
+          "type": "object",
+          "title": "Project attribute markdown label",
+          "allOf": [
+            {
+              "$ref": "#/$defs/font"
+            },
+            {
+              "$ref": "#/$defs/margin"
+            }
+          ]
+        },
+        "markdown": {
+          "$ref": "#/$defs/markdown"
+        },
+        "attributes_group": {
+          "type": "object",
+          "title": "Project attributes group label",
+          "description": "Label headline for a project attributes group",
+          "x-example": {
+            "attributes_group": {
+              "size": 12,
+              "styles": [
+                "bold"
+              ],
+              "margin_top": 2,
+              "margin_bottom": 4
+            }
+          },
+          "properties": {
+            "hr": {
+              "type": "object",
+              "title": "Horizontal rule for attributes group rule",
+              "x-example": {
+                "border": {
+                  "color": "d3dee3",
+                  "height": 1
+                }
+              },
+              "properties": {
+                "height": {
+                  "title": "Line height of the horizontal rule",
+                  "examples": [
+                    1
+                  ],
+                  "$ref": "#/$defs/measurement"
+                },
+                "color": {
+                  "title": "Line color of the horizontal rule",
+                  "$ref": "#/$defs/color"
+                }
+              }
+            }
+          },
+          "allOf": [
+            {
+              "$ref": "#/$defs/font"
+            },
+            {
+              "$ref": "#/$defs/margin"
+            }
+          ]
+        },
+        "attributes_table": {
+          "type": "object",
+          "title": "Project attributes",
+          "description": "Styling for the project attributes table",
+          "x-example": {
+            "attributes_table": {
+              "margin_bottom": 10,
+              "cell": {
+                "size": 9,
+                "color": "000000",
+                "padding_left": 5,
+                "padding_right": 5,
+                "padding_top": 0,
+                "padding_bottom": 5,
+                "border_color": "4B4B4B",
+                "border_width": 0.25
+              },
+              "cell_label": {
+                "styles": [
+                  "bold"
+                ]
+              }
+            }
+          },
+          "properties": {
+            "cell": {
+              "title": "Attribute value table cell",
+              "description": "Styling for a table cell with attribute value",
+              "$ref": "#/$defs/table_cell"
+            },
+            "cell_label": {
+              "title": "Attribute label table cell",
+              "description": "Styling for a table cell with attribute label",
+              "$ref": "#/$defs/table_cell"
+            }
+          },
+          "allOf": [
+            {
+              "$ref": "#/$defs/margin"
+            }
+          ]
         }
       },
       "allOf": [
@@ -463,7 +568,7 @@
     "markdown": {
       "type": "object",
       "title": "Markdown Styling",
-      "description": "Styling for content of work package description and long text custom fields",
+      "description": "Styling for content of project description and long text custom fields",
       "x-example": {
         "markdown": {
           "font": {},
