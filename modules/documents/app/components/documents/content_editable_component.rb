@@ -30,6 +30,7 @@
 #
 module Documents
   class ContentEditableComponent < ApplicationComponent
+    include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
     include OpPrimer::FormHelpers
     include Redmine::I18n

@@ -101,12 +101,20 @@ class DocumentsController < ApplicationController
                                   model: @document,
                                   args: document_params
 
-    if call.success?
-      flash[:notice] = I18n.t(:notice_successful_update)
-      redirect_to action: "show", id: @document
-    else
-      @document = call.result
-      render action: :edit, status: :unprocessable_entity
+    respond_to do |format|
+      format.turbo_stream do
+        respond_with_document_update_turbo_streams(call)
+      end
+
+      format.html do
+        if call.success?
+          flash[:notice] = I18n.t(:notice_successful_update)
+          redirect_to action: "show", id: @document
+        else
+          @document = call.result
+          render action: :edit, status: :unprocessable_entity
+        end
+      end
     end
   end
 
@@ -144,5 +152,17 @@ class DocumentsController < ApplicationController
         state:
       )
     )
+  end
+
+  def respond_with_document_update_turbo_streams(service_call)
+    update_via_turbo_stream(component: Documents::ContentEditableComponent.new(@document, project: @project))
+
+    if service_call.success?
+      render_success_flash_message_via_turbo_stream(message: I18n.t(:notice_successful_update))
+    else
+      render_error_flash_message_via_turbo_stream(message: service_call.message)
+    end
+
+    respond_with_turbo_streams
   end
 end

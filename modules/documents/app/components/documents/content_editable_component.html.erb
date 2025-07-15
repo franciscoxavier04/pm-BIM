@@ -28,19 +28,20 @@ See COPYRIGHT and LICENSE files for more details.
 ++#%>
 
 <%=
-  primer_form_with(
-    model: document,
-    url: url_helpers.document_path(document),
-    method: :patch
-  ) do |f|
-    flex_layout do |form_container|
-      form_container.with_row do
-        render(Documents::EditorForm.new(f))
-      end
+  component_wrapper do
+    primer_form_with(
+      model: document,
+      url: url_helpers.document_path(document),
+      method: :patch,
+      data: { turbo_stream: true }
+    ) do |f|
+      flex_layout do |form_container|
+        form_container.with_row do
+          render(Documents::HeaderComponent.new(document, project: project, state: :show))
+        end
 
-      form_container.with_row(flex_layout: true, mt: 3, justify_content: :flex_end) do |submit_container|
-        submit_container.with_column do
-          render(Documents::SubmitForm.new(f))
+        form_container.with_row do
+          render(Documents::EditorForm.new(f))
         end
       end
     end
