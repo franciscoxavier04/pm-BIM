@@ -33,6 +33,7 @@ module Projects::Exports
     include WorkPackage::PDFExport::Common::Common
     include WorkPackage::PDFExport::Common::Logo
     include WorkPackage::PDFExport::Common::Attachments
+    include WorkPackage::PDFExport::Export::Markdown
     include WorkPackage::PDFExport::Export::Page
     include Projects::Exports::PDFExport::Cover
     include Projects::Exports::PDFExport::TableOfContent
