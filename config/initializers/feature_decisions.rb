@@ -56,3 +56,6 @@ OpenProject::FeatureDecisions.add :block_note_editor,
 
 OpenProject::FeatureDecisions.add :portfolio_dashboard,
                                   description: "Enables the dashboard for Portfolio management."
+
+OpenProject::FeatureDecisions.add :risk_management,
+                                  description: "Enables the risk management module and derivation."
