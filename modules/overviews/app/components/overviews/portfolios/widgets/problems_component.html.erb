@@ -55,11 +55,19 @@ See COPYRIGHT and LICENSE files for more details.
               flex.with_row do
                 render(Primer::Beta::Text.new(font_weight: :bold)) { work_package.subject }
               end
-              flex.with_row(flex_layout: true) do |risk_flex|
-                unless risk_level_for(work_package).nil?
-                  risk_flex.with_column(mr: 3) do
-                    render(Primer::Beta::Text.new(color: :muted)) { "Risiko-Level: #{risk_level_for(work_package)}" }
-                  end
+              unless risk_level_for(work_package).nil?
+                flex.with_row(mr: 3) do
+                  render(Primer::Beta::Text.new(color: :muted)) { "Risiko-Level: #{risk_level_for(work_package)}" }
+                end
+              end
+              unless risk_likelihood_for(work_package).nil?
+                flex.with_row(mr: 3) do
+                  render(Primer::Beta::Text.new(color: :muted)) { "Eintrittswahrscheinlichkeit: #{risk_likelihood_for(work_package)}" }
+                end
+              end
+              unless risk_impact_for(work_package).nil?
+                flex.with_row do
+                  render(Primer::Beta::Text.new(color: :muted)) { "Auswirkung: #{risk_impact_for(work_package)}" }
                 end
               end
             end
@@ -75,11 +83,19 @@ See COPYRIGHT and LICENSE files for more details.
               flex.with_row do
                 render(Primer::Beta::Text.new(font_weight: :bold)) { work_package.subject }
               end
-              flex.with_row(flex_layout: true) do |risk_flex|
-                unless risk_level_for(work_package).nil?
-                  risk_flex.with_column(mr: 3) do
-                    render(Primer::Beta::Text.new(color: :muted)) { "Risiko-Level: #{risk_level_for(work_package)}" }
-                  end
+              unless risk_level_for(work_package).nil?
+                flex.with_row(mr: 3) do
+                  render(Primer::Beta::Text.new(color: :muted)) { "Risiko-Level: #{risk_level_for(work_package)}" }
+                end
+              end
+              unless risk_likelihood_for(work_package).nil?
+                flex.with_row(mr: 3) do
+                  render(Primer::Beta::Text.new(color: :muted)) { "Eintrittswahrscheinlichkeit: #{risk_likelihood_for(work_package)}" }
+                end
+              end
+              unless risk_impact_for(work_package).nil?
+                flex.with_row do
+                  render(Primer::Beta::Text.new(color: :muted)) { "Auswirkung: #{risk_impact_for(work_package)}" }
                 end
               end
             end
@@ -95,11 +111,19 @@ See COPYRIGHT and LICENSE files for more details.
               flex.with_row do
                 render(Primer::Beta::Text.new(font_weight: :bold)) { work_package.subject }
               end
-              flex.with_row(flex_layout: true) do |risk_flex|
-                unless risk_level_for(work_package).nil?
-                  risk_flex.with_column(mr: 3) do
-                    render(Primer::Beta::Text.new(color: :muted)) { "Risiko-Level: #{risk_level_for(work_package)}" }
-                  end
+              unless risk_level_for(work_package).nil?
+                flex.with_row(mr: 3) do
+                  render(Primer::Beta::Text.new(color: :muted)) { "Risiko-Level: #{risk_level_for(work_package)}" }
+                end
+              end
+              unless risk_likelihood_for(work_package).nil?
+                flex.with_row(mr: 3) do
+                  render(Primer::Beta::Text.new(color: :muted)) { "Eintrittswahrscheinlichkeit: #{risk_likelihood_for(work_package)}" }
+                end
+              end
+              unless risk_impact_for(work_package).nil?
+                flex.with_row do
+                  render(Primer::Beta::Text.new(color: :muted)) { "Auswirkung: #{risk_impact_for(work_package)}" }
                 end
               end
             end

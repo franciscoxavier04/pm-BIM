@@ -44,6 +44,8 @@ module Overviews
 
           @project = project
           @cutoff_limit = 5
+          @likelihood_cf = BmdsHackathon::References.risk_likelihood_cf
+          @impact_cf = BmdsHackathon::References.risk_impact_cf
           @level_cf = BmdsHackathon::References.risk_level_cf
           @wps = WorkPackage
                     .visible
@@ -56,6 +58,14 @@ module Overviews
 
         def risk_level_for(work_package)
           work_package.send("custom_field_#{@level_cf.id}")
+        end
+
+        def risk_likelihood_for(work_package)
+          work_package.send("custom_field_#{@likelihood_cf.id}")
+        end
+
+        def risk_impact_for(work_package)
+          work_package.send("custom_field_#{@impact_cf.id}")
         end
       end
     end
