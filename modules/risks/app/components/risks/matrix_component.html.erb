@@ -33,7 +33,11 @@ See COPYRIGHT and LICENSE files for more details.
       <table class="risk-matrix">
         <thead>
           <tr>
-            <th class="matrix-corner"></th>
+            <th class="matrix-corner">
+              <%= link_to project_risks_path do %>
+                Reset
+              <% end  %>
+            </th>
             <th colspan="<%= impact_options.length %>" class="impact-header">
               Auswirkung
             </th>
@@ -50,16 +54,18 @@ See COPYRIGHT and LICENSE files for more details.
           </tr>
         </thead>
         <tbody>
-          <% likelihood_options.reverse.each_with_index do |likelihood, likelihood_index| %>
+          <% likelihood_options.each_with_index do |likelihood, likelihood_index| %>
             <tr>
               <th class="likelihood-label">
                 <%= likelihood.value %>
               </th>
               <% impact_options.each_with_index do |impact, impact_index| %>
-                <td class="risk-cell <%= risk_class(likelihood_index, impact_index) %>">
-                  <span class="risk-count">
-                    <%= work_package_count(likelihood, impact) %>
-                  </span>
+                <td class="risk-cell <%= risk_class(likelihood_index, impact_index) %> <%= selected(likelihood_index, impact_index) %>">
+                  <%= link_to project_risks_path(likelihood: likelihood_index, impact: impact_index), class: "risk-cell-link" do %>
+                    <span class="risk-count">
+                      <%= work_package_count(likelihood, impact) %>
+                    </span>
+                  <% end  %>
                 </td>
               <% end %>
             </tr>

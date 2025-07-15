@@ -2,6 +2,22 @@ module Risks
   class RisksController < ApplicationController
     include ::RisksHelper
 
+    LIKELIHOOD_LABELS = [
+      "1 - sehr niedrig",
+      "2 - niedrig",
+      "3 - mittel",
+      "4 - hoch",
+      "5 - sehr hoch"
+    ].freeze
+
+    IMPACT_LABELS = [
+      "1 - unwesentlich",
+      "2 - geringfügig",
+      "3 - merklich",
+      "4 - schwerwiegend",
+      "5 - katastrophal"
+    ].freeze
+
     before_action :load_and_authorize_in_optional_project
 
     before_action :find_custom_fields,
@@ -42,11 +58,11 @@ module Risks
       @query.include_subprojects = params[:project_filter] != "current"
 
       if params[:likelihood]
-        @query.add_filter(@likelihood_cf.column_name, "=", [params[:likelihood].to_i])
+        @query.add_filter(@likelihood_cf.column_name, "=", [likelihood])
       end
 
       if params[:impact]
-        @query.add_filter(@likelihood_cf.column_name, "=", [params[:likelihood].to_i])
+        @query.add_filter(@impact_cf.column_name, "=", [impact])
       end
 
       if params[:risk_filter].present?
@@ -60,6 +76,25 @@ module Risks
         .results
         .work_packages
         .includes(:custom_values)
+    end
+
+    def select_params
+      @selected_likelihood = params[:likelihood]&.to_i
+      @selected_impact = params[:impact]&.to_i
+    end
+
+    def likelihood
+      index = params[:likelihood].to_i
+      label = LIKELIHOOD_LABELS[index] if index.between?(0, LIKELIHOOD_LABELS.size - 1)
+      option = CustomField.find(43).possible_values.find { |opt| opt.value == label }
+      option.id
+    end
+
+    def impact
+      index = params[:impact].to_i
+      label = IMPACT_LABELS[index] if index.between?(0, IMPACT_LABELS.size - 1)
+      option = CustomField.find(44).possible_values.find { |opt| opt.value == label }
+      option.id
     end
   end
 end

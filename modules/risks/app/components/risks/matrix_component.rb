@@ -32,7 +32,7 @@ module Risks
   class MatrixComponent < ViewComponent::Base
     attr_reader :project, :likelihood_options, :impact_options, :risk_counts, :risk_work_packages
 
-    def initialize(project:, likelihood_options:, impact_options:, risk_counts:, risk_work_packages:)
+    def initialize(project:, likelihood_options:, impact_options:, risk_counts:, risk_work_packages:, selected_likelihood:, selected_impact:)
       super
 
       @project = project
@@ -40,12 +40,15 @@ module Risks
       @impact_options = impact_options
       @risk_counts = risk_counts
       @risk_work_packages = risk_work_packages
+
+      @selected_likelihood = selected_likelihood
+      @selected_impact = selected_impact
     end
 
     private
 
     def risk_class(likelihood_index, impact_index)
-      likelihood_value = likelihood_options.length - likelihood_index
+      likelihood_value = likelihood_index + 1
       impact_value = impact_index + 1
       risk_score = likelihood_value * impact_value
 
@@ -63,6 +66,11 @@ module Risks
 
     def work_package_count(likelihood, impact)
       risk_counts[[likelihood.id, impact.id]] || 0
+    end
+
+    def selected(likelihood, impact)
+      "risk-selected" if @selected_likelihood == likelihood && @selected_impact == impact
+      # binding.pry
     end
   end
 end
