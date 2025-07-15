@@ -262,7 +262,8 @@ Rails.application.reloader.to_prepare do
       wpt.permission :manage_portfolios,
                      {
                        portfolio_managements: %i[show],
-                       "portfolio_managements/menus": %i[show]
+                       "portfolio_managements/menus": %i[show],
+                       "portfolio_managements/proposals": %i[new create show index edit update destroy]
                      },
                      permissible_on: :project
 

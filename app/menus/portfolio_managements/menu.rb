@@ -61,6 +61,8 @@ module PortfolioManagements
         end
       when "projects/queries"
         query_params[:query_id].to_s == params[:id]
+      when "portfolio_managements/proposals"
+        query_params[:controller] == "portfolio_managements/proposals"
       end
     end
 

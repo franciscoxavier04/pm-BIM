@@ -424,6 +424,11 @@ Rails.application.routes.draw do
 
     resource :portfolio_management do
       resource :menu, only: %i[show], controller: "portfolio_managements/menus"
+      resources :proposals, controller: "portfolio_managements/proposals" do
+        member do
+          patch :change_state
+        end
+      end
     end
 
     resource :repository, controller: "repositories", except: [:new] do

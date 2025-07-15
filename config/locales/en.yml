@@ -3149,7 +3149,6 @@ en:
   label_privacy_policy: "Data privacy and security policy"
   label_product_version: "Product version"
   label_profile: "Profile"
-  label_portfolio_management: "Portfolio management"
   label_percent_complete: "% Complete"
   label_progress_tracking: "Progress tracking"
   label_project: "Project"
@@ -4994,3 +4993,33 @@ en:
 
   enterprise_plans:
     legacy_enterprise: "Enterprise Plan"
+
+  label_portfolio_management: Portfolio management
+  label_portfolio_proposals: Portfolio proposals
+  label_portfolio_proposal: Portfolio proposal
+  label_portfolio_proposal_new: New portfolio proposal
+  label_portfolio_proposal_edit: Edit portfolio proposal
+  label_no_portfolio_proposals: No portfolio proposals found.
+  label_no_projects_in_proposal: No projects in this proposal.
+  label_state: State
+  label_state_actions: State actions
+  label_change_state: Change state
+  label_projects: Projects
+
+  button_set_to_compose: Set to "Compose"
+  button_set_to_proposed: Set to "Proposed"
+  button_set_to_approved: Set to "Approved"
+
+  text_are_you_sure_change_to_approved: Are you sure you want to approve this proposal? This will make the included projects children of the portfolio.
+  text_select_projects_for_proposal: Select the projects to include in this proposal.
+
+  error_must_be_portfolio: The project must be a portfolio.
+  error_unable_delete_proposal: Unable to delete the proposal.
+
+  notice_proposal_state_changed: "Proposal state changed to %{state}."
+
+  portfolio_proposals:
+    states:
+      compose: Compose
+      proposed: Proposed
+      approved: Approved
