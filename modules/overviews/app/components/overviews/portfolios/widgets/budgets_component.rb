@@ -31,35 +31,9 @@
 module Overviews
   module Portfolios
     module Widgets
-      class SubportfoliosComponent < ApplicationComponent
+      class BudgetsComponent < ApplicationComponent
         include OpPrimer::ComponentHelpers
         include ApplicationHelper
-
-        attr_reader :subportfolios
-
-        def initialize(model = nil, project:, **)
-          super(model, **)
-
-          @project = project
-          @subportfolios = Project
-                             .visible
-                             .where(type: 2)
-                             .where(parent: project.id)
-        end
-
-        def label_color_for(key)
-          schemes = {
-            on_track: :success,
-            at_risk: :danger,
-            not_set: :primary,
-            off_track: :severe,
-            not_started: :accent,
-            finished: :done,
-            discontinued: :warning
-          }
-
-          schemes[key.to_sym] || :secondary
-        end
       end
     end
   end

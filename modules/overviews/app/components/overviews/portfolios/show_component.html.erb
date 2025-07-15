@@ -1,5 +1,5 @@
 <%=
-  grid_layout("op-portfolio-overview", tag: :div, align_items: :center) do |grid|
+  grid_layout("op-portfolio-overview", tag: :div, align_items: :flex_start) do |grid|
     grid.with_area(:kpi, tag: :div) do
       render(Overviews::Portfolios::Widgets::KpiComponent.new(project: @project))
     end
@@ -9,7 +9,7 @@
     end
 
     grid.with_area(:budget, tag: :div) do
-      "Suspendisse suscipit mi at mauris aliquam volutpat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras pretium elit nisi. Pellentesque vel ligula magna. Donec egestas interdum orci. Phasellus sit amet molestie lectus, a maximus ligula. Cras ultrices at ex id maximus. Nullam semper sem et sollicitudin consequat. Phasellus vitae dignissim mauris, sit amet feugiat purus. Cras vel finibus enim, sed facilisis diam. Nam non ornare tellus. Nulla facilisi."
+      render(Overviews::Portfolios::Widgets::BudgetsComponent.new(project: @project))
     end
 
     grid.with_area(:problems, tag: :div) do
