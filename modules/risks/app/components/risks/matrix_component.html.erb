@@ -54,14 +54,14 @@ See COPYRIGHT and LICENSE files for more details.
           </tr>
         </thead>
         <tbody>
-          <% likelihood_options.each_with_index do |likelihood, likelihood_index| %>
+          <% likelihood_options.reverse.each_with_index do |likelihood| %>
             <tr>
               <th class="likelihood-label">
                 <%= likelihood.value %>
               </th>
-              <% impact_options.each_with_index do |impact, impact_index| %>
-                <td class="risk-cell <%= risk_class(likelihood_index, impact_index) %> <%= selected(likelihood_index, impact_index) %>">
-                  <%= link_to project_risks_path(likelihood: likelihood_index, impact: impact_index), class: "risk-cell-link" do %>
+              <% impact_options.each_with_index do |impact| %>
+                <td class="risk-cell <%= risk_class(likelihood, impact) %> <%= selected(likelihood, impact) %>">
+                  <%= link_to project_risks_path(likelihood: likelihood.id, impact: impact.id), class: "risk-cell-link" do %>
                     <span class="risk-count">
                       <%= work_package_count(likelihood, impact) %>
                     </span>

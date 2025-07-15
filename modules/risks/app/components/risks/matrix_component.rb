@@ -41,26 +41,22 @@ module Risks
       @risk_counts = risk_counts
       @risk_work_packages = risk_work_packages
 
-      @selected_likelihood = selected_likelihood
-      @selected_impact = selected_impact
+      @selected_likelihood = selected_likelihood.to_i
+      @selected_impact = selected_impact.to_i
     end
 
     private
 
-    def risk_class(likelihood_index, impact_index)
-      likelihood_value = likelihood_index + 1
-      impact_value = impact_index + 1
-      risk_score = likelihood_value * impact_value
+    def risk_class(likelihood, impact)
+      risk_score = likelihood.value.to_i * impact.value.to_i
 
       case risk_score
       when 1..6
         "low-risk"
       when 7..15
         "medium-risk"
-      when 16..25
-        "high-risk"
       else
-        "medium-risk"
+        "high-risk"
       end
     end
 
@@ -69,8 +65,7 @@ module Risks
     end
 
     def selected(likelihood, impact)
-      "risk-selected" if @selected_likelihood == likelihood && @selected_impact == impact
-      # binding.pry
+      "risk-selected" if @selected_likelihood == likelihood.id && @selected_impact == impact.id
     end
   end
 end
