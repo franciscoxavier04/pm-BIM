@@ -71,19 +71,31 @@ See COPYRIGHT and LICENSE files for more details.
     <div class="risk-legend">
       <h3>Risikostufen</h3>
       <div class="legend-content">
-        <p class="legend-description">Zahlen zeigen die Anzahl der Risiken in jeder Kategorie</p>
+        <p class="legend-description">
+          Zellen zeigen die Anzahl der Risiken in jeder Kategorie.
+          Klicken Sie auf eine Kategorie, um die entsprechenden Risiken zu filtern.
+        </p>
         <div class="legend-items">
           <div class="legend-item">
             <span class="legend-color low-risk"></span>
-            <span>Niedriges Risiko (1-6)</span>
+            <%=
+              link_to "Niedriges Risiko (1-6)",
+                      project_risks_path(@project, risk_filter: :low)
+            %>
           </div>
           <div class="legend-item">
             <span class="legend-color medium-risk"></span>
-            <span>Mittleres Risiko (7-15)</span>
+            <%=
+              link_to "Mittleres Risiko (7-15)",
+                      project_risks_path(@project, risk_filter: :medium)
+            %>
           </div>
           <div class="legend-item">
             <span class="legend-color high-risk"></span>
-            <span>Hohes Risiko (16-25)</span>
+            <%=
+              link_to "Hohes Risiko (16-25)",
+                      project_risks_path(@project, risk_filter: :high)
+            %>
           </div>
         </div>
       </div>
@@ -92,4 +104,4 @@ See COPYRIGHT and LICENSE files for more details.
       </div>
     </div>
   </div>
-</div> 
+</div>

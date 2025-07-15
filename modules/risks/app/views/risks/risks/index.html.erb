@@ -52,6 +52,7 @@
 %>
 
 <%= render(Risks::MatrixComponent.new(
+  project: @project,
   likelihood_options: @likelihood_options,
   impact_options: @impact_options,
   risk_counts: @risk_counts,
