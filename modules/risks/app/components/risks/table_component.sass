@@ -1,6 +1,6 @@
 .risk-matrix-container
   padding: 20px
-  max-width: 800px
+  max-width: 100%
   margin: 0 auto
 
   h2
@@ -8,9 +8,15 @@
     margin-bottom: 30px
     color: #333
 
+.matrix-content
+  display: flex
+  gap: 20px
+  align-items: stretch
+
 .matrix-wrapper
+  flex: 1
+  max-width: 80%
   overflow-x: auto
-  margin-bottom: 30px
 
 .risk-matrix
   width: 100%
@@ -26,7 +32,7 @@
 
 .matrix-corner
   background: #f8f9fa
-  width: 120px
+  width: 50px
 
 .impact-header
   background: #e9ecef
@@ -36,17 +42,27 @@
 
 .likelihood-header
   background: #e9ecef
-  width: 120px
+  width: 50px
+  max-width: 50px
   position: relative
-  padding: 40px 10px
+  padding: 15px 2px
+  word-wrap: break-word
+  overflow-wrap: break-word
+  hyphens: auto
+  text-align: center
+
+  div
+    font-size: 11px
+    line-height: 1.2
+    word-break: break-word
 
 .impact-label,
 .likelihood-label
   background: #f8f9fa
-  padding: 12px 8px
-  font-size: 14px
+  padding: 6px 2px
+  font-size: 12px
   color: #495057
-  min-width: 80px
+  min-width: 40px
 
 .risk-cell
   width: 80px
@@ -75,23 +91,32 @@
   background: linear-gradient(135deg, #dc3545, #e83e8c)
 
 .risk-legend
-  text-align: center
+  width: 20%
+  min-width: 250px
+  padding: 20px
+  background: #f8f9fa
+  border-radius: 8px
+  border: 1px solid #e9ecef
+  display: flex
+  flex-direction: column
+  justify-content: space-between
 
   h3
     margin-bottom: 15px
     color: #333
+    text-align: center
 
 .legend-description
   font-size: 14px
   color: #666
   margin-bottom: 20px
   font-style: italic
+  text-align: center
 
 .legend-items
   display: flex
-  justify-content: center
-  gap: 30px
-  flex-wrap: wrap
+  flex-direction: column
+  gap: 15px
 
 .legend-item
   display: flex
@@ -105,17 +130,35 @@
   border-radius: 4px
   border: 1px solid #ddd
 
+.legend-content
+  flex: 1
+  display: flex
+  flex-direction: column
+  justify-content: center
+
 .risk-total
-  margin-top: 20px
+  margin-top: auto
   padding: 15px
-  background: #f8f9fa
+  background: #ffffff
   border-radius: 8px
   font-size: 16px
   color: #495057
+  border: 1px solid #dee2e6
 
 @media (max-width: 768px)
   .risk-matrix-container
     padding: 10px
+
+  .matrix-content
+    flex-direction: column
+    gap: 20px
+
+  .matrix-wrapper
+    max-width: 100%
+
+  .risk-legend
+    width: 100%
+    min-width: auto
 
   .risk-matrix
     th,
@@ -132,4 +175,4 @@
 
   .legend-items
     flex-direction: column
-    align-items: center 
+    gap: 10px 

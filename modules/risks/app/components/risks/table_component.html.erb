@@ -29,65 +29,69 @@ See COPYRIGHT and LICENSE files for more details.
 
 <div class="risk-matrix-container">
   <h2>Risikomatrix</h2>
-
-  <div class="matrix-wrapper">
-    <table class="risk-matrix">
-      <thead>
-        <tr>
-          <th class="matrix-corner"></th>
-          <th colspan="<%= impact_options.length %>" class="impact-header">
-            Auswirkung
-          </th>
-        </tr>
-        <tr>
-          <th class="likelihood-header">
-            <div>Eintrittswahrscheinlichkeit</div>
-          </th>
-          <% impact_options.each_with_index do |impact, _| %>
-            <th class="impact-label">
-              <%= impact.value %>
-            </th>
-          <% end %>
-        </tr>
-      </thead>
-      <tbody>
-        <% likelihood_options.reverse.each_with_index do |likelihood, likelihood_index| %>
+  
+  <div class="matrix-content">
+    <div class="matrix-wrapper">
+      <table class="risk-matrix">
+        <thead>
           <tr>
-            <th class="likelihood-label">
-              <%= likelihood.value %>
+            <th class="matrix-corner"></th>
+            <th colspan="<%= impact_options.length %>" class="impact-header">
+              Auswirkung
             </th>
-            <% impact_options.each_with_index do |impact, impact_index| %>
-              <td class="risk-cell <%= risk_class(likelihood_index, impact_index) %>">
-                <span class="risk-count">
-                  <%= work_package_count(likelihood, impact) %>
-                </span>
-              </td>
+          </tr>
+          <tr>
+            <th class="likelihood-header">
+              <div>Eintrittswahrscheinlichkeit</div>
+            </th>
+            <% impact_options.each_with_index do |impact, _| %>
+              <th class="impact-label">
+                <%= impact.value %>
+              </th>
             <% end %>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="risk-legend">
-    <h3>Risikostufen</h3>
-    <p class="legend-description">Zahlen zeigen die Anzahl der Risiken in jeder Kategorie</p>
-    <div class="legend-items">
-      <div class="legend-item">
-        <span class="legend-color low-risk"></span>
-        <span>Niedriges Risiko (1-6)</span>
-      </div>
-      <div class="legend-item">
-        <span class="legend-color medium-risk"></span>
-        <span>Mittleres Risiko (7-15)</span>
-      </div>
-      <div class="legend-item">
-        <span class="legend-color high-risk"></span>
-        <span>Hohes Risiko (16-25)</span>
-      </div>
+        </thead>
+        <tbody>
+          <% likelihood_options.reverse.each_with_index do |likelihood, likelihood_index| %>
+            <tr>
+              <th class="likelihood-label">
+                <%= likelihood.value %>
+              </th>
+              <% impact_options.each_with_index do |impact, impact_index| %>
+                <td class="risk-cell <%= risk_class(likelihood_index, impact_index) %>">
+                  <span class="risk-count">
+                    <%= work_package_count(likelihood, impact) %>
+                  </span>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
-    <div class="risk-total">
-      <strong>Gesamtanzahl Risiken: <%= risk_work_packages.count %></strong>
+    
+    <div class="risk-legend">
+      <h3>Risikostufen</h3>
+      <div class="legend-content">
+        <p class="legend-description">Zahlen zeigen die Anzahl der Risiken in jeder Kategorie</p>
+        <div class="legend-items">
+          <div class="legend-item">
+            <span class="legend-color low-risk"></span>
+            <span>Niedriges Risiko (1-6)</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color medium-risk"></span>
+            <span>Mittleres Risiko (7-15)</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color high-risk"></span>
+            <span>Hohes Risiko (16-25)</span>
+          </div>
+        </div>
+      </div>
+      <div class="risk-total">
+        <strong>Gesamtanzahl Risiken: <%= risk_work_packages.count %></strong>
+      </div>
     </div>
   </div>
 </div>
