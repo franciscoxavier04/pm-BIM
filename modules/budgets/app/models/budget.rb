@@ -46,12 +46,17 @@ class Budget < ApplicationRecord
   has_many :cost_entries, through: :work_packages
   has_many :time_entries, through: :work_packages
 
-  has_many :parent_budget_relations, class_name: "BudgetRelation", foreign_key: "parent_id", dependent: :destroy,
-                                     inverse_of: :parent
-  has_many :parent_budgets, through: :parent_budget_relations, source: :child
+  has_many :parent_budget_relations, class_name: "BudgetRelation",
+                                     foreign_key: "child_budget_id",
+                                     dependent: :destroy,
+                                     inverse_of: :child_budget
+  has_many :parent_budgets, through: :parent_budget_relations, source: :parent_budget
 
-  has_many :child_budget_relations, class_name: "BudgetRelation", foreign_key: "child_id", dependent: :destroy, inverse_of: :child
-  has_many :child_budgets, through: :child_budget_relations, source: :parent
+  has_many :child_budget_relations, class_name: "BudgetRelation",
+                                    foreign_key: "parent_budget_id",
+                                    dependent: :destroy,
+                                    inverse_of: :parent_budget
+  has_many :child_budgets, through: :child_budget_relations, source: :child_budget
 
   include ActiveModel::ForbiddenAttributesProtection
 
@@ -115,6 +120,16 @@ class Budget < ApplicationRecord
 
   def budget
     supplementary_amount + material_budget + labor_budget
+  end
+
+  def allocated_to_children
+    # TODO: Efficient with query
+    child_budget_relations.subtract.includes(:child_budget).sum { |rel| rel.child_budget.budget }
+  end
+
+  def spent_with_children
+    # TODO: Efficient with query
+    spent + child_budget_relations.subtract.includes(:child_budget).sum { |rel| rel.child_budget.spent_with_children }
   end
 
   def type_label
@@ -181,7 +196,7 @@ class Budget < ApplicationRecord
   end
 
   def available
-    budget - spent
+    budget - spent - allocated_to_children
   end
 
   def new_material_budget_item_attributes=(material_budget_item_attributes)

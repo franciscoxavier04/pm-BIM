@@ -36,6 +36,7 @@ en:
       budget:
         author: "Author"
         available: "Available"
+        allocated_to_children: "Allocated"
         budget: "Planned"
         budget_ratio: "Spent (ratio)"
         description: "Description"
