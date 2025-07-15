@@ -645,11 +645,10 @@ pl:
       title: "Potwierdź hasło aby kontynuować"
     pagination:
       no_other_page: "Jesteś na jedynej stronie."
+      pages_skipped: "Pages skipped."
       page_navigation: "Nawigacja po paginacji"
       per_page_navigation: 'Wybór liczby pozycji na jednej stronie'
       pages:
-        next: "Następna strona"
-        previous: "Poprzednia strona"
         page_number: Strona %{number}
         show_per_page: Pokaż %{number} na jednej stronie
     placeholders:

@@ -3005,7 +3005,7 @@ de:
   label_password_rule_special: "Sonderzeichen"
   label_password_rule_uppercase: "Großbuchstaben"
   label_path_encoding: "Path encoding"
-  label_per_page: "Pro Seite"
+  label_per_page: "Per page:"
   label_people: "Personen"
   label_permissions: "Berechtigungen"
   label_permissions_report: "Berechtigungsübersicht"

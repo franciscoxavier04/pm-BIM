@@ -2968,7 +2968,7 @@ ms:
   label_password_rule_special: "Aksara Khas"
   label_password_rule_uppercase: "Huruf Besar"
   label_path_encoding: "Laluan pengekodan"
-  label_per_page: "Setiap halaman"
+  label_per_page: "Per page:"
   label_people: "Orang"
   label_permissions: "Kebenaran"
   label_permissions_report: "Laporan kebenaran"

@@ -3010,7 +3010,7 @@ it:
   label_password_rule_special: "Caratteri Speciali"
   label_password_rule_uppercase: "Maiuscolo"
   label_path_encoding: "Codifica del percorso"
-  label_per_page: "Per pagina"
+  label_per_page: "Per page:"
   label_people: "Persone"
   label_permissions: "Permessi"
   label_permissions_report: "Report permessi"
