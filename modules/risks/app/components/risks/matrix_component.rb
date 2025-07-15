@@ -29,7 +29,7 @@
 #++
 
 module Risks
-  class TableComponent < ViewComponent::Base
+  class MatrixComponent < ViewComponent::Base
     attr_reader :likelihood_options, :impact_options, :risk_counts, :risk_work_packages
 
     def initialize(likelihood_options:, impact_options:, risk_counts:, risk_work_packages:)
