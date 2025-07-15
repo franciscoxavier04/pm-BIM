@@ -1,0 +1,195 @@
+.risk-matrix-container
+  padding: 20px 0
+  max-width: 100%
+  margin: 0 auto
+
+.matrix-content
+  display: flex
+  gap: 20px
+  align-items: stretch
+
+.matrix-wrapper
+  flex: 1
+  max-width: 80%
+  overflow-x: auto
+
+.risk-matrix
+  width: 100%
+  border-collapse: collapse
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1)
+  background: white
+
+  th,
+  td
+    border: 2px solid #ddd
+    text-align: center
+    font-weight: bold
+
+.matrix-corner
+  background: #f8f9fa
+  width: 50px
+
+.impact-header
+  background: #e9ecef
+  padding: 15px
+  font-size: 11px
+  font-weight: bold
+  color: #495057
+
+.likelihood-header
+  background: #e9ecef
+  width: 50px
+  max-width: 50px
+  position: relative
+  padding: 15px 2px
+  word-wrap: break-word
+  overflow-wrap: break-word
+  hyphens: auto
+  text-align: center
+
+  div
+    font-size: 11px
+    line-height: 1.2
+    word-break: break-word
+
+.impact-label,
+.likelihood-label
+  background: #f8f9fa
+  padding: 6px 2px
+  font-size: 12px
+  color: #495057
+  min-width: 40px
+
+.risk-cell
+  width: 80px
+  height: 60px
+  position: relative
+  cursor: pointer
+  transition: all 0.3s ease
+
+  .risk-cell-link
+    display: flex
+    width: 100%
+    height: 100%
+    align-items: center
+    justify-content: center
+    color: inherit
+    text-decoration: none
+
+  &:hover
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), inset 0 0 0 2px rgba(255, 255, 255, 0.3)
+    filter: brightness(1.1)
+
+.risk-count
+  font-size: 18px
+  font-weight: bold
+  color: white
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3)
+
+.low-risk
+  background: linear-gradient(135deg, #28a745, #20c997)
+
+.medium-risk
+  background: linear-gradient(135deg, #ffc107, #fd7e14)
+
+.high-risk
+  background: linear-gradient(135deg, #dc3545, #e83e8c)
+
+.risk-selected
+  filter: brightness(0.8)
+
+.risk-legend
+  width: 20%
+  min-width: 250px
+  padding: 20px
+  background: #f8f9fa
+  border-radius: 8px
+  border: 1px solid #e9ecef
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+
+  h3
+    margin-bottom: 15px
+    color: #333
+    text-align: center
+
+.legend-description
+  font-size: 14px
+  color: #666
+  margin-bottom: 20px
+  font-style: italic
+  text-align: center
+
+.legend-items
+  display: flex
+  flex-direction: column
+  gap: 15px
+
+.legend-item
+  display: flex
+  align-items: center
+  gap: 8px
+  font-weight: 500
+
+.legend-color
+  width: 20px
+  height: 20px
+  border-radius: 4px
+  border: 1px solid #ddd
+
+.legend-content
+  flex: 1
+  display: flex
+  flex-direction: column
+  justify-content: center
+
+.risk-total
+  margin-top: auto
+  padding: 15px
+  background: #ffffff
+  border-radius: 8px
+  font-size: 16px
+  color: #495057
+  border: 1px solid #dee2e6
+
+@media (max-width: 768px)
+  .risk-matrix-container
+    padding: 10px
+
+  .matrix-content
+    flex-direction: column
+    gap: 20px
+
+  .matrix-wrapper
+    max-width: 100%
+
+  .risk-legend
+    width: 100%
+    min-width: auto
+
+  .risk-matrix
+    th,
+    td
+      font-size: 12px
+      padding: 8px 4px
+
+  .risk-cell
+    width: 60px
+    height: 50px
+
+  .risk-count
+    font-size: 14px
+
+  .legend-items
+    flex-direction: column
+    gap: 10px
+
+
+.matrix-reset
+  font-size: 11px
+  max-width: 100px
+  word-wrap: break-word
+  overflow-wrap: break-word
+  hyphens: auto
+  text-align: center

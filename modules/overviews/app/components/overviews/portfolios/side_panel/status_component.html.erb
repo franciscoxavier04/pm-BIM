@@ -1,0 +1,17 @@
+<%=
+  component_wrapper do
+    render(Primer::OpenProject::SidePanel::Section.new) do |section|
+      section.with_title_content(Project.human_attribute_name(:status_code))
+
+      flex_layout(classes: "op-portfolio-sidebar-state") do |state|
+        state.with_row do
+          status_button
+        end
+
+        state.with_row(mt: 3, classes: "hidden-for-mobile") do
+          render(Primer::Beta::Text.new(color: :subtle)) { status_description }
+        end
+      end
+    end
+  end
+%>

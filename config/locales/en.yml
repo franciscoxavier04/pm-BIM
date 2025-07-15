@@ -1101,6 +1101,7 @@ en:
         client: "Client ID"
       project:
         ancestor: "Descendants of" # used for filtering of projects that are descendants of a given work package
+        ancestor_or_self: "Project including descendants" # used for filtering of projects that are descendants of a given work package including the project itself
         active_value:
           true: "unarchived"
           false: "archived"
@@ -3147,6 +3148,7 @@ en:
   label_privacy_policy: "Data privacy and security policy"
   label_product_version: "Product version"
   label_profile: "Profile"
+  label_portfolio_management: "Portfolio management"
   label_percent_complete: "% Complete"
   label_progress_tracking: "Progress tracking"
   label_project: "Project"
