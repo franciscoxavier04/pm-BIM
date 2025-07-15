@@ -38,7 +38,7 @@ See COPYRIGHT and LICENSE files for more details.
         end
       end
 
-      subportfolios.find_each do |project|
+      subportfolios.each do |project|
         component.with_row do
           render(Primer::OpenProject::FlexLayout.new) do |flex|
             flex.with_row(flex_layout: true) do |row|
@@ -52,7 +52,7 @@ See COPYRIGHT and LICENSE files for more details.
             end
 
             flex.with_row do
-              render(Primer::Beta::Text.new) { "Rang: #{rank_for(project)}" }
+              render(Primer::Beta::Text.new) { formatted_rank_for(project) }
             end
           end
         end

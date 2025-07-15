@@ -45,6 +45,10 @@ module Overviews
                              .visible
                              .portfolio
                              .where(parent: project.id)
+                             .sort_by do |project|
+                               rank = rank_for(project)
+                               [rank.nil? ? 1 : 0, rank]
+                             end
         end
 
         def label_color_for(key)
@@ -61,8 +65,12 @@ module Overviews
           schemes[key.to_sym] || :secondary
         end
 
+        def formatted_rank_for(project)
+          helpers.safe_join ["Rang:", rank_for(project) || "k.A."], " "
+        end
+
         def rank_for(project)
-          project.public_send("custom_field_#{BmdsHackathon::References.rank_cf.id}").to_i
+          project.public_send("custom_field_#{BmdsHackathon::References.rank_cf.id}")
         end
       end
     end
