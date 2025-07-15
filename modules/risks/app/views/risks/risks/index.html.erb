@@ -70,7 +70,9 @@
   risk_counts: @risk_counts,
   risk_work_packages: @risk_work_packages,
   selected_likelihood: @selected_likelihood,
-  selected_impact: @selected_impact
+  selected_impact: @selected_impact,
+  risk_filter: @risk_filter,
+  groups: @groups
 )) %>
 
 <%= render Risks::TableComponent.new(
