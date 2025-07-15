@@ -185,7 +185,7 @@ class ProjectsController < ApplicationController
 
   def new_blank
     @new_project = @parent&.children&.build || Project.new
-    @new_project.type = params[:type] if params[:type].present?
+    @new_project.project_type = params[:type] if params[:project_type].present?
 
     render layout: "no_menu"
   end
