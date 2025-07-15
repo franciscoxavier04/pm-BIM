@@ -32,6 +32,8 @@ module ScimV2
   class GroupsController < Scimitar::ResourcesController
     include BaseControllerActions
 
+    before_action :remove_breaking_fields_from_params, only: %i[create replace]
+
     def create
       super do |scim_resource|
         storage_class.transaction do
@@ -67,7 +69,7 @@ module ScimV2
           raise_result_errors_for_scim(
             Groups::UpdateService
               .new(user: User.current, model: group)
-              .call(user_ids: scim_resource.members.map(&:value))
+              .call(user_ids: scim_resource.members&.map(&:value))
           )
           group.reload
           group.to_scim(
@@ -120,6 +122,21 @@ module ScimV2
         .left_joins(:users, :user_auth_provider_links)
         .includes(:users, :user_auth_provider_links)
         .not_builtin
+    end
+
+    private
+
+    # There is a bug in scimitar gem.
+    # When "$ref" sub-attribute is present then scim_reosource cannot be intialized
+    # Firstly it fails because $ref is not part of the schema.
+    # Secondly if it has been added to the schema then "$ref" cannot be a parameter for `attr_accessor` call.
+    # Hopefully helpful code links:
+    # 1. https://github.com/pond/scimitar/blob/09b284778340ee067df9e5140d0230386afb9992/app/controllers/scimitar/resources_controller.rb#L176C25-L176C38
+    # 2. https://github.com/pond/scimitar/blob/09b284778340ee067df9e5140d0230386afb9992/app/models/scimitar/schema/derived_attributes.rb#L13C13-L13C42
+    #
+    # Therefore, before scimitar accepts "$ref" sub-attributes we just remove them from payload.
+    def remove_breaking_fields_from_params
+      params[:members]&.each { |member| member.delete("$ref") }
     end
   end
 end
