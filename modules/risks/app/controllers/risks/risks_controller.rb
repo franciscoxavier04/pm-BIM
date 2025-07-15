@@ -36,7 +36,7 @@ module Risks
     def load_risks
       @query = Query.new(name: "_", project: @project)
       @query.add_filter("type_id", "=", [BmdsHackathon::References.risk_type.id])
-      @query.include_subprojects = true
+      @query.include_subprojects = params[:project_filter] != "current"
 
       if params[:likelihood]
         @query.add_filter(@likelihood_cf.column_name, "=", [params[:likelihood].to_i])

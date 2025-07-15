@@ -10,6 +10,47 @@
   end
 %>
 
+<%=
+  render(Primer::OpenProject::SubHeader.new) do |subheader|
+    all_label =
+      if @project.portfolio?
+        "Aus Portfolio und Teilportfolio"
+      elsif @project.program?
+        "Aus Programm und Projekten"
+      else
+        "Aus Projekt und Unterprojekten"
+      end
+
+    current_label =
+      if @project.portfolio?
+        "Nur aus diesem Portfolio"
+      elsif @project.program?
+        "Nur dieses Programm"
+      else
+        "Nur dieses Project"
+      end
+
+    subheader.with_segmented_control("aria-label": I18n.t(:label_filter_plural)) do |control|
+      control.with_item(
+        tag: :a,
+        icon: :"op-hierarchy",
+        href: project_risks_path(@project, project_filter: nil),
+        label: all_label,
+        title: all_label,
+        selected: params[:project_filter] != "current"
+      )
+      control.with_item(
+        tag: :a,
+        icon: :goal,
+        href:project_risks_path(@project, project_filter: "current"),
+        label: current_label,
+        title: current_label,
+        selected: params[:project_filter] == "current"
+      )
+    end
+  end
+%>
+
 <%= render(Risks::MatrixComponent.new(
   likelihood_options: @likelihood_options,
   impact_options: @impact_options,
