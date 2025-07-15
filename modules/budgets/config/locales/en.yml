@@ -46,6 +46,13 @@ en:
         labor_budget: "Planned labor costs"
         material_budget: "Planned unit costs"
         fixed_budget: "Fixed budget"
+        state: "State"
+        states:
+          planned: "Planned"
+          draft: "Draft"
+          submitted: "Submitted"
+          approved: "Approved"
+          rejected: "Rejected"
       work_package:
         budget_subject: "Budget title"
     models:

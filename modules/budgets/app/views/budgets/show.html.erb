@@ -49,6 +49,10 @@ See COPYRIGHT and LICENSE files for more details.
           value: extended_progress_bar(@budget.budget_ratio, width: "80px", legend: @budget.budget_ratio)
         )
         component.with_attribute(
+          key: Budget.human_attribute_name(:state),
+          value: @budget.state.present? ? I18n.t(@budget.state, scope: [:activerecord, :attributes, :budget, :states]) : "-"
+        )
+        component.with_attribute(
           key: Budget.human_attribute_name(:description),
           value: content_tag(:div, class: "op-uc-container") do
             format_text @budget, :description, attachments: @budget.attachments
@@ -59,9 +63,7 @@ See COPYRIGHT and LICENSE files for more details.
   <% resource = budget_attachment_representer(@budget) %>
   <%= list_attachments(resource) %>
 
-  <% unless @budget.fixed_budget? %>
-    <%= render partial: "budget_items" %>
-  <% end %>
+  <%= render partial: "budget_items" %>
 </div>
 
 <div style="clear: both;"></div>

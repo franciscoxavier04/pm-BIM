@@ -44,13 +44,19 @@ See COPYRIGHT and LICENSE files for more details.
 </div>
 <div class="form--field">
   <%= f.text_field :fixed_budget,
-                           size: 12,
-                           inputmode: :decimal,
-                           container_class: "-wide",
-                           value: (@budget.fixed_budget? ? unitless_currency_number(@budget.fixed_budget) : "") %>
+                   size: 12,
+                   inputmode: :decimal,
+                   container_class: "-wide",
+                   value: (@budget.fixed_budget? ? unitless_currency_number(@budget.fixed_budget) : "") %>
   <span class="form-label">
     <%= Setting.costs_currency %>
   </span>
+</div>
+
+<div class="form--field">
+    <%= f.select :state,
+                 Budget.states.keys.map { |state| [I18n.t(state, scope: %i[activerecord attributes budget states]), state] },
+                 { include_blank: true } %>
 </div>
 
 <%= render partial: "budgets/subform/material_budget_subform" %>
