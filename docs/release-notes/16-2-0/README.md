@@ -14,7 +14,7 @@ We released [OpenProject 16.2.0](https://community.openproject.org/versions/2196
 
 ## Important feature changes
 
-Take a look at our release video showing the most important features introduced in OpenProject 16.1.0:
+Take a look at our release video showing the most important features introduced in OpenProject 16.2.0:
   
 ![Release video of OpenProject 16.2](https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject_16_2_release.mp4)
 
