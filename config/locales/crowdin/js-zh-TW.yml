@@ -642,7 +642,7 @@ zh-TW:
       title: "確認您的密碼以便繼續"
     pagination:
       no_other_page: "您位於唯一頁面上。"
-      pages_skipped: "Pages skipped."
+      pages_skipped: "跳過的頁面。"
       page_navigation: "分頁導航"
       per_page_navigation: '每頁顯示項目數選擇'
       pages:
