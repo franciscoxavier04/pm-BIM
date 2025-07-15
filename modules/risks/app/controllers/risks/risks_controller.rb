@@ -2,7 +2,8 @@ module Risks
   class RisksController < ApplicationController
     before_action :load_and_authorize_in_optional_project
 
-    before_action :load_risks,
+    before_action :find_custom_fields,
+    :load_risks,
                   :derive_risk_counts
 
     menu_item :risks
@@ -11,10 +12,13 @@ module Risks
 
     private
 
-    def derive_risk_counts
-      @likelihood_cf = BmdsHackathon::References.risk_likelihood_cf
-      @impact_cf = BmdsHackathon::References.risk_impact_cf
+    def find_custom_fields
+      @likelihood_cf = CustomField.find_by(name: "Eintrittswahrscheinlichkeit")
+      @impact_cf = CustomField.find_by(name: "Auswirkung")
+      @level_cf = CustomField.find_by(name: "Risiko-Level")
+    end
 
+    def derive_risk_counts
       @likelihood_options = @likelihood_cf.custom_options
       @impact_options = @impact_cf.custom_options
 
@@ -30,10 +34,23 @@ module Risks
     end
 
     def load_risks
-      @risk_work_packages = WorkPackage
-        .visible
-        .where(type: BmdsHackathon::References.risk_type)
-        .where(project_id: @project.self_and_descendants.select(:id))
+      @query = Query.new(name: "_", project: @project)
+      @query.add_filter("type_id", "=", [BmdsHackathon::References.risk_type.id])
+      @query.include_subprojects = true
+
+      if params[:likelihood]
+        @query.add_filter(@likelihood_cf.column_name, "=", [params[:likelihood].to_i])
+      end
+
+      if params[:impact]
+        @query.add_filter(@likelihood_cf.column_name, "=", [params[:likelihood].to_i])
+      end
+
+      @query.sort_criteria = [[@level_cf.column_name, "desc"]]
+
+      @risk_work_packages = @query
+        .results
+        .work_packages
         .includes(:custom_values)
     end
   end
