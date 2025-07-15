@@ -14,7 +14,8 @@ module Risks
                   { controller: "/risks/risks", action: "index" },
                   caption: :"risks.label",
                   if: ->(project) {
-                    User.current.allowed_in_project?(:view_work_packages, project)
+                    OpenProject::FeatureDecisions.risk_management_active? &&
+                      User.current.allowed_in_project?(:view_work_packages, project)
                   },
                   after: :work_packages,
                   icon: "meter")
@@ -24,7 +25,10 @@ module Risks
     initializer "risks.permissions" do
       Rails.application.reloader.to_prepare do
         OpenProject::AccessControl.map do |ac_map|
-          ac_map.project_module(:risks)
+          ac_map.project_module(
+            :risks,
+            if: ->(*) { OpenProject::FeatureDecisions.risk_management_active? }
+          )
         end
 
         OpenProject::AccessControl

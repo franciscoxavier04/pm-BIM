@@ -643,11 +643,10 @@ si:
       title: "දිගටම කරගෙන යාමට ඔබගේ මුරපදය තහවුරු කරන්න"
     pagination:
       no_other_page: "ඔබ සිටින්නේ එකම පිටුවේ ය."
+      pages_skipped: "Pages skipped."
       page_navigation: "Pagination navigation"
       per_page_navigation: 'Items per page selection'
       pages:
-        next: "Next page"
-        previous: "Previous page"
         page_number: Page %{number}
         show_per_page: Show %{number} per page
     placeholders:

@@ -642,11 +642,10 @@ ko:
       title: "계속하려면 암호 확인"
     pagination:
       no_other_page: "유일한 페이지에 있습니다."
+      pages_skipped: "Pages skipped."
       page_navigation: "페이지 매김 탐색"
       per_page_navigation: '페이지별 항목 선택'
       pages:
-        next: "다음 페이지"
-        previous: "이전 페이지"
         page_number: '%{number}페이지'
         show_per_page: 페이지당 %{number}개 표시
     placeholders:

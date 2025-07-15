@@ -82,7 +82,7 @@ class PortfolioManagementsController < ApplicationController
   def load_query_or_deny_access
     super
     if @query && params[:query_id] == ProjectQueries::Static::CURRENT_PORTFOLIO
-      @query.where(:ancestor, "=", [@project.id])
+      @query.where(:ancestor_or_self, "=", [@project.id])
       @query.clear_changes_information
     end
   end

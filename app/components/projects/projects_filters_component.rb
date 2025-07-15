@@ -62,7 +62,8 @@ class Projects::ProjectsFiltersComponent < Filter::FilterComponent
       Queries::Projects::Filters::TypeFilter,
       Queries::Projects::Filters::WorkPackageTypeFilter,
       Queries::Projects::Filters::ParentFilter,
-      Queries::Projects::Filters::AncestorFilter
+      Queries::Projects::Filters::AncestorFilter,
+      Queries::Projects::Filters::AncestorOrSelfFilter
     ]
 
     allowlist.any? { |clazz| filter.is_a? clazz }

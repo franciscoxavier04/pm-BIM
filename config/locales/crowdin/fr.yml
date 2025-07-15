@@ -3011,7 +3011,7 @@ fr:
   label_password_rule_special: "Caractères spéciaux"
   label_password_rule_uppercase: "Majuscules"
   label_path_encoding: "Encodage du chemin d'accès"
-  label_per_page: "Par page"
+  label_per_page: "Per page:"
   label_people: "Participants"
   label_permissions: "Autorisations"
   label_permissions_report: "Rapport d'autorisations"

@@ -645,11 +645,10 @@ uk:
       title: "Підтвердіть ваш пароль щоб продовжити"
     pagination:
       no_other_page: "Ви знаходитесь на єдиній сторінці."
+      pages_skipped: "Pages skipped."
       page_navigation: "Навігація сторінками"
       per_page_navigation: 'Кількість елементів на сторінку'
       pages:
-        next: "Наступна сторінка"
-        previous: "Попередня сторінка"
         page_number: Сторінка %{number}
         show_per_page: Показати %{number} на сторінці
     placeholders:

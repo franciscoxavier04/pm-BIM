@@ -1,6 +1,6 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
 import { WorkPackageTableConfiguration } from 'core-app/features/work-packages/components/wp-table/wp-table-configuration';
-import { ChartOptions } from 'chart.js';
+import { ChartOptions, Plugin } from 'chart.js';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { GroupObject } from 'core-app/features/hal/resources/wp-collection-resource';
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
@@ -38,7 +38,7 @@ export class WorkPackageEmbeddedGraphComponent {
 
   public chartData:ChartDataSet[] = [];
 
-  public chartPlugins = [DataLabelsPlugin];
+  public chartPlugins:Plugin[] = [DataLabelsPlugin];
 
   public internalChartOptions:ChartOptions;
 

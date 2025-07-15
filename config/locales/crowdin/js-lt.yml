@@ -645,11 +645,10 @@ lt:
       title: "Norėdami tęsti, patvirtinkite savo slaptažodį"
     pagination:
       no_other_page: "Jūs esate vieninteliame puslapyje."
+      pages_skipped: "Pages skipped."
       page_navigation: "Pagination navigation"
       per_page_navigation: 'Items per page selection'
       pages:
-        next: "Next page"
-        previous: "Previous page"
         page_number: Page %{number}
         show_per_page: Show %{number} per page
     placeholders:
