@@ -29,36 +29,23 @@
 #++
 #
 module Documents
-  class HeaderComponent < ApplicationComponent
+  class SidePanel::AttachmentsComponent < ApplicationComponent
+    include ApplicationHelper
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
-    include Redmine::I18n
 
     alias_method :document, :model
 
-    options :project, :state
+    options :project
 
     private
 
-    def header_stimulus_controller = "documents--show-page--header"
+    def resource
+      return unless document
 
-    def description_content
-      safe_join [
-        document.category.name,
-        " - ",
-        I18n.t("documents.last_updated_at", time: updated_at_time).html_safe
-      ]
-    end
-
-    def allowed_to?(action, controller: "documents")
-      User.current.allowed_in_project?({ controller:, action: }, project)
-    end
-
-    def updated_at_time
-      OpPrimer::RelativeTimeComponent.new(
-        datetime: in_user_zone(document.updated_at),
-        month: :long
-      ).render_in(view_context)
+      API::V3::Documents::DocumentRepresenter.create(
+        document, current_user: User.current, embed_links: true
+      )
     end
   end
 end

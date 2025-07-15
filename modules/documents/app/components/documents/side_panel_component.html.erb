@@ -29,29 +29,11 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%=
   component_wrapper do
-    flex_layout do |layout_container|
-      layout_container.with_row do
-        render(Documents::HeaderComponent.new(document, project: project, state: :show))
-      end
-
-      layout_container.with_row do
-        render(Primer::Alpha::Layout.new(stacking_breakpoint: :md)) do |content|
-          content.with_main(width: :lg) do
-            primer_form_with(
-              id: "content-editable-form",
-              model: document,
-              url: url_helpers.document_path(document),
-              method: :patch
-            ) do |f|
-              render(Documents::EditorForm.new(f))
-            end
-          end
-
-          content.with_sidebar(col_placement: :end, row_placement: :end, width: :wide) do
-            render(Documents::SidePanelComponent.new(document, project:))
-          end
-        end
-      end
+    render(Primer::OpenProject::SidePanel.new) do |panel|
+      panel.with_section(
+        Documents::SidePanel::AttachmentsComponent.new(document, project:),
+        grid_row_arguments: desktop_grid_row_arguments
+      )
     end
   end
 %>

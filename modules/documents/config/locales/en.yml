@@ -45,6 +45,10 @@ en:
   enumeration_doc_categories: "Document categories"
 
   documents:
+    attachments:
+      text: >
+        Attached files are available to all document readers. You can also drag and drop these into the document editor.
+
     documents_list_blank_slate:
       heading: "Welcome to %{project_name} documents"
       description: "Documents are a great way to share information with your team. You can add documents to your project to help you manage your work."

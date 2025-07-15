@@ -29,29 +29,24 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%=
   component_wrapper do
-    flex_layout do |layout_container|
-      layout_container.with_row do
-        render(Documents::HeaderComponent.new(document, project: project, state: :show))
+    render(Primer::OpenProject::SidePanel::Section.new) do |section|
+      section.with_title { I18n.t(:label_attachment_plural) }
+      section.with_description { I18n.t("documents.attachments.text") }
+      section.with_counter(count: document.attachments.count)
+
+      section.with_footer_button(id: "documents-add-attachments") do |button|
+        button.with_leading_visual_icon(icon: "op-attachmentadd")
+        I18n.t("js.label_add_attachments")
       end
 
-      layout_container.with_row do
-        render(Primer::Alpha::Layout.new(stacking_breakpoint: :md)) do |content|
-          content.with_main(width: :lg) do
-            primer_form_with(
-              id: "content-editable-form",
-              model: document,
-              url: url_helpers.document_path(document),
-              method: :patch
-            ) do |f|
-              render(Documents::EditorForm.new(f))
-            end
-          end
-
-          content.with_sidebar(col_placement: :end, row_placement: :end, width: :wide) do
-            render(Documents::SidePanelComponent.new(document, project:))
-          end
-        end
-      end
+      helpers.list_attachments(
+        resource,
+        inputs: {
+          allowUploading: true,
+          showTimestamp: false,
+          externalUploadButton: "#documents-add-attachments"
+        }
+      )
     end
   end
 %>
