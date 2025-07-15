@@ -189,6 +189,10 @@ module Projects
       helpers.checked_image project.public?
     end
 
+    def portfolio_proposal
+      project.portfolio_proposals_as_project.map(&:name).join(", ")
+    end
+
     def row_css_class
       classes = %w[basics context-menu--reveal op-project-row-component]
       classes << project_css_classes

@@ -72,5 +72,6 @@ module Queries::Projects
     select Selects::ProjectPhase
     select Selects::RequiredDiskSpace
     select Selects::Status
+    select Selects::PortfolioProposal
   end
 end
