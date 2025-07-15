@@ -27,29 +27,18 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+#
+module Documents
+  class SidePanelComponent < ApplicationComponent
+    include OpTurbo::Streamable
+    include OpPrimer::ComponentHelpers
 
-Rails.application.routes.draw do
-  resources :projects, only: [] do
-    resources :documents, only: %i[create new index]
-  end
+    alias_method :document, :model
 
-  resources :documents, except: %i[create new index] do
-    member do
-      get :edit_title
-      put :update_title
-      get :cancel_edit
-      get :delete_dialog
-    end
-  end
+    options :project
 
-  namespace :admin do
-    namespace :settings do
-      resources :document_categories, except: [:show] do
-        member do
-          put :move
-          get :reassign
-        end
-      end
-    end
+    private
+
+    def desktop_grid_row_arguments = { display: [:none, nil, :table_cell] }
   end
 end

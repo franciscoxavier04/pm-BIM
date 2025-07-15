@@ -28,26 +28,17 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-Rails.application.routes.draw do
-  resources :projects, only: [] do
-    resources :documents, only: %i[create new index]
-  end
-
-  resources :documents, except: %i[create new index] do
-    member do
-      get :edit_title
-      put :update_title
-      get :cancel_edit
-      get :delete_dialog
-    end
-  end
-
-  namespace :admin do
-    namespace :settings do
-      resources :document_categories, except: [:show] do
-        member do
-          put :move
-          get :reassign
+module Documents
+  class CategoryForm < ApplicationForm
+    form do |f|
+      f.select_list(
+        name: :category_id,
+        label: I18n.t("label_document_category"),
+        input_width: :medium,
+        required: true
+      ) do |select|
+        DocumentCategory.find_each do |category|
+          select.option(value: category.id, label: category.name)
         end
       end
     end
