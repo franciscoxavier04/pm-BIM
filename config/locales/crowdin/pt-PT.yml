@@ -3016,7 +3016,7 @@ pt-PT:
   label_password_rule_special: "Carateres Especiais"
   label_password_rule_uppercase: "Maiúsculas"
   label_path_encoding: "Codificação do caminho"
-  label_per_page: "Por página"
+  label_per_page: "Per page:"
   label_people: "Pessoas"
   label_permissions: "Permissões"
   label_permissions_report: "Relatório de Permissões"

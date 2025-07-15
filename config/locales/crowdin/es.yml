@@ -3016,7 +3016,7 @@ es:
   label_password_rule_special: "Caracteres especiales"
   label_password_rule_uppercase: "Mayúscula"
   label_path_encoding: "Ruta de codificación"
-  label_per_page: "Por página"
+  label_per_page: "Per page:"
   label_people: "Personas"
   label_permissions: "Permisos"
   label_permissions_report: "Informe de permisos"

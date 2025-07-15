@@ -642,11 +642,10 @@ de:
       title: "Geben Sie Ihr Kennwort ein, um fortzufahren"
     pagination:
       no_other_page: "Sie befinden sich auf der einzigen Seite."
+      pages_skipped: "Pages skipped."
       page_navigation: "Pagination navigation"
       per_page_navigation: 'Items per page selection'
       pages:
-        next: "Nächste Seite"
-        previous: "Vorherige Seite"
         page_number: Seite %{number}
         show_per_page: '%{number} pro Seite anzeigen'
     placeholders:

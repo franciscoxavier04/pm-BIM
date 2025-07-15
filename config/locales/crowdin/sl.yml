@@ -3104,7 +3104,7 @@ sl:
   label_password_rule_special: "Posebni znaki"
   label_password_rule_uppercase: "Velika črka"
   label_path_encoding: "Kodiranje poti"
-  label_per_page: "na stran"
+  label_per_page: "Per page:"
   label_people: "Ljudje"
   label_permissions: "Dovoljenja"
   label_permissions_report: "Poročilo o dovoljenjih"

@@ -644,11 +644,10 @@ ru:
       title: "Для продолжения введите свой пароль"
     pagination:
       no_other_page: "Вы находитесь на единственной странице."
+      pages_skipped: "Pages skipped."
       page_navigation: "Навигация по страницам"
       per_page_navigation: 'Количество элементов на страницу'
       pages:
-        next: "Следующая страница"
-        previous: "Предыдущая страница"
         page_number: Страница %{number}
         show_per_page: Показать %{number} на странице
     placeholders:

@@ -3191,7 +3191,7 @@ ar:
   label_password_rule_special: "أحرف خاصة"
   label_password_rule_uppercase: "أحرف كبيرة"
   label_path_encoding: "ترميز المسار"
-  label_per_page: "في كل صفحة"
+  label_per_page: "Per page:"
   label_people: "الناس"
   label_permissions: "السماحيات"
   label_permissions_report: "تقرير السماحيات"

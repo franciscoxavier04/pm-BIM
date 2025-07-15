@@ -2972,7 +2972,7 @@ id:
   label_password_rule_special: "Karakter spesial"
   label_password_rule_uppercase: "Huruf besar"
   label_path_encoding: "Path encoding"
-  label_per_page: "Per halaman"
+  label_per_page: "Per page:"
   label_people: "Orang"
   label_permissions: "Hak akses"
   label_permissions_report: "Laporan"

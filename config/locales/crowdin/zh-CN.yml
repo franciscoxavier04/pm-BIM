@@ -2972,7 +2972,7 @@ zh-CN:
   label_password_rule_special: "特殊字符"
   label_password_rule_uppercase: "大写字母"
   label_path_encoding: "路径编码"
-  label_per_page: "每页"
+  label_per_page: "Per page:"
   label_people: "人员"
   label_permissions: "权限"
   label_permissions_report: "权限报告"
