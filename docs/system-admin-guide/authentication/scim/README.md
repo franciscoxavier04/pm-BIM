@@ -41,8 +41,6 @@ A configuration form for your SCIM client will open, in which you can adjust the
 
 ### Step 3. Choose an **Authentication method**. 
 
-This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the **scim_v2** scope.
-
 There are three *Authentication method* options you can choose from:
 
 ####  a. **Static access token**
@@ -65,7 +63,7 @@ Once created, a SCIM client will appear on the SCIM clients index page.
 
 Click on the client name to open the detailed view, edit the information, add revoke or add tokens. You will be able to edit the client information and tokens. 
 
-SCIM client tokens can be revoked. To revoke a token click the **Remove** icon at the far right end of the token listing. To add a new token click the **+ Token** button at the bottom of *Tokens* section.
+SCIM client tokens can be revoked. To revoke a token click the **Revoke** icon at the far right end of the token listing. To add a new token click the **+ Token** button at the bottom of *Tokens* section.
 
 ![Add or revoke static access token on a SCIM client detailed from under administration settings in OpenProject administration](add_scim_6.png)
     
@@ -84,7 +82,7 @@ Here is an example of a configuration form in Keycloak, if you use it with [SCIM
 
 #### b. **OAuth 2.0 client credentials**
 
-If in [Step 3](#step-3-choose-an-authentication-method) you selected **OAuth 2.0 client credentials**, after clicking **Create** you will get client credentials of newly created [OpenProject OAuth Application](../oauth-applications/#oauth-applications). These credentials should be entered into the SCIM client configuration on the other end. Then SCIM client is supposed to use provided client credentials to send an access token request to OpenProject.
+If in [Step 3](#step-3-choose-an-authentication-method) you selected **OAuth 2.0 client credentials**, after clicking **Create** you will get client credentials of newly created [OpenProject OAuth Application](../oauth-applications/#oauth-applications). These credentials should be entered into the SCIM client configuration on the other end. The SCIM client is supposed to use the provided client credentials to obtain an access token with the `scim_v2` scope from OpenProject and then use the access token in SCIM API requests.
 
 ![Add SCIM client. Creation form. Client credentials. Generate client credentials.](add_scim_7.png) 
 
@@ -100,6 +98,9 @@ If in [Step 3](#step-3-choose-an-authentication-method) you selected **JWT from 
 
 This authentication method is intended exclusively for use with OpenID Connect setups.
 The SCIM client must be able to obtain a JWT from the OpenID Connect provider (e.g., Keycloak) that meets all of the following conditions:
+
 1. The `sub`  claim contains the value specified in the Subject Claim configuration.
-2. The `aud`  claim includes the Client ID from your OpenID Connect provider configuration.
+2. The `aud`  claim includes OpenProject's Client ID from your OpenID Connect provider configuration.
 3. The `scope` claim includes `scim_v2`.
+
+This could for example be achieved by performing a client credentials token request towards the identity provider. In the case of Keycloak as an IDP, the sub claim would then equal to the UUID of the service account that's associated to the client obtaining the token.
