@@ -95,7 +95,7 @@ class Budget < ApplicationRecord
 
     def copy_attributes(source)
       source.attributes.slice("project_id", "subject", "description", "fixed_date", "state",
-                              "fixed_budget").merge("author" => User.current)
+                              "supplementary_amount").merge("author" => User.current)
     end
 
     def copy_budget_items(source, sink, items:)
@@ -113,16 +113,8 @@ class Budget < ApplicationRecord
     end
   end
 
-  def fixed_budget?
-    fixed_budget.present? && fixed_budget > 0
-  end
-
   def budget
-    if fixed_budget?
-      fixed_budget
-    else
-      material_budget + labor_budget
-    end
+    supplementary_amount + material_budget + labor_budget
   end
 
   def type_label

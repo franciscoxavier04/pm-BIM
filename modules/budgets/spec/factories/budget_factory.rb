@@ -40,8 +40,8 @@ FactoryBot.define do
 
     traits_for_enum(:state)
 
-    trait :fixed do
-      fixed_budget { BigDecimal(250000000) }
+    trait :with_supplementary_amount do
+      supplementary_amount { BigDecimal(250000000) }
     end
   end
 end

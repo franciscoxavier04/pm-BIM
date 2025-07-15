@@ -39,7 +39,7 @@ module Budgets
     attribute :fixed_date
     attribute :project
     attribute :state
-    attribute :fixed_budget
+    attribute :supplementary_amount
     attribute :new_material_budget_item_attributes,
               readable: false
 

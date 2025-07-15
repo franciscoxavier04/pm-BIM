@@ -78,8 +78,8 @@ RSpec.describe PermittedParams do
       it_behaves_like "allows params"
     end
 
-    context "fixed_budget" do
-      let(:hash) { { "fixed_budget" => "250000.00" } }
+    context "supplementary_amount" do
+      let(:hash) { { "supplementary_amount" => "250000.00" } }
 
       it_behaves_like "allows params"
     end

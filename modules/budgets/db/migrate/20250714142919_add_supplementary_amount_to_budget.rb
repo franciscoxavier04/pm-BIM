@@ -28,9 +28,9 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class AddFixedBudgetToBudget < ActiveRecord::Migration[8.0]
+class AddSupplementaryAmountToBudget < ActiveRecord::Migration[8.0]
   def change
-    add_column :budgets, :fixed_budget, :decimal, precision: 20, scale: 2, null: true, default: nil
-    add_column :budget_journals, :fixed_budget, :decimal, precision: 20, scale: 2, null: true, default: nil
+    add_column :budgets, :supplementary_amount, :decimal, precision: 20, scale: 2, null: false, default: "0.0"
+    add_column :budget_journals, :supplementary_amount, :decimal, precision: 20, scale: 2, null: false, default: "0.0"
   end
 end
