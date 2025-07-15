@@ -26,21 +26,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
-<% html_title(t(:label_project_plural)) -%>
+<% html_title("Portfolio management") -%>
+
 <div class="project-list-page">
   <%= render(
         PortfolioManagements::IndexPageHeaderComponent.new(
+          project: @project,
           query:,
           current_user:,
           state:,
           params:
         )
       ) %>
-  <%= render(Projects::IndexSubHeaderComponent.new(query:, current_user:, disable_buttons: state === :rename)) %>
-  <%= render Projects::TableComponent.new(
-        query:,
-        current_user: current_user,
-        params:
-      ) %>
-  <%= render Projects::DiskUsageInformationComponent.new(current_user: current_user) %>
+  <%= render(PortfolioManagements::IndexSubHeaderComponent.new(query:, current_user:, disable_buttons: state === :rename)) %>
+  <%= render Projects::TableComponent.new(query:, current_user: current_user, params:) %>
 </div>
