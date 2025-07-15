@@ -38,13 +38,15 @@ See COPYRIGHT and LICENSE files for more details.
 
   subportfolios.find_each do |project|
     component.with_row do
-      render(Primer::OpenProject::FlexLayout.new(align_items: :center)) do |flex|
-        flex.with_column(mr: 2) do
-          render(Primer::Beta::Link.new(href: project_path(project.id))) { project.name }
-        end
+      render(Primer::OpenProject::FlexLayout.new) do |flex|
+        flex.with_row(flex_layout: true) do |row|
+          row.with_column(mr: 2) do
+            render(Primer::Beta::Link.new(href: project_path(project.id))) { project.name }
+          end
 
-        flex.with_column do
-          render(Primer::Beta::Label.new(tag: :span, scheme: label_color_for(project.status_code))) { I18n.t("activerecord.attributes.project.status_codes.#{project.status_code}") }
+          row.with_column do
+            render(Primer::Beta::Label.new(tag: :span, scheme: label_color_for(project.status_code))) { I18n.t("activerecord.attributes.project.status_codes.#{project.status_code}") }
+          end
         end
       end
     end
