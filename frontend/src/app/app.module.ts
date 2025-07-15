@@ -206,6 +206,7 @@ import {
 import {
   OpWpDatePickerInstanceComponent,
 } from 'core-app/shared/components/datepicker/wp-date-picker-modal/wp-date-picker-instance.component';
+import { OpInviteUserModalAugmentService } from 'core-app/features/invite-user-modal/invite-user-modal-augment.service';
 
 export function initializeServices(injector:Injector) {
   return () => {
@@ -213,6 +214,7 @@ export function initializeServices(injector:Injector) {
     const keyboardShortcuts = injector.get(KeyboardShortcutService);
     const contextMenu = injector.get(OPContextMenuService);
     const currentProject = injector.get(CurrentProjectService);
+    const inviteUserAugmentService = injector.get(OpInviteUserModalAugmentService);
 
     // Conditionally add the Revit Add-In settings button
     injector.get(RevitAddInSettingsButtonService);
@@ -220,6 +222,7 @@ export function initializeServices(injector:Injector) {
     const runOnRenderAndLoad = () => {
       topMenuService.register();
       contextMenu.register();
+      inviteUserAugmentService.setupListener();
     };
     runOnRenderAndLoad();
 
