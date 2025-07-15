@@ -61,7 +61,7 @@ module Projects::Concerns
       model
         .custom_field_values
         .select { it.custom_field_id.in?(given_cf_ids) }
-        .to_h { [it.custom_field.column_name, it.typed_value] }
+        .to_h { [it.custom_field.column_name, it.numeric_value] }
     end
   end
 end

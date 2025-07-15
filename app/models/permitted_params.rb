@@ -501,7 +501,7 @@ class PermittedParams
           :content_right_to_left,
           :custom_field_section_id,
           :allow_non_open_versions,
-          { custom_options_attributes: %i(id value default_value position) },
+          { custom_options_attributes: %i(id value numeric_value default_value position) },
           { type_ids: [] }
         ],
         enumeration: %i(
