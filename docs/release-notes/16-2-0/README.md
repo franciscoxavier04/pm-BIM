@@ -14,6 +14,10 @@ We released [OpenProject 16.2.0](https://community.openproject.org/versions/2196
 
 ## Important feature changes
 
+Take a look at our release video showing the most important features introduced in OpenProject 16.1.0:
+  
+![Release video of OpenProject 16.2](https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject_16_2_release.mp4)
+
 ### New header and sidebar with improved navigation and design
 
 OpenProject 16.2 introduces a redesigned header and sidebar that make navigating your projects noticeably easier. The sidebar toggle (hamburger icon) has moved inside the sidebar itself, the default sidebar color in light mode is now lighter and more modern, and the search and create buttons have been repositioned in the top bar for a more intuitive workflow. Together, these changes create a cleaner, more focused interface that helps you find what you need faster and align with the user interface used in [openDesk](https://www.openproject.org/opendesk/).
