@@ -50,8 +50,8 @@ module Risks
       @risk_counts = risk_counts
       @risk_work_packages = risk_work_packages
 
-      @selected_likelihood = selected_likelihood.to_i
-      @selected_impact = selected_impact.to_i
+      @selected_likelihood = params[:likelihood].to_i
+      @selected_impact = params[:impact].to_i
     end
 
     private
