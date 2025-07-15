@@ -253,6 +253,7 @@ class WorkPackages::SetAttributesService < BaseServices::SetAttributes
   end
 
   def set_risk_attributes(attributes)
+    return unless OpenProject::FeatureDecisions.risk_management_active?
     return unless work_package.type == BmdsHackathon::References.risk_type
     return unless derive_risk_attributes?(attributes)
 
