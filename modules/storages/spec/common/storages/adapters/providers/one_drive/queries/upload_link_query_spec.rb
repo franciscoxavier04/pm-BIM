@@ -37,7 +37,7 @@ module Storages
       module OneDrive
         module Queries
           RSpec.describe UploadLinkQuery, :webmock do
-            let(:storage) { create(:sharepoint_dev_drive_storage) }
+            let(:storage) { create(:one_drive_sandbox_storage) }
             let(:auth_strategy) { Registry["one_drive.authentication.userless"].call }
 
             it_behaves_like "adapter upload_link_query: basic query setup"

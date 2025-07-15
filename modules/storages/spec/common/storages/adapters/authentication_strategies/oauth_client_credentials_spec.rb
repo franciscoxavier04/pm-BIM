@@ -36,7 +36,7 @@ module Storages
     module AuthenticationStrategies
       RSpec.describe OAuthClientCredentials, :webmock do
         let(:user) { create(:user) }
-        let(:storage) { create(:sharepoint_dev_drive_storage, oauth_client_token_user: user) }
+        let(:storage) { create(:one_drive_sandbox_storage, oauth_client_token_user: user) }
 
         let(:strategy_data) { Input::Strategy.build(key: :oauth_client_credentials, use_cache: false) }
         let(:request_url) { "#{storage.uri}v1.0/drives" }

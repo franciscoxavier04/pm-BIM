@@ -195,14 +195,14 @@ FactoryBot.define do
     end
   end
 
-  factory :sharepoint_dev_drive_storage, parent: :one_drive_storage do
+  factory :one_drive_sandbox_storage, parent: :one_drive_storage do
     automatically_managed { false }
 
     transient do
       oauth_client_token_user { association :user }
     end
 
-    name { "Sharepoint VCR drive" }
+    name { "OneDrive VCR drive" }
     tenant_id { ENV.fetch("ONE_DRIVE_TEST_TENANT_ID", "4d44bf36-9b56-45c0-8807-bbf386dd047f") }
     drive_id { ENV.fetch("ONE_DRIVE_TEST_DRIVE_ID", "b!dmVLG22QlE2PSW0AqVB7UOhZ8n7tjkVGkgqLNnuw2OBb-brzKzZAR4DYT1k9KPXs") }
 

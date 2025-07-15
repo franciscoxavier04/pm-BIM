@@ -110,7 +110,7 @@ RSpec.describe Storages::Admin::StorageRowComponent, type: :component do
     end
 
     context "with complete storage" do
-      shared_let(:storage) { create(:sharepoint_dev_drive_storage) }
+      shared_let(:storage) { create(:one_drive_sandbox_storage) }
 
       it_behaves_like "a OneDrive/SharePoint storage row"
 

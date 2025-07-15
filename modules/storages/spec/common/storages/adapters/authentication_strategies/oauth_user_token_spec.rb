@@ -114,7 +114,7 @@ module Storages
 
         context "with valid access token", vcr: "auth/one_drive/user_token" do
           let(:request_url) { "#{storage.uri}v1.0/me" }
-          let(:storage) { create(:sharepoint_dev_drive_storage, oauth_client_token_user: user) }
+          let(:storage) { create(:one_drive_sandbox_storage, oauth_client_token_user: user) }
 
           it_behaves_like "successful response"
         end
