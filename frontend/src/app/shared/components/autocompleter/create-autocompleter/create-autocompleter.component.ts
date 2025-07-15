@@ -85,7 +85,7 @@ export class CreateAutocompleterComponent extends UntilDestroyedMixin implements
 
   @Output() public onChange = new EventEmitter<HalResource>();
 
-  @Output() public onKeydown = new EventEmitter<JQuery.TriggeredEvent>();
+  @Output() public onKeydown = new EventEmitter<KeyboardEvent>();
 
   @Output() public onOpen = new EventEmitter<void>();
 
@@ -155,7 +155,7 @@ export class CreateAutocompleterComponent extends UntilDestroyedMixin implements
     this.onClose.emit();
   }
 
-  public keyPressed(event:JQuery.TriggeredEvent) {
+  public keyPressed(event:KeyboardEvent) {
     this.onKeydown.emit(event);
   }
 

@@ -53,39 +53,38 @@ export class OpModalWrapperAugmentService {
   public setupListener() {
     const matches = this.documentElement.querySelectorAll('[data-augmented-model-wrapper]');
     for (let i = 0; i < matches.length; ++i) {
-      this.wrapElement(jQuery(matches[i]) as JQuery);
+      this.wrapElement(matches[i] as HTMLElement);
     }
   }
 
   /**
    * Wrap a section[data-augmented-modal-wrapper] element
    */
-  public wrapElement(element:JQuery) {
+  public wrapElement(element:HTMLElement) {
     // Find activation link
-    const activationSelector = element.data('activationSelector') || '.modal-delivery-element--activation-link';
-    const activationLink = jQuery(activationSelector);
-
-    const initializeNow = element.data('modalInitializeNow');
+    const activationSelector = element.dataset.activationSelector || '.modal-delivery-element--activation-link';
+    const activationLink = document.querySelector(activationSelector)!;
+    const initializeNow = element.dataset.modalInitializeNow;
 
     if (initializeNow) {
       this.show(element);
     } else {
-      activationLink.click((evt:JQuery.TriggeredEvent) => {
+      activationLink.addEventListener('click', (evt) => {
         this.show(element);
         evt.preventDefault();
       });
     }
   }
 
-  private show(element:JQuery) {
+  private show(element:HTMLElement) {
     // Set modal class name
-    const modalClassName = element.data('modalClassName');
+    const modalClassName = element.dataset.modalClassName;
     // Append CSP-whitelisted IFrame for onboarding
-    const iframeUrl = element.data('modalIframeUrl');
+    const iframeUrl = element.dataset.modalIframeUrl;
 
     // Set template from wrapped element
-    const wrappedElement = element.find('.modal-delivery-element');
-    let modalBody = wrappedElement.html();
+    const wrappedElement = element.querySelector<HTMLElement>('.modal-delivery-element')!;
+    let modalBody = wrappedElement.innerHTML;
 
     if (iframeUrl) {
       modalBody = this.appendIframe(wrappedElement, iframeUrl);
@@ -101,18 +100,21 @@ export class OpModalWrapperAugmentService {
     );
   }
 
-  private appendIframe(body:JQuery<HTMLElement>, url:string) {
-    const iframe = jQuery('<iframe frameborder="0" height="350" allowfullscreen>></iframe>');
-    iframe.attr('src', url);
+  private appendIframe(body:HTMLElement, url:string) {
+    const iframe = document.createElement('iframe');
+    iframe.frameBorder = "0";
+    iframe.height = "350";
+    iframe.allowFullscreen = true;
+    iframe.setAttribute('src', url);
 
-    const iframeParent = body.find(iframeSelector);
-    if (iframeParent.find('iframe').length > 0) {
+    const iframeParent = body.querySelector(iframeSelector)!;
+    if (iframeParent.querySelector('iframe')) {
       // Make sure we don't initialize the iframe multiple times
-      return body.html();
+      return body.innerHTML;
     }
 
     iframeParent.append(iframe);
 
-    return body.html();
+    return body.innerHTML;
   }
 }

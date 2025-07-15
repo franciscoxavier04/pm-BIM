@@ -82,7 +82,7 @@ function newSegment(vp:TimelineViewParameters,
 export class WorkPackageTableTimelineRelations extends UntilDestroyedMixin implements OnInit {
   @InjectField() querySpace:IsolatedQuerySpace;
 
-  private container:JQuery;
+  private container:HTMLElement;
 
   private workPackagesWithRelations:{ [workPackageId:string]:State<RelationsStateValue> } = {};
 
@@ -96,8 +96,8 @@ export class WorkPackageTableTimelineRelations extends UntilDestroyedMixin imple
   }
 
   ngOnInit() {
-    const $element = jQuery(this.elementRef.nativeElement);
-    this.container = $element.find('.wp-table-timeline--relations');
+    const element = this.elementRef.nativeElement;
+    this.container = element.querySelector('.wp-table-timeline--relations');
     this.workPackageTimelineTableController
       .onRefreshRequested('relations', (vp:TimelineViewParameters) => this.refreshView());
 
@@ -186,12 +186,12 @@ export class WorkPackageTableTimelineRelations extends UntilDestroyedMixin imple
 
   private removeRelationElementsForWorkPackage(workPackageId:string) {
     const className = workPackagePrefix(workPackageId);
-    const found = this.container.find(`.${className}`);
-    found.remove();
+    const found = this.container.querySelectorAll(`.${className}`);
+    found.forEach((elem) => elem.remove());
   }
 
   private removeAllVisibleElements() {
-    this.container.find(`.${timelineGlobalElementCssClassname}`).remove();
+    this.container.querySelectorAll(`.${timelineGlobalElementCssClassname}`).forEach((elem) => elem.remove());
   }
 
   private renderElements() {

@@ -26,7 +26,7 @@ export default class MainMenuController extends Controller {
   descend(event:MouseEvent) {
     const target = event.target as HTMLElement;
     this.sidebarTarget.classList.add('-hidden');
-    const targetLi = target.closest('li') as HTMLElement;
+    const targetLi = target.closest('li')!;
 
     this.toggleMenuState(this.rootTarget);
     this.toggleMenuState(targetLi);
@@ -41,7 +41,7 @@ export default class MainMenuController extends Controller {
   ascend(event:MouseEvent) {
     event.preventDefault();
     const target = event.target as HTMLElement;
-    const parent = target.closest('li') as HTMLElement;
+    const parent = target.closest('li')!;
 
     this.toggleMenuState(parent);
     this.toggleMenuState(this.rootTarget);

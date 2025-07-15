@@ -68,6 +68,7 @@ import { onClickOrEnter } from '../wp-fast-table/handlers/click-or-enter-handler
 import {
   HalResourceEditingService,
 } from 'core-app/shared/components/fields/edit/services/hal-resource-editing.service';
+import { delegateEvent } from 'core-app/shared/helpers/delegate-event';
 
 @Component({
   selector: '[wpInlineCreate]',
@@ -100,7 +101,7 @@ export class WorkPackageInlineCreateComponent extends UntilDestroyedMixin implem
 
   private editingSubscription:Subscription|undefined;
 
-  private $element:JQuery;
+  private element:HTMLElement;
 
   get isActive():boolean {
     return this.mode !== 'inactive';
@@ -122,7 +123,7 @@ export class WorkPackageInlineCreateComponent extends UntilDestroyedMixin implem
   }
 
   ngOnInit() {
-    this.$element = jQuery(this.elementRef.nativeElement);
+    this.element = this.elementRef.nativeElement;
   }
 
   ngAfterViewInit():void {
@@ -155,14 +156,16 @@ export class WorkPackageInlineCreateComponent extends UntilDestroyedMixin implem
    * which is dynamically inserted into the action row by the inline create renderer.
    */
   private registerCancelHandler() {
-    this.$element.on('click keydown', `.${inlineCreateCancelClassName}`, (evt:JQuery.TriggeredEvent) => {
+    const handler = (evt:MouseEvent|KeyboardEvent) => {
       onClickOrEnter(evt, () => {
         this.resetRow();
       });
 
       evt.stopImmediatePropagation();
       return false;
-    });
+    };
+    delegateEvent('click', `.${inlineCreateCancelClassName}`, handler, this.element);
+    delegateEvent('keydown', `.${inlineCreateCancelClassName}`, handler, this.element);
   }
 
   /**
@@ -271,9 +274,9 @@ export class WorkPackageInlineCreateComponent extends UntilDestroyedMixin implem
 
   private refreshRow() {
     const builder = new InlineCreateRowBuilder(this.injector, this.table);
-    const rowElement = this.$element.find(`.${inlineCreateRowClassName}`);
+    const rowElement = this.element.querySelector<HTMLTableRowElement>(`.${inlineCreateRowClassName}`);
 
-    if (rowElement.length && this.currentWorkPackage) {
+    if (rowElement && this.currentWorkPackage) {
       builder.refreshRow(this.currentWorkPackage, rowElement);
     }
   }
@@ -290,7 +293,7 @@ export class WorkPackageInlineCreateComponent extends UntilDestroyedMixin implem
     const form = this.table.editing.startEditing(wp, builder.classIdentifier(wp));
 
     const [row] = builder.buildNew(wp, form);
-    this.$element.append(row);
+    this.element.append(row);
 
     return form;
   }
@@ -312,7 +315,7 @@ export class WorkPackageInlineCreateComponent extends UntilDestroyedMixin implem
   public removeWorkPackageRow() {
     this.wpCreate.cancelCreation();
     this.currentWorkPackage = null;
-    this.$element.find('.wp-row-new').remove();
+    this.element.querySelector('.wp-row-new')?.remove();
     if (this.editingSubscription) {
       this.editingSubscription.unsubscribe();
     }

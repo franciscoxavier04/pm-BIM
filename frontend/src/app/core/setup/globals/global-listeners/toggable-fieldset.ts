@@ -26,74 +26,71 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-function createFieldsetToggleStateLabel(legend:JQuery, text:string) {
+import { delegateEvents } from "core-app/shared/helpers/delegate-event";
+import { hideElement, toggleElement } from "core-app/shared/helpers/dom-helpers";
+import invariant from "tiny-invariant";
+
+function createFieldsetToggleStateLabel(legend:HTMLLegendElement, text:string) {
   const labelClass = 'fieldset-toggle-state-label';
-  let toggleLabel = legend.find(`a span.${labelClass}`);
-  const legendLink = legend.children('a');
+  let toggleLabel = legend.querySelector<HTMLSpanElement>(`a span.${labelClass}`);
 
-  if (toggleLabel.length === 0) {
-    toggleLabel = jQuery('<span />').addClass(labelClass)
-      .addClass('hidden-for-sighted');
+  if (!toggleLabel) {
+    toggleLabel = document.createElement('span')
+    toggleLabel.classList.add(labelClass);
+    toggleLabel.classList.add('hidden-for-sighted');
 
-    legendLink.append(toggleLabel);
+    legend.querySelector('a')?.append(toggleLabel);
   }
 
-  toggleLabel.text(` ${text}`);
+  toggleLabel.textContent = ` ${text}`;
 }
 
-function setFieldsetToggleState(fieldset:JQuery) {
-  const legend = fieldset.children('legend');
+function setFieldsetToggleState(fieldset:HTMLFieldSetElement) {
+  const legend = fieldset.querySelector('legend')!;
 
-  if (fieldset.hasClass('collapsed')) {
+  if (fieldset.classList.contains('collapsed')) {
     createFieldsetToggleStateLabel(legend, I18n.t('js.label_collapsed'));
   } else {
     createFieldsetToggleStateLabel(legend, I18n.t('js.label_expanded'));
   }
 }
 
-function getFieldset(el:HTMLElement) {
-  const element = jQuery(el);
+function getFieldset(element:HTMLElement):HTMLFieldSetElement {
+  const fieldset = element.closest('fieldset');
+  invariant(fieldset, 'Cannot derive fieldset from element!');
 
-  if (element.is('legend')) {
-    return jQuery(el).parent();
-  } if (element.is('fieldset')) {
-    return element;
-  }
-
-  throw new Error('Cannot derive fieldset from element!');
+  return fieldset;
 }
 
-function toggleFieldset(el:HTMLElement) {
-  const fieldset = getFieldset(el);
+function toggleFieldset(element:HTMLElement) {
+  const fieldset = getFieldset(element);
   // Mark the fieldset that the user has touched it at least once
-  fieldset.attr('data-touched', 'true');
-  const contentArea = fieldset.find('> div').not('.form--toolbar');
+  fieldset.dataset.touched = 'true';
+  fieldset.classList.toggle('collapsed');
 
-  fieldset.toggleClass('collapsed');
-  contentArea.slideToggle('fast');
-
+  const contentArea = fieldset.querySelector<HTMLElement>('> div:not(.form--toolbar')!;
+  toggleElement(contentArea); // TODO: jQuery Porting - add slide effect
   setFieldsetToggleState(fieldset);
 }
 
 export function setupToggableFieldsets() {
-  const fieldsets = jQuery('fieldset.form--fieldset.-collapsible');
+  const fieldsets = document.querySelectorAll<HTMLFieldSetElement>('fieldset.form--fieldset.-collapsible');
 
   // Toggle on click
-  fieldsets.on('click', '.form--fieldset-legend', function (evt) {
-    toggleFieldset(this);
-    evt.preventDefault();
-    evt.stopPropagation();
+  delegateEvents('click', '.form--fieldset-legend', (event) => {
+    const legend = event.target as HTMLLegendElement;
+    toggleFieldset(legend);
+    event.preventDefault();
+    event.stopPropagation();
     return false;
-  });
+  }, fieldsets);
 
   // Set initial state
   fieldsets
-    .each(function () {
-      const fieldset = getFieldset(this);
-
-      const contentArea = fieldset.find('> div');
-      if (fieldset.hasClass('collapsed')) {
-        contentArea.hide();
+    .forEach((fieldset) => {
+      const contentArea = fieldset.querySelector<HTMLElement>('> div')!;
+      if (fieldset.classList.contains('collapsed')) {
+        hideElement(contentArea);
       }
 
       setFieldsetToggleState(fieldset);

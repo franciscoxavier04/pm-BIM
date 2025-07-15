@@ -85,7 +85,7 @@ export class ZenModeButtonComponent extends AbstractWorkPackageButtonComponent {
 
   private deactivateZenMode():void {
     this.isActive = ZenModeButtonComponent.inZenMode = false;
-    jQuery('body').removeClass('zen-mode');
+    document.body.classList.remove('zen-mode');
     this.disabled = false;
     if (screenfull.enabled && screenfull.isFullscreen) {
       screenfull.exit();
@@ -95,7 +95,7 @@ export class ZenModeButtonComponent extends AbstractWorkPackageButtonComponent {
 
   private activateZenMode() {
     this.isActive = ZenModeButtonComponent.inZenMode = true;
-    jQuery('body').addClass('zen-mode');
+    document.body.classList.add('zen-mode');
     if (screenfull.enabled) {
       screenfull.request();
     }

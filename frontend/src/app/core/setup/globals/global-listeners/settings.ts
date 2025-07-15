@@ -1,41 +1,51 @@
+import { retrieveCkEditorInstance } from 'core-app/shared/helpers/ckeditor-helpers';
+import { hideElement, showElement, toggleElement } from 'core-app/shared/helpers/dom-helpers';
+import invariant from 'tiny-invariant';
+
 /**
  * Move from legacy app/assets/javascripts/application.js.erb
  *
  * This should not be loaded globally and ideally refactored into components
  */
 export function listenToSettingChanges() {
-  jQuery('#settings_session_ttl_enabled').on('change', function () {
-    jQuery('#settings_session_ttl_container').toggle(jQuery(this).is(':checked'));
-  }).trigger('change');
+  const ttlEnabled = document.querySelector<HTMLInputElement>('#settings_session_ttl_enabled');
+  ttlEnabled?.addEventListener('change', () => {
+    toggleElement(document.querySelector('#settings_session_ttl_container')!, ttlEnabled.matches(':checked'));
+  })
+  ttlEnabled?.dispatchEvent(new Event('change', { bubbles: true }));
 
   /** Sync SCM vendor select when enabled SCMs are changed */
-  jQuery('[name="settings[enabled_scm][]"]').change(function (this:HTMLInputElement) {
-    const wasDisabled = !this.checked;
-    const vendor = this.value;
-    const select = jQuery('#settings_repositories_automatic_managed_vendor');
-    const option = select.find(`option[value="${vendor}"]`);
+  const enabledScm = document.querySelector<HTMLInputElement>('[name="settings[enabled_scm][]"]');
+  enabledScm?.addEventListener('change', (event) => {
+    const checkbox = event.target as HTMLInputElement;
+    const wasDisabled = !checkbox.checked;
+    const vendor = checkbox.value;
+    const select = document.querySelector<HTMLSelectElement>('#settings_repositories_automatic_managed_vendor')!;
+    const option = select.querySelector<HTMLOptionElement>(`option[value="${vendor}"]`);
 
     // Skip non-manageable SCMs
-    if (option.length === 0) {
+    if (!option) {
       return;
     }
 
-    option.prop('disabled', wasDisabled);
-    if (wasDisabled && option.prop('selected')) {
-      select.val('');
+    option.disabled = wasDisabled;
+    if (wasDisabled && option.selected) {
+      select.value = '';
     }
   });
 
   /* Javascript for Settings::TextSettingComponent */
-  const langSelectSwitchData = function (select:any) {
-    const self = jQuery(select);
-    const id:string = self.attr('id') || '';
+  const langSelectSwitchData = function (select:HTMLSelectElement) {
+    const id = select.getAttribute('id') || '';
     const settingName = id.replace('lang-for-', '');
-    const newLang = self.val() as string;
-    const textAreaId = `#settings-${settingName}`;
-    const textArea = jQuery(textAreaId);
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */
-    const editor = jQuery(`opce-ckeditor-augmented-textarea[data-textarea-selector='"${textAreaId}"'`).data('editor');
+    const newLang = select.value;
+    const textAreaId = `settings-${settingName}`;
+    const textArea = document.getElementById(textAreaId);
+    invariant(textArea, `Expected textarea "${textAreaId}"`);
+    const ckEditor = document.querySelector<HTMLElement>(`opce-ckeditor-augmented-textarea[data-text-area-id='"${textAreaId}"'`);
+    invariant(ckEditor, `Expected ckEditor for augmented textarea "${textAreaId}"`);
+    const editor = retrieveCkEditorInstance(ckEditor);
+    invariant(editor, `Expected ckEditorInstance for augmented textarea "${textAreaId}"`);
 
     return {
       id, settingName, newLang, textArea, editor,
@@ -48,60 +58,65 @@ export function listenToSettingChanges() {
   //   * get the current value from the hidden field for that lang and set the editor text to that value.
   //   * Set the name of the textarea to reflect the current lang so that the value stored in the hidden field
   //     is overwritten.
-  jQuery('.lang-select-switch')
-    .focus(function () {
-      const data = langSelectSwitchData(this);
 
-      jQuery(`#${data.id}-${data.newLang}`).val(data.editor.getData());
-    })
-    .change(function () {
-      const data = langSelectSwitchData(this);
+  function langSelectSwitchFocusListener(this:HTMLSelectElement, _ev:Event) {
+      const { id, newLang, editor } = langSelectSwitchData(this);
+      const hiddenInput = document.querySelector<HTMLInputElement>(`#${id}-${newLang}`)!;
+      hiddenInput.value = editor.getData();
+  }
 
-      const storedValue = jQuery(`#${data.id}-${data.newLang}`).val();
+  function langSelectSwitchChangeListener(this:HTMLSelectElement, _ev:Event) {
+      const { id, settingName, newLang, textArea, editor } = langSelectSwitchData(this);
+      const hiddenInput = document.querySelector<HTMLInputElement>(`#${id}-${newLang}`)!;
+      editor.setData(hiddenInput.value);
+      textArea.setAttribute('name', `settings[${settingName}][${newLang}]`);
+  }
 
-      data.editor.setData(storedValue);
-      data.textArea.attr('name', `settings[${data.settingName}][${data.newLang}]`);
+  document.querySelectorAll<HTMLSelectElement>('.lang-select-switch')
+    .forEach((selectSwitch) => {
+      selectSwitch.addEventListener('focus', langSelectSwitchFocusListener);
+      selectSwitch.addEventListener('change', langSelectSwitchChangeListener);
     });
   /* end Javascript for Settings::TextSettingComponent */
 
   /** Toggle notification settings fields */
-  jQuery('#email_delivery_method_switch').on('change', function () {
-    const delivery_method = jQuery(this).val();
-    jQuery('.email_delivery_method_settings').hide();
-    jQuery(`#email_delivery_method_${delivery_method}`).show();
-  }).trigger('change');
+  const emailDeliveryMethodSwitch = document.querySelector<HTMLSelectElement>('#email_delivery_method_switch');
+  emailDeliveryMethodSwitch?.addEventListener('change', (event) => {
+    const delivery_method = (event.target as HTMLSelectElement).value;
+    document.querySelectorAll<HTMLElement>('.email_delivery_method_settings').forEach((elem) => hideElement(elem));
+    showElement(document.querySelector(`#email_delivery_method_${delivery_method}`)!);
+  })
+  emailDeliveryMethodSwitch?.dispatchEvent(new Event('change', { bubbles: true }));
 
-  jQuery('#settings_smtp_authentication').on('change', function () {
-    const isNone = jQuery(this).val() === 'none';
-    jQuery('#settings_smtp_user_name,#settings_smtp_password')
-      .closest('.form--field')
-      .toggle(!isNone);
+  document.querySelector<HTMLSelectElement>('#settings_smtp_authentication')?.addEventListener('change', (event) => {
+    const isNone = (event.target as HTMLSelectElement).value === 'none';
+    document.querySelectorAll('#settings_smtp_user_name,#settings_smtp_password')
+      .forEach((field) => toggleElement(field.closest('.form--field')!, !isNone));
   });
 
   /** Toggle repository checkout fieldsets required when option is disabled */
-  jQuery('.settings-repositories--checkout-toggle').change(function (this:HTMLInputElement) {
-    const wasChecked = this.checked;
-    const fieldset = jQuery(this).closest('fieldset');
-
-    fieldset
-      .find('input,select')
-      .filter(':not([type=checkbox])')
-      .filter(':not([type=hidden])')
-      .removeAttr('required') // Rails 4.0 still seems to use attribute
-      .prop('required', wasChecked);
+  document.querySelectorAll<HTMLInputElement>('.settings-repositories--checkout-toggle').forEach((toggle) => {
+    toggle.addEventListener('change', (event) => {
+      const wasChecked = (event.target as HTMLInputElement).checked;
+      const fieldset = toggle.closest('fieldset')!;
+      fieldset
+        .querySelectorAll<HTMLInputElement|HTMLSelectElement>('input,select:not([type=checkbox],[type=hidden])')
+        .forEach((field) => field.required = wasChecked);
+    })
   });
 
   /** Toggle highlighted attributes visibility depending on if the highlighting mode 'inline' was selected */
-  jQuery('.settings--highlighting-mode select').change(function () {
-    const highlightingMode = jQuery(this).val();
-    jQuery('.settings--highlighted-attributes').toggle(highlightingMode === 'inline');
+  document.querySelector<HTMLSelectElement>('.settings--highlighting-mode select')?.addEventListener('change', (event) => {
+    const highlightingMode = (event.target as HTMLSelectElement).value;
+    document.querySelectorAll<HTMLElement>('.settings--highlighted-attributes')
+      .forEach((elem) => toggleElement(elem, highlightingMode === 'inline'));
   });
 
-  jQuery('#tab-content-work_packages form').submit(() => {
-    const availableAttributes = jQuery(".settings--highlighted-attributes input[type='checkbox']");
-    const selectedAttributes = jQuery(".settings--highlighted-attributes input[type='checkbox']:checked");
+  document.querySelector<HTMLFormElement>('#tab-content-work_packages form')?.addEventListener('submit', () => {
+    const availableAttributes = document.querySelectorAll<HTMLInputElement>(".settings--highlighted-attributes input[type='checkbox']");
+    const selectedAttributes = document.querySelectorAll<HTMLInputElement>(".settings--highlighted-attributes input[type='checkbox']:checked");
     if (selectedAttributes.length === availableAttributes.length) {
-      availableAttributes.prop('checked', false);
+      availableAttributes.forEach((availableAttribute) => availableAttribute.checked = false);
     }
   });
 }

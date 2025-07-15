@@ -43,6 +43,7 @@ import { QueryColumn } from 'core-app/features/work-packages/components/wp-query
 import { WpTableConfigurationModalComponent } from 'core-app/features/work-packages/components/wp-table/configuration-modal/wp-table-configuration.modal';
 import { QUERY_SORT_BY_ASC, QUERY_SORT_BY_DESC } from 'core-app/features/hal/resources/query-sort-by-resource';
 import { ConfirmDialogService } from 'core-app/shared/components/modals/confirm-dialog/confirm-dialog.service';
+import { computePosition, flip, offset, shift } from '@floating-ui/dom';
 
 @Directive({
   selector: '[opColumnsContextMenu]',
@@ -72,7 +73,7 @@ export class OpColumnsContextMenu extends OpContextMenuTrigger {
     super(elementRef, opContextMenu);
   }
 
-  protected open(evt:JQuery.TriggeredEvent) {
+  protected open(evt:Event) {
     if (!this.table.configuration.columnMenuEnabled) {
       return;
     }
@@ -89,23 +90,24 @@ export class OpColumnsContextMenu extends OpContextMenuTrigger {
   }
 
   /**
-   * Positioning args for jquery-ui position.
+   * Compute position for Floating UI.
    *
    * @param {Event} openerEvent
    */
-  public positionArgs(evt:JQuery.TriggeredEvent) {
-    const additionalPositionArgs = {
-      of: this.$element.find('.generic-table--sort-header-outer'),
-    };
-
-    const position = super.positionArgs(evt);
-    _.assign(position, additionalPositionArgs);
-
-    return position;
+  public computePosition(floating:HTMLElement, openerEvent:Event) {
+    const reference = this.element.querySelector<HTMLElement>('.generic-table--sort-header-outer')!;
+    return computePosition(reference, floating, {
+      placement: 'bottom-start',
+      middleware: [
+        offset(0),
+        flip(),
+        shift({ padding: 5 }),
+      ],
+    });
   }
 
-  protected get afterFocusOn():JQuery {
-    return this.$element.find(`#${this.column.id}`);
+  protected get afterFocusOn() {
+    return this.element.querySelector<HTMLElement>(`#${this.column.id}`)!;
   }
 
   private buildItems() {
@@ -193,7 +195,7 @@ export class OpColumnsContextMenu extends OpContextMenuTrigger {
 
           setTimeout(() => {
             if (focusColumn) {
-              jQuery(`#${focusColumn.id}`).focus();
+              document.querySelector<HTMLElement>(`#${focusColumn.id}`)?.focus();
             }
           });
           return true;

@@ -175,6 +175,6 @@ export class GlobalSearchService {
   }
 
   public isAfterSearch():boolean {
-    return (jQuery('body.controller-search').length > 0);
+    return (document.querySelector('body.controller-search') !== null);
   }
 }

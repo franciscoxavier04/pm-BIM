@@ -139,7 +139,7 @@ export class WorkPackageSingleViewComponent extends UntilDestroyedMixin implemen
 
   public uiSelfRef:string;
 
-  $element:JQuery;
+  element:HTMLElement;
 
   projectStorages = new BehaviorSubject<IProjectStorage[]>([]);
 
@@ -165,7 +165,7 @@ export class WorkPackageSingleViewComponent extends UntilDestroyedMixin implemen
   }
 
   public ngOnInit():void {
-    this.$element = jQuery(this.elementRef.nativeElement as HTMLElement);
+    this.element = this.elementRef.nativeElement as HTMLElement;
 
     this.isNewResource = isNewResource(this.workPackage);
 
@@ -318,7 +318,7 @@ export class WorkPackageSingleViewComponent extends UntilDestroyedMixin implemen
   }
 
   showTwoColumnLayout():boolean {
-    return this.$element[0].getBoundingClientRect().width > 750;
+    return this.element.getBoundingClientRect().width > 750;
   }
 
   private rebuildGroupedFields(change:WorkPackageChangeset, attributeGroups:any) {
@@ -440,9 +440,9 @@ export class WorkPackageSingleViewComponent extends UntilDestroyedMixin implemen
   }
 
   private getAttributesGroupId(group:any):string {
-    const overflowingIdentifier = this.$element
-      .find(`[data-group-name=\'${group.name}\']`)
-      .data(overflowingContainerAttribute);
+    const overflowingIdentifier = this.element
+      .querySelector<HTMLElement>(`[data-group-name=\'${group.name}\']`)!
+      .dataset[overflowingContainerAttribute];
 
     if (overflowingIdentifier) {
       return overflowingIdentifier.replace('.__overflowing_', '');

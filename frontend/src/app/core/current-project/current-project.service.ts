@@ -79,11 +79,11 @@ export class CurrentProjectService {
    * Detect the current project from its meta tag.
    */
   public detect() {
-    const element:HTMLMetaElement|null = document.querySelector('meta[name=current_project]');
+    const element = document.querySelector<HTMLMetaElement>('meta[name=current_project]');
     if (element) {
-      this.currentId = element.dataset.projectId as string;
-      this.currentName = element.dataset.projectName as string;
-      this.currentIdentifier = element.dataset.projectIdentifier as string;
+      this.currentId = element.dataset.projectId!;
+      this.currentName = element.dataset.projectName!;
+      this.currentIdentifier = element.dataset.projectIdentifier!;
     } else {
       this.currentId = null;
       this.currentName = null;

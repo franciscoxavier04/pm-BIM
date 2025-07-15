@@ -49,7 +49,7 @@ import { WeekdayService } from 'core-app/core/days/weekday.service';
 export class WorkPackageTableTimelineGrid implements AfterViewInit {
   private activeZoomLevel:TimelineZoomLevel;
 
-  private gridContainer:JQuery;
+  private gridContainer:HTMLElement;
 
   constructor(
     private elementRef:ElementRef,
@@ -58,8 +58,8 @@ export class WorkPackageTableTimelineGrid implements AfterViewInit {
   ) {}
 
   ngAfterViewInit():void {
-    const $element = jQuery(this.elementRef.nativeElement);
-    this.gridContainer = $element.find('.wp-table-timeline--grid');
+    const element = this.elementRef.nativeElement;
+    this.gridContainer = element.querySelector('.wp-table-timeline--grid');
     this.wpTimeline.onRefreshRequested('grid', (vp:TimelineViewParameters) => this.refreshView(vp));
   }
 
@@ -68,7 +68,7 @@ export class WorkPackageTableTimelineGrid implements AfterViewInit {
   }
 
   private renderLabels(vp:TimelineViewParameters):void {
-    this.gridContainer.empty();
+    this.gridContainer.innerHTML = '';
 
     switch (vp.settings.zoomLevel) {
       case 'days':
@@ -169,7 +169,7 @@ export class WorkPackageTableTimelineGrid implements AfterViewInit {
       cell.classList.add(timelineElementCssClass, timelineGridElementCssClass);
       cell.style.left = calculatePositionValueForDayCount(vp, start.diff(startView, 'days').days);
       cell.style.width = calculatePositionValueForDayCount(vp, end.diff(start, 'days').days + 1);
-      this.gridContainer[0].appendChild(cell);
+      this.gridContainer.appendChild(cell);
       cellCallback(start, cell);
     }
     setTimeout(() => {
@@ -178,7 +178,7 @@ export class WorkPackageTableTimelineGrid implements AfterViewInit {
         cell.classList.add(timelineElementCssClass, timelineGridElementCssClass);
         cell.style.left = calculatePositionValueForDayCount(vp, start.diff(startView, 'days').days);
         cell.style.width = calculatePositionValueForDayCount(vp, end.diff(start, 'days').days + 1);
-        this.gridContainer[0].appendChild(cell);
+        this.gridContainer.appendChild(cell);
         cellCallback(start, cell);
       }
     }, 0);
