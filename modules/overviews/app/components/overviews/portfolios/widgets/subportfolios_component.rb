@@ -43,7 +43,7 @@ module Overviews
           @project = project
           @subportfolios = Project
                              .visible
-                             .where(type: 2)
+                             .portfolio
                              .where(parent: project.id)
         end
 
