@@ -60,6 +60,10 @@ module Overviews
 
           schemes[key.to_sym] || :secondary
         end
+
+        def rank_for(project)
+          project.public_send("custom_field_#{BmdsHackathon::References.rank_cf.id}").to_i
+        end
       end
     end
   end
