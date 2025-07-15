@@ -48,13 +48,11 @@ This is an example of new project attribute with a format *Text*.
 
 ![Create a new attribute form in OpenProject administration](open_project_system_guide_project_attributes_new_attribute.png)
 
-- **Name**: This is the name that will be visible in the [Project Overview](../../../user-guide/project-overview) page.
+- **Name**: This is the name that will be visible in the [Project Overview](../../../user-guide/project-overview) page, if the custom field is activated on that project.
 - **Section:** If there are sections, you can pick where this new project attribute should appear. [Learn about sections](#sections) for more information.
 - **Required for all projects**: Checking this makes this project attribute required for all projects. It cannot be deactivated at a project level.
-
 - **Admin-only**: If you enable this, the project attribute will only be visible to administrators. All other users will not see it, even if it is activated in a project.
-
-**Searchable**: Checking this makes this project attribute (and its value) available as a filter in project lists.
+- **Searchable**: Checking this makes this project attribute (and its value) available as a filter in project lists.
 
 ## Modify project attributes
 
