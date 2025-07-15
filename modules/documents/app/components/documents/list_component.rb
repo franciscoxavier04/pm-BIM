@@ -27,29 +27,18 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+#
+module Documents
+  class ListComponent < ApplicationComponent
+    include OpPrimer::ComponentHelpers
+    alias_method :documents, :model
 
-Rails.application.routes.draw do
-  resources :projects, only: [] do
-    resources :documents, only: %i[create new index]
-  end
+    options :project
 
-  resources :documents, except: %i[create new index] do
-    member do
-      get :edit_title
-      put :update_title
-      get :cancel_edit
-      get :delete_dialog
-    end
-  end
+    private
 
-  namespace :admin do
-    namespace :settings do
-      resources :document_categories, except: [:show] do
-        member do
-          put :move
-          get :reassign
-        end
-      end
+    def document_row_css_id(document)
+      helpers.dom_id document
     end
   end
 end

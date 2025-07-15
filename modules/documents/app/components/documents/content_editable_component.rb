@@ -27,29 +27,25 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+#
+module Documents
+  class ContentEditableComponent < ApplicationComponent
+    include OpTurbo::Streamable
+    include OpPrimer::ComponentHelpers
+    include OpPrimer::FormHelpers
+    include Redmine::I18n
 
-Rails.application.routes.draw do
-  resources :projects, only: [] do
-    resources :documents, only: %i[create new index]
-  end
+    alias_method :document, :model
 
-  resources :documents, except: %i[create new index] do
-    member do
-      get :edit_title
-      put :update_title
-      get :cancel_edit
-      get :delete_dialog
-    end
-  end
+    options :project
 
-  namespace :admin do
-    namespace :settings do
-      resources :document_categories, except: [:show] do
-        member do
-          put :move
-          get :reassign
-        end
-      end
+    private
+
+    def updated_at_time(document)
+      OpPrimer::RelativeTimeComponent.new(
+        datetime: in_user_zone(document.updated_at),
+        month: :long
+      ).render_in(view_context)
     end
   end
 end
