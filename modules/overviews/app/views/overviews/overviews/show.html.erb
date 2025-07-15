@@ -55,15 +55,17 @@
   end
 %>
 
-<%=
-  render(Primer::Alpha::Layout.new) do |content|
-    content.with_main do
-      render Overviews::Portfolios::ShowComponent.new(project: @project)
+<% if OpenProject::FeatureDecisions.portfolio_dashboard_active? %>
+  <%=
+    render(Primer::Alpha::Layout.new) do |content|
+      content.with_main do
+        render Overviews::Portfolios::ShowComponent.new(project: @project)
+      end
+      content.with_sidebar(col_placement: :end, row_placement: :end) do
+        render Overviews::Portfolios::SidePanelComponent.new(project: @project)
+      end
     end
-    content.with_sidebar(col_placement: :end, row_placement: :end) do
-      render Overviews::Portfolios::SidePanelComponent.new(project: @project)
-    end
-  end
-%>
-
-<!--<openproject-base></openproject-base>-->
+  %>
+<% else %>
+  <openproject-base></openproject-base>
+<% end %>
