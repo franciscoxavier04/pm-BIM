@@ -343,6 +343,18 @@ RSpec.describe WorkPackages::UpdateContract do
         it_behaves_like "contract is valid"
       end
 
+      context "when not changing the value but changing a different attribute while the project phase is inactive" do
+        before do
+          work_package.project_phase_definition = persisted_inactive_project_phase.definition
+          work_package.save
+          work_package.reload
+
+          work_package.subject = "A new subject"
+        end
+
+        it_behaves_like "contract is valid"
+      end
+
       context "when changing the value and assigning a project in which the phase is not active" do
         before do
           work_package.project_phase_definition = persisted_project_phase_definition
