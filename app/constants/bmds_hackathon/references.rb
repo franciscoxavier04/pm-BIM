@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,15 +27,21 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-class HackathonSeeder < CompositeSeeder
-  def data_seeder_classes
-    [
-      HackathonData::KpiSeeder,
-      HackathonData::ProblemSeeder
-    ]
-  end
 
-  def namespace
-    "HackathonData"
+module BmdsHackathon
+  module References
+    module_function
+
+    def kpi_type
+      @kpi_type ||= Type.find_by!(name: "KPI")
+    end
+
+    def kpi_target_cf
+      @kpi_target_cf ||= CustomField.find_by!(name: "Zielwert")
+    end
+
+    def kpi_current_cf
+      @kpi_current_cf ||= CustomField.find_by!(name: "Istwert")
+    end
   end
 end

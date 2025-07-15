@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# --copyright
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -28,31 +28,29 @@
 # See COPYRIGHT and LICENSE files for more details.
 # ++
 
-require_relative "../../lib_static/open_project/feature_decisions"
+module Overviews
+  module Portfolios
+    module Widgets
+      class KpiComponent < ApplicationComponent
+        include OpPrimer::ComponentHelpers
+        include ApplicationHelper
+        include PlaceholderUsersHelper
+        include AvatarHelper
 
-# Add feature flags here via e.g.
-#
-#   OpenProject::FeatureDecisions.add :some_flag
-#
-# If the feature to be flag-guarded stems from a module, add an initializer
-# to that module's engine:
-#
-#   initializer 'the_engine.feature_decisions' do
-#     OpenProject::FeatureDecisions.add :some_flag
-#   end
+        attr_reader :kpis
 
-OpenProject::FeatureDecisions.add :built_in_oauth_applications,
-                                  description: "Allows the display and use of built-in OAuth applications."
+        delegate :count, to: :kpis
 
-OpenProject::FeatureDecisions.add :calculated_value_project_attribute,
-                                  description: "Allows the use of calculated values as a project attribute."
+        def initialize(model = nil, project:, **)
+          super(model, **)
 
-OpenProject::FeatureDecisions.add :scim_api,
-                                  description: "Enables SCIM API.",
-                                  force_active: true
-
-OpenProject::FeatureDecisions.add :block_note_editor,
-                                  description: "Enables the block note editor for rich text fields where available."
-
-OpenProject::FeatureDecisions.add :portfolio_dashboard,
-                                  description: "Enables the dashboard for Portfolio management."
+          @project = project
+          @kpis = WorkPackage
+            .visible
+            .where(type: ::BmdsHackathon::References.kpi_type)
+            .where(project_id: @project.self_and_descendants.select(:id))
+        end
+      end
+    end
+  end
+end

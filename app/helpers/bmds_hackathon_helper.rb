@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,15 +27,16 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-class HackathonSeeder < CompositeSeeder
-  def data_seeder_classes
-    [
-      HackathonData::KpiSeeder,
-      HackathonData::ProblemSeeder
-    ]
-  end
 
-  def namespace
-    "HackathonData"
+module BmdsHackathonHelper
+  def kpi_percentage(work_package)
+    raise ArgumentError, "Work package must be of type KPI" unless work_package.type == BmdsHackathon::References.kpi_type
+
+    current = work_package.typed_custom_value_for(BmdsHackathon::References.kpi_current_cf)
+    target = work_package.typed_custom_value_for(BmdsHackathon::References.kpi_target_cf)
+
+    return 0 if target.nil? || target.zero?
+
+    current.to_f / target
   end
 end

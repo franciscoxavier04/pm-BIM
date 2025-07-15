@@ -1,0 +1,19 @@
+<%=
+  grid_layout("op-portfolio-overview", tag: :div, align_items: :flex_start) do |grid|
+    grid.with_area(:kpi, tag: :div) do
+      render(Overviews::Portfolios::Widgets::KpiComponent.new(project: @project))
+    end
+
+    grid.with_area(:subportfolio, tag: :div) do
+      render(Overviews::Portfolios::Widgets::SubportfoliosComponent.new(project: @project))
+    end
+
+    grid.with_area(:budget, tag: :div) do
+      render(Overviews::Portfolios::Widgets::BudgetsComponent.new(project: @project))
+    end
+
+    grid.with_area(:problems, tag: :div) do
+      render(Overviews::Portfolios::Widgets::ProblemsComponent.new(project: @project))
+    end
+  end
+%>

@@ -1,4 +1,6 @@
-#-- copyright
+# frozen_string_literal: true
+
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -24,16 +26,15 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
-class HackathonSeeder < CompositeSeeder
-  def data_seeder_classes
-    [
-      HackathonData::KpiSeeder,
-      HackathonData::ProblemSeeder
-    ]
-  end
+# ++
 
-  def namespace
-    "HackathonData"
+module Overviews
+  module Portfolios
+    module Widgets
+      class BudgetsComponent < ApplicationComponent
+        include OpPrimer::ComponentHelpers
+        include ApplicationHelper
+      end
+    end
   end
 end

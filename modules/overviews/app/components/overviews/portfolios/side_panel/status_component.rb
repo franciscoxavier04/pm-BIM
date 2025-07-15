@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,15 +27,30 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-class HackathonSeeder < CompositeSeeder
-  def data_seeder_classes
-    [
-      HackathonData::KpiSeeder,
-      HackathonData::ProblemSeeder
-    ]
-  end
 
-  def namespace
-    "HackathonData"
+module Overviews
+  module Portfolios
+    class SidePanel::StatusComponent < ApplicationComponent
+      include ApplicationHelper
+      include OpTurbo::Streamable
+      include OpPrimer::ComponentHelpers
+
+      def initialize(project:, current_user: User.current)
+        super
+
+        @project = project
+        @current_user = current_user
+      end
+
+      private
+
+      def status_button
+        render(Projects::StatusButtonComponent.new(project: @project, user: @current_user))
+      end
+
+      def status_description
+        @project.status_explanation
+      end
+    end
   end
 end

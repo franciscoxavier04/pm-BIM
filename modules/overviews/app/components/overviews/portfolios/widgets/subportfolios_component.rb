@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# --copyright
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -28,31 +28,39 @@
 # See COPYRIGHT and LICENSE files for more details.
 # ++
 
-require_relative "../../lib_static/open_project/feature_decisions"
+module Overviews
+  module Portfolios
+    module Widgets
+      class SubportfoliosComponent < ApplicationComponent
+        include OpPrimer::ComponentHelpers
+        include ApplicationHelper
 
-# Add feature flags here via e.g.
-#
-#   OpenProject::FeatureDecisions.add :some_flag
-#
-# If the feature to be flag-guarded stems from a module, add an initializer
-# to that module's engine:
-#
-#   initializer 'the_engine.feature_decisions' do
-#     OpenProject::FeatureDecisions.add :some_flag
-#   end
+        attr_reader :subportfolios
 
-OpenProject::FeatureDecisions.add :built_in_oauth_applications,
-                                  description: "Allows the display and use of built-in OAuth applications."
+        def initialize(model = nil, project:, **)
+          super(model, **)
 
-OpenProject::FeatureDecisions.add :calculated_value_project_attribute,
-                                  description: "Allows the use of calculated values as a project attribute."
+          @project = project
+          @subportfolios = Project
+                             .visible
+                             .portfolio
+                             .where(parent: project.id)
+        end
 
-OpenProject::FeatureDecisions.add :scim_api,
-                                  description: "Enables SCIM API.",
-                                  force_active: true
+        def label_color_for(key)
+          schemes = {
+            on_track: :success,
+            at_risk: :danger,
+            not_set: :primary,
+            off_track: :severe,
+            not_started: :accent,
+            finished: :done,
+            discontinued: :warning
+          }
 
-OpenProject::FeatureDecisions.add :block_note_editor,
-                                  description: "Enables the block note editor for rich text fields where available."
-
-OpenProject::FeatureDecisions.add :portfolio_dashboard,
-                                  description: "Enables the dashboard for Portfolio management."
+          schemes[key.to_sym] || :secondary
+        end
+      end
+    end
+  end
+end
