@@ -81,6 +81,7 @@ ru:
     edit_project_folder:
       label: Изменить папку проекта
     open:
+      contact_admin: Please contact your administrator to resolve this error.
       remote_identity_error: Произошла непредвиденная ошибка при подключении к хранилищу.
     project_folder_mode:
       automatic: Автоматическое управление
@@ -128,7 +129,7 @@ ru:
               conflict: 'Пользователь %{user} не может быть добавлен в группу %{group} по следующей причине: %{reason}'
               failed_to_add: 'Пользователь %{user} не может быть добавлен в группу %{group} по следующей причине: %{reason}'
             create_folder:
-              conflict: '%{folder_name} уже существует в %{parent_location}.'
+              conflict: The folder %{folder_name} already exists on %{parent_location}.
               not_found: "%{parent_location} не найден."
             ensure_root_folder_permissions:
               not_found: "%{group_folder} не найдена. Пожалуйста, проверьте настройки групп в Nextcloud."
@@ -142,7 +143,7 @@ ru:
               conflict: 'Пользователь %{user} не может быть удален из группы %{group} по следующей причине: %{reason}'
               failed_to_remove: 'Пользователь %{user} не может быть удален из группы %{group} по следующей причине: %{reason}'
             rename_project_folder:
-              conflict: OpenProject could not rename the project folder to %{current_path} as a folder with the same name already exists
+              conflict: OpenProject не смог переименовать папку проекта в %{current_path}, поскольку папка с таким именем уже существует
               forbidden: Пользователь OpenProject не имеет доступа к папке %{current_path}.
               not_found: "%{current_path} не найден."
             set_folders_permissions:

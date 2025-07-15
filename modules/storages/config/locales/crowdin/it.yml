@@ -81,6 +81,7 @@ it:
     edit_project_folder:
       label: Modifica la cartella del progetto
     open:
+      contact_admin: Please contact your administrator to resolve this error.
       remote_identity_error: Si è verificato un errore durante la connessione all'archivio.
     project_folder_mode:
       automatic: Gestione automatica
@@ -128,7 +129,7 @@ it:
               conflict: 'Impossibile aggiungere l''utente %{user} al gruppo %{group} per il seguente motivo: %{reason}'
               failed_to_add: 'Impossibile aggiungere l''utente %{user} al gruppo %{group} per il seguente motivo: %{reason}'
             create_folder:
-              conflict: '%{folder_name} esiste già su %{parent_location}.'
+              conflict: The folder %{folder_name} already exists on %{parent_location}.
               not_found: "Impossibile trovare %{parent_location}."
             ensure_root_folder_permissions:
               not_found: "Impossibile trovare %{group_folder}. Verifica le impostazioni della cartella di gruppo Nextcloud."

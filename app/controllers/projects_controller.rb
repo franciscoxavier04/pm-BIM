@@ -185,6 +185,7 @@ class ProjectsController < ApplicationController
 
   def new_blank
     @new_project = @parent&.children&.build || Project.new
+    @new_project.type = params[:type] if params[:type].present?
 
     render layout: "no_menu"
   end
@@ -195,6 +196,8 @@ class ProjectsController < ApplicationController
       .new(user: current_user, source: @template, contract_options: { validate_model: false })
       .call(target_project_params: params.permit(:parent_id).to_h, attributes_only: true)
       .result
+
+    @new_project.type = params[:type] if params[:type].present?
 
     render layout: "no_menu"
   end

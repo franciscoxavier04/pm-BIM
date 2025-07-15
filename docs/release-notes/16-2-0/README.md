@@ -30,11 +30,13 @@ If you create a project **based on a template**, you will immediately be able to
 
 ![OpenProject screenshot: Create new project, with options to choose what to copy from a template](openproject-16-2-create-project.png)
 
-### Non-latin languages and emojis supported in PDF exports for work packages
+### Non-Latin languages and emojis supported in PDF exports for work packages
 
-PDF work package exports in OpenProject now support **non-latin characters and emojis**. This means that project information written in scripts such as Chinese, Arabic, Cyrillic, or accented characters — as well as any emojis you use in work packages, meetings, or descriptions — will display correctly in exported PDF files. This ensures that documents generated from OpenProject reflect your content accurately, no matter which language or symbols you use.
+PDF work package exports in OpenProject now support **non-Latin characters and emojis**. This means that project information written in scripts such as Chinese, Arabic, Cyrillic, or accented characters — as well as any emojis you use in work packages, meetings, or descriptions — will display correctly in exported PDF files. This ensures that documents generated from OpenProject reflect your content accurately, no matter which language or symbols you use.
 
-![PDF export extract from an OpenProject work package that contains emojis, symbols and non-latin characters](openproject-16-2-pdf-export.png)
+[Read more about work package PDF exports with OpenProject](../../user-guide/work-packages/exporting/)
+
+![PDF export extract from an OpenProject work package that contains emojis, symbols and non-Latin characters](openproject-16-2-pdf-export.png)
 
 Please note that the screenshot only displays some of the now supported characters.
 
@@ -48,9 +50,16 @@ The + Relation menu has been reorganized with a new two-level structure, making 
 
 When creating a new custom field, you now select the format — such as text, list, or date — right at the beginning, on the index page of custom fields and project attributes. This streamlines the creation process and avoids unnecessary steps, since each type opens directly in the appropriate form. This improvement is especially helpful for administrators who frequently set up new custom fields.
 
+[Read more about how to manage custom fields in OpenProject](../../system-admin-guide/custom-fields/).
+
+![OpenProject administration to add a new custom field: Dropdown lets you choose the type during the first step](openproject-16-2-custom-field-type.png)
+
 ### My time tracking: Collapse future days for week and work week views
 
 In the **My time tracking** module, the week and work week views now automatically collapse future and past days while keeping today expanded. This helps you focus on logging time for the current and past days without being distracted by empty future slots. If you view a past week, all days are expanded as before.
+
+> [!TIP]
+> Don't know the My time tracking module yet? We released it with [OpenProject 16.0.0](../../release-notes/16-0-0/). This module shows individual time entries in a calendar or list view, and is very helpful if you use start and end times for your time tracking. 
 
 ![OpenProject's My time tracking module in list view, only Today expanded](user-guide-my-time-tracking-module-list-view.png)
 
@@ -72,13 +81,15 @@ When you set a reminder for a work package, OpenProject now confirms this with a
 
 OpenProject 16.2 adds a **SCIM server API**, available as an Enterprise add-on in the Corporate plan. This allows Identity Providers (IdPs) such as Keycloak to keep user data in OpenProject synchronized automatically. Administrators can manage SCIM clients directly in OpenProject, configure authentication methods, and revoke tokens when needed. This makes it much easier to maintain consistent user records across your systems.
 
+![OpenProject administration with option to add a new SCIM client](openproject-16-2-scim-api.png)
+
 ### API support for internal comments
 
 The API has been extended to fully support **internal comments on work packages**. You can now check via the Capabilities API whether a user can create, view, or edit internal comments. This helps external apps and integrations, such as mobile clients, support internal team discussions securely.
 
 ### Commenting on work packages fires a webhook
 
-When a comment is added to a work package, it now triggers a webhook. This enables external systems to react in real time to comments in OpenProject, for example by updating dashboards or notifying integrated tools.
+When a comment is added to a work package, it now triggers a webhook. This enables external systems to react in real time to comments in OpenProject, for example by updating dashboards or notifying integrated tools. [See our system admin guide to learn more about webhooks for OpenProject](../../system-admin-guide/api-and-webhooks/#webhooks).
 
 <!--more-->
 

@@ -1162,7 +1162,7 @@ it:
         comments_sorting: "Visualizza le attività della macro-attività ordinate per"
         disable_keyboard_shortcuts: "Disabilita le scorciatoie da tastiera"
         disable_keyboard_shortcuts_caption_html: |-
-          Puoi scegliere di disabilitare le scorciatoie da tastiera <a href="%{href}">predefinite</a> se usi un lettore di schermo o vuoi evitare accidentalmente di innescare un'azione con una scorciatoia.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Banner aziendali nascosti"
         impaired: "Modalità di accesso facilitato"
         auto_hide_popups: "Nascondi automaticamente i banner di successo"

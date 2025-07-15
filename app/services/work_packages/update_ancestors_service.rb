@@ -126,10 +126,9 @@ class WorkPackages::UpdateAncestorsService < BaseServices::BaseCallable
   def compute_derived_done_ratio(work_package, loader)
     return if no_children?(work_package, loader)
 
-    case Setting.total_percent_complete_mode
-    when "work_weighted_average"
+    if WorkPackage.work_weighted_average_mode?
       calculate_work_weighted_average_percent_complete(work_package)
-    when "simple_average"
+    elsif WorkPackage.simple_average_mode?
       calculate_simple_average_percent_complete(work_package, loader)
     end
   end

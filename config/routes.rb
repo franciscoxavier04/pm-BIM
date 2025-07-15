@@ -422,6 +422,10 @@ Rails.application.routes.draw do
       resource :menu, only: %[show]
     end
 
+    resource :portfolio_management do
+      resource :menu, only: %i[show], controller: "portfolio_managements/menus"
+    end
+
     resource :repository, controller: "repositories", except: [:new] do
       # Destroy uses a get request to prompt the user before the actual DELETE request
       get :destroy_info
