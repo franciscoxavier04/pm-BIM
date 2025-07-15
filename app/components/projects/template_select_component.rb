@@ -34,7 +34,7 @@ module Projects
     include OpPrimer::ComponentHelpers
     include OpTurbo::Streamable
 
-    options :template, :parent
+    options :template, :parent, :project_type
 
     private
 
