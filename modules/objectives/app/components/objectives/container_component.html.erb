@@ -36,16 +36,6 @@ See COPYRIGHT and LICENSE files for more details.
           render(Primer::OpenProject::BorderBox::CollapsibleHeader.new(box:)) do |header|
             header.with_count(count: key_results.count)
             header.with_title do
-              # render(Primer::OpenProject::FlexLayout.new(justify_content: :space_between, align_items: :center)) do |flex|
-              #   flex.with_column(flex_layout: true) do |wp_flex|
-              #     wp_flex.with_row do
-              #       render(WorkPackages::InfoLineComponent.new(work_package: obj))
-              #     end
-              #     wp_flex.with_row do
-              #       render(Primer::Beta::Text.new(font_weight: :bold)) { obj.subject }
-              #     end
-              #   end
-              # end
               concat(
                 render(
                   Primer::Beta::Link.new(
@@ -57,7 +47,6 @@ See COPYRIGHT and LICENSE files for more details.
                 ) { "Ziel ##{obj.id}" }
               )
               concat render(Primer::Beta::Text.new) { obj.subject }
-              # TODO parent subject + more details?
             end
           end
         end

@@ -49,16 +49,16 @@
       )
     end
 
-    # subheader.with_action_button(
-    #   scheme: :primary,
-    #   leading_icon: :plus,
-    #   label: "Risiko",
-    #   tag: :a,
-    #   data: { turbo_stream: true },
-    #   href: new_project_work_packages_dialog_path(@project, type_id: BmdsHackathon::References.risk_type.id)
-    # ) do
-    #   "Risiko"
-    # end
+    subheader.with_action_button(
+      scheme: :primary,
+      leading_icon: :plus,
+      label: "Ziel",
+      tag: :a,
+      data: { turbo_stream: true },
+      href: new_project_work_packages_dialog_path(@project, type_id: BmdsHackathon::Objectives.objective_type)
+    ) do
+      "Ziel"
+    end
   end
 %>
 
