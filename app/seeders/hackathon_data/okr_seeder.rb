@@ -28,25 +28,32 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 module HackathonData
-  class KpiSeeder < Seeder
+  class OkrSeeder < Seeder
     def seed_data!
-      Rails.logger.debug "*** Seeding KPI work package type"
+      Rails.logger.debug "*** Seeding Objective and Key result work package types"
 
-      type = Type.find_or_create_by!(name: "KPI")
-      kpi_ziel = WorkPackageCustomField.find_or_create_by!(name: "Zielwert", field_format: "int", is_for_all: true)
-      kpi_ist = WorkPackageCustomField.find_or_create_by!(name: "Istwert", field_format: "int", is_for_all: true)
+      # Create the work package types
+      Type.find_or_create_by!(name: "Objective")
+      key_result_type = Type.find_or_create_by!(name: "Key Result")
 
-      kpi_group = [
-        ["KPI", [kpi_ziel.attribute_name, kpi_ist.attribute_name]]
+      # Create custom fields
+      ziel_field = WorkPackageCustomField.find_or_create_by!(name: "Zielwert", field_format: "int", is_for_all: true)
+      ist_field = WorkPackageCustomField.find_or_create_by!(name: "Istwert", field_format: "int", is_for_all: true)
+
+      return if key_result_type.custom_fields.include?(ziel_field)
+
+      # Define the attribute group for both types
+      custom_fields_group = [
+        ["Metriken", [ziel_field.attribute_name, ist_field.attribute_name]]
       ]
 
-      type.update!(
-        attribute_groups: kpi_group + type.default_attribute_groups
+      key_result_type.update!(
+        attribute_groups: custom_fields_group + key_result_type.default_attribute_groups
       )
     end
 
     def applicable?
-      WorkPackageCustomField.where(name: %w[Zielwert Istwert]).empty?
+      true
     end
   end
 end
