@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,17 +27,23 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-class HackathonSeeder < CompositeSeeder
-  def data_seeder_classes
-    [
-      HackathonData::KpiSeeder,
-      HackathonData::ProblemSeeder,
-      HackathonData::RankSeeder,
-      HackathonData::RiskSeeder
-    ]
-  end
 
-  def namespace
-    "HackathonData"
+module HackathonData
+  class RankSeeder < Seeder
+    def seed_data!
+      Rails.logger.debug "*** Seeding Rank (Rang) project attribute"
+
+      ProjectCustomField.find_or_create_by!(
+        name: "Rang",
+        field_format: "int"
+      ) do |cf|
+        cf.project_custom_field_section = ProjectCustomFieldSection.find_or_create_by!(name: "Rang")
+        cf.is_required = true
+      end
+    end
+
+    def applicable?
+      ProjectCustomField.where(name: "Rang", field_format: "int").none?
+    end
   end
 end
