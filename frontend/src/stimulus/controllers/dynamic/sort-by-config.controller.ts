@@ -39,7 +39,7 @@ export default class SortByConfigController extends Controller {
   ];
 
   // These fields can only be selected in isolation. When this field is selected, no other option is allowed to be selected
-  static onlySelectableInIsolation = ['lft'];
+  static onlySelectableInIsolation:string[] = [];
 
   // For some fields we must enforce a fixed direction, those can be listed here
   static fixedDirections:Map<string, string> = new Map([
