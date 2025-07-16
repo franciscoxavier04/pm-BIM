@@ -124,12 +124,14 @@ class Budget < ApplicationRecord
 
   def allocated_to_children
     # TODO: Efficient with query
-    child_budget_relations.subtract.includes(:child_budget).sum { |rel| rel.child_budget.budget }
+    @allocated_to_children ||= child_budget_relations.subtract.includes(:child_budget).sum { |rel| rel.child_budget.budget }
   end
 
   def spent_with_children
     # TODO: Efficient with query
-    spent + child_budget_relations.subtract.includes(:child_budget).sum { |rel| rel.child_budget.spent_with_children }
+    @spent_with_children ||= spent + child_budget_relations.subtract.includes(:child_budget).sum do |rel|
+      rel.child_budget.spent_with_children
+    end
   end
 
   def type_label
@@ -144,7 +146,9 @@ class Budget < ApplicationRecord
   def budget_ratio
     return 0.0 if budget.nil? || budget == 0.0
 
-    ((spent / budget) * 100).round
+    gone = spent + allocated_to_children
+
+    ((gone / budget) * 100).round
   end
 
   def css_classes

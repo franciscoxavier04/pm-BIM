@@ -70,6 +70,7 @@ module Budgets
         select Queries::Projects::Selects::BudgetSpent
         select Queries::Projects::Selects::BudgetSpentRatio
         select Queries::Projects::Selects::BudgetAvailable
+        select Queries::Projects::Selects::BudgetAllocated
       end
     end
   end
