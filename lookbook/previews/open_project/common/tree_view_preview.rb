@@ -28,7 +28,7 @@ module OpenProject
 
             sub_tree.with_sub_tree(label: "OpenProject GmbH",
                                    expanded: expanded,
-                                   elect_variant: select_variant,
+                                   select_variant: select_variant,
                                    select_strategy: select_strategy) do |sub_tree2|
               sub_tree2.with_leaf(label: "HR", select_variant: select_variant)
               sub_tree2.with_leaf(label: "Development", current: true, select_variant: select_variant)

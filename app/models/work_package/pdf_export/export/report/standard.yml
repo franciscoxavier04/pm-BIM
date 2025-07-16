@@ -217,10 +217,16 @@ work_package:
       header:
         size: 9
         styles: [ "bold" ]
+        border_width: 0.25
+        border_color: '000000'
+        no_border: true
       cell:
         size: 8
-        border_width: 0.25
         padding: 5
+        border_width: 0.25
+        border_color: '000000'
+        no_border: true
+        valign: middle
     alerts:
       NOTE:
         border_color: '0969da'

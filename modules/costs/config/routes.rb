@@ -101,5 +101,10 @@ Rails.application.routes.draw do
              only: %i[show update],
              controller: "costs_settings",
              as: "costs_settings"
+
+    resource :time,
+             only: %i[show update],
+             controller: "time_settings",
+             as: "time_settings"
   end
 end

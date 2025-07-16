@@ -252,7 +252,7 @@ RSpec.describe Storages::OneDriveManagedFolderCreateService, :webmock do
 
           expect { result = service.call }.not_to change(project_storage, :project_folder_id)
 
-          expect(result).to be_success
+          expect(result).to be_failure
           expect(result.errors[:create_folder])
             .to match_array(I18n.t("#{error_key_prefix}.attributes.create_folder.conflict",
                                    folder_name: project_storage.managed_project_folder_path, parent_location: "/"))
@@ -355,7 +355,7 @@ RSpec.describe Storages::OneDriveManagedFolderCreateService, :webmock do
                    .value!
     Storages::Peripherals::Registry.resolve("one_drive.commands.set_permissions")
                                    .call(storage:, auth_strategy:, input_data:)
-                                   .on_failure { p _1.inspect }
+                                   .on_failure { p it.inspect }
   end
 
   def delete_created_folders

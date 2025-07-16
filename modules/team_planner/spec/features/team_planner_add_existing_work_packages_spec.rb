@@ -70,6 +70,8 @@ RSpec.describe "Team planner add existing work packages",
 
   let(:add_existing_pane) { Components::AddExistingPane.new }
   let(:filters) { Components::WorkPackages::Filters.new }
+  let(:this_tuesday) { start_of_week.next_occurring(:tuesday) }
+  let(:this_thursday) { start_of_week.next_occurring(:thursday) }
 
   context "with full permissions", with_ee: %i[team_planner_view] do
     before do
@@ -138,14 +140,14 @@ RSpec.describe "Team planner add existing work packages",
       add_existing_pane.expect_result second_wp
 
       # Drag it to the team planner...
-      add_existing_pane.drag_wp_by_pixel second_wp, 800, 0
+      add_existing_pane.drag_wp_to_date(second_wp, this_tuesday)
 
       team_planner.expect_and_dismiss_toaster(message: "Successful update.")
 
       # ... and thus update its attributes. Thereby the duration is maintained
       expect(second_wp.reload).to have_attributes(
-        start_date: start_of_week.next_occurring(:tuesday),
-        due_date: start_of_week.next_occurring(:thursday),
+        start_date: this_tuesday,
+        due_date: this_thursday,
         assigned_to_id: user.id
       )
 
@@ -154,14 +156,14 @@ RSpec.describe "Team planner add existing work packages",
       add_existing_pane.expect_result third_wp
 
       # Drag it to the team planner...
-      add_existing_pane.drag_wp_by_pixel third_wp, 800, 100
+      add_existing_pane.drag_wp_to_date(third_wp, this_tuesday)
 
       team_planner.expect_and_dismiss_toaster(message: "Successful update.")
 
       # ... and thus update its attributes. Since no dates were set before, start and end date are set to the same day
       expect(third_wp.reload).to have_attributes(
-        start_date: start_of_week.next_occurring(:tuesday),
-        due_date: start_of_week.next_occurring(:tuesday),
+        start_date: this_tuesday,
+        due_date: this_tuesday,
         assigned_to_id: user.id
       )
 
@@ -182,15 +184,15 @@ RSpec.describe "Team planner add existing work packages",
         add_existing_pane.expect_result third_wp
 
         # Drag it to the team planner...
-        add_existing_pane.drag_wp_by_pixel third_wp, 800, 0
+        add_existing_pane.drag_wp_to_date third_wp, this_tuesday
         team_planner.expect_and_dismiss_toaster(message: "Successful update.")
 
         # ... and thus update its attributes. Thereby the duration is maintained
         # and the due date is set to 15 days from the start date (11 days of
         # duration + 2x2 non-working days for the weekends)
         expect(third_wp.reload).to have_attributes(
-          start_date: start_of_week.next_occurring(:tuesday),
-          due_date: start_of_week.next_occurring(:tuesday) + 14.days,
+          start_date: this_tuesday,
+          due_date: this_tuesday + 14.days,
           assigned_to_id: user.id
         )
       end

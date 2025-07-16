@@ -138,16 +138,22 @@ Rails.application.routes.draw do
   get "/roles/workflow/:id/:role_id/:type_id" => "roles#workflow"
 
   resources :types do
+    resource :form_configuration, only: %i[edit update], controller: "work_package_types/form_configuration_tab"
+    resource :projects, controller: "work_package_types/projects_tab", only: %i[update edit] do
+      collection do
+        post :enable_all, to: "work_package_types/projects_tab#enable_all_projects"
+      end
+    end
+    resource :settings, controller: "work_package_types/settings_tab", only: %i[update edit]
+    resource :subject_configuration, controller: "work_package_types/subject_configuration_tab", only: %i[update edit]
+
     member do
       get "edit/:tab" => "types#edit", as: "edit_tab"
       match "update/:tab" => "types#update", as: "update_tab", via: %i[post patch]
-      put :subject_configuration,
-          controller: "work_packages/types/subject_configuration_tab",
-          action: "update_subject_configuration"
     end
 
     resources :pdf_export_template, only: %i[],
-                                    controller: "work_packages/types/pdf_export_template",
+                                    controller: "work_package_types/pdf_export_template",
                                     path: "pdf_export_template" do
       member do
         post :toggle
@@ -255,7 +261,7 @@ Rails.application.routes.draw do
     resource :menu, only: %i[show]
   end
 
-  resources :projects, except: %i[show edit create update] do
+  resources :projects, except: %i[show edit update] do
     scope module: "projects" do
       namespace "settings" do
         resource :general, only: %i[show update], controller: "general" do
@@ -305,7 +311,8 @@ Rails.application.routes.draw do
     member do
       get "settings", to: redirect("projects/%{id}/settings/general/")
 
-      get :copy
+      get :copy, to: "projects#copy_form"
+      post :copy
 
       patch :types
 
@@ -476,11 +483,24 @@ Rails.application.routes.draw do
 
   scope "admin" do
     resource :announcements, only: %i[edit update]
+
+    get "/enterprise", to: redirect("#{rails_relative_url_root}/admin/enterprise_tokens")
+
     constraints(Constraints::Enterprise) do
-      resource :enterprise, only: %i[show create destroy]
-      scope controller: "enterprises" do
-        post "enterprise/save_trial_key" => "enterprises#save_trial_key"
-        delete "enterprise/delete_trial_key" => "enterprises#delete_trial_key"
+      resources :enterprise_tokens, only: %i[index new create destroy] do
+        member do
+          get :destroy_dialog
+        end
+
+        collection do
+          post :save_trial_key
+          delete :delete_trial_key
+        end
+      end
+
+      resource :enterprise_trial, only: %i[show create destroy] do
+        get :trial_dialog
+        post :request_resend, on: :collection
       end
     end
 
@@ -489,7 +509,6 @@ Rails.application.routes.draw do
     delete "design/export_cover" => "custom_styles#export_cover_delete", as: "custom_style_export_cover_delete"
     delete "design/favicon" => "custom_styles#favicon_delete", as: "custom_style_favicon_delete"
     delete "design/touch_icon" => "custom_styles#touch_icon_delete", as: "custom_style_touch_icon_delete"
-    get "design/upsell" => "custom_styles#upsell", as: "custom_style_upsell"
     post "design/colors" => "custom_styles#update_colors", as: "update_design_colors"
     post "design/themes" => "custom_styles#update_themes", as: "update_design_themes"
     post "design/export_cover_text_color" => "custom_styles#update_export_cover_text_color",
@@ -569,8 +588,7 @@ Rails.application.routes.draw do
       resource :projects, controller: "/admin/settings/projects_settings", only: %i[show update]
       resource :new_project, controller: "/admin/settings/new_project_settings", only: %i[show update]
       resources :project_phase_definitions,
-                path: "project_life_cycle",
-                controller: "/admin/settings/project_life_cycle_definitions",
+                controller: "/admin/settings/project_phase_definitions",
                 except: :show do
         member do
           patch :move
@@ -616,6 +634,18 @@ Rails.application.routes.draw do
     resources :quarantined_attachments,
               controller: "/admin/attachments/quarantined_attachments",
               only: %i[index destroy]
+
+    resources :scim_clients, only: %i[index edit new create update destroy] do
+      member do
+        get :deletion_dialog
+      end
+
+      resources :static_tokens, only: %i[create destroy], controller: "/admin/scim_client_static_tokens" do
+        member do
+          get :deletion_dialog
+        end
+      end
+    end
 
     resource :backups, controller: "/admin/backups", only: %i[show] do
       collection do
@@ -826,6 +856,7 @@ Rails.application.routes.draw do
 
     get "/my/account", action: "account"
     get "/my/settings", action: "settings"
+    get "/my/interface", action: "interface"
     get "/my/notifications", action: "notifications"
     get "/my/reminders", action: "reminders"
 
@@ -889,7 +920,26 @@ Rails.application.routes.draw do
     get "ensure_connection", controller: "oauth_clients", action: :ensure_connection, as: "oauth_clients_ensure_connection"
   end
 
+  namespace :scim_v2 do
+    mount Scimitar::Engine, at: "/"
+
+    get    "Users",     to: "users#index"
+    get    "Users/:id", to: "users#show"
+    post   "Users",     to: "users#create"
+    put    "Users/:id", to: "users#replace"
+    patch  "Users/:id", to: "users#update"
+    delete "Users/:id", to: "users#destroy"
+
+    get    "Groups",     to: "groups#index"
+    get    "Groups/:id", to: "groups#show"
+    post   "Groups",     to: "groups#create"
+    put    "Groups/:id", to: "groups#replace"
+    patch  "Groups/:id", to: "groups#update"
+    delete "Groups/:id", to: "groups#destroy"
+  end
+
   if OpenProject::Configuration.lookbook_enabled?
+    mount Primer::ViewComponents::Engine, at: "/"
     mount Lookbook::Engine, at: "/lookbook"
   end
 

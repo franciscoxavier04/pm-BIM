@@ -29,7 +29,7 @@
 #++
 
 class Projects::Settings::GeneralController < Projects::SettingsController
-  include OpTurbo::DialogStreamHelper
+  include OpTurbo::ComponentStream
 
   menu_item :settings_general
 

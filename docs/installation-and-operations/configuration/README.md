@@ -269,7 +269,6 @@ OPENPROJECT_SEED_DESIGN_HEADER__BG__COLOR="#1A67A3"
 OPENPROJECT_SEED_DESIGN_HEADER__ITEM__BG__HOVER__COLOR="#E5E5E5"
 OPENPROJECT_SEED_DESIGN_MAIN__MENU__BG__COLOR="#FFFFFF"
 OPENPROJECT_SEED_DESIGN_MAIN__MENU__BG__SELECTED__BACKGROUND="#1F883D"
-OPENPROJECT_SEED_DESIGN_MAIN__MENU__BG__HOVER__BACKGROUND="#E5E5E5"
 OPENPROJECT_SEED_DESIGN_EXPORT__COVER__TEXT__COLOR="#333333"
 ```
 
@@ -321,7 +320,7 @@ OPENPROJECT_SEED_DESIGN_EXPORT__COVER="..."
 ### Allowing public access
 
 By default, any request to the OpenProject application needs to be authenticated. If you want to enable public unauthenticated access like we do for community.openproject.org, you can set the `login_required` to `false`. If not provided through environment variables, this setting is also accessible in the administrative UI. Please see the [authentication settings guide](../../system-admin-guide/authentication/login-registration-settings/) for more details.
-å
+
 *default: true*
 
 To disable, set the configuration option:

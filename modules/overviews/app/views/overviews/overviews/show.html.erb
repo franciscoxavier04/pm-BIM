@@ -1,6 +1,6 @@
 <% content_for :header_tags do %>
   <meta name="custom_fields_sidebar_enabled" data-enabled="<%= @custom_fields_sidebar_enabled %>">
-  <meta name="life_cycles_sidebar_enabled" data-enabled="<%= @life_cycles_sidebar_enabled %>">
+  <meta name="life_cycle_sidebar_enabled" data-enabled="<%= @life_cycle_sidebar_enabled %>">
 <% end -%>
 
 <%=
@@ -8,7 +8,7 @@
     header.with_title(variant: :medium) { t("overviews.label") }
     header.with_breadcrumbs(
       [
-        { href: project_path(@project), text: @project.name },
+        { href: project_path(@project), text: @project.name, skip_for_mobile: true },
         t("overviews.label")
       ]
     )

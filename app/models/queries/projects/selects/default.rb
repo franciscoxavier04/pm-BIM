@@ -34,6 +34,6 @@ class Queries::Projects::Selects::Default < Queries::Selects::Base
   end
 
   def self.all_available
-    KEYS.map { new(_1) }
+    KEYS.map { new(it) }
   end
 end

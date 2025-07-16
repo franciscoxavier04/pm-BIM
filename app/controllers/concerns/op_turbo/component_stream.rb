@@ -42,6 +42,12 @@ module OpTurbo
 
     alias_method :respond_with_turbo_streams, :respond_to_with_turbo_streams
 
+    def respond_with_dialog(dialog_component, status: :ok, &format_block)
+      modify_via_turbo_stream(component: dialog_component, action: :dialog, status:)
+
+      respond_to_with_turbo_streams(&format_block)
+    end
+
     def update_via_turbo_stream(component:, status: :ok, method: nil)
       modify_via_turbo_stream(component:, action: :update, status:, method:)
     end
@@ -90,6 +96,8 @@ module OpTurbo
     end
 
     def render_flash_message_via_turbo_stream(message:, component: OpPrimer::FlashComponent, **)
+      return if message.blank?
+
       instance = component.new(**).with_content(message)
       turbo_streams << instance.render_as_turbo_stream(view_context:, action: :flash)
     end

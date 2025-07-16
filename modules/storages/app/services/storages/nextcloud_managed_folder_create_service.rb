@@ -111,7 +111,7 @@ module Storages
       info "Ensuring that automatically managed project folders exist and are correctly named."
       id_folder_map = remote_folders.to_h { |path, file| [file.id, path] }
 
-      @project_storages.includes(:project).map do |project_storage|
+      @project_storages.includes(:project).find_each do |project_storage|
         unless id_folder_map.key?(project_storage.project_folder_id)
           info "#{project_storage.managed_project_folder_path} does not exist. Creating..."
           next create_remote_folder(project_storage)
@@ -138,7 +138,7 @@ module Storages
         log_storage_error(service_result.errors, folder_id: file_id, folder_name: name)
 
         add_error(:rename_project_folder, service_result.errors,
-                  options: { current_path:, project_folder_name: name, project_folder_id: file_id }).fail!
+                  options: { current_path:, project_folder_name: name, project_folder_id: file_id })
       end
     end
 
@@ -153,14 +153,14 @@ module Storages
         return add_error(:create_folder, service_result.errors, options: { folder_name:, parent_location: })
       end.result
 
+      audit_last_project_folder(project_storage, created_folder.id)
+    end
+
+    def audit_last_project_folder(project_storage, project_folder_id)
       last_project_folder = LastProjectFolder.find_or_initialize_by(
         project_storage_id: project_storage.id, mode: project_storage.project_folder_mode
       )
 
-      audit_last_project_folder(last_project_folder, created_folder.id)
-    end
-
-    def audit_last_project_folder(last_project_folder, project_folder_id)
       ApplicationRecord.transaction do
         success = last_project_folder.update(origin_folder_id: project_folder_id) &&
           last_project_folder.project_storage.update(project_folder_id:)
@@ -188,7 +188,7 @@ module Storages
 
       set_permissions.call(storage: @storage, auth_strategy:, input_data:).on_failure do |service_result|
         log_storage_error(service_result.errors, folder: "root", root_folder_id:)
-        add_error(:ensure_root_folder_permissions, service_result.errors, options: { group:, username: }).fail!
+        add_error(:ensure_root_folder_permissions, service_result.errors, options: { group:, username: })
       end
     end
 
@@ -202,7 +202,7 @@ module Storages
                                depth: 1)
                          .on_failure do |service_result|
         log_storage_error(service_result.errors, { folder: group_folder })
-        add_error(:remote_folders, service_result.errors, options: { group_folder:, username: @storage.username }).fail!
+        add_error(:remote_folders, service_result.errors, options: { group_folder:, username: @storage.username })
       end
     end
 

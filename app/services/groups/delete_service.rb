@@ -30,6 +30,7 @@ class Groups::DeleteService < BaseServices::Delete
   protected
 
   def destroy(group)
+    group.update_column(:status, Group.statuses[:locked])
     ::Principals::DeleteJob.perform_later(group)
     true
   end

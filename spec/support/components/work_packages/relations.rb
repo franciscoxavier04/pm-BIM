@@ -99,20 +99,26 @@ module Components
       end
 
       def select_relation_type(relation_type)
-        within_add_relation_action_menu do
+        within_add_relation_action_menu(relation_type:) do
           click_link_or_button relation_type
         end
       end
 
       def expect_new_relation_type(relation_type)
-        within_add_relation_action_menu do
+        within_add_relation_action_menu(relation_type:) do
           expect(page).to have_link(relation_type, wait: 1)
         end
       end
 
       def expect_no_new_relation_type(relation_type)
-        within_add_relation_action_menu do
+        within_add_relation_action_menu(relation_type:) do
           expect(page).to have_no_link(relation_type, wait: 1)
+        end
+      end
+
+      def expect_no_add_menu_sub_menu
+        within(add_relation_action_menu) do
+          expect(page).to have_no_link("add_relation_sub_menu", wait: 1)
         end
       end
 
@@ -122,13 +128,28 @@ module Components
         new_relation_button.click
       end
 
+      def open_relation_sub_menu
+        return if add_relation_sub_menu.visible?
+
+        new_relation_sub_menu_button.click
+      end
+
       def add_relation_action_menu
         action_menu_id = new_relation_button["aria-controls"]
         page.find(id: action_menu_id, visible: :all)
       end
 
+      def add_relation_sub_menu
+        action_menu_id = new_relation_sub_menu_button["aria-controls"]
+        page.find(id: action_menu_id, visible: :all)
+      end
+
       def new_relation_button
-        page.find_test_selector("add-relation-action-menu").find_button
+        page.find(id: "add-relation-action-menu-button")
+      end
+
+      def new_relation_sub_menu_button
+        page.find(id: "add-relation-sub-menu-button")
       end
 
       def remove_relation(relatable)
@@ -389,8 +410,9 @@ module Components
 
       private
 
-      def within_add_relation_action_menu(&)
+      def within_add_relation_action_menu(relation_type:, &)
         open_add_relation_action_menu
+        open_relation_sub_menu unless first_level_relation?(relation_type)
         within(add_relation_action_menu, &)
       end
 
@@ -410,6 +432,10 @@ module Components
             yield
           end
         end
+      end
+
+      def first_level_relation?(relation_type)
+        ["Related To", "Create new child", "Child", "Parent", "Predecessor (before)", "Successor (after)"].include?(relation_type)
       end
     end
   end

@@ -74,6 +74,10 @@ RSpec.describe CostQuery, :reporting_query_helper do
   minimal_query
 
   describe CostQuery::GroupBy do
+    it "does not fail when grouping by a non-existent column" do
+      expect { query.group_by(:non_existent_column).result }.not_to raise_error
+    end
+
     it "computes group_by on projects" do
       query.group_by :project_id
       expect(query.result.size).to eq(2)

@@ -162,15 +162,7 @@ RSpec.describe Meeting do
     end
 
     context "other timezone set" do
-      let!(:old_time_zone) { Time.zone }
-
-      before do
-        Time.zone = "EST"
-      end
-
-      after do
-        Time.zone = old_time_zone.name
-      end
+      current_user { build_stubbed(:user, preferences: { time_zone: "EST" }) }
 
       it_behaves_like "uses that zone", "EST"
     end

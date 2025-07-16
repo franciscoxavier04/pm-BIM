@@ -59,6 +59,8 @@ gem "will_paginate", "~> 4.0.0"
 
 gem "friendly_id", "~> 5.5.0"
 
+gem "scimitar", "~> 2.11"
+
 gem "acts_as_list", "~> 1.2.0"
 gem "acts_as_tree", "~> 2.9.0"
 gem "awesome_nested_set", "~> 3.8.0"
@@ -158,12 +160,12 @@ gem "structured_warnings", "~> 0.5.0"
 gem "airbrake", "~> 13.0.0", require: false
 
 gem "markly", "~> 0.13" # another markdown parser like commonmarker, but with AST support used in PDF export
-gem "md_to_pdf", git: "https://github.com/opf/md-to-pdf", ref: "67d14c6c7a13f918d158bde1a51ef1067a8cf724"
+gem "md_to_pdf", git: "https://github.com/opf/md-to-pdf", ref: "9961752e4d1e990ec1d4bf48436de9277838763f"
 gem "prawn", "~> 2.4"
 gem "ttfunk", "~> 1.7.0" # remove after https://github.com/prawnpdf/prawn/issues/1346 resolved.
 
 # prawn implicitly depends on matrix gem no longer in ruby core with 3.1
-gem "matrix", "~> 0.4.2"
+gem "matrix", "~> 0.4.3"
 
 gem "meta-tags", "~> 2.22.0"
 
@@ -201,7 +203,7 @@ gem "aws-sdk-core", "~> 3.107"
 # File upload via fog + screenshots on travis
 gem "aws-sdk-s3", "~> 1.91"
 
-gem "openproject-token", "~> 7.1.0"
+gem "openproject-token", "~> 7.3.0"
 
 gem "plaintext", "~> 0.3.2"
 
@@ -221,7 +223,7 @@ gem "dry-validation"
 gem "store_attribute", "~> 2.0"
 
 # Appsignal integration
-gem "appsignal", "~> 3.10.0", require: false
+gem "appsignal", "~> 4.2", require: false
 
 # Yabeda integration
 gem "yabeda-activerecord"
@@ -231,7 +233,7 @@ gem "yabeda-rails"
 
 gem "view_component"
 # Lookbook
-gem "lookbook", "~> 2.3.4"
+gem "lookbook", "~> 2.3.11"
 
 # Require factory_bot for usage with openproject plugins testing
 gem "factory_bot", "~> 6.5.0", require: false
@@ -390,6 +392,9 @@ gem "googleauth", require: false
 # Required for contracts
 gem "disposable", "~> 0.6.2"
 
+# Used for formula evaluation of calculated values
+gem "dentaku", "~> 3.5"
+
 platforms :mri, :mingw, :x64_mingw do
   group :postgres do
     gem "pg", "~> 1.5.0"
@@ -417,4 +422,4 @@ end
 
 gem "openproject-octicons", "~>19.25.0"
 gem "openproject-octicons_helper", "~>19.25.0"
-gem "openproject-primer_view_components", "~>0.68.0"
+gem "openproject-primer_view_components", "~>0.70.4"

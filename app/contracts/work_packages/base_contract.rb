@@ -85,10 +85,7 @@ module WorkPackages
               permission: :manage_subtasks
 
     attribute :project_phase_definition_id,
-              permission: :view_project_phases,
-              writable: ->(*) {
-                OpenProject::FeatureDecisions.stages_and_gates_active?
-              } do
+              permission: :view_project_phases do
       validate_phase_active_in_project
     end
     attribute_alias :project_phase_definition_id, :project_phase_id
@@ -562,7 +559,7 @@ module WorkPackages
     def validate_phase_active_in_project
       if model.project.present? &&
         model.project_phase_definition_id.present? &&
-        !(model.project_changed? && !model.project_phase_definition_changed?) &&
+        model.project_phase_definition_changed? &&
         !project_definition_assignable?
         errors.add :project_phase_id, :inclusion
       end

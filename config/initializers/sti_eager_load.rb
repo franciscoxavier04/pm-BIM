@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -27,5 +29,18 @@
 #++
 
 Rails.application.config.to_prepare do
-  Enumeration.register_subclass(IssuePriority)
+  # Load Enumeration descendants due to STI
+  IssuePriority
+
+  # Load Principal descendants due to STI
+  User
+  PlaceholderUser
+  Group
+
+  # Use User descendants due to STI
+  SystemUser
+  AnonymousUser
+  Users::InexistentUser
+  ServiceAccount
+  DeletedUser
 end

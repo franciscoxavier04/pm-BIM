@@ -31,7 +31,6 @@ class WorkPackagesController < ApplicationController
   include PaginationHelper
   include Layout
   include WorkPackagesControllerHelper
-  include OpTurbo::DialogStreamHelper
   include OpTurbo::ComponentStream
 
   accept_key_auth :index, :show

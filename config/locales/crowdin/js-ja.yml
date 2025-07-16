@@ -203,80 +203,17 @@ ja:
         edit_query: "クエリの編集"
         new_group: "新規グループ"
         reset_to_defaults: "デフォルトに戻す"
-      enterprise:
-        text_reprieve_days_left: "%{days} days until end of grace period"
-        text_expired: "expired"
-        trial:
-          confirmation: "メールアドレスの確認"
-          confirmation_info: >
-            %{date} に %{email} へメールを送信しました。 14日間のトライアルを開始するには、受信トレイを確認し、確認リンクをクリックしてください。
-          form:
-            general_consent: >
-              <a target="_blank" href="%{link_terms}">利用規約</a>と<a target="_blank" href="%{link_privacy}">プライバシー ポリシー</a>に同意します。
-            invalid_email: "無効なメールアドレス"
-            label_company: "会社名"
-            label_first_name: "名前"
-            label_last_name: "苗字"
-            label_domain: "ドメイン"
-            label_subscriber: "購入者"
-            label_maximum_users: "アクティブなユーザーの最大数"
-            label_starts_at: "開始"
-            label_expires_at: "有効期限"
-            label_plan: "プラン"
-            label_additional_features: "Additional features"
-            receive_newsletter: OpenProject <a target="_blank" href="%{link}">ニュースレター</a> を受け取りたい。
-            taken_domain: 有効なトライアルはドメインごとに1つしかありません。
-            domain_mismatch: The current request host name does not match the configured host name. Please double check your system settings.
-            taken_email: 各ユーザーはトライアルを1回のみ作成できます。
-          email_not_received: "メールが届きませんでしたか？右側のリンクでメールを再送信できます。"
-          try_another_email: "または別のメールアドレスでお試しください。"
-          next_steps: "次のステップ"
-          resend_link: "再送信"
-          resend_success: "メールが再送信されました。メールを確認し、確認リンクをクリックしてください。"
-          resend_warning: "メールを再送信できませんでした。"
-          session_timeout: "セッションがタイムアウトしました。ページを再読み込みするか、メールを再送信してください。"
-          status_label: "ステータス:"
-          status_confirmed: "確認済み"
-          status_waiting: "メールが送信されました - 確認待ちです"
-          test_ee: "エンタープライズ版を14日間無料でテストする"
-          quick_overview: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
-        upsell:
-          become_hero: "ヒーローになろう!"
-          enterprise_info_html: "%{feature_title} is an Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> add-on."
-          upgrade_info: "Please upgrade to a paid plan to activate and start using it in your team."
-          text: >
-            The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
-          you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
-          benefits:
-            description: "What are the benefits of the Enterprise on-premises edition?"
-            high_security: "セキュリティ機能"
-            high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
-            installation: "インストールサポート"
-            installation_text: "経験豊富なソフトウェアエンジニアが、あなた独自のインフラストラクチャへの完全なインストールとセットアッププロセスをガイドします。"
-            premium_features: "エンタープライズアドオン"
-            premium_features_text: "アジャイルボード、カスタムテーマとロゴ、グラフ、カスタムアクションによるインテリジェントワークフロー、ワークパッケージの添付ファイルおよびマルチセレクトカスタムフィールドの全文検索。"
-            professional_support: "プロフェッショナルサポート"
-            professional_support_text: "ビジネスクリティカルな環境での OpenProject 利用に関する専門知識を持つ上級サポートエンジニアから、信頼性の高いハイタッチサポートを受けましょう。"
-          button_start_trial: "無料トライアルを開始"
-          button_upgrade: "今すぐアップグレード"
-          button_contact_us: "デモについてはお問い合わせください"
-          button_book_now: "今すぐ予約"
-          confidence: >
-            テストおよびサポートされているエンタープライズクラスのプロジェクト管理ソフトウェアの信頼性を提供します。オープンソースとオープンマインドとともに。
-          link_quote: "見積もりの入手"
-          more_info: "詳細情報"
-          unlimited: "無制限"
       working_days:
         calendar:
-          empty_state_header: "Non-working days"
-          empty_state_description: 'No specific non-working days are defined for this year. Click on "+ Non-working day" below to add a date.'
+          empty_state_header: "休業日"
+          empty_state_description: '休業日が定義されていません。「休業日を追加」ボタンをクリックして日付を追加してください。'
           new_date: "(new)"
-        add_non_working_day: "休業日"
+        add_non_working_day: "休業日を追加"
         already_added_error: "A non-working day for this date exists already. There can only be one non-working day created for each unique date."
         change_button: "Save and reschedule"
         change_title: "営業日を変更する"
         removed_title: "You will remove the following days from the non-working days list:"
-        change_description: "Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance."
+        change_description: "営業日とみなす曜日を変更すると、このインスタンス内のすべてのプロジェクトのすべての作業項目の開始日と終了日に影響を与える可能性があります。"
         warning: >
           The changes might take some time to take effect. You will be notified when all relevant work packages and project life cycles have been updated.
           Are you sure you want to continue?
@@ -358,11 +295,11 @@ ja:
           text_new_features: "新しい機能と製品の更新について紹介します。"
           learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
-          #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_1":
+          #Otherwise, e.g. Chinese might still have the translations for 10.0 in the 12.0 release.
+          "16_2":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Structure the project life cycle with phases and phase gates.</li> <li>Export meetings in PDF format.</li> <li>Set smart default options for reminders.</li> <li>Use negative lag for work package dates.</li> <li>Display hierarchy trees for hierarchy custom fields.</li> <li>Benefit from improved accessibility for the date picker with ARIA live regions.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>New header and sidebar with improved navigation and design.</li> <li>Smoother experience with Custom fields, Relations, Reminders, Meetings, and My time tracking.</li> <li>Non-latin languages and emojis supported in PDF exports.</li> <li>Option to disable keyboard shortcuts for better accessibility.</li> <li>SCIM server via API (Enterprise add-on).</li> <li>API support for internal comments.</li> </ul>
     ical_sharing_modal:
       title: "Subscribe to calendar"
       inital_setup_error_message: "An error occured while fetching data."
@@ -388,6 +325,7 @@ ja:
     label_added_time_by: 'Added by <a href="%{authorLink}">%{author}</a> at %{age}'
     label_ago: "○日前"
     label_all: "全て"
+    label_all_projects: "All projects"
     label_all_uppercase: "全て"
     label_all_work_packages: "全ての作業項目"
     label_and: "及び"
@@ -497,7 +435,6 @@ ja:
     label_repository_plural: "リポジトリ"
     label_save_as: "名前をつけて保存"
     label_search_columns: "Search a column"
-    label_select_project: "プロジェクトの選択"
     label_select_watcher: "ウォッチャーを選択..."
     label_selected_filter_list: "選択されたフィルタ"
     label_show_attributes: "すべての属性を表示"
@@ -610,7 +547,7 @@ ja:
       title: "Notifications"
       no_unread: "No unread notifications"
       reasons:
-        mentioned: "Mentioned"
+        mentioned: "メンションされた"
         watched: "ウォッチャー"
         assigned: "担当者"
         #The enum value is named 'responsible' in the database and that is what is transported through the API
@@ -619,11 +556,11 @@ ja:
         created: "作成日時"
         scheduled: "スケジュール済"
         commented: "コメントしました。"
-        processed: "Processed"
+        processed: "処理済み"
         prioritized: "Prioritized"
-        dateAlert: "Date alert"
-        shared: "Shared"
-        reminder: "Reminder"
+        dateAlert: "日付アラート"
+        shared: "共有"
+        reminder: "通知"
       date_alerts:
         milestone_date: "Milestone date"
         overdue: "期限切れ"
@@ -673,8 +610,8 @@ ja:
               P7D: every week
         reasons:
           mentioned:
-            title: "Mentioned"
-            description: "Receive a notification every time someone mentions me anywhere"
+            title: "メンションされた"
+            description: "メンションされたときに通知を受け取る"
           assignee: "担当者"
           responsible: "責任者"
           shared: "Shared"
@@ -706,9 +643,12 @@ ja:
       title: "続行するにはパスワードを確認してください"
     pagination:
       no_other_page: "このページだけです。"
+      pages_skipped: "Pages skipped."
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
-        next: "次のページに進む"
-        previous: "前のページに戻る"
+        page_number: Page %{number}
+        show_per_page: Show %{number} per page
     placeholders:
       default: "-"
       subject: "ここにタイトルを入力します"
@@ -719,15 +659,10 @@ ja:
       autocompleter:
         label: "プロジェクト名の入力補完"
       click_to_switch_to_project: "Project: %{projectname}"
-      confirm_template_load: "テンプレートを切り替えるとページが再読み込みされ、すべての入力が失われます。続行しますか？"
       context: "プロジェクトのコンテキスト"
-      copy:
-        copy_options: "コピーオプション"
       not_available: "Project N/A"
-      no_template_selected: "(なし)"
       required_outside_context: >
         作業パッケージを作成するプロジェクトを選択して、すべての属性を確認してください。 上記で有効になっているタイプのプロジェクトのみ選択できます。
-      use_template: "テンプレートを使用"
     reminders:
       settings:
         daily:
@@ -741,7 +676,7 @@ ja:
           title: "Receive email reminders on these days"
         immediate:
           title: "Send me an email reminder"
-          mentioned: "Immediately when someone @mentions me"
+          mentioned: "@mentionするとすぐに"
           personal_reminder: "Immediately when I receive a personal reminder"
         alerts:
           title: "Email alerts for other items (that are not work packages)"
@@ -761,6 +696,7 @@ ja:
           first_day: "First day"
           last_day: "Last day"
     text_are_you_sure: "よろしいですか？"
+    breadcrumb: "Breadcrumb"
     text_data_lost: "All entered data will be lost."
     text_user_wrote: "%{value} が書き込みました："
     types:
@@ -845,6 +781,7 @@ ja:
     autocompleter:
       placeholder: "検索キーワードを入力"
       notFoundText: "No items found"
+      search: "Search"
       project:
         placeholder: "Select project"
     repositories:
@@ -890,10 +827,10 @@ ja:
         mixed: "Mixed"
     work_packages:
       bulk_actions:
-        move: "プロジェクトの一括変更"
         edit: "一括編集"
-        copy: "一括コピー"
         delete: "一括削除"
+        duplicate: "Bulk duplicate"
+        move: "プロジェクトの一括変更"
       button_clear: "クリア"
       comment_added: "正常にコメントを追加しました。"
       comment_send_failed: "エラーが発生しました。コメントを投稿できませんでした。"
@@ -937,8 +874,8 @@ ja:
         header_no_type: "新しいワークパッケージ（タイプ未設定）"
         header_with_parent: "新しい %{type}（%{parent_type} #%{id} の子要素）"
         button: "作成"
-      copy:
-        title: "作業項目をコピー"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "階層モードを表示"
         hide: "階層モードを非表示"
@@ -1191,7 +1128,6 @@ ja:
       current_project_and_all_descendants: "このプロジェクトとサブプロジェクトでは"
       current_project: "このプロジェクトでは"
       recently_viewed: "Recently viewed"
-      search: "検索"
       title:
         all_projects: "すべてのプロジェクト"
         project_and_subprojects: "すべてのプロジェクトで"

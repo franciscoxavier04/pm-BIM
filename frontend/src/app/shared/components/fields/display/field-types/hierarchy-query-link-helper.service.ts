@@ -32,7 +32,6 @@ import { PathHelperService } from 'core-app/core/path-helper/path-helper.service
 import { HalResource } from 'core-app/features/hal/resources/hal-resource';
 
 @Injectable({ providedIn: 'root' })
-
 export class HierarchyQueryLinkHelperService {
   constructor(
     private pathHelper:PathHelperService,
@@ -48,7 +47,7 @@ export class HierarchyQueryLinkHelperService {
         is: true,
         f: [{ n: 'parent', o: '=', v: [wpID] }],
       };
-      link.href = URI(this.pathHelper.workPackagesPath())
+      link.href = URI(this.pathHelper.workPackagesPath(null))
         .query({ query_props: JSON.stringify(props) })
         .toString();
     }

@@ -66,7 +66,6 @@ zh-TW:
         header-item-bg-hover-color: "頁首背景（滑鼠停留）"
         main-menu-bg-color: "主畫面背景"
         main-menu-bg-selected-background: "主畫面背景（當選擇時）"
-        main-menu-bg-hover-background: "主要選單（滑鼠移入時）"
       custom_colors: "自訂顏色"
       manage_colors: "編輯顏色選擇選項"
       instructions:
@@ -79,11 +78,15 @@ zh-TW:
         main-menu-bg-color: "左側選單的背景顏色"
       theme_warning: 改變佈景主題會覆蓋你的自訂樣式，你的變更將會遺失。你確定要繼續嗎？
     enterprise:
-      upgrade_to_ee: "升級到企業版"
+      delete_dialog:
+        title: "刪除企業版令牌"
+        heading: "刪除此企業版令牌？"
+        confirmation: "您確定要刪除這個企業版支援令牌嗎？"
+      create_dialog:
+        title: "新增企業版令牌"
+        type_token_text: "輸入企業版令牌密碼"
+        token_placeholder: "在此貼上您的企業版所需的令牌"
       add_token: "上傳企業版所需令牌(Token)"
-      delete_token_modal:
-        text: "您確定要刪除當前使用的企業版令牌(Token)嗎？"
-        title: "刪除令牌"
       replace_token: "替換當前令牌(Token)"
       order: "升級至地端企業版"
       paste: "貼上您的企業版所需的令牌(Token)"
@@ -95,13 +98,71 @@ zh-TW:
       buttons:
         upgrade: "立即更新"
         contact: "聯絡我們取得試用"
-      enterprise_info_html: "是企業版功能 <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> 。"
-      upgrade_info: "請升級到付費版以啟用此功能"
+      status:
+        expired: "已過期"
+        expiring_soon: "即將過期"
+        in_grace_period: "寬限期內"
+        invalid_domain: "無效域名"
+        not_active: "尚未啟用"
+        trial: "試用"
     jemalloc_allocator: Jemalloc 記憶體分配器
     journal_aggregation:
       explanation:
         text: "使用者的個別操作（例如：在短時間內更新同一工作套件兩次）若時間差距小於指定時長，系統會將這些操作合併為單一動作，並於應用程式中以單一動作顯示。\n此機制同時會延遲通知發送相同的時間，以減少電子郵件數量，並且會影響 %{webhook_link} 的延遲時間。"
         link: "webhook"
+    scim_clients:
+      authentication_methods:
+        sso: "來自身份提供者的 JWT"
+        oauth2_client: "OAuth 2.0 用戶端憑證"
+        oauth2_token: "靜態存取令牌"
+      created_client_credentials_dialog_component:
+        title: "已建立用戶端憑證"
+        heading: "用戶端憑證已生成"
+        one_time_hint: "這是您唯一一次看到用戶端密鑰的機會，請務必立即複製。"
+      created_token_dialog_component:
+        title: "令牌(Token)已產生"
+        heading: "A token has been generated"
+        label_token: "令牌"
+        one_time_hint: "這是您唯一可以看到此令牌(Token)的時候, 請務必立即複製它。"
+      delete_scim_client_dialog_component:
+        title: "刪除 SCIM 用戶端"
+        heading: "您確定要刪除此 SCIM 用戶端嗎？"
+        description: "由此 SCIM 用戶端管理的使用者將無法再由其更新。"
+      edit:
+        label_delete_scim_client: "刪除 SCIM 用戶端"
+      form:
+        auth_provider_description: "這是由 SCIM 提供者新增的使用者用來在 OpenProject 中進行驗證的服務。"
+        authentication_method_description_html: "這是 SCIM 客戶端在 OpenProject 進行驗證的方式。請確保 OAuth 令牌包含<code>scim_v2</code>範圍。"
+        description_html: '如需這些設定選項的詳細資訊，請參閱我們的 <a href="%{docs_url}">SCIM 用戶端設定文件</a>。'
+        jwt_sub_description_html: '例如，在 Keycloak 中，這是與 SCIM 用戶端相關聯的服務帳號 UUID。請參閱 <a href="%{docs_url}">我們的文件</a>，了解如何依您的使用情境尋找 subject claim（主體宣告）。'
+        name_description: "請選擇一個能幫助其他管理員理解此用戶端設定目的的名稱。"
+      index:
+        description: "在此設定的 SCIM 用戶端能與 OpenProject SCIM 伺服器 API 互動，以配置、新增、更新及停用使用者帳號與群組。"
+        label_create_button: "新增 SCIM 用戶端"
+      new:
+        title: "新的 SCIM 用戶端"
+      revoke_static_token_dialog_component:
+        confirm_button: "撤銷"
+        title: "撤銷靜態令牌"
+        heading: "你確定要撤銷此令牌(Token)？"
+        description: "使用此令牌的 SCIM 用戶端將不能再存取 OpenProject 的 SCIM 伺服器 API。"
+      table_component:
+        blank_slate:
+          title: "尚未設定 SCIM 用戶端"
+          description: "新增用戶端後，將會在此顯示"
+        user_count: "使用者"
+      token_list_component:
+        description: "您在此產生的權杖可由 SCIM 用戶端用來存取 OpenProject SCIM API。"
+        heading: "令牌"
+        label_add_token: "令牌"
+        label_aria_add_token: "新增令牌"
+      token_table_component:
+        blank_slate:
+          title: "尚未建立任何令牌"
+          description: "您可以立即建立一個"
+        expired: "於 %{date} 過期"
+        revoked: "於 %{date} 撤銷"
+        title: "存取令牌列表"
   authentication:
     login_and_registration: "登入及註冊"
   announcements:
@@ -267,6 +328,7 @@ zh-TW:
       admin_only: "勾選可使此屬性只對管理員可見。沒有管理員權限的使用者將無法檢視或編輯。"
       is_filter: >
         允許在工作套件檢視中的篩選條件使用客製欄位。請注意，僅在選擇「所有專案」的情況下，客製欄位才會出現在所有檢視中。
+      formula: "請輸入數值，或輸入「/」來搜尋屬性或數學運算符號。"
     tab:
       no_results_title_text: 目前沒有自定義的欄位
       no_results_content_text: 建立一個新的自定義欄位
@@ -279,6 +341,8 @@ zh-TW:
       greater_or_equal_zero: "必須大於或等於 0"
       not_found: "未找到"
       rules:
+        copy_workflow_from:
+          workflow_missing: "沒有自己的工作流程。"
         item:
           root_item: "不能為根項目"
           not_persisted: "必須是已存在的項目"
@@ -289,6 +353,8 @@ zh-TW:
         parent:
           not_descendant: "必須是層級展開的"
     rules:
+      copy_workflow_from: "工作流程複本的類型"
+      enabled: "啟用"
       depth: "深度"
       item: "項目"
       label: "標籤"
@@ -610,8 +676,10 @@ zh-TW:
       form_configuration:
         tab: "表單設置"
       projects:
-        tab: "專案"
-        enabled_projects: "已啟用專案"
+        tab: 專案
+        enable_all: 在所有專案中啟用
+        select_projects: 選取專案
+        select_projects_description: 選擇要使用此類型的專案。
       settings:
         tab: "設定"
         type_color_text: 選取的顏色可區分甘特圖或工作套件表格中的不同類型。因此建議使用強烈的顏色。
@@ -809,6 +877,7 @@ zh-TW:
       required_description: "將此工作套件標示為相關工作的需求"
       label_parent_singular: "上層"
       label_parent_plural: "上層"
+      label_other_relations: "其他關聯"
       ghost_relation_title: "相關的工作套件"
       ghost_relation_description: "由於權限的緣故，您無法看到。"
   label_invitation: 邀請
@@ -843,6 +912,10 @@ zh-TW:
     auth_source_login: 請登入 <em>%{login}</em> 來啟用您的帳號。
     omniauth_login: 請登入來啟用您的帳號。
   actionview_instancetag_blank_option: "請選擇"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "依賴套件"
   activerecord:
     attributes:
       announcements:
@@ -858,6 +931,8 @@ zh-TW:
       attribute_help_text:
         attribute_name: "属性"
         help_text: "說明文字"
+      auth_provider:
+        scim_clients: "SCIM 用戶端"
       capability:
         context: "內容"
       changeset:
@@ -871,6 +946,7 @@ zh-TW:
         default_value: "預設值"
         editable: "可編輯"
         field_format: "格式"
+        formula: "公式"
         is_filter: "作為篩選條件"
         is_for_all: "適用於所有專案"
         is_required: "必填"
@@ -897,11 +973,14 @@ zh-TW:
       emoji_reaction:
         reactable: "反應於"
       enterprise_token:
-        domain: "網域"
         starts_at: "生效自"
         subscriber: "訂閱者"
+        subscription: "訂閱"
+        plan: "計畫"
         encoded_token: "Enterprise support token"
-        active_user_count_restriction: "最大活動使用者數"
+        active_user_count_restriction: "活躍使用者"
+      enterprise_trial:
+        company: "公司"
       grids/grid:
         page: "頁面"
         row_count: "列數"
@@ -1018,6 +1097,10 @@ zh-TW:
         url: "URL"
       role:
         permissions: "權限"
+      scim_client:
+        auth_provider: "身份驗證提供者"
+        authentication_method: "驗證方式"
+        jwt_sub: "主體宣告"
       status:
         is_closed: "關閉工作套件"
         is_readonly: "設定「工作套件」唯讀"
@@ -1034,7 +1117,7 @@ zh-TW:
         ongoing: "開啟中"
       type:
         description: "描述的預設文字"
-        attribute_groups: ""
+        attribute_groups: "表單設定"
         is_in_roadmap: "在藍圖中預設為顯示"
         is_default: "新專案的預設啟動類型"
         is_milestone: "里程碑"
@@ -1060,15 +1143,25 @@ zh-TW:
         new_password: "新密碼"
         password_confirmation: "確認密碼"
         consented_at: "同意在"
+      group:
+        identity_url: "身份識別 URL"
       user_preference:
-        comments_sorting: "顯示留言"
+        header_look_and_feel: "介面與外觀"
+        header_alerts: "提醒"
+        button_update_look_and_feel: "更新介面與外觀"
+        button_update_alerts: "更新警示"
+        comments_sorting: "顯示工作套件活動，排序方式為"
+        disable_keyboard_shortcuts: "停用鍵盤快速鍵"
+        disable_keyboard_shortcuts_caption_html: |-
+          如果你使用螢幕閱讀器，或想避免不小心觸發快捷鍵操作，你可以選擇停用預設的<a href="%{href}">鍵盤快捷鍵</a>。
         dismissed_enterprise_banners: "隱藏的企業版廣告"
         impaired: "協助工具模式"
-        auto_hide_popups: "提醒後自動隱藏"
+        auto_hide_popups: "自動關閉成功通知"
+        auto_hide_popups_caption: "啟用時，綠色的成功通知會在 5 秒內自動關閉。"
         warn_on_leaving_unsaved: "離開尚未儲存的工作套件時提示我"
-        theme: "模式 "
+        theme: "顏色模式"
         time_zone: "時區"
-        mode_guideline: "為了親和性以及方便閱讀性，某些模式將覆蓋自訂主題顏色。對於完整的自訂主題，請選擇白色模式。"
+        mode_guideline: "某些模式會為了無障礙與可讀性而覆蓋自訂主題色彩。若需完整支援自訂主題，請選擇「亮色模式」。"
         daily_reminders: "每日提醒"
         workdays: "工作日"
       version:
@@ -1112,7 +1205,7 @@ zh-TW:
         spent_hours: "耗時"
         spent_time: "耗時"
         subproject: "子專案"
-        time_entries: "日誌的時間"
+        time_entries: "工時紀錄"
         type: "類型"
         version: "版本"
         watcher: "監看者"
@@ -1154,6 +1247,7 @@ zh-TW:
         inclusion: "沒有被設置為一個允許的值。"
         inclusion_nested: "未設置為路徑“%{path}”中允許的值之一"
         invalid: "不正確。"
+        invalid_characters: "包含無效的字元。"
         invalid_url: "不是有效的 URL。"
         invalid_url_scheme: "不是受支援的協定 (允許的協定: %{allowed_schemes})。"
         less_than_or_equal_to: "必須少於或者等於 %{count}。"
@@ -1229,8 +1323,14 @@ zh-TW:
               forbidden_uri: "被伺服器禁止。"
             scopes:
               not_match_configured: "與可用的範圍不吻合。"
+        enterprise_trial:
+          already_used: "已被用來建立試用帳號。"
+          failed_to_create: "無法建立試用帳號（%{status}）"
+          general_consent: "請接受條款與條件。"
         enterprise_token:
+          only_one_trial: "只能啟用一個試用令牌。請先刪除前一個試用令牌後，再新增另一個。"
           unreadable: "無法讀取，確定是一個 support token?"
+          already_added: "此令牌已經新增過。"
         grids/grid:
           overlaps: "重疊"
           outside: "不在網格(grid)內。"
@@ -1504,6 +1604,8 @@ zh-TW:
       custom_action: "自訂動作"
       custom_field: "客製欄位"
       "doorkeeper/application": "Oauth 應用程式"
+      enterprise_token:
+        other: "企業版令牌"
       forum: "討論區"
       global_role: "全域角色"
       group: "群組"
@@ -1522,6 +1624,8 @@ zh-TW:
       reminder: "提醒"
       role:
         other: "角色"
+      scim_client:
+        other: "SCIM 用戶端"
       status: "工作套件狀態"
       token/api:
         other: 存取令牌(Token)
@@ -1613,12 +1717,13 @@ zh-TW:
     derived_start_date: "派生的開始日期"
     direction: "方向"
     display_sums: "顯示加總"
+    domain: "網域"
     due_date: "完成日期"
     estimated_hours: "工時"
     estimated_time: "工時"
     email: "電子郵件"
     entity_type: "實體"
-    expires_at: "過期於"
+    expires_at: "失效於"
     firstname: "名字"
     filter: "篩選條件"
     group: "群組"
@@ -1733,7 +1838,6 @@ zh-TW:
   button_copy: "複製"
   button_copy_to_clipboard: "複製到剪貼簿"
   button_copy_link_to_clipboard: "複製到剪貼簿"
-  button_copy_and_follow: "複製並跟隨"
   button_create: "建立"
   button_create_and_continue: "建立並繼續"
   button_decline: "拒絕"
@@ -1742,6 +1846,7 @@ zh-TW:
   button_delete_watcher: "刪除監看者 %{name}"
   button_download: "下載"
   button_duplicate: "複本"
+  button_duplicate_and_follow: "複製並追蹤"
   button_edit: "編輯"
   button_edit_associated_wikipage: "編輯關聯的維基頁面：%{page_title}"
   button_expand_all: "全部展開"
@@ -1780,6 +1885,7 @@ zh-TW:
   button_unwatch: "取消監看"
   button_update: "更新"
   button_upgrade: "升級"
+  button_buy_now: "立刻購買"
   button_upload: "上傳"
   button_view: "檢視"
   button_watch: "監看"
@@ -1824,6 +1930,13 @@ zh-TW:
     text:
       failed: '無法從 “%{source_project_name}” 複製專案到 "%{target_project_name}"'
       succeeded: '複製 "%{source_project_name}" 到 "%{target_project_name}"。'
+    source_project_label: "專案已複製"
+    copy_options:
+      dependencies_label: '從專案複製'
+  create_project:
+    template_label: "使用範本"
+    copy_options:
+      dependencies_label: '從範本複製'
   create_wiki_page: "新增一個 wiki 頁面"
   create_wiki_page_button: "維基頁面"
   date:
@@ -1922,6 +2035,8 @@ zh-TW:
       x_seconds_abbreviated:
         other: "%{count}  秒"
     units:
+      minute_abbreviated:
+        other: "分鐘"
       hour:
         other: "小時"
       day:
@@ -1976,25 +2091,39 @@ zh-TW:
       placeholder_users: 佔位使用者
       project_list_sharing: 專案清單分享
       readonly_work_packages: 唯讀工作套件
+      scim_api: SCIM 伺服器 API
       sso_auth_providers: 單一登入
       team_planner_view: 團隊規劃檢視
-      two_factor_authentication: 雙重身份驗證
       virus_scanning: 掃描病毒
       work_package_query_relation_columns: 工作套件查詢關聯列
       work_package_sharing: 與外部使用者共用工作套件
       work_package_subject_generation: 工作套件標題產生
     upsell:
+      buy_now_button: "立刻購買"
       plans_title: "企業方案"
       title: "企業版附加元件"
       plan_title: "企業版 %{plan} 外掛"
       plan_name: "%{plan} 企業版計畫"
       plan_text_html: "需 %{plan_name} 方案以上才可使用。"
+      unlimited: "不限"
+      already_have_token: >
+        已經有令牌了嗎？請使用下方按鈕新增，以升級至預約的 Enterprise 方案。
       hide_banner: "隱藏此廣告"
       homescreen_description: >
         企業方案擴展您目前使用的 OpenProject 社群版，包含附加元件、額外功能和專業支援，讓各規模組織都能共同達成卓越目標。
       homescreen_subline: 升級即是對開源專案的一種支持。
       baseline_comparison:
         description: 突顯自過去任一時間點以來對此清單所做的變更。
+      benefits:
+        description: "Enterprise 本地部署版有什麼好處？"
+        high_security: "安全功能"
+        high_security_text: "單一登入（SAML、OpenID Connect、CAS）、LDAP 群組支援。"
+        installation: "安裝支援"
+        installation_text: "經驗豐富的軟體工程師將引導您在自己的基礎架構中完成整個安裝與設定流程。"
+        premium_features: "Enterprise 附加元件"
+        premium_features_text: "敏捷看板、自訂主題與標誌、圖表、具備自訂動作的智慧工作流程、工作套件附件的全文搜尋，以及多選自訂欄位。"
+        professional_support: "專業支援"
+        professional_support_text: "由資深支援工程師提供可靠且貼近需求的高品質支援，具備在商業關鍵環境中執行 OpenProject 的專業知識。"
       work_package_subject_generation:
         description: "使用參考的屬性和文字建立自動產生的主題。"
       customize_life_cycle:
@@ -2029,6 +2158,9 @@ zh-TW:
       nextcloud_sso:
         title: "Nextcloud 儲存空間的單一登入(SSO)"
         description: "使用單一登入為您的 Nextcloud 儲存空間啟用無縫且安全的驗證。簡化存取管理並提升使用者便利性。"
+      scim_api:
+        title: "SCIM 用戶端"
+        description: "透過我們的 SCIM Server API，將 OpenProject 與 Microsoft Entra 或 Keycloak 等外部身分識別服務無縫整合，自動化使用者管理功能。此功能自企業版訂閱方案起提供。"
       virus_scanning:
         description: "確保在其他使用者存取 OpenProject 中上傳的檔案前，對其進行病毒掃描。"
       placeholder_users:
@@ -2041,7 +2173,31 @@ zh-TW:
       internal_comments_inline:
         title: "只讓少數人能看到的內部備註"
         description: " "
-  enumeration_activities: "時間追蹤活動"
+    teaser:
+      title:
+        other: "%{count} %{trial_plan} 試用令牌所剩天數"
+      description: "您可以存取所有 %{trial_plan} 功能。"
+    trial:
+      not_found: "您已請求試用令牌，但該請求已無效。請再試一次。"
+      wait_for_confirmation: "我們已傳送一封電子郵件給您，請確認您的地址以取得試用令牌。"
+      already_retrieved: >
+        您的試用 Enterprise 令牌已經被領取。請檢查您的電子郵件，令牌已隨信附上。如需新的，請聯絡我們的支援團隊。
+      successfully_saved: "您的試用 Enterprise 令牌已成功領取。"
+      token_sent: "已請求試用令牌"
+      request_again: "重新申請"
+      resend_action: "重新傳送確認電子郵件"
+      welcome_title: "功能快速總覽"
+      welcome_description: "快速瞭解 OpenProject Enterprise 版的專案管理與團隊協作功能。"
+      confirmation_info: >
+        我們已於 %{date} 寄送一封電子郵件至 %{email}，內含開始 OpenProject Enterprise 免費試用所需的所有資訊。請查看您的收件匣，並點擊信中的確認連結以開始為期 14 天的免費試用。
+      confirmation_subline: >
+        請查看您的收件匣並依照指示操作，以開始為期 14 天的免費試用。
+      domain_caption: 此令牌將僅對您目前設定的主機名稱有效。
+      receive_newsletter_html: >
+        我想訂閱 OpenProject 的<a target="_blank" href="https://www.openproject.org/newsletter/">電子報</a>。
+      consent_html: >
+        我同意<a target="_blank" href="https://www.openproject.org/terms-of-service/">服務條款</a>及<a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">隱私政策</a>。
+  enumeration_activities: "工時紀錄活動"
   enumeration_work_package_priorities: "工作套件優先等級"
   enumeration_reported_project_statuses: "報告的專案狀態"
   enumeration_caption_order_changed: "成功更改排序。"
@@ -2065,6 +2221,7 @@ zh-TW:
   error_color_could_not_be_saved: "無法儲存顏色"
   error_cookie_missing: "OpenProject的Cookie遺失了。請確保瀏覽器的Cookie已經啟用，否則本應用程式將無法正常做用。"
   error_custom_option_not_found: "選項不存在。"
+  error_enterprise_plan_needed: "您需要 %{plan} 企業方案才能執行此操作。"
   error_enterprise_activation_user_limit: "無法啟動您的帳戶 (已達到使用者限制)。請與管理員聯繫以獲取存取權限。"
   error_enterprise_token_invalid_domain: "企業版未啟用。您的企業版令牌(Token)的域名（%{actual}）與系統的主機名（%{expected}）不匹配。"
   error_failed_to_delete_entry: "刪除此項目失敗。"
@@ -2110,7 +2267,7 @@ zh-TW:
     project: "專案已編輯"
     projects: "專案已編輯"
     reply: 已回覆
-    time_entry: "已編輯時間日誌"
+    time_entry: "工時已編輯"
     wiki_page: "維基頁面已編輯"
     work_package_closed: "關閉工作套件"
     work_package_edit: "工作套件已編輯"
@@ -2478,7 +2635,7 @@ zh-TW:
   label_between: "介於"
   label_blocked_by: "標示禁止者"
   label_blocks: "區塊"
-  label_blog: "日誌"
+  label_blog: "部落格"
   label_forums_locked: "停用"
   label_forum_new: "新增討論區"
   label_forum_plural: "討論區"
@@ -2499,6 +2656,7 @@ zh-TW:
   label_select_main_menu_item: 選擇新的主選單項目
   label_required_disk_storage: "所使用的磁碟空間"
   label_send_invitation: 發送邀請
+  label_calculated_value: "計算值"
   label_change_plural: "更改"
   label_change_properties: "更改屬性"
   label_change_status: "更改狀態"
@@ -2548,6 +2706,7 @@ zh-TW:
   label_dashboard: "儀表板"
   label_database_version: "PostgreSQL 版本"
   label_date: "日期"
+  label_dates: "日期"
   label_date_and_time: "日期和時間"
   label_date_format: "日期格式"
   label_date_from: "寄件者"
@@ -2590,7 +2749,7 @@ zh-TW:
   label_enable_multi_select: "取用複選"
   label_enabled_project_custom_fields: "開啟客製欄位"
   label_enabled_project_modules: "啟用的模組"
-  label_enabled_project_activities: "啟用的時間追蹤活動"
+  label_enabled_project_activities: "啟用的工時紀錄活動"
   label_end_to_end: "尾端到尾端"
   label_end_to_start: "尾端至開端"
   label_enumeration_new: "新增「列舉」"
@@ -2633,6 +2792,7 @@ zh-TW:
   label_follows: "關注"
   label_force_user_language_to_default: "設置使用者使用預設語言"
   label_form_configuration: "表單設置"
+  label_formula: "公式"
   label_gantt_chart: "甘特圖"
   label_gantt_chart_plural: "甘特圖"
   label_general: "一般"
@@ -2669,6 +2829,7 @@ zh-TW:
   label_information_plural: "資訊"
   label_installation_guides: "安裝說明"
   label_integer: "整數"
+  label_interface: "介面"
   label_internal: "內部"
   label_introduction_video: "簡介影片"
   label_invite_user: "邀請使用者"
@@ -2811,7 +2972,7 @@ zh-TW:
   label_password_rule_special: "特殊字元"
   label_password_rule_uppercase: "大寫"
   label_path_encoding: "路徑編碼"
-  label_per_page: "每頁"
+  label_per_page: "每頁："
   label_people: "人員"
   label_permissions: "權限"
   label_permissions_report: "權限列表"
@@ -3029,6 +3190,7 @@ zh-TW:
   label_work_package_attachments: "工作套件附件"
   label_work_package_category_new: "新增類別"
   label_work_package_category_plural: "工作套件類別"
+  label_work_package_comments: "工作套件留言"
   label_work_package_hierarchy: "工作套件層級"
   label_work_package_new: "新增工作套件"
   label_work_package_edit: "編輯工作套件 %{name}"
@@ -3305,6 +3467,8 @@ zh-TW:
   notice_successful_delete: "刪除成功"
   notice_successful_cancel: "取消成功"
   notice_successful_update: "更新成功"
+  notice_unsuccessful_create: "建立失敗。"
+  notice_unsuccessful_create_with_reason: "建立失敗：%{reason}"
   notice_unsuccessful_update: "更新失敗。"
   notice_unsuccessful_update_with_reason: "更新失敗： %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
@@ -3322,7 +3486,7 @@ zh-TW:
   #Default format for numbers
   number:
     format:
-      delimiter: ""
+      delimiter: ","
       precision: 3
       separator: "."
     human:
@@ -3381,7 +3545,7 @@ zh-TW:
   permission_edit_own_internal_comments: "編輯內部備註"
   permission_edit_own_work_package_comments: "編輯自己的留言"
   permission_edit_own_messages: "編輯自己張貼的訊息"
-  permission_edit_own_time_entries: "編輯自己的時間日誌"
+  permission_edit_own_time_entries: "編輯自己工時"
   permission_edit_others_internal_comments: "審核內部留言"
   permission_edit_others_internal_comments_explanation: "注意事項：具有此權限的使用者能夠編輯其他使用者內部備註。"
   permission_edit_project: "編輯專案"
@@ -3671,7 +3835,7 @@ zh-TW:
   setting_commit_fix_keywords: "固定的關鍵字"
   setting_commit_logs_encoding: "Commit 訊息的編碼"
   setting_commit_logtime_activity_id: "紀錄時間的動作"
-  setting_commit_logtime_enabled: "啟用時間日誌"
+  setting_commit_logtime_enabled: "啟用工時紀錄"
   setting_commit_ref_keywords: "參照關鍵字"
   setting_consent_time: "同意日期"
   setting_consent_info: "條文"
@@ -4187,7 +4351,7 @@ zh-TW:
     reminders:
       label_remind_at: "日期"
       note_placeholder: "為什麼要設定這個提醒？"
-      success_creation_message: "提醒設定成功。您會在選定的時間收到此工作套件的通知。"
+      create_success_message: "提醒已成功設定。您將會在此工作套件的 %{reminder_time} 收到通知。"
       success_update_message: "提醒成功更新"
       success_deletion_message: "提醒已成功刪除。"
   sharing:

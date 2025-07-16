@@ -28,7 +28,7 @@
 
 module ProjectPhases
   class SetAttributesService < ::BaseServices::SetAttributes
-    def perform(*)
+    def perform
       super.tap do
         set_calculated_duration
       end

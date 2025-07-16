@@ -44,7 +44,7 @@ id:
       meeting_agenda_item:
         title: "Judul"
         author: "Penulis"
-        duration_in_minutes: "menit"
+        duration_in_minutes: "Duration"
         description: "Note"
         presenter: "Pembawa acara"
       meeting_section:
@@ -252,7 +252,7 @@ id:
         label: Include agenda outcomes
         caption: If your agenda outcomes contain confidential information, you can choose to not include them in the export.
       footer_text:
-        label: Footer text
+        label: Teks footer
         caption: This text will appear on every page on the right of the footer.
       submit_button: Download
   meeting_section:
@@ -261,6 +261,10 @@ id:
     placeholder_title: "New section"
     empty_text: "Drag items here or create a new one"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Time zone difference"
+      description: >
+        The dates below are referencing the time zone of the meeting series (%{actual_zone}), not your local time zone (%{user_zone}).
     ended_blankslate:
       title: "Meeting series ended"
       message: "This meeting series has come to an end. There are no upcoming meetings. "
@@ -344,7 +348,7 @@ id:
   permission_delete_meetings: "Hapus rapat"
   permission_view_meetings: "Lihat rapat"
   permission_manage_agendas: "Kelola agenda"
-  permission_manage_agendas_explanation: "Allows managing the Dynamic Meeting's agenda items."
+  permission_manage_agendas_explanation: "Allows creating, editing and removing agenda items"
   permission_manage_outcomes: "Manage outcomes"
   permission_send_meeting_invites_and_outcomes: "Send meeting invites and outcomes to participants"
   project_module_meetings: "Rapat"

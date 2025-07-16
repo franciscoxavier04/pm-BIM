@@ -125,12 +125,11 @@ module Storages
         return add_error(:create_folder, service_result.errors, options: { folder_name:, parent_location: root_folder })
       end.result
 
-      last_project_folder = ::Storages::LastProjectFolder.find_by(project_storage_id:, mode: :automatic)
-
-      audit_last_project_folder(last_project_folder, folder_info.id)
+      audit_last_project_folder(project_storage_id, folder_info.id)
     end
 
-    def audit_last_project_folder(last_project_folder, project_folder_id)
+    def audit_last_project_folder(project_storage_id, project_folder_id)
+      last_project_folder = ::Storages::LastProjectFolder.find_by(project_storage_id:, mode: :automatic)
       ApplicationRecord.transaction do
         success =
           last_project_folder.update(origin_folder_id: project_folder_id) &&
@@ -145,7 +144,7 @@ module Storages
 
       file_list = files.call(storage: @storage, auth_strategy:, folder: root_folder).on_failure do |failed|
         log_storage_error(failed.errors, { drive_id: })
-        return add_error(:remote_folders, failed.errors, options: { drive_id: }).fail!
+        return add_error(:remote_folders, failed.errors, options: { drive_id: })
       end.result
 
       ServiceResult.success(result: filter_folders_from(file_list.files))

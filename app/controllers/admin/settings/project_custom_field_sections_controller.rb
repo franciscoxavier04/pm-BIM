@@ -30,7 +30,6 @@ module Admin::Settings
   class ProjectCustomFieldSectionsController < ::Admin::SettingsController
     include OpTurbo::ComponentStream
     include Admin::Settings::ProjectCustomFields::ComponentStreams
-    include OpTurbo::DialogStreamHelper
 
     before_action :set_project_custom_field_section, only: %i[update move drop destroy]
 
@@ -41,7 +40,7 @@ module Admin::Settings
       )
 
       if call.success?
-        update_header_via_turbo_stream # required to closed the dialog
+        update_header_via_turbo_stream(allow_custom_field_creation: allow_custom_field_creation?)
         update_sections_via_turbo_stream(project_custom_field_sections: ProjectCustomFieldSection.all)
       else
         update_section_dialog_body_form_via_turbo_stream(project_custom_field_section: call.result)
@@ -68,6 +67,7 @@ module Admin::Settings
       call = ::ProjectCustomFieldSections::DeleteService.new(user: current_user, model: @project_custom_field_section).call
 
       if call.success?
+        update_header_via_turbo_stream(allow_custom_field_creation: allow_custom_field_creation?)
         update_sections_via_turbo_stream(project_custom_field_sections: ProjectCustomFieldSection.all)
       else
         # TODO: show error message
@@ -96,6 +96,7 @@ module Admin::Settings
       )
 
       if call.success?
+        update_header_via_turbo_stream(allow_custom_field_creation: allow_custom_field_creation?)
         update_sections_via_turbo_stream(project_custom_field_sections: ProjectCustomFieldSection.all)
       else
         # TODO: show error message
@@ -111,6 +112,10 @@ module Admin::Settings
 
     def set_project_custom_field_section
       @project_custom_field_section = ProjectCustomFieldSection.find(params[:id])
+    end
+
+    def allow_custom_field_creation?
+      ProjectCustomFieldSection.any?
     end
 
     def project_custom_field_section_params

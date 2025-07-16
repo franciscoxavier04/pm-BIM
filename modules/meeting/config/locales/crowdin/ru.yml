@@ -47,7 +47,7 @@ ru:
       meeting_agenda_item:
         title: "Заголовок"
         author: "Автор"
-        duration_in_minutes: "мин"
+        duration_in_minutes: "Продолжительность"
         description: "Примечания"
         presenter: "Ведущий"
       meeting_section:
@@ -273,6 +273,10 @@ ru:
     placeholder_title: "Новый раздел"
     empty_text: "Перенесите элементы сюда или создайте новые"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Разница часового пояса"
+      description: >
+        Приведенные ниже даты относятся к часовому поясу серии совещаний (%{actual_zone}), а не к Вашему местному часовому поясу (%{user_zone}).
     ended_blankslate:
       title: "Серия совещаний закончена"
       message: "Эта серия совещаний подошла к концу. Предстоящих совещаний не будет. "
@@ -362,7 +366,7 @@ ru:
   permission_delete_meetings: "Удалить совещания"
   permission_view_meetings: "Просмотреть совещания"
   permission_manage_agendas: "Управление повестками"
-  permission_manage_agendas_explanation: "Позволяет управлять пунктами повестки для Динамического совещания."
+  permission_manage_agendas_explanation: "Позволяет создавать, редактировать и удалять пункты повестки дня"
   permission_manage_outcomes: "Управление результатами"
   permission_send_meeting_invites_and_outcomes: "Рассылать приглашения на собрания и результаты их проведения участникам"
   project_module_meetings: "Совещания"

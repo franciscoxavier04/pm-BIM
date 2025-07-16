@@ -96,7 +96,7 @@ RSpec.describe "Meetings CRUD",
     # Can add and edit a single item
     show_page.add_agenda_item do
       fill_in "Title", with: "My agenda item"
-      fill_in "min", with: "25"
+      fill_in "Duration", with: "25"
     end
 
     show_page.expect_agenda_item title: "My agenda item"
@@ -181,7 +181,7 @@ RSpec.describe "Meetings CRUD",
 
     show_page.add_agenda_item do
       fill_in "Title", with: "My agenda item"
-      fill_in "min", with: "25"
+      fill_in "Duration", with: "25"
     end
 
     show_page.expect_agenda_item title: "My agenda item"
@@ -268,7 +268,7 @@ RSpec.describe "Meetings CRUD",
     # Can add and edit a single item
     show_page.add_agenda_item do
       fill_in "Title", with: "My agenda item"
-      fill_in "min", with: "25"
+      fill_in "Duration", with: "25"
     end
 
     show_page.expect_agenda_item title: "My agenda item"
@@ -290,7 +290,7 @@ RSpec.describe "Meetings CRUD",
 
     show_page.add_agenda_item do
       fill_in "Title", with: "My agenda item"
-      fill_in "min", with: "25"
+      fill_in "Duration", with: "25"
     end
 
     show_page.expect_agenda_item title: "My agenda item"
@@ -468,7 +468,7 @@ RSpec.describe "Meetings CRUD",
         # add an item to the latest section
         show_page.add_agenda_item do
           fill_in "Title", with: "First item"
-          fill_in "min", with: "25"
+          fill_in "Duration", with: "25"
         end
 
         show_page.expect_agenda_item_in_section title: "First item", section: second_section
@@ -479,7 +479,7 @@ RSpec.describe "Meetings CRUD",
         item_in_second_section = MeetingAgendaItem.find_by!(title: "First item")
 
         show_page.edit_agenda_item(item_in_second_section) do
-          fill_in "min", with: "15"
+          fill_in "Duration", with: "15"
           click_on "Save"
         end
 

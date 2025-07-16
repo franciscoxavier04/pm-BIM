@@ -45,7 +45,7 @@ ca:
       meeting_agenda_item:
         title: "Títol"
         author: "Autor/a"
-        duration_in_minutes: "min"
+        duration_in_minutes: "Duration"
         description: "Notes"
         presenter: "Presentador"
       meeting_section:
@@ -265,6 +265,10 @@ ca:
     placeholder_title: "Nova secció"
     empty_text: "Arrossega els elements aquí o crea un de nou"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Time zone difference"
+      description: >
+        The dates below are referencing the time zone of the meeting series (%{actual_zone}), not your local time zone (%{user_zone}).
     ended_blankslate:
       title: "Meeting series ended"
       message: "This meeting series has come to an end. There are no upcoming meetings. "
@@ -350,7 +354,7 @@ ca:
   permission_delete_meetings: "Elimina reunions"
   permission_view_meetings: "Veure reunions"
   permission_manage_agendas: "Gestiona agendes"
-  permission_manage_agendas_explanation: "Permet gestionar els elements de l'agenda de la reunió dinàmica."
+  permission_manage_agendas_explanation: "Allows creating, editing and removing agenda items"
   permission_manage_outcomes: "Manage outcomes"
   permission_send_meeting_invites_and_outcomes: "Send meeting invites and outcomes to participants"
   project_module_meetings: "Reunions"

@@ -67,6 +67,7 @@ module Storages
         @result.errors.add(attribute, storage_error.code, **options)
       end
 
+      @result.success = false
       @result
     end
   end

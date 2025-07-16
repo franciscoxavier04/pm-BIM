@@ -24,6 +24,11 @@
       "node_modules/@types",
       "src/types"
     ],
+    "types": [
+      "node",
+      "react"
+    ],
+    "jsx": "react-jsx",
     "lib": [
       "es2018",
       "dom"
@@ -31,6 +36,7 @@
     "paths": {
       "@ng-select/ng-select": ["../node_modules/@ng-select/ng-select/"],
       "core-app/*": ["./app/*"],
+      "core-stimulus/*": ["./stimulus/*"],
       "core-typings/*": [
         "./typings/*"
       ],

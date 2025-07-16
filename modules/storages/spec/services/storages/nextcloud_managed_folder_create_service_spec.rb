@@ -348,9 +348,8 @@ module Storages
                                             folder_name: project_storage.managed_project_folder_path, data: "error body")
           end
 
-          it "is a success" do
-            # TODO: why is this a success? Bug or intention?
-            expect(service.call).to be_success
+          it "is a failure" do
+            expect(service.call).to be_failure
           end
 
           it "adds to the services errors" do

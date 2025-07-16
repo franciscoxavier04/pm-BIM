@@ -50,7 +50,7 @@ uk:
         project: Проєкт
         user: Користувач
         work_package: Пакет робіт
-        subject: Заголовок
+        subject: Тема
         hours: Години
         comments: Коментар
         activity: Активність
@@ -85,12 +85,12 @@ uk:
         time_entry:
           invalid_time: "має бути в діапазоні від 00:00 до 23:59."
           cannot_log_for_this_work_package: "Неможливо зареєструвати час, витрачений на цей пакет робіт."
-          duplicate_ongoing: "An ongoing time entry already exists for this user."
+          duplicate_ongoing: "Поточний запис часу вже існує для цього користувача."
         work_package:
           is_not_a_valid_target_for_cost_entries: "Робочий пакет #%{id}  не є дійсною ціллю для перепризначення записів витрат."
           nullify_is_not_valid_for_cost_entries: "Записи витрат не можуть бути призначені проекту."
   attributes:
-    comment: "Коментування"
+    comment: "Коментар"
     cost_type: "Тип вартості"
     costs: "Витрати"
     current_rate: "Поточний курс"

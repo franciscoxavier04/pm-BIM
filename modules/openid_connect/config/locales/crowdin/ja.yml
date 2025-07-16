@@ -55,7 +55,7 @@ ja:
     instructions:
       redirect_url: これは、OpenID Connectプロバイダがログイン成功後にOpenProjectにリダイレクトするために使用するリダイレクトURLです。
       endpoint_url: The endpoint URL given to you by the OpenID Connect provider
-      metadata_none: I don't have this information
+      metadata_none: この情報がありません
       metadata_url: I have a discovery endpoint URL
       client_id: This is the client ID given to you by your OpenID Connect provider
       client_secret: This is the client secret given to you by your OpenID Connect provider

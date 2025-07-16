@@ -45,7 +45,7 @@ de:
       meeting_agenda_item:
         title: "Titel"
         author: "Autor"
-        duration_in_minutes: "Min."
+        duration_in_minutes: "Dauer"
         description: "Anmerkungen"
         presenter: "Referent"
       meeting_section:
@@ -265,6 +265,10 @@ de:
     placeholder_title: "Neuer Abschnitt"
     empty_text: "Neue Agendapunkte hierhin bewegen oder neu erstellen"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Unterschiedliche Zeitzone"
+      description: >
+        Die unten stehenden Daten beziehen sich auf die Zeitzone der Terminserie (%{actual_zone}), nicht auf Ihre lokale Zeitzone (%{user_zone}).
     ended_blankslate:
       title: "Terminserie beendet"
       message: "Diese Terminserie ist beendet. Es finden keine weiteren Ereignisse statt. "
@@ -350,7 +354,7 @@ de:
   permission_delete_meetings: "Besprechungen löschen"
   permission_view_meetings: "Besprechungen ansehen"
   permission_manage_agendas: "Agenden anlegen/bearbeiten"
-  permission_manage_agendas_explanation: "Ermöglicht das Bearbeiten des Inhalts der dynamischen Meetings."
+  permission_manage_agendas_explanation: "Ermöglicht das Erstellen, Bearbeiten und Entfernen von Tagesordnungspunkten"
   permission_manage_outcomes: "Ergebnisse verwalten"
   permission_send_meeting_invites_and_outcomes: "Besprechungseinladungen und -ergebnisse an Teilnehmer senden"
   project_module_meetings: "Besprechungen"

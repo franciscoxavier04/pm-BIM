@@ -42,7 +42,8 @@ module OpenProject
           end
 
           def authenticate_user(id)
-            user = id && User.active.find_by(id:)
+            # ServiceAccount is found explicitly because ServiceAccount is builtin, but User.active excludes builtin entities.
+            user = id && User.active.where(id:).or(ServiceAccount.where(id:, status: ServiceAccount.statuses[:active])).first
             if user
               success!(user)
             else

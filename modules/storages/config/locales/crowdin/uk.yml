@@ -3,7 +3,7 @@ uk:
     attributes:
       oauth_client:
         client_id: Client ID
-        client_secret: Client secret
+        client_secret: Секретний ключ клієнта
       project:
         project_folder_type: Тип папки проєкту
       storages/file_link:
@@ -81,6 +81,7 @@ uk:
     edit_project_folder:
       label: Редагувати папку проєкту
     open:
+      contact_admin: Please contact your administrator to resolve this error.
       remote_identity_error: Під час підключення до сховища сталася неочікувана помилка.
     project_folder_mode:
       automatic: Автоматичне керування
@@ -128,7 +129,7 @@ uk:
               conflict: 'Користувача %{user} не вдалося додати в групу %{group} з такої причини: %{reason}'
               failed_to_add: 'Користувача %{user} не вдалося додати в групу %{group} з такої причини: %{reason}'
             create_folder:
-              conflict: '%{folder_name} уже існує в папці%{parent_location}.'
+              conflict: The folder %{folder_name} already exists on %{parent_location}.
               not_found: "%{parent_location} не знайдено."
             ensure_root_folder_permissions:
               not_found: "%{group_folder} не знайдено. Перевірте налаштування своєї папки групи Nextcloud."
@@ -260,7 +261,7 @@ uk:
         base_configuration:
           capabilities_request: Можливості віддаленого сховища
           client_id: Client ID
-          client_secret: Client secret
+          client_secret: Секретний ключ клієнта
           dependencies_check: Залежності
           dependencies_versions: Залежності (версія)
           diagnostic_request: Діагностичний запит

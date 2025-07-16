@@ -55,6 +55,7 @@ zh-TW:
     hours: "小時"
     impediment: "阻礙"
     label_versions_default_fold_state: "顯示精簡版本"
+    caption_versions_default_fold_state: "檢視待辦清單時，版本預設不會展開，需手動逐一展開。"
     work_package_is_closed: "視為工作套件已完成"
     label_is_done_status: "狀態 %{status_name} 表示完成"
     no_burndown_data: "沒有未完成的資料。起始和結束日期在進度中是必須的"
@@ -73,6 +74,9 @@ zh-TW:
     task: "任務"
     task_color: "任務顏色"
     unassigned: "尚未指派"
+    user_preference:
+      header_backlogs: "待辦清單模組"
+      button_update_backlogs: "更新待辦清單模組"
     x_more: "還有 %{count} 個 ..."
   backlogs_active: "啟用"
   backlogs_any: "全部"

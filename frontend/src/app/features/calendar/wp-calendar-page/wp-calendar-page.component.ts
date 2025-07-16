@@ -72,6 +72,15 @@ export class WorkPackagesCalendarPageComponent extends PartitionedQuerySpacePage
   /** Go back using back-button */
   backButtonCallback:() => void;
 
+  breadcrumbItems() {
+    return [
+      { href: this.pathHelperService.homePath(), text: this.titleService.appTitle },
+      { href: this.pathHelperService.projectPath(this.currentProject.identifier as string), text: (this.currentProject.name) },
+      { href: this.pathHelperService.projectCalendarPath(this.currentProject.identifier as string), text: this.I18n.t('js.calendar.label_calendar_plural') },
+      this.selectedTitle?? '',
+    ];
+  }
+
   /** Current query title to render */
   selectedTitle = this.text.unsaved_title;
 

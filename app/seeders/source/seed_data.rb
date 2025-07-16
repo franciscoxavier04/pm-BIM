@@ -76,6 +76,10 @@ class Source::SeedData
     registry.key?(reference)
   end
 
+  def all_references_exist?(references)
+    references.all? { |reference| reference_exists?(reference) }
+  end
+
   # Get a `SeedData` instance with only the given top level keys.
   #
   # Used in tests to get the real statuses, types and other data.

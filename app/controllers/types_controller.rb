@@ -59,18 +59,19 @@ class TypesController < ApplicationController
   end
 
   def create
-    CreateTypeService
-      .new(current_user)
-      .call(permitted_type_params, copy_workflow_from: params.dig(:type, :copy_workflow_from)) do |call|
-      @type = call.result
+    additional_params = {}
+    value = params.dig(:type, :copy_workflow_from)
+    additional_params[:copy_workflow_from] = value if value.present?
 
-      call.on_success do
-        redirect_to_type_tab_path(@type, t(:notice_successful_create))
-      end
+    service_call = WorkPackageTypes::CreateService
+                     .new(user: current_user)
+                     .call(permitted_type_params.merge(additional_params))
 
-      call.on_failure do
-        render action: :new, status: :unprocessable_entity
-      end
+    @type = service_call.result
+    if service_call.success?
+      redirect_to edit_type_settings_path(@type), notice: t(:notice_successful_create), status: :see_other
+    else
+      render action: :new, status: :unprocessable_entity
     end
   end
 

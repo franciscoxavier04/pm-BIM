@@ -114,7 +114,8 @@ module ProjectQueries::Scopes
       def allowed_to_member_in_query_join(user) # rubocop:disable Metrics/AbcSize
         members_table = Member.arel_table
 
-        join_conditions = members_table[:user_id].eq(user.id)
+        principal_ids = [user.id] + user.group_ids
+        join_conditions = members_table[:user_id].in(principal_ids)
           .and(members_table[:entity_type].eq(model_name.name))
           .and(members_table[:entity_id].eq(arel_table[:id]))
 
