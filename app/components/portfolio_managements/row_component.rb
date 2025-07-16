@@ -51,13 +51,24 @@ module PortfolioManagements
                             more_menu_delete_item].compact
     end
 
+    def portfolio_proposals
+      PortfolioProposal.where(state: :compose)
+    end
+
     def more_menu_add_to_proposal
-      portfolio_proposals = PortfolioProposal.where(state: :compose).map do |proposal|
+      proposal_entries = portfolio_proposals.map do |proposal|
+        project_count = proposal.projects.count
+        description = if project_count == 0
+                        I18n.t("portfolio_proposals.no_elements")
+                      else
+                        I18n.t("portfolio_proposals.contains_elements", count: project_count)
+                      end
+
         {
           scheme: :default,
           icon: nil,
           href: "#",
-          description: "Enthält 3 Elemente",
+          description:,
           label: proposal.name,
           aria: { label: proposal.name }
         }
@@ -73,8 +84,8 @@ module PortfolioManagements
         }
       ]
 
-      if portfolio_proposals.any?
-        submenu_entries += [:divider, *portfolio_proposals]
+      if proposal_entries.any?
+        submenu_entries += [:divider, *proposal_entries]
       end
 
       {

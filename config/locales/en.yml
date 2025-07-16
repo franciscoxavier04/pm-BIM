@@ -5025,3 +5025,5 @@ en:
       compose: Compose
       proposed: Proposed
       approved: Approved
+    contains_elements: "Contains %{count} elements"
+    no_elements: "Still empty"
