@@ -8,6 +8,10 @@
       render(Overviews::Portfolios::Widgets::StatusReportComponent.new(project: @project))
     end
 
+    grid.with_area(:pmflex_hints, tag: :div) do
+      render(Overviews::Portfolios::Widgets::PmflexHintsComponent.new(project: @project))
+    end
+
     grid.with_area(:subportfolio, tag: :div) do
       render(Overviews::Portfolios::Widgets::SubportfoliosComponent.new(project: @project))
     end
