@@ -32,7 +32,7 @@ See COPYRIGHT and LICENSE files for more details.
       header.with_count(count: @groups.values.sum)
       header.with_title do
         concat(render(Primer::Beta::Octicon.new(icon: :checklist, color: :muted, mr: 2)))
-        concat(render(Primer::Beta::Text.new) { "Ziele und Metriken" })
+        concat(render(Primer::Beta::Text.new) { "Übersicht Ziele" })
       end
     end
   end
@@ -55,11 +55,13 @@ See COPYRIGHT and LICENSE files for more details.
         )
 
         @squares.each do |square_data|
+          count = square_data[:count]
+          label = count == 1 ? "Ziel" : "Ziele"
           concat(
             content_tag(:div, class: "op-goals-widget--square", style: "background-color: var(#{square_data[:bgcolor]}") do
               content_tag(:div, class: "op-goals-widget--square-content") do
                 concat(content_tag(:div, square_data[:count], class: "op-goals-widget--count", style: "color: var(#{square_data[:color]})"))
-                concat(content_tag(:div, "OKRs", class: "op-goals-widget--label"))
+                concat(content_tag(:div, label, class: "op-goals-widget--label"))
                 concat(content_tag(:div,
                                    square_data[:label],
                                    style: "background-color: var(#{square_data[:color]})",
