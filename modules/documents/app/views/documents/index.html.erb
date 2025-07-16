@@ -58,7 +58,7 @@ See COPYRIGHT and LICENSE files for more details.
 <% end %>
 
 <% if OpenProject::FeatureDecisions.block_note_editor_active? %>
-  <%= render(Documents::ListComponent.new(@project.documents, project: @project)) %>
+  <%= render(Documents::ListComponent.new(@project.documents.order(updated_at: :desc), project: @project)) %>
 <% else %>
 
   <% if @grouped.empty? %>
