@@ -92,6 +92,10 @@ module Projects::Exports::PDFExport::Styles
       resolve_margin(@styles.dig(:project, :markdown_label))
     end
 
+    def project_markdown_margins
+      resolve_margin(@styles.dig(:project, :markdown_margins))
+    end
+
     def project_markdown_styling_yml
       resolve_markdown_styling(@styles.dig(:project, :markdown) || {})
     end

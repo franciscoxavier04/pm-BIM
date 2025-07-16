@@ -84,7 +84,8 @@ module Projects::Exports::PDFExport
             write_formattable_custom_field(project, select.custom_field)
             entries = []
           else
-            entries.push table_entry(project, "cf_#{select.custom_field.id}", select.caption)
+            entry = table_entry(project, "cf_#{select.custom_field.id}", select.caption)
+            entries.push(entry) if entry
           end
         elsif project_phase_select?(select)
           entry = user_can_view_project_phases?(project) ? table_entry_project_phase(project, select) : nil
@@ -95,7 +96,8 @@ module Projects::Exports::PDFExport
             write_formattable_attribute(project, select.attribute, select.caption)
             entries = []
           else
-            entries.push table_entry(project, select.attribute, select.caption)
+            entry = table_entry(project, select.attribute, select.caption)
+            entries.push(entry) if entry
           end
         end
       end
@@ -134,6 +136,8 @@ module Projects::Exports::PDFExport
 
     def table_entry(project, value_name, caption)
       value = format_attribute(project, value_name, :pdf)
+      return nil if hide_empty_attributes? && value.blank?
+
       [
         { content: caption }.merge(styles.project_attributes_table_label_cell),
         value || ""
@@ -141,7 +145,7 @@ module Projects::Exports::PDFExport
     end
 
     def can_view_attribute?(_project, attribute)
-      return false if attribute.nil? || attribute == :name
+      return false if attribute.nil? || %i[name favored].include?(attribute)
 
       true
     end
@@ -173,19 +177,27 @@ module Projects::Exports::PDFExport
     end
 
     def write_project_markdown(value, caption)
+      return if hide_empty_attributes? && value.blank?
+
+      value = Prawn::Text::NBSP if value.blank?
       with_margin(styles.project_markdown_label_margins) do
         pdf.formatted_text([styles.project_markdown_label.merge({ text: caption })])
       end
-      value = "\\-" if value.blank?
-      write_markdown!(value, styles.project_markdown_styling_yml)
+      with_margin(styles.project_markdown_margins) do
+        write_markdown!(value, styles.project_markdown_styling_yml)
+      end
     end
 
     def write_table_entries(row_entries)
       return if row_entries.empty?
 
-      rows = 0.step(row_entries.length - 1, 2).map do |i|
-        row_entries[i] + (row_entries[i + 1] || ["", ""])
-      end
+      rows = if attributes_table_4_column?
+               0.step(row_entries.length - 1, 2).map do |i|
+                 row_entries[i] + (row_entries[i + 1] || ["", ""])
+               end
+             else
+               row_entries
+             end
 
       pdf.table(
         rows,
@@ -194,8 +206,22 @@ module Projects::Exports::PDFExport
       )
     end
 
+    def attributes_table_4_column?
+      false
+    end
+
+    def hide_empty_attributes?
+      true
+    end
+
     def attributes_table_column_widths
-      widths = [1.5, 2.0, 1.5, 2.0] # label | value | label | value
+      widths = if attributes_table_4_column?
+                 # label | value | label | value
+                 [1.5, 2.0, 1.5, 2.0]
+               else
+                 # label | value
+                 [1.0, 3.0]
+               end
       ratio = pdf.bounds.width / widths.sum
       widths.map { |w| w * ratio }
     end

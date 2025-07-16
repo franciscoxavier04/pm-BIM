@@ -465,6 +465,15 @@
             }
           ]
         },
+        "markdown_margins": {
+          "type": "object",
+          "title": "Project attribute markdown margins",
+          "allOf": [
+            {
+              "$ref": "#/$defs/margin"
+            }
+          ]
+        },
         "markdown": {
           "$ref": "#/$defs/markdown"
         },
