@@ -41,11 +41,19 @@ export default class extends Controller {
 
   static values = {
     inputText: String,
+    userName: String,
+    websocketUrl: String,
+    websocketAccessToken: String,
+    documentId: String,
   };
 
   declare readonly blockNoteEditorTarget:HTMLElement;
   declare readonly blockNoteInputFieldTarget:HTMLInputElement;
   declare readonly inputTextValue:string;
+  declare readonly userNameValue:string;
+  declare readonly websocketUrlValue:string;
+  declare readonly websocketAccessTokenValue:string;
+  declare readonly documentIdValue:string;
 
   connect() {
     const root = createRoot(this.blockNoteEditorTarget);
@@ -56,6 +64,10 @@ export default class extends Controller {
     return React.createElement(OpBlockNoteContainer, {
       inputField: this.blockNoteInputFieldTarget,
       inputText: this.inputTextValue,
+      userName: this.userNameValue,
+      websocketUrl: this.websocketUrlValue,
+      websocketAccessToken: this.websocketAccessTokenValue,
+      documentId: this.documentIdValue,
     });
   }
 }

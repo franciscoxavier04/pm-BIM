@@ -37,7 +37,8 @@ module Documents
           label: I18n.t("label_document_description"),
           visually_hide_label: true,
           classes: "document-form--long-description",
-          value: model.description
+          value: model.description,
+          document_id: ::CollaborativeEditing::DocumentIdGenerator.call("documents", model.id)
         )
       else
         f.rich_text_area(

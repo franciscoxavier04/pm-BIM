@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -568,6 +570,22 @@ module Settings
         format: :string,
         description: "BMDS Hackathon: The base URL of the Haystack server where LLM-requests are being posted",
         default: nil
+      },
+      websocket_server_url: {
+        format: :string,
+        default: nil,
+        description: "BMDS Hackathon: The URL of the websocket server used for collaborative editing in BlockNote.",
+        default_by_env: {
+          development: "wss://hocuspocus.local"
+        }
+      },
+      websocket_server_secret: {
+        format: :string,
+        default: nil,
+        default_by_env: {
+          development: "secret12345"
+        },
+        description: "BMDS Hackathon: The secret used for generating access token to access websocket server."
       },
       hours_per_day: {
         description: "This will define what is considered a “day” when displaying duration in a more natural way " \
