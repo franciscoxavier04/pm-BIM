@@ -38,7 +38,7 @@ module Storages
         module Queries
           RSpec.describe FileInfoQuery, :webmock do
             let(:user) { create(:user) }
-            let(:storage) { create(:sharepoint_dev_drive_storage, oauth_client_token_user: user) }
+            let(:storage) { create(:one_drive_sandbox_storage, oauth_client_token_user: user) }
 
             let(:auth_strategy) { Registry["one_drive.authentication.user_bound"].call(user, storage) }
 
