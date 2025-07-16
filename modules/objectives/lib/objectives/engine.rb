@@ -14,7 +14,7 @@ module Objectives
                   { controller: "/objectives/objectives", action: "index" },
                   caption: :"objectives.label",
                   if: ->(project) {
-                      project.enabled_module_names.include?("objectives") &&
+                    project.module_enabled?("objectives") &&
                       User.current.allowed_in_project?(:view_work_packages, project)
                   },
                   after: :work_packages,
