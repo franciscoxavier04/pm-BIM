@@ -63,5 +63,9 @@
 %>
 
 <%=
+  render(Objectives::WidgetComponent.new(project: @project, collapsed: false, show_footer: false, query: @query, mb: 2))
+%>
+
+<%=
   render(Objectives::ContainerComponent.new(project: @project, objectives: @objectives))
 %>

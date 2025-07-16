@@ -29,12 +29,12 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%
   @objectives.each do |obj|
-    key_metrics = key_metrics(obj)
+    key_results = key_results_for(obj)
     concat(
       render(Primer::Beta::BorderBox.new(mb: 3)) do |box|
-       box.with_header do
-         render(Primer::OpenProject::BorderBox::CollapsibleHeader.new(box:)) do |header|
-           header.with_count(count: key_metrics.count)
+        box.with_header do
+          render(Primer::OpenProject::BorderBox::CollapsibleHeader.new(box:)) do |header|
+            header.with_count(count: key_results.count)
             header.with_title do
               # render(Primer::OpenProject::FlexLayout.new(justify_content: :space_between, align_items: :center)) do |flex|
               #   flex.with_column(flex_layout: true) do |wp_flex|
@@ -46,36 +46,53 @@ See COPYRIGHT and LICENSE files for more details.
               #     end
               #   end
               # end
-              render(Primer::Beta::Text.new) { obj.subject }
+              concat(
+                render(
+                  Primer::Beta::Link.new(
+                    href: url_for(controller: "/work_packages", action: "show", id: obj),
+                    title: obj.subject,
+                    color: :muted,
+                    mr: 1
+                  )
+                ) { "Ziel ##{obj.id}" }
+              )
+              concat render(Primer::Beta::Text.new) { obj.subject }
               # TODO parent subject + more details?
             end
-         end
-       end
+          end
+        end
 
-       key_metrics.each do |metric|
-         box.with_row do
-           render(Primer::OpenProject::FlexLayout.new(justify_content: :space_between, align_items: :center)) do |flex|
-             flex.with_column(flex_layout: true) do |wp_flex|
-               wp_flex.with_row do
-                 render(WorkPackages::InfoLineComponent.new(work_package: metric))
-               end
-               wp_flex.with_row do
-                 render(Primer::Beta::Text.new(font_weight: :bold)) { metric.subject }
-               end
-             end
+        key_results.find_each do |key_result|
+          box.with_row do
+            render(Primer::OpenProject::FlexLayout.new(justify_content: :space_between, align_items: :center)) do |flex|
+              flex.with_column(flex_layout: true) do |wp_flex|
+                wp_flex.with_row do
+                  render(WorkPackages::InfoLineComponent.new(work_package: key_result))
+                end
+                wp_flex.with_row do
+                  render(Primer::Beta::Text.new(font_weight: :bold)) { key_result.subject }
+                end
+              end
 
-             flex.with_column(style: "width: 50%") do
-               render(Primer::Beta::ProgressBar.new(size: :large)) do |component|
-                 component.with_item(
-                   classes: "__hl_background_status_#{metric.status_id}",
-                   percentage: 50 # TODO derive actual value
-                 )
-               end
-             end
-           end
-         end
-       end
-     end
+              percentage = helpers.key_result_percentage(key_result)
+
+              flex.with_column(flex_layout: true, align_items: :center, style: "width: 50%") do |progress_flex|
+                progress_flex.with_column(flex: 1) do
+                  render(Primer::Beta::ProgressBar.new(size: :large)) do |component|
+                    component.with_item(
+                      classes: "__hl_background_status_#{key_result.status_id}",
+                      percentage:
+                    )
+                  end
+                end
+                progress_flex.with_column(ml: 2) do
+                  render(Primer::Beta::Text.new(font_size: :small, color: :subtle)) { "#{percentage.round}%" }
+                end
+              end
+            end
+          end
+        end
+      end
     )
- end
+  end
 %>

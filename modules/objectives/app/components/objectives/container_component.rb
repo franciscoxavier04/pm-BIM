@@ -37,8 +37,9 @@ class Objectives::ContainerComponent < ViewComponent::Base
 
   private
 
-  def key_metrics(objective)
-    objective.children.select { |child| child.type == BmdsHackathon::References.key_result_type }
+  def key_results_for(objective)
+    objective
+      .children
+      .where(type: BmdsHackathon::References.key_result_type)
   end
 end
-
