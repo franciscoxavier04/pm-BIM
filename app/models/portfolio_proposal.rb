@@ -29,7 +29,7 @@
 # ++
 
 class PortfolioProposal < ApplicationRecord
-  belongs_to :portfolio, -> { where(type: :portfolio) }, class_name: 'Project'
+  belongs_to :portfolio, -> { where(project_type: :portfolio) }, class_name: 'Project'
 
   has_many :portfolio_proposal_projects, dependent: :destroy
   has_many :projects, through: :portfolio_proposal_projects
