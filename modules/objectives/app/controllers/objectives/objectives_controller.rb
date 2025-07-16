@@ -2,39 +2,27 @@ module Objectives
   class ObjectivesController < ApplicationController
     before_action :load_and_authorize_in_optional_project
 
-    # before_action :load_risks,
-    #               :derive_risk_counts
+    before_action :load_objectives
 
-    menu_item :objectives
+
+    menu_item :risks
 
     def index; end
 
     private
 
-    def derive_risk_counts
-      @likelihood_cf = BmdsHackathon::References.risk_likelihood_cf
-      @impact_cf = BmdsHackathon::References.risk_impact_cf
+    def load_objectives
+      @query = Query.new(name: "_", project: @project)
+      @query.add_filter("type_id", "=", [BmdsHackathon::References.objective_type.id])
+      @query.include_subprojects = params[:project_filter] != "current"
 
-      @likelihood_options = @likelihood_cf.custom_options
-      @impact_options = @impact_cf.custom_options
+      # @query.sort_criteria = [[@level_cf.column_name, "desc"]]
 
-      @risk_counts = Hash.new(0)
-      @risk_work_packages.each do |work_package|
-        likelihood_value = work_package.custom_value_for(@likelihood_cf)&.value
-        impact_value = work_package.custom_value_for(@impact_cf)&.value
+      @objectives = @query
+                    .results
+                    .work_packages
+                    .includes(:custom_values)
 
-        if likelihood_value.present? && impact_value.present?
-          @risk_counts[[likelihood_value.to_i, impact_value.to_i]] += 1
-        end
-      end
-    end
-
-    def load_risks
-      @risk_work_packages = WorkPackage
-                              .visible
-                              .where(type: BmdsHackathon::References.risk_type)
-                              .where(project_id: @project.self_and_descendants.select(:id))
-                              .includes(:custom_values)
     end
   end
 end
