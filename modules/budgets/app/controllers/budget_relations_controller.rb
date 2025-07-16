@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,18 +28,38 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-Rails.application.routes.draw do
-  scope "projects/:project_id", as: "projects" do
-    resources :budgets, only: %i[new create index] do
-      match :update_labor_budget_item, on: :collection, via: %i[get post]
-      match :update_material_budget_item, on: :collection, via: %i[get post]
-    end
+class BudgetRelationsController < ApplicationController
+  include AttachableServiceCall
+
+  before_action :find_budget, only: %i[index edit update new create destroy]
+  before_action :authorize
+
+  menu_item :budgets
+
+  def index
+    @parent_relations = @budget.parent_budget_relations.includes(parent_budget: :project)
+    @child_relations = @budget.child_budget_relations.includes(child_budget: :project)
   end
 
-  resources :budgets, only: %i[show update destroy edit] do
-    resources :budget_relations, path: :relations, except: %i[show]
+  def new
+  end
 
-    get :copy, on: :member
-    get :destroy_info, on: :member
+  def edit
+  end
+
+  def create
+  end
+
+  def update
+  end
+
+  def destroy
+  end
+
+  private
+
+  def find_budget
+    @budget = Budget.includes(:project, :author).find_by(id: params[:budget_id])
+    @project = @budget.project if @budget
   end
 end
