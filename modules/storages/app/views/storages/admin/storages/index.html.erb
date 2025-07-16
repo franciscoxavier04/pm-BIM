@@ -33,7 +33,7 @@
               label: I18n.t("storages.provider_types.#{short}.name"),
               href: url_helpers.new_admin_settings_storage_path(provider: short)
             ) do |item|
-              if klass.missing_required_enterprise_token?
+              if klass.disallowed_by_enterprise_token?
                 item.with_trailing_visual_icon(
                   icon: "op-enterprise-addons",
                   classes: "upsell-colored"

@@ -84,7 +84,7 @@ class Storages::FileLinks::CreateContract < ModelContract
   end
 
   def check_for_enterprise_token_requirements
-    if model.storage && !model.storage.has_required_enterprise_token?
+    if model.storage && !model.storage.allowed_by_enterprise_token?
       errors.add(:base, I18n.t("api_v3.errors.code_500_missing_enterprise_token"))
     end
   end

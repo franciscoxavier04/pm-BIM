@@ -90,8 +90,8 @@ module Storages
 
       def short_provider_name = raise Errors::SubclassResponsibility
 
-      def has_required_enterprise_token? = true
-      def missing_required_enterprise_token? = !has_required_enterprise_token?
+      def allowed_by_enterprise_token? = true
+      def disallowed_by_enterprise_token? = !allowed_by_enterprise_token?
 
       # TODO: Compatibility Method To be Removed once all references are removed - 2025-07-14 @mereghost
       def shorten_provider_type(provider_type)
@@ -106,7 +106,7 @@ module Storages
       end
     end
 
-    delegate :short_provider_name, :has_required_enterprise_token?, :missing_required_enterprise_token?, to: :class
+    delegate :short_provider_name, :allowed_by_enterprise_token?, :disallowed_by_enterprise_token?, to: :class
     delegate :to_s, to: :short_provider_name
     alias :short_provider_type :to_s
 
@@ -171,11 +171,11 @@ module Storages
     def provider_fields_defaults = raise Errors::SubclassResponsibility
 
     def provider_type_nextcloud?
-      provider_type == PROVIDER_TYPE_NEXTCLOUD
+      is_a?(NextcloudStorage)
     end
 
     def provider_type_one_drive?
-      provider_type == PROVIDER_TYPE_ONE_DRIVE
+      is_a?(OneDriveStorage)
     end
 
     def health_reason_identifier

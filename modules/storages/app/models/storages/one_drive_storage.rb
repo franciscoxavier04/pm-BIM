@@ -41,7 +41,7 @@ module Storages
 
     def self.short_provider_name = :one_drive
 
-    def self.has_required_enterprise_token?
+    def self.allowed_by_enterprise_token?
       EnterpriseToken.allows_to?(:one_drive_sharepoint_file_storage)
     end
 

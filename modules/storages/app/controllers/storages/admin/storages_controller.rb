@@ -269,7 +269,7 @@ class Storages::Admin::StoragesController < ApplicationController
   end
 
   def require_ee_token_for_one_drive
-    if (@provider_type || @storage).missing_required_enterprise_token?
+    if (@provider_type || @storage).disallowed_by_enterprise_token?
       redirect_to action: :upsell
     end
   end
