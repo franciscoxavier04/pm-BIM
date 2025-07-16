@@ -4,10 +4,10 @@
 #++
 
 module Storages
-  class SharepointStorage < Storage
+  class SharePointStorage < Storage
     store_attribute :provider_fields, :tenant_id, :string
 
-    def self.short_provider_name = :sharepoint
+    def self.short_provider_name = :share_point
     def audience = nil
 
     def authenticate_via_idp? = false

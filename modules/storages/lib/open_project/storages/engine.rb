@@ -261,7 +261,7 @@ module OpenProject::Storages
       Storages::Storage::InexistentStorage
       Storages::OneDriveStorage
       Storages::NextcloudStorage
-      Storages::SharepointStorage
+      Storages::SharePointStorage
 
       # Allow the browser to connect to external servers for direct file uploads.
       AppendStoragesHostsToCspHook
