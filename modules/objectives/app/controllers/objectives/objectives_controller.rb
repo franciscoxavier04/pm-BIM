@@ -5,7 +5,7 @@ module Objectives
     before_action :load_objectives
 
 
-    menu_item :risks
+    menu_item :objectives
 
     def index; end
 
