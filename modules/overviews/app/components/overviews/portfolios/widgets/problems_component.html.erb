@@ -46,7 +46,7 @@ See COPYRIGHT and LICENSE files for more details.
           end
         end
       elsif wps.count <= @cutoff_limit
-        wps.find_each do |work_package|
+        wps.each do |work_package|
           component.with_row do
             render(Primer::OpenProject::FlexLayout.new) do |flex|
               flex.with_row do
