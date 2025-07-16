@@ -3825,6 +3825,8 @@ en:
       make_template: "Set as template"
       remove_from_templates: "Remove from templates"
 
+  project_caption_order_changed: "Order successfully changed."
+  project_could_not_be_moved: "Project could not be moved."
   project_module_activity: "Activity"
   project_module_forums: "Forums"
   project_module_work_package_tracking: "Work packages"

@@ -311,6 +311,7 @@ Rails.application.routes.draw do
       post :copy
 
       patch :types
+      put :move
 
       # Destroy uses a get request to prompt the user before the actual DELETE request
       get :destroy_info, as: "confirm_destroy"

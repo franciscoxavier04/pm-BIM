@@ -32,6 +32,7 @@ module Projects
     delegate :identifier, to: :project
     delegate :favored_project_ids,
              :project_phase_by_definition,
+             :query,
              to: :table
 
     def project
@@ -267,6 +268,7 @@ module Projects
         menu.with_divider
       else
         menu_item => { scheme:, label:, icon:, **button_options }
+        form_arguments = button_options.delete(:form_arguments)
         submenu_entries = button_options.delete(:submenu_entries)
         description = button_options.delete(:description)
 
@@ -282,6 +284,7 @@ module Projects
         else
           menu.with_item(scheme:,
                          label:,
+                         form_arguments:,
                          test_selector: "project-list-row--action-menu-item",
                          content_arguments: button_options) do |item|
             item.with_leading_visual_icon(icon:) if icon
@@ -292,7 +295,9 @@ module Projects
     end
 
     def more_menu_items
-      @more_menu_items ||= [more_menu_subproject_item,
+      @more_menu_items ||= [move_action_item(:higher, t("label_agenda_item_move_up"), "chevron-up"),
+                            move_action_item(:lower, t("label_agenda_item_move_down"), "chevron-down"),
+                            more_menu_subproject_item,
                             more_menu_settings_item,
                             more_menu_activity_item,
                             more_menu_favorite_item,
@@ -330,6 +335,25 @@ module Projects
         classes: "op-primer--star-icon",
         label: I18n.t(:button_unfavorite),
         aria: { label: I18n.t(:button_unfavorite) }
+      }
+    end
+
+    def move_action_item(move_to, label, icon)
+      return unless sorted_by_lft?
+
+      href = move_project_path(
+        project,
+        move_to:,
+        sortBy: JSON.dump([%w[lft asc]]),
+        **helpers.projects_query_params.slice(*helpers.projects_query_param_names_for_sort)
+      )
+
+      {
+        scheme: :default,
+        label:,
+        icon:,
+        href:,
+        form_arguments: { method: :put, data: { "turbo-stream": true } }
       }
     end
 
@@ -437,6 +461,10 @@ module Projects
 
     def current_page
       table.model.current_page.to_s
+    end
+
+    def sorted_by_lft?
+      query.orders.first&.attribute.to_s == "lft"
     end
   end
 end

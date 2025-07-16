@@ -35,8 +35,8 @@ class ProjectsController < ApplicationController
   menu_item :roadmap, only: :roadmap
 
   before_action :find_project, except: %i[index new create export_list_modal]
-  before_action :load_query_or_deny_access, only: %i[index export_list_modal]
-  before_action :authorize, only: %i[copy_form copy deactivate_work_package_attachments]
+  before_action :load_query_or_deny_access, only: %i[index export_list_modal move]
+  before_action :authorize, only: %i[copy_form copy deactivate_work_package_attachments move]
   before_action :authorize_global, only: %i[new create]
   before_action :require_admin, only: %i[destroy destroy_info]
   before_action :find_optional_template, only: %i[new create]
@@ -173,6 +173,49 @@ class ProjectsController < ApplicationController
     else
       head :no_content
     end
+  end
+
+  def move # rubocop:disable Metrics/AbcSize
+    success = begin
+      case params[:move_to]
+      when "lower"
+        @project.move_right
+      when "higher"
+        @project.move_left
+      end
+    rescue StandardError
+      false
+    end
+
+    if success
+      render_success_flash_message_via_turbo_stream(
+        message: I18n.t(:project_caption_order_changed)
+      )
+    else
+      render_error_flash_message_via_turbo_stream(
+        message: I18n.t(:project_could_not_be_moved)
+      )
+    end
+
+    replace_via_turbo_stream(
+      component: Projects::IndexPageHeaderComponent.new(query: @query, current_user:, state: :show, params:)
+    )
+    update_via_turbo_stream(
+      component: Filter::FilterButtonComponent.new(query: @query, disable_buttons: false)
+    )
+    replace_via_turbo_stream(component: Projects::TableComponent.new(query: @query, current_user:, params:))
+
+    current_url = projects_path(params.permit(:query_id, :filters, :columns, :sortBy, :page, :per_page))
+
+    turbo_streams << turbo_stream.push_state(current_url)
+    turbo_streams << turbo_stream.turbo_frame_set_src(
+      "projects_sidemenu",
+      projects_menu_url(query_id: @query.id, controller_path: "projects")
+    )
+
+    turbo_streams << turbo_stream.replace("flash-messages", helpers.render_flash_messages)
+
+    render turbo_stream: turbo_streams
   end
 
   def export_list_modal
