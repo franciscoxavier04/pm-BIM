@@ -27,6 +27,12 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 # ++
+
+# Fix issue which did not allow using dividers within submenus:
+class Primer::Alpha::ActionMenu::SubMenuItem
+  delegate :with_divider, to: :@sub_menu
+end
+
 module PortfolioManagements
   class RowComponent < Projects::RowComponent
     def more_menu_items
@@ -46,12 +52,35 @@ module PortfolioManagements
     end
 
     def more_menu_add_to_proposal
-      return unless params[:controller] == "portfolio_managements"
+      portfolio_proposals = PortfolioProposal.where(state: :compose).map do |proposal|
+        {
+          scheme: :default,
+          icon: nil,
+          href: "#",
+          description: "Enthält 3 Elemente",
+          label: proposal.name,
+          aria: { label: proposal.name }
+        }
+      end
+
+      submenu_entries = [
+        {
+          scheme: :default,
+          icon: "plus",
+          href: "#",
+          label: I18n.t(:button_create_new_portfolio_proposal),
+          aria: { label: I18n.t(:button_create_new_portfolio_proposal) }
+        }
+      ]
+
+      if portfolio_proposals.any?
+        submenu_entries += [:divider, *portfolio_proposals]
+      end
 
       {
         scheme: :default,
         icon: "briefcase",
-        href: "#",
+        submenu_entries:,
         label: I18n.t(:button_add_to_proposal),
         aria: { label: I18n.t(:button_add_to_proposal) }
       }
