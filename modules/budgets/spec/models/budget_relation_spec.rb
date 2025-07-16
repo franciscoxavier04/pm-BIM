@@ -53,120 +53,114 @@ RSpec.describe BudgetRelation do
       let(:project2_budget) { create(:budget, project: project2, supplementary_amount: 2_500) }
 
       context "without any relations" do
-        it "calculates the correct values" do # rubocop:disable RSpec/MultipleExpectations
-          expect(portfolio_budget.budget).to eq(0)
-          expect(portfolio_budget.allocated_to_children).to eq(0)
-          expect(portfolio_budget.spent).to eq(0)
-          expect(portfolio_budget.available).to eq(0)
+        it "calculates the correct values" do
+          expect(portfolio_budget).to have_attributes(budget: 0,
+                                                      allocated_to_children: 0,
+                                                      spent: 0,
+                                                      available: 0)
 
-          expect(program1_budget.budget).to eq(0)
-          expect(program1_budget.allocated_to_children).to eq(0)
-          expect(program1_budget.spent).to eq(0)
-          expect(program1_budget.available).to eq(0)
+          expect(program1_budget).to have_attributes(budget: 0,
+                                                     allocated_to_children: 0,
+                                                     spent: 0,
+                                                     available: 0)
 
-          expect(project1_budget.budget).to eq(5_000)
-          expect(project1_budget.allocated_to_children).to eq(0)
-          expect(project1_budget.spent).to eq(0)
-          expect(project1_budget.available).to eq(5_000)
+          expect(project1_budget).to have_attributes(budget: 5_000,
+                                                     allocated_to_children: 0,
+                                                     spent: 0,
+                                                     available: 5_000)
 
-          expect(project2_budget.budget).to eq(2_500)
-          expect(project2_budget.allocated_to_children).to eq(0)
-          expect(project2_budget.spent).to eq(0)
-          expect(project2_budget.available).to eq(2_500)
+          expect(project2_budget).to have_attributes(budget: 2_500,
+                                                     allocated_to_children: 0,
+                                                     spent: 0,
+                                                     available: 2_500)
         end
       end
 
       context "when setting up project1 to add itself to the program1 budget" do
         before do
-          described_class.create!(
-            parent_budget: program1_budget,
-            child_budget: project1_budget,
-            relation_type: :add
-          )
+          described_class.create!(parent_budget: program1_budget,
+                                  child_budget: project1_budget,
+                                  relation_type: :add)
         end
 
-        it "allocates the project's budget to the program's budget" do # rubocop:disable RSpec/MultipleExpectations
-          expect(portfolio_budget.budget).to eq(0)
-          expect(portfolio_budget.allocated_to_children).to eq(0)
-          expect(portfolio_budget.spent).to eq(0)
-          expect(portfolio_budget.available).to eq(0)
+        it "allocates the project's budget to the program's budget" do
+          expect(portfolio_budget).to have_attributes(budget: 0,
+                                                      allocated_to_children: 0,
+                                                      spent: 0,
+                                                      available: 0)
 
-          expect(program1_budget.budget).to eq(5_000)
-          expect(program1_budget.allocated_to_children).to eq(5_000)
-          expect(program1_budget.spent).to eq(0)
-          expect(program1_budget.available).to eq(0)
+          expect(program1_budget).to have_attributes(budget: 5_000,
+                                                     allocated_to_children: 5_000,
+                                                     spent: 0,
+                                                     available: 0)
 
-          expect(project1_budget.budget).to eq(5_000)
-          expect(project1_budget.allocated_to_children).to eq(0)
-          expect(project1_budget.spent).to eq(0)
-          expect(project1_budget.available).to eq(5_000)
+          expect(project1_budget).to have_attributes(budget: 5_000,
+                                                     allocated_to_children: 0,
+                                                     spent: 0,
+                                                     available: 5_000)
 
-          expect(project2_budget.budget).to eq(2_500)
-          expect(project2_budget.allocated_to_children).to eq(0)
-          expect(project2_budget.spent).to eq(0)
-          expect(project2_budget.available).to eq(2_500)
+          expect(project2_budget).to have_attributes(budget: 2_500,
+                                                     allocated_to_children: 0,
+                                                     spent: 0,
+                                                     available: 2_500)
         end
 
         context "when also setting up project2 to add itself to the program1 budget" do
           before do
-            described_class.create!(
-              parent_budget: program1_budget,
-              child_budget: project2_budget,
-              relation_type: :add
-            )
+            described_class.create!(parent_budget: program1_budget,
+                                    child_budget: project2_budget,
+                                    relation_type: :add)
           end
 
-          it "allocates both project's budget to the program's budget" do # rubocop:disable RSpec/MultipleExpectations
-            expect(portfolio_budget.budget).to eq(0)
-            expect(portfolio_budget.allocated_to_children).to eq(0)
-            expect(portfolio_budget.spent).to eq(0)
-            expect(portfolio_budget.available).to eq(0)
+          it "allocates both project's budget to the program's budget" do
+            expect(portfolio_budget).to have_attributes(budget: 0,
+                                                        allocated_to_children: 0,
+                                                        spent: 0,
+                                                        available: 0)
 
-            expect(program1_budget.budget).to eq(7_500)
-            expect(program1_budget.allocated_to_children).to eq(7_500)
-            expect(program1_budget.spent).to eq(0)
-            expect(program1_budget.available).to eq(0)
+            expect(program1_budget).to have_attributes(budget: 7_500,
+                                                       allocated_to_children: 7_500,
+                                                       spent: 0,
+                                                       available: 0)
 
-            expect(project1_budget.budget).to eq(5_000)
-            expect(project1_budget.allocated_to_children).to eq(0)
-            expect(project1_budget.spent).to eq(0)
-            expect(project1_budget.available).to eq(5_000)
+            expect(project1_budget).to have_attributes(budget: 5_000,
+                                                       allocated_to_children: 0,
+                                                       spent: 0,
+                                                       available: 5_000)
 
-            expect(project2_budget.budget).to eq(2_500)
-            expect(project2_budget.allocated_to_children).to eq(0)
-            expect(project2_budget.spent).to eq(0)
-            expect(project2_budget.available).to eq(2_500)
+            expect(project2_budget).to have_attributes(budget: 2_500,
+                                                       allocated_to_children: 0,
+                                                       spent: 0,
+                                                       available: 2_500)
           end
 
           context "when setting program1 to add itself to the portfolio budget" do
             before do
-              described_class.create!(
-                parent_budget: portfolio_budget,
-                child_budget: program1_budget,
-                relation_type: :add
-              )
+              described_class.create!(parent_budget: portfolio_budget,
+                                      child_budget: program1_budget,
+                                      relation_type: :add)
             end
 
-            it "allocates the program's budget to the portfolio's budget" do # rubocop:disable RSpec/MultipleExpectations
-              expect(portfolio_budget.budget).to eq(7_500)
-              expect(portfolio_budget.allocated_to_children).to eq(7_500)
-              expect(portfolio_budget.spent).to eq(0)
-              expect(portfolio_budget.available).to eq(0)
+            it "allocates the program's budget to the portfolio's budget" do
+              expect(portfolio_budget).to have_attributes(budget: 7_500,
+                                                          allocated_to_children: 7_500,
+                                                          spent: 0,
+                                                          available: 0)
 
-              expect(program1_budget.budget).to eq(7_500)
-              expect(program1_budget.allocated_to_children).to eq(7_500)
-              expect(program1_budget.spent).to eq(0)
-              expect(program1_budget.available).to eq(0)
+              expect(program1_budget).to have_attributes(budget: 7_500,
+                                                         allocated_to_children: 7_500,
+                                                         spent: 0,
+                                                         available: 0)
 
-              expect(project1_budget.budget).to eq(5_000)
-              expect(project1_budget.allocated_to_children).to eq(0)
-              expect(project1_budget.spent).to eq(0)
-              expect(project1_budget.available).to eq(5_000)
+              expect(project1_budget).to have_attributes(budget: 5_000,
+                                                         allocated_to_children: 0,
+                                                         spent: 0,
+                                                         available: 5_000)
 
-              expect(project2_budget.budget).to eq(2_500)
-              expect(project2_budget.allocated_to_children).to eq(0)
-              expect(project2_budget.spent).to eq(0)
-              expect(project2_budget.available).to eq(2_500)
+              expect(project2_budget).to have_attributes(budget: 2_500,
+                                                         allocated_to_children: 0,
+                                                         spent: 0,
+                                                         available: 2_500)
             end
 
             context "when adding some costs to the projects" do
@@ -181,19 +175,19 @@ RSpec.describe BudgetRelation do
               end
 
               it "subtracts the costs from the budgets" do
-                expect(portfolio_budget.spent).to eq(0)
-                expect(portfolio_budget.spent_with_children).to eq(1_250)
+                expect(portfolio_budget).to have_attributes(spent: 0,
+                                                            spent_with_children: 1_250)
 
-                expect(program1_budget.spent).to eq(0)
-                expect(program1_budget.spent_with_children).to eq(1_250)
+                expect(program1_budget).to have_attributes(spent: 0,
+                                                           spent_with_children: 1_250)
 
-                expect(project1_budget.budget).to eq(5_000)
-                expect(project1_budget.spent).to eq(500)
-                expect(project1_budget.available).to eq(4_500)
+                expect(project1_budget).to have_attributes(budget: 5_000,
+                                                           spent: 500,
+                                                           available: 4_500)
 
-                expect(project2_budget.budget).to eq(2_500)
-                expect(project2_budget.spent).to eq(750)
-                expect(project2_budget.available).to eq(1_750)
+                expect(project2_budget).to have_attributes(budget: 2_500,
+                                                           spent: 750,
+                                                           available: 1_750)
               end
             end
           end
@@ -219,112 +213,103 @@ RSpec.describe BudgetRelation do
 
       context "without any relations" do
         it "calculates the correct values" do
-          # without any budget relations
-          expect(portfolio_budget.budget).to eq(10_000)
-          expect(portfolio_budget.allocated_to_children).to eq(0)
-          expect(portfolio_budget.spent).to eq(0)
-          expect(portfolio_budget.available).to eq(10_000)
+          expect(portfolio_budget).to have_attributes(budget: 10_000,
+                                                      allocated_to_children: 0,
+                                                      spent: 0,
+                                                      available: 10_000)
         end
       end
 
       context "with the portfolio -> program1 relation" do
         before do
-          described_class.create!(
-            parent_budget: portfolio_budget,
-            child_budget: program1_budget,
-            relation_type: :subtract
-          )
+          described_class.create!(parent_budget: portfolio_budget,
+                                  child_budget: program1_budget,
+                                  relation_type: :subtract)
         end
 
         it "allocates the program's budget out of the portfolio budget" do
-          expect(portfolio_budget.budget).to eq(10_000)
-          expect(portfolio_budget.allocated_to_children).to eq(7_000)
-          expect(portfolio_budget.spent).to eq(0)
-          expect(portfolio_budget.available).to eq(3_000)
+          expect(portfolio_budget).to have_attributes(budget: 10_000,
+                                                      allocated_to_children: 7_000,
+                                                      spent: 0,
+                                                      available: 3_000)
 
-          expect(program1_budget.budget).to eq(7_000)
-          expect(program1_budget.allocated_to_children).to eq(0)
-          expect(program1_budget.spent).to eq(0)
-          expect(program1_budget.available).to eq(7_000)
+          expect(program1_budget).to have_attributes(budget: 7_000,
+                                                     allocated_to_children: 0,
+                                                     spent: 0,
+                                                     available: 7_000)
         end
 
         context "with the program1 -> project1 relation" do
           before do
-            described_class.create!(
-              parent_budget: program1_budget,
-              child_budget: project1_budget,
-              relation_type: :subtract
-            )
+            described_class.create!(parent_budget: program1_budget,
+                                    child_budget: project1_budget,
+                                    relation_type: :subtract)
           end
 
           it "allocates the project's budget out of the program's budget" do
-            expect(portfolio_budget.budget).to eq(10_000)
-            expect(portfolio_budget.allocated_to_children).to eq(7_000)
-            expect(portfolio_budget.spent).to eq(0)
-            expect(portfolio_budget.available).to eq(3_000)
+            expect(portfolio_budget).to have_attributes(budget: 10_000,
+                                                        allocated_to_children: 7_000,
+                                                        spent: 0,
+                                                        available: 3_000)
 
-            expect(program1_budget.budget).to eq(7_000)
-            expect(program1_budget.allocated_to_children).to eq(5_000)
-            expect(program1_budget.spent).to eq(0)
-            expect(program1_budget.available).to eq(2_000)
+            expect(program1_budget).to have_attributes(budget: 7_000,
+                                                       allocated_to_children: 5_000,
+                                                       spent: 0,
+                                                       available: 2_000)
 
-            expect(project1_budget.budget).to eq(5_000)
-            expect(project1_budget.allocated_to_children).to eq(0)
-            expect(project1_budget.spent).to eq(0)
-            expect(project1_budget.available).to eq(5_000)
+            expect(project1_budget).to have_attributes(budget: 5_000,
+                                                       allocated_to_children: 0,
+                                                       spent: 0,
+                                                       available: 5_000)
           end
         end
 
         context "with the portfolio -> program1, program2 relation" do
           before do
-            described_class.create!(
-              parent_budget: portfolio_budget,
-              child_budget: program2_budget,
-              relation_type: :subtract
-            )
+            described_class.create!(parent_budget: portfolio_budget,
+                                    child_budget: program2_budget,
+                                    relation_type: :subtract)
           end
 
           it "allocates the program's budget out of the portfolio's budget" do
-            expect(portfolio_budget.budget).to eq(10_000)
-            expect(portfolio_budget.allocated_to_children).to eq(10_000)
-            expect(portfolio_budget.spent).to eq(0)
-            expect(portfolio_budget.available).to eq(0)
+            expect(portfolio_budget).to have_attributes(budget: 10_000,
+                                                        allocated_to_children: 10_000,
+                                                        spent: 0,
+                                                        available: 0)
 
-            expect(program1_budget.budget).to eq(7_000)
-            expect(program1_budget.allocated_to_children).to eq(0)
-            expect(program1_budget.spent).to eq(0)
-            expect(program1_budget.available).to eq(7_000)
+            expect(program1_budget).to have_attributes(budget: 7_000,
+                                                       allocated_to_children: 0,
+                                                       spent: 0,
+                                                       available: 7_000)
 
-            expect(program2_budget.budget).to eq(3_000)
-            expect(program2_budget.allocated_to_children).to eq(0)
-            expect(program2_budget.spent).to eq(0)
-            expect(program2_budget.available).to eq(3_000)
+            expect(program2_budget).to have_attributes(budget: 3_000,
+                                                       allocated_to_children: 0,
+                                                       spent: 0,
+                                                       available: 3_000)
           end
 
           context "with the program2 -> project2 relation" do
             before do
-              described_class.create!(
-                parent_budget: program2_budget,
-                child_budget: project2_budget,
-                relation_type: :subtract
-              )
+              described_class.create!(parent_budget: program2_budget,
+                                      child_budget: project2_budget,
+                                      relation_type: :subtract)
             end
 
             it "allocates the project's budget out of the program's budget" do
-              expect(portfolio_budget.budget).to eq(10_000)
-              expect(portfolio_budget.allocated_to_children).to eq(10_000)
-              expect(portfolio_budget.spent).to eq(0)
-              expect(portfolio_budget.available).to eq(0)
+              expect(portfolio_budget).to have_attributes(budget: 10_000,
+                                                          allocated_to_children: 10_000,
+                                                          spent: 0,
+                                                          available: 0)
 
-              expect(program2_budget.budget).to eq(3_000)
-              expect(program2_budget.allocated_to_children).to eq(2_000)
-              expect(program2_budget.spent).to eq(0)
-              expect(program2_budget.available).to eq(1_000)
+              expect(program2_budget).to have_attributes(budget: 3_000,
+                                                         allocated_to_children: 2_000,
+                                                         spent: 0,
+                                                         available: 1_000)
 
-              expect(project2_budget.budget).to eq(2_000)
-              expect(project2_budget.allocated_to_children).to eq(0)
-              expect(project2_budget.spent).to eq(0)
-              expect(project2_budget.available).to eq(2_000)
+              expect(project2_budget).to have_attributes(budget: 2_000,
+                                                         allocated_to_children: 0,
+                                                         spent: 0,
+                                                         available: 2_000)
             end
 
             context "with logged costs on project1" do
@@ -340,10 +325,10 @@ RSpec.describe BudgetRelation do
                 expect(program2_budget.spent).to eq(0)
                 expect(program2_budget.spent_with_children).to eq(500)
 
-                expect(project2_budget.budget).to eq(2_000)
-                expect(project2_budget.allocated_to_children).to eq(0)
-                expect(project2_budget.spent).to eq(500)
-                expect(project2_budget.available).to eq(1_500)
+                expect(project2_budget).to have_attributes(budget: 2_000,
+                                                           allocated_to_children: 0,
+                                                           spent: 500,
+                                                           available: 1_500)
               end
             end
           end
@@ -392,30 +377,30 @@ RSpec.describe BudgetRelation do
         create(:cost_entry, project: project2, entity: work_package2, overridden_costs: 1_250)
       end
 
-      it "calculates the correct values" do # rubocop:disable RSpec/MultipleExpectations
-        expect(portfolio_budget.budget).to eq(10_000)
-        expect(portfolio_budget.allocated_to_children).to eq(7_500)
-        expect(portfolio_budget.spent).to eq(0)
-        expect(portfolio_budget.spent_with_children).to eq(3_750)
-        expect(portfolio_budget.available).to eq(2_500)
+      it "calculates the correct values" do
+        expect(portfolio_budget).to have_attributes(budget: 10_000,
+                                                    allocated_to_children: 7_500,
+                                                    spent: 0,
+                                                    spent_with_children: 3_750,
+                                                    available: 2_500)
 
-        expect(program1_budget.budget).to eq(7_500)
-        expect(program1_budget.allocated_to_children).to eq(7_500)
-        expect(program1_budget.spent).to eq(0)
-        expect(program1_budget.spent_with_children).to eq(3_750)
-        expect(program1_budget.available).to eq(0)
+        expect(program1_budget).to have_attributes(budget: 7_500,
+                                                   allocated_to_children: 7_500,
+                                                   spent: 0,
+                                                   spent_with_children: 3_750,
+                                                   available: 0)
 
-        expect(project1_budget.budget).to eq(5_000)
-        expect(project1_budget.allocated_to_children).to eq(0)
-        expect(project1_budget.spent).to eq(2_500)
-        expect(project1_budget.spent_with_children).to eq(2_500)
-        expect(project1_budget.available).to eq(2_500)
+        expect(project1_budget).to have_attributes(budget: 5_000,
+                                                   allocated_to_children: 0,
+                                                   spent: 2_500,
+                                                   spent_with_children: 2_500,
+                                                   available: 2_500)
 
-        expect(project2_budget.budget).to eq(2_500)
-        expect(project2_budget.allocated_to_children).to eq(0)
-        expect(project2_budget.spent).to eq(1_250)
-        expect(project2_budget.spent_with_children).to eq(1_250)
-        expect(project2_budget.available).to eq(1_250)
+        expect(project2_budget).to have_attributes(budget: 2_500,
+                                                   allocated_to_children: 0,
+                                                   spent: 1_250,
+                                                   spent_with_children: 1_250,
+                                                   available: 1_250)
       end
     end
   end
