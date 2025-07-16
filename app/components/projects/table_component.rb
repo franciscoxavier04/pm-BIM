@@ -204,7 +204,7 @@ module Projects
     end
 
     def sorted_by_lft?
-      query.orders.first&.attribute == :lft
+      query.orders.first&.attribute.to_s == "lft"
     end
   end
 end
