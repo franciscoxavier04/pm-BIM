@@ -686,7 +686,7 @@ tr:
         tab: "Formu yapılandırma"
       projects:
         tab: Projeler
-        enable_all: Enable for all projects
+        enable_all: Tüm projeler için etkinleştir
         select_projects: Select projects
         select_projects_description: Select the projects in which you would like to use this type.
       settings:
@@ -900,7 +900,7 @@ tr:
       data_consequences:
         other: 'Kullanıcının oluşturduğu (ör. E-posta, tercihler, iş paketleri, wiki girdileri) mümkün olduğunca silinen verilerden. Bununla birlikte, iş paketleri ve wiki girdileri gibi veriler, diğer kullanıcıların çalışmalarını engellemeden silinemez. Bu tür veriler, "Silinmiş kullanıcı" adı verilen bir hesaba yeniden atanır. Her silinen hesabın verileri bu hesaba yeniden atandığından, kullanıcının oluşturduğu verileri başka bir silinen hesabın verilerinden ayırt etmek mümkün olmayacaktır.'
         self: 'Oluşturduğunuz verilerin (ör. E-posta, tercihler, iş paketleri, wiki girdileri) mümkün olduğunca silinir. Bununla birlikte, iş paketleri ve wiki girdileri gibi veriler, diğer kullanıcıların çalışmalarını engellemeden silinemez. Bu tür veriler, "Silinmiş kullanıcı" adı verilen bir hesaba yeniden atanır. Her silinen hesabın verileri bu hesaba yeniden atandığından, oluşturduğunuz verileri başka bir silinen hesabın verilerinden ayırmanız mümkün olmayacaktır.'
-      heading: "Hesap silmek %{name}"
+      heading: "%{name} hesabını sil"
       info:
         other: "Kullanıcı hesabının silinmesi geri alınamaz bir eylemdir."
         self: "Kullanıcı hesabınızın silinmesi geri alınamaz bir eylemdir."
@@ -1157,22 +1157,22 @@ tr:
       group:
         identity_url: "Identity URL"
       user_preference:
-        header_look_and_feel: "Look and feel"
-        header_alerts: "Alerts"
-        button_update_look_and_feel: "Update look and feel"
-        button_update_alerts: "Update alerts"
-        comments_sorting: "Display work package activity sorted by"
-        disable_keyboard_shortcuts: "Disable keyboard shortcuts"
+        header_look_and_feel: "Görünüm ve his"
+        header_alerts: "Uyarılar"
+        button_update_look_and_feel: "Görünümü ve hissi güncelleyin"
+        button_update_alerts: "Uyarıları güncelle"
+        comments_sorting: "İş paketi faaliyetini aşağıdakilere göre sıralanmış olarak görüntüleyin"
+        disable_keyboard_shortcuts: "Klavye kısayollarını devre dışı bırak"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
+          Ekran okuyucu kullanıyorsanız veya bir eylemi yanlışlıkla bir kısayolla tetiklemekten kaçınmak istiyorsanız varsayılan <a href="%{href}">klavye kısayollarını</a> devre dışı bırakmayı seçebilirsiniz.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Erişilebilirlik modu"
-        auto_hide_popups: "Automatically hide success banners"
-        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
+        auto_hide_popups: "Başarı uyarılarını otomatik olarak gizle"
+        auto_hide_popups_caption: "Etkinleştirildiğinde, yeşil başarı uyarıları 5 saniye sonra otomatik olarak kaybolacaktır."
         warn_on_leaving_unsaved: "İş paketlerinden ayrılırken kaydedilmemiş değişiklik olduğunda beni uyar"
-        theme: "Colour mode"
+        theme: "Renk modu"
         time_zone: "Zaman dilimi"
-        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. Please select Light mode for full custom theme support."
+        mode_guideline: "Bazı modlar, erişilebilirlik ve okunabilirlik için özel tema renklerinin üzerine yazacaktır. Tam özel tema desteği için lütfen Açık modunu seçin."
         daily_reminders: "Günlük hatırlatmalar"
         workdays: "İş Günleri"
       version:
@@ -1487,7 +1487,7 @@ tr:
               not_allowed_to_view: "bu kaynağı görüntülemesine izin verilmiyor."
               locked: "kilitli."
         wiki_page:
-          error_conflict: "Viki sayfası siz düzenlerken başka biri tarafından güncellendi."
+          error_conflict: "Wiki sayfası siz düzenlerken başka biri tarafından güncellendi."
           attributes:
             slug:
               undeducible: "başlıktan çıkarılamaz %{title}"
@@ -2188,7 +2188,7 @@ tr:
       project_list_sharing:
         description: "Share project lists with individual users."
       define_custom_style:
-        title: "Custom color theme and logo"
+        title: "Özel renk teması ve logo"
         more_info: "Not: Kullanılan logo herkese açık olacaktır."
         description: OpenProject kurulumunuzu kendi logonuz ve renklerinizle özelleştirin.
       custom_actions:
@@ -2556,20 +2556,20 @@ tr:
         disabled_text: "API belirteçleri yönetici tarafından etkinleştirilmemiştir. Bu özelliği kullanmak için lütfen yöneticinize başvurun."
       ical:
         title: "iCalendar"
-        text_hint: 'iCalendar tokens allow users to <a href="%{path}" target="_blank">subscribe to OpenProject calendars</a> and view up-to-date work package information from external clients.'
+        text_hint: 'iCalendar belirteçleri, kullanıcıların <a href="%{path}" target="_blank">OpenProject takvimlerine abone</a> olmalarını ve harici istemcilerden gelen güncel iş paketi bilgilerini görüntülemelerini sağlar.'
         disabled_text: "iCalendar abonelikleri yönetici tarafından etkinleştirilmemiştir. Bu özelliği kullanmak için lütfen yöneticinize başvurun."
         empty_text_hint: "To add an iCalendar token, subscribe to a new or existing calendar from within the Calendar module of a project. You must have the necessary permissions."
       oauth:
         title: "OAuth"
-        text_hint: "OAuth tokens allow third-party applications to connect with this OpenProject instance."
+        text_hint: "OAuth belirteçleri, üçüncü taraf uygulamaların bu OpenProject sistemine bağlanmasına izin verir."
         empty_text_hint: "Sizin için yapılandırılmış ve etkin bir üçüncü taraf uygulama erişimi yok. Bu özelliği etkinleştirmek için lütfen yöneticinize başvurun."
       rss:
         title: "RSS"
-        text_hint: "RSS tokens allow users to keep up with the latest changes in this OpenProject instance via an external RSS reader."
+        text_hint: "RSS belirteçleri, kullanıcıların harici bir RSS okuyucu aracılığıyla bu OpenProject sistemindeki en son değişiklikleri takip etmelerini sağlar."
         static_token_name: "RSS belirteci"
         disabled_text: "RSS belirteçleri yönetici tarafından etkinleştirilmemiştir. Bu özelliği kullanmak için lütfen yöneticinize başvurun."
       storages:
-        title: "File storages"
+        title: "Dosya depoları"
         text_hint: "File Storage tokens connect this OpenProject instance with an external File Storage."
         empty_text_hint: "Hesabınıza bağlı herhangi bir depolama erişimi yoktur."
         revoke_token: "Do you really want to remove this token? You will need to login again on %{storage}"
@@ -2869,7 +2869,7 @@ tr:
   label_information_plural: "Bilgi"
   label_installation_guides: "Kurulum kılavuzları"
   label_integer: "Tamsayı"
-  label_interface: "Interface"
+  label_interface: "Arayüz"
   label_internal: "Dahili"
   label_introduction_video: "Tanıtım videosu"
   label_invite_user: "Kullanıcı davet et"
@@ -3012,7 +3012,7 @@ tr:
   label_password_rule_special: "Özel karakterler"
   label_password_rule_uppercase: "Büyük harf"
   label_path_encoding: "Yol kodlaması"
-  label_per_page: "Per page:"
+  label_per_page: "Sayfa başına:"
   label_people: "Kişiler"
   label_permissions: "İzinler"
   label_permissions_report: "İzin raporu"
@@ -3055,7 +3055,7 @@ tr:
   label_project_custom_field_plural: "Proje öznitelikleri"
   label_project_settings: "Proje ayarları"
   label_project_attributes_settings: "Project attributes settings"
-  label_project_storage_plural: "File storages"
+  label_project_storage_plural: "Dosya depoları"
   label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} proje %{used_disk_space} disk alanı kullanıyor"
   label_project_view_all: "Tüm projeleri görüntüle"
@@ -3209,7 +3209,7 @@ tr:
   label_what_is_this: "Bu nedir?"
   label_week: "Hafta"
   label_wiki_content_added: "Viki sayfası eklendi"
-  label_wiki_content_updated: "Viki sayfası güncellendi"
+  label_wiki_content_updated: "Wiki sayfası güncellendi"
   label_wiki_toc: "İçindekiler Tablosu"
   label_wiki_toc_empty: "Başlık mevcut olmadığı için İçindekiler boştur."
   label_wiki_dont_show_menu_item: "Bu wiki sayfasını proje gezinme bölümünde gösterme"
@@ -3416,7 +3416,7 @@ tr:
   mail_subject_lost_password: "Sizin %{value} parola"
   mail_subject_register: "İşletme %{value} hesap etkinleştirme"
   mail_subject_wiki_content_added: "'%{id}' viki sayfası eklendi"
-  mail_subject_wiki_content_updated: "'%{id}' viki sayfası güncellendi"
+  mail_subject_wiki_content_updated: "'%{id}' wiki sayfası güncellendi"
   mail_member_added_project:
     subject: "%{project} - Üye olarak eklendiniz"
     body:
@@ -3911,7 +3911,7 @@ tr:
   setting_hours_per_day_explanation: >-
     Bu, süreyi gün ve saat olarak görüntülerken neyin "gün" olarak kabul edildiğini tanımlar (örneğin, bir gün 8 saat ise, 32 saat 4 gün olacaktır).
   setting_invitation_expiration_days: "Etkinleştirme e-posta kullanım süresi sonu"
-  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
+  setting_invitation_expiration_days_caption: "Etkinleştirme e-postasının süresinin dolduğu gün sayısı."
   setting_work_package_done_ratio: "İlerleme hesaplama modu"
   setting_work_package_done_ratio_field: "İş temelli"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3927,7 +3927,7 @@ tr:
   setting_journal_aggregation_time_minutes: "İçinde biriken kullanıcı işlemleri"
   setting_log_requesting_user: "Tüm istekler için kullanıcı oturum açma, ad ve posta adresini girme"
   setting_login_required: "Kimlik doğrulaması gerekli"
-  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_login_required_caption: "İşaretlendiğinde, uygulamaya gelen tüm isteklerin kimliği doğrulanmalıdır."
   setting_lost_password: "Enable password reset"
   setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "Gönderici e-posta adresi"
@@ -3955,7 +3955,7 @@ tr:
   setting_project_gantt_query_text: "Gantt grafiğini görüntülemek için kullanılan sorguyu projeye genel bakış sayfasından değiştirebilirsiniz."
   setting_security_badge_displayed: "Güvenlik rozeti göster"
   setting_registration_footer: "Kayıt alt bilgisi"
-  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
+  setting_registration_footer_caption: "Bu metin kayıt sayfasının altbilgisinde görüntülenir. Seçilen her dil için metni biçimlendirmek üzere HTML düzenleyicisini kullanın."
   setting_repositories_automatic_managed_vendor: "Otomatik depo satıcısı türü"
   setting_repositories_encodings: "Depolar kodlamaları"
   setting_repository_storage_cache_minutes: "Depo disk boyutu önbelleği"
@@ -3967,21 +3967,21 @@ tr:
   setting_rest_api_enabled: "REST web hizmetini etkinleştir"
   setting_self_registration: "Kendi kendine kayıt"
   setting_self_registration_caption: >
-    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
+    Kullanıcılar için kendi kendine kayıt mekanizmasını seçin. Bazı seçenekler kullanıcıların bu sistemde kendi hesaplarını etkinleştirmelerine izin verdiğinden, seçtiğiniz ayara dikkat edin.
   setting_self_registration_warning: >
-    The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+    Kullanıcı kendi hesaplarını etkinleştirebilecektir. Lütfen bunun onlara tüm genel projelere ve içeriklerine erişim sağlayacağını unutmayın. Lütfen herkese açık projelerde hiçbir hassas veya özel verinin ifşa edilmediğinden emin olun.
   setting_self_registration_disabled: "Kapalı"
   setting_self_registration_disabled_caption: >
-    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
-  setting_self_registration_activation_by_email: "Account activation by email"
+    Hiçbir hesap kendi başına kaydedilemez. Yalnızca yöneticiler ve yeni kullanıcı oluşturma genel iznine sahip kullanıcılar yeni hesaplar oluşturabilir.
+  setting_self_registration_activation_by_email: "E-posta ile hesap etkinleştirmesi"
   setting_self_registration_activation_by_email_caption: >
-    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
-  setting_self_registration_automatic_activation: "Automatic account activation"
+    Kullanıcılar kendi başlarına kaydolabilir ve e-posta adreslerini onayladıktan sonra hesaplarını etkinleştirebilirler. Yöneticilerin aktivasyon süreci üzerinde hiçbir denetim kontrolü yoktur.
+  setting_self_registration_automatic_activation: "Hesabı otomatik etkinleştir"
   setting_self_registration_automatic_activation_caption: >
-    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
-  setting_self_registration_manual_activation: "Manual account activation"
+    Kullanıcılar kendi başlarına kayıt olabilirler. Hesapları başka bir işlem yapılmadan hemen aktif hale gelir. Yöneticilerin etkinleştirme süreci üzerinde hiçbir denetim kontrolü yoktur.
+  setting_self_registration_manual_activation: "Elle hesap etkinleştirme"
   setting_self_registration_manual_activation_caption: >
-    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
+    Kullanıcılar kendi başlarına kayıt olabilirler. Kullanıcı oluşturma veya yönetme genel iznine sahip bir yönetici veya kullanıcı onları etkinleştirene kadar hesapları beklemede durumundadır.
   setting_session_ttl: "Hareketsizlikten sonra oturum son kullanma süresi"
   setting_session_ttl_hint: "5'in altındaki değer, devre dışı gibi"
   setting_session_ttl_enabled: "Oturum sona eriyor"
@@ -4010,7 +4010,7 @@ tr:
   settings:
     authentication:
       login_and_sso: "Login and SSO"
-      registration: "Registration"
+      registration: "Üye Olma"
       single_sign_on: "Tek Oturum Açma"
       omniauth_direct_login_hint_html: >
         Bu seçenek etkinse, oturum açma istekleri yapılandırılmış omniauth sağlayıcısına yönlendirilir. Oturum açma açılır menüsü ve oturum açma sayfası devre dışı bırakılacaktır. <br/> <strong>Not:</strong> Parola girişlerini de devre dışı bırakmadığınız sürece, bu seçenek etkinleştirildiğinde kullanıcılar <code>%{internal_path}</code> giriş sayfasından giriş yapabilirler.
