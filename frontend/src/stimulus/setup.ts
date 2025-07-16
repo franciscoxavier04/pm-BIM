@@ -6,7 +6,6 @@ import PrintController from './controllers/print.controller';
 import RefreshOnFormChangesController from './controllers/refresh-on-form-changes.controller';
 import FormPreviewController from './controllers/form-preview.controller';
 import AsyncDialogController from './controllers/async-dialog.controller';
-import JobDialogController from './controllers/job-dialog.controller';
 import PollForChangesController from './controllers/poll-for-changes.controller';
 import TableHighlightingController from './controllers/table-highlighting.controller';
 import OpShowWhenCheckedController from './controllers/show-when-checked.controller';
@@ -33,7 +32,6 @@ declare global {
 
 OpenProjectStimulusApplication.preregister('application', OpApplicationController);
 OpenProjectStimulusApplication.preregister('async-dialog', AsyncDialogController);
-OpenProjectStimulusApplication.preregister('job-dialog', JobDialogController);
 OpenProjectStimulusApplication.preregister('disable-when-checked', OpDisableWhenCheckedController);
 OpenProjectStimulusApplication.preregister('flash', FlashController);
 OpenProjectStimulusApplication.preregister('menus--main', MainMenuController);
