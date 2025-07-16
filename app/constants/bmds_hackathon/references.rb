@@ -67,5 +67,9 @@ module BmdsHackathon
     def kpi_current_cf
       @kpi_current_cf ||= CustomField.find_by!(name: "Istwert")
     end
+
+    def rank_cf
+      @rank_cf ||= ProjectCustomField.find_by!(name: "Rang")
+    end
   end
 end

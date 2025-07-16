@@ -46,12 +46,11 @@ class Project < ApplicationRecord
   # reserved identifiers
   RESERVED_IDENTIFIERS = %w[new menu queries export_list_modal].freeze
 
-  enum :type, {
-    project: 0,
-    program: 1,
-    portfolio: 2
+  enum :project_type, {
+    project: "project",
+    program: "program",
+    portfolio: "portfolio"
   }
-  self.inheritance_column = nil
 
   has_many :members, -> {
     # TODO: check whether this should

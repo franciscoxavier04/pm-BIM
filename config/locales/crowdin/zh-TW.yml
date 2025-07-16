@@ -2966,7 +2966,7 @@ zh-TW:
   label_password_rule_special: "特殊字元"
   label_password_rule_uppercase: "大寫"
   label_path_encoding: "路徑編碼"
-  label_per_page: "每頁"
+  label_per_page: "每頁："
   label_people: "人員"
   label_permissions: "權限"
   label_permissions_report: "權限列表"

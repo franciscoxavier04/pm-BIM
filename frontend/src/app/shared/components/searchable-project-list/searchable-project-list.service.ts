@@ -70,7 +70,7 @@ export class SearchableProjectListService {
       select: [
         'elements/id',
         'elements/name',
-        'elements/type',
+        'elements/project_type',
         'elements/identifier',
         'elements/self',
         'elements/ancestors',

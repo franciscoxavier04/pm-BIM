@@ -643,11 +643,10 @@ pt-PT:
       title: "Confirme a sua palavra-passe para continuar"
     pagination:
       no_other_page: "Mais nenhuma página a apresentar."
+      pages_skipped: "Pages skipped."
       page_navigation: "Navegação por página"
       per_page_navigation: 'Seleção de elementos por página'
       pages:
-        next: "Próxima página"
-        previous: "Página anterior"
         page_number: Página %{number}
         show_per_page: Mostrar %{number} por página
     placeholders:

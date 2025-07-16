@@ -30,7 +30,9 @@
 
 class Queries::Projects::Filters::TypeFilter < Queries::Projects::Filters::Base
   def allowed_values
-    @allowed_values ||= Project.types.map { |name, id| [I18n.t("activerecord.attributes.project.type_enum.#{name}"), id] }
+    @allowed_values ||= Project.project_types.map do |name, id|
+      [I18n.t("activerecord.attributes.project.project_type_enum.#{name}"), id]
+    end
   end
 
   def type
@@ -38,11 +40,11 @@ class Queries::Projects::Filters::TypeFilter < Queries::Projects::Filters::Base
   end
 
   def self.key
-    :type
+    :project_type
   end
 
   def where
-    operator_strategy.sql_for_field(values, Project.table_name, :type)
+    operator_strategy.sql_for_field(values, Project.table_name, :project_type)
   end
 
   def human_name

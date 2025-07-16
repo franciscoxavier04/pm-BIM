@@ -29,10 +29,9 @@ See COPYRIGHT and LICENSE files for more details.
 <% html_title t("label_project_new") %>
 <%=
   render(Primer::OpenProject::PageHeader.new) do |header|
-    new_label = case @new_project.type
-                when "portfolio"
+    new_label = if @new_project.portfolio?
                   t(:label_project_portfolio_new)
-                when "program"
+                elsif @new_project.program?
                   t(:label_project_program_new)
                 else
                   t(:label_project_new)

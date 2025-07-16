@@ -642,11 +642,10 @@ pt-BR:
       title: "Confirme sua senha para continuar"
     pagination:
       no_other_page: "Você está na página única."
+      pages_skipped: "Pages skipped."
       page_navigation: "Navegação de página"
       per_page_navigation: 'Itens por seleção de página'
       pages:
-        next: "Próxima página"
-        previous: "Página anterior"
         page_number: Página %{number}
         show_per_page: Exibir %{number} por página
     placeholders:

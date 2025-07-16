@@ -38,6 +38,10 @@ class CustomValue::ListStrategy < CustomValue::ARObjectStrategy
     (super_value && super_value.to_s) || nil
   end
 
+  def numeric_value
+    CustomOption.find_by(id: value.to_s)&.numeric_value
+  end
+
   private
 
   def ar_class

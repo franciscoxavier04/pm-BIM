@@ -1050,6 +1050,7 @@ en:
         admin_only: "Admin-only"
       custom_value:
         value: "Value"
+        numeric_value: "Numeric value"
       doorkeeper/application:
         uid: "Client ID"
         secret: "Client secret"
@@ -1117,8 +1118,8 @@ en:
         queries: "Queries"
         status_code: "Project status"
         status_explanation: "Project status description"
-        type: "Organizational entity type"
-        type_enum:
+        project_type: "Organizational entity type"
+        project_type_enum:
           project: "Project"
           program: "Program"
           portfolio: "Portfolio"

@@ -3012,7 +3012,7 @@ hu:
   label_password_rule_special: "Különleges karakterek"
   label_password_rule_uppercase: "Nagybetű"
   label_path_encoding: "Elérési út kódolás"
-  label_per_page: "Oldalanként"
+  label_per_page: "Per page:"
   label_people: "Személyek"
   label_permissions: "Jogosultságok"
   label_permissions_report: "Jogosultságok riportálása"
