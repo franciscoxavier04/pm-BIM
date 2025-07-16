@@ -39,7 +39,7 @@ See COPYRIGHT and LICENSE files for more details.
   <%=
     render(
       Primer::BaseComponent.new(
-        tag: :div, border: true, border_radius: 2, mt: 1, mb: 1,
+        tag: :div, border: true, mt: 1, mb: 1, box_shadow: :medium, border_color: :muted,
         data: { block_note_target: "blockNoteEditor" }
       )
     )
