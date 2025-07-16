@@ -6,7 +6,7 @@ module Risks
 
     before_action :find_custom_fields,
                   :load_risks,
-                  :derive_risk_counts
+                  :derive_risk_counts, :select_params
 
     menu_item :risks
 
@@ -65,6 +65,7 @@ module Risks
     def select_params
       @selected_likelihood = params[:likelihood]&.to_i
       @selected_impact = params[:impact]&.to_i
+      @risk_filter = params[:risk_filter]
     end
   end
 end

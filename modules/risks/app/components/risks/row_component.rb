@@ -58,7 +58,18 @@ module Risks
     end
 
     def level
-      work_package.typed_custom_value_for(BmdsHackathon::References.risk_level_cf)
+      level = work_package.typed_custom_value_for(BmdsHackathon::References.risk_level_cf)
+      render(Primer::Beta::Text.new(classes: derive_color(level.to_i))) { level }
+    end
+
+    def derive_color(level)
+      if level.between?(1, 6)
+        "green"
+      elsif level.between?(7, 15)
+        "yellow"
+      else
+        "red"
+      end
     end
   end
 end
