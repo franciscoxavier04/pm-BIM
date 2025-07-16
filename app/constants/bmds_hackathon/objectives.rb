@@ -54,8 +54,8 @@ module BmdsHackathon
       @key_result_type ||= Type.find_by!(name: "Key Result")
     end
 
-    def key_result_statuses
-      @key_result_statuses ||= begin
+    def objective_statuses
+      @objective_statuses ||= begin
         statuses = Status.where(name: ["Im Plan", "Außer Plan", "Kritisch", "Geschlossen"]).to_a
 
         [

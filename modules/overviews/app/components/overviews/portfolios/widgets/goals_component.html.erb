@@ -46,10 +46,10 @@ See COPYRIGHT and LICENSE files for more details.
       content_tag :div, class: "op-goals-widget" do
         concat(
           content_tag(:div, class: "op-goals-widget--square", style: "background-color: var(--bgColor-success-muted)") do
-            concat(content_tag(:div, "#{@percentage_closed}%", class: "op-goals-widget--count", style: "color: var(--fgColor-success)"))
+            concat(content_tag(:div, "#{@total_percentage}%", class: "op-goals-widget--count", style: "color: var(--fgColor-success)"))
             concat(content_tag(:div, "Fortschritt", class: "op-goals-widget--label"))
             concat(render(Primer::Beta::ProgressBar.new(size: :large, classes: "op-goals-widget--progress")) do |component|
-              component.with_item(percentage: @percentage_closed)
+              component.with_item(percentage: @total_percentage)
             end)
           end
         )

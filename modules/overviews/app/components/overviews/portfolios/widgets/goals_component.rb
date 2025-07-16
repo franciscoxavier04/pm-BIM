@@ -44,14 +44,18 @@ module Overviews
 
           @query = Query.new(name: "_", project:)
           @query.include_subprojects = true
-          @query.add_filter("type_id", "=", [BmdsHackathon::Objectives.key_result_type.id])
-          @query.add_filter("status_id", "=", BmdsHackathon::Objectives.key_result_statuses.map(&:id))
-          @query.group_by = :status
+          @query.column_names = %w[id done_ratio]
+          @query.add_filter("type_id", "=", [BmdsHackathon::Objectives.objective_type.id])
+          @query.add_filter("status_id", "=", BmdsHackathon::Objectives.objective_statuses.map(&:id))
+          @query.group_by = "status"
 
           @groups = @query.results.work_package_count_by_group
           @squares = prepare_squares_data(@groups)
 
-          closed_status = BmdsHackathon::Objectives.key_result_statuses.find { |s| s.name == "Geschlossen" }
+          @work_packages = @query.results.work_packages
+          @total_percentage = (@work_packages.pluck(:done_ratio).sum.to_f / @work_packages.size).round
+
+          closed_status = BmdsHackathon::Objectives.objective_statuses.find { |s| s.name == "Geschlossen" }
           @percentage_closed = (@groups[closed_status] || 0).to_f / @groups.values.sum * 100
         end
 
@@ -59,7 +63,7 @@ module Overviews
 
         def prepare_squares_data(groups)
           # Add squares for each defined status
-          BmdsHackathon::Objectives.key_result_statuses.map do |status|
+          BmdsHackathon::Objectives.objective_statuses.map do |status|
             count = groups[status] || 0
 
             {
