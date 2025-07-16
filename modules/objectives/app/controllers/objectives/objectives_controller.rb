@@ -13,7 +13,7 @@ module Objectives
 
     def load_objectives
       @query = Query.new(name: "_", project: @project)
-      @query.add_filter("type_id", "=", [BmdsHackathon::References.objective_type.id])
+      @query.add_filter("type_id", "=", [BmdsHackathon::Objectives.objective_type.id])
       @query.include_subprojects = params[:project_filter] != "current"
       @query.add_filter("status_id", "=", BmdsHackathon::Objectives.objective_statuses.map(&:id))
       @query.group_by = "status"

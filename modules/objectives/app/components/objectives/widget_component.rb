@@ -49,7 +49,7 @@ module Objectives
       @collapsed = collapsed
       @show_footer = show_footer
       @system_arguments = system_arguments
-      @query = query || setup_query
+      @query = query.presence || setup_query
 
       compute_results!
     end
@@ -68,11 +68,12 @@ module Objectives
     end
 
     def setup_query
-      @query = Query.new(name: "_", project: @project)
-      @query.include_subprojects = true
-      @query.add_filter("type_id", "=", [BmdsHackathon::Objectives.objective_type.id])
-      @query.add_filter("status_id", "=", BmdsHackathon::Objectives.objective_statuses.map(&:id))
-      @query.group_by = "status"
+      Query.new(name: "_", project: @project).tap do |query|
+        query.include_subprojects = true
+        query.add_filter("type_id", "=", [BmdsHackathon::Objectives.objective_type.id])
+        query.add_filter("status_id", "=", BmdsHackathon::Objectives.objective_statuses.map(&:id))
+        query.group_by = "status"
+      end
     end
 
     def prepare_squares_data(groups)

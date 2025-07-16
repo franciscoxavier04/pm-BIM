@@ -43,6 +43,6 @@ class Objectives::ContainerComponent < ViewComponent::Base
   def key_results_for(objective)
     objective
       .children
-      .where(type: BmdsHackathon::References.key_result_type)
+      .where(type: BmdsHackathon::Objectives.key_result_type)
   end
 end
