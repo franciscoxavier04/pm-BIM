@@ -257,12 +257,16 @@ module Projects
                               "aria-label": t(:label_open_menu),
                               tooltip_direction: :w)
         more_menu_items.each do |action_options|
-          action_options => { scheme:, label:, icon:, **button_options }
-          menu.with_item(scheme:,
-                         label:,
-                         test_selector: "project-list-row--action-menu-item",
-                         content_arguments: button_options) do |item|
-            item.with_leading_visual_icon(icon:) if icon
+          if action_options == :divider
+            menu.with_divider
+          else
+            action_options => { scheme:, label:, icon:, **button_options }
+            menu.with_item(scheme:,
+                           label:,
+                           test_selector: "project-list-row--action-menu-item",
+                           content_arguments: button_options) do |item|
+              item.with_leading_visual_icon(icon:) if icon
+            end
           end
         end
       end
@@ -274,9 +278,11 @@ module Projects
                             more_menu_activity_item,
                             more_menu_favorite_item,
                             more_menu_unfavorite_item,
+                            :divider,
                             more_menu_archive_item,
                             more_menu_unarchive_item,
                             more_menu_copy_item,
+                            :divider,
                             more_menu_delete_item].compact
     end
 
