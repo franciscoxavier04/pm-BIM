@@ -40,11 +40,6 @@
 # db/migrate/20220113144323_create_storage.rb "migration".
 module Storages
   class Storage < ApplicationRecord
-    PROVIDER_TYPES = [
-      PROVIDER_TYPE_NEXTCLOUD = "Storages::NextcloudStorage",
-      PROVIDER_TYPE_ONE_DRIVE = "Storages::OneDriveStorage"
-    ].freeze
-
     self.inheritance_column = :provider_type
 
     store_attribute :provider_fields, :automatically_managed, :boolean
