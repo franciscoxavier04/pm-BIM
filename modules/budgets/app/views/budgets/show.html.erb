@@ -98,6 +98,26 @@ See COPYRIGHT and LICENSE files for more details.
   <%= list_attachments(resource) %>
 
   <%= render partial: "budget_items" %>
+
+<h2>Child Budgets</h2>
+  <table>
+    <tr>
+      <th>Budget</th>
+      <th>Projekt</th>
+      <th>Art</th>
+      <th>Betrag</th>
+    </tr>
+
+<%- @budget.child_budget_relations.includes(child_budget: :project).find_each do |rel| -%>
+<tr>
+  <td> <%= link_to rel.child_budget.subject, budget_path(rel.child_budget) %> </td>
+  <td> <%= link_to rel.child_budget.project.name, project_path(rel.child_budget.project) %> </td>
+  <td> <%= rel.relation_type %> </td>
+  <td> <%= number_to_currency(rel.child_budget.budget) %></td>
+  </tr>
+<%- end %>
+    </table>
+
 </div>
 
 <div style="clear: both;"></div>
