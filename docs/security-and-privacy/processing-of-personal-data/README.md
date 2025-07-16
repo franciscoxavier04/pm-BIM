@@ -242,7 +242,7 @@ flowchart TD
   direction TB
     idp["Identity provider (idp)"]
     nex["Nextcloud (nex)"]
-    osh["OneDrive/SharePoint (osh)"]
+    osh["OneDrive (osh)"]
     gih["GitHub (gih)"]
     gil["GitLab (gil)"]
     cal["Calendar (cal)"]
@@ -279,7 +279,12 @@ As a web application, the primary data flow is between the user's web browser (o
 
 The external web server acts as a proxy/reverse-proxy for the OpenProject Puma app server, relaying requests for it to handle and respond. In the course of the request, access to external services such as the PostgreSQL database, a caching server, or attached storages might be performed. In case of S3-compatible object storage set ups, OpenProject performs calls to the object storage to put or request files from it. Likewise, for network-attached storages linked into the application, underlying network requests are performed. These are out of scope for this evaluation, as they are provided and maintained by the operator of the system.
 
-In the course of using the application, background tasks are enqueued in the database such as outgoing emails, cleanup tasks, or notification processing. These tasks are performed in a separate process, the background worker queue. This process accesses the same services as the application server process to access or modify data. It might connect to external integrations such as a [Nextcloud](../../user-guide/file-management/nextcloud-integration/) or [OneDrive/SharePoint](../../user-guide/file-management/one-drive-integration/) instance to set up file sharings depending on actions performed by the users.
+In the course of using the application, background tasks are enqueued in the database such as outgoing emails, cleanup
+tasks, or notification processing. These tasks are performed in a separate process, the background worker queue. This
+process accesses the same services as the application server process to access or modify data. It might connect to
+external integrations such as a [Nextcloud](../../user-guide/file-management/nextcloud-integration/)
+or [OneDrive](../../user-guide/file-management/one-drive-integration/) instance to set up file sharings
+depending on actions performed by the users.
 
 **Exemplary request flow**
 
@@ -506,7 +511,7 @@ subgraph openproject[OpenProject]
 * `nex-03` TLS
 * `nex-04` TLS
 
-### F: OneDrive/SharePoint (osh)
+### F: OneDrive (osh)
 
 #### Overview
 
@@ -525,11 +530,11 @@ flowchart LR
 
 subgraph openproject[OpenProject]
 
-   oponedrivetegration[OneDrive/SharePoint integration]
+   oponedrivetegration[OneDrive integration]
    openprojectapi[API]
     end
 
-  subgraph onedrive[OneDrive/SharePoint]
+  subgraph onedrive[OneDrive]
    appopenprojectintegration[OpenProject integration app]
    onedriveapi[API]
  end
@@ -537,7 +542,7 @@ subgraph openproject[OpenProject]
 
 #### Purpose
 
-* Users can link files stored in OneDrive/SharePoint with work packages in OpenProject.
+* Users can link files stored in OneDrive with work packages in OpenProject.
 
 #### Processed data
 
