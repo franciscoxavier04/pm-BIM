@@ -31,10 +31,72 @@
 module Projects::Exports::PDFExport
   module Cover
     def render_cover
-      with_margin(styles.toc_title_margins) do
-        pdf.formatted_text([{ text: "#{heading} - Cover" }.merge(styles.toc_title)])
-      end
+      write_cover_logo
+      write_cover_image
+      write_cover_rect
+      write_cover_title
       pdf.start_new_page
+    end
+
+    def write_cover_logo
+      image_obj, image_info = logo_image
+      height = 60
+      scale = [height / image_info.height.to_f, 1].min
+      pdf.embed_image image_obj, image_info, { at: [0, pdf.bounds.height + 30], scale: }
+      image_info.width.to_f * scale
+    end
+
+    def cover_image
+      image_file = Rails.root.join("app/assets/images/pdf/20943511.jpg")
+      image_obj, image_info = pdf.build_image_object(image_file)
+      image_opts = { at: [55, pdf.bounds.height - 180], width: 500 }
+      [image_obj, image_info, image_opts]
+    end
+
+    def write_cover_title
+      page_height = pdf.page.dimensions[3]
+      third_height = page_height / 3
+      font_size = 26
+      margin = 50
+      text = heading.gsub(": ", ":\n")
+      pdf.canvas do
+        pdf.formatted_text_box(
+          [{
+             text:,
+             size: font_size,
+             color: "FFFFFF",
+             styles: [:bold]
+           }],
+          at: [margin, third_height],
+          height: third_height - pdf.bounds.bottom - font_size,
+          width: pdf.bounds.width - (margin * 2),
+          overflow: :shrink_to_fit,
+          align: :center,
+          valign: :center
+        )
+      end
+      # pdf.formatted_text([{ text: heading }.merge({ color: "FFFFFF", size: 24, align: :center })])
+    end
+
+    def write_cover_rect
+      original_color = pdf.fill_color
+      pdf.fill_color = "086F90"
+
+      page_width = pdf.page.dimensions[2]
+      page_height = pdf.page.dimensions[3]
+
+      pdf.canvas do
+        pdf.fill_rectangle([0, page_height / 3], page_width, page_height / 3)
+      end
+
+      pdf.fill_color = original_color
+    end
+
+    def write_cover_image
+      pdf.canvas do
+        image_obj, image_info, image_opts = cover_image
+        pdf.embed_image image_obj, image_info, image_opts
+      end
     end
   end
 end

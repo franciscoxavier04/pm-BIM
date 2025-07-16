@@ -1,9 +1,9 @@
 page:
   page_size: "A4"
-  margin_top: 60
+  margin_top: 80
   margin_bottom: 60
-  margin_left: 36
-  margin_right: 36
+  margin_left: 40
+  margin_right: 40
   page_break_threshold: 200
   link_color: "175A8E"
 
@@ -19,6 +19,7 @@ page_footer:
 page_logo:
   height: 20
   align: "right"
+  offset: 10
 
 page_heading:
   size: 14
@@ -45,6 +46,18 @@ toc:
     margin_bottom: 6
   item_level_2:
     size: 11
+    margin_top: 4
+    margin_bottom: 4
+  item_level_3:
+    size: 10
+    margin_top: 4
+    margin_bottom: 4
+  item_level_4:
+    size: 10
+    margin_top: 4
+    margin_bottom: 4
+  item_level_5:
+    size: 10
     margin_top: 4
     margin_bottom: 4
 
