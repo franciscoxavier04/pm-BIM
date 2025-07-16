@@ -55,7 +55,7 @@
   end
 %>
 
-<% if OpenProject::FeatureDecisions.portfolio_dashboard_active? %>
+<% if OpenProject::FeatureDecisions.portfolio_dashboard_active? && (@project.portfolio? || @project.program?) %>
   <%=
     render(Primer::Alpha::Layout.new) do |content|
       content.with_main do
