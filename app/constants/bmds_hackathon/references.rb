@@ -32,18 +32,6 @@ module BmdsHackathon
   module References
     module_function
 
-    def kpi_type
-      @kpi_type ||= Type.find_by!(name: "KPI")
-    end
-
-    def objective_type
-      @kpi_type ||= Type.find_by!(name: "Objective")
-    end
-
-    def key_result_type
-      @key_result_type ||= Type.find_by!(name: "Key Result")
-    end
-
     def risk_type
       @risk_type ||= Type.find_by!(name: "Risiko")
     end
