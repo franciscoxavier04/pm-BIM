@@ -40,7 +40,7 @@ class Overviews::HaystackReportRequest
       URI.join(base_url, "/generate-project-status-report"),
       json: {
         project: { id: project.id, type: project.project_type },
-        user_token:
+        openproject: { base_url: openproject_base_url, user_token: }
       }
     )
 
@@ -56,6 +56,12 @@ class Overviews::HaystackReportRequest
 
   def base_url
     OpenProject::Configuration.haystack_base_url || raise("Missing configuration for OPENPROJECT_HAYSTACK_BASE_URL")
+  end
+
+  def openproject_base_url
+    scheme = OpenProject::Configuration.https? ? "https://" : "http://"
+
+    "#{scheme}#{Setting.host_name}"
   end
 
   def user_token
