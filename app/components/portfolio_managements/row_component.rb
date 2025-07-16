@@ -29,5 +29,32 @@
 # ++
 module PortfolioManagements
   class RowComponent < Projects::RowComponent
+    def more_menu_items
+      @more_menu_items ||= [more_menu_subproject_item,
+                            more_menu_settings_item,
+                            more_menu_activity_item,
+                            more_menu_favorite_item,
+                            more_menu_unfavorite_item,
+                            :divider,
+                            more_menu_add_to_proposal,
+                            :divider,
+                            more_menu_archive_item,
+                            more_menu_unarchive_item,
+                            more_menu_copy_item,
+                            :divider,
+                            more_menu_delete_item].compact
+    end
+
+    def more_menu_add_to_proposal
+      return unless params[:controller] == "portfolio_managements"
+
+      {
+        scheme: :default,
+        icon: "briefcase",
+        href: "#",
+        label: I18n.t(:button_add_to_proposal),
+        aria: { label: I18n.t(:button_add_to_proposal) }
+      }
+    end
   end
 end
