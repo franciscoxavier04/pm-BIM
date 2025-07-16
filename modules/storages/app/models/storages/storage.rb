@@ -45,11 +45,6 @@ module Storages
       PROVIDER_TYPE_ONE_DRIVE = "Storages::OneDriveStorage"
     ].freeze
 
-    PROVIDER_TYPE_SHORT_NAMES = {
-      nextcloud: PROVIDER_TYPE_NEXTCLOUD,
-      one_drive: PROVIDER_TYPE_ONE_DRIVE
-    }.with_indifferent_access.freeze
-
     self.inheritance_column = :provider_type
 
     store_attribute :provider_fields, :automatically_managed, :boolean
@@ -93,7 +88,9 @@ module Storages
       def visible? = true
 
       def provider_types
-        subclasses.filter_map { [it.short_provider_name.to_s, it.name] if it.visible? }.to_h
+        subclasses.sort_by(&:name) # Guarantees alphabetical ordering
+                  .filter_map { [it.short_provider_name, it] if it.visible? } # Remove non-exposed providers
+                  .to_h.with_indifferent_access
       end
 
       def short_provider_name = raise Errors::SubclassResponsibility

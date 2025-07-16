@@ -33,8 +33,13 @@ require_module_spec_helper
 
 RSpec.describe Storages::Storage do
   describe "provider_types" do
-    it "maps the short_name to the provider class name" do
-      expect(described_class.provider_types["nextcloud"]).to eq(Storages::NextcloudStorage.name)
+    it "maps the short_name to the provider class" do
+      expect(described_class.provider_types["nextcloud"]).to eq(Storages::NextcloudStorage)
+      expect(described_class.provider_types[:nextcloud]).to eq(Storages::NextcloudStorage)
+    end
+
+    it "excludes non exposed storage types" do
+      expect(described_class.provider_types[:inexistent]).to be_nil
     end
   end
 

@@ -68,12 +68,11 @@ class Storages::Admin::StoragesController < ApplicationController
       # See also: storages/services/storages/storages/set_attributes_services.rb
       # That service inherits from ::BaseServices::SetAttributes
       @storage = ::Storages::Storages::SetAttributesService
-                   .new(user: current_user,
-                        model: Storages::Storage.new(provider_type: @provider_type),
-                        contract_class: EmptyContract)
+                   .new(user: current_user, model: @provider_type.new, contract_class: EmptyContract)
                    .call
                    .result
     end
+
     @wizard = storage_wizard(@storage)
     @target_step = @wizard.prepare_next_step
   end
@@ -270,14 +269,14 @@ class Storages::Admin::StoragesController < ApplicationController
   end
 
   def require_ee_token_for_one_drive
-    if (@provider_type&.constantize || @storage).missing_required_enterprise_token?
+    if (@provider_type || @storage).missing_required_enterprise_token?
       redirect_to action: :upsell
     end
   end
 
   def storage_wizard(storage)
     ::Storages::Adapters::Registry.resolve("#{storage}.components.setup_wizard")
-                                     .new(model: storage, user: current_user)
+                                  .new(model: storage, user: current_user)
   end
 
   def redirect_to_wizard(storage)
