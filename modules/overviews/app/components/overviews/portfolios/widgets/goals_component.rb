@@ -31,25 +31,44 @@
 module Overviews
   module Portfolios
     module Widgets
-      class KpiComponent < ApplicationComponent
+      class GoalsComponent < ApplicationComponent
         include OpPrimer::ComponentHelpers
         include ApplicationHelper
         include PlaceholderUsersHelper
         include AvatarHelper
 
-        attr_reader :kpis
-
-        delegate :count, to: :kpis
-
         def initialize(model = nil, project:, **)
           super(model, **)
 
           @project = project
-          @cutoff_limit = 5
-          @kpis = WorkPackage
-            .visible
-            .where(type: ::BmdsHackathon::References.kpi_type)
-            .where(project_id: @project.self_and_descendants.select(:id))
+
+          @query = Query.new(name: "_", project:)
+          @query.include_subprojects = true
+          @query.add_filter("type_id", "=", [BmdsHackathon::Objectives.key_result_type.id])
+          @query.add_filter("status_id", "=", BmdsHackathon::Objectives.key_result_statuses.map(&:id))
+          @query.group_by = :status
+
+          @groups = @query.results.work_package_count_by_group
+          @squares = prepare_squares_data(@groups)
+
+          closed_status = BmdsHackathon::Objectives.key_result_statuses.find { |s| s.name == "Geschlossen" }
+          @percentage_closed = (@groups[closed_status] || 0).to_f / @groups.values.sum * 100
+        end
+
+        private
+
+        def prepare_squares_data(groups)
+          # Add squares for each defined status
+          BmdsHackathon::Objectives.key_result_statuses.map do |status|
+            count = groups[status] || 0
+
+            {
+              count: count,
+              label: status.name,
+              color: BmdsHackathon::Objectives::COLOR_MAP[status.name],
+              bgcolor: BmdsHackathon::Objectives::BGCOLOR_MAP[status.name]
+            }
+          end
         end
       end
     end

@@ -1,7 +1,7 @@
 <%=
   grid_layout("op-portfolio-overview", tag: :div, align_items: :flex_start) do |grid|
     grid.with_area(:kpi, tag: :div) do
-      render(Overviews::Portfolios::Widgets::KpiComponent.new(project: @project))
+      render(Overviews::Portfolios::Widgets::GoalsComponent.new(project: @project))
     end
 
     grid.with_area(:status_report, tag: :div) do
