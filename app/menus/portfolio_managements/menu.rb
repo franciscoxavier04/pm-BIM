@@ -49,19 +49,13 @@ module PortfolioManagements
       ]
     end
 
-    def selected?(query_params) # rubocop:disable Metrics/AbcSize
+    def selected?(query_params)
       case controller_path
-      when "projects"
-        case params[:query_id]
-        when nil
-          query_params[:query_id].to_s == ProjectQueries::Static::DEFAULT
+      when "portfolio_managements"
+        case params[:proposal_id]
         when /\A\d+\z/
-          query_params[:query_id].to_s == params[:query_id]
-        else
-          query_params[:query_id].to_s == params[:query_id] unless modification_params?
+          query_params[:proposal_id].to_s == params[:proposal_id]
         end
-      when "projects/queries"
-        query_params[:query_id].to_s == params[:id]
       when "portfolio_managements/proposals"
         query_params[:controller] == "portfolio_managements/proposals"
       end
@@ -94,7 +88,8 @@ module PortfolioManagements
         .where(portfolio: project)
         .map do |proposal|
         menu_item(title: proposal.name,
-                  query_params: { filters: JSON.dump([{ portfolio_proposal: { operator: "=", values: [proposal.id.to_s] } }]) })
+                  query_params: { proposal_id: proposal.id,
+                                  filters: JSON.dump([{ portfolio_proposal: { operator: "=", values: [proposal.id.to_s] } }]) })
       end
     end
 
