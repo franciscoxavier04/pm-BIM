@@ -28,48 +28,52 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Budgets::Patches::Projects::RowComponentPatch
-  def self.included(base) # :nodoc:
-    base.prepend InstanceMethods
-  end
+module Budgets
+  # Provides aggregated budget information for a project.
+  class ProjectBudgets
+    attr_reader :project
 
-  module InstanceMethods
-    def budget_planned
-      with_project_budgets do |project_budgets|
-        number_to_currency(project_budgets.planned, precision: 0)
-      end
+    def initialize(project)
+      @project = project
     end
 
-    def budget_spent
-      with_project_budgets do |project_budgets|
-        number_to_currency(project_budgets.spent, precision: 0)
-      end
+    delegate :any?, to: :budgets
+
+    def children_budgets_count
+      @children_budgets_count ||= budgets.sum(&:children_budgets_count)
     end
 
-    def budget_spent_ratio
-      with_project_budgets do |project_budgets|
-        helpers.extended_progress_bar(project_budgets.budget_ratio,
-                                      legend: project_budgets.budget_ratio.to_s)
-      end
+    def planned
+      @planned ||= budgets.sum(&:budget)
     end
 
-    def budget_allocated
-      with_project_budgets do |project_budgets|
-        number_to_currency(project_budgets.allocated_to_children, precision: 0)
-      end
+    def allocated_to_children
+      @allocated_to_children ||= budgets.sum(&:allocated_to_children)
     end
 
-    def budget_available
-      with_project_budgets do |project_budgets|
-        number_to_currency(project_budgets.available, precision: 0)
-      end
+    def allocated_unused
+      @allocated_unused ||= budgets.sum(&:allocated_unused)
     end
 
-    def with_project_budgets
-      @project_budgets ||= ::Budgets::ProjectBudgets.new(project)
-      return unless @project_budgets.any?
+    def spent_on_children
+      @spent_on_children ||= budgets.sum(&:spent_on_children)
+    end
 
-      yield @project_budgets
+    def spent
+      @spent ||= budgets.sum(&:spent)
+    end
+
+    def available
+      @available ||= budgets.sum(&:available)
+    end
+
+    def budget_ratio
+      gone = spent + allocated_to_children
+      @budget_ratio ||= planned.zero? ? 0 : ((gone / planned) * 100).round
+    end
+
+    def budgets
+      @budgets ||= project.budgets.to_a
     end
   end
 end
