@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,29 +26,46 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-class DocumentCategory < Enumeration
-  has_many :documents, foreign_key: "category_id"
+module Overviews
+  module Portfolios
+    module Widgets
+      class StatusReportComponent < ApplicationComponent
+        include OpPrimer::ComponentHelpers
+        include ApplicationHelper
 
-  OptionName = :enumeration_doc_categories
+        def initialize(model = nil, project:, **)
+          super(model, **)
 
-  class << self
-    def project_status_report
-      # POST-HACKATHON: How would we make searching and finding a common category like this possible?
-      find_or_create_by!(name: "Statusbericht")
+          @project = project
+        end
+
+        private
+
+        def title
+          status_report.title
+        end
+
+        def content
+          # Selecting the first markdown paragraph
+          status_report.description.split("\n\n").first
+        end
+
+        def status_report
+          # TODO: find the correct document
+          @status_report ||= status_reports.order(:created_at).last
+        end
+
+        def status_reports
+          @project.documents.where(category: DocumentCategory.project_status_report)
+        end
+
+        def previous_reports_text
+          previous_count = [status_reports.count - 1, 0].max
+          "Es gibt #{previous_count} frühere archivierte Berichte"
+        end
+      end
     end
-  end
-
-  def option_name
-    OptionName
-  end
-
-  def objects_count
-    documents.count
-  end
-
-  def transfer_relations(to)
-    documents.update_all("category_id = #{to.id}")
   end
 end

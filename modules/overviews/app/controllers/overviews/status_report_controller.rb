@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,29 +26,41 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-class DocumentCategory < Enumeration
-  has_many :documents, foreign_key: "category_id"
+module ::Overviews
+  class StatusReportController < ::ApplicationController
+    before_action :authorize
+    before_action :find_project_by_project_id
 
-  OptionName = :enumeration_doc_categories
+    def create
+      result = if OpenProject::Configuration.haystack_base_url.present?
+                 Overviews::HaystackReportRequest.new(user: current_user).call(@project)
+               else
+                 ServiceResult.success(result: "")
+               end
 
-  class << self
-    def project_status_report
-      # POST-HACKATHON: How would we make searching and finding a common category like this possible?
-      find_or_create_by!(name: "Statusbericht")
+      # TODO: Maybe both (success & error) should redirect to new_document_path, just prefilling a lot
+      #       or the whole LLM-interaction is part of new_document_path and happens there
+      result.each do |content|
+        document = persist_report(content).result
+        redirect_to edit_document_path(document)
+      end
+      result.on_failure do
+        flash[:error] = result.errors
+        redirect_to project_overview_path(@project)
+      end
     end
-  end
 
-  def option_name
-    OptionName
-  end
+    private
 
-  def objects_count
-    documents.count
-  end
-
-  def transfer_relations(to)
-    documents.update_all("category_id = #{to.id}")
+    def persist_report(content)
+      Documents::CreateService.new(user: current_user).call(
+        project: @project,
+        category: DocumentCategory.project_status_report,
+        title: "Report erstellt am #{helpers.format_time(Time.zone.now)}",
+        description: content
+      )
+    end
   end
 end
