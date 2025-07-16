@@ -50,13 +50,11 @@ class Budget < ApplicationRecord
                                      foreign_key: "child_budget_id",
                                      dependent: :destroy,
                                      inverse_of: :child_budget
-  has_many :parent_budgets, through: :parent_budget_relations, source: :parent_budget
 
   has_many :child_budget_relations, class_name: "BudgetRelation",
                                     foreign_key: "parent_budget_id",
                                     dependent: :destroy,
                                     inverse_of: :parent_budget
-  has_many :child_budgets, through: :child_budget_relations, source: :child_budget
 
   include ActiveModel::ForbiddenAttributesProtection
 
@@ -119,17 +117,24 @@ class Budget < ApplicationRecord
   end
 
   def budget
-    supplementary_amount + material_budget + labor_budget
+    supplementary_amount + material_budget + labor_budget + budget_added_by_children
+  end
+
+  def budget_added_by_children
+    # TODO: Efficient with query
+    @budget_added_by_children ||= child_budget_relations.add.includes(:child_budget).sum do |rel|
+      rel.child_budget.budget
+    end
   end
 
   def allocated_to_children
     # TODO: Efficient with query
-    @allocated_to_children ||= child_budget_relations.subtract.includes(:child_budget).sum { |rel| rel.child_budget.budget }
+    @allocated_to_children ||= child_budget_relations.includes(:child_budget).sum { |rel| rel.child_budget.budget }
   end
 
   def spent_with_children
     # TODO: Efficient with query
-    @spent_with_children ||= spent + child_budget_relations.subtract.includes(:child_budget).sum do |rel|
+    @spent_with_children ||= spent + child_budget_relations.includes(:child_budget).sum do |rel|
       rel.child_budget.spent_with_children
     end
   end
