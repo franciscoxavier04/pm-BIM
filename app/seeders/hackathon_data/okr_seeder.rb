@@ -27,16 +27,33 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+module HackathonData
+  class OkrSeeder < Seeder
+    def seed_data!
+      Rails.logger.debug "*** Seeding Objective and Key result work package types"
 
-module BmdsHackathonHelper
-  def kpi_percentage(work_package)
-    raise ArgumentError, "Work package must be of type KPI" unless work_package.type == BmdsHackathon::References.kpi_type
+      # Create the work package types
+      Type.find_or_create_by!(name: "Objective")
+      key_result_type = Type.find_or_create_by!(name: "Key Result")
 
-    current = work_package.typed_custom_value_for(BmdsHackathon::References.kpi_current_cf)
-    target = work_package.typed_custom_value_for(BmdsHackathon::References.kpi_target_cf)
+      # Create custom fields
+      ziel_field = WorkPackageCustomField.find_or_create_by!(name: "Zielwert", field_format: "int", is_for_all: true)
+      ist_field = WorkPackageCustomField.find_or_create_by!(name: "Istwert", field_format: "int", is_for_all: true)
 
-    return 0 if target.nil? || target.zero?
+      return if key_result_type.custom_fields.include?(ziel_field)
 
-    current.to_f / target
+      # Define the attribute group for both types
+      custom_fields_group = [
+        ["Metriken", [ziel_field.attribute_name, ist_field.attribute_name]]
+      ]
+
+      key_result_type.update!(
+        attribute_groups: custom_fields_group + key_result_type.default_attribute_groups
+      )
+    end
+
+    def applicable?
+      true
+    end
   end
 end

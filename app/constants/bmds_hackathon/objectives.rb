@@ -29,43 +29,50 @@
 #++
 
 module BmdsHackathon
-  module References
+  module Objectives
+    BGCOLOR_MAP = {
+      "Im Plan" => "--bgColor-accent-muted",
+      "Außer Plan" => "--bgColor-attention-muted",
+      "Kritisch" => "--bgColor-closed-muted",
+      "Geschlossen" => "--bgColor-neutral-muted"
+    }.freeze
+
+    COLOR_MAP = {
+      "Im Plan" => "--bgColor-accent-emphasis",
+      "Außer Plan" => "--bgColor-attention-emphasis",
+      "Kritisch" => "--bgColor-closed-emphasis",
+      "Geschlossen" => "--bgColor-neutral-emphasis"
+    }.freeze
+
     module_function
 
-    def risk_type
-      @risk_type ||= Type.find_by!(name: "Risiko")
+    def objective_type
+      @objective_type ||= Type.find_by!(name: "Objective")
     end
 
-    def risk_likelihood_cf
-      @risk_likelihood_cf ||= CustomField.find_by!(name: "Eintrittswahrscheinlichkeit")
+    def key_result_type
+      @key_result_type ||= Type.find_by!(name: "Key Result")
     end
 
-    def risk_likelihood_attribute
-      @risk_likelihood_attribute ||= risk_likelihood_cf.attribute_name.to_sym
+    def objective_statuses
+      @objective_statuses ||= begin
+        statuses = Status.where(name: ["Im Plan", "Außer Plan", "Kritisch", "Geschlossen"]).to_a
+
+        [
+          statuses.detect { |s| s.name == "Im Plan" },
+          statuses.detect { |s| s.name == "Außer Plan" },
+          statuses.detect { |s| s.name == "Kritisch" },
+          statuses.detect { |s| s.name == "Geschlossen" }
+        ].compact.freeze
+      end
     end
 
-    def risk_impact_cf
-      @risk_impact_cf ||= CustomField.find_by!(name: "Auswirkung")
+    def target_cf
+      @target_cf ||= CustomField.find_by!(name: "Zielwert")
     end
 
-    def risk_impact_attribute
-      @risk_impact_attribute ||= risk_impact_cf.attribute_name.to_sym
-    end
-
-    def risk_level_cf
-      @risk_level_cf ||= CustomField.find_by!(name: "Risiko-Level")
-    end
-
-    def kpi_target_cf
-      @kpi_target_cf ||= CustomField.find_by!(name: "Zielwert")
-    end
-
-    def kpi_current_cf
-      @kpi_current_cf ||= CustomField.find_by!(name: "Istwert")
-    end
-
-    def rank_cf
-      @rank_cf ||= ProjectCustomField.find_by!(name: "Rang")
+    def current_cf
+      @current_cf ||= CustomField.find_by!(name: "Istwert")
     end
   end
 end
