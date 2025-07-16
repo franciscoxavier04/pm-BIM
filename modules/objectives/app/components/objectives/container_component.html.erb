@@ -34,8 +34,13 @@ See COPYRIGHT and LICENSE files for more details.
       render(Primer::Beta::BorderBox.new(mb: 3)) do |box|
         box.with_header do
           flex_layout(justify_content: :space_between, align_items: :center) do |header|
-            header.with_column(mr: 2) do
-              render(WorkPackages::InfoLineComponent.new(work_package: objective))
+            header.with_column(flex_layout: true, mr: 2) do |wp_flex|
+              wp_flex.with_row do
+                render(WorkPackages::InfoLineComponent.new(work_package: objective))
+              end
+              wp_flex.with_row do
+                render(Primer::Beta::Text.new(font_weight: :bold)) { objective.subject }
+              end
             end
             header.with_column do
               render(Primer::Alpha::ActionMenu.new) do |menu|
@@ -79,13 +84,8 @@ See COPYRIGHT and LICENSE files for more details.
         key_results.find_each do |key_result|
           box.with_row do
             render(Primer::OpenProject::FlexLayout.new(justify_content: :space_between, align_items: :center)) do |flex|
-              flex.with_column(flex_layout: true) do |wp_flex|
-                wp_flex.with_row do
-                  render(WorkPackages::InfoLineComponent.new(work_package: key_result))
-                end
-                wp_flex.with_row do
-                  render(Primer::Beta::Text.new(font_weight: :bold)) { key_result.subject }
-                end
+              flex.with_column do
+                render(Primer::Beta::Text.new) { key_result.subject }
               end
 
               percentage = helpers.key_result_percentage(key_result)
