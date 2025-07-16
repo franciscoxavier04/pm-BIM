@@ -28,26 +28,61 @@ See COPYRIGHT and LICENSE files for more details.
 ++#%>
 
 <%
-  @objectives.each do |obj|
-    key_results = key_results_for(obj)
+  @objectives.each do |objective|
+    key_results = key_results_for(objective)
     concat(
       render(Primer::Beta::BorderBox.new(mb: 3)) do |box|
         box.with_header do
-          render(Primer::OpenProject::BorderBox::CollapsibleHeader.new(box:)) do |header|
-            header.with_count(count: key_results.count)
-            header.with_title do
+          flex_layout(justify_content: :space_between, align_items: :center) do |header|
+            header.with_column(mr: 2) do
               concat(
                 render(
                   Primer::Beta::Link.new(
-                    href: url_for(controller: "/work_packages", action: "show", id: obj),
-                    title: obj.subject,
+                    href: url_for(controller: "/work_packages", action: "show", id: objective),
+                    title: objective.subject,
                     color: :muted,
                     mr: 1
                   )
-                ) { "Ziel ##{obj.id}" }
+                ) { "Ziel ##{objective.id}" }
               )
-              concat render(Primer::Beta::Text.new) { obj.subject }
+              concat render(Primer::Beta::Text.new) { objective.subject }
             end
+            header.with_column do
+              render(Primer::Alpha::ActionMenu.new) do |menu|
+                menu.with_show_button(
+                  "aria-label": "Aktionen",
+                  scheme: :invisible,
+                  icon: "kebab-horizontal"
+                )
+
+                menu.with_item(
+                  label: "Details",
+                  href: url_for(controller: "/work_packages", action: "show", id: objective),
+                  tag: :a
+                ) do |item|
+                  item.with_leading_visual_icon(icon: :eye)
+                end
+
+                menu.with_item(
+                  label: "Metrik hinzufügen",
+                  tag: :a,
+                  content_arguments: {
+                    data: { turbo_stream: true },
+                  },
+                  href: new_project_work_packages_dialog_path(@project,
+                                                              parent_id: objective.id,
+                                                              type_id: BmdsHackathon::Objectives.key_result_type)
+                ) do |item|
+                  item.with_leading_visual_icon(icon: :plus)
+                end
+              end
+            end
+          end
+        end
+
+        if key_results.empty?
+          box.with_row do
+            render(Primer::Beta::Text.new) { "Keine Metriken definiert." }
           end
         end
 

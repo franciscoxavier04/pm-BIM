@@ -29,6 +29,9 @@
 # ++
 
 class Objectives::ContainerComponent < ViewComponent::Base
+  include OpPrimer::ComponentHelpers
+  include ApplicationHelper
+
   def initialize(project:, objectives:)
     super
     @project = project
