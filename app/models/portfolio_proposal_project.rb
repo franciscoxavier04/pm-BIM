@@ -39,6 +39,8 @@ class PortfolioProposalProject < ApplicationRecord
 
   default_scope { order("rank NULLS LAST") }
 
+  acts_as_list scope: :portfolio_proposal_id, column: :rank
+
   validate :project_not_portfolio
 
   private
