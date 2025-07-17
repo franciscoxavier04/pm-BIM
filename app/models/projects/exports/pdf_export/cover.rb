@@ -53,7 +53,7 @@ module Projects::Exports::PDFExport
       [image_obj, image_info, image_opts]
     end
 
-    def write_cover_title
+    def write_cover_title # rubocop:disable Metrics/AbcSize
       page_height = pdf.page.dimensions[3]
       third_height = page_height / 3
       font_size = 26
@@ -61,12 +61,7 @@ module Projects::Exports::PDFExport
       text = heading.gsub(": ", ":\n")
       pdf.canvas do
         pdf.formatted_text_box(
-          [{
-             text:,
-             size: font_size,
-             color: "FFFFFF",
-             styles: [:bold]
-           }],
+          [{ text:, size: font_size, color: "FFFFFF", styles: [:bold] }],
           at: [margin, third_height],
           height: third_height - pdf.bounds.bottom - font_size,
           width: pdf.bounds.width - (margin * 2),
@@ -75,10 +70,9 @@ module Projects::Exports::PDFExport
           valign: :center
         )
       end
-      # pdf.formatted_text([{ text: heading }.merge({ color: "FFFFFF", size: 24, align: :center })])
     end
 
-    def write_cover_rect
+    def write_cover_rect # rubocop:disable Metrics/AbcSize
       original_color = pdf.fill_color
       pdf.fill_color = "086F90"
 

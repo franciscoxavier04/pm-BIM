@@ -176,7 +176,7 @@ module Projects::Exports::PDFExport
       write_project_markdown custom_field_value.value, custom_field.name
     end
 
-    def write_project_markdown(value, caption)
+    def write_project_markdown(value, caption) # rubocop:disable Metrics/AbcSize
       return if hide_empty_attributes? && value.blank?
 
       value = Prawn::Text::NBSP if value.blank?
