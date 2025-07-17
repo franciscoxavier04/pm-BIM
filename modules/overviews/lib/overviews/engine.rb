@@ -47,7 +47,8 @@ module Overviews
         OpenProject::AccessControl.permission(:view_project)
           .controller_actions
           .push(
-            "overviews/overviews/show"
+            "overviews/overviews/show",
+            "overviews/pmflex_hints/create" # TODO: This probably should require a different permission
           )
 
         OpenProject::AccessControl.permission(:view_project_attributes)
@@ -102,6 +103,8 @@ module Overviews
 
       Constants::ARToAPIConversions.add("grids/overview": "grid")
     end
+
+    patches %i[Project]
 
     config.to_prepare do
       Overviews::GridRegistration.register!

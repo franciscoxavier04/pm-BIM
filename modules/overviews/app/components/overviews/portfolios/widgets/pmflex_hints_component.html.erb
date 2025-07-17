@@ -43,11 +43,28 @@ See COPYRIGHT and LICENSE files for more details.
 
       hints.each do |hint|
         layout.with_row(mt: 2) do
-          render(Overviews::Portfolios::Widgets::PmflexHintComponent.new(
-            checked: hint.fetch(:checked),
-            title: hint.fetch(:title),
-            description: hint.fetch(:description)
-          ))
+          render(Overviews::Portfolios::Widgets::PmflexHintComponent.new(hint))
+        end
+      end
+    end
+  end
+
+  component.with_row do
+    flex_layout(justify_content: :space_between) do |layout|
+      layout.with_column do
+        concat(render(Primer::Beta::Text.new(color: :muted)) { "Letzte Aktualisierung: " })
+        if hints_updated_at.nil?
+          concat(render(Primer::Beta::Text.new(color: :muted)) { "Nie" })
+        else
+          concat(render(OpPrimer::RelativeTimeComponent.new(datetime: hints_updated_at, color: :muted)))
+        end
+      end
+
+      layout.with_column do
+        primer_form_with(url: create_project_pmflex_hints_path) do |f|
+          render(Primer::Beta::Button.new(type: :submit, scheme: :link)) do |button|
+            "Erneut analysieren"
+          end
         end
       end
     end

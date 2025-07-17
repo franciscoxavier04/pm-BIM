@@ -28,15 +28,14 @@
 # See COPYRIGHT and LICENSE files for more details.
 # ++
 
-module Overviews
-  module Portfolios
-    module Widgets
-      class PmflexHintComponent < ApplicationComponent
-        include OpPrimer::ComponentHelpers
-        include ApplicationHelper
+class Overviews::HaystackPmflexHintsRequest
+  def initialize(user:)
+    @request_service = Overviews::HaystackRequest.new(user:)
+  end
 
-        delegate :checked?, :title, :description, to: :model
-      end
-    end
+  def call(project)
+    result = @request_service.call(path: "/project-management-hints", project:)
+
+    result.map { |json| json.dig("hints") }
   end
 end

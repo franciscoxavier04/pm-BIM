@@ -1,6 +1,4 @@
-# frozen_string_literal: true
-
-# -- copyright
+#-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,17 +24,17 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-# ++
+#++
 
-module Overviews
-  module Portfolios
-    module Widgets
-      class PmflexHintComponent < ApplicationComponent
-        include OpPrimer::ComponentHelpers
-        include ApplicationHelper
+class AddPmflexHints < ActiveRecord::Migration[8.0]
+  def change
+    create_table :pmflex_hints do |t|
+      t.belongs_to :project, null: false
+      t.string :title, null: false
+      t.string :description, null: false
+      t.boolean :checked, null: false
 
-        delegate :checked?, :title, :description, to: :model
-      end
+      t.timestamps null: false
     end
   end
 end
