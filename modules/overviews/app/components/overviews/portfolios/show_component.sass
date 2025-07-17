@@ -6,3 +6,7 @@
   grid-template-columns: 1fr 1fr
   grid-template-rows: auto auto auto
   gap: 1rem
+
+  @media only screen and (max-width: $breakpoint-xl)
+    grid-template-areas: "kpi" "subportfolio" "status_report" "pmflex_hints" "budget" "problems"
+    grid-template-columns: 1fr
