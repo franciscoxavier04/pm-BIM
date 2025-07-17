@@ -95,14 +95,14 @@ module PortfolioManagements
     end
 
     def find_all_child_project_ids(program)
-      program.children.map do |child|
+      ([program.id] + program.children.map do |child|
         if child.children.any?
           find_all_child_project_ids(child)
         elsif child.project?
           # We only want to return project IDs, not program IDs
           child.id
         end
-      end.flatten.compact.uniq + [program.id]
+      end).flatten.compact.uniq
     end
 
     def project_ids_including_children
