@@ -44,7 +44,7 @@ module PortfolioManagements
     def more_menu_items
       @more_menu_items ||= [move_action_item(:higher, t("label_agenda_item_move_up"), "chevron-up"),
                             move_action_item(:lower, t("label_agenda_item_move_down"), "chevron-down"),
-                            (:divider if sorted_by_lft?),
+                            (:divider if sorted_by_lft? && params[:proposal_id]),
                             more_menu_subproject_item,
                             more_menu_settings_item,
                             more_menu_activity_item,
