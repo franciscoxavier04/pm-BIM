@@ -95,7 +95,9 @@ class ProjectQuery < ApplicationRecord
     # using HierarchyOrder only as a marker
     hierarchy_orders, orders = build_orders.partition { it.is_a?(Queries::Projects::Orders::HierarchyOrder) }
 
-    ordered_scope = orders.inject(query_scope) { |scope, order| order.apply_to(scope, proposal:) }
+    orders.each { it.proposal = proposal }
+
+    ordered_scope = orders.inject(query_scope) { |scope, order| order.apply_to(scope) }
 
     if hierarchy_orders.present?
       query_scope

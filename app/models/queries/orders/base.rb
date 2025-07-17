@@ -41,7 +41,8 @@ module Queries
 
       class_attribute :model
       attr_accessor :direction,
-                    :attribute
+                    :attribute,
+                    :proposal
 
       def initialize(attribute)
         self.attribute = attribute
@@ -51,8 +52,8 @@ module Queries
         raise NotImplementedError
       end
 
-      def apply_to(query_scope, proposal: nil)
-        query_scope = order(query_scope, proposal:)
+      def apply_to(query_scope)
+        query_scope = order(query_scope)
         query_scope = query_scope.joins(joins) if joins
         query_scope = query_scope.left_outer_joins(left_outer_joins) if left_outer_joins
         query_scope
