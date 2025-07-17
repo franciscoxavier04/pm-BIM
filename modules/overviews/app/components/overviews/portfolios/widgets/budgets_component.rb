@@ -37,6 +37,8 @@ module Overviews
 
         attr_reader :project, :project_budgets
 
+        BudgetInfo = Data.define(:label, :value, :color)
+
         def initialize(model = nil, project:, **)
           super(model, **)
 
@@ -59,6 +61,18 @@ module Overviews
             ].join("&"),
             query_id: "active"
           )
+        end
+
+        def chart_data
+          @chart_data ||= [
+            BudgetInfo.new(label: "Zugeteilt (unverbaucht)", value: project_budgets.allocated_unused, color: "#113B6F"),
+            BudgetInfo.new(label: "Ausgegeben", value: project_budgets.spent_on_children, color: "#FBA728"),
+            BudgetInfo.new(label: "Verfügbar", value: project_budgets.available, color: "#26A59A")
+          ]
+        end
+
+        def budget_formatted_amount(amount)
+          number_to_currency(amount, precision: 0)
         end
 
         def column_key(column)
