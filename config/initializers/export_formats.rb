@@ -59,6 +59,11 @@ Rails.application.configure do |application|
       formatter Project, Projects::Exports::Formatters::Active
       formatter Project, Projects::Exports::Formatters::Favored
       formatter Project, Projects::Exports::Formatters::RequiredDiskSpace
+      formatter Project, Projects::Exports::Formatters::BudgetSpent
+      formatter Project, Projects::Exports::Formatters::BudgetSpentRatio
+      formatter Project, Projects::Exports::Formatters::BudgetAllocated
+      formatter Project, Projects::Exports::Formatters::BudgetAvailable
+      formatter Project, Projects::Exports::Formatters::BudgetPlanned
     end
   end
 end

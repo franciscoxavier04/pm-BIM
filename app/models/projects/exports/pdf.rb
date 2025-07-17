@@ -113,7 +113,11 @@ module Projects::Exports
 
     def render_projects_report(flat_list)
       render_cover
-      render_toc(flat_list, @id_project_meta_map)
+      if flat_list.size > 1
+        render_toc(flat_list, @id_project_meta_map)
+      elsif !flat_list.empty?
+        @id_project_meta_map[flat_list[0].id][:level_path] = []
+      end
       render_report(flat_list, @id_project_meta_map)
       write_after_pages!
     end
