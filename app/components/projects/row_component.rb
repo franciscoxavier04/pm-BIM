@@ -446,5 +446,9 @@ module Projects
     def sorted_by_lft?
       query.orders.first&.attribute.to_s == "lft"
     end
+
+    def sorted_by_manual?
+      query.orders.first&.attribute.to_s == "manual_sorting"
+    end
   end
 end

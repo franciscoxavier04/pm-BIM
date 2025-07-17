@@ -61,13 +61,14 @@ module PortfolioManagements
     end
 
     def move_action_item(move_to, label, icon)
-      return unless sorted_by_lft?
+      return unless sorted_by_lft? || sorted_by_manual?
       return unless params[:proposal_id]
 
+      column = sorted_by_lft? ? "lft" : "manual_sorting"
       href = move_project_path(
         project,
         move_to:,
-        sortBy: JSON.dump([%w[lft asc]]),
+        sortBy: JSON.dump([[column, "asc"]]),
         proposal_id: params[:proposal_id],
         **helpers.projects_query_params.slice(*helpers.projects_query_param_names_for_sort)
       )

@@ -177,17 +177,32 @@ class ProjectsController < ApplicationController
   end
 
   def move # rubocop:disable Metrics/AbcSize
-    success = begin
-      case params[:move_to]
-      when "lower"
-        @project.move_right
-      when "higher"
-        @project.move_left
-      end
-    rescue StandardError
-      false
-    end
-
+    success = if sort_by_lft?
+                # Move hierarchies when sorted by hierarchy
+                begin
+                  case params[:move_to]
+                  when "lower"
+                    @project.move_right
+                  when "higher"
+                    @project.move_left
+                  end
+                rescue StandardError
+                  false
+                end
+              else
+                # Move rank when sorted by manual_sorting
+                begin
+                  @ppp = @proposal.portfolio_proposal_projects.find_by(project: @project)
+                  case params[:move_to]
+                  when "lower"
+                    @ppp.move_to = :lower
+                  when "higher"
+                    @ppp.move_to = :higher
+                  end
+                rescue StandardError
+                  false
+                end
+              end
     if success
       render_success_flash_message_via_turbo_stream(
         message: I18n.t(:project_caption_order_changed)
@@ -331,6 +346,10 @@ class ProjectsController < ApplicationController
     if @proposal.present? && @query.selects.none? { |select| select.attribute == :rank }
       @query.select(:rank)
     end
+  end
+
+  def sort_by_lft?
+    params[:sortBy].include?("lft")
   end
 
   helper_method :supported_export_formats
