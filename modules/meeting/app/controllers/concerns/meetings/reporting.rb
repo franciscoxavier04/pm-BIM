@@ -78,6 +78,24 @@ module Meetings
     end
 
     def report_budget(meeting)
+      project = meeting.project
+      budgets = project.budgets
+      return if budgets.empty?
+
+      meeting_section = meeting.sections.find_or_create_by(title: "Budget")
+      budgets.find_each do |budget|
+        MeetingAgendaItem.create!(
+          author: User.system,
+          position: 1,
+          meeting_section:,
+          meeting:,
+          title: budget.subject,
+          notes: <<~STR
+            **Status**: #{budget.state}
+            **Budget**: #{helpers.number_to_currency(budget.supplementary_amount)}
+          STR
+        )
+      end
     end
 
     def report_milestones(meeting)
