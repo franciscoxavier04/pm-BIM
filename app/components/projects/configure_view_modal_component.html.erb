@@ -12,7 +12,7 @@
   <% d.with_header(variant: :large) %>
   <%= render(Primer::Alpha::Dialog::Body.new) do %>
     <%= primer_form_with(
-          url: projects_path,
+          url: params[:from] || projects_path, # dangerous hack
           id: QUERY_FORM_ID,
           data: { "turbo-stream" => false },
           method: :get
