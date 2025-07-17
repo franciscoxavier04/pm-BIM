@@ -81,7 +81,7 @@ class Meeting::ReportForm < ApplicationForm
       name: :report_milestones
     )
     meeting_form.check_box(
-      label: "Ziele für das nächste Quartal",
+      label: "Änderungen an Zielen und Metriken",
       scope_name_to_model: false,
       name: :report_goals
     )
