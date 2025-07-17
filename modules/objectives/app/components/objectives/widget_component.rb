@@ -56,12 +56,14 @@ module Objectives
 
     private
 
-    def compute_results!
+    def compute_results! # rubocop:disable Metrics/AbcSize
       @groups = @query.results.work_package_count_by_group
       @squares = prepare_squares_data(@groups)
 
       @work_packages = @query.results.work_packages
-      @total_percentage = (@work_packages.pluck(:done_ratio).compact.sum.to_f / @work_packages.size).round
+      if @work_packages.present?
+        @total_percentage = (@work_packages.pluck(:done_ratio).compact.sum.to_f / @work_packages.size).round
+      end
 
       closed_status = BmdsHackathon::Objectives.objective_statuses.find { |s| s.name == "Geschlossen" }
       @percentage_closed = (@groups[closed_status] || 0).to_f / @groups.values.sum * 100
