@@ -34,7 +34,7 @@ class PortfolioManagements::ProposalsController < ApplicationController
   before_action :find_project_by_project_id
   before_action :authorize
   before_action :ensure_portfolio
-  before_action :find_proposal, only: %i[show edit update destroy change_state]
+  before_action :find_proposal, only: %i[show edit update destroy change_state remove_project]
 
   menu_item :portfolio
 
@@ -139,6 +139,22 @@ class PortfolioManagements::ProposalsController < ApplicationController
       redirect_to project_portfolio_management_path(proposal_id: @proposal.id,
                                                     filters: JSON.dump([{ portfolio_proposal: { operator: "=", values: [@proposal.id.to_s] } }]))
     end
+  end
+
+  def remove_project
+    project_id_to_remove = params[:remove]&.to_i
+
+    if @proposal.project_ids.include?(project_id_to_remove)
+      if @proposal.remove_project_by_id(project_id_to_remove)
+        flash[:notice] = t(:notice_proposal_project_removed)
+      else
+        flash[:error] = @proposal.errors.full_messages.join(", ")
+      end
+    else
+      flash[:error] = t(:error_project_not_in_proposal)
+    end
+
+    redirect_to project_portfolio_management_path(@project)
   end
 
   private

@@ -46,6 +46,11 @@ class PortfolioProposal < ApplicationRecord
   after_save :update_project_hierarchy, if: :state_changed_to_approved?
   after_save :set_predecessor_state, if: :state_changed_to_approved?
 
+  def remove_project_by_id(project_id)
+    proposal_project = portfolio_proposal_projects.find_by(project_id: project_id)
+    proposal_project&.destroy
+  end
+
   private
 
   def state_changed_to_approved?

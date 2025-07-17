@@ -56,7 +56,8 @@ module PortfolioManagements
                             more_menu_unarchive_item,
                             more_menu_copy_item,
                             :divider,
-                            more_menu_delete_item].compact
+                            more_menu_delete_item,
+                            more_menu_remove_from_proposal].compact
     end
 
     def move_action_item(move_to, label, icon)
@@ -169,6 +170,34 @@ module PortfolioManagements
           aria: { label: I18n.t(:button_add_to_proposal) }
         }
       ]
+    end
+
+    def more_menu_delete_item
+      # Overview screen:
+      if User.current.admin && proposal.blank?
+        {
+          scheme: :danger,
+          icon: :trash,
+          label: I18n.t(:button_delete),
+          href: confirm_destroy_project_path(project),
+          data: { turbo: false }
+        }
+      end
+    end
+
+    def more_menu_remove_from_proposal
+      if proposal.present? && proposal.draft?
+        {
+          scheme: :danger,
+          icon: :"no-entry",
+          label: I18n.t(:button_remove_from_proposal),
+          href: remove_project_project_portfolio_management_proposal_path(portfolio, proposal, remove: project.id),
+          form_arguments: {
+            method: :delete
+          },
+          data: { turbo: false }
+        }
+      end
     end
   end
 end

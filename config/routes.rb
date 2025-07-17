@@ -428,6 +428,8 @@ Rails.application.routes.draw do
       resources :proposals, controller: "portfolio_managements/proposals" do
         member do
           patch :change_state
+
+          delete :remove_project, action: :remove_project
         end
       end
     end

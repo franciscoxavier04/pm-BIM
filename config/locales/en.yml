@@ -1942,6 +1942,7 @@ en:
   button_add_member: Add member
   button_add_watcher: "Add watcher"
   button_add_to_proposal: "Add to proposal"
+  button_remove_from_proposal: "Remove from proposal"
   button_annotate: "Annotate"
   button_apply: "Apply"
   button_archive: "Archive"
@@ -5029,9 +5030,12 @@ en:
 
   error_must_be_portfolio: The project must be a portfolio.
   error_unable_delete_proposal: Unable to delete the proposal.
+  error_project_not_in_proposal: The project is not part of the proposal.
 
   notice_proposal_proposed: "Proposal submitted."
   notice_proposal_approved: "Proposal approved."
+  notice_proposal_state_changed: "Proposal state changed to %{state}."
+  notice_proposal_project_removed: Removed project from proposal.
 
   portfolio_proposals:
     states:

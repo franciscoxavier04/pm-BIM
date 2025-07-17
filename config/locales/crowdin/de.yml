@@ -1832,6 +1832,7 @@ de:
   button_add_sub_item: "Unterelement hinzufügen"
   button_add_member: Mitglied hinzufügen
   button_add_to_proposal: "Zu Vorschlag hinzufügen"
+  button_remove_from_proposal: "Aus dem Vorschlag entfernen"
   button_add_watcher: "Beobachter hinzufügen"
   button_annotate: "Kommentieren"
   button_apply: "Anwenden"
@@ -4722,10 +4723,12 @@ de:
 
   error_must_be_portfolio: The project must be a portfolio.
   error_unable_delete_proposal: Unable to delete the proposal.
+  error_project_not_in_proposal: Das Projekt ist nicht im Vorschlag enthalten.
 
   notice_proposal_state_changed: "Proposal state changed to %{state}."
   notice_proposal_proposed: "Vorschlage eingereicht."
   notice_proposal_approved: "Vorschlag akzeptiert."
+  notice_proposal_project_removed: Projekt aus Vorschlag entfernt.
 
   portfolio_proposals:
     states:
