@@ -147,7 +147,7 @@ echo "CREATE DATABASE openproject OWNER openproject;" | docker exec -i postgres 
 Restore your data:
 
 ```bash
-docker exec -i postgres psql -U openprojet -d openproject < openproject.sql
+docker exec -i postgres psql -U openproject -d openproject < openproject.sql
 ```
 
 This imports your backup into the newly created database.
