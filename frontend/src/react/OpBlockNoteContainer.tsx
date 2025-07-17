@@ -131,7 +131,11 @@ export default function OpBlockNoteContainer({ inputField,
       showCursorLabels: "activity"
     }
   }
-  const editor = useCreateBlockNote({collaboration, schema, dictionary, extensions });
+
+  // const editor = useCreateBlockNote({collaboration, schema, dictionary, extensions });
+  // Create the editor without collaboration until persistence is fixed.
+  console.log(collaboration);
+  const editor = useCreateBlockNote({ schema, dictionary, extensions });
 
   useEffect(() => {
     const observer = new MutationObserver((mutations) => {
