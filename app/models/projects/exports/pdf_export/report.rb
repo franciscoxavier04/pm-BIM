@@ -233,6 +233,7 @@ module Projects::Exports::PDFExport
     end
 
     def write_project_work_packages(project)
+      pdf.move_down 8
       write_project_work_packages_risks(project)
       write_project_work_packages_milestones(project)
       write_project_work_packages_kpis(project)
@@ -251,7 +252,9 @@ module Projects::Exports::PDFExport
     end
 
     def get_column_value_cell(work_package, column_name)
-      get_value_cell_by_column(work_package, column_name, true)
+      value = get_value_cell_by_column(work_package, column_name, false)
+      value = make_link_href(url_helpers.work_package_url(work_package), value) if column_name == :subject
+      value
     end
 
     def write_project_work_packages_table(query, caption)
@@ -270,7 +273,7 @@ module Projects::Exports::PDFExport
       query = build_work_packages_query(
         project,
         type&.id,
-        %i[id subject status cf_33], # rubocop:disable Naming/VariableNumber
+        %i[subject status cf_33], # rubocop:disable Naming/VariableNumber
         [%w[subject asc]]
       )
       write_project_work_packages_table(query, "Risiken")
@@ -282,7 +285,7 @@ module Projects::Exports::PDFExport
       query = build_work_packages_query(
         project,
         type&.id,
-        %i[id subject status due_date],
+        %i[subject status due_date],
         [%w[due_date asc]]
       )
       write_project_work_packages_table(query, "Meilensteine")
@@ -293,7 +296,7 @@ module Projects::Exports::PDFExport
       query = build_work_packages_query(
         project,
         type&.id,
-        %i[id subject status cf_29 cf_30], # rubocop:disable Naming/VariableNumber
+        %i[subject status cf_29 cf_30], # rubocop:disable Naming/VariableNumber
         [%w[subject asc]]
       )
       write_project_work_packages_table(query, "KPIs")
