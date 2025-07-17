@@ -61,7 +61,7 @@ module WorkPackage::PDFExport::Export::Page
   end
 
   def logo_pdf_top
-    pdf.bounds.top + styles.page_header_offset + (styles.page_logo_height / 2)
+    pdf.bounds.top + styles.page_header_offset + styles.page_logo_offset + (styles.page_logo_height / 2)
   end
 
   def logo_pdf_image

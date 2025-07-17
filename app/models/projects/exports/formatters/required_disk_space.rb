@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# -- copyright
+#-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,16 +26,20 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-# ++
+#++
+module Projects::Exports
+  module Formatters
+    class RequiredDiskSpace < ::Exports::Formatters::Default
+      def self.apply?(attribute, export_format)
+        export_format == :pdf && attribute.to_sym == :required_disk_space
+      end
 
-module Overviews
-  module Portfolios
-    module Widgets
-      class PmflexHintComponent < ApplicationComponent
-        include OpPrimer::ComponentHelpers
-        include ApplicationHelper
+      ##
+      # Takes a project and returns the formatted value if the required disk space is greater than 0.
+      def format(project, **)
+        return "" unless project.required_disk_space.to_i > 0
 
-        delegate :checked?, :title, :description, to: :model
+        number_to_human_size(project.required_disk_space, precision: 2)
       end
     end
   end

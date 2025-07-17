@@ -67,7 +67,7 @@ module WorkPackage::PDFExport::Common::Badge
   def prawn_badge(text, color, offset: 0, radius: 8, font_size: 8)
     badge = BadgeCallback.new({ color: color, radius:, document: pdf, offset: })
     {
-      text: (Prawn::Text::NBSP * 3) + text + (Prawn::Text::NBSP * 3),
+      text: (Prawn::Text::NBSP * 3) + text.tr(" ", Prawn::Text::NBSP) + (Prawn::Text::NBSP * 3),
       size: font_size,
       color: readable_color(color),
       callback: badge

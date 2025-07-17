@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# -- copyright
+#-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,17 +26,54 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-# ++
+#++
 
-module Overviews
-  module Portfolios
-    module Widgets
-      class PmflexHintComponent < ApplicationComponent
-        include OpPrimer::ComponentHelpers
-        include ApplicationHelper
+module Budgets
+  # Provides aggregated budget information for a project.
+  class ProjectBudgets
+    attr_reader :project
 
-        delegate :checked?, :title, :description, to: :model
-      end
+    def initialize(project)
+      @project = project
+    end
+
+    delegate :any?, to: :budgets
+
+    def children_budgets_count
+      @children_budgets_count ||= budgets.sum(&:children_budgets_count)
+    end
+
+    def planned
+      @planned ||= budgets.sum(&:budget)
+    end
+
+    def allocated_to_children
+      @allocated_to_children ||= budgets.sum(&:allocated_to_children)
+    end
+
+    def allocated_unused
+      @allocated_unused ||= budgets.sum(&:allocated_unused)
+    end
+
+    def spent_on_children
+      @spent_on_children ||= budgets.sum(&:spent_on_children)
+    end
+
+    def spent
+      @spent ||= budgets.sum(&:spent)
+    end
+
+    def available
+      @available ||= budgets.sum(&:available)
+    end
+
+    def budget_ratio
+      gone = spent + allocated_to_children
+      @budget_ratio ||= planned.zero? ? 0 : ((gone / planned) * 100).round
+    end
+
+    def budgets
+      @budgets ||= project.budgets.to_a
     end
   end
 end

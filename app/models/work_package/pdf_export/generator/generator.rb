@@ -39,6 +39,7 @@ module WorkPackage::PDFExport::Generator::Generator
 
     def initialize(styling_yml)
       symbol_yml = symbolize(styling_yml)
+      symbol_yml[:page][:font] = WorkPackage::PDFExport::Common::View::default_font
       validate_schema!(symbol_yml, styles_schema)
       @styles = MarkdownToPDF::Styles.new(symbol_yml)
       init_options({ auto_generate_header_ids: false })

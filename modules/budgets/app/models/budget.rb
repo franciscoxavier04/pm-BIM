@@ -120,6 +120,11 @@ class Budget < ApplicationRecord
     supplementary_amount + material_budget + labor_budget + budget_added_by_children
   end
 
+  def children_budgets_count
+    # TODO: Efficient with query
+    child_budget_relations.includes(:child_budget).sum { |rel| 1 + rel.child_budget.children_budgets_count }
+  end
+
   def budget_added_by_children
     # TODO: Efficient with query
     @budget_added_by_children ||= child_budget_relations.add.includes(:child_budget).sum do |rel|

@@ -29,7 +29,7 @@ See COPYRIGHT and LICENSE files for more details.
 <%= render(Primer::Beta::Text.new) do
   flex_layout do |layout|
     layout.with_column do
-      if checked
+      if checked?
         render(Primer::Beta::Octicon.new(icon: :"check-circle", "aria-label": "Element erfüllt", mr: 2))
       else
         render(Primer::Beta::Octicon.new(icon: :circle, "aria-label": "Element nicht erfüllt", mr: 2))

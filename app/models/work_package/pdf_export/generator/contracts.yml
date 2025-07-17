@@ -41,6 +41,7 @@ page-logo:
   filter-pages: [ ]
   align: "left"
   max-width: 40mm
+  height: 30
   offset: -70
 
 paragraph:

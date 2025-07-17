@@ -28,49 +28,39 @@
 # See COPYRIGHT and LICENSE files for more details.
 # ++
 
-module Overviews
-  module Portfolios
-    module Widgets
-      class PmflexHintsComponent < ApplicationComponent
-        include OpPrimer::ComponentHelpers
-        include ApplicationHelper
+module ::Overviews
+  class PmflexHintsController < ::ApplicationController
+    before_action :authorize
+    before_action :find_project_by_project_id
 
-        def initialize(model = nil, project:, **)
-          super(model, **)
+    def create
+      result = if OpenProject::Configuration.haystack_base_url.present?
+                 Overviews::HaystackPmflexHintsRequest.new(user: current_user).call(@project)
+               else
+                 ServiceResult.success(result: [])
+               end
 
-          @project = project
-        end
+      result.each do |hints|
+        persist_hints(hints)
+      end
+      result.on_failure do
+        flash[:error] = result.errors
+      end
 
-        def summary
-          passed_hints = hints.count(&:checked?)
-          if hints.empty?
-            "Das #{project_noun} wurde bisher nicht automatisch geprüft"
-          elsif passed_hints == hints.count
-            "Das #{project_noun} erfüllt alle Anforderungen der automatisierten Prüfungen."
-          elsif passed_hints == 0
-            "Das #{project_noun} erfüllt derzeit keine der unten genannten Anforderungen."
-          else
-            "Das #{project_noun} ist auf dem richtigen Weg, aber bestimmte Elemente können noch optimiert werden."
-          end
-        end
+      redirect_to project_overview_path(@project)
+    end
 
-        def hints
-          @project.pmflex_hints.to_a
-        end
+    private
 
-        def project_noun
-          case @project.project_type
-          when :portfolio
-            "Portfolio"
-          when :program
-            "Programm"
-          else
-            "Projekt"
-          end
-        end
-
-        def hints_updated_at
-          hints.first&.created_at
+    def persist_hints(hints)
+      ActiveRecord::Base.transaction do
+        @project.pmflex_hints.destroy_all
+        hints.each do |hint|
+          @project.pmflex_hints.create!(
+            checked: hint.fetch("checked"),
+            title: hint.fetch("title"),
+            description: hint.fetch("description")
+          )
         end
       end
     end
