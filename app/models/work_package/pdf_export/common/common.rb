@@ -108,21 +108,13 @@ module WorkPackage::PDFExport::Common::Common
     pdf.table(data, options.merge({ column_widths: }), &) unless data.empty?
   end
 
-  def draw_text_multiline_left(text:, text_style:, max_left:, top:, max_lines:)
-    lines = wrap_to_lines(text, max_left - pdf.bounds.left, text_style, max_lines)
-    starting_position = top
-    lines.reverse_each do |line|
-      starting_position += draw_text_multiline_part(line, text_style, pdf.bounds.left, starting_position)
-    end
-  end
-
-  def draw_text_multiline_right(text:, text_style:, max_left:, top:, max_lines:)
-    lines = wrap_to_lines(text, pdf.bounds.right - max_left, text_style, max_lines)
+  def draw_text_multiline_center(text:, text_style:, left:, available_width:, top:, max_lines:)
+    lines = wrap_to_lines(text, available_width, text_style, max_lines)
     starting_position = top
     lines.reverse_each do |line|
       line_width = measure_text_width(line, text_style)
-      line_x = pdf.bounds.right - line_width
-      starting_position += draw_text_multiline_part(line, text_style, line_x, starting_position)
+      line_x = (available_width - line_width) / 2
+      starting_position += draw_text_multiline_part(line, text_style, left + line_x, starting_position)
     end
   end
 
@@ -159,6 +151,18 @@ module WorkPackage::PDFExport::Common::Common
     text_x = (pdf.bounds.width - text_width) / 2
     draw_styled_text text, text_style.merge({ at: [text_x, top] })
     [text_x, text_width]
+  end
+
+  def draw_text_left(text, text_style, top)
+    text_width = measure_text_width(text, text_style)
+    draw_styled_text text, text_style.merge({ at: [0, top] })
+    text_width
+  end
+
+  def draw_text_right(text, text_style, top)
+    text_width = measure_text_width(text, text_style)
+    draw_styled_text text, text_style.merge({ at: [pdf.bounds.width - text_width, top] })
+    text_width
   end
 
   def draw_text_multiline_part(line, text_style, x_position, y_position)

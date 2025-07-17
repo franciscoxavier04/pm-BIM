@@ -152,15 +152,11 @@ module WorkPackage::PDFExport::Export::Cover
   end
 
   def write_cover_footer
+    return if footer_date.blank?
+
     text_style = styles.cover_footer
     text_style[:color] = cover_text_color if cover_text_color.present?
-    draw_text_multiline_left(
-      text: footer_date,
-      max_left: pdf.bounds.width / 2,
-      max_lines: 1,
-      top: pdf.bounds.bottom - styles.cover_footer_offset,
-      text_style:
-    )
+    draw_text_left(footer_date, text_style, pdf.bounds.bottom - styles.cover_footer_offset)
   end
 
   def write_cover_logo
