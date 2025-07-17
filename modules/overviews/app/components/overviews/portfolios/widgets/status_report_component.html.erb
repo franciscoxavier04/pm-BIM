@@ -30,8 +30,8 @@ See COPYRIGHT and LICENSE files for more details.
   component.with_header do
     render(Primer::OpenProject::BorderBox::CollapsibleHeader.new(box: component)) do |header|
       header.with_title do
-        concat(render(Primer::Beta::Octicon.new(icon: :"note", color: :muted, mr: 2)))
-        concat(render(Primer::Beta::Text.new) { "PMFlex Hinweise" })
+        concat(render(Primer::Beta::Octicon.new(icon: :note, color: :muted, mr: 2)))
+        concat(render(Primer::Beta::Text.new) { "Letzter Statusbericht" })
       end
     end
   end
