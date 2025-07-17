@@ -23,6 +23,9 @@
     },
     "project": {
       "$ref": "#/$defs/project"
+    },
+    "wp_table": {
+      "$ref": "#/$defs/wp_table"
     }
   },
   "required": [],
@@ -573,6 +576,95 @@
           "$ref": "#/$defs/margin"
         }
       ]
+    },
+    "wp_table": {
+      "title": "Work package table",
+      "description": "Styling for the related tables (Form configuration)",
+      "x-example": {
+        "overview": {
+          "group_heading": {},
+          "table": {}
+        }
+      },
+      "type": "object",
+      "properties": {
+        "group_heading": {
+          "type": "object",
+          "title": "Overview group heading",
+          "description": "Styling for the group label if grouping is activated",
+          "x-example": {
+            "group_heading": {
+              "size": 11,
+              "styles": [
+                "bold"
+              ],
+              "margin_bottom": 10
+            }
+          },
+          "allOf": [
+            {
+              "$ref": "#/$defs/font"
+            },
+            {
+              "$ref": "#/$defs/margin"
+            }
+          ]
+        },
+        "table": {
+          "type": "object",
+          "title": "Overview table",
+          "x-example": {
+            "table": {
+              "subject_indent": 0,
+              "margin_bottom": 20,
+              "cell": {
+                "size": 9,
+                "color": "000000",
+                "padding": 5
+              },
+              "cell_header": {
+                "size": 9,
+                "styles": [
+                  "bold"
+                ]
+              },
+              "cell_sums": {
+                "size": 8,
+                "styles": [
+                  "bold"
+                ]
+              }
+            }
+          },
+          "properties": {
+            "subject_indent": {
+              "title": "Indent subject",
+              "description": "Indent by work package level in the subject cell",
+              "$ref": "#/$defs/measurement"
+            },
+            "cell": {
+              "title": "Table cell",
+              "description": "Styling for a table value cell",
+              "$ref": "#/$defs/table_cell"
+            },
+            "cell_header": {
+              "title": "Table header cell",
+              "description": "Styling for a table header cell",
+              "$ref": "#/$defs/table_cell"
+            },
+            "cell_sums": {
+              "title": "Table sum cell",
+              "description": "Styling for a table sum cell",
+              "$ref": "#/$defs/table_cell"
+            }
+          },
+          "allOf": [
+            {
+              "$ref": "#/$defs/margin"
+            }
+          ]
+        }
+      }
     },
     "markdown": {
       "type": "object",
