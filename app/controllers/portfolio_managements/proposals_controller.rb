@@ -56,8 +56,8 @@ class PortfolioManagements::ProposalsController < ApplicationController
 
   def new
     @proposal = @project.portfolio_proposals.build
-    if params[:add_project].present? && @proposal.project_ids.exclude?(params[:add_project])
-      @proposal.project_ids << params[:add_project]
+    if params[:add_projects].present? && @proposal.project_ids.exclude?(params[:add_projects])
+      @proposal.project_ids.concat(params[:add_projects])
     end
 
     respond_to do |format|
@@ -67,10 +67,6 @@ class PortfolioManagements::ProposalsController < ApplicationController
   end
 
   def edit
-    if params[:add_project].present? && @proposal.project_ids.exclude?(params[:add_project])
-      @proposal.project_ids << params[:add_project]
-    end
-
     respond_to do |format|
       format.html
       format.turbo_stream
@@ -95,8 +91,13 @@ class PortfolioManagements::ProposalsController < ApplicationController
 
   def update
     if @proposal.update(proposal_params)
-      flash[:notice] = t(:notice_successful_update)
-      redirect_to project_portfolio_management_proposal_path(@project, @proposal)
+      if params[:via_context_menu]
+        flash.now[:notice] = t(:notice_successful_update)
+        render turbo_stream: turbo_stream.replace("flash-messages", helpers.render_flash_messages)
+      else
+        flash[:notice] = t(:notice_successful_update)
+        redirect_to project_portfolio_management_proposal_path(@project, @proposal)
+      end
     else
       respond_to do |format|
         format.html { render :edit }
