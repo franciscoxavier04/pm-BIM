@@ -104,6 +104,11 @@ class PortfolioManagementsController < ApplicationController
       @query.where(:ancestor_or_self, "=", [@project.id])
     end
     @query.proposal = @proposal
+    # Add rank column to query selects if proposal is present
+    if @proposal.present? && @query.selects.none? { |select| select.attribute == :rank }
+      @query.select(:rank)
+    end
+
     @query.clear_changes_information
   end
 

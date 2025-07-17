@@ -75,6 +75,7 @@ module Queries::Projects
     select Selects::LatestActivityAt
     select Selects::ManualSortingSelect
     select Selects::ProjectPhase
+    select Selects::RankSelect
     select Selects::RequiredDiskSpace
     select Selects::Status
     select Selects::PortfolioProposal

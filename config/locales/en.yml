@@ -5045,3 +5045,5 @@ en:
       archived: Archived
     contains_elements: "Contains %{count} elements"
     no_elements: "Still empty"
+
+  label_rank: "Rank"
