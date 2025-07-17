@@ -37,7 +37,7 @@ class Overviews::HaystackRequest
 
   def call(path:, project:)
     response = OpenProject.httpx.post(
-      URI.join(base_url, path),
+      URI(base_url + path),
       json: {
         project: { id: project.id, type: project.project_type },
         openproject: { base_url: openproject_base_url, user_token: }
