@@ -32,7 +32,7 @@
     ) do |menu|
       if User.current.allowed_in_project?(:create_meetings, @project)
         menu.with_item(
-          label: "Statusbericht-Meeting erzeugen",
+          label: "Statusbericht-Besprechung erzeugen",
           tag: :a,
           href: polymorphic_path([:new_dialog, @project, :meetings], report: "1"),
           content_arguments: { data: { controller: "async-dialog" } }

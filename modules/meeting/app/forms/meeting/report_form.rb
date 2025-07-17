@@ -35,25 +35,38 @@ class Meeting::ReportForm < ApplicationForm
   end
 
   form do |meeting_form|
+    meeting_form.hidden(name: :report, scope_name_to_model: false, value: "1")
+
     meeting_form.radio_button_group(
       name: :report_subprojects,
       scope_name_to_model: false,
       label: "Bericht für",
+      visually_hide_label: true
     ) do |radio_group|
       radio_group.radio_button(
         value: "false",
         checked: true,
-        label: "Nur dieses #{@project.human_project_type}"
+        label: "Für dieses #{@project.human_project_type}"
       )
       radio_group.radio_button(
         value: "true",
-        label: @project.human_project_type_with_hierarchy
+        label: "Für dieses #{@project.human_project_type_with_hierarchy}"
       )
+    end
+
+    meeting_form.select_list(
+      name: "baseline",
+      label: "Vergleichsbasis",
+    ) do |list|
+      list.option(label: "Gestern", value: :yesterday)
+      list.option(label: "Letzte Woche", value: :last_week)
+      list.option(label: "Letzter Monat", value: :last_month)
+      list.option(label: "Letztes Quartal", value: :last_quarter)
     end
 
 
     meeting_form.check_box(
-      label: "Änderungen am Portfolio",
+      label: "Änderungen am #{@project.human_project_type}",
       scope_name_to_model: false,
       name: :report_portfolio
     )

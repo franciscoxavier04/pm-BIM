@@ -129,7 +129,8 @@ class MeetingsController < ApplicationController
             component: Meetings::Index::FormComponent.new(
               meeting: @meeting,
               project: @project,
-              copy_from: @copy_from
+              copy_from: @copy_from,
+              report: params[:report] == "1"
             ),
             status: :bad_request
           )
