@@ -56,8 +56,8 @@ class PortfolioManagements::ProposalsController < ApplicationController
 
   def new
     @proposal = @project.portfolio_proposals.build
-    if params[:add_project].present? && @proposal.project_ids.exclude?(params[:add_project])
-      @proposal.project_ids << params[:add_project]
+    if params[:add_projects].present? && @proposal.project_ids.exclude?(params[:add_projects])
+      @proposal.project_ids.concat(params[:add_projects])
     end
 
     respond_to do |format|
@@ -67,10 +67,6 @@ class PortfolioManagements::ProposalsController < ApplicationController
   end
 
   def edit
-    if params[:add_project].present? && @proposal.project_ids.exclude?(params[:add_project])
-      @proposal.project_ids << params[:add_project]
-    end
-
     respond_to do |format|
       format.html
       format.turbo_stream

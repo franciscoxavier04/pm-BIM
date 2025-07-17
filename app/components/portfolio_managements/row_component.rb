@@ -56,17 +56,30 @@ module PortfolioManagements
       PortfolioProposal.where(state: :draft)
     end
 
-    def may_add_project_to_proposal?(project, proposal)
+    def may_add_project_to_proposal?(project_ids, proposal)
       # We do not suggest proposals that already contain this project:
-      proposal.projects.exclude?(project)
+      !proposal.project_ids.intersect?(project_ids)
+    end
+
+    def find_all_child_project_ids(program)
+      program.children.map do |child|
+        if child.children.any?
+          find_all_child_project_ids(child)
+        elsif child.project?
+          # We only want to return project IDs, not program IDs
+          child.id
+        end
+      end.flatten.compact.uniq
     end
 
     def more_menu_add_to_proposal
-      # We only allow adding projects to proposals, not portfolios or programs.
-      return unless project.project?
+      # We only allow adding programs and projects to proposals, not portfolios
+      return if project.portfolio?
+
+      project_ids_to_add = project.program? ? find_all_child_project_ids(project) : [project.id]
 
       proposal_entries = portfolio_proposals.filter_map do |proposal|
-        if may_add_project_to_proposal?(project, proposal)
+        if may_add_project_to_proposal?(project_ids_to_add, proposal)
           project_count = proposal.projects.count
           description = if project_count == 0
                           I18n.t("portfolio_proposals.no_elements")
@@ -74,8 +87,8 @@ module PortfolioManagements
                           I18n.t("portfolio_proposals.contains_elements", count: project_count)
                         end
 
-          project_ids = proposal.projects.pluck(:id) + [project.id]
-          inputs = project_ids.map do |pid|
+          ids_in_proposal = proposal.projects.pluck(:id) + project_ids_to_add
+          inputs = ids_in_proposal.map do |pid|
             {
               name: "portfolio_proposal[project_ids][]",
               value: pid
@@ -103,7 +116,7 @@ module PortfolioManagements
         {
           scheme: :default,
           icon: "plus",
-          href: new_project_portfolio_management_proposal_path(portfolio, add_project: project.id),
+          href: new_project_portfolio_management_proposal_path(portfolio, add_projects: project_ids_to_add),
           label: I18n.t(:button_create_new_portfolio_proposal),
           aria: { label: I18n.t(:button_create_new_portfolio_proposal) }
         }
