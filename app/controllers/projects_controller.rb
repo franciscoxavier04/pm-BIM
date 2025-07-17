@@ -326,6 +326,11 @@ class ProjectsController < ApplicationController
 
   def find_proposal
     @proposal = PortfolioProposal.find_by(id: params[:proposal_id])
+    @query.proposal = @proposal
+    # Add rank column to query selects if proposal is present
+    if @proposal.present? && @query.selects.none? { |select| select.attribute == :rank }
+      @query.select(:rank)
+    end
   end
 
   helper_method :supported_export_formats
