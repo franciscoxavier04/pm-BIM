@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,26 +26,17 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
-#
-module Documents
-  class SidePanel::AttachmentsComponent < ApplicationComponent
-    include ApplicationHelper
-    include OpTurbo::Streamable
-    include OpPrimer::ComponentHelpers
+# ++
 
-    alias_method :document, :model
+module Overviews
+  module Portfolios
+    module Widgets
+      class PmflexHintComponent < ApplicationComponent
+        include OpPrimer::ComponentHelpers
+        include ApplicationHelper
 
-    options :project
-
-    private
-
-    def resource
-      return unless document
-
-      API::V3::Documents::DocumentRepresenter.create(
-        document, current_user: User.current, embed_links: true
-      )
+        delegate :checked?, :title, :description, to: :model
+      end
     end
   end
 end

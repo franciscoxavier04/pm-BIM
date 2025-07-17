@@ -31,25 +31,46 @@
 module Overviews
   module Portfolios
     module Widgets
-      class KpiComponent < ApplicationComponent
+      class PmflexHintsComponent < ApplicationComponent
         include OpPrimer::ComponentHelpers
         include ApplicationHelper
-        include PlaceholderUsersHelper
-        include AvatarHelper
-
-        attr_reader :kpis
-
-        delegate :count, to: :kpis
 
         def initialize(model = nil, project:, **)
           super(model, **)
 
           @project = project
-          @cutoff_limit = 5
-          @kpis = WorkPackage
-            .visible
-            .where(type: ::BmdsHackathon::References.kpi_type)
-            .where(project_id: @project.self_and_descendants.select(:id))
+        end
+
+        def summary
+          passed_hints = hints.count(&:checked?)
+          if hints.empty?
+            "Das #{project_noun} wurde bisher nicht automatisch geprüft"
+          elsif passed_hints == hints.count
+            "Das #{project_noun} erfüllt alle Anforderungen der automatisierten Prüfungen."
+          elsif passed_hints == 0
+            "Das #{project_noun} erfüllt derzeit keine der unten genannten Anforderungen."
+          else
+            "Das #{project_noun} ist auf dem richtigen Weg, aber bestimmte Elemente können noch optimiert werden."
+          end
+        end
+
+        def hints
+          @project.pmflex_hints.to_a
+        end
+
+        def project_noun
+          case @project.project_type
+          when :portfolio
+            "Portfolio"
+          when :program
+            "Programm"
+          else
+            "Projekt"
+          end
+        end
+
+        def hints_updated_at
+          hints.first&.created_at
         end
       end
     end

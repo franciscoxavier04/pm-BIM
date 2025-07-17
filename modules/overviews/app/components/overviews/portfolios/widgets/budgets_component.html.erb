@@ -34,13 +34,67 @@ See COPYRIGHT and LICENSE files for more details.
       render(Primer::OpenProject::BorderBox::CollapsibleHeader.new(box: component)) do |header|
         header.with_title do
           concat(render(Primer::Beta::Octicon.new(icon: :"op-budget", color: :muted, mr: 2)))
-          concat(render(Primer::Beta::Text.new) {"Budget"})
+          concat(render(Primer::Beta::Text.new) { "Budget" })
         end
       end
     end
 
     component.with_row do
+      helpers.stimulus_chartjs_canvas(
+        type: :pie,
+        data: {
+          labels: [
+            "Zugeteilt (unverbaucht)",
+            "Ausgegeben",
+            "Verfügbar"
+          ],
+          datasets: [
+            {
+              data: [
+                project_budgets.allocated_unused,
+                project_budgets.spent_on_children,
+                project_budgets.available
+              ]
+            }
+          ]
+        },
+        options: {
+          animation: {
+            animateRotate: false
+          },
+          borderWidth: 0,
+          plugins: {
+            legend: {
+              position: "bottom",
+              labels: {
+                usePointStyle: true
+              }
+            },
+            datalabels: {
+              display: false
+            }
+          }
+        }
+      )
+    end
 
+    component.with_row do
+      flex_layout(justify_content: :space_between) do |layout|
+        layout.with_column do
+          # TODO: replace with proper i18n
+          if project_budgets.children_budgets_count.positive?
+            render(Primer::Beta::Text.new(color: :muted)) do
+              "Schließt #{pluralize(project_budgets.children_budgets_count, 'Teilbudget')} ein"
+            end
+          end
+        end
+
+        layout.with_column do
+          render(Primer::Beta::Link.new(href: projects_list_with_budgets_columns_path)) do
+            render(Primer::Beta::Text.new(font_weight: :semibold)) { "Alle anzeigen" }
+          end
+        end
+      end
     end
   end
 %>

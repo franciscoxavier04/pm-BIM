@@ -29,57 +29,13 @@
 # ++
 
 class Overviews::HaystackReportRequest
-  MAGIC_APPLICATION_NAME = "OpenProject Experimental AI"
-
   def initialize(user:)
-    @user = user
+    @request_service = Overviews::HaystackRequest.new(user:)
   end
 
   def call(project)
-    response = OpenProject.httpx.post(
-      URI.join(base_url, "/generate-project-status-report"),
-      json: {
-        project: { id: project.id, type: project.project_type },
-        user_token:
-      }
-    )
+    result = @request_service.call(path: "/generate-project-status-report", project:)
 
-    if response.status == 200
-      json = JSON.parse(response.body)
-      ServiceResult.success(result: json.dig("report", "content"))
-    else
-      ServiceResult.failure(errors: "Unexpected response from Haystack (HTTP #{response.status})")
-    end
-  end
-
-  private
-
-  def base_url
-    OpenProject::Configuration.haystack_base_url || raise("Missing configuration for OPENPROJECT_HAYSTACK_BASE_URL")
-  end
-
-  def user_token
-    oauth_application.access_tokens.create!(scopes: "api_v3", expires_in: 5.minutes, resource_owner_id: @user.id).plaintext_token
-  end
-
-  def oauth_application
-    find_oauth_application || create_oauth_application
-  end
-
-  def find_oauth_application
-    # POST-HACKATHON: Application should probably be associated via an "integration" relation and found by that
-    @oauth_application ||= Doorkeeper::Application.find_by(name: MAGIC_APPLICATION_NAME)
-  end
-
-  def create_oauth_application
-    ::OAuth::Applications::CreateService
-      .new(user: User.system)
-      .call(
-        name: MAGIC_APPLICATION_NAME,
-        redirect_uri: "urn:ietf:wg:oauth:2.0:oob",
-        scopes: "api_v3",
-        confidential: true,
-        owner: User.system
-      ).result
+    result.map { |json| json.fetch("report") }
   end
 end

@@ -65,10 +65,22 @@ class DocumentsController < ApplicationController
   def new
     @document = @project.documents.build
     @document.attributes = document_params
+
+    if OpenProject::FeatureDecisions.block_note_editor_active?
+      respond_with_dialog Documents::FormModalComponent.new(@document, project: @project)
+    else
+      render action: :new
+    end
   end
 
   def edit
     @categories = DocumentCategory.all
+
+    if OpenProject::FeatureDecisions.block_note_editor_active?
+      respond_with_dialog Documents::FormModalComponent.new(@document, project: @project)
+    else
+      render action: :edit
+    end
   end
 
   def edit_title
@@ -81,12 +93,24 @@ class DocumentsController < ApplicationController
     call = attachable_create_call ::Documents::CreateService,
                                   args: document_params.merge(project: @project)
 
-    if call.success?
+    call.on_success do
       flash[:notice] = I18n.t(:notice_successful_create)
-      redirect_to project_documents_path(@project)
-    else
-      @document = call.result
-      render action: :new, status: :unprocessable_entity
+
+      if OpenProject::FeatureDecisions.block_note_editor_active?
+        redirect_to document_path(call.result)
+      else
+        redirect_to project_documents_path(@project)
+      end
+    end
+
+    call.on_failure do
+      if OpenProject::FeatureDecisions.block_note_editor_active?
+        update_via_turbo_stream(component: Documents::FormModalBodyComponent.new(call.result, project: @project))
+        respond_with_turbo_streams(status: :unprocessable_entity)
+      else
+        @document = call.result
+        render action: :new, status: :unprocessable_entity
+      end
     end
   end
 
@@ -155,7 +179,8 @@ class DocumentsController < ApplicationController
   end
 
   def respond_with_document_update_turbo_streams(service_call)
-    update_via_turbo_stream(component: Documents::ContentEditableComponent.new(@document, project: @project))
+    @document = service_call.result
+    update_header_component_via_turbo_stream(state: :show)
 
     if service_call.success?
       render_success_flash_message_via_turbo_stream(message: I18n.t(:notice_successful_update))

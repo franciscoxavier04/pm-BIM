@@ -51,10 +51,8 @@ module Projects::Hierarchy
       ancestors = []
       result = []
 
-      projects.sort_by(&:lft).each do |project|
+      projects.each do |project|
         while ancestors.any? && !project.is_descendant_of?(ancestors.last[:project])
-          # before we pop back one level, we sort the child projects by name
-          ancestors.last[:children] = sort_by_name(ancestors.last[:children])
           ancestors.pop
         end
 
@@ -65,14 +63,7 @@ module Projects::Hierarchy
         ancestors << current_hierarchy
       end
 
-      # When the last project is deeply nested, we need to sort
-      # all layers we are in.
-      ancestors.each do |level|
-        level[:children] = sort_by_name(level[:children])
-      end
-      # we need one extra element to ensure sorting at the end
-      # at the end the root level must be sorted as well
-      sort_by_name(result)
+      result
     end
 
     def project_tree_from_hierarchy(projects_hierarchy, level, &)
@@ -89,12 +80,6 @@ module Projects::Hierarchy
     def project_tree(projects, &)
       projects_hierarchy = build_projects_hierarchy(projects)
       project_tree_from_hierarchy(projects_hierarchy, 0, &)
-    end
-
-    private
-
-    def sort_by_name(project_hashes)
-      project_hashes.sort_by { |h| h[:project].name&.downcase }
     end
   end
 

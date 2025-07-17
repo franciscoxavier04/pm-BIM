@@ -29,23 +29,39 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%=
   component_wrapper do
-    render(Primer::OpenProject::SidePanel::Section.new) do |section|
-      section.with_title { I18n.t(:label_attachment_plural) }
-      section.with_description { I18n.t("documents.attachments.text") }
-      section.with_counter(count: document.attachments.count)
+    primer_form_with(
+      model:,
+      url:,
+      data: { turbo: true },
+      method:
+    ) do |form|
+      concat(
+        render(
+          Primer::Alpha::Dialog::Body.new(
+            id: dialog_body_id,
+            test_selector: dialog_body_id,
+            aria: { label: aria_label }
+          )
+        ) do
+          flex_layout do |flex|
+            flex.with_row(mb: 3) do
+              render Documents::CategoryForm.new(form)
+            end
 
-      section.with_footer_button(id: "documents-add-attachments") do |button|
-        button.with_leading_visual_icon(icon: "op-attachmentadd")
-        I18n.t("js.label_add_attachments")
-      end
+            if new_record?
+              flex.with_row(mb: 3) do
+                render Documents::TitleForm.new(form)
+              end
+            end
+          end
+        end
+      )
 
-      helpers.list_attachments(
-        resource,
-        inputs: {
-          allowUploading: true,
-          showTimestamp: false,
-          externalUploadButton: "#documents-add-attachments"
-        }
+      concat(
+        render(Primer::Alpha::Dialog::Footer.new(show_divider: false)) do
+          concat(render(Primer::Beta::Button.new(data: { "close-dialog-id": dialog_id })) { I18n.t("button_cancel") })
+          concat(render(Documents::SubmitForm.new(form)))
+        end
       )
     end
   end

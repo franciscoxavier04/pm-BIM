@@ -81,6 +81,14 @@ See COPYRIGHT and LICENSE files for more details.
               data: { "turbo-stream": true }
             }
           ) { it.with_leading_visual_icon(icon: :pencil) }
+
+          menu.with_item(
+            label: t("documents.label_change_category"),
+            href: url_helpers.edit_document_path(document),
+            content_arguments: {
+              data: { controller: "async-dialog" }
+            }
+          ) { it.with_leading_visual_icon(icon: :gear) }
         end
 
         if allowed_to?(:destroy)

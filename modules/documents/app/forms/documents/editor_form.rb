@@ -31,13 +31,14 @@
 module Documents
   class EditorForm < ApplicationForm
     form do |f|
-      if OpenProject::FeatureDecisions.block_note_editor_active? && model.category&.name == "Experimental"
+      if OpenProject::FeatureDecisions.block_note_editor_active?
         f.block_note_editor(
           name: :description,
           label: I18n.t("label_document_description"),
           visually_hide_label: true,
           classes: "document-form--long-description",
-          value: model.description
+          value: model.description,
+          document_id: ::CollaborativeEditing::DocumentIdGenerator.call("documents", model.id)
         )
       else
         f.rich_text_area(

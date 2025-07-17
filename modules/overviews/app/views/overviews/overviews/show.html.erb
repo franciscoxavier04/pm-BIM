@@ -30,6 +30,17 @@
       menu_arguments: { anchor_align: :end },
       button_arguments: { icon: "kebab-horizontal", "aria-label": t(:label_menu) }
     ) do |menu|
+      if User.current.allowed_in_project?(:create_meetings, @project)
+        menu.with_item(
+          label: "Statusbericht-Besprechung erzeugen",
+          tag: :a,
+          href: polymorphic_path([:new_dialog, @project, :meetings], report: "1"),
+          content_arguments: { data: { controller: "async-dialog" } }
+        ) do |item|
+          item.with_leading_visual_icon(icon: "comment-discussion")
+        end
+      end
+
       if User.current.allowed_in_project?(:select_project_custom_fields, @project)
         menu.with_item(
           label: t(:label_project_attribute_manage_link),
@@ -55,17 +66,28 @@
   end
 %>
 
-<% if OpenProject::FeatureDecisions.portfolio_dashboard_active? %>
-  <%=
-    render(Primer::Alpha::Layout.new) do |content|
-      content.with_main do
-        render Overviews::Portfolios::ShowComponent.new(project: @project)
-      end
-      content.with_sidebar(col_placement: :end, row_placement: :end) do
-        render Overviews::Portfolios::SidePanelComponent.new(project: @project)
-      end
-    end
-  %>
-<% else %>
-  <openproject-base></openproject-base>
+<%= render(Primer::Alpha::Layout.new) do |content| %>
+  <% content.with_main do %>
+    <% if OpenProject::FeatureDecisions.portfolio_dashboard_active? %>
+      <%= render(Primer::Alpha::TabPanels.new(label: "label")) do |tab_panel| %>
+        <% tab_panel.with_tab(selected: true, id: "tab-selects--overview") do |tab| %>
+          <% tab.with_text { "Übersicht" } %>
+          <% tab.with_panel do %>
+            <%= render Overviews::Portfolios::ShowComponent.new(project: @project) %>
+          <% end %>
+        <% end %>
+        <% tab_panel.with_tab(id: "tab-selects--dashboard") do |tab| %>
+          <% tab.with_text { "Dashboard" } %>
+          <% tab.with_panel do %>
+            <openproject-base></openproject-base>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <openproject-base></openproject-base>
+    <% end %>
+  <% end %>
+  <% content.with_sidebar(col_placement: :end, row_placement: :end) do %>
+    <%= render Overviews::Portfolios::SidePanelComponent.new(project: @project) %>
+  <% end %>
 <% end %>

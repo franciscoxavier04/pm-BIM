@@ -40,6 +40,14 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%=
   settings_primer_form_with(model: @document, url: project_documents_path(@project), data: { test_selector: "new-document" }) do |f|
-    render DocumentForm.new(f)
+    if OpenProject::FeatureDecisions.block_note_editor_active?
+      render Primer::Forms::FormList.new(
+        Documents::CategoryForm.new(f),
+        Documents::TitleForm.new(f),
+        Documents::SubmitForm.new(f)
+      )
+    else
+      render DocumentForm.new(f)
+    end
   end
 %>

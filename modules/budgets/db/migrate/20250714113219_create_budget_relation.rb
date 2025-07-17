@@ -27,26 +27,17 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-module HackathonData
-  class KpiSeeder < Seeder
-    def seed_data!
-      Rails.logger.debug "*** Seeding KPI work package type"
 
-      type = Type.find_or_create_by!(name: "KPI")
-      kpi_ziel = WorkPackageCustomField.find_or_create_by!(name: "Zielwert", field_format: "int", is_for_all: true)
-      kpi_ist = WorkPackageCustomField.find_or_create_by!(name: "Istwert", field_format: "int", is_for_all: true)
+class CreateBudgetRelation < ActiveRecord::Migration[8.0]
+  def change
+    create_table :budget_relations do |t|
+      t.references :parent_budget, null: false, foreign_key: { to_table: :budgets }
+      t.references :child_budget, null: false, foreign_key: { to_table: :budgets }
+      t.references :cost_type, null: true, foreign_key: { to_table: :cost_types }
 
-      kpi_group = [
-        ["KPI", [kpi_ziel.attribute_name, kpi_ist.attribute_name]]
-      ]
+      t.string :relation_type, null: false, default: "add"
 
-      type.update!(
-        attribute_groups: kpi_group + type.default_attribute_groups
-      )
-    end
-
-    def applicable?
-      WorkPackageCustomField.where(name: %w[Zielwert Istwert]).empty?
+      t.timestamps
     end
   end
 end

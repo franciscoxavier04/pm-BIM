@@ -27,7 +27,8 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<% if OpenProject::FeatureDecisions.block_note_editor_active? && @document.category&.name == "Experimental" %>
+<% if OpenProject::FeatureDecisions.block_note_editor_active? %>
+  <%= render(Documents::HeaderComponent.new(@document, project: @project, state: :show)) %>
   <%= render(Documents::ContentEditableComponent.new(@document, project: @project)) %>
 <% else %>
   <%=

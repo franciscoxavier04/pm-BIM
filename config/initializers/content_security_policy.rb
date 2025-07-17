@@ -42,6 +42,9 @@ Rails.application.config.after_initialize do
         connect_src += ["https://appsignal-endpoint.net"]
       end
 
+      # Allow connection to haystack
+      connect_src += ["https://haystack.pmflex.one"]
+
       # Allow connections to S3 for BIM
       if OpenProject::Configuration.fog_directory.present?
         connect_src += [
