@@ -30,13 +30,14 @@
 
 class Overviews::HaystackRequest
   MAGIC_APPLICATION_NAME = "OpenProject Experimental AI"
+  HAYSTACK_TIMEOUT = 90
 
   def initialize(user:)
     @user = user
   end
 
   def call(path:, project:)
-    response = OpenProject.httpx.post(
+    response = httpx.post(
       URI(base_url + path),
       json: {
         project: { id: project.id, type: project.project_type },
@@ -44,7 +45,9 @@ class Overviews::HaystackRequest
       }
     )
 
-    if response.status == 200
+    if response.error
+      ServiceResult.failure(errors: response.error.to_s)
+    elsif response.status == 200
       json = JSON.parse(response.body)
       ServiceResult.success(result: json)
     else
@@ -53,6 +56,10 @@ class Overviews::HaystackRequest
   end
 
   private
+
+  def httpx
+    OpenProject.httpx.with(timeout: { read_timeout: HAYSTACK_TIMEOUT, request_timeout: HAYSTACK_TIMEOUT })
+  end
 
   def base_url
     OpenProject::Configuration.haystack_base_url || raise("Missing configuration for OPENPROJECT_HAYSTACK_BASE_URL")
