@@ -43,7 +43,7 @@ module Meetings
         report_milestones(meeting)
       end
 
-      if params[:report_milestones]
+      if params[:report_goals]
         report_goals(meeting)
       end
 
@@ -75,6 +75,7 @@ module Meetings
     end
 
     def portfolio_changes(meeting)
+      MeetingSection.create!(title: "Änderungen am Portfolio", meeting:)
     end
 
     def report_budget(meeting)
@@ -99,6 +100,11 @@ module Meetings
     end
 
     def report_milestones(meeting)
+      section = MeetingSection.create!(title: "Änderungen an Meilensteinen", meeting:)
+      last_three_objectives = WorkPackage.where(type: BmdsHackathon::Objectives.objective_type).last(3)
+      last_three_objectives.each do |wp|
+        MeetingAgendaItem.create!(meeting:, meeting_section: section, title: nil, item_type: 1, work_package: wp, author: User.system)
+      end
     end
 
     def report_goals(meeting)
