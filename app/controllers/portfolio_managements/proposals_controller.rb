@@ -78,7 +78,12 @@ class PortfolioManagements::ProposalsController < ApplicationController
 
     if @proposal.save
       flash[:notice] = t(:notice_successful_create)
-      redirect_to project_portfolio_management_proposal_path(@project, @proposal)
+
+      if params[:via_dialog]
+        redirect_to proposal_project_path_with_filters
+      else
+        redirect_to project_portfolio_management_proposal_path(@project, @proposal)
+      end
     else
       respond_to do |format|
         format.html { render :new }

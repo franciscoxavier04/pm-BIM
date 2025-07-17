@@ -1,0 +1,74 @@
+<%#-- copyright
+OpenProject is an open source project management software.
+Copyright (C) the OpenProject GmbH
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License version 3.
+
+OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+Copyright (C) 2006-2013 Jean-Philippe Lang
+Copyright (C) 2010-2013 the ChiliProject Team
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+See COPYRIGHT and LICENSE files for more details.
+
+++#%>
+
+<tr
+  <%= "id=\"#{row_css_id}\"".html_safe if row_css_id %>
+  <%= "class=\"#{row_css_class}\"".html_safe if row_css_class %>>
+  <% columns.each do |column| %>
+    <td class="<%= column_css_class(column) %>">
+      <%= column_value(column) %>
+    </td>
+  <% end %>
+
+  <% if defined?(rank) %>
+    <td>
+      <%= rank %>
+    </td>
+  <% end %>
+  <td class="buttons">
+    <% button_links.each do |link| %>
+      <%= link %>
+    <% end %>
+  </td>
+</tr>
+
+<%# Dialog used for the creation of a new proposal from the context menu. Very hacky: wil create one dialog per row ^_^° %>
+<%= render(Primer::Alpha::Dialog.new(id: "proposal-creation-dialog-#{project.id}", title: I18n.t(:button_create_new_portfolio_proposal))) do |dialog| %>
+  <%= form_for PortfolioProposal.new,
+               url: project_portfolio_management_proposals_path(portfolio, via_dialog: true),
+               data: { turbo: false },
+               html: { class: 'form' } do |f| %>
+    <%= render(Primer::Alpha::Dialog::Body.new) do %>
+      <% project_ids_including_children.each do |id_to_add| %>
+        <%= hidden_field_tag "portfolio_proposal[project_ids][]", id_to_add %>
+      <% end %>
+
+      <div class="form--field -required">
+        <%= f.label :name, class: 'form--label' %>
+        <div class="form--field-container">
+          <%= f.text_field :name, required: true, container_class: '-middle', autofocus: true %>
+        </div>
+      </div>
+    <% end %>
+    <%= render(Primer::Alpha::Dialog::Footer.new(show_divider: false)) do %>
+      <%= render(Primer::Beta::Button.new(data: { "close-dialog-id": "proposal-creation-dialog-#{project.id}" })) { I18n.t(:button_cancel) } %>
+      <%= render(Primer::Beta::Button.new(scheme: :primary, type: :submit)) { I18n.t(:button_save) } %>
+    <% end %>
+  <% end %>
+<% end %>

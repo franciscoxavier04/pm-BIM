@@ -104,11 +104,13 @@ module PortfolioManagements
       end.flatten.compact.uniq
     end
 
+    def project_ids_including_children
+      @project_ids_including_children ||= project.program? ? find_all_child_project_ids(project) : [project.id]
+    end
+
     def more_menu_add_to_proposal
       # We only allow adding programs and projects to proposals, not portfolios
       return if project.portfolio?
-
-      project_ids_including_children = project.program? ? find_all_child_project_ids(project) : [project.id]
 
       proposal_entries = portfolio_proposals.filter_map do |proposal|
         project_ids_to_add = project_ids_for_proposal_without_duplicates(project_ids_including_children, proposal)
@@ -151,7 +153,7 @@ module PortfolioManagements
         {
           scheme: :default,
           icon: "plus",
-          href: new_project_portfolio_management_proposal_path(portfolio, add_projects: project_ids_including_children),
+          "data-show-dialog-id": "proposal-creation-dialog-#{project.id}",
           label: I18n.t(:button_create_new_portfolio_proposal),
           aria: { label: I18n.t(:button_create_new_portfolio_proposal) }
         }
