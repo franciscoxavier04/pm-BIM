@@ -64,6 +64,7 @@ en:
     new_category: "New category"
 
     label_rename_document: "Rename document"
+    label_change_category: "Change document category"
 
     delete_dialog:
       title: "Delete document"
@@ -73,6 +74,7 @@ en:
   label_document_actions: "Document actions"
   label_document_added: "Document added"
   label_document_new: "New document"
+  label_document_edit: "Edit document"
   label_document_plural: "Documents"
   label_documents: "Documents"
   label_document_title: "Title"

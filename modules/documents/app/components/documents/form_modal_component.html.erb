@@ -28,20 +28,18 @@ See COPYRIGHT and LICENSE files for more details.
 ++#%>
 
 <%=
-  component_wrapper do
-    flex_layout(bg: :subtle, style: "min-height: 100vh; height: 100%") do |layout_container|
-      layout_container.with_row(flex_layout: true, justify_content: :center, mt: 4, mb: 4) do |flex_child|
-        flex_child.with_column(classes: "op-documents-content-editable-component--editor-container") do
-          primer_form_with(
-            id: "content-editable-form",
-            model: document,
-            url: url_helpers.document_path(document),
-            method: :patch,
-            bg: :default,
-            p: 4
-          ) { render(Documents::EditorForm.new(it)) }
-        end
-      end
-    end
+  render(
+    Primer::Alpha::Dialog.new(
+      id: dialog_id,
+      title:,
+      test_selector: dialog_id
+    )
+  ) do |dialog|
+    dialog.with_header(
+      show_divider: false,
+      visually_hide_title: false
+    )
+
+    render(::Documents::FormModalBodyComponent.new(document, project:))
   end
 %>

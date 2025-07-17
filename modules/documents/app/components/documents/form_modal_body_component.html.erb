@@ -29,19 +29,40 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%=
   component_wrapper do
-    flex_layout(bg: :subtle, style: "min-height: 100vh; height: 100%") do |layout_container|
-      layout_container.with_row(flex_layout: true, justify_content: :center, mt: 4, mb: 4) do |flex_child|
-        flex_child.with_column(classes: "op-documents-content-editable-component--editor-container") do
-          primer_form_with(
-            id: "content-editable-form",
-            model: document,
-            url: url_helpers.document_path(document),
-            method: :patch,
-            bg: :default,
-            p: 4
-          ) { render(Documents::EditorForm.new(it)) }
+    primer_form_with(
+      model:,
+      url:,
+      data: { turbo: true },
+      method:
+    ) do |form|
+      concat(
+        render(
+          Primer::Alpha::Dialog::Body.new(
+            id: dialog_body_id,
+            test_selector: dialog_body_id,
+            aria: { label: aria_label }
+          )
+        ) do
+          flex_layout do |flex|
+            flex.with_row(mb: 3) do
+              render Documents::CategoryForm.new(form)
+            end
+
+            if new_record?
+              flex.with_row(mb: 3) do
+                render Documents::TitleForm.new(form)
+              end
+            end
+          end
         end
-      end
+      )
+
+      concat(
+        render(Primer::Alpha::Dialog::Footer.new(show_divider: false)) do
+          concat(render(Primer::Beta::Button.new(data: { "close-dialog-id": dialog_id })) { I18n.t("button_cancel") })
+          concat(render(Documents::SubmitForm.new(form)))
+        end
+      )
     end
   end
 %>

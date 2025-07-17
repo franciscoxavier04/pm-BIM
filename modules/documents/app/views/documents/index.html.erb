@@ -49,7 +49,8 @@ See COPYRIGHT and LICENSE files for more details.
         leading_icon: :plus,
         label: I18n.t(:label_document_new),
         tag: :a,
-        href: url_for({ controller: "/documents", action: "new", project_id: @project })
+        href: url_for({ controller: "/documents", action: "new", project_id: @project }),
+        data: {}.tap { it[:controller] = "async-dialog" if OpenProject::FeatureDecisions.block_note_editor_active? }
       ) do
         t("activerecord.models.document")
       end
