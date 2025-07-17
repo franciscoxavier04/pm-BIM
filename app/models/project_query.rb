@@ -92,12 +92,12 @@ class ProjectQuery < ApplicationRecord
     # using HierarchyOrder only as a marker
     hierarchy_orders, orders = build_orders.partition { it.is_a?(Queries::Projects::Orders::HierarchyOrder) }
 
-    ordered_scope = orders.inject(query_scope) { |scope, order| order.apply_to(scope) }.order(id: :desc)
+    ordered_scope = orders.inject(query_scope) { |scope, order| order.apply_to(scope) }
 
     if hierarchy_orders.present?
       query_scope
         .with_recursive(
-          with_row_number: Project.select(:id, :parent_id, "ROW_NUMBER() OVER () AS row_n").from(ordered_scope),
+          with_row_number: Project.select(:id, :parent_id, "ROW_NUMBER() OVER () AS row_n").from(ordered_scope.order(:lft)),
           with_orders_path: [
             Arel.sql(<<~SQL.squish),
               SELECT id, parent_id, ARRAY[row_n] AS orders_path
@@ -114,7 +114,7 @@ class ProjectQuery < ApplicationRecord
         .joins("LEFT JOIN with_orders_path ON with_orders_path.id = projects.id")
         .order(Arel.sql("with_orders_path.orders_path"))
     else
-      ordered_scope
+      ordered_scope.order(id: :desc)
     end
   end
 end
