@@ -55,17 +55,16 @@
   end
 %>
 
-<% if OpenProject::FeatureDecisions.portfolio_dashboard_active? && (@project.portfolio? || @project.program?) %>
-  <%=
-    render(Primer::Alpha::Layout.new) do |content|
-      content.with_main do
-        render Overviews::Portfolios::ShowComponent.new(project: @project)
-      end
-      content.with_sidebar(col_placement: :end, row_placement: :end) do
-        render Overviews::Portfolios::SidePanelComponent.new(project: @project)
-      end
-    end
-  %>
-<% else %>
-  <openproject-base></openproject-base>
+<%= render(Primer::Alpha::Layout.new) do |content| %>
+  <% content.with_main do %>
+    <% if OpenProject::FeatureDecisions.portfolio_dashboard_active? %>
+         <%= render Overviews::Portfolios::ShowComponent.new(project: @project) %>
+    <% end %>
+    <% if !OpenProject::FeatureDecisions.portfolio_dashboard_active? || (!@project.portfolio? && !@project.program?) %>
+      <openproject-base></openproject-base>
+    <% end %>
+  <% end %>
+  <% content.with_sidebar(col_placement: :end, row_placement: :end) do %>
+    <%= render Overviews::Portfolios::SidePanelComponent.new(project: @project) %>
+  <% end %>
 <% end %>
