@@ -56,7 +56,8 @@ class Meeting::ReportForm < ApplicationForm
 
     meeting_form.select_list(
       name: "baseline",
-      label: "Vergleichsbasis",
+      scope_name_to_model: false,
+      label: "Vergleichsbasis"
     ) do |list|
       list.option(label: "Gestern", value: :yesterday)
       list.option(label: "Letzte Woche", value: :last_week)

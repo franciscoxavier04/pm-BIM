@@ -50,6 +50,28 @@ module Meetings
       if params[:report_risks]
         report_risks(meeting)
       end
+    rescue => e
+      binding.pry
+    end
+
+    def base_query(meeting)
+      Query.new(name: "_", project: meeting.project).tap do |query|
+        query.include_subprojects = params[:report_subprojects] == "true"
+        query.timestamps = [baseline_value, "PT0S"]
+      end
+    end
+
+    def baseline_value
+      case params[:baseline].to_s
+      when "last_week"
+        Time.zone.now.last_week
+      when "last_month"
+        Time.zone.now.last_month
+      when "last_quarter"
+        Time.zone.now.last_quarter
+      else
+        Time.zone.now.yesterday
+      end
     end
 
     def portfolio_changes(meeting)
@@ -62,6 +84,27 @@ module Meetings
     end
 
     def report_goals(meeting)
+      query = base_query(meeting)
+      query.add_filter(:type_id, "=", [BmdsHackathon::Objectives.objective_type.id])
+      baseline = query.timestamps.first
+
+      meeting_section = meeting.sections.find_or_create_by(title: "Ziele und Metriken")
+
+      query
+        .results
+        .work_packages
+        .select { |work_package| work_package.at_timestamp(baseline).nil? }
+        .each do |work_package|
+        agenda_item = MeetingAgendaItem.create!(
+          author: User.system,
+          position: 1,
+          meeting_section:,
+          meeting:,
+          work_package:,
+          title: work_package.subject,
+          notes: "Neues Ziel seit Vergleichsbasis"
+        )
+      end
     end
 
     def report_risks(meeting)
