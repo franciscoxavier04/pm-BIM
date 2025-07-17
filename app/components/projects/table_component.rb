@@ -103,19 +103,17 @@ module Projects
       {}
     end
 
-    def deactivate_class_on_lft_sort
-      if sorted_by_lft?
-        "spot-link_inactive"
-      end
-    end
+    def href_for_sort_lft
+      sort_by = if sorted_by_lft?
+                  sort_criteria.to_query_hash.except("lft").to_a
+                else
+                  [%w[lft asc]]
+                end
 
-    def href_only_when_not_sort_lft
-      unless sorted_by_lft?
-        projects_path(
-          sortBy: JSON.dump([%w[lft asc]]),
-          **helpers.projects_query_params.slice(*helpers.projects_query_param_names_for_sort)
-        )
-      end
+      projects_path(
+        sortBy: JSON.dump(sort_by),
+        **helpers.projects_query_params.slice(*helpers.projects_query_param_names_for_sort)
+      )
     end
 
     def order_options(select, turbo: false)

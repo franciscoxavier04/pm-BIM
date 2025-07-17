@@ -150,16 +150,20 @@ module SortHelper
     end
 
     def first_key
-      @criteria.first && @criteria.first.first
+      first&.first
     end
 
     def first_asc?
-      @criteria.first && @criteria.first.last
+      first&.last
     end
 
     delegate :empty?, to: :@criteria
 
     private
+
+    def first
+      @criteria.first&.first == "lft" ? @criteria.second : @criteria.first
+    end
 
     def normalize!
       @criteria ||= []
@@ -171,6 +175,8 @@ module SortHelper
       if @available_criteria
         @criteria = @criteria.select { |k, _o| @available_criteria.has_key?(k) }
       end
+
+      @criteria.sort_by!.with_index { |(a, _), i| [a == "lft" ? 0 : 1, i] }
 
       @criteria.slice!(3)
       self
