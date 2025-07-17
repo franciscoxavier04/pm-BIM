@@ -55,8 +55,8 @@ module Budgets
       @allocated_unused ||= budgets.sum(&:allocated_unused)
     end
 
-    def spent_on_children
-      @spent_on_children ||= budgets.sum(&:spent_on_children)
+    def spent_with_children
+      @spent_with_children ||= budgets.sum(&:spent_with_children)
     end
 
     def spent
