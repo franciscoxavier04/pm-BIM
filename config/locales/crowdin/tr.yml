@@ -170,7 +170,7 @@ tr:
     is_active: şu an görüntüleniyor
     is_inactive: şu an görüntülenmiyor
   antivirus_scan:
-    not_processed_yet_message: "Dosya henüz virüs taramasından geçirilmediği için indirme işlemi engellendi. Lütfen daha sonra tekrar deneyin."
+    not_processed_yet_message: "Dosya henüz virüs taramasından geçmediği için indirme işlemi engellendi. Lütfen daha sonra tekrar deneyin."
     quarantined_message: "'%{filename}' dosyasında bir virüs tespit edildi. Dosya karantinaya alındı ve indirilemez."
     deleted_message: "'%{filename}' dosyasında bir virüs tespit edildi. Dosya silinmiştir."
     deleted_by_admin: "Karantinaya alınan '%{filename}' dosyası bir yönetici tarafından silindi."
@@ -287,10 +287,10 @@ tr:
           heading: Tüm projeler için
           description: '"Tüm projeler için" seçeneği işaretli olduğu için bu proje niteliği tüm projelerde etkindir. Projeler için bağımsız olarak devre dışı bırakılamaz.'
       items:
-        actions: "Öğe eylemleri"
+        actions: "Öge eylemleri"
         blankslate:
           root:
-            title: "Öğeler listeniz boş"
+            title: "Öge listeniz boş"
             description: "Hiyerarşi türündeki özel alana öğeler ekleyerek başlayın. Her öğe, altında bir hiyerarşi oluşturmak için kullanılabilir. Bir hiyerarşi içinde gezinmek ve alt öğeler oluşturmak için oluşturulan öğeye tıklayın."
           item:
             title: Bu öğenin altında herhangi bir hiyerarşi düzeyi yoktur

@@ -169,7 +169,7 @@ zh-CN:
               not_found: "%{current_path} 没有找到。"
             set_folders_permissions:
               permission_not_set: 无法设置 %{path} 上的权限。
-          error: 发生了意外错误。请确保OneDrive/SharePoint可以访问并检查 OpenProject 工人日志以获取更多信息
+          error: An unexpected error occurred. Please ensure that OneDrive is reachable and check OpenProject worker logs for more information
           not_allowed: OpenProject 未被允许访问您的 OneDrive 驱动器。请检查 Azure 应用程序上设置的权限。
           unauthorized: OpenProject 无法与 Nextcloud 同步。请检查您的存储设备和 Nextcloud 配置。
           user_does_not_exist: "在 Nextcloud 中不存在 %{user}  。"
@@ -188,7 +188,7 @@ zh-CN:
     configuration_checks:
       oauth_client_incomplete:
         nextcloud: 允许 OpenProject 使用 OAuth 访问 Nextcloud 数据。
-        one_drive: 允许 OpenProject 使用 OAuth 访问Azure 数据来连接 OneDrive/SharePoint。
+        one_drive: Allow OpenProject to access Azure data using OAuth to connect OneDrive.
       redirect_uri_incomplete:
         one_drive: 使用正确的 URI 重定向完成设置。
     confirm_replace_oauth_application: 此操作将重置当前的 OAuth 凭据。确认后，您必须在存储提供商处重新输入凭据，并且所有远程用户都必须再次针对 OpenProject 进行授权。您确定要继续吗？
@@ -296,7 +296,7 @@ zh-CN:
         od_drive_id_not_found: 找不到配置的驱动器 ID。请检查配置。
         od_oauth_request_not_found: 未找到获取当前连接用户的端点。请检查服务器日志以获取更多信息。
         od_oauth_request_unauthorized: 当前用户无权访问远程文件存储。请检查服务器日志以获取更多信息。
-        od_oauth_token_missing: OpenProject 无法测试用户与 OneDrive/SharePoint 的用户级通信，因为用户尚未关联他们的 Microsoft 帐户。
+        od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive as the user did not yet link their Microsoft account.
         od_tenant_id_wrong: 配置的目录（租户）无效。请检查配置。
         od_test_folder_exists: 测试所需的文件夹 %{folder_name} 已存在。请删除它并重试。
         od_unexpected_content: 在驱动器中找到意外内容。
@@ -362,9 +362,9 @@ zh-CN:
       one_drive:
         application_link_text: Azure 门户
         copy_redirect_uri: 复制重定向 URI
-        documentation_link_text: OneDrive/SharePoint 文件存储文档
+        documentation_link_text: OneDrive file storages documentation
         drive_id:
-        integration: OneDrive/SharePoint
+        integration: OneDrive
         missing_client_id_for_redirect_uri: 请填写OAuth 值以生成 URI
         oauth_client_redirect_uri: 请将该值复制到“重定向 URI ”下的新 Web 重定向 URI。
         oauth_client_secret: 如果在“客户端凭据”下没有应用程序客户端密钥，请新建一个。
@@ -474,7 +474,7 @@ zh-CN:
       one_drive:
         label_oauth_client_id: Azure OAuth 应用程序 (客户端) ID
         label_oauth_client_secret: Azure OAuth 客户端密钥值
-        name: OneDrive/SharePoint
+        name: OneDrive
         name_placeholder: 例如OneDrive
     show_attachments_toggle:
       description: 禁用此选项将隐藏工作包文件选项卡上的附件列表。 工作包描述中的文件仍将上传到内部附件存储。
@@ -493,5 +493,6 @@ zh-CN:
     successful_storage_connection: 存储连接成功！请记住，在每个所需项目的项目设置中激活模块和特定存储，以进行使用。
     upsell:
       description: |-
-        将 OneDrive/SharePoint 作为文件存储与 OpenProject 集成。上传文件并直接将其链接到项目中的工作包。
-      title: OneDrive/SharePoint 集成
+        Integrate your OneDrive as a file storage with OpenProject. Upload files and link them directly to
+        work packages in a project.
+      title: OneDrive integration
