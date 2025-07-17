@@ -261,7 +261,7 @@ module Projects::Exports::PDFExport
       return unless work_packages.any?
 
       write_optional_page_break
-      write_markdown_label("#{I18n.t('label_work_package_plural')}: #{caption}")
+      write_markdown_label(caption)
       write_work_packages_table!(work_packages, query)
     end
 
@@ -273,7 +273,7 @@ module Projects::Exports::PDFExport
         %i[id subject status cf_33], # rubocop:disable Naming/VariableNumber
         [%w[subject asc]]
       )
-      write_project_work_packages_table(query, type&.name)
+      write_project_work_packages_table(query, "Risiken")
     end
 
     def write_project_work_packages_milestones(project)
@@ -285,7 +285,7 @@ module Projects::Exports::PDFExport
         %i[id subject status due_date],
         [%w[due_date asc]]
       )
-      write_project_work_packages_table(query, type&.name)
+      write_project_work_packages_table(query, "Meilensteine")
     end
 
     def write_project_work_packages_kpis(project)
@@ -296,7 +296,7 @@ module Projects::Exports::PDFExport
         %i[id subject status cf_29 cf_30], # rubocop:disable Naming/VariableNumber
         [%w[subject asc]]
       )
-      write_project_work_packages_table(query, type&.name)
+      write_project_work_packages_table(query, "KPIs")
     end
   end
 end
