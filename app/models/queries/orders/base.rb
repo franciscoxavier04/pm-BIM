@@ -51,8 +51,8 @@ module Queries
         raise NotImplementedError
       end
 
-      def apply_to(query_scope)
-        query_scope = order(query_scope)
+      def apply_to(query_scope, proposal: nil)
+        query_scope = order(query_scope, proposal:)
         query_scope = query_scope.joins(joins) if joins
         query_scope = query_scope.left_outer_joins(left_outer_joins) if left_outer_joins
         query_scope
@@ -68,7 +68,7 @@ module Queries
 
       private
 
-      def order(scope)
+      def order(scope, proposal: nil)
         scope.order(name => direction)
       end
 

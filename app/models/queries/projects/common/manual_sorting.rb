@@ -34,16 +34,17 @@ module Queries::Projects
       ##
       # We depend on portfolio_proposal_projects association
       # for determining sort and filter for manual sorting.
-      def portfolio_proposal_projects_join
+      def portfolio_proposal_projects_join(proposal)
         join_sql = <<-SQL.squish
           LEFT OUTER JOIN
             portfolio_proposal_projects
           ON
             portfolio_proposal_projects.project_id = projects.id
+            #{'AND portfolio_proposal_projects.portfolio_proposal_id = :proposal_id' if proposal}
         SQL
 
         ::OpenProject::SqlSanitization
-          .sanitize join_sql
+          .sanitize join_sql, proposal_id: proposal.try(:id)
       end
     end
   end

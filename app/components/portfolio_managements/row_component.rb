@@ -35,7 +35,11 @@ end
 
 module PortfolioManagements
   class RowComponent < Projects::RowComponent
-    delegate :portfolio, to: :table
+    delegate :portfolio, :proposal, to: :table
+
+    def rank
+      PortfolioProposalProject.find_by(project:, portfolio_proposal: proposal).try(:rank) || "N/A"
+    end
 
     def more_menu_items
       @more_menu_items ||= [move_action_item(:higher, t("label_agenda_item_move_up"), "chevron-up"),

@@ -35,9 +35,9 @@ class PortfolioManagementsController < ApplicationController
   before_action :find_project_by_project_id
 
   before_action :set_query_id_if_nil
+  before_action :load_proposal
   before_action :load_query_or_deny_access
   before_action :authorize
-  before_action :load_proposal
 
   helper OpPrimer::ComponentHelpers
 
@@ -67,7 +67,15 @@ class PortfolioManagementsController < ApplicationController
         update_via_turbo_stream(
           component: Filter::FilterButtonComponent.new(query: @query, disable_buttons: false)
         )
-        replace_via_turbo_stream(component: PortfolioManagements::TableComponent.new(query: @query, current_user:, params:, portfolio: @project))
+        replace_via_turbo_stream(
+          component: PortfolioManagements::TableComponent.new(
+            query: @query,
+            current_user:,
+            params:,
+            portfolio: @project,
+            proposal: @proposal
+          )
+        )
 
         current_url = url_for(params.permit(:controller, :action, :query_id, :filters, :columns, :sortBy, :page, :per_page, :proposal_id))
         turbo_streams << turbo_stream.push_state(current_url)
@@ -95,6 +103,7 @@ class PortfolioManagementsController < ApplicationController
        !params[:filters]
       @query.where(:ancestor_or_self, "=", [@project.id])
     end
+    @query.proposal = @proposal
     @query.clear_changes_information
   end
 

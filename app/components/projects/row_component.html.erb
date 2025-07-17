@@ -35,6 +35,12 @@ See COPYRIGHT and LICENSE files for more details.
       <%= column_value(column) %>
     </td>
   <% end %>
+
+  <% if defined?(rank) %>
+    <td>
+      <%= rank %>
+    </td>
+  <% end %>
   <td class="buttons">
     <% button_links.each do |link| %>
       <%= link %>

@@ -40,9 +40,9 @@ class Queries::Projects::Orders::ManualSortingOrder < Queries::Orders::Base
   private
 
   # TODO: Should we apply the manual sort order when sorting by rank?
-  def order(scope)
+  def order(scope, proposal: nil)
     with_raise_on_invalid do
-      scope.joins(portfolio_proposal_projects_join)
+      scope.joins(portfolio_proposal_projects_join(proposal))
            .order(Arel.sql("#{PortfolioProposalProject.table_name}.rank NULLS LAST, #{Project.table_name}.id"))
     end
   end

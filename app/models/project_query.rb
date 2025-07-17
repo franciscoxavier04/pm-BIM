@@ -33,6 +33,8 @@ class ProjectQuery < ApplicationRecord
   include ::Scopes::Scoped
   include ManualSorting
 
+  attr_accessor :proposal
+
   belongs_to :user
 
   acts_as_favorable
@@ -93,7 +95,7 @@ class ProjectQuery < ApplicationRecord
     # using HierarchyOrder only as a marker
     hierarchy_orders, orders = build_orders.partition { it.is_a?(Queries::Projects::Orders::HierarchyOrder) }
 
-    ordered_scope = orders.inject(query_scope) { |scope, order| order.apply_to(scope) }
+    ordered_scope = orders.inject(query_scope) { |scope, order| order.apply_to(scope, proposal:) }
 
     if hierarchy_orders.present?
       query_scope

@@ -40,5 +40,5 @@ See COPYRIGHT and LICENSE files for more details.
         )
       ) %>
   <%= render(PortfolioManagements::IndexSubHeaderComponent.new(query:, proposal: @proposal, current_user:, disable_buttons: state === :rename)) %>
-  <%= render PortfolioManagements::TableComponent.new(query:, current_user: current_user, params:, portfolio: @project) %>
+  <%= render PortfolioManagements::TableComponent.new(query:, current_user: current_user, params:, portfolio: @project, proposal: @proposal) %>
 </div>
