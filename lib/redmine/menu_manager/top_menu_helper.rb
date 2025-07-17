@@ -56,6 +56,13 @@ module Redmine::MenuManager::TopMenuHelper
     end
   end
 
+  def render_logo_only
+    mode_class = User.current.pref.theme === "dark" ? "op-logo-only_dark" : "op-logo-only"
+    content_tag :div, class: mode_class do
+      nil
+    end
+  end
+
   def render_top_menu_search
     content_tag :div, class: "op-app-search" do
       render_global_search_input
@@ -185,6 +192,9 @@ module Redmine::MenuManager::TopMenuHelper
                               title: I18n.t("label_modules"),
                               test_selector: "op-app-header--modules-menu-button",
                               "aria-label": I18n.t("label_modules"))
+        menu.with_header do
+          render_logo_only
+        end
 
         item_groups.each do |item_group|
           render_menu_item_group(menu, item_group)
@@ -195,7 +205,7 @@ module Redmine::MenuManager::TopMenuHelper
 
   def render_menu_item_group(menu, item_group)
     menu.with_body do
-      render(Primer::Alpha::ActionList.new) do |component|
+      render(Primer::Alpha::ActionList.new(classes: "op-app-menu--items")) do |component|
         component.with_heading(title: item_group[:title], align_items: :flex_start) if item_group[:title]
         item_group[:items].each do |item|
           component.with_item(

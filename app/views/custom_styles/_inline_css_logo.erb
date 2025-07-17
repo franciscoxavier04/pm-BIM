@@ -51,15 +51,28 @@ See COPYRIGHT and LICENSE files for more details.
     elsif CustomStyle.current.theme_logo.present?
       logo_url = asset_path(CustomStyle.current.theme_logo)
     end
-    
+
     if isRu && logo_url == asset_path("logo_openproject.png")
       logo_url = asset_path("logo-black-bg-ua.png")
     end
   end
+  logo_only_url = if logo_url == asset_path("logo_openproject_white_big.png")
+                    asset_path("icon_logo.svg")
+                  else
+                    logo_url
+                  end
   %>
 
   .op-logo--link {
     background-image: url(<%= logo_url %>);
+  }
+
+  .op-logo-only {
+    background-image: url(<%= logo_only_url %>);
+  }
+
+  .op-logo-only_dark {
+    background-image: url(<%= asset_path("icon_logo_white.svg") %>);
   }
 
   .op-logo--link_high_contrast {
