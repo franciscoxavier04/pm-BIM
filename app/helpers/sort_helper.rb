@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -370,7 +368,7 @@ module SortHelper
     sort_key = sort_key(sort_by)
 
     allowed_params ||= %w[filters per_page expand columns]
-    url_for(safe_query_params(allowed_params).merge(columns: columns.join(" "), sort_key => params[sort_key]))
+    projects_portfolio_hack_path(**safe_query_params(allowed_params).merge(columns: columns.join(" "), sort_key => params[sort_key]))
   end
 
   # Tries to find the correct filter name for a column.
@@ -440,21 +438,8 @@ module SortHelper
   end
 
   def sort_actions(menu, column, default_order, content_args:, allowed_params: nil, **html_options)
-    desc_sort_link = if params[:controller] == "projects" && params[:action] == "move"
-                       project_portfolio_management_path(params[:id],
-                                                         sort_by_options(column, "desc", default_order, allowed_params:,
-                                                                                                        **html_options))
-                     else
-                       url_for(sort_by_options(column, "desc", default_order, allowed_params:, **html_options))
-                     end
-
-    asc_sort_link = if params[:controller] == "projects" && params[:action] == "move"
-                      project_portfolio_management_path(params[:id],
-                                                        sort_by_options(column, "asc", default_order, allowed_params:,
-                                                                                                      **html_options))
-                    else
-                      url_for(sort_by_options(column, "asc", default_order, allowed_params:, **html_options))
-                    end
+    desc_sort_link = projects_portfolio_hack_path(**sort_by_options(column, "desc", default_order, allowed_params:, **html_options))
+    asc_sort_link = projects_portfolio_hack_path(**sort_by_options(column, "asc", default_order, allowed_params:, **html_options))
 
     menu.with_item(**menu_options(label: t(:label_sort_descending),
                                   content_args:,
@@ -516,7 +501,7 @@ module SortHelper
   end
 
   def add_and_remove_column_actions(menu, column, selected_columns, content_args:, allowed_params: nil, **html_options)
-    config_view_modal_link = configure_view_modal_project_queries_path(**projects_query_params, from: url_for)
+    config_view_modal_link = configure_view_modal_project_queries_path(**projects_query_params, from: projects_portfolio_hack_path)
 
     all_columns_except_this = selected_columns.reject { it == column }
     rm_column_link = build_columns_link(all_columns_except_this, allowed_params:, **html_options)

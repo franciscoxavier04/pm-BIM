@@ -110,18 +110,10 @@ module Projects
                   [%w[lft asc]]
                 end
 
-      if controller_name == "projects" && action_name == "move"
-        project_portfolio_management_path(
-          params[:id],
-          sortBy: JSON.dump(sort_by),
-          **helpers.projects_query_params.slice(*helpers.projects_query_param_names_for_sort)
-        )
-      else
-        url_for(
-          sortBy: JSON.dump(sort_by),
-          **helpers.projects_query_params.slice(*helpers.projects_query_param_names_for_sort)
-        )
-      end
+      helpers.projects_portfolio_hack_path(
+        sortBy: JSON.dump(sort_by),
+        **helpers.projects_query_params.slice(*helpers.projects_query_param_names_for_sort)
+      )
     end
 
     def order_options(select, turbo: false)

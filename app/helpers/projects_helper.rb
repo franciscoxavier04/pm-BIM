@@ -83,4 +83,12 @@ module ProjectsHelper
   def projects_query_params
     safe_query_params(PROJECTS_QUERY_PARAM_NAMES)
   end
+
+  def projects_portfolio_hack_path(**options) # rubocop:disable Rails/HelperInstanceVariable
+    if @proposal || controller_name == "portfolio_managements"
+      project_portfolio_management_path(@proposal ? @proposal.portfolio : @project, **options)
+    else
+      projects_path(**options)
+    end
+  end
 end

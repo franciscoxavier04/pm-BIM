@@ -151,7 +151,7 @@
         menu.with_item(
           tag: :a,
           label: t(:"queries.configure_view.heading"),
-          href: configure_view_modal_project_queries_path(**projects_query_params, from: url_for),
+          href: configure_view_modal_project_queries_path(**projects_query_params, from: helpers.projects_portfolio_hack_path),
           content_arguments: { data: { controller: "async-dialog" } }
         ) do |item|
           item.with_leading_visual_icon(icon: :gear)
