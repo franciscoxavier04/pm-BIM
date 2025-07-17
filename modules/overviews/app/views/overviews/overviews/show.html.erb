@@ -88,6 +88,23 @@
     <% end %>
   <% end %>
   <% content.with_sidebar(col_placement: :end, row_placement: :end) do %>
+    <% if @project.phases.any? %>
+      <turbo-frame
+        src="<%= project_life_cycle_sidebar_path(project_id: @project.id) %>"
+        id="project-life-cycle-sidebar"
+      >
+        <op-content-loader viewBox="0 0 100 100">
+          <svg:rect x="0" y="0" width="70" height="5" rx="1" />
+
+          <svg:rect x="75" y="0" width="25" height="5" rx="1" />
+
+          <svg:rect x="0" y="10" width="100" height="8" rx="1" />
+
+          <svg:rect x="0" y="25" width="100" height="12" rx="1" />
+        </op-content-loader>
+      </turbo-frame>
+    <% end %>
+
     <%= render Overviews::Portfolios::SidePanelComponent.new(project: @project) %>
   <% end %>
 <% end %>
