@@ -137,6 +137,13 @@
             render(Meeting::EmailParticipants.new(f))
           end
         end
+
+        if @report
+          modal_body.with_row do
+            concat render(Primer::Beta::Text.new(my: 2, tag: :h4)) { "Statusreport" }
+            concat render(Meeting::ReportForm.new(f, project: @project))
+          end
+        end
       end
     end
   end

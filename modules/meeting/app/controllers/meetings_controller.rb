@@ -51,6 +51,7 @@ class MeetingsController < ApplicationController
   include OpTurbo::ComponentStream
   include OpTurbo::FlashStreamHelper
   include Meetings::AgendaComponentStreams
+  include Meetings::Reporting
   include MetaTagsHelper
 
   menu_item :new_meeting, only: %i[new create]
@@ -103,6 +104,8 @@ class MeetingsController < ApplicationController
     @meeting = call.result
 
     if call.success?
+      generate_report(@meeting)
+
       text = I18n.t(:notice_successful_create)
       unless User.current.pref.time_zone?
         link = I18n.t(:notice_timezone_missing, zone: formatted_time_zone_offset)
@@ -140,7 +143,8 @@ class MeetingsController < ApplicationController
   def new_dialog
     respond_with_dialog Meetings::Index::DialogComponent.new(
       meeting: @meeting,
-      project: @project
+      project: @project,
+      report: params[:report] == "1"
     )
   end
 

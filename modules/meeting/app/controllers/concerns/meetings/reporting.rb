@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,41 +29,42 @@
 #++
 
 module Meetings
-  class Index::DialogComponent < ApplicationComponent
-    include ApplicationHelper
-    include OpenProject::FormTagHelper
-    include OpTurbo::Streamable
-    include OpPrimer::ComponentHelpers
+  module Reporting
+    def generate_report(meeting)
+      if params[:report_portfolio]
+        portfolio_changes(meeting)
+      end
 
-    def initialize(meeting:, project:, copy_from: nil, report: false)
-      super
+      if params[:report_budget]
+        report_budget(meeting)
+      end
 
-      @meeting = meeting
-      @project = project
-      @copy_from = copy_from
-      @report = report
-    end
+      if params[:report_milestones]
+        report_milestones(meeting)
+      end
 
-    private
+      if params[:report_milestones]
+        report_goals(meeting)
+      end
 
-    def render?
-      if @project
-        User.current.allowed_in_project?(:create_meetings, @project)
-      else
-        User.current.allowed_in_any_project?(:create_meetings)
+      if params[:report_risks]
+        report_risks(meeting)
       end
     end
 
-    def title
-      return I18n.t(:label_meeting_copy) if @copy_from
-      return I18n.t(:label_meeting_edit) if @meeting.persisted?
+    def portfolio_changes(meeting)
+    end
 
-      case @meeting
-      when RecurringMeeting
-        I18n.t("label_meeting_new_recurring")
-      else
-        I18n.t("label_meeting_new_dynamic")
-      end
+    def report_budget(meeting)
+    end
+
+    def report_milestones(meeting)
+    end
+
+    def report_goals(meeting)
+    end
+
+    def report_risks(meeting)
     end
   end
 end
