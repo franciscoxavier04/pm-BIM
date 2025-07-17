@@ -154,10 +154,15 @@ class PortfolioManagements::ProposalsController < ApplicationController
       flash[:error] = t(:error_project_not_in_proposal)
     end
 
-    redirect_to project_portfolio_management_path(@project)
+    redirect_to proposal_project_path_with_filters
   end
 
   private
+
+  def proposal_project_path_with_filters
+    filters = JSON.dump([{ portfolio_proposal: { operator: "=", values: [@proposal.id.to_s] } }])
+    project_portfolio_management_path(project_id: @project.id, proposal_id: @proposal.id, filters:)
+  end
 
   def ensure_portfolio
     unless @project.portfolio?
