@@ -42,6 +42,7 @@ module Projects::Exports::PDFExport
       with_margin(styles.project_margins) do
         write_project_title(project, info_map_entry[:level_path])
         write_project_detail_content(project)
+        write_project_work_packages(project)
       end
     end
 
@@ -51,7 +52,7 @@ module Projects::Exports::PDFExport
         link_target_at_current_y(project.id)
         level_string_width = write_project_level(level_path, text_style)
         pdf.indent(level_string_width) do
-          pdf.formatted_text([text_style.merge({ text: project.name })])
+          pdf.formatted_text([text_style.merge({ text: project.name, link: url_helpers.project_url(project) })])
         end
       end
     end
@@ -138,6 +139,7 @@ module Projects::Exports::PDFExport
       value = format_attribute(project, value_name, :pdf)
       return nil if hide_empty_attributes? && value.blank?
 
+      value = make_link_href_cell(url_helpers.project_url(project), value) if value_name == :id
       [
         { content: caption }.merge(styles.project_attributes_table_label_cell),
         value || ""
@@ -176,15 +178,19 @@ module Projects::Exports::PDFExport
       write_project_markdown custom_field_value.value, custom_field.name
     end
 
-    def write_project_markdown(value, caption) # rubocop:disable Metrics/AbcSize
+    def write_project_markdown(value, caption)
       return if hide_empty_attributes? && value.blank?
 
+      write_markdown_label(caption)
       value = Prawn::Text::NBSP if value.blank?
-      with_margin(styles.project_markdown_label_margins) do
-        pdf.formatted_text([styles.project_markdown_label.merge({ text: caption })])
-      end
       with_margin(styles.project_markdown_margins) do
         write_markdown!(value, styles.project_markdown_styling_yml)
+      end
+    end
+
+    def write_markdown_label(caption)
+      with_margin(styles.project_markdown_label_margins) do
+        pdf.formatted_text([styles.project_markdown_label.merge({ text: caption })])
       end
     end
 
@@ -224,6 +230,73 @@ module Projects::Exports::PDFExport
                end
       ratio = pdf.bounds.width / widths.sum
       widths.map { |w| w * ratio }
+    end
+
+    def write_project_work_packages(project)
+      write_project_work_packages_risks(project)
+      write_project_work_packages_milestones(project)
+      write_project_work_packages_kpis(project)
+    end
+
+    def build_work_packages_query(project, type_id, column_names, sort_criteria = [])
+      return nil unless type_id
+
+      query = Query.new(project:)
+      query.filters.clear
+      query.include_subprojects = false
+      query.column_names = column_names
+      query.sort_criteria = sort_criteria
+      query.add_filter("type_id", "=", [type_id])
+      query
+    end
+
+    def get_column_value_cell(work_package, column_name)
+      get_value_cell_by_column(work_package, column_name, true)
+    end
+
+    def write_project_work_packages_table(query, caption)
+      return unless query
+
+      work_packages = query.results.work_packages
+      return unless work_packages.any?
+
+      write_optional_page_break
+      write_markdown_label("#{I18n.t('label_work_package_plural')}: #{caption}")
+      write_work_packages_table!(work_packages, query)
+    end
+
+    def write_project_work_packages_risks(project)
+      type = Type.find_by(name: "Risiko")
+      query = build_work_packages_query(
+        project,
+        type&.id,
+        %i[id subject status cf_33], # rubocop:disable Naming/VariableNumber
+        [%w[subject asc]]
+      )
+      write_project_work_packages_table(query, type&.name)
+    end
+
+    def write_project_work_packages_milestones(project)
+      type = Type.find_by(name: "Meilenstein")
+      type = Type.find_by(name: "Milestone") if type.nil?
+      query = build_work_packages_query(
+        project,
+        type&.id,
+        %i[id subject status due_date],
+        [%w[due_date asc]]
+      )
+      write_project_work_packages_table(query, type&.name)
+    end
+
+    def write_project_work_packages_kpis(project)
+      type = Type.find_by(name: "KPI")
+      query = build_work_packages_query(
+        project,
+        type&.id,
+        %i[id subject status cf_29 cf_30], # rubocop:disable Naming/VariableNumber
+        [%w[subject asc]]
+      )
+      write_project_work_packages_table(query, type&.name)
     end
   end
 end

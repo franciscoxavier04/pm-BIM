@@ -35,6 +35,7 @@ module Projects::Exports
     include WorkPackage::PDFExport::Common::Attachments
     include WorkPackage::PDFExport::Export::Markdown
     include WorkPackage::PDFExport::Export::Page
+    include WorkPackage::PDFExport::Export::WpTable
     include Projects::Exports::PDFExport::Cover
     include Projects::Exports::PDFExport::TableOfContent
     include Projects::Exports::PDFExport::Report

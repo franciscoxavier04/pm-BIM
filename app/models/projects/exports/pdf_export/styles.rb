@@ -35,6 +35,7 @@ module Projects::Exports::PDFExport::Styles
     include WorkPackage::PDFExport::Common::Styles
     include WorkPackage::PDFExport::Common::StylesPage
     include WorkPackage::PDFExport::Common::StylesAttributesTable
+    include WorkPackage::PDFExport::Common::StylesWpTable
 
     def project_title
       resolve_font(@styles.dig(:project, :title))
