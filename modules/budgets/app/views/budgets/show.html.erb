@@ -75,6 +75,10 @@ See COPYRIGHT and LICENSE files for more details.
           value: number_to_currency(@budget.labor_budget)
         )
         component.with_attribute(
+          key: Budget.human_attribute_name(:budget_added_by_children),
+          value: number_to_currency(@budget.budget_added_by_children)
+        )
+        component.with_attribute(
           key: Budget.human_attribute_name(:budget),
           value: content_tag(:strong, number_to_currency(@budget.budget))
         )
