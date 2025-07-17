@@ -74,6 +74,8 @@ class BudgetsController < ApplicationController
 
   def show
     @edit_allowed = User.current.allowed_in_project?(:edit_budgets, @project)
+    @child_budget_relations = @budget.child_budget_relations.includes(child_budget: :project)
+
     respond_to do |format|
       format.html { render action: "show", layout: !request.xhr? }
     end

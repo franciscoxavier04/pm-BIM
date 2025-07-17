@@ -18,7 +18,7 @@
         t(:button_update)
       end
     end
-    if authorize_for(:budgets, :parent)
+    if authorize_for(:budgets, :parent) && @budget.project.parent_id.present?
       header.with_action_button(
         tag: :a,
         mobile_icon: "git-pull-request",

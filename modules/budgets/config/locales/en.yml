@@ -61,6 +61,7 @@ en:
       budget_relation:
         parent_budget: "Parent budget"
         child_budget: "Child budget"
+        relation_type: "Relation to this"
         relation_types:
           add: "add budget to parent"
           subtract: "allocated budget from parent"
@@ -109,9 +110,13 @@ en:
   label_example_placeholder: "e.g., %{decimal}"
   label_view_all_budgets: "View all budgets"
   label_yes: "Yes"
+  label_budget_child_budgets: "Child budgets"
+  label_budget_totals: "Totals"
+  label_budget_details: "Budget details"
 
   notice_budget_conflict: "Work packages must be of the same project."
   notice_no_budgets_available: "No budgets available."
+  notice_relation_destroyed: "The budget relation has been removed."
 
   permission_edit_budgets: "Edit budgets"
   permission_view_budgets: "View budgets"
