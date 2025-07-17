@@ -56,26 +56,33 @@ module PortfolioManagements
       PortfolioProposal.where(state: :compose)
     end
 
+    def may_add_project_to_proposal?(project, proposal)
+      # We do not suggest proposals that already contain this project:
+      proposal.projects.exclude?(project)
+    end
+
     def more_menu_add_to_proposal
       # We only allow adding projects to proposals, not portfolios or programs.
       return unless project.project?
 
-      proposal_entries = portfolio_proposals.map do |proposal|
-        project_count = proposal.projects.count
-        description = if project_count == 0
-                        I18n.t("portfolio_proposals.no_elements")
-                      else
-                        I18n.t("portfolio_proposals.contains_elements", count: project_count)
-                      end
+      proposal_entries = portfolio_proposals.filter_map do |proposal|
+        if may_add_project_to_proposal?(project, proposal)
+          project_count = proposal.projects.count
+          description = if project_count == 0
+                          I18n.t("portfolio_proposals.no_elements")
+                        else
+                          I18n.t("portfolio_proposals.contains_elements", count: project_count)
+                        end
 
-        {
-          scheme: :default,
-          icon: nil,
-          href: edit_project_portfolio_management_proposal_path(portfolio, proposal, add_project: project.id),
-          description:,
-          label: proposal.name,
-          aria: { label: proposal.name }
-        }
+          {
+            scheme: :default,
+            icon: nil,
+            href: edit_project_portfolio_management_proposal_path(portfolio, proposal, add_project: project.id),
+            description:,
+            label: proposal.name,
+            aria: { label: proposal.name }
+          }
+        end
       end
 
       submenu_entries = [
