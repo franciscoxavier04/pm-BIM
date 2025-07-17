@@ -122,12 +122,23 @@ class PortfolioManagements::ProposalsController < ApplicationController
     new_state = params[:state]
 
     if @proposal.update(state: new_state)
-      flash[:notice] = t(:notice_proposal_state_changed, state: @proposal.state)
+      message = if new_state == 'approved'
+                  :notice_proposal_approved
+                else
+                  :notice_proposal_proposed
+                end
+
+      flash[:notice] = t(message, state: @proposal.state)
     else
       flash[:error] = @proposal.errors.full_messages.join(", ")
     end
 
-    redirect_to project_portfolio_management_path(@project)
+    if new_state == 'approved'
+      redirect_to project_portfolio_management_path(@project)
+    else
+      redirect_to project_portfolio_management_path(proposal_id: @proposal.id,
+                                                    filters: JSON.dump([{ portfolio_proposal: { operator: "=", values: [@proposal.id.to_s] } }]))
+    end
   end
 
   private

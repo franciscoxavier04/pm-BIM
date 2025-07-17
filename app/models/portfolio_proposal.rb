@@ -61,6 +61,7 @@ class PortfolioProposal < ApplicationRecord
     end
 
     projects.each do |project|
+      next if projects.map(&:id).include?(project.parent_id)
       project.parent_id = portfolio_id
       project.save
     end
@@ -72,6 +73,6 @@ class PortfolioProposal < ApplicationRecord
       .where(portfolio_id: portfolio_id)
       .where(state: PortfolioProposal.states[:approved])
       .where.not(id: id)
-      .update_all(state: PortfolioProposal.states[:phased_out])
+      .update_all(state: PortfolioProposal.states[:archived])
   end
 end

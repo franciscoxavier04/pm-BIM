@@ -30,7 +30,7 @@
 
 class PortfolioProposalProject < ApplicationRecord
   belongs_to :portfolio_proposal
-  belongs_to :project, -> { where(project_type: :project) }
+  belongs_to :project, -> { where(project_type: [:project, :program]) }
   belongs_to :project_query, optional: true
 
   validates :portfolio_proposal, presence: true

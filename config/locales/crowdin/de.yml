@@ -4714,7 +4714,7 @@ de:
 
   button_create_new_portfolio_proposal: Neuen Portfolio-Vorschlag erstellen
   button_set_to_compose: Set to "Compose"
-  button_set_to_proposed: Set to "Proposed"
+  button_set_to_proposed: Einreichen
   button_set_to_approved: Genehmigen
 
   text_are_you_sure_change_to_approved: Are you sure you want to approve this proposal? This will make the included projects children of the portfolio.
@@ -4724,6 +4724,8 @@ de:
   error_unable_delete_proposal: Unable to delete the proposal.
 
   notice_proposal_state_changed: "Proposal state changed to %{state}."
+  notice_proposal_proposed: "Vorschlage eingereicht."
+  notice_proposal_approved: "Vorschlag akzeptiert."
 
   portfolio_proposals:
     states:

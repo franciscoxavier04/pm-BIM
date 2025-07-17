@@ -5021,8 +5021,8 @@ en:
 
   button_create_new_portfolio_proposal: Create new portfolio proposal
   button_set_to_compose: Set to "Compose"
-  button_set_to_proposed: Set to "Proposed"
-  button_set_to_approved: Set to "Approved"
+  button_set_to_proposed: Propose
+  button_set_to_approved: Approve
 
   text_are_you_sure_change_to_approved: Are you sure you want to approve this proposal? This will make the included projects children of the portfolio.
   text_select_projects_for_proposal: Select the projects to include in this proposal.
@@ -5030,7 +5030,8 @@ en:
   error_must_be_portfolio: The project must be a portfolio.
   error_unable_delete_proposal: Unable to delete the proposal.
 
-  notice_proposal_state_changed: "Proposal state changed to %{state}."
+  notice_proposal_proposed: "Proposal submitted."
+  notice_proposal_approved: "Proposal approved."
 
   portfolio_proposals:
     states:
