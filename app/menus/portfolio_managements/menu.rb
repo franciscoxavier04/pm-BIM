@@ -91,6 +91,7 @@ module PortfolioManagements
         .map do |proposal|
         menu_item(title: proposal.name,
                   query_params: { proposal_id: proposal.id,
+                                  sortBy: JSON.dump({ manual_sorting: :asc }),
                                   filters: JSON.dump([{ portfolio_proposal: { operator: "=", values: [proposal.id.to_s] } }]) })
       end
     end

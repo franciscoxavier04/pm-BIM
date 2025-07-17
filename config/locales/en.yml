@@ -5048,3 +5048,5 @@ en:
     no_elements: "Still empty"
 
   label_rank: "Rank"
+  label_increase_rank: "Increase rank"
+  label_decrease_rank: "Decrease rank"

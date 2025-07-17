@@ -42,8 +42,8 @@ module PortfolioManagements
     end
 
     def more_menu_items
-      @more_menu_items ||= [move_action_item(:higher, t("label_agenda_item_move_up"), "chevron-up"),
-                            move_action_item(:lower, t("label_agenda_item_move_down"), "chevron-down"),
+      @more_menu_items ||= [move_action_item(:higher, t(:label_increase_rank), "chevron-up"),
+                            move_action_item(:lower, t(:label_decrease_rank), "chevron-down"),
                             (:divider if sorted_by_lft? && params[:proposal_id]),
                             more_menu_subproject_item,
                             more_menu_settings_item,
@@ -190,7 +190,7 @@ module PortfolioManagements
     end
 
     def more_menu_remove_from_proposal
-      if proposal.present? && proposal.draft? && project.project?
+      if proposal.present? && proposal.draft? && (project.project? || project.program?)
         {
           scheme: :danger,
           icon: :"no-entry",

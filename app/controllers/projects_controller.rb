@@ -203,11 +203,7 @@ class ProjectsController < ApplicationController
                   false
                 end
               end
-    if success
-      render_success_flash_message_via_turbo_stream(
-        message: I18n.t(:project_caption_order_changed)
-      )
-    else
+    unless success
       render_error_flash_message_via_turbo_stream(
         message: I18n.t(:project_could_not_be_moved)
       )
@@ -344,7 +340,11 @@ class ProjectsController < ApplicationController
     @query.proposal = @proposal
     # Add rank column to query selects if proposal is present
     if @proposal.present? && @query.selects.none? { |select| select.attribute == :rank }
-      @query.select(:rank)
+      selects = @query.selects.map(&:attribute)
+      selects.insert(selects.index(:name) + 1, :rank)
+
+      @query.selects.clear
+      @query.select(*selects)
     end
   end
 
