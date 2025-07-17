@@ -207,7 +207,15 @@ class ProjectsController < ApplicationController
     update_via_turbo_stream(
       component: Filter::FilterButtonComponent.new(query: @query, disable_buttons: false)
     )
-    replace_via_turbo_stream(component: PortfolioManagements::TableComponent.new(portfolio: @proposal.portfolio, query: @query, current_user:, params:))
+    replace_via_turbo_stream(
+      component: PortfolioManagements::TableComponent.new(
+        portfolio: @proposal.portfolio,
+        query: @query,
+        current_user:,
+        params:,
+        proposal: @proposal
+      )
+    )
 
     current_url = project_portfolio_management_path(project_id: @proposal.portfolio, **params.permit(:query_id, :filters, :columns, :sortBy, :page, :per_page, :proposal_id))
 
