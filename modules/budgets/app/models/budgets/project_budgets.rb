@@ -37,7 +37,7 @@ module Budgets
       @project = project
     end
 
-    delegate :any?, to: :budgets
+    delegate :any?, :none?, to: :budgets
 
     def children_budgets_count
       @children_budgets_count ||= budgets.sum(&:children_budgets_count)

@@ -39,43 +39,90 @@ See COPYRIGHT and LICENSE files for more details.
       end
     end
 
+    # TODO: hide if user does not have permissions to see budgets :view_budgets
+    # TODO: hide charts if the budgets module is inactive (even if budgets records are present)
     component.with_row do
-      helpers.stimulus_chartjs_canvas(
-        type: :pie,
-        data: {
-          labels: [
-            "Zugeteilt (unverbaucht)",
-            "Ausgegeben",
-            "Verfügbar"
-          ],
-          datasets: [
-            {
-              data: [
-                project_budgets.allocated_unused,
-                project_budgets.spent_on_children,
-                project_budgets.available
-              ]
-            }
-          ]
-        },
-        options: {
-          animation: {
-            animateRotate: false
-          },
-          borderWidth: 0,
-          plugins: {
-            legend: {
-              position: "bottom",
-              labels: {
-                usePointStyle: true
-              }
-            },
-            datalabels: {
-              display: false
-            }
-          }
-        }
-      )
+      if project_budgets.none?
+        disabled = !User.current.allowed_in_project?(:edit_budgets, project)
+        flex_layout(style: "gap: 1rem;") do |no_budgets_row|
+          no_budgets_row.with_row do
+            render(
+              Primer::Beta::Button.new(
+                mt: 2,
+                leading_icon: :plus,
+                tag: :a,
+                disabled:,
+                href: new_projects_budget_path(project)
+              )
+            ) do |button|
+              button.with_leading_visual_icon(icon: :plus)
+              t(:label_budget)
+            end
+          end
+          if disabled
+            no_budgets_row.with_row do
+              render(Primer::Beta::Text.new(color: :muted)) do
+                if project.module_enabled?(:budgets)
+                  "Du hast keine Berechtigung, um Budgets zu erstellen."
+                else
+                  "Budget Modul ist nicht aktiviert."
+                end
+              end
+            end
+          end
+        end
+      else
+        flex_layout(style: "gap: 2rem;") do |layout|
+          layout.with_row do
+            content_tag(:div, style: "position: relative; max-width: 300px; max-height: 300px; margin: 0 auto;") do
+              helpers.stimulus_chartjs_canvas(
+                type: :pie,
+                data: {
+                  labels: chart_data.map(&:label),
+                  datasets: [
+                    {
+                      data: chart_data.map(&:value),
+                      backgroundColor: chart_data.map(&:color)
+                    }
+                  ]
+                },
+                options: {
+                  animation: {
+                    animateRotate: false
+                  },
+                  borderWidth: 0,
+                  plugins: {
+                    legend: {
+                      display: false
+                    },
+                    datalabels: {
+                      display: false
+                    }
+                  }
+                }
+              )
+            end
+          end
+
+          layout.with_row(flex_layout: true, justify_content: :space_between) do |legend_row|
+            legend_row.with_column do
+              render(Primer::Beta::Text.new(font_weight: :bold)) do
+                "Geplant: #{budget_formatted_amount(project_budgets.planned)}"
+              end
+            end
+
+            legend_row.with_column(flex_layout: true, style: "gap: 8px;") do |legend_column|
+              chart_data.each do |budget_info|
+                legend_column.with_row do
+                  concat(content_tag(:span, "", style: "display: inline-block; width: 16px; height: 16px; border-radius: 50%; background-color: #{budget_info.color}; margin-right: 8px; vertical-align: middle;"))
+                  concat(render(Primer::Beta::Text.new) { "#{budget_info.label}: " })
+                  concat(render(Primer::Beta::Text.new(font_weight: :bold)) { budget_formatted_amount(budget_info.value) })
+                end
+              end
+            end
+          end
+        end
+      end
     end
 
     component.with_row do
