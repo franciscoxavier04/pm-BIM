@@ -440,6 +440,10 @@ class MeetingsController < ApplicationController
       .call(project: @project)
 
     @meeting = call.result
+
+    if params[:report] == "1"
+      @meeting.title = "#{@project.human_project_type}-Statusbericht"
+    end
   end
 
   def global_upcoming_meetings
