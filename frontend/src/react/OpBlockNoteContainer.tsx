@@ -28,13 +28,37 @@
  * ++
  */
 
-import { BlockNoteSchema, defaultBlockSpecs, filterSuggestionItems } from "@blocknote/core";
+import {
+  BlockNoteSchema,
+  defaultBlockSpecs,
+  filterSuggestionItems,
+  BlockNoteExtensionFactory,
+  BlockNoteEditor
+} from "@blocknote/core";
 import { BlockNoteView } from "@blocknote/mantine";
-import { getDefaultReactSlashMenuItems, SuggestionMenuController, useCreateBlockNote } from "@blocknote/react";
-import { dummyBlockSpec, getDefaultOpenProjectSlashMenuItems, openProjectWorkPackageBlockSpec } from "op-blocknote-extensions";
+import {
+  FormattingToolbar,
+  FormattingToolbarController,
+  getDefaultReactSlashMenuItems,
+  getFormattingToolbarItems,
+  SuggestionMenuController,
+  useCreateBlockNote
+} from "@blocknote/react";
+import {
+  dummyBlockSpec,
+  getDefaultOpenProjectSlashMenuItems,
+  openProjectWorkPackageBlockSpec
+} from "op-blocknote-extensions";
+
 import { useEffect, useState } from "react";
+
 import { HocuspocusProvider } from "@hocuspocus/provider";
 import * as Y from 'yjs';
+
+import { en } from "@blocknote/core/locales";
+import { en as aiEn } from "@blocknote/xl-ai/locales";
+import { AIMenuController, AIToolbarButton, createAIExtension, getAISlashMenuItems, } from "@blocknote/xl-ai";
+import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
 
 export interface OpBlockNoteContainerProps {
   inputField: HTMLInputElement;
@@ -59,6 +83,24 @@ const detectTheme = (): "light" | "dark" => {
   }
   return 'light';
 };
+
+const dictionary = {
+  ...en,
+  ai: aiEn
+}
+
+
+const provider = createOpenAICompatible({
+  name: 'haystack-op',
+  apiKey: 'DUMMY_KEY',
+  baseURL: 'https://haystack.pmflex.one/haystack/v1',
+});
+
+const model = provider("mistral:latest");
+
+const extensions:Array<BlockNoteExtensionFactory> = [
+  createAIExtension({model}),
+]
 
 export default function OpBlockNoteContainer({ inputField,
                                                inputText,
@@ -89,15 +131,7 @@ export default function OpBlockNoteContainer({ inputField,
       showCursorLabels: "activity"
     }
   }
-  const editor = useCreateBlockNote({collaboration, schema });
-  type EditorType = typeof editor;
-
-  const getCustomSlashMenuItems = (editor: EditorType) => {
-    return [
-      ...getDefaultReactSlashMenuItems(editor),
-      ...getDefaultOpenProjectSlashMenuItems(editor),
-    ];
-  };
+  const editor = useCreateBlockNote({collaboration, schema, dictionary, extensions });
 
   useEffect(() => {
     const observer = new MutationObserver((mutations) => {
@@ -125,7 +159,8 @@ export default function OpBlockNoteContainer({ inputField,
       editor.replaceBlocks(editor.document, blocks);
       setIsLoading(false);
     }
-    loadInitialContent();
+
+    void loadInitialContent();
   }, [editor]);
 
   return (
@@ -139,13 +174,47 @@ export default function OpBlockNoteContainer({ inputField,
             const content = await editor.blocksToMarkdownLossy();
             inputField.value = content;
           }}
+          slashMenu={false}
+          formattingToolbar={false}
         >
-          <SuggestionMenuController
-            triggerCharacter="/"
-            getItems={async (query: string) => filterSuggestionItems(getCustomSlashMenuItems(editor), query)}
-          />
+          <AIMenuController/>
+          <FormattingToolbarWithAI/>
+          <SuggestionMenuWithAI editor={editor}/>
         </BlockNoteView>
       }
     </>
+  );
+}
+
+function FormattingToolbarWithAI() {
+  return (
+    <FormattingToolbarController
+      formattingToolbar={() => (
+        <FormattingToolbar>
+          {...getFormattingToolbarItems()}
+          <AIToolbarButton/>
+        </FormattingToolbar>
+      )}
+    />
+  );
+}
+
+function SuggestionMenuWithAI(props:{
+  editor:BlockNoteEditor<any, any, any>;
+}) {
+  return (
+    <SuggestionMenuController
+      triggerCharacter="/"
+      getItems={async (query) =>
+        filterSuggestionItems(
+          [
+            ...getDefaultReactSlashMenuItems(props.editor),
+            ...getDefaultOpenProjectSlashMenuItems(props.editor),
+            ...getAISlashMenuItems(props.editor),
+          ],
+          query,
+        )
+      }
+    />
   );
 }
