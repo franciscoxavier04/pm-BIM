@@ -42,3 +42,28 @@ See COPYRIGHT and LICENSE files for more details.
     <% end %>
   </td>
 </tr>
+
+<%# Dialog used for the creation of a new proposal from the context menu. Very hacky: wil create one dialog per row ^_^° %>
+<%= render(Primer::Alpha::Dialog.new(id: "proposal-creation-dialog-#{project.id}", title: I18n.t(:button_create_new_portfolio_proposal))) do |dialog| %>
+  <%= form_for PortfolioProposal.new,
+               url: project_portfolio_management_proposals_path(portfolio, via_dialog: true),
+               data: { turbo: false },
+               html: { class: 'form' } do |f| %>
+    <%= render(Primer::Alpha::Dialog::Body.new) do %>
+      <% project_ids_including_children.each do |id_to_add| %>
+        <%= hidden_field_tag "portfolio_proposal[project_ids][]", id_to_add %>
+      <% end %>
+
+      <div class="form--field -required">
+        <%= f.label :name, class: 'form--label' %>
+        <div class="form--field-container">
+          <%= f.text_field :name, required: true, container_class: '-middle', autofocus: true %>
+        </div>
+      </div>
+    <% end %>
+    <%= render(Primer::Alpha::Dialog::Footer.new(show_divider: false)) do %>
+      <%= render(Primer::Beta::Button.new(data: { "close-dialog-id": "proposal-creation-dialog-#{project.id}" })) { I18n.t(:button_cancel) } %>
+      <%= render(Primer::Beta::Button.new(scheme: :primary, type: :submit)) { I18n.t(:button_save) } %>
+    <% end %>
+  <% end %>
+<% end %>

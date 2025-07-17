@@ -105,12 +105,12 @@ module Projects
 
     def href_for_sort_lft
       sort_by = if sorted_by_lft?
-                  sort_criteria.to_query_hash.except("lft").to_a
+                  sort_criteria.to_query_hash.except("lft").to_a.presence || [%w[lft asc]]
                 else
                   [%w[lft asc]]
                 end
 
-      projects_path(
+      helpers.projects_portfolio_hack_path(
         sortBy: JSON.dump(sort_by),
         **helpers.projects_query_params.slice(*helpers.projects_query_param_names_for_sort)
       )

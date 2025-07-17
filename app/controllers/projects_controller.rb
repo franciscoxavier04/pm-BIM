@@ -35,12 +35,13 @@ class ProjectsController < ApplicationController
   menu_item :roadmap, only: :roadmap
 
   before_action :find_project, except: %i[index new create export_list_modal]
-  before_action :load_query_or_deny_access, only: %i[index export_list_modal]
-  before_action :authorize, only: %i[copy_form copy deactivate_work_package_attachments]
+  before_action :load_query_or_deny_access, only: %i[index export_list_modal move]
+  before_action :authorize, only: %i[copy_form copy deactivate_work_package_attachments move]
   before_action :authorize_global, only: %i[new create]
   before_action :require_admin, only: %i[destroy destroy_info]
   before_action :find_optional_template, only: %i[new create]
   before_action :find_optional_parent, only: :new
+  before_action :find_proposal, only: %i[move]
 
   no_authorization_required! :index, :export_list_modal
 
@@ -175,6 +176,67 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def move # rubocop:disable Metrics/AbcSize
+    success = if sort_by_lft?
+                # Move hierarchies when sorted by hierarchy
+                begin
+                  case params[:move_to]
+                  when "lower"
+                    @project.move_right
+                  when "higher"
+                    @project.move_left
+                  end
+                rescue StandardError
+                  false
+                end
+              else
+                # Move rank when sorted by manual_sorting
+                begin
+                  @ppp = @proposal.portfolio_proposal_projects.find_by(project: @project)
+                  case params[:move_to]
+                  when "lower"
+                    @ppp.move_to = :lower
+                  when "higher"
+                    @ppp.move_to = :higher
+                  end
+                rescue StandardError
+                  false
+                end
+              end
+    unless success
+      render_error_flash_message_via_turbo_stream(
+        message: I18n.t(:project_could_not_be_moved)
+      )
+    end
+
+    replace_via_turbo_stream(
+      component: PortfolioManagements::IndexPageHeaderComponent.new(project: @proposal.portfolio,
+                                                                    query: @query, current_user:,
+                                                                    proposal: @proposal,
+                                                                    state: :show, params:)
+    )
+    update_via_turbo_stream(
+      component: Filter::FilterButtonComponent.new(query: @query, disable_buttons: false)
+    )
+    replace_via_turbo_stream(
+      component: PortfolioManagements::TableComponent.new(
+        portfolio: @proposal.portfolio,
+        query: @query,
+        current_user:,
+        params:,
+        proposal: @proposal
+      )
+    )
+
+    current_url = project_portfolio_management_path(project_id: @proposal.portfolio, **params.permit(:query_id, :filters, :columns, :sortBy, :page, :per_page, :proposal_id))
+
+    turbo_streams << turbo_stream.push_state(current_url)
+
+    turbo_streams << turbo_stream.replace("flash-messages", helpers.render_flash_messages)
+
+    render turbo_stream: turbo_streams
+  end
+
   def export_list_modal
     respond_with_dialog Projects::ExportListModalComponent.new(query: @query)
   end
@@ -271,6 +333,23 @@ class ProjectsController < ApplicationController
 
   def supported_export_formats
     ::Exports::Register.list_formats(Project).map(&:to_s)
+  end
+
+  def find_proposal
+    @proposal = PortfolioProposal.find_by(id: params[:proposal_id])
+    @query.proposal = @proposal
+    # Add rank column to query selects if proposal is present
+    if @proposal.present? && @query.selects.none? { |select| select.attribute == :rank }
+      selects = @query.selects.map(&:attribute)
+      selects.insert(selects.index(:name) + 1, :rank)
+
+      @query.selects.clear
+      @query.select(*selects)
+    end
+  end
+
+  def sort_by_lft?
+    params[:sortBy].include?("lft")
   end
 
   helper_method :supported_export_formats

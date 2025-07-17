@@ -1,4 +1,6 @@
-# -- copyright
+# frozen_string_literal: true
+
+#-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -24,47 +26,45 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-# ++
+#++
 
-module ProjectQueries
-  class BaseContract < ::ModelContract
-    include PermissionsGuard
+class Queries::Projects::Filters::ManualSortFilter < Queries::Projects::Filters::Base
+  include ::Queries::Projects::Common::ManualSorting
 
-    attribute :name
-    attribute :selects
-    attribute :filters
-    attribute :orders
+  def available_operators
+    [Queries::Operators::PortfolioProposalProjects]
+  end
 
-    attribute :portfolio_proposal_projects # => manual sort
+  def available?
+    true
+  end
 
-    def self.model
-      ProjectQuery
-    end
+  def type
+    :empty_value
+  end
 
-    validates :name,
-              presence: true,
-              length: { maximum: 255 }
+  def where
+    Project
+      .arel_table[:id]
+      .in(context.portfolio_proposal_projects.pluck(:project_id))
+      .to_sql
+  end
 
-    validate :name_select_included
-    # When we only changed the name, we don't need to validate the selects
-    validate :existing_selects, unless: :only_changed_name?
+  def self.key
+    :manual_sort
+  end
 
-    protected
+  def human_name
+    I18n.t("activerecord.attributes.project_query.manual_sorting")
+  end
 
-    def name_select_included
-      if model.selects.none? { |s| s.attribute == :name }
-        errors.add :selects, :name_not_included
-      end
-    end
+  def ar_object_filter?
+    true
+  end
 
-    def existing_selects
-      model.selects.select { |s| s.is_a?(Queries::Selects::NotExistingSelect) }.each do |s|
-        errors.add :selects, :nonexistent, column: s.attribute
-      end
-    end
+  private
 
-    def only_changed_name?
-      model.changed == ["name"]
-    end
+  def operator_strategy
+    Queries::Operators::PortfolioProposalProjects
   end
 end

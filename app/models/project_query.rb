@@ -31,6 +31,9 @@ class ProjectQuery < ApplicationRecord
   include Queries::Serialization::Hash
   include HasMembers
   include ::Scopes::Scoped
+  include ManualSorting
+
+  attr_accessor :proposal
 
   belongs_to :user
 
@@ -92,6 +95,8 @@ class ProjectQuery < ApplicationRecord
     # using HierarchyOrder only as a marker
     hierarchy_orders, orders = build_orders.partition { it.is_a?(Queries::Projects::Orders::HierarchyOrder) }
 
+    orders.each { it.proposal = proposal }
+
     ordered_scope = orders.inject(query_scope) { |scope, order| order.apply_to(scope) }
 
     if hierarchy_orders.present?
@@ -103,6 +108,7 @@ class ProjectQuery < ApplicationRecord
               SELECT id, parent_id, ARRAY[row_n] AS orders_path
               FROM with_row_number
               WHERE parent_id IS NULL
+                 OR parent_id NOT IN (SELECT id FROM with_row_number)
             SQL
             Arel.sql(<<~SQL.squish)
               SELECT cur.id, cur.parent_id, parent.orders_path || ARRAY[cur.row_n]

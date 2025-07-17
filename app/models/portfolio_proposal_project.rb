@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,45 +28,26 @@
 # See COPYRIGHT and LICENSE files for more details.
 # ++
 
-module ProjectQueries
-  class BaseContract < ::ModelContract
-    include PermissionsGuard
+class PortfolioProposalProject < ApplicationRecord
+  belongs_to :portfolio_proposal
+  belongs_to :project, -> { where(project_type: [:project, :program]) }
+  belongs_to :project_query, optional: true
 
-    attribute :name
-    attribute :selects
-    attribute :filters
-    attribute :orders
+  validates :portfolio_proposal, presence: true
+  validates :project, presence: true
+  validates :project_id, uniqueness: { scope: :portfolio_proposal_id }
 
-    attribute :portfolio_proposal_projects # => manual sort
+  default_scope { order("rank NULLS LAST") }
 
-    def self.model
-      ProjectQuery
-    end
+  acts_as_list scope: :portfolio_proposal_id, column: :rank
 
-    validates :name,
-              presence: true,
-              length: { maximum: 255 }
+  validate :project_not_portfolio
 
-    validate :name_select_included
-    # When we only changed the name, we don't need to validate the selects
-    validate :existing_selects, unless: :only_changed_name?
+  private
 
-    protected
-
-    def name_select_included
-      if model.selects.none? { |s| s.attribute == :name }
-        errors.add :selects, :name_not_included
-      end
-    end
-
-    def existing_selects
-      model.selects.select { |s| s.is_a?(Queries::Selects::NotExistingSelect) }.each do |s|
-        errors.add :selects, :nonexistent, column: s.attribute
-      end
-    end
-
-    def only_changed_name?
-      model.changed == ["name"]
+  def project_not_portfolio
+    if project && project.portfolio?
+      errors.add(:project, :must_not_be_portfolio)
     end
   end
 end

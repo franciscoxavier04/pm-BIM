@@ -193,7 +193,11 @@ module Queries::BaseQuery
   end
 
   def apply_orders(query_scope)
-    query_scope = build_orders.inject(query_scope) do |scope, order|
+    orders = build_orders
+
+    orders.each { it.proposal = proposal }
+
+    query_scope = orders.inject(query_scope) do |scope, order|
       order.apply_to(scope)
     end
 

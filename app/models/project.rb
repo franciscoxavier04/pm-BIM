@@ -100,6 +100,13 @@ class Project < ApplicationRecord
 
   has_many :recurring_meetings, dependent: :destroy
 
+  # Portfolio proposal associations
+  # Only for a portfolio
+  has_many :portfolio_proposals, foreign_key: :portfolio_id, dependent: :destroy
+  has_many :portfolio_proposal_projects, dependent: :destroy
+  # Only for a project
+  has_many :portfolio_proposals_as_project, through: :portfolio_proposal_projects, source: :portfolio_proposal
+
   accepts_nested_attributes_for :available_phases
   validates_associated :available_phases, on: :saving_phases
 

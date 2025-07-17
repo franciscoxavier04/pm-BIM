@@ -41,7 +41,8 @@ module Queries
 
       class_attribute :model
       attr_accessor :direction,
-                    :attribute
+                    :attribute,
+                    :proposal
 
       def initialize(attribute)
         self.attribute = attribute
@@ -68,7 +69,7 @@ module Queries
 
       private
 
-      def order(scope)
+      def order(scope, proposal: nil)
         scope.order(name => direction)
       end
 

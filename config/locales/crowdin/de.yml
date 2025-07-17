@@ -1831,6 +1831,8 @@ de:
   button_add_item_below: "Element unten hinzufügen"
   button_add_sub_item: "Unterelement hinzufügen"
   button_add_member: Mitglied hinzufügen
+  button_add_to_proposal: "Zu Vorschlag hinzufügen"
+  button_remove_from_proposal: "Aus dem Vorschlag entfernen"
   button_add_watcher: "Beobachter hinzufügen"
   button_annotate: "Kommentieren"
   button_apply: "Anwenden"
@@ -4693,3 +4695,52 @@ de:
     description: "Fügt den OmniAuth SAML-Anbieter zu OpenProject hinzu"
   enterprise_plans:
     legacy_enterprise: "Enterprise Plan"
+
+  label_portfolio_management: Portfoliomanagement
+  label_portfolio_proposals: Portfoliovorschläge
+  label_portfolio_proposal: Portfoliovorschlag
+  label_portfolio_proposal_new: Neuer Portfoliovorschlag
+  label_portfolio_proposal_edit: Portfoliovorschlag editieren
+  label_no_portfolio_proposals: No portfolio proposals found.
+  label_no_projects_in_proposal: No projects in this proposal.
+  label_proposal_approved: "Portfoliovorschlag angenommen"
+  label_new_proposals: "Neue Vorschläge"
+  label_finalized_proposals: "Abgeschlossene Vorschläge"
+  label_pending_proposal: "Eingereichter Vorschlag"
+  label_proposal_last_change: "Letzte Änderung: %{time}"
+  label_current_portfolio: "Aktuelles Portfolio"
+  label_state: Status
+  label_state_actions: State actions
+  label_change_state: Change state
+  label_projects: Projects
+
+  button_create_new_portfolio_proposal: Neuen Portfolio-Vorschlag erstellen
+  button_set_to_compose: Set to "Compose"
+  button_set_to_proposed: Einreichen
+  button_set_to_approved: Genehmigen
+
+  text_are_you_sure_change_to_approved: Are you sure you want to approve this proposal? This will make the included projects children of the portfolio.
+  text_select_projects_for_proposal: Select the projects to include in this proposal.
+
+  error_must_be_portfolio: The project must be a portfolio.
+  error_unable_delete_proposal: Unable to delete the proposal.
+  error_project_not_in_proposal: Das Projekt ist nicht im Vorschlag enthalten.
+
+  notice_proposal_state_changed: "Proposal state changed to %{state}."
+  notice_proposal_proposed: "Vorschlage eingereicht."
+  notice_proposal_approved: "Vorschlag akzeptiert."
+  notice_proposal_project_removed: Projekt aus Vorschlag entfernt.
+
+  portfolio_proposals:
+    states:
+      draft: Entwurf
+      proposed: Eingereicht
+      approved: Abgestimmt
+      archived: Archiviert
+
+    contains_elements: "Enthält %{count} Elemente"
+    no_elements: "Derzeit leer"
+
+  label_rank: "Rang"
+  label_increase_rank: "Rang erhöhen"
+  label_decrease_rank: "Rang verringern"

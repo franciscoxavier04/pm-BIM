@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,45 +28,51 @@
 # See COPYRIGHT and LICENSE files for more details.
 # ++
 
-module ProjectQueries
-  class BaseContract < ::ModelContract
-    include PermissionsGuard
-
-    attribute :name
-    attribute :selects
-    attribute :filters
-    attribute :orders
-
-    attribute :portfolio_proposal_projects # => manual sort
-
-    def self.model
-      ProjectQuery
+class Queries::Projects::Filters::PortfolioProposalFilter < Queries::Projects::Filters::Base
+  def apply_to(_query_scope)
+    case operator
+    when "="
+      super
+        .where(exists_condition.exists)
+    else
+      raise "unsupported operator"
     end
+  end
 
-    validates :name,
-              presence: true,
-              length: { maximum: 255 }
+  def type
+    :list
+  end
 
-    validate :name_select_included
-    # When we only changed the name, we don't need to validate the selects
-    validate :existing_selects, unless: :only_changed_name?
+  def allowed_values
+    PortfolioProposal.all.map { [it.name, it.id] }
+  end
 
-    protected
+  def where
+    nil
+  end
 
-    def name_select_included
-      if model.selects.none? { |s| s.attribute == :name }
-        errors.add :selects, :name_not_included
-      end
-    end
+  def self.key
+    :portfolio_proposal
+  end
 
-    def existing_selects
-      model.selects.select { |s| s.is_a?(Queries::Selects::NotExistingSelect) }.each do |s|
-        errors.add :selects, :nonexistent, column: s.attribute
-      end
-    end
+  def human_name
+    I18n.t(:label_portfolio_proposal)
+  end
 
-    def only_changed_name?
-      model.changed == ["name"]
-    end
+  private
+
+  def exists_condition
+    PortfolioProposalProject
+      .where(portfolio_proposal_projects_table[:portfolio_proposal_id].in(values)
+             .and(portfolio_proposal_projects_table[:project_id].eq(projects_table[:id])))
+      .arel
+  end
+
+  def projects_table
+    Project.arel_table
+  end
+
+  def portfolio_proposal_projects_table
+    PortfolioProposalProject.arel_table
   end
 end

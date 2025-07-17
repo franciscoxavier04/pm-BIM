@@ -618,7 +618,7 @@ Redmine::MenuManager.map :project_menu do |menu|
             { controller: "/portfolio_managements", action: "show" },
             if: ->(project) { project.portfolio? || project.program? },
             icon: "briefcase",
-            caption: "Portfolio management"
+            caption: :label_portfolio_management
 
   menu.push :projects_query_select,
             { controller: "/portfolio_managements", action: "show" },

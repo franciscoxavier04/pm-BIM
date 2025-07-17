@@ -1,0 +1,143 @@
+<%#-- copyright
+OpenProject is an open source project management software.
+Copyright (C) the OpenProject GmbH
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License version 3.
+
+OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+Copyright (C) 2006-2013 Jean-Philippe Lang
+Copyright (C) 2010-2013 the ChiliProject Team
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+See COPYRIGHT and LICENSE files for more details.
+
+++#%>
+
+<% html_title(t(:label_portfolio_proposals)) -%>
+
+<div class="portfolio-proposals-page">
+  <div class="op-toolbar">
+    <div class="title-container">
+      <h2><%= t(:label_portfolio_proposals) %></h2>
+    </div>
+    <ul class="toolbar-items">
+      <li class="toolbar-item">
+        <%= link_to new_project_portfolio_management_proposal_path(@project),
+                    class: 'button -alt-highlight',
+                    aria: {label: t(:label_portfolio_proposal_new)},
+                    title: t(:label_portfolio_proposal_new) do %>
+          <%= op_icon('button--icon icon-add') %>
+          <span class="button--text"><%= t(:label_portfolio_proposal_new) %></span>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+
+  <% if @proposals.empty? %>
+    <div class="generic-table--container">
+      <div class="generic-table--no-results-container">
+        <h2 class="generic-table--no-results-title">
+          <%= op_icon('icon-info1') %>
+          <%= t(:no_results_title_text) %>
+        </h2>
+        <div class="generic-table--no-results-description">
+          <%= t(:label_no_portfolio_proposals) %>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="generic-table--container">
+      <div class="generic-table--results-container">
+        <table class="generic-table">
+          <colgroup>
+            <col>
+            <col>
+            <col>
+            <col>
+          </colgroup>
+          <thead>
+            <tr>
+              <th>
+                <div class="generic-table--sort-header-outer">
+                  <div class="generic-table--sort-header">
+                    <span>
+                      <%= t(:label_name) %>
+                    </span>
+                  </div>
+                </div>
+              </th>
+              <th>
+                <div class="generic-table--sort-header-outer">
+                  <div class="generic-table--sort-header">
+                    <span>
+                      <%= t(:label_state) %>
+                    </span>
+                  </div>
+                </div>
+              </th>
+              <th>
+                <div class="generic-table--sort-header-outer">
+                  <div class="generic-table--sort-header">
+                    <span>
+                      <%= t(:label_projects) %>
+                    </span>
+                  </div>
+                </div>
+              </th>
+              <th>
+                <div class="generic-table--sort-header-outer">
+                  <div class="generic-table--sort-header">
+                    <span>
+                      <%= t(:label_actions) %>
+                    </span>
+                  </div>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @proposals.each do |proposal| %>
+              <tr>
+                <td>
+                  <%= link_to proposal.name, project_portfolio_management_proposal_path(@project, proposal) %>
+                </td>
+                <td>
+                  <span class="portfolio-proposal-state portfolio-proposal-state--<%= proposal.state %>">
+                    <%= t("portfolio_proposals.states.#{proposal.state}") %>
+                  </span>
+                </td>
+                <td>
+                  <%= proposal.projects.count %>
+                </td>
+                <td class="buttons">
+                  <%= link_to t(:button_show), project_portfolio_management_proposal_path(@project, proposal),
+                              class: 'icon icon-show' %>
+                  <%= link_to t(:button_edit), edit_project_portfolio_management_proposal_path(@project, proposal),
+                              class: 'icon icon-edit' %>
+                  <%= link_to t(:button_delete), project_portfolio_management_proposal_path(@project, proposal),
+                              method: :delete,
+                              data: { confirm: t(:text_are_you_sure) },
+                              class: 'icon icon-delete' %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <% end %>
+</div>

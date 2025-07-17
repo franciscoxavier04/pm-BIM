@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -98,6 +100,7 @@ Rails.application.reloader.to_prepare do
 
       map.permission :edit_project,
                      {
+                       projects: %i[move],
                        "projects/settings/general": %i[show update toggle_public toggle_public_dialog],
                        "projects/settings/storage": %i[show],
                        "projects/settings/work_packages": %i[show],
@@ -262,7 +265,8 @@ Rails.application.reloader.to_prepare do
       wpt.permission :manage_portfolios,
                      {
                        portfolio_managements: %i[show],
-                       "portfolio_managements/menus": %i[show]
+                       "portfolio_managements/menus": %i[show],
+                       "portfolio_managements/proposals": %i[new create show index edit update destroy change_state remove_project]
                      },
                      permissible_on: :project
 

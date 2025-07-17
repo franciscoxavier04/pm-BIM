@@ -44,23 +44,21 @@ module PortfolioManagements
 
     def menu_items
       [
-        OpenProject::Menu::MenuGroup.new(header: nil, children: main_static_filters)
+        OpenProject::Menu::MenuGroup.new(header: nil, children: main_static_filters),
+        OpenProject::Menu::MenuGroup.new(header: I18n.t(:'portfolio_proposals.states.proposed'), children: portfolio_proposals(:proposed)),
+        OpenProject::Menu::MenuGroup.new(header: I18n.t(:'portfolio_proposals.states.draft'), children: portfolio_proposals(:draft))
       ]
     end
 
-    def selected?(query_params) # rubocop:disable Metrics/AbcSize
+    def selected?(query_params)
       case controller_path
-      when "projects"
-        case params[:query_id]
-        when nil
-          query_params[:query_id].to_s == ProjectQueries::Static::DEFAULT
+      when "portfolio_managements"
+        case params[:proposal_id]
         when /\A\d+\z/
-          query_params[:query_id].to_s == params[:query_id]
-        else
-          query_params[:query_id].to_s == params[:query_id] unless modification_params?
+          query_params[:proposal_id].to_s == params[:proposal_id]
         end
-      when "projects/queries"
-        query_params[:query_id].to_s == params[:id]
+      when "portfolio_managements/proposals"
+        query_params[:controller] == "portfolio_managements/proposals"
       end
     end
 
@@ -83,6 +81,18 @@ module PortfolioManagements
     def static_filters(ids)
       ids.map do |id|
         menu_item(title: ::ProjectQueries::Static.query(id).name, query_params: { query_id: id })
+      end
+    end
+
+    def portfolio_proposals(state_name)
+      PortfolioProposal
+        .where(portfolio: project)
+        .where(state: PortfolioProposal.states[state_name])
+        .map do |proposal|
+        menu_item(title: proposal.name,
+                  query_params: { proposal_id: proposal.id,
+                                  sortBy: JSON.dump({ manual_sorting: :asc }),
+                                  filters: JSON.dump([{ portfolio_proposal: { operator: "=", values: [proposal.id.to_s] } }]) })
       end
     end
 

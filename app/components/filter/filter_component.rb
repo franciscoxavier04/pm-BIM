@@ -35,9 +35,10 @@ module Filter
     # rubocop:enable OpenProject/AddPreviewForViewComponent
     options :query
     options always_visible: false
+    options collapsed_by_default: false
 
     def show_filters_section?
-      always_visible || params[:filters].present?
+      always_visible || (params[:filters].present? && !collapsed_by_default)
     end
 
     # Returns filters, active and inactive.

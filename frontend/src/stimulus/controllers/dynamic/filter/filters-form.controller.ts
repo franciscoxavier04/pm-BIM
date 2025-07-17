@@ -103,7 +103,7 @@ export default class FiltersFormController extends Controller {
 
   connect() {
     const urlParams = new URLSearchParams(window.location.search);
-    this.displayFiltersValue = urlParams.has('filters');
+    this.displayFiltersValue = urlParams.has('filters') && !urlParams.has('proposal_id');
 
     const clearButton = document.getElementById(this.clearButtonIdValue);
     clearButton?.addEventListener('click', (event:MouseEvent) => this.clearInputWithButton(event));

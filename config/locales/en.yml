@@ -1179,6 +1179,9 @@ en:
         ordered_work_packages: "Work packages order"
         include_subprojects: "Include subprojects"
         results: "Results"
+      project_query:
+        manual_sorting: "Manual sort order"
+        portfolio_proposal_projects: "Projects order"
       relation:
         lag: "Lag"
         from: "Related work package"
@@ -1938,6 +1941,8 @@ en:
   button_add_sub_item: "Add sub-item"
   button_add_member: Add member
   button_add_watcher: "Add watcher"
+  button_add_to_proposal: "Add to proposal"
+  button_remove_from_proposal: "Remove from proposal"
   button_annotate: "Annotate"
   button_apply: "Apply"
   button_archive: "Archive"
@@ -3149,7 +3154,6 @@ en:
   label_privacy_policy: "Data privacy and security policy"
   label_product_version: "Product version"
   label_profile: "Profile"
-  label_portfolio_management: "Portfolio management"
   label_percent_complete: "% Complete"
   label_progress_tracking: "Progress tracking"
   label_project: "Project"
@@ -3825,6 +3829,8 @@ en:
       make_template: "Set as template"
       remove_from_templates: "Remove from templates"
 
+  project_caption_order_changed: "Order successfully changed."
+  project_could_not_be_moved: "Project could not be moved."
   project_module_activity: "Activity"
   project_module_forums: "Forums"
   project_module_work_package_tracking: "Work packages"
@@ -4996,3 +5002,51 @@ en:
 
   enterprise_plans:
     legacy_enterprise: "Enterprise Plan"
+
+  label_portfolio_management: Portfolio management
+  label_portfolio_proposals: Portfolio proposals
+  label_portfolio_proposal: Portfolio proposal
+  label_portfolio_proposal_new: New portfolio proposal
+  label_portfolio_proposal_edit: Edit portfolio proposal
+  label_no_portfolio_proposals: No portfolio proposals found.
+  label_no_projects_in_proposal: No projects in this proposal.
+  label_state: State
+  label_state_actions: State actions
+  label_change_state: Change state
+  label_projects: Projects
+  label_proposal_approved: "Portfolio proposal approved"
+  label_new_proposals: "New proposals"
+  label_finalized_proposals: "Finalized proposals"
+  label_pending_proposal: "Pending proposal"
+  label_proposal_last_change: "Last change: %{time}"
+  label_current_portfolio: "Current portfolio"
+
+  button_create_new_portfolio_proposal: Create new portfolio proposal
+  button_set_to_compose: Set to "Compose"
+  button_set_to_proposed: Propose
+  button_set_to_approved: Approve
+
+  text_are_you_sure_change_to_approved: Are you sure you want to approve this proposal? This will make the included projects children of the portfolio.
+  text_select_projects_for_proposal: Select the projects to include in this proposal.
+
+  error_must_be_portfolio: The project must be a portfolio.
+  error_unable_delete_proposal: Unable to delete the proposal.
+  error_project_not_in_proposal: The project is not part of the proposal.
+
+  notice_proposal_proposed: "Proposal submitted."
+  notice_proposal_approved: "Proposal approved."
+  notice_proposal_state_changed: "Proposal state changed to %{state}."
+  notice_proposal_project_removed: Removed project from proposal.
+
+  portfolio_proposals:
+    states:
+      draft: Draft
+      proposed: Submitted
+      approved: Approved
+      archived: Archived
+    contains_elements: "Contains %{count} elements"
+    no_elements: "Still empty"
+
+  label_rank: "Rank"
+  label_increase_rank: "Increase rank"
+  label_decrease_rank: "Decrease rank"

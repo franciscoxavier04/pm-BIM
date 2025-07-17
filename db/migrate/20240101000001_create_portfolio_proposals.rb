@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,45 +28,18 @@
 # See COPYRIGHT and LICENSE files for more details.
 # ++
 
-module ProjectQueries
-  class BaseContract < ::ModelContract
-    include PermissionsGuard
+class CreatePortfolioProposals < ActiveRecord::Migration[7.0]
+  def change
+    create_table :portfolio_proposals do |t|
+      t.references :portfolio, null: false, foreign_key: { to_table: :projects }
+      t.string :name, null: false
+      t.integer :state, default: 0, null: false
+      t.text :description
 
-    attribute :name
-    attribute :selects
-    attribute :filters
-    attribute :orders
-
-    attribute :portfolio_proposal_projects # => manual sort
-
-    def self.model
-      ProjectQuery
+      t.timestamps
     end
 
-    validates :name,
-              presence: true,
-              length: { maximum: 255 }
-
-    validate :name_select_included
-    # When we only changed the name, we don't need to validate the selects
-    validate :existing_selects, unless: :only_changed_name?
-
-    protected
-
-    def name_select_included
-      if model.selects.none? { |s| s.attribute == :name }
-        errors.add :selects, :name_not_included
-      end
-    end
-
-    def existing_selects
-      model.selects.select { |s| s.is_a?(Queries::Selects::NotExistingSelect) }.each do |s|
-        errors.add :selects, :nonexistent, column: s.attribute
-      end
-    end
-
-    def only_changed_name?
-      model.changed == ["name"]
-    end
+    add_index :portfolio_proposals, [:portfolio_id, :state],
+              name: 'index_portfolio_proposals_on_portfolio_id_and_state'
   end
 end

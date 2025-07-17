@@ -16,6 +16,20 @@
         page_title
       end
       header.with_breadcrumbs(breadcrumb_items, selected_item_font_weight: current_breadcrumb_element == page_title ? :bold : :normal)
+      if proposal
+        header.with_description do
+          flex_layout(align_items: :center) do |container|
+            container.with_column(mr: 3) do
+              render(PortfolioManagements::StatusButtonComponent.new(proposal:, size: :small))
+            end
+            container.with_column do
+              render(Primer::Beta::Text.new) do
+                I18n.t(:label_proposal_last_change, time: render(OpPrimer::RelativeTimeComponent.new(datetime: proposal.updated_at, prefix: I18n.t(:label_on)))).html_safe
+              end
+            end
+          end
+        end
+      end
 
       if can_save?
         header_save_action(
@@ -137,7 +151,7 @@
         menu.with_item(
           tag: :a,
           label: t(:"queries.configure_view.heading"),
-          href: configure_view_modal_project_queries_path(projects_query_params),
+          href: configure_view_modal_project_queries_path(**projects_query_params, from: helpers.projects_portfolio_hack_path),
           content_arguments: { data: { controller: "async-dialog" } }
         ) do |item|
           item.with_leading_visual_icon(icon: :gear)

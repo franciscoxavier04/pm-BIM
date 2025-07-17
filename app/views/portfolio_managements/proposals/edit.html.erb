@@ -27,18 +27,25 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<tr
-  <%= "id=\"#{row_css_id}\"".html_safe if row_css_id %>
-  <%= "class=\"#{row_css_class}\"".html_safe if row_css_class %>>
-  <% columns.each do |column| %>
-    <td class="<%= column_css_class(column) %>">
-      <%= column_value(column) %>
-    </td>
-  <% end %>
+<% html_title(t(:label_portfolio_proposal_edit)) -%>
 
-  <td class="buttons">
-    <% button_links.each do |link| %>
-      <%= link %>
-    <% end %>
-  </td>
-</tr>
+<div class="portfolio-proposal-edit-page">
+  <div class="op-toolbar">
+    <div class="title-container">
+      <h2><%= t(:label_portfolio_proposal_edit) %></h2>
+    </div>
+    <ul class="toolbar-items">
+      <li class="toolbar-item">
+        <%= link_to project_portfolio_management_proposal_path(@project, @proposal),
+                    class: 'button',
+                    aria: {label: t(:button_back)},
+                    title: t(:button_back) do %>
+          <%= op_icon('button--icon icon-back-up') %>
+          <span class="button--text"><%= t(:button_back) %></span>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+
+  <%= render partial: 'form' %>
+</div>

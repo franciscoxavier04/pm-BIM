@@ -2,7 +2,7 @@
                     src: project_portfolio_management_menu_path(
                       controller_path:,
                       project_id: @project.identifier,
-                      **params.permit(:filters, :columns, :sortBy, :id, :query_id)
+                      **params.permit(:filters, :columns, :sortBy, :id, :query_id, :proposal_id)
                     ),
                     target: "_top",
                     data: { turbo: false },
