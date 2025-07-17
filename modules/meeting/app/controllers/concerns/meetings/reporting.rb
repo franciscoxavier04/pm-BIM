@@ -100,11 +100,27 @@ module Meetings
     end
 
     def report_milestones(meeting)
+      query = base_query(meeting)
+      query.add_filter(:type_id, "=", [Type.find_by!(name: "Milestone").id])
+      baseline = query.timestamps.first
+
       section = MeetingSection.create!(title: "Änderungen an Meilensteinen", meeting:)
-      last_three_objectives = WorkPackage.where(type: BmdsHackathon::Objectives.objective_type).last(3)
-      last_three_objectives.each do |wp|
-        MeetingAgendaItem.create!(meeting:, meeting_section: section, title: nil, item_type: 1, work_package: wp, author: User.system)
-      end
+
+      query
+        .results
+        .work_packages
+        .select { |work_package| work_package.at_timestamp(baseline).nil? }
+        .each do |wp|
+          MeetingAgendaItem.create!(
+            meeting:,
+            meeting_section: section,
+            title: nil,
+            item_type: 1,
+            work_package: wp,
+            author: User.system,
+            notes: "Neues Meilensteinen seit Vergleichsbasis"
+          )
+        end
     end
 
     def report_goals(meeting)
