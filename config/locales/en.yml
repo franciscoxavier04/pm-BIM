@@ -1938,6 +1938,7 @@ en:
   button_add_sub_item: "Add sub-item"
   button_add_member: Add member
   button_add_watcher: "Add watcher"
+  button_add_to_proposal: "Add to proposal"
   button_annotate: "Annotate"
   button_apply: "Apply"
   button_archive: "Archive"
@@ -5006,6 +5007,7 @@ en:
   label_change_state: Change state
   label_projects: Projects
 
+  button_create_new_portfolio_proposal: Create new portfolio proposal
   button_set_to_compose: Set to "Compose"
   button_set_to_proposed: Set to "Proposed"
   button_set_to_approved: Set to "Approved"
@@ -5023,3 +5025,5 @@ en:
       compose: Compose
       proposed: Proposed
       approved: Approved
+    contains_elements: "Contains %{count} elements"
+    no_elements: "Still empty"

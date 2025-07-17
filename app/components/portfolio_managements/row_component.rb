@@ -27,7 +27,88 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 # ++
+
+# Fix issue which did not allow using dividers within submenus:
+class Primer::Alpha::ActionMenu::SubMenuItem
+  delegate :with_divider, to: :@sub_menu
+end
+
 module PortfolioManagements
   class RowComponent < Projects::RowComponent
+    delegate :portfolio, to: :table
+
+    def more_menu_items
+      @more_menu_items ||= [more_menu_subproject_item,
+                            more_menu_settings_item,
+                            more_menu_activity_item,
+                            more_menu_favorite_item,
+                            more_menu_unfavorite_item,
+                            *more_menu_add_to_proposal,
+                            :divider,
+                            more_menu_archive_item,
+                            more_menu_unarchive_item,
+                            more_menu_copy_item,
+                            :divider,
+                            more_menu_delete_item].compact
+    end
+
+    def portfolio_proposals
+      PortfolioProposal.where(state: :compose)
+    end
+
+    def may_add_project_to_proposal?(project, proposal)
+      # We do not suggest proposals that already contain this project:
+      proposal.projects.exclude?(project)
+    end
+
+    def more_menu_add_to_proposal
+      # We only allow adding projects to proposals, not portfolios or programs.
+      return unless project.project?
+
+      proposal_entries = portfolio_proposals.filter_map do |proposal|
+        if may_add_project_to_proposal?(project, proposal)
+          project_count = proposal.projects.count
+          description = if project_count == 0
+                          I18n.t("portfolio_proposals.no_elements")
+                        else
+                          I18n.t("portfolio_proposals.contains_elements", count: project_count)
+                        end
+
+          {
+            scheme: :default,
+            icon: nil,
+            href: edit_project_portfolio_management_proposal_path(portfolio, proposal, add_project: project.id),
+            description:,
+            label: proposal.name,
+            aria: { label: proposal.name }
+          }
+        end
+      end
+
+      submenu_entries = [
+        {
+          scheme: :default,
+          icon: "plus",
+          href: new_project_portfolio_management_proposal_path(portfolio, add_project: project.id),
+          label: I18n.t(:button_create_new_portfolio_proposal),
+          aria: { label: I18n.t(:button_create_new_portfolio_proposal) }
+        }
+      ]
+
+      if proposal_entries.any?
+        submenu_entries += [:divider, *proposal_entries]
+      end
+
+      [
+        :divider,
+        {
+          scheme: :default,
+          icon: "briefcase",
+          submenu_entries:,
+          label: I18n.t(:button_add_to_proposal),
+          aria: { label: I18n.t(:button_add_to_proposal) }
+        }
+      ]
+    end
   end
 end

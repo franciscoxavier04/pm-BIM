@@ -30,5 +30,6 @@
 
 module PortfolioManagements
   class TableComponent < Projects::TableComponent
+    options :portfolio
   end
 end

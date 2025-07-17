@@ -257,12 +257,35 @@ module Projects
                               "aria-label": t(:label_open_menu),
                               tooltip_direction: :w)
         more_menu_items.each do |action_options|
-          action_options => { scheme:, label:, icon:, **button_options }
+          add_menu_item_to_action_menu(menu, action_options)
+        end
+      end
+    end
+
+    def add_menu_item_to_action_menu(menu, menu_item)
+      if menu_item == :divider
+        menu.with_divider
+      else
+        menu_item => { scheme:, label:, icon:, **button_options }
+        submenu_entries = button_options.delete(:submenu_entries)
+        description = button_options.delete(:description)
+
+        if submenu_entries.present?
+          menu.with_sub_menu_item(scheme:,
+                                  label:,
+                                  test_selector: "project-list-row--action-menu-item",
+                                  content_arguments: button_options) do |sub_menu|
+            submenu_entries.each do |sub_menu_item|
+              add_menu_item_to_action_menu(sub_menu, sub_menu_item)
+            end
+          end
+        else
           menu.with_item(scheme:,
                          label:,
                          test_selector: "project-list-row--action-menu-item",
                          content_arguments: button_options) do |item|
             item.with_leading_visual_icon(icon:) if icon
+            item.with_description.with_content(description) if description
           end
         end
       end
@@ -274,9 +297,11 @@ module Projects
                             more_menu_activity_item,
                             more_menu_favorite_item,
                             more_menu_unfavorite_item,
+                            :divider,
                             more_menu_archive_item,
                             more_menu_unarchive_item,
                             more_menu_copy_item,
+                            :divider,
                             more_menu_delete_item].compact
     end
 

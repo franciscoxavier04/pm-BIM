@@ -1831,6 +1831,7 @@ de:
   button_add_item_below: "Element unten hinzufügen"
   button_add_sub_item: "Unterelement hinzufügen"
   button_add_member: Mitglied hinzufügen
+  button_add_to_proposal: "Zu Vorschlag hinzufügen"
   button_add_watcher: "Beobachter hinzufügen"
   button_annotate: "Kommentieren"
   button_apply: "Anwenden"
@@ -4706,6 +4707,7 @@ de:
   label_change_state: Change state
   label_projects: Projects
 
+  button_create_new_portfolio_proposal: Neuen Portfolio-Vorschlag erstellen
   button_set_to_compose: Set to "Compose"
   button_set_to_proposed: Set to "Proposed"
   button_set_to_approved: Set to "Approved"
@@ -4723,3 +4725,5 @@ de:
       compose: Zusammenstellen
       proposed: Vorgeschlagen
       approved: Abgestimmt
+    contains_elements: "Enthält %{count} Elemente"
+    no_elements: "Derzeit leer"
