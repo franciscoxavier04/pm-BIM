@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -438,8 +440,21 @@ module SortHelper
   end
 
   def sort_actions(menu, column, default_order, content_args:, allowed_params: nil, **html_options)
-    desc_sort_link = url_for(sort_by_options(column, "desc", default_order, allowed_params:, **html_options))
-    asc_sort_link = url_for(sort_by_options(column, "asc", default_order, allowed_params:, **html_options))
+    desc_sort_link = if params[:controller] == "projects" && params[:action] == "move"
+                       project_portfolio_management_path(params[:id],
+                                                         sort_by_options(column, "desc", default_order, allowed_params:,
+                                                                                                        **html_options))
+                     else
+                       url_for(sort_by_options(column, "desc", default_order, allowed_params:, **html_options))
+                     end
+
+    asc_sort_link = if params[:controller] == "projects" && params[:action] == "move"
+                      project_portfolio_management_path(params[:id],
+                                                        sort_by_options(column, "asc", default_order, allowed_params:,
+                                                                                                      **html_options))
+                    else
+                      url_for(sort_by_options(column, "asc", default_order, allowed_params:, **html_options))
+                    end
 
     menu.with_item(**menu_options(label: t(:label_sort_descending),
                                   content_args:,
