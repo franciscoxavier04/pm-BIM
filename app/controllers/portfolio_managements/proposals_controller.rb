@@ -56,6 +56,9 @@ class PortfolioManagements::ProposalsController < ApplicationController
 
   def new
     @proposal = @project.portfolio_proposals.build
+    if params[:add_project].present? && @proposal.project_ids.exclude?(params[:add_project])
+      @proposal.project_ids << params[:add_project]
+    end
 
     respond_to do |format|
       format.html
@@ -64,6 +67,10 @@ class PortfolioManagements::ProposalsController < ApplicationController
   end
 
   def edit
+    if params[:add_project].present? && @proposal.project_ids.exclude?(params[:add_project])
+      @proposal.project_ids << params[:add_project]
+    end
+
     respond_to do |format|
       format.html
       format.turbo_stream

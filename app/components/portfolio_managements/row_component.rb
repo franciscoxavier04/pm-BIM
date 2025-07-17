@@ -43,8 +43,7 @@ module PortfolioManagements
                             more_menu_activity_item,
                             more_menu_favorite_item,
                             more_menu_unfavorite_item,
-                            :divider,
-                            more_menu_add_to_proposal,
+                            *more_menu_add_to_proposal,
                             :divider,
                             more_menu_archive_item,
                             more_menu_unarchive_item,
@@ -58,6 +57,9 @@ module PortfolioManagements
     end
 
     def more_menu_add_to_proposal
+      # We only allow adding projects to proposals, not portfolios or programs.
+      return unless project.project?
+
       proposal_entries = portfolio_proposals.map do |proposal|
         project_count = proposal.projects.count
         description = if project_count == 0
@@ -69,7 +71,7 @@ module PortfolioManagements
         {
           scheme: :default,
           icon: nil,
-          href: "#", # edit_project_portfolio_management_proposal_path for proposal?
+          href: edit_project_portfolio_management_proposal_path(portfolio, proposal, add_project: project.id),
           description:,
           label: proposal.name,
           aria: { label: proposal.name }
@@ -80,8 +82,7 @@ module PortfolioManagements
         {
           scheme: :default,
           icon: "plus",
-          # TODO: find current portfolio and inject into path
-          href: new_project_portfolio_management_proposal_path(portfolio),
+          href: new_project_portfolio_management_proposal_path(portfolio, add_project: project.id),
           label: I18n.t(:button_create_new_portfolio_proposal),
           aria: { label: I18n.t(:button_create_new_portfolio_proposal) }
         }
@@ -91,13 +92,16 @@ module PortfolioManagements
         submenu_entries += [:divider, *proposal_entries]
       end
 
-      {
-        scheme: :default,
-        icon: "briefcase",
-        submenu_entries:,
-        label: I18n.t(:button_add_to_proposal),
-        aria: { label: I18n.t(:button_add_to_proposal) }
-      }
+      [
+        :divider,
+        {
+          scheme: :default,
+          icon: "briefcase",
+          submenu_entries:,
+          label: I18n.t(:button_add_to_proposal),
+          aria: { label: I18n.t(:button_add_to_proposal) }
+        }
+      ]
     end
   end
 end
