@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,10 +28,10 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Queries::Projects::Orders::DefaultOrder < Queries::Orders::Base
+class Queries::Projects::Orders::HierarchyOrder < Queries::Orders::Base
   self.model = Project
 
   def self.key
-    /\A(id|identifier|created_at|public)\z/
+    :lft
   end
 end
