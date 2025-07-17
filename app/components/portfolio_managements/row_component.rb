@@ -101,7 +101,7 @@ module PortfolioManagements
           # We only want to return project IDs, not program IDs
           child.id
         end
-      end.flatten.compact.uniq
+      end.flatten.compact.uniq + [program.id]
     end
 
     def project_ids_including_children
