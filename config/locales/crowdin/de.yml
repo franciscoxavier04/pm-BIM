@@ -4708,6 +4708,7 @@ de:
   label_finalized_proposals: "Abgeschlossene Vorschläge"
   label_pending_proposal: "Eingereichter Vorschlag"
   label_proposal_last_change: "Letzte Änderung: %{time}"
+  label_current_portfolio: "Aktuelles Portfolio"
   label_state: Status
   label_state_actions: State actions
   label_change_state: Change state

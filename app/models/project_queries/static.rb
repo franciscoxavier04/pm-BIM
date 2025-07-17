@@ -105,7 +105,7 @@ class ProjectQueries::Static
     end
 
     def static_query_current_portfolio
-      ProjectQuery.new(name: "Aktuell") do |query|
+      ProjectQuery.new(name: I18n.t(:label_current_portfolio)) do |query|
         query.order("lft" => "asc")
         query.select(*Setting.enabled_projects_columns - %w[favored required_disk_space public], add_not_existing: false)
 

@@ -5019,6 +5019,7 @@ en:
   label_finalized_proposals: "Finalized proposals"
   label_pending_proposal: "Pending proposal"
   label_proposal_last_change: "Last change: %{time}"
+  label_current_portfolio: "Current portfolio"
 
   button_create_new_portfolio_proposal: Create new portfolio proposal
   button_set_to_compose: Set to "Compose"
