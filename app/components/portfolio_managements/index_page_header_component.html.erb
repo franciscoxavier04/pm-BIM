@@ -48,17 +48,6 @@
         )
       end
 
-      if proposal && proposal.proposed?
-        header.with_action_icon_button(
-          icon: "issue-closed",
-          mobile_icon: "issue-closed",
-          label: t(:button_set_to_approved),
-          tag: :a,
-          href: helpers.change_state_project_portfolio_management_proposal_path(project_id: project.id, id: proposal.id, state: "approved"),
-          data: { method: :patch }
-        )
-      end
-
       if can_access_shares?
         header.with_action_icon_button(
           tag: :a,
