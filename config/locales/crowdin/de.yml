@@ -1637,8 +1637,8 @@ de:
         one: "Rolle"
         other: "Rollen"
       scim_client:
-        one: "SCIM-client"
-        other: "SCIM-clients"
+        one: "SCIM-Client"
+        other: "SCIM clients"
       status: "Arbeitspaket-Status"
       token/api:
         one: Zugangs-Token

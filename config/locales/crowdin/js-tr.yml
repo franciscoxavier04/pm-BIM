@@ -33,10 +33,10 @@ tr:
         Editör alanında, satır içi görüntüye veya referans ekine sürükleyin. Sürüklemeye devam ederken kapalı editör alanları açılacaktır.
       quarantined_hint: "Dosya, bir virüs bulunduğu için karantinaya alındı. İndirmek için kullanılamaz."
     autocomplete_ng_select:
-      add_tag: "Öğe ekle"
+      add_tag: "Öge ekle"
       clear_all: "Tümünü temizle"
       loading: "Yükleniyor..."
-      not_found: "Hiçbir öğe bulunamadı"
+      not_found: "Hiçbir öge bulunamadı"
       type_to_search: "Aramak için yazın"
     autocomplete_select:
       placeholder:

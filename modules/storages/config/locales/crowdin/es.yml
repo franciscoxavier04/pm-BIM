@@ -81,7 +81,7 @@ es:
     edit_project_folder:
       label: Editar la carpeta del proyecto
     open:
-      contact_admin: Please contact your administrator to resolve this error.
+      contact_admin: Póngase en contacto con su administrador para ayudarle a configurar una integración.
       remote_identity_error: Se ha producido un error inesperado al conectarse al almacenamiento.
     project_folder_mode:
       automatic: Gestionado automáticamente
@@ -129,7 +129,7 @@ es:
               conflict: 'El usuario %{user} no se ha podido añadir al grupo %{group} por la siguiente razón: %{reason}'
               failed_to_add: 'El usuario %{user} no se ha podido añadir al grupo %{group} por la siguiente razón: %{reason}'
             create_folder:
-              conflict: The folder %{folder_name} already exists on %{parent_location}.
+              conflict: La dirección %{folder_name} ya existe en %{parent_location}.
               not_found: "No se encontró %{parent_location}."
             ensure_root_folder_permissions:
               not_found: "No se ha encontrado %{group_folder}. Compruebe la configuración de su carpeta de grupo Nextcloud."
