@@ -41,6 +41,7 @@ class ProjectsController < ApplicationController
   before_action :require_admin, only: %i[destroy destroy_info]
   before_action :find_optional_template, only: %i[new create]
   before_action :find_optional_parent, only: :new
+  before_action :find_proposal, only: %i[move]
 
   no_authorization_required! :index, :export_list_modal
 
@@ -198,20 +199,19 @@ class ProjectsController < ApplicationController
     end
 
     replace_via_turbo_stream(
-      component: Projects::IndexPageHeaderComponent.new(query: @query, current_user:, state: :show, params:)
+      component: PortfolioManagements::IndexPageHeaderComponent.new(project: @proposal.portfolio,
+                                                                    query: @query, current_user:,
+                                                                    proposal: @proposal,
+                                                                    state: :show, params:)
     )
     update_via_turbo_stream(
       component: Filter::FilterButtonComponent.new(query: @query, disable_buttons: false)
     )
-    replace_via_turbo_stream(component: Projects::TableComponent.new(query: @query, current_user:, params:))
+    replace_via_turbo_stream(component: PortfolioManagements::TableComponent.new(portfolio: @proposal.portfolio, query: @query, current_user:, params:))
 
-    current_url = projects_path(params.permit(:query_id, :filters, :columns, :sortBy, :page, :per_page))
+    current_url = project_portfolio_management_path(project_id: @proposal.portfolio, **params.permit(:query_id, :filters, :columns, :sortBy, :page, :per_page, :proposal_id))
 
     turbo_streams << turbo_stream.push_state(current_url)
-    turbo_streams << turbo_stream.turbo_frame_set_src(
-      "projects_sidemenu",
-      projects_menu_url(query_id: @query.id, controller_path: "projects")
-    )
 
     turbo_streams << turbo_stream.replace("flash-messages", helpers.render_flash_messages)
 
@@ -314,6 +314,10 @@ class ProjectsController < ApplicationController
 
   def supported_export_formats
     ::Exports::Register.list_formats(Project).map(&:to_s)
+  end
+
+  def find_proposal
+    @proposal = PortfolioProposal.find_by(id: params[:proposal_id])
   end
 
   helper_method :supported_export_formats

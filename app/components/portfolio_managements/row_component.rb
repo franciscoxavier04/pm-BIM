@@ -38,7 +38,10 @@ module PortfolioManagements
     delegate :portfolio, to: :table
 
     def more_menu_items
-      @more_menu_items ||= [more_menu_subproject_item,
+      @more_menu_items ||= [move_action_item(:higher, t("label_agenda_item_move_up"), "chevron-up"),
+                            move_action_item(:lower, t("label_agenda_item_move_down"), "chevron-down"),
+                            (:divider if sorted_by_lft?),
+                            more_menu_subproject_item,
                             more_menu_settings_item,
                             more_menu_activity_item,
                             more_menu_favorite_item,
@@ -50,6 +53,27 @@ module PortfolioManagements
                             more_menu_copy_item,
                             :divider,
                             more_menu_delete_item].compact
+    end
+
+    def move_action_item(move_to, label, icon)
+      return unless sorted_by_lft?
+      return unless params[:proposal_id]
+
+      href = move_project_path(
+        project,
+        move_to:,
+        sortBy: JSON.dump([%w[lft asc]]),
+        proposal_id: params[:proposal_id],
+        **helpers.projects_query_params.slice(*helpers.projects_query_param_names_for_sort)
+      )
+
+      {
+        scheme: :default,
+        label:,
+        icon:,
+        href:,
+        form_arguments: { method: :put, data: { "turbo-stream": true } }
+      }
     end
 
     def portfolio_proposals

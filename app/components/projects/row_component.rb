@@ -296,10 +296,7 @@ module Projects
     end
 
     def more_menu_items
-      @more_menu_items ||= [move_action_item(:higher, t("label_agenda_item_move_up"), "chevron-up"),
-                            move_action_item(:lower, t("label_agenda_item_move_down"), "chevron-down"),
-                            (:divider if sorted_by_lft?),
-                            more_menu_subproject_item,
+      @more_menu_items ||= [more_menu_subproject_item,
                             more_menu_settings_item,
                             more_menu_activity_item,
                             more_menu_favorite_item,
@@ -337,25 +334,6 @@ module Projects
         classes: "op-primer--star-icon",
         label: I18n.t(:button_unfavorite),
         aria: { label: I18n.t(:button_unfavorite) }
-      }
-    end
-
-    def move_action_item(move_to, label, icon)
-      return unless sorted_by_lft?
-
-      href = move_project_path(
-        project,
-        move_to:,
-        sortBy: JSON.dump([%w[lft asc]]),
-        **helpers.projects_query_params.slice(*helpers.projects_query_param_names_for_sort)
-      )
-
-      {
-        scheme: :default,
-        label:,
-        icon:,
-        href:,
-        form_arguments: { method: :put, data: { "turbo-stream": true } }
       }
     end
 
