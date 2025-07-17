@@ -1179,6 +1179,9 @@ en:
         ordered_work_packages: "Work packages order"
         include_subprojects: "Include subprojects"
         results: "Results"
+      project_query:
+        manual_sorting: "Manual sort order"
+        portfolio_proposal_projects: "Projects order"
       relation:
         lag: "Lag"
         from: "Related work package"

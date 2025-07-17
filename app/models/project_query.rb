@@ -31,6 +31,7 @@ class ProjectQuery < ApplicationRecord
   include Queries::Serialization::Hash
   include HasMembers
   include ::Scopes::Scoped
+  include ManualSorting
 
   belongs_to :user
 

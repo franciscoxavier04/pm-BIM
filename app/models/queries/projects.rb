@@ -38,6 +38,7 @@ module Queries::Projects
     filter Filters::FavoredFilter
     filter Filters::IdFilter
     filter Filters::LatestActivityAtFilter
+    filter Filters::ManualSortFilter
     filter Filters::ProjectPhaseAnyFilter
     filter Filters::ProjectPhaseGateFilter
     filter Filters::ProjectPhaseFilter
@@ -59,6 +60,7 @@ module Queries::Projects
     order Orders::CustomFieldOrder
     order Orders::DefaultOrder
     order Orders::LatestActivityAtOrder
+    order Orders::ManualSortingOrder
     order Orders::ProjectPhaseOrder
     order Orders::NameOrder
     order Orders::ProjectStatusOrder
@@ -71,6 +73,7 @@ module Queries::Projects
     select Selects::Default
     select Selects::Favored
     select Selects::LatestActivityAt
+    select Selects::ManualSortingSelect
     select Selects::ProjectPhase
     select Selects::RequiredDiskSpace
     select Selects::Status

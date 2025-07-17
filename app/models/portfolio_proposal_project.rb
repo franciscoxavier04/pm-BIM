@@ -31,10 +31,13 @@
 class PortfolioProposalProject < ApplicationRecord
   belongs_to :portfolio_proposal
   belongs_to :project, -> { where(project_type: :project) }
+  belongs_to :project_query, optional: true
 
   validates :portfolio_proposal, presence: true
   validates :project, presence: true
   validates :project_id, uniqueness: { scope: :portfolio_proposal_id }
+
+  default_scope { order("rank NULLS LAST") }
 
   validate :project_not_portfolio
 

@@ -1,4 +1,6 @@
-# -- copyright
+# frozen_string_literal: true
+
+#-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -24,47 +26,22 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-# ++
+#++
 
-module ProjectQueries
-  class BaseContract < ::ModelContract
-    include PermissionsGuard
+module ProjectQuery::ManualSorting
+  extend ActiveSupport::Concern
 
-    attribute :name
-    attribute :selects
-    attribute :filters
-    attribute :orders
+  included do
+    has_many :portfolio_proposal_projects,
+             -> { where(portfolio_proposal_id: nil).order(rank: :asc) }
 
-    attribute :portfolio_proposal_projects # => manual sort
-
-    def self.model
-      ProjectQuery
+    def manually_sorted?
+      sort_criteria_columns.any? { |clz, _| clz.is_a?(::Queries::Projects::Selects::ManualSortingSelect) }
     end
 
-    validates :name,
-              presence: true,
-              length: { maximum: 255 }
-
-    validate :name_select_included
-    # When we only changed the name, we don't need to validate the selects
-    validate :existing_selects, unless: :only_changed_name?
-
-    protected
-
-    def name_select_included
-      if model.selects.none? { |s| s.attribute == :name }
-        errors.add :selects, :name_not_included
-      end
+    def self.manual_sorting_column
+      ::Queries::Projects::Selects::ManualSortingSelect.new
     end
-
-    def existing_selects
-      model.selects.select { |s| s.is_a?(Queries::Selects::NotExistingSelect) }.each do |s|
-        errors.add :selects, :nonexistent, column: s.attribute
-      end
-    end
-
-    def only_changed_name?
-      model.changed == ["name"]
-    end
+    delegate :manual_sorting_column, to: :class
   end
 end
