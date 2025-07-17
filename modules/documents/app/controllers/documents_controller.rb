@@ -155,7 +155,8 @@ class DocumentsController < ApplicationController
   end
 
   def respond_with_document_update_turbo_streams(service_call)
-    update_via_turbo_stream(component: Documents::ContentEditableComponent.new(@document, project: @project))
+    @document = service_call.result
+    update_header_component_via_turbo_stream(state: :show)
 
     if service_call.success?
       render_success_flash_message_via_turbo_stream(message: I18n.t(:notice_successful_update))

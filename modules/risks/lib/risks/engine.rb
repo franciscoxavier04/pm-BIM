@@ -15,11 +15,11 @@ module Risks
                   caption: :"risks.label",
                   if: ->(project) {
                     OpenProject::FeatureDecisions.risk_management_active? &&
-                      project.enabled_module_names.include?("risks") &&
+                     project.module_enabled?("risks") &&
                       User.current.allowed_in_project?(:view_work_packages, project)
                   },
                   after: :work_packages,
-                  icon: "meter")
+                  icon: :alert)
       end
     end
 

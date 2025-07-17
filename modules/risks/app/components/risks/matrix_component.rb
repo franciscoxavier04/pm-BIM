@@ -40,7 +40,9 @@ module Risks
                    risk_counts:,
                    risk_work_packages:,
                    selected_likelihood:,
-                   selected_impact:)
+                   selected_impact:,
+                   risk_filter:,
+                   groups:)
       super
 
       @project = project
@@ -49,9 +51,11 @@ module Risks
       @impact_options = impact_options
       @risk_counts = risk_counts
       @risk_work_packages = risk_work_packages
+      @groups = groups
 
       @selected_likelihood = params[:likelihood].to_i
       @selected_impact = params[:impact].to_i
+      @risk_filter = risk_filter.present?
     end
 
     private

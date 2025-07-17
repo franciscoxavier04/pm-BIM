@@ -113,15 +113,15 @@ de:
     scim_clients:
       authentication_methods:
         sso: "JWT vom Identitätsanbieter"
-        oauth2_client: "OAuth 2.0 client credentials"
+        oauth2_client: "OAuth 2.0 Client-Anmeldeinformationen"
         oauth2_token: "Statisches Zugriffstoken"
       created_client_credentials_dialog_component:
-        title: "Client credentials created"
-        heading: "Client credentials have been generated"
+        title: "Client-Zugangsdaten erstellt"
+        heading: "Client-Zugangsdaten wurden generiert"
         one_time_hint: "Dies ist das einzige Mal, dass dieses Token angezeigt wird. Stellen Sie sicher, dass Sie es jetzt kopieren."
       created_token_dialog_component:
         title: "Token erstellt"
-        heading: "An token has been generated"
+        heading: "Ein Token wurde generiert"
         label_token: "Token"
         one_time_hint: "Dies ist das einzige Mal, dass dieses Token angezeigt wird. Stellen Sie sicher, dass Sie es jetzt kopieren."
       delete_scim_client_dialog_component:
@@ -131,13 +131,13 @@ de:
       edit:
         label_delete_scim_client: "SCIM-Client löschen"
       form:
-        auth_provider_description: "This is the service that users added by the SCIM provider will use to authenticate in OpenProject."
-        authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
+        auth_provider_description: "Dies ist der Dienst, den die vom SCIM-Anbieter hinzugefügten Benutzer für die Authentifizierung in OpenProject verwenden werden."
+        authentication_method_description_html: "So authentifiziert sich der SCIM-Client bei OpenProject. Bitte stellen Sie sicher, dass OAuth Tokens den <code>scim_v2</code> Scope enthalten."
         description_html: 'Weitere Informationen zu diesen Konfigurationsoptionen finden Sie in unserer <a href="%{docs_url}">Dokumentation zur Konfiguration von SCIM-Clients</a>.'
-        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
+        jwt_sub_description_html: 'Bei Keycloak ist dies beispielsweise die UUID des mit dem SCIM-Client verbundenen Servicekontos. Lesen Sie <a href="%{docs_url}">unsere Dokumentation</a>, um zu erfahren, wie Sie den Subject Claim für Ihren Anwendungsfall finden.'
         name_description: "Wählen Sie einen Namen, der anderen Administratoren hilft, besser zu verstehen, warum dieser Client konfiguriert wurde."
       index:
-        description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
+        description: "SCIM-Clients, die hier konfiguriert werden, können mit der OpenProject SCIM-Server-API interagieren, um Benutzerkonten und Gruppen zu erstellen, zu aktualisieren und zu entfernen."
         label_create_button: "SCIM-Client hinzufügen"
       new:
         title: "Neuer SCIM-Client"
@@ -145,15 +145,15 @@ de:
         confirm_button: "Widerrufen"
         title: "Statisches Token widerrufen"
         heading: "Sind Sie sicher, dass Sie dieses Token widerrufen möchten?"
-        description: "The SCIM client that uses this token will no longer be able to access OpenProject's SCIM server API."
+        description: "Der SCIM-Client, der dieses Token verwendet, kann nicht mehr auf die SCIM-Server-API von OpenProject zugreifen."
       table_component:
         blank_slate:
-          title: "No SCIM clients configured yet"
-          description: "Add clients to see them here"
+          title: "Noch keine SCIM-Clients konfiguriert"
+          description: "Kunden hinzufügen, um sie hier zu sehen"
         user_count: "Benutzer"
       token_list_component:
-        description: "The tokens you generate here can be passed by a SCIM client to access the OpenProject SCIM API."
-        heading: "Tokens"
+        description: "Die Token, die Sie hier erzeugen, können von einem SCIM-Client weitergegeben werden, um auf die OpenProject SCIM-API zuzugreifen."
+        heading: "Token"
         label_add_token: "Token"
         label_aria_add_token: "Token hinzufügen"
       token_table_component:
@@ -162,7 +162,7 @@ de:
           description: "Sie können jetzt eins erstellen"
         expired: "Abgelaufen am %{date}"
         revoked: "Widerrufen am %{date}"
-        title: "Access token table"
+        title: "Zugangs-Token Tabelle"
   authentication:
     login_and_registration: "Anmeldung und Registrierung"
   announcements:
@@ -351,7 +351,7 @@ de:
         parent:
           not_descendant: "muss ein Unterelement der Hierarchiewurzel sein."
     rules:
-      copy_workflow_from: "Type for workflow copy"
+      copy_workflow_from: "Typ für Workflow-Kopie"
       enabled: "Aktiviert"
       depth: "Tiefe"
       item: "Element"
@@ -682,7 +682,7 @@ de:
         tab: Projekte
         enable_all: Für alle Projekte aktivieren
         select_projects: Projekte auswählen
-        select_projects_description: Select the projects in which you would like to use this type.
+        select_projects_description: Wählen Sie die Projekte aus, in denen Sie diesen Typ verwenden möchten.
       settings:
         tab: "Einstellungen"
         type_color_text: "Die ausgewählte Farbe unterscheidet verschiedene Typen\nin Gantt-Diagrammen und Arbeitspakettabellen. Es wird daher empfohlen, gut unterscheidbare Farben zu verwenden."
@@ -1160,8 +1160,8 @@ de:
           You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Ausgeblendete Unternehmensbanner"
         impaired: "Für die barrierefreie Nutzung optimierte Oberfläche"
-        auto_hide_popups: "Automatically hide success banners"
-        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
+        auto_hide_popups: "Automatisches Ausblenden von Erfolgsbannern"
+        auto_hide_popups_caption: "Wenn diese Funktion aktiviert ist, verschwinden die grünen Erfolgsbanner automatisch nach 5 Sekunden."
         warn_on_leaving_unsaved: "Beim Verlassen einer Arbeitspaket-Seite mit ungespeichertem Text warnen"
         theme: "Farbmodus"
         time_zone: "Zeitzone"
@@ -2066,8 +2066,8 @@ de:
         other: "%{count} Sek."
     units:
       minute_abbreviated:
-        one: "min"
-        other: "mins"
+        one: "Min"
+        other: "Min"
       hour:
         one: "Stunde"
         other: "Stunde"
@@ -2124,7 +2124,7 @@ de:
       placeholder_users: Platzhalter-Benutzer
       project_list_sharing: Projektlistenfreigabe
       readonly_work_packages: Schreibgeschützte Arbeitspakete
-      scim_api: SCIM server API
+      scim_api: SCIM-Server-API
       sso_auth_providers: Single Sign-on
       team_planner_view: Teamplaner
       virus_scanning: Antivirus-Überprüfung
@@ -2192,8 +2192,8 @@ de:
         title: "Single Sign-On für Nextcloud-Speicher"
         description: "Aktivieren Sie nahtlose und sichere Authentifizierung für Ihren Nextcloud-Speicher mit Single Sign-On. Vereinfachen Sie das Zugriffsmanagement und erhöhen Sie den Benutzerkomfort."
       scim_api:
-        title: "SCIM clients"
-        description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
+        title: "SCIM-Clients"
+        description: "Automatisieren Sie die Benutzerverwaltung in OpenProject durch nahtlose Integration externer Identitätsdienste wie Microsoft Entra oder Keycloak über unsere SCIM Server API. Verfügbar ab dem Enterprise Corporate Plan."
       virus_scanning:
         description: "Stellen Sie sicher, dass hochgeladene Dateien in OpenProject auf Viren gescannt werden, bevor sie für andere Benutzer zugänglich sind."
       placeholder_users:
@@ -3006,7 +3006,7 @@ de:
   label_password_rule_special: "Sonderzeichen"
   label_password_rule_uppercase: "Großbuchstaben"
   label_path_encoding: "Path encoding"
-  label_per_page: "Per page:"
+  label_per_page: "Pro Seite:"
   label_people: "Personen"
   label_permissions: "Berechtigungen"
   label_permissions_report: "Berechtigungsübersicht"
@@ -3566,7 +3566,7 @@ de:
   permission_comment_news: "Nachricht kommentieren"
   permission_commit_access: "Lese- und Schreibzugriff auf Projektarchiv (Commit)"
   permission_copy_projects: "Projekte kopieren"
-  permission_copy_work_packages: "Duplicate work packages"
+  permission_copy_work_packages: "Arbeitspakete duplizieren"
   permission_create_backup: "Backups erstellen"
   permission_delete_work_package_watchers: "Beobachter löschen"
   permission_delete_work_packages: "Arbeitspakete löschen"

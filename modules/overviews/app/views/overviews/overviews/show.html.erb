@@ -55,17 +55,28 @@
   end
 %>
 
-<% if OpenProject::FeatureDecisions.portfolio_dashboard_active? %>
-  <%=
-    render(Primer::Alpha::Layout.new) do |content|
-      content.with_main do
-        render Overviews::Portfolios::ShowComponent.new(project: @project)
-      end
-      content.with_sidebar(col_placement: :end, row_placement: :end) do
-        render Overviews::Portfolios::SidePanelComponent.new(project: @project)
-      end
-    end
-  %>
-<% else %>
-  <openproject-base></openproject-base>
+<%= render(Primer::Alpha::Layout.new) do |content| %>
+  <% content.with_main do %>
+    <% if OpenProject::FeatureDecisions.portfolio_dashboard_active? %>
+      <%= render(Primer::Alpha::TabPanels.new(label: "label")) do |tab_panel| %>
+        <% tab_panel.with_tab(selected: true, id: "tab-selects--overview") do |tab| %>
+          <% tab.with_text { "Übersicht" } %>
+          <% tab.with_panel do %>
+            <%= render Overviews::Portfolios::ShowComponent.new(project: @project) %>
+          <% end %>
+        <% end %>
+        <% tab_panel.with_tab(id: "tab-selects--dashboard") do |tab| %>
+          <% tab.with_text { "Dashboard" } %>
+          <% tab.with_panel do %>
+            <openproject-base></openproject-base>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <openproject-base></openproject-base>
+    <% end %>
+  <% end %>
+  <% content.with_sidebar(col_placement: :end, row_placement: :end) do %>
+    <%= render Overviews::Portfolios::SidePanelComponent.new(project: @project) %>
+  <% end %>
 <% end %>

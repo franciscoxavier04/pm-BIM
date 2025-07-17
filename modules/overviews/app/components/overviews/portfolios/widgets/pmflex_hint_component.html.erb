@@ -26,27 +26,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
-
-<%=
-  component_wrapper do
-    render(Primer::OpenProject::SidePanel::Section.new) do |section|
-      section.with_title { I18n.t(:label_attachment_plural) }
-      section.with_description { I18n.t("documents.attachments.text") }
-      section.with_counter(count: document.attachments.count)
-
-      section.with_footer_button(id: "documents-add-attachments") do |button|
-        button.with_leading_visual_icon(icon: "op-attachmentadd")
-        I18n.t("js.label_add_attachments")
+<%= render(Primer::Beta::Text.new) do
+  flex_layout do |layout|
+    layout.with_column do
+      if checked?
+        render(Primer::Beta::Octicon.new(icon: :"check-circle", "aria-label": "Element erfüllt", mr: 2))
+      else
+        render(Primer::Beta::Octicon.new(icon: :circle, "aria-label": "Element nicht erfüllt", mr: 2))
       end
+    end
 
-      helpers.list_attachments(
-        resource,
-        inputs: {
-          allowUploading: true,
-          showTimestamp: false,
-          externalUploadButton: "#documents-add-attachments"
-        }
-      )
+    layout.with_column do
+      concat(render(Primer::Beta::Text.new(font_weight: :bold, display: :block)) { title })
+      concat(render(Primer::Beta::Text.new(color: :muted)) { description })
     end
   end
-%>
+end %>

@@ -33,64 +33,40 @@ module Budgets::Patches::Projects::RowComponentPatch
     base.prepend InstanceMethods
   end
 
-  class ProjectBudgets
-    attr_reader :project
-
-    def initialize(project)
-      @project = project
-    end
-
-    delegate :any?, to: :budgets
-
-    def total_planned
-      @total_planned ||= budgets.sum(&:budget)
-    end
-
-    def total_spent
-      @total_spent ||= budgets.sum(&:spent)
-    end
-
-    def total_available
-      @total_available ||= budgets.sum(&:available)
-    end
-
-    def total_ratio
-      @total_ratio ||= total_planned.zero? ? 0 : ((total_spent / total_planned) * 100).round
-    end
-
-    def budgets
-      @budgets ||= project.budgets.to_a
-    end
-  end
-
   module InstanceMethods
     def budget_planned
       with_project_budgets do |project_budgets|
-        number_to_currency(project_budgets.total_planned, precision: 0)
+        number_to_currency(project_budgets.planned, precision: 0)
       end
     end
 
     def budget_spent
       with_project_budgets do |project_budgets|
-        number_to_currency(project_budgets.total_spent, precision: 0)
+        number_to_currency(project_budgets.spent, precision: 0)
       end
     end
 
     def budget_spent_ratio
       with_project_budgets do |project_budgets|
-        helpers.extended_progress_bar(project_budgets.total_ratio,
-                                      legend: project_budgets.total_ratio.to_s)
+        helpers.extended_progress_bar(project_budgets.budget_ratio,
+                                      legend: project_budgets.budget_ratio.to_s)
+      end
+    end
+
+    def budget_allocated
+      with_project_budgets do |project_budgets|
+        number_to_currency(project_budgets.allocated_to_children, precision: 0)
       end
     end
 
     def budget_available
       with_project_budgets do |project_budgets|
-        number_to_currency(project_budgets.total_available, precision: 0)
+        number_to_currency(project_budgets.available, precision: 0)
       end
     end
 
     def with_project_budgets
-      @project_budgets ||= ProjectBudgets.new(project)
+      @project_budgets ||= ::Budgets::ProjectBudgets.new(project)
       return unless @project_budgets.any?
 
       yield @project_budgets

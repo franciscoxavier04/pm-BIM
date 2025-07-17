@@ -9,7 +9,8 @@ $grid--widget-padding: 20px 20px 20px 20px
   display: grid
 
 body.widget-grid-layout
-  #content, page-header
+  #content, page-header,
+  .tabnav-tab.selected, .tabnav-tab[aria-current]:not([aria-current=false]), .tabnav-tab[aria-selected=true]
     background-color: var(--grid-background-color)
 
 .grid--container

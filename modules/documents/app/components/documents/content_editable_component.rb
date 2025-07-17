@@ -38,14 +38,5 @@ module Documents
     alias_method :document, :model
 
     options :project
-
-    private
-
-    def updated_at_time(document)
-      OpPrimer::RelativeTimeComponent.new(
-        datetime: in_user_zone(document.updated_at),
-        month: :long
-      ).render_in(view_context)
-    end
   end
 end

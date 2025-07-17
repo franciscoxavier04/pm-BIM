@@ -27,26 +27,7 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-module HackathonData
-  class KpiSeeder < Seeder
-    def seed_data!
-      Rails.logger.debug "*** Seeding KPI work package type"
 
-      type = Type.find_or_create_by!(name: "KPI")
-      kpi_ziel = WorkPackageCustomField.find_or_create_by!(name: "Zielwert", field_format: "int", is_for_all: true)
-      kpi_ist = WorkPackageCustomField.find_or_create_by!(name: "Istwert", field_format: "int", is_for_all: true)
-
-      kpi_group = [
-        ["KPI", [kpi_ziel.attribute_name, kpi_ist.attribute_name]]
-      ]
-
-      type.update!(
-        attribute_groups: kpi_group + type.default_attribute_groups
-      )
-    end
-
-    def applicable?
-      WorkPackageCustomField.where(name: %w[Zielwert Istwert]).empty?
-    end
-  end
+class Overviews::PmflexHint < ApplicationRecord
+  belongs_to :project
 end

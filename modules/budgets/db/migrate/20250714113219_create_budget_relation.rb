@@ -27,25 +27,17 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-#
-module Documents
-  class SidePanel::AttachmentsComponent < ApplicationComponent
-    include ApplicationHelper
-    include OpTurbo::Streamable
-    include OpPrimer::ComponentHelpers
 
-    alias_method :document, :model
+class CreateBudgetRelation < ActiveRecord::Migration[8.0]
+  def change
+    create_table :budget_relations do |t|
+      t.references :parent_budget, null: false, foreign_key: { to_table: :budgets }
+      t.references :child_budget, null: false, foreign_key: { to_table: :budgets }
+      t.references :cost_type, null: true, foreign_key: { to_table: :cost_types }
 
-    options :project
+      t.string :relation_type, null: false, default: "add"
 
-    private
-
-    def resource
-      return unless document
-
-      API::V3::Documents::DocumentRepresenter.create(
-        document, current_user: User.current, embed_links: true
-      )
+      t.timestamps
     end
   end
 end

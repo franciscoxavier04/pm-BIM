@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# -- copyright
+#-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,31 +26,18 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-# ++
+#++
+module Projects::Exports
+  module Formatters
+    class Favored < ::Exports::Formatters::Default
+      def self.apply?(attribute, export_format)
+        export_format == :pdf && attribute.to_sym == :favored
+      end
 
-module Overviews
-  module Portfolios
-    module Widgets
-      class KpiComponent < ApplicationComponent
-        include OpPrimer::ComponentHelpers
-        include ApplicationHelper
-        include PlaceholderUsersHelper
-        include AvatarHelper
-
-        attr_reader :kpis
-
-        delegate :count, to: :kpis
-
-        def initialize(model = nil, project:, **)
-          super(model, **)
-
-          @project = project
-          @cutoff_limit = 5
-          @kpis = WorkPackage
-            .visible
-            .where(type: ::BmdsHackathon::References.kpi_type)
-            .where(project_id: @project.self_and_descendants.select(:id))
-        end
+      ##
+      # Takes a project and returns yes/no depending on the favored attribute
+      def format(project, **)
+        project.favored_by?(User.current) ? I18n.t(:general_text_Yes) : I18n.t(:general_text_No)
       end
     end
   end

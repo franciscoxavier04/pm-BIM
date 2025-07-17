@@ -33,6 +33,7 @@ module WorkPackage::PDFExport::Export::Wp::Styles
     include MarkdownToPDF::Common
     include MarkdownToPDF::StyleHelper
     include WorkPackage::PDFExport::Common::Styles
+    include WorkPackage::PDFExport::Common::Logo
     include WorkPackage::PDFExport::Common::StylesPage
     include WorkPackage::PDFExport::Common::StylesMarkdown
     include WorkPackage::PDFExport::Common::StylesWpTable

@@ -29,6 +29,12 @@
 #++
 
 module DynamicContentSecurityPolicy
+  extend ActiveSupport::Concern
+
+  included do
+    before_action :add_websocket_server_url_to_csp
+  end
+
   ##
   # Dynamically append sources to CSP directives
   # This replaces the secure_headers named append functionality
@@ -45,6 +51,18 @@ module DynamicContentSecurityPolicy
 
       policy.send(directive, *new_values)
       request.content_security_policy = policy
+    end
+  end
+
+  private
+
+  def add_websocket_server_url_to_csp
+    websocket_server_url = Setting.websocket_server_url
+    if websocket_server_url.present?
+      uri = URI.parse(websocket_server_url)
+      base_url = "#{uri.scheme}://#{uri.host}"
+
+      append_content_security_policy_directives(connect_src: [base_url])
     end
   end
 end

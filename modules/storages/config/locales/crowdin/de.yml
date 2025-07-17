@@ -81,7 +81,7 @@ de:
     edit_project_folder:
       label: Projektordner bearbeiten
     open:
-      contact_admin: Please contact your administrator to resolve this error.
+      contact_admin: Bitte kontaktieren Sie Ihren Administrator, um diesen Fehler zu beheben.
       remote_identity_error: Unerwarteter Fehler beim Verbinden mit dem Speicher.
     project_folder_mode:
       automatic: Automatisch verwaltet
@@ -129,7 +129,7 @@ de:
               conflict: 'Der Benutzer %{user} konnte aus folgendem Grund nicht zur %{group} Gruppe hinzugefügt werden: %{reason}'
               failed_to_add: 'Der Benutzer %{user} konnte aus folgendem Grund nicht zur %{group} Gruppe hinzugefügt werden: %{reason}'
             create_folder:
-              conflict: The folder %{folder_name} already exists on %{parent_location}.
+              conflict: Der Ordner %{folder_name} existiert bereits in %{parent_location}.
               not_found: "%{parent_location} wurde nicht gefunden."
             ensure_root_folder_permissions:
               not_found: "%{group_folder} wurde nicht gefunden. Bitte überprüfen Sie Ihr Nextcloud Gruppenordner-Setup."
@@ -143,7 +143,7 @@ de:
               conflict: 'Der Benutzer %{user} konnte aus folgendem Grund nicht aus der %{group} Gruppe entfernt werden: %{reason}'
               failed_to_remove: 'Der Benutzer %{user} konnte aus folgendem Grund nicht aus der %{group} Gruppe entfernt werden: %{reason}'
             rename_project_folder:
-              conflict: OpenProject could not rename the project folder to %{current_path} as a folder with the same name already exists
+              conflict: OpenProject konnte den Projektordner nicht in %{current_path} umbenennen, da bereits ein Ordner mit demselben Namen existiert
               forbidden: OpenProject Benutzer hat keinen Zugriff auf den Ordner %{current_path}.
               not_found: "%{current_path} wurde nicht gefunden."
             set_folders_permissions:

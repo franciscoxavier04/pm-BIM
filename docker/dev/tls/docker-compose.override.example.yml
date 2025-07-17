@@ -11,3 +11,4 @@ services:
           - nextcloud.local
           - gitlab.local
           - keycloak.local
+          - hocuspocus.local

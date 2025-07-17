@@ -642,9 +642,9 @@ de:
       title: "Geben Sie Ihr Kennwort ein, um fortzufahren"
     pagination:
       no_other_page: "Sie befinden sich auf der einzigen Seite."
-      pages_skipped: "Pages skipped."
-      page_navigation: "Pagination navigation"
-      per_page_navigation: 'Items per page selection'
+      pages_skipped: "Seiten übersprungen."
+      page_navigation: "Seitennavigation"
+      per_page_navigation: 'Elemente pro Seitenauswahl'
       pages:
         page_number: Seite %{number}
         show_per_page: '%{number} pro Seite anzeigen'
@@ -828,7 +828,7 @@ de:
       bulk_actions:
         edit: "Arbeitspakete bearbeiten"
         delete: "Arbeitspakete löschen"
-        duplicate: "Bulk duplicate"
+        duplicate: "Bulk-Duplikat"
         move: "In anderes Projekt verschieben"
       button_clear: "Zurücksetzen"
       comment_added: "Der Kommentar wurde erfolgreich hinzugefügt."

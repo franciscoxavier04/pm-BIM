@@ -64,6 +64,7 @@ module Queries::Projects
     order Orders::ProjectStatusOrder
     order Orders::RequiredDiskSpaceOrder
     order Orders::TypeaheadOrder
+    order Orders::HierarchyOrder
 
     select Selects::CreatedAt
     select Selects::CustomField

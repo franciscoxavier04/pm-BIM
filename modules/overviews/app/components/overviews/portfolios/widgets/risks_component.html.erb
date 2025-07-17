@@ -1,0 +1,89 @@
+<%#-- copyright
+
+OpenProject is an open source project management software.
+Copyright (C) the OpenProject GmbH
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License version 3.
+
+OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+Copyright (C) 2006-2013 Jean-Philippe Lang
+Copyright (C) 2010-2013 the ChiliProject Team
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+See COPYRIGHT and LICENSE files for more details.
+
+++#%>
+
+<%= render(Primer::Beta::BorderBox.new) do |component|
+  component.with_header do
+    render(Primer::OpenProject::BorderBox::CollapsibleHeader.new(box: component)) do |header|
+      header.with_title do
+        concat(render(Primer::Beta::Octicon.new(icon: :alert, color: :muted, mr: 2)))
+        concat(render(Primer::Beta::Text.new) { "Risiken" })
+      end
+    end
+  end
+  component.with_row do
+    helpers.stimulus_chartjs_canvas(
+      type: :bar,
+      data: {
+        labels: %w[Niedrig Mittel Hoch],
+        datasets: [
+          {
+            "label": "Risiken",
+            "borderColor": "#3B82F6",
+            "backgroundColor": %w[#4AC26B #D4A72C #FA4549],
+            "data": [@groups[:low], @groups[:medium], @groups[:high]]
+          }
+        ]
+      },
+      options: {
+        plugins: {
+          legend: {
+            display: false
+          },
+          datalabels: {
+            anchor: 'end',
+            align: 'top',
+            color: '#333333',
+            font: {
+              weight: 'bold'
+            },
+            display: true
+          }
+        }
+      }
+    )
+  end
+
+  if @project.enabled_module_names.include?("risks")
+    component.with_footer do
+      flex_layout do |flex|
+        flex.with_column(flex: 1) do
+          "#{@groups.values.sum} in allen Portfolio-Elementen"
+        end
+
+        flex.with_column do
+          render(Primer::Beta::Link.new(href: project_risks_path(@project))) do
+            render(Primer::Beta::Text.new(font_weight: :bold)) { "Alle anzeigen" }
+          end
+        end
+      end
+    end
+  end
+end
+%>

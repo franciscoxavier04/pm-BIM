@@ -34,6 +34,7 @@ class WorkPackage::PDFExport::Common::View
 
   FONT_SPEC = {
     latin: [
+      { name: "BundesSansOffice", path: "bundes-sans-office" },
       { name: "NotoSans", path: "noto" }
     ],
     mono: [
@@ -53,6 +54,10 @@ class WorkPackage::PDFExport::Common::View
     set_language_if_valid lang
   end
 
+  def self.default_font
+    FONT_SPEC[:latin].first[:name]
+  end
+
   def options
     @options ||= {}
   end
@@ -68,7 +73,7 @@ class WorkPackage::PDFExport::Common::View
     @document ||= Prawn::Document.new(options.merge(info:)).tap do |document|
       register_fonts! document
 
-      document.set_font document.font("NotoSans")
+      document.set_font document.font(WorkPackage::PDFExport::Common::View::default_font)
       document.fallback_fonts = fallback_fonts
     end
   end

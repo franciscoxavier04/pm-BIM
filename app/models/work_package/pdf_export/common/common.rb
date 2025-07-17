@@ -101,7 +101,11 @@ module WorkPackage::PDFExport::Common::Common
 
     pdf.table(data, options.merge({ width: pdf.bounds.width }), &)
   rescue Prawn::Errors::CannotFit
-    pdf.table(data, options.merge({ column_widths: }), &)
+    pdf_table_fixed_widths(data, column_widths, options, &)
+  end
+
+  def pdf_table_fixed_widths(data, column_widths, options, &)
+    pdf.table(data, options.merge({ column_widths: }), &) unless data.empty?
   end
 
   def draw_text_multiline_left(text:, text_style:, max_left:, top:, max_lines:)
@@ -248,15 +252,19 @@ module WorkPackage::PDFExport::Common::Common
   end
 
   def get_column_value(work_package, column_name)
-    formatter = formatter_for(column_name, :pdf)
+    formatter = wp_formatter_for(column_name, :pdf)
     formatter.format(work_package)
   end
 
   def get_formatted_value(value, column_name)
     return "" if value.nil?
 
-    formatter = formatter_for(column_name, :pdf)
+    formatter = wp_formatter_for(column_name, :pdf)
     formatter.format_value(value, {})
+  end
+
+  def wp_formatter_for(column_name, format)
+    ::Exports::Register.formatter_for(WorkPackage, column_name, format)
   end
 
   def hyphenation_enabled

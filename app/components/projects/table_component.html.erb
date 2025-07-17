@@ -47,8 +47,8 @@ See COPYRIGHT and LICENSE files for more details.
                         <div class="generic-table--sort-header">
                           <%= content_tag :a,
                                           helpers.op_icon("icon-hierarchy"),
-                                          href: href_only_when_not_sort_lft,
-                                          class: "spot-link #{deactivate_class_on_lft_sort}",
+                                          href: href_for_sort_lft,
+                                          class: "spot-link",
                                           data: { "turbo-stream": true },
                                           title: t(:label_sort_by, value: %("#{t(:label_project_hierarchy)}")) %>
                         </div>

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,17 +26,41 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-module BmdsHackathonHelper
-  def kpi_percentage(work_package)
-    raise ArgumentError, "Work package must be of type KPI" unless work_package.type == BmdsHackathon::References.kpi_type
+module ::Overviews
+  class StatusReportController < ::ApplicationController
+    before_action :authorize
+    before_action :find_project_by_project_id
 
-    current = work_package.typed_custom_value_for(BmdsHackathon::References.kpi_current_cf)
-    target = work_package.typed_custom_value_for(BmdsHackathon::References.kpi_target_cf)
+    def create
+      result = if OpenProject::Configuration.haystack_base_url.present?
+                 Overviews::HaystackReportRequest.new(user: current_user).call(@project)
+               else
+                 ServiceResult.success(result: "")
+               end
 
-    return 0 if target.nil? || target.zero?
+      # TODO: Maybe both (success & error) should redirect to new_document_path, just prefilling a lot
+      #       or the whole LLM-interaction is part of new_document_path and happens there
+      result.each do |content|
+        document = persist_report(content).result
+        redirect_to edit_document_path(document)
+      end
+      result.on_failure do
+        flash[:error] = result.errors
+        redirect_to project_overview_path(@project)
+      end
+    end
 
-    current.to_f / target
+    private
+
+    def persist_report(content)
+      Documents::CreateService.new(user: current_user).call(
+        project: @project,
+        category: DocumentCategory.project_status_report,
+        title: "Report erstellt am #{helpers.format_time(Time.zone.now)}",
+        description: content
+      )
+    end
   end
 end
