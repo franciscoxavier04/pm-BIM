@@ -29,42 +29,49 @@
 # ++
 
 class PortfolioProposal < ApplicationRecord
-  belongs_to :portfolio, -> { where(project_type: :portfolio) }, class_name: 'Project'
+  belongs_to :portfolio, -> { where(project_type: :portfolio) }, class_name: "Project"
 
   has_many :portfolio_proposal_projects, dependent: :destroy
   has_many :projects, through: :portfolio_proposal_projects
 
   enum :state, {
-    compose: 0,
+    draft: 0,
     proposed: 1,
-    approved: 2
+    approved: 3,
+    archived: 4
   }
 
   validates :portfolio, presence: true
-  validate :only_one_approved_proposal_per_portfolio
 
   after_save :update_project_hierarchy, if: :state_changed_to_approved?
+  after_save :set_predecessor_state, if: :state_changed_to_approved?
 
   private
 
-  def only_one_approved_proposal_per_portfolio
-    return unless state == 'approved'
-
-    existing_approved = PortfolioProposal.where(portfolio_id: portfolio_id, state: :approved)
-    existing_approved = existing_approved.where.not(id: id) if persisted?
-
-    if existing_approved.exists?
-      errors.add(:state, :only_one_approved_proposal_allowed)
-    end
-  end
-
   def state_changed_to_approved?
-    saved_change_to_state? && state == 'approved'
+    saved_change_to_state? && approved?
   end
 
   def update_project_hierarchy
-    projects.each do |project|
-      project.update(parent_id: portfolio_id)
+    Project
+      .where(parent_id: portfolio_id)
+      .find_each do |project|
+      project.parent_id = nil
+      project.save
     end
+
+    projects.each do |project|
+      project.parent_id = portfolio_id
+      project.save
+    end
+  end
+
+  def set_predecessor_state
+    self
+      .class
+      .where(portfolio_id: portfolio_id)
+      .where(state: PortfolioProposal.states[:approved])
+      .where.not(id: id)
+      .update_all(state: PortfolioProposal.states[:phased_out])
   end
 end

@@ -263,7 +263,7 @@ Rails.application.reloader.to_prepare do
                      {
                        portfolio_managements: %i[show],
                        "portfolio_managements/menus": %i[show],
-                       "portfolio_managements/proposals": %i[new create show index edit update destroy]
+                       "portfolio_managements/proposals": %i[new create show index edit update destroy change_state]
                      },
                      permissible_on: :project
 

@@ -37,6 +37,9 @@ class PortfolioManagementsController < ApplicationController
   before_action :set_query_id_if_nil
   before_action :load_query_or_deny_access
   before_action :authorize
+  before_action :load_proposal
+
+  helper OpPrimer::ComponentHelpers
 
   include SortHelper
   include PaginationHelper
@@ -56,7 +59,9 @@ class PortfolioManagementsController < ApplicationController
 
       format.turbo_stream do
         replace_via_turbo_stream(
-          component: PortfolioManagements::IndexPageHeaderComponent.new(project: @project, query: @query, current_user:,
+          component: PortfolioManagements::IndexPageHeaderComponent.new(project: @project,
+                                                                        query: @query, current_user:,
+                                                                        proposal: @proposal,
                                                                         state: :show, params:)
         )
         update_via_turbo_stream(
@@ -84,10 +89,17 @@ class PortfolioManagementsController < ApplicationController
 
   def load_query_or_deny_access
     super
-    if @query && params[:query_id] == ProjectQueries::Static::CURRENT_PORTFOLIO
+    if @query &&
+       params[:query_id] == ProjectQueries::Static::CURRENT_PORTFOLIO &&
+       !params[:proposal_id] &&
+       !params[:filters]
       @query.where(:ancestor_or_self, "=", [@project.id])
-      @query.clear_changes_information
     end
+    @query.clear_changes_information
+  end
+
+  def load_proposal
+    @proposal = PortfolioProposal.find_by_id(params[:proposal_id])
   end
 
   def set_query_id_if_nil

@@ -5006,6 +5006,11 @@ en:
   label_state_actions: State actions
   label_change_state: Change state
   label_projects: Projects
+  label_proposal_approved: "Portfolio proposal approved"
+  label_new_proposals: "New proposals"
+  label_finalized_proposals: "Finalized proposals"
+  label_pending_proposal: "Pending proposal"
+  label_proposal_last_change: "Last change: %{time}"
 
   button_create_new_portfolio_proposal: Create new portfolio proposal
   button_set_to_compose: Set to "Compose"
@@ -5022,8 +5027,9 @@ en:
 
   portfolio_proposals:
     states:
-      compose: Compose
-      proposed: Proposed
+      draft: Draft
+      proposed: Submitted
       approved: Approved
+      archived: Archived
     contains_elements: "Contains %{count} elements"
     no_elements: "Still empty"

@@ -35,11 +35,12 @@ module PortfolioManagements
     include ApplicationHelper
     include OpTurbo::Streamable
 
-    def initialize(query:, current_user:, disable_buttons: nil)
+    def initialize(query:, proposal:, current_user:, disable_buttons: nil)
       super
       @query = query
       @current_user = current_user
       @disable_buttons = disable_buttons
+      @proposal = proposal
     end
 
     def self.wrapper_key

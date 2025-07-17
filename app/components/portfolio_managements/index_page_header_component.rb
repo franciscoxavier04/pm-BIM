@@ -37,14 +37,15 @@ class PortfolioManagements::IndexPageHeaderComponent < ApplicationComponent
                 :query,
                 :state,
                 :params,
-                :project
+                :project,
+                :proposal
 
   STATE_DEFAULT = :show
   STATE_EDIT = :edit
 
   delegate :projects_query_params, to: :helpers
 
-  def initialize(project:, current_user:, query:, params:, state: STATE_DEFAULT)
+  def initialize(project:, proposal:, current_user:, query:, params:, state: STATE_DEFAULT)
     super
 
     self.current_user = current_user
@@ -57,6 +58,7 @@ class PortfolioManagements::IndexPageHeaderComponent < ApplicationComponent
                  end
     self.params = params
     self.project = project
+    self.proposal = proposal
   end
 
   def self.wrapper_key
@@ -77,7 +79,7 @@ class PortfolioManagements::IndexPageHeaderComponent < ApplicationComponent
   end
 
   def page_title
-    query.name || t(:label_portfolio_management)
+    proposal&.name || query.name || t(:label_portfolio_management)
   end
 
   def may_save_as? = current_user.logged?

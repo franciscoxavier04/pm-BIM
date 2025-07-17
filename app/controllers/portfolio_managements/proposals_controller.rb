@@ -126,7 +126,7 @@ class PortfolioManagements::ProposalsController < ApplicationController
       flash[:error] = @proposal.errors.full_messages.join(", ")
     end
 
-    redirect_to project_portfolio_management_proposal_path(@project, @proposal)
+    redirect_to project_portfolio_management_path(@project)
   end
 
   private

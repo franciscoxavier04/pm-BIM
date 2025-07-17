@@ -32,12 +32,13 @@ See COPYRIGHT and LICENSE files for more details.
   <%= render(
         PortfolioManagements::IndexPageHeaderComponent.new(
           project: @project,
+          proposal: @proposal,
           query:,
           current_user:,
           state:,
           params:
         )
       ) %>
-  <%= render(PortfolioManagements::IndexSubHeaderComponent.new(query:, current_user:, disable_buttons: state === :rename)) %>
+  <%= render(PortfolioManagements::IndexSubHeaderComponent.new(query:, proposal: @proposal, current_user:, disable_buttons: state === :rename)) %>
   <%= render PortfolioManagements::TableComponent.new(query:, current_user: current_user, params:, portfolio: @project) %>
 </div>

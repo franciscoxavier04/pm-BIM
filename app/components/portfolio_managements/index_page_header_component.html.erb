@@ -16,6 +16,20 @@
         page_title
       end
       header.with_breadcrumbs(breadcrumb_items, selected_item_font_weight: current_breadcrumb_element == page_title ? :bold : :normal)
+      if proposal
+        header.with_description do
+          flex_layout(align_items: :center) do |container|
+            container.with_column(mr: 3) do
+              render(PortfolioManagements::StatusButtonComponent.new(proposal:, size: :small))
+            end
+            container.with_column do
+              render(Primer::Beta::Text.new) do
+                I18n.t(:label_proposal_last_change, time: render(OpPrimer::RelativeTimeComponent.new(datetime: proposal.updated_at, prefix: I18n.t(:label_on)))).html_safe
+              end
+            end
+          end
+        end
+      end
 
       if can_save?
         header_save_action(
@@ -31,6 +45,17 @@
           message: t("lists.can_be_saved_as"),
           label: t("button_save_as"),
           href: new_project_query_path(projects_query_params)
+        )
+      end
+
+      if proposal && proposal.proposed?
+        header.with_action_icon_button(
+          icon: "issue-closed",
+          mobile_icon: "issue-closed",
+          label: t(:button_set_to_approved),
+          tag: :a,
+          href: helpers.change_state_project_portfolio_management_proposal_path(project_id: project.id, id: proposal.id, state: "approved"),
+          data: { method: :patch }
         )
       end
 

@@ -17,23 +17,23 @@
       render(Projects::ProjectFilterButtonComponent.new(query: @query, disabled: @disable_buttons))
     end
 
-    if false && @current_user.allowed_globally?(:add_project)
+    if @proposal&.proposed?
       subheader.with_action_button(
         tag: :a,
         href: new_project_path,
         scheme: :primary,
         leading_icon: :plus,
-        label: I18n.t(:label_project_new),
+        label: I18n.t(:button_set_to_approved),
         disabled: @disable_buttons,
         size: :medium,
         data: { "test-selector": "project-new-button" }
       ) do
-        Project.model_name.human
+        I18n.t(:button_set_to_approved)
       end
     end
 
     subheader.with_bottom_pane_component(mt: 0) do
-      render(Projects::ProjectsFiltersComponent.new(query: @query))
+      render(Projects::ProjectsFiltersComponent.new(query: @query, collapsed_by_default: true))
     end
   end %>
 <% end %>

@@ -45,7 +45,8 @@ module PortfolioManagements
     def menu_items
       [
         OpenProject::Menu::MenuGroup.new(header: nil, children: main_static_filters),
-        OpenProject::Menu::MenuGroup.new(header: I18n.t(:label_portfolio_proposals), children: portfolio_proposals)
+        OpenProject::Menu::MenuGroup.new(header: I18n.t(:'portfolio_proposals.states.proposed'), children: portfolio_proposals(:proposed)),
+        OpenProject::Menu::MenuGroup.new(header: I18n.t(:'portfolio_proposals.states.draft'), children: portfolio_proposals(:draft))
       ]
     end
 
@@ -83,9 +84,10 @@ module PortfolioManagements
       end
     end
 
-    def portfolio_proposals
+    def portfolio_proposals(state_name)
       PortfolioProposal
         .where(portfolio: project)
+        .where(state: PortfolioProposal.states[state_name])
         .map do |proposal|
         menu_item(title: proposal.name,
                   query_params: { proposal_id: proposal.id,
