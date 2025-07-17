@@ -271,11 +271,13 @@ module Projects
         form_arguments = button_options.delete(:form_arguments)
         submenu_entries = button_options.delete(:submenu_entries)
         description = button_options.delete(:description)
+        form_arguments = button_options.delete(:form_arguments)
 
         if submenu_entries.present?
           menu.with_sub_menu_item(scheme:,
                                   label:,
                                   test_selector: "project-list-row--action-menu-item",
+                                  form_arguments:,
                                   content_arguments: button_options) do |sub_menu|
             submenu_entries.each do |sub_menu_item|
               add_menu_item_to_action_menu(sub_menu, sub_menu_item)
@@ -286,6 +288,7 @@ module Projects
                          label:,
                          form_arguments:,
                          test_selector: "project-list-row--action-menu-item",
+                         form_arguments:,
                          content_arguments: button_options) do |item|
             item.with_leading_visual_icon(icon:) if icon
             item.with_description.with_content(description) if description

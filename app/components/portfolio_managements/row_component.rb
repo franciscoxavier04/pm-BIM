@@ -74,10 +74,24 @@ module PortfolioManagements
                           I18n.t("portfolio_proposals.contains_elements", count: project_count)
                         end
 
+          project_ids = proposal.projects.pluck(:id) + [project.id]
+          inputs = project_ids.map do |pid|
+            {
+              name: "portfolio_proposal[project_ids][]",
+              value: pid
+            }
+          end
+
+          inputs << { name: "via_context_menu", value: true }
+
           {
             scheme: :default,
             icon: nil,
-            href: edit_project_portfolio_management_proposal_path(portfolio, proposal, add_project: project.id),
+            href: project_portfolio_management_proposal_path(portfolio, proposal),
+            form_arguments: {
+              inputs:,
+              method: :patch
+            },
             description:,
             label: proposal.name,
             aria: { label: proposal.name }
