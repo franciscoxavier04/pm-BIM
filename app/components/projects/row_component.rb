@@ -268,7 +268,6 @@ module Projects
         menu.with_divider
       else
         menu_item => { scheme:, label:, icon:, **button_options }
-        form_arguments = button_options.delete(:form_arguments)
         submenu_entries = button_options.delete(:submenu_entries)
         description = button_options.delete(:description)
         form_arguments = button_options.delete(:form_arguments)
@@ -286,7 +285,6 @@ module Projects
         else
           menu.with_item(scheme:,
                          label:,
-                         form_arguments:,
                          test_selector: "project-list-row--action-menu-item",
                          form_arguments:,
                          content_arguments: button_options) do |item|
