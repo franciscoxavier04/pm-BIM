@@ -104,6 +104,7 @@ class ProjectQuery < ApplicationRecord
               SELECT id, parent_id, ARRAY[row_n] AS orders_path
               FROM with_row_number
               WHERE parent_id IS NULL
+                 OR parent_id NOT IN (SELECT id FROM with_row_number)
             SQL
             Arel.sql(<<~SQL.squish)
               SELECT cur.id, cur.parent_id, parent.orders_path || ARRAY[cur.row_n]
