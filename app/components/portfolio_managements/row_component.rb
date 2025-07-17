@@ -35,6 +35,8 @@ end
 
 module PortfolioManagements
   class RowComponent < Projects::RowComponent
+    delegate :portfolio, to: :table
+
     def more_menu_items
       @more_menu_items ||= [more_menu_subproject_item,
                             more_menu_settings_item,
@@ -67,7 +69,7 @@ module PortfolioManagements
         {
           scheme: :default,
           icon: nil,
-          href: "#",
+          href: "#", # edit_project_portfolio_management_proposal_path for proposal?
           description:,
           label: proposal.name,
           aria: { label: proposal.name }
@@ -78,7 +80,8 @@ module PortfolioManagements
         {
           scheme: :default,
           icon: "plus",
-          href: "#",
+          # TODO: find current portfolio and inject into path
+          href: new_project_portfolio_management_proposal_path(portfolio),
           label: I18n.t(:button_create_new_portfolio_proposal),
           aria: { label: I18n.t(:button_create_new_portfolio_proposal) }
         }
