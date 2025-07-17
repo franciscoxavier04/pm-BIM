@@ -110,7 +110,7 @@ module Projects
                   [%w[lft asc]]
                 end
 
-      projects_path(
+      url_for(
         sortBy: JSON.dump(sort_by),
         **helpers.projects_query_params.slice(*helpers.projects_query_param_names_for_sort)
       )
