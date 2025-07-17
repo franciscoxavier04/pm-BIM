@@ -56,9 +56,12 @@ module PortfolioManagements
       PortfolioProposal.where(state: :draft)
     end
 
-    def may_add_project_to_proposal?(project_ids, proposal)
-      # We do not suggest proposals that already contain this project:
-      !proposal.project_ids.intersect?(project_ids)
+    def project_ids_for_proposal_without_duplicates(possible_project_ids, proposal)
+      proposal_projects = proposal.projects.pluck(:id)
+
+      possible_project_ids.select do |pid|
+        proposal_projects.exclude?(pid)
+      end
     end
 
     def find_all_child_project_ids(program)
@@ -76,10 +79,12 @@ module PortfolioManagements
       # We only allow adding programs and projects to proposals, not portfolios
       return if project.portfolio?
 
-      project_ids_to_add = project.program? ? find_all_child_project_ids(project) : [project.id]
+      project_ids_including_children = project.program? ? find_all_child_project_ids(project) : [project.id]
 
       proposal_entries = portfolio_proposals.filter_map do |proposal|
-        if may_add_project_to_proposal?(project_ids_to_add, proposal)
+        project_ids_to_add = project_ids_for_proposal_without_duplicates(project_ids_including_children, proposal)
+
+        if project_ids_to_add.any?
           project_count = proposal.projects.count
           description = if project_count == 0
                           I18n.t("portfolio_proposals.no_elements")
@@ -116,7 +121,7 @@ module PortfolioManagements
         {
           scheme: :default,
           icon: "plus",
-          href: new_project_portfolio_management_proposal_path(portfolio, add_projects: project_ids_to_add),
+          href: new_project_portfolio_management_proposal_path(portfolio, add_projects: project_ids_including_children),
           label: I18n.t(:button_create_new_portfolio_proposal),
           aria: { label: I18n.t(:button_create_new_portfolio_proposal) }
         }
