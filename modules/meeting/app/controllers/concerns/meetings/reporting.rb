@@ -31,23 +31,23 @@
 module Meetings
   module Reporting
     def generate_report(meeting)
-      if params[:report_portfolio]
+      if params[:report_portfolio] == "1"
         portfolio_changes(meeting)
       end
 
-      if params[:report_budget]
+      if params[:report_budget] == "1"
         report_budget(meeting)
       end
 
-      if params[:report_milestones]
+      if params[:report_milestones] == "1"
         report_milestones(meeting)
       end
 
-      if params[:report_goals]
+      if params[:report_goals] == "1"
         report_goals(meeting)
       end
 
-      if params[:report_risks]
+      if params[:report_risks] == "1"
         report_risks(meeting)
       end
     rescue => e
@@ -118,7 +118,7 @@ module Meetings
             item_type: 1,
             work_package: wp,
             author: User.system,
-            notes: "Neues Meilensteinen seit Vergleichsbasis"
+            notes: "Neuer Meilenstein seit Vergleichsbasis"
           )
         end
     end
