@@ -51,7 +51,7 @@ module Meetings
         report_risks(meeting)
       end
     rescue => e
-      binding.pry
+      Rails.logger.error("Failed to setup report #{e.message}")
     end
 
     def base_query(meeting)
