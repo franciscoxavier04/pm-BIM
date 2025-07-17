@@ -53,7 +53,7 @@ module PortfolioManagements
     end
 
     def portfolio_proposals
-      PortfolioProposal.where(state: :compose)
+      PortfolioProposal.where(state: :draft)
     end
 
     def may_add_project_to_proposal?(project, proposal)
