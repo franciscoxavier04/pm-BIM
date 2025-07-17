@@ -39,7 +39,7 @@ class Queries::Projects::Selects::ManualSortingSelect < Queries::Selects::Base
   end
 
   def caption
-    Query.human_attribute_name(name)
+    I18n.t(:label_rank)
   end
 
   def initialize(*)

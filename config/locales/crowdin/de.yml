@@ -4740,3 +4740,5 @@ de:
 
     contains_elements: "Enthält %{count} Elemente"
     no_elements: "Derzeit leer"
+
+  label_rank: "Rang"
