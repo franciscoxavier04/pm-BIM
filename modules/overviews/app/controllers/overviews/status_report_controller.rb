@@ -44,7 +44,7 @@ module ::Overviews
       #       or the whole LLM-interaction is part of new_document_path and happens there
       result.each do |content|
         document = persist_report(content).result
-        redirect_to edit_document_path(document)
+        redirect_to document_path(document)
       end
       result.on_failure do
         flash[:error] = result.errors
