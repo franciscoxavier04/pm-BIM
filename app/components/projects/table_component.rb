@@ -105,7 +105,7 @@ module Projects
 
     def href_for_sort_lft
       sort_by = if sorted_by_lft?
-                  sort_criteria.to_query_hash.except("lft").to_a
+                  sort_criteria.to_query_hash.except("lft").to_a.presence || [%w[lft asc]]
                 else
                   [%w[lft asc]]
                 end
