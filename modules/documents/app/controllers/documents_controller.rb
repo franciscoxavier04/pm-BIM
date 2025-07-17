@@ -75,18 +75,16 @@ class DocumentsController < ApplicationController
 
   def edit
     @categories = DocumentCategory.all
-
-    if OpenProject::FeatureDecisions.block_note_editor_active?
-      respond_with_dialog Documents::FormModalComponent.new(@document, project: @project)
-    else
-      render action: :edit
-    end
   end
 
   def edit_title
     update_header_component_via_turbo_stream(state: :edit)
 
     respond_with_turbo_streams
+  end
+
+  def edit_category
+    respond_with_dialog Documents::FormModalComponent.new(@document, project: @project)
   end
 
   def create

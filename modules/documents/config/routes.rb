@@ -35,6 +35,7 @@ Rails.application.routes.draw do
 
   resources :documents, except: %i[create new index] do
     member do
+      get :edit_category
       get :edit_title
       put :update_title
       get :cancel_edit

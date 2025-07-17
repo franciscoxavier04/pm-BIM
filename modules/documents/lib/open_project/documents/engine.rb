@@ -49,7 +49,11 @@ module OpenProject::Documents
                    { documents: %i[index show download] },
                    permissible_on: :project
         permission :manage_documents,
-                   { documents: %i[new create edit edit_title update delete_dialog destroy update_title cancel_edit] },
+                   {
+                     documents: %i[
+                       new create edit edit_title edit_category update delete_dialog destroy update_title cancel_edit
+                     ]
+                   },
                    permissible_on: :project,
                    require: :loggedin
       end
