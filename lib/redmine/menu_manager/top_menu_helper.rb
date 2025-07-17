@@ -174,9 +174,11 @@ module Redmine::MenuManager::TopMenuHelper
 
   def render_module_top_menu_node(item_groups = module_top_menu_item_groups)
     unless item_groups.empty?
-      render Primer::Alpha::ActionMenu.new(classes: "op-app-menu--item",
-                                           menu_id: "op-app-header--modules-menu",
-                                           anchor_align: :end) do |menu|
+      render Primer::Alpha::Dialog.new(classes: "op-app-menu--item",
+                                       title: "waffle menu",
+                                       visually_hide_title: true,
+                                       menu_id: "op-app-header--modules-menu",
+                                       position: :left) do |menu|
         menu.with_show_button(icon: "op-grid-menu",
                               scheme: :invisible,
                               classes: "op-app-menu--item-action op-app-header--primer-button",
@@ -192,16 +194,17 @@ module Redmine::MenuManager::TopMenuHelper
   end
 
   def render_menu_item_group(menu, item_group)
-    menu.with_group do |menu_group|
-      menu_group.with_heading(title: item_group[:title], align_items: :flex_start) if item_group[:title]
-
-      item_group[:items].each do |item|
-        menu_group.with_item(
-          href: url_for(item.url),
-          label: item.caption,
-          test_selector: "op-menu--item-action"
-        ) do |menu_item|
-          menu_item.with_leading_visual_icon(icon: item.icon) if item.icon
+    menu.with_body do
+      render(Primer::Alpha::ActionList.new) do |component|
+        component.with_heading(title: item_group[:title], align_items: :flex_start) if item_group[:title]
+        item_group[:items].each do |item|
+          component.with_item(
+            href: url_for(item.url),
+            label: item.caption,
+            test_selector: "op-menu--item-action"
+          ) do |menu_item|
+            menu_item.with_leading_visual_icon(icon: item.icon) if item.icon
+          end
         end
       end
     end
