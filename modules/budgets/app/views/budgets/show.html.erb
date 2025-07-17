@@ -51,6 +51,17 @@ See COPYRIGHT and LICENSE files for more details.
           value: @budget.state.present? ? I18n.t(@budget.state, scope: %i[activerecord attributes budget states]) : "-"
         )
         component.with_attribute(
+          key: Budget.human_attribute_name(:parent_budget),
+          value: if @budget.parent_budget_relation.present?
+                   link_to(
+                     "#{@budget.parent_budget.project.name}: #{@budget.parent_budget.subject} (#{I18n.t(@budget.parent_budget_relation.relation_type, scope: %i[activerecord attributes budget_relation relation_types])})",
+                     budget_path(@budget.parent_budget)
+                   )
+                 else
+                   "-"
+                 end
+        )
+        component.with_attribute(
           key: Budget.human_attribute_name(:description),
           value: content_tag(:div, class: "op-uc-container") do
             format_text @budget, :description, attachments: @budget.attachments
@@ -116,7 +127,7 @@ See COPYRIGHT and LICENSE files for more details.
 <tr>
   <td> <%= link_to rel.child_budget.subject, budget_path(rel.child_budget) %> </td>
   <td> <%= link_to rel.child_budget.project.name, project_path(rel.child_budget.project) %> </td>
-  <td> <%= rel.relation_type %> </td>
+  <td> <%= I18n.t(rel.relation_type, scope: %i[activerecord attributes budget_relation relation_types]) %> </td>
   <td> <%= number_to_currency(rel.child_budget.budget) %></td>
   </tr>
 <%- end %>
