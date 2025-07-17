@@ -43,18 +43,17 @@ module Budgets
     def breadcrumb_items
       [
         { href: project_overview_path(@project.id), text: @project.name },
-       { href: projects_budgets_path(@project.id), text: t(:label_budget_plural) },
-       { href: budget_path(@budget.id), text: t(:label_budget_id, id: @budget.id) },
-       t(:button_manage_parent)
-    ]
+        { href: projects_budgets_path(@project.id), text: t(:label_budget_plural) },
+        { href: budget_path(@budget.id), text: t(:label_budget_id, id: @budget.id) },
+        t(:button_manage_parent)
+      ]
     end
 
-
     def call
-        render(Primer::OpenProject::PageHeader.new) do |header|
-    header.with_title { t(:button_manage_parent) }
-    header.with_breadcrumbs(breadcrumb_items)
-        end
-        end
+      render(Primer::OpenProject::PageHeader.new) do |header|
+        header.with_title { t(:button_manage_parent) }
+        header.with_breadcrumbs(breadcrumb_items)
+      end
+    end
   end
 end
