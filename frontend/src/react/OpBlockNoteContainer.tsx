@@ -33,10 +33,16 @@ import { BlockNoteView } from "@blocknote/mantine";
 import { getDefaultReactSlashMenuItems, SuggestionMenuController, useCreateBlockNote } from "@blocknote/react";
 import { dummyBlockSpec, getDefaultOpenProjectSlashMenuItems, openProjectWorkPackageBlockSpec } from "op-blocknote-extensions";
 import { useEffect, useState } from "react";
+import { HocuspocusProvider } from "@hocuspocus/provider";
+import * as Y from 'yjs';
 
 export interface OpBlockNoteContainerProps {
   inputField: HTMLInputElement;
   inputText?: string;
+  websocketUrl: string;
+  websocketAccessToken: string;
+  userName: string;
+  documentId: string;
 }
 
 const schema = BlockNoteSchema.create({
@@ -54,11 +60,36 @@ const detectTheme = (): "light" | "dark" => {
   return 'light';
 };
 
-export default function OpBlockNoteContainer({ inputField, inputText }: OpBlockNoteContainerProps) {
+export default function OpBlockNoteContainer({ inputField,
+                                               inputText,
+                                               userName,
+                                               websocketUrl,
+                                               websocketAccessToken,
+                                               documentId }: OpBlockNoteContainerProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [theme, setTheme] = useState<"light" | "dark">(detectTheme);
 
-  const editor = useCreateBlockNote({ schema });
+  let collaboration: any;
+  if(websocketUrl != '' && documentId != '' && websocketAccessToken != '' && userName != '') {
+    const doc = new Y.Doc()
+    const provider = new HocuspocusProvider({
+      url: websocketUrl,
+      name: documentId,
+      token: websocketAccessToken,
+      document: doc
+    });
+    const cursorColor = '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+    collaboration = {
+      provider,
+      fragment: doc.getXmlFragment("document-store"),
+      user: {
+        name: userName,
+        color: cursorColor,
+      },
+      showCursorLabels: "activity"
+    }
+  }
+  const editor = useCreateBlockNote({collaboration, schema });
   type EditorType = typeof editor;
 
   const getCustomSlashMenuItems = (editor: EditorType) => {
