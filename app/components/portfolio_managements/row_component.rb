@@ -139,6 +139,7 @@ module PortfolioManagements
               inputs:,
               method: :patch
             },
+            data: { turbo: false },
             description:,
             label: proposal.name,
             aria: { label: proposal.name }

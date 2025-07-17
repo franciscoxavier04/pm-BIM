@@ -91,18 +91,22 @@ class PortfolioManagements::ProposalsController < ApplicationController
 
   def update
     if @proposal.update(proposal_params)
+      flash[:notice] = t(:notice_successful_update)
       if params[:via_context_menu]
-        flash.now[:notice] = t(:notice_successful_update)
-        render turbo_stream: turbo_stream.replace("flash-messages", helpers.render_flash_messages)
+        redirect_to proposal_project_path_with_filters
       else
-        flash[:notice] = t(:notice_successful_update)
         redirect_to project_portfolio_management_proposal_path(@project, @proposal)
       end
     else
-      respond_to do |format|
-        format.html { render :edit }
-        format.turbo_stream do
-          render turbo_stream: turbo_stream.replace("flash-messages", helpers.render_flash_messages)
+      if params[:via_context_menu]
+        flash[:error] = @proposal.errors.full_messages.join(", ")
+        redirect_to proposal_project_path_with_filters
+      else
+        respond_to do |format|
+          format.html { render :edit }
+          format.turbo_stream do
+            render turbo_stream: turbo_stream.replace("flash-messages", helpers.render_flash_messages)
+          end
         end
       end
     end
