@@ -187,7 +187,7 @@ module PortfolioManagements
     end
 
     def more_menu_remove_from_proposal
-      if proposal.present? && proposal.draft?
+      if proposal.present? && proposal.draft? && project.project?
         {
           scheme: :danger,
           icon: :"no-entry",
