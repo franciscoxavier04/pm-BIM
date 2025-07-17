@@ -34,12 +34,13 @@ module Meetings
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
-    def initialize(meeting:, project:, copy_from: nil)
+    def initialize(meeting:, project:, copy_from: nil, report: false)
       super
 
       @meeting = meeting
       @project = project
       @copy_from = copy_from
+      @report = report
     end
 
     private
@@ -55,6 +56,7 @@ module Meetings
     def title
       return I18n.t(:label_meeting_copy) if @copy_from
       return I18n.t(:label_meeting_edit) if @meeting.persisted?
+      return "Statusbericht-Besprechung erzeugen" if @report
 
       case @meeting
       when RecurringMeeting

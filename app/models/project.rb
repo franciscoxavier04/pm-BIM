@@ -256,6 +256,28 @@ class Project < ApplicationRecord
     name
   end
 
+  def human_project_type
+    case project_type
+    when "portfolio"
+      "Portfolio"
+    when "program"
+      "Programm"
+    else
+      "Projekt"
+    end
+  end
+
+  def human_project_type_with_hierarchy
+    case project_type
+    when "portfolio"
+      "Portfolio und Portfolioelemente"
+    when "program"
+      "Programm und Projekte"
+    else
+      "Projekt und Unterprojekte"
+    end
+  end
+
   # Return true if this project is allowed to do the specified action.
   # action can be:
   # * a parameter-like Hash (eg. controller: '/projects', action: 'edit')
