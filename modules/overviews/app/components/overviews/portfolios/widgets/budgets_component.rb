@@ -34,6 +34,36 @@ module Overviews
       class BudgetsComponent < ApplicationComponent
         include OpPrimer::ComponentHelpers
         include ApplicationHelper
+
+        attr_reader :project, :project_budgets
+
+        def initialize(model = nil, project:, **)
+          super(model, **)
+
+          @project = project
+          @project_budgets = ::Budgets::ProjectBudgets.new(project)
+        end
+
+        def projects_list_with_budgets_columns_path
+          projects_path(
+            columns: [
+              "name",
+              Queries::Projects::Selects::BudgetPlanned,
+              Queries::Projects::Selects::BudgetAllocated,
+              Queries::Projects::Selects::BudgetSpent,
+              Queries::Projects::Selects::BudgetAvailable
+            ].map { column_key(it) }.join(" "),
+            filters: [
+              "#{Queries::Projects::Filters::ActiveFilter.key} = t",
+              "#{Queries::Projects::Filters::AncestorOrSelfFilter.key} = #{project.id}"
+            ].join("&"),
+            query_id: "active"
+          )
+        end
+
+        def column_key(column)
+          column.respond_to?(:key) ? column.key.to_s : column
+        end
       end
     end
   end
