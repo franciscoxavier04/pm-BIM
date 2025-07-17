@@ -36,6 +36,6 @@ class Overviews::HaystackReportRequest
   def call(project)
     result = @request_service.call(path: "/generate-project-status-report", project:)
 
-    result.map { |json| json.dig("report", "content") }
+    result.map { |json| json.fetch("report") }
   end
 end
