@@ -35,13 +35,13 @@ RB.Impediment = (function ($) {
   // @ts-expect-error TS(2304): Cannot find name 'RB'.
   return RB.Object.create(RB.Task, {
 
-    initialize: function (el: any) {
-      var j;  // This ensures that we use a local 'j' variable, not a global one.
+    initialize(el:any) {
+      let j; // This ensures that we use a local 'j' variable, not a global one.
 
       this.$ = j = $(el);
       this.el = el;
 
-      j.addClass("impediment"); // If node is based on #task_template, it doesn't have the impediment class yet
+      j.addClass('impediment'); // If node is based on #task_template, it doesn't have the impediment class yet
 
       // Associate this object with the element for later retrieval
       j.data('this', this);
@@ -50,35 +50,38 @@ RB.Impediment = (function ($) {
     },
 
     // Override saveDirectives of RB.Task
-    saveDirectives: function () {
-      var j, prev, statusID, data, url;
+    saveDirectives() {
+      let j;
+      let prev;
+      let statusID;
+      let data;
+      let url;
 
       j = this.$;
       prev = this.$.prev();
-      statusID = j.parent('td').first().attr('id').split("_")[1];
+      statusID = j.parent('td').first().attr('id').split('_')[1];
 
-      data = j.find('.editor').serialize() +
-                 "&is_impediment=true" +
+      data = `${j.find('.editor').serialize()
+                 }&is_impediment=true`
                  // @ts-expect-error TS(2304): Cannot find name 'RB'.
-                 "&version_id=" + RB.constants.sprint_id +
-                 "&status_id=" + statusID +
-                 "&prev=" + (prev.length === 1 ? prev.data('this').getID() : '') +
-                 (this.isNew() ? "" : "&id=" + j.children('.id').text());
+                 + `&version_id=${RB.constants.sprint_id
+                 }&status_id=${statusID
+                 }&prev=${prev.length === 1 ? prev.data('this').getID() : ''
+                 }${this.isNew() ? '' : `&id=${j.children('.id').text()}`}`;
 
       if (this.isNew()) {
         // @ts-expect-error TS(2304): Cannot find name 'RB'.
-        url = RB.urlFor('create_impediment', {sprint_id: RB.constants.sprint_id});
-      }
-      else {
+        url = RB.urlFor('create_impediment', { sprint_id: RB.constants.sprint_id });
+      } else {
         // @ts-expect-error TS(2304): Cannot find name 'RB'.
-        url = RB.urlFor('update_impediment', {id: this.getID(), sprint_id: RB.constants.sprint_id});
-        data += "&_method=put";
+        url = RB.urlFor('update_impediment', { id: this.getID(), sprint_id: RB.constants.sprint_id });
+        data += '&_method=put';
       }
 
       return {
-        url: url,
-        data: data
+        url,
+        data,
       };
-    }
+    },
   });
 }(jQuery));
