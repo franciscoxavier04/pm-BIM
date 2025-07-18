@@ -146,6 +146,22 @@ RSpec.describe FlashMessagesHelper do
       it_behaves_like "rendering nothing"
     end
 
+    context "with an empty flash message" do
+      before do
+        flash[:info] = "" # rubocop:disable Rails/I18nLocaleTexts
+      end
+
+      it_behaves_like "rendering nothing"
+    end
+
+    context "with a nil flash message" do
+      before do
+        flash[:info] = nil
+      end
+
+      it_behaves_like "rendering nothing"
+    end
+
     context "with an :info flash message" do
       before do
         flash[:info] = "zu deiner Information" # rubocop:disable Rails/I18nLocaleTexts

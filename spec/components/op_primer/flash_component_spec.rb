@@ -31,33 +31,82 @@
 require "rails_helper"
 
 RSpec.describe OpPrimer::FlashComponent, type: :component do
-  def render_component(content, ...)
-    render_inline(described_class.new(...).with_content(content))
+  describe "#render" do
+    def render_component(content, ...)
+      render_inline(described_class.new(...).with_content(content))
+    end
+
+    subject(:rendered_component) { render_component(content) }
+
+    context "with content" do
+      let(:content) { "Flash Text" }
+
+      it "renders an x-banner" do
+        expect(rendered_component).to have_element "x-banner"
+      end
+
+      it "renders the banner text" do
+        expect(rendered_component).to have_css ".Banner-message .Banner-title", text: "Flash Text"
+      end
+    end
+
+    context "with blank content" do
+      let(:content) { " " }
+
+      it "renders nothing" do
+        expect(rendered_component.to_s).to be_empty
+      end
+
+      it "does not render an x-banner" do
+        expect(rendered_component).to have_no_element "x-banner"
+      end
+
+      it "does not render the banner text" do
+        expect(rendered_component).to have_no_css ".Banner-message .Banner-title"
+      end
+    end
   end
 
-  subject(:rendered_component) { render_component(content) }
-
-  context "with content" do
-    let(:content) { "Flash Text" }
-
-    it "renders an x-banner" do
-      expect(rendered_component).to have_element "x-banner"
+  describe "#render_as_turbo_stream" do
+    def render_component_as_turbo_stream(content, ...)
+      component_class = described_class
+      render_in_view_context do
+        component_class.new(...)
+          .with_content(content)
+          .render_as_turbo_stream(view_context: self, action: :flash)
+      end
     end
 
-    it "renders the banner text" do
-      expect(rendered_component).to have_css ".Banner-message .Banner-title", text: "Flash Text"
+    subject(:rendered_component) { render_component_as_turbo_stream(content) }
+
+    let(:rendered_template) { Nokogiri(rendered_component.to_s).css("turbo-stream template").first&.inner_html&.strip }
+
+    context "with content" do
+      let(:content) { "Flash Text" }
+
+      it "renders a template" do
+        expect(rendered_template).not_to be_blank
+      end
+
+      it "renders an x-banner within the template" do
+        expect(rendered_template).to have_element "x-banner"
+      end
+
+      it "renders the banner text within the template" do
+        expect(rendered_template).to have_css ".Banner-message .Banner-title", text: "Flash Text"
+      end
     end
-  end
 
-  context "with blank content" do
-    let(:content) { " " }
+    context "with blank content" do
+      let(:content) { " " }
 
-    it "does not render an x-banner" do
-      expect(rendered_component).to have_no_element "x-banner"
-    end
+      it "renders nothing" do
+        expect(rendered_component.to_s).to be_empty
+      end
 
-    it "does not render the banner text" do
-      expect(rendered_component).to have_no_css ".Banner-message .Banner-title"
+      it "does not render a template" do
+        expect(rendered_template).to be_nil
+      end
     end
   end
 end
