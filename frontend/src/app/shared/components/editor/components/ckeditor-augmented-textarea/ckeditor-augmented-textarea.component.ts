@@ -146,7 +146,7 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
     // Parse the resource if any exists
     this.halResource = this.resource ? this.halResourceService.createHalResource(this.resource, true) : undefined;
 
-    this.formElement = this.element.closest<HTMLFormElement>('form') as HTMLFormElement;
+    this.formElement = this.element.closest('form')!;
 
     this.wrappedTextArea = document.getElementById(this.textAreaId) as HTMLTextAreaElement;
 
@@ -212,10 +212,6 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
   }
 
   public setup(editor:ICKEditorInstance) {
-    // Have a hacky way to access the editor from outside of angular.
-    // This is e.g. employed to set the text from outside to reuse the same editor for different languages.
-    jQuery(this.element).data('editor', editor);
-
     this.setupMarkingReadonlyWhenTextareaIsDisabled(editor);
 
     if (this.halResource?.attachments) {
