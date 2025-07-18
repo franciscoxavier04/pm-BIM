@@ -163,7 +163,7 @@ RB.Backlog = (function ($) {
       var total: any;
 
       if (!this.isSprintBacklog()) {
-        return true;
+        return;
       }
 
       total = 0;
