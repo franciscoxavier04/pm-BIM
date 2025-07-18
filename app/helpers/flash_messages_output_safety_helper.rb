@@ -36,10 +36,6 @@ module FlashMessagesOutputSafetyHelper
   end
 
   def join_flash_messages(messages)
-    if messages.respond_to?(:join)
-      safe_join(messages, "<br />".html_safe)
-    else
-      messages
-    end
+    safe_join(Array(messages), "<br />".html_safe)
   end
 end
