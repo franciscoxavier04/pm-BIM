@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,30 +28,36 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module OpPrimer
-  class FlashComponent < Primer::Alpha::Banner
-    include ApplicationHelper
-    include OpTurbo::Streamable
-    include OpPrimer::ComponentHelpers
+require "rails_helper"
 
-    def initialize(**system_arguments)
-      @unique_key = system_arguments.delete(:unique_key)
+RSpec.describe OpPrimer::FlashComponent, type: :component do
+  def render_component(content, ...)
+    render_inline(described_class.new(...).with_content(content))
+  end
 
-      system_arguments[:test_selector] ||= "op-primer-flash-message"
-      system_arguments[:dismiss_scheme] ||= :remove
-      system_arguments[:dismiss_label] ||= I18n.t(:button_close)
-      system_arguments[:data] ||= {}
-      system_arguments[:data]["flash-target"] = "flash"
+  subject(:rendered_component) { render_component(content) }
 
-      @autohide = system_arguments[:scheme] == :success && system_arguments[:dismiss_scheme] != :none
+  context "with content" do
+    let(:content) { "Flash Text" }
 
-      super
+    it "renders an x-banner" do
+      expect(rendered_component).to have_element "x-banner"
     end
 
-    private
+    it "renders the banner text" do
+      expect(rendered_component).to have_css ".Banner-message .Banner-title", text: "Flash Text"
+    end
+  end
 
-    def render?
-      trimmed_content.present?
+  context "with blank content" do
+    let(:content) { " " }
+
+    it "does not render an x-banner" do
+      expect(rendered_component).to have_no_element "x-banner"
+    end
+
+    it "does not render the banner text" do
+      expect(rendered_component).to have_no_css ".Banner-message .Banner-title"
     end
   end
 end
