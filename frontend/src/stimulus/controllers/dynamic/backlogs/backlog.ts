@@ -43,7 +43,7 @@ RB.Backlog = (function ($) {
   // @ts-expect-error TS(2304): Cannot find name 'RB'.
   return RB.Object.create({
 
-    initialize: function (el: any) {
+    initialize(el:any) {
       this.$ = $(el);
       this.el = el;
 
@@ -54,19 +54,19 @@ RB.Backlog = (function ($) {
       this.getList().sortable({
         connectWith: '.stories',
         dropOnEmpty: true,
-        start:   this.dragStart,
-        stop:    this.dragStop,
-        update:  this.dragComplete,
+        start: this.dragStart,
+        stop: this.dragStop,
+        update: this.dragComplete,
         receive: this.dragChanged,
-        remove:  this.dragChanged,
+        remove: this.dragChanged,
         containment: $('#backlogs_container'),
         cancel: 'input, textarea, button, select, option, .prevent_drag',
         scroll: true,
-        helper: function(event: any, ui: any){
-          var $clone =  $(ui).clone();
-          $clone .css('position','absolute');
+        helper(event:any, ui:any) {
+          const $clone = $(ui).clone();
+          $clone.css('position', 'absolute');
           return $clone.get(0);
-        }
+        },
       });
 
       // Observe menu items
@@ -81,7 +81,7 @@ RB.Backlog = (function ($) {
       }
 
       // Initialize each item in the backlog
-      this.getStories().each(function(this: any, index: any) {
+      this.getStories().each(function (this:any, index:any) {
         // 'this' refers to an element with class="story"
         // @ts-expect-error TS(2304): Cannot find name 'RB'.
         RB.Factory.initialize(RB.Story, this);
@@ -92,12 +92,12 @@ RB.Backlog = (function ($) {
       }
     },
 
-    dragChanged: function (e: any, ui: any) {
+    dragChanged(e:any, ui:any) {
       $(this).parents('.backlog').data('this').refresh();
     },
 
-    dragComplete: function (e: any, ui: any) {
-      var isDropTarget = (ui.sender === null || ui.sender === undefined);
+    dragComplete(e:any, ui:any) {
+      const isDropTarget = (ui.sender === null || ui.sender === undefined);
 
       // jQuery triggers dragComplete of source and target.
       // Thus we have to check here. Otherwise, the story
@@ -107,29 +107,29 @@ RB.Backlog = (function ($) {
       }
     },
 
-    dragStart: function (e: any, ui: any) {
-      ui.item.addClass("dragging");
+    dragStart(e:any, ui:any) {
+      ui.item.addClass('dragging');
     },
 
-    dragStop: function (e: any, ui: any) {
-      ui.item.removeClass("dragging");
+    dragStop(e:any, ui:any) {
+      ui.item.removeClass('dragging');
     },
 
-    getSprint: function () {
-      return $(this.el).find(".model.sprint").first();
+    getSprint() {
+      return $(this.el).find('.model.sprint').first();
     },
 
-    getStories: function () {
-      return this.getList().children(".story");
+    getStories() {
+      return this.getList().children('.story');
     },
 
-    getList: function () {
-      return this.$.children(".stories").first();
+    getList() {
+      return this.$.children('.stories').first();
     },
 
-    handleNewStoryClick: function (e: any) {
-      var toggler = $(this).parents('.header').find('.toggler');
-      if (toggler.hasClass('closed')){
+    handleNewStoryClick(e:any) {
+      const toggler = $(this).parents('.header').find('.toggler');
+      if (toggler.hasClass('closed')) {
         toggler.click();
       }
       e.preventDefault();
@@ -137,12 +137,13 @@ RB.Backlog = (function ($) {
     },
 
     // return true if backlog has an element with class="sprint"
-    isSprintBacklog: function () {
+    isSprintBacklog() {
       return $(this.el).find('.sprint').length === 1;
     },
 
-    newStory: function () {
-      var story, o;
+    newStory() {
+      let story;
+      let o;
 
       story = $('#story_template').children().first().clone();
       this.getList().prepend(story);
@@ -154,28 +155,28 @@ RB.Backlog = (function ($) {
       story.find('.editor').first().focus();
     },
 
-    refresh : function () {
+    refresh() {
       this.recalcVelocity();
       this.recalcOddity();
     },
 
-    recalcVelocity: function () {
-      var total: any;
+    recalcVelocity() {
+      let total:any;
 
       if (!this.isSprintBacklog()) {
         return;
       }
 
       total = 0;
-      this.getStories().each(function(this: any, index: any) {
+      this.getStories().each(function (this:any, index:any) {
         total += $(this).data('this').getPoints();
       });
       this.$.children('.header').children('.velocity').text(total);
     },
 
-    recalcOddity : function () {
+    recalcOddity() {
       this.$.find('.story:even').removeClass('odd').addClass('even');
       this.$.find('.story:odd').removeClass('even').addClass('odd');
-    }
+    },
   });
 }(jQuery));

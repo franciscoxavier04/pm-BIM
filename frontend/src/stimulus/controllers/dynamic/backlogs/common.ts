@@ -32,16 +32,21 @@ if (window.RB === null || window.RB === undefined) {
   window.RB = {};
 }
 
-
 (function ($) {
-  var object: any, Factory, Dialog, UserPreferences,
-      ajax;
+  let object:any;
+  let Factory;
+  let Dialog;
+  let UserPreferences;
+  let ajax;
 
   object = {
     // Douglas Crockford's technique for object extension
     // http://javascript.crockford.com/prototypal.html
-    create: function () {
-      var obj, i, methods, methodName;
+    create() {
+      let obj;
+      let i;
+      let methods;
+      let methodName;
 
       function F() {
       }
@@ -63,34 +68,33 @@ if (window.RB === null || window.RB === undefined) {
         }
       }
       return obj;
-    }
+    },
   };
-
 
   // Object factory for chiliproject_backlogs
   Factory = object.create({
 
-    initialize: function (objType: any, el: any) {
-      var obj;
+    initialize(objType:any, el:any) {
+      let obj;
 
       obj = object.create(objType);
       obj.initialize(el);
       return obj;
-    }
+    },
 
   });
 
   // Utilities
   Dialog = object.create({
-    msg: function (msg: any) {
-      var dialog, baseClasses;
+    msg(msg:any) {
+      let dialog;
+      let baseClasses;
 
       baseClasses = 'ui-button ui-widget ui-state-default ui-corner-all';
 
       if ($('#msgBox').length === 0) {
         dialog = $('<div id="msgBox"></div>').appendTo('body');
-      }
-      else {
+      } else {
         dialog = $('#msgBox');
       }
 
@@ -101,26 +105,27 @@ if (window.RB === null || window.RB === undefined) {
         {
           text: 'OK',
           class: 'button -primary',
-          click: function () {
-            $(this).dialog("close");
-          }
+          click() {
+            $(this).dialog('close');
+          },
         }],
-        modal: true
+        modal: true,
       });
       $('.button').removeClass(baseClasses);
       $('.ui-icon-closethick').prop('title', 'close');
-    }
+    },
   });
 
   ajax = (function () {
-    var ajaxQueue: any, ajaxOngoing: any,
-        processAjaxQueue: any;
+    let ajaxQueue:any;
+    let ajaxOngoing:any;
+    let processAjaxQueue:any;
 
     ajaxQueue = [];
     ajaxOngoing = false;
 
     processAjaxQueue = function () {
-      var options = ajaxQueue.shift();
+      const options = ajaxQueue.shift();
 
       if (options !== null && options !== undefined) {
         ajaxOngoing = true;
@@ -130,12 +135,12 @@ if (window.RB === null || window.RB === undefined) {
 
     // Process outstanding entries in the ajax queue whenever a ajax request
     // finishes.
-    $(document).ajaxComplete(function (event, xhr, settings) {
+    $(document).ajaxComplete((event, xhr, settings) => {
       ajaxOngoing = false;
       processAjaxQueue();
     });
 
-    return function (options: any) {
+    return function (options:any) {
       ajaxQueue.push(options);
       if (!ajaxOngoing) {
         processAjaxQueue();
@@ -146,13 +151,13 @@ if (window.RB === null || window.RB === undefined) {
   // Abstract the user preference from the rest of the RB objects
   // so that we can change the underlying implementation as needed
   UserPreferences = object.create({
-    get: function (key: any) {
+    get(key:any) {
       return $.cookie(key);
     },
 
-    set: function (key: any, value: any) {
+    set(key:any, value:any) {
       $.cookie(key, value, { expires: 365 * 10 });
-    }
+    },
   });
 
   // @ts-expect-error TS(2304): Cannot find name 'RB'.
@@ -165,5 +170,4 @@ if (window.RB === null || window.RB === undefined) {
   RB.UserPreferences = UserPreferences;
   // @ts-expect-error TS(2304): Cannot find name 'RB'.
   RB.ajax = ajax;
-
 }(jQuery));

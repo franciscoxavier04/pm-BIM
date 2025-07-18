@@ -37,17 +37,18 @@ RB.Model = (function ($) {
   // @ts-expect-error TS(2304): Cannot find name 'RB'.
   return RB.Object.create({
 
-    initialize: function (el: any) {
+    initialize(el:any) {
       this.$ = $(el);
       this.el = el;
     },
 
-    afterCreate: function (data: any, textStatus: any, xhr: any) {
+    afterCreate(data:any, textStatus:any, xhr:any) {
       // Do nothing. Child objects may optionally override this
     },
 
-    afterSave: function (data: any, textStatus: any, xhr: any) {
-      var isNew, result;
+    afterSave(data:any, textStatus:any, xhr:any) {
+      let isNew;
+      let result;
 
       isNew = this.isNew();
       // @ts-expect-error TS(2304): Cannot find name 'RB'.
@@ -59,48 +60,46 @@ RB.Model = (function ($) {
       if (isNew) {
         this.$.attr('id', result.$.attr('id'));
         this.afterCreate(data, textStatus, xhr);
-      }
-      else {
+      } else {
         this.afterUpdate(data, textStatus, xhr);
       }
     },
 
-    afterUpdate: function (data: any, textStatus: any, xhr: any) {
+    afterUpdate(data:any, textStatus:any, xhr:any) {
       // Do nothing. Child objects may optionally override this
     },
 
-    beforeSave: function () {
+    beforeSave() {
       // Do nothing. Child objects may or may not override this method
     },
 
-    cancelEdit: function () {
+    cancelEdit() {
       this.endEdit();
       if (this.isNew()) {
         this.$.hide('blind');
       }
     },
 
-    close: function () {
+    close() {
       this.$.addClass('closed');
     },
 
-    copyFromDialog: function () {
-      var editors;
+    copyFromDialog() {
+      let editors;
 
-      if (this.$.find(".editors").length === 0) {
+      if (this.$.find('.editors').length === 0) {
         editors = $("<div class='editors'></div>").appendTo(this.$);
+      } else {
+        editors = this.$.find('.editors').first();
       }
-      else {
-        editors = this.$.find(".editors").first();
-      }
-      editors.html("");
-      editors.append($("#" + this.getType().toLowerCase() + "_editor").children(".editor"));
+      editors.html('');
+      editors.append($(`#${this.getType().toLowerCase()}_editor`).children('.editor'));
       this.saveEdits();
     },
 
-    displayEditor: function (editor: any) {
-      var self = this,
-          baseClasses;
+    displayEditor(editor:any) {
+      const self = this;
+          let baseClasses;
 
       baseClasses = 'ui-button ui-widget ui-state-default ui-corner-all';
 
@@ -109,43 +108,43 @@ RB.Model = (function ($) {
         {
           text: 'OK',
           class: 'button -primary',
-          click: function () {
+          click() {
             self.copyFromDialog();
-            $(this).dialog("close");
-          }
+            $(this).dialog('close');
+          },
         },
         {
           text: 'Cancel',
           class: 'button',
-          click: function () {
+          click() {
             self.cancelEdit();
-            $(this).dialog("close");
-          }
+            $(this).dialog('close');
+          },
         },
         ],
-        close: function (e: any, ui: any) {
+        close(e:any, ui:any) {
           if (e.type === 'click' || (e.type === 'keydown' && e.key === 'Escape')) {
             self.cancelEdit();
           }
         },
-        dialogClass: this.getType().toLowerCase() + '_editor_dialog',
-        modal:       true,
-        position:    { my: 'center', at: 'center', of: window },
-        resizable:   false,
-        title:       (this.isNew() ? this.newDialogTitle() : this.editDialogTitle())
+        dialogClass: `${this.getType().toLowerCase()}_editor_dialog`,
+        modal: true,
+        position: { my: 'center', at: 'center', of: window },
+        resizable: false,
+        title: (this.isNew() ? this.newDialogTitle() : this.editDialogTitle()),
       });
-      editor.find(".editor").first().focus();
+      editor.find('.editor').first().focus();
       $('.button').removeClass(baseClasses);
       $('.ui-icon-closethick').prop('title', 'close');
     },
 
-    edit: function () {
-      var editor = this.getEditor(),
-          self = this,
-          maxTabIndex = 0;
+    edit() {
+      const editor = this.getEditor();
+          const self = this;
+          let maxTabIndex = 0;
 
       $('.stories .editors .editor').each(function (index) {
-        var value;
+        let value;
 
         // @ts-expect-error TS(2345): Argument of type 'string | undefined' is not assig... Remove this comment to see the full error message
         value = parseInt($(this).attr('tabindex'), 10);
@@ -156,7 +155,7 @@ RB.Model = (function ($) {
       });
 
       if (!editor.hasClass('permanent')) {
-        this.$.find('.editable').each(function(this: any, index: any) {
+        this.$.find('.editable').each(function (this:any, index:any) {
           const field = $(this);
           const fieldId = field.attr('field_id');
           const fieldName = field.attr('fieldname');
@@ -167,7 +166,7 @@ RB.Model = (function ($) {
           const fieldType = field.attr('fieldtype') || 'input';
           let typeId;
           let statusId;
-          let input: any;
+          let input:any;
 
           if (fieldType === 'select') {
             // Special handling for status_id => they are dependent of type_id
@@ -180,7 +179,7 @@ RB.Model = (function ($) {
               statusId = $.trim(self.$.find('.status_id .v').html());
               input = self.findFactory(typeId, statusId, fieldName);
             } else if (fieldName === 'type_id') {
-              input = $('#' + fieldName + '_options').clone(true);
+              input = $(`#${fieldName}_options`).clone(true);
               // if the type changes the status dropdown has to be modified
               input.change(function () {
                 // @ts-expect-error TS(2683): 'this' implicitly has type 'any' because it does n... Remove this comment to see the full error message
@@ -192,7 +191,7 @@ RB.Model = (function ($) {
                 newInput = self.replaceStatusForNewType(input, newInput, $(this).parent().find('.status_id').val(), editor);
               });
             } else {
-              input = $('#' + fieldName + '_options').clone(true);
+              input = $(`#${fieldName}_options`).clone(true);
             }
           } else {
             input = $(document.createElement(fieldType));
@@ -206,15 +205,15 @@ RB.Model = (function ($) {
           // Record in the model's root element which input field had the last focus. We will
           // use this information inside RB.Model.refresh() to determine where to return the
           // focus after the element has been refreshed with info from the server.
-          input.focus(function(this: any) {
+          input.focus(function (this:any) {
             self.$.data('focus', $(this).attr('name'));
           });
 
-          input.blur(function () {
+          input.blur(() => {
             self.$.data('focus', '');
           });
 
-          $("<label />").attr({
+          $('<label />').attr({
             for: input.attr('id'),
           // @ts-expect-error TS(2345): Argument of type 'string | undefined' is not assig... Remove this comment to see the full error message
           }).text(fieldLabel).appendTo(editor);
@@ -227,20 +226,20 @@ RB.Model = (function ($) {
       return editor;
     },
 
-    findFactory: function (typeId: any, statusId: any, fieldName: any){
+    findFactory(typeId:any, statusId:any, fieldName:any) {
       // Find a factory
-      let newInput = $('#' + fieldName + '_options_' + typeId + '_' + statusId);
+      let newInput = $(`#${fieldName}_options_${typeId}_${statusId}`);
       if (newInput.length === 0) {
         // when no list found, only offer the default status
         // no list = combination is not valid / user has no rights -> workflow
-        newInput = $('#status_id_options_default_' + statusId);
+        newInput = $(`#status_id_options_default_${statusId}`);
       }
       newInput = newInput.clone(true);
       return newInput;
     },
 
-    prepareInputFromFactory: function (input: any, fieldId: any, fieldName: any, fieldOrder: any, maxTabIndex: any, fieldEditable: any) {
-      input.attr('id', fieldName + '_' + fieldId);
+    prepareInputFromFactory(input:any, fieldId:any, fieldName:any, fieldOrder:any, maxTabIndex:any, fieldEditable:any) {
+      input.attr('id', `${fieldName}_${fieldId}`);
       input.attr('name', fieldName);
       input.attr('tabindex', fieldOrder + maxTabIndex);
       if (fieldEditable !== 'true') {
@@ -253,19 +252,19 @@ RB.Model = (function ($) {
       return input;
     },
 
-    replaceStatusForNewType: function (input: any,newInput: any, statusId: any, editor: any) {
+    replaceStatusForNewType(input:any, newInput:any, statusId:any, editor:any) {
       // Append an empty field and select it in case the old status is not available
       newInput.val(statusId); // try to set the status
-      if (newInput.val() !== statusId){
-          newInput.append(new Option('',''));
+      if (newInput.val() !== statusId) {
+          newInput.append(new Option('', ''));
           newInput.val('');
       }
-      newInput.focus(function(this: any) {
+      newInput.focus(function (this:any) {
         // @ts-expect-error TS(2339): Property '$' does not exist on type 'Window & type... Remove this comment to see the full error message
         self.$.data('focus', $(this).attr('name'));
       });
 
-      newInput.blur(function () {
+      newInput.blur(() => {
         // @ts-expect-error TS(2339): Property '$' does not exist on type 'Window & type... Remove this comment to see the full error message
         self.$.data('focus', '');
       });
@@ -274,47 +273,49 @@ RB.Model = (function ($) {
     },
 
     // Override this method to change the dialog title
-    editDialogTitle: function () {
-      return "Edit " + this.getType();
+    editDialogTitle() {
+      return `Edit ${this.getType()}`;
     },
 
-    editorDisplayed: function (editor: any) {
+    editorDisplayed(editor:any) {
       // Do nothing. Child objects may override this.
     },
 
-    endEdit: function () {
+    endEdit() {
       this.$.removeClass('editing');
     },
 
-    error: function (xhr: any, textStatus: any, error: any) {
+    error(xhr:any, textStatus:any, error:any) {
       this.markError();
       // @ts-expect-error TS(2304): Cannot find name 'RB'.
       RB.Dialog.msg($(xhr.responseText).find('.errors').html());
       this.processError(xhr, textStatus, error);
     },
 
-    getEditor: function () {
-      var editorId, editor;
-      // Create the model editor if it does not yet exist
-      editorId = this.getType().toLowerCase() + "_editor";
+    getEditor() {
+      let editorId;
+       let editor;
 
-      editor = $("#" + editorId).html("");
+      // Create the model editor if it does not yet exist
+      editorId = `${this.getType().toLowerCase()}_editor`;
+
+      editor = $(`#${editorId}`).html('');
 
       if (editor.length === 0) {
-        editor = $("<div id='" + editorId + "'></div>").appendTo("body");
+        editor = $(`<div id='${editorId}'></div>`).appendTo('body');
       }
       return editor;
     },
 
-    getID: function () {
+    getID() {
       return this.$.children('.id').children('.v').text();
     },
 
-    getType: function () {
-      throw new Error("Child objects must override getType()");
+    getType() {
+      throw new Error('Child objects must override getType()');
     },
 
-    handleClick: function (e: any) {
+    handleClick(e:any) {
       const field = $(this);
       const model = field.parents('.model').first().data('this');
       const j = model.$;
@@ -323,72 +324,70 @@ RB.Model = (function ($) {
           && !j.hasClass('dragging')
           && !j.hasClass('prevent_edit')
           && !$(e.target).hasClass('prevent_edit')
-          && e.target.closest('.editable').getAttribute('fieldeditable') !== 'false' ) {
+          && e.target.closest('.editable').getAttribute('fieldeditable') !== 'false') {
         const editor = model.edit();
-        var input = editor.find('.' + $(e.currentTarget).attr('fieldname') + '.editor');
+        const input = editor.find(`.${$(e.currentTarget).attr('fieldname')}.editor`);
 
         input.focus();
         input.click();
       }
     },
 
-    handleSelect: function (e: any) {
-      var j = $(this),
-          self = j.data('this');
+    handleSelect(e:any) {
+      const j = $(this);
+          const self = j.data('this');
 
-      if (!$(e.target).hasClass('editable') &&
-          !$(e.target).hasClass('checkbox') &&
-          !j.hasClass('editing') &&
-          e.target.tagName !== 'A' &&
-          !j.hasClass('dragging')) {
-
+      if (!$(e.target).hasClass('editable')
+          && !$(e.target).hasClass('checkbox')
+          && !j.hasClass('editing')
+          && e.target.tagName !== 'A'
+          && !j.hasClass('dragging')) {
         self.setSelection(!self.isSelected());
       }
     },
 
-    isClosed: function () {
+    isClosed() {
       return this.$.hasClass('closed');
     },
 
-    isNew: function () {
-      return this.getID() === "";
+    isNew() {
+      return this.getID() === '';
     },
 
-    markError: function () {
+    markError() {
       this.$.addClass('error icon icon-bug');
     },
 
-    markIfClosed: function () {
-      throw new Error("Child objects must override markIfClosed()");
+    markIfClosed() {
+      throw new Error('Child objects must override markIfClosed()');
     },
 
-    markSaving: function () {
+    markSaving() {
       this.$.addClass('ajax-indicator');
     },
 
     // Override this method to change the dialog title
-    newDialogTitle: function () {
-      return "New " + this.getType();
+    newDialogTitle() {
+      return `New ${this.getType()}`;
     },
 
-    open: function () {
+    open() {
       this.$.removeClass('closed');
     },
 
-    processError: function (x: any, t: any, e: any) {
+    processError(x:any, t:any, e:any) {
       // Override as needed
     },
 
-    refresh: function (obj: any) {
+    refresh(obj:any) {
       this.$.html(obj.$.html());
 
       if (obj.$.length > 1) {
         // execute script tags, that were attached to the sources
-        obj.$.filter('script').each(function(this: any) {
+        obj.$.filter('script').each(function (this:any) {
           try {
             $.globalEval($(this).html());
-          }
-          catch (e) {
+          } catch (e) {
           }
         });
       }
@@ -402,22 +401,22 @@ RB.Model = (function ($) {
       this.refreshed();
     },
 
-    refreshed: function () {
+    refreshed() {
       // Override as needed
     },
 
-    saveDirectives: function () {
-      throw new Error("Child object must implement saveDirectives()");
+    saveDirectives() {
+      throw new Error('Child object must implement saveDirectives()');
     },
 
-    saveEdits: function () {
-      var j = this.$,
-          self = this,
-          editors = j.find('.editor'),
-          saveDir;
+    saveEdits() {
+      const j = this.$;
+          const self = this;
+          const editors = j.find('.editor');
+          let saveDir;
 
       // Copy the values from the fields to the proper html elements
-      editors.each(function(this: any, index: any) {
+      editors.each(function (this:any, index:any) {
         const editor = $(this).find('input,select,textarea').addBack('input,select,textarea');
         const fieldName = editor.attr('name');
         const type = editor.attr('type');
@@ -427,14 +426,13 @@ RB.Model = (function ($) {
           // if the user saves this edit we will receive a validation error
           // the following 3 lines will prevent the override of the status id
           // otherwise we would loose the status id of the current ticket
-          if (!(editor.val() === '' && fieldName === 'status_id')){
-            j.children('div.' + fieldName).children('.v').text(editor.val());
+          if (!(editor.val() === '' && fieldName === 'status_id')) {
+            j.children(`div.${fieldName}`).children('.v').text(editor.val());
           }
 
-          j.children('div.' + fieldName).children('.t').text(editor.children(':selected').text());
-
+          j.children(`div.${fieldName}`).children('.t').text(editor.children(':selected').text());
         } else {
-          j.children('div.' + fieldName).text(editor.val());
+          j.children(`div.${fieldName}`).text(editor.val());
         }
       });
 
@@ -450,25 +448,25 @@ RB.Model = (function ($) {
       self.markSaving();
       // @ts-expect-error TS(2304): Cannot find name 'RB'.
       RB.ajax({
-        type: "POST",
+        type: 'POST',
         url: saveDir.url,
         data: saveDir.data,
-        success   : function (d: any, t: any, x: any) {
+        success(d:any, t:any, x:any) {
           self.afterSave(d, t, x);
         },
-        error     : function (x: any, t: any, e: any) {
+        error(x:any, t:any, e:any) {
           self.error(x, t, e);
-        }
+        },
       });
       self.endEdit();
     },
 
-    unmarkError: function () {
+    unmarkError() {
       this.$.removeClass('error icon icon-bug');
     },
 
-    unmarkSaving: function () {
+    unmarkSaving() {
       this.$.removeClass('ajax-indicator');
-    }
+    },
   });
 }(jQuery));

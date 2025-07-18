@@ -35,7 +35,7 @@ RB.Sprint = (function ($) {
   // @ts-expect-error TS(2304): Cannot find name 'RB'.
   return RB.Object.create(RB.Model, RB.EditableInplace, {
 
-    initialize: function (el: any) {
+    initialize(el:any) {
       this.$ = $(el);
       this.el = el;
 
@@ -44,37 +44,37 @@ RB.Sprint = (function ($) {
       this.$.on('mouseup', '.editable', this.handleClick);
     },
 
-    beforeSave: function () {
+    beforeSave() {
       // Do nothing
     },
 
-    getType: function () {
-      return "Sprint";
+    getType() {
+      return 'Sprint';
     },
 
-    markIfClosed: function () {
+    markIfClosed() {
       // Do nothing
     },
 
-    refreshed: function () {
+    refreshed() {
       // Do nothing
     },
 
-    saveDirectives: function () {
+    saveDirectives() {
       const wrapper = this.$;
       const editor = wrapper.find('.editor');
-      const data = editor.serialize() + "&_method=put";
+      const data = `${editor.serialize()}&_method=put`;
       // @ts-expect-error TS(2304): Cannot find name 'RB'.
       const url = RB.urlFor('update_sprint', { id: this.getID() });
 
       return {
-        url : url,
-        data: data
+        url,
+        data,
       };
     },
 
-    beforeSaveDragResult: function () {
+    beforeSaveDragResult() {
       // Do nothing
-    }
+    },
   });
 }(jQuery));

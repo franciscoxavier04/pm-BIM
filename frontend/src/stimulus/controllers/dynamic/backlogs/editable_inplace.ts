@@ -31,14 +31,14 @@ RB.EditableInplace = (function ($) {
   // @ts-expect-error TS(2304): Cannot find name 'RB'.
   return RB.Object.create(RB.Model, {
 
-    displayEditor: function (editor: any) {
-      this.$.addClass("editing");
-      editor.find(".editor").bind('keydown', this.handleKeydown);
+    displayEditor(editor:any) {
+      this.$.addClass('editing');
+      editor.find('.editor').bind('keydown', this.handleKeydown);
     },
 
-    getEditor: function () {
+    getEditor() {
       // Create the model editor container if it does not yet exist
-      var editor = this.$.children(".editors");
+      let editor = this.$.children('.editors');
 
       if (editor.length === 0) {
         editor = $("<div class='editors'></div>").appendTo(this.$);
@@ -49,8 +49,9 @@ RB.EditableInplace = (function ($) {
     },
 
     // For detecting Enter and ESC
-    handleKeydown: function (e: any) {
-      var j, that;
+    handleKeydown(e:any) {
+      let j;
+      let that;
 
       j = $(this).parents('.model').first();
       that = j.data('this');
@@ -60,6 +61,6 @@ RB.EditableInplace = (function ($) {
       } else if (e.key === 'Escape') {
         that.cancelEdit();
       }
-    }
+    },
   });
 }(jQuery));

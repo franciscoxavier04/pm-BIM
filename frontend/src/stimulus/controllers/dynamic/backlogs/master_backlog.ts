@@ -27,8 +27,7 @@
 //++
 
 // Initialize the backlogs after DOM is loaded
-jQuery(function ($) {
-
+jQuery(($) => {
   // Initialize each backlog
   $('.backlog').each(function (index) {
     // 'this' refers to an element with class="backlog"
@@ -36,7 +35,7 @@ jQuery(function ($) {
     RB.Factory.initialize(RB.Backlog, this);
   });
 
-  $('.backlog .toggler').on('click',function(){
+  $('.backlog .toggler').on('click', function () {
     $(this).toggleClass('closed icon-arrow-up1 icon-arrow-down1');
     $(this).parents('.backlog').find('ul.stories').toggleClass('closed');
   });
