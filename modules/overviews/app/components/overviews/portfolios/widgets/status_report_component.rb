@@ -48,8 +48,10 @@ module Overviews
         end
 
         def content
-          # Selecting the first markdown paragraph
-          status_report.description.split("\n\n").first
+          # Trying to find the first markdown paragraph with relevant content, while skipping headlines or "headline-like"
+          # passages (maybe not every headline is clearly indicated as one)
+          paragraphs = status_report.description.split("\n\n")
+          paragraphs.find { |p| p.size >= 100 } || paragraphs.first
         end
 
         def status_report
