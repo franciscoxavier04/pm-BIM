@@ -120,6 +120,10 @@ module OpTurbo
         .render_in(view_context)
     end
 
+    def reload_page_via_turbo_stream
+      turbo_streams << OpTurbo::StreamComponent.new(action: :reloadPage, target: nil).render_in(view_context)
+    end
+
     def turbo_streams
       @turbo_streams ||= []
     end

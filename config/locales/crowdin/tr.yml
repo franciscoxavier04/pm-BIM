@@ -1241,6 +1241,7 @@ tr:
         error_unauthorized: "erişilemez."
         error_readonly: "yazılmaya çalışıldı fakat yazılabilir değil."
         error_conflict: "Bu arada, bilgi en az bir başka kullanıcı tarafından güncellendi."
+        error_not_found: "not found."
         email: "Geçerli bir e-posta adresi değil.\n"
         empty: "boş olamaz."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1400,8 +1401,6 @@ tr:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "bulunamadı"
             public:
               error_unauthorized: "- Kullanıcı herkese açık görünüm oluşturma yetkisine sahip değil."
             group_by:
@@ -1441,10 +1440,8 @@ tr:
             circular_dependency: "İlişki, bir ilişki çemberi oluşturur."
           attributes:
             to_id:
-              error_not_found: "bulunamadı veya görünmüyor."
               error_readonly: "mevcut ilişkiler için değiştirilemez."
             from_id:
-              error_not_found: "bulunamadı veya görünmüyor."
               error_readonly: "mevcut ilişkiler için değiştirilemez."
         repository:
           not_available: "SCM satıcısı yok"
@@ -1584,10 +1581,6 @@ tr:
                 description: "\"Parola onayı\" 'yeni parola' alanı girişi aynı olmalıdır."
             status:
               invalid_on_create: "yeni kullanıcılar için geçerli bir durum değil."
-            ldap_auth_source:
-              error_not_found: "bulunamadı"
-            auth_source:
-              error_not_found: "bulunamadı"
         member:
           principal_blank: "Lütfen en az bir kullanıcı veya grup seçin."
           role_blank: "atanması gerek."
@@ -1797,6 +1790,7 @@ tr:
     title: "Başlık"
     type: "Tür"
     typeahead: "Otomatik tamamla"
+    uid: "Unique identifier"
     updated_at: "Güncelleme tarihi"
     updated_on: "Güncelleme tarihi"
     uploader: "Yükleyici"

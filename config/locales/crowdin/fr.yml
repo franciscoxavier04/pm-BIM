@@ -1240,6 +1240,7 @@ fr:
         error_unauthorized: "est interdit d'accès."
         error_readonly: "a tenté d'être écrit mais n'est pas accessible en écriture."
         error_conflict: "Cette information a été mise a jour par au moin un autre utilisateur pendant la même session"
+        error_not_found: "introuvable."
         email: "n'est pas une adresse e-mail valide."
         empty: "ne peut pas être vide."
         enterprise_plan_required: "nécessite au minimum l'abonnement %{plan_name}."
@@ -1399,8 +1400,6 @@ fr:
           cannot_be_a_non_working_day: "ne peut pas être un jour non travaillé."
         query:
           attributes:
-            project:
-              error_not_found: "non trouvé"
             public:
               error_unauthorized: "- L’utilisateur n'est pas autorisé à créer des vues publiques."
             group_by:
@@ -1440,10 +1439,8 @@ fr:
             circular_dependency: "La relation créée un cercle de relations."
           attributes:
             to_id:
-              error_not_found: "introuvable ou non visible."
               error_readonly: "ne peut pas être modifié pour les relations existantes."
             from_id:
-              error_not_found: "introuvable ou non visible."
               error_readonly: "ne peut pas être modifié pour les relations existantes."
         repository:
           not_available: "Le fournisseur de gestion de contrôle de sources n'est pas disponible"
@@ -1583,10 +1580,6 @@ fr:
                 description: "La confirmation du mot de passe doit correspondre à celui saisi dans le champ “Nouveau mot de passe”."
             status:
               invalid_on_create: "n’est pas un statut valide pour les nouveaux utilisateurs."
-            ldap_auth_source:
-              error_not_found: "introuvable"
-            auth_source:
-              error_not_found: "introuvable"
         member:
           principal_blank: "Veuillez choisir au moins un utilisateur ou un groupe."
           role_blank: "doit être assigné."
@@ -1796,6 +1789,7 @@ fr:
     title: "Titre"
     type: "Type"
     typeahead: "Saisie semi-automatique"
+    uid: "Identifiant unique"
     updated_at: "Mis à jour le"
     updated_on: "Mis à jour le"
     uploader: "Téléversé par"

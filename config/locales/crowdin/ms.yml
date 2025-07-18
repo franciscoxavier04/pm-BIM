@@ -1232,6 +1232,7 @@ ms:
         error_unauthorized: "tidak boleh diakses."
         error_readonly: "telah cuba untuk menulis tetapi tidak dapat ditulis."
         error_conflict: "Sementara itu, maklumat telah dikemas kini oleh sekurang-kurangnya salah satu pengguna lain."
+        error_not_found: "not found."
         email: "adalah bukan alamat e-mel yang sah."
         empty: "tidak boleh kosong."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1391,8 +1392,6 @@ ms:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "tidak ditemui"
             public:
               error_unauthorized: "- Pengguna tersebut tiada kebenaran untuk mencipta paparan umum."
             group_by:
@@ -1432,10 +1431,8 @@ ms:
             circular_dependency: "Hubungan ini mencipta sebuah lingkaran hubungan."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "Vendor SCM tidak tersedia"
@@ -1574,10 +1571,6 @@ ms:
                 description: "'Pengesahan kata laluan' perlu sepadan dengan input dalam ruangan 'Kata laluan baharu'."
             status:
               invalid_on_create: "adalah bukan status yang sah untuk pengguna baharu."
-            ldap_auth_source:
-              error_not_found: "tidak ditemui"
-            auth_source:
-              error_not_found: "tidak ditemui"
         member:
           principal_blank: "Sila pilih sekurang-kurangnya satu pengguna atau kumpulan."
           role_blank: "perlu ditugaskan."
@@ -1774,6 +1767,7 @@ ms:
     title: "Tajuk"
     type: "Jenis"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Dikemas kini pada"
     updated_on: "Dikemas kini pada"
     uploader: "Pemuat naik\n"

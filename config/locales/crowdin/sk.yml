@@ -1258,6 +1258,7 @@ sk:
         error_unauthorized: "may not be accessed."
         error_readonly: "was attempted to be written but is not writable."
         error_conflict: "Informácia bola medzičasom aktualizovaná aspoň jedným iným používateľom."
+        error_not_found: "not found."
         email: "is not a valid email address."
         empty: "nemôže byť prázdny."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1417,8 +1418,6 @@ sk:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "nenájdené"
             public:
               error_unauthorized: "- Používateľ nemá povolenie na vytvorenie verejných zobrazení."
             group_by:
@@ -1458,10 +1457,8 @@ sk:
             circular_dependency: "Vzťah vytvorí kruh vzťahov."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "SCM dodávateľ nie je k dispozícii"
@@ -1603,10 +1600,6 @@ sk:
                 description: "\"Potvrdenie hesla\" musí byť rovnaké ako v poli \"Nové heslo\"."
             status:
               invalid_on_create: "nie je platný stav pre nových používateľov."
-            ldap_auth_source:
-              error_not_found: "nenájdené"
-            auth_source:
-              error_not_found: "nenájdené"
         member:
           principal_blank: "Vyberte aspoň jedného používateľa alebo skupinu."
           role_blank: "musí byť pridelené."
@@ -1842,6 +1835,7 @@ sk:
     title: "Nadpis"
     type: "Typ"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Aktualizované"
     updated_on: "Aktualizované"
     uploader: "Uploader"

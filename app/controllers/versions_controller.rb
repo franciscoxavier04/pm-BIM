@@ -168,7 +168,7 @@ class VersionsController < ApplicationController
       versions = versions.or(@project.rolled_up_versions.includes(:custom_values))
     end
 
-    versions = versions.visible.order_by_semver_name.except(:distinct).uniq
+    versions = versions.visible.order(:name).except(:distinct).uniq
     versions.reject! { |version| version.closed? || version.completed? } unless completed
     versions
   end

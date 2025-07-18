@@ -317,6 +317,10 @@ class User < Principal
     authentication_provider&.display_name
   end
 
+  def provided_by_oidc?
+    authentication_provider.is_a?(OpenIDConnect::Provider)
+  end
+
   ##
   # Allows the API and other sources to determine locking actions
   # on represented collections of children of Principals.

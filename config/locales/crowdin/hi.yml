@@ -1241,6 +1241,7 @@ hi:
         error_unauthorized: "may not be accessed."
         error_readonly: "was attempted to be written but is not writable."
         error_conflict: "Information has been updated by at least one other user in the meantime."
+        error_not_found: "not found."
         email: "is not a valid email address."
         empty: "can't be empty."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1400,8 +1401,6 @@ hi:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "not found"
             public:
               error_unauthorized: "-उपयोगकर्ता सार्वजनिक दृश्य बनाने के लिए कोई अनुमति नहीं है ।"
             group_by:
@@ -1441,10 +1440,8 @@ hi:
             circular_dependency: "The relationship creates a circle of relationships."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "SCM vendor is not available"
@@ -1584,10 +1581,6 @@ hi:
                 description: "' पासवर्ड पुष्टिकरण ' नए पासवर्ड फ़ील्ड में इनपुट से मेल खाना चाहिए ।"
             status:
               invalid_on_create: "is not a valid status for new users."
-            ldap_auth_source:
-              error_not_found: "not found"
-            auth_source:
-              error_not_found: "not found"
         member:
           principal_blank: "कृपया कम से कम एक समूह या उपयोगकर्ता चुनें।"
           role_blank: "need to be assigned."
@@ -1797,6 +1790,7 @@ hi:
     title: "शीर्षक"
     type: "प्रकार"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "पर अद्यतीत"
     updated_on: "पर अद्यतीत"
     uploader: "Uploader"

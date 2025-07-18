@@ -10,6 +10,7 @@ import { addTurboGlobalListeners } from './turbo-global-listeners';
 import { applyTurboNavigationPatch } from './turbo-navigation-patch';
 import { debugLog, whenDebugging } from 'core-app/shared/helpers/debug_output';
 import { TURBO_EVENTS } from './constants';
+import { StreamActions } from '@hotwired/turbo';
 
 Turbo.session.drive = true;
 Turbo.setProgressBarDelay(100);
@@ -33,6 +34,10 @@ registerDialogStreamAction();
 registerFlashStreamAction();
 registerLiveRegionStreamAction();
 registerInputCaptionStreamAction();
+
+StreamActions.reloadPage = function reloadPage() {
+  window.location.reload();
+};
 
 // Apply navigational patch
 // https://github.com/hotwired/turbo/issues/1300

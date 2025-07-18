@@ -1241,6 +1241,7 @@ hu:
         error_unauthorized: "lehet, hogy nem érhető el."
         error_readonly: "írása megkísérelve, de nem írható."
         error_conflict: "Az adatokat frissítette egy másik felhasználó időközben."
+        error_not_found: "not found."
         email: "nem valós e-mail cím"
         empty: "nem lehet üres."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1400,8 +1401,6 @@ hu:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "nem található"
             public:
               error_unauthorized: "- A felhasználó nem jogosult nyilvános nézeteket létrehozni."
             group_by:
@@ -1441,10 +1440,8 @@ hu:
             circular_dependency: "A kapcsolat körkörös függőséget hoz létre."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "SCM szolgáltató nem elérhető"
@@ -1584,10 +1581,6 @@ hu:
                 description: "A \"'Jelszó megerősítés\"-nek meg kell egyeznie az \"Új jelszó\" mezővel."
             status:
               invalid_on_create: "ez nem egy érvényes állapot, az új felhasználó számára."
-            ldap_auth_source:
-              error_not_found: "nem található"
-            auth_source:
-              error_not_found: "nem található"
         member:
           principal_blank: "Kérem, válasszon legalább egy felhasználót vagy csoportot."
           role_blank: "Hozzá kell rendelve lennie"
@@ -1797,6 +1790,7 @@ hu:
     title: "Cím"
     type: "Típus"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Frissítve"
     updated_on: "Frissítve"
     uploader: "Feltöltő"

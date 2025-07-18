@@ -34,7 +34,7 @@ import { getDefaultReactSlashMenuItems, SuggestionMenuController, useCreateBlock
 import { dummyBlockSpec, getDefaultOpenProjectSlashMenuItems, openProjectWorkPackageBlockSpec } from "op-blocknote-extensions";
 import { useEffect, useState } from "react";
 
-interface OpBlockNoteContainerProps {
+export interface OpBlockNoteContainerProps {
   inputField: HTMLInputElement;
   inputText?: string;
 }

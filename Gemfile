@@ -138,9 +138,6 @@ gem "rack-protection", "~> 3.2.0"
 # https://github.com/kickstarter/rack-attack
 gem "rack-attack", "~> 6.7.0"
 
-# CSP headers
-gem "secure_headers", "~> 7.1.0"
-
 # Browser detection for incompatibility checks
 gem "browser", "~> 6.2.0"
 
@@ -172,6 +169,9 @@ gem "meta-tags", "~> 2.22.0"
 gem "paper_trail", "~> 16.0.0"
 
 gem "op-clamav-client", "~> 3.4", require: "clamav"
+
+# Global ID for polymorphic associations
+gem "globalid", "~> 1.2"
 
 # Recurring meeting events definition
 gem "ice_cube", "~> 0.17.0"
@@ -214,7 +214,6 @@ gem "mini_magick", "~> 5.2.0", require: false
 gem "validate_url"
 
 # Storages support code
-gem "dry-auto_inject"
 gem "dry-container"
 gem "dry-monads"
 gem "dry-validation"
@@ -238,7 +237,7 @@ gem "lookbook", "~> 2.3.11"
 # Require factory_bot for usage with openproject plugins testing
 gem "factory_bot", "~> 6.5.0", require: false
 # require factory_bot_rails for convenience in core development
-gem "factory_bot_rails", "~> 6.4.4", require: false
+gem "factory_bot_rails", "~> 6.5.0", require: false
 
 gem "turbo_power", "~> 0.7.0"
 gem "turbo-rails", "~> 2.0.0"

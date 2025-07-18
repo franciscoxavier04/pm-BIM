@@ -31,6 +31,9 @@ sk:
         spent: "Minuté"
         spent_on: "Dátum"
         logged_by: "Logged by"
+        entity: Logged for
+        entity_id: Logged for
+        entity_gid: Logged for
       cost_type:
         unit: "Názov jednotky"
         unit_plural: "Názov jednotky v množnom čísle"
@@ -58,6 +61,9 @@ sk:
         start_time: Start time
         end_time: Finish time
         time: Čas
+        entity: Logged for
+        entity_id: Logged for
+        entity_gid: Logged for
     models:
       time_entry:
         one: "Time entry"
@@ -103,6 +109,7 @@ sk:
   button_log_time: "Log"
   button_add_activity: "Činnosť"
   button_add_time_entry: "Zaprotokoluj čas"
+  button_stop_timer: "Stop timer"
   caption_booked_on_project: "Rezervované na projekte"
   caption_default: "Predvolené"
   caption_default_rate_history_for: "História predvolenej sadzby pre %{user}"
@@ -181,6 +188,7 @@ sk:
   label_day: "Deň"
   label_today_capitalized: "Dnes"
   label_view_mode_switcher: "Change view"
+  label_timer_since: "Started at %{time}"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Niečo sa pokazilo. Prosím skúste to znova."
   notice_successful_restore: "Úspešné obnovenie."
@@ -188,6 +196,7 @@ sk:
   notice_cost_logged_successfully: "Jednotkové náklady boli úspešne zaznamenané."
   notice_different_time_zones: "This user has a different time zone (%{tz}). Time will be logged using their time zone."
   notice_time_entry_update_failed: "Failed to update time entry. Errors: %{errors}"
+  notice_time_entry_delete_failed: "Failed to delete time entry. Errors: %{errors}"
   permission_edit_cost_entries: "Upraviť zaúčtované jednotkové náklady"
   permission_edit_own_cost_entries: "Upraviť vlastné zaúčtované jednotkové náklady"
   permission_edit_hourly_rates: "Upraviť hodinové sadzby"

@@ -55,7 +55,7 @@ module ::TypesHelper
       },
       {
         name: "export_configuration",
-        path: edit_tab_type_path(id: @type.id, tab: :export_configuration),
+        path: edit_type_pdf_export_template_index_path(type_id: @type.id),
         label: I18n.t("types.edit.export_configuration.tab"),
         view_component: WorkPackageTypes::ExportConfigurationComponent
       }

@@ -219,6 +219,12 @@ module ApplicationHelper
     end
   end
 
+  # Backward compatibility helper for secure_headers gem migration
+  # Rails built-in CSP equivalent of nonced_javascript_tag
+  def nonced_javascript_tag(**, &)
+    javascript_tag(nonce: true, **, &)
+  end
+
   def to_path_param(path)
     path.to_s
   end

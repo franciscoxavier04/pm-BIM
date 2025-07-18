@@ -1241,6 +1241,7 @@
         error_unauthorized: "kan ikke nås"
         error_readonly: "ble forsøkt skrevet til, men er skrivebeskyttet"
         error_conflict: "Informasjonen har blitt oppdatert av minst en annen bruker i mellomtiden."
+        error_not_found: "not found."
         email: "er ikke en gyldig e-postadresse."
         empty: "kan ikke være tomt."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1400,8 +1401,6 @@
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "ikke funnet"
             public:
               error_unauthorized: "- Brukeren har ikke tillatelse til å opprette offentlige visninger."
             group_by:
@@ -1441,10 +1440,8 @@
             circular_dependency: "Forholdet skaper en sirkel av forhold."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "SCM leverandør er ikke tilgjengelig"
@@ -1584,10 +1581,6 @@
                 description: "Bekreftelse av passord må samsvare med inndata i det nye passordet feltet."
             status:
               invalid_on_create: "er ikke gyldig status for nye brukere."
-            ldap_auth_source:
-              error_not_found: "ikke funnet"
-            auth_source:
-              error_not_found: "ikke funnet"
         member:
           principal_blank: "Velg minst én bruker eller gruppe."
           role_blank: "må tilordnes."
@@ -1797,6 +1790,7 @@
     title: "Tittel"
     type: "Type"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Oppdatert"
     updated_on: "Oppdatert"
     uploader: "Opplaster"

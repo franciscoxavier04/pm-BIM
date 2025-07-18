@@ -67,13 +67,11 @@ class MeetingAgendaItemsController < ApplicationController
           collapsed = false
         end
         update_section_via_turbo_stream(form_hidden: true, meeting_section:, collapsed:)
-      else
-        update_new_button_via_turbo_stream(disabled: false, meeting_section:)
       end
     end
 
     update_new_component_via_turbo_stream(hidden: true, meeting_section:)
-    update_new_button_via_turbo_stream(disabled: false)
+    update_new_button_via_turbo_stream(disabled: false) unless meeting_section&.backlog?
 
     respond_with_turbo_streams
   end
@@ -93,7 +91,6 @@ class MeetingAgendaItemsController < ApplicationController
     if call.success?
       if @meeting_agenda_item.meeting_section.backlog?
         update_section_via_turbo_stream(meeting_section: @meeting_agenda_item.meeting_section, collapsed: false)
-        update_new_button_via_turbo_stream(disabled: false)
       else
         reset_meeting_from_agenda_item
         # enable continue editing

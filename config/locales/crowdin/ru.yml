@@ -1256,6 +1256,7 @@ ru:
         error_unauthorized: "не доступен."
         error_readonly: "запись не разрешена."
         error_conflict: "Информация была обновлена одновременно с вами  по крайней мере одним пользователем."
+        error_not_found: "не найдено."
         email: "неверный адрес электронной почты."
         empty: "не может быть пустым."
         enterprise_plan_required: "требует хотя бы %{plan_name}."
@@ -1415,8 +1416,6 @@ ru:
           cannot_be_a_non_working_day: "не может быть нерабочим днем."
         query:
           attributes:
-            project:
-              error_not_found: "не найдено"
             public:
               error_unauthorized: "- У пользователя нет прав для создания общедоступных представлений."
             group_by:
@@ -1456,10 +1455,8 @@ ru:
             circular_dependency: "Зацикливание зависимостей."
           attributes:
             to_id:
-              error_not_found: "не найден или невидим."
               error_readonly: "не может быть изменен для существующих отношений."
             from_id:
-              error_not_found: "не найден или невидим."
               error_readonly: "не может быть изменен для существующих отношений."
         repository:
           not_available: "SCM поставщик не доступен"
@@ -1601,10 +1598,6 @@ ru:
                 description: "«Подтвержденный пароль» должен совпадать с введенным «новым паролем»."
             status:
               invalid_on_create: "не является допустимым статусом для новых пользователей."
-            ldap_auth_source:
-              error_not_found: "не найдено"
-            auth_source:
-              error_not_found: "не найдено"
         member:
           principal_blank: "Пожалуйста, выберите по крайней мере одного пользователя или группу."
           role_blank: "требуется назначить."
@@ -1840,6 +1833,7 @@ ru:
     title: "Заголовок"
     type: "Тип"
     typeahead: "Автозаполнение"
+    uid: "Уникальный идентификатор"
     updated_at: "Обновлено"
     updated_on: "Обновлено"
     uploader: "Кто загрузил"

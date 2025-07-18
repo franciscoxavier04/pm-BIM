@@ -50,6 +50,14 @@ RSpec.describe AttributeHelpTexts::ShowDialogComponent, type: :component do
     page
   end
 
+  it "renders a dialog" do
+    expect(subject).to have_element :dialog
+  end
+
+  it "applies an ID" do
+    expect(subject).to have_element id: "dialog_attribute_help_text_project_#{attribute_help_text.id}"
+  end
+
   describe "dialog heading" do
     it "renders the heading" do
       expect(subject).to have_heading attribute_help_text.attribute_caption

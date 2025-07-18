@@ -59,10 +59,8 @@ class WorkPackage < ApplicationRecord
   belongs_to :priority, class_name: "IssuePriority"
   belongs_to :category, class_name: "Category", optional: true
 
-  has_many :time_entries, dependent: :delete_all
-
+  has_many :time_entries, dependent: :delete_all, inverse_of: :entity, as: :entity
   has_many :file_links, dependent: :delete_all, class_name: "Storages::FileLink", as: :container
-
   has_many :storages, through: :project
 
   has_and_belongs_to_many :changesets, -> { # rubocop:disable Rails/HasAndBelongsToMany
@@ -215,6 +213,14 @@ class WorkPackage < ApplicationRecord
     Setting.work_package_done_ratio == "field"
   end
 
+  def self.work_weighted_average_mode?
+    Setting.total_percent_complete_mode == "work_weighted_average"
+  end
+
+  def self.simple_average_mode?
+    Setting.total_percent_complete_mode == "simple_average"
+  end
+
   def self.complete_on_status_closed?
     Setting.percent_complete_on_status_closed == "set_100p"
   end
@@ -243,10 +249,7 @@ class WorkPackage < ApplicationRecord
   end
 
   def add_time_entry(attributes = {})
-    attributes.reverse_merge!(
-      project:,
-      work_package: self
-    )
+    attributes.reverse_merge!(project:, entity: self)
     time_entries.build(attributes)
   end
 
@@ -269,7 +272,7 @@ class WorkPackage < ApplicationRecord
   end
 
   def to_s
-    "#{type.is_standard ? '' : type.name} ##{id}: #{subject}"
+    "#{type.name unless type.is_standard} ##{id}: #{subject}"
   end
 
   # Return true if the work_package is closed, otherwise false
