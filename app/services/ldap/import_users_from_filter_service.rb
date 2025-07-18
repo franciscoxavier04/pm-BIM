@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Ldap
   class ImportUsersFromFilterService < BaseService
     attr_reader :filter

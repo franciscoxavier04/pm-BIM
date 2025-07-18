@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Ldap
   class PostLoginSyncService < BaseService
     attr_reader :user, :update_attributes

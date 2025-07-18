@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Ldap
   class ImportUsersFromListService < BaseService
     attr_reader :logins

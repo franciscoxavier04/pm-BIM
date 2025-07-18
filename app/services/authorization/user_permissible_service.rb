@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Authorization
   class UserPermissibleService
     attr_accessor :user

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Copy
   module Concerns
     module CopyAttachments
