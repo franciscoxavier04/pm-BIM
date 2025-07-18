@@ -206,10 +206,10 @@ module Redmine::MenuManager::TopMenuHelper
 
   def render_menu_item_group(menu, item_group)
     menu.with_body do
-      render(Primer::Alpha::ActionList.new(classes: "op-app-menu--items", id: "op-app-header--modules-menu-list")) do |component|
-        component.with_heading(title: item_group[:title], align_items: :flex_start) if item_group[:title]
+      render(Primer::Alpha::ActionList.new(classes: "op-app-menu--items", id: "op-app-header--modules-menu-list")) do |list|
+        list.with_heading(title: item_group[:title], align_items: :flex_start) if item_group[:title]
         item_group[:items].each do |item|
-          component.with_item(
+          list.with_item(
             href: url_for(item.url),
             label: item.caption,
             test_selector: "op-menu--item-action"
