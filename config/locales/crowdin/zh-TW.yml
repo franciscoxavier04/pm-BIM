@@ -121,7 +121,7 @@ zh-TW:
         one_time_hint: "這是您唯一一次看到用戶端密鑰的機會，請務必立即複製。"
       created_token_dialog_component:
         title: "令牌(Token)已產生"
-        heading: "A token has been generated"
+        heading: "已產生一組令牌"
         label_token: "令牌"
         one_time_hint: "這是您唯一可以看到此令牌(Token)的時候, 請務必立即複製它。"
       delete_scim_client_dialog_component:

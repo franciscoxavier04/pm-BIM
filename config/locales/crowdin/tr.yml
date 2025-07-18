@@ -104,7 +104,7 @@ tr:
         in_grace_period: "In grace period"
         invalid_domain: "Invalid domain"
         not_active: "Not active"
-        trial: "Trial"
+        trial: "Deneme"
     jemalloc_allocator: Jemalloc bellek ayırıcı
     journal_aggregation:
       explanation:
@@ -501,7 +501,7 @@ tr:
       success: "Liste gizli hale getirildi"
       failure: "The list cannot be made private: %{errors}"
     can_be_saved: "Liste değiştirildi:"
-    can_be_saved_as: "The modifications can only be saved in a new list:"
+    can_be_saved_as: "Değişiklikler sadece yeni bir listede kaydedilebilir:"
   members:
     index:
       no_results_title_text: Bu projenini parçası olan mevcut bir üye bulunmamakta.
@@ -1963,7 +1963,7 @@ tr:
     copy_options:
       dependencies_label: 'Copy from template'
   create_wiki_page: "Create new wiki page"
-  create_wiki_page_button: "Viki sayfası"
+  create_wiki_page_button: "Wiki sayfası"
   date:
     abbr_day_names:
       - "Pzr"
@@ -2010,7 +2010,7 @@ tr:
       - "Şubat"
       - "Mart"
       - "Nisan"
-      - "May"
+      - "Mayıs"
       - "Haziran"
       - "Temmuz"
       - "Ağustos"
@@ -2025,11 +2025,11 @@ tr:
   datetime:
     distance_in_words:
       about_x_hours:
-        one: "Yaklaşık 1 saat"
+        one: "yaklaşık 1 saat"
         other: "yaklaşık %{count} saat"
       about_x_months:
         one: "yaklaşık 1 ay"
-        other: "about %{count} ay"
+        other: "yaklaşık %{count} ay"
       about_x_years:
         one: "yaklaşık 1 yıl"
         other: "yaklaşık %{count} yıl"
@@ -2053,8 +2053,8 @@ tr:
         one: "1 dakika"
         other: "%{count} dakika"
       x_minutes_abbreviated:
-        one: "1 dak"
-        other: "%{count} dak"
+        one: "1 dk"
+        other: "%{count} dk"
       x_hours:
         one: "1 saat"
         other: "%{count} saat"
@@ -2326,7 +2326,7 @@ tr:
       title: "Dışarı aktar"
       submit: "Dışarı aktar"
       save_export_settings:
-        label: "Save settings"
+        label: "Ayarları kaydet"
       format:
         label: "Dosya biçimi"
         options:
