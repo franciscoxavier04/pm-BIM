@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Borrows from http://gist.github.com/bf4/5320847
 # without addressable requirement
 # Accepts options[:allowed_protocols]
