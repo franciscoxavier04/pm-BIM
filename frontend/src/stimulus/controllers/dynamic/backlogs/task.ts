@@ -30,10 +30,12 @@
   TASK
 ***************************************/
 
+// @ts-expect-error TS(2304): Cannot find name 'RB'.
 RB.Task = (function ($) {
+  // @ts-expect-error TS(2304): Cannot find name 'RB'.
   return RB.Object.create(RB.WorkPackage, {
 
-    initialize: function (el) {
+    initialize: function (el: any) {
       this.$ = $(el);
       this.el = el;
 
@@ -55,7 +57,7 @@ RB.Task = (function ($) {
       this.$.colorcontrast();
     },
 
-    editorDisplayed: function (dialog) {
+    editorDisplayed: function (dialog: any) {
       dialog.parents('.ui-dialog').css('background-color', this.$.css('background-color'));
       dialog.parents('.ui-dialog').colorcontrast();
     },
@@ -85,9 +87,11 @@ RB.Task = (function ($) {
                  (this.isNew() ? "" : "&id=" + this.$.children('.id').text());
 
       if (this.isNew()) {
+        // @ts-expect-error TS(2304): Cannot find name 'RB'.
         url = RB.urlFor('create_task', {sprint_id: RB.constants.sprint_id});
       }
       else {
+        // @ts-expect-error TS(2304): Cannot find name 'RB'.
         url = RB.urlFor('update_task', {id: this.getID(), sprint_id: RB.constants.sprint_id});
         data += "&_method=put";
       }

@@ -30,10 +30,12 @@
   TASKBOARD
 ***************************************/
 
+// @ts-expect-error TS(2304): Cannot find name 'RB'.
 RB.Taskboard = (function ($) {
+  // @ts-expect-error TS(2304): Cannot find name 'RB'.
   return RB.Object.create(RB.Model, {
 
-    initialize: function (el) {
+    initialize: function (el: any) {
       var self = this; // So we can bind the event handlers to this object
 
       this.$ = $(el);
@@ -79,7 +81,7 @@ RB.Taskboard = (function ($) {
       }).sortable('option', 'connectWith', '#impediments .list');
       $('#impediments .list').disableSelection();
 
-      var list, augmentList, self = this;
+      var list: any, augmentList: any, self = this;
 
       list = this.$.find('#tasks .list');
 
@@ -102,13 +104,15 @@ RB.Taskboard = (function ($) {
     },
 
     initializeTasks : function () {
-      this.$.find('.task').each(function (index) {
+      this.$.find('.task').each(function(this: any, index: any) {
+        // @ts-expect-error TS(2304): Cannot find name 'RB'.
         RB.Factory.initialize(RB.Task, this);
       });
     },
 
     initializeImpediments : function () {
-      this.$.find('.impediment').each(function (index) {
+      this.$.find('.impediment').each(function(this: any, index: any) {
+        // @ts-expect-error TS(2304): Cannot find name 'RB'.
         RB.Factory.initialize(RB.Impediment, this);
       });
     },
@@ -125,7 +129,7 @@ RB.Taskboard = (function ($) {
       });
     },
 
-    dragComplete: function (e, ui) {
+    dragComplete: function (e: any, ui: any) {
       // Handler is triggered for source and target. Thus the need to check.
       var isDropTarget = (ui.sender === null);
 
@@ -134,60 +138,66 @@ RB.Taskboard = (function ($) {
       }
     },
 
-    dragStart: function (e, ui) {
+    dragStart: function (e: any, ui: any) {
       ui.item.addClass("dragging");
     },
 
-    dragStop: function (e, ui) {
+    dragStop: function (e: any, ui: any) {
       ui.item.removeClass("dragging");
     },
 
-    handleAddNewImpedimentClick: function (e) {
+    handleAddNewImpedimentClick: function (e: any) {
       var row = $(this).parents("tr").first();
       $('#taskboard').data('this').newImpediment(row);
     },
 
-    handleAddNewTaskClick: function (e) {
+    handleAddNewTaskClick: function (e: any) {
       var row = $(this).parents("tr").first();
       $('#taskboard').data('this').newTask(row);
     },
 
     loadColWidthPreference: function () {
+      // @ts-expect-error TS(2304): Cannot find name 'RB'.
       var w = RB.UserPreferences.get('taskboardColWidth');
       if (w === null || w === undefined) {
         w = this.defaultColWidth;
+        // @ts-expect-error TS(2304): Cannot find name 'RB'.
         RB.UserPreferences.set('taskboardColWidth', w);
       }
       $("#col_width input").val(w);
     },
 
-    newImpediment: function (row) {
+    newImpediment: function (row: any) {
       var impediment, o;
 
       impediment = $('#impediment_template').children().first().clone();
       row.find(".list").first().prepend(impediment);
 
+      // @ts-expect-error TS(2304): Cannot find name 'RB'.
       o = RB.Factory.initialize(RB.Impediment, impediment);
       o.edit();
     },
 
-    newTask: function (row) {
+    newTask: function (row: any) {
       var task, o;
 
       task = $('#task_template').children().first().clone();
       row.find(".list").first().prepend(task);
 
+      // @ts-expect-error TS(2304): Cannot find name 'RB'.
       o = RB.Factory.initialize(RB.Task, task);
       o.edit();
     },
 
     updateColWidths: function () {
+      // @ts-expect-error TS(2345): Argument of type 'string | number | string[] | und... Remove this comment to see the full error message
       var w = parseInt($("#col_width_input").val(), 10);
 
       if (isNaN(w) || w <= 0) {
         w = this.defaultColWidth;
       }
       $("#col_width_input").val(w);
+      // @ts-expect-error TS(2304): Cannot find name 'RB'.
       RB.UserPreferences.set('taskboardColWidth', w);
       $(".swimlane").width(this.colWidthUnit * w).css('min-width', this.colWidthUnit * w);
     }

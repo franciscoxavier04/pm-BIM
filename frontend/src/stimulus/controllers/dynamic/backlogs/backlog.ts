@@ -38,10 +38,12 @@
   visualize the sprint.
 ******************************************/
 
+// @ts-expect-error TS(2304): Cannot find name 'RB'.
 RB.Backlog = (function ($) {
+  // @ts-expect-error TS(2304): Cannot find name 'RB'.
   return RB.Object.create({
 
-    initialize: function (el) {
+    initialize: function (el: any) {
       this.$ = $(el);
       this.el = el;
 
@@ -60,7 +62,7 @@ RB.Backlog = (function ($) {
         containment: $('#backlogs_container'),
         cancel: 'input, textarea, button, select, option, .prevent_drag',
         scroll: true,
-        helper: function(event, ui){
+        helper: function(event: any, ui: any){
           var $clone =  $(ui).clone();
           $clone .css('position','absolute');
           return $clone.get(0);
@@ -71,14 +73,17 @@ RB.Backlog = (function ($) {
       this.$.find('.add_new_story').click(this.handleNewStoryClick);
 
       if (this.isSprintBacklog()) {
+        // @ts-expect-error TS(2304): Cannot find name 'RB'.
         RB.Factory.initialize(RB.Sprint, this.getSprint());
+        // @ts-expect-error TS(2304): Cannot find name 'RB'.
         this.burndown = RB.Factory.initialize(RB.Burndown, this.$.find('.show_burndown_chart'));
         this.burndown.setSprintId(this.getSprint().data('this').getID());
       }
 
       // Initialize each item in the backlog
-      this.getStories().each(function (index) {
+      this.getStories().each(function(this: any, index: any) {
         // 'this' refers to an element with class="story"
+        // @ts-expect-error TS(2304): Cannot find name 'RB'.
         RB.Factory.initialize(RB.Story, this);
       });
 
@@ -87,11 +92,11 @@ RB.Backlog = (function ($) {
       }
     },
 
-    dragChanged: function (e, ui) {
+    dragChanged: function (e: any, ui: any) {
       $(this).parents('.backlog').data('this').refresh();
     },
 
-    dragComplete: function (e, ui) {
+    dragComplete: function (e: any, ui: any) {
       var isDropTarget = (ui.sender === null || ui.sender === undefined);
 
       // jQuery triggers dragComplete of source and target.
@@ -102,11 +107,11 @@ RB.Backlog = (function ($) {
       }
     },
 
-    dragStart: function (e, ui) {
+    dragStart: function (e: any, ui: any) {
       ui.item.addClass("dragging");
     },
 
-    dragStop: function (e, ui) {
+    dragStop: function (e: any, ui: any) {
       ui.item.removeClass("dragging");
     },
 
@@ -122,7 +127,7 @@ RB.Backlog = (function ($) {
       return this.$.children(".stories").first();
     },
 
-    handleNewStoryClick: function (e) {
+    handleNewStoryClick: function (e: any) {
       var toggler = $(this).parents('.header').find('.toggler');
       if (toggler.hasClass('closed')){
         toggler.click();
@@ -142,6 +147,7 @@ RB.Backlog = (function ($) {
       story = $('#story_template').children().first().clone();
       this.getList().prepend(story);
 
+      // @ts-expect-error TS(2304): Cannot find name 'RB'.
       o = RB.Factory.initialize(RB.Story, story[0]);
       o.edit();
 
@@ -154,14 +160,14 @@ RB.Backlog = (function ($) {
     },
 
     recalcVelocity: function () {
-      var total;
+      var total: any;
 
       if (!this.isSprintBacklog()) {
         return true;
       }
 
       total = 0;
-      this.getStories().each(function (index) {
+      this.getStories().each(function(this: any, index: any) {
         total += $(this).data('this').getPoints();
       });
       this.$.children('.header').children('.velocity').text(total);
