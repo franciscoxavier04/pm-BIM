@@ -112,9 +112,11 @@ export default function OpBlockNoteContainer({ inputField,
   const [theme, setTheme] = useState<"light" | "dark">(detectTheme);
 
   let collaboration: any;
+  let provider: HocuspocusProvider | null = null;
+  
   if(websocketUrl != '' && documentId != '' && websocketAccessToken != '' && userName != '') {
     const doc = new Y.Doc()
-    const provider = new HocuspocusProvider({
+    provider = new HocuspocusProvider({
       url: websocketUrl,
       name: documentId,
       token: websocketAccessToken,
@@ -132,10 +134,8 @@ export default function OpBlockNoteContainer({ inputField,
     }
   }
 
-  // const editor = useCreateBlockNote({collaboration, schema, dictionary, extensions });
-  // Create the editor without collaboration until persistence is fixed.
-  console.log(collaboration);
-  const editor = useCreateBlockNote({ schema, dictionary, extensions });
+  // Enable collaboration if all required parameters are provided
+  const editor = useCreateBlockNote(collaboration ? {collaboration, schema, dictionary, extensions } : { schema, dictionary, extensions });
 
   useEffect(() => {
     const observer = new MutationObserver((mutations) => {
@@ -159,13 +159,44 @@ export default function OpBlockNoteContainer({ inputField,
 
   useEffect(() => {
     async function loadInitialContent() {
-      const blocks = await editor.tryParseMarkdownToBlocks(inputText || "");
-      editor.replaceBlocks(editor.document, blocks);
-      setIsLoading(false);
+      // Only load initial content if not using collaboration or if the document is empty
+      if (provider && collaboration && collaboration.fragment) {
+        // Wait for provider to be connected
+        provider.on('synced', async () => {
+          // Check if the Y.js document is empty after sync
+          const fragment = collaboration.fragment;
+          const isEmpty = fragment.length === 0;
+          
+          if (isEmpty && inputText) {
+            // New document - load initial content
+            const blocks = await editor.tryParseMarkdownToBlocks(inputText);
+            editor.replaceBlocks(editor.document, blocks);
+          }
+          // For existing documents, the content will be synchronized automatically
+          setIsLoading(false);
+        });
+        
+        // Handle connection errors
+        provider.on('disconnect', () => {
+          console.error('BlockNote collaboration disconnected');
+        });
+      } else {
+        // No collaboration - load content normally
+        const blocks = await editor.tryParseMarkdownToBlocks(inputText || "");
+        editor.replaceBlocks(editor.document, blocks);
+        setIsLoading(false);
+      }
     }
 
     void loadInitialContent();
-  }, [editor]);
+    
+    // Cleanup
+    return () => {
+      if (provider) {
+        provider.destroy();
+      }
+    };
+  }, [editor, collaboration, inputText, provider]);
 
   return (
     <>
