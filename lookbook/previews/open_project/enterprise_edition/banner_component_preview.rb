@@ -73,6 +73,17 @@ module OpenProject
         )
       end
 
+      # @display min_height 600px
+      def large
+        render(
+          ::EnterpriseEdition::BannerComponent
+            .new(:date_alerts,
+                 variant: :large,
+                 video: "enterprise/date-alert-notifications.mp4",
+                 show_always: true)
+        )
+      end
+
       # @display min_height 350px
       def medium_dismissable
         render(

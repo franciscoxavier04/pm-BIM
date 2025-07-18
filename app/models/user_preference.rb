@@ -86,6 +86,14 @@ class UserPreference < ApplicationRecord
     comments_sorting == "desc"
   end
 
+  def disable_keyboard_shortcuts?
+    settings.fetch(:disable_keyboard_shortcuts) { Setting.disable_keyboard_shortcuts? }
+  end
+
+  def disable_keyboard_shortcuts=(value)
+    settings[:disable_keyboard_shortcuts] = to_boolean(value)
+  end
+
   def diff_type
     settings.fetch(:diff_type, "inline")
   end
@@ -110,6 +118,7 @@ class UserPreference < ApplicationRecord
   alias :comments_in_reverse_order :comments_in_reverse_order?
   alias :warn_on_leaving_unsaved :warn_on_leaving_unsaved?
   alias :auto_hide_popups :auto_hide_popups?
+  alias :disable_keyboard_shortcuts :disable_keyboard_shortcuts?
 
   def comments_in_reverse_order=(value)
     settings[:comments_sorting] = to_boolean(value) ? "desc" : "asc"

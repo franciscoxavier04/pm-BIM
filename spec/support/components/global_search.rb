@@ -44,7 +44,11 @@ module Components
     end
 
     def expect_open
-      expect(page).to have_selector(container)
+      expect(page).to have_selector(selector)
+    end
+
+    def expect_closed
+      expect(page).to have_no_selector("#{selector}.expanded")
     end
 
     def submit_in_project_and_subproject_scope

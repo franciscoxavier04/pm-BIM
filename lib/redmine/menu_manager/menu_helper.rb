@@ -154,7 +154,7 @@ module Redmine::MenuManager::MenuHelper
     html_id = node.html_options[:id] || node.name
     content_tag(:div, class: "main-item-wrapper", id: "#{html_id}-wrapper") do
       concat render_single_menu_node(node, project)
-      concat render_menu_toggler(node.name)
+      concat render_menu_toggler(node)
     end
   end
 
@@ -165,13 +165,14 @@ module Redmine::MenuManager::MenuHelper
     end
   end
 
-  def render_menu_toggler(node_name)
+  def render_menu_toggler(node)
     content_tag(:button,
                 class: "toggler main-menu-toggler",
                 type: :button,
+                "aria-label": I18n.t(:label_go_forward, module: node.html_options[:title]),
                 data: {
                   action: "menus--main#descend",
-                  test_selector: "main-menu-toggler--#{node_name}"
+                  test_selector: "main-menu-toggler--#{node.name}"
                 }) do
       render(Primer::Beta::Octicon.new("arrow-right", size: :small))
     end
@@ -214,11 +215,14 @@ module Redmine::MenuManager::MenuHelper
     content_tag(
       :a,
       render(Primer::Beta::Octicon.new("arrow-left", size: :small)),
-      title: I18n.t("js.label_up"),
+      href: "#",
+      tabindex: "0",
+      "aria-label": I18n.t(:label_go_back),
       class: "main-menu--arrow-left-to-project",
       data: {
-        action: "menus--main#ascend",
-        "tour-selector": "main-menu--arrow-left_#{node.name}"
+        action: "menus--main#ascend keydown.enter->menus--main#ascend",
+        "tour-selector": "main-menu--arrow-left_#{node.name}",
+        "test-selector": "main-menu--arrow-left-to-project"
       }
     )
   end

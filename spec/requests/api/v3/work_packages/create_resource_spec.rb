@@ -255,11 +255,11 @@ RSpec.describe "API v3 Work package resource",
         end
 
         context "when the work package has no direct or indirect predecessors and no children" do
-          # TODO: should the API return an error here?
-          it "does not set the scheduling mode to automatic as requested " \
-             "and keeps manual scheduling mode (schedule_manually: true)" do
-            expect(created_work_package.schedule_manually).to be true
-          end
+          it_behaves_like "error response",
+                          422,
+                          "PropertyConstraintViolation",
+                          I18n.t("activerecord.errors.models.work_package.attributes." \
+                                 "schedule_manually.cannot_be_automatically_scheduled")
         end
       end
 

@@ -38,7 +38,7 @@ module CustomFields
       nil
     end
 
-    def perform(params)
+    def perform
       super
     rescue StandardError => e
       ServiceResult.failure(message: e.message)

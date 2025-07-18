@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -22,7 +23,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
@@ -30,6 +31,23 @@
 class WorkPackage::PDFExport::Common::View
   include Prawn::View
   include Redmine::I18n
+
+  FONT_SPEC = {
+    latin: [
+      { name: "NotoSans", path: "noto" }
+    ],
+    mono: [
+      { name: "SpaceMono", path: "spacemono" }
+    ],
+    fonts: [
+      { name: "GoNotoKurrent", path: "noto-kurrent" }
+    ],
+    symbols: [
+      { name: "NotoEmoji", path: "noto-emoji" },
+      { name: "NotoSansSymbols2", path: "noto-symbols" },
+      { name: "GoNotoAncient", path: "noto-ancient" }
+    ]
+  }.freeze
 
   def initialize(lang)
     set_language_if_valid lang
@@ -42,7 +60,7 @@ class WorkPackage::PDFExport::Common::View
   def info
     @info ||= {
       Creator: OpenProject::Info.app_name,
-      CreationDate: Time.now
+      CreationDate: Time.zone.now
     }
   end
 
@@ -56,22 +74,56 @@ class WorkPackage::PDFExport::Common::View
   end
 
   def fallback_fonts
-    [noto_font_base_path.join("NotoSansSymbols2-Regular.ttf")]
+    FONT_SPEC[:fonts].pluck(:name).concat fallback_symbol_fonts
   end
 
-  def register_fonts!(document)
-    register_font!("NotoSans", noto_font_base_path, document)
-    register_font!("SpaceMono", spacemono_font_base_path, document)
+  def fallback_symbol_fonts
+    FONT_SPEC[:symbols].map do |symbol|
+      font_base_path.join(symbol[:path], "#{symbol[:name]}.ttf")
+    end
   end
 
-  def register_font!(family, font_path, document)
+  def register_fonts!(document) # rubocop:disable Metrics/AbcSize
+    FONT_SPEC[:latin].each do |font|
+      register_full_font!(font[:name], font_base_path.join(font[:path]), document)
+    end
+    FONT_SPEC[:fonts].each do |font|
+      register_base_font!(font[:name], font_base_path.join(font[:path]), document)
+    end
+    FONT_SPEC[:mono].each do |font|
+      register_full_font!(font[:name], font_base_path.join(font[:path]), document)
+    end
+  end
+
+  def register_base_font!(family, font_path, document)
+    document.font_families[family] = {
+      normal: {
+        file: font_path.join("#{family}-Regular.ttf"),
+        font: "#{family}-Regular"
+      },
+      bold: {
+        file: font_path.join("#{family}-Bold.ttf"),
+        font: "#{family}-Bold"
+      },
+      italic: { # most i18n languages do not have italic, so we use regular instead
+        file: font_path.join("#{family}-Regular.ttf"),
+        font: "#{family}-Regular"
+      },
+      bold_italic: { # most i18n languages do not have bold-italic, so we use bold instead
+        file: font_path.join("#{family}-Bold.ttf"),
+        font: "#{family}-Bold"
+      }
+    }
+  end
+
+  def register_full_font!(family, font_path, document)
     document.font_families[family] = {
       normal: {
         file: font_path.join("#{family}-Regular.ttf"),
         font: "#{family}-Regular"
       },
       italic: {
-        file: font_path.join("#{family}-Italic.ttf" ""),
+        file: font_path.join("#{family}-Italic.ttf"),
         font: "#{family}-Italic"
       },
       bold: {
@@ -106,11 +158,7 @@ class WorkPackage::PDFExport::Common::View
 
   private
 
-  def noto_font_base_path
-    Rails.public_path.join("fonts/noto")
-  end
-
-  def spacemono_font_base_path
-    Rails.public_path.join("fonts/spacemono")
+  def font_base_path
+    Rails.public_path.join("fonts")
   end
 end

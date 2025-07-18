@@ -141,6 +141,7 @@ export class GlobalSearchInputComponent implements AfterViewInit, OnDestroy {
     current_project_and_all_descendants: this.I18n.t('js.global_search.current_project_and_all_descendants'),
     current_project: this.I18n.t('js.global_search.current_project'),
     recently_viewed: this.I18n.t('js.global_search.recently_viewed'),
+    search: this.I18n.t('js.autocompleter.search'),
   };
 
   constructor(
@@ -194,7 +195,7 @@ export class GlobalSearchInputComponent implements AfterViewInit, OnDestroy {
 
     // handle click on search button
     if (insideOrSelf(this.btn.nativeElement as HTMLElement, event.target as HTMLElement)) {
-      if (this.deviceService.isMobile) {
+      if (this.deviceService.isTablet) {
         this.toggleMobileSearch();
         // open ng-select menu on default
         jQuery('.ng-input input').focus();

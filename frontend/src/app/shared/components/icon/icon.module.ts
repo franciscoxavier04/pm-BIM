@@ -27,6 +27,7 @@ import {
   OpViewThreedIconComponent,
   PackageIconComponent,
   PersonIconComponent,
+  QuestionIconComponent,
   ScreenFullIconComponent,
   ShareAndroidIconComponent,
   StarFillIconComponent,
@@ -56,6 +57,7 @@ import {
   ReadIconComponent,
   EyeIconComponent,
   EyeClosedIconComponent,
+  ArrowLeftIconComponent,
 } from '@openproject/octicons-angular';
 
 @NgModule({
@@ -87,6 +89,7 @@ import {
     OpViewThreedIconComponent,
     PackageIconComponent,
     PersonIconComponent,
+    QuestionIconComponent,
     ScreenFullIconComponent,
     ShareAndroidIconComponent,
     StarFillIconComponent,
@@ -119,6 +122,7 @@ import {
     ReadIconComponent,
     EyeIconComponent,
     EyeClosedIconComponent,
+    ArrowLeftIconComponent,
   ],
   declarations: [
     OpIconComponent,
@@ -152,6 +156,7 @@ import {
     OpViewThreedIconComponent,
     PackageIconComponent,
     PersonIconComponent,
+    QuestionIconComponent,
     ScreenFullIconComponent,
     ShareAndroidIconComponent,
     StarFillIconComponent,
@@ -183,6 +188,7 @@ import {
     ReadIconComponent,
     EyeIconComponent,
     EyeClosedIconComponent,
+    ArrowLeftIconComponent,
   ],
 })
 export class IconModule {}

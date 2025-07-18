@@ -366,7 +366,7 @@ RSpec.describe ProjectQuery do
         let(:orders) { { name: :asc, project_status: :desc, "cf_#{custom_field.id}": :desc } }
 
         it "leaves the values untouched" do
-          expect(instance.orders.to_h { [_1.attribute, _1.direction] })
+          expect(instance.orders.to_h { [it.attribute, it.direction] })
             .to eq orders
         end
       end
@@ -375,7 +375,7 @@ RSpec.describe ProjectQuery do
         let(:orders) { { bogus: :desc, cf_1: :desc } } # rubocop:disable Naming/VariableNumber
 
         it "removes the values" do
-          expect(instance.orders.to_h { [_1.attribute, _1.direction] })
+          expect(instance.orders.to_h { [it.attribute, it.direction] })
             .to be_empty
         end
       end
@@ -385,7 +385,7 @@ RSpec.describe ProjectQuery do
         let(:orders) { { bogus: :desc, name: :desc, cf_0: :desc, "cf_#{custom_field.id}": :desc } } # rubocop:disable Naming/VariableNumber
 
         it "removes only the offending values" do
-          expect(instance.orders.to_h { [_1.attribute, _1.direction] })
+          expect(instance.orders.to_h { [it.attribute, it.direction] })
             .to eq(name: :desc, "cf_#{custom_field.id}": :desc)
         end
       end

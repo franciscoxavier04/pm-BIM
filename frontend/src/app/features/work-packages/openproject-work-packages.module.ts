@@ -231,7 +231,6 @@ import {
   WorkPackageViewDropdownMenuDirective,
 } from 'core-app/shared/components/op-context-menu/handlers/wp-view-dropdown-menu.directive';
 import { HalEventsService } from 'core-app/features/hal/services/hal-events.service';
-import { OpenprojectProjectsModule } from 'core-app/features/projects/openproject-projects.module';
 import {
   WorkPackageNotificationService,
 } from 'core-app/features/work-packages/services/notifications/work-package-notification.service';
@@ -293,7 +292,7 @@ import { UserLinkComponent } from 'core-app/shared/components/user-link/user-lin
 import {
   WorkPackageWatcherButtonComponent,
 } from 'core-app/features/work-packages/components/wp-watcher-button/wp-watcher-button.component';
-import { WpResizerDirective } from 'core-app/shared/components/resizer/resizer/wp-resizer.component';
+import { WpResizerComponent } from 'core-app/shared/components/resizer/resizer/wp-resizer.component';
 import {
   GroupDescriptor,
   WorkPackageSingleViewComponent,
@@ -405,6 +404,9 @@ import {
 } from 'core-app/features/work-packages/routing/wp-split-view/wp-split-view-entry.component';
 import { OpWpDatePickerModalComponent } from 'core-app/shared/components/datepicker/wp-date-picker-modal/wp-date-picker.modal';
 import { OpenprojectEnterpriseModule } from 'core-app/features/enterprise/openproject-enterprise.module';
+import {
+  WorkPackageReminderContextMenuDirective,
+} from 'core-app/features/work-packages/components/wp-buttons/wp-reminder-button/wp-reminder-context-menu.directive';
 
 @NgModule({
   imports: [
@@ -419,8 +421,6 @@ import { OpenprojectEnterpriseModule } from 'core-app/features/enterprise/openpr
     OpenprojectAttachmentsModule,
 
     OpenprojectBcfModule,
-
-    OpenprojectProjectsModule,
 
     OpenprojectModalModule,
 
@@ -511,7 +511,7 @@ import { OpenprojectEnterpriseModule } from 'core-app/features/enterprise/openpr
     WorkPackagesTableConfigMenuComponent,
     WorkPackageTablePaginationComponent,
 
-    WpResizerDirective,
+    WpResizerComponent,
 
     WorkPackageTableSumsRowController,
 
@@ -596,6 +596,7 @@ import { OpenprojectEnterpriseModule } from 'core-app/features/enterprise/openpr
     WorkPackageSplitViewToolbarComponent,
     WorkPackageWatcherButtonComponent,
     WorkPackageReminderButtonComponent,
+    WorkPackageReminderContextMenuDirective,
     WorkPackageShareButtonComponent,
     WorkPackageSubjectComponent,
 
@@ -654,7 +655,7 @@ import { OpenprojectEnterpriseModule } from 'core-app/features/enterprise/openpr
     WorkPackageFilterContainerComponent,
     QueryFiltersComponent,
 
-    WpResizerDirective,
+    WpResizerComponent,
     WorkPackageBreadcrumbComponent,
     WorkPackageBreadcrumbParentComponent,
     WorkPackageSplitViewToolbarComponent,

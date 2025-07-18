@@ -27,13 +27,13 @@
             render(Primer::Alpha::ActionMenu.new(data: { test_selector: "meeting-section-action-menu" })) do |menu|
               menu.with_show_button(icon: "kebab-horizontal", "aria-label": t("settings.project_attributes.label_section_actions"), scheme: :invisible)
               edit_action_item(menu)
+              menu.with_divider
+              add_agenda_item_action(menu)
+              add_work_package_action(menu)
               unless first? && last?
                 menu.with_divider
                 move_actions(menu)
               end
-              menu.with_divider
-              add_agenda_item_action(menu)
-              add_work_package_action(menu)
               menu.with_divider
               delete_action_item(menu)
             end
@@ -46,9 +46,8 @@
         method: :put,
         url: meeting_section_path(@meeting_section.meeting, @meeting_section),
         data: {
-          controller: "meeting-section-form scroll-into-view",
-          "application-target": "dynamic",
-          "meeting-section-form-cancel-url-value": cancel_edit_meeting_section_path(@meeting_section.meeting, @meeting_section)
+          controller: "meetings--section-form scroll-into-view",
+          "meetings--section-form-cancel-url-value": cancel_edit_meeting_section_path(@meeting_section.meeting, @meeting_section)
         }
       ) do |f|
         flex_layout do |editable_title_form|

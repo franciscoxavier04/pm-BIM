@@ -44,7 +44,7 @@ zh-CN:
       meeting_agenda_item:
         title: "标题"
         author: "作者"
-        duration_in_minutes: "分钟"
+        duration_in_minutes: "持续时间"
         description: "备注"
         presenter: "演讲者"
       meeting_section:
@@ -178,6 +178,7 @@ zh-CN:
       agenda_items: "复制议程项目"
       agenda_text: "复制之前会议的议程"
       participants: "复制与会者列表"
+      to_clipboard: "复制到剪贴板"
     email:
       send_emails: "电子邮件参与者"
       send_invitation_emails: >
@@ -232,12 +233,38 @@ zh-CN:
     blankslate:
       title: "无会议显示"
       desc: "没有符合主动筛选条件的会议。"
+    label_export_pdf: "导出 PDF"
+    export:
+      your_meeting_export: "会议正在导出"
+    export_pdf_dialog:
+      title: 导出 PDF
+      description: 生成当前状态下此会议的可打印 PDF 文件。
+      include_participants:
+        label: 包含与会者名单
+        caption: 与会者名单将列在会议议程上方。
+      include_attachments:
+        label: 包含附件列表
+        caption: 附件的文件名清单将附加在结尾。
+      include_backlog:
+        label: 包含积压工作
+        caption: 积压工作元素通常不被视为会议事件的一部分，但您可以选择将它们包含在内。
+      include_outcomes:
+        label: 包含议程结果
+        caption: 如果您的议程结果包含机密信息，您可以选择不在导出内容中包括它们。
+      footer_text:
+        label: 页脚文本
+        caption: 此文本将出现在每一页的页脚右侧。
+      submit_button: 下载
   meeting_section:
     untitled_title: "无标题章节"
     delete_confirmation: "删除该属性也会删除其在所有项目中的值。您确定要这样做吗？"
     placeholder_title: "新建章节"
     empty_text: "拖动项目到此处或创建一个新项目"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Time zone difference"
+      description: >
+        The dates below are referencing the time zone of the meeting series (%{actual_zone}), not your local time zone (%{user_zone}).
     ended_blankslate:
       title: "结束"
       message: "本系列会议已经结束，没有即将举行的会议。 "
@@ -321,7 +348,7 @@ zh-CN:
   permission_delete_meetings: "删除会议"
   permission_view_meetings: "查看会议"
   permission_manage_agendas: "管理议程"
-  permission_manage_agendas_explanation: "允许管理动态会议的议程项目。"
+  permission_manage_agendas_explanation: "允许创建、编辑和移除议程条目"
   permission_manage_outcomes: "管理结果"
   permission_send_meeting_invites_and_outcomes: "向与会者发送会议邀请和结果"
   project_module_meetings: "会议"
@@ -350,7 +377,9 @@ zh-CN:
   label_meeting_index_later: "下周及以后"
   label_agenda_items: "议程项目"
   label_agenda_items_reordered: "重新排序"
-  label_agenda_item_remove: "从议程中移除"
+  label_agenda_item_add: "添加议程项"
+  label_agenda_item_remove_from_agenda: "从议程中移除"
+  label_agenda_item_remove_from_backlog: "从积压工作中移除"
   label_agenda_item_undisclosed_wp: "工作包 #%{id} 不可见"
   label_agenda_item_deleted_wp: "已删除工作包引用"
   label_agenda_item_actions: "议程项目行动"
@@ -363,7 +392,9 @@ zh-CN:
   label_agenda_item_move_down: "向下移动"
   label_agenda_item_add_notes: "添加备注"
   label_agenda_item_add_outcome: "添加成果"
+  label_agenda_item_work_package_add: "添加工作包"
   label_agenda_item_work_package: "议程项目工作包"
+  label_section_rename: "重命名章节"
   label_agenda_outcome: "成果"
   label_agenda_outcome_actions: "议程成果行动"
   label_agenda_outcome_edit: "编辑成果"

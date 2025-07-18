@@ -15,6 +15,7 @@ ru:
           oauth2_sso_with_two_way_oauth2_fallback: Аутентификация Single-Sign-On с двухсторонней OAuth 2.0 как резервная
           two_way_oauth2: Двусторонняя аутентификация OAuth 2.0
         storage_audience: Аудитория хранилища
+        token_exchange_scope: Объем хранения
       storages/project_storage:
         project_folder: Папка проекта
         project_folder_mode: Режим папки проекта
@@ -80,6 +81,7 @@ ru:
     edit_project_folder:
       label: Изменить папку проекта
     open:
+      contact_admin: Please contact your administrator to resolve this error.
       remote_identity_error: Произошла непредвиденная ошибка при подключении к хранилищу.
     project_folder_mode:
       automatic: Автоматическое управление
@@ -127,7 +129,7 @@ ru:
               conflict: 'Пользователь %{user} не может быть добавлен в группу %{group} по следующей причине: %{reason}'
               failed_to_add: 'Пользователь %{user} не может быть добавлен в группу %{group} по следующей причине: %{reason}'
             create_folder:
-              conflict: '%{folder_name} уже существует в %{parent_location}.'
+              conflict: The folder %{folder_name} already exists on %{parent_location}.
               not_found: "%{parent_location} не найден."
             ensure_root_folder_permissions:
               not_found: "%{group_folder} не найдена. Пожалуйста, проверьте настройки групп в Nextcloud."
@@ -141,6 +143,7 @@ ru:
               conflict: 'Пользователь %{user} не может быть удален из группы %{group} по следующей причине: %{reason}'
               failed_to_remove: 'Пользователь %{user} не может быть удален из группы %{group} по следующей причине: %{reason}'
             rename_project_folder:
+              conflict: OpenProject не смог переименовать папку проекта в %{current_path}, поскольку папка с таким именем уже существует
               forbidden: Пользователь OpenProject не имеет доступа к папке %{current_path}.
               not_found: "%{current_path} не найден."
             set_folders_permissions:
@@ -166,7 +169,7 @@ ru:
               not_found: "%{current_path} не найден."
             set_folders_permissions:
               permission_not_set: не удалось установить разрешения на %{path}.
-          error: Произошла непредвиденная ошибка. Пожалуйста, убедитесь, что OneDrive/SharePoint доступен и проверьте журналы работы OpenProject для дополнительной информации
+          error: An unexpected error occurred. Please ensure that OneDrive is reachable and check OpenProject worker logs for more information
           not_allowed: OpenProject не был разрешен доступ к OneDrive. Пожалуйста, проверьте разрешения, установленные в приложении Azure.
           unauthorized: OpenProject не удалось синхронизировать с OneDrive. Пожалуйста, проверьте конфигурацию хранилища и приложения Azure.
           user_does_not_exist: "%{user} не существует в Nextcloud."
@@ -185,7 +188,7 @@ ru:
     configuration_checks:
       oauth_client_incomplete:
         nextcloud: Разрешить OpenProject доступ к данным Nextcloud с помощью OAuth.
-        one_drive: Разрешить OpenProject доступ к данным Azure, используя OAuth для подключения OneDrive/Sharepoint.
+        one_drive: Allow OpenProject to access Azure data using OAuth to connect OneDrive.
       redirect_uri_incomplete:
         one_drive: Завершите установку с правильным перенаправлением URI.
     confirm_replace_oauth_application: Это действие приведет к сбросу текущих учетных данных OAuth. После подтверждения вам придется повторно ввести учетные данные у поставщика хранилища, и всем удаленным пользователям придется снова авторизоваться в OpenProject. Вы уверены, что хотите продолжить?
@@ -225,18 +228,18 @@ ru:
       openproject_oauth: OpenProject OAuth
       project_folders: Папки проекта
       redirect_uri: URI перенаправления
-      storage_audience: Аудитория хранилища
       storage_audience_blank: Аудитория не была настроена.
-      storage_audience_description: Получение токенов для аудитории "%{audience}".
-      storage_audience_idp: Использование ключа первого доступа, полученного от провайдера аутентификации независимо от аудитории.
+      storage_audience_description: Обмен токенами для аудитории "%{audience}".
+      storage_audience_idp: Использование токена доступа, полученного поставщиком идентификационных данных при входе в систему, независимо от аудитории.
       storage_oauth: Nextcloud OAuth
       storage_provider: Поставщик хранилища
+      token_exchange: Обмен токенами
     health:
       actions:
         download_report: Скачать
         rerun_checks: Перезапустить все проверки
         run_checks: Выполнить проверку
-      checked: Последняя проверка %{datetime}
+      checked: 'Последняя проверка: %{datetime}'
       checks:
         ampf_configuration:
           client_folder_creation: Автоматическое создание папки
@@ -246,7 +249,7 @@ ru:
           group_folder_app: 'Зависимость: Папки группы'
           group_folder_contents: Папка группы ожидала содержимое
           group_folder_presence: Папка группы существует
-          header: Конфигурация автоматически управляемых папок проекта
+          header: Автоматически управляемые папки проекта
           userless_access: Аутентификация на стороне сервера
         authentication:
           existing_token: Токен пользователя
@@ -265,16 +268,16 @@ ru:
           diagnostic_request: Диагностический запрос
           drive_id_exists: Диск существует
           drive_id_format: Формат ID диска
-          header: Основные настройки
+          header: Конфигурация
           host_url_accessible: Адрес хоста доступен
           storage_configured: Настройка завершена
           tenant_id: Идентификатор арендатора
         failures:
-          zero: Проверка прошла успешна
           one: "%{count} проверка не удалась"
           few: "%{count} проверка не удалась"
           many: "%{count} проверка не удалась"
           other: "%{count} проверка не удалась"
+        success: Все проверки пройдены
         warnings:
           one: "%{count} проверка с предупреждением"
           few: "%{count} проверки с предупреждениями"
@@ -287,8 +290,8 @@ ru:
         nc_dependency_version_mismatch: Версия %{dependency} не поддерживается. Пожалуйста, обновите Ваш сервер Nextcloud.
         nc_group_folder_not_found: Папка группы не найдена.
         nc_host_not_found: По настроенному адресу хоста сервер Nextcloud не найден. Пожалуйста, проверьте конфигурацию.
-        nc_oauth_request_not_found: OpenProject не смог найти корневую папку Nextcloud для текущего зарегистрированного пользователя. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
-        nc_oauth_request_unauthorized: У текущего пользователя нет прав на просмотр основной папки Nextcloud или мы не смогли получить токен. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
+        nc_oauth_request_not_found: Конечная точка для получения данных о текущем подключенном пользователе не найдена. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
+        nc_oauth_request_unauthorized: Текущий пользователь не авторизован для доступа к удаленному файловому хранилищу. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
         nc_oauth_token_missing: OpenProject не может протестировать пользовательскую связь с Nextcloud, так как пользователь еще не связал свою учетную запись Nextcloud.
         nc_unexpected_content: В управляемой папке группы обнаружено неожиданное содержимое.
         nc_userless_access_denied: Указанный пароль приложения неверен.
@@ -297,18 +300,19 @@ ru:
         od_client_write_permission_missing: Возможно, клиент не имеет прав на запись. Пожалуйста, проверьте документацию по конфигурации для вашего хранилища.
         od_drive_id_invalid: Настроенный идентификатор диска не найден. Пожалуйста, проверьте конфигурацию.
         od_drive_id_not_found: Настроенный идентификатор диска не найден. Пожалуйста, проверьте конфигурацию.
-        od_existing_test_folder: Папка %{folder_name}, необходимая для тестирования, уже существует. Удалите ее и повторите попытку.
-        od_oauth_request_not_found: OpenProject не смог найти корневую папку для текущего зарегистрированного пользователя. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
-        od_oauth_request_unauthorized: У текущего пользователя нет прав для просмотра корневой папки OneDrive/SharePoint или мы не смогли получить токен. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
-        od_oauth_token_missing: OpenProject не может протестировать пользовательскую связь с OneDrive/SharePoint, так как пользователь еще не связал свою учетную запись Microsoft.
+        od_oauth_request_not_found: Конечная точка для получения данных о текущем подключенном пользователе не найдена. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
+        od_oauth_request_unauthorized: Текущий пользователь не авторизован для доступа к удаленному файловому хранилищу. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
+        od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive as the user did not yet link their Microsoft account.
         od_tenant_id_wrong: Настроенный идентификатор каталога недействителен. Пожалуйста, проверьте конфигурацию.
+        od_test_folder_exists: Папка %{folder_name}, необходимая для тестирования уже существует. Пожалуйста, удалите её и повторите попытку.
         od_unexpected_content: На диске обнаружено неожидаемое содержимое.
         offline_access_scope_missing: Рекомендуется настроить провайдера OpenID Connect для запроса области offline_access. Интеграция может работать в любом случае, но убедитесь, что токены обновления не истекают.
-        oidc_cant_acquire_token: Ваша настройка OpenID Connect не предоставляет необходимой аудитории и не предоставляет возможности обмена токенами. Пожалуйста, ознакомьтесь с нашей документацией для получения дополнительной информации.
-        oidc_cant_exchange_token: Похоже, возникла проблема с настройкой Exchange Token вашего провайдера OpenID Connect. Пожалуйста, проверьте его конфигурацию и повторите попытку.
         oidc_cant_refresh_token: Произошла ошибка во время проверки Вашего доступа к хранилищу. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
         oidc_non_oidc_user: Текущий пользователь не представлен провайдером идентификации OpenID Connect(OIDC). Пожалуйста, повторите проверку пользователя, идентифицированного через OIDC.
         oidc_non_provisioned_user: Текущий пользователь не представлен провайдером идентификации OpenID Connect. Пожалуйста, повторите проверку пользователя.
+        oidc_token_acquisition_failed: Ваша настройка OpenID Connect не обеспечивает необходимую аудиторию и не предоставляет возможности обмена токенами. Пожалуйста, ознакомьтесь с нашей документацией для получения дополнительной информации.
+        oidc_token_exchange_failed: Похоже, возникла проблема с настройкой Token Exchange вашего провайдера OpenID Connect. Пожалуйста, проверьте его конфигурацию и повторите попытку.
+        oidc_token_refresh_failed: Произошла ошибка во время проверки Вашего доступа к хранилищу. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
         unknown_error: Соединение не удалось подтвердить. Произошла неизвестная ошибка. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
       label_error: Ошибка
       label_failed: Ошибка
@@ -353,8 +357,9 @@ ru:
         integration: Администрирование Nextcloud / OpenProject
         oauth_configuration: Скопируйте эти значения из %{application_link_text}.
         provider_configuration: Пожалуйста, убедитесь, что у вас есть права администрирования в копии Nextcloud, и перед установкой настроен %{application_link_text}.
-        storage_audience: Пожалуйста, введите ID Клиента, с помощью которого Nextcloud связан с провайдером идентификации.
+        storage_audience: Идентификатор клиента, который Nextcloud использует для связи с поставщиком идентификационных данных.
         storage_audience_placeholder: например, nextcloud
+        token_exchange_scope: Объемы, которые должны быть запрошены во время обмена токенами, каждый из которых разделен пробелом.
       no_specific_folder: По умолчанию каждый пользователь при загрузке файла начинает работу со своей собственной домашней папки.
       no_storage_set_up: Нет настроенных хранилищ файлов.
       not_logged_into_storage: Чтобы выбрать папку проекта, сначала войдите
@@ -363,9 +368,9 @@ ru:
       one_drive:
         application_link_text: Портал Azure
         copy_redirect_uri: Копировать перенаправление URI
-        documentation_link_text: Документация по хранению файлов OneDrive/SharePoint
+        documentation_link_text: OneDrive file storages documentation
         drive_id: Пожалуйста, скопируйте ID с нужного диска, выполнив шаги в %{drive_id_link_text}.
-        integration: OneDrive/SharePoint
+        integration: OneDrive
         missing_client_id_for_redirect_uri: Пожалуйста, заполните значения OAuth для генерации URI
         oauth_client_redirect_uri: Скопируйте это значение в новый Web redirect URI под URI перенаправления.
         oauth_client_secret: В случае, если у клиента нет секретного ключа приложения, пожалуйста, создайте новый.
@@ -374,9 +379,9 @@ ru:
         tenant_id: Пожалуйста, скопируйте идентификатор каталога (арендатора) из желаемого приложения и регистраций App в %{application_link_text}.
         tenant_id_placeholder: Имя или UUID
       setting_up_additional_storages: Для настройки дополнительных файловых хранилищ посетите
-      setting_up_additional_storages_non_admin: Администраторы могут настроить дополнительные файловые хранилища в Администрировании / Файловых хранилищах.
+      setting_up_additional_storages_non_admin: Администраторы могут настроить дополнительные файловые хранилища в Администрирование / Файловые хранилища.
       setting_up_storages: Для настройки файловых хранилищ посетите
-      setting_up_storages_non_admin: Администраторы могут настроить файловые хранилища в Администрировании / Файловых хранилищах.
+      setting_up_storages_non_admin: Администраторы могут настроить файловые хранилища в Администрирование / Файловые хранилища.
       type: 'Перед установкой убедитесь, что у вас есть права администрирования в вашем экземпляре Nextcloud и что перед установкой установлено следующее приложение:'
       type_link_text: "«Интеграционный OpenProject»"
     label_active: Активно
@@ -386,9 +391,9 @@ ru:
     label_creator: Автор
     label_delete_storage: Удалить хранилище
     label_edit_storage_access_management: Редактировать управление доступом к хранилищу
-    label_edit_storage_audience: Изменить аудиторию хранилища
     label_edit_storage_automatically_managed_folders: Редактирование хранилища автоматически управляемых папок
     label_edit_storage_host: Изменить узел хранения
+    label_edit_token_exchange: Редактировать конфигурацию обмена токенами
     label_existing_manual_folder: Существующая папка с разрешениями, управляемыми вручную
     label_file_storage: Файловое хранилище
     label_host: URL хоста
@@ -475,24 +480,30 @@ ru:
       one_drive:
         label_oauth_client_id: ID приложения (клиента) Azure OAuth
         label_oauth_client_secret: Секретное значение клиента Azure OAuth
-        name: OneDrive/SharePoint
+        name: OneDrive
         name_placeholder: напр. OneDrive
+      share_point:
+        label_oauth_client_id: Azure OAuth Application (client) ID
+        label_oauth_client_secret: Azure OAuth Client Secret Value
+        name: SharePoint
+        name_placeholder: e.g. SharePoint
     show_attachments_toggle:
       description: Отключение этой опции скроет список вложений на вкладке "Файлы" у пакетов работ. Файлы, прикрепленные в описании пакета работ, по-прежнему будут загружаться во внутреннее хранилище вложений.
       label: Показывать вложения во вкладке "Файлы" пакетов работ
     storage_audience:
-      documentation_intro: Детали о следующих опциях и о том, что нужно настроить в поставщике идентификации можно найти в нашей документации.
+      documentation_intro: Пожалуйста, ознакомьтесь с нашей документацией для подробной информации о следующих опциях и конфигурации поставщика идентификационных данных.
       idp:
-        helptext: OpenProject будет использовать первый токен доступа, полученный провайдером идентификации для аутентификации запросов на хранилище. Он не будет пытаться получить другой токен.
-        label: Использовать первый токен доступа, полученный идентификатором провайдера
+        helptext: OpenProject будет использовать токен доступа, полученный поставщиком идентификационных данных при входе в систему, для аутентификации запросов к хранилищу. Он не будет пытаться получить другой токен.
+        label: Использовать токен доступа, полученный при входе пользователя
       manual:
-        helptext: Позволяет задать аудиторию хранилища. OpenProject попытается получить токен для данной аудитории у поставщика аутентификации.
-        label: Определить аудиторию хранилища вручную
+        helptext: OpenProject обменяется токеном с поставщиком идентификационных данных для данной аудитории.
+        label: Вручную укажите аудиторию, для которой необходимо обменять токен доступа
     storage_list_blank_slate:
       description: Добавьте хранилище, чтобы увидеть его здесь.
       heading: У вас пока нет хранилищ.
     successful_storage_connection: Хранилище успешно подключено! Не забудьте активировать хранилище на вкладке Проекты для каждого желаемого проекта, чтобы использовать его.
     upsell:
       description: |-
-        Интегрируйте OneDrive / SharePoint как хранилище файлов OpenProject. Загружайте файлы и связывайте их напрямую с пакетами работ проекта.
-      title: Интеграция с OneDrive/SharePoint
+        Integrate your OneDrive as a file storage with OpenProject. Upload files and link them directly to
+        work packages in a project.
+      title: OneDrive integration

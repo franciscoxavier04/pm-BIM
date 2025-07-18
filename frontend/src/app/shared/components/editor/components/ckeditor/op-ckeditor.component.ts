@@ -36,7 +36,7 @@ import {
   ICKEditorWatchdog,
 } from 'core-app/shared/components/editor/components/ckeditor/ckeditor.types';
 import { CKEditorSetupService } from 'core-app/shared/components/editor/components/ckeditor/ckeditor-setup.service';
-import { KeyCodes } from 'core-app/shared/helpers/keyCodes.enum';
+import { KeyCodes } from 'core-app/shared/helpers/keycodes';
 import { debugLog } from 'core-app/shared/helpers/debug_output';
 import { UntilDestroyedMixin } from 'core-app/shared/helpers/angular/until-destroyed.mixin';
 
@@ -271,13 +271,13 @@ export class OpCkeditorComponent extends UntilDestroyedMixin implements OnInit, 
       editor.editing.view.document,
       'keydown',
       (evt, data) => {
-        if ((data.ctrlKey || data.metaKey) && data.keyCode === Number(KeyCodes.ENTER)) {
+        if ((data.ctrlKey || data.metaKey) && data.keyCode === KeyCodes.ENTER) {
           debugLog('Sending save request from CKEditor.');
           this.saveRequested.emit();
           evt.stop();
         }
 
-        if (data.keyCode === Number(KeyCodes.ESCAPE)) {
+        if (data.keyCode === KeyCodes.ESCAPE) {
           this.editorEscape.emit();
           evt.stop();
         }

@@ -39,14 +39,28 @@ module Exports
       raise NotImplementedError
     end
 
+    def list_export?
+      true
+    end
+
     def export!
       result = exporter_instance.export!
       handle_export_result(export, result)
     end
 
     def exporter_instance
+      list_export? ? exporter_instance_list : exporter_single_list
+    end
+
+    def exporter_instance_list
       ::Exports::Register
         .list_exporter(model, mime_type)
+        .new(query, options)
+    end
+
+    def exporter_single_list
+      ::Exports::Register
+        .single_exporter(model, mime_type)
         .new(query, options)
     end
 
@@ -103,7 +117,7 @@ module Exports
       filename = clean_filename(export_result)
 
       call = Attachments::CreateService
-               .bypass_whitelist(user: User.current)
+               .bypass_allowlist(user: User.current)
                .call(container:, file:, filename:, description: "")
 
       call.on_success do

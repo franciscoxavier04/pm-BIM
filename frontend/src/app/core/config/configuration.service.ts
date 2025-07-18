@@ -51,6 +51,10 @@ export class ConfigurationService {
     return this.userPreference('commentSortDescending');
   }
 
+  public disableKeyboardShortcuts():boolean {
+    return this.userPreference('disableKeyboardShortcuts');
+  }
+
   public warnOnLeavingUnsaved():boolean {
     return this.userPreference('warnOnLeavingUnsaved');
   }
@@ -148,6 +152,10 @@ export class ConfigurationService {
 
   public get availableFeatures():string[] {
     return this.systemPreference<string[]>('availableFeatures');
+  }
+
+  public get triallingFeatures():string[] {
+    return this.systemPreference<string[]>('triallingFeatures');
   }
 
   private loadConfiguration() {

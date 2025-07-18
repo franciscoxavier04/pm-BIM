@@ -36,7 +36,7 @@ module RecurringMeetings
       Meetings::DeleteContract
     end
 
-    def after_validate(_, call)
+    def after_validate(call)
       send_cancellation_mail(model)
 
       call

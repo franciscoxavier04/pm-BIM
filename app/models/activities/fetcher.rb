@@ -78,11 +78,7 @@ module Activities
       when :default
         OpenProject::Activity.default_event_types.to_a
       else
-        scope = Array(scope)
-
-        scope << "project_details" if scope.delete("project_attributes")
-
-        scope & event_types
+        Array(scope) & event_types
       end
     end
 

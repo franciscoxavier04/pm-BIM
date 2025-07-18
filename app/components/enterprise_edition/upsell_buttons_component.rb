@@ -33,13 +33,15 @@ module EnterpriseEdition
     include OpPrimer::ComponentHelpers
 
     # @param feature_key [Symbol, NilClass] The key of the feature to show the banner for.
+    # @param show_buy_now [Boolean] Whether to show the "Buy now" button.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(feature_key, **system_arguments)
+    def initialize(feature_key, show_buy_now: false, **system_arguments)
       super
 
       @system_arguments = system_arguments
       @system_arguments[:align_items] ||= :center
       @feature_key = feature_key
+      @show_buy_now = show_buy_now
     end
 
     def call
@@ -58,6 +60,7 @@ module EnterpriseEdition
 
     def buttons
       [
+        buy_now_button,
         free_trial_button,
         upgrade_now_button,
         more_info_button
@@ -65,18 +68,41 @@ module EnterpriseEdition
     end
 
     def free_trial_button
-      return if EnterpriseToken.active?
+      render ::EnterpriseTrials::TrialButtonComponent.new
+    end
+
+    def buy_now_button
+      return unless EnterpriseToken.active?
       return unless User.current.admin?
 
-      helpers.angular_component_tag("opce-free-trial-button")
+      render(EnterpriseEdition::BuyNowButtonComponent.new)
     end
 
     # Allow providing a custom upgrade now button
     def upgrade_now_button
-      nil
+      if @show_buy_now
+        button_title = t("admin.enterprise.book_now")
+        render(
+          Primer::Beta::Button.new(
+            tag: :a,
+            size: :medium,
+            href: "#",
+            aria: { label: button_title },
+            classes: "upsell-colored-background",
+            role: "button",
+            data: {
+              "cb-type": "checkout",
+              "cb-plan-id": OpenProject::Configuration.enterprise_plan
+            },
+            title: button_title
+          )
+        ) { button_title }
+      end
     end
 
     def more_info_button
+      return if @feature_key == :teaser
+
       render(Primer::Beta::Link.new(href: enterprise_link)) do |link|
         link.with_trailing_visual_icon(icon: "link-external")
         link_title

@@ -42,7 +42,7 @@
                   data: add_comment_wrapper_data_attributes
                 ) do
                   render(
-                    WorkPackages::ActivitiesTab::Journals::NewComponent.new(work_package:)
+                    WorkPackages::ActivitiesTab::Journals::NewComponent.new(work_package:, filter:, last_server_timestamp:)
                   )
                 end
               end

@@ -30,6 +30,7 @@
 
 class AddFileLinkJournalsToExistingContainers < ActiveRecord::Migration[7.0]
   def up
+    SystemUser.reset_column_information
     system_user = SystemUser.first
     containers = Storages::FileLink.includes(:container).map(&:container).uniq.compact
 

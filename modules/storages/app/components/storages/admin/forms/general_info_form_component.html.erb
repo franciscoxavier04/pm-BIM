@@ -1,6 +1,6 @@
 <%=
-    component_wrapper(tag: 'turbo-frame') do
-      render(Primer::Beta::Text.new(tag: :div, test_selector: 'storage-general-info-form')) do
+    component_wrapper(tag: "turbo-frame") do
+      render(Primer::Beta::Text.new(tag: :div, test_selector: "storage-general-info-form")) do
         primer_form_with(
           model:,
           url: form_url,
@@ -8,9 +8,8 @@
           data: {
             "turbo-frame": "page-content",
             controller: "storages--automatically-managed-project-folders-form",
-            'application-target': "dynamic",
-            'storages--automatically-managed-project-folders-form-provider-type-value': storage.provider_type,
-            'storages--automatically-managed-project-folders-form-is-automatically-managed-value': storage.automatic_management_enabled?,
+            "storages--automatically-managed-project-folders-form-provider-type-value": storage.provider_type,
+            "storages--automatically-managed-project-folders-form-is-automatically-managed-value": storage.automatic_management_enabled?
           }
         ) do |form|
           flex_layout do |general_info_row|
@@ -20,7 +19,7 @@
             end
 
             general_info_row.with_row(mb: 3) do
-              render(Primer::Beta::Text.new(test_selector: 'storage-provider-configuration-instructions')) { provider_configuration_instructions }
+              render(Primer::Beta::Text.new(test_selector: "storage-provider-configuration-instructions")) { provider_configuration_instructions }
             end
 
             general_info_row.with_row(mb: 3) do
@@ -37,7 +36,13 @@
               end
 
               general_info_row.with_row(mb: 3) do
-                render(EnterpriseEdition::BannerComponent.new(:nextcloud_sso, variant: :medium, image: "enterprise/nextcloud-sso-authentication.png"))
+                render(
+                  EnterpriseEdition::BannerComponent.new(
+                    :nextcloud_sso,
+                    variant: :medium,
+                    image: "enterprise/nextcloud-sso-authentication.png"
+                  )
+                )
               end
             end
 
@@ -64,5 +69,5 @@
           end
         end
       end
-  end
+    end
 %>

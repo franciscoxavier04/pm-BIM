@@ -53,6 +53,12 @@ OpenProject has multiple file format options for exporting work packages, includ
 
 OpenProject has multiple options for exporting work packages in PDF format. These include table, report and Gantt chart. 
 
+> [!TIP]
+>
+> OpenProject PDF export supports commonly used character sets, including multilingual fonts with different alphabets, various symbols (mathematical, technical) and emojis.
+>
+![Example of a PDF export in OpenProject that includes lorem ipsum text in multiple languages and mathematical symbols](openproject-user-guide-wp-export-multilingual-symbols-example.png)
+
 #### PDF Table
 
 PDF Table exports the work package table displaying work packages as single rows with the selected columns for the work package table. Work package IDs are linked to the respective work packages. Clicking on a work package ID will lead you directly to the work package in OpenProject.
@@ -177,9 +183,8 @@ If you select **Generate PDF**, a modal will open, where you can adjust the foll
 
 - **Template** is a dropdown menu showing all of the options currently enabled. At moment possible template options include:
 
-   - *Attributes and description* - this template lists all the work package attributes [configured in the work package form](../../../system-admin-guide/manage-work-packages/work-package-types/#work-package-form-configuration-enterprise-add-on), regardless whether they are filled out or not.
-   - *Contract* - this template includes work package details formatted to the standard German contract form.
-
+  - *Attributes and description* - this template lists all the work package attributes [configured in the work package form](../../../system-admin-guide/manage-work-packages/work-package-types/#work-package-form-configuration-enterprise-add-on), regardless whether they are filled out or not.
+  - *Contract* - this template includes work package details formatted to the standard German contract form.
     
 > [!TIP] 
 > You can define which templates are enabled for specific work package types in the [administration settings](../../../system-admin-guide/manage-work-packages/work-package-types).

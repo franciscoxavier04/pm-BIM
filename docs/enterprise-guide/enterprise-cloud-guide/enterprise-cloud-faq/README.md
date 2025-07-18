@@ -20,7 +20,7 @@ If you are currently on a lower plan for the Enterprise cloud and want to test a
 
 ### Can I get a custom domain name instead of example.openproject.com?
 
-Yes, you can create your custom domain name. For this service we charge €100 per month. Please contact us via email (sales@openproject.com) if you are interested.
+Yes, you can create your custom domain name. For this service we charge €100 per month. Please contact us via email [support@openproject.com](mailto:support@openproject.com) if you are interested.
 
 ### How can I change the OpenProject Enterprise cloud creators account?
 
@@ -61,7 +61,7 @@ The user may terminate the contract at any time, which will apply by the end of 
 
 ### What shall I do when I run into payment issues with OpenProject?
 
-In case you use the bank transfer payment method please indicate the invoice number. You can find this information in the corresponding invoice (OP…). Otherwise the automatic banking system is not able to detect your payment. Please do not hesitate to contact billing@openproject.com if you have any further questions.
+In case you use the bank transfer payment method please indicate the invoice number. You can find this information in the corresponding invoice (OP…). Otherwise the automatic banking system is not able to detect your payment. Please do not hesitate to contact [billing@openproject.com](mailto:billing@openproject.com) if you have any further questions.
 
 You can find additional questions and answers regarding pricing and booking at the bottom of our [pricing website](https://www.openproject.org/pricing/#faq).
 
@@ -85,7 +85,7 @@ If you are having trouble accessing the files on your server with your browser, 
 
 ### How can I export the documents loaded on OpenProject?
 
-Currently, there is unfortunately no option to export all the documents in OpenProject at once. We could manually export the entire database (including the attachments) for you. Due to the manual effort, we would however need to charge a service fee for this. Please contact sales@openproject.com.
+Currently, there is unfortunately no option to export all the documents in OpenProject at once. We could manually export the entire database (including the attachments) for you. Due to the manual effort, we would however need to charge a service fee for this. Please contact [support@openproject.com](mailto:support@openproject.com).
 
 ### Is it possible to access the PostgreSQL tables (read-only) on a hosted OpenProject instance via ODBC or another protocol (e.g. to extract data for PowerBI)?
 

@@ -27,9 +27,11 @@
 #++
 
 class CustomActionsController < ApplicationController
-  include EnterpriseTrialHelper
   before_action :require_admin
-  before_action :require_enterprise_token
+
+  guard_enterprise_feature(:custom_actions, only: %i[new create edit update]) do
+    redirect_to action: :index
+  end
 
   self._model_object = CustomAction
   before_action :find_model_object, only: %i(edit update destroy)
@@ -80,16 +82,6 @@ class CustomActionsController < ApplicationController
         render action: render_action, status: :unprocessable_entity
       end
     }
-  end
-
-  def require_enterprise_token
-    return if EnterpriseToken.allows_to?(:custom_actions)
-
-    if request.get?
-      render template: "custom_actions/upsell"
-    else
-      render_403
-    end
   end
 
   # If no action/condition is set in the view, the

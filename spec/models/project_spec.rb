@@ -39,6 +39,15 @@ RSpec.describe Project do
   let(:build_project) { build_stubbed(:project, active:) }
   let(:user) { create(:user) }
 
+  describe ".templated" do
+    let!(:projects) { create_list(:project, 2) }
+    let!(:templated_projects) { create_list(:template_project, 1) }
+
+    it "returns templated projects only" do
+      expect(described_class.templated).to match_array(templated_projects)
+    end
+  end
+
   describe "#active?" do
     context "if active" do
       it "is true" do
@@ -389,7 +398,7 @@ RSpec.describe Project do
                     .class_name("Project::Phase")
                     .inverse_of(:project)
                     .dependent(nil)
-                    .order(position: :asc)
+                    .order("project_phase_definitions.position ASC")
     end
 
     it "checks for active flag" do

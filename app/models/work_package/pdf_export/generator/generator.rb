@@ -135,7 +135,7 @@ module WorkPackage::PDFExport::Generator::Generator
       if src == logo_image_filename
         logo_image_filename
       else
-        attachment_image_filepath(work_package, src)
+        attachment_image_filepath(src)
       end
     })
   end

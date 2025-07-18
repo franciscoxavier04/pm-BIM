@@ -44,7 +44,7 @@ vi:
       meeting_agenda_item:
         title: "Tiêu đề"
         author: "Tác giả"
-        duration_in_minutes: "phút"
+        duration_in_minutes: "Duration"
         description: "Ghi chú"
         presenter: "Người trình bày"
       meeting_section:
@@ -178,6 +178,7 @@ vi:
       agenda_items: "Chép mục chương trình nghị sự"
       agenda_text: "Sao chép chương trình nghị sự của cuộc họp cũ"
       participants: "Chép danh sách người tham gia"
+      to_clipboard: "Copy to clipboard"
     email:
       send_emails: "Gửi email cho người tham gia"
       send_invitation_emails: >
@@ -232,12 +233,38 @@ vi:
     blankslate:
       title: "No meetings to display"
       desc: "There are no meetings that meet the active filter criteria."
+    label_export_pdf: "Export PDF"
+    export:
+      your_meeting_export: "Meeting is being exported"
+    export_pdf_dialog:
+      title: Export PDF
+      description: Generate a printable PDF file of this meeting at the current state.
+      include_participants:
+        label: Include list of participants
+        caption: A list of participants will be preset above the meeting agenda.
+      include_attachments:
+        label: Include list of attachments
+        caption: A list containing the filenames of attachments will be appended at the end.
+      include_backlog:
+        label: Include backlog
+        caption: Backlog elements are not normally considered part of a meeting occurrence but you can choose to include them.
+      include_outcomes:
+        label: Include agenda outcomes
+        caption: If your agenda outcomes contain confidential information, you can choose to not include them in the export.
+      footer_text:
+        label: Footer text
+        caption: This text will appear on every page on the right of the footer.
+      submit_button: Download
   meeting_section:
     untitled_title: "Phần không tiêu đề"
     delete_confirmation: "Xóa phần này cũng sẽ xóa tất cả các mục chương trình nghị sự của nó. Bạn có chắc chắn muốn làm điều này không?"
     placeholder_title: "Phần mới"
     empty_text: "Kéo các mục vào đây hoặc tạo một cái mới"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Time zone difference"
+      description: >
+        The dates below are referencing the time zone of the meeting series (%{actual_zone}), not your local time zone (%{user_zone}).
     ended_blankslate:
       title: "Meeting series ended"
       message: "This meeting series has come to an end. There are no upcoming meetings. "
@@ -321,7 +348,7 @@ vi:
   permission_delete_meetings: "Xóa cuộc họp"
   permission_view_meetings: "Xem cuộc họp"
   permission_manage_agendas: "Quản lý chương trình nghị sự"
-  permission_manage_agendas_explanation: "Cho phép quản lý các mục chương trình nghị sự của cuộc họp Dạng động."
+  permission_manage_agendas_explanation: "Allows creating, editing and removing agenda items"
   permission_manage_outcomes: "Manage outcomes"
   permission_send_meeting_invites_and_outcomes: "Send meeting invites and outcomes to participants"
   project_module_meetings: "Các cuộc họp"
@@ -350,7 +377,9 @@ vi:
   label_meeting_index_later: "Next week and later"
   label_agenda_items: "Các mục chương trình nghị sự"
   label_agenda_items_reordered: "đã sắp xếp lại"
-  label_agenda_item_remove: "Gỡ bỏ khỏi chương trình nghị sự"
+  label_agenda_item_add: "Add agenda item"
+  label_agenda_item_remove_from_agenda: "Remove from agenda"
+  label_agenda_item_remove_from_backlog: "Remove from backlog"
   label_agenda_item_undisclosed_wp: "Gói công việc #%{id} không hiển thị"
   label_agenda_item_deleted_wp: "Tham chiếu gói công việc đã bị xóa"
   label_agenda_item_actions: "Các hành động mục chương trình nghị sự"
@@ -363,7 +392,9 @@ vi:
   label_agenda_item_move_down: "Di chuyển xuống"
   label_agenda_item_add_notes: "Thêm ghi chú"
   label_agenda_item_add_outcome: "Add outcome"
+  label_agenda_item_work_package_add: "Add work package"
   label_agenda_item_work_package: "Gói công việc mục chương trình nghị sự"
+  label_section_rename: "Rename section"
   label_agenda_outcome: "Outcome"
   label_agenda_outcome_actions: "Agenda outcome actions"
   label_agenda_outcome_edit: "Edit outcome"

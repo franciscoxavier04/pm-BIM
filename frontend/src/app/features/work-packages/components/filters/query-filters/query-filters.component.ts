@@ -70,7 +70,7 @@ export class QueryFiltersComponent extends UntilDestroyedMixin implements OnInit
     500,
   );
 
-  public remainingFilters:any[] = [];
+  public remainingFilters:QueryFilterResource[] = [];
 
   public focusElementIndex = 0;
 
@@ -141,7 +141,7 @@ export class QueryFiltersComponent extends UntilDestroyedMixin implements OnInit
 
   public deactivateFilter(removedFilter:QueryFilterInstanceResource) {
     const index = this.filters.indexOf(removedFilter);
-    _.remove(this.filters, (f) => f.id === removedFilter.id);
+    this.filters.splice(index, 1);
 
     this.filtersChanged.emit(this.filters);
 

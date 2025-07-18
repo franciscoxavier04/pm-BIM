@@ -1,4 +1,4 @@
-<div class="op-submenu" data-controller="filter--filter-list" data-application-target="dynamic" data-test-selector="op-submenu">
+<div class="op-submenu" data-controller="filter--filter-list" data-test-selector="op-submenu">
   <% if @searchable %>
     <div class="op-submenu--search">
       <%= render Primer::Alpha::TextField.new(
@@ -56,9 +56,7 @@
     <% end %>
 
     <% nested_sidebar_menu_items.each do |menu_item| %>
-      <div data-controller="menus--submenu"
-           data-application-target="dynamic">
-
+      <div data-controller="menus--submenu">
         <button class="op-submenu--title"
                 type="button"
                 data-action="click->menus--submenu#toggleContainer">

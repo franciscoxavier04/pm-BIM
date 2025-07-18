@@ -81,4 +81,8 @@ module WorkPackage::PDFExport::Export::Report::Attributes
       attribute_data[:value]
     ]
   end
+
+  def get_column_value_cell(work_package, column_name)
+    get_value_cell_by_column(work_package, column_name, wants_report?)
+  end
 end

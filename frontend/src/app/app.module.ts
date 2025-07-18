@@ -55,7 +55,6 @@ import {
 } from 'core-app/shared/components/work-package-graphs/openproject-work-package-graphs.module';
 import { OpenprojectOverviewModule } from 'core-app/features/overview/openproject-overview.module';
 import { OpenprojectMyPageModule } from 'core-app/features/my-page/openproject-my-page.module';
-import { OpenprojectProjectsModule } from 'core-app/features/projects/openproject-projects.module';
 import { KeyboardShortcutService } from 'core-app/shared/directives/a11y/keyboard-shortcut.service';
 import { CopyToClipboardService } from 'core-app/shared/components/copy-to-clipboard/copy-to-clipboard.service';
 import {
@@ -68,7 +67,6 @@ import {
   RevitAddInSettingsButtonService,
 } from 'core-app/features/bim/revit_add_in/revit-add-in-settings-button.service';
 import { OpenprojectEnterpriseModule } from 'core-app/features/enterprise/openproject-enterprise.module';
-import { MainMenuToggleComponent } from 'core-app/core/main-menu/main-menu-toggle.component';
 import { ConfirmDialogService } from 'core-app/shared/components/modals/confirm-dialog/confirm-dialog.service';
 import { ConfirmDialogModalComponent } from 'core-app/shared/components/modals/confirm-dialog/confirm-dialog.modal';
 import { DynamicContentModalComponent } from 'core-app/shared/components/modals/modal-wrapper/dynamic-content.modal';
@@ -138,12 +136,7 @@ import {
 import {
   DraggableAutocompleteComponent,
 } from 'core-app/shared/components/autocompleter/draggable-autocomplete/draggable-autocomplete.component';
-import {
-  AttributeHelpTextComponent,
-} from 'core-app/shared/components/attribute-help-texts/attribute-help-text.component';
 import { OpExclusionInfoComponent } from 'core-app/shared/components/fields/display/info/op-exclusion-info.component';
-import { NewProjectComponent } from 'core-app/features/projects/components/new-project/new-project.component';
-import { CopyProjectComponent } from 'core-app/features/projects/components/copy-project/copy-project.component';
 import { OpenProjectJobStatusModule } from 'core-app/features/job-status/openproject-job-status.module';
 import {
   NotificationsSettingsPageComponent,
@@ -182,16 +175,10 @@ import {
 import {
   WorkPackageOverviewGraphComponent,
 } from 'core-app/shared/components/work-package-graphs/overview/wp-overview-graph.component';
-import {
-  EEActiveSavedTrialComponent,
-} from 'core-app/features/enterprise/enterprise-active-trial/ee-active-saved-trial.component';
-import { FreeTrialButtonComponent } from 'core-app/features/enterprise/free-trial-button/free-trial-button.component';
-import { EnterpriseBaseComponent } from 'core-app/features/enterprise/enterprise-base.component';
 import { NoResultsComponent } from 'core-app/shared/components/no-results/no-results.component';
 import {
   OpNonWorkingDaysListComponent,
 } from 'core-app/shared/components/op-non-working-days-list/op-non-working-days-list.component';
-import { CopyToClipboardComponent } from 'core-app/shared/components/copy-to-clipboard/copy-to-clipboard.component';
 import { GlobalSearchTitleComponent } from 'core-app/core/global_search/title/global-search-title.component';
 import { PersistentToggleComponent } from 'core-app/shared/components/persistent-toggle/persistent-toggle.component';
 import { TypeFormConfigurationComponent } from 'core-app/features/admin/types/type-form-configuration.component';
@@ -219,6 +206,7 @@ import {
 import {
   OpWpDatePickerInstanceComponent,
 } from 'core-app/shared/components/datepicker/wp-date-picker-modal/wp-date-picker-instance.component';
+import { OpInviteUserModalAugmentService } from 'core-app/features/invite-user-modal/invite-user-modal-augment.service';
 
 export function initializeServices(injector:Injector) {
   return () => {
@@ -226,17 +214,22 @@ export function initializeServices(injector:Injector) {
     const keyboardShortcuts = injector.get(KeyboardShortcutService);
     const contextMenu = injector.get(OPContextMenuService);
     const currentProject = injector.get(CurrentProjectService);
+    const inviteUserAugmentService = injector.get(OpInviteUserModalAugmentService);
 
     // Conditionally add the Revit Add-In settings button
     injector.get(RevitAddInSettingsButtonService);
 
-    topMenuService.register();
-    contextMenu.register();
-
-    // Re-register on turbo:load
-    document.addEventListener('turbo:load', () => {
+    const runOnRenderAndLoad = () => {
       topMenuService.register();
       contextMenu.register();
+      inviteUserAugmentService.setupListener();
+    };
+    runOnRenderAndLoad();
+
+    // Register on turbo:render, turbo:load
+    document.addEventListener('turbo:render', runOnRenderAndLoad);
+    document.addEventListener('turbo:load', () => {
+      runOnRenderAndLoad();
       currentProject.detect();
     });
 
@@ -270,9 +263,6 @@ export function initializeServices(injector:Injector) {
     OpenprojectFieldsModule,
     OpenprojectGridsModule,
     OpenprojectAttachmentsModule,
-
-    // Project module
-    OpenprojectProjectsModule,
 
     // Work packages and their routes
     OpenprojectWorkPackagesModule,
@@ -363,7 +353,6 @@ export function initializeServices(injector:Injector) {
 
     // Main menu
     MainMenuResizerComponent,
-    MainMenuToggleComponent,
 
     // Project selector
     OpHeaderProjectSelectComponent,
@@ -420,7 +409,6 @@ export class OpenProjectModule implements DoBootstrap {
     registerCustomElement('opce-macro-wp-quickinfo', WorkPackageQuickinfoMacroComponent, { injector });
     registerCustomElement('opce-ckeditor-augmented-textarea', CkeditorAugmentedTextareaComponent, { injector });
     registerCustomElement('opce-draggable-autocompleter', DraggableAutocompleteComponent, { injector });
-    registerCustomElement('opce-attribute-help-text', AttributeHelpTextComponent, { injector });
     registerCustomElement('opce-static-attribute-help-text', StaticAttributeHelpTextComponent, { injector });
     registerCustomElement('opce-exclusion-info', OpExclusionInfoComponent, { injector });
     registerCustomElement('opce-attachments', OpAttachmentsComponent, { injector });
@@ -428,8 +416,6 @@ export class OpenProjectModule implements DoBootstrap {
     registerCustomElement('opce-custom-modal-overlay', OpCustomModalOverlayComponent, { injector });
 
     // TODO: These elements are now registered custom elements, but are actually single-use components. They should be removed when we move these pages to Rails.
-    registerCustomElement('opce-new-project', NewProjectComponent, { injector });
-    registerCustomElement('opce-copy-project', CopyProjectComponent, { injector });
     registerCustomElement('opce-notification-settings', NotificationsSettingsPageComponent, { injector });
     registerCustomElement('opce-reminder-settings', ReminderSettingsPageComponent, { injector });
     registerCustomElement('opce-notification-center', InAppNotificationCenterComponent, { injector });
@@ -446,14 +432,9 @@ export class OpenProjectModule implements DoBootstrap {
     registerCustomElement('opce-time-entry-trigger-actions', TriggerActionsEntryComponent, { injector });
     registerCustomElement('opce-wp-overview-graph', WorkPackageOverviewGraphComponent, { injector });
     registerCustomElement('opce-header-project-select', OpHeaderProjectSelectComponent, { injector });
-    registerCustomElement('opce-enterprise-active-saved-trial', EEActiveSavedTrialComponent, { injector });
-    registerCustomElement('opce-free-trial-button', FreeTrialButtonComponent, { injector });
-    registerCustomElement('opce-enterprise-base', EnterpriseBaseComponent, { injector });
     registerCustomElement('opce-no-results', NoResultsComponent, { injector });
     registerCustomElement('opce-non-working-days-list', OpNonWorkingDaysListComponent, { injector });
-    registerCustomElement('opce-main-menu-toggle', MainMenuToggleComponent, { injector });
     registerCustomElement('opce-main-menu-resizer', MainMenuResizerComponent, { injector });
-    registerCustomElement('opce-copy-to-clipboard', CopyToClipboardComponent, { injector });
     registerCustomElement('opce-global-search-title', GlobalSearchTitleComponent, { injector });
     registerCustomElement('opce-persistent-toggle', PersistentToggleComponent, { injector });
     registerCustomElement('opce-admin-type-form-configuration', TypeFormConfigurationComponent, { injector });

@@ -29,6 +29,16 @@
 class AttributeHelpText < ApplicationRecord
   acts_as_attachable viewable_by_all_users: true
 
+  def self.cached(user)
+    RequestStore.fetch(name) do
+      visible(user).select(:id, :attribute_name).index_by(&:attribute_name)
+    end
+  end
+
+  def self.for(model)
+    subclasses.find { |child| child.name.demodulize == model.model_name }
+  end
+
   def self.available_types
     subclasses.map { |child| child.name.demodulize }
   end
@@ -53,6 +63,8 @@ class AttributeHelpText < ApplicationRecord
 
     scope
   end
+
+  normalizes :attribute_name, with: -> { it.delete_suffix("_id") }
 
   validates :help_text, presence: true
   validates :attribute_name, uniqueness: { scope: :type }

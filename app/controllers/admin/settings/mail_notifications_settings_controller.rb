@@ -32,10 +32,21 @@ module Admin::Settings
       :mail_notifications
     end
 
+    before_action :validate_mail_from, only: :update # rubocop:disable Rails/LexicallyScopedActionFilter
+
     def show
       @deliveries = ActionMailer::Base.perform_deliveries
 
       respond_to :html
+    end
+
+    private
+
+    def validate_mail_from
+      return if EmailValidator.valid?(settings_params[:mail_from])
+
+      flash[:error] = "#{I18n.t(:setting_mail_from)} #{I18n.t('activerecord.errors.messages.email')}"
+      redirect_to action: :show
     end
   end
 end

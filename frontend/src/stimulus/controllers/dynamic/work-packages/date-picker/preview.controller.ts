@@ -309,7 +309,10 @@ export default class PreviewController extends DialogPreviewController {
     this.updateFlatpickrCalendar();
   }
 
-  afterRendering() {
+  afterRendering(params:{ shouldFocusBanner?:boolean }) {
+    if (params.shouldFocusBanner) {
+      this.focusOnOpen();
+    }
     this.readCurrentValues();
     this.updateFlatpickrCalendar();
   }
@@ -353,7 +356,7 @@ export default class PreviewController extends DialogPreviewController {
     }
   }
 
-  // called from inputs defined in the date_picker/date_form.rb
+  // called from inputs defined in the date_picker/date_form_component.rb
   onHighlightField(e:Event) {
     const fieldToHighlight = e.target as HTMLInputElement;
     if (fieldToHighlight) {

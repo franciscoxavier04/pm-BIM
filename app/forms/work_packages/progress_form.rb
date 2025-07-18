@@ -173,7 +173,7 @@ class WorkPackages::ProgressForm < ApplicationForm
 
   def field_value(name)
     errors = @work_package.errors.where(name)
-    if (user_value = errors.map { |error| error.options[:value] }.find { !_1.nil? })
+    if (user_value = errors.map { |error| error.options[:value] }.find { !it.nil? })
       user_value
     elsif name == :done_ratio
       as_percent(@work_package.public_send(name))

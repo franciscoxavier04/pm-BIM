@@ -51,16 +51,15 @@ module WorkPackages
         duration(predecessor_date + 1.day, successor_date - 1.day)
       end
 
-      def add_lag(date, lag)
+      def with_lag(date, lag)
         return nil unless date
 
-        date_after_lag = date + 1.day
         lag ||= 0
-        while lag > 0
-          lag -= 1 if working?(date_after_lag)
-          date_after_lag += 1
+        if lag >= 0
+          add_lag(date, lag)
+        else
+          remove_lag(date, -lag)
         end
-        date_after_lag
       end
 
       def start_date(due_date, duration)
@@ -109,6 +108,26 @@ module WorkPackages
 
       def assert_strictly_positive_duration(duration)
         raise ArgumentError, "duration must be strictly positive" if duration.is_a?(Integer) && duration <= 0
+      end
+
+      def add_lag(date, lag)
+        date_with_lag = date.next_day
+        while lag != 0
+          lag -= 1 if working?(date_with_lag)
+          date_with_lag += 1
+        end
+        date_with_lag
+      end
+
+      def remove_lag(date, lag)
+        date_with_lag = date
+        while lag != 0
+          lag -= 1 if working?(date_with_lag)
+          next if lag == 0
+
+          date_with_lag -= 1
+        end
+        date_with_lag
       end
 
       def latest_working_day(date)

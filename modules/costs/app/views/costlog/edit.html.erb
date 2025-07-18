@@ -48,15 +48,16 @@ See COPYRIGHT and LICENSE files for more details.
   <%= f.hidden_field :element_id, value: "cost_entry", class: "remote-field--input", data: { "remote-field-key": "element_id" } %>
 
   <div class="form--field -required">
-    <%= f.text_field :work_package_id,
+    <%= f.hidden_field :entity_type, value: "WorkPackage" %>
+    <%= f.text_field :entity_id,
                      size: 6,
                      required: true,
                      autofocus: true,
                      container_class: "-xslim" %>
 
-    <% if @cost_entry.work_package %>
+    <% if @cost_entry.entity %>
       <div class="form--field-instructions">
-        <%= h(@cost_entry.work_package.to_s) %>
+        <%= h(@cost_entry.entity.to_s) %>
       </div>
     <% end %>
   </div>

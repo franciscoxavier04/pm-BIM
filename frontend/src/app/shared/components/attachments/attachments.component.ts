@@ -76,6 +76,8 @@ export class OpAttachmentsComponent extends UntilDestroyedMixin implements OnIni
 
   @Input() public allowUploading = true;
 
+  @Input() public allowRemoval = true;
+
   @Input() public destroyImmediately = true;
 
   @Input() public externalUploadButton:string|null = null;
@@ -103,7 +105,7 @@ export class OpAttachmentsComponent extends UntilDestroyedMixin implements OnIni
   };
 
   private get attachmentsSelfLink():string {
-    const attachments = this.resource.attachments as unknown&{ href:string };
+    const attachments = this.resource.attachments as { href:string };
     return attachments.href;
   }
 

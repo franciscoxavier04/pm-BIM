@@ -45,6 +45,7 @@ module OpenProject::OpenIDConnect
            :plugin_openid_connect,
            :openid_connect_providers_path,
            parent: :authentication,
+           after: :oauth_applications,
            caption: ->(*) { I18n.t("openid_connect.menu_title") },
            enterprise_feature: "sso_auth_providers"
     end
@@ -108,6 +109,9 @@ module OpenProject::OpenIDConnect
 
     config.to_prepare do
       ::OpenProject::OpenIDConnect::Hooks::Hook
+
+      # Load AuthProvider descendants due to STI
+      OpenIDConnect::Provider
     end
   end
 end

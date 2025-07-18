@@ -63,8 +63,8 @@ export class DragAndDropService implements OnDestroy {
 
   public remove(container:HTMLElement) {
     if (this.initialized) {
-      _.remove(this.drake!.containers, (el) => el === container);
-      _.remove(this.members, (el) => el.dragContainer === container);
+      this.drake!.containers = this.drake!.containers.filter((el) => el !== container);
+      this.members = this.members.filter((el) => el.dragContainer !== container);
     }
   }
 

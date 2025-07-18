@@ -56,7 +56,6 @@ interface TokenNameFormValue {
   templateUrl: './query-get-ical-url.modal.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export class QueryGetIcalUrlModalComponent extends OpModalComponent implements OnInit {
   public tokenName = '';
 

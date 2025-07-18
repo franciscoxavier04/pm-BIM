@@ -86,7 +86,7 @@ module WorkPackage::PDFExport::Common::StylesPage
   end
 
   def page_break_threshold
-    resolve_pt(@styles.dig(:page, :page_break_threshold), 200)
+    @page_break_threshold ||= resolve_pt(@styles.dig(:page, :page_break_threshold), 200)
   end
 
   def link_color

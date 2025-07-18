@@ -47,7 +47,7 @@ ru:
       meeting_agenda_item:
         title: "Заголовок"
         author: "Автор"
-        duration_in_minutes: "мин"
+        duration_in_minutes: "Продолжительность"
         description: "Примечания"
         presenter: "Ведущий"
       meeting_section:
@@ -190,6 +190,7 @@ ru:
       agenda_items: "Копировать пункты повестки дня"
       agenda_text: "Копировать повестку старого совещания"
       participants: "Копировать список участников"
+      to_clipboard: "Копировать в буфер обмена"
     email:
       send_emails: "Отправить email участникам"
       send_invitation_emails: >
@@ -244,12 +245,38 @@ ru:
     blankslate:
       title: "Нет совещаний для отображения"
       desc: "Нет совещаний, удовлетворяющих критериям активного фильтра."
+    label_export_pdf: "Экспорт в PDF"
+    export:
+      your_meeting_export: "Совещание экспортируется"
+    export_pdf_dialog:
+      title: Экспорт в PDF
+      description: Создать печатный PDF-файл этого совещания в текущем состоянии.
+      include_participants:
+        label: Включить список участников
+        caption: Список участников будет представлен выше повестки дня совещания.
+      include_attachments:
+        label: Включить список вложений
+        caption: Список с именами файлов вложений будет добавлен в конце.
+      include_backlog:
+        label: Включить бэклог
+        caption: Элементы бэклога обычно не считаются частью совещания, но вы можете включить их.
+      include_outcomes:
+        label: Включить итоги повестки дня
+        caption: Если результаты вашей повестки дня содержат конфиденциальную информацию, вы можете не включать их в экспорт.
+      footer_text:
+        label: Текст нижнего колонтитула
+        caption: Этот текст появится на каждой странице с правой стороны нижнего колонтитула.
+      submit_button: Скачать
   meeting_section:
     untitled_title: "Раздел без названия"
     delete_confirmation: "Удаление раздела также удалит все пункты его повестки дня. Вы уверены, что хотите это сделать?"
     placeholder_title: "Новый раздел"
     empty_text: "Перенесите элементы сюда или создайте новые"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Разница часового пояса"
+      description: >
+        Приведенные ниже даты относятся к часовому поясу серии совещаний (%{actual_zone}), а не к Вашему местному часовому поясу (%{user_zone}).
     ended_blankslate:
       title: "Серия совещаний закончена"
       message: "Эта серия совещаний подошла к концу. Предстоящих совещаний не будет. "
@@ -339,7 +366,7 @@ ru:
   permission_delete_meetings: "Удалить совещания"
   permission_view_meetings: "Просмотреть совещания"
   permission_manage_agendas: "Управление повестками"
-  permission_manage_agendas_explanation: "Позволяет управлять пунктами повестки для Динамического совещания."
+  permission_manage_agendas_explanation: "Позволяет создавать, редактировать и удалять пункты повестки дня"
   permission_manage_outcomes: "Управление результатами"
   permission_send_meeting_invites_and_outcomes: "Рассылать приглашения на собрания и результаты их проведения участникам"
   project_module_meetings: "Совещания"
@@ -368,7 +395,9 @@ ru:
   label_meeting_index_later: "На следующей неделе и позже"
   label_agenda_items: "Пункты повестки"
   label_agenda_items_reordered: "переупорядочено"
-  label_agenda_item_remove: "Удалить из повестки"
+  label_agenda_item_add: "Добавить пункт повестки"
+  label_agenda_item_remove_from_agenda: "Исключить из повестки"
+  label_agenda_item_remove_from_backlog: "Удалить из бэклога"
   label_agenda_item_undisclosed_wp: "Пакет работ #%{id} невидим"
   label_agenda_item_deleted_wp: "Ссылка на удалённый пакет работ"
   label_agenda_item_actions: "Действия по пунктам повестки"
@@ -381,7 +410,9 @@ ru:
   label_agenda_item_move_down: "Вниз"
   label_agenda_item_add_notes: "Добавить заметки"
   label_agenda_item_add_outcome: "Добавить расход"
+  label_agenda_item_work_package_add: "Добавить пакет работ"
   label_agenda_item_work_package: "Пакет работ по пунктам повестки"
+  label_section_rename: "Переименовать раздел"
   label_agenda_outcome: "Расход"
   label_agenda_outcome_actions: "Действия по расходам"
   label_agenda_outcome_edit: "Редактировать результат"

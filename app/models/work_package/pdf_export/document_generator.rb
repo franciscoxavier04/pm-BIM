@@ -65,7 +65,8 @@ class WorkPackage::PDFExport::DocumentGenerator < Exports::Exporter
 
   def render_doc
     generate_doc!(
-      apply_markdown_field_macros(work_package.description || "", work_package),
+      apply_markdown_field_macros(work_package.description || "",
+                                  { work_package:, project: work_package.project, user: User.current }),
       "contracts.yml"
     )
   end

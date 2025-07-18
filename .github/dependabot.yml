@@ -17,6 +17,7 @@ updates:
     ignore:
       - dependency-name: "@angular*"
         update-types: ["version-update:semver-major"]
+      - dependency-name: "@openproject/primer-view-components"
   - package-ecosystem: "bundler"
     directory: "/"
     schedule:
@@ -28,6 +29,8 @@ updates:
       aws-gems:
         patterns:
           - "aws-*"
+    ignore:
+      - dependency-name: "openproject-primer_view_components"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:

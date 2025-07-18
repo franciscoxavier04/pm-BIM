@@ -29,7 +29,6 @@
 class Projects::QueriesController < ApplicationController
   include Queries::Loading
   include OpTurbo::ComponentStream
-  include OpTurbo::DialogStreamHelper
 
   # No need for a more specific authorization check. That is carried out in the contracts.
   no_authorization_required! :show, :new, :create, :rename, :update, :toggle_public, :destroy, :destroy_confirmation_modal,

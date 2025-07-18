@@ -5,7 +5,6 @@ class RecurringMeetingsController < ApplicationController
   include PaginationHelper
   include OpTurbo::ComponentStream
   include OpTurbo::FlashStreamHelper
-  include OpTurbo::DialogStreamHelper
 
   before_action :load_and_authorize_in_optional_project
   before_action :find_meeting, except: %i[index new create]

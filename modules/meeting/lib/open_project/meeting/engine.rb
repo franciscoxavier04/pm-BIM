@@ -43,7 +43,8 @@ module OpenProject::Meeting
       project_module :meetings do
         permission :view_meetings,
                    {
-                     meetings: %i[index show check_for_updates download_ics participants_dialog history],
+                     meetings: %i[index show check_for_updates download_ics participants_dialog
+                                  generate_pdf_dialog history],
                      "meetings/menus": %i[show],
                      work_package_meetings_tab: %i[index count],
                      recurring_meetings: %i[index show new create download_ics]
@@ -180,6 +181,10 @@ module OpenProject::Meeting
       OpenProject::ProjectLatestActivity.register on: "Meeting"
 
       PermittedParams.permit(:search, :meetings)
+
+      ::Exports::Register.register do
+        single(::Meeting, Meetings::Exporter)
+      end
     end
 
     add_api_path :meetings do

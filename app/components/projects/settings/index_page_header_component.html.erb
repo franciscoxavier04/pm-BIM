@@ -4,7 +4,7 @@
     header.with_breadcrumbs(
       [
         { href: project_overview_path(@project.id), text: @project.name },
-        { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
+        { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings"), skip_for_mobile: true },
         t(:label_information_plural)
       ]
     )

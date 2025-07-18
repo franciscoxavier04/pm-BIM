@@ -270,4 +270,13 @@ RSpec.describe "Authentication Stages" do
       end
     end
   end
+
+  context "when calling the consent page outside of the login process" do
+    it "redirects to the login page" do
+      visit "account/consent"
+
+      expect_flash message: "Consent failed, cannot proceed.", type: :error
+      expect(page).to have_current_path "/login"
+    end
+  end
 end

@@ -147,6 +147,9 @@ module Costs
            { controller: "/my/time_tracking", action: "index" },
            after: :my_page,
            caption: :label_my_time_tracking,
+           if: ->(*) do
+             User.current.allowed_in_any_project?(:log_own_time) || User.current.allowed_in_any_project?(:log_time)
+           end,
            icon: :stopwatch
     end
 
@@ -311,7 +314,9 @@ module Costs
     end
 
     config.to_prepare do
-      Enumeration.register_subclass(TimeEntryActivity)
+      # Load Enumeration descendants due to STI
+      TimeEntryActivity
+
       OpenProject::ProjectLatestActivity.register on: "TimeEntry"
       Costs::Patches::MembersPatch.mixin!
 

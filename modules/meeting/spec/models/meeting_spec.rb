@@ -162,15 +162,7 @@ RSpec.describe Meeting do
     end
 
     context "other timezone set" do
-      let!(:old_time_zone) { Time.zone }
-
-      before do
-        Time.zone = "EST"
-      end
-
-      after do
-        Time.zone = old_time_zone.name
-      end
+      current_user { build_stubbed(:user, preferences: { time_zone: "EST" }) }
 
       it_behaves_like "uses that zone", "EST"
     end
@@ -206,6 +198,14 @@ RSpec.describe Meeting do
       expect(meeting).not_to be_valid
       expect(meeting.errors[:duration]).to include("is not a number.")
       expect(meeting.formatted_duration).to be_nil
+    end
+  end
+
+  describe "uid" do
+    it "assigns a uid on create" do
+      meeting = described_class.new(project:, author: user1)
+      expect(meeting.uid).to be_present
+      expect(meeting.uid).to include "@#{Setting.host_name}"
     end
   end
 

@@ -257,6 +257,12 @@ module OpenProject::Storages
 
     # This hook is executed when the module is loaded.
     config.to_prepare do
+      # Load Storages::Storage descendants due to STI
+      Storages::Storage::InexistentStorage
+      Storages::OneDriveStorage
+      Storages::NextcloudStorage
+      Storages::SharePointStorage
+
       # Allow the browser to connect to external servers for direct file uploads.
       AppendStoragesHostsToCspHook
 
@@ -350,7 +356,7 @@ module OpenProject::Storages
     end
 
     add_api_path :file_link_open do |file_link_id, location = false|
-      "#{file_link(file_link_id)}/open#{location ? '?location=true' : ''}"
+      "#{file_link(file_link_id)}/open#{'?location=true' if location}"
     end
 
     # Add api endpoints specific to this module

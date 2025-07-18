@@ -126,7 +126,7 @@ class WorkPackages::MovesController < ApplicationController
       hierarchies = WorkPackageHierarchy
                       .includes(:ancestor)
                       .where(ancestor_id: @work_packages.select(:id))
-      Type.where(id: hierarchies.map { _1.ancestor.type_id })
+      Type.where(id: hierarchies.map { it.ancestor.type_id })
           .select("distinct id")
           .pluck(:id)
           .difference(@types.pluck(:id))

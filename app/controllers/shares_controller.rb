@@ -28,7 +28,6 @@
 
 class SharesController < ApplicationController
   include OpTurbo::ComponentStream
-  include OpTurbo::DialogStreamHelper
   include MemberHelper
 
   before_action :load_entity

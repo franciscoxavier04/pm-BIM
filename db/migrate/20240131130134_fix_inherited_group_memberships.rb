@@ -2,6 +2,7 @@ class FixInheritedGroupMemberships < ActiveRecord::Migration[7.0]
   def up
     # Recreate member_roles for all group members
     # due to regression https://community.openproject.org/work_packages/52528
+    Group.reset_column_information
     Group
       .where(id: Member.where(project_id: nil, user_id: Group.select(:id)).select(:user_id))
       .find_each do |group|

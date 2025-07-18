@@ -89,6 +89,7 @@ module OpPrimer
     def header_classes(column)
       classes = [heading_class]
       classes << "op-border-box-grid--main-column" if main_column?(column)
+      classes << "op-border-box-grid--heading-action" if column == :actions
 
       classes.join(" ")
     end

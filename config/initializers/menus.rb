@@ -122,7 +122,14 @@ Redmine::MenuManager.map :account_menu do |menu|
             }
   menu.push :logout,
             :signout_path,
-            if: ->(_) { User.current.logged? }
+            if: ->(_) { User.current.logged? },
+            html: {
+              data: {
+                # Turbo-drive needs to be disabled, as we might redirect to other origins
+                # as a result here (e.g., post logout SSO redirects).
+                turbo: false
+              }
+            }
 end
 
 Redmine::MenuManager.map :global_menu do |menu|
@@ -203,6 +210,10 @@ Redmine::MenuManager.map :my_menu do |menu|
             { controller: "/my", action: "settings" },
             caption: :label_setting_plural,
             icon: "gear"
+  menu.push :interface,
+            { controller: "/my", action: "interface" },
+            caption: :label_interface,
+            icon: "device-desktop"
   menu.push :password,
             { controller: "/my", action: "password" },
             caption: :button_change_password,
@@ -318,7 +329,7 @@ Redmine::MenuManager.map :admin_menu do |menu|
             parent: :admin_work_packages
 
   menu.push :types,
-            { controller: "/types" },
+            { controller: "/work_package_types/types" },
             if: ->(_) { User.current.admin? },
             caption: :label_type_plural,
             parent: :admin_work_packages
@@ -348,20 +359,14 @@ Redmine::MenuManager.map :admin_menu do |menu|
             parent: :admin_work_packages
 
   menu.push :admin_projects_settings,
-            ->(_) { # TODO: doesn't need to be a proc when condition is removed
-              if OpenProject::FeatureDecisions.stages_and_gates_active?
-                { controller: "/admin/settings/project_life_cycle_definitions", action: :index }
-              else
-                { controller: "/admin/settings/project_custom_fields", action: :index }
-              end
-            },
+            { controller: "/admin/settings/project_phase_definitions", action: :index },
             if: ->(_) { User.current.admin? },
             caption: :label_project_plural,
             icon: "project"
 
-  menu.push :project_life_cycle_definitions_settings,
-            { controller: "/admin/settings/project_life_cycle_definitions", action: :index },
-            if: ->(_) { User.current.admin? && OpenProject::FeatureDecisions.stages_and_gates_active? },
+  menu.push :project_phase_definitions_settings,
+            { controller: "/admin/settings/project_phase_definitions", action: :index },
+            if: ->(_) { User.current.admin? },
             caption: :label_project_life_cycle,
             parent: :admin_projects_settings
 
@@ -505,20 +510,26 @@ Redmine::MenuManager.map :admin_menu do |menu|
             caption: :"authentication.login_and_registration",
             parent: :authentication
 
-  menu.push :ldap_authentication,
-            { controller: "/ldap_auth_sources", action: "index" },
-            if: ->(_) { User.current.admin? && !OpenProject::Configuration.disable_password_login? },
-            parent: :authentication,
-            caption: :label_ldap_auth_source_plural,
-            html: { class: "server_authentication" },
-            last: true
-
   menu.push :oauth_applications,
             { controller: "/oauth/applications", action: "index" },
             if: ->(_) { User.current.admin? },
             parent: :authentication,
             caption: :"oauth.application.plural",
             html: { class: "oauth_applications" }
+
+  menu.push :ldap_authentication,
+            { controller: "/ldap_auth_sources", action: "index" },
+            if: ->(_) { User.current.admin? && !OpenProject::Configuration.disable_password_login? },
+            parent: :authentication,
+            caption: :label_ldap_auth_source_plural,
+            html: { class: "server_authentication" }
+
+  menu.push :scim_clients,
+            { controller: "/admin/scim_clients", action: "index" },
+            if: ->(_) { User.current.admin? && OpenProject::FeatureDecisions.scim_api_active? },
+            parent: :authentication,
+            caption: ScimClient.model_name.human(count: 2),
+            enterprise_feature: "scim_api"
 
   menu.push :announcements,
             { controller: "/announcements", action: "edit" },
@@ -560,7 +571,7 @@ Redmine::MenuManager.map :admin_menu do |menu|
             icon: "meter"
 
   menu.push :enterprise,
-            { controller: "/enterprises", action: :show },
+            { controller: "/enterprise_tokens", action: :index },
             caption: :label_enterprise_edition,
             icon: "op-enterprise-addons",
             if: proc { User.current.admin? && OpenProject::Configuration.ee_manager_visible? }
@@ -646,8 +657,7 @@ Redmine::MenuManager.map :project_menu do |menu|
     general: { caption: :label_information_plural },
     life_cycle_steps: {
       caption: :label_project_life_cycle,
-      action: :index,
-      if: ->(_) { OpenProject::FeatureDecisions.stages_and_gates_active? }
+      action: :index
     },
     project_custom_fields: { caption: :label_project_attributes_plural },
     modules: { caption: :label_module_plural },

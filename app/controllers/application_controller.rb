@@ -50,11 +50,13 @@ class ApplicationController < ActionController::Base
   include Accounts::CurrentUser
   include Accounts::UserLogin
   include Accounts::Authorization
+  include Accounts::EnterpriseGuard
   include ::OpenProject::Authentication::SessionExpiry
   include AdditionalUrlHelpers
   include OpenProjectErrorHelper
   include Security::DefaultUrlOptions
   include OpModalFlashable
+  include DynamicContentSecurityPolicy
 
   layout "base"
 

@@ -37,7 +37,7 @@ class IssuePriority < Enumeration
   end
 
   def color_label
-    I18n.t("prioritiies.edit.priority_color_text")
+    I18n.t("priorities.edit.priority_color_text")
   end
 
   def option_name

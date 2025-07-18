@@ -45,7 +45,7 @@ es:
       meeting_agenda_item:
         title: "Título"
         author: "Autor"
-        duration_in_minutes: "min"
+        duration_in_minutes: "Duración"
         description: "Notas"
         presenter: "Responsable"
       meeting_section:
@@ -182,6 +182,7 @@ es:
       agenda_items: "Copiar elementos de agenda"
       agenda_text: "Copiar la agenda de la reunión anterior"
       participants: "Copie la lista de participantes"
+      to_clipboard: "Copiar al portapapeles"
     email:
       send_emails: "Envíe un correo electrónico a los participantes"
       send_invitation_emails: >
@@ -236,12 +237,38 @@ es:
     blankslate:
       title: "No hay reuniones que mostrar"
       desc: "No hay reuniones que cumplan los criterios del filtro activo."
+    label_export_pdf: "Exportar PDF"
+    export:
+      your_meeting_export: "Se está exportando la reunión"
+    export_pdf_dialog:
+      title: Exportar PDF
+      description: Genere un archivo PDF imprimible de esta reunión en el estado actual.
+      include_participants:
+        label: Incluir lista de participantes
+        caption: Se establecerá previamente una lista de participantes encima de la agenda de la reunión.
+      include_attachments:
+        label: Incluir lista de archivos adjuntos
+        caption: Al final se añadirá una lista con los nombres de los archivos adjuntos.
+      include_backlog:
+        label: Incluir backlog
+        caption: Los elementos de backlog no se consideran normalmente parte de una reunión pero puede elegir incluirlos.
+      include_outcomes:
+        label: Incluir resultados de la agenda
+        caption: Si los resultados de su agenda contienen información confidencial, puede optar por no incluirlos en la exportación.
+      footer_text:
+        label: Texto a pie de página
+        caption: Este texto aparecerá en cada página a la derecha del pie de página.
+      submit_button: Descargar
   meeting_section:
     untitled_title: "Sección sin título"
     delete_confirmation: "Al eliminar esta sección también se eliminarán todos sus puntos de agenda. ¿Seguro que desea hacerlo?"
     placeholder_title: "Nueva sección"
     empty_text: "Arrastre los elementos aquí o cree uno nuevo"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Diferencia de zona horaria"
+      description: >
+        Las fechas de abajo se refieren a la zona horaria de la serie de reuniones (%{actual_zone}), no a su zona horaria local (%{user_zone}).
     ended_blankslate:
       title: "Serie de reuniones finalizada"
       message: "Esta serie de reuniones ha llegado a su fin. No hay reuniones programadas. "
@@ -327,7 +354,7 @@ es:
   permission_delete_meetings: "Eliminar reuniones"
   permission_view_meetings: "Ver reuniones"
   permission_manage_agendas: "Gestionar agendas"
-  permission_manage_agendas_explanation: "Permite editar el contenido de la agenda de la reunión dinámica."
+  permission_manage_agendas_explanation: "Permite crear, editar y eliminar puntos de la agenda"
   permission_manage_outcomes: "Gestionar resultados"
   permission_send_meeting_invites_and_outcomes: "Enviar invitaciones a reuniones y resultados a los participantes"
   project_module_meetings: "Reuniones"
@@ -341,8 +368,8 @@ es:
   text_meeting_minutes_for_meeting: 'minutas para la reunión "%{meeting}"'
   text_notificiation_invited: "El correo electrónico contiene una entrada ics para la reunión siguiente:"
   text_meeting_empty_heading: "Su reunión está vacía"
-  text_meeting_empty_description1: "Comience añadiendo elementos de la agenda a continuación. Cada elemento puede ser tan simple como un título, pero también puede agregar detalles adicionales como duración, notas y una persona responsable."
-  text_meeting_empty_description2: 'También puede añadir referencias a los paquetes de trabajo existentes. Cuando lo haga, las notas relacionadas serán automáticamente visibles en la pestaña "Reuniones" del paquete de trabajo.'
+  text_meeting_empty_description1: "Comience añadiendo puntos a la agenda a continuación. Cada punto puede ser tan sencillo como un título, pero también puede añadir detalles adicionales como duración y notas."
+  text_meeting_empty_description2: 'También puede añadir referencias a los paquetes de trabajo existentes. Cuando lo haga, las notas relacionadas se verán automáticamente en la pestaña «Reuniones» del paquete de trabajo.'
   label_meeting_empty_action: "Añadir punto a la agenda"
   label_meeting_actions: "Acciones de reunión"
   label_meeting_edit_title: "Editar título de la reunión"
@@ -356,7 +383,9 @@ es:
   label_meeting_index_later: "La semana que viene y después"
   label_agenda_items: "Puntos del orden del día"
   label_agenda_items_reordered: "reordenados"
-  label_agenda_item_remove: "Quitar del orden del día"
+  label_agenda_item_add: "Añadir punto a la agenda"
+  label_agenda_item_remove_from_agenda: "Quitar de la agenda"
+  label_agenda_item_remove_from_backlog: "Quitar del backlog"
   label_agenda_item_undisclosed_wp: "Paquete de trabajo #%{id} no visible"
   label_agenda_item_deleted_wp: "Referencia de paquete de trabajo eliminada"
   label_agenda_item_actions: "Acciones de elementos de la agenda"
@@ -369,7 +398,9 @@ es:
   label_agenda_item_move_down: "Mover hacia abajo"
   label_agenda_item_add_notes: "Añadir notas"
   label_agenda_item_add_outcome: "Añadir resultado"
+  label_agenda_item_work_package_add: "Añadir paquete de trabajo"
   label_agenda_item_work_package: "Paquete de trabajo del punto del orden del día"
+  label_section_rename: "Renombrar sección"
   label_agenda_outcome: "Resultado"
   label_agenda_outcome_actions: "Acciones resultantes de la agenda"
   label_agenda_outcome_edit: "Editar resultado"
@@ -377,7 +408,7 @@ es:
   text_outcome_not_editable_anymore: "Este resultado ya no se puede editar."
   text_outcome_cannot_be_added: "Ya no se puede añadir ningún resultado."
   label_backlog_clear: "Borrar backlog"
-  label_backlog_clear_button: "Limpiar todo"
+  label_backlog_clear_button: "Borrar todo"
   text_backlog_clear_error: "Se han producido uno o más errores al intentar borrar el backlog."
   label_agenda_backlog: "Backlog de agenda"
   text_agenda_backlog: >

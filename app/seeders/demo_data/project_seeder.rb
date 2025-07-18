@@ -60,6 +60,10 @@ module DemoData
       ]
     end
 
+    def all_required_references
+      [:default_role_project_admin] + types_seed_data
+    end
+
     private
 
     attr_writer :project
@@ -94,7 +98,7 @@ module DemoData
     def set_types
       print_status "   -Assigning types."
 
-      project.types = seed_data.find_references(project_data.lookup("types"))
+      project.types = seed_data.find_references(types_seed_data)
     end
 
     def seed_categories
@@ -140,6 +144,10 @@ module DemoData
         seeder = seeder_class.new(project, project_data)
         seeder.seed!
       end
+    end
+
+    def types_seed_data
+      seed_data.lookup("types") || []
     end
 
     def project_attributes

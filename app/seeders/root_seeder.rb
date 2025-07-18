@@ -40,6 +40,10 @@ class RootSeeder < Seeder
     load_available_seeders
   end
 
+  def applicable?
+    true
+  end
+
   # Returns the demo data in the default language.
   def seed_data
     @seed_data ||= begin

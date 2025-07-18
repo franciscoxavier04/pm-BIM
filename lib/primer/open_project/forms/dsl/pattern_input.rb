@@ -45,7 +45,7 @@ module Primer
           end
 
           def to_component
-            WorkPackages::Types::PatternInput.new(input: self, value:, suggestions:)
+            WorkPackageTypes::PatternInput.new(input: self, value:, suggestions:)
           end
 
           def type

@@ -36,7 +36,7 @@ ruby File.read(File.expand_path(".ruby-version", __dir__)).strip
 
 gem "actionpack-xml_parser", "~> 2.0.0"
 gem "activemodel-serializers-xml", "~> 1.0.1"
-gem "activerecord-import", "~> 2.1.0"
+gem "activerecord-import", "~> 2.2.0"
 gem "activerecord-session_store", "~> 2.2.0"
 gem "ox"
 gem "rails", "~> 8.0.1"
@@ -59,10 +59,12 @@ gem "will_paginate", "~> 4.0.0"
 
 gem "friendly_id", "~> 5.5.0"
 
+gem "scimitar", "~> 2.11"
+
 gem "acts_as_list", "~> 1.2.0"
 gem "acts_as_tree", "~> 2.9.0"
 gem "awesome_nested_set", "~> 3.8.0"
-gem "closure_tree", "~> 7.4.0"
+gem "closure_tree", "~> 8.0.0"
 gem "rubytree", "~> 2.1.0"
 # Only used in down migrations now.
 # Is to be removed once the referencing migrations have been squashed.
@@ -136,9 +138,6 @@ gem "rack-protection", "~> 3.2.0"
 # https://github.com/kickstarter/rack-attack
 gem "rack-attack", "~> 6.7.0"
 
-# CSP headers
-gem "secure_headers", "~> 7.1.0"
-
 # Browser detection for incompatibility checks
 gem "browser", "~> 6.2.0"
 
@@ -158,18 +157,21 @@ gem "structured_warnings", "~> 0.5.0"
 gem "airbrake", "~> 13.0.0", require: false
 
 gem "markly", "~> 0.13" # another markdown parser like commonmarker, but with AST support used in PDF export
-gem "md_to_pdf", git: "https://github.com/opf/md-to-pdf", ref: "67d14c6c7a13f918d158bde1a51ef1067a8cf724"
+gem "md_to_pdf", git: "https://github.com/opf/md-to-pdf", ref: "9961752e4d1e990ec1d4bf48436de9277838763f"
 gem "prawn", "~> 2.4"
 gem "ttfunk", "~> 1.7.0" # remove after https://github.com/prawnpdf/prawn/issues/1346 resolved.
 
 # prawn implicitly depends on matrix gem no longer in ruby core with 3.1
-gem "matrix", "~> 0.4.2"
+gem "matrix", "~> 0.4.3"
 
 gem "meta-tags", "~> 2.22.0"
 
 gem "paper_trail", "~> 16.0.0"
 
 gem "op-clamav-client", "~> 3.4", require: "clamav"
+
+# Global ID for polymorphic associations
+gem "globalid", "~> 1.2"
 
 # Recurring meeting events definition
 gem "ice_cube", "~> 0.17.0"
@@ -201,7 +203,7 @@ gem "aws-sdk-core", "~> 3.107"
 # File upload via fog + screenshots on travis
 gem "aws-sdk-s3", "~> 1.91"
 
-gem "openproject-token", "~> 6.0.0"
+gem "openproject-token", "~> 7.3.0"
 
 gem "plaintext", "~> 0.3.2"
 
@@ -212,7 +214,6 @@ gem "mini_magick", "~> 5.2.0", require: false
 gem "validate_url"
 
 # Storages support code
-gem "dry-auto_inject"
 gem "dry-container"
 gem "dry-monads"
 gem "dry-validation"
@@ -221,22 +222,22 @@ gem "dry-validation"
 gem "store_attribute", "~> 2.0"
 
 # Appsignal integration
-gem "appsignal", "~> 3.10.0", require: false
+gem "appsignal", "~> 4.2", require: false
 
 # Yabeda integration
 gem "yabeda-activerecord"
-gem "yabeda-prometheus-mmap"
+gem "yabeda-prometheus-mmap", require: false
 gem "yabeda-puma-plugin"
 gem "yabeda-rails"
 
 gem "view_component"
 # Lookbook
-gem "lookbook", "~> 2.3.4"
+gem "lookbook", "~> 2.3.11"
 
 # Require factory_bot for usage with openproject plugins testing
 gem "factory_bot", "~> 6.5.0", require: false
 # require factory_bot_rails for convenience in core development
-gem "factory_bot_rails", "~> 6.4.4", require: false
+gem "factory_bot_rails", "~> 6.5.0", require: false
 
 gem "turbo_power", "~> 0.7.0"
 gem "turbo-rails", "~> 2.0.0"
@@ -261,7 +262,7 @@ group :test do
   gem "rack_session_access"
   gem "rspec", "~> 3.13.0"
   # also add to development group, so 'spec' rake task gets loaded
-  gem "rspec-rails", "~> 7.1.0", group: :development
+  gem "rspec-rails", "~> 8.0.0", group: :development
 
   # Retry failures within the same environment
   gem "retriable", "~> 3.1.1"
@@ -285,8 +286,7 @@ group :test do
   gem "capybara", "~> 3.40.0"
   gem "capybara_accessible_selectors", git: "https://github.com/citizensadvice/capybara_accessible_selectors", tag: "v0.12.0"
   gem "capybara-screenshot", "~> 1.0.17"
-  gem "cuprite", "~> 0.15.0"
-  gem "ferrum", github: "opf/ferrum", ref: "mouse-events-buttons-property-0.15"
+  gem "cuprite", "~> 0.17.0"
   gem "rspec-wait"
   gem "selenium-devtools"
   gem "selenium-webdriver", "~> 4.20"
@@ -391,6 +391,9 @@ gem "googleauth", require: false
 # Required for contracts
 gem "disposable", "~> 0.6.2"
 
+# Used for formula evaluation of calculated values
+gem "dentaku", "~> 3.5"
+
 platforms :mri, :mingw, :x64_mingw do
   group :postgres do
     gem "pg", "~> 1.5.0"
@@ -401,7 +404,7 @@ platforms :mri, :mingw, :x64_mingw do
 
   # Have application level locks on the database to have a mutex shared between workers/hosts.
   # We e.g. employ this to safeguard the creation of journals.
-  gem "with_advisory_lock", "~> 5.1.0"
+  gem "with_advisory_lock", "~> 5.3.0"
 end
 
 # Load Gemfile.modules explicitly to allow dependabot to work
@@ -418,4 +421,4 @@ end
 
 gem "openproject-octicons", "~>19.25.0"
 gem "openproject-octicons_helper", "~>19.25.0"
-gem "openproject-primer_view_components", "~>0.65.0"
+gem "openproject-primer_view_components", "~>0.70.4"

@@ -229,4 +229,66 @@ RSpec.describe "Projects", "editing settings", :js do
       end
     end
   end
+
+  describe "attribute help texts", :selenium do
+    let(:general_page) { Pages::Projects::Settings::General.new(project) }
+
+    context "without attribute help texts defined" do
+      before do
+        general_page.visit!
+      end
+
+      it "shows field labels without help text link" do
+        general_page.expect_field_label_without_help_text "Name"
+        general_page.expect_field_label_without_help_text "Description"
+        general_page.expect_field_label_without_help_text "Project status description"
+        general_page.expect_field_label_without_help_text "Subproject of"
+      end
+
+      it "does not show help text link next to status button" do
+        within_section "Project status" do
+          button = find_button("Edit project status")
+          expect(page).to have_no_link accessible_name: "Show help text", right_of: button
+        end
+      end
+    end
+
+    context "with attribute help texts defined" do
+      let!(:name_help_text) { create(:project_help_text, attribute_name: :name) }
+      let!(:description_help_text) { create(:project_help_text, attribute_name: :description) }
+      let!(:status_help_text) { create(:project_help_text, attribute_name: :status) }
+      let!(:status_description_help_text) { create(:project_help_text, attribute_name: :status_explanation) }
+      let!(:subproject_of_help_text) { create(:project_help_text, attribute_name: :parent) }
+
+      before do
+        general_page.visit!
+      end
+
+      it "shows field labels with help text link" do
+        general_page.expect_field_label_with_help_text "Name"
+        general_page.expect_field_label_with_help_text "Description"
+        general_page.expect_field_label_with_help_text "Project status description"
+        general_page.expect_field_label_with_help_text "Subproject of"
+      end
+
+      it "shows help text link next to status button" do
+        within_section "Project status" do
+          button = find_button("Edit project status")
+          expect(page).to have_link accessible_name: "Show help text", right_of: button
+        end
+      end
+
+      it "shows help text modal on clicking help text link" do
+        general_page.click_help_text_link_for_label "Description"
+
+        expect(page).to have_modal "Description"
+        within_modal "Description" do
+          expect(page).to have_text "Attribute help text"
+
+          click_on "Close"
+        end
+        expect(page).to have_no_modal "Description"
+      end
+    end
+  end
 end

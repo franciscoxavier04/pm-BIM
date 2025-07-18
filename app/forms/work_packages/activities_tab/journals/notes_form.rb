@@ -33,7 +33,8 @@ module WorkPackages::ActivitiesTab::Journals
       notes_form.rich_text_area(
         classes: "ck-editor-primer-adjusted",
         name: :notes,
-        label: nil,
+        label: I18n.t("activities.work_packages.activity_tab.label_type_to_comment"),
+        visually_hide_label: true,
         rich_text_options: {
           showAttachments: false,
           resource:,

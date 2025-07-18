@@ -132,7 +132,7 @@ RSpec.describe "history",
 
     show_page.add_agenda_item do
       fill_in "Title", with: "My agenda item"
-      fill_in "min", with: "25"
+      fill_in "Duration", with: "25"
     end
 
     show_page.expect_agenda_item(title: "My agenda item")
@@ -144,7 +144,7 @@ RSpec.describe "history",
     history_page.expect_event('Agenda item "My agenda item"',
                               timestamp: format_time(item.created_at.utc),
                               actor: user.name,
-                              action: "created by")
+                              action: "added by")
 
     within("li.op-activity-list--item", match: :first) do
       expect(page).to have_css(".op-activity-list--item-title", text: 'Agenda item "My agenda item"')
@@ -157,7 +157,7 @@ RSpec.describe "history",
     item = MeetingAgendaItem.find_by(title: "My agenda item")
     show_page.edit_agenda_item(item) do
       fill_in "Title", with: "Updated title"
-      fill_in "min", with: "5"
+      fill_in "Duration", with: "5"
       click_on "Save"
     end
 
@@ -209,7 +209,7 @@ RSpec.describe "history",
 
     item = history_page.first_item
     expect(item).to have_css(".op-activity-list--item-title", text: 'Agenda item "Second"')
-    expect(item).to have_css(".op-activity-list--item-subtitle", text: "deleted by")
+    expect(item).to have_css(".op-activity-list--item-subtitle", text: "removed by")
     expect(item).to have_css(".op-activity-list--item-subtitle", text: user.name)
 
     # Add linked work package

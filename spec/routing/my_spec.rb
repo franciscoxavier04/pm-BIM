@@ -47,6 +47,10 @@ RSpec.describe "my routes" do
     expect(patch("/my/settings")).to route_to("my#update_settings")
   end
 
+  it "/my/interface GET routes to my#interface" do
+    expect(get("/my/interface")).to route_to("my#interface")
+  end
+
   it "/my/notifications GET routes to my#notifications" do
     expect(get("/my/notifications")).to route_to("my#notifications")
   end

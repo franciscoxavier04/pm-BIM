@@ -216,6 +216,12 @@ module Components
         end
       end
 
+      def expect_blur_on_editor
+        page.within_test_selector("op-work-package-journal-form-element") do
+          expect(page).to have_css(".ck-content:not(:focus)", wait: 10)
+        end
+      end
+
       def expect_activity_anchor_link(text:)
         expect(page).to have_test_selector("activity-anchor-link", text:)
       end
@@ -390,6 +396,16 @@ module Components
         end
 
         wait_for { page }.to have_test_selector("op-wp-journals-#{default_filter}-#{sorting}")
+      end
+
+      def trigger_update_streams_poll
+        page.execute_script(<<~JS)
+          var target = document.querySelector('[data-controller*="work-packages--activities-tab--index"]')
+          var controller = window.Stimulus.getControllerForElementAndIdentifier(target, 'work-packages--activities-tab--index')
+          controller.updateActivitiesList();
+        JS
+
+        wait_for_network_idle
       end
     end
   end

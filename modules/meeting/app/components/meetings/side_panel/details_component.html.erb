@@ -50,7 +50,7 @@
           details.with_row do
             render_meeting_attribute_row(:calendar) do
               render(Primer::Beta::Text.new) do
-                format_time_as_date(@meeting.start_time)
+                format_date(@meeting.start_time)
               end
             end
           end

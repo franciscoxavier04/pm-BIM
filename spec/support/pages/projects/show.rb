@@ -88,20 +88,20 @@ module Pages
       end
 
       def open_edit_dialog_for_life_cycle(life_cycle, wait_angular: false)
-        within_life_cycles_sidebar do
+        within_life_cycle_sidebar do
           page.find("[data-test-selector='project-life-cycle-edit-button-#{life_cycle.id}']").click
         end
 
-        Components::Projects::ProjectLifeCycles::EditDialog.new.tap do |dialog|
+        Components::Projects::ProjectLifeCycle::EditDialog.new.tap do |dialog|
           dialog.expect_open
 
           expect_angular_frontend_initialized if wait_angular
         end
       end
 
-      def within_life_cycles_sidebar(&)
-        within "#project-life-cycles-sidebar" do
-          expect(page).to have_css("[data-test-selector='project-life-cycles-sidebar-async-content']")
+      def within_life_cycle_sidebar(&)
+        within "#project-life-cycle-sidebar" do
+          expect(page).to have_css("[data-test-selector='project-life-cycle-sidebar-async-content']")
           yield
         end
       end

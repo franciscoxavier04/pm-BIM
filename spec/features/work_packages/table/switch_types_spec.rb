@@ -117,6 +117,8 @@ RSpec.describe "Switching types in work package table", :js do
     end
 
     it "can switch back from an open required CF (Regression test #28099)" do
+      wait_for_network_idle
+
       # Switch type
       type_field.activate!
       type_field.set_value type_bug.name

@@ -30,7 +30,7 @@ Rails.application.reloader.to_prepare do
   OpenProject::AccessControl.map do |map|
     map.project_module nil, order: 100 do
       map.permission :add_project,
-                     { projects: %i[new] },
+                     { projects: %i[new create] },
                      permissible_on: :global,
                      require: :loggedin,
                      contract_actions: { projects: %i[create] }
@@ -141,16 +141,14 @@ Rails.application.reloader.to_prepare do
                        "project_phases/hover_card": :show
                      },
                      permissible_on: :project,
-                     dependencies: :view_project,
-                     visible: -> { OpenProject::FeatureDecisions.stages_and_gates_active? }
+                     dependencies: :view_project
 
       map.permission :edit_project_phases,
                      {},
                      permissible_on: :project,
                      require: :member,
                      dependencies: :view_project_phases,
-                     contract_actions: { projects: %i[update] },
-                     visible: -> { OpenProject::FeatureDecisions.stages_and_gates_active? }
+                     contract_actions: { projects: %i[update] }
 
       map.permission :select_project_phases,
                      {
@@ -158,7 +156,7 @@ Rails.application.reloader.to_prepare do
                      },
                      permissible_on: :project,
                      require: :member,
-                     visible: -> { OpenProject::FeatureDecisions.stages_and_gates_active? }
+                     dependencies: :edit_project_phases
 
       map.permission :manage_members,
                      {
@@ -201,13 +199,13 @@ Rails.application.reloader.to_prepare do
                      require: :member
 
       map.permission :add_subprojects,
-                     { projects: %i[new] },
+                     { projects: %i[new create] },
                      permissible_on: :project,
                      require: :member
 
       map.permission :copy_projects,
                      {
-                       projects: %i[copy]
+                       projects: %i[copy_form copy]
                      },
                      permissible_on: :project,
                      require: :member,
@@ -319,25 +317,29 @@ Rails.application.reloader.to_prepare do
                      {},
                      permissible_on: %i[project],
                      require: :loggedin,
-                     dependencies: :view_work_packages
+                     dependencies: :view_work_packages,
+                     contract_actions: { internal_comments: %i[read] }
 
       wpt.permission :add_internal_comments,
                      {},
                      permissible_on: %i[project],
                      require: :loggedin,
-                     dependencies: %i[view_project view_internal_comments]
+                     dependencies: %i[view_project view_internal_comments],
+                     contract_actions: { internal_comments: %i[create] }
 
       wpt.permission :edit_own_internal_comments,
                      {},
                      permissible_on: %i[project],
                      require: :loggedin,
-                     dependencies: %i[view_project view_internal_comments]
+                     dependencies: %i[view_project view_internal_comments],
+                     contract_actions: { internal_comments: %i[update_own] }
 
       wpt.permission :edit_others_internal_comments,
                      {},
                      permissible_on: %i[project],
                      require: :loggedin,
-                     dependencies: %i[view_project view_internal_comments]
+                     dependencies: %i[view_project view_internal_comments],
+                     contract_actions: { internal_comments: %i[update_others] }
 
       # WP attachments can be added with :edit_work_packages, this permission allows it without Edit WP as well.
       wpt.permission :add_work_package_attachments,

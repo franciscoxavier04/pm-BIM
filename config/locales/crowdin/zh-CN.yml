@@ -66,7 +66,6 @@ zh-CN:
         header-item-bg-hover-color: "悬停时的标题背景"
         main-menu-bg-color: "主菜单背景"
         main-menu-bg-selected-background: "选择时的主菜单"
-        main-menu-bg-hover-background: "悬停时的主菜单"
       custom_colors: "自定义颜色"
       manage_colors: "编辑颜色选择选项"
       instructions:
@@ -79,11 +78,15 @@ zh-CN:
         main-menu-bg-color: "左菜单的背景色。"
       theme_warning: 更改主题将覆盖您的自定义样式。设计将会丢失。您确定要继续吗？
     enterprise:
-      upgrade_to_ee: "升级到企业版"
+      delete_dialog:
+        title: "删除企业令牌"
+        heading: "删除此企业令牌？"
+        confirmation: "确定要删除此企业版支持令牌吗？"
+      create_dialog:
+        title: "添加企业令牌"
+        type_token_text: "输入支持令牌文本"
+        token_placeholder: "在此处粘贴您的企业版支持令牌"
       add_token: "上传企业版支持令牌"
-      delete_token_modal:
-        text: "您确定要删除当前使用的企业版令牌吗？"
-        title: "删除令牌"
       replace_token: "替换您当前的支持令牌"
       order: "订购本地部署的 Enterprise edition"
       paste: "粘贴您企业版的支持令牌"
@@ -95,13 +98,71 @@ zh-CN:
       buttons:
         upgrade: "立即升级"
         contact: "联系我们获取演示"
-      enterprise_info_html: "是企业版的 <span class='spot-icon spot-icon_enterprise-addons'></span> 附加功能。"
-      upgrade_info: "请升级到付费方案，以激活并开始在您的团队中使用该功能。"
+      status:
+        expired: "已过期"
+        expiring_soon: "即将到期"
+        in_grace_period: "宽限期内"
+        invalid_domain: "域无效"
+        not_active: "停用"
+        trial: "试用"
     jemalloc_allocator: 使用 jemalloc 内存分配器
     journal_aggregation:
       explanation:
         text: "如果用户的多项操作（例如，更新工作包两次）的时间间隔小于指定的时间跨度，则这些操作将被聚合为单个操作，并在应用程序中显示为单个操作。这也会将通知延迟同等的时间，从而减少电子邮件的发送数量，并且还会影响 %{webhook_link} 延迟。"
         link: "Webhook"
+    scim_clients:
+      authentication_methods:
+        sso: "来自身份提供商的 JWT"
+        oauth2_client: "OAuth 2.0 客户端凭据"
+        oauth2_token: "静态访问令牌"
+      created_client_credentials_dialog_component:
+        title: "客户端凭据已创建"
+        heading: "客户端凭据已生成"
+        one_time_hint: "这将是您看到客户端密钥的唯一机会。请务必立即复制。"
+      created_token_dialog_component:
+        title: "令牌已创建"
+        heading: "A token has been generated"
+        label_token: "令牌"
+        one_time_hint: "这将是您看到此令牌的唯一机会。请务必立即复制。"
+      delete_scim_client_dialog_component:
+        title: "删除 SCIM 客户端"
+        heading: "确定要删除此 SCIM 客户端吗？"
+        description: "此 SCIM 客户端管理的用户无法再由其更新。"
+      edit:
+        label_delete_scim_client: "删除 SCIM 客户端"
+      form:
+        auth_provider_description: "这是 SCIM 提供商添加的用户在 OpenProject 中进行身份验证时将使用的服务。"
+        authentication_method_description_html: "这是 SCIM 客户端在 OpenProject 上进行身份验证的方式。请确保 OAuth 令牌包括 <code>scim_v2</code> 作用域。"
+        description_html: '关于这些配置选项的更多信息，请参阅我们的 <a href="%{docs_url}">SCIM 客户端配置文档</a> 。'
+        jwt_sub_description_html: '例如，对于 Keycloak，这是与 SCIM 客户端相关联的服务账户的 UUID。请查阅<a href="%{docs_url}">我们的文档</a>，了解如何找到您的用例的主体声明。'
+        name_description: "选择一个名称，帮助其他管理员更好地理解配置此客户端的原因。"
+      index:
+        description: "在此处配置的 SCIM 客户端能够与 OpenProject SCIM 服务器 API 交互，以添加、更新和删除用户帐户和群组。"
+        label_create_button: "添加 SCIM 客户端"
+      new:
+        title: "新建 SCIM 客户端"
+      revoke_static_token_dialog_component:
+        confirm_button: "撤销"
+        title: "撤销静态令牌"
+        heading: "确定要撤销此令牌吗？"
+        description: "使用此令牌的 SCIM 客户端将无法再访问 OpenProject 的 SCIM 服务器 API。"
+      table_component:
+        blank_slate:
+          title: "尚未配置 SCIM 客户端"
+          description: "添加客户端以在此处查看"
+        user_count: "用户"
+      token_list_component:
+        description: "您在此处生成的令牌可以通过 SCIM 客户端传递以访问 OpenProject SCIM API。"
+        heading: "令牌"
+        label_add_token: "令牌"
+        label_aria_add_token: "添加令牌"
+      token_table_component:
+        blank_slate:
+          title: "尚未创建令牌"
+          description: "您现在可以创建一个"
+        expired: "已于 %{date} 到期"
+        revoked: "已于 %{date} 撤销"
+        title: "访问令牌表"
   authentication:
     login_and_registration: "登录和注册"
   announcements:
@@ -265,6 +326,7 @@ zh-CN:
       admin_only: "选中使此属性仅对管理员可见。没有管理员权限的用户将无法查看或编辑该属性。"
       is_filter: >
         允许在工作包视图中使用自定义字段。 请注意，只有选择了“所有项目”时，自定义字段才会显示在全局视图中。
+      formula: "添加数值或输入 / 以搜索特性或数学运算符。"
     tab:
       no_results_title_text: 目前没有自定义字段。
       no_results_content_text: 创建新的自定义字段
@@ -277,6 +339,8 @@ zh-CN:
       greater_or_equal_zero: "必须大于或等于 0"
       not_found: "未找到"
       rules:
+        copy_workflow_from:
+          workflow_missing: "没有自己的工作流。"
         item:
           root_item: "不能为根项目"
           not_persisted: "必须是已存在的项目"
@@ -287,6 +351,8 @@ zh-CN:
         parent:
           not_descendant: "必须是层次结构根的后代"
     rules:
+      copy_workflow_from: "工作流副本的类型"
+      enabled: "已启用"
       depth: "深"
       item: "条目"
       label: "标签"
@@ -418,9 +484,6 @@ zh-CN:
         new_label: "新优先级"
     status:
       button_edit: 编辑项目状态
-  project_phase:
-    duration:
-      other: "时长： %{count} 个工作日"
   lists:
     create:
       success: "已将修改后的列表保存为新列表"
@@ -554,11 +617,14 @@ zh-CN:
         出现的所有占位符用户（例如，作为受理人、负责人或其他用户值）将被重新分配给一个名为“已删除用户”的帐户。 由于每个已删除帐户的数据都会被重新分配给此帐户，因此无法将用户创建的数据与另一个已删除帐户的数据区分。
       irreversible: "此操作不可逆"
       confirmation: "输入占位符用户名 %{name} 以确认删除。"
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        单击可以分配或更改此优先级的颜色。
-        颜色可用于突出显示表中的工作包。
+        点击以指定或更改此优先级的颜色。
+        颜色可用于高亮显示表中的工作包。
+    admin:
+      default:
+        caption: 将此优先级设为默认优先级会覆盖之前的默认优先级。
   reactions:
     action_title: "回应"
     add_reaction: "添加回应"
@@ -609,8 +675,10 @@ zh-CN:
       form_configuration:
         tab: "表单配置"
       projects:
-        tab: "项目"
-        enabled_projects: "已启用的项目"
+        tab: 项目
+        enable_all: 对所有项目启用
+        select_projects: 选择项目
+        select_projects_description: 选择您想要使用此类型的项目。
       settings:
         tab: "设置"
         type_color_text: 所选颜色用于在甘特图或工作包表中区分不同类型。因此建议使用鲜艳的颜色。
@@ -680,6 +748,7 @@ zh-CN:
         automatic: "自动"
         manual: "手动"
       show_relations: "显示关系"
+      update_inputs_aria_live_message: "日期选择器已更新。 %{message}"
       tabs:
         aria_label: "日期选择器标签"
         children: "子项"
@@ -747,7 +816,9 @@ zh-CN:
     label_add_description: "添加说明"
     lag:
       subject: "间隔"
-      caption: "两个工作包之间的最低工作日数。"
+      caption: |-
+        两个工作包间的最少工作日数。
+        也可以是负数。
     relations:
       label_new_child_created: "创建新工作包并将其添加为子项"
       label_relates_singular: "关联到"
@@ -806,6 +877,7 @@ zh-CN:
       required_description: "将此工作包标记为相关工作包的需求"
       label_parent_singular: "父级"
       label_parent_plural: "父级"
+      label_other_relations: "其他关系"
       ghost_relation_title: "相关工作包"
       ghost_relation_description: "由于权限问题，您无法看到这些信息。"
   label_invitation: 邀请
@@ -840,6 +912,10 @@ zh-CN:
     auth_source_login: 请使用 <em>%{login}</em> 登录来激活您的帐户，
     omniauth_login: 请登录以激活您的帐户。
   actionview_instancetag_blank_option: "请选择"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "依赖项"
   activerecord:
     attributes:
       announcements:
@@ -855,6 +931,8 @@ zh-CN:
       attribute_help_text:
         attribute_name: "属性"
         help_text: "帮助文本"
+      auth_provider:
+        scim_clients: "SCIM 客户端"
       capability:
         context: "背景"
       changeset:
@@ -868,6 +946,7 @@ zh-CN:
         default_value: "默认值"
         editable: "可编辑"
         field_format: "格式"
+        formula: "公式"
         is_filter: "用作筛选器"
         is_for_all: "适用于所有项目"
         is_required: "必填"
@@ -894,11 +973,14 @@ zh-CN:
       emoji_reaction:
         reactable: "作用于"
       enterprise_token:
-        domain: "域"
         starts_at: "生效时间"
         subscriber: "订阅者"
+        subscription: "订阅"
+        plan: "方案"
         encoded_token: "企业版支持令牌"
-        active_user_count_restriction: "最大活动用户数"
+        active_user_count_restriction: "活跃用户"
+      enterprise_trial:
+        company: "公司"
       grids/grid:
         page: "页"
         row_count: "行数"
@@ -963,6 +1045,10 @@ zh-CN:
       project/phase:
         date_range: "日期范围"
         definition: "定义"
+        duration: "持续时间"
+        start_date: "开始日期"
+        start_date_caption: "跟随上一个阶段。"
+        finish_date: "完成日期"
       project/phase_definition:
         name: "名称"
         color: "颜色"
@@ -1011,6 +1097,10 @@ zh-CN:
         url: "URL"
       role:
         permissions: "权限"
+      scim_client:
+        auth_provider: "身份验证提供商"
+        authentication_method: "身份验证方式"
+        jwt_sub: "主体声明"
       status:
         is_closed: "工作包已关闭"
         is_readonly: "只读工作包"
@@ -1027,7 +1117,7 @@ zh-CN:
         ongoing: "正在进行的"
       type:
         description: "默认描述文本"
-        attribute_groups: ""
+        attribute_groups: "表单配置"
         is_in_roadmap: "默认在路线图中显示"
         is_default: "默认激活新项目"
         is_milestone: "里程碑"
@@ -1053,15 +1143,25 @@ zh-CN:
         new_password: "新密码"
         password_confirmation: "确认"
         consented_at: "同意在"
+      group:
+        identity_url: "身份 URL"
       user_preference:
-        comments_sorting: "显示评论"
+        header_look_and_feel: "外观和风格"
+        header_alerts: "提醒"
+        button_update_look_and_feel: "更新外观和风格"
+        button_update_alerts: "更新提醒"
+        comments_sorting: "显示工作包活动排序方式"
+        disable_keyboard_shortcuts: "禁用键盘快捷键"
+        disable_keyboard_shortcuts_caption_html: |-
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "隐藏企业横幅"
         impaired: "辅助功能模式"
-        auto_hide_popups: "自动隐藏成功通知"
+        auto_hide_popups: "自动隐藏成功横幅"
+        auto_hide_popups_caption: "启用后，绿色成功横幅将在 5 秒后自动消失。"
         warn_on_leaving_unsaved: "离开未保存更改的工作包时提示我"
-        theme: "模式"
+        theme: "颜色模式"
         time_zone: "时区"
-        mode_guideline: "某些模式会覆盖自定义主题的颜色，以便于访问和阅读。如需完整的自定义主题，请选择 \"浅色 \"模式。"
+        mode_guideline: "某些模式将覆盖自定义主题颜色，以提高可访问性和可读性。请选择“浅色”模式，以获得完全的自定义主题支持。"
         daily_reminders: "每日提醒"
         workdays: "工作日"
       version:
@@ -1130,6 +1230,7 @@ zh-CN:
         error_unauthorized: "无法访问。"
         error_readonly: "曾尝试被写入，但不可写。"
         error_conflict: "在此期间，至少有一位其他用户更新了信息。"
+        error_not_found: "未找到。"
         email: "不是一个有效的电子邮件地址。"
         empty: "不能为空。"
         enterprise_plan_required: "至少需要 %{plan_name}。"
@@ -1147,6 +1248,7 @@ zh-CN:
         inclusion: "未设置为允许的值之一。"
         inclusion_nested: "未设置为路径“%{path}”中允许的值之一。"
         invalid: "是无效的。"
+        invalid_characters: "包含无效字符。"
         invalid_url: "不是有效的 URL。"
         invalid_url_scheme: "不是受支持的协议（允许：%{allowed_schemes}）。"
         less_than_or_equal_to: "必须小于或等于 %{count}。"
@@ -1189,7 +1291,7 @@ zh-CN:
           attributes:
             content_type:
               blank: "文件的内容类型不能为空。"
-              not_whitelisted: "文件被自动筛选器拒绝。“%{value}”未被列入上传白名单。"
+              not_allowlisted: "文件被自动过滤器拒绝。不允许上传 '%{value}'。"
               format: "%{message}"
         capability:
           context:
@@ -1222,8 +1324,14 @@ zh-CN:
               forbidden_uri: "被服务器禁止。"
             scopes:
               not_match_configured: "与可用范围不匹配。"
+        enterprise_trial:
+          already_used: "已被用于创建一个试用。"
+          failed_to_create: "无法创建试用（%{status}）"
+          general_consent: "请接受条款与条件。"
         enterprise_token:
+          only_one_trial: "只能有一个试用令牌处于有效状态。请先删除上一个试用令牌，然后再添加另一个。"
           unreadable: "无法读取。是否确定为支持令牌？"
+          already_added: "此令牌已添加。"
         grids/grid:
           overlaps: "重叠."
           outside: "不在网格内。"
@@ -1274,14 +1382,14 @@ zh-CN:
               blank: "请选择一个项目。"
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "开始日期必须早于结束日期。"
+            start_date:
+              must_be_before_finish_date: "必须早于完成日期。"
               non_continuous_dates: "不能早于上一阶段的结束日期。"
-              incomplete: "不完整。"
+            finish_date:
+              must_be_after_start_date: "必须在开始日期之后。"
+          cannot_be_a_non_working_day: "不能是非工作日。"
         query:
           attributes:
-            project:
-              error_not_found: "未找到"
             public:
               error_unauthorized: "- 用户没有创建公公查询的权限。"
             group_by:
@@ -1321,15 +1429,9 @@ zh-CN:
             circular_dependency: "关系会创建关系的循环。"
           attributes:
             to_id:
-              error_not_found: "找不到或不可见。"
               error_readonly: "无法针对现有关系更改。"
             from_id:
-              error_not_found: "找不到或不可见。"
               error_readonly: "无法针对现有关系更改。"
-            lag:
-              greater_than_or_equal_to:
-                zero: "不能为负数。"
-              less_than_or_equal_to: "太高。"
         repository:
           not_available: "SCM提供商不可用"
           not_whitelisted: "配置所不允许的。"
@@ -1407,6 +1509,8 @@ zh-CN:
               cannot_be_self_assigned: "不能分配给自己。"
               cannot_be_in_another_project: "不能在另一个项目中。"
               not_a_valid_parent: "是无效的。"
+            schedule_manually:
+              cannot_be_automatically_scheduled: "不能设置为 false（自动调度），因为它没有父项或子项。"
             start_date:
               violates_relationships: "仅可以设置为 %{soonest_start} 或之后，以免违反工作包的关系。"
               cannot_be_null: "无法设置为 null，因为结束日期和持续时间已知。"
@@ -1465,10 +1569,6 @@ zh-CN:
                 description: "“确认密码”应该与“新密码”相同。"
             status:
               invalid_on_create: "不是新用户的有效状态"
-            ldap_auth_source:
-              error_not_found: "未找到"
-            auth_source:
-              error_not_found: "未找到"
         member:
           principal_blank: "请选择至少一个用户或组。"
           role_blank: "需要进行分配。"
@@ -1497,6 +1597,8 @@ zh-CN:
       custom_action: "自定义操作"
       custom_field: "自定义字段"
       "doorkeeper/application": "OAuth应用程序"
+      enterprise_token:
+        other: "企业令牌"
       forum: "论坛"
       global_role: "全局角色"
       group: "组"
@@ -1515,6 +1617,8 @@ zh-CN:
       reminder: "提醒"
       role:
         other: "角色"
+      scim_client:
+        other: "SCIM 客户端"
       status: "工作包状态"
       token/api:
         other: 访问令牌
@@ -1570,7 +1674,7 @@ zh-CN:
       added_date: "设为 %{date}"
       changed_date: "由 %{from} 变更为 %{to}"
       deactivated: "已停用"
-      deleted_project_phase: "Deleted project phase"
+      deleted_project_phase: "删除的项目阶段"
       phase_and_both_gates: "%{phase_message}。%{start_gate_message}，和%{finish_gate_message}"
       phase_and_one_gate: "%{phase_message}。%{gate_message}"
       removed_date: "删除日期%{date}"
@@ -1606,12 +1710,13 @@ zh-CN:
     derived_start_date: "派生的开始日期"
     direction: "方向"
     display_sums: "显示汇总"
+    domain: "域"
     due_date: "完成日期"
     estimated_hours: "工时"
     estimated_time: "工时"
     email: "Email"
     entity_type: "实体"
-    expires_at: "过期于"
+    expires_at: "Expires on"
     firstname: "名字"
     filter: "筛选器"
     group: "组"
@@ -1660,6 +1765,7 @@ zh-CN:
     title: "标题"
     type: "类型"
     typeahead: "自动补全"
+    uid: "唯一标识符"
     updated_at: "更新于"
     updated_on: "更新于"
     uploader: "上载程序"
@@ -1726,7 +1832,6 @@ zh-CN:
   button_copy: "复制"
   button_copy_to_clipboard: "复制到剪贴板"
   button_copy_link_to_clipboard: "复制链接到剪贴板"
-  button_copy_and_follow: "复制和跟踪"
   button_create: "创建"
   button_create_and_continue: "创建并继续"
   button_decline: "拒绝"
@@ -1735,6 +1840,7 @@ zh-CN:
   button_delete_watcher: "删除关注者 %{name}"
   button_download: "下载"
   button_duplicate: "复制"
+  button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "编辑"
   button_edit_associated_wikipage: "编辑关联的维基页面： %{page_title}"
   button_expand_all: "全部展开"
@@ -1773,6 +1879,7 @@ zh-CN:
   button_unwatch: "取消关注"
   button_update: "更新"
   button_upgrade: "升级"
+  button_buy_now: "立即购买"
   button_upload: "上传"
   button_view: "查看"
   button_watch: "关注"
@@ -1817,6 +1924,13 @@ zh-CN:
     text:
       failed: '无法将项目"%{source_project_name}"复制到项目"%{target_project_name}"。'
       succeeded: '已复制项目"%{source_project_name}"到"%{target_project_name}"。'
+    source_project_label: "项目已复制"
+    copy_options:
+      dependencies_label: '从项目复制'
+  create_project:
+    template_label: "使用模板"
+    copy_options:
+      dependencies_label: '从模板复制'
   create_wiki_page: "创建新的 Wiki 页面"
   create_wiki_page_button: "Wiki 页面"
   date:
@@ -1915,6 +2029,8 @@ zh-CN:
       x_seconds_abbreviated:
         other: "%{count} 秒"
     units:
+      minute_abbreviated:
+        other: "分钟"
       hour:
         other: "小时"
       day:
@@ -1969,25 +2085,39 @@ zh-CN:
       placeholder_users: 占位符用户
       project_list_sharing: 项目列表共享
       readonly_work_packages: 只读工作包
+      scim_api: SCIM 服务器 API
       sso_auth_providers: 单点登录
       team_planner_view: 工作组规划器视图
-      two_factor_authentication: 双因子认证
       virus_scanning: 反病毒扫描
       work_package_query_relation_columns: 工作包查询关系列
       work_package_sharing: 与外部用户共享工作包
       work_package_subject_generation: 工作包主题生成
     upsell:
+      buy_now_button: "立即购买"
       plans_title: "企业计划"
       title: "企业附加组件"
       plan_title: "企业 %{plan} 附加组件"
       plan_name: "%{plan} 企业计划"
       plan_text_html: "从 %{plan_name} 开始可用。"
+      unlimited: "无限制"
+      already_have_token: >
+        已经有令牌？使用下方按钮添加以升级到预订的 Enterprise 方案。
       hide_banner: "隐藏此广告"
       homescreen_description: >
-        企业计划将扩展您正在使用的 OpenProject 社区版本。 它们包括附加组件、额外功能和专业支持，使各种规模的组织能够一起取得巨大成就。
+        企业方案可以扩展您当前正在使用的 OpenProject 社区版。它们包括附加组件、额外功能和专业支持，使各种规模的组织能够共同实现伟大目标。
       homescreen_subline: 通过升级，您也将支持一个开源项目。
       baseline_comparison:
         description: 高亮显示自从过去任意时间点以来对此列表所做的更改。
+      benefits:
+        description: "Enterprise 本地部署版具有哪些优势？"
+        high_security: "安全功能"
+        high_security_text: "单点登录（SAML、OpenID Connect、CAS）、LDAP 群组。"
+        installation: "安装支持"
+        installation_text: "经验丰富的软件工程师将指导您在自己的基础架构中完成整个安装和设置过程。"
+        premium_features: "Enterprise 附加组件"
+        premium_features_text: "敏捷面板、自定义主题与徽标、图表、包含自定义操作的智能工作流、工作包附件全文搜索和多选自定义字段。"
+        professional_support: "专业支持"
+        professional_support_text: "获取高级支持工程师提供的可靠的个性化支持，他们拥有在关键业务环境中运行 OpenProject 的专业知识。"
       work_package_subject_generation:
         description: "使用引用的属性和文本自动生成主题。"
       customize_life_cycle:
@@ -2010,6 +2140,8 @@ zh-CN:
         description: "通过日期提醒，您将收到即将开始或完成日期的通知，以免错过或忘记重要截止日期。"
       work_package_sharing:
         description: "与非此项目成员的用户共享工作包。"
+      project_list_sharing:
+        description: "与个人用户共享项目列表。"
       define_custom_style:
         title: "自定义颜色主题和 Logo"
         more_info: "注：使用的 Logo 将可公开访问。"
@@ -2020,6 +2152,9 @@ zh-CN:
       nextcloud_sso:
         title: "Nextcloud存储的单点登录(SSO)"
         description: "使用单点登录为您的 Nextcloud 存储启用无缝且安全的身份验证。简化访问管理并提升用户便利性。"
+      scim_api:
+        title: "SCIM 客户端"
+        description: "通过我们的 SCIM 服务器 API 无缝集成外部身份服务（例如，Microsoft Entra 或 Keycloak），在 OpenProject 中自动执行用户管理。该功能现已在 Enterprise 公司方案中提供。"
       virus_scanning:
         description: "确保在 OpenProject 中上传的文件在被其他用户访问之前进行病毒扫描。"
       placeholder_users:
@@ -2032,6 +2167,30 @@ zh-CN:
       internal_comments_inline:
         title: "编写只有小部分群体能看见的内部评论"
         description: " "
+    teaser:
+      title:
+        other: "%{trial_plan} 试用令牌剩余 %{count} 天"
+      description: "您可以访问 %{trial_plan} 的所有功能。"
+    trial:
+      not_found: "您已申请试用令牌，但该申请已不再可用。请重试。"
+      wait_for_confirmation: "我们向您发送了一封电子邮件来确认地址，以便检索试用令牌。"
+      already_retrieved: >
+        您的试用 Enterprise 令牌已被检索。请检查您的电子邮件，查看是否已附上令牌。如果您需要一个新令牌，请联系我们的支持团队。
+      successfully_saved: "您的试用 Enterprise 令牌已成功检索。"
+      token_sent: "已申请试用令牌"
+      request_again: "再次申请"
+      resend_action: "重新发送确认电子邮件"
+      welcome_title: "快速功能概览"
+      welcome_description: "快速了解 OpenProject Enterprise 版的项目管理和团队协作。"
+      confirmation_info: >
+        我们在 %{date} 向您的 %{email} 发送了一封电子邮件，其中包含开始 OpenProject Enterprise 版免费试用需要的所有信息。请检查您的收件箱并点击提供的确认链接以开始您的 14 天免费试用。
+      confirmation_subline: >
+        请检查您的收件箱，并按照步骤开始 14 天免费试用。
+      domain_caption: 该令牌将对您当前配置的主机名有效。
+      receive_newsletter_html: >
+        我希望接收 OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">简报</a>。
+      consent_html: >
+        我同意<a target="_blank" href="https://www.openproject.org/terms-of-service/">服务条款</a>和<a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">隐私政策</a>。
   enumeration_activities: "时间跟踪活动"
   enumeration_work_package_priorities: "工作包优先级"
   enumeration_reported_project_statuses: "报告的项目状态"
@@ -2056,6 +2215,7 @@ zh-CN:
   error_color_could_not_be_saved: "无法保存颜色"
   error_cookie_missing: "OpenProject cookie 丢失。请确保已启用 cookie，因为如果不启用，此应用程序将无法正常运行。"
   error_custom_option_not_found: "选项不存在。"
+  error_enterprise_plan_needed: "您需要 %{plan} Enterprise 方案才能执行此操作。"
   error_enterprise_activation_user_limit: "无法激活您的帐户 (已达到用户限制)。请与管理员联系以获取访问权限。"
   error_enterprise_token_invalid_domain: "企业版未激活。您的企业版令牌的域名（%{actual}）与系统的主机名（%{expected}）不匹配。"
   error_failed_to_delete_entry: "无法删除此条目。"
@@ -2363,7 +2523,7 @@ zh-CN:
         static_token_name: "RSS 令牌"
         disabled_text: "管理员未启用 RSS 令牌。请联系管理员以使用此功能。"
       storages:
-        title: "文件存储区"
+        title: "文件存储"
         text_hint: "文件存储区令牌将此 OpenProject 实例与外部文件存储区连接。"
         empty_text_hint: "没有与您的帐户相关联的存储区访问权限。"
         revoke_token: "是否确实要移除此令牌？您需要再次登录 %{storage}"
@@ -2490,6 +2650,7 @@ zh-CN:
   label_select_main_menu_item: 选择新的主菜单项
   label_required_disk_storage: "所需的磁盘空间"
   label_send_invitation: 发送邀请
+  label_calculated_value: "计算的值"
   label_change_plural: "更改"
   label_change_properties: "更改属性"
   label_change_status: "更改状态"
@@ -2539,6 +2700,7 @@ zh-CN:
   label_dashboard: "仪表板"
   label_database_version: "PostgreSQL 版本"
   label_date: "日期"
+  label_dates: "日期"
   label_date_and_time: "日期和时间"
   label_date_format: "日期格式"
   label_date_from: "从"
@@ -2554,6 +2716,8 @@ zh-CN:
   label_deleted_custom_item: "(删除项目)"
   label_deleted_custom_option: "（删除的选项）"
   label_empty_element: "（空）"
+  label_go_back: "返回上一级菜单"
+  label_go_forward: "打开 %{module} 子菜单"
   label_missing_or_hidden_custom_option: "（缺少值或缺少访问权限）"
   label_descending: "降序"
   label_details: "详细信息"
@@ -2622,6 +2786,7 @@ zh-CN:
   label_follows: "跟踪"
   label_force_user_language_to_default: "设置拥有非允许语言的用户的默认语言"
   label_form_configuration: "表格配置"
+  label_formula: "公式"
   label_gantt_chart: "甘特图"
   label_gantt_chart_plural: "甘特图"
   label_general: "通用"
@@ -2658,6 +2823,7 @@ zh-CN:
   label_information_plural: "信息"
   label_installation_guides: "安装指南"
   label_integer: "整数"
+  label_interface: "界面"
   label_internal: "内部"
   label_introduction_video: "自我介绍视频"
   label_invite_user: "邀请用户"
@@ -2800,7 +2966,7 @@ zh-CN:
   label_password_rule_special: "特殊字符"
   label_password_rule_uppercase: "大写字母"
   label_path_encoding: "路径编码"
-  label_per_page: "每页"
+  label_per_page: "Per page:"
   label_people: "人员"
   label_permissions: "权限"
   label_permissions_report: "权限报告"
@@ -2843,8 +3009,8 @@ zh-CN:
   label_project_custom_field_plural: "项目属性"
   label_project_settings: "项目设置"
   label_project_attributes_settings: "项目属性设置"
-  label_project_storage_plural: "文件存储区"
-  label_project_storage_project_folder: "文件存储区：项目文件夹"
+  label_project_storage_plural: "文件存储"
+  label_project_storage_project_folder: "文件存储：项目文件夹"
   label_projects_disk_usage_information: "%{count} 个项目正在使用 %{used_disk_space} 磁盘空间"
   label_project_view_all: "查看所有项目"
   label_project_show_details: "显示项目详细信息"
@@ -2853,6 +3019,7 @@ zh-CN:
   label_query_new: "新的查询"
   label_query_plural: "自定义查询"
   label_read: "阅读..."
+  label_read_documentation: "阅读文档"
   label_register: "创建一个新帐户"
   label_register_with_developer: "注册成为开发人员"
   label_registered_on: "注册于"
@@ -3017,6 +3184,7 @@ zh-CN:
   label_work_package_attachments: "工作包附件"
   label_work_package_category_new: "新的类别"
   label_work_package_category_plural: "工作包类别"
+  label_work_package_comments: "工作包评论"
   label_work_package_hierarchy: "工作包的层次结构"
   label_work_package_new: "新工作包"
   label_work_package_edit: "编辑工作包 %{name}"
@@ -3292,6 +3460,8 @@ zh-CN:
   notice_successful_delete: "成功删除。"
   notice_successful_cancel: "取消成功"
   notice_successful_update: "成功更新。"
+  notice_unsuccessful_create: "创建失败。"
+  notice_unsuccessful_create_with_reason: "创建失败：%{reason}"
   notice_unsuccessful_update: "更新失败。"
   notice_unsuccessful_update_with_reason: "更新失败：%{reason}"
   notice_successful_update_custom_fields_added_to_project: |
@@ -3309,7 +3479,7 @@ zh-CN:
   #Default format for numbers
   number:
     format:
-      delimiter: ""
+      delimiter: "，"
       precision: 3
       separator: "."
     human:
@@ -3351,7 +3521,7 @@ zh-CN:
   permission_comment_news: "评论新闻"
   permission_commit_access: "读/写访问存储库 (提交)"
   permission_copy_projects: "复制项目"
-  permission_copy_work_packages: "复制工作包"
+  permission_copy_work_packages: "Duplicate work packages"
   permission_create_backup: "创建备份"
   permission_delete_work_package_watchers: "删除关注者"
   permission_delete_work_packages: "删除工作包"
@@ -3870,8 +4040,6 @@ zh-CN:
       new:
         description: "对此项目阶段的更改将反映在所有启用的项目中。"
         heading: "新阶段"
-      edit:
-        heading: "编辑阶段"
       both_gate: "开始和结束关口"
       no_gate: "无关口"
       start_gate: "开始关口"
@@ -4173,7 +4341,7 @@ zh-CN:
     reminders:
       label_remind_at: "日期"
       note_placeholder: "您为什么要设置此提醒？"
-      success_creation_message: "提醒设置成功。您将在所选时间收到此工作包的通知。"
+      create_success_message: "提醒设置成功。您将在%{reminder_time}收到此工作包的通知。"
       success_update_message: "提醒更新成功。"
       success_deletion_message: "提醒已成功删除。"
   sharing:
@@ -4245,12 +4413,12 @@ zh-CN:
         message: "与单个用户共享项目列表是一项企业附加功能。"
   working_days:
     info: >
-      在安排工作包时，未选择的日期将被跳过（且不计入天数）。可以在工作包级别覆盖这些选项。
+      安排工作包和项目生命周期时，未选择的日期将被跳过（不计入天数）。可以在工作包级别覆盖这些选项。
     instance_wide_info: >
       添加到以下列表的日期被视为非工作日，在安排工作包时将被跳过。
     change_button: "更改工作日"
     warning: >
-      在这种情况下，更改一周中哪些天被视为工作日或非工作日，会影响所有项目中所有工作包的开始和结束日期。
+      在这种情况下，更改一周中哪几天被视为工作日或非工作日会影响所有项目中所有工作包和生命周期的开始日期和结束日期。
     journal_note:
       changed: _**工作日**已更改（%{changes}）。_
       days:
@@ -4274,8 +4442,14 @@ zh-CN:
       code_500: "发生了内部错误。"
       code_500_outbound_request_failure: "对另一个资源的出站请求存在失败状态代码 %{status_code} 。"
       code_500_missing_enterprise_token: "由于企业令牌是无效的或缺失的，故无法处理该请求。"
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "此活动类型不支持表情符号回应。"
+      conflict:
+        multiple_reminders_not_allowed: |-
+          您每次只能设置一个工作包提醒。请删除或更新现有提醒。
       not_found:
         work_package: "找不到您要查找的工作包或者它已被删除。"
+        reminder: "找不到您要查找的提醒或者它已被删除。"
       expected:
         date: "YYYY-MM-DD（仅适用于 ISO 8601 日期）"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm]（任何兼容的 ISO 8601 日期时间）"

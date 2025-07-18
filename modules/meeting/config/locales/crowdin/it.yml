@@ -45,7 +45,7 @@ it:
       meeting_agenda_item:
         title: "Titolo"
         author: "Autore"
-        duration_in_minutes: "min"
+        duration_in_minutes: "Durata"
         description: "Note"
         presenter: "Presentatore"
       meeting_section:
@@ -182,6 +182,7 @@ it:
       agenda_items: "Copia punti all'ordine del giorno"
       agenda_text: "Copia l'ordine del giorno della vecchia riunione"
       participants: "Copia elenco dei partecipanti"
+      to_clipboard: "Copia negli appunti"
     email:
       send_emails: "Invia e-mail ai partecipanti"
       send_invitation_emails: >
@@ -236,12 +237,38 @@ it:
     blankslate:
       title: "Nessuna riunione da visualizzare"
       desc: "Non ci sono riunioni che soddisfano i criteri del filtro attivo."
+    label_export_pdf: "Esporta PDF"
+    export:
+      your_meeting_export: "Riunione in corso di esportazione"
+    export_pdf_dialog:
+      title: Esporta PDF
+      description: Genera un file PDF stampabile di questa riunione allo stato attuale.
+      include_participants:
+        label: Includi l'elenco dei partecipanti
+        caption: L'elenco dei partecipanti sarà preimpostato sopra l'ordine del giorno della riunione.
+      include_attachments:
+        label: Includi l'elenco degli allegati
+        caption: Alla fine verrà aggiunto un elenco contenente i nomi dei file degli allegati.
+      include_backlog:
+        label: Includi backlog
+        caption: Di solito gli elementi del backlog non vengono considerati parte integrante di una riunione, ma è possibile scegliere di includerli.
+      include_outcomes:
+        label: Includi esiti dell'ordine del giorno
+        caption: Se i risultati dell'agenda contengono informazioni riservate, puoi scegliere di non includerli nell'esportazione.
+      footer_text:
+        label: Testo del piè di pagina
+        caption: Questo testo apparirà in ogni pagina a destra nel piè di pagina.
+      submit_button: Scarica
   meeting_section:
     untitled_title: "Sezione senza titolo"
     delete_confirmation: "L'eliminazione della sezione eliminerà anche tutti i suoi elementi dell'ordine del giorno. Continuare?"
     placeholder_title: "Nuova sezione"
     empty_text: "Trascina gli elementi qui o creane una nuova"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Differenza di fuso orario"
+      description: >
+        Le date riportate di seguito fanno riferimento al fuso orario della serie di riunioni (%{actual_zone}), non al tuo fuso orario locale (%{user_zone}).
     ended_blankslate:
       title: "Serie di riunioni terminata"
       message: "Questa serie di riunioni è giunta al termine. Non ci sono altre riunioni. "
@@ -327,7 +354,7 @@ it:
   permission_delete_meetings: "Annullare riunioni"
   permission_view_meetings: "Vedere riunioni"
   permission_manage_agendas: "Gestire gli ordini del giorno"
-  permission_manage_agendas_explanation: "Consente di gestire gli elementi dell'ordine del giorno della Riunione dinamica."
+  permission_manage_agendas_explanation: "Consente di creare, modificare e rimuovere voci dell'ordine del giorno"
   permission_manage_outcomes: "Gestisci risultati"
   permission_send_meeting_invites_and_outcomes: "Invia inviti alla riunione e risultati ai partecipanti"
   project_module_meetings: "Riunioni"
@@ -356,7 +383,9 @@ it:
   label_meeting_index_later: "La prossima settimana e più tardi"
   label_agenda_items: "Punti all'ordine del giorno"
   label_agenda_items_reordered: "riordinato"
-  label_agenda_item_remove: "Rimuovi dall'ordine del giorno"
+  label_agenda_item_add: "Aggiungi punto all'ordine del giorno"
+  label_agenda_item_remove_from_agenda: "Rimuovi dall'ordine del giorno"
+  label_agenda_item_remove_from_backlog: "Rimuovi dal backlog"
   label_agenda_item_undisclosed_wp: "Macro-attività #%{id} non visibile"
   label_agenda_item_deleted_wp: "Riferimento della macro-attività eliminato"
   label_agenda_item_actions: "Azioni all'ordine del giorno"
@@ -369,7 +398,9 @@ it:
   label_agenda_item_move_down: "Sposta giu"
   label_agenda_item_add_notes: "Aggiungi nota"
   label_agenda_item_add_outcome: "Aggiungi risultato"
+  label_agenda_item_work_package_add: "Aggiungi macro-attività"
   label_agenda_item_work_package: "Macro-attività nei punti all'ordine del giorno"
+  label_section_rename: "Rinomina sezione"
   label_agenda_outcome: "Risultato"
   label_agenda_outcome_actions: "Azioni di risultato dell'ordine del giorno"
   label_agenda_outcome_edit: "Modifica risultato"

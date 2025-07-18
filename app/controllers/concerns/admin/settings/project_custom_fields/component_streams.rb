@@ -33,9 +33,11 @@ module Admin
         extend ActiveSupport::Concern
 
         included do
-          def update_header_via_turbo_stream
+          def update_header_via_turbo_stream(allow_custom_field_creation:)
             update_via_turbo_stream(
-              component: ::Settings::ProjectCustomFields::HeaderComponent.new
+              component: ::Settings::ProjectCustomFields::HeaderComponent.new(
+                allow_custom_field_creation:
+              )
             )
           end
 

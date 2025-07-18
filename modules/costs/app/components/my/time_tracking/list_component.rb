@@ -43,7 +43,6 @@ module My
       def wrapper_data
         {
           "controller" => "my--time-tracking",
-          "application-target" => "dynamic",
           "my--time-tracking-mode-value" => mode,
           "my--time-tracking-view-mode-value" => "list"
         }
@@ -102,7 +101,11 @@ module My
       def collapsed?(date)
         return false if mode == :day
 
-        date.past?
+        if range.include?(Date.current)
+          !date.today?
+        else
+          false
+        end
       end
 
       def date_caption(date)

@@ -150,7 +150,7 @@ module Meetings
           render_agenda_item_form_in_section_via_turbo_stream(meeting:, meeting_section:, type:, collapsed:)
         end
 
-        update_new_button_via_turbo_stream(disabled: true)
+        update_new_button_via_turbo_stream(disabled: true) unless meeting_section == meeting.backlog
       end
 
       def render_agenda_item_form_for_empty_meeting_via_turbo_stream(type: :simple)
@@ -295,7 +295,12 @@ module Meetings
           update_section_header_via_turbo_stream(meeting_section: old_section)
 
           if old_section.agenda_items.empty?
-            update_section_via_turbo_stream(meeting_section: old_section)
+            if old_section.title.blank?
+              # Special case when the only item is being moved out of current meeting
+              update_list_via_turbo_stream
+            else
+              update_section_via_turbo_stream(meeting_section: old_section)
+            end
           else
             update_show_items_of_section_via_turbo_stream(meeting_section: old_section)
           end

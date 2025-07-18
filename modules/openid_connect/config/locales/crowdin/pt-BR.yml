@@ -15,18 +15,18 @@ pt-BR:
         secret: Segredo
         scope: Escopo
         grant_types_supported: Tipos de concessão compatíveis
-        limit_self_registration: Restringir auto-registro
+        limit_self_registration: Limitar auto registro
         authorization_endpoint: Endpoint de autorização
         userinfo_endpoint: Endpoint de informações do usuários
         token_endpoint: Endpoint do token
-        end_session_endpoint: Endpoint de término de sessão
+        end_session_endpoint: Endpoint de encerramento de sessão
         post_logout_redirect_uri: URI de redirecionamento após logout
         jwks_uri: URI de JWKS
-        issuer: Emissor (Issuer)
-        tenant: Locatário
+        issuer: Emissor
+        tenant: Cliente
         metadata_url: URL de metadados
         icon: Ícone personalizado
-        claims: Reivindicações
+        claims: Declarações
         acr_values: Valores ACR
         redirect_url: URL de redirecionamento
     errors:
@@ -61,7 +61,7 @@ pt-BR:
       client_secret: Este é o segredo do cliente fornecido pelo seu provedor OpenID Connect
       limit_self_registration: Se ativado, os usuários só poderão se registrar usando este provedor se a configuração no lado do provedor permitir.
       display_name: Nome do provedor. Ele será exibido como o botão de login e na lista de provedores.
-      tenant: 'Substitua o locatário padrão pelo seu, se necessário. Consulte <a href=" https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols-oidc#find-your-apps-openid-configuration-document-uri">aqui</a>.'
+      tenant: 'Substitua o cliente padrão pelo seu, se necessário. Consulte <a href=" https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols-oidc#find-your-apps-openid-configuration-document-uri">aqui</a>.'
       scope: Se você quiser solicitar escopos personalizados, pode adicionar um ou vários valores de escopo separados por espaços aqui. Para mais informações, consulte a [documentação do OpenID Connect](docs_url).
       post_logout_redirect_uri: O URL para a qual o provedor OpenID Connect deve redirecionar após a solicitação de logout.
       claims: >
@@ -93,7 +93,7 @@ pt-BR:
         name: Personalizar
       upsell:
         title: "Autenticação única (SSO) com OpenID Connect"
-        description: Conecte o OpenProject a um provedor de identidade OpenID Connect
+        description: Conectar o OpenProject a um provedor de identidade do OpenID Connect
       label_add_new: Adicionar um novo provedor OpenID
       label_edit: Editar provedor OpenID %{name}
       label_empty_title: Ainda não há provedores OpenID configurados.

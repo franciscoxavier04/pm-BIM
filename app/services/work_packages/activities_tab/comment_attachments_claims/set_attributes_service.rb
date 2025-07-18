@@ -36,12 +36,9 @@ module WorkPackages
 
         ATTACHMENT_CSS_SELECTOR = "img.op-uc-image"
 
-        def perform(params = {})
-          super(
-            params.reverse_merge(
-              attachment_ids: collect_attachment_ids_from_notes
-            )
-          )
+        def perform
+          self.params = params.reverse_merge(attachment_ids: collect_attachment_ids_from_notes)
+          super
         end
 
         private

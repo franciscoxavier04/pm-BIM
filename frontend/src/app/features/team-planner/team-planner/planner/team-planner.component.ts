@@ -38,7 +38,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { CalendarOptions, DateSelectArg, EventApi, EventDropArg, EventInput } from '@fullcalendar/core';
-import { BehaviorSubject, combineLatest, Subject } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import {
   debounceTime,
   distinctUntilChanged,
@@ -143,7 +143,7 @@ export class TeamPlannerComponent extends UntilDestroyedMixin implements OnInit,
 
   calendarOptions$ = new Subject<CalendarOptions>();
 
-  draggingItem$ = new BehaviorSubject<EventDragStartArg|undefined>(undefined);
+  draggingItem$:BehaviorSubject<EventDragStartArg|undefined> = new BehaviorSubject(undefined);
 
   globalDraggingItem$ = combineLatest([
     this.draggingItem$,
@@ -176,7 +176,7 @@ export class TeamPlannerComponent extends UntilDestroyedMixin implements OnInit,
       }),
     );
 
-  dropzone$ = combineLatest([
+  dropzone$:Observable<{ dragging:EventDragStartArg|undefined; isHovering:boolean; canDrop:boolean }> = combineLatest([
     this.draggingItem$,
     this.dropzoneHovered$,
     this.dropzoneAllowed$,

@@ -30,7 +30,6 @@
 
 class WorkPackageMeetingsTabController < ApplicationController
   include OpTurbo::ComponentStream
-  include OpTurbo::DialogStreamHelper
   include Meetings::WorkPackageMeetingsTabComponentStreams
 
   before_action :set_work_package

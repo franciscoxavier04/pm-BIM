@@ -12,8 +12,8 @@ Rails.application.routes.draw do
     put "projects/:project_id/update_project_custom_values/:section_id", to: "overviews/overviews#update_project_custom_values",
                                                                          as: :update_project_custom_values
 
-    get "projects/:project_id/project_life_cycles_sidebar",
-        to: "overviews/overviews#project_life_cycles_sidebar", as: :project_life_cycles_sidebar
+    get "projects/:project_id/project_life_cycle_sidebar",
+        to: "overviews/overviews#project_life_cycle_sidebar", as: :project_life_cycle_sidebar
   end
 
   resources :project_phases, controller: "overviews/project_phases", only: %i[edit update] do

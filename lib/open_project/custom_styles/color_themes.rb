@@ -37,6 +37,7 @@ module OpenProject::CustomStyles
     DEPRECATED_BIM_ALTERNATIVE_COLOR = "#349939".freeze
     DEPRECATED_PRIMARY_DARK_COLOR = "#175A8E".freeze
     DEPRECATED_LINK_COLOR = "#155282".freeze
+    DEPRECATED_MAIN_MENU_COLOR = "#333739".freeze
     PRIMER_PRIMARY_BUTTON_COLOR = "#1F883D".freeze
     ACCENT_COLOR = "#1A67A3".freeze
 
@@ -48,9 +49,8 @@ module OpenProject::CustomStyles
           "accent-color" => ACCENT_COLOR,
           "header-bg-color" => "#1A67A3",
           "header-item-bg-hover-color" => "#175A8E",
-          "main-menu-bg-color" => "#333739",
+          "main-menu-bg-color" => "#FFFFFF",
           "main-menu-bg-selected-background" => "#175A8E",
-          "main-menu-bg-hover-background" => "#124E7C",
         }
       },
       {
@@ -62,7 +62,6 @@ module OpenProject::CustomStyles
           "header-item-bg-hover-color" => "#E1E1E1",
           "main-menu-bg-color" => "#ECECEC",
           "main-menu-bg-selected-background" => "#A9A9A9",
-          "main-menu-bg-hover-background" => "#FFFFFF",
         },
         logo: "logo_openproject.png"
       },
@@ -75,7 +74,6 @@ module OpenProject::CustomStyles
           "header-item-bg-hover-color" => "#163473",
           "main-menu-bg-color" => "#0E2045",
           "main-menu-bg-selected-background" => "#3270DB",
-          "main-menu-bg-hover-background" => "#163473",
         }
       }
     ].freeze

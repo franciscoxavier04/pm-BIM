@@ -34,6 +34,7 @@ import {
 } from 'core-app/shared/components/editor/components/ckeditor/ckeditor.types';
 import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
+import { useMeta } from 'stimulus-use';
 
 enum AnchorType {
   Comment = 'comment',
@@ -61,12 +62,13 @@ export default class IndexController extends Controller {
     unsavedChangesConfirmationMessage: String,
   };
 
-  static targets = ['journalsContainer', 'buttonRow', 'formRow', 'form', 'formSubmitButton', 'reactionButton'];
+  static targets = ['journalsContainer', 'buttonRow', 'formRow', 'form', 'editForm', 'formSubmitButton', 'reactionButton'];
 
   declare readonly journalsContainerTarget:HTMLElement;
   declare readonly buttonRowTarget:HTMLInputElement;
   declare readonly formRowTarget:HTMLElement;
   declare readonly formTarget:HTMLFormElement;
+  declare readonly editFormTargets:HTMLFormElement[];
   declare readonly formSubmitButtonTarget:HTMLButtonElement;
   declare readonly reactionButtonTargets:HTMLElement[];
 
@@ -86,23 +88,21 @@ export default class IndexController extends Controller {
   declare showConflictFlashMessageUrlValue:string;
   declare unsavedChangesConfirmationMessageValue:string;
 
-  private handleWorkPackageUpdateBound:EventListener;
-  private handleVisibilityChangeBound:EventListener;
-  private rescueEditorContentBound:EventListener;
+  static metaNames = ['csrf-token'];
 
-  private onSubmitBound:EventListener;
-  private onEscapeEditorBound:EventListener;
-  private adjustMarginBound:EventListener;
-  private onBlurEditorBound:EventListener;
-  private onFocusEditorBound:EventListener;
+  declare readonly csrfToken:string;
 
-  private saveInProgress:boolean;
   private updateInProgress:boolean;
   private turboRequests:TurboRequestsService;
 
   private apiV3Service:ApiV3Service;
 
+  private abortController = new AbortController();
+  private ckEditorAbortController = new AbortController();
+
   async connect() {
+    useMeta(this, { suffix: false });
+
     const context = await window.OpenProject.getPluginContext();
     this.turboRequests = context.services.turboRequests;
     this.apiV3Service = context.services.apiV3Service;
@@ -113,7 +113,7 @@ export default class IndexController extends Controller {
     this.handleInitialScroll();
     this.populateRescuedEditorContent();
     this.markAsConnected();
-    this.safeUpdateWorkPackageFormsWithStateChecks(); // required if switching back to the activities tab from another tab
+    this.safeUpdateWorkPackageFormsWithStateChecks();
 
     this.setLatestKnownChangesetUpdatedAt();
     this.startPolling();
@@ -123,6 +123,7 @@ export default class IndexController extends Controller {
   disconnect() {
     this.rescueEditorContent();
     this.removeEventListeners();
+    this.removeCkEditorEventListeners();
     this.stopPolling();
     this.markAsDisconnected();
   }
@@ -145,21 +146,28 @@ export default class IndexController extends Controller {
   }
 
   private setupEventListeners() {
-    this.handleWorkPackageUpdateBound = () => { void this.handleWorkPackageUpdate(); };
-    this.handleVisibilityChangeBound = () => { void this.handleVisibilityChange(); };
-    this.rescueEditorContentBound = () => { void this.rescueEditorContent(); };
+    const { signal } = this.abortController;
 
-    document.addEventListener('work-package-updated', this.handleWorkPackageUpdateBound);
-    document.addEventListener('work-package-notifications-updated', this.handleWorkPackageUpdateBound);
-    document.addEventListener('visibilitychange', this.handleVisibilityChangeBound);
-    document.addEventListener('beforeunload', this.rescueEditorContentBound);
+    const handlers = {
+      workPackageUpdated: () => { void this.handleWorkPackageUpdate(); },
+      workPackageNotificationsUpdated: () => { void this.handleWorkPackageUpdate(); },
+      visibilityChange: () => { void this.handleVisibilityChange(); },
+      beforeUnload: () => { void this.rescueEditorContent(); },
+      turboSubmitStart: (event:Event) => { void this.handleTurboSubmitStart(event); },
+      turboSubmitEnd: (event:Event) => { void this.handleTurboSubmitEnd(event); },
+    };
+
+    document.addEventListener('work-package-updated', handlers.workPackageUpdated, { signal });
+    document.addEventListener('work-package-notifications-updated', handlers.workPackageNotificationsUpdated, { signal });
+    document.addEventListener('visibilitychange', handlers.visibilityChange, { signal });
+    document.addEventListener('beforeunload', handlers.beforeUnload, { signal });
+
+    this.element.addEventListener('turbo:submit-start', handlers.turboSubmitStart, { signal });
+    this.element.addEventListener('turbo:submit-end', handlers.turboSubmitEnd, { signal });
   }
 
   private removeEventListeners() {
-    document.removeEventListener('work-package-updated', this.handleWorkPackageUpdateBound);
-    document.removeEventListener('work-package-notifications-updated', this.handleWorkPackageUpdateBound);
-    document.removeEventListener('visibilitychange', this.handleVisibilityChangeBound);
-    document.removeEventListener('beforeunload', this.rescueEditorContentBound);
+    this.abortController.abort();
   }
 
   private handleVisibilityChange() {
@@ -217,13 +225,15 @@ export default class IndexController extends Controller {
 
     this.updateInProgress = true;
 
+    const editingJournals = this.captureEditingJournals();
+
     // Unfocus any reaction buttons that may have been focused
     // otherwise the browser will perform an auto scroll to the before focused button after the stream update was applied
     this.unfocusReactionButtons();
 
     const journalsContainerAtBottom = this.isJournalsContainerScrolledToBottom();
 
-    void this.performUpdateStreamsRequest(this.prepareUpdateStreamsUrl())
+    void this.performUpdateStreamsRequest(this.prepareUpdateStreamsUrl(editingJournals))
     .then(({ html, headers }) => {
       this.handleUpdateStreamsResponse(html, headers, journalsContainerAtBottom);
     }).catch((error) => {
@@ -233,16 +243,34 @@ export default class IndexController extends Controller {
     });
   }
 
+  private captureEditingJournals():Set<string> {
+    const editingJournals = new Set<string>();
+
+    const editForms = this.editFormTargets;
+    editForms.forEach((form) => {
+      const journalId = form.dataset.journalId;
+      if (journalId) { editingJournals.add(journalId); }
+    });
+
+    return editingJournals;
+  }
+
   private unfocusReactionButtons() {
     this.reactionButtonTargets.forEach((button) => button.blur());
   }
 
-  private prepareUpdateStreamsUrl():string {
+  private prepareUpdateStreamsUrl(editingJournals:Set<string>):string {
     const baseUrl = window.location.origin;
     const url = new URL(this.updateStreamsPathValue, baseUrl);
+
     url.searchParams.set('sortBy', this.sortingValue);
     url.searchParams.set('filter', this.filterValue);
     url.searchParams.set('last_update_timestamp', this.lastServerTimestampValue);
+
+    if (editingJournals.size > 0) {
+      url.searchParams.set('editing_journals', Array.from(editingJournals).join(','));
+    }
+
     return url.toString();
   }
 
@@ -250,7 +278,7 @@ export default class IndexController extends Controller {
     return this.turboRequests.request(url, {
       method: 'GET',
       headers: {
-        'X-CSRF-Token': (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement).content,
+        'X-CSRF-Token': this.csrfToken,
       },
     }, true); // suppress error toast in polling to avoid spamming the user when having e.g. network issues
   }
@@ -546,37 +574,32 @@ export default class IndexController extends Controller {
     }
   }
 
-  private addEventListenersToCkEditorInstance() {
-    this.onSubmitBound = () => { void this.onSubmit(); };
-    this.onEscapeEditorBound = () => { void this.closeEditor(); };
-    this.adjustMarginBound = () => { void this.adjustJournalContainerMargin(); };
-    this.onBlurEditorBound = () => { void this.onBlurEditor(); };
-    this.onFocusEditorBound = () => {
-      void this.onFocusEditor();
-      if (this.isMobile()) {
-        void this.scrollInputContainerIntoView(200);
-      }
+  private addCkEditorEventListeners() {
+    const { signal } = this.ckEditorAbortController;
+
+    const handlers = {
+      onEscapeEditor: () => { void this.closeEditor(); },
+      adjustMargin: () => { void this.adjustJournalContainerMargin(); },
+      onBlurEditor: () => { void this.onBlurEditor(); },
+      onFocusEditor: () => {
+        void this.onFocusEditor();
+        if (this.isMobile()) { void this.scrollInputContainerIntoView(200); }
+      },
     };
 
     const editorElement = this.getCkEditorElement();
     if (editorElement) {
-      editorElement.addEventListener('saveRequested', this.onSubmitBound);
-      editorElement.addEventListener('editorEscape', this.onEscapeEditorBound);
-      editorElement.addEventListener('editorKeyup', this.adjustMarginBound);
-      editorElement.addEventListener('editorBlur', this.onBlurEditorBound);
-      editorElement.addEventListener('editorFocus', this.onFocusEditorBound);
+      editorElement.addEventListener('editorEscape', handlers.onEscapeEditor, { signal });
+      editorElement.addEventListener('editorKeyup', handlers.adjustMargin, { signal });
+      editorElement.addEventListener('editorBlur', handlers.onBlurEditor, { signal });
+      editorElement.addEventListener('editorFocus', handlers.onFocusEditor, { signal });
     }
   }
 
-  private removeEventListenersFromCkEditorInstance() {
-    const editorElement = this.getCkEditorElement();
-    if (editorElement) {
-      editorElement.removeEventListener('saveRequested', this.onSubmitBound);
-      editorElement.removeEventListener('editorEscape', this.onEscapeEditorBound);
-      editorElement.removeEventListener('editorKeyup', this.adjustMarginBound);
-      editorElement.removeEventListener('editorBlur', this.onBlurEditorBound);
-      editorElement.removeEventListener('editorFocus', this.onFocusEditorBound);
-    }
+  private removeCkEditorEventListeners() {
+    this.ckEditorAbortController.abort();
+    // Create a new AbortController for future CKEditor events
+    this.ckEditorAbortController = new AbortController();
   }
 
   private adjustJournalContainerMargin() {
@@ -630,7 +653,7 @@ export default class IndexController extends Controller {
     this.formRowTarget.classList.remove('d-none');
     this.journalsContainerTarget?.classList.add('work-packages-activities-tab-index-component--journals-container_with-input-compensation');
 
-    this.addEventListenersToCkEditorInstance();
+    this.addCkEditorEventListeners();
 
     if (this.isMobile()) {
       this.focusEditor(0);
@@ -664,7 +687,7 @@ export default class IndexController extends Controller {
 
   hideEditor() {
     this.clearEditor(); // remove potentially empty lines
-    this.removeEventListenersFromCkEditorInstance();
+    this.removeCkEditorEventListeners();
     this.buttonRowTarget.classList.remove('d-none');
     this.formRowTarget.classList.add('d-none');
 
@@ -704,52 +727,45 @@ export default class IndexController extends Controller {
     this.adjustJournalContainerMargin();
   }
 
-  private closeForm() {
-    this.hideEditor();
-    this.formTarget.reset();
-    this.notifyFormClose();
-  }
-
   private isEditorEmpty():boolean {
     const ckEditorInstance = this.getCkEditorInstance();
 
     return !!(ckEditorInstance?.getData({ trim: false }).length === 0);
   }
 
-  async onSubmit(event:Event | null = null) {
-    event?.preventDefault();
-
-    if (this.saveInProgress === true) return;
-
-    this.setFormSubmitInProgress(true);
-
-    const formData = this.prepareFormData();
-    void this.submitForm(formData)
-      .then(({ html, headers }) => {
-        this.handleSuccessfulSubmission(html, headers);
-        this.formTarget.reset();
-      })
-      .catch((error) => {
-        console.error('Error saving activity:', error);
-      })
-      .finally(() => {
-        this.setFormSubmitInProgress(false);
-        this.notifyFormClose();
-      });
+  private handleTurboSubmitStart(_event:Event) {
+    this.setCKEditorReadonlyMode(true);
   }
 
-  private notifyFormClose() {
-    this.dispatch('onSubmit-end');
-  }
+  private handleTurboSubmitEnd(event:Event) {
+    const formSubmitResponse = (event as CustomEvent<{ fetchResponse:{ succeeded:boolean; response:{ headers:Headers } } }>).detail.fetchResponse;
 
-  private setFormSubmitInProgress(inProgress:boolean) {
-    this.saveInProgress = inProgress;
+    this.setCKEditorReadonlyMode(false);
 
-    if (this.hasFormSubmitButtonTarget) {
-      this.formSubmitButtonTarget.disabled = inProgress;
+    if (formSubmitResponse.succeeded) {
+      // extract server timestamp from response headers in order to be in sync with the server
+      this.setLastServerTimestampViaHeaders(formSubmitResponse.response.headers);
+
+      if (!this.journalsContainerTarget) return;
+
+      this.clearEditor();
+      this.closeForm();
+      this.resetJournalsContainerMargins();
+
+      setTimeout(() => {
+        if (this.isMobile() && !this.isWithinNotificationCenter()) {
+          // wait for the keyboard to be fully down before scrolling further
+          // timeout amount tested on mobile devices for best possible user experience
+        this.scrollInputContainerIntoView(800);
+        } else {
+          this.scrollJournalContainer(
+            this.sortingValue === 'asc',
+            true,
+          );
+        }
+        this.handleStemVisibility();
+      }, 100);
     }
-
-    this.setCKEditorReadonlyMode(inProgress);
   }
 
   private setCKEditorReadonlyMode(disabled:boolean) {
@@ -765,55 +781,6 @@ export default class IndexController extends Controller {
     }
   }
 
-  private prepareFormData():FormData {
-    const ckEditorInstance = this.getCkEditorInstance();
-    const data = ckEditorInstance ? ckEditorInstance.getData({ trim: false }) : '';
-
-    const formData = new FormData(this.formTarget);
-    formData.append('last_update_timestamp', this.lastServerTimestampValue);
-    formData.append('filter', this.filterValue);
-    formData.append('journal[notes]', data);
-
-    return formData;
-  }
-
-  private async submitForm(formData:FormData):Promise<{ html:string, headers:Headers }> {
-    return this.turboRequests.request(this.formTarget.action, {
-      method: 'POST',
-      body: formData,
-      headers: {
-        'X-CSRF-Token': (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement).content,
-      },
-    }, true);
-  }
-
-  private handleSuccessfulSubmission(html:string, headers:Headers) {
-    // extract server timestamp from response headers in order to be in sync with the server
-    this.setLastServerTimestampViaHeaders(headers);
-
-    if (!this.journalsContainerTarget) return;
-
-    this.clearEditor();
-    this.hideEditor();
-    this.resetJournalsContainerMargins();
-
-    setTimeout(() => {
-      if (this.isMobile() && !this.isWithinNotificationCenter()) {
-        // wait for the keyboard to be fully down before scrolling further
-        // timeout amount tested on mobile devices for best possible user experience
-        this.scrollInputContainerIntoView(800);
-      } else {
-        this.scrollJournalContainer(
-          this.sortingValue === 'asc',
-          true,
-        );
-      }
-      this.handleStemVisibility();
-    }, 10);
-
-    this.setFormSubmitInProgress(false);
-  }
-
   private resetJournalsContainerMargins():void {
     if (!this.journalsContainerTarget) return;
 
@@ -825,6 +792,16 @@ export default class IndexController extends Controller {
     if (headers.has('X-Server-Timestamp')) {
       this.lastServerTimestampValue = headers.get('X-Server-Timestamp') as string;
     }
+  }
+
+  private closeForm() {
+    this.hideEditor();
+    this.formTarget.reset();
+    this.notifyFormClose();
+  }
+
+  private notifyFormClose() {
+    this.dispatch('onSubmit-end');
   }
 
   // Towards the code below:

@@ -57,6 +57,7 @@ import { OpTitleService } from 'core-app/core/html/op-title.service';
 import { WorkPackageCreateService } from './wp-create.service';
 import { HalError } from 'core-app/features/hal/services/hal-error';
 import idFromLink from 'core-app/features/hal/helpers/id-from-link';
+import { CurrentProjectService } from 'core-app/core/current-project/current-project.service';
 
 @Directive()
 export class WorkPackageCreateComponent extends UntilDestroyedMixin implements OnInit {
@@ -97,7 +98,9 @@ export class WorkPackageCreateComponent extends UntilDestroyedMixin implements O
     protected readonly wpTableFilters:WorkPackageViewFiltersService,
     protected readonly pathHelper:PathHelperService,
     protected readonly apiV3Service:ApiV3Service,
-    protected readonly cdRef:ChangeDetectorRef) {
+    protected readonly currentProjectService:CurrentProjectService,
+    protected readonly cdRef:ChangeDetectorRef,
+  ) {
     super();
   }
 

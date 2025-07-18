@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -83,10 +85,7 @@ module WorkPackages
               permission: :manage_subtasks
 
     attribute :project_phase_definition_id,
-              permission: :view_project_phases,
-              writable: ->(*) {
-                OpenProject::FeatureDecisions.stages_and_gates_active?
-              } do
+              permission: :view_project_phases do
       validate_phase_active_in_project
     end
     attribute_alias :project_phase_definition_id, :project_phase_id
@@ -289,6 +288,7 @@ module WorkPackages
 
     def validate_parent_not_self
       if model.parent == model
+        errors.delete(:parent_id) # remove the error added by closure_tree's cycle detection
         errors.add :parent, :cannot_be_self_assigned
       end
     end
@@ -304,9 +304,20 @@ module WorkPackages
       if model.parent_id_changed? &&
          model.parent_id &&
          errors.exclude?(:parent) &&
-         WorkPackage.relatable(model, Relation::TYPE_PARENT).where(id: model.parent_id).empty?
+         current_parent_unrelatable?
+        # closure_tree adds an error on :parent_id because of the cycle
+        # detection, and active_record sees the error when saving the children
+        # association and adds an error on :children as well. We need to remove
+        # them.
+        errors.delete(:parent_id) # remove the error added by closure_tree
+        errors.delete(:children) # remove the error added by active_record
+        # add our own error
         errors.add :parent, :cant_link_a_work_package_with_a_descendant
       end
+    end
+
+    def current_parent_unrelatable?
+      WorkPackage.relatable(model, Relation::TYPE_PARENT).where(id: model.parent_id).empty?
     end
 
     def validate_status_exists
@@ -548,7 +559,7 @@ module WorkPackages
     def validate_phase_active_in_project
       if model.project.present? &&
         model.project_phase_definition_id.present? &&
-        !(model.project_changed? && !model.project_phase_definition_changed?) &&
+        model.project_phase_definition_changed? &&
         !project_definition_assignable?
         errors.add :project_phase_id, :inclusion
       end
@@ -603,7 +614,7 @@ module WorkPackages
     end
 
     def category_not_of_project?
-      model.category && model.project.categories.exclude?(model.category)
+      model.category && (model.project.nil? || model.project.categories.exclude?(model.category))
     end
 
     def status_changed?

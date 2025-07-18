@@ -6,7 +6,7 @@ sidebar_navigation:
 
 # Environment variables
 
-> **NOTE:** This documentation is for OpenProject on-premises Installations only, if you would like to setup similar in your OpenProject cloud instance, please contact us at support@openproject.com
+> **NOTE:** This documentation is for OpenProject on-premises Installations only, if you would like to setup similar in your OpenProject cloud instance, please contact us at [support@openproject.com](mailto:support@openproject.com)
 
 When using environment variables, you can set the options by setting environment variables with the name of the options below in uppercase. So for example, to configure email delivery via an SMTP server, you can set the following environment variables:
 

@@ -5,8 +5,7 @@
       method: :put,
       data: { turbo: true,
               turbo_stream: true,
-              controller: "meetings--form",
-              "application-target": "dynamic" },
+              controller: "meetings--form" },
       url: update_details_project_meeting_path(@project, @meeting)
     ) do |f|
       component_collection do |collection|

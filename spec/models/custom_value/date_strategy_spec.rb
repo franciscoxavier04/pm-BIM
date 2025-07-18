@@ -33,26 +33,31 @@ require "spec_helper"
 RSpec.describe CustomValue::DateStrategy do
   let(:instance) { described_class.new(custom_value) }
   let(:custom_value) do
-    double("CustomValue",
-           value:)
+    instance_double(CustomValue, value:)
   end
 
   describe "#typed_value" do
     subject { instance.typed_value }
 
-    context "value is some date string" do
+    context "when value is a date string" do
       let(:value) { "2015-01-03" }
 
       it { is_expected.to eql(Date.iso8601(value)) }
     end
 
-    context "value is blank" do
+    context "when value is not a date" do
+      let(:value) { "hello, world!" }
+
+      it { is_expected.to be_nil }
+    end
+
+    context "when value is blank" do
       let(:value) { "" }
 
       it { is_expected.to be_nil }
     end
 
-    context "value is nil" do
+    context "when value is nil" do
       let(:value) { nil }
 
       it { is_expected.to be_nil }
@@ -62,17 +67,15 @@ RSpec.describe CustomValue::DateStrategy do
   describe "#formatted_value" do
     subject { instance.formatted_value }
 
-    context "value is some date string" do
+    context "when value is some date string", with_settings: { date_format: "%Y-%m-%d" } do
       let(:value) { "2015-01-03" }
 
-      context "date format", with_settings: { date_format: "%Y-%m-%d" } do
-        it "is the date" do
-          expect(subject).to eql value
-        end
+      it "is the date" do
+        expect(subject).to eql value
       end
     end
 
-    context "value is blank" do
+    context "when value is blank" do
       let(:value) { "" }
 
       it "is a blank string" do
@@ -80,7 +83,7 @@ RSpec.describe CustomValue::DateStrategy do
       end
     end
 
-    context "value is nil" do
+    context "when value is nil" do
       let(:value) { nil }
 
       it "is a blank string" do
@@ -92,7 +95,7 @@ RSpec.describe CustomValue::DateStrategy do
   describe "#validate_type_of_value" do
     subject { instance.validate_type_of_value }
 
-    context "value is valid date string" do
+    context "when value is valid date string" do
       let(:value) { "2015-01-03" }
 
       it "accepts" do
@@ -100,7 +103,7 @@ RSpec.describe CustomValue::DateStrategy do
       end
     end
 
-    context "value is invalid date string in good format" do
+    context "when value is invalid date string in good format" do
       let(:value) { "2015-02-30" }
 
       it "rejects" do
@@ -108,7 +111,7 @@ RSpec.describe CustomValue::DateStrategy do
       end
     end
 
-    context "value is date string in bad format" do
+    context "when value is date string in bad format" do
       let(:value) { "03.01.2015" }
 
       it "rejects" do
@@ -116,7 +119,7 @@ RSpec.describe CustomValue::DateStrategy do
       end
     end
 
-    context "value is not a date string at all" do
+    context "when value is not a date string at all" do
       let(:value) { "chicken" }
 
       it "rejects" do
@@ -124,7 +127,7 @@ RSpec.describe CustomValue::DateStrategy do
       end
     end
 
-    context "value is valid date" do
+    context "when value is valid date" do
       let(:value) { Date.iso8601("2015-01-03") }
 
       it "accepts" do

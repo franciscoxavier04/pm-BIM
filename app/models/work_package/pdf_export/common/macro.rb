@@ -29,48 +29,90 @@
 module WorkPackage::PDFExport::Common::Macro
   PREFORMATTED_BLOCKS = %w(pre code).freeze
 
-  def apply_markdown_field_macros(markdown, work_package)
-    apply_macros(markdown, work_package, WorkPackage::Exports::Macros::Attributes)
+  def apply_markdown_field_macros(markdown, context)
+    return markdown if markdown.blank?
+
+    apply_macros(markdown, context)
+  end
+
+  def macros
+    [
+      WorkPackage::Exports::Macros::Links,
+      WorkPackage::Exports::Macros::Attributes
+    ]
   end
 
   private
 
-  def apply_macros(markdown, work_package, formatter)
-    return markdown unless formatter.applicable?(markdown)
+  def apply_macros(markdown, context)
+    return markdown unless macros.any? { |macro| macro.applicable?(markdown) }
 
     document = Markly.parse(markdown)
-    document.walk do |node|
-      if node.type == :html
-        node.string_content = apply_macro_html(node.string_content, work_package, formatter) || node.string_content
-      elsif node.type == :text
-        node.string_content = apply_macro_text(node.string_content, work_package, formatter) || node.string_content
+    document.walk { |node| apply_macros_node(node, context) }
+    document.to_markdown
+            .gsub("\\~", "~") # fix a bug in Markly that escapes tildes
+  end
+
+  def apply_macros_node(node, context)
+    if node.type == :html
+      apply_macros_node_html(node, context)
+    elsif node.type == :text && not_in_mention?(node)
+      apply_macros_node_text(node, context)
+    end
+  end
+
+  def not_in_mention?(node)
+    # Check if the text node is not inside a mention tag
+    # e.g. <mention ...>#1234</mention>
+    # We don't want to end up with
+    # <mention ...><mention ...>#1234</mention></mention>
+    node.previous.nil? || node.previous.type != :inline_html || node.previous.string_content.exclude?("<mention")
+  end
+
+  def apply_macros_node_text(node, context)
+    formatted = apply_macro_text(node.string_content, context)
+    return if formatted == node.string_content
+
+    fragment = Markly::Node.new(:inline_html)
+    fragment.string_content = formatted
+    node.insert_before(fragment)
+    node.delete
+  end
+
+  def apply_macros_node_html(node, context)
+    node.string_content = apply_macro_html(node.string_content, context)
+  end
+
+  def applicable?(content)
+    macros.any? { |macro| macro.applicable?(content) }
+  end
+
+  def apply_macro_text(text, context)
+    applicable_macros = macros.select { |macro| macro.applicable?(text) }
+    return text if applicable_macros.empty?
+
+    applicable_macros.each do |macro|
+      text = text.gsub(macro.regexp) do |matched_string|
+        macro.process_match(Regexp.last_match, matched_string, context)
       end
     end
-    document.to_markdown
+    text
   end
 
-  def apply_macro_text(text, work_package, formatter)
-    return text unless formatter.applicable?(text)
-
-    text.gsub!(formatter.regexp) do |matched_string|
-      matchdata = Regexp.last_match
-      formatter.process_match(matchdata, matched_string, { user: User.current, work_package: })
-    end
-  end
-
-  def apply_macro_html(html, work_package, formatter)
-    return html unless formatter.applicable?(html)
+  def apply_macro_html(html, context)
+    return html unless applicable?(html)
 
     doc = Nokogiri::HTML.fragment(html)
-    apply_macro_html_node(doc, work_package, formatter)
+    apply_macro_html_node(doc, context)
     doc.to_html
   end
 
-  def apply_macro_html_node(node, work_package, formatter)
+  def apply_macro_html_node(node, context)
     if node.text?
-      node.content = apply_macro_text(node.content, work_package, formatter)
+      formatted = apply_macro_text(node.content, context)
+      node.replace(formatted) if formatted != node.content
     elsif PREFORMATTED_BLOCKS.exclude?(node.name)
-      node.children.each { |child| apply_macro_html_node(child, work_package, formatter) }
+      node.children.each { |child| apply_macro_html_node(child, context) }
     end
   end
 end

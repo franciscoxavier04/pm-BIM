@@ -43,7 +43,7 @@ module Components
     end
 
     def wait_until_visible
-      element.tap { scroll_to_element(_1) }
+      element.tap { scroll_to_element(it) }
     end
 
     def element

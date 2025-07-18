@@ -60,10 +60,10 @@ export class WorkPackageContextMenuHelperService {
       href: this.PathHelper.workPackagesBulkMovePath(),
     },
     {
-      text: I18n.t('js.work_packages.bulk_actions.copy'),
+      text: I18n.t('js.work_packages.bulk_actions.duplicate'),
       key: 'copy',
       link: 'copy',
-      href: this.PathHelper.workPackagesBulkCopyPath(),
+      href: this.PathHelper.workPackagesBulkDuplicatePath(),
     },
     {
       text: I18n.t('js.work_packages.bulk_actions.delete'),

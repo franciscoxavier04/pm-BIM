@@ -45,7 +45,7 @@ tr:
       meeting_agenda_item:
         title: "Başlık"
         author: "Yazar"
-        duration_in_minutes: "dakika"
+        duration_in_minutes: "Duration"
         description: "Notlar"
         presenter: "Sunucu"
       meeting_section:
@@ -182,6 +182,7 @@ tr:
       agenda_items: "Gündem maddesini kopyala"
       agenda_text: "Eski toplantının gündemini kopyalayın"
       participants: "Katılımcı listesini kopyala"
+      to_clipboard: "Panoya kopyala"
     email:
       send_emails: "Katılımcılara e-posta gönder"
       send_invitation_emails: >
@@ -236,12 +237,38 @@ tr:
     blankslate:
       title: "Gösterilecek toplantı yok"
       desc: "Aktif filtre kriterlerini karşılayan herhangi bir toplantı bulunmamaktadır."
+    label_export_pdf: "PDF olarak dışa aktar"
+    export:
+      your_meeting_export: "Toplantı dışa aktarılıyor"
+    export_pdf_dialog:
+      title: PDF olarak dışa aktar
+      description: Mevcut hali ile toplantının yazdırılabilir bir PDF çıktısını üret.
+      include_participants:
+        label: Katılımcı listesini içer
+        caption: Toplantı gündeminin üstünde katılımcıların listesi gösterilecektir.
+      include_attachments:
+        label: Eklerin listesini içer
+        caption: En sonda eklerin dosya isimlerinin yer aldığı bir liste eklenecektir.
+      include_backlog:
+        label: Birikmiş işleri içer
+        caption: Birikmiş işler normalde bir toplantının parçası olarak kabul edilmez, ancak bunları dahil etmeyi seçebilirsiniz.
+      include_outcomes:
+        label: Gündem sonuçlarını içer
+        caption: Eğer toplantı sonuçları gizli bir bilgiye sahip ise bunları dışarı aktarırken dahil edilmemesini seçebilirsiniz.
+      footer_text:
+        label: Altbilgi metni
+        caption: Bu metin her sayfada altbilginin sağında görünecektir.
+      submit_button: İndir
   meeting_section:
     untitled_title: "İsimsiz bölüm"
     delete_confirmation: "Bölümün silinmesi tüm gündem maddelerini de silecektir. Bunu yapmak istediğinizden emin misiniz?"
     placeholder_title: "Yeni bölüm"
     empty_text: "Maddeleri buraya sürükleyin ya da yeni bir tane oluşturun"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Time zone difference"
+      description: >
+        The dates below are referencing the time zone of the meeting series (%{actual_zone}), not your local time zone (%{user_zone}).
     ended_blankslate:
       title: "Toplantı serisi sona erdi"
       message: "Bu toplantı serisi sona ermiştir. Gelecek toplantı yoktur. "
@@ -327,9 +354,9 @@ tr:
   permission_delete_meetings: "Toplantıları silme"
   permission_view_meetings: "Toplantıları görüntüle"
   permission_manage_agendas: "Acentaları yönetme"
-  permission_manage_agendas_explanation: "Dinamik Toplantı modülünün gündem maddelerinin yönetilmesini sağlar."
-  permission_manage_outcomes: "Manage outcomes"
-  permission_send_meeting_invites_and_outcomes: "Send meeting invites and outcomes to participants"
+  permission_manage_agendas_explanation: "Gündem maddelerinin oluşturulmasına, düzenlenmesine ve kaldırılmasına izin verir"
+  permission_manage_outcomes: "Sonuçları yönet"
+  permission_send_meeting_invites_and_outcomes: "Toplantı davetlerini ve sonuçlarını katılımcılara gönderin"
   project_module_meetings: "Toplantı"
   text_duration_in_hours: "Saat süresi"
   text_in_hours: "saat olarak"
@@ -356,41 +383,45 @@ tr:
   label_meeting_index_later: "Gelecek hafta ve daha sonra"
   label_agenda_items: "Gündem maddeleri"
   label_agenda_items_reordered: "yeniden sıralandı"
-  label_agenda_item_remove: "Gündemden çıkarıldı"
+  label_agenda_item_add: "Gündem maddesi ekle"
+  label_agenda_item_remove_from_agenda: "Gündemden kaldır"
+  label_agenda_item_remove_from_backlog: "Birikmiş iş listesinden çıkar"
   label_agenda_item_undisclosed_wp: "#%{id} numaralı iş parçası görünmez"
   label_agenda_item_deleted_wp: "Silinmiş iş parçsına referans"
   label_agenda_item_actions: "Gündem maddeleri için eylemler"
   label_agenda_item_move_to_next: "Sonraki toplantıya taşı"
-  label_agenda_item_move_to_backlog: "Move to backlog"
-  label_agenda_item_move_to_current_meeting: "Move to current meeting"
+  label_agenda_item_move_to_backlog: "Birikmiş iş listesine taşı"
+  label_agenda_item_move_to_current_meeting: "Şuanki toplantıya taşı"
   label_agenda_item_move_to_top: "En üste taşı"
   label_agenda_item_move_to_bottom: "En aşağı taşı"
   label_agenda_item_move_up: "Yukarı taşı"
   label_agenda_item_move_down: "Aşağı taşı"
   label_agenda_item_add_notes: "Not ekle"
   label_agenda_item_add_outcome: "Sonuç ekle"
+  label_agenda_item_work_package_add: "İş paketi ekle"
   label_agenda_item_work_package: "Gündem maddesinin iş parçası"
+  label_section_rename: "Seçimi yeniden adlandır"
   label_agenda_outcome: "Sonuçlar"
   label_agenda_outcome_actions: "Gündem sonuçları eylemleri"
   label_agenda_outcome_edit: "Sonuç düzenle"
   label_agenda_outcome_delete: "Sonuç kaldır"
   text_outcome_not_editable_anymore: "Bu sonuç artık düzenlenemez."
-  text_outcome_cannot_be_added: "An outcome can no longer be added."
-  label_backlog_clear: "Clear backlog"
+  text_outcome_cannot_be_added: "Artık gündem maddesi sonucu eklenemez."
+  label_backlog_clear: "Birikmiş işleri temizle"
   label_backlog_clear_button: "Tümünü temizle"
-  text_backlog_clear_error: "One or more errors occurred while trying to clear the backlog."
-  label_agenda_backlog: "Agenda backlog"
+  text_backlog_clear_error: "Birikmiş işler temizlenirken hata meydana geldi."
+  label_agenda_backlog: "Gündemdeki birikmiş işler"
   text_agenda_backlog: >
-    This backlog is unique to this one-time meeting. You can drag items in and out to add or remove them from the meeting agenda.
-  label_agenda_backlog_clear_title: "Clear agenda backlog?"
+    Birikmiş bu işler bu toplantıya özgüdür. Gündeme eklemek yada gündemden çıkarmak için ögeleri sürekleyebilirsiniz.
+  label_agenda_backlog_clear_title: "Gündemdeki birikmiş iş listesi temizlensin mi?"
   text_agenda_backlog_clear_description: >
-    Are you sure you want to remove all items currently in the agenda backlog? This action is not reversible.
-  label_series_backlog: "Series backlog"
+    Şu anda gündemdeki birikmiş iş listesinde bulunan tüm ögeleri kaldırmak istediğinizden emin misiniz? Bu işlem geri alınamaz.
+  label_series_backlog: "Toplantı serisinin birikmiş iş listesi"
   text_series_backlog: >
-    The backlog is shared with all occurrences of this series. You can drag items in and out to add or remove them from a particular meeting.
-  label_series_backlog_clear_title: "Clear series backlog?"
+    Birikmiş işler bu gümden serisisin tüm toplantılarıyla paylaşılmıştır. Seçtiğiniz bir toplantıya eklemek veya toplantıdan çıkarmak için ögeleri içeri veya dışarı sürükleyebilirsiniz.
+  label_series_backlog_clear_title: "Toplantı serisinin birikmiş iş listesi temizlensin mi?"
   text_series_backlog_clear_description: >
-    This will remove all items in the series backlog, which is shared with all meetings in the series. Are you sure you want to continue? This action is not reversible.
+    Bu işlem serideki tüm toplantılarda paylaşılan birikmiş iş listesini kaldıracaktır. Devam etmek istediğinizden emin misiniz? Geri işlem geri alınamaz.
   text_agenda_item_title: 'Gündem maddesi %{title}"'
   text_agenda_work_package_deleted: 'Silinen iş parçası için gündem maddesi'
   text_deleted_agenda_item: 'Silinen gündem maddesi'

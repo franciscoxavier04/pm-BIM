@@ -102,14 +102,12 @@ You can then continue working in the Excel spreadsheet to filter, group, or impo
 
 You can  **export reports for time entries** in PDF format in the *Time and costs* module of your project. 
 
->  [!TIP]
->
+> [!TIP]
 > Keep in mind that this report will only include time entries, but not the cost ones.
 
 To prepare the export, first filter and set up the report according to your preferences and click the **Export PDF timesheet** button.
 
 > [!NOTE]
->
 > Please note that "Group by" settings won't be applied to the exported file.
 
 ![Settings for timesheet PDF export in OpenProject](openproject_userguide_timeandcosts_timesheet_export_settings.png)
@@ -121,8 +119,6 @@ In the user details section, if there are several entries on the same day, the h
 ![Timesheet PDF export in OpenProject](openproject_userguide_timesheet_pdf_export.png)
 
 > [!TIP]
->
 > If the exported PDF includes multiple users, an additional page after the cover page will provide an overview table displaying the total hours worked by each user, as well as a sum per user. It will also include an overview of hours worked per user per day.
-> 
 
 ![Timesheet PDF export for multiple users in OpenProject](openproject_userguide_timesheet_pdf_export_multiple_users.png)

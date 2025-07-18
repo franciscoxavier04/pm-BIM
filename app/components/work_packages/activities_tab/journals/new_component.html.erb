@@ -42,14 +42,13 @@
         data: { "work-packages--activities-tab--index-target": "formRow" }
       ) do
         primer_form_with(
-          id: "work-package-journal-form-element", # required for specs
+          id: "work-package-journal-form-element",
           model: journal,
           method: :post,
           data: {
             turbo: true,
             turbo_stream: true,
             "work-packages--activities-tab--index-target": "form",
-            action: "submit->work-packages--activities-tab--index#onSubmit",
             test_selector: "op-work-package-journal-form-element"
           },
           url: work_package_activities_path(work_package_id: work_package.id)
@@ -59,7 +58,12 @@
               classes: "work-packages-activities-tab-journals-new-component--ck-editor-column",
               mb: 3
             ) do
-              render(WorkPackages::ActivitiesTab::Journals::NotesForm.new(f))
+              render(
+                Primer::Forms::FormList.new(
+                  WorkPackages::ActivitiesTab::Journals::HiddenForm.new(f, filter:, last_server_timestamp:),
+                  WorkPackages::ActivitiesTab::Journals::NotesForm.new(f)
+                )
+              )
             end
 
             form_container.with_row(flex_layout: true, justify_content: adding_internal_comment_allowed? ? :space_between : :flex_end) do |form_container_row|

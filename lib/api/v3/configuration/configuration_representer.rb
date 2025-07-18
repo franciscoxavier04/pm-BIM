@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -100,7 +102,12 @@ module API
 
         property :available_features,
                  getter: ->(*) {
-                   EnterpriseToken.current&.available_features || []
+                   EnterpriseToken.available_features
+                 }
+
+        property :trialling_features,
+                 getter: ->(*) {
+                   EnterpriseToken.trialling_features
                  }
 
         property :allowed_link_protocols,

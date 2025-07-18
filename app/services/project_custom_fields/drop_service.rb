@@ -34,7 +34,7 @@ module ProjectCustomFields
       @project_custom_field = project_custom_field
     end
 
-    def perform(params)
+    def perform
       service_call = validate_permissions
       service_call = perform_drop(service_call, params) if service_call.success?
 

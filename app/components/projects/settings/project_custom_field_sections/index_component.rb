@@ -46,7 +46,6 @@ module Projects
         def wrapper_data_attributes
           {
             controller: "projects--settings--border-box-filter",
-            "application-target": "dynamic",
             "projects--settings--border-box-filter-clear-button-id-value": clear_button_id
           }
         end

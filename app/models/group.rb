@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -66,6 +68,59 @@ class Group < Principal
   def to_s
     lastname
   end
+
+  def scim_members
+    @scim_members ||= users
+  end
+
+  def scim_members=(array)
+    # Here we just assign array of found users to an instance variable.
+    # So it is done on a higher(controller) level to pass users_ids list
+    # to Groups::UpdateService
+    @scim_members = array
+  end
+
+  def self.scim_resource_type
+    Scimitar::Resources::Group
+  end
+
+  def self.scim_attributes_map
+    {
+      id: :id,
+      externalId: :scim_external_id,
+      displayName: :name,
+      members: [
+        list: :scim_members,
+        using: {
+          value: :id
+        },
+        find_with: ->(scim_list_entry) {
+          id   = scim_list_entry["value"]
+          type = scim_list_entry["type"] || "User" # Some online examples omit 'type' and believe 'User' will be assumed
+
+          case type.downcase
+          when "user"
+            User.not_builtin.find_by(id:)
+          when "group"
+            # OP does not support nesting of groups but SCIM does.
+            # For now raises exception in case of group as a member arrival.
+            raise Scimitar::InvalidSyntaxError.new("Unsupported type #{type.inspect}")
+          else
+            raise Scimitar::InvalidSyntaxError.new("Unrecognised type #{type.inspect}")
+          end
+        }
+      ]
+    }
+  end
+
+  def self.scim_queryable_attributes
+    {
+      displayName: { column: :lastname },
+      externalId: { column: UserAuthProviderLink.arel_table[:external_id] }
+    }
+  end
+
+  include Scimitar::Resources::Mixin
 
   private
 

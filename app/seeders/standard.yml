@@ -144,6 +144,11 @@ projects:
         t_name: 'Kanban board'
         filters:
           - type: :default_type_task
+        statuses:
+          - :default_status_new
+          - :default_status_in_progress
+          - :default_status_closed
+          - :default_status_rejected
       basic:
         t_name: 'Basic board'
         lists:
@@ -500,6 +505,11 @@ projects:
     boards:
       kanban:
         t_name: 'Kanban board'
+        statuses:
+          - :default_status_new
+          - :default_status_in_progress
+          - :default_status_closed
+          - :default_status_rejected
       basic:
         t_name: 'Task board'
         lists:

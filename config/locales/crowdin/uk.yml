@@ -66,7 +66,6 @@ uk:
         header-item-bg-hover-color: "Фон заголовка в разі наведення курсора"
         main-menu-bg-color: "Фон головного меню"
         main-menu-bg-selected-background: "Головне меню в разі вибору"
-        main-menu-bg-hover-background: "Головне меню в разі наведення"
       custom_colors: "Кольори за власними вподобаннями"
       manage_colors: "Редагувати параметри вибору кольору"
       instructions:
@@ -79,11 +78,15 @@ uk:
         main-menu-bg-color: "Колір фону меню зліва."
       theme_warning: Змінення теми перезапише ваш власний стиль. У такому разі дизайн буде втрачено. Справді продовжити?
     enterprise:
-      upgrade_to_ee: "Перейти на версію Enterprise"
+      delete_dialog:
+        title: "Вилучити корпоративний маркер"
+        heading: "Вилучити цей корпоративний маркер?"
+        confirmation: "Справді видалити цей маркер підтримки версії Enterprise?"
+      create_dialog:
+        title: "Додати маркер Enterprise"
+        type_token_text: "Введіть текст маркера підтримки"
+        token_placeholder: "Вставте тут свій маркер підтримки версії Enterprise"
       add_token: "Додати маркер підтримки версії Enterprise"
-      delete_token_modal:
-        text: "Справді вилучити поточний маркер версії Enterprise?"
-        title: "Видалити маркер"
       replace_token: "Замініть поточний маркер підтримки"
       order: "Замовте локальну версію Enterprise"
       paste: "Вставте свій маркер підтримки версії Enterprise"
@@ -95,13 +98,71 @@ uk:
       buttons:
         upgrade: "Оновити зараз"
         contact: "Зв’яжіться з нами, щоб отримати демоверсію"
-      enterprise_info_html: "– це доповнення версії Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>."
-      upgrade_info: "Перейдіть на платний план, щоб активувати його та почати використовувати його у своїй команді."
+      status:
+        expired: "Термін дії минув"
+        expiring_soon: "Термін дії незабаром мине"
+        in_grace_period: "У пільговому періоді"
+        invalid_domain: "Недійсний домен"
+        not_active: "Неактивний"
+        trial: "Пробний період"
     jemalloc_allocator: Розподіл пам'яті Jemalloc
     journal_aggregation:
       explanation:
         text: "Окремі дії користувача (напр., оновлення робочого пакета двічі) зводяться в одну дію, якщо відмінність у часі між ними менша за вказаний проміжок часу. Їх буде виведено як окремі дії в межах додатка. Крім того, це призведе до затримки сповіщень на такий самий проміжок часу, що зменшить кількість електронних листів, які надсилатимуться, а також вплине на затримку %{webhook_link}."
         link: "вебгука"
+    scim_clients:
+      authentication_methods:
+        sso: "JWT від постачальника ідентифікаційних даних"
+        oauth2_client: "Облікові дані клієнта OAuth 2.0"
+        oauth2_token: "Постійний токен доступу"
+      created_client_credentials_dialog_component:
+        title: "Облікові дані клієнта створено"
+        heading: "Облікові дані клієнта згенеровано"
+        one_time_hint: "Це єдиний раз, коли ви побачите секретний ключ клієнта. Обов’язково скопіюйте його зараз."
+      created_token_dialog_component:
+        title: "Токен створено"
+        heading: "A token has been generated"
+        label_token: "Токен"
+        one_time_hint: "Це єдиний раз, коли ви побачите цей токен. Обов’язково скопіюйте його зараз."
+      delete_scim_client_dialog_component:
+        title: "Видалити клієнт SCIM"
+        heading: "Ви дійсно хочете видалити цей клієнт SCIM?"
+        description: "Цей клієнт SCIM більше не може оновлювати користувачів, якими керує."
+      edit:
+        label_delete_scim_client: "Видалити клієнт SCIM"
+      form:
+        auth_provider_description: "Це сервіс, який користувачі, додані SCIM-провайдером, будуть використовувати для автентифікації в OpenProject."
+        authentication_method_description_html: "Ось так клієнт SCIM автентифікується в OpenProject. Переконайтеся, що токени OAuth включають область <code>scim_v2</code>."
+        description_html: 'Щоб отримати додаткову інформацію про налаштування клієнтів SCIM, перегляньте <a href="%{docs_url}">документацію</a>.'
+        jwt_sub_description_html: 'Наприклад, для Keycloak це UUID пов’язаного з клієнтом SCIM облікового запису сервісу. Інформацію про те, як знайти тему для свого варіанту використання, наведено в <a href="%{docs_url}">документації</a>.'
+        name_description: "Виберіть ім’я, яке допоможе іншим адміністраторам чітко зрозуміти, навіщо налаштовано цей клієнт."
+      index:
+        description: "Клієнти SCIM, налаштовані тут, можуть взаємодіяти з API сервера SCIM в OpenProject, щоб надавати, оновлювати й видаляти облікові записи й групи."
+        label_create_button: "Додати клієнт SCIM"
+      new:
+        title: "Новий клієнт SCIM"
+      revoke_static_token_dialog_component:
+        confirm_button: "Анулювати"
+        title: "Анулювати статичний токен"
+        heading: "Ви дійсно хочете анулювати цей токен?"
+        description: "Клієнт SCIM, який використовує цей токен, більше не зможе отримати доступ до API сервера SCIM в OpenProject."
+      table_component:
+        blank_slate:
+          title: "Немає налаштованих клієнтів SCIM"
+          description: "Додайте клієнтів, щоб побачити їх тут"
+        user_count: "Користувачі"
+      token_list_component:
+        description: "Клієнт SCIM може передавати токени, які ви генеруєте тут, для доступу до API сервера SCIM в OpenProject."
+        heading: "Токени"
+        label_add_token: "Токен"
+        label_aria_add_token: "Додати токен"
+      token_table_component:
+        blank_slate:
+          title: "Ще не створено жодного токена"
+          description: "Його можна створити прямо зараз"
+        expired: "Термін дії минув %{date}"
+        revoked: "Анульовано %{date}"
+        title: "Таблиця токенів доступу"
   authentication:
     login_and_registration: "Вхід і реєстрація"
   announcements:
@@ -264,6 +325,7 @@ uk:
       admin_only: "Установіть прапорець, щоб зробити цей атрибут видимим лише для адміністраторів. Користувачі без прав адміністратора не зможуть переглядати або редагувати його."
       is_filter: >
         Дозвольте відображати користувацьке поле у фільтрі в поданнях пакета робіт. Зверніть увагу: користувацьке поле відображатиметься в глобальних поданнях, лише якщо встановлено прапорець «Для всіх проєктів».
+      formula: "Додайте числові значення або введіть «/» для пошуку атрибута чи математичного оператора."
     tab:
       no_results_title_text: Наразі немає спеціальних полів.
       no_results_content_text: Створіть нове спеціальне поле
@@ -276,6 +338,8 @@ uk:
       greater_or_equal_zero: "має дорівнювати нулю або перевищувати його."
       not_found: "не знайдено."
       rules:
+        copy_workflow_from:
+          workflow_missing: "не має власного робочого процесу."
         item:
           root_item: "не може бути кореневим елементом."
           not_persisted: "має бути вже наявним елементом."
@@ -286,6 +350,8 @@ uk:
         parent:
           not_descendant: "має бути нащадком кореня ієрархії."
     rules:
+      copy_workflow_from: "Тип копії робочого процесу"
+      enabled: "Увімкнено"
       depth: "Глибина"
       item: "Елемент"
       label: "Мітка"
@@ -417,12 +483,6 @@ uk:
         new_label: "Новий пріоритет"
     status:
       button_edit: Змінити статус проєкту
-  project_phase:
-    duration:
-      one: "Тривалість: %{count} робочий день"
-      few: "Тривалість: %{count} робочого дня"
-      many: "Тривалість: %{count} робочого дня"
-      other: "Тривалість: %{count} робочих днів"
   lists:
     create:
       success: "Змінений список збережено як новий"
@@ -574,11 +634,14 @@ uk:
         Усі екземпляри прототипу користувача (наприклад, виконавець, відповідальний тощо) буде перепризначено обліковому запису з назвою «Видалений користувач». Оскільки дані кожного видаленого облікового запису перепризначаються цьому обліковому запису, відрізнити дані, створені користувачем, від даних іншого видаленого облікового запису, може бути важко.
       irreversible: "Цю дію не можна скасувати"
       confirmation: "Введіть ім’я прототипу  користувача %{name}, щоб підтвердити видалення."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Натисніть, щоб призначити або змінити колір цього пріоритету.
-        Його можна використовувати для виділення робочих пакетів у таблиці.
+        Натисніть, щоб призначити або змінити колір для цього пріоритету.
+        Його можна використовувати для виділення пакетів роботи в таблиці.
+    admin:
+      default:
+        caption: Якщо зробити цей пріоритет стандартним, він замінить попередній стандартний пріоритет.
   reactions:
     action_title: "Реакція"
     add_reaction: "Додати реакцію"
@@ -631,8 +694,10 @@ uk:
       form_configuration:
         tab: "Конфігурація форми"
       projects:
-        tab: "Проєкти"
-        enabled_projects: "Включені проєкти"
+        tab: Проєкти
+        enable_all: Використовувати у всіх проєктах
+        select_projects: Вибрати проєкти
+        select_projects_description: Виберіть проєкти, у яких ви хочете використовувати цей тип.
       settings:
         tab: "Налаштування"
         type_color_text: "Цей колір використовується для виділення різних типів \nна діаграмах Ґанта або в таблицях пакетів робіт. Тому рекомендуємо вибрати насичений колір."
@@ -702,6 +767,7 @@ uk:
         automatic: "Автоматично"
         manual: "Вручну"
       show_relations: "Показати зв’язки"
+      update_inputs_aria_live_message: "Засіб вибору дати оновлено. %{message}"
       tabs:
         aria_label: "Вкладки вибору даних"
         children: "Дочірні елементи"
@@ -772,7 +838,8 @@ uk:
     label_add_description: "Додати опис"
     lag:
       subject: "Затримка"
-      caption: "Мінімальна кількість робочих днів між двома пакетами робіт."
+      caption: |-
+        Мінімальна кількість робочих днів між двома пакетами робіт. Може бути від’ємним числом.
     relations:
       label_new_child_created: "Новий пакет робіт створено й додано як дочірній"
       label_relates_singular: "зв’язано з"
@@ -831,6 +898,7 @@ uk:
       required_description: "Позначає цей робочий пакет як обовʼязковий для звʼязаного з ним"
       label_parent_singular: "батьківський елемент"
       label_parent_plural: "батьківський елемент"
+      label_other_relations: "Інші зв’язки"
       ghost_relation_title: "Пов’язаний пакет робіт"
       ghost_relation_description: "Ви не маєте дозволів на перегляд цього елемента."
   label_invitation: Запрошення
@@ -865,6 +933,10 @@ uk:
     auth_source_login: Увійдіть, як <em>%{login}</em> для активації облікового запису.
     omniauth_login: Увійдіть, щоб активувати свій обліковий запис.
   actionview_instancetag_blank_option: "Будь ласка, виберіть"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Залежності"
   activerecord:
     attributes:
       announcements:
@@ -880,6 +952,8 @@ uk:
       attribute_help_text:
         attribute_name: "Атрибут"
         help_text: "Довідковий текст"
+      auth_provider:
+        scim_clients: "Клієнти SCIM"
       capability:
         context: "Контекст"
       changeset:
@@ -893,6 +967,7 @@ uk:
         default_value: "Значення за замовчуванням"
         editable: "Може бути відредаговане"
         field_format: "Формат"
+        formula: "Формула"
         is_filter: "Використовується як фільтр"
         is_for_all: "Для всіх проєктів"
         is_required: "Обов'язкове поле"
@@ -919,18 +994,21 @@ uk:
       emoji_reaction:
         reactable: "Реакція на"
       enterprise_token:
-        domain: "Домен"
         starts_at: "Дійсний з"
         subscriber: "Абонент"
+        subscription: "Підписка"
+        plan: "План"
         encoded_token: "Маркер підтримки підприємства"
-        active_user_count_restriction: "Максимальна кількість активних користувачів"
+        active_user_count_restriction: "Активні користувачі"
+      enterprise_trial:
+        company: "Компанія"
       grids/grid:
         page: "Сторінка"
         row_count: "Кількість рядків"
         column_count: "Кількість стовпців"
         widgets: "Віджети"
       journal:
-        notes: "Нотатки"
+        notes: "Примітки"
         cause_type: "Тип причини"
       ldap_auth_source:
         account: "Обліковий запис"
@@ -988,6 +1066,10 @@ uk:
       project/phase:
         date_range: "Діапазон дат"
         definition: "Визначення"
+        duration: "Тривалість"
+        start_date: "Дата початку"
+        start_date_caption: "Слідує за попереднім етапом."
+        finish_date: "Дата закінчення"
       project/phase_definition:
         name: "Назва"
         color: "Колір"
@@ -1036,6 +1118,10 @@ uk:
         url: "Посилання"
       role:
         permissions: "Дозволи"
+      scim_client:
+        auth_provider: "Постачальник послуг автентифікації"
+        authentication_method: "Метод автентифікації"
+        jwt_sub: "Потрібна тема"
       status:
         is_closed: "Робочий пакет закритий"
         is_readonly: "Пакет робіт лише для перегляду"
@@ -1052,7 +1138,7 @@ uk:
         ongoing: "Триває"
       type:
         description: "Текст за умовчанням для опису"
-        attribute_groups: ""
+        attribute_groups: "Конфігурація форми"
         is_in_roadmap: "За умовчанням відображається в дорожній карті"
         is_default: "Активовано для нових проектів за замовчуванням"
         is_milestone: "Це віха"
@@ -1078,15 +1164,25 @@ uk:
         new_password: "Новий пароль"
         password_confirmation: "Підтвердження"
         consented_at: "Згоден на"
+      group:
+        identity_url: "URL-адреса ідентичності"
       user_preference:
-        comments_sorting: "Відображення коментарів"
+        header_look_and_feel: "Оформлення"
+        header_alerts: "Сповіщення"
+        button_update_look_and_feel: "Оновити оформлення"
+        button_update_alerts: "Сповіщення про оновлення"
+        comments_sorting: "Відображати дії з пакетів робіт, відсортовані за"
+        disable_keyboard_shortcuts: "Вимкнути комбінації клавіш"
+        disable_keyboard_shortcuts_caption_html: |-
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Приховані банери Enterprise"
         impaired: "Режим спеціальних можливостей"
-        auto_hide_popups: "Автоматичне приховування сповіщень про успіх"
+        auto_hide_popups: "Автоматично приховувати банери про успішне виконання"
+        auto_hide_popups_caption: "Якщо ввімкнено, зелені банери про успішне виконання автоматично зникатимуть через 5 секунд."
         warn_on_leaving_unsaved: "Попереджати мене, коли залишив робочий пакет із незбереженими змінами"
-        theme: "Режим"
+        theme: "Колірний режим"
         time_zone: "Часовий пояс"
-        mode_guideline: "У деяких режимах кольори користувацької теми замінюються, щоб полегшити взаємодію з користувачем і зробити її зручнішою. Якщо потрібна повністю користувацька тема, виберіть світлий режим."
+        mode_guideline: "Деякі режими перезаписують користувацькі кольори теми, щоб поліпшити доступність і читабельність. Виберіть світлий режим, якщо потрібна повна підтримка користувацької теми."
         daily_reminders: "Щоденні нагадування"
         workdays: "Робочі дні"
       version:
@@ -1155,6 +1251,7 @@ uk:
         error_unauthorized: "– можливо, немає доступу."
         error_readonly: "– було здійснено спробу запису, але елемент недоступний для запису."
         error_conflict: "Інформація була оновлена принаймні один інший користувач в той же час."
+        error_not_found: "не знайдено."
         email: "– це не дійсна електронна адреса."
         empty: "не може бути порожнім."
         enterprise_plan_required: "потрібен принаймні план %{plan_name}."
@@ -1172,6 +1269,7 @@ uk:
         inclusion: "не встановлено в одному з допустимих значень"
         inclusion_nested: "– не призначено одне з дозволених значень за шляхом «%{path}»."
         invalid: "зазначено невірно"
+        invalid_characters: "містить недопустимі символи."
         invalid_url: "не є дійсною URL-адресою."
         invalid_url_scheme: "не є підтримуваним протоколом (дозволено: %{allowed_schemes})."
         less_than_or_equal_to: "має бути меншим або рівним %{count}"
@@ -1214,7 +1312,7 @@ uk:
           attributes:
             content_type:
               blank: "Тип контенту файлу не може бути пустий."
-              not_whitelisted: "Файл відхилено автоматичним фільтром. Завантаження «%{value}» не дозволено."
+              not_allowlisted: "Файл відхилено автоматичним фільтром. Завантаження «%{value}» не дозволено."
               format: "%{message}"
         capability:
           context:
@@ -1247,8 +1345,14 @@ uk:
               forbidden_uri: "заборонено сервером."
             scopes:
               not_match_configured: "не відповідає доступним областям."
+        enterprise_trial:
+          already_used: "уже використано для створення пробної версії."
+          failed_to_create: "Не вдалося створити пробну версію (%{status})"
+          general_consent: "Будь ласка, прийміть правила й умови використання."
         enterprise_token:
+          only_one_trial: "Активним може бути лише один пробний токен. Видаліть попередній, перш ніж додавати новий."
           unreadable: "неможливо прочитати. Ви впевнені, що це маркер підтримки?"
+          already_added: "Цей токен уже додано."
         grids/grid:
           overlaps: "перекриваються."
           outside: "знаходиться за межами сітки."
@@ -1299,14 +1403,14 @@ uk:
               blank: "Виберіть проєкт."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "дата початку має передувати даті закінчення."
+            start_date:
+              must_be_before_finish_date: "має передувати даті закінчення."
               non_continuous_dates: "не може передувати даті закінчення попереднього етапу."
-              incomplete: "неповний."
+            finish_date:
+              must_be_after_start_date: "має слідувати за датою початку."
+          cannot_be_a_non_working_day: "не може припадати на неробочий день."
         query:
           attributes:
-            project:
-              error_not_found: "не знайдено"
             public:
               error_unauthorized: "- Користувач не має дозволу на створення загальнодоступних переглядів."
             group_by:
@@ -1346,15 +1450,9 @@ uk:
             circular_dependency: "Відносини створюють коло відносин."
           attributes:
             to_id:
-              error_not_found: "не знайдено або приховано."
               error_readonly: "не можна змінити для наявних зв’язків."
             from_id:
-              error_not_found: "не знайдено або приховано."
               error_readonly: "не можна змінити для наявних зв’язків."
-            lag:
-              greater_than_or_equal_to:
-                zero: "не може мати від’ємне значення."
-              less_than_or_equal_to: "має зависоке значення."
         repository:
           not_available: "Постачальник SCM недоступний"
           not_whitelisted: "не дозволяється конфігурацією."
@@ -1432,6 +1530,8 @@ uk:
               cannot_be_self_assigned: "– не можна призначити собі."
               cannot_be_in_another_project: "не може бути в іншому проекті."
               not_a_valid_parent: "зазначено невірно"
+            schedule_manually:
+              cannot_be_automatically_scheduled: "не може мати значення false (автоматично заплановано), оскільки не має попередників або дочірніх елементів."
             start_date:
               violates_relationships: "може бути встановлено лише для %{soonest_start} або пізнішої версії, щоб не порушувати зв'язки робочого пакету."
               cannot_be_null: "не може мати нульове значення, оскільки задано дату початку й тривалість."
@@ -1493,10 +1593,6 @@ uk:
                 description: "\"Підтвердження пароля\" має відповідати введеному в полі \"Новий пароль\"."
             status:
               invalid_on_create: "не є дійсним статусом для нових користувачів."
-            ldap_auth_source:
-              error_not_found: "не знайдено"
-            auth_source:
-              error_not_found: "не знайдено"
         member:
           principal_blank: "Виберіть принаймні одного користувача або групу."
           role_blank: "повинні бути призначені."
@@ -1528,6 +1624,11 @@ uk:
       custom_action: "Спеціальні дії"
       custom_field: "Користувацьке поле"
       "doorkeeper/application": "Програма OAuth"
+      enterprise_token:
+        one: "Маркер Enterprise"
+        few: "Маркери Enterprise"
+        many: "Маркери Enterprise"
+        other: "Маркери Enterprise"
       forum: "Форум"
       global_role: "Глобальна роль"
       group: "Група"
@@ -1561,6 +1662,11 @@ uk:
         few: "Роль"
         many: "Роль"
         other: "Роль"
+      scim_client:
+        one: "Клієнт SCIM"
+        few: "Клієнти SCIM"
+        many: "Клієнти SCIM"
+        other: "Клієнти SCIM"
       status: "Стан робочого пакета"
       token/api:
         one: Маркер доступу
@@ -1631,7 +1737,7 @@ uk:
       added_date: "визначено як %{date}"
       changed_date: "змінено з %{from} на %{to}"
       deactivated: "деактивовано"
-      deleted_project_phase: "Deleted project phase"
+      deleted_project_phase: "Видалений етап проєкту"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message} і %{finish_gate_message}"
       phase_and_one_gate: "%{phase_message}. %{gate_message}"
       removed_date: "видалено %{date}"
@@ -1650,7 +1756,7 @@ uk:
     blocks_ids: "Ідентифікатори заблокованих робочих пакетів"
     category: "Категорія"
     comment: "Коментар"
-    comments: "Коментування"
+    comments: "Коментар"
     content: "Контент"
     color: "Колір"
     creator: "Автор"
@@ -1667,12 +1773,13 @@ uk:
     derived_start_date: "Отримана дата початку"
     direction: "Напрямок"
     display_sums: "Відображати суми"
+    domain: "Домен"
     due_date: "Дата закінчення"
     estimated_hours: "Робота"
     estimated_time: "Робота"
     email: "Ел. адреса"
     entity_type: "Сутність"
-    expires_at: "Закінчується о"
+    expires_at: "Термін дії минає"
     firstname: "Ім'я"
     filter: "Фільтр"
     group: "Група"
@@ -1686,14 +1793,14 @@ uk:
     #kept for backwards compatibility
     issue: "Робочий пакет"
     journal: "Журнал"
-    journal_notes: "Коментування"
+    journal_notes: "Коментар"
     lastname: "Прізвище"
     login: "Ім'я користувача"
     lock_version: "Заблокувати версію"
     mail: "Електронна пошта"
     name: "Назва"
     note: "Примітка"
-    notes: "Нотатки"
+    notes: "Примітки"
     number: "Число"
     options: "Опції"
     operator: "Оператор"
@@ -1721,6 +1828,7 @@ uk:
     title: "Назва"
     type: "Тип"
     typeahead: "Автозаповнення"
+    uid: "Унікальний ідентифікатор"
     updated_at: "Оновлене"
     updated_on: "Оновлено"
     uploader: "Завантажувач"
@@ -1787,7 +1895,6 @@ uk:
   button_copy: "Копіювати"
   button_copy_to_clipboard: "Копіювати в буфер обміну"
   button_copy_link_to_clipboard: "Копіювати посилання в буфер обміну"
-  button_copy_and_follow: "Скопіювати та продовжити"
   button_create: "Створити"
   button_create_and_continue: "Створити та продовжити"
   button_decline: "Відхилити"
@@ -1796,6 +1903,7 @@ uk:
   button_delete_watcher: "Видалити спостерігача %{name}"
   button_download: "Завантажити"
   button_duplicate: "Дублювати"
+  button_duplicate_and_follow: "Дублювати й стежити"
   button_edit: "Редагувати"
   button_edit_associated_wikipage: "Редагувати пов'язану Wiki сторінку: %{page_title}"
   button_expand_all: "Розгорнути все"
@@ -1834,6 +1942,7 @@ uk:
   button_unwatch: "Перестати відстежувати"
   button_update: "Оновити"
   button_upgrade: "Оновити"
+  button_buy_now: "Придбати зараз"
   button_upload: "Завантажити"
   button_view: "Перегляд"
   button_watch: "Спостерігати"
@@ -1878,6 +1987,13 @@ uk:
     text:
       failed: 'Не вдалося скопіювати проект "%{source_project_name}" до проекту "%{target_project_name}".'
       succeeded: 'Скопіював проект "%{source_project_name}" до "%{target_project_name}".'
+    source_project_label: "Проєкт скопійовано"
+    copy_options:
+      dependencies_label: 'Копіювати з проєкту'
+  create_project:
+    template_label: "Використовувати шаблон"
+    copy_options:
+      dependencies_label: 'Копіювати з шаблона'
   create_wiki_page: "Створити нову вікісторінку"
   create_wiki_page_button: "Сторінка Wiki"
   date:
@@ -2027,6 +2143,11 @@ uk:
         many: "%{count} с"
         other: "%{count} с"
     units:
+      minute_abbreviated:
+        one: "хв"
+        few: "хв"
+        many: "хв"
+        other: "хв"
       hour:
         one: "година"
         few: "годин(и)"
@@ -2055,7 +2176,7 @@ uk:
   description_category_reassign: "Оберіть категорію"
   description_message_content: "Зміст повідомлення"
   description_my_project: "Ви учасник"
-  description_notes: "Нотатки"
+  description_notes: "Примітки"
   description_parent_work_package: "Батьківський робочий пакет поточного"
   description_project_scope: "Область пошуку"
   description_query_sort_criteria_attribute: "Критерій сортування"
@@ -2087,25 +2208,39 @@ uk:
       placeholder_users: Прототипи користувачів
       project_list_sharing: Спільне використання списку проєктів
       readonly_work_packages: Пакети робіт лише для читання
+      scim_api: API сервера SCIM
       sso_auth_providers: Єдиний вхід
       team_planner_view: Подання командного планувальника
-      two_factor_authentication: Двофакторна автентифікація
       virus_scanning: Пошук вірусів
       work_package_query_relation_columns: Стовпці зв’язків запиту пакета робіт
       work_package_sharing: Діліться пакетами робіт із зовнішніми користувачами
       work_package_subject_generation: Створення теми пакета робіт
     upsell:
+      buy_now_button: "Купити"
       plans_title: "Плани Enterprise"
       title: "Доповнення версії Enterprise"
       plan_title: "Доповнення версії Enterprise %{plan}"
       plan_name: "Версія Enterprise %{plan}"
       plan_text_html: "Доступно, починаючи з версії %{plan_name}."
+      unlimited: "Без обмежень"
+      already_have_token: >
+        Уже маєте токен? Додайте його за допомогою кнопки нижче, щоб перейти на вже замовлений план Enterprise.
       hide_banner: "Приховати цей банер"
       homescreen_description: >
         Плани Enterprise розширюють можливості вашого випуску OpenProject Community. Вони включають доповнення, додаткові функції та професійну підтримку, що дає організаціям усіх розмірів досягати кращих результатів разом.
       homescreen_subline: Підвищивши рівень, ви також долучитеся до підтримки проєкту з відкритим кодом.
       baseline_comparison:
         description: Виділяйте зміни, внесені в цей список із будь-якого моменту часу в минулому.
+      benefits:
+        description: "Які переваги локальної версії Enterprise?"
+        high_security: "Функції безпеки"
+        high_security_text: "Єдиний вхід (SAML, OpenID Connect, CAS), групи LDAP."
+        installation: "Підтримка під час установлення"
+        installation_text: "Досвідчені інженери з програмного забезпечення допоможуть вам виконати повне встановлення й налаштувати процес у вашій інфраструктурі."
+        premium_features: "Доповнення версії Enterprise"
+        premium_features_text: "Дошки Agile, власні тема й логотип, діаграми, розумні робочі процеси з користувацькими діями, повнотекстовий пошук у вкладеннях пакетів робіт і користувацькі поля з множинним вибором."
+        professional_support: "Професійна підтримка"
+        professional_support_text: "Отримайте надійну, комплексну підтримку від старших інженерів, які знають усе про запуск OpenProject у критично важливих для бізнесу середовищах."
       work_package_subject_generation:
         description: "Створюйте автоматично згенеровані теми на основі атрибутів і тексту."
       customize_life_cycle:
@@ -2128,6 +2263,8 @@ uk:
         description: "Завдяки оповіщенням про дати ви завжди знатимете про заплановані дати початку або завершення, тож ніколи не пропускатимете важливі терміни й не забуватимете про них."
       work_package_sharing:
         description: "Діліться пакетами робіт із користувачами, які не належать до учасників проєкту."
+      project_list_sharing:
+        description: "Діліться списками проєктів з окремими користувачами."
       define_custom_style:
         title: "Користувацький колір теми й логотип"
         more_info: "Примітка: вибраний логотип буде загальнодоступний."
@@ -2138,6 +2275,9 @@ uk:
       nextcloud_sso:
         title: "Єдиний вхід для сховища Nextcloud"
         description: "Увімкніть швидку й безпечну автентифікацію для свого сховища Nextcloud завдяки технології єдиного входу. Спростіть керування доступом і покращте взаємодію користувачів зі своїм продуктом."
+      scim_api:
+        title: "Клієнти SCIM"
+        description: "Автоматизуйте управління користувачами в OpenProject, інтегрувавши зовнішні сервіси для керування ідентичностями, такі як Microsoft Entra або Keycloak, через API сервера SCIM. Ця можливість доступна, починаючи з корпоративного плану Enterprise."
       virus_scanning:
         description: "Переконайтеся, що вивантажені в OpenProject файли перевіряються на віруси перед тим, як стають доступними для інших користувачів."
       placeholder_users:
@@ -2150,6 +2290,33 @@ uk:
       internal_comments_inline:
         title: "Створюйте внутрішні коментарі лише для учасників невеликої групи"
         description: " "
+    teaser:
+      title:
+        one: "Один день до завершення строку дії пробного токена %{trial_plan}"
+        few: "%{count} дні до завершення строку дії пробного токена %{trial_plan}"
+        many: "%{count} днів до завершення строку дії пробного токена %{trial_plan}"
+        other: "%{count} дня до завершення строку дії пробного токена %{trial_plan}"
+      description: "У вас є доступ до всіх функцій %{trial_plan}."
+    trial:
+      not_found: "Ви запитали пробний токен, але цей запит більше не доступний. Спробуйте ще раз."
+      wait_for_confirmation: "Ми надіслали вам електронного листа, щоб ви підтвердили свою адресу й могли отримати пробний токен."
+      already_retrieved: >
+        Токен пробної версії Enterprise уже отримано. На вашу електронну пошту мав надійти лист із вкладеним токеном. Якщо вам потрібен новий токен, зверніться до нашої служби підтримки.
+      successfully_saved: "Токен пробної версії Enterprise успішно отримано."
+      token_sent: "Запитано пробний токен"
+      request_again: "Надіслати запит ще раз"
+      resend_action: "Ще раз надіслати електронного листа для підтвердження"
+      welcome_title: "Стислий огляд функцій"
+      welcome_description: "Отримайте стислий огляд функцій для управління проєктами й командної роботи у версії OpenProject Enterprise."
+      confirmation_info: >
+        Ми надіслали вам листа %{date} на адресу %{email} з усією інформацією, потрібною, щоб почати користуватися безкоштовною пробною версією OpenProject Enterprise. Знайдіть його у своїй пошті й перейдіть за посиланням для підтвердження, щоб розпочати безплатний 14-денний пробний період.
+      confirmation_subline: >
+        Перевірте свою пошту й виконайте вказівки, щоб розпочати безплатний 14-денний пробний період.
+      domain_caption: Токен буде дійсним для вашого поточного імені хосту.
+      receive_newsletter_html: >
+        Я хочу отримувати <a target="_blank" href="https://www.openproject.org/newsletter/">інформаційний бюлетень</a> OpenProject.
+      consent_html: >
+        Я погоджуюся з <a target="_blank" href="https://www.openproject.org/terms-of-service/">умовами надання послуг</a> і <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">політикою конфіденційності</a>.
   enumeration_activities: "Дії щодо відстеження часу"
   enumeration_work_package_priorities: "Пріоритети робочого пакету"
   enumeration_reported_project_statuses: "Повідомлення про статус проекту"
@@ -2174,11 +2341,12 @@ uk:
   error_color_could_not_be_saved: "Не вдалося зберегти колір"
   error_cookie_missing: "Файл cookie OpenProject відсутній. Переконайтеся, що файли cookie увімкнено, оскільки ця програма не буде функціонувати належним чином."
   error_custom_option_not_found: "Варіант не існує."
+  error_enterprise_plan_needed: "Щоб виконати цю дію, потрібен корпоративний план %{plan}."
   error_enterprise_activation_user_limit: "Ваш обліковий запис не можна активувати (досягнуто обмеження користувача). Щоб отримати доступ, зверніться до свого адміністратора."
   error_enterprise_token_invalid_domain: "Версія Enterprise не активна. Домен вашого маркера Enterprise (%{actual}) не збігається з іменем хосту системи (%{expected})."
   error_failed_to_delete_entry: "Не вдалося видалити цей запис."
   error_in_dependent: "Помилка спроби змінити залежний об'єкт: %{dependent_class} %{related_id} - %{related_subject}: %{error}"
-  error_in_new_dependent: "Не вдалося змінити залежний об’єкт: %{dependent_class} – %{related_subject}: %{error}"
+  error_in_new_dependent: "Не вдалося створити залежний об’єкт: %{dependent_class} – %{related_subject}: %{error}"
   error_invalid_selected_value: "Недійсне вибране значення."
   error_journal_attribute_not_present: "Журнал не містить атрибута %{attribute}."
   error_pdf_export_too_many_columns: "Для експорту PDF-файлу вибрано занадто багато стовпців. Скоротіть кількість стовпців."
@@ -2516,13 +2684,13 @@ uk:
         responsible: "Ви стали відповідальними за %{work_package}"
         watched: "Ви переглядаєте %{work_package}"
     query:
-      invalid_filter: "Invalid notification filter"
+      invalid_filter: "Недійсний фільтр сповіщень"
   label_accessibility: "Розробникам також потрібно оплачувати свої рахунки. З доступністю"
   label_account: "Обліковий запис"
   label_active: "Активні"
   label_activate_user: "Активні користувачі"
   label_active_in_new_projects: "Активна участь в нових проектах"
-  label_activity: "Дія"
+  label_activity: "Активність"
   label_add_edit_translations: "Додайте та редагуйте переклади"
   label_add_another_file: "Додати ще один файл"
   label_add_columns: "Додати вибрані стовпці"
@@ -2608,6 +2776,7 @@ uk:
   label_select_main_menu_item: Виберіть новий пункт головного меню
   label_required_disk_storage: "Необхідне місце на диску"
   label_send_invitation: Надіслати запрошення
+  label_calculated_value: "Розраховане значення"
   label_change_plural: "Зміни"
   label_change_properties: "Змінити властивості"
   label_change_status: "Змінити статус"
@@ -2657,6 +2826,7 @@ uk:
   label_dashboard: "Панель керування"
   label_database_version: "Версія PostgreSQL"
   label_date: "Дата"
+  label_dates: "Дати"
   label_date_and_time: "Дата і час"
   label_date_format: "Формат дати:"
   label_date_from: "Від"
@@ -2672,6 +2842,8 @@ uk:
   label_deleted_custom_item: "(видалений елемент)"
   label_deleted_custom_option: "(параметр видалення)"
   label_empty_element: "(пусто)"
+  label_go_back: "Повернутися на попередній рівень меню"
+  label_go_forward: "Відкрити підменю %{module}"
   label_missing_or_hidden_custom_option: "(відсутнє значення або бракує дозволів для доступу)"
   label_descending: "За спаданням"
   label_details: "Детальніше"
@@ -2740,6 +2912,7 @@ uk:
   label_follows: "слідкувати"
   label_force_user_language_to_default: "Встановити мову користувачів, які мають не підтримувану мову, за умовчанням"
   label_form_configuration: "Конфігурація форми"
+  label_formula: "Формула"
   label_gantt_chart: "Діаграма Ґанта"
   label_gantt_chart_plural: "Діаграми Ґанта"
   label_general: "Загальні"
@@ -2776,6 +2949,7 @@ uk:
   label_information_plural: "Інформація"
   label_installation_guides: "Інструкції зі встановлення"
   label_integer: "Ціле число"
+  label_interface: "Інтерфейс"
   label_internal: "Власне"
   label_introduction_video: "Введення відео"
   label_invite_user: "Запросити користувача"
@@ -2918,7 +3092,7 @@ uk:
   label_password_rule_special: "Спеціальні символи"
   label_password_rule_uppercase: "Верхній регістр"
   label_path_encoding: "Кодування шляху"
-  label_per_page: "На сторінці"
+  label_per_page: "Per page:"
   label_people: "Люди"
   label_permissions: "Дозволи"
   label_permissions_report: "Звіт про права доступу"
@@ -2971,6 +3145,7 @@ uk:
   label_query_new: "Новий запит"
   label_query_plural: "Спеціальні запити"
   label_read: "Читання..."
+  label_read_documentation: "Прочитати документацію"
   label_register: "Створити новий акаунт"
   label_register_with_developer: "Зареєструйтеся як розробник"
   label_registered_on: "Зареєстровано на"
@@ -3135,6 +3310,7 @@ uk:
   label_work_package_attachments: "Додатки до робочого пакету"
   label_work_package_category_new: "Нова категорія"
   label_work_package_category_plural: "Категорії робочих пакетів"
+  label_work_package_comments: "Коментарі до пакета робіт"
   label_work_package_hierarchy: "Ієрархія робочих пакетів"
   label_work_package_new: "Новий пакет робіт"
   label_work_package_edit: "Редагувати робочий пакет %{name}"
@@ -3414,6 +3590,8 @@ uk:
   notice_successful_delete: "Видалення успішно завершене."
   notice_successful_cancel: "Успішно видалено."
   notice_successful_update: "Успішно оновлено."
+  notice_unsuccessful_create: "Не вдалося створити."
+  notice_unsuccessful_create_with_reason: "Не вдалося створити: %{reason}"
   notice_unsuccessful_update: "Не вдалось оновити."
   notice_unsuccessful_update_with_reason: "Помилка оновлення: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
@@ -3431,7 +3609,7 @@ uk:
   #Default format for numbers
   number:
     format:
-      delimiter: ""
+      delimiter: ","
       precision: 3
       separator: "."
     human:
@@ -3455,7 +3633,7 @@ uk:
     text_getting_started_description: "Отримайте стислий огляд управління проєктами та командної роботи в OpenProject. Це відео можна переглянути знову в меню довідки."
     welcome: "Вітаємо в додатку %{app_title}"
     select_language: "Будь ласка, виберіть мову"
-  permission_add_work_package_comments: "Додати коментарі"
+  permission_add_work_package_comments: "Додавання коментарів"
   permission_add_work_packages: "Додати робочі пакети"
   permission_add_messages: "Відправка повідомлень"
   permission_add_project: "Створення проєктів"
@@ -3476,7 +3654,7 @@ uk:
   permission_comment_news: "Коментування новин"
   permission_commit_access: "Доступ для читання/запису до сховища (фіксація)"
   permission_copy_projects: "Копіювати проекти"
-  permission_copy_work_packages: "Копіювання робочих пакетів"
+  permission_copy_work_packages: "Дублювати пакети робіт"
   permission_create_backup: "Створення резервних копій"
   permission_delete_work_package_watchers: "Видалення спостерігачів"
   permission_delete_work_packages: "Видалити робочі пакети"
@@ -3486,12 +3664,12 @@ uk:
   permission_delete_timelines: "Видалити графіки"
   permission_delete_wiki_pages: "Видалення wiki-сторінок"
   permission_delete_wiki_pages_attachments: "Видалення прикріплених файлів"
-  permission_edit_work_package_comments: "Модерувати коментарі"
+  permission_edit_work_package_comments: "Модерування коментарів"
   permission_edit_work_package_comments_explanation: "Увага! Користувачі із цим дозволом можуть редагувати будь-чиї коментарі."
   permission_edit_work_packages: "Редагувати робочі пакети"
   permission_edit_messages: "Редагування повідомлень"
   permission_edit_own_internal_comments: "Редагування власних внутрішніх коментарів"
-  permission_edit_own_work_package_comments: "Редагувати власні коментарі"
+  permission_edit_own_work_package_comments: "Редагування власних коментарів"
   permission_edit_own_messages: "Редагування власних повідомлень"
   permission_edit_own_time_entries: "Редагування власного обліку часу"
   permission_edit_others_internal_comments: "Модерування внутрішніх коментарів"
@@ -3553,7 +3731,7 @@ uk:
   permission_view_wiki_pages: "Перегляд wiki"
   permission_work_package_assigned: "Стати виконавцем / відповідальним"
   permission_work_package_assigned_explanation: "Робочі пакети можуть бути призначені користувачам і групам, які володіють цією роллю у відповідному проекті"
-  permission_view_project_activity: "Перегляд активності в проєкті"
+  permission_view_project_activity: "Перегляд дій у проєкті"
   permission_view_project_attributes: "Переглянути атрибути проєкту"
   permission_view_project_phases: "Перегляд етапів проєкту"
   permission_save_bcf_queries: "Зберігання запитів BCF"
@@ -3595,7 +3773,7 @@ uk:
       use_template: "Використовувати шаблон"
       make_template: "Установити як шаблон"
       remove_from_templates: "Вилучити із шаблонів"
-  project_module_activity: "Дія"
+  project_module_activity: "Активність"
   project_module_forums: "Форуми"
   project_module_work_package_tracking: "Пакети робіт"
   project_module_news: "Новини"
@@ -3996,9 +4174,7 @@ uk:
       phase_gates: "Контрольні точки етапів"
       new:
         description: "Зміни цього етапу проєкту відображатимуться в усіх проєктах із цим етапом."
-        heading: "Створення етапу"
-      edit:
-        heading: "Редагування етапу"
+        heading: "Новий етап"
       both_gate: "Початкова й кінцева контрольні точки"
       no_gate: "Немає контрольної точки"
       start_gate: "Початкова контрольна точка"
@@ -4303,7 +4479,7 @@ uk:
     reminders:
       label_remind_at: "Дата"
       note_placeholder: "Навіщо ви встановлюєте це нагадування?"
-      success_creation_message: "Нагадування встановлено. Ви отримаєте сповіщення про цей пакет робіт у вибраний час."
+      create_success_message: "Нагадування встановлено. Ви отримаєте сповіщення про цей пакет робіт у такий час: %{reminder_time}."
       success_update_message: "Нагадування оновлено."
       success_deletion_message: "Нагадування видалено."
   sharing:
@@ -4375,12 +4551,12 @@ uk:
         message: "Надавати спільний доступ до списків проєктів окремим користувачам можна за допомогою доповнення версії Enterprise."
   working_days:
     info: >
-      Під час планування пакетів робіт невибрані дні пропускаються й не включаються в кількість днів. Це налаштування можна змінити на рівні пакета робіт.
+      Під час планування пакетів робіт і життєвих циклів проєктів невибрані дні пропускаються (і не включаються в кількість днів). Це налаштування можна змінити на рівні пакета робіт.
     instance_wide_info: >
       Під час планування пакетів робіт дати, додані в список нижче, вважаються неробочим днями й пропускаються.
     change_button: "Змінити робочі дні"
     warning: >
-      Змінення днів тижня, які вважаються робочими або неробочими, може вплинути на дати початку й закінчення всіх пакетів робіт в усіх проєктах цього екземпляра.
+      Якщо змінити дні тижня, які вважаються робочими чи неробочими, це може вплинути на дати початку й завершення всіх пакетів робіт і життєвих циклів проєктів в усіх проєктах цього екземпляра.
     journal_note:
       changed: _**Робочі дні** змінено (%{changes})._
       days:
@@ -4404,8 +4580,14 @@ uk:
       code_500: "Сталася внутрішня помилка."
       code_500_outbound_request_failure: "Вихідний запит до іншого ресурсу завершився помилкою з кодом стану: %{status_code}."
       code_500_missing_enterprise_token: "Цей запит не можна обробити через недійсний або відсутній маркер версії Enterprise."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "Дія такого типу не підтримує реакцію за допомогою емодзі."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          Можна одночасно встановити лише одне нагадування для пакета робіт. Видаліть або оновіть наявне нагадування.
       not_found:
         work_package: "Пакет робіт, який ви шукаєте, не можна знайти або його видалено."
+        reminder: "Нагадування, яке ви шукаєте, не вдалося знайти. Можливо, його видалено."
       expected:
         date: "YYYY-MM-DD (ISO 8601 date only)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm] (будь-який сумісний формат ISO 8601 дати й часу)"

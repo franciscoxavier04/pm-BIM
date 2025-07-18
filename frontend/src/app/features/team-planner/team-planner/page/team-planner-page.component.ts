@@ -123,6 +123,15 @@ export class TeamPlannerPageComponent extends PartitionedQuerySpacePageComponent
     this.currentPartition = state.data?.partition || '-split';
   }
 
+  breadcrumbItems() {
+    return [
+      { href: this.pathHelperService.homePath(), text: this.titleService.appTitle },
+      { href: this.pathHelperService.projectPath(this.currentProject.identifier as string), text: (this.currentProject.name) },
+      { href: this.pathHelperService.projectTeamplannerPath(this.currentProject.identifier as string), text: this.I18n.t('js.team_planner.label_team_planner_plural') },
+      this.selectedTitle?? '',
+    ];
+  }
+
   protected staticQueryName(_query:QueryResource):string {
     return this.text.unsaved_title;
   }

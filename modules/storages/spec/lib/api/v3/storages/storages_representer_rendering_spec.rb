@@ -34,16 +34,13 @@ require_module_spec_helper
 RSpec.describe API::V3::Storages::StorageRepresenter, "rendering" do
   let(:oauth_client_credentials) { build_stubbed(:oauth_client) }
   let(:user) { create(:user) }
-  let(:auth_check_result) { ServiceResult.success }
+  let(:auth_check_result) { Success() }
   let(:representer) { described_class.new(storage, current_user: user, embed_links: true) }
 
   subject(:generated) { representer.to_json }
 
   before do
-    Storages::Peripherals::Registry.stub(
-      "#{storage}.queries.user",
-      ->(_) { auth_check_result }
-    )
+    Storages::Adapters::Registry.stub("#{storage}.queries.user", ->(_) { auth_check_result })
   end
 
   shared_examples_for "common file storage properties" do
@@ -103,7 +100,7 @@ RSpec.describe API::V3::Storages::StorageRepresenter, "rendering" do
       end
 
       context "if authentication check returns unauthorized" do
-        let(:auth_check_result) { ServiceResult.failure(errors: Storages::StorageError.new(code: :unauthorized)) }
+        let(:auth_check_result) { Failure(Storages::Adapters::Results::Error.new(code: :unauthorized, source: nil)) }
 
         it_behaves_like "has a titled link" do
           let(:link) { "authorizationState" }
@@ -113,22 +110,12 @@ RSpec.describe API::V3::Storages::StorageRepresenter, "rendering" do
       end
 
       context "if authentication check returns error" do
-        let(:auth_check_result) { ServiceResult.failure(errors: Storages::StorageError.new(code: :error)) }
+        let(:auth_check_result) { Failure(Storages::Adapters::Results::Error.new(code: :error, source: nil)) }
 
         it_behaves_like "has a titled link" do
           let(:link) { "authorizationState" }
           let(:href) { "urn:openproject-org:api:v3:storages:authorization:Error" }
           let(:title) { "Error" }
-        end
-      end
-
-      context "if there is no remote identity for the user at the storage" do
-        let(:remote_identity) { nil }
-
-        it_behaves_like "has a titled link" do
-          let(:link) { "authorizationState" }
-          let(:href) { "urn:openproject-org:api:v3:storages:authorization:NotConnected" }
-          let(:title) { "Not connected" }
         end
       end
     end
@@ -183,7 +170,7 @@ RSpec.describe API::V3::Storages::StorageRepresenter, "rendering" do
 
           expect(generated).to have_json_size(2).at_path("_links/prepareUpload")
 
-          project_ids = JSON.parse(generated).dig("_links", "prepareUpload").map { _1.dig("payload", "projectId") }
+          project_ids = JSON.parse(generated).dig("_links", "prepareUpload").map { it.dig("payload", "projectId") }
           expect(project_ids)
             .to contain_exactly(project_linked_with_upload_permission.id, another_project_linked_with_upload_permission.id)
         end
@@ -347,7 +334,7 @@ RSpec.describe API::V3::Storages::StorageRepresenter, "rendering" do
     end
   end
 
-  context "if file storage has provider type OneDrive/SharePoint" do
+  context "if file storage has provider type OneDrive" do
     let(:storage) { build_stubbed(:one_drive_storage, oauth_client: oauth_client_credentials) }
 
     it_behaves_like "common file storage properties"
@@ -360,7 +347,7 @@ RSpec.describe API::V3::Storages::StorageRepresenter, "rendering" do
       end
     end
 
-    describe "properties (OneDrive/SharePoint only)" do
+    describe "properties (OneDrive only)" do
       it_behaves_like "property", :tenantId do
         let(:value) { storage.tenant_id }
       end

@@ -50,7 +50,7 @@ module MeetingSections
 
     def wrapper_data_attributes
       {
-        "add-meeting-params-target": "container",
+        "meetings--add-params-target": "container",
         meeting: @meeting.id
       }
     end

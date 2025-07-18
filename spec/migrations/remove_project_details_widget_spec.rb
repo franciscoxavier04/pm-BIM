@@ -36,7 +36,7 @@ RSpec.describe RemoveProjectDetailsWidget, type: :model do
     ActiveRecord::Migration.suppress_messages do
       described_class
         .new
-        .tap { _1.migrate(:up) }
+        .tap { it.migrate(:up) }
     end
   end
 

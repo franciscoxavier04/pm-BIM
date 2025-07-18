@@ -40,22 +40,22 @@ ja:
               response_misses_required_attributes: " は必須属性を返しません。欠けている属性は次のとおりです: %{missing_attributes}."
   provider:
     delete_warning:
-      input_delete_confirmation: 確認のため、削;除するフィルタ名 %{name} を入力します。
+      input_delete_confirmation: 確認のため、削除するフィルタ名 %{name} を入力します。
       irreversible_notice: ワークパッケージの削除は復元できない操作です。
       provider: 'SSO プロバイダー %{name}を削除してもよろしいですか？ このアクションを確認するには、以下のフィールドにプロバイダの名前を入力してください。'
       delete_result_1: 利用可能なプロバイダのリストからプロバイダを削除します。
       delete_result_user_count:
         zero: 現在、このプロバイダを使用しているユーザーはいません。これ以上の操作は必要ありません。
         one: "1人のユーザーが現在このプロバイダーを使用しています。再招待または別のプロバイダーでログインする必要があります。"
-        other: "%{count} users are currently still using this provider. They will need to be re-invited or logging in with another provider."
+        other: "%{count}人のユーザーが現在このプロバイダーを使用しています。再招待または別のプロバイダーでログインする必要があります。"
       delete_result_direct: This provider is marked as a direct login provider. The setting will be removed and users will no longer be redirected to the provider for login.
   openid_connect:
     menu_title: OpenID プロバイダー
-    delete_title: "Delete OpenID Connect provider"
+    delete_title: "OpenID Connectプロバイダの削除"
     instructions:
       redirect_url: これは、OpenID Connectプロバイダがログイン成功後にOpenProjectにリダイレクトするために使用するリダイレクトURLです。
       endpoint_url: The endpoint URL given to you by the OpenID Connect provider
-      metadata_none: I don't have this information
+      metadata_none: この情報がありません
       metadata_url: I have a discovery endpoint URL
       client_id: This is the client ID given to you by your OpenID Connect provider
       client_secret: This is the client secret given to you by your OpenID Connect provider

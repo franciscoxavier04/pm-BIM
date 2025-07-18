@@ -102,6 +102,10 @@ module Settings
         description: "Time in minutes to wait before uploaded files not attached to any container are removed",
         default: 180
       },
+      antivirus_scan_available: {
+        description: "Virus scanning option selectable in the UI",
+        default: true
+      },
       antivirus_scan_mode: {
         description: "Virus scanning option for files uploaded to OpenProject",
         format: :symbol,
@@ -328,6 +332,10 @@ module Settings
       default_comment_sort_order: {
         description: "Default sort order for activities",
         default: "asc"
+      },
+      disable_keyboard_shortcuts: {
+        description: "Whether keyboard short cuts should be disabled (e.g. for better screen reader support)",
+        default: false
       },
       default_language: {
         default: "en",
@@ -1156,7 +1164,7 @@ module Settings
         default: {
           "workers" => 2,
           "timeout" => Rails.env.production? ? 120 : 0,
-          "wait_timeout" => 10,
+          "wait_timeout" => 30,
           "min_threads" => 4,
           "max_threads" => 16
         },

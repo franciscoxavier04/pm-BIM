@@ -51,8 +51,8 @@ module WorkPackage::PDFExport::Export::MarkdownField
   def write_markdown_field_value(work_package, markdown)
     with_margin(styles.wp_markdown_margins) do
       write_markdown!(
-        work_package,
-        apply_markdown_field_macros(markdown, work_package),
+        apply_markdown_field_macros(markdown,
+                                    { work_package:, project: work_package.project, user: User.current }),
         styles.wp_markdown_styling_yml
       )
     end

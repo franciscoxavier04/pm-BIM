@@ -29,28 +29,37 @@
 #++
 
 module EnterpriseHelper
-  def write_augur_to_gon
-    gon.augur_url = OpenProject::Configuration.enterprise_trial_creation_host
-    gon.token_version = OpenProject::Token::VERSION
+  ##
+  # Renders the enterprise banner component with a guard for the given feature key.
+  # If the feature is not enabled, it will not render the given block.
+  def with_enterprise_banner_guard(feature_key, **args)
+    concat(render(EnterpriseEdition::BannerComponent.new(feature_key, **args)))
+    yield if EnterpriseToken.allows_to?(feature_key)
   end
 
-  def write_trial_key_to_gon
+  def enterprise_angular_trial_inputs
     trial_key = Token::EnterpriseTrialKey.find_by(user_id: User.system.id)
-    if trial_key
-      gon.ee_trial_key = {
-        value: trial_key.value,
-        created: trial_key.created_at
-      }
+
+    if EnterpriseToken.active? || trial_key.blank?
+      enterprise_angular_static_inputs
+    else
+      enterprise_angular_static_inputs.merge(
+        trialKey: trial_key.value,
+        trialCreatedAt: trial_key.created_at.to_date.iso8601
+      )
     end
+  end
+
+  def enterprise_angular_static_inputs
+    {
+      augurUrl: OpenProject::Configuration.enterprise_trial_creation_host,
+      tokenVersion: OpenProject::Token::VERSION
+    }
   end
 
   def enterprise_token_plan_name(enterprise_token)
     plan = enterprise_token.plan.to_s
-
-    <<~LABEL.squish
-      #{I18n.t(plan, scope: [:enterprise_plans], default: plan.humanize)}
-      (#{I18n.t(:label_token_version)} #{enterprise_token.version})
-    LABEL
+    I18n.t(plan, scope: [:enterprise_plans], default: plan.humanize)
   end
 
   def enterprise_plan_additional_features(enterprise_token)

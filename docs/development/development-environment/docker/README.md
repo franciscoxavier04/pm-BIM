@@ -45,7 +45,7 @@ docker compose up -d frontend
 Optional: In case you want to develop on the OpenProject *BIM Edition* you need
 to install all the required dependencies and command line tools to convert IFC
 files into XKT files, so that the BIM models can be viewed via the *Xeokit*
-BIM viewer. As the conversions are done by background jobs you need install 
+BIM viewer. As the conversions are done by background jobs you need install
 those tools within the `worker` service:
 
 ```shell
@@ -173,7 +173,7 @@ are cached in a docker volume. Meaning that from the 2nd run onwards it will sta
 
 Wait until you see `✔ Compiled successfully.` in the frontend logs and the success message from Puma in the backend
 logs. This means both frontend and backend have come up successfully. You can now access OpenProject
-under http://localhost:3000, and via the live-reloaded under http://localhost:4200.
+under `http://localhost:3000`, and via the live-reloaded under `http://localhost:4200`.
 
 Again the first request to the server can take some time too. But subsequent requests will be a lot faster.
 
@@ -222,7 +222,7 @@ Adding additional external docker networks to the test services like `backend-te
 `docker-compose.override.yml`) breaks the functionality of the Selenium service. This results in failing tests running
 inside a Selenium context, like feature and UI tests.
 
-```
+```text
 Selenium::WebDriver::Error::UnknownError:
   unknown error: net::ERR_CONNECTION_REFUSED
     (Session info: chrome=130.0.6723.91)
@@ -474,7 +474,7 @@ Start up the docker compose service for Keycloak as follows:
 docker compose --project-directory docker/dev/keycloak up -d
 ```
 
-Once the keycloak service is started and running, you can access the keycloak instance on `https://keycloak.local` 
+Once the keycloak service is started and running, you can access the keycloak instance on `https://keycloak.local`
 and login with initial username and password as `admin`.
 
 Keycloak being an OpenID connect provider, we need to setup an OIDC integration for OpenProject.
@@ -537,3 +537,52 @@ This means that the current image is out-dated. You can update it like this:
 ```shell
 docker compose build --pull
 ```
+
+## Migrating Your Local Database Between Docker Versions
+
+When upgrading your local development stack (e.g., after pulling the latest dev branch or updating Docker images),
+you may want to preserve your PostgreSQL data. This guide outlines the correct steps to safely migrate your data.
+
+### Context
+
+The database volume may be recreated or become incompatible if you:
+- rebuild Docker images,
+- upgrade PostgreSQL,
+- change volume mounts.
+
+To avoid data loss, dump your database before tearing anything down.
+
+### Step-by-step
+
+1. Start your current environment with the existing database and backend images.
+Make sure the database service is running normally.
+2. Create a database dump using a PostgreSQL-compatible tool such as `pg_dump` or `pg_dumpall`.
+This ensures you have a consistent export of your data before making any destructive changes.
+3. Copy the resulting dump file from inside the database container to your local machine,
+so it remains accessible after removing the Docker volumes.
+
+```shell
+# Copying backup to the local machine:
+docker compose exec -T <db-container-name> pg_dump -U <db-user> <db-name> > openproject_backup.sql
+
+#or
+
+docker compose exec -T <db-container-name> pg_dumpall -U <db-user> > openproject_full_backup.sql
+```
+4. Shut down the Docker stack. If you want a clean reset, make sure to remove the database volume.
+5. Update the codebase by pulling the latest changes from the dev branch.
+You may also want to update Docker base images at this stage.
+6. Rebuild the backend image to ensure it’s aligned with the current code and dependency versions.
+7. Start only the database service, allowing it to initialize with a clean or migrated volume, depending on your setup.
+8. Copy your previously saved database dump back into the container and restore it into the PostgreSQL instance
+or load the dump from local machine. This will rehydrate the new database with your old data.
+```shell
+# Copying backup from the local machine:
+docker compose cp openproject_backup.sql <db-container-name>:/tmp/openproject_backup.sql
+
+# Load dump to the DB
+docker compose exec -T <db-container-name> psql -U <db-user> <db-name> -f /tmp/openproject_backup.sql
+```
+9. Start the remaining services (backend, frontend, etc.) using the standard setup process. The stack should now function as expected, with your previous data restored and the environment updated.
+
+

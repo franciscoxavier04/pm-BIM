@@ -56,7 +56,6 @@ module WorkPackages
         def wrapper_data_attributes
           {
             controller: "work-packages--activities-tab--item",
-            "application-target": "dynamic",
             "work-packages--activities-tab--item-activity-url-value": activity_url(journal)
           }
         end
@@ -158,7 +157,6 @@ module WorkPackages
         def quote_action_data_attributes # rubocop:disable Metrics/AbcSize
           {
             controller: quote_comments_stimulus_controller,
-            "application-target": "dynamic",
             action: "click->#{quote_comments_stimulus_controller}#quote:prevent",
             quote_comments_stimulus_controller("-content-param") => journal.notes,
             quote_comments_stimulus_controller("-user-id-param") => journal.user_id,

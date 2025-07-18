@@ -65,9 +65,11 @@ export class OpAttachmentListItemComponent extends UntilDestroyedMixin implement
 
   @Input() public showTimestamp = true;
 
+  @Input() public showDelete = true;
+
   @Output() public removeAttachment = new EventEmitter<void>();
 
-  @ViewChild('avatar') avatar:ElementRef;
+  @ViewChild('avatar') avatar:ElementRef<HTMLDivElement>;
 
   static imageFileExtensions:string[] = ['jpeg', 'jpg', 'gif', 'bmp', 'png'];
 

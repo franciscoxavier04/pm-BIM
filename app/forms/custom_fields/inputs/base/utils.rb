@@ -27,6 +27,8 @@
 #++
 
 module CustomFields::Inputs::Base::Utils
+  delegate :attribute_name, to: :@custom_field
+
   def base_input_attributes
     {
       name:,
@@ -34,7 +36,8 @@ module CustomFields::Inputs::Base::Utils
       value:,
       required: required?,
       invalid: invalid?,
-      validation_message:
+      validation_message:,
+      help_text_options: { attribute_name: }
     }
   end
 
@@ -55,7 +58,7 @@ module CustomFields::Inputs::Base::Utils
   end
 
   def qa_field_name
-    @custom_field.attribute_name(:kebab_case)
+    attribute_name(:kebab_case)
   end
 
   # used within autocompleter inputs

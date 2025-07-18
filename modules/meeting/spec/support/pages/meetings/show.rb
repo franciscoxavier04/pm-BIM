@@ -131,7 +131,7 @@ module Pages::Meetings
     end
 
     def add_agenda_item_to_section(section:, type: MeetingAgendaItem, save: true, &)
-      select_section_action(section, type.model_name.human)
+      select_section_action(section, "Add #{type.model_name.human.downcase}")
 
       within("#meeting-sections-show-component-#{section.id}") do
         in_agenda_form do
@@ -153,7 +153,7 @@ module Pages::Meetings
     end
 
     def in_agenda_form(&)
-      page.within("#meeting-agenda-items-form-component", &)
+      page.within("#meeting-agenda-items-form-component-new", &)
     end
 
     def assert_agenda_order!(*titles)
@@ -165,12 +165,16 @@ module Pages::Meetings
 
     def remove_agenda_item(item)
       accept_confirm(I18n.t("text_are_you_sure")) do
-        action = item.work_package ? I18n.t(:label_agenda_item_remove) : I18n.t(:button_delete)
+        action = item.work_package ? wp_agenda_item_delete_label(item) : I18n.t(:button_delete)
         select_action(item, action)
       end
 
       title = item.work_package ? item.work_package.subject : item.title
       expect_no_agenda_item(title:)
+    end
+
+    def wp_agenda_item_delete_label(item)
+      item.in_backlog? ? I18n.t(:label_agenda_item_remove_from_backlog) : I18n.t(:label_agenda_item_remove_from_agenda)
     end
 
     def expect_agenda_item(title:)
@@ -226,9 +230,8 @@ module Pages::Meetings
           page.find_test_selector("op-meeting-agenda-actions").click
         end
         page.find(".Overlay")
+        page.within(".Overlay", &)
       end
-
-      page.within(".Overlay", &)
     end
 
     def select_outcome_action(action)
@@ -353,7 +356,7 @@ module Pages::Meetings
     end
 
     def add_agenda_item_to_backlog(type: MeetingAgendaItem, &)
-      select_backlog_action(type.model_name.human)
+      select_backlog_action("Add #{type.model_name.human.downcase}")
 
       within("#meeting-sections-backlogs-container-component") do
         in_agenda_form do
@@ -367,10 +370,9 @@ module Pages::Meetings
       retry_block do
         click_on_backlog_menu
         page.find(".Overlay")
-      end
-
-      page.within(".Overlay") do
-        click_on action
+        page.within(".Overlay") do
+          click_on action
+        end
       end
     end
 
@@ -419,8 +421,12 @@ module Pages::Meetings
     end
 
     def expect_item_edit_field_error(item, text)
-      page.within("#meeting-agenda-items-form-component-#{item.id}") do
-        expect(page).to have_css(".FormControl-inlineValidation", text:)
+      # retry because the #meeting-agenda-items-form-component-<id> may not be
+      # updated yet and then becomes stale while checking for field error.
+      retry_block do
+        page.within("#meeting-agenda-items-form-component-#{item.id}") do
+          expect(page).to have_css(".FormControl-inlineValidation", text:)
+        end
       end
     end
 
@@ -532,7 +538,7 @@ module Pages::Meetings
     end
 
     def edit_section(section, &)
-      select_section_action(section, "Edit")
+      select_section_action(section, "Rename section")
 
       page.within_test_selector("meeting-section-header-container-#{section.id}", &)
     end

@@ -34,6 +34,7 @@ module WorkPackage::PDFExport::Export::Markdown
   class MD2PDFExport
     include MarkdownToPDF::Core
     include MarkdownToPDF::Parser
+    include WorkPackage::PDFExport::Common::Common
 
     def initialize(styling_yml, pdf, hyphenation_language)
       @styles = MarkdownToPDF::Styles.new(styling_yml)
@@ -68,9 +69,8 @@ module WorkPackage::PDFExport::Export::Markdown
       @hyphens.hyphenate(text)
     end
 
-    def handle_mention_html_tag(tag, node, opts)
+    def handle_user_mention_html_tag(tag, node, opts)
       if tag.text.blank?
-        # <mention class="mention" data-id="46012" data-type="work_package" data-text="#46012"></mention>
         # <mention class="mention" data-id="3" data-type="user" data-text="@Some User">
         text = tag.attr("data-text")
         if text.present? && !node.next.respond_to?(:string_content) && node.next.string_content != text
@@ -78,7 +78,72 @@ module WorkPackage::PDFExport::Export::Markdown
         end
       end
       # <mention class="mention" data-id="3" data-type="user" data-text="@Some User">@Some User</mention>
+      # the node text is used.
       []
+    end
+
+    def handle_wp_mention_html_tag(tag, node, opts)
+      # <mention class="mention" data-id="185" data-type="work_package" data-text="#185">#185</mention>
+      # <mention class="mention" data-id="185" data-type="work_package" data-text="##185">##185</mention>
+      # <mention class="mention" data-id="185" data-type="work_package" data-text="###185">###185</mention>
+      next_node = node&.next # there is no markdown node in a html table
+      if next_node && next_node.type == :text && next_node.respond_to?(:string_content)
+        # clear the text content, so it does not get rendered
+        next_node.string_content = ""
+      end
+      wp_mention_macro(tag.attr("data-text") || "", tag.attr("data-id") || "", opts)
+    end
+
+    def expand_wp_mention(work_package, content)
+      detail_level = content.count("#")
+      return content if detail_level == 1
+
+      # ##1234: {Type} #{ID}: {Subject}
+      content = "#{work_package.type} ##{work_package.id}: #{work_package.subject}"
+      return content if detail_level == 2
+
+      # ###1234: {Status} {Type} #{ID}: {Subject} ({Start Date} - {End Date})
+      "#{work_package.status.name} #{content}#{work_package_dates(work_package)}"
+    end
+
+    def wp_mention_macro(content, id, opts)
+      id = id[/\d+/]
+      return [text_hash(content, opts)] if id.blank?
+
+      work_package = WorkPackage.find_by(id: id)
+      return [text_hash(content, opts)] unless work_package&.visible?
+
+      content = expand_wp_mention(work_package, content)
+      [text_hash(content, opts.merge({ link: url_helpers.work_package_url(id) }))]
+    end
+
+    def work_package_dates(work_package)
+      return "" if work_package.start_date.blank? && work_package.due_date.blank?
+
+      if work_package.due_date.present? && work_package.start_date == work_package.due_date
+        return " (#{format_date(work_package.due_date)})"
+      end
+
+      work_package_date_range(work_package)
+    end
+
+    def work_package_date_range(work_package)
+      content = [
+        work_package.start_date.present? ? format_date(work_package.start_date) : I18n.t("label_no_start_date"),
+        work_package.due_date.present? ? format_date(work_package.due_date) : I18n.t("label_no_due_date")
+      ].join(" - ")
+      " (#{content})"
+    end
+
+    def handle_mention_html_tag(tag, node, opts)
+      type = tag.attr("data-type")
+      if type == "work_package"
+        handle_wp_mention_html_tag(tag, node, opts)
+      elsif type == "user"
+        handle_user_mention_html_tag(tag, node, opts)
+      else
+        []
+      end
     end
 
     def handle_unknown_inline_html_tag(tag, node, opts)
@@ -92,10 +157,14 @@ module WorkPackage::PDFExport::Export::Markdown
       [result, opts]
     end
 
-    def handle_unknown_html_tag(_tag, _node, opts)
-      # unknown/unsupported html tags eg. <foo>hi</foo> are ignored
-      # but scanned for supported or text children [true, ...]
-      [true, opts]
+    def handle_unknown_html_tag(tag, node, opts)
+      if tag.name == "mention"
+        handle_mention_html_tag(tag, node, opts)
+      else
+        # unknown/unsupported html tags eg. <foo>hi</foo> are ignored
+        # but scanned for supported or text children [true, ...]
+        [true, opts]
+      end
     end
 
     def warn(text, element, node)
@@ -103,10 +172,16 @@ module WorkPackage::PDFExport::Export::Markdown
     end
   end
 
-  def write_markdown!(work_package, markdown, styling_yml)
-    md2pdf = MD2PDFExport.new(styling_yml, pdf, hyphenation_language)
-    md2pdf.draw_markdown(markdown, pdf, ->(src) {
-      with_images? ? attachment_image_filepath(work_package, src) : nil
-    })
+  def markdown_writer(styling_yml)
+    MD2PDFExport.new(styling_yml, pdf, hyphenation_language)
+  end
+
+  def write_markdown!(markdown, styling_yml)
+    return if markdown.blank?
+
+    markdown_writer(styling_yml)
+      .draw_markdown(markdown, pdf, ->(src) {
+        with_images? ? attachment_image_filepath(src) : nil
+      })
   end
 end

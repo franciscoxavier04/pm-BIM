@@ -29,7 +29,7 @@
 class Roles::CreateService < BaseServices::Create
   private
 
-  def perform(params)
+  def perform
     copy_workflow_id = params.delete(:copy_workflow_from)
 
     super_call = super

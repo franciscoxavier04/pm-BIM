@@ -38,7 +38,6 @@ import { TabDefinition } from 'core-app/shared/components/tabs/tab.interface';
   templateUrl: '../../../shared/components/tabs/scrollable-tabs/scrollable-tabs.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export class GlobalSearchTabsComponent extends ScrollableTabsComponent implements OnInit, OnDestroy {
   private currentTabSub:Subscription;
 

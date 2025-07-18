@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Saml
   class ProvidersController < ::ApplicationController
     include OpTurbo::ComponentStream
@@ -106,7 +108,7 @@ module Saml
       if call.success?
         flash[:notice] = I18n.t(:notice_successful_delete)
       else
-        flash[:error] = I18n.t(:error_failed_to_delete_entry)
+        flash[:error] = call.errors.full_messages
       end
 
       redirect_to action: :index

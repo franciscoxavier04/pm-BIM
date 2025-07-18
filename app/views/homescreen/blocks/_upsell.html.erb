@@ -1,12 +1,15 @@
-<div class="widget-box--blocks--upsell-container"
-     style="background-image: url(<%= image_path("enterprise/homescreen.png") %>)">
+<div class="widget-box--blocks--upsell-container">
   <div class="widget-box--blocks--upsell-text">
     <%=
       render(Primer::OpenProject::FlexLayout.new(align_items: :center, mb: 3)) do |title_flex|
         title_flex.with_column do
-          render(Primer::Beta::Octicon.new(icon: :"op-enterprise-addons",
-                                           size: :medium,
-                                           classes: "upsell-colored"))
+          render(
+            Primer::Beta::Octicon.new(
+              icon: :"op-enterprise-addons",
+              size: :medium,
+              classes: "upsell-colored"
+            )
+          )
         end
 
         title_flex.with_column(ml: 2) do
@@ -15,12 +18,17 @@
       end
     %>
 
-    <p class="widget-box--blocks--upsell-description">
-      <%= t("ee.upsell.homescreen_description") %>
-    </p>
-    <p class="widget-box--blocks--upsell-description">
-      <%= t("ee.upsell.homescreen_subline") %>
-    </p>
+    <div class="widget-box--blocks--upsell-description">
+      <p>
+        <%= t("ee.upsell.homescreen_description") %>
+      </p>
+      <p>
+        <%= t("ee.upsell.homescreen_subline") %>
+      </p>
+    </div>
+
+    <%= render EnterpriseEdition::UpsellButtonsComponent.new(nil) %>
   </div>
-  <%= render EnterpriseEdition::UpsellButtonsComponent.new(nil) %>
+  <div class="widget-box--blocks--upsell-image"
+       style="background-image: url(<%= image_path("enterprise/homescreen.png") %>)"></div>
 </div>

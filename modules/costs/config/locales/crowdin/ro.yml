@@ -31,6 +31,9 @@ ro:
         spent: "Cheltuit"
         spent_on: "Dată"
         logged_by: "Logat ca"
+        entity: Logged for
+        entity_id: Logged for
+        entity_gid: Logged for
       cost_type:
         unit: "Denumirea unității"
         unit_plural: "Numele unității pluralizate"
@@ -58,6 +61,9 @@ ro:
         start_time: Dată început
         end_time: Dată finalizare
         time: Timp
+        entity: Logged for
+        entity_id: Logged for
+        entity_gid: Logged for
     models:
       time_entry:
         one: "Înregistrarea timpului"
@@ -81,6 +87,7 @@ ro:
         time_entry:
           invalid_time: "trebuie să fie între 00:00 și 23:59."
           cannot_log_for_this_work_package: "Cannot log time for this work package."
+          duplicate_ongoing: "An ongoing time entry already exists for this user."
         work_package:
           is_not_a_valid_target_for_cost_entries: "Pachetul de lucru #%{id} nu este o ţintă validă pentru reasocierea timpilor de lucru."
           nullify_is_not_valid_for_cost_entries: "Înregistrările de costuri nu pot fi atribuite unui proiect."
@@ -98,6 +105,7 @@ ro:
   button_log_time: "Jurnal"
   button_add_activity: "Activitate"
   button_add_time_entry: "Consum timp"
+  button_stop_timer: "Stop timer"
   caption_booked_on_project: "Rezervat pe proiect"
   caption_default: "Implicit"
   caption_default_rate_history_for: "Istoricul ratei de neplată pentru %{user}"
@@ -157,7 +165,7 @@ ro:
   label_cost: "Cost"
   label_costs: "Costuri"
   label_mandatory_fields: "Mandatory fields"
-  label_my_time_tracking: "My time tracking"
+  label_my_time_tracking: "Urmărirea timpului meu"
   label_no_time: "No time tracked"
   label_next_day: "Next day"
   label_next_week: "Săptămâna viitoare"
@@ -176,6 +184,7 @@ ro:
   label_day: "Zi"
   label_today_capitalized: "Azi"
   label_view_mode_switcher: "Change view"
+  label_timer_since: "Started at %{time}"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Ceva n-a mers bine. Vă rugăm să încercați din nou."
   notice_successful_restore: "Restaurare reușită."
@@ -183,6 +192,7 @@ ro:
   notice_cost_logged_successfully: "Costul unitar a fost înregistrat cu succes."
   notice_different_time_zones: "This user has a different time zone (%{tz}). Time will be logged using their time zone."
   notice_time_entry_update_failed: "Failed to update time entry. Errors: %{errors}"
+  notice_time_entry_delete_failed: "Failed to delete time entry. Errors: %{errors}"
   permission_edit_cost_entries: "Editarea costurilor unitare înregistrate"
   permission_edit_own_cost_entries: "Editați propriile costuri unitare contabilizate"
   permission_edit_hourly_rates: "Editați tarifele orare"
@@ -197,11 +207,13 @@ ro:
   permission_view_own_hourly_rate: "Vezi propriul tarif orar"
   permission_view_own_time_entries: "Vizualizează propriul timp consumat"
   project_module_costs: "Timp și costuri"
-  setting_allow_tracking_start_and_end_times: "Allow exact times tracking"
+  setting_allow_tracking_start_and_end_times: "Allow start and finish times"
   setting_costs_currency: "Monedă"
   setting_costs_currency_format: "Format monedă"
-  setting_enforce_tracking_start_and_end_times: "Require exact times"
-  setting_enforce_without_allow: "Requiring exact times is not possible without allowing them"
+  setting_enforce_tracking_start_and_end_times: "Require start and finish times"
+  setting_enforce_without_allow: "Requiring start and finish times is not possible without allowing them"
+  setting_allow_tracking_start_and_end_times_caption: "Enables entering start and finish times when logging time."
+  setting_enforce_tracking_start_and_end_times_caption: "Makes entering start and finish times mandatory when logging time."
   text_assign_time_and_cost_entries_to_project: "Atribuiți orele și costurile raportate la proiect"
   text_destroy_cost_entries_question: "%{cost_entries} au fost raportate pe pachetele de lucru pe care urmează să le ștergeți. Ce doriți să faceți?"
   text_destroy_time_and_cost_entries: "Ștergeți orele și costurile raportate"

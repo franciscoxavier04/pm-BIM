@@ -33,34 +33,47 @@ require "spec_helper"
 RSpec.describe "Authentication Settings" do
   shared_let(:admin) { create(:admin) }
 
+  let(:registration_page) { Pages::Admin::Authentication::Registration.new }
+
   before do
     login_as(admin)
   end
 
   describe "self registration settings" do
-    it "allows changing self registration options" do
-      visit admin_settings_authentication_path(tab: "registration")
+    it "allows changing self registration options", :js do
+      registration_page.visit!
 
-      # Test changing to "0" (disabled)
       choose I18n.t(:setting_self_registration_disabled)
-      click_button "Save"
-      expect(page).to have_field("settings[self_registration]",
-                                 with: Setting::SelfRegistration.value(key: :disabled))
+      registration_page.expect_hidden_unsupervised_self_registration_warning
+      registration_page.save
+      Setting.clear_cache
+      expect(Setting::SelfRegistration.disabled?).to be(true)
+      registration_page.expect_self_registration_selected(:disabled)
+      registration_page.expect_hidden_unsupervised_self_registration_warning
 
       choose I18n.t(:setting_self_registration_activation_by_email)
-      click_button "Save"
-      expect(page).to have_field("settings[self_registration]",
-                                 with: Setting::SelfRegistration.value(key: :activation_by_email))
+      registration_page.expect_visible_unsupervised_self_registration_warning
+      registration_page.save
+      Setting.clear_cache
+      expect(Setting::SelfRegistration.by_email?).to be(true)
+      registration_page.expect_self_registration_selected(:activation_by_email)
+      registration_page.expect_visible_unsupervised_self_registration_warning
 
       choose I18n.t(:setting_self_registration_manual_activation)
-      click_button "Save"
-      expect(page).to have_field("settings[self_registration]",
-                                 with: Setting::SelfRegistration.value(key: :manual_activation))
+      registration_page.expect_hidden_unsupervised_self_registration_warning
+      registration_page.save
+      Setting.clear_cache
+      expect(Setting::SelfRegistration.manual?).to be(true)
+      registration_page.expect_self_registration_selected(:manual_activation)
+      registration_page.expect_hidden_unsupervised_self_registration_warning
 
       choose I18n.t(:setting_self_registration_automatic_activation)
-      click_button "Save"
-      expect(page).to have_field("settings[self_registration]",
-                                 with: Setting::SelfRegistration.value(key: :automatic_activation))
+      registration_page.expect_visible_unsupervised_self_registration_warning
+      registration_page.save
+      Setting.clear_cache
+      expect(Setting::SelfRegistration.automatic?).to be(true)
+      registration_page.expect_self_registration_selected(:automatic_activation)
+      registration_page.expect_visible_unsupervised_self_registration_warning
     end
   end
 end

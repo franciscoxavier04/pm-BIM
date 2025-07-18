@@ -9,6 +9,7 @@
 class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
   FRAME_ID = "work-package-relations-tab-content"
   ADD_RELATION_ACTION_MENU = "add-relation-action-menu"
+  ADD_RELATION_SUB_MENU = "add-relation-sub-menu"
   ADD_CHILD_ACTION_MENU = "add-child-action-menu"
   I18N_NAMESPACE = "work_package_relations_tab"
 
@@ -17,12 +18,15 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
     Relation::TYPE_CHILD
   ].freeze
 
-  ADD_RELATION_MENU_TYPES = [
-    *ADD_CHILD_MENU_TYPES,
+  FIRST_LEVEL_RELATION_MENU_TYPES = [
     Relation::TYPE_RELATES,
     Relation::TYPE_FOLLOWS,
     Relation::TYPE_PRECEDES,
-    Relation::TYPE_PARENT,
+    *ADD_CHILD_MENU_TYPES,
+    Relation::TYPE_PARENT
+  ].freeze
+
+  SECOND_LEVEL_RELATION_MENU_TYPES = [
     Relation::TYPE_DUPLICATES,
     Relation::TYPE_DUPLICATED,
     Relation::TYPE_BLOCKS,
@@ -200,7 +204,6 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
     if scroll_to?(item)
       {
         controller: "work-packages--relations-tab--scroll",
-        application_target: "dynamic",
         "work-packages--relations-tab--scroll-target": "scrollToRow"
       }
     end

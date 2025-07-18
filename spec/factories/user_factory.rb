@@ -31,12 +31,11 @@
 FactoryBot.define do
   factory :user, parent: :principal, class: "User" do
     firstname { "Bob" }
-    lastname { "Bobbit" }
+    sequence(:lastname) { |n| "Bobbit#{n}" }
     sequence(:login) { |n| "bob#{n}" }
     sequence(:mail) { |n| "bobmail#{n}.bobbit@bob.com" }
     password { "adminADMIN!" }
     password_confirmation { "adminADMIN!" }
-    identity_url { nil }
 
     transient do
       preferences { {} }
@@ -65,7 +64,8 @@ FactoryBot.define do
       end
 
       if factory.authentication_provider.present?
-        user.update!(identity_url: "#{factory.authentication_provider.slug}:#{factory.external_id}")
+        user.user_auth_provider_links.create!(auth_provider: factory.authentication_provider,
+                                              external_id: factory.external_id)
       end
     end
 
@@ -79,7 +79,7 @@ FactoryBot.define do
       end
     end
 
-    factory :admin do
+    factory :admin, parent: :user, class: "User" do
       firstname { "OpenProject" }
       sequence(:lastname) { |n| "Admin#{n}" }
       sequence(:login) { |n| "admin#{n}" }

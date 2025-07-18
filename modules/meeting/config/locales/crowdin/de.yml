@@ -45,7 +45,7 @@ de:
       meeting_agenda_item:
         title: "Titel"
         author: "Autor"
-        duration_in_minutes: "Min."
+        duration_in_minutes: "Dauer"
         description: "Anmerkungen"
         presenter: "Referent"
       meeting_section:
@@ -182,6 +182,7 @@ de:
       agenda_items: "Tagesordnungspunkte kopieren"
       agenda_text: "Tagesordnung der alten Besprechung kopieren"
       participants: "Liste der Teilnehmer kopieren"
+      to_clipboard: "In Zwischenablage kopieren"
     email:
       send_emails: "E-Mail an Teilnehmer"
       send_invitation_emails: >
@@ -236,12 +237,38 @@ de:
     blankslate:
       title: "Keine Besprechungen anzuzeigen"
       desc: "Es gibt keine Besprechungen, die die Kriterien des aktiven Filters erfüllen."
+    label_export_pdf: "PDF exportieren"
+    export:
+      your_meeting_export: "Besprechung wird exportiert"
+    export_pdf_dialog:
+      title: PDF exportieren
+      description: Erstellen Sie eine druckbare PDF-Datei dieser Besprechung im aktuellen Zustand.
+      include_participants:
+        label: Liste der Teilnehmer einfügen
+        caption: Eine Liste der Teilnehmer wird oberhalb der Agenda ausgegeben.
+      include_attachments:
+        label: Liste der Anhänge einfügen
+        caption: Eine Liste mit den Dateinamen von Anhängen wird am Ende angehängt.
+      include_backlog:
+        label: Backlog einfügen
+        caption: Einträge im Backlog der Besprechung sind standardmäßig nicht Teil des Exports, aber Sie können sie optional einbinden.
+      include_outcomes:
+        label: Ergebnisse einfügen
+        caption: Wenn Ihre Ergebnisse vertrauliche Informationen enthalten, können Sie wählen, diese nicht in den Export aufzunehmen.
+      footer_text:
+        label: Text in der Fußzeile
+        caption: Dieser Text wird auf jeder Seite in der rechten Ecke der Fußzeile angezeigt.
+      submit_button: Download
   meeting_section:
     untitled_title: "Unbenannter Abschnitt"
     delete_confirmation: "Wenn Sie den Abschnitt löschen, werden auch alle zugehörigen Tagesordnungspunkte gelöscht. Möchten Sie fortfahren?"
     placeholder_title: "Neuer Abschnitt"
     empty_text: "Neue Agendapunkte hierhin bewegen oder neu erstellen"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Unterschiedliche Zeitzone"
+      description: >
+        Die unten stehenden Daten beziehen sich auf die Zeitzone der Terminserie (%{actual_zone}), nicht auf Ihre lokale Zeitzone (%{user_zone}).
     ended_blankslate:
       title: "Terminserie beendet"
       message: "Diese Terminserie ist beendet. Es finden keine weiteren Ereignisse statt. "
@@ -327,7 +354,7 @@ de:
   permission_delete_meetings: "Besprechungen löschen"
   permission_view_meetings: "Besprechungen ansehen"
   permission_manage_agendas: "Agenden anlegen/bearbeiten"
-  permission_manage_agendas_explanation: "Ermöglicht das Bearbeiten des Inhalts der dynamischen Meetings."
+  permission_manage_agendas_explanation: "Ermöglicht das Erstellen, Bearbeiten und Entfernen von Tagesordnungspunkten"
   permission_manage_outcomes: "Ergebnisse verwalten"
   permission_send_meeting_invites_and_outcomes: "Besprechungseinladungen und -ergebnisse an Teilnehmer senden"
   project_module_meetings: "Besprechungen"
@@ -356,7 +383,9 @@ de:
   label_meeting_index_later: "Nächste Woche und später"
   label_agenda_items: "Tagesordnungspunkte"
   label_agenda_items_reordered: "neu geordnet"
-  label_agenda_item_remove: "Von der Tagesordnung entfernen"
+  label_agenda_item_add: "Tagesordnungspunkt hinzufügen"
+  label_agenda_item_remove_from_agenda: "Von der Tagesordnung entfernen"
+  label_agenda_item_remove_from_backlog: "Aus dem Backlog entfernen"
   label_agenda_item_undisclosed_wp: "Arbeitspaket #%{id} ist nicht sichtbar"
   label_agenda_item_deleted_wp: "Referenz auf ein gelöschtes Arbeitspaket"
   label_agenda_item_actions: "Aktionen zu Tagesordnungspunkten"
@@ -369,7 +398,9 @@ de:
   label_agenda_item_move_down: "Nach unten verschieben"
   label_agenda_item_add_notes: "Notiz hinzufügen"
   label_agenda_item_add_outcome: "Ergebnis hinzufügen"
+  label_agenda_item_work_package_add: "Arbeitspaket hinzufügen"
   label_agenda_item_work_package: "Tagesordnungspunkt Arbeitspaket"
+  label_section_rename: "Abschnitt umbenennen"
   label_agenda_outcome: "Ergebnis"
   label_agenda_outcome_actions: "Aktionen für die Ergebnisse von Agendapunkten"
   label_agenda_outcome_edit: "Ergebnis bearbeiten"

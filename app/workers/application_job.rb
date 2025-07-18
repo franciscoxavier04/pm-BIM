@@ -33,7 +33,6 @@ class ApplicationJob < ActiveJob::Base
   include SharedJobSetup
   include JobPriority
 
-
   def job_scheduled_at
     GoodJob::Job.where(id: job_id).pick(:scheduled_at)
   end
