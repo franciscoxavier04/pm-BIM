@@ -242,19 +242,19 @@ tr:
       your_meeting_export: "Toplantı dışa aktarılıyor"
     export_pdf_dialog:
       title: PDF olarak dışa aktar
-      description: Generate a printable PDF file of this meeting at the current state.
+      description: Mevcut hali ile toplantının yazdırılabilir bir PDF çıktısını üret.
       include_participants:
         label: Katılımcı listesini içer
-        caption: A list of participants will be preset above the meeting agenda.
+        caption: Toplantı gündeminin üstünde katılımcıların listesi gösterilecektir.
       include_attachments:
-        label: Eklenti listesini içer
-        caption: A list containing the filenames of attachments will be appended at the end.
+        label: Eklerin listesini içer
+        caption: En sonda eklerin dosya isimlerinin yer aldığı bir liste eklenecektir.
       include_backlog:
         label: Birikmiş işleri içer
-        caption: Backlog elements are not normally considered part of a meeting occurrence but you can choose to include them.
+        caption: Birikmiş işler normalde bir toplantının parçası olarak kabul edilmez, ancak bunları dahil etmeyi seçebilirsiniz.
       include_outcomes:
         label: Gündem sonuçlarını içer
-        caption: If your agenda outcomes contain confidential information, you can choose to not include them in the export.
+        caption: Eğer toplantı sonuçları gizli bir bilgiye sahip ise bunları dışarı aktarırken dahil edilmemesini seçebilirsiniz.
       footer_text:
         label: Altbilgi metni
         caption: Bu metin her sayfada altbilginin sağında görünecektir.
@@ -412,10 +412,10 @@ tr:
   text_backlog_clear_error: "Birikmiş işler temizlenirken hata meydana geldi."
   label_agenda_backlog: "Gündemdeki birikmiş işler"
   text_agenda_backlog: >
-    Bu birikmiş iş bu toplantıya özgüdür. Ögeleri toplantı gündemine eklemek ya da gündemden çıkartmak için ögeleri içeri ya da dışarı sürükleyebilirsiniz.
-  label_agenda_backlog_clear_title: "Gündem birikmiş iş listesi temizlensin mi?"
+    Birikmiş bu işler bu toplantıya özgüdür. Gündeme eklemek yada gündemden çıkarmak için ögeleri sürekleyebilirsiniz.
+  label_agenda_backlog_clear_title: "Gündemdeki birikmiş iş listesi temizlensin mi?"
   text_agenda_backlog_clear_description: >
-    Are you sure you want to remove all items currently in the agenda backlog? This action is not reversible.
+    Şu anda gündemdeki birikmiş iş listesinde bulunan tüm ögeleri kaldırmak istediğinizden emin misiniz? Bu işlem geri alınamaz.
   label_series_backlog: "Toplantı serisinin birikmiş iş listesi"
   text_series_backlog: >
     Birikmiş işler bu gümden serisisin tüm toplantılarıyla paylaşılmıştır. Seçtiğiniz bir toplantıya eklemek veya toplantıdan çıkarmak için ögeleri içeri veya dışarı sürükleyebilirsiniz.

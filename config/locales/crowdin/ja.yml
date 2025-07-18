@@ -121,7 +121,7 @@ ja:
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -2968,7 +2968,7 @@ ja:
   label_password_rule_special: "特殊文字"
   label_password_rule_uppercase: "大文字"
   label_path_encoding: "パスのエンコード"
-  label_per_page: "1ページあたりの件数"
+  label_per_page: "Per page:"
   label_people: "人"
   label_permissions: "権限"
   label_permissions_report: "権限のレポート"

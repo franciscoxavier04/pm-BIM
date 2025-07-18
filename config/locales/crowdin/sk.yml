@@ -121,7 +121,7 @@ sk:
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -3099,7 +3099,7 @@ sk:
   label_password_rule_special: "Špeciálne znaky"
   label_password_rule_uppercase: "Veľké písmená"
   label_path_encoding: "Kódovanie cesty"
-  label_per_page: "Na stranu"
+  label_per_page: "Per page:"
   label_people: "Ľudia"
   label_permissions: "Oprávnenia"
   label_permissions_report: "Výkaz oprávnení"

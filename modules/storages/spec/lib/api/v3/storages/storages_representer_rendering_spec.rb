@@ -334,7 +334,7 @@ RSpec.describe API::V3::Storages::StorageRepresenter, "rendering" do
     end
   end
 
-  context "if file storage has provider type OneDrive/SharePoint" do
+  context "if file storage has provider type OneDrive" do
     let(:storage) { build_stubbed(:one_drive_storage, oauth_client: oauth_client_credentials) }
 
     it_behaves_like "common file storage properties"
@@ -347,7 +347,7 @@ RSpec.describe API::V3::Storages::StorageRepresenter, "rendering" do
       end
     end
 
-    describe "properties (OneDrive/SharePoint only)" do
+    describe "properties (OneDrive only)" do
       it_behaves_like "property", :tenantId do
         let(:value) { storage.tenant_id }
       end

@@ -121,7 +121,7 @@ hi:
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -3012,7 +3012,7 @@ hi:
   label_password_rule_special: "विशेष अक्षर"
   label_password_rule_uppercase: "अपरकेस"
   label_path_encoding: "पथ एंकोडिंग"
-  label_per_page: "प्रति पृष्ठ"
+  label_per_page: "Per page:"
   label_people: "People"
   label_permissions: "अनुमतियाँ"
   label_permissions_report: "अनुमतियाँ रिपोर्ट"

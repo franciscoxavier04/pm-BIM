@@ -121,7 +121,7 @@ ro:
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -3056,7 +3056,7 @@ ro:
   label_password_rule_special: "Caractere speciale"
   label_password_rule_uppercase: "Majuscule"
   label_path_encoding: "Codificare cale"
-  label_per_page: "Pe pagină"
+  label_per_page: "Per page:"
   label_people: "Persoane"
   label_permissions: "Drepturi"
   label_permissions_report: "Raport drepturi"

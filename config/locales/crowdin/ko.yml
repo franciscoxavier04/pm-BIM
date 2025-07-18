@@ -121,7 +121,7 @@ ko:
         one_time_hint: "이번에만 클라이언트 비밀번호가 표시됩니다. 지금 이 클라이언트 비밀번호를 복사해야 합니다."
       created_token_dialog_component:
         title: "토큰 생성됨"
-        heading: "토큰이 생성되었습니다"
+        heading: "A token has been generated"
         label_token: "토큰"
         one_time_hint: "이번에만 이 토큰이 표시됩니다. 지금 이 토큰을 복사해야 합니다."
       delete_scim_client_dialog_component:
@@ -2970,7 +2970,7 @@ ko:
   label_password_rule_special: "특수 문자"
   label_password_rule_uppercase: "대문자"
   label_path_encoding: "경로 인코딩"
-  label_per_page: "페이지당"
+  label_per_page: "Per page:"
   label_people: "사용자"
   label_permissions: "권한"
   label_permissions_report: "권한 보고서"

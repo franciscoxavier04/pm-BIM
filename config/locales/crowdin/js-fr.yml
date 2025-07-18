@@ -643,11 +643,10 @@ fr:
       title: "Confirmez votre mot de passe pour continuer"
     pagination:
       no_other_page: "Vous êtes sur la seule page."
+      pages_skipped: "Pages skipped."
       page_navigation: "Navigation par pagination"
       per_page_navigation: 'Sélection des éléments par page'
       pages:
-        next: "Page suivante"
-        previous: "Page précédente"
         page_number: Page %{number}
         show_per_page: Afficher %{number} par page
     placeholders:

@@ -121,7 +121,7 @@ hr:
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -3056,7 +3056,7 @@ hr:
   label_password_rule_special: "Posebni znakovi"
   label_password_rule_uppercase: "Velika slova"
   label_path_encoding: "Staza kodiranja"
-  label_per_page: "Po stranici"
+  label_per_page: "Per page:"
   label_people: "Osobe"
   label_permissions: "Dozvole"
   label_permissions_report: "Dozvole izvješća"

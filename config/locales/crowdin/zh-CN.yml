@@ -121,7 +121,7 @@ zh-CN:
         one_time_hint: "这将是您看到客户端密钥的唯一机会。请务必立即复制。"
       created_token_dialog_component:
         title: "令牌已创建"
-        heading: "已生成一个令牌"
+        heading: "A token has been generated"
         label_token: "令牌"
         one_time_hint: "这将是您看到此令牌的唯一机会。请务必立即复制。"
       delete_scim_client_dialog_component:
@@ -2966,7 +2966,7 @@ zh-CN:
   label_password_rule_special: "特殊字符"
   label_password_rule_uppercase: "大写字母"
   label_path_encoding: "路径编码"
-  label_per_page: "每页"
+  label_per_page: "Per page:"
   label_people: "人员"
   label_permissions: "权限"
   label_permissions_report: "权限报告"

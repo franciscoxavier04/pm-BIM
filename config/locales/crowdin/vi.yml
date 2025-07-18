@@ -121,7 +121,7 @@ vi:
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -2970,7 +2970,7 @@ vi:
   label_password_rule_special: "Ký tự đặc biệt"
   label_password_rule_uppercase: "Chữ hoa"
   label_path_encoding: "Mã hóa đường dẫn"
-  label_per_page: "Mỗi trang"
+  label_per_page: "Per page:"
   label_people: "Người dùng"
   label_permissions: "Phân Quyền"
   label_permissions_report: "Báo cáo phân quyền"

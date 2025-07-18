@@ -121,7 +121,7 @@ et:
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -3013,7 +3013,7 @@ et:
   label_password_rule_special: "Erimärgid"
   label_password_rule_uppercase: "Suurtäheline"
   label_path_encoding: "Teeraja kodeering"
-  label_per_page: "Lehekülje kohta"
+  label_per_page: "Per page:"
   label_people: "Inimesed"
   label_permissions: "Õigused"
   label_permissions_report: "Õiguste aruanne"

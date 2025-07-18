@@ -169,7 +169,7 @@ cs:
               not_found: "%{current_path} nebyl nalezen."
             set_folders_permissions:
               permission_not_set: nelze nastavit oprávnění na %{path}.
-          error: An unexpected error occurred. Please ensure that OneDrive/SharePoint is reachable and check OpenProject worker logs for more information
+          error: An unexpected error occurred. Please ensure that OneDrive is reachable and check OpenProject worker logs for more information
           not_allowed: Aplikaci OpenProject nebyl povolen přístup k vaší jednotce OneDrive. Zkontrolujte prosím oprávnění nastavená v aplikaci Azure.
           unauthorized: OpenProject se nepodařilo synchronizovat s OneDrive. Zkontrolujte prosím konfiguraci úložiště a aplikace Azure
           user_does_not_exist: "%{user} neexistuje v Nextcloudu."
@@ -188,7 +188,7 @@ cs:
     configuration_checks:
       oauth_client_incomplete:
         nextcloud: Povolit OpenProject přístup k Nextcloud datům pomocí OAuth.
-        one_drive: Povolit OpenProject přístup k Azure datům pomocí OAuth pro připojení OneDrive/Sharepoint.
+        one_drive: Allow OpenProject to access Azure data using OAuth to connect OneDrive.
       redirect_uri_incomplete:
         one_drive: Dokončete nastavení správným přesměrováním URI.
     confirm_replace_oauth_application: Tato akce obnoví aktuální OAuth přihlašovací údaje. Po potvrzení budete muset znovu zadat přihlašovací údaje u poskytovatele úložiště a všichni vzdálení uživatelé budou muset znovu autorizovat proti OpenProject Jste si jisti, že chcete pokračovat?
@@ -302,7 +302,7 @@ cs:
         od_drive_id_not_found: The configured drive id could not be found. Please check the configuration.
         od_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
         od_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
-        od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
+        od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive as the user did not yet link their Microsoft account.
         od_tenant_id_wrong: The configured directory (tenant) id is invalid. Please check the configuration.
         od_test_folder_exists: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
         od_unexpected_content: Nalezen neočekávaný obsah v jednotce.
@@ -368,9 +368,9 @@ cs:
       one_drive:
         application_link_text: Azure portal
         copy_redirect_uri: Kopírovat URI přesměrování
-        documentation_link_text: Dokumentace o úložištích OneDrive/SharePoint
+        documentation_link_text: OneDrive file storages documentation
         drive_id: Prosím, zkopírujte ID z požadovaného disku podle kroků %{drive_id_link_text}.
-        integration: OneDrive/SharePoint
+        integration: OneDrive
         missing_client_id_for_redirect_uri: Vyplňte hodnoty OAuth pro generování URI
         oauth_client_redirect_uri: Prosím zkopírujte tuto hodnotu do nového webového URI přesměrování pod přesměrováním URI.
         oauth_client_secret: V případě, že v pověření klienta není žádný klíč aplikace, vytvořte prosím nový.
@@ -480,8 +480,13 @@ cs:
       one_drive:
         label_oauth_client_id: Azure OAuth aplikace (klient) ID
         label_oauth_client_secret: ' utajená Hodnota klienta Azure OAuth'
-        name: OneDrive/SharePoint
+        name: OneDrive
         name_placeholder: např. OneDrive
+      share_point:
+        label_oauth_client_id: Azure OAuth Application (client) ID
+        label_oauth_client_secret: Azure OAuth Client Secret Value
+        name: SharePoint
+        name_placeholder: e.g. SharePoint
     show_attachments_toggle:
       description: Deactivating this option will hide the attachments list on the work packages files tab. The files attached in the description of a work package will still be uploaded in the internal attachments storage.
       label: Zobrazit přílohy na kartě souborů s pracovními balíčky
@@ -499,5 +504,6 @@ cs:
     successful_storage_connection: Úložiště bylo úspěšně připojeno! Nezapomeňte aktivovat úložiště v záložce Projekty pro každý požadovaný projekt.
     upsell:
       description: |-
-        Integrujte OneDrive/SharePoint jako úložiště souborů s OpenProject. Nahrávejte soubory a propojte je přímo s pracovními balíčky v projektu.
-      title: Integrace OneDrive/SharePoint
+        Integrate your OneDrive as a file storage with OpenProject. Upload files and link them directly to
+        work packages in a project.
+      title: OneDrive integration

@@ -38,7 +38,7 @@ module Storages
     shared_let(:admin) { create(:admin) }
     shared_let(:storage) do
       # Automatically Managed Project Folder Drive
-      create(:sharepoint_dev_drive_storage,
+      create(:one_drive_sandbox_storage,
              drive_id: "b!dmVLG22QlE2PSW0AqVB7UOhZ8n7tjkVGkgqLNnuw2ODRDvn3haLiQIhB5UYNdqMy",
              oauth_client_token_user: admin)
     end

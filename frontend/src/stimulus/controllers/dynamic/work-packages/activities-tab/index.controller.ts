@@ -34,6 +34,7 @@ import {
 } from 'core-app/shared/components/editor/components/ckeditor/ckeditor.types';
 import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
+import { useMeta } from 'stimulus-use';
 
 enum AnchorType {
   Comment = 'comment',
@@ -61,12 +62,13 @@ export default class IndexController extends Controller {
     unsavedChangesConfirmationMessage: String,
   };
 
-  static targets = ['journalsContainer', 'buttonRow', 'formRow', 'form', 'formSubmitButton', 'reactionButton'];
+  static targets = ['journalsContainer', 'buttonRow', 'formRow', 'form', 'editForm', 'formSubmitButton', 'reactionButton'];
 
   declare readonly journalsContainerTarget:HTMLElement;
   declare readonly buttonRowTarget:HTMLInputElement;
   declare readonly formRowTarget:HTMLElement;
   declare readonly formTarget:HTMLFormElement;
+  declare readonly editFormTargets:HTMLFormElement[];
   declare readonly formSubmitButtonTarget:HTMLButtonElement;
   declare readonly reactionButtonTargets:HTMLElement[];
 
@@ -86,6 +88,10 @@ export default class IndexController extends Controller {
   declare showConflictFlashMessageUrlValue:string;
   declare unsavedChangesConfirmationMessageValue:string;
 
+  static metaNames = ['csrf-token'];
+
+  declare readonly csrfToken:string;
+
   private updateInProgress:boolean;
   private turboRequests:TurboRequestsService;
 
@@ -95,6 +101,8 @@ export default class IndexController extends Controller {
   private ckEditorAbortController = new AbortController();
 
   async connect() {
+    useMeta(this, { suffix: false });
+
     const context = await window.OpenProject.getPluginContext();
     this.turboRequests = context.services.turboRequests;
     this.apiV3Service = context.services.apiV3Service;
@@ -217,13 +225,15 @@ export default class IndexController extends Controller {
 
     this.updateInProgress = true;
 
+    const editingJournals = this.captureEditingJournals();
+
     // Unfocus any reaction buttons that may have been focused
     // otherwise the browser will perform an auto scroll to the before focused button after the stream update was applied
     this.unfocusReactionButtons();
 
     const journalsContainerAtBottom = this.isJournalsContainerScrolledToBottom();
 
-    void this.performUpdateStreamsRequest(this.prepareUpdateStreamsUrl())
+    void this.performUpdateStreamsRequest(this.prepareUpdateStreamsUrl(editingJournals))
     .then(({ html, headers }) => {
       this.handleUpdateStreamsResponse(html, headers, journalsContainerAtBottom);
     }).catch((error) => {
@@ -233,16 +243,34 @@ export default class IndexController extends Controller {
     });
   }
 
+  private captureEditingJournals():Set<string> {
+    const editingJournals = new Set<string>();
+
+    const editForms = this.editFormTargets;
+    editForms.forEach((form) => {
+      const journalId = form.dataset.journalId;
+      if (journalId) { editingJournals.add(journalId); }
+    });
+
+    return editingJournals;
+  }
+
   private unfocusReactionButtons() {
     this.reactionButtonTargets.forEach((button) => button.blur());
   }
 
-  private prepareUpdateStreamsUrl():string {
+  private prepareUpdateStreamsUrl(editingJournals:Set<string>):string {
     const baseUrl = window.location.origin;
     const url = new URL(this.updateStreamsPathValue, baseUrl);
+
     url.searchParams.set('sortBy', this.sortingValue);
     url.searchParams.set('filter', this.filterValue);
     url.searchParams.set('last_update_timestamp', this.lastServerTimestampValue);
+
+    if (editingJournals.size > 0) {
+      url.searchParams.set('editing_journals', Array.from(editingJournals).join(','));
+    }
+
     return url.toString();
   }
 
@@ -250,7 +278,7 @@ export default class IndexController extends Controller {
     return this.turboRequests.request(url, {
       method: 'GET',
       headers: {
-        'X-CSRF-Token': (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement).content,
+        'X-CSRF-Token': this.csrfToken,
       },
     }, true); // suppress error toast in polling to avoid spamming the user when having e.g. network issues
   }

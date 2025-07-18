@@ -28,7 +28,7 @@
  * ++
  */
 
-import { ApplicationController } from 'stimulus-use';
+import { ApplicationController, useMeta } from 'stimulus-use';
 import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
 import { appendCollapsedState } from '../../../helpers/collapsible-helper';
 
@@ -38,7 +38,12 @@ export default class extends ApplicationController {
 
   declare readonly containerTarget:HTMLElement;
 
+  static metaNames = ['csrf-token'];
+
+  declare readonly csrfToken:string;
+
   async connect() {
+    useMeta(this, { suffix: false });
     const context = await window.OpenProject.getPluginContext();
     this.turboRequests = context.services.turboRequests;
   }
@@ -59,7 +64,7 @@ export default class extends ApplicationController {
         {
           method: 'PUT',
           headers: {
-            'X-CSRF-Token': (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement).content,
+            'X-CSRF-Token': this.csrfToken,
             Accept: 'text/vnd.turbo-stream.html',
           },
         },

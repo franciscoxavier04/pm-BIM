@@ -643,11 +643,10 @@ ro:
       title: "Vă rugăm să confirmați parola dumneavoastră pentru a continua"
     pagination:
       no_other_page: "Sunteți pe pagina unică."
+      pages_skipped: "Pages skipped."
       page_navigation: "Pagination navigation"
       per_page_navigation: 'Items per page selection'
       pages:
-        next: "Next page"
-        previous: "Previous page"
         page_number: Page %{number}
         show_per_page: Show %{number} per page
     placeholders:

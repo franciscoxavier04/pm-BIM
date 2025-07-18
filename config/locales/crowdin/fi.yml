@@ -121,7 +121,7 @@ fi:
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -3013,7 +3013,7 @@ fi:
   label_password_rule_special: "Erikoismerkit"
   label_password_rule_uppercase: "Suuri kirjainkoko"
   label_path_encoding: "Polun koodaus"
-  label_per_page: "Per sivu"
+  label_per_page: "Per page:"
   label_people: "Henkilöresurssit"
   label_permissions: "Oikeudet"
   label_permissions_report: "Käyttöoikeudet-raportti"

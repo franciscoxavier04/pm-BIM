@@ -121,7 +121,7 @@ uk:
         one_time_hint: "Це єдиний раз, коли ви побачите секретний ключ клієнта. Обов’язково скопіюйте його зараз."
       created_token_dialog_component:
         title: "Токен створено"
-        heading: "Токен згенеровано"
+        heading: "A token has been generated"
         label_token: "Токен"
         one_time_hint: "Це єдиний раз, коли ви побачите цей токен. Обов’язково скопіюйте його зараз."
       delete_scim_client_dialog_component:
@@ -3092,7 +3092,7 @@ uk:
   label_password_rule_special: "Спеціальні символи"
   label_password_rule_uppercase: "Верхній регістр"
   label_path_encoding: "Кодування шляху"
-  label_per_page: "На сторінці"
+  label_per_page: "Per page:"
   label_people: "Люди"
   label_permissions: "Дозволи"
   label_permissions_report: "Звіт про права доступу"

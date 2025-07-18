@@ -50,7 +50,7 @@ A user can have one or more roles which grant permissions on different levels.
 
 ### Non-member
 
-**Non member** is the default role of users of your OpenProject instance who have not been added to a project. This only applies if the project has been set as [public](../../../user-guide/projects/#set-a-project-to-public) in the project settings.
+**Non member** is the default role of users of your OpenProject instance who have not been added to a project. This only applies if the project has been set as [public](../../../user-guide/projects/project-settings/project-information/#make-a-project-public) in the project settings.
 
 > [!NOTE]
 > The *Non-member* role cannot be deleted.
@@ -181,9 +181,9 @@ Following are the permissions for file storages within OpenProject:
 
 Following user permissions are set on files and folder in **External Storages**:
 
-- **Automatically managed folders: Read files (Nextcloud, OneDrive/SharePoint)**
+- **Automatically managed folders: Read files (Nextcloud, OneDrive)**
 
-- **Automatically managed folders:  Write files (Nextcloud, OneDrive/SharePoint)**
+- **Automatically managed folders: Write files (Nextcloud, OneDrive)**
 
 - **Automatically managed folders: Create files (Nextcloud)**
 

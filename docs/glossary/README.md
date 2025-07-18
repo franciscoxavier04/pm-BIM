@@ -108,7 +108,10 @@ Community edition is defined as the main and free-of-charge edition of OpenProje
 
 ### Connection validation
 
-The connection validation in OpenProject is available for the storage integrations with [Nextcloud](#nextcloud-integration) and [OneDrive/SharePoint](#onedrivesharepoint-integration). It is a manually triggered test to check the connection between OpenProject and the respective storage. [Read more about health status checks for OpenProject's external file storages](../system-admin-guide/files/external-file-storages/health-status/).
+The connection validation in OpenProject is available for the storage integrations
+with [Nextcloud](#nextcloud-integration) and [OneDrive](#onedrive-integration). It is a manually
+triggered test to check the connection between OpenProject and the respective
+storage. [Read more about health status checks for OpenProject's external file storages](../system-admin-guide/files/external-file-storages/health-status/).
 
 ### Custom action
 
@@ -275,9 +278,13 @@ In OpenProject, you get in-app notifications about important changes that are re
 
 OAuth is an open authorization standard. It allows you to access certain information or resources on behalf of a user without accessing their username and password on each individual service. OpenProject acts as an OAuth provider, allowing you to optionally grant permissions to access your data to authorized third-party applications or services. [Read more about OAuth applications in OpenProject](../system-admin-guide/authentication/oauth-applications/).
 
-### OneDrive/SharePoint integration
+### OneDrive integration
 
-OpenProject offers a OneDrive/SharePoint [integration](#integration) as an [Enterprise add-on](#enterprise-add-on). It must be setup by an administrator before members can use it. With this integration, users can link files and folders that are stored in OneDrive/SharePoint with work packages in OpenProject. They can also view, open and download files and folders linked to a work package. [Read more about OpenProject's OneDrive/SharePoint integration](../user-guide/file-management/one-drive-integration/).
+OpenProject offers a OneDrive [integration](#integration) as an [Enterprise add-on](#enterprise-add-on). It must be
+setup by an administrator before members can use it. With this integration, users can link files and folders that are
+stored in OneDrive with work packages in OpenProject. They can also view, open and download files and folders
+linked to a work
+package. [Read more about OpenProject's OneDrive integration](../user-guide/file-management/one-drive-integration/).
 
 ### On-premises
 
@@ -337,7 +344,9 @@ A project attribute in OpenProject is a [custom field](#custom-field) that appli
 
 ### Project folder
 
-Project folders help collaborating in the most efficient way. They can be used with OpenProject's [Nextcloud integration](#nextcloud-integration) or with OpenProject's [OneDrive/SharePoint integration](#onedrivesharepoint-integration). [Read more about project folders in OpenProject](../user-guide/projects/project-settings/files/#project-folders).
+Project folders help collaborating in the most efficient way. They can be used with
+OpenProject's [Nextcloud integration](#nextcloud-integration) or with
+OpenProject's [OneDrive integration](#onedrive-integration). [Read more about project folders in OpenProject](../user-guide/projects/project-settings/files/#project-folders).
 
 ### Project identifier
 
@@ -383,7 +392,7 @@ A project template in OpenProject is defined as a dummy project to copy and adju
 
 ### Public project
 
-In OpenProject, projects can be private or public. Public means that the project is visible to any user, regardless of project [membership](#member). The visibility of a project can be changed in the project settings. [Read how to set a project to public in OpenProject](../user-guide/projects/#set-a-project-to-public).
+In OpenProject, projects can be private or public. Public means that the project is visible to any user, regardless of project [membership](#member). The visibility of a project can be changed in the project settings. [Read how to set a project to public in OpenProject](../user-guide/projects/project-settings/project-information/#make-a-project-public).
 
 ## Q
 

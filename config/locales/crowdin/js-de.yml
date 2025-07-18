@@ -155,9 +155,9 @@ de:
           nested_macro: "Dieses Makro verweist rekursiv auf %{model} %{id}."
           invalid_attribute: "Das ausgewählte Attribut '%{name}' existiert nicht."
         child_pages:
-          button: "Auflistung untergeordneter Seiten"
+          button: "Auflistung der Unteraufgaben"
           include_parent: "Elternseite anzeigen"
-          text: "[Platzhalter] Auflistung untergeordneter Seiten von"
+          text: "[Platzhalter] Auflistung der Unteraufgaben von"
           page: "Wiki-Seite"
           this_page: "diese Seite"
           hint: |
@@ -283,7 +283,7 @@ de:
     hal:
       error:
         update_conflict_refresh: "Klicken Sie hier, um die Ressource auf die neueste Version zu aktualisieren."
-        edit_prohibited: "Die Bearbeitung von %{attribute} ist für diese Ressource blockiert. Entweder wird dieses Attribut aus Relationen abgeleitet (z. B. childs) oder es ist nicht konfigurierbar."
+        edit_prohibited: "Die Bearbeitung von %{attribute} ist für diese Ressource blockiert. Entweder wird dieses Attribut aus Relationen abgeleitet (z. B. Unteraufgaben) oder es ist nicht konfigurierbar."
         format:
           date: "%{attribute} ist kein gültiges Datum - Erwartetes Format: YYY-MM-DD."
         general: "Ein Fehler ist aufgetreten."
@@ -461,7 +461,7 @@ de:
     label_total_amount: "Gesamt: %{amount}"
     label_updated_on: "aktualisiert am"
     label_value_derived_from_children: "(aggregierter Wert von Kindelementen)"
-    label_children_derived_duration: "Aggregierte Dauer der Unterarbeitspakete"
+    label_children_derived_duration: "Aggregierte Dauer der Unteraufgaben"
     label_warning: "Warnung"
     label_work_package: "Arbeitspaket"
     label_work_package_parent: "Übergeordnetes Arbeitspaket"
@@ -642,11 +642,10 @@ de:
       title: "Geben Sie Ihr Kennwort ein, um fortzufahren"
     pagination:
       no_other_page: "Sie befinden sich auf der einzigen Seite."
-      page_navigation: "Pagination navigation"
-      per_page_navigation: 'Items per page selection'
+      pages_skipped: "Seiten übersprungen."
+      page_navigation: "Seitennavigation"
+      per_page_navigation: 'Elemente pro Seitenauswahl'
       pages:
-        next: "Nächste Seite"
-        previous: "Vorherige Seite"
         page_number: Seite %{number}
         show_per_page: '%{number} pro Seite anzeigen'
     placeholders:
@@ -733,7 +732,7 @@ de:
     relation_labels:
       parent: "Übergeordnetes Arbeitspaket"
       child: "Unteraufgabe"
-      children: "Untergeordnete Arbeitspakete"
+      children: "Unteraufgaben"
       relates: "Verwandt mit"
       duplicates: "Dupliziert"
       duplicated: "Dupliziert durch"
@@ -749,7 +748,7 @@ de:
     relations_hierarchy:
       parent_headline: "Übergeordnetes Arbeitspaket"
       hierarchy_headline: "Hierarchie"
-      children_headline: "Untergeordnete Arbeitspakete"
+      children_headline: "Unteraufgaben"
     relation_buttons:
       set_parent: "Übergeordnetes Arbeitspaket festlegen"
       change_parent: "Übergeordnetes Arbeitspaket ändern"
@@ -762,7 +761,7 @@ de:
       add_new_child: "Neue Unteraufgabe"
       create_new: "Neu erstellen"
       add_existing: "Bestehende hinzufügen"
-      add_existing_child: "Untergeordnetes Arbeitspaket hinzufügen"
+      add_existing_child: "Unteraufgabe hinzufügen"
       remove_child: "Unteraufgabe entfernen"
       add_new_relation: "Neue Beziehung erstellen"
       add_existing_relation: "Bestehende Beziehung hinzufügen"
@@ -829,7 +828,7 @@ de:
       bulk_actions:
         edit: "Arbeitspakete bearbeiten"
         delete: "Arbeitspakete löschen"
-        duplicate: "Bulk duplicate"
+        duplicate: "Bulk-Duplikat"
         move: "In anderes Projekt verschieben"
       button_clear: "Zurücksetzen"
       comment_added: "Der Kommentar wurde erfolgreich hinzugefügt."
@@ -881,8 +880,8 @@ de:
         hide: "Hierarchie-Modus verbergen"
         toggle_button: "Klicken Sie, um den Hierarchiemodus umzuschalten."
         leaf: "Arbeitspaketblatt in Ebene %{level}."
-        children_collapsed: "Hierarchieebene %{level}, zusammengeklappt. Klicken Sie, um die gefilterten Kinder einzublenden"
-        children_expanded: "Hierarchieebene %{level}, erweitert. Klicken Sie, um die gefilterten Kinder auszublenden"
+        children_collapsed: "Hierarchieebene %{level}, zusammengeklappt. Klicken Sie, um die gefilterten Unteraufgaben einzublenden"
+        children_expanded: "Hierarchieebene %{level}, erweitert. Klicken Sie, um die gefilterten Unteraufgaben auszublenden"
       faulty_query:
         title: Die Arbeitspakete konnten nicht geladen werden.
         description: Diese Ansicht ist fehlerhaft und konnte nicht verarbeitet werden.
@@ -982,7 +981,7 @@ de:
           month: "In einem Monat"
           custom: "Zu einem bestimmten Datum/Zeitpunkt"
       scheduling:
-        is_parent: "Die Termine dieses Arbeitspakets werden automatisch von seinen Kindern aggregiert. Aktivieren Sie \"Manuelle Planung\", um die Termine frei zu setzen."
+        is_parent: "Die Termine dieses Arbeitspakets werden automatisch von seinen Unteraufgaben aggregiert. Aktivieren Sie \"Manuelle Planung\", um die Termine frei zu setzen."
         is_switched_from_manual_to_automatic: "Die Termine dieses Arbeitspakets müssen nach dem Wechsel auf automatische Planung neu berechnet werden."
       sharing:
         title: "Arbeitspaket teilen"
@@ -1070,7 +1069,7 @@ de:
         bulk_text: "Sind Sie sicher, dass Sie die folgenden %{label} löschen möchten?"
         has_children: "Dieses Arbeitspaket hat %{childUnits}:"
         confirm_deletion_children: "Ich bestätige, dass alle untergordneten Elemente der hier aufgeführten Arbeitspakete rekursiv entfernt werden."
-        deletes_children: "Alle untergeordneten Arbeitspaketen und deren Nachkommen werden auch rekursiv gelöscht."
+        deletes_children: "Alle Unteraufgaben und deren Nachkommen werden auch rekursiv gelöscht."
       destroy_time_entry:
         title: "Löschen der Zeitbuchung bestätigen"
         text: "Sind Sie sicher, dass Sie die folgende Zeitbuchung löschen möchten?"
@@ -1109,7 +1108,7 @@ de:
         one: "Arbeitspaket"
         other: "Arbeitspakete"
       child_work_packages:
-        one: "ein untergeordnetes Arbeitspaket"
+        one: "eine Unteraufgabe"
         other: "%{count} untergeordnete Arbeitspakete"
       hour:
         one: "1 h"

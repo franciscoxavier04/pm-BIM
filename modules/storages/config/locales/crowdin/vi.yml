@@ -169,7 +169,7 @@ vi:
               not_found: "Không tìm thấy %{current_path}."
             set_folders_permissions:
               permission_not_set: không thể thiết lập quyền trên %{path}.
-          error: An unexpected error occurred. Please ensure that OneDrive/SharePoint is reachable and check OpenProject worker logs for more information
+          error: An unexpected error occurred. Please ensure that OneDrive is reachable and check OpenProject worker logs for more information
           not_allowed: OpenProject không được phép truy cập ổ đĩa OneDrive của bạn. Vui lòng kiểm tra các quyền được thiết lập trên Ứng dụng Azure.
           unauthorized: OpenProject could not sync with OneDrive. Please check your storage and Azure Application configuration.
           user_does_not_exist: "%{user} không tồn tại trong Nextcloud."
@@ -188,7 +188,7 @@ vi:
     configuration_checks:
       oauth_client_incomplete:
         nextcloud: Cho phép OpenProject truy cập dữ liệu Nextcloud bằng OAuth.
-        one_drive: Cho phép OpenProject truy cập dữ liệu Azure bằng OAuth để kết nối OneDrive/Sharepoint.
+        one_drive: Allow OpenProject to access Azure data using OAuth to connect OneDrive.
       redirect_uri_incomplete:
         one_drive: Hoàn tất cấu hình với URI chuyển hướng chính xác.
     confirm_replace_oauth_application: Hành động này sẽ đặt lại các thông tin xác thực OAuth hiện tại. Sau khi xác nhận, bạn sẽ phải nhập lại thông tin xác thực tại nhà cung cấp lưu trữ và tất cả người dùng từ xa sẽ phải xác thực lại với OpenProject. Bạn có chắc chắn muốn tiếp tục không?
@@ -296,7 +296,7 @@ vi:
         od_drive_id_not_found: ID ổ đĩa cấu hình không tìm thấy. Vui lòng kiểm tra cấu hình.
         od_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
         od_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
-        od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
+        od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive as the user did not yet link their Microsoft account.
         od_tenant_id_wrong: ID thư mục (người thuê) cấu hình không hợp lệ. Vui lòng kiểm tra cấu hình.
         od_test_folder_exists: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
         od_unexpected_content: Nội dung không mong đợi được tìm thấy trong ổ đĩa.
@@ -362,9 +362,9 @@ vi:
       one_drive:
         application_link_text: cổng thông tin Azure
         copy_redirect_uri: Sao chép URI chuyển hướng
-        documentation_link_text: Tài liệu lưu trữ tệp OneDrive/SharePoint
+        documentation_link_text: OneDrive file storages documentation
         drive_id: Vui lòng sao chép ID từ ổ đĩa mong muốn bằng cách làm theo các bước trong %{drive_id_link_text}.
-        integration: OneDrive/SharePoint
+        integration: OneDrive
         missing_client_id_for_redirect_uri: Vui lòng điền các giá trị OAuth để tạo một URI
         oauth_client_redirect_uri: Vui lòng sao chép giá trị này vào một URI chuyển hướng Web mới dưới Redirect URIs.
         oauth_client_secret: Trong trường hợp không có bí mật khách hàng ứng dụng dưới Client credentials, vui lòng tạo một cái mới.
@@ -474,8 +474,13 @@ vi:
       one_drive:
         label_oauth_client_id: ID Ứng dụng OAuth Azure (khách hàng)
         label_oauth_client_secret: Giá trị Bí mật khách hàng OAuth Azure
-        name: OneDrive/SharePoint
+        name: OneDrive
         name_placeholder: 'ví dụ: OneDrive'
+      share_point:
+        label_oauth_client_id: Azure OAuth Application (client) ID
+        label_oauth_client_secret: Azure OAuth Client Secret Value
+        name: SharePoint
+        name_placeholder: e.g. SharePoint
     show_attachments_toggle:
       description: Deactivating this option will hide the attachments list on the work packages files tab. The files attached in the description of a work package will still be uploaded in the internal attachments storage.
       label: Hiển thị tệp đính kèm trong tab tệp các gói công việc
@@ -493,5 +498,6 @@ vi:
     successful_storage_connection: Storage connected successfully! Remember to activate the storage in the Projects tab for each desired project to use it.
     upsell:
       description: |-
-        Tích hợp OneDrive/SharePoint của bạn như một lưu trữ tệp với OpenProject. Tải lên các tệp và liên kết chúng trực tiếp đến các gói công việc trong một dự án.
-      title: Tích hợp OneDrive/SharePoint
+        Integrate your OneDrive as a file storage with OpenProject. Upload files and link them directly to
+        work packages in a project.
+      title: OneDrive integration

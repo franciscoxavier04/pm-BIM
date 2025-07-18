@@ -121,7 +121,7 @@ bg:
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -3013,7 +3013,7 @@ bg:
   label_password_rule_special: "Special Characters"
   label_password_rule_uppercase: "Uppercase"
   label_path_encoding: "Path encoding"
-  label_per_page: "На страница"
+  label_per_page: "Per page:"
   label_people: "Участници"
   label_permissions: "Права"
   label_permissions_report: "Доклади за права"

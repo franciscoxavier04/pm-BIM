@@ -121,7 +121,7 @@ fr:
         one_time_hint: "C'est la seule fois que vous verrez le secret client. Pensez à le copier maintenant."
       created_token_dialog_component:
         title: "Jeton créé"
-        heading: "Un jeton a été généré"
+        heading: "A token has been generated"
         label_token: "Jeton"
         one_time_hint: "C'est la seule fois que vous verrez ce jeton. Pensez à le copier maintenant."
       delete_scim_client_dialog_component:
@@ -3011,7 +3011,7 @@ fr:
   label_password_rule_special: "Caractères spéciaux"
   label_password_rule_uppercase: "Majuscules"
   label_path_encoding: "Encodage du chemin d'accès"
-  label_per_page: "Par page"
+  label_per_page: "Per page:"
   label_people: "Participants"
   label_permissions: "Autorisations"
   label_permissions_report: "Rapport d'autorisations"

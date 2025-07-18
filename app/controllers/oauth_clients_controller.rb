@@ -232,7 +232,7 @@ class OAuthClientsController < ApplicationController
   end
 
   def nextcloud?
-    @oauth_client&.integration&.provider_type == ::Storages::Storage::PROVIDER_TYPE_NEXTCLOUD
+    @oauth_client&.integration&.provider_type == ::Storages::NextcloudStorage.name
   end
 
   def one_drive?

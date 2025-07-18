@@ -643,11 +643,10 @@ es:
       title: "Confirma tu contraseña para continuar"
     pagination:
       no_other_page: "Usted está en la única página."
+      pages_skipped: "Páginas omitidas."
       page_navigation: "Navegación de paginación"
       per_page_navigation: 'Selección de elementos por página'
       pages:
-        next: "Página siguiente"
-        previous: "Página anterior"
         page_number: Página %{number}
         show_per_page: Mostrar %{number} por página
     placeholders:

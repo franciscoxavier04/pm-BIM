@@ -397,6 +397,16 @@ module Components
 
         wait_for { page }.to have_test_selector("op-wp-journals-#{default_filter}-#{sorting}")
       end
+
+      def trigger_update_streams_poll
+        page.execute_script(<<~JS)
+          var target = document.querySelector('[data-controller*="work-packages--activities-tab--index"]')
+          var controller = window.Stimulus.getControllerForElementAndIdentifier(target, 'work-packages--activities-tab--index')
+          controller.updateActivitiesList();
+        JS
+
+        wait_for_network_idle
+      end
     end
   end
 end

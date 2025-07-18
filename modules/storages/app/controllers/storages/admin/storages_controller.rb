@@ -28,7 +28,6 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-# Purpose: CRUD the global admin page of Storages (=Nextcloud servers)
 class Storages::Admin::StoragesController < ApplicationController
   using Storages::Peripherals::ServiceResultRefinements
 
@@ -69,9 +68,7 @@ class Storages::Admin::StoragesController < ApplicationController
       # See also: storages/services/storages/storages/set_attributes_services.rb
       # That service inherits from ::BaseServices::SetAttributes
       @storage = ::Storages::Storages::SetAttributesService
-                   .new(user: current_user,
-                        model: Storages::Storage.new(provider_type: @provider_type),
-                        contract_class: EmptyContract)
+                   .new(user: current_user, model: @provider_type.new, contract_class: EmptyContract)
                    .call
                    .result
     end
@@ -225,6 +222,7 @@ class Storages::Admin::StoragesController < ApplicationController
                  .result
   end
 
+  # rubocop:disable Metrics/AbcSize
   def ensure_valid_wizard_parameters
     if params[:continue_wizard].present?
       @storage = ::Storages::Storage.find(params[:continue_wizard])
@@ -232,11 +230,12 @@ class Storages::Admin::StoragesController < ApplicationController
     end
 
     short_provider_type = params[:provider]
-    if short_provider_type.blank? || (@provider_type = ::Storages::Storage::PROVIDER_TYPE_SHORT_NAMES[short_provider_type]).blank?
+    if short_provider_type.blank? || (@provider_type = ::Storages::Storage.provider_types[short_provider_type]).blank?
       flash[:error] = I18n.t("storages.error_invalid_provider_type")
       redirect_to admin_settings_storages_path
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   # Called by create and update above in order to check if the
   # update parameters are correctly set.
@@ -270,14 +269,14 @@ class Storages::Admin::StoragesController < ApplicationController
   end
 
   def require_ee_token_for_one_drive
-    if ::Storages::Storage::one_drive_without_ee_token?(@provider_type)
+    if (@provider_type || @storage).disallowed_by_enterprise_token?
       redirect_to action: :upsell
     end
   end
 
   def storage_wizard(storage)
     ::Storages::Adapters::Registry.resolve("#{storage}.components.setup_wizard")
-                                     .new(model: storage, user: current_user)
+                                  .new(model: storage, user: current_user)
   end
 
   def redirect_to_wizard(storage)

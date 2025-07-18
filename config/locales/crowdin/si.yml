@@ -121,7 +121,7 @@ si:
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -3013,7 +3013,7 @@ si:
   label_password_rule_special: "විශේෂ චරිත"
   label_password_rule_uppercase: "මහකුරු"
   label_path_encoding: "මාර්ගය කේතන"
-  label_per_page: "පිටුවකට"
+  label_per_page: "Per page:"
   label_people: "ජනතාව"
   label_permissions: "අවසර"
   label_permissions_report: "අවසර වාර්තාව"

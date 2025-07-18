@@ -121,7 +121,7 @@ el:
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -3009,7 +3009,7 @@ el:
   label_password_rule_special: "Ειδικοί Χαρακτήρες"
   label_password_rule_uppercase: "Κεφαλαία"
   label_path_encoding: "Κωδικοποίηση μονοπατιού"
-  label_per_page: "Ανά σελίδα"
+  label_per_page: "Per page:"
   label_people: "Άτομα"
   label_permissions: "Δικαιώματα"
   label_permissions_report: "Αναφορά δικαιωμάτων"

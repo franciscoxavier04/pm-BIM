@@ -37,7 +37,7 @@ module Storages
       module OneDrive
         module Validators
           RSpec.describe StorageConfigurationValidator, :webmock do
-            let(:storage) { create(:sharepoint_dev_drive_storage, :as_automatically_managed) }
+            let(:storage) { create(:one_drive_sandbox_storage, :as_automatically_managed) }
             let(:auth_strategy) { Registry["one_drive.authentication.userless"].call }
             let(:error) { Results::Error.new(code: error_code, source: self) }
 

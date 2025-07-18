@@ -121,7 +121,7 @@ af:
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -3013,7 +3013,7 @@ af:
   label_password_rule_special: "Spesiale karakters"
   label_password_rule_uppercase: "Grootletters"
   label_path_encoding: "Pad enkodering"
-  label_per_page: "Per bladsy"
+  label_per_page: "Per page:"
   label_people: "People"
   label_permissions: "Toestemmings"
   label_permissions_report: "Toestemmingsverslag"

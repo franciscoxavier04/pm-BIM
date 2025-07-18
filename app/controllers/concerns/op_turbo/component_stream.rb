@@ -96,6 +96,8 @@ module OpTurbo
     end
 
     def render_flash_message_via_turbo_stream(message:, component: OpPrimer::FlashComponent, **)
+      return if message.blank?
+
       instance = component.new(**).with_content(message)
       turbo_streams << instance.render_as_turbo_stream(view_context:, action: :flash)
     end

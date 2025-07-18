@@ -16,7 +16,7 @@ We released [OpenProject 16.1.0](https://community.openproject.org/versions/2194
 
 Take a look at our release video showing the most important features introduced in OpenProject 16.1.0:
   
-![Release video of OpenProject 15.5](https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject_16_1_release.mp4)
+![Release video of OpenProject 16.1](https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject_16_1_release.mp4)
 
 ### Structure the project life cycle with phases and phase gates
 

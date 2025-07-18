@@ -34,7 +34,7 @@ require_module_spec_helper
 # rubocop:disable RSpec/DescribeClass
 RSpec.describe "network errors for storage interaction", :webmock do
   let(:user) { create(:user) }
-  let(:storage) { create(:sharepoint_dev_drive_storage, oauth_client_token_user: user) }
+  let(:storage) { create(:one_drive_sandbox_storage, oauth_client_token_user: user) }
   let(:fields) { Storages::Adapters::Providers::OneDrive::Queries::FilesQuery::FIELDS }
   let(:request_url) { "https://graph.microsoft.com/v1.0/drives/#{storage.drive_id}/root/children#{fields}" }
   let(:input_data) { Storages::Adapters::Input::Files.build(folder: "/").value! }

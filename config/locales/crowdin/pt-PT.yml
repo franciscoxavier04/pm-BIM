@@ -121,7 +121,7 @@ pt-PT:
         one_time_hint: "Esta é a única vez que verá o segredo do cliente. Não se esqueça de o copiar agora."
       created_token_dialog_component:
         title: "Token criado"
-        heading: "Foi gerado um token"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "Esta é a única vez que verá este token. Não se esqueça de o copiar agora."
       delete_scim_client_dialog_component:
@@ -3010,7 +3010,7 @@ pt-PT:
   label_password_rule_special: "Carateres Especiais"
   label_password_rule_uppercase: "Maiúsculas"
   label_path_encoding: "Codificação do caminho"
-  label_per_page: "Por página"
+  label_per_page: "Per page:"
   label_people: "Pessoas"
   label_permissions: "Permissões"
   label_permissions_report: "Relatório de Permissões"

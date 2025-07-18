@@ -121,7 +121,7 @@ th:
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -2970,7 +2970,7 @@ th:
   label_password_rule_special: "อักขระพิเศษ"
   label_password_rule_uppercase: "ตัวพิมพ์ใหญ่"
   label_path_encoding: "การเข้ารหัสเส้นทาง"
-  label_per_page: "ต่อหน้า"
+  label_per_page: "Per page:"
   label_people: "People"
   label_permissions: "สิทธิ์"
   label_permissions_report: "รายงานสิทธิ์"
