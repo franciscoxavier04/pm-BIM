@@ -32,22 +32,25 @@
   story, task, and impediment
 ***************************************/
 
+// @ts-expect-error TS(2304): Cannot find name 'RB'.
 RB.Model = (function ($) {
+  // @ts-expect-error TS(2304): Cannot find name 'RB'.
   return RB.Object.create({
 
-    initialize: function (el) {
+    initialize: function (el: any) {
       this.$ = $(el);
       this.el = el;
     },
 
-    afterCreate: function (data, textStatus, xhr) {
+    afterCreate: function (data: any, textStatus: any, xhr: any) {
       // Do nothing. Child objects may optionally override this
     },
 
-    afterSave: function (data, textStatus, xhr) {
+    afterSave: function (data: any, textStatus: any, xhr: any) {
       var isNew, result;
 
       isNew = this.isNew();
+      // @ts-expect-error TS(2304): Cannot find name 'RB'.
       result = RB.Factory.initialize(RB.Model, data);
 
       this.unmarkSaving();
@@ -62,7 +65,7 @@ RB.Model = (function ($) {
       }
     },
 
-    afterUpdate: function (data, textStatus, xhr) {
+    afterUpdate: function (data: any, textStatus: any, xhr: any) {
       // Do nothing. Child objects may optionally override this
     },
 
@@ -95,7 +98,7 @@ RB.Model = (function ($) {
       this.saveEdits();
     },
 
-    displayEditor: function (editor) {
+    displayEditor: function (editor: any) {
       var self = this,
           baseClasses;
 
@@ -120,7 +123,7 @@ RB.Model = (function ($) {
           }
         },
         ],
-        close: function (e, ui) {
+        close: function (e: any, ui: any) {
           if (e.type === 'click' || (e.type === 'keydown' && e.key === 'Escape')) {
             self.cancelEdit();
           }
@@ -144,6 +147,7 @@ RB.Model = (function ($) {
       $('.stories .editors .editor').each(function (index) {
         var value;
 
+        // @ts-expect-error TS(2345): Argument of type 'string | undefined' is not assig... Remove this comment to see the full error message
         value = parseInt($(this).attr('tabindex'), 10);
 
         if (maxTabIndex < value) {
@@ -152,17 +156,18 @@ RB.Model = (function ($) {
       });
 
       if (!editor.hasClass('permanent')) {
-        this.$.find('.editable').each(function (index) {
+        this.$.find('.editable').each(function(this: any, index: any) {
           const field = $(this);
           const fieldId = field.attr('field_id');
           const fieldName = field.attr('fieldname');
           const fieldLabel = field.attr('fieldlabel');
+          // @ts-expect-error TS(2345): Argument of type 'string | undefined' is not assig... Remove this comment to see the full error message
           const fieldOrder = parseInt(field.attr('fieldorder'), 10);
           const fieldEditable = field.attr('fieldeditable') || 'true';
           const fieldType = field.attr('fieldtype') || 'input';
           let typeId;
           let statusId;
-          let input;
+          let input: any;
 
           if (fieldType === 'select') {
             // Special handling for status_id => they are dependent of type_id
@@ -178,10 +183,12 @@ RB.Model = (function ($) {
               input = $('#' + fieldName + '_options').clone(true);
               // if the type changes the status dropdown has to be modified
               input.change(function () {
+                // @ts-expect-error TS(2683): 'this' implicitly has type 'any' because it does n... Remove this comment to see the full error message
                 typeId = $(this).val();
                 statusId = $.trim(self.$.find('.status_id .v').html());
                 let newInput = self.findFactory(typeId, statusId, 'status_id');
                 newInput = self.prepareInputFromFactory(newInput, fieldId, 'status_id', fieldOrder, maxTabIndex);
+                // @ts-expect-error TS(2683): 'this' implicitly has type 'any' because it does n... Remove this comment to see the full error message
                 newInput = self.replaceStatusForNewType(input, newInput, $(this).parent().find('.status_id').val(), editor);
               });
             } else {
@@ -199,7 +206,7 @@ RB.Model = (function ($) {
           // Record in the model's root element which input field had the last focus. We will
           // use this information inside RB.Model.refresh() to determine where to return the
           // focus after the element has been refreshed with info from the server.
-          input.focus(function () {
+          input.focus(function(this: any) {
             self.$.data('focus', $(this).attr('name'));
           });
 
@@ -209,6 +216,7 @@ RB.Model = (function ($) {
 
           $("<label />").attr({
             for: input.attr('id'),
+          // @ts-expect-error TS(2345): Argument of type 'string | undefined' is not assig... Remove this comment to see the full error message
           }).text(fieldLabel).appendTo(editor);
           input.appendTo(editor);
         });
@@ -219,7 +227,7 @@ RB.Model = (function ($) {
       return editor;
     },
 
-    findFactory: function (typeId, statusId, fieldName){
+    findFactory: function (typeId: any, statusId: any, fieldName: any){
       // Find a factory
       let newInput = $('#' + fieldName + '_options_' + typeId + '_' + statusId);
       if (newInput.length === 0) {
@@ -231,7 +239,7 @@ RB.Model = (function ($) {
       return newInput;
     },
 
-    prepareInputFromFactory: function (input, fieldId, fieldName, fieldOrder, maxTabIndex, fieldEditable) {
+    prepareInputFromFactory: function (input: any, fieldId: any, fieldName: any, fieldOrder: any, maxTabIndex: any, fieldEditable: any) {
       input.attr('id', fieldName + '_' + fieldId);
       input.attr('name', fieldName);
       input.attr('tabindex', fieldOrder + maxTabIndex);
@@ -245,18 +253,20 @@ RB.Model = (function ($) {
       return input;
     },
 
-    replaceStatusForNewType: function (input,newInput, statusId, editor) {
+    replaceStatusForNewType: function (input: any,newInput: any, statusId: any, editor: any) {
       // Append an empty field and select it in case the old status is not available
       newInput.val(statusId); // try to set the status
       if (newInput.val() !== statusId){
           newInput.append(new Option('',''));
           newInput.val('');
       }
-      newInput.focus(function () {
+      newInput.focus(function(this: any) {
+        // @ts-expect-error TS(2339): Property '$' does not exist on type 'Window & type... Remove this comment to see the full error message
         self.$.data('focus', $(this).attr('name'));
       });
 
       newInput.blur(function () {
+        // @ts-expect-error TS(2339): Property '$' does not exist on type 'Window & type... Remove this comment to see the full error message
         self.$.data('focus', '');
       });
       // Find the old status dropdown and replace it with the new one
@@ -268,7 +278,7 @@ RB.Model = (function ($) {
       return "Edit " + this.getType();
     },
 
-    editorDisplayed: function (editor) {
+    editorDisplayed: function (editor: any) {
       // Do nothing. Child objects may override this.
     },
 
@@ -276,8 +286,9 @@ RB.Model = (function ($) {
       this.$.removeClass('editing');
     },
 
-    error: function (xhr, textStatus, error) {
+    error: function (xhr: any, textStatus: any, error: any) {
       this.markError();
+      // @ts-expect-error TS(2304): Cannot find name 'RB'.
       RB.Dialog.msg($(xhr.responseText).find('.errors').html());
       this.processError(xhr, textStatus, error);
     },
@@ -303,7 +314,7 @@ RB.Model = (function ($) {
       throw new Error("Child objects must override getType()");
     },
 
-    handleClick: function (e) {
+    handleClick: function (e: any) {
       const field = $(this);
       const model = field.parents('.model').first().data('this');
       const j = model.$;
@@ -321,7 +332,7 @@ RB.Model = (function ($) {
       }
     },
 
-    handleSelect: function (e) {
+    handleSelect: function (e: any) {
       var j = $(this),
           self = j.data('this');
 
@@ -364,16 +375,16 @@ RB.Model = (function ($) {
       this.$.removeClass('closed');
     },
 
-    processError: function (x, t, e) {
+    processError: function (x: any, t: any, e: any) {
       // Override as needed
     },
 
-    refresh: function (obj) {
+    refresh: function (obj: any) {
       this.$.html(obj.$.html());
 
       if (obj.$.length > 1) {
         // execute script tags, that were attached to the sources
-        obj.$.filter('script').each(function () {
+        obj.$.filter('script').each(function(this: any) {
           try {
             $.globalEval($(this).html());
           }
@@ -406,7 +417,7 @@ RB.Model = (function ($) {
           saveDir;
 
       // Copy the values from the fields to the proper html elements
-      editors.each(function (index) {
+      editors.each(function(this: any, index: any) {
         const editor = $(this).find('input,select,textarea').addBack('input,select,textarea');
         const fieldName = editor.attr('name');
         const type = editor.attr('type');
@@ -437,14 +448,15 @@ RB.Model = (function ($) {
 
       self.unmarkError();
       self.markSaving();
+      // @ts-expect-error TS(2304): Cannot find name 'RB'.
       RB.ajax({
         type: "POST",
         url: saveDir.url,
         data: saveDir.data,
-        success   : function (d, t, x) {
+        success   : function (d: any, t: any, x: any) {
           self.afterSave(d, t, x);
         },
-        error     : function (x, t, e) {
+        error     : function (x: any, t: any, e: any) {
           self.error(x, t, e);
         }
       });

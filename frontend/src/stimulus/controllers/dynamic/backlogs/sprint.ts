@@ -30,10 +30,12 @@
   SPRINT
 ***************************************/
 
+// @ts-expect-error TS(2304): Cannot find name 'RB'.
 RB.Sprint = (function ($) {
+  // @ts-expect-error TS(2304): Cannot find name 'RB'.
   return RB.Object.create(RB.Model, RB.EditableInplace, {
 
-    initialize: function (el) {
+    initialize: function (el: any) {
       this.$ = $(el);
       this.el = el;
 
@@ -62,6 +64,7 @@ RB.Sprint = (function ($) {
       const wrapper = this.$;
       const editor = wrapper.find('.editor');
       const data = editor.serialize() + "&_method=put";
+      // @ts-expect-error TS(2304): Cannot find name 'RB'.
       const url = RB.urlFor('update_sprint', { id: this.getID() });
 
       return {

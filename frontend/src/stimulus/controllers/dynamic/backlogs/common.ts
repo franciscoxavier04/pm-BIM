@@ -26,13 +26,15 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
+// @ts-expect-error TS(2339): Property 'RB' does not exist on type 'Window & typ... Remove this comment to see the full error message
 if (window.RB === null || window.RB === undefined) {
+  // @ts-expect-error TS(2339): Property 'RB' does not exist on type 'Window & typ... Remove this comment to see the full error message
   window.RB = {};
 }
 
 
 (function ($) {
-  var object, Factory, Dialog, UserPreferences,
+  var object: any, Factory, Dialog, UserPreferences,
       ajax;
 
   object = {
@@ -45,6 +47,7 @@ if (window.RB === null || window.RB === undefined) {
       }
 
       F.prototype = arguments[0];
+      // @ts-expect-error TS(7009): 'new' expression, whose target lacks a construct s... Remove this comment to see the full error message
       obj = new F();
 
       // Add all the other arguments as mixins that
@@ -67,7 +70,7 @@ if (window.RB === null || window.RB === undefined) {
   // Object factory for chiliproject_backlogs
   Factory = object.create({
 
-    initialize: function (objType, el) {
+    initialize: function (objType: any, el: any) {
       var obj;
 
       obj = object.create(objType);
@@ -79,7 +82,7 @@ if (window.RB === null || window.RB === undefined) {
 
   // Utilities
   Dialog = object.create({
-    msg: function (msg) {
+    msg: function (msg: any) {
       var dialog, baseClasses;
 
       baseClasses = 'ui-button ui-widget ui-state-default ui-corner-all';
@@ -110,8 +113,8 @@ if (window.RB === null || window.RB === undefined) {
   });
 
   ajax = (function () {
-    var ajaxQueue, ajaxOngoing,
-        processAjaxQueue;
+    var ajaxQueue: any, ajaxOngoing: any,
+        processAjaxQueue: any;
 
     ajaxQueue = [];
     ajaxOngoing = false;
@@ -132,7 +135,7 @@ if (window.RB === null || window.RB === undefined) {
       processAjaxQueue();
     });
 
-    return function (options) {
+    return function (options: any) {
       ajaxQueue.push(options);
       if (!ajaxOngoing) {
         processAjaxQueue();
@@ -143,19 +146,24 @@ if (window.RB === null || window.RB === undefined) {
   // Abstract the user preference from the rest of the RB objects
   // so that we can change the underlying implementation as needed
   UserPreferences = object.create({
-    get: function (key) {
+    get: function (key: any) {
       return $.cookie(key);
     },
 
-    set: function (key, value) {
+    set: function (key: any, value: any) {
       $.cookie(key, value, { expires: 365 * 10 });
     }
   });
 
+  // @ts-expect-error TS(2304): Cannot find name 'RB'.
   RB.Object = object;
+  // @ts-expect-error TS(2304): Cannot find name 'RB'.
   RB.Factory = Factory;
+  // @ts-expect-error TS(2304): Cannot find name 'RB'.
   RB.Dialog = Dialog;
+  // @ts-expect-error TS(2304): Cannot find name 'RB'.
   RB.UserPreferences = UserPreferences;
+  // @ts-expect-error TS(2304): Cannot find name 'RB'.
   RB.ajax = ajax;
 
 }(jQuery));

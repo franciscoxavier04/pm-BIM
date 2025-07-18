@@ -29,9 +29,11 @@
 /**************************************
   STORY
 ***************************************/
+// @ts-expect-error TS(2304): Cannot find name 'RB'.
 RB.Story = (function ($) {
+  // @ts-expect-error TS(2304): Cannot find name 'RB'.
   return RB.Object.create(RB.WorkPackage, RB.EditableInplace, {
-    initialize: function (el) {
+    initialize: function (el: any) {
       this.$ = $(el);
       this.el = el;
 
@@ -47,11 +49,11 @@ RB.Story = (function ($) {
       this.refreshStory();
     },
 
-    afterCreate: function (data, textStatus, xhr) {
+    afterCreate: function (data: any, textStatus: any, xhr: any) {
       this.refreshStory();
     },
 
-    afterUpdate : function (data, textStatus, xhr) {
+    afterUpdate : function (data: any, textStatus: any, xhr: any) {
       this.refreshStory();
     },
 
@@ -64,7 +66,7 @@ RB.Story = (function ($) {
       return "Story #" + this.getID();
     },
 
-    editorDisplayed: function (editor) { },
+    editorDisplayed: function (editor: any) { },
 
     getPoints: function () {
       var points = parseInt(this.$.find('.story_points').first().text(), 10);
@@ -112,8 +114,10 @@ RB.Story = (function ($) {
       //      valid url - one option might be to take RB.constants.sprint_id
       //      hoping it exists
       if (this.isNew()) {
+        // @ts-expect-error TS(2304): Cannot find name 'RB'.
         url = RB.urlFor('create_story', {sprint_id: sprintId});
       } else {
+        // @ts-expect-error TS(2304): Cannot find name 'RB'.
         url = RB.urlFor('update_story', {id: this.getID(), sprint_id: sprintId});
         data += "&_method=put";
       }
