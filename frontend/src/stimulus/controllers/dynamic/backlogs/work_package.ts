@@ -34,24 +34,24 @@ RB.WorkPackage = (function ($) {
   // @ts-expect-error TS(2304): Cannot find name 'RB'.
   return RB.Object.create(RB.Model, {
 
-    initialize: function (el: any) {
+    initialize(el:any) {
       this.$ = $(el);
       this.el = el;
     },
 
-    beforeSaveDragResult: function () {
+    beforeSaveDragResult() {
       // Do nothing
     },
 
-    getType: function () {
-      return "WorkPackage";
+    getType() {
+      return 'WorkPackage';
     },
 
-    saveDragResult: function () {
+    saveDragResult() {
       this.beforeSaveDragResult();
       if (!this.$.hasClass('editing')) {
         this.saveEdits();
       }
-    }
+    },
   });
 }(jQuery));

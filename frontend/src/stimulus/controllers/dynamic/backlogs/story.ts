@@ -33,7 +33,7 @@
 RB.Story = (function ($) {
   // @ts-expect-error TS(2304): Cannot find name 'RB'.
   return RB.Object.create(RB.WorkPackage, RB.EditableInplace, {
-    initialize: function (el: any) {
+    initialize(el:any) {
       this.$ = $(el);
       this.el = el;
 
@@ -45,68 +45,72 @@ RB.Story = (function ($) {
     /**
      * Callbacks from model.js
      **/
-    beforeSave: function () {
+    beforeSave() {
       this.refreshStory();
     },
 
-    afterCreate: function (data: any, textStatus: any, xhr: any) {
+    afterCreate(data:any, textStatus:any, xhr:any) {
       this.refreshStory();
     },
 
-    afterUpdate : function (data: any, textStatus: any, xhr: any) {
+    afterUpdate(data:any, textStatus:any, xhr:any) {
       this.refreshStory();
     },
 
-    refreshed: function () {
+    refreshed() {
       this.refreshStory();
     },
     /**/
 
-    editDialogTitle: function () {
-      return "Story #" + this.getID();
+    editDialogTitle() {
+      return `Story #${this.getID()}`;
     },
 
-    editorDisplayed: function (editor: any) { },
+    editorDisplayed(editor:any) { },
 
-    getPoints: function () {
-      var points = parseInt(this.$.find('.story_points').first().text(), 10);
+    getPoints() {
+      const points = parseInt(this.$.find('.story_points').first().text(), 10);
       return isNaN(points) ? 0 : points;
     },
 
-    getType: function () {
-      return "Story";
+    getType() {
+      return 'Story';
     },
 
-    markIfClosed: function () {
+    markIfClosed() {
       // Do nothing
     },
 
-    newDialogTitle: function () {
-      return "New Story";
+    newDialogTitle() {
+      return 'New Story';
     },
 
-    refreshStory : function () {
+    refreshStory() {
       this.recalcVelocity();
     },
 
-    recalcVelocity: function () {
-      this.$.parents(".backlog").first().data('this').refresh();
+    recalcVelocity() {
+      this.$.parents('.backlog').first().data('this').refresh();
     },
 
-    saveDirectives: function () {
-      var url, prev, sprintId, data;
+    saveDirectives() {
+      let url;
+      let prev;
+      let sprintId;
+      let data;
 
       prev = this.$.prev();
-      sprintId = this.$.parents('.backlog').data('this').isSprintBacklog() ?
-                   this.$.parents('.backlog').data('this').getSprint().data('this').getID() :
-                   '';
+      sprintId = this.$.parents('.backlog').data('this').isSprintBacklog()
+                   ? this.$.parents('.backlog').data('this').getSprint().data('this')
+.getID()
+                   : '';
 
-      data = "prev=" +
-             (prev.length === 1 ?  prev.data('this').getID() : '') +
-             "&version_id=" + sprintId;
+      data = `prev=${
+             prev.length === 1 ? prev.data('this').getID() : ''
+              }&version_id=${sprintId}`;
 
       if (this.$.find('.editor').length > 0) {
-        data += "&" + this.$.find('.editor').serialize();
+        data += `&${this.$.find('.editor').serialize()}`;
       }
 
       //TODO: this might be unsave in case the parent of this story is not the
@@ -115,21 +119,21 @@ RB.Story = (function ($) {
       //      hoping it exists
       if (this.isNew()) {
         // @ts-expect-error TS(2304): Cannot find name 'RB'.
-        url = RB.urlFor('create_story', {sprint_id: sprintId});
+        url = RB.urlFor('create_story', { sprint_id: sprintId });
       } else {
         // @ts-expect-error TS(2304): Cannot find name 'RB'.
-        url = RB.urlFor('update_story', {id: this.getID(), sprint_id: sprintId});
-        data += "&_method=put";
+        url = RB.urlFor('update_story', { id: this.getID(), sprint_id: sprintId });
+        data += '&_method=put';
       }
 
       return {
-        url: url,
-        data: data
+        url,
+        data,
       };
     },
 
-    beforeSaveDragResult: function () {
+    beforeSaveDragResult() {
       // Do nothing
-    }
+    },
   });
 }(jQuery));
