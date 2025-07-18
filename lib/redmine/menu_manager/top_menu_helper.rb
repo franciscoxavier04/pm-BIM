@@ -193,7 +193,7 @@ module Redmine::MenuManager::TopMenuHelper
                               "aria-controls": "op-app-header--modules-menu-list",
                               test_selector: "op-app-header--modules-menu-button",
                               "aria-label": I18n.t("label_modules"))
-        menu.with_header do
+        menu.with_header(classes: "op-app-header--modules-menu-header") do
           render_logo_only
         end
 
