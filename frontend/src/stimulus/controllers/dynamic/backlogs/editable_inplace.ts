@@ -59,8 +59,6 @@ RB.EditableInplace = (function ($) {
         that.saveEdits();
       } else if (e.key === 'Escape') {
         that.cancelEdit();
-      } else {
-        return true;
       }
     }
   });
