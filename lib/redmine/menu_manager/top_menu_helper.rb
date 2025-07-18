@@ -190,6 +190,7 @@ module Redmine::MenuManager::TopMenuHelper
                               scheme: :invisible,
                               classes: "op-app-menu--item-action op-app-header--primer-button",
                               title: I18n.t("label_modules"),
+                              "aria-controls": "op-app-header--modules-menu-list",
                               test_selector: "op-app-header--modules-menu-button",
                               "aria-label": I18n.t("label_modules"))
         menu.with_header do
@@ -205,7 +206,7 @@ module Redmine::MenuManager::TopMenuHelper
 
   def render_menu_item_group(menu, item_group)
     menu.with_body do
-      render(Primer::Alpha::ActionList.new(classes: "op-app-menu--items")) do |component|
+      render(Primer::Alpha::ActionList.new(classes: "op-app-menu--items", id: "op-app-header--modules-menu-list")) do |component|
         component.with_heading(title: item_group[:title], align_items: :flex_start) if item_group[:title]
         item_group[:items].each do |item|
           component.with_item(
