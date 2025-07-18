@@ -32,6 +32,7 @@ jQuery(function ($) {
   // Initialize each backlog
   $('.backlog').each(function (index) {
     // 'this' refers to an element with class="backlog"
+    // @ts-expect-error TS(2304): Cannot find name 'RB'.
     RB.Factory.initialize(RB.Backlog, this);
   });
 

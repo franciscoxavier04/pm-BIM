@@ -26,10 +26,12 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
+// @ts-expect-error TS(2304): Cannot find name 'RB'.
 RB.EditableInplace = (function ($) {
+  // @ts-expect-error TS(2304): Cannot find name 'RB'.
   return RB.Object.create(RB.Model, {
 
-    displayEditor: function (editor) {
+    displayEditor: function (editor: any) {
       this.$.addClass("editing");
       editor.find(".editor").bind('keydown', this.handleKeydown);
     },
@@ -47,7 +49,7 @@ RB.EditableInplace = (function ($) {
     },
 
     // For detecting Enter and ESC
-    handleKeydown: function (e) {
+    handleKeydown: function (e: any) {
       var j, that;
 
       j = $(this).parents('.model').first();
