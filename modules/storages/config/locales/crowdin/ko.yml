@@ -476,6 +476,11 @@ ko:
         label_oauth_client_secret: Azure OAuth 클라이언트 비밀번호 값
         name: OneDrive
         name_placeholder: '예: OneDrive'
+      share_point:
+        label_oauth_client_id: Azure OAuth Application (client) ID
+        label_oauth_client_secret: Azure OAuth Client Secret Value
+        name: SharePoint
+        name_placeholder: e.g. SharePoint
     show_attachments_toggle:
       description: 이 옵션을 비활성화하면 작업 패키지 파일 탭에서 첨부 파일 목록이 숨겨집니다. 작업 패키지 설명에 첨부된 파일은 내부 첨부 파일 저장소에 계속 업로드됩니다.
       label: 작업 패키지 파일 탭에 첨부 파일 표시

@@ -483,6 +483,11 @@ uk:
         label_oauth_client_secret: Значення секрету клієнта Azure OAuth
         name: OneDrive
         name_placeholder: напр. OneDrive
+      share_point:
+        label_oauth_client_id: Azure OAuth Application (client) ID
+        label_oauth_client_secret: Azure OAuth Client Secret Value
+        name: SharePoint
+        name_placeholder: e.g. SharePoint
     show_attachments_toggle:
       description: Якщо вимкнути цей параметр, список вкладень буде приховано на вкладці «Файли» пакетів робіт. Файли, вкладені в опис пакета робіт, усе одно буде додано у внутрішнє сховище вкладень.
       label: Показувати вкладення на вкладці «Файли» пакетів робіт

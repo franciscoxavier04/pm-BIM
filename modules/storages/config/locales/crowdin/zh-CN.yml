@@ -476,6 +476,11 @@ zh-CN:
         label_oauth_client_secret: Azure OAuth 客户端密钥值
         name: OneDrive
         name_placeholder: 例如OneDrive
+      share_point:
+        label_oauth_client_id: Azure OAuth Application (client) ID
+        label_oauth_client_secret: Azure OAuth Client Secret Value
+        name: SharePoint
+        name_placeholder: e.g. SharePoint
     show_attachments_toggle:
       description: 禁用此选项将隐藏工作包文件选项卡上的附件列表。 工作包描述中的文件仍将上传到内部附件存储。
       label: 在工作包文件选项卡中显示附件

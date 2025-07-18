@@ -478,6 +478,11 @@ pt-BR:
         label_oauth_client_secret: Valor secreto do cliente Azure OAuth
         name: OneDrive
         name_placeholder: 'por ex.: OneDrive'
+      share_point:
+        label_oauth_client_id: Azure OAuth Application (client) ID
+        label_oauth_client_secret: Azure OAuth Client Secret Value
+        name: SharePoint
+        name_placeholder: e.g. SharePoint
     show_attachments_toggle:
       description: Desativar esta opção ocultará a lista de anexos na guia de arquivos dos pacotes de trabalho. Os arquivos anexados na descrição de um pacote de trabalho ainda serão enviados para o armazenamento interno de anexos.
       label: Exibir anexos na aba arquivos de pacotes de trabalho

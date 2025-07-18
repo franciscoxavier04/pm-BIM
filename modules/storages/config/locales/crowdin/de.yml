@@ -478,6 +478,11 @@ de:
         label_oauth_client_secret: Azure OAuth geheimer Clientschlüssel Wert
         name: OneDrive
         name_placeholder: z.B. OneDrive
+      share_point:
+        label_oauth_client_id: Azure OAuth Application (client) ID
+        label_oauth_client_secret: Azure OAuth Client Secret Value
+        name: SharePoint
+        name_placeholder: e.g. SharePoint
     show_attachments_toggle:
       description: Beim Deaktivieren dieser Option wird die Liste der Anhänge auf der Registerkarte Arbeitspakete ausgeblendet. Die in der Beschreibung eines Arbeitspakets angehängten Dateien werden weiterhin im internen Anhang gespeichert.
       label: Anhänge auf dem Dateien-Tab der Arbeitspakete anzeigen

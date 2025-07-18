@@ -478,6 +478,11 @@ fr:
         label_oauth_client_secret: Clé secrète du client OAuth Azure
         name: OneDrive
         name_placeholder: par exemple OneDrive
+      share_point:
+        label_oauth_client_id: Azure OAuth Application (client) ID
+        label_oauth_client_secret: Azure OAuth Client Secret Value
+        name: SharePoint
+        name_placeholder: e.g. SharePoint
     show_attachments_toggle:
       description: Si vous désactivez cette option, la liste des pièces jointes dans l'onglet des fichiers des lots de travaux sera masquée. Les fichiers joints dans la description d'un lot de travaux seront toujours téléversés dans l'espace de stockage interne des pièces jointes.
       label: Afficher les pièces jointes dans l'onglet des fichiers des lots de travaux

@@ -479,6 +479,11 @@ it:
         label_oauth_client_secret: Valore segreto client Azure OAuth
         name: OneDrive
         name_placeholder: es. OneDrive
+      share_point:
+        label_oauth_client_id: Azure OAuth Application (client) ID
+        label_oauth_client_secret: Azure OAuth Client Secret Value
+        name: SharePoint
+        name_placeholder: e.g. SharePoint
     show_attachments_toggle:
       description: La disattivazione di questa opzione nasconderà l'elenco degli allegati nella scheda dei file delle macro-attività. I file allegati nella descrizione di una macro-attività verranno comunque caricati nell'archivio interno degli allegati.
       label: Mostra gli allegati nella scheda File delle macro-attività

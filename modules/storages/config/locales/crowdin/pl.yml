@@ -482,6 +482,11 @@ pl:
         label_oauth_client_secret: Tajny klucz klienta OAuth Azure
         name: OneDrive
         name_placeholder: np. OneDrive
+      share_point:
+        label_oauth_client_id: Azure OAuth Application (client) ID
+        label_oauth_client_secret: Azure OAuth Client Secret Value
+        name: SharePoint
+        name_placeholder: e.g. SharePoint
     show_attachments_toggle:
       description: Wyłączenie tej opcji spowoduje ukrycie listy załączników na karcie plików pakietów roboczych. Pliki załączone w opisie pakietu roboczego będą nadal przesyłane do wewnętrznego magazynu załączników.
       label: Pokaż załączniki na karcie plików pakietów roboczych
