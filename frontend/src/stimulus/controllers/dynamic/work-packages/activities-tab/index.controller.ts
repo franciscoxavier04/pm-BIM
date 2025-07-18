@@ -34,6 +34,7 @@ import {
 } from 'core-app/shared/components/editor/components/ckeditor/ckeditor.types';
 import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
+import { useMeta } from 'stimulus-use';
 
 enum AnchorType {
   Comment = 'comment',
@@ -86,6 +87,10 @@ export default class IndexController extends Controller {
   declare showConflictFlashMessageUrlValue:string;
   declare unsavedChangesConfirmationMessageValue:string;
 
+  static metaNames = ['csrf-token'];
+
+  declare readonly csrfToken:string;
+
   private updateInProgress:boolean;
   private turboRequests:TurboRequestsService;
 
@@ -95,6 +100,8 @@ export default class IndexController extends Controller {
   private ckEditorAbortController = new AbortController();
 
   async connect() {
+    useMeta(this, { suffix: false });
+
     const context = await window.OpenProject.getPluginContext();
     this.turboRequests = context.services.turboRequests;
     this.apiV3Service = context.services.apiV3Service;
@@ -250,7 +257,7 @@ export default class IndexController extends Controller {
     return this.turboRequests.request(url, {
       method: 'GET',
       headers: {
-        'X-CSRF-Token': (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement).content,
+        'X-CSRF-Token': this.csrfToken,
       },
     }, true); // suppress error toast in polling to avoid spamming the user when having e.g. network issues
   }
