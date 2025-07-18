@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module DemoData
   class OverviewSeeder < Seeder
     include CreateAttachments
