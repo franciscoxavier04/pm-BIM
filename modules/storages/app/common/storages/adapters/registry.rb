@@ -60,8 +60,9 @@ module Storages
       config.resolver = Resolver.new
 
       # Need to make this dynamic to ease new providers to be registered
-      import Providers::OneDrive::OneDriveRegistry
       import Providers::Nextcloud::NextcloudRegistry
+      import Providers::OneDrive::OneDriveRegistry
+      import Providers::SharePoint::SharePointRegistry
     end
   end
 end
