@@ -33,8 +33,10 @@ module OpTurbo
     # rubocop:enable OpenProject/AddPreviewForViewComponent
 
     INLINE_ACTIONS = %i[dialog flash].freeze
+    private_constant :INLINE_ACTIONS
     # Turbo allows the response method for these actions only:
     ACTIONS_WITH_METHOD = %i[update replace].freeze
+    private_constant :ACTIONS_WITH_METHOD
 
     extend ActiveSupport::Concern
 
@@ -44,6 +46,19 @@ module OpTurbo
       end
     end
 
+    ##
+    # Renders the component as a Turbo Stream.
+    #
+    # The rendered component is wrapped in a `<turbo-stream>` tag.
+    #
+    # @example
+    #   <turbo-stream action="update" method="morph" target="wrapper_key">
+    #     <template><component /></template>
+    #   </turbo-stream>
+    #
+    # @param [ActionView::Context] view_context the view context to render in.
+    # @param [Symbol] action the Turbo Stream action.
+    # @param [String, nil] method the Turbo Stream method (if action is :update or :replace).
     def render_as_turbo_stream(view_context:, action: :update, method: nil, **attributes)
       case action
       when :update, *INLINE_ACTIONS
