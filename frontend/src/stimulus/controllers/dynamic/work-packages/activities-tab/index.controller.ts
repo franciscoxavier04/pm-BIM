@@ -62,12 +62,13 @@ export default class IndexController extends Controller {
     unsavedChangesConfirmationMessage: String,
   };
 
-  static targets = ['journalsContainer', 'buttonRow', 'formRow', 'form', 'formSubmitButton', 'reactionButton'];
+  static targets = ['journalsContainer', 'buttonRow', 'formRow', 'form', 'editForm', 'formSubmitButton', 'reactionButton'];
 
   declare readonly journalsContainerTarget:HTMLElement;
   declare readonly buttonRowTarget:HTMLInputElement;
   declare readonly formRowTarget:HTMLElement;
   declare readonly formTarget:HTMLFormElement;
+  declare readonly editFormTargets:HTMLFormElement[];
   declare readonly formSubmitButtonTarget:HTMLButtonElement;
   declare readonly reactionButtonTargets:HTMLElement[];
 
@@ -224,13 +225,15 @@ export default class IndexController extends Controller {
 
     this.updateInProgress = true;
 
+    const editingJournals = this.captureEditingJournals();
+
     // Unfocus any reaction buttons that may have been focused
     // otherwise the browser will perform an auto scroll to the before focused button after the stream update was applied
     this.unfocusReactionButtons();
 
     const journalsContainerAtBottom = this.isJournalsContainerScrolledToBottom();
 
-    void this.performUpdateStreamsRequest(this.prepareUpdateStreamsUrl())
+    void this.performUpdateStreamsRequest(this.prepareUpdateStreamsUrl(editingJournals))
     .then(({ html, headers }) => {
       this.handleUpdateStreamsResponse(html, headers, journalsContainerAtBottom);
     }).catch((error) => {
@@ -240,16 +243,34 @@ export default class IndexController extends Controller {
     });
   }
 
+  private captureEditingJournals():Set<string> {
+    const editingJournals = new Set<string>();
+
+    const editForms = this.editFormTargets;
+    editForms.forEach((form) => {
+      const journalId = form.dataset.journalId;
+      if (journalId) { editingJournals.add(journalId); }
+    });
+
+    return editingJournals;
+  }
+
   private unfocusReactionButtons() {
     this.reactionButtonTargets.forEach((button) => button.blur());
   }
 
-  private prepareUpdateStreamsUrl():string {
+  private prepareUpdateStreamsUrl(editingJournals:Set<string>):string {
     const baseUrl = window.location.origin;
     const url = new URL(this.updateStreamsPathValue, baseUrl);
+
     url.searchParams.set('sortBy', this.sortingValue);
     url.searchParams.set('filter', this.filterValue);
     url.searchParams.set('last_update_timestamp', this.lastServerTimestampValue);
+
+    if (editingJournals.size > 0) {
+      url.searchParams.set('editing_journals', Array.from(editingJournals).join(','));
+    }
+
     return url.toString();
   }
 

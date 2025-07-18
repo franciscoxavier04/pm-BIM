@@ -121,7 +121,7 @@ ko:
         one_time_hint: "이번에만 클라이언트 비밀번호가 표시됩니다. 지금 이 클라이언트 비밀번호를 복사해야 합니다."
       created_token_dialog_component:
         title: "토큰 생성됨"
-        heading: "토큰이 생성되었습니다"
+        heading: "A token has been generated"
         label_token: "토큰"
         one_time_hint: "이번에만 이 토큰이 표시됩니다. 지금 이 토큰을 복사해야 합니다."
       delete_scim_client_dialog_component:
