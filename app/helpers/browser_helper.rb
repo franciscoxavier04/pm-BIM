@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module BrowserHelper
   ##
   # Instead of defining what makes up a modern user,

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module WorkPackages::SplitViewHelper
   def render_work_package_split_view?
     params[:work_package_split_view].present?

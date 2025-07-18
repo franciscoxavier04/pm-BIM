@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module AccountsHelper
   class Footer
     include OpenProject::TextFormatting

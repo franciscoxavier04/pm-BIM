@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module AppsignalHelper
   def appsignal_frontend_tag
     return "" unless OpenProject::Configuration.appsignal_frontend_key

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module HighlightingHelper
   def highlight_css_version_tag(max_updated_at = highlight_css_updated_at)
     OpenProject::Cache::CacheKey.expand [max_updated_at, Meetings::Statuses::AVAILABLE]
