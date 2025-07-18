@@ -26,7 +26,8 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { ChangeDetectionStrategy, Component, Injector, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Injector, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
+
 import {
   PartitionedQuerySpacePageComponent,
   ToolbarButtonComponentDefinition,
@@ -89,7 +90,9 @@ import {
   ],
   selector: 'op-ifc-viewer-page',
 })
-export class IFCViewerPageComponent extends PartitionedQuerySpacePageComponent implements UntilDestroyedMixin, OnInit {
+export class IFCViewerPageComponent
+  extends PartitionedQuerySpacePageComponent
+  implements UntilDestroyedMixin, OnInit, OnDestroy {
   text = {
     title: this.I18n.t('js.bcf.management'),
     delete: this.I18n.t('js.button_delete'),
@@ -151,6 +154,9 @@ export class IFCViewerPageComponent extends PartitionedQuerySpacePageComponent i
     },
   ];
 
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  private removeSubscription:Function;
+
   constructor(
     readonly ifcData:IfcModelsDataService,
     readonly bcfView:BcfViewService,
@@ -172,17 +178,20 @@ export class IFCViewerPageComponent extends PartitionedQuerySpacePageComponent i
         this.filterAllowed = dr !== bcfViewerViewIdentifier;
         // When changing the query space by selecting a dropdown option, handle the split screen
         // and hide it for full views.
-        this.hideSplitScreenForFullViews(dr as BcfViewState);
+        this.updateSplitScreen(dr as BcfViewState);
         this.cdRef.detectChanges();
       });
 
-    this.$transitions.onSuccess({}, (transition):void => {
+    this.removeSubscription = this.$transitions.onSuccess({}, (_transition):void => {
       // When going back from "details" route to "list" route handle the split screen right side
-      if (transition.to().name === 'bim.partitioned.list') {
-        const dr = this.querySpace.query.value?.displayRepresentation;
-        this.hideSplitScreenForFullViews((dr || bcfTableViewIdentifier) as BcfViewState);
-      }
+      const dr = this.querySpace.query.value?.displayRepresentation;
+      this.updateSplitScreen((dr || bcfTableViewIdentifier) as BcfViewState);
     });
+  }
+
+  ngOnDestroy() {
+    this.removeSubscription();
+    super.ngOnDestroy();
   }
 
   breadcrumbItems() {
@@ -211,8 +220,16 @@ export class IFCViewerPageComponent extends PartitionedQuerySpacePageComponent i
       });
   }
 
-  private hideSplitScreenForFullViews(dr:BcfViewState):void {
-    if ([bcfViewerViewIdentifier, bcfCardsViewIdentifier, bcfTableViewIdentifier].includes(dr)) {
+  private updateSplitScreen(dr:BcfViewState):void {
+    const isFullViewDisplayRepresentation = [
+      bcfViewerViewIdentifier,
+      bcfCardsViewIdentifier,
+      bcfTableViewIdentifier,
+    ].includes(dr);
+
+    const isListRoute = this.uiRouterGlobals.current.name === 'bim.partitioned.list';
+
+    if (isListRoute && isFullViewDisplayRepresentation) {
       document.documentElement.style.setProperty('--split-screen-width', '0');
     }
   }
