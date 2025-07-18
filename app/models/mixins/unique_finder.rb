@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Mixins
   module UniqueFinder
     def self.prepended(model_class)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,8 +30,8 @@
 
 module Exports::PDF::Components::Gantt
   class GanttPainter
-    GANTT_GRID_COLOR = "9b9ea3".freeze
-    GANTT_LINE_COLOR = "2b8bd5".freeze
+    GANTT_GRID_COLOR = "9b9ea3"
+    GANTT_LINE_COLOR = "2b8bd5"
 
     def initialize(pdf)
       @pdf = pdf

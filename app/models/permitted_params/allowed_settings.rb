@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PermittedParams
   module AllowedSettings
     class Restriction
