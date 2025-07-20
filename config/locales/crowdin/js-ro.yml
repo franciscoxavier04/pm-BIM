@@ -323,7 +323,7 @@ ro:
     label_added_time_by: 'Adăugat de <a href="%{authorLink}">%{author}</a> acum %{age}'
     label_ago: "zile în urmă"
     label_all: "toate"
-    label_all_projects: "All projects"
+    label_all_projects: "Toate proiectele"
     label_all_uppercase: "Toate"
     label_all_work_packages: "toate pachetele de lucru"
     label_and: "și"

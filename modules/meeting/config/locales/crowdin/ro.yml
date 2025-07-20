@@ -159,16 +159,16 @@ ro:
   label_past_meetings_short: "Past"
   label_involvement: "Implicare"
   label_invitations: "Invitations"
-  label_invited_user: "Invited user"
-  label_past_invitations: "Past invitations"
-  label_attended: "Attended"
-  label_attended_user: "Attended user"
+  label_invited_user: "Utilizator invitat"
+  label_past_invitations: "Invitații anterioare"
+  label_attended: "Participat"
+  label_attended_user: "Utilizator participant"
   label_created_by_me: "Creat de mine"
   label_notify: "Trimiteți pentru revizuire"
   label_icalendar: "Trimiteți iCalendar"
   label_icalendar_download: "Download iCalendar event"
   label_view_meeting_series: "View meeting series"
-  label_meeting_series: "Meeting series"
+  label_meeting_series: "Serie şedinţe"
   label_version: "Versiune"
   label_time_zone: "Fus orar"
   label_start_date: "Dată început"
@@ -241,11 +241,11 @@ ro:
     blankslate:
       title: "No meetings to display"
       desc: "There are no meetings that meet the active filter criteria."
-    label_export_pdf: "Export PDF"
+    label_export_pdf: "Exportă PDF"
     export:
       your_meeting_export: "Meeting is being exported"
     export_pdf_dialog:
-      title: Export PDF
+      title: Exportă PDF
       description: Generate a printable PDF file of this meeting at the current state.
       include_participants:
         label: Include list of participants
@@ -262,7 +262,7 @@ ro:
       footer_text:
         label: Footer text
         caption: This text will appear on every page on the right of the footer.
-      submit_button: Download
+      submit_button: Descarcă
   meeting_section:
     untitled_title: "Untitled section"
     delete_confirmation: "Deleting the section will also delete all of its agenda items. Are you sure you want to do this?"
@@ -381,14 +381,14 @@ ro:
   label_meeting_edit_title: "Edit meeting title"
   label_meeting_delete: "Delete meeting"
   label_meeting_created_by: "Creat de"
-  label_meeting_last_updated: "Last updated"
-  label_meeting_reload: "Reload"
+  label_meeting_last_updated: "Ultima actualizare"
+  label_meeting_reload: "Reîncarcă"
   label_meeting_index_today: "Azi"
-  label_meeting_index_tomorrow: "Tomorrow"
-  label_meeting_index_this_week: "Later this week"
+  label_meeting_index_tomorrow: "Mâine"
+  label_meeting_index_this_week: "Mai târziu în această săptămână"
   label_meeting_index_later: "Next week and later"
   label_agenda_items: "Agenda items"
-  label_agenda_items_reordered: "reordered"
+  label_agenda_items_reordered: "reordonat"
   label_agenda_item_add: "Add agenda item"
   label_agenda_item_remove_from_agenda: "Remove from agenda"
   label_agenda_item_remove_from_backlog: "Remove from backlog"
