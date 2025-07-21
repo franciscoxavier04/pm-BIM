@@ -36,6 +36,7 @@ import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
 import { useMeta } from 'stimulus-use';
 import { retrieveCkEditorInstance } from 'core-app/shared/helpers/ckeditor-helpers';
+import ViewPortService from './services/view-port-service';
 
 enum AnchorType {
   Comment = 'comment',
@@ -95,8 +96,8 @@ export default class IndexController extends Controller<HTMLElement> {
 
   private updateInProgress:boolean;
   private turboRequests:TurboRequestsService;
-
   private apiV3Service:ApiV3Service;
+  viewPortService:ViewPortService;
 
   private abortController = new AbortController();
   private ckEditorAbortController = new AbortController();
@@ -107,6 +108,8 @@ export default class IndexController extends Controller<HTMLElement> {
     const context = await window.OpenProject.getPluginContext();
     this.turboRequests = context.services.turboRequests;
     this.apiV3Service = context.services.apiV3Service;
+
+    this.viewPortService = new ViewPortService(this.notificationCenterPathNameValue);
 
     this.setLocalStorageKeys();
     this.handleStemVisibility();
@@ -232,7 +235,7 @@ export default class IndexController extends Controller<HTMLElement> {
     // otherwise the browser will perform an auto scroll to the before focused button after the stream update was applied
     this.unfocusReactionButtons();
 
-    const journalsContainerAtBottom = this.isJournalsContainerScrolledToBottom();
+    const journalsContainerAtBottom = this.viewPortService.isJournalsContainerScrolledToBottom();
 
     void this.performUpdateStreamsRequest(this.prepareUpdateStreamsUrl(editingJournals))
     .then(({ html, headers }) => {
@@ -394,7 +397,7 @@ export default class IndexController extends Controller<HTMLElement> {
 
     if (this.sortingValue === 'asc' && journalsContainerAtBottom) {
       // scroll to (new) bottom if sorting is ascending and journals container was already at bottom before a new activity was added
-      if (this.isMobile()) {
+      if (this.viewPortService.isMobile()) {
         this.scrollInputContainerIntoView(300);
       } else {
         this.scrollJournalContainer(true, true);
@@ -423,13 +426,13 @@ export default class IndexController extends Controller<HTMLElement> {
 
     if (activityIdMatch && activityIdMatch.length === 3) {
       this.scrollToActivity(activityIdMatch[1] as AnchorType, activityIdMatch[2]);
-    } else if (this.sortingValue === 'asc' && (!this.isMobile() || this.isWithinNotificationCenter())) {
+    } else if (this.sortingValue === 'asc' && (!this.viewPortService.isMobile() || this.viewPortService.isWithinNotificationCenter())) {
       this.scrollToBottom();
     }
   }
 
   private tryScroll(activityAnchorName:AnchorType, activityId:string, attempts:number, maxAttempts:number) {
-    const scrollableContainer = this.getScrollableContainer();
+    const scrollableContainer = this.viewPortService.scrollableContainer;
     const activityElement = this.getActivityAnchorElement(activityAnchorName, activityId);
     const topPadding = 70;
 
@@ -454,7 +457,7 @@ export default class IndexController extends Controller<HTMLElement> {
   }
 
   private tryScrollToBottom(attempts:number = 0, maxAttempts:number = 20, behavior:ScrollBehavior = 'smooth') {
-    const scrollableContainer = this.getScrollableContainer();
+    const scrollableContainer = this.viewPortService.scrollableContainer;
 
     if (!scrollableContainer) {
       if (attempts < maxAttempts) {
@@ -504,7 +507,7 @@ export default class IndexController extends Controller<HTMLElement> {
 
     // not using the scrollToActivity method here as it is causing flickering issues
     // in case of a setAnchor click, we can go for a direct scroll approach
-    const scrollableContainer = this.getScrollableContainer();
+    const scrollableContainer = this.viewPortService.scrollableContainer;
     const activityElement = this.getActivityAnchorElement(anchorName, activityId);
 
     if (scrollableContainer && activityElement) {
@@ -529,44 +532,15 @@ export default class IndexController extends Controller<HTMLElement> {
     return this.element.querySelector('.work-packages-activities-tab-journals-new-component');
   }
 
-  private getScrollableContainer():HTMLElement | null {
-    if (this.isWithinNotificationCenter() || this.isWithinSplitScreen()) {
-      // valid for both mobile and desktop
-      return document.querySelector('.work-package-details-tab') as HTMLElement;
-    }
-    if (this.isMobile()) {
-      return document.querySelector('#content-body') as HTMLElement;
-    }
-
-    // valid for desktop
-    return document.querySelector('.tabcontent') as HTMLElement;
-  }
-
   private getActivityAnchorElement(activityAnchorName:AnchorType, activityId:string):HTMLElement | null {
     return document.querySelector(`[data-anchor-${activityAnchorName}-id="${activityId}"]`);
   }
 
-  // Code Maintenance: Get rid of this JS based view port checks when activities are rendered in fully primierized activity tab in all contexts
-  isMobile():boolean {
-    if (this.isWithinNotificationCenter() || this.isWithinSplitScreen()) {
-      return window.innerWidth < 1013;
-    }
-    return window.innerWidth < 1279;
-  }
-
-  private isWithinNotificationCenter():boolean {
-    return window.location.pathname.includes(this.notificationCenterPathNameValue);
-  }
-
-  private isWithinSplitScreen():boolean {
-    return window.location.pathname.includes('work_packages/details');
-  }
-
   private setCssClasses() {
-    if (this.isWithinNotificationCenter()) {
+    if (this.viewPortService.isWithinNotificationCenter()) {
       this.element.classList.add('work-packages-activities-tab-index-component--within-notification-center');
     }
-    if (this.isWithinSplitScreen()) {
+    if (this.viewPortService.isWithinSplitScreen()) {
       this.element.classList.add('work-packages-activities-tab-index-component--within-split-screen');
     }
   }
@@ -580,7 +554,7 @@ export default class IndexController extends Controller<HTMLElement> {
       onBlurEditor: () => { void this.onBlurEditor(); },
       onFocusEditor: () => {
         void this.onFocusEditor();
-        if (this.isMobile()) { void this.scrollInputContainerIntoView(200); }
+        if (this.viewPortService.isMobile()) { void this.scrollInputContainerIntoView(200); }
       },
     };
 
@@ -601,24 +575,12 @@ export default class IndexController extends Controller<HTMLElement> {
 
   private adjustJournalContainerMargin() {
     // don't do this on mobile screens
-    if (this.isMobile()) { return; }
+    if (this.viewPortService.isMobile()) { return; }
     this.journalsContainerTarget.style.marginBottom = `${this.formRowTarget.clientHeight + 29}px`;
   }
 
-  private isJournalsContainerScrolledToBottom() {
-    let atBottom = false;
-    // we have to handle different scrollable containers for different viewports/pages in order to idenfity if the user is at the bottom of the journals
-    // DOM structure different for notification center and workpackage detail view as well
-    const scrollableContainer = this.getScrollableContainer();
-    if (scrollableContainer) {
-      atBottom = (scrollableContainer.scrollTop + scrollableContainer.clientHeight + 10) >= scrollableContainer.scrollHeight;
-    }
-
-    return atBottom;
-  }
-
   private scrollJournalContainer(toBottom:boolean, smooth:boolean = false) {
-    const scrollableContainer = this.getScrollableContainer();
+    const scrollableContainer = this.viewPortService.scrollableContainer;
     if (scrollableContainer) {
       if (smooth) {
         scrollableContainer.scrollTo({
@@ -644,7 +606,7 @@ export default class IndexController extends Controller<HTMLElement> {
   }
 
   showForm() {
-    const journalsContainerAtBottom = this.isJournalsContainerScrolledToBottom();
+    const journalsContainerAtBottom = this.viewPortService.isJournalsContainerScrolledToBottom();
 
     this.buttonRowTarget.classList.add('d-none');
     this.formRowTarget.classList.remove('d-none');
@@ -652,7 +614,7 @@ export default class IndexController extends Controller<HTMLElement> {
 
     this.addCkEditorEventListeners();
 
-    if (this.isMobile()) {
+    if (this.viewPortService.isMobile()) {
       this.focusEditor(0);
     } else if (this.sortingValue === 'asc' && journalsContainerAtBottom) {
       // scroll to (new) bottom if sorting is ascending and journals container was already at bottom before showing the form
@@ -693,7 +655,7 @@ export default class IndexController extends Controller<HTMLElement> {
       this.journalsContainerTarget.classList.remove('work-packages-activities-tab-index-component--journals-container_with-input-compensation');
     }
 
-    if (this.isMobile()) {
+    if (this.viewPortService.isMobile()) {
       // wait for the keyboard to be fully down before scrolling further
       // timeout amount tested on mobile devices for best possible user experience
       this.scrollInputContainerIntoView(500);
@@ -747,7 +709,7 @@ export default class IndexController extends Controller<HTMLElement> {
       this.resetJournalsContainerMargins();
 
       setTimeout(() => {
-        if (this.isMobile() && !this.isWithinNotificationCenter()) {
+        if (this.viewPortService.isMobile() && !this.viewPortService.isWithinNotificationCenter()) {
           // wait for the keyboard to be fully down before scrolling further
           // timeout amount tested on mobile devices for best possible user experience
         this.scrollInputContainerIntoView(800);
@@ -806,7 +768,7 @@ export default class IndexController extends Controller<HTMLElement> {
   }
 
   private handleStemVisibilityForMobile() {
-    if (this.isMobile()) {
+    if (this.viewPortService.isMobile()) {
       if (this.sortingValue === 'asc') return;
 
       const initialJournalContainer = this.element.querySelector('.work-packages-activities-tab-journals-item-component-details--journal-details-container[data-initial="true"]') as HTMLElement;

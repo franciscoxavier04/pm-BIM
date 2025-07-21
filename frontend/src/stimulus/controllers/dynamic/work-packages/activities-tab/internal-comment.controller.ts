@@ -105,7 +105,7 @@ export default class InternalCommentController extends Controller {
   }
 
   private toggleLearnMoreLink(isChecked:boolean):void {
-    if (this.workPackagesActivitiesTabIndexOutlet.isMobile()) return; // hidden on mobile
+    if (this.workPackagesActivitiesTabIndexOutlet.viewPortService.isMobile()) return; // hidden on mobile
 
     this.learnMoreLinkTarget.classList.toggle(this.hiddenClass, !isChecked);
   }
