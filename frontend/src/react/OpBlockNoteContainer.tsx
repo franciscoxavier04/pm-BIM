@@ -58,7 +58,6 @@ const detectTheme = (): OpTheme => {
 
 export default function OpBlockNoteContainer({ inputField, inputText }: OpBlockNoteContainerProps) {
   const [isLoading, setIsLoading] = useState(true);
-  const [theme, setTheme] = useState<"light" | "dark">(detectTheme);
 
   const editor = useCreateBlockNote({ schema });
   type EditorType = typeof editor;
@@ -69,26 +68,6 @@ export default function OpBlockNoteContainer({ inputField, inputText }: OpBlockN
       ...getDefaultOpenProjectSlashMenuItems(editor),
     ];
   };
-
-  useEffect(() => {
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.type === 'attributes' &&
-            (mutation.attributeName === 'data-color-mode' ||
-             mutation.attributeName === 'data-light-theme' ||
-             mutation.attributeName === 'data-dark-theme')) {
-          setTheme(detectTheme());
-        }
-      });
-    });
-
-    observer.observe(document.body, {
-      attributes: true,
-      attributeFilter: ['data-color-mode', 'data-light-theme', 'data-dark-theme']
-    });
-
-    return () => observer.disconnect();
-  }, []);
 
   useEffect(() => {
     async function loadInitialContent() {
@@ -105,7 +84,7 @@ export default function OpBlockNoteContainer({ inputField, inputText }: OpBlockN
         :
         <BlockNoteView
           editor={editor}
-          theme={theme}
+          theme={detectTheme()}
           onChange={async (editor) => {
             const content = await editor.blocksToMarkdownLossy();
             inputField.value = content;
