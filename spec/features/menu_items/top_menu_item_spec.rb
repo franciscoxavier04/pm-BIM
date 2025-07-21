@@ -82,6 +82,8 @@ RSpec.describe "Top menu items", :js do
     shared_let(:news_item) { menu_link_item.new(I18n.t(:label_news_plural), news_index_path) }
     shared_let(:reporting_item) { menu_link_item.new(I18n.t(:cost_reports_title), "/cost_reports") }
     shared_let(:meetings_item) { menu_link_item.new(I18n.t(:label_meeting_plural), "/meetings") }
+    shared_let(:my_page_item) { menu_link_item.new(I18n.t("my_page.label"), my_page_path) }
+    shared_let(:home_item) { menu_link_item.new(I18n.t(:label_home), home_path) }
 
     shared_let(:all_items) do
       [
@@ -93,7 +95,9 @@ RSpec.describe "Top menu items", :js do
         boards_item,
         news_item,
         reporting_item,
-        meetings_item
+        meetings_item,
+        my_page_item,
+        home_item
       ]
     end
 
@@ -123,7 +127,7 @@ RSpec.describe "Top menu items", :js do
 
     context "as a regular user" do
       it "only displays projects, activity and news" do
-        has_menu_items? project_item, activity_item, news_item
+        has_menu_items? project_item, activity_item, news_item, home_item, my_page_item
       end
     end
 
@@ -148,7 +152,7 @@ RSpec.describe "Top menu items", :js do
 
       context "when not login_required", with_settings: { login_required: false } do
         it "displays only projects, activity and news" do
-          has_menu_items? project_item, activity_item, news_item
+          has_menu_items? project_item, activity_item, news_item, home_item, my_page_item
         end
       end
     end
