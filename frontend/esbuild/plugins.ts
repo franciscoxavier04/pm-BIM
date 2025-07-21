@@ -32,7 +32,7 @@ import type { Plugin } from 'esbuild';
 
 const customConfigPlugin:Plugin = {
   name: 'custom-config',
-  setup({ initialOptions:options }) {
+  setup({ initialOptions: options }) {
     if (options.chunkNames === '[name]-[hash]') { // named chunks
       options.chunkNames = '[dir]/[name]-[hash]';
     }

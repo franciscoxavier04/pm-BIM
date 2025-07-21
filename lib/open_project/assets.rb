@@ -73,12 +73,12 @@ module OpenProject
 
         # Create map of asset chunk name to current hash
         manifest = current_assets.filter_map do |asset|
-          name = asset.basename(asset.extname).to_s
+          name, extname = split_basename(asset)
           case name.match(/\A(?<unhashed_name>[^.]+)[-\.][A-Z0-9]{8}\z/)
           in unhashed_name: "chunk"
             [asset, asset]
           in unhashed_name:
-            [asset.parent.join(unhashed_name + asset.extname), asset]
+            [asset.parent.join(unhashed_name + extname), asset]
           else
             nil # Non-hashed asset: no-op
           end
@@ -92,6 +92,19 @@ module OpenProject
           .glob("**/*")
           .select(&:file?)
           .map { it.relative_path_from(frontend_asset_path) }
+      end
+
+      def split_basename(pathname)
+        ext1 = pathname.extname
+        base = pathname.basename(ext1)
+
+        if ext1 == ".map"
+          ext2 = base.extname
+          base = base.basename(ext2)
+          [base.to_s, ext2 + ext1]
+        else
+          [base.to_s, ext1]
+        end
       end
     end
   end
