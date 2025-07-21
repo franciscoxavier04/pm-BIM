@@ -313,7 +313,7 @@ export class WorkPackageSingleViewComponent extends UntilDestroyedMixin implemen
     const id = idFromLink(this.workPackage.project.href);
     const projectPath = this.PathHelper.projectPath(id);
     const projectName = this.workPackage.project.name as string;
-    const project = `<a href="${projectPath}" class="project-context--switch-link">${projectName}<a>`;
+    const project = `<a href="${projectPath}" target="_self" class="project-context--switch-link">${projectName}</a>`;
     return this.I18n.t('js.project.click_to_switch_to_project', { projectname: project });
   }
 
