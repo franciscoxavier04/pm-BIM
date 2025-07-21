@@ -160,13 +160,11 @@ Redmine::MenuManager.map :global_menu do |menu|
   menu.push :home,
             { controller: "/homescreen", action: "index" },
             icon: "home",
-            context: :modules,
             first: true
 
   menu.push :my_page,
             { controller: "/my/page", action: "show" },
             after: :home,
-            context: :modules,
             icon: "person",
             caption: I18n.t("my_page.label")
 
