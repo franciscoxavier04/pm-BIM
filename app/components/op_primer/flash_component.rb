@@ -45,5 +45,17 @@ module OpPrimer
 
       super
     end
+
+    def render_as_turbo_stream(...)
+      return unless render?
+
+      super
+    end
+
+    private
+
+    def render?
+      trimmed_content.present?
+    end
   end
 end
