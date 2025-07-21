@@ -40,11 +40,10 @@ module CustomField::CalculatedValue
   FIELD_FORMATS_FOR_FORMULA = %w[int float calculated_value].freeze
 
   included do
-    validate :validate_formula
+    validate :validate_formula, if: :field_format_calculated_value?
+    validate :validate_referenced_custom_fields_allowed, if: :field_format_calculated_value?
 
     def validate_formula
-      return unless field_format_calculated_value?
-
       if formula_string.blank?
         errors.add(:formula, :blank)
         return
@@ -60,11 +59,7 @@ module CustomField::CalculatedValue
         return
       end
 
-      # WP-64348: check for valid (i.e., visible & enabled) custom field references (see #cf_ids_used_in_formula)
-
-      # TODO: consider differentiating between a formula that contains missing variables, invalid
-      #       syntax, or mathematical errors.
-      true # return anything to appease RuboCop for now
+      true
     end
 
     def formula=(value)
@@ -88,6 +83,21 @@ module CustomField::CalculatedValue
         # Disallow the current custom field to avoid circular references
         .where.not(id: id)
         .visible
+    end
+
+    def validate_referenced_custom_fields_allowed
+      formula_cfs = CustomField.where(id: cf_ids_used_in_formula(formula_string)).pluck(:id)
+      allowed_cfs = usable_custom_field_references_for_formula.pluck(:id)
+
+      surplus_cfs = formula_cfs - allowed_cfs
+
+      if surplus_cfs.any?
+        errors.add(:formula, :invalid_custom_fields, surplus_cfs:)
+        return
+      end
+
+      # TODO: validate referenced custom fields are enabled. This can only be done in the context of a project.
+      true
     end
 
     private
