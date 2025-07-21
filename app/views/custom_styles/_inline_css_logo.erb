@@ -37,9 +37,9 @@ See COPYRIGHT and LICENSE files for more details.
                asset_path("logo_openproject_white_big.png")
              end
 
-  logo_only_url = asset_path("icon_logo.svg")
+  logo_short_url = asset_path("icon_logo.svg")
 
-  logo_only_dark_url = asset_path("icon_logo_white.svg")
+  logo_short_dark_url = asset_path("icon_logo_white.svg")
 
   high_contrast_logo_url = if isRu
                              asset_path("logo-black-bg-ua.png")
@@ -52,12 +52,12 @@ See COPYRIGHT and LICENSE files for more details.
   if apply_custom_styles?
     if CustomStyle.current.logo.present?
       logo_url = custom_style_logo_path(digest: CustomStyle.current.digest, filename: CustomStyle.current.logo_identifier)
-      logo_only_url = logo_url
-      logo_only_dark_url = logo_url
+      logo_short_url = logo_url
+      logo_short_dark_url = logo_url
     elsif CustomStyle.current.theme_logo.present?
       logo_url = asset_path(CustomStyle.current.theme_logo)
-      logo_only_url = logo_url
-      logo_only_dark_url = logo_url
+      logo_short_url = logo_url
+      logo_short_dark_url = logo_url
     end
 
     if isRu && logo_url == asset_path("logo_openproject.png")
@@ -70,12 +70,12 @@ See COPYRIGHT and LICENSE files for more details.
     background-image: url(<%= logo_url %>);
   }
 
-  .op-logo-only {
-    background-image: url(<%= logo_only_url %>);
+  .op-logo-short {
+    background-image: url(<%= logo_short_url %>);
   }
 
-  .op-logo-only_dark {
-    background-image: url(<%= logo_only_dark_url %>);
+  .op-logo-short_dark {
+    background-image: url(<%= logo_short_dark_url %>);
   }
 
   .op-logo--link_high_contrast {

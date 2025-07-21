@@ -56,8 +56,8 @@ module Redmine::MenuManager::TopMenuHelper
     end
   end
 
-  def render_logo_only
-    mode_class = User.current.pref.theme === "dark" ? "op-logo-only_dark" : "op-logo-only"
+  def render_logo_short
+    mode_class = User.current.pref.theme === "dark" ? "op-logo-short_dark" : "op-logo-short"
     content_tag :div, class: mode_class do
       nil
     end
@@ -182,30 +182,30 @@ module Redmine::MenuManager::TopMenuHelper
   def render_module_top_menu_node(item_groups = module_top_menu_item_groups)
     unless item_groups.empty?
       render Primer::Alpha::Dialog.new(classes: "op-app-menu--item",
-                                       title: "waffle menu",
+                                       title:  I18n.t("label_modules"),
                                        visually_hide_title: true,
                                        menu_id: "op-app-header--modules-menu",
-                                       position: :left) do |menu|
-        menu.with_show_button(icon: "op-grid-menu",
+                                       position: :left) do |dialog|
+        dialog.with_show_button(icon: "op-grid-menu",
                               scheme: :invisible,
                               classes: "op-app-menu--item-action op-app-header--primer-button",
                               title: I18n.t("label_modules"),
                               "aria-controls": "op-app-header--modules-menu-list",
                               test_selector: "op-app-header--modules-menu-button",
                               "aria-label": I18n.t("label_modules"))
-        menu.with_header(classes: "op-app-header--modules-menu-header") do
-          render_logo_only
+        dialog.with_header(classes: "op-app-header--modules-menu-header") do
+          render_logo_short
         end
 
         item_groups.each do |item_group|
-          render_menu_item_group(menu, item_group)
+          render_dialog_item_group(dialog, item_group)
         end
       end
     end
   end
 
-  def render_menu_item_group(menu, item_group)
-    menu.with_body do
+  def render_dialog_item_group(dialog, item_group)
+    dialog.with_body do
       render(Primer::Alpha::ActionList.new(classes: "op-app-menu--items", id: "op-app-header--modules-menu-list")) do |list|
         list.with_heading(title: item_group[:title], align_items: :flex_start) if item_group[:title]
         item_group[:items].each do |item|
