@@ -208,7 +208,27 @@ module Redmine::MenuManager::TopMenuHelper
     dialog.with_body do
       render(Primer::Alpha::ActionList.new(classes: "op-app-menu--items", id: "op-app-header--modules-menu-list")) do |list|
         list.with_heading(title: item_group[:title], align_items: :flex_start) if item_group[:title]
-        item_group[:items].each do |item|
+
+        # Group items by context
+        items_by_context = item_group[:items].group_by(&:context)
+        my_items = items_by_context[:my] || []
+        modules_items = items_by_context[:modules] || []
+
+        # Render :my context items
+        my_items.each do |item|
+          list.with_item(
+            href: url_for(item.url),
+            label: item.caption,
+            test_selector: "op-menu--item-action"
+          ) do |menu_item|
+            menu_item.with_leading_visual_icon(icon: item.icon) if item.icon
+          end
+        end
+
+        list.with_divider if my_items.any? && modules_items.any?
+
+        # Render :modules context items
+        modules_items.each do |item|
           list.with_item(
             href: url_for(item.url),
             label: item.caption,
@@ -234,7 +254,8 @@ module Redmine::MenuManager::TopMenuHelper
 
   # Menu items for the modules top menu
   def more_top_menu_items
-    split_top_menu_into_main_or_more_menus[:modules]
+    split = split_top_menu_into_main_or_more_menus
+    split[:modules] + split[:my]
   end
 
   def module_top_menu_item_groups

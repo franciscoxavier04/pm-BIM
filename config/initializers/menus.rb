@@ -72,6 +72,29 @@ Redmine::MenuManager.map :top_menu do |menu|
             html: { accesskey: OpenProject::AccessKeys.key_for(:help),
                     title: I18n.t("label_help"),
                     target: "_blank" }
+
+  menu.push :home,
+            { controller: "/homescreen", action: "index" },
+            context: :my,
+            icon: "home",
+            first: true
+
+  menu.push :my_page,
+            { controller: "/my/page", action: "show" },
+            context: :my,
+            after: :home,
+            icon: "person",
+            caption: I18n.t("my_page.label")
+
+  menu.push :my_time_tracking,
+            { controller: "/my/time_tracking", action: "index" },
+            after: :my_page,
+            context: :my,
+            caption: :label_my_time_tracking,
+            if: ->(*) do
+              User.current.allowed_in_any_project?(:log_own_time) || User.current.allowed_in_any_project?(:log_time)
+            end,
+            icon: :stopwatch
 end
 
 Redmine::MenuManager.map :quick_add_menu do |menu|
@@ -137,11 +160,13 @@ Redmine::MenuManager.map :global_menu do |menu|
   menu.push :home,
             { controller: "/homescreen", action: "index" },
             icon: "home",
+            context: :modules,
             first: true
 
   menu.push :my_page,
             { controller: "/my/page", action: "show" },
             after: :home,
+            context: :modules,
             icon: "person",
             caption: I18n.t("my_page.label")
 
