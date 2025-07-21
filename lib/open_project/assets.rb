@@ -69,27 +69,29 @@ module OpenProject
       # Rebuilds the manifest file
       def rebuild_manifest!
         # Remove index html
-        FileUtils.remove File.join(frontend_asset_path, "index2.html"), force: true
+        FileUtils.remove frontend_asset_path.join("index2.html"), force: true
 
         # Create map of asset chunk name to current hash
-        manifest = {}
-        OpenProject::Assets.current_assets.each do |filename|
-          md = filename.match /\A([^.]+)-(\w+)\.(\w+)\z/
+        manifest = current_assets.filter_map do |asset|
+          name = asset.basename(asset.extname).to_s
+          case name.match(/\A(?<unhashed_name>[^.]+)[-\.][A-Z0-9]{8}\z/)
+          in unhashed_name: "chunk"
+            [asset, asset]
+          in unhashed_name:
+            [asset.parent.join(unhashed_name + asset.extname), asset]
+          else
+            nil # Non-hashed asset: no-op
+          end
+        end.to_h
 
-          # Non-hashed asset
-          next if md.nil?
-
-          chunk_name = "#{md[1]}.#{md[3]}"
-          manifest[chunk_name] = filename
-        end
-
-        File.write(manifest_path, manifest.to_json)
+        manifest_path.write manifest.to_json
       end
 
       def current_assets
-        Dir.glob(OpenProject::Assets.frontend_asset_path + "*")
-          .select { |f| File.file? f }
-          .map { |f| File.basename(f) }
+        frontend_asset_path
+          .glob("**/*")
+          .select(&:file?)
+          .map { it.relative_path_from(frontend_asset_path) }
       end
     end
   end
