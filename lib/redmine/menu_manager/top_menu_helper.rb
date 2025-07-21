@@ -206,37 +206,33 @@ module Redmine::MenuManager::TopMenuHelper
 
   def render_dialog_item_group(dialog, item_group)
     dialog.with_body do
-      render(Primer::Alpha::ActionList.new(classes: "op-app-menu--items", id: "op-app-header--modules-menu-list")) do |list|
+      render Primer::Alpha::ActionList.new(
+        classes: "op-app-menu--items",
+        id: "op-app-header--modules-menu-list"
+      ) do |list|
         list.with_heading(title: item_group[:title], align_items: :flex_start) if item_group[:title]
 
-        # Group items by context
         items_by_context = item_group[:items].group_by(&:context)
         my_items = items_by_context[:my] || []
-        modules_items = items_by_context[:modules] || []
+        module_items = items_by_context[:modules] || []
 
-        # Render :my context items
-        my_items.each do |item|
-          list.with_item(
-            href: url_for(item.url),
-            label: item.caption,
-            test_selector: "op-menu--item-action"
-          ) do |menu_item|
-            menu_item.with_leading_visual_icon(icon: item.icon) if item.icon
-          end
-        end
+        render_action_list_items(list, my_items)
 
-        list.with_divider if my_items.any? && modules_items.any?
+        list.with_divider if my_items.any? && module_items.any?
 
-        # Render :modules context items
-        modules_items.each do |item|
-          list.with_item(
-            href: url_for(item.url),
-            label: item.caption,
-            test_selector: "op-menu--item-action"
-          ) do |menu_item|
-            menu_item.with_leading_visual_icon(icon: item.icon) if item.icon
-          end
-        end
+        render_action_list_items(list, module_items)
+      end
+    end
+  end
+
+  def render_action_list_items(list, items)
+    items.each do |item|
+      list.with_item(
+        href: url_for(item.url),
+        label: item.caption,
+        test_selector: "op-menu--item-action"
+      ) do |menu_item|
+        menu_item.with_leading_visual_icon(icon: item.icon) if item.icon
       end
     end
   end
