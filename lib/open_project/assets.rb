@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -51,7 +53,7 @@ module OpenProject
       end
 
       def load_manifest
-        @manifest ||= begin
+        @load_manifest ||= begin
           JSON.parse File.read(manifest_path)
         rescue StandardError => e
           Rails.logger.error "Failed to read frontend manifest file: #{e}."
