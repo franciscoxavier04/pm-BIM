@@ -33,6 +33,31 @@
 module CustomField::CalculatedValue
   extend ActiveSupport::Concern
 
+  # Mathematical operators that are allowed in the formula.
+  OPERATORS = %w[+ - * / ( )].freeze
+
+  # Field formats that can be used within a formula.
+  FIELD_FORMATS_FOR_FORMULA = %w[int float calculated_value].freeze
+
+  class_methods do
+    def affected_calculated_fields(changed_cf_ids)
+      to_check = select(&:field_format_calculated_value?)
+
+      # include calculated value field itself
+      all_affected, to_check = to_check.partition { it.id.in?(changed_cf_ids) }
+
+      loop do
+        affected, to_check = to_check.partition { it.formula_referenced_custom_field_ids.intersect?(changed_cf_ids) }
+        break if affected.empty?
+
+        all_affected += affected
+        changed_cf_ids = affected.map(&:id)
+      end
+
+      all_affected
+    end
+  end
+
   included do
     validate :validate_formula
 
@@ -51,13 +76,14 @@ module CustomField::CalculatedValue
 
       # WP-64348: check for valid (i.e., visible & enabled) custom field references (see #cf_ids_used_in_formula)
 
-      # Dentaku will return nil if the formula is invalid.
-      # TODO WP-64348: add support for referenced custom fields by injecting them as variables,
-      #       e.g. calculator.evaluate(formula_string, cf_123: CustomField.find(123).value)
-      errors.add(:formula, :invalid) unless Dentaku::Calculator.new.evaluate(formula_string)
+      unless formula_parses_to_ast?
+        errors.add(:formula, :invalid)
+        return
+      end
 
       # TODO: consider differentiating between a formula that contains missing variables, invalid
       #       syntax, or mathematical errors.
+      true # return anything to appease RuboCop for now
     end
 
     def formula=(value)
@@ -73,19 +99,41 @@ module CustomField::CalculatedValue
       formula ? formula.fetch("formula", "") : ""
     end
 
+    def formula_referenced_custom_field_ids
+      formula ? formula.fetch("referenced_custom_fields", []) : []
+    end
+
+    def usable_custom_field_references_for_formula
+      scope = type == "ProjectCustomField" ? ProjectCustomField : CustomField
+
+      scope
+        .where(field_format: FIELD_FORMATS_FOR_FORMULA)
+        # Disallow the current custom field to avoid circular references
+        .where.not(id: id)
+        .visible
+    end
+
     private
+
+    def formula_parses_to_ast?
+      # Dentaku will return nil if the formula is invalid.
+      # Accept both cf_123 and {{cf_123}} in the formula string
+      formula_for_eval = formula_string.gsub(/\{\{(cf_\d+)}}/, '\1')
+
+      Dentaku::Calculator.new.dependencies(formula_for_eval)
+    end
 
     def formula_contains_only_allowed_characters?
       # List of allowed characters in a formula. This only performs a very basic validation.
-      # Allowed characters are:
-      # + - / * ( ) whitespace digits and decimal points
-      # Additionally, the formula may contain references to custom fields in the form of `cf_123` where 123 is the ID of
-      # the custom field.
+      # The allowed characters are:
+      # Our mathematical operators, whitespace, digits and decimal points
+      # Additionally, the formula may contain references to custom fields in the form of `cf_123` or `{{cf_123}}`
+      # where 123 is the ID of the custom field.
       # Once this basic validation passes, the formula will be parsed and validated by Dentaku, which builds an AST
       # and ensures that the formula is really valid. A welcome side effect of the basic validation done here is that
       # it prevents built-in functions from being used in the formula, which we do not want to allow.
-      allowed_chars = %w[+ - / * ( )] + [" "]
-      allowed_tokens = /\A(cf_\d+|\d+\.?\d*|\.\d+)\z/
+      allowed_chars = OPERATORS + [" "]
+      allowed_tokens = /\A(cf_\d+|\{\{cf_\d+}}|\d+\.?\d*|\.\d+)\z/
 
       formula_string.split(Regexp.union(allowed_chars)).reject(&:empty?).all? do |token|
         token.match?(allowed_tokens)
@@ -93,9 +141,10 @@ module CustomField::CalculatedValue
     end
 
     # Returns a list of custom field IDs used in the formula.
-    # For a formula like `2 + cf_12 + cf_4` it returns `[12, 4]`.
+    # For a formula like `2 + cf_12 + cf_4` or `2 + {{cf_12}} + {{cf_4}}` it returns `[12, 4]`.
     def cf_ids_used_in_formula(formula_str)
-      formula_str.scan(/\bcf_(\d+)\b/).flatten.map(&:to_i)
+      # Match both cf_123 and {{cf_123}}
+      formula_str.scan(/\b(?:cf_(\d+)|\{\{cf_(\d+)}})\b/).flatten.compact.map(&:to_i)
     end
   end
 end

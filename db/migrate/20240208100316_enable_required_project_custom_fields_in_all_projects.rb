@@ -1,4 +1,14 @@
 class EnableRequiredProjectCustomFieldsInAllProjects < ActiveRecord::Migration[7.1]
+  class EnableRequiredProjectCustomFieldsInAllProjectsProject < ActiveRecord::Base
+    self.table_name = "projects"
+
+    has_many :project_custom_field_project_mappings,
+             class_name: "ProjectCustomFieldProjectMapping",
+             foreign_key: :custom_field_id,
+             dependent: :destroy,
+             inverse_of: :project_custom_field
+  end
+
   def up
     required_custom_field_ids = ProjectCustomField.required.ids
 
@@ -6,7 +16,7 @@ class EnableRequiredProjectCustomFieldsInAllProjects < ActiveRecord::Migration[7
     # of {project_id:, custom_field_id:} for every project that does not have
     # the required required_custom_field_ids activated.
     missing_custom_field_attributes =
-      Project
+      EnableRequiredProjectCustomFieldsInAllProjectsProject
         .includes(:project_custom_field_project_mappings)
         .pluck(:id, "project_custom_field_project_mappings.custom_field_id")
         .group_by(&:first)

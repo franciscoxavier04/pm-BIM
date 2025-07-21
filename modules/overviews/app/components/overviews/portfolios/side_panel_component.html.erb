@@ -1,0 +1,36 @@
+<%=
+  component_wrapper do
+    if available_project_custom_fields_grouped_by_section.any?
+      render(
+        Primer::OpenProject::SidePanel.new(
+          spacious: true,
+          test_selector: "project-custom-fields-sidebar-async-content"
+        )
+      ) do |panel|
+        first_sections = available_project_custom_fields_grouped_by_section.first(2).to_h
+        remaining_sections = available_project_custom_fields_grouped_by_section.drop(2).to_h
+        first_sections.each do |project_custom_field_section, project_custom_fields|
+          panel.with_section(
+            Overviews::ProjectCustomFields::ShowComponent.new(
+              project: @project,
+              project_custom_field_section:,
+              project_custom_fields: project_custom_fields
+            )
+          )
+        end
+
+        panel.with_section(Overviews::Portfolios::SidePanel::StatusComponent.new(project: @project))
+
+        remaining_sections.each do |project_custom_field_section, project_custom_fields|
+          panel.with_section(
+            Overviews::ProjectCustomFields::ShowComponent.new(
+              project: @project,
+              project_custom_field_section:,
+              project_custom_fields: project_custom_fields
+            )
+          )
+        end
+      end
+    end
+  end
+%>

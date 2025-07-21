@@ -1,0 +1,108 @@
+<%#-- copyright
+OpenProject is an open source project management software.
+Copyright (C) the OpenProject GmbH
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License version 3.
+
+OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+Copyright (C) 2006-2013 Jean-Philippe Lang
+Copyright (C) 2010-2013 the ChiliProject Team
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+See COPYRIGHT and LICENSE files for more details.
+
+++#%>
+
+<%=
+  component_wrapper do
+    render Primer::OpenProject::PageHeader.new(
+      test_selector: "document-page-header",
+      state:,
+      data: { controller: header_stimulus_controller }
+    ) do |header|
+      header.with_title do |title|
+        if allowed_to?(:edit)
+          title.with_editable_form(
+            model: document,
+            update_path: url_helpers.update_title_document_path(document),
+            cancel_path: url_helpers.cancel_edit_document_path(document),
+            label: Document.human_attribute_name(:title),
+            placeholder: Document.human_attribute_name(:title)
+          )
+        end
+
+        document.title
+      end
+
+      header.with_description { description_content }
+
+      header.with_breadcrumbs(
+        [{ href: project_overview_path(project.id), text: project.name },
+         { href: project_documents_path(project), text: t(:label_document_plural) },
+         document.title]
+      )
+
+      header.with_action_button(
+        mobile_icon: :check,
+        mobile_label: I18n.t("button_save"),
+        type: :button,
+        scheme: :primary,
+        data: { action: "click->#{header_stimulus_controller}#submitContentForm" }
+      ) do |button|
+        button.with_leading_visual_icon(icon: :check)
+        I18n.t("button_save")
+      end
+
+      header.with_action_menu(
+        menu_arguments: {},
+        button_arguments: { icon: "kebab-horizontal",
+                            "aria-label": I18n.t("label_document_actions"),
+                            test_selector: "op-documents-header-action-trigger" }
+      ) do |menu|
+        if allowed_to?(:edit)
+          menu.with_item(
+            label: t("documents.label_rename_document"),
+            href: url_helpers.edit_title_document_path(document),
+            content_arguments: {
+              data: { "turbo-stream": true }
+            }
+          ) { it.with_leading_visual_icon(icon: :pencil) }
+
+          menu.with_item(
+            label: t("documents.label_change_category"),
+            href: url_helpers.edit_category_document_path(document),
+            content_arguments: {
+              data: { controller: "async-dialog" }
+            }
+          ) { it.with_leading_visual_icon(icon: :gear) }
+        end
+
+        if allowed_to?(:destroy)
+          menu.with_item(
+            label: I18n.t(:button_delete),
+            scheme: :danger,
+            tag: :a,
+            content_arguments: {
+              data: { controller: "async-dialog" }
+            },
+            href: url_helpers.delete_dialog_document_path(document)
+          ) { it.with_leading_visual_icon(icon: :trash) }
+        end
+      end
+    end
+  end
+%>

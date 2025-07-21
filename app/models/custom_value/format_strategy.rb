@@ -43,6 +43,8 @@ class CustomValue::FormatStrategy
     raise "SubclassResponsibility"
   end
 
+  def numeric_value = nil
+
   # Returns the value of the CustomValue formatted to a string
   # representation.
   def formatted_value

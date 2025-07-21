@@ -54,6 +54,15 @@ See COPYRIGHT and LICENSE files for more details.
           <div class="generic-table--sort-header-outer">
             <div class="generic-table--sort-header">
                 <span>
+                  <%= t("activerecord.attributes.custom_value.numeric_value") %>
+                </span>
+            </div>
+          </div>
+        </th>
+        <th>
+          <div class="generic-table--sort-header-outer">
+            <div class="generic-table--sort-header">
+                <span>
                   <%= t(:label_default) %>
                 </span>
             </div>
@@ -92,6 +101,13 @@ See COPYRIGHT and LICENSE files for more details.
                                   disabled: true,
                                   container_class: "custom-option-value",
                                   no_label: true %>
+            </td>
+            <td>
+              <%= co_f.number_field :numeric_value,
+                                    disabled: true,
+                                    step: :any,
+                                    container_class: "custom-option-value",
+                                    no_label: true %>
             </td>
             <td>
               <%= co_f.check_box :default_value,

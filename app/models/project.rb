@@ -46,6 +46,12 @@ class Project < ApplicationRecord
   # reserved identifiers
   RESERVED_IDENTIFIERS = %w[new menu queries export_list_modal].freeze
 
+  enum :project_type, {
+    project: "project",
+    program: "program",
+    portfolio: "portfolio"
+  }
+
   has_many :members, -> {
     # TODO: check whether this should
     # remain to be limited to User only
@@ -93,6 +99,13 @@ class Project < ApplicationRecord
            inverse_of: :project
 
   has_many :recurring_meetings, dependent: :destroy
+
+  # Portfolio proposal associations
+  # Only for a portfolio
+  has_many :portfolio_proposals, foreign_key: :portfolio_id, dependent: :destroy
+  has_many :portfolio_proposal_projects, dependent: :destroy
+  # Only for a project
+  has_many :portfolio_proposals_as_project, through: :portfolio_proposal_projects, source: :portfolio_proposal
 
   accepts_nested_attributes_for :available_phases
   validates_associated :available_phases, on: :saving_phases
@@ -248,6 +261,28 @@ class Project < ApplicationRecord
 
   def to_s
     name
+  end
+
+  def human_project_type
+    case project_type
+    when "portfolio"
+      "Portfolio"
+    when "program"
+      "Programm"
+    else
+      "Projekt"
+    end
+  end
+
+  def human_project_type_with_hierarchy
+    case project_type
+    when "portfolio"
+      "Portfolio und Portfolioelemente"
+    when "program"
+      "Programm und Projekte"
+    else
+      "Projekt und Unterprojekte"
+    end
   end
 
   # Return true if this project is allowed to do the specified action.

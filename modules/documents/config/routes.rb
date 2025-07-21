@@ -33,7 +33,15 @@ Rails.application.routes.draw do
     resources :documents, only: %i[create new index]
   end
 
-  resources :documents, except: %i[create new index]
+  resources :documents, except: %i[create new index] do
+    member do
+      get :edit_category
+      get :edit_title
+      put :update_title
+      get :cancel_edit
+      get :delete_dialog
+    end
+  end
 
   namespace :admin do
     namespace :settings do

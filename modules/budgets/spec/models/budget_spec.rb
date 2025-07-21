@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -29,13 +31,19 @@
 require_relative "../spec_helper"
 
 RSpec.describe Budget do
-  let(:budget) { build(:budget, project:) }
-  let(:type) { create(:type_feature) }
-  let(:project) { create(:project_with_types) }
-  let(:user) { create(:user) }
+  shared_let(:user) { create(:user) }
+  shared_let(:project) { create(:project_with_types) }
+
+  before_all do
+    set_factory_default(:user, user)
+    set_factory_default(:project, project)
+    set_factory_default(:project_with_types, project)
+  end
+
+  let(:budget) { build(:budget) }
 
   describe "destroy" do
-    let(:work_package) { create(:work_package, project:) }
+    let(:work_package) { create(:work_package) }
 
     before do
       budget.author = user
@@ -45,9 +53,14 @@ RSpec.describe Budget do
       budget.destroy
     end
 
-    it { expect(Budget.find_by_id(budget.id)).to be_nil }
-    it { expect(WorkPackage.find_by_id(work_package.id)).to eq(work_package) }
-    it { expect(work_package.reload.budget).to be_nil }
+    it "deletes the budget" do
+      expect(described_class.find_by(id: budget.id)).to be_nil
+      expect(work_package.reload.budget).to be_nil
+    end
+
+    it "does not delete the associated work packages" do
+      expect(WorkPackage.find_by(id: work_package.id)).to eq(work_package)
+    end
   end
 
   describe "#existing_material_budget_item_attributes=" do
@@ -57,7 +70,7 @@ RSpec.describe Budget do
       budget.material_budget_items.reload.first
     end
 
-    context "allowed to edit budgets" do
+    context "when allowed to edit budgets" do
       before do
         mock_permissions_for(User.current) do |mock|
           mock.allow_in_project :edit_budgets, project:
@@ -80,6 +93,28 @@ RSpec.describe Budget do
           expect(existing_material_budget_item)
             .to be_destroyed
         end
+      end
+    end
+  end
+
+  describe "#children_budgets_count" do
+    context "without any budget relations" do
+      it { expect(budget.children_budgets_count).to eq(0) }
+    end
+
+    context "with one child budget relation" do
+      let!(:child_budget) { create(:budget) }
+      let!(:budget_relation) { create(:budget_relation, parent_budget: budget, child_budget:) }
+
+      it { expect(budget.children_budgets_count).to eq(1) }
+
+      context "with also a grandchild budget relation" do
+        let!(:grandchild_budget) { create(:budget) }
+        let!(:grandchild_budget_relation) do
+          create(:budget_relation, parent_budget: child_budget, child_budget: grandchild_budget)
+        end
+
+        it { expect(budget.children_budgets_count).to eq(2) }
       end
     end
   end

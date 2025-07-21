@@ -30,6 +30,7 @@ module Queries::Projects
   ::Queries::Register.register(ProjectQuery) do
     filter Filters::ActiveFilter
     filter Filters::AncestorFilter
+    filter Filters::AncestorOrSelfFilter
     filter Filters::AvailableCustomFieldsProjectsFilter
     filter Filters::AvailableProjectAttributesFilter
     filter Filters::CreatedAtFilter
@@ -37,6 +38,7 @@ module Queries::Projects
     filter Filters::FavoredFilter
     filter Filters::IdFilter
     filter Filters::LatestActivityAtFilter
+    filter Filters::ManualSortFilter
     filter Filters::ProjectPhaseAnyFilter
     filter Filters::ProjectPhaseGateFilter
     filter Filters::ProjectPhaseFilter
@@ -49,26 +51,33 @@ module Queries::Projects
     filter Filters::PublicFilter
     filter Filters::TemplatedFilter
     filter Filters::TypeFilter
+    filter Filters::WorkPackageTypeFilter
     filter Filters::TypeaheadFilter
     filter Filters::UserActionFilter
     filter Filters::VisibleFilter
+    filter Filters::PortfolioProposalFilter
 
     order Orders::CustomFieldOrder
     order Orders::DefaultOrder
     order Orders::LatestActivityAtOrder
+    order Orders::ManualSortingOrder
     order Orders::ProjectPhaseOrder
     order Orders::NameOrder
     order Orders::ProjectStatusOrder
     order Orders::RequiredDiskSpaceOrder
     order Orders::TypeaheadOrder
+    order Orders::HierarchyOrder
 
     select Selects::CreatedAt
     select Selects::CustomField
     select Selects::Default
     select Selects::Favored
     select Selects::LatestActivityAt
+    select Selects::ManualSortingSelect
     select Selects::ProjectPhase
+    select Selects::RankSelect
     select Selects::RequiredDiskSpace
     select Selects::Status
+    select Selects::PortfolioProposal
   end
 end

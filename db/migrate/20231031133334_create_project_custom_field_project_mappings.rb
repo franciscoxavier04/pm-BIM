@@ -1,4 +1,8 @@
 class CreateProjectCustomFieldProjectMappings < ActiveRecord::Migration[7.0]
+  class CreateProjectCustomFieldProjectMappingsProject < ActiveRecord::Base
+    self.table_name = "projects"
+  end
+
   def up
     create_table :project_custom_field_project_mappings do |t|
       t.references :custom_field, foreign_key: true, index: {
@@ -19,7 +23,7 @@ class CreateProjectCustomFieldProjectMappings < ActiveRecord::Migration[7.0]
   private
 
   def create_default_mapping
-    project_ids = Project.pluck(:id)
+    project_ids = CreateProjectCustomFieldProjectMappingsProject.pluck(:id)
     custom_field_ids = ProjectCustomField.pluck(:id)
     mappings = []
 

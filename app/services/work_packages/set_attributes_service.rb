@@ -30,6 +30,7 @@
 
 class WorkPackages::SetAttributesService < BaseServices::SetAttributes
   include Attachments::SetReplacements
+  include ::RisksHelper
 
   private
 
@@ -45,6 +46,7 @@ class WorkPackages::SetAttributesService < BaseServices::SetAttributes
     end
 
     set_custom_attributes(attributes)
+    set_risk_attributes(attributes)
     mark_templated_subject
   end
 
@@ -159,6 +161,7 @@ class WorkPackages::SetAttributesService < BaseServices::SetAttributes
       work_package.start_date = days.start_date(work_package.due_date, work_package.duration)
     end
   end
+
   # rubocop:enable Metrics/AbcSize
 
   def invalid_duration?
@@ -196,18 +199,18 @@ class WorkPackages::SetAttributesService < BaseServices::SetAttributes
     return if attributes.has_key?(:start_date)
 
     work_package.start_date ||= if parent_start_earlier_than_due?
-                                  work_package.parent.start_date
-                                elsif Setting.work_package_startdate_is_adddate?
-                                  Time.zone.today
-                                end
+      work_package.parent.start_date
+    elsif Setting.work_package_startdate_is_adddate?
+      Time.zone.today
+    end
   end
 
   def set_default_due_date(attributes)
     return if attributes.has_key?(:due_date)
 
     work_package.due_date ||= if parent_due_later_than_start?
-                                work_package.parent.due_date
-                              end
+      work_package.parent.due_date
+    end
   end
 
   def set_templated_description
@@ -247,6 +250,25 @@ class WorkPackages::SetAttributesService < BaseServices::SetAttributes
     work_package.attributes = assignable_attributes
 
     initialize_unset_custom_values
+  end
+
+  def set_risk_attributes(attributes)
+    return unless OpenProject::FeatureDecisions.risk_management_active?
+    return unless work_package.type == BmdsHackathon::References.risk_type
+    return unless derive_risk_attributes?(attributes)
+
+    risk_level = get_risk_level(work_package)
+    level_cf = BmdsHackathon::References.risk_level_cf
+
+    if risk_level.present?
+      work_package.send(:"#{level_cf.attribute_name}=", risk_level)
+    end
+  end
+
+  def derive_risk_attributes?(attributes)
+    attributes[:custom_field_values].present? ||
+      attributes.keys.intersect?([BmdsHackathon::References.risk_likelihood_attribute,
+                                  BmdsHackathon::References.risk_impact_attribute])
   end
 
   def custom_field_context_changed?
@@ -334,14 +356,14 @@ class WorkPackages::SetAttributesService < BaseServices::SetAttributes
 
   def set_version_to_nil
     if work_package.version &&
-       work_package.project&.shared_versions&.exclude?(work_package.version)
+      work_package.project&.shared_versions&.exclude?(work_package.version)
       work_package.version = nil
     end
   end
 
   def set_parent_to_nil
     if !Setting.cross_project_work_package_relations? &&
-       !work_package.parent_changed?
+      !work_package.parent_changed?
 
       work_package.parent = nil
     end
@@ -407,7 +429,7 @@ class WorkPackages::SetAttributesService < BaseServices::SetAttributes
   # If the parent has changed, #soonest_start would be inaccurate.
   def new_start_date_from_parent
     return unless work_package.parent_id_changed? &&
-                  work_package.parent
+      work_package.parent
 
     work_package.parent.soonest_start(working_days_from: work_package)
   end

@@ -1,0 +1,124 @@
+<%#-- copyright
+OpenProject is an open source project management software.
+Copyright (C) the OpenProject GmbH
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License version 3.
+
+OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+Copyright (C) 2006-2013 Jean-Philippe Lang
+Copyright (C) 2010-2013 the ChiliProject Team
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+See COPYRIGHT and LICENSE files for more details.
+
+++#%>
+
+<div class="risk-matrix-container">
+  <div class="matrix-content">
+    <div class="matrix-wrapper">
+      <table class="risk-matrix">
+        <thead>
+          <tr>
+            <th class="matrix-corner">
+              <% if params[:impact] || params[:likelihood] || @risk_filter %>
+                <%= link_to project_risks_path, class: "matrix-reset-link" do %>
+                  Filter zurücksetzen
+                <% end %>
+              <% end %>
+            </th>
+            <th class="matrix-corner-right"></th>
+            <th colspan="<%= impact_options.length %>" class="impact-header">
+              Auswirkung
+            </th>
+          </tr>
+          <tr>
+            <th class="matrix-corner-bottom"></th>
+            <th class="matrix-reset">
+            </th>
+            <% impact_options.each_with_index do |impact, _| %>
+              <th class="impact-label">
+                <%= impact.value %>
+              </th>
+            <% end %>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% likelihood_options.reverse.each_with_index do |likelihood, index| %>
+          <tr>
+            <% if index == 0 %>
+              <th rowspan="5" class="likelihood-header">
+                Eintrittswahrscheinlichkeit
+              </th>
+            <% end %>
+            <th class="likelihood-label">
+              <%= likelihood.value %>
+            </th>
+            <% impact_options.each_with_index do |impact| %>
+              <td class="risk-cell <%= risk_class(likelihood, impact) %> <%= selected(likelihood, impact) %>">
+                <%= link_to project_risks_path(likelihood: likelihood.id, impact: impact.id), class: "risk-cell-link" do %>
+                    <span class="risk-count">
+                      <%= work_package_count(likelihood, impact) %>
+                    </span>
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="risk-legend">
+      <div class="header">
+        <h3>Risiko-Level</h3>
+      </div>
+      <div class="legend-content">
+        <p class="legend-description">
+          Zellen zeigen die Anzahl der Risiken in jeder Kategorie.
+          Klicken Sie auf eine Kategorie, um die entsprechenden Risiken zu filtern.
+        </p>
+        <div class="legend-items">
+          <div class="legend-total">
+            Gesamtrisiken: <%= risk_work_packages.count %>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color low-risk"></span>
+            <%=
+              link_to "Niedriges Risiko (1-6)",
+                      project_risks_path(@project, risk_filter: :low)
+            %>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color medium-risk"></span>
+            <%=
+              link_to "Mittleres Risiko (7-15)",
+                      project_risks_path(@project, risk_filter: :medium)
+            %>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color high-risk"></span>
+            <%=
+              link_to "Hohes Risiko (16-25)",
+                      project_risks_path(@project, risk_filter: :high)
+            %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -81,7 +81,7 @@ module Queries::Filters::Shared
 
       def type
         case custom_field.field_format
-        when "float"
+        when "float", "calculated_value"
           :float
         when "int"
           :integer

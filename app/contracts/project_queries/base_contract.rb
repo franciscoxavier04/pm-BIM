@@ -35,6 +35,8 @@ module ProjectQueries
     attribute :filters
     attribute :orders
 
+    attribute :portfolio_proposal_projects # => manual sort
+
     def self.model
       ProjectQuery
     end

@@ -123,6 +123,8 @@ module API
         property :active
 
         property :public
+
+        property :project_type
       end
     end
   end

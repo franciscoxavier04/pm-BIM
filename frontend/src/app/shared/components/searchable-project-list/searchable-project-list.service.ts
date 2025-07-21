@@ -70,6 +70,7 @@ export class SearchableProjectListService {
       select: [
         'elements/id',
         'elements/name',
+        'elements/project_type',
         'elements/identifier',
         'elements/self',
         'elements/ancestors',
@@ -118,7 +119,7 @@ export class SearchableProjectListService {
       }
 
       return null;
-    }
+    };
 
     this.selectedItemID$.next(findFirstNonDisabledID(projects));
   }

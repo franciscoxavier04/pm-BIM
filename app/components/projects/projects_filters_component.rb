@@ -59,7 +59,12 @@ class Projects::ProjectsFiltersComponent < Filter::FilterComponent
       Queries::Projects::Filters::ProjectStatusFilter,
       Queries::Projects::Filters::PublicFilter,
       Queries::Projects::Filters::TemplatedFilter,
-      Queries::Projects::Filters::TypeFilter
+      Queries::Projects::Filters::TypeFilter,
+      Queries::Projects::Filters::WorkPackageTypeFilter,
+      Queries::Projects::Filters::ParentFilter,
+      Queries::Projects::Filters::AncestorFilter,
+      Queries::Projects::Filters::AncestorOrSelfFilter,
+      Queries::Projects::Filters::PortfolioProposalFilter
     ]
 
     allowlist.any? { |clazz| filter.is_a? clazz }

@@ -31,6 +31,9 @@ class ProjectQuery < ApplicationRecord
   include Queries::Serialization::Hash
   include HasMembers
   include ::Scopes::Scoped
+  include ManualSorting
+
+  attr_accessor :proposal
 
   belongs_to :user
 
@@ -85,6 +88,39 @@ class ProjectQuery < ApplicationRecord
     filters.reject do |filter|
       # Skip the name filter as we have it present as a permanent filter with a text input.
       filter.is_a?(Queries::Projects::Filters::NameAndIdentifierFilter)
+    end
+  end
+
+  def apply_orders(query_scope) # rubocop:disable Metrics/AbcSize
+    # using HierarchyOrder only as a marker
+    hierarchy_orders, orders = build_orders.partition { it.is_a?(Queries::Projects::Orders::HierarchyOrder) }
+
+    orders.each { it.proposal = proposal }
+
+    ordered_scope = orders.inject(query_scope) { |scope, order| order.apply_to(scope) }
+
+    if hierarchy_orders.present?
+      query_scope
+        .with_recursive(
+          with_row_number: Project.select(:id, :parent_id, "ROW_NUMBER() OVER () AS row_n").from(ordered_scope.order(:lft)),
+          with_orders_path: [
+            Arel.sql(<<~SQL.squish),
+              SELECT id, parent_id, ARRAY[row_n] AS orders_path
+              FROM with_row_number
+              WHERE parent_id IS NULL
+                 OR parent_id NOT IN (SELECT id FROM with_row_number)
+            SQL
+            Arel.sql(<<~SQL.squish)
+              SELECT cur.id, cur.parent_id, parent.orders_path || ARRAY[cur.row_n]
+              FROM with_row_number cur
+              JOIN with_orders_path parent ON cur.parent_id = parent.id
+            SQL
+          ]
+        )
+        .joins("LEFT JOIN with_orders_path ON with_orders_path.id = projects.id")
+        .order(Arel.sql("with_orders_path.orders_path"))
+    else
+      ordered_scope.order(id: :desc)
     end
   end
 end

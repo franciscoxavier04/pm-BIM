@@ -1,0 +1,54 @@
+<%= component_wrapper(tag: "turbo-frame") do %>
+  <%= render(Primer::OpenProject::SubHeader.new(data: sub_header_data_attributes)) do |subheader|
+    subheader.with_filter_input(
+      name: "name_and_identifier",
+      label: t("projects.index.search.label"),
+      value: filter_input_value,
+      placeholder: t("projects.index.search.placeholder"),
+      leading_visual: {
+        icon: :search,
+        size: :small
+      },
+      clear_button_id: clear_button_id,
+      data: filter_input_data_attributes
+    )
+
+    subheader.with_filter_component do
+      render(Projects::ProjectFilterButtonComponent.new(query: @query, disabled: @disable_buttons))
+    end
+
+    if @proposal&.draft?
+      subheader.with_action_button(
+        tag: :a,
+        href: change_state_project_portfolio_management_proposal_path(project_id: @proposal.portfolio_id, id: @proposal.id, state: :proposed),
+        scheme: :primary,
+        leading_icon: :play,
+        label: I18n.t(:button_set_to_proposed),
+        disabled: @disable_buttons,
+        size: :medium,
+        data: { "test-selector": "project-new-button", method: :patch }
+      ) do
+        I18n.t(:button_set_to_proposed)
+      end
+    end
+
+    if @proposal&.proposed?
+      subheader.with_action_button(
+        tag: :a,
+        href: change_state_project_portfolio_management_proposal_path(project_id: @proposal.portfolio_id, id: @proposal.id, state: :approved),
+        scheme: :primary,
+        leading_icon: :'issue-closed',
+        label: I18n.t(:button_set_to_approved),
+        disabled: @disable_buttons,
+        size: :medium,
+        data: { "test-selector": "project-new-button", method: :patch }
+      ) do
+        I18n.t(:button_set_to_approved)
+      end
+    end
+
+    subheader.with_bottom_pane_component(mt: 0) do
+      render(Projects::ProjectsFiltersComponent.new(query: @query, collapsed_by_default: true))
+    end
+  end %>
+<% end %>

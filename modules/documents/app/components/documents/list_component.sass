@@ -1,0 +1,20 @@
+.op-documents-list--header,
+.op-documents-list--row
+  display: grid
+  grid-template-columns: 1fr 160px 180px 220px
+  grid-template-areas: "title author category updated_at"
+
+@media screen and (max-width: $breakpoint-lg)
+  .op-documents-list--header,
+  .op-documents-list--row
+    grid-template-columns: 1fr 160px 60px 140px
+
+@media screen and (max-width: $breakpoint-sm)
+  .op-documents-list--row
+    grid-template-columns: 1fr
+    grid-template-areas: "title" "author" "category" "updated_at"
+    grid-row-gap: 5px
+
+  .op-documents-list--header
+    grid-template-columns: 1fr
+    grid-template-areas: "title"

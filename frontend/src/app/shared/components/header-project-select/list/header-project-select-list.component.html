@@ -17,6 +17,27 @@
     [attr.data-project-id]="project.id"
     [attr.data-test-selector]="currentProjectService.id === project.id.toString() ? 'op-header-project-select--active-item' : null"
   >
+    <svg
+      *ngIf="project.type === 'portfolio'"
+      briefcase-icon
+      size="small"
+      class="color-fg-muted"
+    ></svg>
+
+    <svg
+      *ngIf="project.type === 'program'"
+      versions-icon
+      size="small"
+      class="color-fg-muted"
+    ></svg>
+
+    <svg
+      *ngIf="project.type === 'project'"
+      project-icon
+      size="small"
+      class="color-fg-muted"
+    ></svg>
+
     <span
       class="spot-list--item-title spot-list--item-title_ellipse-text"
       data-test-selector="op-header-project-select--item-title"
@@ -50,6 +71,27 @@
       'spot-list--item-action_active': (searchableProjectListService.selectedItemID$ | async) === project.id
     }"
   >
+    <svg
+      *ngIf="project.type === 'portfolio'"
+      briefcase-icon
+      size="small"
+      class="color-fg-muted"
+    ></svg>
+
+    <svg
+      *ngIf="project.type === 'program'"
+      versions-icon
+      size="small"
+      class="color-fg-muted"
+    ></svg>
+
+    <svg
+      *ngIf="project.type === 'project'"
+      project-icon
+      size="small"
+      class="color-fg-muted"
+    ></svg>
+
     <span
       class="spot-list--item-title spot-list--item-title_ellipse-text"
       data-test-selector="op-header-project-select--item-disabled-title"

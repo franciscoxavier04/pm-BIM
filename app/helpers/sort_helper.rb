@@ -150,16 +150,20 @@ module SortHelper
     end
 
     def first_key
-      @criteria.first && @criteria.first.first
+      first&.first
     end
 
     def first_asc?
-      @criteria.first && @criteria.first.last
+      first&.last
     end
 
     delegate :empty?, to: :@criteria
 
     private
+
+    def first
+      @criteria.first&.first == "lft" ? @criteria.second : @criteria.first
+    end
 
     def normalize!
       @criteria ||= []
@@ -171,6 +175,8 @@ module SortHelper
       if @available_criteria
         @criteria = @criteria.select { |k, _o| @available_criteria.has_key?(k) }
       end
+
+      @criteria.sort_by!.with_index { |(a, _), i| [a == "lft" ? 0 : 1, i] }
 
       @criteria.slice!(3)
       self
@@ -362,7 +368,7 @@ module SortHelper
     sort_key = sort_key(sort_by)
 
     allowed_params ||= %w[filters per_page expand columns]
-    projects_path(safe_query_params(allowed_params).merge(columns: columns.join(" "), sort_key => params[sort_key]))
+    projects_portfolio_hack_path(**safe_query_params(allowed_params).merge(columns: columns.join(" "), sort_key => params[sort_key]))
   end
 
   # Tries to find the correct filter name for a column.
@@ -432,8 +438,8 @@ module SortHelper
   end
 
   def sort_actions(menu, column, default_order, content_args:, allowed_params: nil, **html_options)
-    desc_sort_link = projects_path(sort_by_options(column, "desc", default_order, allowed_params:, **html_options))
-    asc_sort_link = projects_path(sort_by_options(column, "asc", default_order, allowed_params:, **html_options))
+    desc_sort_link = projects_portfolio_hack_path(**sort_by_options(column, "desc", default_order, allowed_params:, **html_options))
+    asc_sort_link = projects_portfolio_hack_path(**sort_by_options(column, "asc", default_order, allowed_params:, **html_options))
 
     menu.with_item(**menu_options(label: t(:label_sort_descending),
                                   content_args:,
@@ -495,7 +501,7 @@ module SortHelper
   end
 
   def add_and_remove_column_actions(menu, column, selected_columns, content_args:, allowed_params: nil, **html_options)
-    config_view_modal_link = configure_view_modal_project_queries_path(projects_query_params)
+    config_view_modal_link = configure_view_modal_project_queries_path(**projects_query_params, from: projects_portfolio_hack_path)
 
     all_columns_except_this = selected_columns.reject { it == column }
     rm_column_link = build_columns_link(all_columns_except_this, allowed_params:, **html_options)

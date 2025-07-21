@@ -7,4 +7,5 @@ export interface IProjectData {
   disabled:boolean;
   children:IProjectData[];
   position:number;
+  type:string;
 }

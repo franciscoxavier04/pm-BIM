@@ -33,6 +33,8 @@ class CustomValue::IntStrategy < CustomValue::FormatStrategy
     end
   end
 
+  def numeric_value = typed_value
+
   def validate_type_of_value
     return :not_an_integer if value.is_a? Float
 

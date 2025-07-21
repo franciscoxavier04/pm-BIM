@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -29,28 +31,23 @@
 module ProjectsHelper
   include WorkPackagesFilterHelper
 
-  PROJECTS_QUERY_PARAM_NAMES = %i[query_id filters columns sortBy per_page page].freeze
+  PROJECTS_QUERY_PARAM_NAMES = %i[query_id filters columns sortBy per_page page proposal_id].freeze
   PROJECTS_FILTER_FOR_COLUMN_MAPPING = {
     "description" => nil,
     "identifier" => nil,
     "name" => "id",
     "project_status" => "project_status_code",
     "required_disk_space" => nil,
-    "status_explanation" => nil
+    "status_explanation" => nil,
+    "proposal_id" => nil
   }.freeze
 
   # Just like sort_header tag but removes sorting by
   # lft from the sort criteria as lft is mutually exclusive with
   # the other criteria.
   def projects_sort_header_tag(column, all_column_attributes, **)
-    former_criteria = @sort_criteria.criteria.dup
-
-    @sort_criteria.criteria.reject! { |a, _| a == "lft" }
-
     sort_header_with_action_menu(column, all_column_attributes, PROJECTS_FILTER_FOR_COLUMN_MAPPING, **,
                                  allowed_params: projects_query_param_names_for_sort)
-  ensure
-    @sort_criteria.criteria = former_criteria
   end
 
   def short_project_description(project, length = 255)
@@ -65,7 +62,7 @@ module ProjectsHelper
     @projects_columns_options ||= ::ProjectQuery
                                     .new
                                     .available_selects
-                                    .reject { |c| c.attribute == :hierarchy }
+                                    .reject { |c| c.attribute.in?(%i[hierarchy rank]) }
                                     .sort_by(&:caption)
                                     .map { |c| { id: c.attribute, name: c.caption } }
   end
@@ -78,12 +75,20 @@ module ProjectsHelper
 
   def protected_projects_columns_options
     projects_columns_options
-      .select { |c| c[:id] == :name }
+      .select { |c| c[:id].in?(%i[name rank]) }
   end
 
   def projects_query_param_names_for_sort = PROJECTS_QUERY_PARAM_NAMES - %i[sortBy page]
 
   def projects_query_params
     safe_query_params(PROJECTS_QUERY_PARAM_NAMES)
+  end
+
+  def projects_portfolio_hack_path(**options) # rubocop:disable Rails/HelperInstanceVariable
+    if @proposal || controller_name == "portfolio_managements"
+      project_portfolio_management_path(@proposal ? @proposal.portfolio : @project, **options)
+    else
+      projects_path(**options)
+    end
   end
 end

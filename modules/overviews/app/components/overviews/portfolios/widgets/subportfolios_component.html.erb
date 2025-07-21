@@ -1,0 +1,62 @@
+<%#-- copyright
+OpenProject is an open source project management software.
+Copyright (C) the OpenProject GmbH
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License version 3.
+
+OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+Copyright (C) 2006-2013 Jean-Philippe Lang
+Copyright (C) 2010-2013 the ChiliProject Team
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+See COPYRIGHT and LICENSE files for more details.
+
+++#%>
+<%=
+  unless subportfolios.empty?
+    render(Primer::Beta::BorderBox.new) do |component|
+      component.with_header do
+        render(Primer::OpenProject::BorderBox::CollapsibleHeader.new(box: component)) do |header|
+          header.with_title do
+            concat(render(Primer::Beta::Octicon.new(icon: :briefcase, color: :muted, mr: 2)))
+            concat(render(Primer::Beta::Text.new) { "Teilportfolios" }) # TODO: Name to be changed depending on the type of the project?
+          end
+        end
+      end
+
+      subportfolios.each do |project|
+        component.with_row do
+          render(Primer::OpenProject::FlexLayout.new) do |flex|
+            flex.with_row(flex_layout: true) do |row|
+              row.with_column(mr: 2) do
+                render(Primer::Beta::Link.new(href: project_path(project.id), font_weight: :bold)) { project.name }
+              end
+
+              row.with_column do
+                render(Primer::Beta::Label.new(tag: :span, scheme: label_color_for(project.status_code))) { I18n.t("activerecord.attributes.project.status_codes.#{project.status_code}") }
+              end
+            end
+
+            flex.with_row do
+              render(Primer::Beta::Text.new) { formatted_rank_for(project) }
+            end
+          end
+        end
+      end
+    end
+  end
+%>

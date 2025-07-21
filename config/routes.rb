@@ -311,6 +311,7 @@ Rails.application.routes.draw do
       post :copy
 
       patch :types
+      put :move
 
       # Destroy uses a get request to prompt the user before the actual DELETE request
       get :destroy_info, as: "confirm_destroy"
@@ -420,6 +421,17 @@ Rails.application.routes.draw do
 
     namespace :members do
       resource :menu, only: %[show]
+    end
+
+    resource :portfolio_management do
+      resource :menu, only: %i[show], controller: "portfolio_managements/menus"
+      resources :proposals, controller: "portfolio_managements/proposals" do
+        member do
+          patch :change_state
+
+          delete :remove_project, action: :remove_project
+        end
+      end
     end
 
     resource :repository, controller: "repositories", except: [:new] do

@@ -33,12 +33,13 @@ module Meetings
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
-    def initialize(meeting:, project:, copy_from: nil)
+    def initialize(meeting:, project:, copy_from: nil, report: false)
       super
 
       @meeting = meeting
       @project = project
       @copy_from = copy_from
+      @report = report
     end
 
     private

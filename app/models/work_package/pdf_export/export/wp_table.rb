@@ -137,7 +137,13 @@ module WorkPackage::PDFExport::Export::WpTable
 
   def table_column_widths(columns)
     widths = columns.map do |col|
-      col.name == :subject || text_column?(col) ? 4.0 : 1.0
+      if col.name == :subject || text_column?(col)
+        4.0
+      elsif col.name == :id
+        0.5
+      else
+        0.8
+      end
     end
     ratio = pdf.bounds.width / widths.sum
     widths.map { |w| w * ratio }
@@ -155,7 +161,7 @@ module WorkPackage::PDFExport::Export::WpTable
 
   def write_table!(work_packages, query, columns, sums)
     rows = build_table_rows(work_packages, query, columns, sums)
-    pdf_table_auto_widths(rows, table_column_widths(columns), wp_table_options)
+    pdf_table_fixed_widths(rows, table_column_widths(columns), wp_table_options)
   end
 
   def wp_table_options

@@ -34,6 +34,7 @@ class ProjectQueries::Static
   ON_TRACK = "on_track".freeze
   OFF_TRACK = "off_track".freeze
   AT_RISK = "at_risk".freeze
+  CURRENT_PORTFOLIO = "current_portfolio".freeze
 
   DEFAULT = ACTIVE
 
@@ -54,6 +55,8 @@ class ProjectQueries::Static
         static_query_status_off_track
       when AT_RISK
         static_query_status_at_risk
+      when CURRENT_PORTFOLIO
+        static_query_current_portfolio
       end
     end
 
@@ -101,7 +104,15 @@ class ProjectQueries::Static
       end
     end
 
-    private
+    def static_query_current_portfolio
+      ProjectQuery.new(name: I18n.t(:label_current_portfolio)) do |query|
+        query.order("lft" => "asc")
+        query.select(*Setting.enabled_projects_columns - %w[favored required_disk_space public], add_not_existing: false)
+
+        # This method is used to create static queries, so assume clean state after building
+        query.clear_changes_information
+      end
+    end
 
     def list_with(name)
       ProjectQuery.new(name: I18n.t(name)) do |query|

@@ -51,6 +51,7 @@ class MeetingsController < ApplicationController
   include OpTurbo::ComponentStream
   include OpTurbo::FlashStreamHelper
   include Meetings::AgendaComponentStreams
+  include Meetings::Reporting
   include MetaTagsHelper
 
   menu_item :new_meeting, only: %i[new create]
@@ -103,6 +104,8 @@ class MeetingsController < ApplicationController
     @meeting = call.result
 
     if call.success?
+      generate_report(@meeting)
+
       text = I18n.t(:notice_successful_create)
       unless User.current.pref.time_zone?
         link = I18n.t(:notice_timezone_missing, zone: formatted_time_zone_offset)
@@ -126,7 +129,8 @@ class MeetingsController < ApplicationController
             component: Meetings::Index::FormComponent.new(
               meeting: @meeting,
               project: @project,
-              copy_from: @copy_from
+              copy_from: @copy_from,
+              report: params[:report] == "1"
             ),
             status: :bad_request
           )
@@ -140,7 +144,8 @@ class MeetingsController < ApplicationController
   def new_dialog
     respond_with_dialog Meetings::Index::DialogComponent.new(
       meeting: @meeting,
-      project: @project
+      project: @project,
+      report: params[:report] == "1"
     )
   end
 
@@ -435,6 +440,10 @@ class MeetingsController < ApplicationController
       .call(project: @project)
 
     @meeting = call.result
+
+    if params[:report] == "1"
+      @meeting.title = "#{@project.human_project_type}-Statusbericht"
+    end
   end
 
   def global_upcoming_meetings

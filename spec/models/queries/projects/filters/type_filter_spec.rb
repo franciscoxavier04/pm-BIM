@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,27 +26,35 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
 require "spec_helper"
 
 RSpec.describe Queries::Projects::Filters::TypeFilter do
   it_behaves_like "basic query filter" do
-    let(:class_key) { :type_id }
+    let(:class_key) { :project_type }
     let(:type) { :list }
     let(:model) { Project }
-    let(:attribute) { :type_id }
-    let(:values) { ["3"] }
+    let(:attribute) { :project_type }
+    let(:values) { ["program"] }
     let(:admin) { build_stubbed(:admin) }
     let(:user) { build_stubbed(:user) }
 
     before do
-      allow(Type).to receive(:pluck).with(:name, :id).and_return([["Foo", "1234"]])
+      allow(Project).to receive(:project_types).and_return({
+                                                             "project" => "project",
+                                                             "program" => "program",
+                                                             "portfolio" => "portfolio"
+                                                           })
+      allow(I18n).to receive(:t).with("label_project_type").and_return("Organizational entity type")
+      allow(I18n).to receive(:t).with("activerecord.attributes.project.project_type_enum.project").and_return("Project")
+      allow(I18n).to receive(:t).with("activerecord.attributes.project.project_type_enum.program").and_return("Program")
+      allow(I18n).to receive(:t).with("activerecord.attributes.project.project_type_enum.portfolio").and_return("Portfolio")
     end
 
     describe "#allowed_values" do
       it "is a list of the possible values" do
-        expect(instance.allowed_values).to contain_exactly(["Foo", "1234"])
+        expect(instance.allowed_values.map(&:second)).to contain_exactly("portfolio", "program", "project")
       end
     end
   end

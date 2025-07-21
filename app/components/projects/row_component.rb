@@ -32,6 +32,7 @@ module Projects
     delegate :identifier, to: :project
     delegate :favored_project_ids,
              :project_phase_by_definition,
+             :query,
              to: :table
 
     def project
@@ -127,7 +128,17 @@ module Projects
     end
 
     def name
-      content = content_tag(:i, "", class: "projects-table--hierarchy-icon")
+      content = "".html_safe
+
+      icon = if project.project?
+               :project
+             elsif project.portfolio?
+               :briefcase
+             elsif project.program?
+               :versions
+             end
+
+      content << render(Primer::Beta::Octicon.new(icon: icon, "aria-label": "Portfolio", color: :muted, size: :xsmall))
 
       if project.archived?
         content << " "
@@ -179,6 +190,10 @@ module Projects
       helpers.checked_image project.public?
     end
 
+    def portfolio_proposal
+      project.portfolio_proposals_as_project.map(&:name).join(", ")
+    end
+
     def row_css_class
       classes = %w[basics context-menu--reveal op-project-row-component]
       classes << project_css_classes
@@ -215,7 +230,7 @@ module Projects
 
     def additional_css_class(column)
       if column.attribute == :name
-        "project--hierarchy #{project.archived? ? 'archived' : ''}"
+        "project--hierarchy #{'archived' if project.archived?}"
       elsif %i[status_explanation description].include?(column.attribute)
         "project-long-text-container"
       elsif column.attribute == :favored
@@ -243,12 +258,38 @@ module Projects
                               "aria-label": t(:label_open_menu),
                               tooltip_direction: :w)
         more_menu_items.each do |action_options|
-          action_options => { scheme:, label:, icon:, **button_options }
+          add_menu_item_to_action_menu(menu, action_options)
+        end
+      end
+    end
+
+    def add_menu_item_to_action_menu(menu, menu_item)
+      if menu_item == :divider
+        menu.with_divider
+      else
+        menu_item => { scheme:, label:, icon:, **button_options }
+        submenu_entries = button_options.delete(:submenu_entries)
+        description = button_options.delete(:description)
+        form_arguments = button_options.delete(:form_arguments)
+
+        if submenu_entries.present?
+          menu.with_sub_menu_item(scheme:,
+                                  label:,
+                                  test_selector: "project-list-row--action-menu-item",
+                                  form_arguments:,
+                                  content_arguments: button_options) do |sub_menu|
+            submenu_entries.each do |sub_menu_item|
+              add_menu_item_to_action_menu(sub_menu, sub_menu_item)
+            end
+          end
+        else
           menu.with_item(scheme:,
                          label:,
                          test_selector: "project-list-row--action-menu-item",
+                         form_arguments:,
                          content_arguments: button_options) do |item|
             item.with_leading_visual_icon(icon:) if icon
+            item.with_description.with_content(description) if description
           end
         end
       end
@@ -260,9 +301,11 @@ module Projects
                             more_menu_activity_item,
                             more_menu_favorite_item,
                             more_menu_unfavorite_item,
+                            :divider,
                             more_menu_archive_item,
                             more_menu_unarchive_item,
                             more_menu_copy_item,
+                            :divider,
                             more_menu_delete_item].compact
     end
 
@@ -398,6 +441,14 @@ module Projects
 
     def current_page
       table.model.current_page.to_s
+    end
+
+    def sorted_by_lft?
+      query.orders.first&.attribute.to_s == "lft"
+    end
+
+    def sorted_by_manual?
+      query.orders.first&.attribute.to_s == "manual_sorting"
     end
   end
 end

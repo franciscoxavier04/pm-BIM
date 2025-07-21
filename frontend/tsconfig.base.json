@@ -3,7 +3,7 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "outDir": "./dist/out-tsc",
     "removeComments": true,
     "preserveConstEnums": true,
@@ -35,6 +35,7 @@
     ],
     "paths": {
       "@ng-select/ng-select": ["../node_modules/@ng-select/ng-select/"],
+      "@ng-select/ng-select/*": ["../node_modules/@ng-select/ng-select/*"],
       "core-app/*": ["./app/*"],
       "core-stimulus/*": ["./stimulus/*"],
       "core-typings/*": [

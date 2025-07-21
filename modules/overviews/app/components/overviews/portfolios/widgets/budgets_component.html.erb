@@ -1,0 +1,147 @@
+<%#-- copyright
+
+OpenProject is an open source project management software.
+Copyright (C) the OpenProject GmbH
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License version 3.
+
+OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+Copyright (C) 2006-2013 Jean-Philippe Lang
+Copyright (C) 2010-2013 the ChiliProject Team
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+See COPYRIGHT and LICENSE files for more details.
+
+++#%>
+
+<%=
+  render(Primer::Beta::BorderBox.new) do |component|
+    component.with_header do
+      render(Primer::OpenProject::BorderBox::CollapsibleHeader.new(box: component)) do |header|
+        header.with_title do
+          concat(render(Primer::Beta::Octicon.new(icon: :"op-budget", color: :muted, mr: 2)))
+          concat(render(Primer::Beta::Text.new) { "Budget" })
+        end
+      end
+    end
+
+    # TODO: hide if user does not have permissions to see budgets :view_budgets
+    # TODO: hide charts if the budgets module is inactive (even if budgets records are present)
+    component.with_row do
+      if project_budgets.none?
+        disabled = !User.current.allowed_in_project?(:edit_budgets, project)
+        flex_layout(style: "gap: 1rem;") do |no_budgets_row|
+          no_budgets_row.with_row do
+            render(
+              Primer::Beta::Button.new(
+                mt: 2,
+                leading_icon: :plus,
+                tag: :a,
+                disabled:,
+                href: new_projects_budget_path(project)
+              )
+            ) do |button|
+              button.with_leading_visual_icon(icon: :plus)
+              t(:label_budget)
+            end
+          end
+          if disabled
+            no_budgets_row.with_row do
+              render(Primer::Beta::Text.new(color: :muted)) do
+                if project.module_enabled?(:budgets)
+                  "Du hast keine Berechtigung, um Budgets zu erstellen."
+                else
+                  "Budget Modul ist nicht aktiviert."
+                end
+              end
+            end
+          end
+        end
+      else
+        flex_layout(style: "gap: 2rem;") do |layout|
+          layout.with_row do
+            content_tag(:div, style: "position: relative; max-width: 300px; max-height: 300px; margin: 0 auto;") do
+              helpers.stimulus_chartjs_canvas(
+                type: :pie,
+                data: {
+                  labels: chart_data.map(&:label),
+                  datasets: [
+                    {
+                      data: chart_data.map(&:value),
+                      backgroundColor: chart_data.map(&:color)
+                    }
+                  ]
+                },
+                options: {
+                  animation: {
+                    animateRotate: false
+                  },
+                  borderWidth: 0,
+                  plugins: {
+                    legend: {
+                      display: false
+                    },
+                    datalabels: {
+                      display: false
+                    }
+                  }
+                }
+              )
+            end
+          end
+
+          layout.with_row(flex_layout: true, justify_content: :space_between) do |legend_row|
+            legend_row.with_column do
+              render(Primer::Beta::Text.new(font_weight: :bold)) do
+                "Geplant: #{budget_formatted_amount(project_budgets.planned)}"
+              end
+            end
+
+            legend_row.with_column(flex_layout: true, style: "gap: 8px;") do |legend_column|
+              chart_data.each do |budget_info|
+                legend_column.with_row do
+                  concat(content_tag(:span, "", style: "display: inline-block; width: 16px; height: 16px; border-radius: 50%; background-color: #{budget_info.color}; margin-right: 8px; vertical-align: middle;"))
+                  concat(render(Primer::Beta::Text.new) { "#{budget_info.label}: " })
+                  concat(render(Primer::Beta::Text.new(font_weight: :bold)) { budget_formatted_amount(budget_info.value) })
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+
+    component.with_row do
+      flex_layout(justify_content: :space_between) do |layout|
+        layout.with_column do
+          # TODO: replace with proper i18n
+          if project_budgets.children_budgets_count.positive?
+            render(Primer::Beta::Text.new(color: :muted)) do
+              "Schließt #{pluralize(project_budgets.children_budgets_count, 'Teilbudget')} ein"
+            end
+          end
+        end
+
+        layout.with_column do
+          render(Primer::Beta::Link.new(href: projects_list_with_budgets_columns_path)) do
+            render(Primer::Beta::Text.new(font_weight: :semibold)) { "Alle anzeigen" }
+          end
+        end
+      end
+    end
+  end
+%>

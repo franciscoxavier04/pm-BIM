@@ -91,7 +91,7 @@ These values are **guidelines** and should be adjusted based on actual monitorin
 
 - **RAM**: 4 GB
 
-- **Web Workers**:  2 Workers, each with 4 threads
+- **Web Workers**: 2 Workers, each with 4 threads
 
 - **Background Workers**: 1 multithreaded worker with 4GiB RAM (more RAM possibly required for larger exports)
 
@@ -150,7 +150,7 @@ For high-availability setups, distribute traffic across multiple servers and ava
 
 > [!IMPORTANT]
 >
-> Some features we plan for the future will only be shipped with Docker-based installations. We also don't plan to provide packaged-based installations for more recent Linux versions, e.g. Ubuntu 24.04.  
+> Some features we plan for the future will only be shipped with Docker-based installations. We also don't plan to provide packaged-based installations for more recent Linux versions, e.g. Ubuntu 24.04.
 
 ### Docker-based installation (recommendation)
 

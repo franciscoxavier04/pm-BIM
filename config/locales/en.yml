@@ -1050,6 +1050,7 @@ en:
         admin_only: "Admin-only"
       custom_value:
         value: "Value"
+        numeric_value: "Numeric value"
       doorkeeper/application:
         uid: "Client ID"
         secret: "Client secret"
@@ -1100,6 +1101,8 @@ en:
       oauth_client:
         client: "Client ID"
       project:
+        ancestor: "Descendants of" # used for filtering of projects that are descendants of a given work package
+        ancestor_or_self: "Project including descendants" # used for filtering of projects that are descendants of a given work package including the project itself
         active_value:
           true: "unarchived"
           false: "archived"
@@ -1115,6 +1118,11 @@ en:
         queries: "Queries"
         status_code: "Project status"
         status_explanation: "Project status description"
+        project_type: "Organizational entity type"
+        project_type_enum:
+          project: "Project"
+          program: "Program"
+          portfolio: "Portfolio"
         status_codes:
           not_started: "Not started"
           on_track: "On track"
@@ -1171,6 +1179,9 @@ en:
         ordered_work_packages: "Work packages order"
         include_subprojects: "Include subprojects"
         results: "Results"
+      project_query:
+        manual_sorting: "Manual sort order"
+        portfolio_proposal_projects: "Projects order"
       relation:
         lag: "Lag"
         from: "Related work package"
@@ -1930,6 +1941,8 @@ en:
   button_add_sub_item: "Add sub-item"
   button_add_member: Add member
   button_add_watcher: "Add watcher"
+  button_add_to_proposal: "Add to proposal"
+  button_remove_from_proposal: "Remove from proposal"
   button_annotate: "Annotate"
   button_apply: "Apply"
   button_archive: "Archive"
@@ -3026,6 +3039,7 @@ en:
   label_manage: "Manage"
   label_manage_groups: "Manage groups"
   label_managed_repositories_vendor: "Managed %{vendor} repositories"
+  label_mathematical_operators: "Mathematical operators"
   label_max_size: "Maximum size"
   label_me: "me"
   label_member_new: "New member"
@@ -3153,6 +3167,8 @@ en:
   label_project_hierarchy: "Project hierarchy"
   label_project_mappings: "Projects"
   label_project_new: "New project"
+  label_project_portfolio_new: "New portfolio"
+  label_project_program_new: "New program"
   label_project_plural: "Projects"
   label_project_list_plural: "Project lists"
   label_project_life_cycle: "Project life cycle"
@@ -3161,6 +3177,7 @@ en:
   label_project_settings: "Project settings"
   label_project_attributes_settings: "Project attributes settings"
   label_project_storage_plural: "File storages"
+  label_project_type: "Organizational entity"
   label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} projects using %{used_disk_space} disk space"
   label_project_view_all: "View all projects"
@@ -3812,6 +3829,8 @@ en:
       make_template: "Set as template"
       remove_from_templates: "Remove from templates"
 
+  project_caption_order_changed: "Order successfully changed."
+  project_could_not_be_moved: "Project could not be moved."
   project_module_activity: "Activity"
   project_module_forums: "Forums"
   project_module_work_package_tracking: "Work packages"
@@ -4060,6 +4079,8 @@ en:
   setting_feeds_limit: "Feed content limit"
   setting_file_max_size_displayed: "Max size of text files displayed inline"
   setting_host_name: "Host name"
+  setting_websocket_server_url: "Websocket server URL"
+  setting_websocket_server_secret: "Websocket server secret"
   setting_hours_per_day: "Hours per day"
   setting_hours_per_day_explanation: >-
     This defines what is considered a "day" when displaying duration in days and hours
@@ -4981,3 +5002,51 @@ en:
 
   enterprise_plans:
     legacy_enterprise: "Enterprise Plan"
+
+  label_portfolio_management: Portfolio management
+  label_portfolio_proposals: Portfolio proposals
+  label_portfolio_proposal: Portfolio proposal
+  label_portfolio_proposal_new: New portfolio proposal
+  label_portfolio_proposal_edit: Edit portfolio proposal
+  label_no_portfolio_proposals: No portfolio proposals found.
+  label_no_projects_in_proposal: No projects in this proposal.
+  label_state: State
+  label_state_actions: State actions
+  label_change_state: Change state
+  label_projects: Projects
+  label_proposal_approved: "Portfolio proposal approved"
+  label_new_proposals: "New proposals"
+  label_finalized_proposals: "Finalized proposals"
+  label_pending_proposal: "Pending proposal"
+  label_proposal_last_change: "Last change: %{time}"
+  label_current_portfolio: "Current portfolio"
+
+  button_create_new_portfolio_proposal: Create new portfolio proposal
+  button_set_to_compose: Set to "Compose"
+  button_set_to_proposed: Propose
+  button_set_to_approved: Approve
+
+  text_are_you_sure_change_to_approved: Are you sure you want to approve this proposal? This will make the included projects children of the portfolio.
+  text_select_projects_for_proposal: Select the projects to include in this proposal.
+
+  error_must_be_portfolio: The project must be a portfolio.
+  error_unable_delete_proposal: Unable to delete the proposal.
+  error_project_not_in_proposal: The project is not part of the proposal.
+
+  notice_proposal_proposed: "Proposal submitted."
+  notice_proposal_approved: "Proposal approved."
+  notice_proposal_state_changed: "Proposal state changed to %{state}."
+  notice_proposal_project_removed: Removed project from proposal.
+
+  portfolio_proposals:
+    states:
+      draft: Draft
+      proposed: Submitted
+      approved: Approved
+      archived: Archived
+    contains_elements: "Contains %{count} elements"
+    no_elements: "Still empty"
+
+  label_rank: "Rank"
+  label_increase_rank: "Increase rank"
+  label_decrease_rank: "Decrease rank"

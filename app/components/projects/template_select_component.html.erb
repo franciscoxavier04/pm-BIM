@@ -49,6 +49,7 @@ See COPYRIGHT and LICENSE files for more details.
       ) do
         template_id_value = template_id
         parent_id_value = parent_id
+        project_type_value = project_type
         render_inline_form(f) do |form|
           form.project_autocompleter(
             name: :template_id,
@@ -60,7 +61,8 @@ See COPYRIGHT and LICENSE files for more details.
               placeholder: I18n.t("label_none_parentheses"),
               filters: [
                 { name: "user_action", operator: "=", values: ["projects/copy"] },
-                { name: "templated", operator: "=", values: ["t"] }
+                { name: "templated", operator: "=", values: ["t"] },
+                { name: "project_type", operator: "=", values: [project_type_value] }
               ],
               data: {
                 action: "change->auto-submit#submit",

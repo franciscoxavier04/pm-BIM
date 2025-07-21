@@ -32,7 +32,7 @@ class AttributeHelpText::Project < AttributeHelpText
 
     attributes = API::V3::Projects::Schemas::ProjectSchemaRepresenter
       .representable_definitions
-      .reject { |key, _| skip.include?(key.to_s) }
+      .reject { |key, definition| skip.include?(key.to_s) || definition[:name_source].nil? }
       .transform_values { |definition| definition[:name_source].call }
 
     ProjectCustomField.find_each do |field|

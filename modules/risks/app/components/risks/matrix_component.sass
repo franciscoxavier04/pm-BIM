@@ -1,0 +1,249 @@
+.risk-matrix-container
+  padding: 20px 0
+  max-width: 100%
+  margin: 0 auto
+
+.matrix-content
+  display: flex
+  gap: 20px
+  align-items: stretch
+
+.matrix-wrapper
+  flex: 1
+  max-width: 80%
+  overflow-x: auto
+
+.risk-matrix
+  width: 100%
+  border-collapse: collapse
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1)
+  background: white
+
+  .matrix-corner
+    background: #f8f9fa
+    border-right: none
+    border-bottom: none
+    height: 50px
+    width: 50px
+
+  .matrix-corner-right
+    background: #f8f9fa
+    border-left: none !important
+    border-bottom: none !important
+
+  .matrix-corner-bottom
+    background: #f8f9fa
+    border-top: none !important
+    border-right: none !important
+
+  .matrix-reset
+    background: #f8f9fa
+    border-top: none
+    border-left: none
+
+  .matrix-reset-link
+    font-size: 12px
+    font-weight: 400
+    position: absolute
+    padding-top: 8px
+    padding-right: 10px
+    width: 12%
+    height: 75px
+
+  th,
+  td
+    width: auto
+    border: 2px solid #ddd
+    text-align: center
+    //font-weight: bold
+
+.matrix-corner
+  background: #f8f9fa
+  border-right: none
+  border-bottom: none
+
+.matrix-corner-right
+  background: #f8f9fa
+  border-left: none !important
+  border-bottom: none !important
+
+.matrix-corner-bottom
+  background: #f8f9fa
+  border-top: none !important
+  border-right: none !important
+
+.impact-header
+  background: #AFB8C133
+  padding: 15px
+  font-size: 14px
+  font-weight: 600
+  color: #495057
+
+.likelihood-header
+  background: #AFB8C133
+  font-weight: 600
+  color: #495057
+  font-size: 14px
+  padding: 50px 5px
+  text-align: center
+  vertical-align: middle
+  writing-mode: vertical-rl
+  transform: rotate(180deg)
+
+  div
+    font-size: 11px
+    line-height: 1.2
+    word-break: break-word
+
+.impact-label,
+.likelihood-label
+  font-weight: normal
+  background: #f8f9fa
+  padding: 6px 2px
+  font-size: 12px
+  color: #495057
+  max-width: 40px
+
+.risk-cell
+  color: black
+  width: 80px
+  height: 60px
+  position: relative
+  cursor: pointer
+  transition: all 0.3s ease
+
+  .risk-cell-link
+    display: flex
+    width: 100%
+    height: 100%
+    align-items: center
+    justify-content: center
+    color: inherit
+    text-decoration: none
+
+  &:hover
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), inset 0 0 0 2px rgba(255, 255, 255, 0.3)
+    filter: brightness(1.025)
+
+.risk-count
+  font-size: 16px
+
+.low-risk
+  background: #DAFBE1
+
+.medium-risk
+  background: #FFF8C5
+
+.high-risk
+  background: #FFEBE9
+
+.risk-selected
+  color: white
+
+.low-risk.risk-selected
+  background: #4AC26B
+
+.medium-risk.risk-selected
+  background: #D4A72C
+
+.high-risk.risk-selected
+  background: #FA4549
+
+.risk-legend
+  width: 20%
+  min-width: 250px
+  padding: 20px
+  background: #f8f9fa
+  border-radius: 8px
+  border: 1px solid #e9ecef
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
+
+  .header
+    border-bottom: 2px solid #ddd
+
+    h3
+      font-size: 14px
+      font-weight: 600
+      margin-bottom: 15px
+      color: #333
+      text-align: center
+
+.legend-description
+  font-size: 12px
+  color: #636C76
+  padding-top: 20px
+  padding-bottom: 20px
+  text-align: center
+  border-bottom: 2px solid #ddd
+
+.legend-items
+  display: flex
+  flex-direction: column
+  gap: 15px
+  padding-top: 10px
+
+.legend-item
+  display: flex
+  align-items: center
+  gap: 8px
+  font-weight: normal
+
+.legend-color
+  width: 20px
+  height: 20px
+  border-radius: 4px
+  border: 1px solid #ddd
+
+.legend-content
+  flex: 1
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
+
+.legend-total
+  margin-top: auto
+  font-weight: 600
+  font-size: 16px
+  color: #636C76
+
+@media (max-width: 768px)
+  .risk-matrix-container
+    padding: 10px
+
+  .matrix-content
+    flex-direction: column
+    gap: 20px
+
+  .matrix-wrapper
+    max-width: 100%
+
+  .risk-legend
+    width: 100%
+    min-width: auto
+
+  .risk-matrix
+    th,
+    td
+      font-size: 12px
+      padding: 8px 4px
+
+  .risk-cell
+    width: 60px
+    height: 50px
+
+  .risk-count
+    font-size: 14px
+
+  .legend-items
+    flex-direction: column
+    gap: 10px
+
+
+.matrix-reset
+  font-size: 11px
+  word-wrap: break-word
+  overflow-wrap: break-word
+  hyphens: auto
+  text-align: center

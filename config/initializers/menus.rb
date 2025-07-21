@@ -75,12 +75,42 @@ Redmine::MenuManager.map :top_menu do |menu|
 end
 
 Redmine::MenuManager.map :quick_add_menu do |menu|
+  menu.push :new_portfolio,
+            ->(project) {
+              { controller: "/projects", action: :new, project_id: nil, project_type: "portfolio", parent_id: project&.id }
+            },
+            caption: ->(_) { I18n.t("activerecord.attributes.project.project_type_enum.portfolio") },
+            icon: "briefcase",
+            html: {
+              aria: { label: I18n.t(:label_project_portfolio_new) },
+              title: I18n.t(:label_project_portfolio_new)
+            },
+            if: ->(project) {
+              User.current.allowed_globally?(:add_project) ||
+                User.current.allowed_in_project?(:add_subprojects, project)
+            }
+
+  menu.push :new_program,
+            ->(project) {
+              { controller: "/projects", action: :new, project_id: nil, project_type: "program", parent_id: project&.id }
+            },
+            caption: ->(_) { I18n.t("activerecord.attributes.project.project_type_enum.program") },
+            icon: "versions",
+            html: {
+              aria: { label: I18n.t(:label_project_program_new) },
+              title: I18n.t(:label_project_program_new)
+            },
+            if: ->(project) {
+              User.current.allowed_globally?(:add_project) ||
+                User.current.allowed_in_project?(:add_subprojects, project)
+            }
+
   menu.push :new_project,
             ->(project) {
               { controller: "/projects", action: :new, project_id: nil, parent_id: project&.id }
             },
             caption: ->(_) { Project.model_name.human },
-            icon: "plus",
+            icon: "project",
             html: {
               aria: { label: I18n.t(:label_project_new) },
               title: I18n.t(:label_project_new)
@@ -584,6 +614,17 @@ Redmine::MenuManager.map :admin_menu do |menu|
 end
 
 Redmine::MenuManager.map :project_menu do |menu|
+  menu.push :portfolio,
+            { controller: "/portfolio_managements", action: "show" },
+            if: ->(project) { project.portfolio? || project.program? },
+            icon: "briefcase",
+            caption: :label_portfolio_management
+
+  menu.push :projects_query_select,
+            { controller: "/portfolio_managements", action: "show" },
+            parent: :portfolio,
+            partial: "portfolio_managements/menus/menu"
+
   menu.push :activity,
             { controller: "/activities", action: "index" },
             if: ->(project) { project.module_enabled?("activity") },

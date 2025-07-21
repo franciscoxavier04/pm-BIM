@@ -30,6 +30,17 @@
       menu_arguments: { anchor_align: :end },
       button_arguments: { icon: "kebab-horizontal", "aria-label": t(:label_menu) }
     ) do |menu|
+      if User.current.allowed_in_project?(:create_meetings, @project)
+        menu.with_item(
+          label: "Statusbericht-Besprechung erzeugen",
+          tag: :a,
+          href: polymorphic_path([:new_dialog, @project, :meetings], report: "1"),
+          content_arguments: { data: { controller: "async-dialog" } }
+        ) do |item|
+          item.with_leading_visual_icon(icon: "comment-discussion")
+        end
+      end
+
       if User.current.allowed_in_project?(:select_project_custom_fields, @project)
         menu.with_item(
           label: t(:label_project_attribute_manage_link),
@@ -55,4 +66,45 @@
   end
 %>
 
-<openproject-base></openproject-base>
+<%= render(Primer::Alpha::Layout.new) do |content| %>
+  <% content.with_main do %>
+    <% if OpenProject::FeatureDecisions.portfolio_dashboard_active? %>
+      <%= render(Primer::Alpha::TabPanels.new(label: "label")) do |tab_panel| %>
+        <% tab_panel.with_tab(selected: true, id: "tab-selects--overview") do |tab| %>
+          <% tab.with_text { "Übersicht" } %>
+          <% tab.with_panel do %>
+            <%= render Overviews::Portfolios::ShowComponent.new(project: @project) %>
+          <% end %>
+        <% end %>
+        <% tab_panel.with_tab(id: "tab-selects--dashboard") do |tab| %>
+          <% tab.with_text { "Dashboard" } %>
+          <% tab.with_panel do %>
+            <openproject-base></openproject-base>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <openproject-base></openproject-base>
+    <% end %>
+  <% end %>
+  <% content.with_sidebar(col_placement: :end, row_placement: :end) do %>
+    <% if @project.phases.any? %>
+      <turbo-frame
+        src="<%= project_life_cycle_sidebar_path(project_id: @project.id) %>"
+        id="project-life-cycle-sidebar"
+      >
+        <op-content-loader viewBox="0 0 100 100">
+          <svg:rect x="0" y="0" width="70" height="5" rx="1" />
+
+          <svg:rect x="75" y="0" width="25" height="5" rx="1" />
+
+          <svg:rect x="0" y="10" width="100" height="8" rx="1" />
+
+          <svg:rect x="0" y="25" width="100" height="12" rx="1" />
+        </op-content-loader>
+      </turbo-frame>
+    <% end %>
+
+    <%= render Overviews::Portfolios::SidePanelComponent.new(project: @project) %>
+  <% end %>
+<% end %>

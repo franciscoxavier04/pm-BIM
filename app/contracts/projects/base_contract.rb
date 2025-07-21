@@ -56,6 +56,7 @@ module Projects
     # only validate custom fields of the touched section
 
     validate :validate_user_allowed_to_manage
+    attribute :project_type
 
     def valid?(context = :saving_custom_fields) = super
 

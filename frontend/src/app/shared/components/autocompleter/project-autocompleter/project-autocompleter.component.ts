@@ -176,7 +176,7 @@ export class ProjectAutocompleterComponent extends OpAutocompleterComponent<IPro
 
         filteredURL.searchParams.set('pageSize', params.pageSize?.toString() || '-1');
         filteredURL.searchParams.set('offset', params.offset?.toString() || '1');
-        filteredURL.searchParams.set('select', 'elements/id,elements/name,elements/identifier,elements/self,elements/ancestors,total,count,pageSize');
+        filteredURL.searchParams.set('select', 'elements/id,elements/name,elements/project_type,elements/identifier,elements/self,elements/ancestors,total,count,pageSize');
 
         return this
           .http

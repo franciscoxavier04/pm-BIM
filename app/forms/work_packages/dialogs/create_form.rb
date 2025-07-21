@@ -113,7 +113,27 @@ module WorkPackages::Dialogs
     private
 
     def custom_fields
-      @custom_fields ||= work_package.available_custom_fields.select(&:required?)
+      @custom_fields ||= begin
+        required = work_package.available_custom_fields.select(&:required?)
+        additional_custom_fields + required
+      end
+    end
+
+    def additional_custom_fields
+      case work_package.type
+      when BmdsHackathon::References.risk_type
+        [
+          BmdsHackathon::References.risk_likelihood_cf,
+          BmdsHackathon::References.risk_impact_cf
+        ]
+      when BmdsHackathon::Objectives.key_result_type
+        [
+          BmdsHackathon::Objectives.current_cf,
+          BmdsHackathon::Objectives.target_cf
+        ]
+      else
+        []
+      end
     end
 
     def writable_attributes

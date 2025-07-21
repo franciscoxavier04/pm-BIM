@@ -170,6 +170,12 @@ PATH
       grids
 
 PATH
+  remote: modules/objectives
+  specs:
+    objectives (1.0.0)
+      objectives
+
+PATH
   remote: modules/openid_connect
   specs:
     openproject-openid_connect (1.0.0)
@@ -194,6 +200,12 @@ PATH
   specs:
     openproject-reporting (1.0.0)
       costs
+
+PATH
+  remote: modules/risks
+  specs:
+    risks (1.0.0)
+      risks
 
 PATH
   remote: modules/storages
@@ -1428,6 +1440,7 @@ DEPENDENCIES
   my_page!
   net-ldap (~> 0.19.0)
   nokogiri (~> 1.18.8)
+  objectives!
   oj (~> 3.16.0)
   okcomputer (~> 1.19.0)
   omniauth!
@@ -1491,6 +1504,7 @@ DEPENDENCIES
   responders (~> 3.0)
   retriable (~> 3.1.1)
   rinku (~> 2.0.4)
+  risks!
   roar (~> 1.2.0)
   rouge (~> 4.5.1)
   rspec (~> 3.13.0)
@@ -1797,6 +1811,7 @@ CHECKSUMS
   nokogiri (1.18.8-x86_64-darwin) sha256=024cdfe7d9ae3466bba6c06f348fb2a8395d9426b66a3c82f1961b907945cc0c
   nokogiri (1.18.8-x86_64-linux-gnu) sha256=4a747875db873d18a2985ee2c320a6070c4a414ad629da625fbc58d1a20e5ecc
   nokogiri (1.18.8-x86_64-linux-musl) sha256=ddd735fba49475a395b9ea793bb6474e3a3125b89960339604d08a5397de1165
+  objectives (1.0.0)
   oj (3.16.11) sha256=2aab609d2bc896529bd3c70d737f591c13932a640ba6164a0f7e414efdb052b1
   okcomputer (1.19.0) sha256=8548935a82f725bdd8f2c329925a9f1a1bb2ce19ce26b47d7515665ee363b458
   omniauth (1.9.2)
@@ -1909,6 +1924,7 @@ CHECKSUMS
   retriable (3.1.2) sha256=0a5a5d0ca4ba61a76fb31a17ab8f7f80281beb040c329d34dfc137a1398688e0
   rexml (3.4.1) sha256=c74527a9a0a04b4ec31dbe0dc4ed6004b960af943d8db42e539edde3a871abca
   rinku (2.0.6) sha256=8b60670e3143f3db2b37efa262971ce3619ec23092045498ef9f077d82828d7d
+  risks (1.0.0)
   roar (1.2.0) sha256=8db4d1ca79c57a5fb746c16c0d5661d7c3e0de3d9553dc016a88d2dba2929d08
   rotp (6.3.0) sha256=75d40087e65ed0d8022c33055a6306c1c400d1c12261932533b5d6cbcd868854
   rouge (4.5.2) sha256=034233fb8a69d0ad0e0476943184e04cb971b68e3c2239724e02f428878b68a3

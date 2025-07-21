@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -107,8 +109,97 @@ module API
           schema :updated_at,
                  type: "DateTime"
 
-          def self.represented_class
-            ::Project
+          # Needs to not be cached as the custom field sections might contain information
+          # whose visibility needs to be checked per user
+          property :attribute_groups,
+                   type: "[]String",
+                   as: "_attributeGroups",
+                   exec_context: :decorator,
+                   uncacheable: true
+
+          class << self
+            def represented_class
+              ::Project
+            end
+
+            def attribute_group(property)
+              lambda do
+                key = property.to_s
+                attribute_group_map key
+              end
+            end
+
+            # override the various schema methods to include
+
+            def schema(property, *args)
+              opts, = args
+              opts[:attribute_group] = attribute_group property
+
+              super(property, **opts)
+            end
+
+            def schema_with_allowed_link(property, *args)
+              opts, = args
+              opts[:attribute_group] = attribute_group property
+
+              super(property, **opts)
+            end
+
+            def schema_with_allowed_collection(property, *args)
+              opts, = args
+              opts[:attribute_group] = attribute_group property
+
+              super(property, **opts)
+            end
+          end
+
+          def attribute_groups
+            project_custom_field_sections.map do |section|
+              form_config_section_representation(section)
+            end
+          end
+
+          ##
+          # Return a map of attribute => group name
+          def attribute_group_map(key)
+            return nil if project_custom_field_sections.empty?
+
+            @attribute_group_map ||= project_custom_field_sections.each_with_object({}) do |section, hash|
+              section.custom_fields.each do |cf|
+                hash[cf.attribute_name(:camel_case)] = section.name
+              end
+            end
+
+            @attribute_group_map[key]
+          end
+
+          private
+
+          def project_custom_field_sections
+            @project_custom_field_sections ||= ProjectCustomFieldSection
+                                                .joins(:custom_fields)
+                                                .includes(:custom_fields)
+                                                .merge(ProjectCustomField.visible)
+                                                .group(:id, "custom_fields.id")
+                                                .order(:position, :position_in_custom_field_section)
+          end
+
+          def form_config_section_representation(section)
+            OpenProject::Cache.fetch(*form_config_section_cache_key(section)) do
+              ::JSON::parse(::API::V3::Projects::Schemas::ProjectCustomFieldSectionRepresenter
+                              .new(section, current_user:, embed_links: true)
+                              .to_json)
+            end
+          end
+
+          def form_config_section_cache_key(section)
+            ["project_schema_custom_field_section",
+             section.id,
+             I18n.locale,
+             represented.model,
+             represented.model.available_custom_fields.sort_by(&:id)]
+              .flatten
+              .compact
           end
         end
       end

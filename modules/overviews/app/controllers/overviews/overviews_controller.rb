@@ -114,6 +114,9 @@ module ::Overviews
       update_via_turbo_stream(
         component: Overviews::ProjectCustomFields::SidePanelComponent.new(project: @project)
       )
+      update_via_turbo_stream(
+        component: Overviews::Portfolios::SidePanelComponent.new(project: @project)
+      )
     end
   end
 end

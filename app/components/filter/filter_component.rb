@@ -35,9 +35,10 @@ module Filter
     # rubocop:enable OpenProject/AddPreviewForViewComponent
     options :query
     options always_visible: false
+    options collapsed_by_default: false
 
     def show_filters_section?
-      always_visible || params[:filters].present?
+      always_visible || (params[:filters].present? && !collapsed_by_default)
     end
 
     # Returns filters, active and inactive.
@@ -82,7 +83,8 @@ module Filter
       when Queries::Filters::Shared::CustomFields::ListOptional
         { autocomplete_options: custom_field_list_autocomplete_options(filter) }
       when Queries::Projects::Filters::ProjectStatusFilter,
-           Queries::Projects::Filters::TypeFilter
+           Queries::Projects::Filters::TypeFilter,
+           Queries::Projects::Filters::WorkPackageTypeFilter
         { autocomplete_options: list_autocomplete_options(filter) }
       else
         {}

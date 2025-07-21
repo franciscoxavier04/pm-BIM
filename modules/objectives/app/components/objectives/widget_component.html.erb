@@ -1,0 +1,94 @@
+<%#-- copyright
+OpenProject is an open source project management software.
+Copyright (C) the OpenProject GmbH
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License version 3.
+
+OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+Copyright (C) 2006-2013 Jean-Philippe Lang
+Copyright (C) 2010-2013 the ChiliProject Team
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+See COPYRIGHT and LICENSE files for more details.
+
+++#%>
+<%= render(Primer::Beta::BorderBox.new(data: { controller: "expandable-list" }, **@system_arguments)) do |component|
+  component.with_header do
+    render(Primer::OpenProject::BorderBox::CollapsibleHeader.new(box: component, collapsed:)) do |header|
+      header.with_count(count: @groups.values.sum)
+      header.with_title do
+        concat(render(Primer::Beta::Octicon.new(icon: :checklist, color: :muted, mr: 2)))
+        concat(render(Primer::Beta::Text.new) { "Übersicht Ziele" })
+      end
+    end
+  end
+
+  component.with_row do
+    if @groups.empty?
+      render(Primer::Beta::Blankslate.new) do |component|
+        component.with_heading(tag: :h2) { "Keine Ziele definiert" }
+      end
+    else
+      content_tag :div, class: "op-goals-widget" do
+        concat(
+          content_tag(:div, class: "op-goals-widget--square", style: "background-color: var(--bgColor-success-muted)") do
+            content_tag(:div, class: "op-goals-widget--square-content") do
+              concat(content_tag(:div, "#{@total_percentage}%", class: "op-goals-widget--count", style: "color: var(--fgColor-success)"))
+              concat(content_tag(:div, "Fortschritt", class: "op-goals-widget--label"))
+              concat(render(Primer::Beta::ProgressBar.new(size: :large, classes: "op-goals-widget--progress")) do |component|
+                component.with_item(percentage: @total_percentage)
+              end)
+            end
+          end
+        )
+
+        @squares.each do |square_data|
+          count = square_data[:count]
+          label = count == 1 ? "Ziel" : "Ziele"
+          concat(
+            content_tag(:div, class: "op-goals-widget--square", style: "background-color: var(#{square_data[:bgcolor]}") do
+              content_tag(:div, class: "op-goals-widget--square-content") do
+                concat(content_tag(:div, square_data[:count], class: "op-goals-widget--count", style: "color: var(#{square_data[:color]})"))
+                concat(content_tag(:div, label, class: "op-goals-widget--label"))
+                concat(content_tag(:div,
+                                   square_data[:label],
+                                   style: "background-color: var(#{square_data[:color]})",
+                                   class: "op-goal-badge"))
+              end
+            end
+          )
+        end
+      end
+    end
+  end
+
+  if @show_footer && @project.enabled_module_names.include?("objectives")
+    component.with_footer do
+      flex_layout do |flex|
+        flex.with_column(flex: 1) do
+          "#{@groups.values.sum} in allen Portfolio-Elementen"
+        end
+
+        flex.with_column do
+          render(Primer::Beta::Link.new(href: project_objectives_path(@project))) do
+            render(Primer::Beta::Text.new(font_weight: :semibold)) { "Alle anzeigen" }
+          end
+        end
+      end
+    end
+  end
+end %>

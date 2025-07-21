@@ -283,6 +283,7 @@ class PermittedParams
                                                 :templated,
                                                 :status_code,
                                                 :status_explanation,
+                                                :project_type,
                                                 custom_fields: [],
                                                 work_package_custom_field_ids: [],
                                                 type_ids: [],
@@ -297,7 +298,7 @@ class PermittedParams
 
   def new_project
     params
-      .expect(project: %i[name parent_id])
+      .expect(project: %i[name parent_id project_type])
       .merge(custom_field_values(:project))
   end
 
@@ -500,7 +501,7 @@ class PermittedParams
           :content_right_to_left,
           :custom_field_section_id,
           :allow_non_open_versions,
-          { custom_options_attributes: %i(id value default_value position) },
+          { custom_options_attributes: %i(id value numeric_value default_value position) },
           { type_ids: [] }
         ],
         enumeration: %i(
