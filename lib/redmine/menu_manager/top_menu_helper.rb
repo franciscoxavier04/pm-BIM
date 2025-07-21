@@ -212,15 +212,13 @@ module Redmine::MenuManager::TopMenuHelper
       ) do |list|
         list.with_heading(title: item_group[:title], align_items: :flex_start) if item_group[:title]
 
-        items_by_context = item_group[:items].group_by(&:context)
-        my_items = items_by_context[:my] || []
-        module_items = items_by_context[:modules] || []
+        my_items, remaining_items = item_group[:items].partition { |item| item.context == :my }
 
         render_action_list_items(list, my_items)
 
-        list.with_divider if my_items.any? && module_items.any?
+        list.with_divider if my_items.any? && remaining_items.any?
 
-        render_action_list_items(list, module_items)
+        render_action_list_items(list, remaining_items)
       end
     end
   end
