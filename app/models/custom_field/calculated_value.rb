@@ -134,7 +134,7 @@ module CustomField::CalculatedValue
     # Returns a list of custom field IDs used in the formula.
     # For a formula like `2 + {{cf_12}} + {{cf_4}}` it returns `[12, 4]`.
     def cf_ids_used_in_formula(formula_str)
-      formula_str.scan(/\b\{\{cf_(\d+)}}\b/).flatten.compact.map(&:to_i)
+      formula_str.scan(/\{\{cf_(\d+)}}/).flatten.compact.map(&:to_i)
     end
 
     def formula_str_without_patterns

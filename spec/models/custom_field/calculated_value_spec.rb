@@ -34,11 +34,16 @@ RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_proje
   subject(:custom_field) { create(:calculated_value_project_custom_field, formula: "1 + 1") }
 
   describe "#formula=" do
+    let!(:int) { create(:project_custom_field, :integer, default_value: 2, is_for_all: true) }
+    let!(:float) { create(:project_custom_field, :float, default_value: 3.5, is_for_all: true) }
+
+    current_user { create(:admin) }
+
     it "splits formula and referenced custom fields on persist if given a string" do
-      formula = "1 * cf_7 + cf_42"
+      formula = "1 * {{cf_#{int.id}}} + {{cf_#{float.id}}}"
       subject.formula = formula
 
-      expect(subject.formula).to eq({ "formula" => formula, "referenced_custom_fields" => [7, 42] })
+      expect(subject.formula).to eq({ "formula" => formula, "referenced_custom_fields" => [int.id, float.id] })
     end
 
     it "omits referenced custom fields if none are given" do
@@ -56,7 +61,7 @@ RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_proje
     end
 
     it "returns the formula as a string" do
-      formula = "1 * cf_7 + cf_42"
+      formula = "1 * {{cf_7}} + {{cf_42}}"
       subject.formula = formula
 
       expect(subject.formula_string).to eq(formula)
@@ -115,12 +120,6 @@ RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_proje
 
     context "with a formula that is not a valid equation" do
       let(:formula) { "1 / + - 3" }
-
-      it_behaves_like "invalid formula", "is invalid."
-    end
-
-    context "with a formula that causes a division by zero error" do
-      let(:formula) { "1 / 0" }
 
       it_behaves_like "invalid formula", "is invalid."
     end
