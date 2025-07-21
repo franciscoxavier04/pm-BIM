@@ -478,10 +478,10 @@ zh-TW:
         name: OneDrive
         name_placeholder: 例如 OneDrive
       share_point:
-        label_oauth_client_id: Azure OAuth Application (client) ID
-        label_oauth_client_secret: Azure OAuth Client Secret Value
-        name: SharePoint
-        name_placeholder: e.g. SharePoint
+        label_oauth_client_id: Azure OAuth 應用程式(客戶端) ID
+        label_oauth_client_secret: Azure OAuth 客戶端密鑰值
+        name: Sharepoint
+        name_placeholder: 例如 SharePoint
     show_attachments_toggle:
       description: 停用此選項將隱藏工作套件檔案索引標籤上的附件清單。工作套件說明中附加的檔案仍會上傳至內部附件儲存區。
       label: 顯示與工作套件相關之附件
