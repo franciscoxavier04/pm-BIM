@@ -182,7 +182,7 @@ module Redmine::MenuManager::TopMenuHelper
   def render_module_top_menu_node(item_groups = module_top_menu_item_groups)
     unless item_groups.empty?
       render Primer::Alpha::Dialog.new(classes: "op-app-menu--item",
-                                       title:  I18n.t("label_modules"),
+                                       title: I18n.t("label_modules"),
                                        visually_hide_title: true,
                                        menu_id: "op-app-header--modules-menu",
                                        position: :left) do |dialog|
