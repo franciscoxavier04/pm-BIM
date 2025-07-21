@@ -5,7 +5,8 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "@angular-devkit/build-angular": "^17.3.4",
+    "@angular-builders/custom-esbuild": "^17.1.2",
+    "@angular-devkit/build-angular": "^17.3.17",
     "@angular-eslint/builder": "^17.4.1",
     "@angular-eslint/eslint-plugin": "^17.4.1",
     "@angular-eslint/eslint-plugin-template": "^17.4.1",
@@ -17,7 +18,7 @@
     "@jsdevtools/coverage-istanbul-loader": "3.0.5",
     "@types/codemirror": "5.60.5",
     "@types/dom-navigation": "^1.0.3",
-    "@types/dragula": "^3.7.0",
+    "@types/dragula": "^3.7.5",
     "@types/hammerjs": "^2.0.36",
     "@types/jasmine": "~3.6.0",
     "@types/jquery": "^3.5.32",
@@ -61,7 +62,6 @@
     "webpack-bundle-analyzer": "^4.4.2"
   },
   "dependencies": {
-    "@angular-builders/custom-webpack": "^17.0.2",
     "@angular/animations": "^17.3.4",
     "@angular/cdk": "^17.3.4",
     "@angular/cli": "^17.3.4",
@@ -136,7 +136,6 @@
     "i18n-js": "^4.3.0",
     "idiomorph": "^0.3.0",
     "jquery": "^3.7.1",
-    "jquery-ui": "1.14.1",
     "jquery-ujs": "^1.2.3",
     "jquery.caret": "^0.3.1",
     "json5": "^2.2.2",
@@ -176,18 +175,18 @@
   },
   "scripts": {
     "analyze": "ng build --configuration production --stats-json && webpack-bundle-analyzer -h 0.0.0.0 -p 9999 ../public/assets/frontend/stats.json",
-    "build:fast": "OPENPROJECT_ANGULAR_BUILD=fast node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build --configuration production",
+    "build:fast": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build --configuration production",
     "build": "node --max_old_space_size=4096 ./node_modules/@angular/cli/bin/ng build --configuration production --named-chunks --source-map",
     "build:watch": "node --max_old_space_size=4096 ./node_modules/@angular/cli/bin/ng build --watch --named-chunks",
     "ci:plugins:register_frontend": "node ci-plugins-generator.js",
     "tokens:generate": "theo src/app/spot/styles/tokens/tokens.yml --transform web --format sass,json --dest src/app/spot/styles/tokens/dist",
-    "serve": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng serve --host ${FE_HOST:-localhost} --port ${FE_PORT:-4200} --public-host http://${PROXY_HOSTNAME:-${FE_HOST:-localhost}}:${FE_PORT:-4200}",
-    "serve:test": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng serve --host ${FE_HOST:-localhost} --port ${FE_PORT:-4200} --disable-host-check --public-host http://frontend-test:${FE_PORT:-4200}",
+    "serve": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng serve --host ${FE_HOST:-localhost} --port ${FE_PORT:-4200}",
+    "serve:test": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng serve --host ${FE_HOST:-localhost} --port ${FE_PORT:-4200} --disable-host-check",
     "test": "ng test --watch=false",
     "test:watch": "ng test --watch=true",
     "lint": "esprint check",
     "lint:fix": "esprint check --fix",
     "lint:eslint": "eslint",
-    "generate-typings": "tsc -d -p src/tsconfig.app.json"
+    "generate-typings": "tsc -d -p tsconfig.app.json"
   }
 }
