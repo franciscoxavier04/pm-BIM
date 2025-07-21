@@ -422,3 +422,5 @@ end
 gem "openproject-octicons", "~>19.25.0"
 gem "openproject-octicons_helper", "~>19.25.0"
 gem "openproject-primer_view_components", "~>0.70.4"
+
+gem "jsbundling-rails", "~> 1.3"
