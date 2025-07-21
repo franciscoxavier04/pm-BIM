@@ -28,7 +28,7 @@
 
 import { APP_INITIALIZER, ApplicationRef, DoBootstrap, Injector, NgModule } from '@angular/core';
 import { A11yModule } from '@angular/cdk/a11y';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   OpContextMenuTrigger,
@@ -301,9 +301,6 @@ export function initializeServices(injector:Injector) {
     // Angular Forms
     ReactiveFormsModule,
 
-    // Angular Http Client
-    HttpClientModule,
-
     // Augmenting Module
     OpenprojectAugmentingModule,
 
@@ -342,6 +339,7 @@ export function initializeServices(injector:Injector) {
     ConfirmDialogService,
     RevitAddInSettingsButtonService,
     CopyToClipboardService,
+    provideHttpClient(withInterceptorsFromDi()),
   ],
   declarations: [
     OpContextMenuTrigger,
