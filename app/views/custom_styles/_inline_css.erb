@@ -79,7 +79,6 @@ See COPYRIGHT and LICENSE files for more details.
           DesignColor.overwritten.select { |design_color| design_color.variable == 'header-bg-color' }.try(:first).try(:hexcode) == '#FFFFFF' &&
           DesignColor.overwritten.select { |design_color| design_color.variable == 'header-item-bg-hover-color' }.try(:first).try(:hexcode) == '#FFFFFF' %>
     <%# Disable hover background color to not overlap border %>
-    .op-app-menu--item-action:hover,
     .top-menu-search.-collapsed .top-menu-search--button:hover {
         background: transparent;
     }

@@ -31,6 +31,10 @@ require_relative "dropdown"
 
 module Components
   class QuickAddMenu < Dropdown
+    def id
+      "op-app-header--quick-add-menu"
+    end
+
     def expect_visible
       expect(trigger_element).to be_present
     end

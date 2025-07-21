@@ -55,7 +55,7 @@ export class RevitAddInSettingsButtonService {
   }
 
   public addUserMenuItem():void {
-    const userMenu = document.getElementById('user-menu');
+    const userMenu = document.getElementById('op-app-header--user-menu');
 
     if (userMenu) {
       const menuItem:HTMLElement = document.createElement('li');

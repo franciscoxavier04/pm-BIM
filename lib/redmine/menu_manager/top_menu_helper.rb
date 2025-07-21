@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -110,45 +112,61 @@ module Redmine::MenuManager::TopMenuHelper
   end
 
   def render_login_drop_down
-    url = { controller: "/account", action: "login" }
-    link = link_to url,
-                   class: "op-app-menu--item-action",
-                   title: I18n.t(:label_login) do
-      concat content_tag(:span, I18n.t(:label_login), class: "op-app-menu--item-title hidden-for-mobile")
-      concat content_tag(:i, "", class: "op-app-menu--item-dropdown-indicator button--dropdown-indicator hidden-for-mobile")
-      concat content_tag(:i, "", class: "icon2 icon-user hidden-for-desktop")
+    # url = { controller: "/account", action: "login" }
+    # link = link_to url,
+    #                class: "op-app-menu--item-action",
+    #                title: I18n.t(:label_login) do
+    #   concat content_tag(:span, I18n.t(:label_login), class: "op-app-menu--item-title hidden-for-mobile")
+    #   concat content_tag(:i, "", class: "op-app-menu--item-dropdown-indicator button--dropdown-indicator hidden-for-mobile")
+    #   concat content_tag(:i, "", class: "icon2 icon-user hidden-for-desktop")
+    # end
+
+    render Primer::Alpha::ActionMenu.new(classes: "op-app-menu--item",
+                                         menu_id: "op-app-header--login",
+                                         anchor_align: :end) do |menu|
+      menu.with_show_button(scheme: :invisible,
+                            classes: "op-app-header--primer-button op-top-menu-user",
+                            "aria-label": I18n.t(:label_login)) do
+        I18n.t(:label_login)
+      end
     end
 
-    render_menu_dropdown(link, menu_item_class: "") do
-      render_login_partial
-    end
+    # render_menu_dropdown(link, menu_item_class: "") do
+    #  render_login_partial
+    # end
   end
 
   def render_direct_login
-    link = link_to signin_path,
-                   class: "op-app-menu--item-action login",
-                   title: I18n.t(:label_login) do
-      concat content_tag(:span, I18n.t(:label_login), class: "op-app-menu--item-title hidden-for-mobile")
-      concat content_tag(:i, "", class: "icon2 icon-user hidden-for-desktop")
-    end
-
-    content_tag :li, class: "" do
-      concat link
-    end
+    render(Primer::Beta::IconButton.new(icon: "person",
+                                        tag: :a,
+                                        scheme: :invisible,
+                                        href: signin_path,
+                                        aria: { label: I18n.t(:label_login) }))
   end
 
   def render_user_drop_down(items)
     avatar = avatar(User.current, class: "op-top-menu-user-avatar", hover_card: { active: false })
-    render_menu_dropdown_with_items(
-      label: avatar.presence || "",
-      label_options: {
-        title: User.current.name,
-        class: "op-top-menu-user",
-        icon: (avatar.present? ? "overridden-by-avatar" : "icon-user")
-      },
-      items:,
-      options: { drop_down_id: "user-menu", menu_item_class: "last-child" }
-    )
+
+    render Primer::Alpha::ActionMenu.new(classes: "op-app-menu--item",
+                                         menu_id: "op-app-header--user-menu",
+                                         anchor_align: :end) do |menu|
+      menu.with_show_button(scheme: :invisible,
+                            classes: "op-app-header--primer-button op-top-menu-user",
+                            test_selector: "op-app-header--modules-menu-button",
+                            "aria-label": I18n.t("label_user_menu")) do
+        avatar.presence || render(Primer::Beta::Octicon.new(icon: :person, aria: { label: I18n.t("label_user_menu") }))
+      end
+
+      items.each do |item|
+        menu.with_item(
+          href: allowed_node_url(item, nil),
+          label: item.caption,
+          test_selector: "op-menu--item-action"
+        ) do |menu_item|
+          menu_item.with_leading_visual_icon(icon: item.icon) if item.icon
+        end
+      end
+    end
   end
 
   def render_login_partial
