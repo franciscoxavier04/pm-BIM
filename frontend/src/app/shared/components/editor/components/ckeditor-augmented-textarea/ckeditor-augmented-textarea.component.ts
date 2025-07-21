@@ -191,7 +191,7 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
     CkeditorAugmentedTextareaComponent.inFlight.set(this.formElement, true);
 
     this.syncToTextarea();
-    window.OpenProject.pageIsSubmitted = true;
+    window.OpenProject.pageState = 'submitted';
 
     setTimeout(() => {
       if (evt?.submitter) {
@@ -232,7 +232,7 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
   }
 
   public syncToTextarea() {
-    window.OpenProject.pageWasEdited = true;
+    window.OpenProject.pageState = 'edited';
 
     try {
       this.wrappedTextArea.value = this.ckEditorInstance.getTransformedContent(true);

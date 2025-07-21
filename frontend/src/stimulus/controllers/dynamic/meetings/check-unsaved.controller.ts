@@ -30,9 +30,11 @@
 
 import { ApplicationController, useMeta } from 'stimulus-use';
 import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
+import { BeforeunloadController } from '../../beforeunload.controller';
 
 export default class extends ApplicationController {
   private turboRequests:TurboRequestsService;
+  private beforeUnloadController:BeforeunloadController;
   private boundBeforeUnloadHandler = this.beforeUnloadHandler.bind(this);
 
   static values = { unsavedChangesConfirmationMessage: String };
@@ -50,6 +52,7 @@ export default class extends ApplicationController {
 
     const context = await window.OpenProject.getPluginContext();
     this.turboRequests = context.services.turboRequests;
+    this.beforeUnloadController = this.application.getControllerForElementAndIdentifier(document.body, 'beforeunload') as BeforeunloadController;
   }
 
   disconnect():void {
