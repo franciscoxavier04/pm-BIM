@@ -39,6 +39,8 @@ export interface OpBlockNoteContainerProps {
   inputText?: string;
 }
 
+type OpTheme = "light" | "dark";
+
 const schema = BlockNoteSchema.create({
   blockSpecs: {
     ...defaultBlockSpecs,
@@ -47,7 +49,7 @@ const schema = BlockNoteSchema.create({
   },
 });
 
-const detectTheme = (): "light" | "dark" => {
+const detectTheme = (): OpTheme => {
   if (document.body.getAttribute('data-color-mode') === 'dark') {
     return 'dark';
   }
