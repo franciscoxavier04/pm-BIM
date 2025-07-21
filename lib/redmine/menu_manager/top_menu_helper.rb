@@ -187,12 +187,12 @@ module Redmine::MenuManager::TopMenuHelper
                                        menu_id: "op-app-header--modules-menu",
                                        position: :left) do |dialog|
         dialog.with_show_button(icon: "op-grid-menu",
-                              scheme: :invisible,
-                              classes: "op-app-menu--item-action op-app-header--primer-button",
-                              title: I18n.t("label_modules"),
-                              "aria-controls": "op-app-header--modules-menu-list",
-                              test_selector: "op-app-header--modules-menu-button",
-                              "aria-label": I18n.t("label_modules"))
+                                scheme: :invisible,
+                                classes: "op-app-menu--item-action op-app-header--primer-button",
+                                title: I18n.t("label_modules"),
+                                test_selector: "op-app-header--modules-menu-button",
+                                "aria-controls": "op-app-header--modules-menu-list",
+                                "aria-label": I18n.t("label_modules"))
         dialog.with_header(classes: "op-app-header--modules-menu-header") do
           render_logo_short
         end
