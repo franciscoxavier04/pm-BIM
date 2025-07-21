@@ -36,9 +36,6 @@ import lodash from 'lodash';
 // jQuery
 import 'jquery-ujs';
 
-// Angular dependencies
-import '@uirouter/angular';
-
 // Jquery UI
 // import 'jquery-ui/ui/position';
 // import 'jquery-ui/ui/disable-selection';
