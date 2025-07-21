@@ -54,6 +54,31 @@ Redmine::MenuManager.map :top_menu do |menu|
               (User.current.logged? || !Setting.login_required?) &&
                 User.current.allowed_in_any_work_package?(:view_work_packages)
             }
+
+  # Homescreen
+  menu.push :home,
+            { controller: "/homescreen", action: "index" },
+            context: :modules,
+            icon: "home",
+            first: true
+
+  menu.push :my_page,
+            { controller: "/my/page", action: "show" },
+            context: :modules,
+            after: :home,
+            icon: "person",
+            caption: I18n.t("my_page.label")
+
+  menu.push :my_time_tracking,
+            { controller: "/my/time_tracking", action: "index" },
+            after: :my_page,
+            context: :modules,
+            caption: :label_my_time_tracking,
+            if: ->(*) do
+              User.current.allowed_in_any_project?(:log_own_time) || User.current.allowed_in_any_project?(:log_time)
+            end,
+            icon: :stopwatch
+
   menu.push :news,
             { controller: "/news", project_id: nil, action: "index" },
             context: :modules,
@@ -136,11 +161,13 @@ Redmine::MenuManager.map :global_menu do |menu|
   # Homescreen
   menu.push :home,
             { controller: "/homescreen", action: "index" },
+            context: :modules,
             icon: "home",
             first: true
 
   menu.push :my_page,
             { controller: "/my/page", action: "show" },
+            context: :modules,
             after: :home,
             icon: "person",
             caption: I18n.t("my_page.label")
