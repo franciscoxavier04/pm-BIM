@@ -60,8 +60,8 @@ export default class InternalCommentController extends withIndexOutletMixin(Cont
   declare readonly csrfToken:string;
 
   connect() {
-    // FIXME: `this` is not typed as HTMLElement, but as any
-    useMeta(this as any, { suffix: false });
+    // FIXME: Cast to the proper Controller type for useMeta
+    useMeta(this as unknown as Controller<HTMLElement>, { suffix: false });
   }
 
   onSubmitEnd(_event:CustomEvent):void {

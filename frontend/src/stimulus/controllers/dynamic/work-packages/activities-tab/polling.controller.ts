@@ -57,8 +57,8 @@ export default class PollingController extends withIndexOutletMixin(Controller) 
   private abortController = new AbortController();
 
   async connect() {
-    // FIXME: `this` is not typed as HTMLElement, but as any
-    useMeta(this as any, { suffix: false });
+    // FIXME: Cast to the proper Controller type for useMeta
+    useMeta(this as unknown as Controller<HTMLElement>, { suffix: false });
 
     const context = await window.OpenProject.getPluginContext();
     this.turboRequests = context.services.turboRequests;
@@ -113,17 +113,20 @@ export default class PollingController extends withIndexOutletMixin(Controller) 
   }
 
   private setLatestKnownChangesetUpdatedAt() {
-    const latestKnownChangesetUpdatedAtKey = `work-package-${this.indexOutlet.workPackageIdValue}-latest-known-changeset-updated-at-${this.indexOutlet.userIdValue}`;
     const latestChangesetUpdatedAt = this.parseLatestChangesetUpdatedAtFromDom();
 
     if (latestChangesetUpdatedAt) {
-      localStorage.setItem(latestKnownChangesetUpdatedAtKey, latestChangesetUpdatedAt.toString());
+      localStorage.setItem(this.latestKnownChangesetUpdatedAtKey, latestChangesetUpdatedAt.toString());
     }
   }
 
   private getLatestKnownChangesetUpdatedAt():Date | null {
     const latestKnownChangesetUpdatedAt = localStorage.getItem(this.latestKnownChangesetUpdatedAtKey);
     return latestKnownChangesetUpdatedAt ? new Date(latestKnownChangesetUpdatedAt) : null;
+  }
+
+  private get latestKnownChangesetUpdatedAtKey():string {
+    return `work-package-${this.indexOutlet.workPackageIdValue}-latest-known-changeset-updated-at-${this.indexOutlet.userIdValue}`;
   }
 
   private setupEventListeners() {
@@ -267,15 +270,18 @@ export default class PollingController extends withIndexOutletMixin(Controller) 
     if (!latestChangesetUpdatedAt) return null;
 
     const railsTimestamp = latestChangesetUpdatedAt.getTime() / 1000;
-    const userId = this.element
-      .querySelector(`[data-journal-with-changeset-updated-at="${railsTimestamp}"]`)
-      ?.getAttribute('data-journal-with-changeset-user-id');
+    const element = (this.element)
+      .querySelector(`[data-journal-with-changeset-updated-at="${railsTimestamp}"]`);
+
+    if (!element) return null;
+
+    const userId = element.getAttribute('data-journal-with-changeset-user-id');
 
     return userId ? parseInt(userId, 10) : null;
   }
 
   private parseLatestChangesetUpdatedAtFromDom():Date | null {
-    const elements = this.element.querySelectorAll('[data-journal-with-changeset-updated-at]') as NodeListOf<HTMLElement>;
+    const elements = (this.element).querySelectorAll('[data-journal-with-changeset-updated-at]');
 
     const dates = Array.from(elements)
       .map((element) => element.getAttribute('data-journal-with-changeset-updated-at'))

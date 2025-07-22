@@ -51,7 +51,7 @@ export default class StemsController extends withIndexOutletMixin(Controller) {
     if (this.isMobile()) {
       if (this.indexOutlet.sortingValue === 'asc') return;
 
-      const initialJournalContainer = this.element.querySelector('.work-packages-activities-tab-journals-item-component-details--journal-details-container[data-initial="true"]') as HTMLElement;
+      const initialJournalContainer = (this.element).querySelector('.work-packages-activities-tab-journals-item-component-details--journal-details-container[data-initial="true"]');
 
       if (initialJournalContainer) {
         initialJournalContainer.classList.add('work-packages-activities-tab-journals-item-component-details--journal-details-container--border-removed');
@@ -60,7 +60,7 @@ export default class StemsController extends withIndexOutletMixin(Controller) {
   }
 
   private handleLastStemPartVisibility() {
-    const emptyLines = this.element.querySelectorAll('.empty-line') as NodeListOf<HTMLElement>;
+    const emptyLines = (this.element).querySelectorAll('.empty-line');
 
     // make sure all are visible first
     emptyLines.forEach((container) => {
@@ -72,8 +72,10 @@ export default class StemsController extends withIndexOutletMixin(Controller) {
     // then hide the last one again
     if (emptyLines.length > 0) {
       // take the parent container of the last empty line
-      const lastEmptyLineContainer = emptyLines[emptyLines.length - 1].parentElement as HTMLElement;
-      lastEmptyLineContainer.classList.add('work-packages-activities-tab-journals-item-component-details--journal-details-container--hidden');
+      const lastEmptyLineContainer = emptyLines[emptyLines.length - 1].parentElement;
+      if (lastEmptyLineContainer) {
+        lastEmptyLineContainer.classList.add('work-packages-activities-tab-journals-item-component-details--journal-details-container--hidden');
+      }
     }
   }
 }

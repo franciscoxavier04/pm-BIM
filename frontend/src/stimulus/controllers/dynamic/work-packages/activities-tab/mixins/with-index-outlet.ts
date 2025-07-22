@@ -28,15 +28,11 @@
  * ++
  */
 
-import { useMeta } from 'stimulus-use';
+import { Controller } from '@hotwired/stimulus';
 import IndexController from '../index.controller';
 
-export const withIndexOutletMixin = (BaseController:any) => {
+export const withIndexOutletMixin = (BaseController:typeof Controller) => {
   return class extends BaseController<HTMLElement> {
-    constructor(...args:any[]) {
-      super(...(args));
-    }
-
     static outlets = [
       ...(BaseController.outlets || []),
       'work-packages--activities-tab--index',

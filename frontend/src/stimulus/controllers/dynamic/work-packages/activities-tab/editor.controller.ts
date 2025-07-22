@@ -74,13 +74,13 @@ export default class EditorController extends withIndexOutletMixin(Controller) {
 
     this.buttonRowTarget.classList.add('d-none');
     this.formRowTarget.classList.remove('d-none');
-    this.journalsContainerTarget?.classList.add('work-packages-activities-tab-index-component--journals-container_with-input-compensation');
+    this.indexOutlet.showJournalsContainerInput();
 
     this.addCkEditorEventListeners();
 
     if (this.isMobile()) {
       this.focusEditor(0);
-    } else if (this.sortingValue === 'asc' && journalsContainerAtBottom) {
+    } else if (this.indexOutlet.sortingValue === 'asc' && journalsContainerAtBottom) {
       // scroll to (new) bottom if sorting is ascending and journals container was already at bottom before showing the form
       this.autoScrollingOutlet.scrollJournalContainer(true);
       this.focusEditor();
@@ -152,8 +152,8 @@ export default class EditorController extends withIndexOutletMixin(Controller) {
 
     document.addEventListener('beforeunload', handlers.beforeUnload, { signal });
 
-    this.element.addEventListener('turbo:submit-start', handlers.turboSubmitStart, { signal });
-    this.element.addEventListener('turbo:submit-end', handlers.turboSubmitEnd, { signal });
+    (this.element).addEventListener('turbo:submit-start', handlers.turboSubmitStart, { signal });
+    (this.element).addEventListener('turbo:submit-end', handlers.turboSubmitEnd, { signal });
   }
 
   private removeEventListeners() {
@@ -186,7 +186,7 @@ export default class EditorController extends withIndexOutletMixin(Controller) {
     };
 
     const editorElement = this.ckEditorAugmentedTextarea;
-    if (editorElement) {
+    if (editorElement && editorElement.addEventListener) {
       editorElement.addEventListener('editorEscape', handlers.onEscapeEditor, { signal });
       editorElement.addEventListener('editorKeyup', handlers.adjustMargin, { signal });
       editorElement.addEventListener('editorBlur', handlers.onBlurEditor, { signal });
@@ -258,7 +258,7 @@ export default class EditorController extends withIndexOutletMixin(Controller) {
   }
 
   private get ckEditorAugmentedTextarea():HTMLElement | null {
-    return this.element.querySelector('opce-ckeditor-augmented-textarea');
+    return (this.element).querySelector('opce-ckeditor-augmented-textarea');
   }
 
   get ckEditorInstance():ICKEditorInstance | undefined {

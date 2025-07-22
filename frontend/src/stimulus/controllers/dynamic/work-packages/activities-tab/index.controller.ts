@@ -96,12 +96,18 @@ export default class IndexController extends Controller<HTMLElement> {
     }
   }
 
+  showJournalsContainerInput() {
+    if (!this.hasJournalsContainerTarget) return;
+
+    this.journalsContainerTarget.classList.add('work-packages-activities-tab-index-component--journals-container_with-input-compensation');
+  }
+
   hideJournalsContainerInput() {
     if (!this.hasJournalsContainerTarget) return;
 
     this.journalsContainerTarget.style.marginBottom = '';
-    this.journalsContainerTarget.classList.add('work-packages-activities-tab-index-component--journals-container_with-initial-input-compensation');
     this.journalsContainerTarget.classList.remove('work-packages-activities-tab-index-component--journals-container_with-input-compensation');
+    this.journalsContainerTarget.classList.add('work-packages-activities-tab-index-component--journals-container_with-initial-input-compensation');
   }
 
   // used in specs for timing
