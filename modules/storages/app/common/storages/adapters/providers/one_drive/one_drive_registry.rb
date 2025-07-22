@@ -84,8 +84,8 @@ module Storages
           end
 
           namespace("services") do
-            register(:upkeep_managed_folders, NextcloudManagedFolderCreateService)
-            register(:upkeep_managed_folder_permissions, NextcloudManagedFolderPermissionsService)
+            register(:upkeep_managed_folders, OneDriveManagedFolderCreateService)
+            register(:upkeep_managed_folder_permissions, OneDriveManagedFolderPermissionsService)
           end
 
           namespace("validators") do

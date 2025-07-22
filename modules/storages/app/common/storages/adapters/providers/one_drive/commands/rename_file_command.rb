@@ -40,7 +40,7 @@ module Storages
                 Authentication[auth_strategy].call(storage: @storage) do |http|
                   handle_response(
                     http.patch(UrlBuilder.url(base_uri, "items", input_data.location),
-                               body: { name: input_data.new_name })
+                               json: { name: input_data.new_name })
                   )
                 end
               end
