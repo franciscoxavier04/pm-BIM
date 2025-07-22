@@ -53,7 +53,7 @@ module Redmine::MenuManager::TopMenu::QuickAddMenu
       end
 
       add_first_level_items(menu)
-      if first_level_menu_items_for(:quick_add_menu, @project).any? && work_package_quick_add_items.any?
+      if first_level_menu_items_for(:quick_add_menu, @project).present? && work_package_quick_add_items.present?
         menu.with_divider
       end
       add_second_level_items(menu)

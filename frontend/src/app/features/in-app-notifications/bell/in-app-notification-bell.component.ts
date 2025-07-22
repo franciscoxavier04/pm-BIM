@@ -7,7 +7,6 @@ import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
 import { IanBellService } from 'core-app/features/in-app-notifications/bell/state/ian-bell.service';
 import { populateInputsFromDataset } from 'core-app/shared/components/dataset-inputs';
 
-
 @Component({
   selector: 'opce-in-app-notification-bell',
   templateUrl: './in-app-notification-bell.component.html',
@@ -65,7 +64,7 @@ export class InAppNotificationBellComponent implements OnInit {
       .pipe(
         map((count) => {
           if (count > 99) {
-            return '99+';
+            return '&bull;';
           }
 
           if (count <= 0) {
@@ -75,9 +74,5 @@ export class InAppNotificationBellComponent implements OnInit {
           return count;
         }),
       );
-  }
-
-  notificationsPath():string {
-    return this.pathHelper.notificationsPath();
   }
 }

@@ -53,13 +53,10 @@ module Redmine::MenuManager::TopMenu::UserMenu
 
     render Primer::Alpha::Dialog.new(title: I18n.t("label_user_menu"),
                                      visually_hide_title: true,
+                                     size: User.current.logged? ? :small : :medium,
                                      position: :right) do |dialog|
-      dialog.with_show_button(scheme: :invisible,
-                              classes: "op-app-header--primer-button op-app-menu--item op-top-menu-user",
-                              test_selector: "op-app-header--modules-menu-button",
-                              "aria-label": I18n.t("label_user_menu")) do
-        lateral_user_menu_button(avatar)
-      end
+      lateral_user_menu_button(dialog, avatar)
+
 
       dialog.with_header(classes: "op-app-header--modules-menu-header") do
         lateral_user_menu_header(avatar)
@@ -75,18 +72,27 @@ module Redmine::MenuManager::TopMenu::UserMenu
     end
   end
 
-  def lateral_user_menu_button(avatar)
-    if User.current.logged? && avatar.present?
-      avatar
+  def lateral_user_menu_button(dialog, avatar)
+    options = {
+      scheme: :invisible,
+      classes: "op-app-header--primer-button op-app-menu--item op-top-menu-user",
+      test_selector: "op-app-header--modules-menu-button",
+      "aria-label": I18n.t("label_user_menu")
+    }
+
+    if show_avatar?(avatar)
+      dialog.with_show_button(px: 0, **options) do
+        avatar
+      end
     else
-      render(Primer::Beta::Octicon.new(icon: :person, aria: { label: I18n.t("label_user_menu") }))
+      dialog.with_show_button(icon: :person, **options)
     end
   end
 
   def lateral_user_menu_header(avatar)
     render(Primer::OpenProject::FlexLayout.new(align_items: :center)) do |flex|
       flex.with_column(mr: 2) do
-        if User.current.logged? && avatar.present?
+        if show_avatar?(avatar)
           avatar
         else
           render(Primer::Beta::Octicon.new(icon: :person, aria: { label: I18n.t("label_user_menu") }))
@@ -114,13 +120,13 @@ module Redmine::MenuManager::TopMenu::UserMenu
         ) do |list|
           list.with_divider
 
-          add_lateral_user_menu_items link_items
+          add_lateral_user_menu_items list, link_items
         end
       end
     end
   end
 
-  def add_lateral_user_menu_items(link_items)
+  def add_lateral_user_menu_items(list, link_items)
     link_items.each do |item|
       list.with_item(
         href: allowed_node_url(item, nil),
@@ -142,5 +148,9 @@ module Redmine::MenuManager::TopMenu::UserMenu
       end
 
     render partial:
+  end
+
+  def show_avatar?(avatar)
+    User.current.logged? && avatar.present?
   end
 end

@@ -93,11 +93,18 @@ module Redmine::MenuManager::TopMenuHelper
     return "".html_safe unless User.current.logged?
     return "".html_safe if Setting.notifications_hidden?
 
-    content_tag("li", class: "op-app-menu--item", title: I18n.t("mail.notification.center")) do
-      angular_component_tag "opce-in-app-notification-bell",
-                            inputs: {
-                              interval: Setting.notifications_polling_interval
-                            }
+    render(Primer::Beta::Button.new(tag: :a,
+                                    href: notifications_path,
+                                    classes: "op-app-header--primer-button op-app-menu--item op-ian-bell",
+                                    scheme: :invisible,
+                                    test_selector: "op-ian-bell",
+                                    p: 0,
+                                    aria: { label: I18n.t("mail.notification.center") })) do
+      concat(render(Primer::Beta::Octicon.new(icon: :inbox, aria: { label: I18n.t("mail.notification.center") })))
+      concat(angular_component_tag("opce-in-app-notification-bell",
+                                   inputs: {
+                                     interval: Setting.notifications_polling_interval
+                                   }))
     end
   end
 
