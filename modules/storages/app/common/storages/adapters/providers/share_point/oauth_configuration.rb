@@ -29,29 +29,11 @@
 #++
 
 module Storages
-  class SharePointStorage < Storage
-    store_attribute :provider_fields, :tenant_id, :string
-
-    def self.short_provider_name = :share_point
-    def audience = nil
-
-    def authenticate_via_idp? = false
-
-    def authenticate_via_storage? = true
-
-    def available_project_folder_modes
-      if automatic_management_enabled?
-        ProjectStorage.project_folder_modes.keys
-      else
-        %w[inactive manual]
+  module Adapters
+    module Providers
+      module SharePoint
+        OAuthConfiguration = Providers::OneDrive::OAuthConfiguration
       end
     end
-
-    def oauth_configuration = Adapters::Providers::SharePoint::OAuthConfiguration.new(self)
-
-    # To implement
-    # configuration_checks
-    # automatic_management_new_record?
-    # provider_fields_defaults
   end
 end

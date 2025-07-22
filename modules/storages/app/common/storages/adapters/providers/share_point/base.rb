@@ -29,29 +29,43 @@
 #++
 
 module Storages
-  class SharePointStorage < Storage
-    store_attribute :provider_fields, :tenant_id, :string
+  module Adapters
+    module Providers
+      module SharePoint
+        class Base
+          include TaggedLogging
+          include Dry::Monads::Result(Results::Error)
 
-    def self.short_provider_name = :share_point
-    def audience = nil
+          # @param storage [Storages::SharePointStorage]
+          # @param auth_strategy [Result(Input::Strategy)]
+          # @param input_data [Data]
+          # @return [Success, Failure(Results::Error)]
+          def self.call(storage:, auth_strategy:, input_data:)
+            new(storage).call(auth_strategy:, input_data:)
+          end
 
-    def authenticate_via_idp? = false
+          # @param storage [Storages::SharePointStorage]
+          def initialize(storage)
+            @storage = storage
+          end
 
-    def authenticate_via_storage? = true
+          private
 
-    def available_project_folder_modes
-      if automatic_management_enabled?
-        ProjectStorage.project_folder_modes.keys
-      else
-        %w[inactive manual]
+          # @param error [Results::Error]
+          # @return [void]
+          def log_storage_error(error, context = {})
+            data = case error.payload
+                   in { status: Integer }
+                     { status: error.payload&.status, body: error.payload&.body.to_s }
+                   else
+                     error.payload.to_s
+                   end
+
+            error_message = context.merge({ error_code: error.code, data: })
+            error error_message
+          end
+        end
       end
     end
-
-    def oauth_configuration = Adapters::Providers::SharePoint::OAuthConfiguration.new(self)
-
-    # To implement
-    # configuration_checks
-    # automatic_management_new_record?
-    # provider_fields_defaults
   end
 end

@@ -29,29 +29,16 @@
 #++
 
 module Storages
-  class SharePointStorage < Storage
-    store_attribute :provider_fields, :tenant_id, :string
-
-    def self.short_provider_name = :share_point
-    def audience = nil
-
-    def authenticate_via_idp? = false
-
-    def authenticate_via_storage? = true
-
-    def available_project_folder_modes
-      if automatic_management_enabled?
-        ProjectStorage.project_folder_modes.keys
-      else
-        %w[inactive manual]
+  module Adapters
+    module Providers
+      module SharePoint
+        SharePointRegistry = Dry::Container::Namespace.new("share_point") do
+          namespace("authentication") do
+            register(:userless, ->(use_cache = true) { Input::Strategy.build(key: :oauth_client_credentials, use_cache:) })
+            register(:user_bound, ->(user, storage = nil) { Input::Strategy.build(key: :oauth_user_token, user:, storage:) })
+          end
+        end
       end
     end
-
-    def oauth_configuration = Adapters::Providers::SharePoint::OAuthConfiguration.new(self)
-
-    # To implement
-    # configuration_checks
-    # automatic_management_new_record?
-    # provider_fields_defaults
   end
 end
