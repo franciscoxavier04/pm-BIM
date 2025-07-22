@@ -38,9 +38,6 @@ See COPYRIGHT and LICENSE files for more details.
         --header-border-bottom-color: #d0d7de;
       <% end %>
     <% end %>
-    <% if design_color.variable == "header-item-bg-hover-color" %>
-      --header-item-font-hover-color: <%= design_color.contrasting_font_color %>;
-    <% end %>
     <% if design_color.variable == "main-menu-bg-color" %>
       --main-menu-font-color: <%= design_color.contrasting_font_color %>;
       <% if design_color.dark? %>
@@ -76,8 +73,7 @@ See COPYRIGHT and LICENSE files for more details.
 
     <%# Trying to hit the query cache for the condition here: %>
     <% if DesignColor.overwritten.map(&:variable).include?('header-bg-color') &&
-          DesignColor.overwritten.select { |design_color| design_color.variable == 'header-bg-color' }.try(:first).try(:hexcode) == '#FFFFFF' &&
-          DesignColor.overwritten.select { |design_color| design_color.variable == 'header-item-bg-hover-color' }.try(:first).try(:hexcode) == '#FFFFFF' %>
+          DesignColor.overwritten.select { |design_color| design_color.variable == 'header-bg-color' }.try(:first).try(:hexcode) == '#FFFFFF' %>
     <%# Disable hover background color to not overlap border %>
     .top-menu-search.-collapsed .top-menu-search--button:hover {
         background: transparent;
