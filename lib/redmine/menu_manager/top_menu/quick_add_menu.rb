@@ -43,14 +43,19 @@ module Redmine::MenuManager::TopMenu::QuickAddMenu
     render Primer::Alpha::ActionMenu.new(classes: "op-app-menu--item",
                                          menu_id: "op-app-header--quick-add-menu",
                                          anchor_align: :end) do |menu|
-      menu.with_show_button(icon: :plus,
-                            scheme: :primary,
+      menu.with_show_button(scheme: :primary,
                             classes: "op-app-header--primer-button",
                             test_selector: "quick-add-menu-button",
-                            "aria-label": I18n.t("menus.quick_add.label"))
+                            "aria-label": I18n.t("menus.quick_add.label"),
+                            px: 2) do |button|
+        button.with_leading_visual_icon(icon: :plus)
+        render(Primer::Beta::Octicon.new(icon: "triangle-down", aria: { label: I18n.t("menus.quick_add.label") }))
+      end
 
       add_first_level_items(menu)
-      menu.with_divider
+      if first_level_menu_items_for(:quick_add_menu, @project).any? && work_package_quick_add_items.any?
+        menu.with_divider
+      end
       add_second_level_items(menu)
     end
   end
