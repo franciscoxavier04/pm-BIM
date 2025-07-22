@@ -96,10 +96,10 @@ module Exports::PDF::Components::Page
     text_style = styles.page_footer
     right_width = footer_page_nr.present? ? draw_text_right(footer_page_nr, text_style, top) : 0
     left_width = footer_date.present? ? draw_text_left(footer_date, text_style, top) : 0
-    draw_footer_title(left_width, right_width) if footer_title.present?
+    draw_footer_title(left_width, right_width, text_style, top) if footer_title.present?
   end
 
-  def draw_footer_title(left_width, right_width)
+  def draw_footer_title(left_width, right_width, text_style, top)
     spacing = styles.page_footer_horizontal_spacing
     footer_sides = [left_width, right_width].max + spacing
     available_width = pdf.bounds.width - (2 * footer_sides)
