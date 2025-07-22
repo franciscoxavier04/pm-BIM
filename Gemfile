@@ -64,7 +64,7 @@ gem "scimitar", "~> 2.11"
 gem "acts_as_list", "~> 1.2.0"
 gem "acts_as_tree", "~> 2.9.0"
 gem "awesome_nested_set", "~> 3.8.0"
-gem "closure_tree", "~> 8.0.0"
+gem "closure_tree", "~> 9.0.0"
 gem "rubytree", "~> 2.1.0"
 # Only used in down migrations now.
 # Is to be removed once the referencing migrations have been squashed.
@@ -124,7 +124,7 @@ gem "sys-filesystem", "~> 1.5.0", require: false
 
 gem "bcrypt", "~> 3.1.6"
 
-gem "multi_json", "~> 1.15.0"
+gem "multi_json", "~> 1.17.0"
 gem "oj", "~> 3.16.0"
 
 gem "daemons"
@@ -209,7 +209,7 @@ gem "plaintext", "~> 0.3.2"
 
 gem "ruby-progressbar", "~> 1.13.0", require: false
 
-gem "mini_magick", "~> 5.2.0", require: false
+gem "mini_magick", "~> 5.3.0", require: false
 
 gem "validate_url"
 
@@ -365,7 +365,7 @@ group :development, :test do
   gem "erblint-github", require: false
 
   # Brakeman scanner
-  gem "brakeman", "~> 7.0.0"
+  gem "brakeman", "~> 7.1.0"
 
   # i18n-tasks helps find and manage missing and unused translations.
   gem "i18n-tasks", "~> 1.0.13", require: false
@@ -378,7 +378,7 @@ gem "bootsnap", "~> 1.18.0", require: false
 
 # API gems
 gem "grape", "~> 2.3.0"
-gem "grape_logging", "~> 1.8.4"
+gem "grape_logging", "~> 2.1.1"
 gem "roar", "~> 1.2.0"
 
 # CORS for API
@@ -394,18 +394,16 @@ gem "disposable", "~> 0.6.2"
 # Used for formula evaluation of calculated values
 gem "dentaku", "~> 3.5"
 
-platforms :mri, :mingw, :x64_mingw do
-  group :postgres do
-    gem "pg", "~> 1.5.0"
-  end
-
-  # Support application loading when no database exists yet.
-  gem "activerecord-nulldb-adapter", "~> 1.1.1"
-
-  # Have application level locks on the database to have a mutex shared between workers/hosts.
-  # We e.g. employ this to safeguard the creation of journals.
-  gem "with_advisory_lock", "~> 5.3.0"
+group :postgres do
+  gem "pg", "~> 1.5.0"
 end
+
+# Support application loading when no database exists yet.
+gem "activerecord-nulldb-adapter", "~> 1.1.1"
+
+# Have application level locks on the database to have a mutex shared between workers/hosts.
+# We e.g. employ this to safeguard the creation of journals.
+gem "with_advisory_lock", "~> 7.0.1"
 
 # Load Gemfile.modules explicitly to allow dependabot to work
 eval_gemfile "./Gemfile.modules"
