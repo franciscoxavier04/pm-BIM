@@ -105,21 +105,27 @@ Redmine::MenuManager.map :account_menu do |menu|
   menu.push :my_page,
             :my_page_path,
             caption: I18n.t("my_page.label"),
+            icon: :person,
             if: ->(_) { User.current.logged? }
   menu.push :my_profile,
             { controller: "/users", action: "show", id: "me" },
             caption: :label_my_activity,
+            icon: :history,
             if: ->(_) { User.current.logged? }
   menu.push :my_account,
             { controller: "/my", action: "account" },
+            icon: :gear,
             if: ->(_) { User.current.logged? }
   menu.push :administration,
             { controller: "/admin", action: "index" },
+            icon: :sliders,
             if: ->(_) {
               User.current.allowed_globally?({ controller: "/admin", action: "index" })
             }
   menu.push :logout,
             :signout_path,
+            icon: :"sign-out",
+            scheme: :danger,
             if: ->(_) { User.current.logged? },
             html: {
               data: {

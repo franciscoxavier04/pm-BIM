@@ -32,6 +32,7 @@ module Redmine::MenuManager::TopMenuHelper
   include Redmine::MenuManager::TopMenu::HelpMenu
   include Redmine::MenuManager::TopMenu::ProjectsMenu
   include Redmine::MenuManager::TopMenu::QuickAddMenu
+  include Redmine::MenuManager::TopMenu::UserMenu
 
   def render_top_menu_left
     content_tag :ul, class: "op-app-menu op-app-menu_drop-left" do
@@ -41,8 +42,7 @@ module Redmine::MenuManager::TopMenuHelper
 
   def top_menu_left_menu_items
     [render_module_top_menu_node,
-     render_logo,
-     render_main_top_menu_nodes] # ToDo: Check wether render_main_top_menu_nodes can be removed
+     render_logo]
   end
 
   def render_top_menu_center
@@ -101,85 +101,6 @@ module Redmine::MenuManager::TopMenuHelper
     end
   end
 
-  def render_user_top_menu_node(items = first_level_menu_items_for(:account_menu))
-    if User.current.logged?
-      render_user_drop_down items
-    elsif omniauth_direct_login?
-      render_direct_login
-    else
-      render_login_drop_down
-    end
-  end
-
-  def render_login_drop_down
-    # url = { controller: "/account", action: "login" }
-    # link = link_to url,
-    #                class: "op-app-menu--item-action",
-    #                title: I18n.t(:label_login) do
-    #   concat content_tag(:span, I18n.t(:label_login), class: "op-app-menu--item-title hidden-for-mobile")
-    #   concat content_tag(:i, "", class: "op-app-menu--item-dropdown-indicator button--dropdown-indicator hidden-for-mobile")
-    #   concat content_tag(:i, "", class: "icon2 icon-user hidden-for-desktop")
-    # end
-
-    render Primer::Alpha::ActionMenu.new(classes: "op-app-menu--item",
-                                         menu_id: "op-app-header--login",
-                                         anchor_align: :end) do |menu|
-      menu.with_show_button(scheme: :invisible,
-                            classes: "op-app-header--primer-button op-top-menu-user",
-                            "aria-label": I18n.t(:label_login)) do
-        I18n.t(:label_login)
-      end
-    end
-
-    # render_menu_dropdown(link, menu_item_class: "") do
-    #  render_login_partial
-    # end
-  end
-
-  def render_direct_login
-    render(Primer::Beta::IconButton.new(icon: "person",
-                                        tag: :a,
-                                        scheme: :invisible,
-                                        href: signin_path,
-                                        aria: { label: I18n.t(:label_login) }))
-  end
-
-  def render_user_drop_down(items)
-    avatar = avatar(User.current, class: "op-top-menu-user-avatar", hover_card: { active: false })
-
-    render Primer::Alpha::ActionMenu.new(classes: "op-app-menu--item",
-                                         menu_id: "op-app-header--user-menu",
-                                         anchor_align: :end) do |menu|
-      menu.with_show_button(scheme: :invisible,
-                            classes: "op-app-header--primer-button op-top-menu-user",
-                            test_selector: "op-app-header--modules-menu-button",
-                            "aria-label": I18n.t("label_user_menu")) do
-        avatar.presence || render(Primer::Beta::Octicon.new(icon: :person, aria: { label: I18n.t("label_user_menu") }))
-      end
-
-      items.each do |item|
-        menu.with_item(
-          href: allowed_node_url(item, nil),
-          label: item.caption,
-          test_selector: "op-menu--item-action"
-        ) do |menu_item|
-          menu_item.with_leading_visual_icon(icon: item.icon) if item.icon
-        end
-      end
-    end
-  end
-
-  def render_login_partial
-    partial =
-      if OpenProject::Configuration.disable_password_login?
-        "account/omniauth_login"
-      else
-        "account/login"
-      end
-
-    render partial:
-  end
-
   def render_module_top_menu_node(item_groups = module_top_menu_item_groups)
     unless item_groups.empty?
       render Primer::Alpha::ActionMenu.new(classes: "op-app-menu--item",
@@ -213,17 +134,6 @@ module Redmine::MenuManager::TopMenuHelper
         end
       end
     end
-  end
-
-  def render_main_top_menu_nodes(items = main_top_menu_items)
-    items.map do |item|
-      render_menu_node(item)
-    end.join(" ")
-  end
-
-  # Menu items for the main top menu
-  def main_top_menu_items
-    split_top_menu_into_main_or_more_menus[:base]
   end
 
   # Menu items for the modules top menu
