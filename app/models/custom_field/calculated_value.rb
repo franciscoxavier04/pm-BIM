@@ -86,6 +86,9 @@ module CustomField::CalculatedValue
     end
 
     def validate_referenced_custom_fields_allowed
+      # We can only validate used custom fields from a high-level perspective, since at this point in validation,
+      # we do not have a project context to check against. So we cannot check if the custom fields are actually
+      # enabled for a project and visible to a non-admin user.
       formula_cfs = CustomField.where(id: cf_ids_used_in_formula(formula_string)).pluck(:id)
       allowed_cfs = usable_custom_field_references_for_formula.pluck(:id)
 
@@ -96,7 +99,6 @@ module CustomField::CalculatedValue
         return
       end
 
-      # TODO: validate referenced custom fields are enabled. This can only be done in the context of a project.
       true
     end
 
@@ -137,6 +139,8 @@ module CustomField::CalculatedValue
       formula_str.scan(/\{\{cf_(\d+)}}/).flatten.compact.map(&:to_i)
     end
 
+    # Returns `formula_string` with all custom field references detokenized so that they are parseable by Dentaku.
+    # For example, for `2 + {{cf_12}} + {{cf_4}}` it returns `2 + cf_12 + cf_4`.
     def formula_str_without_patterns
       formula_string.gsub(/\{\{(cf_\d+)}}/, '\1')
     end
