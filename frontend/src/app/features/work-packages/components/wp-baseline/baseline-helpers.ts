@@ -6,6 +6,7 @@ import { WorkPackageResource } from 'core-app/features/hal/resources/work-packag
 import { SchemaCacheService } from 'core-app/core/schemas/schema-cache.service';
 
 export type BaselineOption = 'oneDayAgo'|'lastWorkingDay'|'oneWeekAgo'|'oneMonthAgo'|'aSpecificDate'|'betweenTwoSpecificDates';
+export type BaselineMode = 'added'|'updated'|'removed'|null;
 
 export interface BaselineTimestamp {
   date:string;
@@ -60,8 +61,8 @@ export function attributeChanged(base:IWorkPackageTimestamp, schema:ISchemaProxy
     });
 }
 
-export function getBaselineState(workPackage:WorkPackageResource, schemaService:SchemaCacheService):string {
-  let state = '';
+export function getBaselineState(workPackage:WorkPackageResource, schemaService:SchemaCacheService):BaselineMode {
+  let state:BaselineMode = null;
   const schema = schemaService.of(workPackage);
   const timestamps = workPackage.attributesByTimestamp || [];
   if (timestamps.length > 1) {
@@ -74,8 +75,6 @@ export function getBaselineState(workPackage:WorkPackageResource, schemaService:
     } else if (attributeChanged(base, schema)) {
       state = 'updated';
     }
-  } else {
-    state = '';
   }
   return state;
 }
