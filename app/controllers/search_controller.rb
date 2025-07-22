@@ -154,15 +154,14 @@ class SearchController < ApplicationController
   end
 
   def search_classes
-    scope = search_types & search_params.keys
-
-    scope = if scope.empty?
-      search_types
-    elsif scope & ["work_packages"] == scope
-      []
-    else
-      scope
-    end
+    scope =
+      if search_params[:filter] == "work_packages"
+        [] # work packages are handled in the frontend
+      elsif search_params[:filter].present?
+        [search_params[:filter]] & search_types
+      else
+        search_types
+      end
 
     scope.index_with { |s| scope_class(s) }
   end

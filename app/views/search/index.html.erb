@@ -56,25 +56,22 @@ See COPYRIGHT and LICENSE files for more details.
     )
 
     header.with_tab_nav(label: nil) do |tab_nav|
-      (search_types + ["all"]).each do |name|
+      search_types.each do |name|
         tab_nav.with_tab(
           selected: search_params[:filter] == name,
-          href: search_path(
-            {
-              filter: name,
-              q: @question,
-              scope: search_params[:scope]
-            }.compact
-          )
-        ) do |t|
-          t.with_text { OpenProject::GlobalSearch.tab_name(name) }
-        end
+          href: search_path(filter: name, q: @question, scope: search_params[:scope])
+        ) { |t| t.with_text { OpenProject::GlobalSearch.tab_name(name) } }
       end
+
+      tab_nav.with_tab(
+        selected: search_params[:filter].blank?,
+        href: search_path(q: @question, scope: search_params[:scope])
+      ) { |t| t.with_text { OpenProject::GlobalSearch.tab_name("all") } }
     end
   end
 %>
 
-<% if params[:work_packages].present? %>
+<% if params[:filter] == "work_packages" %>
   <opce-global-search-work-packages></opce-global-search-work-packages>
 <% else %>
 

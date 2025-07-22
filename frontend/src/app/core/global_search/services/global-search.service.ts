@@ -165,7 +165,7 @@ export class GlobalSearchService {
     params = `q=${encodeURIComponent(this.searchTerm)}`;
 
     if (this.currentTab.length > 0 && this.currentTab !== 'all') {
-      params = `${params}&${this.currentTab}=1`;
+      params = `${params}&filter=${this.currentTab}`;
     }
     if (this.projectScope.length > 0) {
       params = `${params}&scope=${this.projectScope}`;
