@@ -66,6 +66,7 @@ services:
     depends_on:
       - db
       - cache
+      - frontend
 
   worker:
     <<: *backend
@@ -77,16 +78,12 @@ services:
   frontend:
     build:
       <<: *frontend-build
-    command: "node --max_old_space_size=8096 ./node_modules/@angular/cli/bin/ng serve --host 0.0.0.0"
+    command: "node --max_old_space_size=8096 ./node_modules/@angular/cli/bin/ng serve --host 0.0.0.0 --allowed-hosts openproject-assets.local"
     volumes:
       - ".:/home/dev/openproject"
       - "${CKEDITOR_BUILD_DIR:-./frontend/src/vendor/ckeditor/}:/home/dev/openproject/frontend/src/vendor/ckeditor/"
-    environment:
-      PROXY_HOSTNAME: backend
     networks:
       - network
-    depends_on:
-      - backend
 
   db:
     image: postgres:17
