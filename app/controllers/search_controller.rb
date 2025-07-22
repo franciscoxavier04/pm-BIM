@@ -161,7 +161,8 @@ class SearchController < ApplicationController
         search_types
       end
 
-    scope.index_with { |s| scope_class(s) }
+    scope
+      .index_with { |s| scope_class(s) }
   end
 
   def scope_class(scope)

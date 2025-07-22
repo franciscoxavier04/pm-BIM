@@ -31,7 +31,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  ElementRef,
+  ElementRef, Input,
   OnDestroy,
   OnInit,
   Renderer2,
@@ -55,24 +55,26 @@ import {
 import {
   WorkPackageIsolatedQuerySpaceDirective,
 } from 'core-app/features/work-packages/directives/query-space/wp-isolated-query-space.directive';
+import { QueryRequestParams } from 'core-app/features/work-packages/components/wp-query/url-params-helper';
+import { populateInputsFromDataset } from 'core-app/shared/components/dataset-inputs';
 
 @Component({
   selector: 'opce-global-search-work-packages',
   changeDetection: ChangeDetectionStrategy.OnPush,
   hostDirectives: [WorkPackageIsolatedQuerySpaceDirective],
   template: `
-    <wp-embedded-table *ngIf="!resultsHidden"
-                       [queryProps]="queryProps"
+    <wp-embedded-table [queryProps]="queryProps"
                        [configuration]="tableConfiguration">
     </wp-embedded-table>
   `,
   standalone: false,
 })
-export class GlobalSearchWorkPackagesComponent extends UntilDestroyedMixin implements OnInit, OnDestroy, AfterViewInit {
-  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-  public queryProps:{ [key:string]:any };
+export class GlobalSearchWorkPackagesComponent extends UntilDestroyedMixin implements OnInit, OnDestroy {
+  @Input() public searchTerm:string;
 
-  public resultsHidden = false;
+  @Input() public scope:'all'|'current_project'|'';
+
+  public queryProps:Partial<QueryRequestParams>;
 
   public tableConfiguration:WorkPackageTableConfigurationObject = {
     actionsColumnEnabled: false,
@@ -89,37 +91,12 @@ export class GlobalSearchWorkPackagesComponent extends UntilDestroyedMixin imple
     readonly renderer:Renderer2,
     readonly I18n:I18nService,
     readonly halResourceService:HalResourceService,
-    readonly globalSearchService:GlobalSearchService,
     readonly wpTableFilters:WorkPackageViewFiltersService,
     readonly querySpace:IsolatedQuerySpace,
-    readonly wpFilters:WorkPackageFiltersService,
     readonly cdRef:ChangeDetectorRef,
   ) {
     super();
-  }
-
-  ngAfterViewInit() {
-    combineLatest([
-      this.globalSearchService.searchTerm$,
-      this.globalSearchService.projectScope$,
-    ])
-      .pipe(
-        skip(1),
-        distinctUntilChanged(),
-        debounceTime(10),
-        this.untilDestroyed(),
-      )
-      .subscribe(() => {
-        this.wpFilters.visible = false;
-        this.setQueryProps();
-      });
-
-    this.globalSearchService
-      .resultsHidden$
-      .pipe(
-        this.untilDestroyed(),
-      )
-      .subscribe((resultsHidden:boolean) => (this.resultsHidden = resultsHidden));
+    populateInputsFromDataset(this);
   }
 
   ngOnInit():void {
@@ -131,23 +108,23 @@ export class GlobalSearchWorkPackagesComponent extends UntilDestroyedMixin imple
     const filters:any[] = [];
     let columns = ['id', 'project', 'subject', 'type', 'status', 'updatedAt'];
 
-    if (this.globalSearchService.searchTermIsId) {
+    if (this.searchTermIsId) {
       filters.push({
         id: {
           operator: '=',
-          values: [this.globalSearchService.searchTermWithoutHash],
+          values: [this.searchTermWithoutHash],
         },
       });
-    } else if (this.globalSearchService.searchTerm.length > 0) {
+    } else if (this.searchTerm.length > 0) {
       filters.push({
         search: {
           operator: '**',
-          values: [this.globalSearchService.searchTerm],
+          values: [this.searchTerm],
         },
       });
     }
 
-    if (this.globalSearchService.projectScope === 'current_project') {
+    if (this.scope === 'current_project') {
       filters.push({
         subprojectId: {
           operator: '!*',
@@ -157,7 +134,7 @@ export class GlobalSearchWorkPackagesComponent extends UntilDestroyedMixin imple
       columns = ['id', 'subject', 'type', 'status', 'updatedAt'];
     }
 
-    if (this.globalSearchService.projectScope === '') {
+    if (this.scope === '') {
       filters.push({
         subprojectId: {
           operator: '*',
@@ -172,5 +149,16 @@ export class GlobalSearchWorkPackagesComponent extends UntilDestroyedMixin imple
       sortBy: JSON.stringify([['updatedAt', 'desc']]),
       showHierarchies: false,
     };
+  }
+
+  public get searchTermIsId():boolean {
+    return this.searchTermWithoutHash !== this.searchTerm;
+  }
+
+  public get searchTermWithoutHash():string {
+    if (/^#(\d+)/.exec(this.searchTerm)) {
+      return this.searchTerm.substr(1);
+    }
+    return this.searchTerm;
   }
 }

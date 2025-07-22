@@ -120,17 +120,6 @@ export class GlobalSearchService {
     return this._searchTerm.value;
   }
 
-  public get searchTermIsId():boolean {
-    return this.searchTermWithoutHash !== this.searchTerm;
-  }
-
-  public get searchTermWithoutHash():string {
-    if (/^#(\d+)/.exec(this.searchTerm)) {
-      return this.searchTerm.substr(1);
-    }
-    return this.searchTerm;
-  }
-
   public get tabs():string {
     return this._tabs.value;
   }
