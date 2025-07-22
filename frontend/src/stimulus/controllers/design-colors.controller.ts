@@ -28,7 +28,6 @@
  * ++
  */
 
-// app/javascript/controllers/design_colors_controller.ts
 import { ApplicationController } from 'stimulus-use';
 
 export default class DesignColorsController extends ApplicationController {
