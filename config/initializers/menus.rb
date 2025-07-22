@@ -84,7 +84,10 @@ Redmine::MenuManager.map :top_menu do |menu|
             context: :my,
             after: :home,
             icon: "person",
-            caption: I18n.t("my_page.label")
+            caption: I18n.t("my_page.label"),
+            if: ->(*) do
+              User.current.logged?
+            end
 
   menu.push :my_time_tracking,
             { controller: "/my/time_tracking", action: "index" },
