@@ -33,6 +33,43 @@ require "spec_helper"
 RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_project_attribute: true } do
   subject(:custom_field) { create(:calculated_value_project_custom_field, formula: "1 + 1") }
 
+  describe "#usable_custom_field_references_for_formula" do
+    let!(:int) { create(:project_custom_field, :integer, default_value: 4, is_for_all: true) }
+    let!(:float) { create(:project_custom_field, :float, default_value: 5.5, is_for_all: true) }
+    let!(:other_calculated_value) { create(:calculated_value_project_custom_field, formula: "2 + 2", is_for_all: true) }
+
+    current_user { create(:admin) }
+
+    context "with permission to see all custom fields" do
+      it "returns custom fields with formats that can be used in formulas" do
+        expect(subject.usable_custom_field_references_for_formula).to contain_exactly(int, float, other_calculated_value)
+      end
+
+      it "excludes custom field formats that are not usable in formulas" do
+        text = create(:project_custom_field, :text, default_value: "txt", is_for_all: true)
+        expect(subject.usable_custom_field_references_for_formula).not_to include(text)
+      end
+    end
+
+    context "with insufficient permission to see some custom fields" do
+      let(:project_with_permission) { create(:project) }
+      let(:project_without_permission) { create(:project) }
+      let(:user) { create(:user, member_with_permissions: { project_with_permission => [:view_project_attributes] }) }
+
+      let!(:int) { create(:project_custom_field, :integer, default_value: 4, projects: [project_with_permission]) }
+      let!(:float) { create(:project_custom_field, :float, default_value: 5.5, projects: [project_with_permission]) }
+      let!(:other_calculated_value) do
+        create(:calculated_value_project_custom_field, formula: "2 + 2", projects: [project_without_permission])
+      end
+
+      current_user { user }
+
+      it "returns only custom fields that the user has permission to see" do
+        expect(subject.usable_custom_field_references_for_formula).to contain_exactly(int, float)
+      end
+    end
+  end
+
   describe "#formula=" do
     let!(:int) { create(:project_custom_field, :integer, default_value: 2, is_for_all: true) }
     let!(:float) { create(:project_custom_field, :float, default_value: 3.5, is_for_all: true) }
@@ -114,6 +151,12 @@ RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_proje
 
     context "with a formula containing forbidden characters" do
       let(:formula) { "abc + 2" }
+
+      it_behaves_like "invalid formula", "contains invalid characters."
+    end
+
+    context "with a formula containing references to custom fields without pattern-mustaches" do
+      let(:formula) { "100 * cf_3" }
 
       it_behaves_like "invalid formula", "contains invalid characters."
     end
