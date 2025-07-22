@@ -29,10 +29,34 @@ See COPYRIGHT and LICENSE files for more details.
 
 <% content_for :header_tags do %>
   <%= call_hook :search_index_head %>
-
 <% end %>
 
-<opce-global-search-title></opce-global-search-title>
+<%=
+  render(Primer::OpenProject::PageHeader.new) do |header|
+    title =
+      case @search_params[:scope]
+      when "all"
+        t("global_search.title.all_projects", search_term: @question)
+      when "current_project"
+        t("global_search.title.current_project", search_term: @question, project_name: @project.name)
+      else
+        if @project
+          t("global_search.title.project_and_subprojects", search_term: @question, project_name: @project.name)
+        else
+          t("global_search.title.all_projects", search_term: @question)
+        end
+      end
+
+    header.with_title { title }
+
+    header.with_breadcrumbs(
+      [
+        ({ href: project_overview_path(@project.id), text: @project.name } if @project),
+        title
+      ].compact
+    )
+  end
+%>
 
 <opce-global-search-tabs></opce-global-search-tabs>
 
