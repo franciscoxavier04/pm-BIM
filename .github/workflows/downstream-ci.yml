@@ -62,7 +62,9 @@ jobs:
             exit 0
           fi
 
+          PAYLOAD=$(printf '{"ref": "%s", "inputs": {"core_ref": "%s"}}' "$REF" "$CORE_REF")
+
           curl -i --fail-with-body -H"authorization: Bearer $TOKEN" \
             -XPOST -H"Accept: application/vnd.github.v3+json" \
             https://api.github.com/repos/$REPOSITORY/actions/workflows/$WORKFLOW_ID/dispatches \
-            -d '{"ref": "$REF", "inputs": { "core_ref" : "$CORE_REF" }}'
+            -d "$PAYLOAD"
