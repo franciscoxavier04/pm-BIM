@@ -394,18 +394,16 @@ gem "disposable", "~> 0.6.2"
 # Used for formula evaluation of calculated values
 gem "dentaku", "~> 3.5"
 
-platforms :mri, :mingw, :x64_mingw do
-  group :postgres do
-    gem "pg", "~> 1.5.0"
-  end
-
-  # Support application loading when no database exists yet.
-  gem "activerecord-nulldb-adapter", "~> 1.1.1"
-
-  # Have application level locks on the database to have a mutex shared between workers/hosts.
-  # We e.g. employ this to safeguard the creation of journals.
-  gem "with_advisory_lock", "~> 5.3.0"
+group :postgres do
+  gem "pg", "~> 1.5.0"
 end
+
+# Support application loading when no database exists yet.
+gem "activerecord-nulldb-adapter", "~> 1.1.1"
+
+# Have application level locks on the database to have a mutex shared between workers/hosts.
+# We e.g. employ this to safeguard the creation of journals.
+gem "with_advisory_lock", "~> 5.3.0"
 
 # Load Gemfile.modules explicitly to allow dependabot to work
 eval_gemfile "./Gemfile.modules"
