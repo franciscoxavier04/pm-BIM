@@ -26,55 +26,52 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
+import { Model } from './model';
+
 /***************************************
   SPRINT
 ***************************************/
+class Sprint extends Model { // editable in place {
+  constructor(el:HTMLElement) {
+    super(el);
 
-// @ts-expect-error TS(2304): Cannot find name 'RB'.
-RB.Sprint = (function ($) {
-  // @ts-expect-error TS(2304): Cannot find name 'RB'.
-  return RB.Object.create(RB.Model, RB.EditableInplace, {
+    // Associate this object with the element for later retrieval
+    this.$.data('this', this);
+    this.$.on('mouseup', '.editable', this.handleClick);
+  }
 
-    initialize(el:any) {
-      this.$ = $(el);
-      this.el = el;
+  beforeSave() {
+    // Do nothing
+  }
 
-      // Associate this object with the element for later retrieval
-      this.$.data('this', this);
-      this.$.on('mouseup', '.editable', this.handleClick);
-    },
+  getType() {
+    return 'Sprint';
+  }
 
-    beforeSave() {
-      // Do nothing
-    },
+  markIfClosed() {
+    // Do nothing
+  }
 
-    getType() {
-      return 'Sprint';
-    },
+  refreshed() {
+    // Do nothing
+  }
 
-    markIfClosed() {
-      // Do nothing
-    },
+  saveDirectives() {
+    const wrapper = this.$;
+    const editor = wrapper.find('.editor');
+    const data = `${editor.serialize()}&_method=put`;
+    // @ts-expect-error TS(2304): Cannot find name 'RB'.
+    const url = RB.urlFor('update_sprint', { id: this.getID() });
 
-    refreshed() {
-      // Do nothing
-    },
+    return {
+      url,
+      data,
+    };
+  }
 
-    saveDirectives() {
-      const wrapper = this.$;
-      const editor = wrapper.find('.editor');
-      const data = `${editor.serialize()}&_method=put`;
-      // @ts-expect-error TS(2304): Cannot find name 'RB'.
-      const url = RB.urlFor('update_sprint', { id: this.getID() });
+  beforeSaveDragResult() {
+    // Do nothing
+  }
+}
 
-      return {
-        url,
-        data,
-      };
-    },
-
-    beforeSaveDragResult() {
-      // Do nothing
-    },
-  });
-}(jQuery));
+export const EditableSprint = EditableInplace(Sprint);

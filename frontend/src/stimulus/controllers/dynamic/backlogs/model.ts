@@ -31,80 +31,77 @@
   Common methods for sprint, work_package,
   story, task, and impediment
 ***************************************/
+export abstract class Model implements Editable {
+  $:JQuery<HTMLElement>;
 
-// @ts-expect-error TS(2304): Cannot find name 'RB'.
-RB.Model = (function ($) {
-  // @ts-expect-error TS(2304): Cannot find name 'RB'.
-  return RB.Object.create({
+  constructor(protected el:HTMLElement) {
+    this.$ = $(el);
+    this.el = el;
+  }
 
-    initialize(el:any) {
-      this.$ = $(el);
-      this.el = el;
-    },
+  afterCreate(data:any, textStatus:any, xhr:any) {
+    // Do nothing. Child objects may optionally override this
+  }
 
-    afterCreate(data:any, textStatus:any, xhr:any) {
-      // Do nothing. Child objects may optionally override this
-    },
+  afterSave(data:any, textStatus:any, xhr:any) {
+    let isNew;
+    let result;
 
-    afterSave(data:any, textStatus:any, xhr:any) {
-      let isNew;
-      let result;
+    isNew = this.isNew();
+    // @ts-expect-error TS(2304): Cannot find name 'RB'.
+    result = RB.Factory.initialize(RB.Model, data);
 
-      isNew = this.isNew();
-      // @ts-expect-error TS(2304): Cannot find name 'RB'.
-      result = RB.Factory.initialize(RB.Model, data);
+    this.unmarkSaving();
+    this.refresh(result);
 
-      this.unmarkSaving();
-      this.refresh(result);
+    if (isNew) {
+      this.$.attr('id', result.$.attr('id'));
+      this.afterCreate(data, textStatus, xhr);
+    } else {
+      this.afterUpdate(data, textStatus, xhr);
+    }
+  }
 
-      if (isNew) {
-        this.$.attr('id', result.$.attr('id'));
-        this.afterCreate(data, textStatus, xhr);
-      } else {
-        this.afterUpdate(data, textStatus, xhr);
-      }
-    },
+  afterUpdate(data:any, textStatus:any, xhr:any) {
+    // Do nothing. Child objects may optionally override this
+  }
 
-    afterUpdate(data:any, textStatus:any, xhr:any) {
-      // Do nothing. Child objects may optionally override this
-    },
+  beforeSave() {
+    // Do nothing. Child objects may or may not override this method
+  }
 
-    beforeSave() {
-      // Do nothing. Child objects may or may not override this method
-    },
+  cancelEdit() {
+    this.endEdit();
+    if (this.isNew()) {
+      this.$.hide('blind');
+    }
+  }
 
-    cancelEdit() {
-      this.endEdit();
-      if (this.isNew()) {
-        this.$.hide('blind');
-      }
-    },
+  close() {
+    this.$.addClass('closed');
+  }
 
-    close() {
-      this.$.addClass('closed');
-    },
+  copyFromDialog() {
+    let editors;
 
-    copyFromDialog() {
-      let editors;
+    if (this.$.find('.editors').length === 0) {
+      editors = $("<div class='editors'></div>").appendTo(this.$);
+    } else {
+      editors = this.$.find('.editors').first();
+    }
+    editors.html('');
+    editors.append($(`#${this.getType().toLowerCase()}_editor`).children('.editor'));
+    this.saveEdits();
+  }
 
-      if (this.$.find('.editors').length === 0) {
-        editors = $("<div class='editors'></div>").appendTo(this.$);
-      } else {
-        editors = this.$.find('.editors').first();
-      }
-      editors.html('');
-      editors.append($(`#${this.getType().toLowerCase()}_editor`).children('.editor'));
-      this.saveEdits();
-    },
+  displayEditor(editor:JQuery<HTMLElement>) {
+    const self = this;
+    let baseClasses;
 
-    displayEditor(editor:any) {
-      const self = this;
-          let baseClasses;
+    baseClasses = 'ui-button ui-widget ui-state-default ui-corner-all';
 
-      baseClasses = 'ui-button ui-widget ui-state-default ui-corner-all';
-
-      editor.dialog({
-        buttons: [
+    editor.dialog({
+      buttons: [
         {
           text: 'OK',
           class: 'button -primary',
@@ -121,266 +118,266 @@ RB.Model = (function ($) {
             $(this).dialog('close');
           },
         },
-        ],
-        close(e:any, ui:any) {
-          if (e.type === 'click' || (e.type === 'keydown' && e.key === 'Escape')) {
-            self.cancelEdit();
-          }
-        },
-        dialogClass: `${this.getType().toLowerCase()}_editor_dialog`,
-        modal: true,
-        position: { my: 'center', at: 'center', of: window },
-        resizable: false,
-        title: (this.isNew() ? this.newDialogTitle() : this.editDialogTitle()),
-      });
-      editor.find('.editor').first().focus();
-      $('.button').removeClass(baseClasses);
-      $('.ui-icon-closethick').prop('title', 'close');
-    },
-
-    edit() {
-      const editor = this.getEditor();
-          const self = this;
-          let maxTabIndex = 0;
-
-      $('.stories .editors .editor').each(function (index) {
-        let value;
-
-        // @ts-expect-error TS(2345): Argument of type 'string | undefined' is not assig... Remove this comment to see the full error message
-        value = parseInt($(this).attr('tabindex'), 10);
-
-        if (maxTabIndex < value) {
-          maxTabIndex = value;
+      ],
+      close(e, ui) {
+        if (e.type === 'click' || (e.type === 'keydown' && e.key === 'Escape')) {
+          self.cancelEdit();
         }
-      });
+      },
+      dialogClass: `${this.getType().toLowerCase()}_editor_dialog`,
+      modal: true,
+      position: { my: 'center', at: 'center', of: window },
+      resizable: false,
+      title: (this.isNew() ? this.newDialogTitle() : this.editDialogTitle()),
+    });
+    editor.find('.editor').first().focus();
+    $('.button').removeClass(baseClasses);
+    $('.ui-icon-closethick').prop('title', 'close');
+  }
 
-      if (!editor.hasClass('permanent')) {
-        this.$.find('.editable').each(function (this:any, index:any) {
-          const field = $(this);
-          const fieldId = field.attr('field_id');
-          const fieldName = field.attr('fieldname');
-          const fieldLabel = field.attr('fieldlabel');
-          // @ts-expect-error TS(2345): Argument of type 'string | undefined' is not assig... Remove this comment to see the full error message
-          const fieldOrder = parseInt(field.attr('fieldorder'), 10);
-          const fieldEditable = field.attr('fieldeditable') || 'true';
-          const fieldType = field.attr('fieldtype') || 'input';
-          let typeId;
-          let statusId;
-          let input:any;
+  edit() {
+    const editor = this.getEditor();
+    const self = this;
+    let maxTabIndex = 0;
 
-          if (fieldType === 'select') {
-            // Special handling for status_id => they are dependent of type_id
-            if (fieldName === 'status_id') {
-              typeId = $.trim(self.$.find('.type_id .v').html());
-              // when creating stories we need to query the select directly
-              if (typeId === '') {
-                typeId = $('#type_id_options').val();
-              }
-              statusId = $.trim(self.$.find('.status_id .v').html());
-              input = self.findFactory(typeId, statusId, fieldName);
-            } else if (fieldName === 'type_id') {
-              input = $(`#${fieldName}_options`).clone(true);
-              // if the type changes the status dropdown has to be modified
-              input.change(function () {
-                // @ts-expect-error TS(2683): 'this' implicitly has type 'any' because it does n... Remove this comment to see the full error message
-                typeId = $(this).val();
-                statusId = $.trim(self.$.find('.status_id .v').html());
-                let newInput = self.findFactory(typeId, statusId, 'status_id');
-                newInput = self.prepareInputFromFactory(newInput, fieldId, 'status_id', fieldOrder, maxTabIndex);
-                // @ts-expect-error TS(2683): 'this' implicitly has type 'any' because it does n... Remove this comment to see the full error message
-                newInput = self.replaceStatusForNewType(input, newInput, $(this).parent().find('.status_id').val(), editor);
-              });
-            } else {
-              input = $(`#${fieldName}_options`).clone(true);
+    $('.stories .editors .editor').each(function (index) {
+      let value;
+
+      // @ts-expect-error TS(2345): Argument of type 'string | undefined' is not assig... Remove this comment to see the full error message
+      value = parseInt($(this).attr('tabindex'), 10);
+
+      if (maxTabIndex < value) {
+        maxTabIndex = value;
+      }
+    });
+
+    if (!editor.hasClass('permanent')) {
+      this.$.find('.editable').each(function (this:any, index:any) {
+        const field = $(this);
+        const fieldId = field.attr('field_id')!;
+        const fieldName = field.attr('fieldname')!;
+        const fieldLabel = field.attr('fieldlabel');
+        // @ts-expect-error TS(2345): Argument of type 'string | undefined' is not assig... Remove this comment to see the full error message
+        const fieldOrder = parseInt(field.attr('fieldorder'), 10);
+        const fieldEditable = field.attr('fieldeditable') || 'true';
+        const fieldType = field.attr('fieldtype') || 'input';
+        let typeId:string;
+        let statusId;
+        let input:JQuery;
+
+        if (fieldType === 'select') {
+          // Special handling for status_id => they are dependent of type_id
+          if (fieldName === 'status_id') {
+            typeId = $.trim(self.$.find('.type_id .v').html());
+            // when creating stories we need to query the select directly
+            if (typeId === '') {
+              typeId = $('#type_id_options').val()!.toString();
             }
+            statusId = $.trim(self.$.find('.status_id .v').html());
+            input = self.findFactory(typeId, statusId, fieldName);
+          } else if (fieldName === 'type_id') {
+            input = $(`#${fieldName}_options`).clone(true);
+            // if the type changes the status dropdown has to be modified
+            input.change(function () {
+              // @ts-expect-error TS(2683): 'this' implicitly has type 'any' because it does n... Remove this comment to see the full error message
+              typeId = $(this).val();
+              statusId = $.trim(self.$.find('.status_id .v').html());
+              let newInput = self.findFactory(typeId, statusId, 'status_id');
+              newInput = self.prepareInputFromFactory(newInput, fieldId, 'status_id', fieldOrder, maxTabIndex);
+              // @ts-expect-error TS(2683): 'this' implicitly has type 'any' because it does n... Remove this comment to see the full error message
+              newInput = self.replaceStatusForNewType(input, newInput, $(this).parent().find('.status_id').val(), editor);
+            });
           } else {
-            input = $(document.createElement(fieldType));
+            input = $(`#${fieldName}_options`).clone(true);
           }
+        } else {
+          input = $(document.createElement(fieldType));
+        }
 
-          input = self.prepareInputFromFactory(input, fieldId, fieldName, fieldOrder, maxTabIndex, fieldEditable);
+        input = self.prepareInputFromFactory(input, fieldId, fieldName, fieldOrder, maxTabIndex, fieldEditable);
 
-          // Copy the value in the field to the input element
-          input.val(fieldType === 'select' ? field.children('.v').first().text() : field.text());
+        // Copy the value in the field to the input element
+        input.val(fieldType === 'select' ? field.children('.v').first().text() : field.text());
 
-          // Record in the model's root element which input field had the last focus. We will
-          // use this information inside RB.Model.refresh() to determine where to return the
-          // focus after the element has been refreshed with info from the server.
-          input.focus(function (this:any) {
-            self.$.data('focus', $(this).attr('name'));
-          });
-
-          input.blur(() => {
-            self.$.data('focus', '');
-          });
-
-          $('<label />').attr({
-            for: input.attr('id'),
-          // @ts-expect-error TS(2345): Argument of type 'string | undefined' is not assig... Remove this comment to see the full error message
-          }).text(fieldLabel).appendTo(editor);
-          input.appendTo(editor);
+        // Record in the model's root element which input field had the last focus. We will
+        // use this information inside RB.Model.refresh() to determine where to return the
+        // focus after the element has been refreshed with info from the server.
+        input.focus(function (this:any) {
+          self.$.data('focus', $(this).attr('name')!);
         });
-      }
 
-      this.displayEditor(editor);
-      this.editorDisplayed(editor);
-      return editor;
-    },
+        input.blur(() => {
+          self.$.data('focus', '');
+        });
 
-    findFactory(typeId:any, statusId:any, fieldName:any) {
-      // Find a factory
-      let newInput = $(`#${fieldName}_options_${typeId}_${statusId}`);
-      if (newInput.length === 0) {
-        // when no list found, only offer the default status
-        // no list = combination is not valid / user has no rights -> workflow
-        newInput = $(`#status_id_options_default_${statusId}`);
-      }
-      newInput = newInput.clone(true);
-      return newInput;
-    },
-
-    prepareInputFromFactory(input:any, fieldId:any, fieldName:any, fieldOrder:any, maxTabIndex:any, fieldEditable:any) {
-      input.attr('id', `${fieldName}_${fieldId}`);
-      input.attr('name', fieldName);
-      input.attr('tabindex', fieldOrder + maxTabIndex);
-      if (fieldEditable !== 'true') {
-        input.attr('disabled', true);
-      }
-      input.addClass(fieldName);
-      input.addClass('editor');
-      input.removeClass('template');
-      input.removeClass('helper');
-      return input;
-    },
-
-    replaceStatusForNewType(input:any, newInput:any, statusId:any, editor:any) {
-      // Append an empty field and select it in case the old status is not available
-      newInput.val(statusId); // try to set the status
-      if (newInput.val() !== statusId) {
-          newInput.append(new Option('', ''));
-          newInput.val('');
-      }
-      newInput.focus(function (this:any) {
-        // @ts-expect-error TS(2339): Property '$' does not exist on type 'Window & type... Remove this comment to see the full error message
-        self.$.data('focus', $(this).attr('name'));
+        $('<label />').attr({
+          for: input.attr('id'),
+          // @ts-expect-error TS(2345): Argument of type 'string | undefined' is not assig... Remove this comment to see the full error message
+        }).text(fieldLabel).appendTo(editor);
+        input.appendTo(editor);
       });
+    }
 
-      newInput.blur(() => {
-        // @ts-expect-error TS(2339): Property '$' does not exist on type 'Window & type... Remove this comment to see the full error message
-        self.$.data('focus', '');
-      });
-      // Find the old status dropdown and replace it with the new one
-      input.parent().find('.status_id').replaceWith(newInput);
-    },
+    this.displayEditor(editor);
+    this.editorDisplayed(editor);
+    return editor;
+  }
 
-    // Override this method to change the dialog title
-    editDialogTitle() {
-      return `Edit ${this.getType()}`;
-    },
+  findFactory(typeId:string, statusId:string, fieldName:string):JQuery {
+    // Find a factory
+    let newInput = $(`#${fieldName}_options_${typeId}_${statusId}`);
+    if (newInput.length === 0) {
+      // when no list found, only offer the default status
+      // no list = combination is not valid / user has no rights -> workflow
+      newInput = $(`#status_id_options_default_${statusId}`);
+    }
+    newInput = newInput.clone(true);
+    return newInput;
+  }
 
-    editorDisplayed(editor:any) {
-      // Do nothing. Child objects may override this.
-    },
+  prepareInputFromFactory(input:JQuery, fieldId:string, fieldName:string, fieldOrder:number, maxTabIndex:number, fieldEditable:string = '') {
+    input.attr('id', `${fieldName}_${fieldId}`);
+    input.attr('name', fieldName);
+    input.attr('tabindex', fieldOrder + maxTabIndex);
+    if (fieldEditable !== 'true') {
+      input.attr('disabled', 'true');
+    }
+    input.addClass(fieldName);
+    input.addClass('editor');
+    input.removeClass('template');
+    input.removeClass('helper');
+    return input;
+  }
 
-    endEdit() {
-      this.$.removeClass('editing');
-    },
+  replaceStatusForNewType(input:JQuery, newInput:JQuery<HTMLIFrameElement>, statusId:string|number, editor:JQuery<HTMLElement>) {
+    // Append an empty field and select it in case the old status is not available
+    newInput.val(statusId); // try to set the status
+    if (newInput.val() !== statusId) {
+      newInput.append(new Option('', ''));
+      newInput.val('');
+    }
+    newInput.focus(function (this:any) {
+      // @ts-expect-error TS(2339): Property '$' does not exist on type 'Window & type... Remove this comment to see the full error message
+      self.$.data('focus', $(this).attr('name'));
+    });
 
-    error(xhr:any, textStatus:any, error:any) {
-      this.markError();
-      // @ts-expect-error TS(2304): Cannot find name 'RB'.
-      RB.Dialog.msg($(xhr.responseText).find('.errors').html());
-      this.processError(xhr, textStatus, error);
-    },
+    newInput.blur(() => {
+      // @ts-expect-error TS(2339): Property '$' does not exist on type 'Window & type... Remove this comment to see the full error message
+      self.$.data('focus', '');
+    });
+    // Find the old status dropdown and replace it with the new one
+    input.parent().find('.status_id').replaceWith(newInput);
+  }
 
-    getEditor() {
-      let editorId;
-       let editor;
+  // Override this method to change the dialog title
+  editDialogTitle() {
+    return `Edit ${this.getType()}`;
+  }
 
-      // Create the model editor if it does not yet exist
-      editorId = `${this.getType().toLowerCase()}_editor`;
+  editorDisplayed(editor:JQuery<HTMLElement>) {
+    // Do nothing. Child objects may override this.
+  }
 
-      editor = $(`#${editorId}`).html('');
+  endEdit() {
+    this.$.removeClass('editing');
+  }
 
-      if (editor.length === 0) {
-        editor = $(`<div id='${editorId}'></div>`).appendTo('body');
-      }
-      return editor;
-    },
+  error(xhr:any, textStatus:any, error:any) {
+    this.markError();
+    // @ts-expect-error TS(2304): Cannot find name 'RB'.
+    RB.Dialog.msg($(xhr.responseText).find('.errors').html());
+    this.processError(xhr, textStatus, error);
+  }
 
-    getID() {
-      return this.$.children('.id').children('.v').text();
-    },
+  getEditor() {
+    let editorId;
+    let editor;
 
-    getType() {
-      throw new Error('Child objects must override getType()');
-    },
+    // Create the model editor if it does not yet exist
+    editorId = `${this.getType().toLowerCase()}_editor`;
 
-    handleClick(e:any) {
-      const field = $(this);
-      const model = field.parents('.model').first().data('this');
-      const j = model.$;
+    editor = $(`#${editorId}`).html('');
 
-      if (!j.hasClass('editing')
+    if (editor.length === 0) {
+      editor = $(`<div id='${editorId}'></div>`).appendTo('body');
+    }
+    return editor;
+  }
+
+  getID():string {
+    return this.$.children('.id').children('.v').text();
+  }
+
+  getType():string {
+    throw new Error('Child objects must override getType()');
+  }
+
+  handleClick(e:JQueryEventObject) {
+    const field = $(this);
+    const model = field.parents('.model').first().data('this') as Model;
+    const j = model.$;
+
+    if (!j.hasClass('editing')
           && !j.hasClass('dragging')
           && !j.hasClass('prevent_edit')
           && !$(e.target).hasClass('prevent_edit')
-          && e.target.closest('.editable').getAttribute('fieldeditable') !== 'false') {
-        const editor = model.edit();
-        const input = editor.find(`.${$(e.currentTarget).attr('fieldname')}.editor`);
+          && e.target.closest('.editable')?.getAttribute('fieldeditable') !== 'false') {
+      const editor = model.edit();
+      const input = editor.find(`.${$(e.currentTarget).attr('fieldname')}.editor`);
 
-        input.focus();
-        input.click();
-      }
-    },
+      input.focus();
+      input.click();
+    }
+  }
 
-    handleSelect(e:any) {
-      const j = $(this);
-          const self = j.data('this');
+  handleSelect(e:JQueryEventObject) {
+    const j = $(this);
+    const self = j.data('this');
 
-      if (!$(e.target).hasClass('editable')
+    if (!$(e.target).hasClass('editable')
           && !$(e.target).hasClass('checkbox')
           && !j.hasClass('editing')
           && e.target.tagName !== 'A'
           && !j.hasClass('dragging')) {
-        self.setSelection(!self.isSelected());
-      }
-    },
+      self.setSelection(!self.isSelected());
+    }
+  }
 
-    isClosed() {
-      return this.$.hasClass('closed');
-    },
+  isClosed() {
+    return this.$.hasClass('closed');
+  }
 
-    isNew() {
-      return this.getID() === '';
-    },
+  isNew() {
+    return this.getID() === '';
+  }
 
-    markError() {
-      this.$.addClass('error icon icon-bug');
-    },
+  markError() {
+    this.$.addClass('error icon icon-bug');
+  }
 
-    markIfClosed() {
-      throw new Error('Child objects must override markIfClosed()');
-    },
+  markIfClosed():void {
+    throw new Error('Child objects must override markIfClosed()');
+  }
 
-    markSaving() {
-      this.$.addClass('ajax-indicator');
-    },
+  markSaving() {
+    this.$.addClass('ajax-indicator');
+  }
 
-    // Override this method to change the dialog title
-    newDialogTitle() {
-      return `New ${this.getType()}`;
-    },
+  // Override this method to change the dialog title
+  newDialogTitle() {
+    return `New ${this.getType()}`;
+  }
 
-    open() {
-      this.$.removeClass('closed');
-    },
+  open() {
+    this.$.removeClass('closed');
+  }
 
-    processError(x:any, t:any, e:any) {
-      // Override as needed
-    },
+  processError(x:any, t:any, e:any) {
+    // Override as needed
+  }
 
-    refresh(obj:any) {
-      this.$.html(obj.$.html());
+  refresh(obj:any) {
+    this.$.html(obj.$.html());
 
       if (obj.$.length > 1) {
         // execute script tags, that were attached to the sources
@@ -435,38 +432,82 @@ RB.Model = (function ($) {
           j.children(`div.${fieldName}`).text(editor.val());
         }
       });
+    }
 
-      // Mark the work_package as closed if so
-      self.markIfClosed();
+    if (obj.isClosed()) {
+      this.close();
+    } else {
+      this.open();
+    }
 
-      // Get the save directives.
-      saveDir = self.saveDirectives();
+    this.refreshed();
+  }
 
-      self.beforeSave();
+  refreshed() {
+    // Override as needed
+  }
 
-      self.unmarkError();
-      self.markSaving();
-      // @ts-expect-error TS(2304): Cannot find name 'RB'.
-      RB.ajax({
-        type: 'POST',
-        url: saveDir.url,
-        data: saveDir.data,
-        success(d:any, t:any, x:any) {
-          self.afterSave(d, t, x);
-        },
-        error(x:any, t:any, e:any) {
-          self.error(x, t, e);
-        },
-      });
-      self.endEdit();
-    },
+  saveDirectives():SaveDirectives {
+    throw new Error('Child object must implement saveDirectives()');
+  }
 
-    unmarkError() {
-      this.$.removeClass('error icon icon-bug');
-    },
+  saveEdits() {
+    const j = this.$;
+    const self = this;
+    const editors = j.find('.editor');
+    let saveDir;
 
-    unmarkSaving() {
-      this.$.removeClass('ajax-indicator');
-    },
-  });
-}(jQuery));
+    // Copy the values from the fields to the proper html elements
+    editors.each(function (this:any, index:any) {
+      const editor = $(this).find('input,select,textarea').addBack('input,select,textarea');
+      const fieldName = editor.attr('name');
+      const type = editor.attr('type');
+      if (type && type.match(/select/)) {
+        // if the user changes the type and that type does not offer the status
+        // of the current story, the status field is set to blank
+        // if the user saves this edit we will receive a validation error
+        // the following 3 lines will prevent the override of the status id
+        // otherwise we would loose the status id of the current ticket
+        if (!(editor.val() === '' && fieldName === 'status_id')) {
+          j.children(`div.${fieldName}`).children('.v').text(editor.val()!.toString());
+        }
+
+        j.children(`div.${fieldName}`).children('.t').text(editor.children(':selected').text());
+      } else {
+        j.children(`div.${fieldName}`).text(editor.val()!.toString());
+      }
+    });
+
+    // Mark the work_package as closed if so
+    self.markIfClosed();
+
+    // Get the save directives.
+    saveDir = self.saveDirectives();
+
+    self.beforeSave();
+
+    self.unmarkError();
+    self.markSaving();
+    // @ts-expect-error TS(2304): Cannot find name 'RB'.
+    RB.ajax({
+      type: 'POST',
+      url: saveDir.url,
+      data: saveDir.data,
+      success(d:any, t:any, x:any) {
+        self.afterSave(d, t, x);
+      },
+      error(x:any, t:any, e:any) {
+        self.error(x, t, e);
+      },
+    });
+    self.endEdit();
+  }
+
+  unmarkError() {
+    this.$.removeClass('error icon icon-bug');
+  }
+
+  unmarkSaving() {
+    this.$.removeClass('ajax-indicator');
+  }
+}

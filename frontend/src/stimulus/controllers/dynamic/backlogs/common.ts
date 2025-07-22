@@ -32,76 +32,35 @@ if (window.RB === null || window.RB === undefined) {
   window.RB = {};
 }
 
-(function ($) {
-  let object:any;
-  let Factory;
-  let Dialog;
-  let UserPreferences;
-  let ajax;
+interface SaveDirectives {
+  url:string;
+  data:string;
+}
 
-  object = {
-    // Douglas Crockford's technique for object extension
-    // http://javascript.crockford.com/prototypal.html
-    create() {
-      let obj;
-      let i;
-      let methods;
-      let methodName;
+interface Editable {
+  $:JQuery<HTMLElement>;
+  displayEditor(editor:JQuery<HTMLElement>):void;
+  getEditor():JQuery<HTMLElement>;
+}
 
-      function F() {
-      }
+// Utilities
+class Dialog {
+  msg(msg:any) {
+    let dialog;
+    let baseClasses;
 
-      F.prototype = arguments[0];
-      // @ts-expect-error TS(7009): 'new' expression, whose target lacks a construct s... Remove this comment to see the full error message
-      obj = new F();
+    baseClasses = 'ui-button ui-widget ui-state-default ui-corner-all';
 
-      // Add all the other arguments as mixins that
-      // 'write over' any existing methods
-      for (i = 1; i < arguments.length; i += 1) {
-        methods = arguments[i];
-        if (typeof methods === 'object') {
-          for (methodName in methods) {
-            if (methods.hasOwnProperty(methodName)) {
-              obj[methodName] = methods[methodName];
-            }
-          }
-        }
-      }
-      return obj;
-    },
-  };
+    if ($('#msgBox').length === 0) {
+      dialog = $('<div id="msgBox"></div>').appendTo('body');
+    } else {
+      dialog = $('#msgBox');
+    }
 
-  // Object factory for chiliproject_backlogs
-  Factory = object.create({
-
-    initialize(objType:any, el:any) {
-      let obj;
-
-      obj = object.create(objType);
-      obj.initialize(el);
-      return obj;
-    },
-
-  });
-
-  // Utilities
-  Dialog = object.create({
-    msg(msg:any) {
-      let dialog;
-      let baseClasses;
-
-      baseClasses = 'ui-button ui-widget ui-state-default ui-corner-all';
-
-      if ($('#msgBox').length === 0) {
-        dialog = $('<div id="msgBox"></div>').appendTo('body');
-      } else {
-        dialog = $('#msgBox');
-      }
-
-      dialog.html(msg);
-      dialog.dialog({
-        title: 'Backlogs Plugin',
-        buttons: [
+    dialog.html(msg);
+    dialog.dialog({
+      title: 'Backlogs Plugin',
+      buttons: [
         {
           text: 'OK',
           class: 'button -primary',
@@ -109,65 +68,60 @@ if (window.RB === null || window.RB === undefined) {
             $(this).dialog('close');
           },
         }],
-        modal: true,
-      });
-      $('.button').removeClass(baseClasses);
-      $('.ui-icon-closethick').prop('title', 'close');
-    },
-  });
-
-  ajax = (function () {
-    let ajaxQueue:any;
-    let ajaxOngoing:any;
-    let processAjaxQueue:any;
-
-    ajaxQueue = [];
-    ajaxOngoing = false;
-
-    processAjaxQueue = function () {
-      const options = ajaxQueue.shift();
-
-      if (options !== null && options !== undefined) {
-        ajaxOngoing = true;
-        $.ajax(options);
-      }
-    };
-
-    // Process outstanding entries in the ajax queue whenever a ajax request
-    // finishes.
-    $(document).ajaxComplete((event, xhr, settings) => {
-      ajaxOngoing = false;
-      processAjaxQueue();
+      modal: true,
     });
+    $('.button').removeClass(baseClasses);
+    $('.ui-icon-closethick').prop('title', 'close');
+  }
+}
 
-    return function (options:any) {
-      ajaxQueue.push(options);
-      if (!ajaxOngoing) {
-        processAjaxQueue();
-      }
-    };
-  }());
+function ajax() {
+  let ajaxQueue:any;
+  let ajaxOngoing:any;
+  let processAjaxQueue:any;
 
-  // Abstract the user preference from the rest of the RB objects
-  // so that we can change the underlying implementation as needed
-  UserPreferences = object.create({
-    get(key:any) {
-      return $.cookie(key);
-    },
+  ajaxQueue = [];
+  ajaxOngoing = false;
 
-    set(key:any, value:any) {
-      $.cookie(key, value, { expires: 365 * 10 });
-    },
+  processAjaxQueue = function () {
+    const options = ajaxQueue.shift();
+
+    if (options !== null && options !== undefined) {
+      ajaxOngoing = true;
+      $.ajax(options);
+    }
+  };
+
+  // Process outstanding entries in the ajax queue whenever a ajax request
+  // finishes.
+  $(document).ajaxComplete((event, xhr, settings) => {
+    ajaxOngoing = false;
+    processAjaxQueue();
   });
 
-  // @ts-expect-error TS(2304): Cannot find name 'RB'.
-  RB.Object = object;
-  // @ts-expect-error TS(2304): Cannot find name 'RB'.
-  RB.Factory = Factory;
-  // @ts-expect-error TS(2304): Cannot find name 'RB'.
-  RB.Dialog = Dialog;
-  // @ts-expect-error TS(2304): Cannot find name 'RB'.
-  RB.UserPreferences = UserPreferences;
-  // @ts-expect-error TS(2304): Cannot find name 'RB'.
-  RB.ajax = ajax;
-}(jQuery));
+  return function (options:any) {
+    ajaxQueue.push(options);
+    if (!ajaxOngoing) {
+      processAjaxQueue();
+    }
+  };
+}
+
+// Abstract the user preference from the rest of the RB objects
+// so that we can change the underlying implementation as needed
+class UserPreferences {
+  get(key:string) {
+    return $.cookie(key);
+  }
+
+  set(key:string, value:any) {
+    $.cookie(key, value, { expires: 365 * 10 });
+  }
+}
+
+// @ts-expect-error TS(2304): Cannot find name 'RB'.
+RB.Dialog = Dialog;
+// @ts-expect-error TS(2304): Cannot find name 'RB'.
+RB.UserPreferences = UserPreferences;
+// @ts-expect-error TS(2304): Cannot find name 'RB'.
+RB.ajax = ajax;
