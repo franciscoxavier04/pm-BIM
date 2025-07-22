@@ -28,11 +28,11 @@
  * ++
  */
 
-import BaseController from './base.controller';
+import { Controller } from '@hotwired/stimulus';
+import { withIndexOutletMixin } from './mixins/with-index-outlet';
 
-export default class StemsController extends BaseController {
+export default class StemsController extends withIndexOutletMixin(Controller) {
   connect() {
-    super.connect();
     this.handleStemVisibility();
   }
 
@@ -48,8 +48,8 @@ export default class StemsController extends BaseController {
   }
 
   private handleStemVisibilityForMobile() {
-    if (this.viewPortService.isMobile()) {
-      if (this.sortingValue === 'asc') return;
+    if (this.isMobile()) {
+      if (this.indexOutlet.sortingValue === 'asc') return;
 
       const initialJournalContainer = this.element.querySelector('.work-packages-activities-tab-journals-item-component-details--journal-details-container[data-initial="true"]') as HTMLElement;
 
@@ -60,14 +60,14 @@ export default class StemsController extends BaseController {
   }
 
   private handleLastStemPartVisibility() {
-    const emptyLines = this.element.querySelectorAll('.empty-line');
+    const emptyLines = this.element.querySelectorAll('.empty-line') as NodeListOf<HTMLElement>;
 
     // make sure all are visible first
     emptyLines.forEach((container) => {
       container.classList.remove('work-packages-activities-tab-journals-item-component-details--journal-details-container--hidden');
     });
 
-    if (this.sortingValue === 'asc' || this.filterValue === 'only_changes') return;
+    if (this.indexOutlet.sortingValue === 'asc' || this.indexOutlet.filterValue === 'only_changes') return;
 
     // then hide the last one again
     if (emptyLines.length > 0) {

@@ -28,23 +28,29 @@
  * ++
  */
 
+import { Controller } from '@hotwired/stimulus';
 import {
   ICKEditorInstance,
 } from 'core-app/shared/components/editor/components/ckeditor/ckeditor.types';
 import { retrieveCkEditorInstance } from 'core-app/shared/helpers/ckeditor-helpers';
 import AutoScrollingController from './auto-scrolling.controller';
-import BaseController from './base.controller';
 import StemsController from './stems.controller';
+import { withIndexOutletMixin } from './mixins/with-index-outlet';
 
-export default class EditorController extends BaseController {
-  static outlets = ['work-packages--activities-tab--auto-scrolling', 'work-packages--activities-tab--stems'];
+export default class EditorController extends withIndexOutletMixin(Controller) {
+  static outlets = [
+    'work-packages--activities-tab--auto-scrolling',
+    'work-packages--activities-tab--stems',
+  ];
+
   declare readonly workPackagesActivitiesTabAutoScrollingOutlet:AutoScrollingController;
   declare readonly workPackagesActivitiesTabStemsOutlet:StemsController;
+  private get autoScrollingOutlet() { return this.workPackagesActivitiesTabAutoScrollingOutlet; }
+  private get stemsOutlet() { return this.workPackagesActivitiesTabStemsOutlet; }
 
-  static targets = ['buttonRow', 'formRow', 'journalsContainer', 'form'];
+  static targets = ['buttonRow', 'formRow', 'form'];
   declare readonly buttonRowTarget:HTMLInputElement;
   declare readonly formRowTarget:HTMLElement;
-  declare readonly journalsContainerTarget:HTMLElement;
   declare readonly formTarget:HTMLFormElement;
 
   private rescuedEditorDataKey:string;
@@ -52,8 +58,6 @@ export default class EditorController extends BaseController {
   private ckEditorAbortController = new AbortController();
 
   connect() {
-    super.connect();
-
     this.setupEventListeners();
     this.setLocalStorageKeys();
     this.populateRescuedEditorContent();
@@ -66,7 +70,7 @@ export default class EditorController extends BaseController {
   }
 
   showForm() {
-    const journalsContainerAtBottom = this.viewPortService.isJournalsContainerScrolledToBottom();
+    const journalsContainerAtBottom = this.isJournalsContainerScrolledToBottom();
 
     this.buttonRowTarget.classList.add('d-none');
     this.formRowTarget.classList.remove('d-none');
@@ -74,11 +78,11 @@ export default class EditorController extends BaseController {
 
     this.addCkEditorEventListeners();
 
-    if (this.viewPortService.isMobile()) {
+    if (this.isMobile()) {
       this.focusEditor(0);
     } else if (this.sortingValue === 'asc' && journalsContainerAtBottom) {
       // scroll to (new) bottom if sorting is ascending and journals container was already at bottom before showing the form
-      this.workPackagesActivitiesTabAutoScrollingOutlet.scrollJournalContainer(true);
+      this.autoScrollingOutlet.scrollJournalContainer(true);
       this.focusEditor();
     } else {
       this.focusEditor();
@@ -108,17 +112,12 @@ export default class EditorController extends BaseController {
     this.removeCkEditorEventListeners();
     this.buttonRowTarget.classList.remove('d-none');
     this.formRowTarget.classList.add('d-none');
+    this.indexOutlet.hideJournalsContainerInput();
 
-    if (this.journalsContainerTarget) {
-      this.journalsContainerTarget.style.marginBottom = '';
-      this.journalsContainerTarget.classList.add('work-packages-activities-tab-index-component--journals-container_with-initial-input-compensation');
-      this.journalsContainerTarget.classList.remove('work-packages-activities-tab-index-component--journals-container_with-input-compensation');
-    }
-
-    if (this.viewPortService.isMobile()) {
+    if (this.isMobile()) {
       // wait for the keyboard to be fully down before scrolling further
       // timeout amount tested on mobile devices for best possible user experience
-      this.workPackagesActivitiesTabAutoScrollingOutlet.scrollInputContainerIntoView(500);
+      this.autoScrollingOutlet.scrollInputContainerIntoView(500);
     }
   }
 
@@ -127,7 +126,7 @@ export default class EditorController extends BaseController {
       this.closeForm();
     } else {
       // eslint-disable-next-line no-alert
-      const shouldClose = window.confirm(this.unsavedChangesConfirmationMessageValue);
+      const shouldClose = window.confirm(this.indexOutlet.unsavedChangesConfirmationMessageValue);
       if (shouldClose) { this.closeForm(); }
     }
   }
@@ -162,7 +161,7 @@ export default class EditorController extends BaseController {
   }
 
   private setLocalStorageKeys() {
-    this.rescuedEditorDataKey = `work-package-${this.workPackageIdValue}-rescued-editor-data-${this.userIdValue}`;
+    this.rescuedEditorDataKey = `work-package-${this.indexOutlet.workPackageIdValue}-rescued-editor-data-${this.indexOutlet.userIdValue}`;
   }
 
   private populateRescuedEditorContent() {
@@ -182,9 +181,7 @@ export default class EditorController extends BaseController {
       onBlurEditor: () => { void this.onBlurEditor(); },
       onFocusEditor: () => {
         void this.onFocusEditor();
-        if (this.viewPortService.isMobile()) {
-          void this.workPackagesActivitiesTabAutoScrollingOutlet.scrollInputContainerIntoView(200);
-        }
+        if (this.isMobile()) { void this.autoScrollingOutlet.scrollInputContainerIntoView(200); }
       },
     };
 
@@ -221,23 +218,23 @@ export default class EditorController extends BaseController {
 
     if (formSubmitResponse.succeeded) {
       // extract server timestamp from response headers in order to be in sync with the server
-      this.setLastServerTimestampViaHeaders(formSubmitResponse.response.headers);
+      this.indexOutlet.setLastServerTimestampViaHeaders(formSubmitResponse.response.headers);
 
-      if (!this.journalsContainerTarget) return;
+      if (!this.indexOutlet.hasJournalsContainerTarget) return;
 
       this.clearEditor();
       this.closeForm();
-      this.resetJournalsContainerMargins();
+      this.indexOutlet.resetJournalsContainerMargins();
 
       setTimeout(() => {
-        this.workPackagesActivitiesTabAutoScrollingOutlet.performAutoScrollingOnFormSubmit();
-        this.workPackagesActivitiesTabStemsOutlet.handleStemVisibility();
+        this.autoScrollingOutlet.performAutoScrollingOnFormSubmit();
+        this.stemsOutlet.handleStemVisibility();
       }, 100);
     }
   }
 
   private adjustJournalContainerMargin() {
-    this.adjustJournalContainerMarginWith(`${this.formRowTarget.clientHeight + 29}px`);
+    this.indexOutlet.adjustJournalContainerMarginWith(`${this.formRowTarget.clientHeight + 29}px`);
   }
 
   private closeForm() {
@@ -264,7 +261,7 @@ export default class EditorController extends BaseController {
     return this.element.querySelector('opce-ckeditor-augmented-textarea');
   }
 
-  private get ckEditorInstance():ICKEditorInstance | undefined {
+  get ckEditorInstance():ICKEditorInstance | undefined {
     return retrieveCkEditorInstance(this.element);
   }
 }

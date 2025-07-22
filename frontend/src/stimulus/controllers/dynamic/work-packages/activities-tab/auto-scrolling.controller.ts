@@ -28,7 +28,8 @@
  * ++
  */
 
-import BaseController from './base.controller';
+import { Controller } from '@hotwired/stimulus';
+import { withIndexOutletMixin } from './mixins/with-index-outlet';
 
 enum AnchorType {
   Comment = 'comment',
@@ -42,9 +43,8 @@ interface CustomEventWithIdParam extends Event {
   };
 }
 
-export default class AutoScrollingController extends BaseController {
+export default class AutoScrollingController extends withIndexOutletMixin(Controller) {
   connect() {
-    super.connect();
     this.handleInitialScroll();
   }
 
@@ -57,7 +57,7 @@ export default class AutoScrollingController extends BaseController {
 
     // not using the scrollToActivity method here as it is causing flickering issues
     // in case of a setAnchor click, we can go for a direct scroll approach
-    const scrollableContainer = this.viewPortService.scrollableContainer;
+    const scrollableContainer = this.scrollableContainer;
     const activityElement = this.getActivityAnchorElement(anchorName, activityId);
 
     if (scrollableContainer && activityElement) {
@@ -71,9 +71,9 @@ export default class AutoScrollingController extends BaseController {
   }
 
   performAutoScrollingOnStreamsUpdate() {
-    if (this.sortingValue === 'asc' && this.viewPortService.isJournalsContainerScrolledToBottom()) {
+    if (this.indexOutlet.sortingValue === 'asc' && this.isJournalsContainerScrolledToBottom()) {
       // scroll to (new) bottom if sorting is ascending and journals container was already at bottom before a new activity was added
-      if (this.viewPortService.isMobile()) {
+      if (this.isMobile()) {
         this.scrollInputContainerIntoView(300);
       } else {
         this.scrollJournalContainer(true, true);
@@ -82,12 +82,12 @@ export default class AutoScrollingController extends BaseController {
   }
 
   performAutoScrollingOnFormSubmit() {
-    if (this.viewPortService.isMobile() && !this.viewPortService.isWithinNotificationCenter()) {
+    if (this.isMobile() && !this.isWithinNotificationCenter()) {
       // wait for the keyboard to be fully down before scrolling further
       // timeout amount tested on mobile devices for best possible user experience
       this.scrollInputContainerIntoView(800);
     } else {
-      this.scrollJournalContainer(this.sortingValue === 'asc', true);
+      this.scrollJournalContainer(this.indexOutlet.sortingValue === 'asc', true);
     }
   }
 
@@ -97,14 +97,14 @@ export default class AutoScrollingController extends BaseController {
       if (inputContainer) {
         inputContainer.scrollIntoView({
           behavior,
-          block: this.sortingValue === 'desc' ? 'nearest' : 'start',
+          block: this.indexOutlet.sortingValue === 'desc' ? 'nearest' : 'start',
         });
       }
     }, timeout);
   }
 
   scrollJournalContainer(toBottom:boolean, smooth:boolean = false) {
-    const scrollableContainer = this.viewPortService.scrollableContainer;
+    const scrollableContainer = this.scrollableContainer;
     if (scrollableContainer) {
       if (smooth) {
         scrollableContainer.scrollTo({
@@ -123,7 +123,7 @@ export default class AutoScrollingController extends BaseController {
 
     if (activityIdMatch && activityIdMatch.length === 3) {
       this.scrollToActivity(activityIdMatch[1] as AnchorType, activityIdMatch[2]);
-    } else if (this.sortingValue === 'asc' && (!this.viewPortService.isMobile() || this.viewPortService.isWithinNotificationCenter())) {
+    } else if (this.indexOutlet.sortingValue === 'asc' && (!this.isMobile() || this.isWithinNotificationCenter())) {
       this.scrollToBottom();
     }
   }
@@ -138,7 +138,7 @@ export default class AutoScrollingController extends BaseController {
   }
 
   private tryScroll(activityAnchorName:AnchorType, activityId:string, attempts:number, maxAttempts:number) {
-    const scrollableContainer = this.viewPortService.scrollableContainer;
+    const scrollableContainer = this.scrollableContainer;
     const activityElement = this.getActivityAnchorElement(activityAnchorName, activityId);
     const topPadding = 70;
 
@@ -158,7 +158,7 @@ export default class AutoScrollingController extends BaseController {
   }
 
   private tryScrollToBottom(attempts:number = 0, maxAttempts:number = 20, behavior:ScrollBehavior = 'smooth') {
-    const scrollableContainer = this.viewPortService.scrollableContainer;
+    const scrollableContainer = this.scrollableContainer;
 
     if (!scrollableContainer) {
       if (attempts < maxAttempts) {

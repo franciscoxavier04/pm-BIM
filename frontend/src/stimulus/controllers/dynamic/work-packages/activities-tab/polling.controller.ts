@@ -28,17 +28,20 @@
  * ++
  */
 
+import { Controller } from '@hotwired/stimulus';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
 import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
 import { useMeta } from 'stimulus-use';
 import type AutoScrollingController from './auto-scrolling.controller';
-import BaseController from './base.controller';
 import StemsController from './stems.controller';
+import { withIndexOutletMixin } from './mixins/with-index-outlet';
 
-export default class PollingController extends BaseController {
+export default class PollingController extends withIndexOutletMixin(Controller) {
   static outlets = ['work-packages--activities-tab--auto-scrolling', 'work-packages--activities-tab--stems'];
   declare readonly workPackagesActivitiesTabAutoScrollingOutlet:AutoScrollingController;
   declare readonly workPackagesActivitiesTabStemsOutlet:StemsController;
+  private get autoScrollingOutlet() { return this.workPackagesActivitiesTabAutoScrollingOutlet; }
+  private get stemsOutlet() { return this.workPackagesActivitiesTabStemsOutlet; }
 
   static targets = ['editForm', 'reactionButton'];
   declare readonly editFormTargets:HTMLFormElement[];
@@ -48,20 +51,20 @@ export default class PollingController extends BaseController {
   declare readonly csrfToken:string;
 
   private updateInProgress:boolean = false;
+  private intervallId:number;
   private turboRequests:TurboRequestsService;
   private apiV3Service:ApiV3Service;
   private abortController = new AbortController();
 
   async connect() {
-    super.connect();
-    useMeta(this, { suffix: false });
+    // FIXME: `this` is not typed as HTMLElement, but as any
+    useMeta(this as any, { suffix: false });
 
     const context = await window.OpenProject.getPluginContext();
     this.turboRequests = context.services.turboRequests;
     this.apiV3Service = context.services.apiV3Service;
 
     this.setupEventListeners();
-    this.markAsConnected();
     this.safeUpdateWorkPackageFormsWithStateChecks();
     this.setLatestKnownChangesetUpdatedAt();
     this.startPolling();
@@ -70,7 +73,6 @@ export default class PollingController extends BaseController {
   disconnect() {
     this.removeEventListeners();
     this.stopPolling();
-    this.markAsDisconnected();
   }
 
   handleWorkPackageUpdate(_event?:Event):void {
@@ -98,16 +100,12 @@ export default class PollingController extends BaseController {
       });
   }
 
-  // used in specs for timing
-  private markAsConnected() { this.element.dataset.stimulusControllerConnected = 'true'; }
-  private markAsDisconnected() { this.element.dataset.stimulusControllerConnected = 'false'; }
-
   private startPolling() {
     if (this.intervallId) {
       this.stopPolling();
     }
 
-    this.intervallId = window.setInterval(() => this.updateActivitiesList(), this.pollingIntervalInMsValue);
+    this.intervallId = window.setInterval(() => this.updateActivitiesList(), this.indexOutlet.pollingIntervalInMsValue);
   }
 
   private stopPolling() {
@@ -115,7 +113,7 @@ export default class PollingController extends BaseController {
   }
 
   private setLatestKnownChangesetUpdatedAt() {
-    const latestKnownChangesetUpdatedAtKey = `work-package-${this.workPackageIdValue}-latest-known-changeset-updated-at-${this.userIdValue}`;
+    const latestKnownChangesetUpdatedAtKey = `work-package-${this.indexOutlet.workPackageIdValue}-latest-known-changeset-updated-at-${this.indexOutlet.userIdValue}`;
     const latestChangesetUpdatedAt = this.parseLatestChangesetUpdatedAtFromDom();
 
     if (latestChangesetUpdatedAt) {
@@ -168,11 +166,11 @@ export default class PollingController extends BaseController {
 
   private prepareUpdateStreamsUrl(editingJournals:Set<string>):string {
     const baseUrl = window.location.origin;
-    const url = new URL(this.updateStreamsPathValue, baseUrl);
+    const url = new URL(this.indexOutlet.updateStreamsPathValue, baseUrl);
 
-    url.searchParams.set('sortBy', this.sortingValue);
-    url.searchParams.set('filter', this.filterValue);
-    url.searchParams.set('last_update_timestamp', this.lastServerTimestampValue);
+    url.searchParams.set('sortBy', this.indexOutlet.sortingValue);
+    url.searchParams.set('filter', this.indexOutlet.filterValue);
+    url.searchParams.set('last_update_timestamp', this.indexOutlet.lastServerTimestampValue);
 
     if (editingJournals.size > 0) {
       url.searchParams.set('editing_journals', Array.from(editingJournals).join(','));
@@ -186,8 +184,8 @@ export default class PollingController extends BaseController {
     // the methods below partially rely on the DOM to be updated
     // a specific signal would be way better than a static timeout, but I couldn't find a suitable one
     setTimeout(() => {
-      this.workPackagesActivitiesTabStemsOutlet.handleStemVisibility();
-      this.setLastServerTimestampViaHeaders(headers);
+      this.stemsOutlet.handleStemVisibility();
+      this.indexOutlet.setLastServerTimestampViaHeaders(headers);
       this.checkForAndHandleWorkPackageUpdate(html);
       this.checkForNewNotifications(html);
       this.performAutoScrolling(html);
@@ -236,7 +234,7 @@ export default class PollingController extends BaseController {
   private latestChangesetFromOtherUser():boolean {
     const latestChangesetUserId = this.parseLatestChangesetUserIdFromDom();
 
-    return !!(latestChangesetUserId && (latestChangesetUserId !== this.userIdValue));
+    return !!(latestChangesetUserId && (latestChangesetUserId !== this.indexOutlet.userIdValue));
   }
 
   private anyInlineEditActiveInWpSingleView():boolean {
@@ -251,13 +249,12 @@ export default class PollingController extends BaseController {
     // currently we do not have a programmatic way to show the primer flash messages
     // so we just do a request to the server to show it
     // should be refactored once we have a programmatic way to show the primer flash messages!
-    void this.turboRequests.request(`${this.showConflictFlashMessageUrlValue}?scheme=warning`, {
-      method: 'GET',
-    });
+    const url = `${this.indexOutlet.showConflictFlashMessageUrlValue}?scheme=warning`;
+    void this.turboRequests.request(url, { method: 'GET' });
   }
 
   private updateWorkPackageForms() {
-    const wp = this.apiV3Service.work_packages.id(this.workPackageIdValue);
+    const wp = this.apiV3Service.work_packages.id(this.indexOutlet.workPackageIdValue);
     void wp.refresh();
   }
 
@@ -278,7 +275,7 @@ export default class PollingController extends BaseController {
   }
 
   private parseLatestChangesetUpdatedAtFromDom():Date | null {
-    const elements = this.element.querySelectorAll('[data-journal-with-changeset-updated-at]');
+    const elements = this.element.querySelectorAll('[data-journal-with-changeset-updated-at]') as NodeListOf<HTMLElement>;
 
     const dates = Array.from(elements)
       .map((element) => element.getAttribute('data-journal-with-changeset-updated-at'))
@@ -310,6 +307,6 @@ export default class PollingController extends BaseController {
       return;
     }
 
-    this.workPackagesActivitiesTabAutoScrollingOutlet.performAutoScrollingOnStreamsUpdate();
+    this.autoScrollingOutlet.performAutoScrollingOnStreamsUpdate();
   }
 }

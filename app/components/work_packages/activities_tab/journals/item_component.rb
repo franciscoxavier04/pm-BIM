@@ -156,6 +156,7 @@ module WorkPackages
 
         def quote_action_data_attributes # rubocop:disable Metrics/AbcSize
           {
+            test_selector: "op-wp-journal-#{journal.id}-quote",
             controller: quote_comments_stimulus_controller,
             action: "click->#{quote_comments_stimulus_controller}#quote:prevent",
             quote_comments_stimulus_controller("-content-param") => journal.notes,
@@ -163,9 +164,9 @@ module WorkPackages
             quote_comments_stimulus_controller("-user-name-param") => journal.user.name,
             quote_comments_stimulus_controller("-is-internal-param") => journal.internal?,
             quote_comments_stimulus_controller("-text-wrote-param") => I18n.t(:text_wrote),
-            quote_comments_stimulus_controller("-#{index_stimulus_controller}-outlet") => index_stimulus_controller_outlet_selector, # rubocop:disable Layout/LineLength
-            quote_comments_stimulus_controller("-#{internal_comment_stimulus_controller}-outlet") => internal_comment_stimulus_controller_outlet_selector, # rubocop:disable Layout/LineLength
-            test_selector: "op-wp-journal-#{journal.id}-quote"
+            quote_comments_stimulus_controller("-#{index_stimulus_controller}-outlet") => index_component_dom_selector,
+            quote_comments_stimulus_controller("-#{internal_comment_stimulus_controller}-outlet") => add_comment_component_dom_selector, # rubocop:disable Layout/LineLength
+            quote_comments_stimulus_controller("-#{editor_stimulus_controller}-outlet") => index_component_dom_selector
           }
         end
       end
