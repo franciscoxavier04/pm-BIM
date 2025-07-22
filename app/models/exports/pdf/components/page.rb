@@ -94,21 +94,23 @@ module Exports::PDF::Components::Page
   def draw_footer_on_page
     top = styles.page_footer_offset
     text_style = styles.page_footer
-    spacing = styles.page_footer_horizontal_spacing
     right_width = footer_page_nr.present? ? draw_text_right(footer_page_nr, text_style, top) : 0
     left_width = footer_date.present? ? draw_text_left(footer_date, text_style, top) : 0
-    if footer_title.present?
-      footer_sides = [left_width, right_width].max + spacing
-      available_width = pdf.bounds.width - (2 * footer_sides)
-      draw_text_multiline_center(
-        text: footer_title,
-        text_style:,
-        left: footer_sides,
-        available_width:,
-        top:,
-        max_lines: MAX_NR_OF_PDF_FOOTER_LINES
-      )
-    end
+    draw_footer_title(left_width, right_width) if footer_title.present?
+  end
+
+  def draw_footer_title(left_width, right_width)
+    spacing = styles.page_footer_horizontal_spacing
+    footer_sides = [left_width, right_width].max + spacing
+    available_width = pdf.bounds.width - (2 * footer_sides)
+    draw_text_multiline_center(
+      text: footer_title,
+      text_style:,
+      left: footer_sides,
+      available_width:,
+      top:,
+      max_lines: MAX_NR_OF_PDF_FOOTER_LINES
+    )
   end
 
   def footer_page_nr
