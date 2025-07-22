@@ -26,7 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { ChangeDetectionStrategy, Component, InjectFlags, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { StateService, UIRouterGlobals } from '@uirouter/core';
 import { from, Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
@@ -67,7 +67,7 @@ export class SelectEditFieldComponent extends EditFieldComponent implements OnIn
 
   @InjectField() uiRouterGlobals:UIRouterGlobals;
 
-  @InjectField(EditFormComponent, null, InjectFlags.Optional) editFormComponent:EditFormComponent;
+  @InjectField(EditFormComponent, null, { optional: true }) editFormComponent:EditFormComponent;
 
   public availableOptions:any[];
 

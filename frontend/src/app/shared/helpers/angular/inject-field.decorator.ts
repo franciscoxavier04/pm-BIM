@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { InjectFlags, Injector } from '@angular/core';
+import { Injector } from '@angular/core';
 import { debugLog } from 'core-app/shared/helpers/debug_output';
 
 export interface InjectableClass {
