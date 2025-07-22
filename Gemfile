@@ -378,7 +378,7 @@ gem "bootsnap", "~> 1.18.0", require: false
 
 # API gems
 gem "grape", "~> 2.3.0"
-gem "grape_logging", "~> 1.8.4"
+gem "grape_logging", "~> 2.1.1"
 gem "roar", "~> 1.2.0"
 
 # CORS for API
