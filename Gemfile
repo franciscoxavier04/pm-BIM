@@ -64,7 +64,7 @@ gem "scimitar", "~> 2.11"
 gem "acts_as_list", "~> 1.2.0"
 gem "acts_as_tree", "~> 2.9.0"
 gem "awesome_nested_set", "~> 3.8.0"
-gem "closure_tree", "~> 8.0.0"
+gem "closure_tree", "~> 9.0.0"
 gem "rubytree", "~> 2.1.0"
 # Only used in down migrations now.
 # Is to be removed once the referencing migrations have been squashed.
@@ -403,7 +403,7 @@ gem "activerecord-nulldb-adapter", "~> 1.1.1"
 
 # Have application level locks on the database to have a mutex shared between workers/hosts.
 # We e.g. employ this to safeguard the creation of journals.
-gem "with_advisory_lock", "~> 5.3.0"
+gem "with_advisory_lock", "~> 7.0.1"
 
 # Load Gemfile.modules explicitly to allow dependabot to work
 eval_gemfile "./Gemfile.modules"
