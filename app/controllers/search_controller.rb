@@ -49,8 +49,6 @@ class SearchController < ApplicationController
       end
     end
 
-    provision_gon
-
     render "index", locals: { menu_name: project_or_global_menu }
   end
 
@@ -168,21 +166,5 @@ class SearchController < ApplicationController
 
   def scope_class(scope)
     scope.singularize.camelcase.constantize
-  end
-
-  def provision_gon
-    available_search_types = search_types.dup.push("all")
-
-    gon.global_search = {
-      search_term: @question,
-      project_scope: search_params[:scope].to_s,
-      available_search_types: available_search_types.map do |search_type|
-        {
-          id: search_type,
-          name: OpenProject::GlobalSearch.tab_name(search_type)
-        }
-      end,
-      current_tab: available_search_types.detect { |search_type| search_params[search_type] } || "all"
-    }
   end
 end
