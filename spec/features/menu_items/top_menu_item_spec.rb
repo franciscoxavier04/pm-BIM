@@ -153,8 +153,8 @@ RSpec.describe "Top menu items", :js do
       end
 
       context "when not login_required", with_settings: { login_required: false } do
-        it "displays only projects, activity, news, my page and home" do
-          has_menu_items? project_item, activity_item, news_item, home_item, my_page_item
+        it "displays only projects, activity, news and home" do
+          has_menu_items? project_item, activity_item, news_item, home_item
         end
       end
     end
