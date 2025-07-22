@@ -56,8 +56,8 @@ module Redmine::MenuManager::TopMenuHelper
     end
   end
 
-  def render_logo_short
-    mode_class = User.current.pref.theme === "dark" ? "op-logo-short_dark" : "op-logo-short"
+  def render_logo_icon
+    mode_class = User.current.pref.theme === "dark" ? "op-logo-icon_dark" : "op-logo-icon"
     render Primer::BaseComponent.new(tag: :div, classes: mode_class)
   end
 
@@ -193,7 +193,7 @@ module Redmine::MenuManager::TopMenuHelper
                                 "aria-controls": "op-app-header--modules-menu-list",
                                 "aria-label": I18n.t("label_modules"))
         dialog.with_header(classes: "op-app-header--modules-menu-header") do
-          render_logo_short
+          render_logo_icon
         end
 
         item_groups.each do |item_group|
