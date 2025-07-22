@@ -30,7 +30,6 @@ import { Injector, NgModule } from '@angular/core';
 import { OpenprojectWorkPackagesModule } from 'core-app/features/work-packages/openproject-work-packages.module';
 import { GlobalSearchInputComponent } from 'core-app/core/global_search/input/global-search-input.component';
 import { GlobalSearchWorkPackagesComponent } from 'core-app/core/global_search/global-search-work-packages.component';
-import { GlobalSearchTabsComponent } from 'core-app/core/global_search/tabs/global-search-tabs.component';
 import { GlobalSearchService } from 'core-app/core/global_search/services/global-search.service';
 import {
   OpenprojectAutocompleterModule,
@@ -51,7 +50,6 @@ import { RecentItemsService } from 'core-app/core/recent-items.service';
   declarations: [
     GlobalSearchInputComponent,
     GlobalSearchWorkPackagesComponent,
-    GlobalSearchTabsComponent,
   ],
 })
 export class OpenprojectGlobalSearchModule {

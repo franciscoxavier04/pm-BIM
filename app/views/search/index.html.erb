@@ -34,7 +34,7 @@ See COPYRIGHT and LICENSE files for more details.
 <%=
   render(Primer::OpenProject::PageHeader.new) do |header|
     title =
-      case @search_params[:scope]
+      case search_params[:scope]
       when "all"
         t("global_search.title.all_projects", search_term: @question)
       when "current_project"
@@ -48,17 +48,31 @@ See COPYRIGHT and LICENSE files for more details.
       end
 
     header.with_title { title }
-
     header.with_breadcrumbs(
       [
         ({ href: project_overview_path(@project.id), text: @project.name } if @project),
         title
       ].compact
     )
+
+    header.with_tab_nav(label: nil) do |tab_nav|
+      (search_types + ["all"]).each do |name|
+        tab_nav.with_tab(
+          selected: search_params[:filter] == name,
+          href: search_path(
+            {
+              filter: name,
+              q: @question,
+              scope: search_params[:scope]
+            }.compact
+          )
+        ) do |t|
+          t.with_text { OpenProject::GlobalSearch.tab_name(name) }
+        end
+      end
+    end
   end
 %>
-
-<opce-global-search-tabs></opce-global-search-tabs>
 
 <% if params[:work_packages].present? %>
   <opce-global-search-work-packages></opce-global-search-work-packages>

@@ -34,6 +34,8 @@ class SearchController < ApplicationController
   before_action :load_and_authorize_in_optional_project,
                 :prepare_tokens
 
+  helper_method :search_types, :search_params
+
   LIMIT = 10
 
   def index
@@ -137,28 +139,30 @@ class SearchController < ApplicationController
   end
 
   def search_types
-    types = Redmine::Search.available_search_types.dup
+    @search_types ||= begin
+      types = Redmine::Search.available_search_types.dup
 
-    if projects_to_search.is_a? Project
-      # don't search projects
-      types.delete("projects")
-      # only show what the user is allowed to view
-      types = types.select { |o| User.current.allowed_in_project?(:"view_#{o}", projects_to_search) }
+      if projects_to_search.is_a? Project
+        # don't search projects
+        types.delete("projects")
+        # only show what the user is allowed to view
+        types = types.select { |o| User.current.allowed_in_project?(:"view_#{o}", projects_to_search) }
+      end
+
+      types
     end
-
-    types
   end
 
   def search_classes
     scope = search_types & search_params.keys
 
     scope = if scope.empty?
-              search_types
-            elsif scope & ["work_packages"] == scope
-              []
-            else
-              scope
-            end
+      search_types
+    elsif scope & ["work_packages"] == scope
+      []
+    else
+      scope
+    end
 
     scope.index_with { |s| scope_class(s) }
   end
