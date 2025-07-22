@@ -124,7 +124,7 @@ gem "sys-filesystem", "~> 1.5.0", require: false
 
 gem "bcrypt", "~> 3.1.6"
 
-gem "multi_json", "~> 1.15.0"
+gem "multi_json", "~> 1.17.0"
 gem "oj", "~> 3.16.0"
 
 gem "daemons"
