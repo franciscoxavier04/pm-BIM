@@ -166,5 +166,27 @@ RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_proje
 
       it_behaves_like "invalid formula", "is invalid."
     end
+
+    context "with a formula that contains custom fields that are not visible to the user" do
+      let(:project_with_permission) { create(:project) }
+      let(:project_without_permission) { create(:project) }
+      let(:user) { create(:user, member_with_permissions: { project_with_permission => [:view_project_attributes] }) }
+
+      let!(:int) do
+        create(:project_custom_field, :integer, name: "int", default_value: 4, projects: [project_without_permission])
+      end
+      let!(:float) do
+        create(:project_custom_field, :float, name: "float", default_value: 5.5, projects: [project_without_permission])
+      end
+      let!(:other_calculated_value) do
+        create(:calculated_value_project_custom_field, formula: "2 + 2", projects: [project_with_permission])
+      end
+
+      let(:formula) { "1 + {{cf_#{int.id}}} + {{cf_#{float.id}}} + {{cf_#{other_calculated_value.id}}}" }
+
+      current_user { user }
+
+      it_behaves_like "invalid formula", "contains custom fields that are not allowed: int, float."
+    end
   end
 end
