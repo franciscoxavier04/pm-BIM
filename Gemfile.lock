@@ -538,7 +538,7 @@ GEM
       activemodel
     equivalent-xml (0.6.0)
       nokogiri (>= 1.4.3)
-    erb (5.0.1)
+    erb (5.0.2)
     erb_lint (0.9.0)
       activesupport
       better_html (>= 2.0.1)
@@ -553,7 +553,7 @@ GEM
       tzinfo
     eventmachine (1.2.7)
     eventmachine_httpserver (0.2.1)
-    excon (1.2.7)
+    excon (1.2.8)
       logger
     factory_bot (6.5.4)
       activesupport (>= 6.1.0)
@@ -603,7 +603,7 @@ GEM
     fog-xml (0.1.5)
       fog-core
       nokogiri (>= 1.5.11, < 2.0.0)
-    formatador (1.1.0)
+    formatador (1.1.1)
     friendly_id (5.5.1)
       activerecord (>= 4.0.0)
     front_matter_parser (1.0.1)
@@ -788,7 +788,7 @@ GEM
     mime-types (3.7.0)
       logger
       mime-types-data (~> 3.2025, >= 3.2025.0507)
-    mime-types-data (3.2025.0701)
+    mime-types-data (3.2025.0715)
     mini_magick (5.2.0)
       benchmark
       logger
@@ -815,24 +815,24 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.4)
-    nokogiri (1.18.8)
+    nokogiri (1.18.9)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    nokogiri (1.18.8-aarch64-linux-gnu)
+    nokogiri (1.18.9-aarch64-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.18.8-aarch64-linux-musl)
+    nokogiri (1.18.9-aarch64-linux-musl)
       racc (~> 1.4)
-    nokogiri (1.18.8-arm-linux-gnu)
+    nokogiri (1.18.9-arm-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.18.8-arm-linux-musl)
+    nokogiri (1.18.9-arm-linux-musl)
       racc (~> 1.4)
-    nokogiri (1.18.8-arm64-darwin)
+    nokogiri (1.18.9-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.8-x86_64-darwin)
+    nokogiri (1.18.9-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.8-x86_64-linux-gnu)
+    nokogiri (1.18.9-x86_64-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.18.8-x86_64-linux-musl)
+    nokogiri (1.18.9-x86_64-linux-musl)
       racc (~> 1.4)
     oj (3.16.11)
       bigdecimal (>= 3.0)
@@ -1668,7 +1668,7 @@ CHECKSUMS
   em-synchrony (1.0.6) sha256=6e7470a684d9bbc00d61d552911b65711540bd89e95c157156f5aacdd6f306ca
   email_validator (2.2.4) sha256=5ab238095bec7aef9389f230e9e0c64c5081cdf91f19d6c5cecee0a93af20604
   equivalent-xml (0.6.0) sha256=8919761efa848ad0846369ff8be1f646b17e5061698c4867b09829000cc3f487
-  erb (5.0.1) sha256=760439803b36cc93eca8a266aab614614e588024a89bc30a62e78d98ff452c23
+  erb (5.0.2) sha256=d30f258143d4300fb4ecf430042ac12970c9bb4b33c974a545b8f58c1ec26c0f
   erb_lint (0.9.0) sha256=dfb5e40ad839e8d1f0d56ca85ec9a7ac4c9cd966ec281138282f35b323ca7c31
   erblint-github (1.0.1) sha256=9f28f7dc381a0dc68a0093ef7af3424ed9d2bb2b3e39bdc8e8cba86a0d31f2d0
   erubi (1.13.1) sha256=a082103b0885dbc5ecf1172fede897f9ebdb745a4b97a5e8dc63953db1ee4ad9
@@ -1676,7 +1676,7 @@ CHECKSUMS
   et-orbi (1.2.11) sha256=d26e868cc21db88280a9ec1a50aa3da5d267eb9b2037ba7b831d6c2731f5df64
   eventmachine (1.2.7) sha256=994016e42aa041477ba9cff45cbe50de2047f25dd418eba003e84f0d16560972
   eventmachine_httpserver (0.2.1) sha256=5db5e8a23754204d43592e5fcc2160457c57c870babe6307c4e61fc95019b809
-  excon (1.2.7) sha256=3b3917dbdf0c65b8d872039fe2b37bf423da2f245ef05b0af07423027c4cfde5
+  excon (1.2.8) sha256=150f57a0f3919b8d2b3f74535596f9876389c6dde157e0bfac8f26631eb135d0
   factory_bot (6.5.4) sha256=4707fb7d80a7c14d71feb069460587bfc342e4ff1ef28097e0ad69d5ddfce613
   factory_bot_rails (6.5.0) sha256=4a7b61635424a57cc60412a18b72b9dcfb02fabfce2c930447a01dce8b37c0a2
   faraday (2.13.2) sha256=5c19762e3bbe78e61d8007c5119f2968373c5296d6c6d6aa05b6f9cec34f2a1a
@@ -1700,7 +1700,7 @@ CHECKSUMS
   fog-core (2.6.0) sha256=3fe08aa83a23cddce42f4ba412040c08f890d7ff04c175c0ee59119371245be6
   fog-json (1.2.0) sha256=dd4f5ab362dbc72b687240bba9d2dd841d5dfe888a285797533f85c03ea548fe
   fog-xml (0.1.5) sha256=52b9fea10701461dd3eaf9d9839702169b418dbbf50426786b9b74fade373bd6
-  formatador (1.1.0) sha256=54e23e2af4d60bb9327c7fac62b29968e4cf28cee0111f726d0bdeadc85e06d0
+  formatador (1.1.1) sha256=cd0870fb00738204c98e9239f81fadc6f7966724d8037ba471684ed180fabbeb
   friendly_id (5.5.1) sha256=e018f2b89bfc143276fee6d378a64792385cd4fddd3d4fce501f59ec19c06207
   front_matter_parser (1.0.1) sha256=bae298bda01db95788a4d6452f1670a3d198c6716c8d3727db9a95533deb7b7b
   fugit (1.11.1) sha256=e89485e7be22226d8e9c6da411664d0660284b4b1c08cacb540f505907869868
@@ -1770,7 +1770,7 @@ CHECKSUMS
   meta-tags (2.22.1) sha256=e5ae1febbd320d396c7226d7edb868e5d63466c14b9c8b06622a1a74e6dce354
   method_source (1.1.0) sha256=181301c9c45b731b4769bc81e8860e72f9161ad7d66dd99103c9ab84f560f5c5
   mime-types (3.7.0) sha256=dcebf61c246f08e15a4de34e386ebe8233791e868564a470c3fe77c00eed5e56
-  mime-types-data (3.2025.0701) sha256=1c7df686911260bf9127c7263840b94fd73ed4193f62d625aefc217af101e161
+  mime-types-data (3.2025.0715) sha256=865f9759d5db11f983086a70379f8282e2e64fba7b82058b928c63a7ab79871d
   mini_magick (5.2.0) sha256=2757ffbfdb1d38242d1da9ff1505360ab75d59dc02eb7ab79ff6d5acb1243f4a
   mini_mime (1.1.5) sha256=8681b7e2e4215f2a159f9400b5816d85e9d8c6c6b491e96a12797e798f8bccef
   mini_portile2 (2.8.9) sha256=0cd7c7f824e010c072e33f68bc02d85a00aeb6fce05bb4819c03dfd3c140c289
@@ -1788,15 +1788,15 @@ CHECKSUMS
   net-protocol (0.2.2) sha256=aa73e0cba6a125369de9837b8d8ef82a61849360eba0521900e2c3713aa162a8
   net-smtp (0.5.1) sha256=ed96a0af63c524fceb4b29b0d352195c30d82dd916a42f03c62a3a70e5b70736
   nio4r (2.7.4) sha256=d95dee68e0bb251b8ff90ac3423a511e3b784124e5db7ff5f4813a220ae73ca9
-  nokogiri (1.18.8) sha256=8c7464875d9ca7f71080c24c0db7bcaa3940e8be3c6fc4bcebccf8b9a0016365
-  nokogiri (1.18.8-aarch64-linux-gnu) sha256=36badd2eb281fca6214a5188e24a34399b15d89730639a068d12931e2adc210e
-  nokogiri (1.18.8-aarch64-linux-musl) sha256=664e0f9a77a7122a66d6c03abba7641ca610769a4728db55ee1706a0838b78a2
-  nokogiri (1.18.8-arm-linux-gnu) sha256=17de01ca3adf9f8e187883ed73c672344d3dbb3c260f88ffa1008e8dc255a28e
-  nokogiri (1.18.8-arm-linux-musl) sha256=6e6d7e71fc39572bd613a82d528cf54392c3de1ba5ce974f05c832b8187a040b
-  nokogiri (1.18.8-arm64-darwin) sha256=483b5b9fb33653f6f05cbe00d09ea315f268f0e707cfc809aa39b62993008212
-  nokogiri (1.18.8-x86_64-darwin) sha256=024cdfe7d9ae3466bba6c06f348fb2a8395d9426b66a3c82f1961b907945cc0c
-  nokogiri (1.18.8-x86_64-linux-gnu) sha256=4a747875db873d18a2985ee2c320a6070c4a414ad629da625fbc58d1a20e5ecc
-  nokogiri (1.18.8-x86_64-linux-musl) sha256=ddd735fba49475a395b9ea793bb6474e3a3125b89960339604d08a5397de1165
+  nokogiri (1.18.9) sha256=ac5a7d93fd0e3cef388800b037407890882413feccca79eb0272a2715a82fa33
+  nokogiri (1.18.9-aarch64-linux-gnu) sha256=5bcfdf7aa8d1056a7ad5e52e1adffc64ef53d12d0724fbc6f458a3af1a4b9e32
+  nokogiri (1.18.9-aarch64-linux-musl) sha256=55e9e6ca46c4ad1715e313f407d8481d15be1e3b65d9f8e52ba1c124d01676a7
+  nokogiri (1.18.9-arm-linux-gnu) sha256=fe611ae65880e445a9c0f650d52327db239f3488626df4173c05beafd161d46e
+  nokogiri (1.18.9-arm-linux-musl) sha256=935605e14c0ba17da18d203922440bf6c0676c602659278d855d4622d756a324
+  nokogiri (1.18.9-arm64-darwin) sha256=eea3f1f06463ff6309d3ff5b88033c4948d0da1ab3cc0a3a24f63c4d4a763979
+  nokogiri (1.18.9-x86_64-darwin) sha256=e0d2deb03d3d7af8016e8c9df5ff4a7d692159cefb135cbb6a4109f265652348
+  nokogiri (1.18.9-x86_64-linux-gnu) sha256=b52f5defedc53d14f71eeaaf990da66b077e1918a2e13088b6a96d0230f44360
+  nokogiri (1.18.9-x86_64-linux-musl) sha256=e69359d6240c17e64cc9f43970d54f13bfc7b8cc516b819228f687e953425e69
   oj (3.16.11) sha256=2aab609d2bc896529bd3c70d737f591c13932a640ba6164a0f7e414efdb052b1
   okcomputer (1.19.0) sha256=8548935a82f725bdd8f2c329925a9f1a1bb2ce19ce26b47d7515665ee363b458
   omniauth (1.9.2)
