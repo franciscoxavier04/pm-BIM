@@ -28,42 +28,33 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
+module WorkPackage::PDFExport::Common::MarkdownField
+  include Exports::PDF::Common::Markdown
+  include Exports::PDF::Common::Macro
 
-RSpec.describe Exports::PDF::Common::Badge do
-  let(:badge) { Class.new { extend Exports::PDF::Common::Badge } }
+  def write_markdown_field!(work_package, markdown, label)
+    return if markdown.blank?
 
-  describe "#readable_color" do
-    describe "returns white for dark colors" do
-      it "black" do
-        expect(badge.readable_color("000000")).to eq("FFFFFF")
-      end
+    write_optional_page_break
+    write_markdown_field_label(label)
+    write_markdown_field_value(work_package, markdown)
+  end
 
-      it "dark blue" do
-        expect(badge.readable_color("1864AB")).to eq("FFFFFF")
-      end
+  private
 
-      it "purple" do
-        expect(badge.readable_color("894CEB")).to eq("FFFFFF")
-      end
+  def write_markdown_field_label(label)
+    with_margin(styles.markdown_field_label_margins) do
+      pdf.formatted_text([styles.markdown_field_label.merge({ text: label })])
     end
+  end
 
-    describe "returns black for light colors" do
-      it "blue-6" do
-        expect(badge.readable_color("228BE6")).to eq("000000")
-      end
-
-      it "orange-2" do
-        expect(badge.readable_color("FFD8A8")).to eq("000000")
-      end
-
-      it "cyan-0" do
-        expect(badge.readable_color("E3FAFC")).to eq("000000")
-      end
-
-      it "white" do
-        expect(badge.readable_color("FFFFFF")).to eq("000000")
-      end
+  def write_markdown_field_value(work_package, markdown)
+    with_margin(styles.markdown_field_margins) do
+      write_markdown!(
+        apply_markdown_field_macros(markdown,
+                                    { work_package:, project: work_package.project, user: User.current }),
+        styles.markdown_field_styling_yml
+      )
     end
   end
 end

@@ -28,42 +28,20 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
+module WorkPackage::PDFExport::Common::MarkdownFieldStyles
+  def markdown_field_label
+    resolve_font(@styles.dig(:work_package, :markdown_label))
+  end
 
-RSpec.describe Exports::PDF::Common::Badge do
-  let(:badge) { Class.new { extend Exports::PDF::Common::Badge } }
+  def markdown_field_label_margins
+    resolve_margin(@styles.dig(:work_package, :markdown_label))
+  end
 
-  describe "#readable_color" do
-    describe "returns white for dark colors" do
-      it "black" do
-        expect(badge.readable_color("000000")).to eq("FFFFFF")
-      end
+  def markdown_field_margins
+    resolve_margin(@styles.dig(:work_package, :markdown_margin))
+  end
 
-      it "dark blue" do
-        expect(badge.readable_color("1864AB")).to eq("FFFFFF")
-      end
-
-      it "purple" do
-        expect(badge.readable_color("894CEB")).to eq("FFFFFF")
-      end
-    end
-
-    describe "returns black for light colors" do
-      it "blue-6" do
-        expect(badge.readable_color("228BE6")).to eq("000000")
-      end
-
-      it "orange-2" do
-        expect(badge.readable_color("FFD8A8")).to eq("000000")
-      end
-
-      it "cyan-0" do
-        expect(badge.readable_color("E3FAFC")).to eq("000000")
-      end
-
-      it "white" do
-        expect(badge.readable_color("FFFFFF")).to eq("000000")
-      end
-    end
+  def markdown_field_styling_yml
+    resolve_markdown_styling(@styles.dig(:work_package, :markdown) || {})
   end
 end

@@ -1,7 +1,7 @@
 
-# Attributes and description PDF
+# Meetings PDF
 
-This document describes the style settings format for the [PDF Export styling file](https://github.com/opf/openproject/blob/dev/app/models/work_package/pdf_export/wp/standard.yml).
+This document describes the style settings format for the [PDF Export styling file](https://github.com/opf/openproject/blob/dev/modules/meeting/app/workers/meetings/pdf/standard.yml).
 
 | Key | Description | Data type |
 | - | - | - |
@@ -10,10 +10,144 @@ This document describes the style settings format for the [PDF Export styling fi
 | `page_header` | **Page headers**<br/>See [Page headers](#page-headers) | object |
 | `page_footer` | **Page footers**<br/>See [Page footers](#page-footers) | object |
 | `page_heading` | **Page heading**<br/>The main page title heading<br/>See [Page heading](#page-heading) | object |
-| `work_package` | **Work package**<br/>Styling for the Work package section<br/>See [Work package](#work-package) | object |
-| `wp_table` | **Work package table**<br/>Styling for the related tables (Form configuration)<br/>See [Work package table](#work-package-table) | object |
-| `inline_error` | **Font properties**<br/>Styling for inline error messages<br/>See [Font properties](#font-properties) | object |
-| `inline_hint` | **Font properties**<br/>Styling for inline hint messages<br/>See [Font properties](#font-properties) | object |
+| `page_subtitle` | **Page heading**<br/>The main page title heading<br/>See [Page heading](#page-heading) | object |
+| `cover` | **Cover page**<br/>Styling for the cover page of the PDF report export<br/>See [Cover page](#cover-page) | object |
+| `notes` | **Agenda item notes**<br/>Styling for Meeting agenda item notes<br/>See [Agenda item notes](#agenda-item-notes) | object |
+| `outcome` | **Agenda item outcome**<br/>Styling for Meeting agenda item outcome<br/>See [Agenda item outcome](#agenda-item-outcome) | object |
+| `heading` | **Heading**<br/>Styling for the heading of the PDF meeting export<br/>See [Heading](#heading) | object |
+| `agenda_item` | **Agenda item**<br/>Styling for a agenda item of the PDF meeting export<br/>See [Agenda item](#agenda-item) | object |
+| `agenda_section` | **Agenda section**<br/>Styling for a agenda section of the PDF meeting export<br/>See [Agenda section](#agenda-section) | object |
+| `participants` | **Participants**<br/>Styling for the participants table<br/>See [Participants](#participants) | object |
+| `attachments` | **Attachments**<br/>Styling for the attachments table<br/>See [Attachments](#attachments) | object |
+
+## Agenda item
+
+Styling for a agenda item of the PDF meeting export
+
+Key: `agenda_item`
+
+Example:
+```yml
+agenda_item: {}
+```
+
+| Key | Description | Data type |
+| - | - | - |
+| `title_cell` | **Agenda item title table cell**<br/>Styling for a table cell with the agenda item title<br/>See [Table cell](#table-cell) | object |
+| `title` | **Font properties**<br/>Properties to set the font style<br/>See [Font properties](#font-properties) | object |
+| `subtitle` | **Font properties**<br/>Properties to set the font style<br/>See [Font properties](#font-properties) | object |
+| `title_margin` | **Margin properties**<br/>Properties to set margins<br/>See [Margin properties](#margin-properties) | object |
+| `indent` | **Indent width**<br/>Indent for agenda item notes<br/>Examples: `10mm`, `10` | number or string<br/>See [Units](#units) |
+| `hr` | **Horizontal rule between agenda items**<br/>See [Horizontal rule between agenda items](#horizontal-rule-between-agenda-items) | object |
+
+## Agenda item notes
+
+Styling for Meeting agenda item notes
+
+Key: `notes`
+
+Example:
+```yml
+notes:
+  markdown_margin: {}
+  markdown: {}
+```
+
+| Key | Description | Data type |
+| - | - | - |
+| `markdown_margin` | **Agenda item notes markdown margins**<br/>Margins for agenda item notes<br/>See [Agenda item notes markdown margins](#agenda-item-notes-markdown-margins) | object |
+| `markdown` | **Markdown Styling**<br/>Styling for markdown content of agenda item notes<br/>See [Markdown Styling](#markdown-styling) | object |
+| … | See [Margin properties](#margin-properties) |  |
+
+## Agenda item notes markdown margins
+
+Margins for agenda item notes
+
+Key: `markdown_margin`
+
+Example:
+```yml
+markdown_margin:
+  margin_bottom: 16
+```
+
+| Key | Description | Data type |
+| - | - | - |
+| … | See [Margin properties](#margin-properties) |  |
+
+## Agenda item outcome
+
+Styling for Meeting agenda item outcome
+
+Key: `outcome`
+
+Example:
+```yml
+outcome:
+  indent: 15
+  markdown_margin: {}
+  markdown: {}
+```
+
+| Key | Description | Data type |
+| - | - | - |
+| `title` | **Agenda item outcome title**<br/>See [Agenda item outcome title](#agenda-item-outcome-title) | object |
+| `symbol` | **Agenda item outcome symbol**<br/>See [Agenda item outcome symbol](#agenda-item-outcome-symbol) | object |
+| `indent` | **Indent width**<br/>Indent for agenda item notes<br/>Examples: `10mm`, `10` | number or string<br/>See [Units](#units) |
+| `markdown_margin` | **Agenda item outcome markdown margins**<br/>Margins for agenda item outcome<br/>See [Agenda item outcome markdown margins](#agenda-item-outcome-markdown-margins) | object |
+| `markdown` | **Markdown Styling**<br/>Styling for markdown content of agenda item notes<br/>See [Markdown Styling](#markdown-styling) | object |
+| … | See [Margin properties](#margin-properties) |  |
+
+## Agenda item outcome markdown margins
+
+Margins for agenda item outcome
+
+Key: `markdown_margin`
+
+Example:
+```yml
+markdown_margin:
+  margin_bottom: 16
+```
+
+| Key | Description | Data type |
+| - | - | - |
+| … | See [Margin properties](#margin-properties) |  |
+
+## Agenda item outcome symbol
+
+Key: `symbol`
+
+| Key | Description | Data type |
+| - | - | - |
+| … | See [Font properties](#font-properties) |  |
+
+## Agenda item outcome title
+
+Key: `title`
+
+| Key | Description | Data type |
+| - | - | - |
+| … | See [Font properties](#font-properties) |  |
+| … | See [Margin properties](#margin-properties) |  |
+
+## Agenda section
+
+Styling for a agenda section of the PDF meeting export
+
+Key: `agenda_section`
+
+Example:
+```yml
+agenda_section: {}
+```
+
+| Key | Description | Data type |
+| - | - | - |
+| `title_cell` | **Agenda section title table cell**<br/>Styling for a table cell with the agenda section title<br/>See [Table cell](#table-cell) | object |
+| `title` | **Font properties**<br/>Properties to set the font style<br/>See [Font properties](#font-properties) | object |
+| `subtitle` | **Font properties**<br/>Properties to set the font style<br/>See [Font properties](#font-properties) | object |
+| `title_margins` | **Margin properties**<br/>Properties to set margins<br/>See [Margin properties](#margin-properties) | object |
 
 ## Alert
 
@@ -53,6 +187,26 @@ Key: `alerts`
 | `WARNING` | **Alert**<br/>Styling to denote a quote as alert box<br/>See [Alert](#alert) | object |
 | `IMPORTANT` | **Alert**<br/>Styling to denote a quote as alert box<br/>See [Alert](#alert) | object |
 | `CAUTION` | **Alert**<br/>Styling to denote a quote as alert box<br/>See [Alert](#alert) | object |
+
+## Attachments
+
+Styling for the attachments table
+
+Key: `attachments`
+
+Example:
+```yml
+margin_bottom: 12
+cell:
+  size: 10
+  padding_left: 0
+  no_border: true
+```
+
+| Key | Description | Data type |
+| - | - | - |
+| `cell` | **Attachments table cell**<br/>Styling for a table cell with a attachment name<br/>See [Table cell](#table-cell) | object |
+| … | See [Margin properties](#margin-properties) |  |
 
 ## Border Properties
 
@@ -107,11 +261,118 @@ valign: middle
 | `align` | **Horizontal alignment**<br/>Set the horizontal alignment of the content in a cell<br/>Example: `center`<br/>Valid values:<br/>`left`, `center`, `right` | string |
 | `valign` | **Vertical alignment**<br/>Border width only on the left side<br/>Example: `middle`<br/>Valid values:<br/>`top`, `center`, `middle`, `bottom` | string |
 
+## Cover page
+
+Styling for the cover page of the PDF report export
+
+Key: `cover`
+
+Example:
+```yml
+cover:
+  header: {}
+  footer: {}
+  hero: {}
+```
+
+| Key | Description | Data type |
+| - | - | - |
+| `header` | **Cover page header**<br/>Styling for the cover page header<br/>See [Cover page header](#cover-page-header) | object |
+| `footer` | **Cover page footer**<br/>Styling for the cover page footer<br/>See [Cover page footer](#cover-page-footer) | object |
+| `hero` | **Cover page hero**<br/>Styling for the hero banner at the bottom at the cover page<br/>See [Cover page hero](#cover-page-hero) | object |
+
+## Cover page footer
+
+Styling for the cover page footer of the PDF report export
+
+Key: `cover_footer`
+
+Example:
+```yml
+footer:
+  offset: 20
+  size: 10
+  color: 064e80
+```
+
+| Key | Description | Data type |
+| - | - | - |
+| `offset` | **Offset position from page bottom**<br/>A number >= 0 and an optional unit<br/>Example: `30` | number or string<br/>See [Units](#units) |
+| … | See [Font properties](#font-properties) |  |
+
+## Cover page header
+
+Styling for the cover page header of the PDF report export
+
+Key: `cover_header`
+
+Example:
+```yml
+header:
+  logo_height: 25
+  border: {}
+```
+
+| Key | Description | Data type |
+| - | - | - |
+| `spacing` | **Minimum spacing between logo and page header text**<br/>A number >= 0 and an optional unit<br/>Example: `20` | number or string<br/>See [Units](#units) |
+| `offset` | **Offset position from page top**<br/>A number >= 0 and an optional unit<br/>Example: `6.5` | number or string<br/>See [Units](#units) |
+| `logo_height` | **Height of the logo in the page header**<br/>A number >= 0 and an optional unit<br/>Example: `25` | number or string<br/>See [Units](#units) |
+| `border` | **Cover page header**<br/>Styling for the cover page header<br/>See [Cover page header border](#cover-page-header-border) | object |
+| … | See [Font properties](#font-properties) |  |
+
+## Cover page header border
+
+Styling for the cover page header border of the PDF report export
+
+Key: `cover_header_border`
+
+Example:
+```yml
+border:
+  color: d3dee3
+  height: 1
+  offset: 6
+```
+
+| Key | Description | Data type |
+| - | - | - |
+| `spacing` | **Minimum spacing between logo and page header text**<br/>A number >= 0 and an optional unit<br/>Example: `20` | number or string<br/>See [Units](#units) |
+| `offset` | **Offset position from page top**<br/>A number >= 0 and an optional unit<br/>Example: `6` | number or string<br/>See [Units](#units) |
+| `height` | **Line height of the border**<br/>A number >= 0 and an optional unit<br/>Example: `25` | number or string<br/>See [Units](#units) |
+| `color` | **Line color of the border**<br/>A color in RRGGBB format<br/>Example: `F0F0F0` | string |
+| … | See [Font properties](#font-properties) |  |
+
+## Cover page hero
+
+Styling for the hero banner at the bottom at the cover page
+
+Key: `cover_hero`
+
+Example:
+```yml
+header:
+  padding_right: 150
+  padding_top: 120
+  title: {}
+  heading: {}
+  subheading: {}
+```
+
+| Key | Description | Data type |
+| - | - | - |
+| `padding_right` | **Padding right**<br/>Padding only on the right side of the hero banner<br/>Examples: `10mm`, `10` | number or string<br/>See [Units](#units) |
+| `padding_top` | **Padding top**<br/>Padding only on the top side of the hero banner<br/>Examples: `10mm`, `10` | number or string<br/>See [Units](#units) |
+| `title` | **The first block in the hero**<br/>See [The first block in the hero](#the-first-block-in-the-hero) | object |
+| `heading` | **The main block in the hero**<br/>See [The main block in the hero](#the-main-block-in-the-hero) | object |
+| `dates` | **The dates block in the hero**<br/>See [The dates block in the hero](#the-dates-block-in-the-hero) | object |
+| `subheading` | **The last block in the hero**<br/>See [The last block in the hero](#the-last-block-in-the-hero) | object |
+
 ## Font properties
 
-Styling for inline error messages
+Properties to set the font style
 
-Key: `inline_error`
+Key: `font`
 
 Example:
 ```yml
@@ -157,14 +418,52 @@ table:
 | … | See [Margin properties](#margin-properties) |  |
 | … | See [Border Properties](#border-properties) |  |
 
-## Horizontal rule for attributes group rule
+## Heading
+
+Styling for the heading of the PDF meeting export
+
+Key: `heading`
+
+Example:
+```yml
+heading:
+  size: 12
+  styles:
+    - bold
+  margin_bottom: 10
+```
+
+| Key | Description | Data type |
+| - | - | - |
+| `hr` | **Horizontal rule before headings**<br/>See [Horizontal rule before headings](#horizontal-rule-before-headings) | object |
+| … | See [Font properties](#font-properties) |  |
+| … | See [Margin properties](#margin-properties) |  |
+
+## Horizontal rule before headings
 
 Key: `hr`
 
 Example:
 ```yml
 border:
-  color: d3dee3
+  color: 6E7781
+  height: 1.5
+```
+
+| Key | Description | Data type |
+| - | - | - |
+| `height` | **Line height of the horizontal rule**<br/>A number >= 0 and an optional unit<br/>Example: `1` | number or string<br/>See [Units](#units) |
+| `color` | **Line color of the horizontal rule**<br/>A color in RRGGBB format<br/>Example: `F0F0F0` | string |
+| … | See [Margin properties](#margin-properties) |  |
+
+## Horizontal rule between agenda items
+
+Key: `hr`
+
+Example:
+```yml
+border:
+  color: D0D7DE
   height: 1
 ```
 
@@ -172,6 +471,7 @@ border:
 | - | - | - |
 | `height` | **Line height of the horizontal rule**<br/>A number >= 0 and an optional unit<br/>Example: `1` | number or string<br/>See [Units](#units) |
 | `color` | **Line color of the horizontal rule**<br/>A color in RRGGBB format<br/>Example: `F0F0F0` | string |
+| … | See [Margin properties](#margin-properties) |  |
 
 ## Image caption
 
@@ -223,7 +523,7 @@ link:
 
 ## Markdown Styling
 
-Styling for content of work package description and long text custom fields
+Styling for markdown content of agenda item notes
 
 Key: `markdown`
 
@@ -577,57 +877,6 @@ unordered_list_point:
 | `spacing` | **Spacing**<br/>Space between point and list item content<br/>Examples: `10mm`, `10` | number or string<br/>See [Units](#units) |
 | … | See [Font properties](#font-properties) |  |
 
-## Overview group heading
-
-Styling for the group label if grouping is activated
-
-Key: `group_heading`
-
-Example:
-```yml
-group_heading:
-  size: 11
-  styles:
-    - bold
-  margin_bottom: 10
-```
-
-| Key | Description | Data type |
-| - | - | - |
-| … | See [Font properties](#font-properties) |  |
-| … | See [Margin properties](#margin-properties) |  |
-
-## Overview table
-
-Key: `table`
-
-Example:
-```yml
-table:
-  subject_indent: 0
-  margin_bottom: 20
-  cell:
-    size: 9
-    color: '000000'
-    padding: 5
-  cell_header:
-    size: 9
-    styles:
-    - bold
-  cell_sums:
-    size: 8
-    styles:
-    - bold
-```
-
-| Key | Description | Data type |
-| - | - | - |
-| `subject_indent` | **Indent subject**<br/>Indent by work package level in the subject cell<br/>Examples: `10mm`, `10` | number or string<br/>See [Units](#units) |
-| `cell` | **Table cell**<br/>Styling for a table value cell<br/>See [Table cell](#table-cell) | object |
-| `cell_header` | **Table header cell**<br/>Styling for a table header cell<br/>See [Table cell](#table-cell) | object |
-| `cell_sums` | **Table sum cell**<br/>Styling for a table sum cell<br/>See [Table cell](#table-cell) | object |
-| … | See [Margin properties](#margin-properties) |  |
-
 ## Padding Properties
 
 Properties to set paddings
@@ -749,6 +998,27 @@ page:
 | … | Default font settings<br/>See [Font properties](#font-properties) |  |
 | … | Page margins<br/>See [Margin properties](#margin-properties) |  |
 
+## Participants
+
+Styling for the participants table
+
+Key: `participants`
+
+Example:
+```yml
+margin_bottom: 12
+cell:
+  size: 10
+  padding_left: 0
+  no_border: true
+```
+
+| Key | Description | Data type |
+| - | - | - |
+| `status` | **Status**<br/>Styling for the status text in the participants table<br/>See [Font properties](#font-properties) | object |
+| `cell` | **Participant table cell**<br/>Styling for a table cell with a participant name<br/>See [Table cell](#table-cell) | object |
+| … | See [Margin properties](#margin-properties) |  |
+
 ## Table cell
 
 Styling for a table cell
@@ -766,6 +1036,7 @@ table_cell:
 
 | Key | Description | Data type |
 | - | - | - |
+| `background_color` | **Color**<br/>A color in RRGGBB format<br/>Example: `F0F0F0` | string |
 | … | See [Font properties](#font-properties) |  |
 | … | See [Padding Properties](#padding-properties) |  |
 | … | See [Border Properties](#border-properties) |  |
@@ -794,188 +1065,84 @@ table_header:
 | … | See [Border Properties](#border-properties) |  |
 | … | See [Cell alignment properties](#cell-alignment-properties) |  |
 
-## Work package
+## The dates block in the hero
 
-Styling for the Work package section
-
-Key: `work_package`
+Key: `dates`
 
 Example:
 ```yml
-work_package:
-  margin_bottom: 20
-  subject: {}
-  subject_level_1: {}
-  subject_level_2: {}
-  subject_level_3: {}
-  attributes_table: {}
-  markdown_label: {}
-  markdown_margin: {}
-  markdown: {}
-```
-
-| Key | Description | Data type |
-| - | - | - |
-| `subject` | **Work package subject**<br/>Styling for the Work package subject headline<br/>See [Work package subject](#work-package-subject) | object |
-| `attributes_table` | **Work package attributes**<br/>Styling for the Work package attributes table<br/>See [Work package attributes](#work-package-attributes) | object |
-| `attributes_group` | **Work package attributes group label**<br/>Label headline for a work package attributes group<br/>See [Work package attributes group label](#work-package-attributes-group-label) | object |
-| `markdown_label` | **Work package markdown label**<br/>Label headline for work package description and long text custom fields<br/>See [Work package markdown label](#work-package-markdown-label) | object |
-| `markdown_margin` | **Work package markdown margins**<br/>Margins for work package description and long text custom fields<br/>See [Work package markdown margins](#work-package-markdown-margins) | object |
-| `markdown` | **Markdown Styling**<br/>Styling for content of work package description and long text custom fields<br/>See [Markdown Styling](#markdown-styling) | object |
-| … | See [Margin properties](#margin-properties) |  |
-| `subject_level_1`<br/>`subject_level_2`<br/>`subject_level_x` | See [Work package subject level](#work-package-subject-level) | object |
-
-## Work package attributes
-
-Styling for the Work package attributes table
-
-Key: `attributes_table`
-
-Example:
-```yml
-attributes_table:
-  margin_bottom: 10
-  cell:
-    size: 9
-    color: '000000'
-    padding_left: 5
-    padding_right: 5
-    padding_top: 0
-    padding_bottom: 5
-    border_color: 4B4B4B
-    border_width: 0.25
-  cell_label:
-    styles:
-    - bold
-```
-
-| Key | Description | Data type |
-| - | - | - |
-| `cell` | **Attribute value table cell**<br/>Styling for a table cell with attribute value<br/>See [Table cell](#table-cell) | object |
-| `cell_label` | **Attribute label table cell**<br/>Styling for a table cell with attribute label<br/>See [Table cell](#table-cell) | object |
-| … | See [Margin properties](#margin-properties) |  |
-
-## Work package attributes group label
-
-Label headline for a work package attributes group
-
-Key: `attributes_group`
-
-Example:
-```yml
-attributes_group:
-  size: 12
+heading:
+  spacing: 10
+  max_height: 20
+  size: 32
+  color: 414d5f
   styles:
     - bold
-  margin_top: 2
-  margin_bottom: 4
 ```
 
 | Key | Description | Data type |
 | - | - | - |
-| `hr` | **Horizontal rule for attributes group rule**<br/>See [Horizontal rule for attributes group rule](#horizontal-rule-for-attributes-group-rule) | object |
+| `max_height` | **Maximum height of the block**<br/>A number >= 0 and an optional unit<br/>Example: `30` | number or string<br/>See [Units](#units) |
+| `spacing` | **Minimum spacing between dates and subheading**<br/>A number >= 0 and an optional unit<br/>Example: `10` | number or string<br/>See [Units](#units) |
 | … | See [Font properties](#font-properties) |  |
-| … | See [Margin properties](#margin-properties) |  |
 
-## Work package markdown label
+## The first block in the hero
 
-Label headline for work package description and long text custom fields
-
-Key: `markdown_label`
+Key: `title`
 
 Example:
 ```yml
-markdown_label:
-  size: 12
-  styles:
-    - bold
-  margin_top: 2
-  margin_bottom: 4
-```
-
-| Key | Description | Data type |
-| - | - | - |
-| … | See [Font properties](#font-properties) |  |
-| … | See [Margin properties](#margin-properties) |  |
-
-## Work package markdown margins
-
-Margins for work package description and long text custom fields
-
-Key: `markdown_margin`
-
-Example:
-```yml
-markdown_margin:
-  margin_bottom: 16
-```
-
-| Key | Description | Data type |
-| - | - | - |
-| … | See [Margin properties](#margin-properties) |  |
-
-## Work package subject
-
-Styling for the Work package subject headline
-
-Key: `subject`
-
-Example:
-```yml
-subject:
+title:
+  max_height: 30
+  spacing: 10
+  font: SpaceMono
   size: 10
-  styles:
-    - bold
-  margin_bottom: 10
+  color: 414d5f
 ```
 
 | Key | Description | Data type |
 | - | - | - |
+| `spacing` | **Minimum spacing between title and heading**<br/>A number >= 0 and an optional unit<br/>Example: `10` | number or string<br/>See [Units](#units) |
+| `max_height` | **Maximum height of the block**<br/>A number >= 0 and an optional unit<br/>Example: `30` | number or string<br/>See [Units](#units) |
 | … | See [Font properties](#font-properties) |  |
-| … | See [Margin properties](#margin-properties) |  |
 
-## Work package subject level
+## The last block in the hero
 
-Key: `subject_level_x`
+Key: `subheading`
 
 Example:
 ```yml
-subject_level_1:
-  size: 14
+subheading:
+  max_height: 30
+  size: 10
+  color: 414d5f
   styles:
-    - bold
-subject_level_2:
-  size: 13
-  styles:
-    - bold
-subject_level_3:
-  size: 12
-  styles:
-    - bold
+    - italic
 ```
 
 | Key | Description | Data type |
 | - | - | - |
+| `max_height` | **Maximum height of the block**<br/>A number >= 0 and an optional unit<br/>Example: `30` | number or string<br/>See [Units](#units) |
 | … | See [Font properties](#font-properties) |  |
-| … | See [Margin properties](#margin-properties) |  |
 
-## Work package table
+## The main block in the hero
 
-Styling for the related tables (Form configuration)
-
-Key: `wp_table`
+Key: `heading`
 
 Example:
 ```yml
-overview:
-  group_heading: {}
-  table: {}
+heading:
+  spacing: 10
+  size: 32
+  color: 414d5f
+  styles:
+    - bold
 ```
 
 | Key | Description | Data type |
 | - | - | - |
-| `group_heading` | **Overview group heading**<br/>Styling for the group label if grouping is activated<br/>See [Overview group heading](#overview-group-heading) | object |
-| `table` | **Overview table**<br/>See [Overview table](#overview-table) | object |
+| `spacing` | **Minimum spacing between heading and subheading**<br/>A number >= 0 and an optional unit<br/>Example: `10` | number or string<br/>See [Units](#units) |
+| … | See [Font properties](#font-properties) |  |
 
 ## Units
 

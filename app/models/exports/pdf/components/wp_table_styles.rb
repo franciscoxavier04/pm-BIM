@@ -28,42 +28,40 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
+module Exports::PDF::Components::WpTableStyles
+  def wp_table_group_header
+    resolve_font(@styles.dig(:wp_table, :group_heading))
+  end
 
-RSpec.describe Exports::PDF::Common::Badge do
-  let(:badge) { Class.new { extend Exports::PDF::Common::Badge } }
+  def wp_tables_margins
+    resolve_margin(@styles.dig(:wp_table, :margins))
+  end
 
-  describe "#readable_color" do
-    describe "returns white for dark colors" do
-      it "black" do
-        expect(badge.readable_color("000000")).to eq("FFFFFF")
-      end
+  def wp_table_group_header_margins
+    resolve_margin(@styles.dig(:wp_table, :group_heading))
+  end
 
-      it "dark blue" do
-        expect(badge.readable_color("1864AB")).to eq("FFFFFF")
-      end
+  def wp_table_margins
+    resolve_margin(@styles.dig(:wp_table, :table))
+  end
 
-      it "purple" do
-        expect(badge.readable_color("894CEB")).to eq("FFFFFF")
-      end
-    end
+  def wp_table_cell
+    resolve_table_cell(@styles.dig(:wp_table, :table, :cell))
+  end
 
-    describe "returns black for light colors" do
-      it "blue-6" do
-        expect(badge.readable_color("228BE6")).to eq("000000")
-      end
+  def wp_table_header_cell
+    wp_table_cell.merge(
+      resolve_table_cell(@styles.dig(:wp_table, :table, :cell_header))
+    )
+  end
 
-      it "orange-2" do
-        expect(badge.readable_color("FFD8A8")).to eq("000000")
-      end
+  def wp_table_sums_cell
+    wp_table_cell.merge(
+      resolve_table_cell(@styles.dig(:wp_table, :table, :cell_sums))
+    )
+  end
 
-      it "cyan-0" do
-        expect(badge.readable_color("E3FAFC")).to eq("000000")
-      end
-
-      it "white" do
-        expect(badge.readable_color("FFFFFF")).to eq("000000")
-      end
-    end
+  def wp_table_subject_indent
+    resolve_pt(@styles.dig(:wp_table, :table, :subject_indent), 0)
   end
 end

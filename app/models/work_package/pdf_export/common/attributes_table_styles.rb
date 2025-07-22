@@ -28,42 +28,41 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
+module WorkPackage::PDFExport::Common::AttributesTableStyles
+  def wp_attributes_group_label_margins
+    resolve_margin(@styles.dig(:work_package, :attributes_group))
+  end
 
-RSpec.describe Exports::PDF::Common::Badge do
-  let(:badge) { Class.new { extend Exports::PDF::Common::Badge } }
+  def wp_attributes_group_label
+    resolve_font(@styles.dig(:work_package, :attributes_group))
+  end
 
-  describe "#readable_color" do
-    describe "returns white for dark colors" do
-      it "black" do
-        expect(badge.readable_color("000000")).to eq("FFFFFF")
-      end
+  def wp_attributes_group_label_hr
+    {
+      color: @styles.dig(:work_package, :attributes_group, :hr, :color),
+      height: resolve_pt(@styles.dig(:work_package, :attributes_group, :hr, :height), 1)
+    }
+  end
 
-      it "dark blue" do
-        expect(badge.readable_color("1864AB")).to eq("FFFFFF")
-      end
+  def markdown_field_label_margins
+    resolve_margin(@styles.dig(:work_package, :attributes_group))
+  end
 
-      it "purple" do
-        expect(badge.readable_color("894CEB")).to eq("FFFFFF")
-      end
-    end
+  def wp_attributes_table_margins
+    resolve_margin(@styles.dig(:work_package, :attributes_table))
+  end
 
-    describe "returns black for light colors" do
-      it "blue-6" do
-        expect(badge.readable_color("228BE6")).to eq("000000")
-      end
+  def wp_attributes_table_cell
+    resolve_table_cell(@styles.dig(:work_package, :attributes_table, :cell))
+  end
 
-      it "orange-2" do
-        expect(badge.readable_color("FFD8A8")).to eq("000000")
-      end
+  def wp_attributes_table_label
+    resolve_font(@styles.dig(:work_package, :attributes_table, :cell_label))
+  end
 
-      it "cyan-0" do
-        expect(badge.readable_color("E3FAFC")).to eq("000000")
-      end
-
-      it "white" do
-        expect(badge.readable_color("FFFFFF")).to eq("000000")
-      end
-    end
+  def wp_attributes_table_label_cell
+    wp_attributes_table_cell.merge(
+      resolve_table_cell(@styles.dig(:work_package, :attributes_table, :cell_label))
+    )
   end
 end

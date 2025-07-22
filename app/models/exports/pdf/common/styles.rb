@@ -28,42 +28,48 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
+module Exports::PDF::Common::Styles
+  include MarkdownToPDF::StyleValidation
 
-RSpec.describe Exports::PDF::Common::Badge do
-  let(:badge) { Class.new { extend Exports::PDF::Common::Badge } }
+  def initialize(styles_asset_path, style_yml_file = "standard.yml", schema_json_file = "schema.json")
+    yml = YAML::load_file(File.join(styles_asset_path, style_yml_file))
+    schema = JSON::load_file(File.join(styles_asset_path, schema_json_file))
+    validate_schema!(yml, schema)
+    @styles = yml.deep_symbolize_keys
+  end
 
-  describe "#readable_color" do
-    describe "returns white for dark colors" do
-      it "black" do
-        expect(badge.readable_color("000000")).to eq("FFFFFF")
-      end
+  protected
 
-      it "dark blue" do
-        expect(badge.readable_color("1864AB")).to eq("FFFFFF")
-      end
+  def resolve_pt(value, default)
+    parse_pt(value) || default
+  end
 
-      it "purple" do
-        expect(badge.readable_color("894CEB")).to eq("FFFFFF")
-      end
-    end
+  def resolve_table_cell(style)
+    # prawn.table.make_cell does use differently named options
+    # so to have them specified consistently, we map here
+    opts = opts_table_cell(style || {})
+    font_styles = opts.delete(:styles) || []
+    opts[:font_style] = font_styles[0] unless font_styles.empty?
+    color = opts.delete(:color)
+    opts[:text_color] = color unless color.nil?
+    opts
+  end
 
-    describe "returns black for light colors" do
-      it "blue-6" do
-        expect(badge.readable_color("228BE6")).to eq("000000")
-      end
+  def resolve_markdown_styling(style)
+    page = style.delete(:font)
+    style[:page] = page unless page.nil?
+    style
+  end
 
-      it "orange-2" do
-        expect(badge.readable_color("FFD8A8")).to eq("000000")
-      end
+  def resolve_font(style)
+    opts_font(style || {})
+  end
 
-      it "cyan-0" do
-        expect(badge.readable_color("E3FAFC")).to eq("000000")
-      end
+  def resolve_margin(style)
+    opts_margin(style || {})
+  end
 
-      it "white" do
-        expect(badge.readable_color("FFFFFF")).to eq("000000")
-      end
-    end
+  def resolve_padding(style)
+    opts_padding(style || {})
   end
 end

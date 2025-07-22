@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe WorkPackage::PDFExport::Common::Macro do
+RSpec.describe Exports::PDF::Common::Macro do
   shared_let(:type_task) { create(:type_task) }
   shared_let(:custom_field) do
     create(
@@ -115,7 +115,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
       }
     )
   end
-  shared_let(:formatter) { Class.new { extend WorkPackage::PDFExport::Common::Macro } }
+  shared_let(:formatter) { Class.new { extend Exports::PDF::Common::Macro } }
   let(:additional_permissions) { [] }
   let(:user) do
     create(

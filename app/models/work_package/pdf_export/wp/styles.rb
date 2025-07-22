@@ -28,42 +28,47 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
+module WorkPackage::PDFExport::Wp::Styles
+  class PDFStyles
+    include MarkdownToPDF::Common
+    include MarkdownToPDF::StyleHelper
+    include Exports::PDF::Common::Styles
+    include Exports::PDF::Common::Logo
+    include Exports::PDF::Components::WpTableStyles
+    include Exports::PDF::Components::PageStyles
+    include WorkPackage::PDFExport::Common::MarkdownFieldStyles
+    include WorkPackage::PDFExport::Common::AttributesTableStyles
 
-RSpec.describe Exports::PDF::Common::Badge do
-  let(:badge) { Class.new { extend Exports::PDF::Common::Badge } }
-
-  describe "#readable_color" do
-    describe "returns white for dark colors" do
-      it "black" do
-        expect(badge.readable_color("000000")).to eq("FFFFFF")
-      end
-
-      it "dark blue" do
-        expect(badge.readable_color("1864AB")).to eq("FFFFFF")
-      end
-
-      it "purple" do
-        expect(badge.readable_color("894CEB")).to eq("FFFFFF")
-      end
+    def wp_margins
+      resolve_margin(@styles[:work_package])
     end
 
-    describe "returns black for light colors" do
-      it "blue-6" do
-        expect(badge.readable_color("228BE6")).to eq("000000")
-      end
-
-      it "orange-2" do
-        expect(badge.readable_color("FFD8A8")).to eq("000000")
-      end
-
-      it "cyan-0" do
-        expect(badge.readable_color("E3FAFC")).to eq("000000")
-      end
-
-      it "white" do
-        expect(badge.readable_color("FFFFFF")).to eq("000000")
-      end
+    def wp_subject(level)
+      resolve_font(@styles.dig(:work_package, :subject)).merge(
+        resolve_font(@styles.dig(:work_package, :"subject_level_#{level}"))
+      )
     end
+
+    def wp_detail_subject_margins
+      resolve_margin(@styles.dig(:work_package, :subject))
+    end
+
+    def inline_error
+      resolve_font(@styles[:inline_error])
+    end
+
+    def inline_hint
+      resolve_font(@styles[:inline_hint])
+    end
+  end
+
+  def styles
+    @styles ||= PDFStyles.new(styles_asset_path)
+  end
+
+  private
+
+  def styles_asset_path
+    File.dirname(File.expand_path(__FILE__))
   end
 end

@@ -28,42 +28,24 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
+module Exports::PDF::Common::Logo
+  def logo_image
+    image_obj, image_info = pdf.build_image_object(logo_image_filename)
+    [image_obj, image_info]
+  end
 
-RSpec.describe Exports::PDF::Common::Badge do
-  let(:badge) { Class.new { extend Exports::PDF::Common::Badge } }
+  def logo_image_filename
+    custom_logo_image_filename || Rails.root.join("app/assets/images/logo_openproject.png")
+  end
 
-  describe "#readable_color" do
-    describe "returns white for dark colors" do
-      it "black" do
-        expect(badge.readable_color("000000")).to eq("FFFFFF")
-      end
+  def custom_logo_image_filename
+    return unless CustomStyle.current.present? &&
+      CustomStyle.current.export_logo.present? && CustomStyle.current.export_logo.local_file.present?
 
-      it "dark blue" do
-        expect(badge.readable_color("1864AB")).to eq("FFFFFF")
-      end
+    image_file = CustomStyle.current.export_logo.local_file.path
+    content_type = OpenProject::ContentTypeDetector.new(image_file).detect
+    return unless pdf_embeddable?(content_type)
 
-      it "purple" do
-        expect(badge.readable_color("894CEB")).to eq("FFFFFF")
-      end
-    end
-
-    describe "returns black for light colors" do
-      it "blue-6" do
-        expect(badge.readable_color("228BE6")).to eq("000000")
-      end
-
-      it "orange-2" do
-        expect(badge.readable_color("FFD8A8")).to eq("000000")
-      end
-
-      it "cyan-0" do
-        expect(badge.readable_color("E3FAFC")).to eq("000000")
-      end
-
-      it "white" do
-        expect(badge.readable_color("FFFFFF")).to eq("000000")
-      end
-    end
+    image_file
   end
 end

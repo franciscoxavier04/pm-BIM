@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,42 +26,35 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
-
-RSpec.describe Exports::PDF::Common::Badge do
-  let(:badge) { Class.new { extend Exports::PDF::Common::Badge } }
-
-  describe "#readable_color" do
-    describe "returns white for dark colors" do
-      it "black" do
-        expect(badge.readable_color("000000")).to eq("FFFFFF")
-      end
-
-      it "dark blue" do
-        expect(badge.readable_color("1864AB")).to eq("FFFFFF")
-      end
-
-      it "purple" do
-        expect(badge.readable_color("894CEB")).to eq("FFFFFF")
-      end
+module Exports::PDF::Components::Gantt
+  class GanttBuilderDays < GanttBuilder
+    def build_column_dates_range(range)
+      range.to_a
     end
 
-    describe "returns black for light colors" do
-      it "blue-6" do
-        expect(badge.readable_color("228BE6")).to eq("000000")
-      end
+    def header_row_parts
+      %i[years months days]
+    end
 
-      it "orange-2" do
-        expect(badge.readable_color("FFD8A8")).to eq("000000")
-      end
+    def work_packages_on_date(date, work_packages)
+      work_packages.select { |work_package| wp_on_day?(work_package, date) }
+    end
 
-      it "cyan-0" do
-        expect(badge.readable_color("E3FAFC")).to eq("000000")
-      end
+    def calc_start_offset(_work_package, _date)
+      0.0
+    end
 
-      it "white" do
-        expect(badge.readable_color("FFFFFF")).to eq("000000")
-      end
+    def calc_end_offset(_work_package, _date)
+      0.0
+    end
+
+    def milestone_position_centered?
+      true
+    end
+
+    def wp_on_day?(work_package, date)
+      start_date, end_date = wp_dates(work_package)
+      (start_date..end_date).cover?(date)
     end
   end
 end
