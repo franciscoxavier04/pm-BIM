@@ -58,9 +58,7 @@ module Redmine::MenuManager::TopMenuHelper
 
   def render_logo_short
     mode_class = User.current.pref.theme === "dark" ? "op-logo-short_dark" : "op-logo-short"
-    content_tag :div, class: mode_class do
-      nil
-    end
+    render Primer::BaseComponent.new(tag: :div, classes: mode_class)
   end
 
   def render_top_menu_search
@@ -184,6 +182,7 @@ module Redmine::MenuManager::TopMenuHelper
       render Primer::Alpha::Dialog.new(classes: "op-app-menu--item",
                                        title: I18n.t("label_modules"),
                                        visually_hide_title: true,
+                                       size: :small,
                                        menu_id: "op-app-header--modules-menu",
                                        position: :left) do |dialog|
         dialog.with_show_button(icon: "op-grid-menu",
