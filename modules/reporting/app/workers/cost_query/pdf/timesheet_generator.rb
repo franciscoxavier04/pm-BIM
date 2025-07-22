@@ -29,12 +29,12 @@
 #++
 
 class CostQuery::PDF::TimesheetGenerator
-  include WorkPackage::PDFExport::Common::Common
-  include WorkPackage::PDFExport::Common::Attachments
-  include WorkPackage::PDFExport::Common::Logo
-  include WorkPackage::PDFExport::Export::Cover
-  include WorkPackage::PDFExport::Export::Page
-  include WorkPackage::PDFExport::Export::Timesheet::Styles
+  include Exports::PDF::Common::Common
+  include Exports::PDF::Common::Attachments
+  include Exports::PDF::Common::Logo
+  include Exports::PDF::Components::Cover
+  include Exports::PDF::Components::Page
+  include CostQuery::PDF::Styles
   include ReportingHelper
 
   H1_FONT_SIZE = 26

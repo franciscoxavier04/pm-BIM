@@ -29,15 +29,15 @@
 #++
 
 class WorkPackage::PDFExport::WorkPackageToPdf < Exports::Exporter
-  include WorkPackage::PDFExport::Common::Common
-  include WorkPackage::PDFExport::Common::Logo
-  include WorkPackage::PDFExport::Common::Attachments
-  include WorkPackage::PDFExport::Export::MarkdownField
-  include WorkPackage::PDFExport::Export::Page
-  include WorkPackage::PDFExport::Export::Wp::Styles
-  include WorkPackage::PDFExport::Export::Wp::Attributes
-  include WorkPackage::PDFExport::Export::WpTable
-  include WorkPackage::PDFExport::Common::Badge
+  include Exports::PDF::Common::Common
+  include Exports::PDF::Common::Logo
+  include Exports::PDF::Common::Attachments
+  include Exports::PDF::Common::Badge
+  include Exports::PDF::Components::Page
+  include Exports::PDF::Components::WpTable
+  include WorkPackage::PDFExport::Wp::Styles
+  include WorkPackage::PDFExport::Wp::Attributes
+  include WorkPackage::PDFExport::Common::MarkdownField
 
   attr_accessor :pdf
 
