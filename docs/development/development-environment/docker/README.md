@@ -39,7 +39,7 @@ Then continue the setup:
 cp docker-compose.override.example.yml docker-compose.override.yml
 docker compose run --rm backend setup
 docker compose run --rm frontend npm install
-docker compose up -d frontend
+docker compose up -d backend
 ```
 
 Optional: In case you want to develop on the OpenProject *BIM Edition* you need
@@ -133,19 +133,19 @@ docker compose run --rm frontend npm install
 The docker compose file also has the test containers defined. The easiest way to start only the development stack, use
 
 ```shell
-docker compose up frontend
+docker compose up backend
 ```
 
-If you want to see the backend logs, too.
+If you want to see the frontend logs, too.
 
 ```shell
-docker compose up frontend backend
+docker compose up backend frontend
 ```
 
 Alternatively, if you do want to detach from the process you can use the `-d` option.
 
 ```shell
-docker compose up -d frontend
+docker compose up -d backend
 ```
 
 The logs can still be accessed like this.
@@ -259,8 +259,8 @@ and `443` and redirect those requests to the specific container. To make it happ
 define for your services to your `/etc/hosts`.
 
 ```shell
-127.0.0.1   openproject.local traefik.local
-::1         openproject.local traefik.local
+127.0.0.1   openproject.local openproject-assets.local traefik.local
+::1         openproject.local openproject-assets.local traefik.local
 ```
 
 #### DNS? Where are you?
