@@ -138,7 +138,7 @@ module Meetings::PDF
     end
 
     def footer_title
-      options[:footer_text_right] || project_title
+      options[:footer_text] || project_title
     end
 
     def title_datetime

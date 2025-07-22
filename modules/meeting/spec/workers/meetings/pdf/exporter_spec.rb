@@ -164,7 +164,7 @@ RSpec.describe Meetings::PDF::Exporter do
           outcomes: "1",
           backlog: "1",
           attachments: "1",
-          footer_text_right: "Custom Footer Text"
+          footer_text: "Custom Footer Text"
         }
       end
 
