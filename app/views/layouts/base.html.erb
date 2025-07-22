@@ -136,7 +136,8 @@ See COPYRIGHT and LICENSE files for more details.
         </div>
       </div>
     <% end %>
-    <div class="content-overlay"></div>
+    <div class="content-overlay"
+         data-action="click->menus--main-toggle#toggleNavigation"></div>
     <%= content_tag :main, id: "content-wrapper", class: initial_classes, data: stimulus_content_data do %>
       <%= render partial: "layouts/flashes" %>
       <% if show_onboarding_modal? %>
