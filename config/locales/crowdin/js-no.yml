@@ -696,6 +696,7 @@
           first_day: "Første dag "
           last_day: "Siste dag"
     text_are_you_sure: "Er du sikker?"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
     breadcrumb: "Breadcrumb"
     text_data_lost: "Alle angitte data vil gå tapt."
     text_user_wrote: "%{value} skrev:"

@@ -695,6 +695,7 @@ zh-TW:
           first_day: "第一天"
           last_day: "最後一天"
     text_are_you_sure: "是否確定？"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
     breadcrumb: "導覽軌跡"
     text_data_lost: "所有資料將遺失"
     text_user_wrote: "%{value} 寫道："

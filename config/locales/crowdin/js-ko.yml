@@ -695,6 +695,7 @@ ko:
           first_day: "첫날"
           last_day: "마지막 날"
     text_are_you_sure: "계속하시겠습니까?"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
     breadcrumb: "이동 경로"
     text_data_lost: "입력한 모든 데이터가 손실됩니다."
     text_user_wrote: "%{value}이(가) 작성함:"
