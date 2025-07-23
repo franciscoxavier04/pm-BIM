@@ -32,15 +32,22 @@ module Storages
   module Adapters
     module Providers
       module SharePoint
-        SharePointRegistry = Dry::Container::Namespace.new("share_point") do
-          namespace("authentication") do
-            register(:userless, ->(use_cache = true) { Input::Strategy.build(key: :oauth_client_credentials, use_cache:) })
-            register(:user_bound, ->(user, storage = nil) { Input::Strategy.build(key: :oauth_user_token, user:, storage:) })
-          end
+        class SharePointContract < ::ModelContract
+          attribute :name
+          validates :name, presence: true, length: { maximum: 255 }
 
-          namespace("contracts") do
-            register(:storage, SharePointContract)
-          end
+          attribute :host
+          validates :host, presence: true, format: { with: URI::DEFAULT_PARSER.make_regexp }
+
+          attribute :site_id
+          validates :site_id,
+                    presence: true,
+                    format: { with: /\A(?:[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}|consumers)\z/i }
+
+          attribute :library_id
+          validates :library_id,
+                    presence: true,
+                    format: { with: /\A(?:[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}|consumers)\z/i }
         end
       end
     end

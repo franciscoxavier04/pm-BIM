@@ -30,6 +30,11 @@ en:
         name: Name
         provider_type: Provider type
         tenant: Directory (tenant) ID
+      storages/share_point_storage:
+        site: "Site ID"
+        library: "Library ID"
+        name: "Name"
+        host: "Host"
     errors:
       messages:
         invalid_host_url: is not a valid URL.
