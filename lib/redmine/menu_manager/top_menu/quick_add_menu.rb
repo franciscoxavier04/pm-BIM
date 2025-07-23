@@ -63,7 +63,7 @@ module Redmine::MenuManager::TopMenu::QuickAddMenu
   def add_first_level_items(menu)
     first_level_menu_items_for(:quick_add_menu, @project).each do |item|
       menu.with_item(
-        href: item.url.present? ? url_for(item.url) : "#",
+        href: item.url.present? ? allowed_node_url(item, @project) : "#",
         content_arguments: {
           target: "_top",
           **item.html_options,

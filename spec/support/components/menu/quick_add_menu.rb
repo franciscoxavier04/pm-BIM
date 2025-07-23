@@ -53,7 +53,7 @@ module Components
 
     def expect_work_package_type(*names, present: true)
       within_dropdown do
-        expect(page).to have_text "Work Packages"
+        expect(page).to have_text "Work packages"
       end
 
       names.each do |name|
@@ -76,9 +76,9 @@ module Components
     def expect_link(matcher, present: true)
       within_dropdown do
         if present
-          expect(page).to have_link matcher
+          expect(page).to have_link aria: { label: matcher }
         else
-          expect(page).to have_no_link matcher
+          expect(page).to have_no_link aria: { label: matcher }
         end
       end
     end

@@ -21,7 +21,7 @@ export function menuTourSteps():OnboardingStep[] {
       condition: () => document.getElementById('op-app-header--quick-add-menu-button') !== undefined,
     },
     {
-      'next .op-app-help': I18n.t('js.onboarding.steps.help_menu'),
+      'next #op-app-header--help-menu-button': I18n.t('js.onboarding.steps.help_menu'),
       shape: 'circle',
       showSkip: false,
       nextButton: { text: I18n.t('js.onboarding.buttons.got_it') },
