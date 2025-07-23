@@ -47,6 +47,7 @@ declare module 'codemirror';
   templateUrl: './op-ckeditor.html',
   styleUrls: ['./op-ckeditor.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class OpCkeditorComponent extends UntilDestroyedMixin implements OnInit, OnDestroy {
   @Input() context:ICKEditorContext;

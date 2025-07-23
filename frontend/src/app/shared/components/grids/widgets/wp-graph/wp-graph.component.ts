@@ -14,6 +14,7 @@ import { WpGraphConfiguration } from 'core-app/shared/components/work-package-gr
   styleUrls: ['../wp-table/wp-table.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [WpGraphConfigurationService],
+  standalone: false,
 })
 export class WidgetWpGraphComponent extends AbstractWidgetComponent implements OnInit, OnDestroy {
   public datasets:WorkPackageEmbeddedGraphDataset[] = [];

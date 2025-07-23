@@ -58,6 +58,7 @@ import { InjectField } from 'core-app/shared/helpers/angular/inject-field.decora
   providers: [
     QueryParamListenerService,
   ],
+  standalone: false,
 })
 export class WorkPackagesCalendarPageComponent extends PartitionedQuerySpacePageComponent {
   @InjectField(ActionsService) actions$:ActionsService;

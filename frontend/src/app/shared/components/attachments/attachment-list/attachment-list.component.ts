@@ -41,6 +41,7 @@ import { AttachmentsResourceService } from 'core-app/core/state/attachments/atta
   selector: 'op-attachment-list',
   templateUrl: './attachment-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class OpAttachmentListComponent extends UntilDestroyedMixin {
   @Input() public attachments:IAttachment[] = [];

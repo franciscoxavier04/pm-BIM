@@ -79,13 +79,13 @@ describe('autocompleter', () => {
     fixture.componentInstance.debounceTimeMs = 0;
   });
 
-  it('should load the ng-select correctly', () => {
+  it('should load the ng-select correctly', fakeAsync(() => {
     fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      const autocompleter = document.querySelector('.ng-select-container');
-      expect(document.contains(autocompleter)).toBeTruthy();
-    });
-  });
+    tick();
+
+    const autocompleter = document.querySelector('.ng-select-container');
+    expect(document.contains(autocompleter)).toBeTruthy();
+  }));
 
   describe('without debounce', () => {
     it('should load items', fakeAsync(() => {

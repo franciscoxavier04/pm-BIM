@@ -20,6 +20,7 @@ interface ChartDataSet {
   selector: 'op-wp-embedded-graph',
   templateUrl: './wp-embedded-graph.html',
   styleUrls: ['./wp-embedded-graph.component.sass'],
+  standalone: false,
 })
 export class WorkPackageEmbeddedGraphComponent {
   @Input() public datasets:WorkPackageEmbeddedGraphDataset[];

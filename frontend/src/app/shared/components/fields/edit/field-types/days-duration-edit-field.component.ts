@@ -35,6 +35,7 @@ import moment from 'moment-timezone';
 
 @Component({
   templateUrl: './days-duration-edit-field.component.html',
+  standalone: false,
 })
 export class DaysDurationEditFieldComponent extends DatePickerEditFieldComponent implements OnInit {
   public get formattedValue():number {

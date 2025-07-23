@@ -44,6 +44,7 @@ import {
   getPartsFromTimestamp,
   getBaselineState,
   offsetToUtcString,
+  BaselineMode,
 } from 'core-app/features/work-packages/components/wp-baseline/baseline-helpers';
 import { TimezoneService } from 'core-app/core/datetime/timezone.service';
 import moment, { Moment } from 'moment-timezone';
@@ -57,6 +58,7 @@ import { filter } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'op-baseline-legends',
   encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class OpBaselineLegendsComponent extends UntilDestroyedMixin implements OnInit {
   @HostBinding('class.op-baseline-legends') className = true;
@@ -199,7 +201,7 @@ export class OpBaselineLegendsComponent extends UntilDestroyedMixin implements O
     this.numAdded = 0;
     this.numRemoved = 0;
     this.numUpdated = 0;
-    let state = '';
+    let state:BaselineMode;
     const baselineIsActive= this.wpTableBaseline.isActive();
     const results = this.querySpace.results.value;
     if (baselineIsActive && results && results.elements.length > 0) {
