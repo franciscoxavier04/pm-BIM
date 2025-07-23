@@ -133,7 +133,7 @@ RSpec.describe "BIM Revit Add-in navigation spec", :js,
     it "the user menu has an option to go to the add-in settings" do
       visit home_path
 
-      click_link I18n.t(:label_login)
+      user_menu.open
 
       expect(page).to have_text(I18n.t("js.revit.revit_add_in_settings"))
     end

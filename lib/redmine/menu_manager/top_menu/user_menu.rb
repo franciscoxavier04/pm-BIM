@@ -138,7 +138,8 @@ module Redmine::MenuManager::TopMenu::UserMenu
         href: allowed_node_url(item, nil),
         label: item.caption,
         scheme: item.scheme || :default,
-        test_selector: "op-menu--item-action"
+        test_selector: "op-menu--item-action",
+        **item.html_options
       ) do |menu_item|
         menu_item.with_leading_visual_icon(icon: item.icon) if item.icon
       end

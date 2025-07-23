@@ -41,5 +41,11 @@ module Components
     def close
       page.find(".op-app-header--modules-menu-header .close-button").click
     end
+
+    def expect_user_shown(user_name)
+      page.within_test_selector "op-app-header--user-menu-button" do
+        expect(page).to have_element "data-title": "\"#{user_name}\""
+      end
+    end
   end
 end

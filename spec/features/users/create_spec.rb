@@ -40,6 +40,7 @@ RSpec.describe "create users" do
   end
   let(:mail_body) { mail.body.parts.first.body.to_s }
   let(:token) { mail_body.scan(/token=(.*)$/).first.first.strip }
+  let(:user_menu) { Components::UserMenu.new }
 
   before do
     allow(User).to receive(:current).and_return current_user
@@ -93,9 +94,7 @@ RSpec.describe "create users" do
 
           # landed on the 'my page'
           expect(page).to have_text "Welcome, your account has been activated. You are logged in now."
-          within_test_selector "op-app-header--user-menu-button" do
-            expect(page).to have_element title: "bobfirst boblast"
-          end
+          user_menu.expect_user_shown "bobfirst boblast"
         end
       end
     end
@@ -157,9 +156,7 @@ RSpec.describe "create users" do
 
           expect(page).to have_text "OpenProject"
           expect(page).to have_current_path "/", ignore_query: true
-          within_test_selector "op-app-header--user-menu-button" do
-            expect(page).to have_element title: "bobfirst boblast"
-          end
+          user_menu.expect_user_shown "bobfirst boblast"
         end
       end
     end
@@ -202,9 +199,7 @@ RSpec.describe "create users" do
 
             # landed on the 'my page'
             expect(page).to have_text "Welcome, your account has been activated. You are logged in now."
-            within_test_selector "op-app-header--user-menu-button" do
-              expect(page).to have_element title: "bobfirst boblast"
-            end
+            user_menu.expect_user_shown "bobfirst boblast"
           end
         end
       end
