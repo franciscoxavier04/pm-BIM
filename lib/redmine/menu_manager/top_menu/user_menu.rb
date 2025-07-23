@@ -74,17 +74,24 @@ module Redmine::MenuManager::TopMenu::UserMenu
   def lateral_user_menu_button(dialog, avatar)
     options = {
       scheme: :invisible,
-      classes: "op-app-header--primer-button op-app-menu--item op-top-menu-user",
-      test_selector: "op-app-header--modules-menu-button",
+      classes: "op-app-header--primer-button op-app-menu--item",
+      test_selector: "op-app-header--user-menu-button",
       "aria-label": I18n.t("label_user_menu")
     }
 
-    if show_avatar?(avatar)
-      dialog.with_show_button(px: 0, **options) do
-        avatar
+    if User.current.logged?
+      if avatar.present?
+        dialog.with_show_button(px: 0, **options) do
+          avatar
+        end
+      else
+        dialog.with_show_button(icon: :person, **options)
       end
     else
-      dialog.with_show_button(icon: :person, **options)
+      dialog.with_show_button(**options) do |button|
+        button.with_trailing_visual_icon(icon: :"triangle-down")
+        t(:label_login)
+      end
     end
   end
 
