@@ -27,18 +27,17 @@
 //++
 
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  ElementRef, Input,
+  ElementRef, inject,
+  Input,
   OnDestroy,
   OnInit,
   Renderer2,
 } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { HalResourceService } from 'core-app/features/hal/services/hal-resource.service';
-import { GlobalSearchService } from 'core-app/core/global_search/services/global-search.service';
 import {
   WorkPackageTableConfigurationObject,
 } from 'core-app/features/work-packages/components/wp-table/wp-table-configuration';
@@ -46,12 +45,7 @@ import { IsolatedQuerySpace } from 'core-app/features/work-packages/directives/q
 import {
   WorkPackageViewFiltersService,
 } from 'core-app/features/work-packages/routing/wp-view-base/view-services/wp-view-filters.service';
-import { debounceTime, distinctUntilChanged, skip } from 'rxjs/operators';
-import { combineLatest } from 'rxjs';
 import { UntilDestroyedMixin } from 'core-app/shared/helpers/angular/until-destroyed.mixin';
-import {
-  WorkPackageFiltersService,
-} from 'core-app/features/work-packages/components/filters/wp-filters/wp-filters.service';
 import {
   WorkPackageIsolatedQuerySpaceDirective,
 } from 'core-app/features/work-packages/directives/query-space/wp-isolated-query-space.directive';
@@ -77,6 +71,15 @@ export class GlobalSearchWorkPackagesComponent extends UntilDestroyedMixin imple
 
   public queryProps:Partial<QueryRequestParams>;
 
+  readonly elementRef = inject(ElementRef);
+  readonly renderer= inject(Renderer2);
+  readonly I18n= inject(I18nService);
+  readonly halResourceService= inject(HalResourceService);
+  readonly wpTableFilters= inject(WorkPackageViewFiltersService);
+  readonly querySpace= inject(IsolatedQuerySpace);
+  readonly currentProject= inject(CurrentProjectService);
+  readonly cdRef= inject(ChangeDetectorRef);
+
   public tableConfiguration:WorkPackageTableConfigurationObject = {
     actionsColumnEnabled: false,
     columnMenuEnabled: true,
@@ -87,16 +90,7 @@ export class GlobalSearchWorkPackagesComponent extends UntilDestroyedMixin imple
     filterButtonText: this.I18n.t('js.button_advanced_filter'),
   };
 
-  constructor(
-    readonly elementRef:ElementRef,
-    readonly renderer:Renderer2,
-    readonly I18n:I18nService,
-    readonly halResourceService:HalResourceService,
-    readonly wpTableFilters:WorkPackageViewFiltersService,
-    readonly querySpace:IsolatedQuerySpace,
-    readonly currentProject:CurrentProjectService,
-    readonly cdRef:ChangeDetectorRef,
-  ) {
+  constructor() {
     super();
     populateInputsFromDataset(this);
   }
