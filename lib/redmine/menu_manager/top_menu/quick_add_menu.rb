@@ -62,13 +62,17 @@ module Redmine::MenuManager::TopMenu::QuickAddMenu
 
   def add_first_level_items(menu)
     first_level_menu_items_for(:quick_add_menu, @project).each do |item|
+      html_options = item.html_options
+      html_options[:aria] = { labelledby: id_for_name(item.caption) } if html_options[:aria].blank?
+
       menu.with_item(
         href: item.url.present? ? allowed_node_url(item, @project) : "#",
         content_arguments: {
           target: "_top",
-          **item.html_options,
+          **html_options,
           test_selector: "quick-add-menu-item"
         },
+        label_arguments: { id: id_for_name(item.caption) },
         label: item.caption,
         test_selector: "op-menu--item-action"
       ) do |menu_item|
@@ -86,8 +90,12 @@ module Redmine::MenuManager::TopMenu::QuickAddMenu
           menu_group.with_item(
             href: item[:href],
             label: item[:caption],
-            content_arguments: { target: "_top" },
-            label_arguments: { classes: item[:classes] },
+            content_arguments: {
+              target: "_top",
+              aria: { labelledby: id_for_name(item[:caption]) }
+            },
+            label_arguments: { id: id_for_name(item[:caption]),
+                               classes: item[:classes] },
             test_selector: "op-menu--item-action"
           )
         end
@@ -161,5 +169,9 @@ module Redmine::MenuManager::TopMenu::QuickAddMenu
 
   def any_types?
     visible_types.any?
+  end
+
+  def id_for_name(name)
+    "quick-add-menu-item--item-#{name.parameterize(separator: '_')}"
   end
 end

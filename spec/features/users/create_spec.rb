@@ -93,7 +93,9 @@ RSpec.describe "create users" do
 
           # landed on the 'my page'
           expect(page).to have_text "Welcome, your account has been activated. You are logged in now."
-          expect(page).to have_link "bobfirst boblast"
+          within_test_selector "op-app-header--user-menu-button" do
+            expect(page).to have_element title: "bobfirst boblast"
+          end
         end
       end
     end
@@ -151,11 +153,13 @@ RSpec.describe "create users" do
 
           fill_in "password", with: "dummy" # accepted by DummyAuthSource
 
-          click_button "Sign in"
+          click_button "Sign in", type: "submit"
 
           expect(page).to have_text "OpenProject"
           expect(page).to have_current_path "/", ignore_query: true
-          expect(page).to have_link "bobfirst boblast"
+          within_test_selector "op-app-header--user-menu-button" do
+            expect(page).to have_element title: "bobfirst boblast"
+          end
         end
       end
     end
@@ -198,7 +202,9 @@ RSpec.describe "create users" do
 
             # landed on the 'my page'
             expect(page).to have_text "Welcome, your account has been activated. You are logged in now."
-            expect(page).to have_link "bobfirst boblast"
+            within_test_selector "op-app-header--user-menu-button" do
+              expect(page).to have_element title: "bobfirst boblast"
+            end
           end
         end
       end

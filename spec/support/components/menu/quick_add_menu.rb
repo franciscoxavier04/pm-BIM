@@ -44,7 +44,7 @@ module Components
     end
 
     def expect_add_project(present: true)
-      expect_link "New project", present:
+      expect_link "Project", present:
     end
 
     def expect_user_invite(present: true)
@@ -76,9 +76,9 @@ module Components
     def expect_link(matcher, present: true)
       within_dropdown do
         if present
-          expect(page).to have_link aria: { label: matcher }
+          expect(page).to have_link matcher
         else
-          expect(page).to have_no_link aria: { label: matcher }
+          expect(page).to have_no_link matcher
         end
       end
     end
