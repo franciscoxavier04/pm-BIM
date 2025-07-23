@@ -179,33 +179,37 @@ See COPYRIGHT and LICENSE files for more details.
         where menu is first expanded, then being collapsed in angular. %>
 <%= nonced_javascript_tag defer: true do %>
   // execute these lines to prevent flickering when page loads:
+  function onPageLoad() {
+    var wrapper = document.getElementById("wrapper");
+    var savedMainMenuWidth = window.OpenProject.guardedLocalStorage("openProject-mainMenuWidth");
+    var mainMenuCollapsed =  window.OpenProject.guardedLocalStorage("openProject-mainMenuCollapsed");
 
-  window.addEventListener('turbo:load', () => {
-    (function($) {
-      var wrapper = $('#wrapper');
-      var savedMainMenuWidth = window.OpenProject.guardedLocalStorage("openProject-mainMenuWidth");
-      var mainMenuCollapsed =  window.OpenProject.guardedLocalStorage("openProject-mainMenuCollapsed");
+    if (window.innerWidth < 1012) {
+      // force hide on load for small desktops
+      document
+        .querySelectorAll('.can-hide-navigation')
+        .forEach(function (element) {
+          element.classList.add('hidden-navigation');
+        });
+    }
 
-      if (window.innerWidth < 1012) {
-        // force hide on load for small desktops
-        $('.can-hide-navigation').addClass('hidden-navigation');
-      }
+    if (mainMenuCollapsed === 'true') {
+      savedMainMenuWidth = 0;
+    }
 
-      if (mainMenuCollapsed === 'true') {
-        savedMainMenuWidth = 0;
-      }
+    if (savedMainMenuWidth || savedMainMenuWidth === 0) {
+      document.documentElement.style.setProperty("--main-menu-width", savedMainMenuWidth + 'px');
+    }
 
-      if (savedMainMenuWidth || savedMainMenuWidth === 0) {
-        document.documentElement.style.setProperty("--main-menu-width", savedMainMenuWidth + 'px');
-      }
+    wrapper.style.removeProperty("display");
 
-      wrapper.show();
+    // Wrapper for page-specific JS from deprecated inline functions
+    // no longer available with CSP.
+    <%= content_for :additional_js_dom_ready %>
+  }
 
-      // Wrapper for page-specific JS from deprecated inline functions
-      // no longer available with CSP.
-      <%= content_for :additional_js_dom_ready %>
-    }(jQuery));
-  });
+  window.addEventListener('turbo:load', onPageLoad);
+  window.addEventListener('turbo:render', onPageLoad);
 <% end %>
 <div class="op-wide-autocomplete-wrapper"></div>
 <%= call_hook :view_layouts_base_body_bottom %>
