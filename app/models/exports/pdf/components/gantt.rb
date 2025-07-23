@@ -50,8 +50,8 @@ module Exports::PDF::Components::Gantt
   GANTT_COLUMN_WIDTHS = [128, 64, 32, 24].freeze
   GANTT_COLUMN_WIDTHS_NAMES = %w[very_wide wide medium narrow].freeze
   GANTT_MODE_NAMES = %w[day week month quarter].freeze
-  GANTT_MODE_DEFAULT = "day".freeze
-  GANTT_COLUMN_DEFAULT = "wide".freeze
+  GANTT_MODE_DEFAULT = "day"
+  GANTT_COLUMN_DEFAULT = "wide"
 
   def write_work_packages_gantt!(work_packages, id_wp_meta_map)
     wps = work_packages.select { |work_package| work_package.start_date || work_package.due_date }
