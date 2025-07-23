@@ -88,16 +88,6 @@ Redmine::MenuManager.map :top_menu do |menu|
             if: ->(*) do
               User.current.logged?
             end
-
-  menu.push :my_time_tracking,
-            { controller: "/my/time_tracking", action: "index" },
-            after: :my_page,
-            context: :my,
-            caption: :label_my_time_tracking,
-            if: ->(*) do
-              User.current.allowed_in_any_project?(:log_own_time) || User.current.allowed_in_any_project?(:log_time)
-            end,
-            icon: :stopwatch
 end
 
 Redmine::MenuManager.map :quick_add_menu do |menu|
