@@ -31,7 +31,6 @@
 import { Controller } from '@hotwired/stimulus';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
 import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
-import { useMeta } from 'stimulus-use';
 import type AutoScrollingController from './auto-scrolling.controller';
 import StemsController from './stems.controller';
 import { withIndexOutletMixin } from './mixins/with-index-outlet';
@@ -47,9 +46,6 @@ export default class PollingController extends withIndexOutletMixin(Controller) 
   declare readonly editFormTargets:HTMLFormElement[];
   declare readonly reactionButtonTargets:HTMLElement[];
 
-  static metaNames = ['csrf-token'];
-  declare readonly csrfToken:string;
-
   private updateInProgress:boolean = false;
   private intervallId:number;
   private turboRequests:TurboRequestsService;
@@ -57,8 +53,7 @@ export default class PollingController extends withIndexOutletMixin(Controller) 
   private abortController = new AbortController();
 
   async connect() {
-    // FIXME: Cast to the proper Controller type for useMeta
-    useMeta(this as unknown as Controller<HTMLElement>, { suffix: false });
+    this.initializeUseMeta();
 
     const context = await window.OpenProject.getPluginContext();
     this.turboRequests = context.services.turboRequests;

@@ -30,7 +30,6 @@
 
 import { Controller } from '@hotwired/stimulus';
 import { renderStreamMessage } from '@hotwired/turbo';
-import { useMeta } from 'stimulus-use';
 import type EditorController from './editor.controller';
 import { withIndexOutletMixin } from './mixins/with-index-outlet';
 
@@ -56,12 +55,8 @@ export default class InternalCommentController extends withIndexOutletMixin(Cont
 
   declare isInternalValue:boolean;
 
-  static metaNames = ['csrf-token'];
-  declare readonly csrfToken:string;
-
   connect() {
-    // FIXME: Cast to the proper Controller type for useMeta
-    useMeta(this as unknown as Controller<HTMLElement>, { suffix: false });
+    this.initializeUseMeta();
   }
 
   onSubmitEnd(_event:CustomEvent):void {

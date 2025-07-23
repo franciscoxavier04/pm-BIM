@@ -262,6 +262,6 @@ export default class EditorController extends withIndexOutletMixin(Controller) {
   }
 
   get ckEditorInstance():ICKEditorInstance | undefined {
-    return retrieveCkEditorInstance(this.element);
+    return retrieveCkEditorInstance(this.element as HTMLElement);
   }
 }

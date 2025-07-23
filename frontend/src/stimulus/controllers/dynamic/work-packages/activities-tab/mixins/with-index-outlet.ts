@@ -29,23 +29,33 @@
  */
 
 import { Controller } from '@hotwired/stimulus';
+import { useMeta } from 'stimulus-use';
 import IndexController from '../index.controller';
 
 export const withIndexOutletMixin = (BaseController:typeof Controller) => {
-  return class extends BaseController<HTMLElement> {
+  return class extends BaseController {
+    static metaNames = ['csrf-token'];
+    declare readonly csrfToken:string;
+
     static outlets = [
       ...(BaseController.outlets || []),
       'work-packages--activities-tab--index',
     ];
 
     declare readonly workPackagesActivitiesTabIndexOutlet:IndexController;
+
     get indexOutlet() { return this.workPackagesActivitiesTabIndexOutlet; }
 
+    // Viewport service convenience methods
     isMobile() { return this.indexOutlet.viewPortService.isMobile(); }
     isWithinNotificationCenter() { return this.indexOutlet.viewPortService.isWithinNotificationCenter(); }
     isWithinSplitScreen() { return this.indexOutlet.viewPortService.isWithinSplitScreen(); }
     isJournalsContainerScrolledToBottom() { return this.indexOutlet.viewPortService.isJournalsContainerScrolledToBottom(); }
 
     get scrollableContainer() { return this.indexOutlet.viewPortService.scrollableContainer; }
+
+    initializeUseMeta() {
+      useMeta(this as unknown as Controller<HTMLElement>, { suffix: false });
+    }
   };
 };
