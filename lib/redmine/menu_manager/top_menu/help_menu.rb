@@ -51,6 +51,10 @@ module Redmine::MenuManager::TopMenu::HelpMenu
     end
   end
 
+  def help_menu_item
+    split_top_menu_into_main_or_more_menus[:help]
+  end
+
   def render_help_dropdown
     render Primer::Alpha::ActionMenu.new(classes: "op-app-menu--item",
                                          menu_id: "op-app-header--help-menu",

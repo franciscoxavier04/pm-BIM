@@ -57,7 +57,6 @@ module Redmine::MenuManager::TopMenu::UserMenu
                                      position: :right) do |dialog|
       lateral_user_menu_button(dialog, avatar)
 
-
       dialog.with_header(classes: "op-app-header--modules-menu-header") do
         lateral_user_menu_header(avatar)
       end
