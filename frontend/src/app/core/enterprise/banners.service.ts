@@ -26,8 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { Inject, Injectable } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Inject, Injectable, DOCUMENT } from '@angular/core';
 import { enterpriseEditionUrl } from 'core-app/core/setup/globals/constants.const';
 import { ConfigurationService } from 'core-app/core/config/configuration.service';
 
