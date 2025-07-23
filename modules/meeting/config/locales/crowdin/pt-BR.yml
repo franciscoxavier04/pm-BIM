@@ -257,7 +257,7 @@ pt-BR:
         caption: Se os resultados da sua pauta contiverem informações confidenciais, você pode optar por não incluí-los na exportação.
       footer_text:
         label: Texto do rodapé
-        caption: Este texto aparecerá em todas as páginas à direita do rodapé.
+        caption: This text will appear on every page at the center of the footer.
       submit_button: Baixar
   meeting_section:
     untitled_title: "Seção sem título"

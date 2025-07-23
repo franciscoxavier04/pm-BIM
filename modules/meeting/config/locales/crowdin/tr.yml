@@ -257,7 +257,7 @@ tr:
         caption: Eğer toplantı sonuçları gizli bir bilgiye sahip ise bunları dışarı aktarırken dahil edilmemesini seçebilirsiniz.
       footer_text:
         label: Altbilgi metni
-        caption: Bu metin her sayfada altbilginin sağında görünecektir.
+        caption: This text will appear on every page at the center of the footer.
       submit_button: İndir
   meeting_section:
     untitled_title: "İsimsiz bölüm"

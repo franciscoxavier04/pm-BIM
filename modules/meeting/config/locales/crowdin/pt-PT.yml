@@ -257,7 +257,7 @@ pt-PT:
         caption: Se os resultados da ordem de trabalhos tiverem informações confidenciais, pode optar por não os incluir na exportação.
       footer_text:
         label: Texto do rodapé
-        caption: Esse texto vai aparecer em todas as páginas à direita do rodapé.
+        caption: This text will appear on every page at the center of the footer.
       submit_button: Transferir
   meeting_section:
     untitled_title: "Secção sem título"

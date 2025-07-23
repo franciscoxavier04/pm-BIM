@@ -257,7 +257,7 @@ es:
         caption: Si los resultados de su agenda contienen información confidencial, puede optar por no incluirlos en la exportación.
       footer_text:
         label: Texto a pie de página
-        caption: Este texto aparecerá en cada página a la derecha del pie de página.
+        caption: This text will appear on every page at the center of the footer.
       submit_button: Descargar
   meeting_section:
     untitled_title: "Sección sin título"

@@ -265,7 +265,7 @@ uk:
         caption: Якщо результати порядку денного містять конфіденційну інформацію, ви можете не включати її у файл експорту.
       footer_text:
         label: Текст нижнього колонтитула
-        caption: Цей текст з’явиться на кожній сторінці в правій частині нижнього колонтитула.
+        caption: This text will appear on every page at the center of the footer.
       submit_button: Завантажити
   meeting_section:
     untitled_title: "Розділ без назви"
