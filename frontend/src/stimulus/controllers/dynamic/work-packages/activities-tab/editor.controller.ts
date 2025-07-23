@@ -28,16 +28,15 @@
  * ++
  */
 
-import { Controller } from '@hotwired/stimulus';
 import {
   ICKEditorInstance,
 } from 'core-app/shared/components/editor/components/ckeditor/ckeditor.types';
 import { retrieveCkEditorInstance } from 'core-app/shared/helpers/ckeditor-helpers';
 import AutoScrollingController from './auto-scrolling.controller';
 import StemsController from './stems.controller';
-import { withIndexOutletMixin } from './mixins/with-index-outlet';
+import BaseController from './base.controller';
 
-export default class EditorController extends withIndexOutletMixin(Controller) {
+export default class EditorController extends BaseController {
   static outlets = [
     'work-packages--activities-tab--auto-scrolling',
     'work-packages--activities-tab--stems',
@@ -58,6 +57,8 @@ export default class EditorController extends withIndexOutletMixin(Controller) {
   private ckEditorAbortController = new AbortController();
 
   connect() {
+    super.connect();
+
     this.setupEventListeners();
     this.setLocalStorageKeys();
     this.populateRescuedEditorContent();

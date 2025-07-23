@@ -28,12 +28,11 @@
  * ++
  */
 
-import { Controller } from '@hotwired/stimulus';
 import { renderStreamMessage } from '@hotwired/turbo';
 import type EditorController from './editor.controller';
-import { withIndexOutletMixin } from './mixins/with-index-outlet';
+import BaseController from './base.controller';
 
-export default class InternalCommentController extends withIndexOutletMixin(Controller) {
+export default class InternalCommentController extends BaseController {
   static outlets = ['work-packages--activities-tab--editor'];
   declare readonly workPackagesActivitiesTabEditorOutlet:EditorController;
   private get editorOutlet() { return this.workPackagesActivitiesTabEditorOutlet; }
@@ -54,10 +53,6 @@ export default class InternalCommentController extends withIndexOutletMixin(Cont
   };
 
   declare isInternalValue:boolean;
-
-  connect() {
-    this.initializeUseMeta();
-  }
 
   onSubmitEnd(_event:CustomEvent):void {
     if (this.hasInternalCheckboxTarget) {

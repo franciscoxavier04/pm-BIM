@@ -30,32 +30,31 @@
 
 import { Controller } from '@hotwired/stimulus';
 import { useMeta } from 'stimulus-use';
-import IndexController from '../index.controller';
+import IndexController from './index.controller';
 
-export const withIndexOutletMixin = (BaseController:typeof Controller) => {
-  return class extends BaseController {
-    static metaNames = ['csrf-token'];
-    declare readonly csrfToken:string;
+export default class BaseController extends Controller {
+  static metaNames = ['csrf-token'];
+  declare readonly csrfToken:string;
 
-    static outlets = [
-      ...(BaseController.outlets || []),
-      'work-packages--activities-tab--index',
-    ];
+  indexOutlet:IndexController;
 
-    declare readonly workPackagesActivitiesTabIndexOutlet:IndexController;
+  connect() {
+    useMeta(this, { suffix: false });
+    this.indexOutlet = this.indexController;
+  }
 
-    get indexOutlet() { return this.workPackagesActivitiesTabIndexOutlet; }
+  // Viewport service convenience methods
+  isMobile() { return this.indexOutlet.viewPortService.isMobile(); }
+  isWithinNotificationCenter() { return this.indexOutlet.viewPortService.isWithinNotificationCenter(); }
+  isWithinSplitScreen() { return this.indexOutlet.viewPortService.isWithinSplitScreen(); }
+  isJournalsContainerScrolledToBottom() { return this.indexOutlet.viewPortService.isJournalsContainerScrolledToBottom(); }
 
-    // Viewport service convenience methods
-    isMobile() { return this.indexOutlet.viewPortService.isMobile(); }
-    isWithinNotificationCenter() { return this.indexOutlet.viewPortService.isWithinNotificationCenter(); }
-    isWithinSplitScreen() { return this.indexOutlet.viewPortService.isWithinSplitScreen(); }
-    isJournalsContainerScrolledToBottom() { return this.indexOutlet.viewPortService.isJournalsContainerScrolledToBottom(); }
+  get scrollableContainer() { return this.indexOutlet.viewPortService.scrollableContainer; }
 
-    get scrollableContainer() { return this.indexOutlet.viewPortService.scrollableContainer; }
+  private get indexController() {
+    const identifier = 'work-packages--activities-tab--index';
+    const target = document.getElementById(identifier)!;
 
-    initializeUseMeta() {
-      useMeta(this as unknown as Controller<HTMLElement>, { suffix: false });
-    }
-  };
-};
+    return this.application.getControllerForElementAndIdentifier(target, identifier) as IndexController;
+  }
+}

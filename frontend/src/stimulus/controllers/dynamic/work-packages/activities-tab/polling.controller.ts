@@ -28,14 +28,13 @@
  * ++
  */
 
-import { Controller } from '@hotwired/stimulus';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
 import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
 import type AutoScrollingController from './auto-scrolling.controller';
 import StemsController from './stems.controller';
-import { withIndexOutletMixin } from './mixins/with-index-outlet';
+import BaseController from './base.controller';
 
-export default class PollingController extends withIndexOutletMixin(Controller) {
+export default class PollingController extends BaseController {
   static outlets = ['work-packages--activities-tab--auto-scrolling', 'work-packages--activities-tab--stems'];
   declare readonly workPackagesActivitiesTabAutoScrollingOutlet:AutoScrollingController;
   declare readonly workPackagesActivitiesTabStemsOutlet:StemsController;
@@ -53,7 +52,7 @@ export default class PollingController extends withIndexOutletMixin(Controller) 
   private abortController = new AbortController();
 
   async connect() {
-    this.initializeUseMeta();
+    super.connect();
 
     const context = await window.OpenProject.getPluginContext();
     this.turboRequests = context.services.turboRequests;
