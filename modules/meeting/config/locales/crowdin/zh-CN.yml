@@ -253,7 +253,7 @@ zh-CN:
         caption: 如果您的议程结果包含机密信息，您可以选择不在导出内容中包括它们。
       footer_text:
         label: 页脚文本
-        caption: 此文本将出现在每一页的页脚右侧。
+        caption: This text will appear on every page at the center of the footer.
       submit_button: 下载
   meeting_section:
     untitled_title: "无标题章节"

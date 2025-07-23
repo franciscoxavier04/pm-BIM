@@ -253,7 +253,7 @@ ko:
         caption: 의제 결과에 기밀 정보가 포함되어 있는 경우 내보내기에 이 기밀 정보를 포함하지 않도록 선택할 수 있습니다.
       footer_text:
         label: 바닥글 텍스트
-        caption: 이 텍스트는 모든 페이지의 바닥글 오른쪽에 나타납니다.
+        caption: This text will appear on every page at the center of the footer.
       submit_button: 다운로드
   meeting_section:
     untitled_title: "제목 없는 섹션"

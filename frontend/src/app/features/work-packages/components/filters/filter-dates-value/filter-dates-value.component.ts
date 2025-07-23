@@ -43,6 +43,7 @@ import { QueryFilterInstanceResource } from 'core-app/features/hal/resources/que
 @Component({
   selector: 'op-filter-dates-value',
   templateUrl: './filter-dates-value.component.html',
+  standalone: false,
 })
 export class FilterDatesValueComponent extends UntilDestroyedMixin {
   @HostBinding('id') get id() {

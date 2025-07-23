@@ -66,6 +66,7 @@ function containsFiles(dataTransfer:DataTransfer):boolean {
   templateUrl: './attachments.component.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class OpAttachmentsComponent extends UntilDestroyedMixin implements OnInit, OnDestroy {
   @HostBinding('attr.data-test-selector') public testSelector = 'op-attachments';

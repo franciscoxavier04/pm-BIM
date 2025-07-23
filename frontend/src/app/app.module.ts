@@ -26,7 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { APP_INITIALIZER, ApplicationRef, DoBootstrap, Injector, NgModule } from '@angular/core';
+import { ApplicationRef, DoBootstrap, Injector, NgModule, inject, provideAppInitializer } from '@angular/core';
 import { A11yModule } from '@angular/cdk/a11y';
 import { HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -240,6 +240,24 @@ export function initializeServices(injector:Injector) {
 }
 
 @NgModule({
+  declarations: [
+    OpContextMenuTrigger,
+
+    // Modals
+    ConfirmDialogModalComponent,
+    DynamicContentModalComponent,
+    PasswordConfirmationModalComponent,
+
+    // Main menu
+    MainMenuResizerComponent,
+
+    // Project selector
+    OpHeaderProjectSelectComponent,
+    OpHeaderProjectSelectListComponent,
+
+    // Form configuration
+    OpDragScrollDirective,
+  ],
   imports: [
     // The BrowserModule must only be loaded here!
     BrowserModule,
@@ -270,7 +288,6 @@ export function initializeServices(injector:Injector) {
 
     // Work packages in graph representation
     OpenprojectWorkPackageGraphsModule,
-
     // Calendar module
     OpenprojectCalendarModule,
 
@@ -325,13 +342,13 @@ export function initializeServices(injector:Injector) {
   providers: [
     { provide: States, useValue: new States() },
     { provide: HTTP_INTERCEPTORS, useClass: OpenProjectHeaderInterceptor, multi: true },
-    {
-      provide: APP_INITIALIZER, useFactory: initializeServices, deps: [Injector], multi: true,
-    },
+    provideAppInitializer(() => {
+      const initializerFn = (initializeServices)(inject(Injector));
+      return initializerFn();
+    }),
     {
       provide: OpUploadService,
-      useFactory: (config:ConfigurationService, http:HttpClient) =>
-        (config.isDirectUploads() ? new FogUploadService(http) : new LocalUploadService(http)),
+      useFactory: (config:ConfigurationService, http:HttpClient) => (config.isDirectUploads() ? new FogUploadService(http) : new LocalUploadService(http)),
       deps: [ConfigurationService, HttpClient],
     },
     PaginationService,
@@ -340,24 +357,6 @@ export function initializeServices(injector:Injector) {
     RevitAddInSettingsButtonService,
     CopyToClipboardService,
     provideHttpClient(withInterceptorsFromDi()),
-  ],
-  declarations: [
-    OpContextMenuTrigger,
-
-    // Modals
-    ConfirmDialogModalComponent,
-    DynamicContentModalComponent,
-    PasswordConfirmationModalComponent,
-
-    // Main menu
-    MainMenuResizerComponent,
-
-    // Project selector
-    OpHeaderProjectSelectComponent,
-    OpHeaderProjectSelectListComponent,
-
-    // Form configuration
-    OpDragScrollDirective,
   ],
 })
 export class OpenProjectModule implements DoBootstrap {

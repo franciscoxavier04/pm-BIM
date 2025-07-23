@@ -48,6 +48,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
   template: `
     <op-dynamic-form [formControl]="control"></op-dynamic-form>`,
   providers: [],
+  standalone: false,
 })
 class DynamicFormsTestingComponent {
   control = new UntypedFormControl('');

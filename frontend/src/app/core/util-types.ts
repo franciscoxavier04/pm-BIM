@@ -26,35 +26,5 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { ChangeDetectionStrategy, Component, ElementRef, Input } from '@angular/core';
-import {
-  WorkPackageIsolatedQuerySpaceDirective,
-} from 'core-app/features/work-packages/directives/query-space/wp-isolated-query-space.directive';
-import { populateInputsFromDataset } from 'core-app/shared/components/dataset-inputs';
-
-/**
- * An entry component to be rendered by Rails which opens an isolated query space
- * for the work package split view
- */
-@Component({
-  hostDirectives: [WorkPackageIsolatedQuerySpaceDirective],
-  template: `
-    <op-wp-split-view
-      [workPackageId]="workPackageId"
-      [activeTab]="activeTab"
-      [showTabs]="false"
-      [resizerClass]="resizerClass"
-    ></op-wp-split-view>
-  `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
-})
-export class WorkPackageSplitViewEntryComponent {
-  @Input() workPackageId:string;
-  @Input() activeTab:string;
-  @Input() resizerClass:string;
-
-  constructor(readonly elementRef:ElementRef) {
-    populateInputsFromDataset(this);
-  }
-}
+/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+export type Constructor<T> = new (...args:any[]) => T;

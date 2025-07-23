@@ -120,7 +120,7 @@ class WorkPackage::PDFExport::WorkPackageToPdf < Exports::Exporter
   end
 
   def footer_title
-    options[:footer_text_right]
+    options[:footer_text]
   end
 
   def title

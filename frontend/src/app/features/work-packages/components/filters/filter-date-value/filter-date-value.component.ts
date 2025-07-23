@@ -43,6 +43,7 @@ import moment from 'moment-timezone';
 @Component({
   selector: 'op-filter-date-value',
   templateUrl: './filter-date-value.component.html',
+  standalone: false,
 })
 export class FilterDateValueComponent extends UntilDestroyedMixin {
   @HostBinding('id') get id() {

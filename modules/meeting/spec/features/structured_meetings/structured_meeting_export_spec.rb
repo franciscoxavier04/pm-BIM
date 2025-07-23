@@ -54,7 +54,7 @@ RSpec.describe "Meetings Export PDF",
       attachments: "0",
       backlog: "0",
       outcomes: "0",
-      footer_text_right: project.name
+      footer_text: project.name
     }
   end
   let(:expected_params) do
@@ -124,11 +124,11 @@ RSpec.describe "Meetings Export PDF",
 
   context "with custom footer text" do
     let(:expected_params) do
-      default_expected_params.merge(footer_text_right: "Custom Footer Text")
+      default_expected_params.merge(footer_text: "Custom Footer Text")
     end
 
     it "can submit the export dialog with options" do
-      show_page.fill_in "pdf_footer_text_right", with: "Custom Footer Text"
+      show_page.fill_in "pdf_footer_text", with: "Custom Footer Text"
       generate!
     end
   end

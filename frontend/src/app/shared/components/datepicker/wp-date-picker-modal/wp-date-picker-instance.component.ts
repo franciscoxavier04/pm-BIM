@@ -62,6 +62,7 @@ export type DateMode = 'single'|'range';
       hidden>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class OpWpDatePickerInstanceComponent extends UntilDestroyedMixin implements AfterViewInit {
   @Input() public ignoreNonWorkingDays:boolean;

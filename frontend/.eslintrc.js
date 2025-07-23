@@ -51,6 +51,8 @@ module.exports = {
         ],
         "@angular-eslint/component-class-suffix": ["error", {"suffixes": ["Component", "Example"]}],
 
+        "@angular-eslint/prefer-standalone": "off",
+
         // Warn when new components are being created without OnPush
         "change-detection-strategy/on-push": "error",
         "no-console": [

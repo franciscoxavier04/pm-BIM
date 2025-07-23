@@ -66,6 +66,7 @@ import {
                        [configuration]="tableConfiguration">
     </wp-embedded-table>
   `,
+  standalone: false,
 })
 export class GlobalSearchWorkPackagesComponent extends UntilDestroyedMixin implements OnInit, OnDestroy, AfterViewInit {
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */

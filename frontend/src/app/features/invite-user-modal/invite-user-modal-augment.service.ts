@@ -26,8 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { Inject, Injectable } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Inject, Injectable, DOCUMENT } from '@angular/core';
 import { OpModalService } from 'core-app/shared/components/modal/modal.service';
 import { CurrentProjectService } from 'core-app/core/current-project/current-project.service';
 import { InviteUserModalComponent } from './invite-user.component';

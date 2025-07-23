@@ -40,6 +40,7 @@ import { Component, Input } from '@angular/core';
         [textContent]="iconTitle"
         *ngIf="iconTitle"></span>
     `,
+  standalone: false,
 })
 export class OpIconComponent {
   @Input('icon-classes') iconClasses:string;

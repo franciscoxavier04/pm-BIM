@@ -1,5 +1,5 @@
-import { ApplicationRef, ComponentFactoryResolver, Injectable, Injector } from '@angular/core';
-import { ComponentPortal, ComponentType, DomPortalOutlet, PortalInjector } from '@angular/cdk/portal';
+import { ApplicationRef, Injectable, Injector } from '@angular/core';
+import { ComponentPortal, ComponentType, DomPortalOutlet } from '@angular/cdk/portal';
 import { TransitionService } from '@uirouter/core';
 import { OpContextMenuHandler } from 'core-app/shared/components/op-context-menu/op-context-menu-handler';
 import {
@@ -23,7 +23,6 @@ export class OPContextMenuService {
   private isOpening = false;
 
   constructor(
-    private componentFactoryResolver:ComponentFactoryResolver,
     readonly FocusHelper:FocusHelperService,
     private appRef:ApplicationRef,
     private $transitions:TransitionService,
@@ -41,7 +40,6 @@ export class OPContextMenuService {
 
     this.bodyPortalHost = new DomPortalOutlet(
       hostElement,
-      this.componentFactoryResolver,
       this.appRef,
       this.injector,
     );
@@ -140,16 +138,18 @@ export class OPContextMenuService {
    * This allows callers to pass data into the newly created context menu component.
    *
    * @param {OpContextMenuLocalsMap} data
-   * @returns {PortalInjector}
+   * @returns {Injector}
    */
   private injectorFor(data:OpContextMenuLocalsMap) {
-    const injectorTokens = new WeakMap();
     // Pass the service because otherwise we're getting a cyclic dependency between the portal
     // host service and the bound portal
     data.service = this;
 
-    injectorTokens.set(OpContextMenuLocalsToken, data);
-
-    return new PortalInjector(this.injector, injectorTokens);
+    return Injector.create({
+      providers: [
+        { provide: OpContextMenuLocalsToken, useValue: data },
+      ],
+      parent: this.injector,
+    });
   }
 }
