@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe Storages::Wizard do
+RSpec.describe Wizard do
   subject(:wizard) { wizard_class.new(model:) }
 
   let(:wizard_class) do
@@ -65,6 +65,7 @@ RSpec.describe Storages::Wizard do
         step :b, completed_if: ->(i) { i > 4 }, if: :odd
         step :c, completed_if: ->(i) { i > 10 }, if: :even
         step :d, completed_if: ->(i) { i > 20 }, if: ->(i) { i.odd? }
+        step :e, completed_if: ->(i) { i > 30 }
 
         def odd(number)
           number.odd?
@@ -77,7 +78,7 @@ RSpec.describe Storages::Wizard do
     end
 
     it "lists relevant steps" do
-      expect(wizard.steps).to eq(%i[b d])
+      expect(wizard.steps).to eq(%i[b d e])
     end
 
     it "lists relevant completed steps" do
@@ -85,14 +86,23 @@ RSpec.describe Storages::Wizard do
     end
 
     it "lists relevant pending steps" do
-      expect(wizard.pending_steps).to eq(%i[d])
+      expect(wizard.pending_steps).to eq(%i[d e])
+    end
+
+    it "determines next steps", :aggregate_failures do
+      expect(wizard.step_after(:a)).to be_nil
+      expect(wizard.step_after(:b)).to eq(:d)
+      expect(wizard.step_after(:c)).to be_nil
+      expect(wizard.step_after(:d)).to eq(:e)
+      expect(wizard.step_after(:e)).to be_nil
+      expect(wizard.step_after(:x)).to be_nil
     end
 
     context "when model matches alternative conditions" do
       let(:model) { 6 }
 
       it "lists relevant steps" do
-        expect(wizard.steps).to eq(%i[a c])
+        expect(wizard.steps).to eq(%i[a c e])
       end
 
       it "lists relevant completed steps" do
@@ -100,7 +110,16 @@ RSpec.describe Storages::Wizard do
       end
 
       it "lists relevant pending steps" do
-        expect(wizard.pending_steps).to eq(%i[c])
+        expect(wizard.pending_steps).to eq(%i[c e])
+      end
+
+      it "determines next steps", :aggregate_failures do
+        expect(wizard.step_after(:a)).to eq(:c)
+        expect(wizard.step_after(:b)).to be_nil
+        expect(wizard.step_after(:c)).to eq(:e)
+        expect(wizard.step_after(:d)).to be_nil
+        expect(wizard.step_after(:e)).to be_nil
+        expect(wizard.step_after(:x)).to be_nil
       end
     end
   end
