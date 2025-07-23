@@ -70,8 +70,8 @@ export default class AutoScrollingController extends withIndexOutletMixin(Contro
     window.location.hash = `#${anchorName}-${activityId}`;
   }
 
-  performAutoScrollingOnStreamsUpdate() {
-    if (this.indexOutlet.sortingValue === 'asc' && this.isJournalsContainerScrolledToBottom()) {
+  performAutoScrollingOnStreamsUpdate(journalsContainerAtBottom:boolean = false) {
+    if (this.indexOutlet.sortingValue === 'asc' && journalsContainerAtBottom) {
       // scroll to (new) bottom if sorting is ascending and journals container was already at bottom before a new activity was added
       if (this.isMobile()) {
         this.scrollInputContainerIntoView(300);
@@ -197,5 +197,17 @@ export default class AutoScrollingController extends withIndexOutletMixin(Contro
 
   private get inputContainer():HTMLElement | null {
     return this.element.querySelector('.work-packages-activities-tab-journals-new-component');
+  }
+
+  isJournalsContainerScrolledToBottom():boolean {
+    let atBottom = false;
+    // we have to handle different scrollable containers for different viewports/pages in order to identify if the user is at the bottom of the journals
+    // DOM structure different for notification center and workpackage detail view as well
+    const scrollableContainer = this.scrollableContainer;
+    if (scrollableContainer) {
+      atBottom = (scrollableContainer.scrollTop + scrollableContainer.clientHeight + 10) >= scrollableContainer.scrollHeight;
+    }
+
+    return atBottom;
   }
 }

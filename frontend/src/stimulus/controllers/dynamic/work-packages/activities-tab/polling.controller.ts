@@ -90,9 +90,12 @@ export default class PollingController extends withIndexOutletMixin(Controller) 
     // otherwise the browser will perform an auto scroll to the before focused button after the stream update was applied
     this.unfocusReactionButtons();
 
+    // Capture scroll position before the update
+    const journalsContainerAtBottom = this.autoScrollingOutlet.isJournalsContainerScrolledToBottom();
+
     void this.performUpdateStreamsRequest(this.prepareUpdateStreamsUrl(editingJournals))
       .then(({ html, headers }) => {
-        this.handleUpdateStreamsResponse(html, headers);
+        this.handleUpdateStreamsResponse(html, headers, journalsContainerAtBottom);
       }).catch((error) => {
         console.error('Error updating activities list:', error);
       }).finally(() => {
@@ -182,8 +185,8 @@ export default class PollingController extends withIndexOutletMixin(Controller) 
     return url.toString();
   }
 
-  private handleUpdateStreamsResponse(html:string, headers:Headers) {
-    // the timeout is require in order to give the Turb.renderStream method enough time to render the new journals
+  private handleUpdateStreamsResponse(html:string, headers:Headers, journalsContainerAtBottom:boolean) {
+    // the timeout is required in order to give the Turbo.renderStream method enough time to render the new journals
     // the methods below partially rely on the DOM to be updated
     // a specific signal would be way better than a static timeout, but I couldn't find a suitable one
     setTimeout(() => {
@@ -191,7 +194,7 @@ export default class PollingController extends withIndexOutletMixin(Controller) 
       this.indexOutlet.setLastServerTimestampViaHeaders(headers);
       this.checkForAndHandleWorkPackageUpdate(html);
       this.checkForNewNotifications(html);
-      this.performAutoScrolling(html);
+      this.performAutoScrolling(html, journalsContainerAtBottom);
       this.setLatestKnownChangesetUpdatedAt();
     }, 100);
   }
@@ -307,12 +310,12 @@ export default class PollingController extends withIndexOutletMixin(Controller) 
     return editingJournals;
   }
 
-  private performAutoScrolling(html:string) {
+  private performAutoScrolling(html:string, journalsContainerAtBottom:boolean) {
     // only process append, prepend and update actions
     if (!(html.includes('action="append"') || html.includes('action="prepend"') || html.includes('action="update"'))) {
       return;
     }
 
-    this.autoScrollingOutlet.performAutoScrollingOnStreamsUpdate();
+    this.autoScrollingOutlet.performAutoScrollingOnStreamsUpdate(journalsContainerAtBottom);
   }
 }

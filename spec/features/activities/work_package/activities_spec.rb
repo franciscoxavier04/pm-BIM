@@ -1005,7 +1005,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       logout
       login_as(admin)
 
-      # navigate to the same workpackage, but as a different user
+      # navigate to the same workpackage, as the same user
       wp_page.visit!
       wp_page.wait_for_activity_tab
       # expect the editor to be opened and content to be rescued for the correct user
