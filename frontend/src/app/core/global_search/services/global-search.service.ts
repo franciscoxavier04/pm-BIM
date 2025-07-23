@@ -61,6 +61,11 @@ export class GlobalSearchService {
     params.set('q', query);
     params.set('scope', scope);
 
+    // Filter work packages by default
+    if (!params.get('filter')) {
+      params.set('filter', 'work_packages');
+    }
+
     return params.toString();
   }
 }

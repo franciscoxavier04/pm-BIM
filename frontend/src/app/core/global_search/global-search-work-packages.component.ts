@@ -57,6 +57,7 @@ import {
 } from 'core-app/features/work-packages/directives/query-space/wp-isolated-query-space.directive';
 import { QueryRequestParams } from 'core-app/features/work-packages/components/wp-query/url-params-helper';
 import { populateInputsFromDataset } from 'core-app/shared/components/dataset-inputs';
+import { CurrentProjectService } from 'core-app/core/current-project/current-project.service';
 
 @Component({
   selector: 'opce-global-search-work-packages',
@@ -93,6 +94,7 @@ export class GlobalSearchWorkPackagesComponent extends UntilDestroyedMixin imple
     readonly halResourceService:HalResourceService,
     readonly wpTableFilters:WorkPackageViewFiltersService,
     readonly querySpace:IsolatedQuerySpace,
+    readonly currentProject:CurrentProjectService,
     readonly cdRef:ChangeDetectorRef,
   ) {
     super();
@@ -134,7 +136,7 @@ export class GlobalSearchWorkPackagesComponent extends UntilDestroyedMixin imple
       columns = ['id', 'subject', 'type', 'status', 'updatedAt'];
     }
 
-    if (this.scope === '') {
+    if (this.scope === '' && this.currentProject.id) {
       filters.push({
         subprojectId: {
           operator: '*',

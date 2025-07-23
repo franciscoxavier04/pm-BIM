@@ -56,17 +56,19 @@ See COPYRIGHT and LICENSE files for more details.
       ].compact
     )
 
-    header.with_tab_nav(label: nil) do |tab_nav|
+    header.with_tab_nav(label: nil, test_selector: "search-tabs") do |tab_nav|
       search_types.each do |name|
         tab_nav.with_tab(
+          test_selector: "search-tab-#{name}",
           selected: search_params[:filter] == name,
-          href: search_path(filter: name, q: @question, scope: search_params[:scope])
+          href: search_path(project_id: @project, filter: name, q: @question, scope: search_params[:scope])
         ) { |t| t.with_text { OpenProject::GlobalSearch.tab_name(name) } }
       end
 
       tab_nav.with_tab(
+        test_selector: "search-tab-all",
         selected: search_params[:filter].blank?,
-        href: search_path(q: @question, scope: search_params[:scope])
+        href: search_path(project_id: @project, q: @question, scope: search_params[:scope])
       ) { |t| t.with_text { OpenProject::GlobalSearch.tab_name("all") } }
     end
   end
