@@ -105,7 +105,7 @@ module Storages
             end
 
             def token_negotiable
-              service = OpenIDConnect::UserTokens::FetchService.new(user: @user)
+              service = OpenIDConnect::UserTokens::FetchService.new(user: @user, exchange_scope: @storage.token_exchange_scope)
 
               result = service.access_token_for(audience: @storage.audience)
               return pass_check(:token_negotiable) if result.success?

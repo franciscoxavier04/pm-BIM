@@ -559,7 +559,7 @@ module WorkPackages
     def validate_phase_active_in_project
       if model.project.present? &&
         model.project_phase_definition_id.present? &&
-        !(model.project_changed? && !model.project_phase_definition_changed?) &&
+        model.project_phase_definition_changed? &&
         !project_definition_assignable?
         errors.add :project_phase_id, :inclusion
       end

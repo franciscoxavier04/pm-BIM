@@ -839,14 +839,14 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       create(:work_package_journal, user: member, notes: "First comment by member", journable: work_package, version: 3)
     end
 
+    current_user { admin }
+
+    before do
+      wp_page.visit!
+      wp_page.wait_for_activity_tab
+    end
+
     context "when admin is visiting the work package" do
-      current_user { admin }
-
-      before do
-        wp_page.visit!
-        wp_page.wait_for_activity_tab
-      end
-
       it "can edit own comments" do
         # edit own comment
         activity_tab.edit_comment(first_comment_by_admin, text: "First comment by admin edited")
@@ -861,6 +861,19 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
 
         activity_tab.within_journal_entry(first_comment_by_member) do
           activity_tab.expect_journal_notes(text: "First comment by member edited")
+        end
+      end
+    end
+
+    context "when editing a comment included in the polling update" do
+      it "preserves the edit state" do
+        activity_tab.type_comment_in_edit(first_comment_by_admin, "Editing comment")
+        first_comment_by_admin.update_column(:updated_at, Time.current)
+
+        activity_tab.trigger_update_streams_poll
+
+        activity_tab.within_journal_entry(first_comment_by_admin) do
+          activity_tab.expect_journal_notes(text: "Editing comment")
         end
       end
     end

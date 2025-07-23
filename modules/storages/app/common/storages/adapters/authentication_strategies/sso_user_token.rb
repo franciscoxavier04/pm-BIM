@@ -38,7 +38,8 @@ module Storages
         end
 
         def call(storage:, http_options: {}, &)
-          result = OpenIDConnect::UserTokens::FetchService.new(user: @user).access_token_for(audience: storage.audience)
+          result = OpenIDConnect::UserTokens::FetchService.new(user: @user, exchange_scope: storage.token_exchange_scope)
+                                                          .access_token_for(audience: storage.audience)
 
           token = result.value_or do |failure|
             error("Failed to fetch access token for user #{@user}. Error: #{failure.inspect}")

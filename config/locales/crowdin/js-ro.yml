@@ -323,7 +323,7 @@ ro:
     label_added_time_by: 'Adăugat de <a href="%{authorLink}">%{author}</a> acum %{age}'
     label_ago: "zile în urmă"
     label_all: "toate"
-    label_all_projects: "All projects"
+    label_all_projects: "Toate proiectele"
     label_all_uppercase: "Toate"
     label_all_work_packages: "toate pachetele de lucru"
     label_and: "și"
@@ -696,6 +696,7 @@ ro:
           first_day: "Prima zi"
           last_day: "Ultima zi"
     text_are_you_sure: "Ești sigur?"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
     breadcrumb: "Breadcrumb"
     text_data_lost: "Toate datele introduse vor fi pierdute."
     text_user_wrote: "%{value} a scris:"

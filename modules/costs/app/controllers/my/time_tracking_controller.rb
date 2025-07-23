@@ -81,10 +81,14 @@ module My
 
     def parsed_date
       if params[:date].present?
-        begin
-          Date.iso8601(params[:date])
-        rescue StandardError
-          nil
+        if params[:date] == "today"
+          current_date
+        else
+          begin
+            Date.iso8601(params[:date])
+          rescue StandardError
+            nil
+          end
         end
       end
     end

@@ -56,11 +56,11 @@ ro:
     custom_styles:
       color_theme: "Culoarea temei"
       color_theme_custom: "(Personalizat)"
-      tab_interface: "Interface"
-      tab_branding: "Branding"
+      tab_interface: "Interfață"
+      tab_branding: "Elemente de marcă"
       tab_pdf_export_styles: "PDF export styles"
       colors:
-        primary-button-color: "Primary button"
+        primary-button-color: "Butonul principal"
         accent-color: "Accent"
         header-bg-color: "Fundal antet"
         header-item-bg-hover-color: "Fundal antet la plutire"
@@ -121,7 +121,7 @@ ro:
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -150,7 +150,7 @@ ro:
         blank_slate:
           title: "No SCIM clients configured yet"
           description: "Add clients to see them here"
-        user_count: "Users"
+        user_count: "Utilizatori"
       token_list_component:
         description: "The tokens you generate here can be passed by a SCIM client to access the OpenProject SCIM API."
         heading: "Tokens"
@@ -259,9 +259,9 @@ ro:
       no_results_content_text: Creează o culoare nouă
       label_new_color: "Culoare nouă"
     new:
-      label_new_color: "New Color"
+      label_new_color: "Culoare nouă"
     edit:
-      label_edit_color: "Edit Color"
+      label_edit_color: "Editează culoare"
     form:
       label_new_color: "Culoare nouă"
       label_edit_color: "Editare culoare"
@@ -300,8 +300,8 @@ ro:
           heading: "Delete custom field item?"
           description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
-          label: "Item label"
-          short: "Short name"
+          label: "Etichetă element"
+          short: "Nume scurt"
       notice:
         remember_items_and_projects: "Remember to set items and projects in the respective tabs for this custom field."
       hierarchy:
@@ -337,15 +337,15 @@ ro:
     single: "sau"
   dry_validation:
     errors:
-      int?: "must be an integer."
-      filled?: "must be filled."
-      greater_or_equal_zero: "must be greater or equal to 0."
-      not_found: "not found."
+      int?: "trebuie să fie un număr întreg."
+      filled?: "trebuie completat"
+      greater_or_equal_zero: "trebuie să fie mai mare sau egal cu 0."
+      not_found: "nu a fost găsit."
       rules:
         copy_workflow_from:
-          workflow_missing: "has no own workflow."
+          workflow_missing: "nu are un flux de lucru propriu."
         item:
-          root_item: "cannot be a root item."
+          root_item: "nu poate fi un element root."
           not_persisted: "must be an already existing item."
         label:
           not_unique: "must be unique within the same hierarchy level."
@@ -355,11 +355,11 @@ ro:
           not_descendant: "must be a descendant of the hierarchy root."
     rules:
       copy_workflow_from: "Type for workflow copy"
-      enabled: "Enabled"
-      depth: "Depth"
-      item: "Item"
-      label: "Label"
-      short: "Short name"
+      enabled: "Activat"
+      depth: "Adâncime"
+      item: "Element"
+      label: "Etichetă"
+      short: "Nume scurt"
       parent: "Părinte"
       blueprint: "Pattern blueprint"
   global_search:
@@ -403,7 +403,7 @@ ro:
       no_results_title_text: În acest moment nu există proiecte
       no_results_content_text: Creează proiect nou
       search:
-        label: Project name filter
+        label: Filtru nume proiect
         placeholder: Caută după numele proiectului
     lists:
       active: "Proiecte active"
@@ -694,7 +694,7 @@ ro:
         tab: "Configurare formular"
       projects:
         tab: Proiecte
-        enable_all: Enable for all projects
+        enable_all: Activează pentru toate proiectele
         select_projects: Select projects
         select_projects_description: Select the projects in which you would like to use this type.
       settings:
@@ -771,11 +771,11 @@ ro:
         aria_label: "Datepicker tabs"
         children: "Copii"
         dates: "Date"
-        predecessors: "Predecessors"
-        successors: "Successors"
+        predecessors: "Predecesori"
+        successors: "Succesori"
         blankslate:
           predecessors:
-            title: "No predecessors"
+            title: "Fără predecesori"
             description: "This work package does not have any predecessors."
           successors:
             title: "No successors"
@@ -861,7 +861,7 @@ ro:
       child_description: "Face din pachetul de lucru asociat un sub-element al pachetului de lucru actual (părinte)"
       parent: "Părinte"
       parent_description: "Makes the related work package a parent of the current (child) work package"
-      label_closest: "Closest"
+      label_closest: "Cel mai apropiat"
       label_blocks_singular: "blochează"
       label_blocks_plural: "blochează"
       blocks_description: "Pachetul de lucru asociat nu poate fi închis până când acesta nu este închis mai întâi"
@@ -897,7 +897,7 @@ ro:
       required_description: "Marchează acest pachet de lucru ca fiind o cerință pentru cel asociat"
       label_parent_singular: "părinte"
       label_parent_plural: "părinte"
-      label_other_relations: "Other relations"
+      label_other_relations: "Alte relaţii"
       ghost_relation_title: "Pachet de lucru asociat"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Invitație
@@ -984,23 +984,23 @@ ro:
         uid: "ID Client"
         secret: "Client Secret"
         owner: "Proprietar"
-        builtin: "Builtin"
+        builtin: "Încorporat"
         enabled: "Activ"
         redirect_uri: "Redirecționați URI"
         client_credentials_user_id: "Credențiale client ID utilizator"
         scopes: "Scopuri"
         confidential: "Confidenţial"
       emoji_reaction:
-        reactable: "Reacted on"
+        reactable: "A reacţionat la"
       enterprise_token:
         starts_at: "Valabil din"
         subscriber: "Abonat"
-        subscription: "Subscription"
+        subscription: "Abonament"
         plan: "Plan"
         encoded_token: "Token de sprijin pentru întreprinderi"
-        active_user_count_restriction: "Active users"
+        active_user_count_restriction: "Utilizatori activi"
       enterprise_trial:
-        company: "Company"
+        company: "Companie"
       grids/grid:
         page: "Pagină"
         row_count: "Număr de rânduri"
@@ -1026,7 +1026,7 @@ ro:
         roles: "Roluri"
       notification:
         read_ian: "Read in-app"
-        resource: "Resource"
+        resource: "Resursă"
       oauth_client:
         client: "ID Client"
       project:
@@ -1092,8 +1092,8 @@ ro:
         timestamps: "Baseline timestamps"
         sort_criteria: "Sort criteria"
         highlighted_attributes: "Highlighted attributes"
-        highlighting_mode: "Highlight mode"
-        display_representation: "Display mode"
+        highlighting_mode: "Mod evidențiere"
+        display_representation: "Mod afişare"
         show_hierarchies: "Display mode"
         starred: "Favorit"
         hidden: "Hidden"

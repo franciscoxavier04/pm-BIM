@@ -89,7 +89,7 @@ FactoryBot.define do
   factory :nextcloud_storage,
           parent: :storage,
           class: "::Storages::NextcloudStorage" do
-    provider_type { Storages::Storage::PROVIDER_TYPE_NEXTCLOUD }
+    provider_type { Storages::NextcloudStorage.name }
     sequence(:host) { |n| "https://host#{n}.example.com/" }
     authentication_method { "two_way_oauth2" }
     storage_audience { nil }

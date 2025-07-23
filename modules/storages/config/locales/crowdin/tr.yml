@@ -479,6 +479,11 @@ tr:
         label_oauth_client_secret: Azure OAuth Client Secret Value
         name: OneDrive
         name_placeholder: ör. OneDrive
+      share_point:
+        label_oauth_client_id: Azure OAuth Application (client) ID
+        label_oauth_client_secret: Azure OAuth Client Secret Value
+        name: SharePoint
+        name_placeholder: e.g. SharePoint
     show_attachments_toggle:
       description: Bu seçeneğin devre dışı bırakılması, iş paketleri dosyaları sekmesindeki ekler listesini gizleyecektir. Bir iş paketinin açıklamasına eklenen dosyalar dahili ekler deposuna yüklenmeye devam edecektir.
       label: İş paketleri dosyaları sekmesinde ekleri göster

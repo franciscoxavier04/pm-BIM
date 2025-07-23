@@ -22,7 +22,7 @@ ro:
         end_session_endpoint: End session endpoint
         post_logout_redirect_uri: Post logout redirect URI
         jwks_uri: JWKS URI
-        issuer: Issuer
+        issuer: Emitent
         tenant: Tenant
         metadata_url: Metadata URL
         icon: Custom icon

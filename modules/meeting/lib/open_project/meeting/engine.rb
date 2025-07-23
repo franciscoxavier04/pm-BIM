@@ -183,7 +183,7 @@ module OpenProject::Meeting
       PermittedParams.permit(:search, :meetings)
 
       ::Exports::Register.register do
-        single(::Meeting, Meetings::Exporter)
+        single(::Meeting, Meetings::PDF::Exporter)
       end
     end
 

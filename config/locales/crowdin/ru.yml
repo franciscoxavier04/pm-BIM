@@ -121,7 +121,7 @@ ru:
         one_time_hint: "Это единственный раз, когда Вы увидите секретный ключ. Убедитесь, что вы сохранили его."
       created_token_dialog_component:
         title: "Токен доступа создан"
-        heading: "Токен доступа сгенерирован"
+        heading: "A token has been generated"
         label_token: "Токен доступа"
         one_time_hint: "Это единственный раз, когда Вы увидите токен. Убедитесь, что вы сохранили его."
       delete_scim_client_dialog_component:

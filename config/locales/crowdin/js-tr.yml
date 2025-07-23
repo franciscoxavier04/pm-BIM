@@ -696,6 +696,7 @@ tr:
           first_day: "İlk gün"
           last_day: "Son gün"
     text_are_you_sure: "Emin misiniz?"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
     breadcrumb: "Breadcrumb"
     text_data_lost: "Girilen tüm veriler silinecek."
     text_user_wrote: "%{value} demiş ki:"

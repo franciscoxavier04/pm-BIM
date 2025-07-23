@@ -81,7 +81,7 @@ fr:
     edit_project_folder:
       label: Modifier le dossier du projet
     open:
-      contact_admin: Please contact your administrator to resolve this error.
+      contact_admin: Veuillez contacter votre administrateur pour résoudre cette erreur.
       remote_identity_error: Une erreur inattendue s'est produite lors de la connexion à l'espace de stockage.
     project_folder_mode:
       automatic: Géré automatiquement
@@ -129,7 +129,7 @@ fr:
               conflict: 'L''utilisateur %{user} n''a pas pu être ajouté au groupe %{group} pour la raison suivante : %{reason}'
               failed_to_add: 'L''utilisateur %{user} n''a pas pu être ajouté au groupe %{group} pour la raison suivante : %{reason}'
             create_folder:
-              conflict: The folder %{folder_name} already exists on %{parent_location}.
+              conflict: Le dossier %{folder_name} existe déjà dans %{parent_location}.
               not_found: "%{parent_location} n'a pas été trouvé."
             ensure_root_folder_permissions:
               not_found: "%{group_folder} n'a pas été trouvé. Veuillez vérifier la configuration de votre dossier de groupe Nextcloud."
@@ -143,7 +143,7 @@ fr:
               conflict: 'L''utilisateur %{user} n''a pas pu être retiré du groupe %{group} pour la raison suivante : %{reason}'
               failed_to_remove: 'L''utilisateur %{user} n''a pas pu être retiré du groupe %{group} pour la raison suivante : %{reason}'
             rename_project_folder:
-              conflict: OpenProject could not rename the project folder to %{current_path} as a folder with the same name already exists
+              conflict: OpenProject n'a pas pu renommer le dossier du projet en %{current_path} car un dossier portant le même nom existe déjà.
               forbidden: L'utilisateur d'OpenProject n'a pas accès au dossier %{current_path}.
               not_found: "%{current_path} n'a pas été trouvé."
             set_folders_permissions:
@@ -169,7 +169,7 @@ fr:
               not_found: "%{current_path} n'a pas été trouvé."
             set_folders_permissions:
               permission_not_set: n'a pas pu définir les autorisations sur %{path}.
-          error: An unexpected error occurred. Please ensure that OneDrive is reachable and check OpenProject worker logs for more information
+          error: Une erreur inattendue s'est produite. Veuillez vous assurer que OneDrive/SharePoint est joignable et vérifiez les journaux des processus OpenProject pour obtenir plus d'informations
           not_allowed: L'application OpenProject n'a pas été autorisée à accéder à votre lecteur OneDrive. Veuillez vérifier les autorisations définies dans l'application Azure.
           unauthorized: OpenProject n'a pas pu se synchroniser avec OneDrive. Veuillez vérifier votre espace de stockage et la configuration de l'application Azure.
           user_does_not_exist: "%{user} n'existe pas dans Nextcloud."
@@ -188,7 +188,7 @@ fr:
     configuration_checks:
       oauth_client_incomplete:
         nextcloud: Autoriser OpenProject à accéder aux données Nextcloud en utilisant OAuth.
-        one_drive: Allow OpenProject to access Azure data using OAuth to connect OneDrive.
+        one_drive: Autoriser OpenProject à accéder aux données Azure en utilisant OAuth pour connecter OneDrive/Sharepoint.
       redirect_uri_incomplete:
         one_drive: Complétez la configuration avec la redirection de l'URI correcte.
     confirm_replace_oauth_application: Cette action réinitialisera les informations d'identification OAuth actuelles. Après confirmation, vous devrez saisir de nouvelles informations d'identification auprès du fournisseur de stockage et tous les utilisateurs devront à nouveau s'authentifier sur OpenProject. Êtes-vous sûr de vouloir continuer ?
@@ -298,7 +298,7 @@ fr:
         od_drive_id_not_found: L'identifiant du lecteur configuré est introuvable. Veuillez vérifier la configuration.
         od_oauth_request_not_found: Le point de terminaison pour récupérer l'utilisateur actuellement connecté n'a pas été trouvé. Veuillez vérifier les journaux du serveur pour obtenir plus d'informations.
         od_oauth_request_unauthorized: L'utilisateur actuel n'est pas autorisé à accéder à l'espace de stockage de fichiers distant. Veuillez consulter les journaux du serveur pour obtenir plus d'informations.
-        od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive as the user did not yet link their Microsoft account.
+        od_oauth_token_missing: OpenProject ne peut pas tester la communication au niveau utilisateur avec OneDrive/SharePoint, car l'utilisateur n'a pas encore lié son compte Microsoft.
         od_tenant_id_wrong: L'identifiant du répertoire (locataire) configuré n'est pas valide. Veuillez vérifier la configuration.
         od_test_folder_exists: Le dossier %{folder_name} requis pour le test existe déjà. Veuillez le supprimer et réessayer.
         od_unexpected_content: Contenu inattendu trouvé dans le lecteur.
@@ -364,7 +364,7 @@ fr:
       one_drive:
         application_link_text: Portal Azure
         copy_redirect_uri: Copier l'URI de redirection
-        documentation_link_text: OneDrive file storages documentation
+        documentation_link_text: Documentation de stockage de fichiers OneDrive/SharePoint
         drive_id: Veuillez copier l'ID du lecteur souhaité en suivant les étapes de %{drive_id_link_text}.
         integration: OneDrive
         missing_client_id_for_redirect_uri: Veuillez remplir les valeurs OAuth pour générer un URI
@@ -478,6 +478,11 @@ fr:
         label_oauth_client_secret: Clé secrète du client OAuth Azure
         name: OneDrive
         name_placeholder: par exemple OneDrive
+      share_point:
+        label_oauth_client_id: ID de l'application Azure OAuth (client)
+        label_oauth_client_secret: Clé secrète du client OAuth Azure
+        name: Microsoft Office SharePoint Online
+        name_placeholder: par exemple SharePoint
     show_attachments_toggle:
       description: Si vous désactivez cette option, la liste des pièces jointes dans l'onglet des fichiers des lots de travaux sera masquée. Les fichiers joints dans la description d'un lot de travaux seront toujours téléversés dans l'espace de stockage interne des pièces jointes.
       label: Afficher les pièces jointes dans l'onglet des fichiers des lots de travaux
@@ -495,6 +500,5 @@ fr:
     successful_storage_connection: Espace de stockage connecté avec succès ! N'oubliez pas d'activer le stockage dans l'onglet Projets des projets dans lesquels vous souhaitez l'utiliser.
     upsell:
       description: |-
-        Integrate your OneDrive as a file storage with OpenProject. Upload files and link them directly to
-        work packages in a project.
-      title: OneDrive integration
+        Intégrez votre OneDrive/SharePoint en tant que espace de stockage de fichiers avec OpenProject. Téléchargez des fichiers et liez-les directement aux lots de travaux d'un projet.
+      title: Intégration de OneDrive

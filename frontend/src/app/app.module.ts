@@ -28,7 +28,7 @@
 
 import { APP_INITIALIZER, ApplicationRef, DoBootstrap, Injector, NgModule } from '@angular/core';
 import { A11yModule } from '@angular/cdk/a11y';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   OpContextMenuTrigger,
@@ -206,6 +206,7 @@ import {
 import {
   OpWpDatePickerInstanceComponent,
 } from 'core-app/shared/components/datepicker/wp-date-picker-modal/wp-date-picker-instance.component';
+import { OpInviteUserModalAugmentService } from 'core-app/features/invite-user-modal/invite-user-modal-augment.service';
 
 export function initializeServices(injector:Injector) {
   return () => {
@@ -213,6 +214,7 @@ export function initializeServices(injector:Injector) {
     const keyboardShortcuts = injector.get(KeyboardShortcutService);
     const contextMenu = injector.get(OPContextMenuService);
     const currentProject = injector.get(CurrentProjectService);
+    const inviteUserAugmentService = injector.get(OpInviteUserModalAugmentService);
 
     // Conditionally add the Revit Add-In settings button
     injector.get(RevitAddInSettingsButtonService);
@@ -220,6 +222,7 @@ export function initializeServices(injector:Injector) {
     const runOnRenderAndLoad = () => {
       topMenuService.register();
       contextMenu.register();
+      inviteUserAugmentService.setupListener();
     };
     runOnRenderAndLoad();
 
@@ -298,9 +301,6 @@ export function initializeServices(injector:Injector) {
     // Angular Forms
     ReactiveFormsModule,
 
-    // Angular Http Client
-    HttpClientModule,
-
     // Augmenting Module
     OpenprojectAugmentingModule,
 
@@ -339,6 +339,7 @@ export function initializeServices(injector:Injector) {
     ConfirmDialogService,
     RevitAddInSettingsButtonService,
     CopyToClipboardService,
+    provideHttpClient(withInterceptorsFromDi()),
   ],
   declarations: [
     OpContextMenuTrigger,

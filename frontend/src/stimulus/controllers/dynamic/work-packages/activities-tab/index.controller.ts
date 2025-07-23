@@ -34,6 +34,8 @@ import {
 } from 'core-app/shared/components/editor/components/ckeditor/ckeditor.types';
 import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
+import { useMeta } from 'stimulus-use';
+import { retrieveCkEditorInstance } from 'core-app/shared/helpers/ckeditor-helpers';
 
 enum AnchorType {
   Comment = 'comment',
@@ -47,7 +49,7 @@ interface CustomEventWithIdParam extends Event {
   };
 }
 
-export default class IndexController extends Controller {
+export default class IndexController extends Controller<HTMLElement> {
   static values = {
     updateStreamsPath: String,
     sorting: String,
@@ -61,12 +63,13 @@ export default class IndexController extends Controller {
     unsavedChangesConfirmationMessage: String,
   };
 
-  static targets = ['journalsContainer', 'buttonRow', 'formRow', 'form', 'formSubmitButton', 'reactionButton'];
+  static targets = ['journalsContainer', 'buttonRow', 'formRow', 'form', 'editForm', 'formSubmitButton', 'reactionButton'];
 
   declare readonly journalsContainerTarget:HTMLElement;
   declare readonly buttonRowTarget:HTMLInputElement;
   declare readonly formRowTarget:HTMLElement;
   declare readonly formTarget:HTMLFormElement;
+  declare readonly editFormTargets:HTMLFormElement[];
   declare readonly formSubmitButtonTarget:HTMLButtonElement;
   declare readonly reactionButtonTargets:HTMLElement[];
 
@@ -86,6 +89,10 @@ export default class IndexController extends Controller {
   declare showConflictFlashMessageUrlValue:string;
   declare unsavedChangesConfirmationMessageValue:string;
 
+  static metaNames = ['csrf-token'];
+
+  declare readonly csrfToken:string;
+
   private updateInProgress:boolean;
   private turboRequests:TurboRequestsService;
 
@@ -95,6 +102,8 @@ export default class IndexController extends Controller {
   private ckEditorAbortController = new AbortController();
 
   async connect() {
+    useMeta(this, { suffix: false });
+
     const context = await window.OpenProject.getPluginContext();
     this.turboRequests = context.services.turboRequests;
     this.apiV3Service = context.services.apiV3Service;
@@ -122,12 +131,12 @@ export default class IndexController extends Controller {
 
   private markAsConnected() {
     // used in specs for timing
-    (this.element as HTMLElement).dataset.stimulusControllerConnected = 'true';
+    this.element.dataset.stimulusControllerConnected = 'true';
   }
 
   private markAsDisconnected() {
     // used in specs for timing
-    (this.element as HTMLElement).dataset.stimulusControllerConnected = 'false';
+    this.element.dataset.stimulusControllerConnected = 'false';
   }
 
   private setLocalStorageKeys() {
@@ -217,13 +226,15 @@ export default class IndexController extends Controller {
 
     this.updateInProgress = true;
 
+    const editingJournals = this.captureEditingJournals();
+
     // Unfocus any reaction buttons that may have been focused
     // otherwise the browser will perform an auto scroll to the before focused button after the stream update was applied
     this.unfocusReactionButtons();
 
     const journalsContainerAtBottom = this.isJournalsContainerScrolledToBottom();
 
-    void this.performUpdateStreamsRequest(this.prepareUpdateStreamsUrl())
+    void this.performUpdateStreamsRequest(this.prepareUpdateStreamsUrl(editingJournals))
     .then(({ html, headers }) => {
       this.handleUpdateStreamsResponse(html, headers, journalsContainerAtBottom);
     }).catch((error) => {
@@ -233,16 +244,34 @@ export default class IndexController extends Controller {
     });
   }
 
+  private captureEditingJournals():Set<string> {
+    const editingJournals = new Set<string>();
+
+    const editForms = this.editFormTargets;
+    editForms.forEach((form) => {
+      const journalId = form.dataset.journalId;
+      if (journalId) { editingJournals.add(journalId); }
+    });
+
+    return editingJournals;
+  }
+
   private unfocusReactionButtons() {
     this.reactionButtonTargets.forEach((button) => button.blur());
   }
 
-  private prepareUpdateStreamsUrl():string {
+  private prepareUpdateStreamsUrl(editingJournals:Set<string>):string {
     const baseUrl = window.location.origin;
     const url = new URL(this.updateStreamsPathValue, baseUrl);
+
     url.searchParams.set('sortBy', this.sortingValue);
     url.searchParams.set('filter', this.filterValue);
     url.searchParams.set('last_update_timestamp', this.lastServerTimestampValue);
+
+    if (editingJournals.size > 0) {
+      url.searchParams.set('editing_journals', Array.from(editingJournals).join(','));
+    }
+
     return url.toString();
   }
 
@@ -250,7 +279,7 @@ export default class IndexController extends Controller {
     return this.turboRequests.request(url, {
       method: 'GET',
       headers: {
-        'X-CSRF-Token': (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement).content,
+        'X-CSRF-Token': this.csrfToken,
       },
     }, true); // suppress error toast in polling to avoid spamming the user when having e.g. network issues
   }
@@ -374,12 +403,9 @@ export default class IndexController extends Controller {
   }
 
   private rescueEditorContent() {
-    const ckEditorInstance = this.getCkEditorInstance();
-    if (ckEditorInstance) {
-      const data = ckEditorInstance.getData({ trim: false });
-      if (data.length > 0) {
-        localStorage.setItem(this.rescuedEditorDataKey, data);
-      }
+    const data = this.ckEditorInstance?.getData({ trim: false });
+    if (data) {
+      localStorage.setItem(this.rescuedEditorDataKey, data);
     }
   }
 
@@ -491,13 +517,12 @@ export default class IndexController extends Controller {
     window.location.hash = `#${anchorName}-${activityId}`;
   }
 
-  private getCkEditorElement():HTMLElement | null {
+  private get ckEditorAugmentedTextarea():HTMLElement | null {
     return this.element.querySelector('opce-ckeditor-augmented-textarea');
   }
 
-  getCkEditorInstance():ICKEditorInstance | null {
-    const AngularCkEditorElement = this.getCkEditorElement();
-    return AngularCkEditorElement ? jQuery(AngularCkEditorElement).data('editor') as ICKEditorInstance : null;
+  get ckEditorInstance():ICKEditorInstance | undefined {
+    return retrieveCkEditorInstance(this.element);
   }
 
   private getInputContainer():HTMLElement | null {
@@ -559,7 +584,7 @@ export default class IndexController extends Controller {
       },
     };
 
-    const editorElement = this.getCkEditorElement();
+    const editorElement = this.ckEditorAugmentedTextarea;
     if (editorElement) {
       editorElement.addEventListener('editorEscape', handlers.onEscapeEditor, { signal });
       editorElement.addEventListener('editorKeyup', handlers.adjustMargin, { signal });
@@ -639,7 +664,7 @@ export default class IndexController extends Controller {
   }
 
   focusEditor(timeout:number = 10) {
-    const ckEditorInstance = this.getCkEditorInstance();
+    const ckEditorInstance = this.ckEditorInstance;
     if (ckEditorInstance) {
       setTimeout(() => ckEditorInstance.editing.view.focus(), timeout);
     }
@@ -647,14 +672,13 @@ export default class IndexController extends Controller {
 
   openEditorWithInitialData(quotedText:string) {
     this.showForm();
-    const ckEditorInstance = this.getCkEditorInstance();
-    if (ckEditorInstance && ckEditorInstance.getData({ trim: false }).length === 0) {
-      ckEditorInstance.setData(quotedText);
+    if (this.isEditorEmpty()) {
+      this.ckEditorInstance!.setData(quotedText);
     }
   }
 
   clearEditor() {
-    this.getCkEditorInstance()?.setData('');
+    this.ckEditorInstance?.setData('');
   }
 
   hideEditor() {
@@ -700,9 +724,7 @@ export default class IndexController extends Controller {
   }
 
   private isEditorEmpty():boolean {
-    const ckEditorInstance = this.getCkEditorInstance();
-
-    return !!(ckEditorInstance?.getData({ trim: false }).length === 0);
+    return this.ckEditorInstance?.getData({ trim: false }) === '';
   }
 
   private handleTurboSubmitStart(_event:Event) {
@@ -741,15 +763,12 @@ export default class IndexController extends Controller {
   }
 
   private setCKEditorReadonlyMode(disabled:boolean) {
-    const ckEditorInstance = this.getCkEditorInstance();
     const editorLockID = 'work-packages-activities-tab-index-component';
 
-    if (ckEditorInstance) {
-      if (disabled) {
-        ckEditorInstance.enableReadOnlyMode(editorLockID);
-      } else {
-        ckEditorInstance.disableReadOnlyMode(editorLockID);
-      }
+    if (disabled) {
+      this.ckEditorInstance?.enableReadOnlyMode(editorLockID);
+    } else {
+      this.ckEditorInstance?.disableReadOnlyMode(editorLockID);
     }
   }
 

@@ -58,6 +58,11 @@ module Redmine::MenuManager::TopMenuHelper
     end
   end
 
+  def render_logo_icon
+    mode_class = User.current.pref.theme === "dark" ? "op-logo-icon_dark" : "op-logo-icon"
+    render Primer::BaseComponent.new(tag: :div, classes: mode_class)
+  end
+
   def render_top_menu_search
     content_tag :div, class: "op-app-search" do
       render_global_search_input
@@ -110,42 +115,64 @@ module Redmine::MenuManager::TopMenuHelper
 
   def render_module_top_menu_node(item_groups = module_top_menu_item_groups)
     unless item_groups.empty?
-      render Primer::Alpha::ActionMenu.new(classes: "op-app-menu--item",
-                                           menu_id: "op-app-header--modules-menu",
-                                           anchor_align: :end) do |menu|
-        menu.with_show_button(icon: "op-grid-menu",
-                              scheme: :invisible,
-                              classes: "op-app-header--primer-button",
-                              title: I18n.t("label_modules"),
-                              test_selector: "op-app-header--modules-menu-button",
-                              "aria-label": I18n.t("label_modules"))
+      render Primer::Alpha::Dialog.new(classes: "op-app-menu--item",
+                                       title: I18n.t("label_modules"),
+                                       visually_hide_title: true,
+                                       size: :small,
+                                       position: :left) do |dialog|
+        dialog.with_show_button(icon: "op-grid-menu",
+                                scheme: :invisible,
+                                classes: "op-app-header--primer-button",
+                                title: I18n.t("label_modules"),
+                                test_selector: "op-app-header--modules-menu-button",
+                                "aria-controls": "op-app-header--modules-menu-list",
+                                "aria-label": I18n.t("label_modules"))
+        dialog.with_header(classes: "op-app-header--modules-menu-header") do
+          render_logo_icon
+        end
 
         item_groups.each do |item_group|
-          render_menu_item_group(menu, item_group)
+          render_dialog_item_group(dialog, item_group)
         end
       end
     end
   end
 
-  def render_menu_item_group(menu, item_group)
-    menu.with_group do |menu_group|
-      menu_group.with_heading(title: item_group[:title], align_items: :flex_start) if item_group[:title]
+  def render_dialog_item_group(dialog, item_group)
+    dialog.with_body do
+      render Primer::Alpha::ActionList.new(
+        classes: "op-app-menu--items",
+        id: "op-app-header--modules-menu-list"
+      ) do |list|
+        list.with_heading(title: item_group[:title], align_items: :flex_start) if item_group[:title]
 
-      item_group[:items].each do |item|
-        menu_group.with_item(
-          href: url_for(item.url),
-          label: item.caption,
-          test_selector: "op-menu--item-action"
-        ) do |menu_item|
-          menu_item.with_leading_visual_icon(icon: item.icon) if item.icon
-        end
+        my_items, remaining_items = item_group[:items].partition { |item| item.context == :my }
+
+        render_action_list_items(list, my_items)
+
+        list.with_divider if my_items.any? && remaining_items.any?
+
+        render_action_list_items(list, remaining_items)
+      end
+    end
+  end
+
+  def render_action_list_items(list, items)
+    items.each do |item|
+      list.with_item(
+        href: url_for(item.url),
+        label: item.caption,
+        test_selector: "op-menu--item-action"
+      ) do |menu_item|
+        menu_item.with_leading_visual_icon(icon: item.icon) if item.icon
       end
     end
   end
 
   # Menu items for the modules top menu
   def more_top_menu_items
-    split_top_menu_into_main_or_more_menus[:modules]
+    split = split_top_menu_into_main_or_more_menus
+    split[:modules] + split[:my]
   end
 
   def module_top_menu_item_groups

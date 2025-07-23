@@ -696,6 +696,7 @@ pt-PT:
           first_day: "Primeiro dia"
           last_day: "Último dia"
     text_are_you_sure: "Tem a certeza?"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
     breadcrumb: "Estrutural"
     text_data_lost: "Todos os dados inseridos serão perdidos."
     text_user_wrote: "%{value} escreveu:"

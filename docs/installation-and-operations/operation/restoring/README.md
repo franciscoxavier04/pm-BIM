@@ -236,7 +236,7 @@ host which is mounted into the OpenProject container. For instance:
 
 ```shell
 # 1. extract files
-tar -C /var/lib/openproject/assets -xf attachments-20210211090802.tar.gz
+tar -C /var/lib/openproject/assets/files -xf attachments-20210211090802.tar.gz
 
 # 2. give right permission so `app` user in container can read them
 chown -R 1000:1000 /var/lib/openproject/assets
