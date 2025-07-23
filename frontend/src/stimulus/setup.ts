@@ -20,6 +20,10 @@ import HoverCardTriggerController from './controllers/hover-card-trigger.control
 import ScrollIntoViewController from './controllers/scroll-into-view.controller';
 import CkeditorFocusController from './controllers/ckeditor-focus.controller';
 import IndexController from './controllers/dynamic/work-packages/activities-tab/index.controller';
+import AutoScrollingController from './controllers/dynamic/work-packages/activities-tab/auto-scrolling.controller';
+import PollingController from './controllers/dynamic/work-packages/activities-tab/polling.controller';
+import StemsController from './controllers/dynamic/work-packages/activities-tab/stems.controller';
+import EditorController from './controllers/dynamic/work-packages/activities-tab/editor.controller';
 
 import AutoSubmit from '@stimulus-components/auto-submit';
 import { OpenProjectStimulusApplication } from 'core-stimulus/openproject-stimulus-application';
@@ -54,6 +58,10 @@ OpenProjectStimulusApplication.preregister('scroll-into-view', ScrollIntoViewCon
 OpenProjectStimulusApplication.preregister('ckeditor-focus', CkeditorFocusController);
 OpenProjectStimulusApplication.preregister('auto-submit', AutoSubmit);
 OpenProjectStimulusApplication.preregister('work-packages--activities-tab--index', IndexController);
+OpenProjectStimulusApplication.preregister('work-packages--activities-tab--auto-scrolling', AutoScrollingController);
+OpenProjectStimulusApplication.preregister('work-packages--activities-tab--polling', PollingController);
+OpenProjectStimulusApplication.preregister('work-packages--activities-tab--stems', StemsController);
+OpenProjectStimulusApplication.preregister('work-packages--activities-tab--editor', EditorController);
 OpenProjectStimulusApplication.preregister('beforeunload', BeforeunloadController);
 
 const instance = OpenProjectStimulusApplication.start();
