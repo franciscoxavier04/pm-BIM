@@ -193,6 +193,7 @@
     "analytics": false,
     "cache": {
       "environment": "all"
-    }
+    },
+    "packageManager": "pnpm"
   }
 }
