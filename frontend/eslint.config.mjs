@@ -5,9 +5,6 @@ import jasmine from 'eslint-plugin-jasmine';
 import angular from 'angular-eslint';
 import stylistic from '@stylistic/eslint-plugin';
 
-// import airbnb from 'eslint-config-airbnb-base';
-// import tsairbnb from 'eslint-config-airbnb-typescript';
-
 import { defineConfig, globalIgnores } from 'eslint/config';
 
 const config = defineConfig([
