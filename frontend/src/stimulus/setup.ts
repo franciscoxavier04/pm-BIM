@@ -19,6 +19,7 @@ import PatternInputController from './controllers/pattern-input.controller';
 import HoverCardTriggerController from './controllers/hover-card-trigger.controller';
 import ScrollIntoViewController from './controllers/scroll-into-view.controller';
 import CkeditorFocusController from './controllers/ckeditor-focus.controller';
+import IndexController from './controllers/dynamic/work-packages/activities-tab/index.controller';
 
 import AutoSubmit from '@stimulus-components/auto-submit';
 import { OpenProjectStimulusApplication } from 'core-stimulus/openproject-stimulus-application';
@@ -52,8 +53,8 @@ OpenProjectStimulusApplication.preregister('pattern-input', PatternInputControll
 OpenProjectStimulusApplication.preregister('scroll-into-view', ScrollIntoViewController);
 OpenProjectStimulusApplication.preregister('ckeditor-focus', CkeditorFocusController);
 OpenProjectStimulusApplication.preregister('auto-submit', AutoSubmit);
+OpenProjectStimulusApplication.preregister('work-packages--activities-tab--index', IndexController);
 OpenProjectStimulusApplication.preregister('beforeunload', BeforeunloadController);
-
 
 const instance = OpenProjectStimulusApplication.start();
 window.Stimulus = instance;
