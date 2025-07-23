@@ -37,7 +37,11 @@ module Storages
       module SharePoint
         RSpec.describe SharePointContract, :storage_server_helpers, :webmock do
           let(:current_user) { create(:admin) }
-          let(:storage) { build(:share_point_storage, host: "https://openproject.sharepoint.com ") }
+          let(:storage) { build(:share_point_storage, host: "https://openproject.sharepoint.com") }
+
+          # Ensure that the SharePointStorage is visible for the contract tests
+          # but not to show it on the UI
+          before { allow(::Storages::SharePointStorage).to receive(:visible?).and_return(true) }
 
           # As the SharePointContract is selected by the BaseContract to make writable attributes available,
           # the BaseContract needs to be instantiated here.
