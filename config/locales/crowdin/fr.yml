@@ -121,7 +121,7 @@ fr:
         one_time_hint: "C'est la seule fois que vous verrez le secret client. Pensez à le copier maintenant."
       created_token_dialog_component:
         title: "Jeton créé"
-        heading: "A token has been generated"
+        heading: "Un jeton a été généré"
         label_token: "Jeton"
         one_time_hint: "C'est la seule fois que vous verrez ce jeton. Pensez à le copier maintenant."
       delete_scim_client_dialog_component:
@@ -1163,7 +1163,7 @@ fr:
         comments_sorting: "Afficher l'activité du lot de travaux triée par"
         disable_keyboard_shortcuts: "Désactiver les raccourcis clavier"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
+          Vous pouvez choisir de désactiver les <a href="%{href}">raccourcis clavier</a> par défaut si vous utilisez un lecteur d'écran ou si vous voulez éviter de déclencher accidentellement une action avec un raccourci.
         dismissed_enterprise_banners: "Bannières d'entreprise masquées"
         impaired: "Mode d'accessibilité"
         auto_hide_popups: "Masquer automatiquement les bannières de réussite"
@@ -3017,7 +3017,7 @@ fr:
   label_password_rule_special: "Caractères spéciaux"
   label_password_rule_uppercase: "Majuscules"
   label_path_encoding: "Encodage du chemin d'accès"
-  label_per_page: "Per page:"
+  label_per_page: "Par page :"
   label_people: "Participants"
   label_permissions: "Autorisations"
   label_permissions_report: "Rapport d'autorisations"
