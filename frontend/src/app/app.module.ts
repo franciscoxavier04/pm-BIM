@@ -179,7 +179,6 @@ import { NoResultsComponent } from 'core-app/shared/components/no-results/no-res
 import {
   OpNonWorkingDaysListComponent,
 } from 'core-app/shared/components/op-non-working-days-list/op-non-working-days-list.component';
-import { GlobalSearchTitleComponent } from 'core-app/core/global_search/title/global-search-title.component';
 import { PersistentToggleComponent } from 'core-app/shared/components/persistent-toggle/persistent-toggle.component';
 import { TypeFormConfigurationComponent } from 'core-app/features/admin/types/type-form-configuration.component';
 import { ToastsContainerComponent } from 'core-app/shared/components/toaster/toasts-container.component';
@@ -188,7 +187,6 @@ import {
   CustomDateActionAdminComponent,
 } from 'core-app/features/work-packages/components/wp-custom-actions/date-action/custom-date-action-admin.component';
 import { HomescreenNewFeaturesBlockComponent } from 'core-app/features/homescreen/blocks/new-features.component';
-import { GlobalSearchTabsComponent } from 'core-app/core/global_search/tabs/global-search-tabs.component';
 import {
   ZenModeButtonComponent,
 } from 'core-app/features/work-packages/components/wp-buttons/zen-mode-toggle-button/zen-mode-toggle-button.component';
@@ -432,14 +430,12 @@ export class OpenProjectModule implements DoBootstrap {
     registerCustomElement('opce-no-results', NoResultsComponent, { injector });
     registerCustomElement('opce-non-working-days-list', OpNonWorkingDaysListComponent, { injector });
     registerCustomElement('opce-main-menu-resizer', MainMenuResizerComponent, { injector });
-    registerCustomElement('opce-global-search-title', GlobalSearchTitleComponent, { injector });
     registerCustomElement('opce-persistent-toggle', PersistentToggleComponent, { injector });
     registerCustomElement('opce-admin-type-form-configuration', TypeFormConfigurationComponent, { injector });
     registerCustomElement('opce-toasts-container', ToastsContainerComponent, { injector });
     registerCustomElement('opce-global-search-work-packages', GlobalSearchWorkPackagesComponent, { injector });
     registerCustomElement('opce-custom-date-action-admin', CustomDateActionAdminComponent, { injector });
     registerCustomElement('opce-homescreen-new-features-block', HomescreenNewFeaturesBlockComponent, { injector });
-    registerCustomElement('opce-global-search-tabs', GlobalSearchTabsComponent, { injector });
     registerCustomElement('opce-zen-mode-toggle-button', ZenModeButtonComponent, { injector });
     registerCustomElement('opce-colors-autocompleter', ColorsAutocompleterComponent, { injector });
   }
