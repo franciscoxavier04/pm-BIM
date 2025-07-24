@@ -32,17 +32,16 @@ module Redmine::MenuManager::TopMenu::ModuleMenu
   def render_module_top_menu_node(item_groups = module_top_menu_item_groups)
     unless item_groups.empty?
       render Primer::Alpha::Dialog.new(classes: "op-app-menu--item",
-                                       title: I18n.t("label_modules"),
+                                       title: I18n.t("label_global_modules"),
                                        visually_hide_title: true,
                                        size: :small,
                                        position: :left) do |dialog|
         dialog.with_show_button(icon: "op-grid-menu",
                                 scheme: :invisible,
                                 classes: "op-app-header--primer-button",
-                                title: I18n.t("label_modules"),
                                 test_selector: "op-app-header--modules-menu-button",
                                 "aria-controls": "op-app-header--modules-menu-list",
-                                "aria-label": I18n.t("label_modules"))
+                                "aria-label": I18n.t("label_global_modules"))
         dialog.with_header(classes: "op-app-header--modules-menu-header") do
           render_logo_icon
         end

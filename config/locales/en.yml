@@ -2638,7 +2638,7 @@ en:
       aggregation: "Aggregation"
       api_and_webhooks: "API and webhooks"
     quick_add:
-      label: "Open quick add menu"
+      label: "Add…"
 
   my_account:
     access_tokens:
@@ -2941,6 +2941,7 @@ en:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "General"
   label_generate_key: "Generate a key"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: "Path to .git directory"
   label_greater_or_equal: ">="
@@ -3084,6 +3085,7 @@ en:
   label_no_due_date: "no finish date"
   label_no_start_date: "no start date"
   label_no_parent_page: "No parent page"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Nothing to display"
   label_nobody: "nobody"
   label_not_configured: "Not configured"
@@ -3292,7 +3294,7 @@ en:
   label_user_mail_option_only_my_events: "Only for things I watch or I'm involved in"
   label_user_mail_option_only_owner: "Only for things I am the owner of"
   label_user_mail_option_selected: "For any event on the selected projects only"
-  label_user_menu: "Open user navigation menu"
+  label_user_menu: "User menu"
   label_user_new: "New user"
   label_user_plural: "Users"
   label_user_search: "Search for user"
