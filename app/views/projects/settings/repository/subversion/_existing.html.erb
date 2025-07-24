@@ -62,15 +62,11 @@ See COPYRIGHT and LICENSE files for more details.
         label: t("repositories.subversion.password"),
         name: "ignore",
         id: "repository-password-placeholder",
-        value: (repository.new_record? || repository.password.blank? ? "" : ("x" * 15)),
-        container_class: "-middle"
+        container_class: "-middle",
+        data: {
+          controller: "password-placeholder",
+          action: "click->repository-settings#enablePasswordInput"
+        }
       ) %>
-  <%=
-    content_for(:additional_js_dom_ready) do
-      "jQuery('#repository-password-placeholder')
-        .change(function() { this.name = 'repository[password]'; })
-        .focus(function() { this.value = ''; this.name = 'repository[password]'; });
-        ".html_safe
-    end
-  %>
+
 </div>
