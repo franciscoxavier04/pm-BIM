@@ -54,7 +54,7 @@
             classes: "op-primer--star-icon",
             tag: :a,
             href: helpers.build_favorite_path(query, format: :html),
-            data: { method: :delete, "test-selector": "project-query-unfavorite" }
+            data: { turbo_method: :delete, "test-selector": "project-query-unfavorite" }
           )
         else
           header.with_action_icon_button(

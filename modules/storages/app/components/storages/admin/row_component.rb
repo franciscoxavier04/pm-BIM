@@ -68,9 +68,9 @@ module Storages::Admin
       link_to "",
               admin_settings_storage_path(storage),
               class: "icon icon-delete",
-              data: { confirm: I18n.t("storages.delete_warning.storage") },
+              data: { turbo_confirm: I18n.t("storages.delete_warning.storage") },
               title: I18n.t(:button_delete),
-              method: :delete
+              turbo_method: :delete
     end
 
     def edit_link

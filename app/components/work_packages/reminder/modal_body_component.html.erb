@@ -25,7 +25,7 @@
                     scheme: :danger,
                     type: :submit,
                     formaction: work_package_reminder_path(remindable, reminder),
-                    formmethod: :delete
+                    formturbo_method: :delete
                   )
                 ) { I18n.t(:button_remove_reminder) } %>
           <% end %>

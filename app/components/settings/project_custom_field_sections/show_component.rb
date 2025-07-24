@@ -116,7 +116,7 @@ module Settings
                        scheme: :danger,
                        href: admin_settings_project_custom_field_section_path(@project_custom_field_section),
                        form_arguments: {
-                         method: :delete, data: { confirm: t("text_are_you_sure"), "turbo-stream": true,
+                         turbo_method: :delete, data: { turbo_confirm: t("text_are_you_sure"), "turbo-stream": true,
                                                   test_selector: "project-custom-field-section-delete" }
                        }) do |item|
           item.with_leading_visual_icon(icon: :trash)

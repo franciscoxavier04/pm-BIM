@@ -51,7 +51,7 @@ module Admin
               icon: nil,
               label: I18n.t("projects.settings.project_custom_fields.actions.remove_from_project"),
               href: detach_from_project_url,
-              data: { turbo_method: :delete }
+              data: { turbo_turbo_method: :delete }
             }
           end
         end

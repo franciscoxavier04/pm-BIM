@@ -133,7 +133,7 @@ See COPYRIGHT and LICENSE files for more details.
                       <% end %>
                       <%= link_to(icon_wrapper('icon icon-remove', t(:button_remove)),
                                   polymorphic_path([@individual_principal, :membership], id: membership),
-                                  method: :delete,
+                                  turbo_method: :delete,
                                   title: t(:button_remove)) if membership.deletable? %>
                     <% end %>
                   </td>
