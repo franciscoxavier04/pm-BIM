@@ -28,46 +28,25 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module GroupsHelper
-  def group_settings_tabs(group)
-    [
-      {
-        name: "general",
-        partial: "groups/general",
-        path: edit_group_path(group),
-        label: :label_general
-      },
-      {
-        name: "users",
-        partial: "groups/users",
-        path: edit_group_path(group, tab: :users),
-        label: :label_user_plural
-      },
-      {
-        name: "memberships",
-        partial: "groups/memberships",
-        path: edit_group_path(group, tab: :memberships),
-        label: :label_project_plural
-      },
-      {
-        name: "global_roles",
-        partial: "principals/global_roles",
-        path: edit_group_path(group, tab: :global_roles),
-        label: :label_global_roles
-      },
-      {
-        name: "synchronized_groups",
-        partial: "groups/synchronized_groups",
-        path: edit_group_path(group, tab: :synchronized_groups),
-        label: :"groups.edit.synchronized_groups"
-      }
-    ]
-  end
+module OpenIDConnect::GroupLinks
+  class TableComponent < OpPrimer::BorderBoxTableComponent
+    columns :oidc_group_name, :auth_provider, :created_at
+    mobile_labels :oidc_group_name, :auth_provider, :created_at
 
-  def autocompleter_filters(group)
-    [
-      { name: "status", operator: "=", values: ["active", "invited"] },
-      { name: "group", operator: "!", values: [group.id] }
-    ]
+    def mobile_title
+      OpenIDConnect::GroupLink.model_name.human(count: 2)
+    end
+
+    def row_class
+      RowComponent
+    end
+
+    def headers
+      [
+        [:oidc_group_name, { caption: OpenIDConnect::GroupLink.human_attribute_name(:oidc_group_name) }],
+        [:auth_provider, { caption: OpenIDConnect::GroupLink.human_attribute_name(:auth_provider) }],
+        [:created_at, { caption: OpenIDConnect::GroupLink.human_attribute_name(:created_at) }]
+      ]
+    end
   end
 end

@@ -7,6 +7,8 @@ en:
     Please [log in].
   activerecord:
     attributes:
+      openid_connect/group_link:
+        oidc_group_name: OpenID group identifier
       openid_connect/provider:
         name: Name
         slug: Unique identifier
@@ -55,6 +57,7 @@ en:
   openid_connect:
     menu_title: OpenID providers
     delete_title: "Delete OpenID Connect provider"
+    group_links_heading: OpenID Connect group links
 
     instructions:
       redirect_url: This is the redirect URL that the OpenID Connect provider should use to redirect back to OpenProject after a successful login.
