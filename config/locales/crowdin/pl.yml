@@ -121,7 +121,7 @@ pl:
         one_time_hint: "To jedyny raz, kiedy zobaczysz klucz tajny klienta. Koniecznie skopiuj go teraz."
       created_token_dialog_component:
         title: "Utworzono token"
-        heading: "A token has been generated"
+        heading: "Token został wygenerowany"
         label_token: "Token"
         one_time_hint: "Jest to jedyny raz, gdy zobaczysz ten token. Koniecznie skopiuj go teraz."
       delete_scim_client_dialog_component:
@@ -360,6 +360,10 @@ pl:
       parent: "Element nadrzędny"
       blueprint: "Plan wzorca"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Wyszukaj w %{app_title}"
     overwritten_tabs:
       all: "Wszystkie"
@@ -1177,7 +1181,7 @@ pl:
         comments_sorting: "Wyświetl działania pakietu roboczego posortowane według"
         disable_keyboard_shortcuts: "Wyłącz skróty klawiaturowe"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
+          Jeśli korzystasz z czytnika ekranu lub chcesz uniknąć przypadkowego uruchomienia działania za pomocą skrótu, możesz wyłączyć domyślne <a href="%{href}">skróty klawiaturowe</a>.
         dismissed_enterprise_banners: "Ukryte banery przedsiębiorstwa"
         impaired: "Ułatwienia dostępu"
         auto_hide_popups: "Automatycznie ukrywaj banery sukcesu"
@@ -3095,7 +3099,7 @@ pl:
   label_password_rule_special: "Znaki specjalne"
   label_password_rule_uppercase: "Wielkie litery"
   label_path_encoding: "Path encoding"
-  label_per_page: "Per page:"
+  label_per_page: "Na stronę:"
   label_people: "Ludzie"
   label_permissions: "Uprawnienia"
   label_permissions_report: "Raport uprawnień"

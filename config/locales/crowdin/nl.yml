@@ -360,6 +360,10 @@ nl:
       parent: "Bovenliggend werkpakket"
       blueprint: "Patroonblauwdruk"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Zoeken in %{app_title}"
     overwritten_tabs:
       all: "Alle"

@@ -28,13 +28,13 @@ ro:
     attachments:
       delete: "Șterge atașament"
       delete_confirmation: |
-        Sunteți sigur că doriți să ștergeți acest fișier? Această acțiune nu este reversibilă.
+        Ești sigur că vrei să ștergi acest cod? Acțiunea este ireversibilă.
       draggable_hint: |
-        Trageți pe câmpul editorului pentru a introduce o imagine sau un atașament de referință. Câmpurile de editor închise vor fi deschise în timp ce continuați să trageți.
-      quarantined_hint: "The file is quarantined, as a virus was found. It is not available for download."
+        Trage pe câmpul editorului pentru a introduce o imagine sau un atașament de referință. Câmpurile de editor închise vor fi deschise în timp ce continui să tragi.
+      quarantined_hint: "Fișierul este în carantină, deoarece a fost găsit un virus. Acesta nu este disponibil pentru descărcare."
     autocomplete_ng_select:
-      add_tag: "Add item"
-      clear_all: "Clear all"
+      add_tag: "Adaugă element"
+      clear_all: "Șterge tot"
       loading: "Se încarcă..."
       not_found: "Niciun articol găsit"
       type_to_search: "Tastează pentru a căuta"
@@ -78,7 +78,7 @@ ro:
     button_custom-fields: "Câmpuri personalizate"
     button_delete: "Șterge"
     button_delete_watcher: "Șterge observator"
-    button_details_view: "Vizualizare detaliată"
+    button_details_view: "Vizualizare detalii"
     button_duplicate: "Dublează"
     button_edit: "Editează"
     button_filter: "Filtrează"
@@ -94,7 +94,7 @@ ro:
     button_open_fullscreen: "Afișează pe tot ecranul"
     button_show_cards: "Afișați vizualizarea cardului"
     button_show_list: "Afișați vizualizarea listei"
-    button_show_table: "Afișați vizualizarea tabelului"
+    button_show_table: "Afișează vizualizare tabel"
     button_show_gantt: "Arată vizualizarea Gantt"
     button_show_fullscreen: "Arată vizualizarea pe tot ecranul"
     button_more_actions: "Mai multe acțiuni"
@@ -104,7 +104,7 @@ ro:
     button_uncheck_all: "Deselectează tot"
     button_update: "Actualizare"
     button_export-atom: "Descarcă Atom"
-    button_generate_pdf: "Generate PDF"
+    button_generate_pdf: "Generează PDF"
     button_create: "Creează"
     card:
       add_new: "Adaugă card nou"
@@ -187,7 +187,7 @@ ro:
           without_type: "Creați pachet de lucru"
           with_type: "Creați pachet de lucru (Tip: %{typename})"
         embedded_table:
-          button: "Inserați tabel pachet de lucru"
+          button: "Inserează tabel pachet de lucru"
           text: "[Placeholder] Tabelul pachetului de lucru inserat"
         embedded_calendar:
           text: "[Placeholder] Tabelul pachetului de lucru inserat"
@@ -339,7 +339,7 @@ ro:
     label_create: "Creează"
     label_create_work_package: "Creează pachet de lucru nou"
     label_created_by: "Creat de"
-    label_current: "current"
+    label_current: "curent"
     label_date: "Dată"
     label_date_with_format: "Introduceţi %{date_attribute} folosind următorul format: %{format}"
     label_deactivate: "Dezactivează"
@@ -432,7 +432,7 @@ ro:
     label_report: "Raportare"
     label_repository_plural: "Repo-uri"
     label_save_as: "Salvează ca"
-    label_search_columns: "Search a column"
+    label_search_columns: "Caută o coloană"
     label_select_watcher: "Selectaţi un observator..."
     label_selected_filter_list: "Filtre selectate"
     label_show_attributes: "Afișați toate câmpurile"
@@ -471,7 +471,7 @@ ro:
     label_watcher_added_successfully: "Observator adăugat cu succes!"
     label_watcher_deleted_successfully: "Observator eliminat cu succes!"
     label_work_package_details_you_are_here: "Sunteți pe fila %{tab} pentru %{type} %{subject}."
-    label_work_package_context_menu: "Work package context menu"
+    label_work_package_context_menu: "Meniul contextual al pachetului de lucru"
     label_unwatch: "Nu mai urmări"
     label_unwatch_work_package: "Oprește urmărirea pachetului de lucru"
     label_uploaded_by: "Încărcat de"
@@ -502,7 +502,7 @@ ro:
     label_version_plural: "Versiuni"
     label_view_has_changed: "Această vizualizare are modificări nesalvate. Faceți clic pentru a le salva."
     help_texts:
-      show_modal: "Show help text"
+      show_modal: "Arată text de ajutor"
     onboarding:
       buttons:
         skip: "Sari"
@@ -555,7 +555,7 @@ ro:
         scheduled: "Planificat"
         commented: "Cu comentarii"
         processed: "Procesat"
-        prioritized: "Prioritized"
+        prioritized: "Prioritizat"
         dateAlert: "Alertă dată"
         shared: "Partajat"
         reminder: "Reminder"
@@ -643,7 +643,7 @@ ro:
       title: "Vă rugăm să confirmați parola dumneavoastră pentru a continua"
     pagination:
       no_other_page: "Sunteți pe pagina unică."
-      pages_skipped: "Pages skipped."
+      pages_skipped: "Pagini sărite."
       page_navigation: "Pagination navigation"
       per_page_navigation: 'Items per page selection'
       pages:
@@ -995,9 +995,9 @@ ro:
         text_sort_hint: "Cu link-urile din capul de tabel poți sorta, grupa, reordona, elimina și adăuga coloane la tabel."
         text_select_hint: "Casetele de selectare ar trebui să fie deschise cu 'ALT' si tastele săgeată."
       table_configuration:
-        button: "Configurați acest tabel al pachetului de lucru"
+        button: "Configurează acest tabel al pachetului de lucru"
         choose_display_mode: "Afișare pachete de lucru din subproiecte pe pagina proiectului principal"
-        modal_title: "Configurația tabelului pachetului de lucru"
+        modal_title: "Configurare tabel pachet de lucru"
         embedded_tab_disabled: "Această filă de configurare nu este disponibilă pentru vizualizarea încorporată pe care o editezi."
         default: "implicit"
         display_settings: "Setări afișare"

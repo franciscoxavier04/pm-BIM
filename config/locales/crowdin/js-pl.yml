@@ -645,7 +645,7 @@ pl:
       title: "Potwierdź hasło aby kontynuować"
     pagination:
       no_other_page: "Jesteś na jedynej stronie."
-      pages_skipped: "Pages skipped."
+      pages_skipped: "Pominięte strony."
       page_navigation: "Nawigacja po paginacji"
       per_page_navigation: 'Wybór liczby pozycji na jednej stronie'
       pages:
@@ -698,7 +698,7 @@ pl:
           first_day: "Pierwszy dzień"
           last_day: "Ostatni dzień"
     text_are_you_sure: "Jesteś pewny?"
-    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
+    text_are_you_sure_to_cancel: "Na tej stronie znajdują się niezapisane zmiany. Czy na pewno chcesz je odrzucić?"
     breadcrumb: "Ścieżka"
     text_data_lost: "Wszystkie wprowadzone dane zostaną utracone."
     text_user_wrote: "%{value} napisał(a):"

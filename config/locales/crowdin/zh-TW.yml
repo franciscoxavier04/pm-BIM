@@ -362,6 +362,10 @@ zh-TW:
       parent: "上層"
       blueprint: "樣式藍圖"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "在 %{app_title} 搜尋"
     overwritten_tabs:
       all: "全部"
