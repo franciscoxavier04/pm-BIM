@@ -361,6 +361,10 @@ it:
       parent: "Genitore"
       blueprint: "Schema del modello"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Cerca in %{app_title}"
     overwritten_tabs:
       all: "Tutti"

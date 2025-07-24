@@ -363,6 +363,10 @@ ko:
       parent: "부모"
       blueprint: "패턴 청사진"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "%{app_title}에서 검색"
     overwritten_tabs:
       all: "모두"

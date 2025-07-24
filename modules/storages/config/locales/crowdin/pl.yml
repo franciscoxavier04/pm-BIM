@@ -81,7 +81,7 @@ pl:
     edit_project_folder:
       label: Edytuj folder projektu
     open:
-      contact_admin: Please contact your administrator to resolve this error.
+      contact_admin: Aby rozwiązać ten błąd, skontaktuj się z administratorem.
       remote_identity_error: Podczas łączenia się z magazynem wystąpił nieoczekiwany błąd.
     project_folder_mode:
       automatic: Automatyczne zarządzanie
@@ -129,7 +129,7 @@ pl:
               conflict: 'Użytkownika %{user} nie można było dodać do grupy %{group} z następującego powodu: %{reason}'
               failed_to_add: 'Użytkownika %{user} nie można było dodać do grupy %{group} z następującego powodu: %{reason}'
             create_folder:
-              conflict: The folder %{folder_name} already exists on %{parent_location}.
+              conflict: Folder %{folder_name} już istnieje w lokalizacji %{parent_location}.
               not_found: "Nie znaleziono lokalizacji %{parent_location}."
             ensure_root_folder_permissions:
               not_found: "Nie znaleziono folderu %{group_folder}. Sprawdź konfigurację folderu grupy Nextcloud."
@@ -483,10 +483,10 @@ pl:
         name: OneDrive
         name_placeholder: np. OneDrive
       share_point:
-        label_oauth_client_id: Azure OAuth Application (client) ID
-        label_oauth_client_secret: Azure OAuth Client Secret Value
+        label_oauth_client_id: Identyfikator aplikacji OAuth Azure (klienta)
+        label_oauth_client_secret: Tajny klucz klienta OAuth Azure
         name: SharePoint
-        name_placeholder: e.g. SharePoint
+        name_placeholder: np. SharePoint
     show_attachments_toggle:
       description: Wyłączenie tej opcji spowoduje ukrycie listy załączników na karcie plików pakietów roboczych. Pliki załączone w opisie pakietu roboczego będą nadal przesyłane do wewnętrznego magazynu załączników.
       label: Pokaż załączniki na karcie plików pakietów roboczych
@@ -504,6 +504,5 @@ pl:
     successful_storage_connection: Magazyn został podłączony! Pamiętaj, aby aktywować magazyn na karcie Projekty każdego żądanego projektu, aby móc go użyć.
     upsell:
       description: |-
-        Integrate your OneDrive as a file storage with OpenProject. Upload files and link them directly to
-        work packages in a project.
-      title: OneDrive integration
+        Zintegruj swoją usługę OneDrive z OpenProject jako magazyn plików. Prześlij pliki i powiąż je bezpośrednio z pakietami roboczymi w projekcie.
+      title: Integracja z OneDrive
