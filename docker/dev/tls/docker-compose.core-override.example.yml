@@ -57,6 +57,8 @@ services:
       # - ~/.step/certs:/usr/local/share/ca-certificates
 
   frontend:
+    environment:
+      __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS: "openproject-assets.local"
     networks:
       - external
     labels:
