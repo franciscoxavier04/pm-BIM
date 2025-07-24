@@ -34,7 +34,7 @@ module CustomField::CalculatedValue
   extend ActiveSupport::Concern
 
   # Mathematical operators that are allowed in the formula.
-  OPERATORS = %w[+ - * / % ( )].freeze
+  MATH_OPERATORS_FOR_FORMULA = %w[+ - * / % ( )].freeze
 
   # Field formats that can be used within a formula.
   FIELD_FORMATS_FOR_FORMULA = %w[int float calculated_value].freeze
@@ -126,7 +126,7 @@ module CustomField::CalculatedValue
       # Once this basic validation passes, the formula will be parsed and validated by Dentaku, which builds an AST
       # and ensures that the formula is really valid. A welcome side effect of the basic validation done here is that
       # it prevents built-in functions from being used in the formula, which we do not want to allow.
-      allowed_chars = OPERATORS + [" "]
+      allowed_chars = MATH_OPERATORS_FOR_FORMULA + [" "]
       allowed_tokens = /\A(\{\{cf_\d+}}|\d+\.?\d*|\.\d+)\z/
 
       formula_string.split(Regexp.union(allowed_chars)).reject(&:empty?).all? do |token|
