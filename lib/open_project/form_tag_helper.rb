@@ -70,7 +70,9 @@ module OpenProject
     end
 
     def styled_text_area_tag(name, content = nil, options = {})
-      apply_css_class_to_options(options, "form--text-area")
+      classes = ["form--text-area"]
+      classes << "-hidden" if options[:with_text_formatting]
+      apply_css_class_to_options(options, classes)
       wrap_field "text-area", options do
         output = text_area_tag(name, content, options)
 
@@ -157,7 +159,7 @@ module OpenProject
     end
 
     def apply_css_class_to_options(options, css_class)
-      options[:class] = Array(options[:class]) + Array(css_class)
+      options[:class] = (Array(options[:class]) + Array(css_class)).compact
     end
 
     def field_container_css_class(selector, options)
