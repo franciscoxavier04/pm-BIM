@@ -42,6 +42,7 @@ module Redmine::MenuManager::TopMenu::HelpMenu
                                             href: url_for(item.url),
                                             classes: "op-app-header--primer-button hidden-for-mobile",
                                             scheme: :invisible,
+                                            pl: 1,
                                             test_selector: "header-help-button",
                                             aria: { label: I18n.t(:label_help) },
                                             **item.html_options))
@@ -58,6 +59,7 @@ module Redmine::MenuManager::TopMenu::HelpMenu
   def render_help_dropdown
     render Primer::Alpha::ActionMenu.new(classes: "op-app-menu--item",
                                          menu_id: "op-app-header--help-menu",
+                                         pl: 1,
                                          anchor_align: :end) do |menu|
       menu.with_show_button(icon: :question,
                             scheme: :invisible,

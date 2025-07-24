@@ -85,12 +85,12 @@ module Redmine::MenuManager::TopMenu::UserMenu
           avatar
         end
       else
-        dialog.with_show_button(icon: :person, **options) do |button|
+        dialog.with_show_button(icon: :person, aria: { label: I18n.t("label_user_menu") }, **options) do |button|
           button.with_tooltip(text: I18n.t("label_user_menu"))
         end
       end
     else
-      dialog.with_show_button(**options) do |button|
+      dialog.with_show_button(px: 1, **options) do |button|
         button.with_trailing_visual_icon(icon: :"triangle-down")
         t(:label_login)
       end

@@ -72,7 +72,9 @@ module Redmine::MenuManager::TopMenuHelper
 
   def render_top_menu_teaser
     if User.current.admin? && EnterpriseToken.trial_only?
-      render(EnterpriseEdition::BuyNowButtonComponent.new)
+      render(Primer::BaseComponent.new(tag: :div, classes: "op-app-menu--item hidden-for-mobile")) do
+        render(EnterpriseEdition::BuyNowButtonComponent.new)
+      end
     end
   end
 
@@ -99,7 +101,10 @@ module Redmine::MenuManager::TopMenuHelper
     return "".html_safe unless User.current.logged?
     return "".html_safe if Setting.notifications_hidden?
 
-    render(Primer::BaseComponent.new(tag: :div, classes: "op-app-menu--item", position: :relative)) do
+    render(Primer::BaseComponent.new(tag: :div,
+                                     classes: "op-app-menu--item",
+                                     position: :relative,
+                                     px: 1)) do
       concat(render(Primer::Beta::IconButton.new(icon: :inbox,
                                                  tag: :a,
                                                  href: notifications_path,
