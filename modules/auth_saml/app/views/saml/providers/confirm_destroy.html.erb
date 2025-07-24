@@ -29,7 +29,7 @@ See COPYRIGHT and LICENSE files for more details.
 <%= styled_form_tag(
       saml_provider_path(@provider),
       class: "danger-zone",
-      method: :delete
+      turbo_method: :delete
     ) do %>
   <section class="form--section">
     <h3 class="form--section-title">

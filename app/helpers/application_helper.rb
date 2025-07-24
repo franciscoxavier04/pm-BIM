@@ -99,8 +99,8 @@ module ApplicationHelper
 
   def delete_link(url, options = {})
     options = {
-      method: :delete,
-      data: { confirm: I18n.t(:text_are_you_sure) },
+      turbo_method: :delete,
+      data: { turbo_confirm: I18n.t(:text_are_you_sure) },
       class: "icon icon-delete"
     }.merge(options)
 

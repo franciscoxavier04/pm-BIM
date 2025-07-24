@@ -61,8 +61,8 @@ See COPYRIGHT and LICENSE files for more details.
                   <td class="buttons">
                     <%= link_to "",
                                 { action: "revoke_rss_key" },
-                                method: :delete,
-                                data: { confirm: t("my_account.access_tokens.simple_revoke_confirmation"), test_selector: "rss-token-revoke" },
+                                turbo_method: :delete,
+                                data: { turbo_confirm: t("my_account.access_tokens.simple_revoke_confirmation"), test_selector: "rss-token-revoke" },
                                 class: "icon icon-delete" %>
                   </td>
                 </tr>

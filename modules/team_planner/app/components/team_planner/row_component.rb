@@ -59,9 +59,9 @@ module TeamPlanner
           "",
           project_team_planner_path(project, query.id),
           class: "spot-link icon icon-delete",
-          method: :delete,
+          turbo_method: :delete,
           data: {
-            confirm: I18n.t(:text_are_you_sure),
+            turbo_confirm: I18n.t(:text_are_you_sure),
             "test-selector": "team-planner-remove-#{query.id}"
           },
           title: t(:button_delete)

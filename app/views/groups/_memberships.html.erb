@@ -118,7 +118,7 @@ See COPYRIGHT and LICENSE files for more details.
                         <%= icon_wrapper('icon icon-edit', t(:button_edit)) %>
                       <% end %>
                       <%= link_to t(:button_remove), membership_of_group_path(@group, membership),
-                                           method: :delete,
+                                           turbo_method: :delete,
                                            class: 'icon icon-remove' %>
                     </td>
                   </tr>
