@@ -88,12 +88,16 @@ See COPYRIGHT and LICENSE files for more details.
                       <div class="generic-table--sort-header">
                         <span>
                           <%= content_tag(role.builtin? ? "em" : "span", h(role.name)) %>
-                          <%= link_to_function(
-                                icon_wrapper("icon-context icon-checkmark", "#{t(:button_check_all)}/#{t(:button_uncheck_all)}"),
-                                "OpenProject.helpers.toggleCheckboxesBySelector('input.role-#{role.id}')",
+                          <%= link_to("#",
                                 class: "no-decoration-on-hover",
-                                title: "#{t(:button_check_all)}/#{t(:button_uncheck_all)}"
-                              ) %>
+                                title: "#{t(:button_check_all)}/#{t(:button_uncheck_all)}",
+                                data: {
+                                  controller: "checkbox-toggle",
+                                  action: "click->checkbox-toggle#toggle",
+                                  "checkbox-toggle-selector-value": "input.role-#{role.id}"
+                                }) do %>
+                            <%= icon_wrapper("icon-context icon-checkmark", "#{t(:button_check_all)}/#{t(:button_uncheck_all)}") %>
+                          <% end %>
                         </span>
                       </div>
                     </div>
@@ -105,12 +109,16 @@ See COPYRIGHT and LICENSE files for more details.
               <% mod_permissions.each do |permission| %>
                 <tr class="permission-<%= permission.name %>">
                   <td>
-                    <%= link_to_function(
-                          icon_wrapper("icon-context icon-checkmark", "#{t(:button_check_all)}/#{t(:button_uncheck_all)}"),
-                          "OpenProject.helpers.toggleCheckboxesBySelector('.permission-#{permission.name} input')",
+                    <%= link_to("#",
                           class: "no-decoration-on-hover",
-                          title: "#{t(:button_check_all)}/#{t(:button_uncheck_all)}"
-                        ) %>
+                          title: "#{t(:button_check_all)}/#{t(:button_uncheck_all)}",
+                          data: {
+                            controller: "checkbox-toggle",
+                            action: "click->checkbox-toggle#toggle",
+                            "checkbox-toggle-selector-value": ".permission-#{permission.name} input"
+                          }) do %>
+                      <%= icon_wrapper("icon-context icon-checkmark", "#{t(:button_check_all)}/#{t(:button_uncheck_all)}") %>
+                    <% end %>
                     <%= l_or_humanize(permission.name, prefix: "permission_") %>
                   </td>
                   <% @roles.each do |role| %>

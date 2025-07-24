@@ -52,17 +52,28 @@ See COPYRIGHT and LICENSE files for more details.
   </div>
 
   <% if @reassignable_to.any? %>
-    <div class="form--field">
+    <div class="form--field" data-controller="focus-when-selected">
       <label class="form--label" for="todo_reassign"><%= t(:text_wiki_page_reassign_children) %></label>
       <div class="form--field-container">
-        <%= styled_radio_button_tag "todo", "reassign", false %>
+        <%= styled_radio_button_tag "todo",
+                                    "reassign",
+                                    false,
+                                    data: {
+                                      "focus-when-selected-target": "valueInput",
+                                      action: "focus-when-selected#focus"
+                                    } %>
+
+        %>
       </div>
 
       <%= label_tag "reassign_to_id", t(:description_wiki_subpages_reassign), class: "sr-only" %>
-      <%= styled_select_tag "reassign_to_id",
+            <%= styled_select_tag "reassign_to_id",
                             options_for_select(wiki_page_options_for_select(@reassignable_to)),
-                            { container_class: "-wide" } %>
-      <% csp_onclick("jQuery('#todo_reassign').attr('checked', true)", "#reassign_to_id") %>
+                            { container_class: "-wide",
+                              data: {
+                                action: "click->focus-when-selected#setInputValue",
+                                "focus-when-selected-target": "focusInput"
+                              } } %>
     </div>
   <% end %>
 
