@@ -46,15 +46,9 @@ module CustomField::CalculatedValue
     def validate_formula
       if formula_string.blank?
         errors.add(:formula, :blank)
-        return
-      end
-
-      unless formula_contains_only_allowed_characters?
+      elsif !formula_contains_only_allowed_characters?
         errors.add(:formula, :invalid_characters)
-        return
-      end
-
-      unless valid_formula_syntax?
+      elsif !valid_formula_syntax?
         errors.add(:formula, :invalid)
       end
     end
