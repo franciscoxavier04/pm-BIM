@@ -137,6 +137,18 @@ RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_proje
       it_behaves_like "valid formula"
     end
 
+    context "with a formula using the modulo operator" do
+      let(:formula) { "10 % 3" }
+
+      it_behaves_like "valid formula"
+    end
+
+    context "with a formula calculating percentages" do
+      let(:formula) { "10% * 3" }
+
+      it_behaves_like "valid formula"
+    end
+
     context "when omitting leading decimals before a decimal point" do
       let(:formula) { "1.5 + .0 - 3.25" }
 
