@@ -32,15 +32,15 @@ module Storages
   module Adapters
     module Providers
       module SharePoint
-        SharePointRegistry = Dry::Container::Namespace.new("share_point") do
-          namespace("authentication") do
-            register(:userless, ->(use_cache = true) { Input::Strategy.build(key: :oauth_client_credentials, use_cache:) })
-            register(:user_bound, ->(user, storage = nil) { Input::Strategy.build(key: :oauth_user_token, user:, storage:) })
-          end
+        class SharePointContract < ::ModelContract
+          attribute :name
+          validates :name, presence: true, length: { maximum: 255 }
 
-          namespace("contracts") do
-            register(:storage, SharePointContract)
-          end
+          attribute :host
+          validates :host, presence: true, format: { with: URI::DEFAULT_PARSER.make_regexp }
+          validates :host,
+                    format: { with: %r{\Ahttps://[^/]+/sites/[^/]+(/.*)?\z}i,
+                              message: I18n.t("activerecord.errors.messages.invalid_sharepoint_url") }
         end
       end
     end

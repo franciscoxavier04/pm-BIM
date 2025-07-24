@@ -223,4 +223,19 @@ FactoryBot.define do
              token_type: "bearer")
     end
   end
+
+  factory :share_point_storage,
+          parent: :storage,
+          class: "::Storages::SharePointStorage" do
+    host { "https://openproject.sharepoint.com/sites/ProjectX" }
+    automatically_managed { false }
+
+    trait :as_automatically_managed do
+      automatically_managed { true }
+    end
+
+    trait :with_tenant_id do
+      tenant_id { SecureRandom.uuid }
+    end
+  end
 end
