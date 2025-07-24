@@ -645,7 +645,7 @@ pl:
       title: "Potwierdź hasło aby kontynuować"
     pagination:
       no_other_page: "Jesteś na jedynej stronie."
-      pages_skipped: "Pages skipped."
+      pages_skipped: "Pominięte strony."
       page_navigation: "Nawigacja po paginacji"
       per_page_navigation: 'Wybór liczby pozycji na jednej stronie'
       pages:
