@@ -84,7 +84,7 @@ module CustomField::CalculatedValue
       # We can only validate used custom fields from a high-level perspective, since at this point in validation,
       # we do not have a project context to check against. So we cannot check if the custom fields are actually
       # enabled for a project and visible to a non-admin user.
-      formula_cfs = CustomField.where(id: cf_ids_used_in_formula(formula_string)).pluck(:id)
+      formula_cfs = cf_ids_used_in_formula(formula_string)
       allowed_cfs = usable_custom_field_references_for_formula.pluck(:id)
 
       surplus_cfs = formula_cfs - allowed_cfs
