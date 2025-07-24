@@ -22,6 +22,11 @@ en:
         project_folder_mode: Project folder mode
         storage: Storage
         storage_url: Storage URL
+      storages/share_point_storage:
+        host: Sharepoint Site URL
+        library: Library ID
+        name: Name
+        site: Site ID
       storages/storage:
         authentication_method: Authentication Method
         creator: Creator
@@ -30,11 +35,6 @@ en:
         name: Name
         provider_type: Provider type
         tenant: Directory (tenant) ID
-      storages/share_point_storage:
-        site: "Site ID"
-        library: "Library ID"
-        name: "Name"
-        host: "Sharepoint Site URL"
     errors:
       messages:
         invalid_host_url: is not a valid URL.
