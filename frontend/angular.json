@@ -114,7 +114,6 @@
             "development": {
               "buildTarget": "OpenProject:build:development",
               "proxyConfig": "src/proxy.conf.mjs",
-              "allowedHosts": ["openproject-assets.local"],
               "headers": {
                 "Access-Control-Allow-Origin": "*"
               }

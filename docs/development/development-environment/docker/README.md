@@ -213,7 +213,7 @@ or for running a particular test
 docker compose exec backend-test bundle exec rspec path/to/some_spec.rb
 ```
 
-Tests are ran within Selenium containers, on a small local Selenium grid. You can connect to the containers via VNC if
+Tests are run within Selenium containers, on a small local Selenium grid. You can connect to the containers via VNC if
 you want to see what the browsers are doing. `gvncviewer` or `vinagre` on Linux is a good tool for this. Set any port in
 the `docker-compose.override.yml` to access a container of a specific browser. As a default, the `chrome` container is
 exposed on port 5900. The password is `secret` for all.
