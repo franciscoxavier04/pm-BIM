@@ -67,6 +67,8 @@ services:
       - db
       - cache
       - frontend
+    ports:
+      - "${PORT:-3000}:3000"
 
   worker:
     <<: *backend
@@ -84,6 +86,10 @@ services:
       - "${CKEDITOR_BUILD_DIR:-./frontend/src/vendor/ckeditor/}:/home/dev/openproject/frontend/src/vendor/ckeditor/"
     networks:
       - network
+    environment:
+      __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS: "openproject-assets.local"
+    ports:
+      - "${FE_PORT:-4200}:4200"
 
   db:
     image: postgres:17
