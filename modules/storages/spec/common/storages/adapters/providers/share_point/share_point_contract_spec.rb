@@ -37,7 +37,7 @@ module Storages
       module SharePoint
         RSpec.describe SharePointContract, :storage_server_helpers, :webmock do
           let(:current_user) { create(:admin) }
-          let(:storage) { build(:share_point_storage, provider_type: "Storages::SharePointStorage") }
+          let(:storage) { build(:share_point_storage) }
 
           # Ensure that the SharePointStorage is visible for the contract tests
           # but not to show it on the UI

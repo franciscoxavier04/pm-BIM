@@ -30,7 +30,7 @@
 
 module Storages
   class SharePointStorage < Storage
-    def self.visible? = false
+    def self.visible? = true
 
     def self.short_provider_name = :share_point
     def audience = nil
