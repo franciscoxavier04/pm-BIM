@@ -228,8 +228,6 @@ FactoryBot.define do
           parent: :storage,
           class: "::Storages::SharePointStorage" do
     host { "https://openproject.sharepoint.com/sites/ProjectX" }
-    site_id { SecureRandom.uuid }
-    library_id { SecureRandom.uuid }
     automatically_managed { false }
 
     trait :as_automatically_managed do

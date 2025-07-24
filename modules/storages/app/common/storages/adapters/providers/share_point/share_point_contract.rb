@@ -41,9 +41,6 @@ module Storages
           validates :host,
                     format: { with: %r{\Ahttps://[^/]+/sites/[^/]+(/.*)?\z}i,
                               message: I18n.t("activerecord.errors.messages.invalid_sharepoint_url") }
-
-          attribute :site_id
-          attribute :library_id
         end
       end
     end

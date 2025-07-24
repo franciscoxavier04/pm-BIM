@@ -30,9 +30,6 @@
 
 module Storages
   class SharePointStorage < Storage
-    store_attribute :provider_fields, :site_id, :string
-    store_attribute :provider_fields, :library_id, :string
-
     def self.visible? = false
 
     def self.short_provider_name = :share_point
