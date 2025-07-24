@@ -73,6 +73,7 @@ module CustomField::CalculatedValue
     end
 
     def usable_custom_field_references_for_formula
+      # TODO: do not suggest other calculated values that lead to recursion.
       self.class
         .where(field_format: FIELD_FORMATS_FOR_FORMULA)
         # Disallow the current custom field to avoid circular references

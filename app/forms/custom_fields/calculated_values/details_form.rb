@@ -80,9 +80,12 @@ module CustomFields
       private
 
       def formula_suggestions
-        # Insert operators as plain text nodes instead of tokens, since displaying them as tokens would result
-        # in too much visual clutter. We still want to offer autocompletion for them.
-        operators = CustomField::CalculatedValue::MATH_OPERATORS_FOR_FORMULA.map do |op|
+        operators = CustomField::CalculatedValue::MATH_OPERATORS_FOR_FORMULA
+                      # Hide % from the suggestions as it can be used as either modulo or percentage.
+                      .reject { it == "%" }
+                      .map do |op|
+          # Insert operators as plain text nodes instead of tokens, since displaying them as tokens would result
+          # in too much visual clutter. We still want to offer autocompletion for them.
           { key: op, label: op, insert_as_text: true }
         end
 
