@@ -29,7 +29,7 @@
  */
 
 import { Controller } from '@hotwired/stimulus';
-import ViewPortService from './services/view-port-service';
+import { ViewPortService } from './services/view-port-service';
 
 export default class IndexController extends Controller<HTMLElement> {
   static values = {

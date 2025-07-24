@@ -28,7 +28,15 @@
  * ++
  */
 
-export default class ViewPortService {
+export interface ViewPortServiceInterface {
+  isMobile():boolean;
+  isWithinNotificationCenter():boolean;
+  isWithinSplitScreen():boolean;
+  isJournalsContainerScrolledToBottom():boolean;
+  scrollableContainer:HTMLElement | null;
+}
+
+export class ViewPortService implements ViewPortServiceInterface {
   private notificationCenterPathName:string;
   private splitScreenPathName:string;
 
