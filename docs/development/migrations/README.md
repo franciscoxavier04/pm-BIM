@@ -57,6 +57,20 @@ To ensure that the squashing process hasn't introduced any schema changes, you c
 4. Run `rails db:drop db:create db:migrate` again to generate a new `structure.sql` file
 5. Compare the two structure files (e.g., using `diff`) - there should be no differences. This includes known shortcomings. The shortcomings could be addressed in separate migrations.
 
+To also ensure that the data hasn't changed, it is ideal to find a database that has data in it. With that found, follow these steps:
+
+1. Create a dump of the database you want to run the comparison for, including data: `pg_dump --column-inserts -U [user_name] -d [database_name] > [database_name]-orig.sql`
+2. Load the dump into the database you want to run the comparison on `psql [another_database_name] < [database_name]-orig.sql`
+3. Switch to a commit prior to the migration squashing, e.g. by switching to the dev branch.
+4. Run `rails db:migrate`
+5. Export the dump `pg_dump --column-inserts -U [user_name] -d [another_database_name] > [database_name]-dev.sql`
+6. Drop and recreate the database `rails db:drop db:create`
+7. Switch to a commit after the migration squashing is introduced.
+8. Load the original dump `psql [another_database_name] < [database_name]-orig.sql`
+9. Run `rails db:migrate`
+10. Export the dump `pg_dump --column-inserts -U [user_name] -d [another_database_name] > [database_name]-squashed.sql`
+11. Run `git diff [database_name]-dev.sql [database_name]-squashed.sql`
+
 ## Particularities
 
 good_job creates migration files when it is upgraded. It does so simply by looking for the existence of migration files with expected names. Removing the files as it is done for other migrations would therefore only lead to the file being recreated with a different timestamp once good_job is upgraded. To prevent that from happening, good_job's migration files are not removed. But they are emptied out and their contents moved to `tables` classes just like it is done for squashed migrations.
