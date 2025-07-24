@@ -151,7 +151,7 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
 
     this.wrappedTextArea = document.getElementById(this.textAreaId) as HTMLTextAreaElement;
 
-    this.wrappedTextArea.style.display = 'none';
+    this.wrappedTextArea.classList.add('-hidden');
     this.wrappedTextArea.required = false;
     this.initialContent = this.wrappedTextArea.value;
     this.readOnly = this.wrappedTextArea.disabled;
