@@ -30,44 +30,34 @@
 
 module Storages
   module Adapters
-    module Results
-      StorageFile = Data.define(
-        :id,
-        :name,
-        :size,
-        :mime_type,
-        :created_at,
-        :last_modified_at,
-        :created_by_name,
-        :last_modified_by_name,
-        :location,
-        :permissions
-      ) do
-        def initialize(
-          id:,
-          name:,
-          size: nil,
-          mime_type: nil,
-          created_at: nil,
-          last_modified_at: nil,
-          created_by_name: nil,
-          last_modified_by_name: nil,
-          location: nil,
-          permissions: nil
-        )
-          super
-        end
+    module Providers
+      module SharePoint
+        module Queries
+          class FilesQuery < Base
+            def call(auth_strategy:, **)
+              Authentication[auth_strategy].call(storage: @storage) do |http|
+                Internal::ListsQuery.call(storage: @storage, http:).bind { build_collection(it) }
+              end
+            end
 
-        def self.build(contract: StorageFileContract.new, **)
-          contract.call(**).to_monad.fmap { |input| new(**input.to_h) }
-        end
+            private
 
-        def folder?
-          mime_type.present? && mime_type == "application/x-op-directory"
-        end
+            def build_collection(files)
+              Results::StorageFileCollection.build(
+                files:,
+                parent: root(Digest::SHA256.hexdigest("i_am_site_root")),
+                ancestors: []
+              )
+            end
 
-        def drive?
-          mime_type.present? && mime_type == "application/x-op-drive"
+            def root(id)
+              Results::StorageFile.new(
+                name: URI(@storage.host).path&.split("/")&.last,
+                location: "/", id:,
+                permissions: %i[readable writeable]
+              )
+            end
+          end
         end
       end
     end

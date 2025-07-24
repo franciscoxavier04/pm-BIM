@@ -30,44 +30,33 @@
 
 module Storages
   module Adapters
-    module Results
-      StorageFile = Data.define(
-        :id,
-        :name,
-        :size,
-        :mime_type,
-        :created_at,
-        :last_modified_at,
-        :created_by_name,
-        :last_modified_by_name,
-        :location,
-        :permissions
-      ) do
-        def initialize(
-          id:,
-          name:,
-          size: nil,
-          mime_type: nil,
-          created_at: nil,
-          last_modified_at: nil,
-          created_by_name: nil,
-          last_modified_by_name: nil,
-          location: nil,
-          permissions: nil
-        )
-          super
-        end
+    module Providers
+      module SharePoint
+        module Commands
+          class CreateFolderCommand < Base
+            # @param auth_strategy [Result(Input::Strategy)]
+            # @param input_data [Input::CreateFolder]
+            def call(auth_strategy:, input_data:)
+              Authentication[auth_strategy].call(storage: @storage) do |_http|
+                # Input data has: folder name, parent_location
+                # Parent Location here need to be eiter a Drive
+                #   Or a pair of Drive + Parent Folder
+                Rails.logger.debug request_uri(**drive_and_location(input_data.parent_location))
+              end
+            end
 
-        def self.build(contract: StorageFileContract.new, **)
-          contract.call(**).to_monad.fmap { |input| new(**input.to_h) }
-        end
+            private
 
-        def folder?
-          mime_type.present? && mime_type == "application/x-op-directory"
-        end
+            def request_uri(drive_id:, location:)
+              last_fragment = if location.root?
+                                ["/root/children"]
+                              else
+                                ["/items", parent_location.path, "/children"]
+                              end
 
-        def drive?
-          mime_type.present? && mime_type == "application/x-op-drive"
+              UrlBuilder.url(base_uri, "/drives/", drive_id, *last_fragment)
+            end
+          end
         end
       end
     end
