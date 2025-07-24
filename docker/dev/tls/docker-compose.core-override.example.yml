@@ -28,8 +28,6 @@ services:
       # Mac OS
       # - ~/.step/certs:/etc/ssl/certs
       # - ~/.step/certs:/usr/local/share/ca-certificates
-    ports:
-      - "${PORT:-3000}:3000"
     labels:
     - "traefik.enable=true"
     - "traefik.http.routers.openproject.rule=Host(`openproject.local`)"
@@ -59,12 +57,8 @@ services:
       # - ~/.step/certs:/usr/local/share/ca-certificates
 
   frontend:
-    environment:
-      __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS: "openproject-assets.local"
     networks:
       - external
-    ports:
-      - "${FE_PORT:-4200}:4200"
     labels:
     - "traefik.enable=true"
     - "traefik.http.routers.openproject-assets.rule=Host(`openproject-assets.local`)"
