@@ -56,10 +56,7 @@ module CustomField::CalculatedValue
 
       unless valid_formula_syntax?
         errors.add(:formula, :invalid)
-        return
       end
-
-      true
     end
 
     def formula=(value)
@@ -97,10 +94,7 @@ module CustomField::CalculatedValue
       if surplus_cfs.any?
         custom_field_names = CustomField.where(id: surplus_cfs).pluck(:name)
         errors.add(:formula, :invalid_custom_fields, custom_fields: custom_field_names.join(", "))
-        return
       end
-
-      true
     end
 
     private
