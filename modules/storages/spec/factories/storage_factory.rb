@@ -227,7 +227,7 @@ FactoryBot.define do
   factory :share_point_storage,
           parent: :storage,
           class: "::Storages::SharePointStorage" do
-    host { nil }
+    host { "https://openproject.sharepoint.com/sites/ProjectX" }
     site_id { SecureRandom.uuid }
     library_id { SecureRandom.uuid }
     automatically_managed { false }

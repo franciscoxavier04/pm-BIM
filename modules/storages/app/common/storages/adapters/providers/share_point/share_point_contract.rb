@@ -38,16 +38,12 @@ module Storages
 
           attribute :host
           validates :host, presence: true, format: { with: URI::DEFAULT_PARSER.make_regexp }
+          validates :host,
+                    format: { with: %r{\Ahttps://[^/]+/sites/[^/]+(/.*)?\z}i,
+                              message: I18n.t("activerecord.errors.messages.invalid_sharepoint_url") }
 
           attribute :site_id
-          validates :site_id,
-                    presence: true,
-                    format: { with: /\A(?:[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}|consumers)\z/i }
-
           attribute :library_id
-          validates :library_id,
-                    presence: true,
-                    format: { with: /\A(?:[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}|consumers)\z/i }
         end
       end
     end

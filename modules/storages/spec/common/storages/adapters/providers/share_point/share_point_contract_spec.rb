@@ -37,7 +37,7 @@ module Storages
       module SharePoint
         RSpec.describe SharePointContract, :storage_server_helpers, :webmock do
           let(:current_user) { create(:admin) }
-          let(:storage) { build(:share_point_storage, host: "https://openproject.sharepoint.com") }
+          let(:storage) { build(:share_point_storage) }
 
           # Ensure that the SharePointStorage is visible for the contract tests
           # but not to show it on the UI
@@ -63,58 +63,42 @@ module Storages
           end
 
           describe "host" do
-            context "with valid host" do
-              before do
-                storage.host = "https://exmaple.com/"
-              end
-
-              it "must be valid" do
+            context "with valid SharePoint site url" do
+              it "is valid" do
                 expect(contract).to be_valid
               end
             end
 
-            context "with invalid host" do
+            context "with valid SharePoint library url" do
+              before do
+                storage.host = "https://openproject.sharepoint.com/sites/ProjectX/Documents/Report.rdl"
+              end
+
+              it "is valid" do
+                expect(contract).to be_valid
+              end
+            end
+
+            context "with invalid url" do
               before do
                 storage.host = "not-a-url"
               end
 
               it "is not valid" do
                 expect(subject).not_to be_valid
-                expect(subject.errors[:host]).to be_present
+                expect(subject.errors[:host]).to include("is invalid.")
               end
             end
-          end
 
-          context "with missing site_id" do
-            before do
-              storage.site_id = nil
-            end
+            context "with invalid sharepoint structure" do
+              before do
+                storage.host = "https://openproject.sharepoint.com/invalidpath"
+              end
 
-            it "is not valid" do
-              expect(subject).not_to be_valid
-              expect(subject.errors[:site_id]).to be_present
-            end
-          end
-
-          context "with invalid site_id" do
-            before do
-              storage.site_id = "not-a-guid"
-            end
-
-            it "is not valid" do
-              expect(subject).not_to be_valid
-              expect(subject.errors[:site_id]).to be_present
-            end
-          end
-
-          context "with missing library_id" do
-            before do
-              storage.library_id = nil
-            end
-
-            it "is not valid" do
-              expect(subject).not_to be_valid
-              expect(subject.errors[:library_id]).to be_present
+              it "is not valid" do
+                expect(subject).not_to be_valid
+                expect(subject.errors[:host]).to include("is not a valid SharePoint site, library, or document URL.")
+              end
             end
           end
         end
