@@ -28,8 +28,7 @@
  * ++
  */
 
-import { Controller } from '@hotwired/stimulus';
-import { withIndexOutletMixin } from './mixins/with-index-outlet';
+import BaseController from './base.controller';
 
 enum AnchorType {
   Comment = 'comment',
@@ -43,8 +42,10 @@ interface CustomEventWithIdParam extends Event {
   };
 }
 
-export default class AutoScrollingController extends withIndexOutletMixin(Controller) {
+export default class AutoScrollingController extends BaseController {
   connect() {
+    super.connect();
+
     this.handleInitialScroll();
   }
 

@@ -28,11 +28,12 @@
  * ++
  */
 
-import { Controller } from '@hotwired/stimulus';
-import { withIndexOutletMixin } from './mixins/with-index-outlet';
+import BaseController from './base.controller';
 
-export default class StemsController extends withIndexOutletMixin(Controller) {
+export default class StemsController extends BaseController {
   connect() {
+    super.connect();
+
     this.handleStemVisibility();
   }
 
