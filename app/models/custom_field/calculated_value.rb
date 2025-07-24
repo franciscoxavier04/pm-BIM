@@ -92,6 +92,7 @@ module CustomField::CalculatedValue
 
       if surplus_cfs.any?
         custom_field_names = CustomField.where(id: surplus_cfs).pluck(:name)
+        # TODO: explain WHY the custom fields are not allowed:
         errors.add(:formula, :invalid_custom_fields, custom_fields: custom_field_names.join(", "))
       end
     end
@@ -120,7 +121,7 @@ module CustomField::CalculatedValue
       # and ensures that the formula is really valid. A welcome side effect of the basic validation done here is that
       # it prevents built-in functions from being used in the formula, which we do not want to allow.
       allowed_chars = MATH_OPERATORS_FOR_FORMULA + [" "]
-      allowed_tokens = /\A(\{\{cf_\d+}}|\d+\.?\d*|\.\d+)\z/
+      allowed_tokens = /\A(\{\{cf_\d+}}|[\d.]+)\z/
 
       formula_string.split(Regexp.union(allowed_chars)).reject(&:empty?).all? do |token|
         token.match?(allowed_tokens)
