@@ -98,7 +98,7 @@ module CustomField::CalculatedValue
     private
 
     def calculator
-      @calculator ||= Dentaku::Calculator.new(case_sensitive: true)
+      Dentaku::Calculator.new(case_sensitive: true)
     end
 
     def valid_formula_syntax?
