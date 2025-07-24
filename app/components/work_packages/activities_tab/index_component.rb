@@ -78,14 +78,10 @@ module WorkPackages
           index_stimulus_controller("-unsaved-changes-confirmation-message-value") => unsaved_changes_confirmation_message
         }
         stimulus_controller_outlets = {
-          auto_scrolling_stimulus_controller("-#{index_stimulus_controller}-outlet") => index_component_dom_selector,
-          editor_stimulus_controller("-#{index_stimulus_controller}-outlet") => index_component_dom_selector,
           editor_stimulus_controller("-#{auto_scrolling_stimulus_controller}-outlet") => index_component_dom_selector,
           editor_stimulus_controller("-#{stems_stimulus_controller}-outlet") => index_component_dom_selector,
-          polling_stimulus_controller("-#{index_stimulus_controller}-outlet") => index_component_dom_selector,
           polling_stimulus_controller("-#{auto_scrolling_stimulus_controller}-outlet") => index_component_dom_selector,
-          polling_stimulus_controller("-#{stems_stimulus_controller}-outlet") => index_component_dom_selector,
-          stems_stimulus_controller("-#{index_stimulus_controller}-outlet") => index_component_dom_selector
+          polling_stimulus_controller("-#{stems_stimulus_controller}-outlet") => index_component_dom_selector
         }
 
         { test_selector: "op-wp-activity-tab" }
@@ -102,7 +98,6 @@ module WorkPackages
           action: editor_stimulus_controller(":onSubmit-end@window->#{internal_comment_stimulus_controller}#onSubmitEnd"),
           internal_comment_stimulus_controller("-highlight-class") => "work-packages-activities-tab-journals-new-component--journal-notes-body__internal-comment", # rubocop:disable Layout/LineLength
           internal_comment_stimulus_controller("-hidden-class") => "d-none",
-          internal_comment_stimulus_controller("-#{index_stimulus_controller}-outlet") => index_component_dom_selector,
           internal_comment_stimulus_controller("-is-internal-value") => false, # Initial value
           internal_comment_stimulus_controller("-#{editor_stimulus_controller}-outlet") => index_component_dom_selector
         }

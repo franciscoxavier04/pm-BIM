@@ -187,7 +187,7 @@ export default class EditorController extends BaseController {
     };
 
     const editorElement = this.ckEditorAugmentedTextarea;
-    if (editorElement && editorElement.addEventListener) {
+    if (editorElement) {
       editorElement.addEventListener('editorEscape', handlers.onEscapeEditor, { signal });
       editorElement.addEventListener('editorKeyup', handlers.adjustMargin, { signal });
       editorElement.addEventListener('editorBlur', handlers.onBlurEditor, { signal });

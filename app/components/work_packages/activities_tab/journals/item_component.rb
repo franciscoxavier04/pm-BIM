@@ -164,7 +164,6 @@ module WorkPackages
             quote_comments_stimulus_controller("-user-name-param") => journal.user.name,
             quote_comments_stimulus_controller("-is-internal-param") => journal.internal?,
             quote_comments_stimulus_controller("-text-wrote-param") => I18n.t(:text_wrote),
-            quote_comments_stimulus_controller("-#{index_stimulus_controller}-outlet") => index_component_dom_selector,
             quote_comments_stimulus_controller("-#{internal_comment_stimulus_controller}-outlet") => add_comment_component_dom_selector, # rubocop:disable Layout/LineLength
             quote_comments_stimulus_controller("-#{editor_stimulus_controller}-outlet") => index_component_dom_selector
           }
