@@ -50,8 +50,6 @@ class ProjectsController < ApplicationController
   include ProjectsHelper
   include Queries::Loading
 
-  helper_method :has_managed_project_folders?
-
   current_menu_item :index do
     :projects
   end
@@ -145,8 +143,8 @@ class ProjectsController < ApplicationController
   # Delete @project
   def destroy
     service_call = ::Projects::ScheduleDeletionService
-                     .new(user: current_user, model: @project)
-                     .call
+                    .new(user: current_user, model: @project)
+                    .call
 
     if service_call.success?
       flash[:notice] = I18n.t("projects.delete.scheduled")
@@ -154,13 +152,11 @@ class ProjectsController < ApplicationController
       flash[:error] = I18n.t("projects.delete.schedule_failed", errors: service_call.errors.full_messages.join("\n"))
     end
 
-    redirect_to projects_path
+    redirect_to projects_path, status: :see_other
   end
 
   def destroy_info
-    @project_to_destroy = @project
-
-    hide_project_in_layout
+    respond_with_dialog Projects::DeleteDialogComponent.new(project: @project)
   end
 
   def deactivate_work_package_attachments
@@ -241,14 +237,6 @@ class ProjectsController < ApplicationController
 
   def find_optional_parent
     @parent = Project.visible(current_user).find(params[:parent_id]) if params[:parent_id].present?
-  end
-
-  def has_managed_project_folders?(project)
-    project.project_storages.any?(&:project_folder_automatic?)
-  end
-
-  def hide_project_in_layout
-    @project = nil
   end
 
   def export_list(query, mime_type)
