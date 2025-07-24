@@ -75,17 +75,19 @@ module Redmine::MenuManager::TopMenu::UserMenu
     options = {
       scheme: :invisible,
       classes: "op-app-header--primer-button op-app-menu--item",
-      test_selector: "op-app-header--user-menu-button",
-      "aria-label": I18n.t("label_user_menu")
+      test_selector: "op-app-header--user-menu-button"
     }
 
     if User.current.logged?
       if avatar.present?
-        dialog.with_show_button(px: 0, **options) do
+        dialog.with_show_button(px: 0, **options) do |button|
+          button.with_tooltip(text: I18n.t("label_user_menu"))
           avatar
         end
       else
-        dialog.with_show_button(icon: :person, **options)
+        dialog.with_show_button(icon: :person, **options) do |button|
+          button.with_tooltip(text: I18n.t("label_user_menu"))
+        end
       end
     else
       dialog.with_show_button(**options) do |button|

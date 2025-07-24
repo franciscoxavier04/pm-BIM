@@ -46,9 +46,9 @@ module Redmine::MenuManager::TopMenu::QuickAddMenu
       menu.with_show_button(scheme: :primary,
                             classes: "op-app-header--primer-button",
                             test_selector: "quick-add-menu-button",
-                            "aria-label": I18n.t("menus.quick_add.label"),
                             px: 2) do |button|
         button.with_leading_visual_icon(icon: :plus)
+        button.with_tooltip(text: I18n.t("menus.quick_add.label"))
         render(Primer::Beta::Octicon.new(icon: "triangle-down", aria: { label: I18n.t("menus.quick_add.label") }))
       end
 

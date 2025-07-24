@@ -23,6 +23,8 @@ export class InAppNotificationBellComponent implements OnInit {
 
   unreadCountText$:Observable<number|string>;
 
+  public bellDisplayLimit = 99;
+
   constructor(
     readonly elementRef:ElementRef,
     readonly storeService:IanBellService,
@@ -64,11 +66,7 @@ export class InAppNotificationBellComponent implements OnInit {
       .unreadCount$
       .pipe(
         map((count) => {
-          if (count > 99) {
-            return '&bull;';
-          }
-
-          if (count <= 0) {
+          if (count > this.bellDisplayLimit || count <= 0) {
             return '';
           }
 
