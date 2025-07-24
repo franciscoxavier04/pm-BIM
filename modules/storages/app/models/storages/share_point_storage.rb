@@ -30,7 +30,11 @@
 
 module Storages
   class SharePointStorage < Storage
-    def self.visible? = true
+    # For now SharePoint is visible only in tests.
+    # This is to prevent it from being shown in the UI, as it is not ready yet.
+    def self.visible?
+      Rails.env.test?
+    end
 
     def self.short_provider_name = :share_point
     def audience = nil

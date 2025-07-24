@@ -39,10 +39,6 @@ module Storages
           let(:current_user) { create(:admin) }
           let(:storage) { build(:share_point_storage) }
 
-          # Ensure that the SharePointStorage is visible for the contract tests
-          # but not to show it on the UI
-          before { allow(::Storages::SharePointStorage).to receive(:visible?).and_return(true) }
-
           # As the SharePointContract is selected by the BaseContract to make writable attributes available,
           # the BaseContract needs to be instantiated here.
           subject(:contract) { Storages::BaseContract.new(storage, current_user) }
