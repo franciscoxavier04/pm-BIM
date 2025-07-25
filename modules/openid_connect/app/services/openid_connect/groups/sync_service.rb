@@ -95,12 +95,13 @@ module OpenIDConnect
       end
 
       def update_group_users(group)
-        # TODO: is that service well suited for many small group changes?
-        current_user_ids = group.group_users.pluck(:user_id)
-        new_user_ids = yield current_user_ids
-        @result.merge!(
-          ::Groups::UpdateService.new(user: User.system, model: group).call(user_ids: new_user_ids)
-        )
+        ActiveRecord::Base.transaction do
+          current_user_ids = group.group_users.lock.pluck(:user_id)
+          new_user_ids = yield current_user_ids
+          @result.merge!(
+            ::Groups::UpdateService.new(user: User.system, model: group).call(user_ids: new_user_ids)
+          )
+        end
       end
 
       def authentication_provider
