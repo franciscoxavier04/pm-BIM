@@ -67,12 +67,14 @@ module CustomField::CalculatedValue
     end
 
     def usable_custom_field_references_for_formula
-      # TODO: do not suggest other calculated values that lead to recursion.
-      self.class
-        .where(field_format: FIELD_FORMATS_FOR_FORMULA)
-        # Disallow the current custom field to avoid circular references
-        .where.not(id: id)
-        .visible
+      visible_cfs = ProjectCustomField
+                      .where(field_format: FIELD_FORMATS_FOR_FORMULA)
+                      .where.not(id:)
+                      .visible
+
+      visible_cfs.reject do |custom_field|
+        has_circular_reference?(custom_field, id)
+      end
     end
 
     def validate_referenced_custom_fields_allowed
@@ -132,6 +134,25 @@ module CustomField::CalculatedValue
     # For example, for `2 + {{cf_12}} + {{cf_4}}` it returns `2 + cf_12 + cf_4`.
     def formula_str_without_patterns
       formula_string.gsub(/\{\{(cf_\d+)}}/, '\1')
+    end
+
+    def has_circular_reference?(custom_field, original_id, visited = Set.new)
+      return true if visited.include?(custom_field.id)
+
+      visited.add(custom_field.id)
+
+      if custom_field.field_format_calculated_value? && custom_field.formula
+        referenced_custom_fields = custom_field.formula.fetch("referenced_custom_fields", [])
+
+        return true if referenced_custom_fields.include?(original_id)
+
+        referenced_custom_fields.any? do |ref_id|
+          referenced_field = ProjectCustomField.find_by(id: ref_id)
+          referenced_field && has_circular_reference?(referenced_field, original_id, visited)
+        end
+      else
+        false
+      end
     end
   end
 end
