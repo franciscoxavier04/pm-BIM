@@ -88,7 +88,6 @@ module CustomField::CalculatedValue
 
       if surplus_cfs.any?
         custom_field_names = CustomField.where(id: surplus_cfs).pluck(:name)
-        # TODO: explain WHY the custom fields are not allowed:
         errors.add(:formula, :invalid_custom_fields, custom_fields: custom_field_names.join(", "))
       end
     end
