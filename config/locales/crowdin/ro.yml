@@ -1112,7 +1112,7 @@ ro:
         remind_at_date: "Dată"
         remind_at_time: "Timp"
       reminder_notification:
-        notification: "Notificari"
+        notification: "Notificări"
       repository:
         url: "URL"
       role:
@@ -1520,7 +1520,7 @@ ro:
               inclusion: "trebuie să fie între 0 și 100."
             due_date:
               not_start_date: "nu este în data de început, deși acest lucru este necesar pentru etape."
-              cannot_be_null: "nu poate fi setat la null, deoarece data de începere și durata sunt cunoscute."
+              cannot_be_null: "nu poate fi setat la null, deoarece data de început și durata sunt cunoscute."
             duration:
               larger_than_dates: "este mai mare decât intervalul dintre data de început și data de sfârșit."
               smaller_than_dates: "este mai mică decât intervalul dintre data de început și data de sfârșit."
@@ -1586,9 +1586,9 @@ ro:
               numeric: "cifre (ex. ' 1')"
               special: "caractere speciale (ex. '%')"
               reused:
-                one: "a fost deja utilizată. Vă rugăm să alegeți una diferită de anterioara."
-                few: "a fost deja utilizată. Vă rugăm să alegeți una diferită de ultimele %{count}."
-                other: "a fost deja utilizată. Vă rugăm să alegeți una diferită de ultimele %{count}."
+                one: "a fost deja utilizată. Te rog să alegi una diferită de anterioara."
+                few: "a fost deja utilizată. Te rog să alegi una diferită de ultimele %{count}."
+                other: "a fost deja utilizată. Te rog să alegi una diferită de ultimele %{count}."
               match:
                 confirm: "Confirmă noua parolă."
                 description: "Valoarea din 'Confirmare parolă' ar trebui să fie identică cu cea introdusă în 'Parolă nouă'."
@@ -1719,7 +1719,7 @@ ro:
       changeset: "Seturi de modificări"
       message: "Forumuri"
       news: "Noutăţi"
-      project_details: "Arată detaliile proietului"
+      project_details: "Detalii proiect"
       subproject: "Include subproiecte"
       time_entry: "Timp consumat"
       wiki_edit: "Wiki"
@@ -1792,7 +1792,7 @@ ro:
     mail: "E-mail"
     name: "Nume"
     note: "Notă"
-    notes: "Mențiuni"
+    notes: "Note"
     number: "Number"
     options: "Opțiuni"
     operator: "Operator"
@@ -1808,7 +1808,7 @@ ro:
     recipient: "Recipient"
     role: "Rol"
     roles: "Roluri"
-    search: "Căutare"
+    search: "Caută"
     start_date: "Dată început"
     status: "Stare"
     state: "State"

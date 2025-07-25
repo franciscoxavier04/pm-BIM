@@ -11,7 +11,7 @@ ro:
         slug: Unique identifier
         display_name: Nume afișat
         client_id: ID Client
-        client_secret: Client Secret
+        client_secret: Secret client
         secret: Secret
         scope: Scop
         grant_types_supported: Supported grant types
