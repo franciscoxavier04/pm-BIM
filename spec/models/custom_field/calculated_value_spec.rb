@@ -49,6 +49,10 @@ RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_proje
         text = create(:project_custom_field, :text, default_value: "txt", is_for_all: true)
         expect(subject.usable_custom_field_references_for_formula).not_to include(text)
       end
+
+      it "excludes the current custom field from the results" do
+        expect(subject.usable_custom_field_references_for_formula).not_to include(subject)
+      end
     end
 
     context "with insufficient permission to see some custom fields" do
@@ -66,6 +70,53 @@ RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_proje
 
       it "returns only custom fields that the user has permission to see" do
         expect(subject.usable_custom_field_references_for_formula).to contain_exactly(int, float)
+      end
+    end
+
+    context "when there are circular references" do
+      let!(:field_a) { create(:calculated_value_project_custom_field, formula: "1 + 1", is_for_all: true) }
+      let!(:field_b) { create(:calculated_value_project_custom_field, formula: "2 + 2", is_for_all: true) }
+      let!(:field_c) { create(:calculated_value_project_custom_field, formula: "3 + 3", is_for_all: true) }
+
+      before do
+        # Set up circular reference: field_a -> field_b -> field_c -> field_a
+        field_a.formula = "{{cf_#{field_b.id}}} + 1"
+        field_b.formula = "{{cf_#{field_c.id}}} + 2"
+        field_c.formula = "{{cf_#{field_a.id}}} + 3"
+
+        field_a.save(validate: false)
+        field_b.save(validate: false)
+        field_c.save(validate: false)
+      end
+
+      it "excludes fields that would create circular references" do
+        # field_a should not be able to reference field_b, field_b should not be able to reference field_c, etc.
+        expect(field_a.usable_custom_field_references_for_formula).not_to include(field_b)
+        expect(field_b.usable_custom_field_references_for_formula).not_to include(field_c)
+        expect(field_c.usable_custom_field_references_for_formula).not_to include(field_a)
+      end
+
+      it "still includes fields that don't create circular references" do
+        expect(field_a.usable_custom_field_references_for_formula).to include(int, float)
+        expect(field_b.usable_custom_field_references_for_formula).to include(int, float)
+        expect(field_c.usable_custom_field_references_for_formula).to include(int, float)
+      end
+    end
+
+    context "when there are self-referencing fields" do
+      let!(:self_referencing_field) { create(:calculated_value_project_custom_field, formula: "1 + 1", is_for_all: true) }
+
+      before do
+        self_referencing_field.formula = "{{cf_#{self_referencing_field.id}}} + 1"
+        self_referencing_field.save(validate: false)
+      end
+
+      it "excludes self-referencing fields from other fields' usable references" do
+        expect(subject.usable_custom_field_references_for_formula).not_to include(self_referencing_field)
+      end
+
+      it "still includes non-self-referencing fields" do
+        expect(subject.usable_custom_field_references_for_formula).to include(int, float)
       end
     end
   end
@@ -102,6 +153,166 @@ RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_proje
       subject.formula = formula
 
       expect(subject.formula_string).to eq(formula)
+    end
+  end
+
+  describe "#has_circular_reference?" do
+    let!(:int_field) { create(:project_custom_field, :integer, default_value: 10, is_for_all: true) }
+    let!(:float_field) { create(:project_custom_field, :float, default_value: 5.5, is_for_all: true) }
+    let!(:text_field) { create(:project_custom_field, :text, default_value: "text", is_for_all: true) }
+
+    current_user { create(:admin) }
+
+    context "when checking a non-calculated value custom field" do
+      it "returns false for integer custom field" do
+        expect(subject.send(:has_circular_reference?, int_field, subject.id)).to be false
+      end
+
+      it "returns false for float custom field" do
+        expect(subject.send(:has_circular_reference?, float_field, subject.id)).to be false
+      end
+
+      it "returns false for text custom field" do
+        expect(subject.send(:has_circular_reference?, text_field, subject.id)).to be false
+      end
+    end
+
+    context "when checking a calculated value custom field with formula but no references" do
+      let!(:simple_calculated_field) do
+        create(:calculated_value_project_custom_field, formula: "1 + 2", is_for_all: true)
+      end
+
+      it "returns false" do
+        expect(subject.send(:has_circular_reference?, simple_calculated_field, subject.id)).to be false
+      end
+    end
+
+    context "when checking for direct circular reference" do
+      let!(:self_referencing_field) do
+        create(:calculated_value_project_custom_field,
+               formula: "{{cf_#{int_field.id}}} + 1",
+               is_for_all: true)
+      end
+
+      before do
+        # Manually set the formula to reference itself
+        self_referencing_field.formula = "{{cf_#{self_referencing_field.id}}} + 1"
+        self_referencing_field.save(validate: false)
+      end
+
+      it "returns true when field references itself" do
+        circular = self_referencing_field.send(:has_circular_reference?, self_referencing_field, self_referencing_field.id)
+        expect(circular).to be true
+      end
+    end
+
+    context "when checking for indirect circular reference" do
+      let!(:field_a) do
+        create(:calculated_value_project_custom_field,
+               formula: "1 + 1",
+               is_for_all: true)
+      end
+
+      let!(:field_b) do
+        create(:calculated_value_project_custom_field,
+               formula: "1 + 1",
+               is_for_all: true)
+      end
+
+      let!(:field_c) do
+        create(:calculated_value_project_custom_field,
+               formula: "1 + 1",
+               is_for_all: true)
+      end
+
+      before do
+        # Set up the circular reference: field_a -> field_b -> field_c -> field_a
+        field_a.formula = "{{cf_#{field_b.id}}} + 1"
+        field_b.formula = "{{cf_#{field_c.id}}} + 2"
+        field_c.formula = "{{cf_#{field_a.id}}} + 3"
+
+        field_a.save(validate: false)
+        field_b.save(validate: false)
+        field_c.save(validate: false)
+      end
+
+      it "returns true when there is an indirect circular reference" do
+        expect(field_a.send(:has_circular_reference?, field_a, field_a.id)).to be true
+      end
+
+      it "returns true when checking from any field in the circular chain" do
+        expect(field_b.send(:has_circular_reference?, field_b, field_b.id)).to be true
+        expect(field_c.send(:has_circular_reference?, field_c, field_c.id)).to be true
+      end
+    end
+
+    context "when checking for no circular reference" do
+      # Set up a linear chain: field_x -> field_y -> field_z (no circular reference)
+      let!(:field_x) do
+        create(:calculated_value_project_custom_field,
+               formula: "{{cf_#{int_field.id}}} + 1",
+               is_for_all: true)
+      end
+
+      let!(:field_y) do
+        create(:calculated_value_project_custom_field,
+               formula: "{{cf_#{field_x.id}}} + 2",
+               is_for_all: true)
+      end
+
+      let!(:field_z) do
+        create(:calculated_value_project_custom_field,
+               formula: "{{cf_#{field_y.id}}} + 3",
+               is_for_all: true)
+      end
+
+      it "returns false when there is no circular reference" do
+        expect(field_x.send(:has_circular_reference?, field_x, field_x.id)).to be false
+        expect(field_y.send(:has_circular_reference?, field_y, field_y.id)).to be false
+        expect(field_z.send(:has_circular_reference?, field_z, field_z.id)).to be false
+      end
+    end
+
+    context "when checking with visited nodes tracking" do
+      let!(:field1) do
+        create(:calculated_value_project_custom_field,
+               formula: "{{cf_#{int_field.id}}} + 1",
+               is_for_all: true)
+      end
+
+      let!(:field2) do
+        create(:calculated_value_project_custom_field,
+               formula: "{{cf_#{field1.id}}} + 2",
+               is_for_all: true)
+      end
+
+      it "returns true when a node has already been visited" do
+        visited = Set.new([field1.id])
+        expect(field2.send(:has_circular_reference?, field1, field2.id, visited)).to be true
+      end
+
+      it "returns false when checking a new node with empty visited set" do
+        visited = Set.new
+        expect(field2.send(:has_circular_reference?, field1, field2.id, visited)).to be false
+      end
+    end
+
+    context "when checking with non-existent referenced custom field" do
+      let!(:field_with_invalid_ref) do
+        create(:calculated_value_project_custom_field,
+               formula: "1 + 1",
+               is_for_all: true)
+      end
+
+      before do
+        field_with_invalid_ref.formula = "{{cf_99999}} + 1"
+        field_with_invalid_ref.save(validate: false)
+      end
+
+      it "returns false when referenced custom field does not exist" do
+        circular = field_with_invalid_ref.send(:has_circular_reference?, field_with_invalid_ref, field_with_invalid_ref.id)
+        expect(circular).to be false
+      end
     end
   end
 
