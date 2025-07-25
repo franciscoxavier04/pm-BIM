@@ -21,6 +21,11 @@ ca:
         project_folder_mode: Project folder mode
         storage: Emmagatzematge
         storage_url: Storage URL
+      storages/share_point_storage:
+        host: Sharepoint Site URL
+        library: Library ID
+        name: Name
+        site: Site ID
       storages/storage:
         authentication_method: Authentication Method
         creator: Autor
@@ -32,6 +37,7 @@ ca:
     errors:
       messages:
         invalid_host_url: no és una URL vàlida.
+        invalid_sharepoint_url: is not a valid SharePoint site, library, or document URL.
         not_linked_to_project: encara no està enllaçat a un projecte.
       models:
         storages/file_link:

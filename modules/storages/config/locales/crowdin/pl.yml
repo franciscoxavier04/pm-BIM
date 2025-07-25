@@ -21,6 +21,11 @@ pl:
         project_folder_mode: Tryb folderu projektu
         storage: Magazyn danych
         storage_url: Adres URL magazynu
+      storages/share_point_storage:
+        host: Sharepoint Site URL
+        library: Library ID
+        name: Name
+        site: Site ID
       storages/storage:
         authentication_method: Metoda uwierzytelniania
         creator: Twórca
@@ -32,6 +37,7 @@ pl:
     errors:
       messages:
         invalid_host_url: nie jest poprawnym adresem URL.
+        invalid_sharepoint_url: is not a valid SharePoint site, library, or document URL.
         not_linked_to_project: nie ma powiązania z projektem.
       models:
         storages/file_link:

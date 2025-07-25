@@ -21,6 +21,11 @@ tr:
         project_folder_mode: Proje klasör modu
         storage: Depolama
         storage_url: Depolama adresi
+      storages/share_point_storage:
+        host: Sharepoint Site URL
+        library: Library ID
+        name: Name
+        site: Site ID
       storages/storage:
         authentication_method: Kimlik Doğrulama Metodu
         creator: Oluşturan
@@ -32,6 +37,7 @@ tr:
     errors:
       messages:
         invalid_host_url: geçerli bir adres değil.
+        invalid_sharepoint_url: is not a valid SharePoint site, library, or document URL.
         not_linked_to_project: projeye bağlı değildir.
       models:
         storages/file_link:
