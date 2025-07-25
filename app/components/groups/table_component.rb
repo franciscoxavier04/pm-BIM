@@ -28,26 +28,49 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
+module Groups
+  class TableComponent < OpPrimer::BorderBoxTableComponent
+    columns :name, :user_count, :created_at
+    mobile_labels :user_count, :created_at
 
-RSpec.describe "group memberships through groups page", :js do
-  shared_let(:admin) { create(:admin) }
-  let!(:group) { create(:group, lastname: "Bob's Team") }
-
-  let(:groups_page) { Pages::Groups.new }
-
-  context "as an admin" do
-    before do
-      allow(User).to receive(:current).and_return admin
+    def mobile_title
+      Group.model_name.human(count: 2)
     end
 
-    it "I can see groups" do
-      groups_page.visit!
-      expect(groups_page).to have_group "Bob's Team"
+    def row_class
+      RowComponent
+    end
 
-      click_on "Bob's Team"
+    def headers
+      [
+        [:name, { caption: Group.human_attribute_name(:name) }],
+        [:user_count, { caption: t(".user_count") }],
+        [:created_at, { caption: Group.human_attribute_name(:created_at) }]
+      ]
+    end
 
-      expect(page).to have_current_path(edit_group_path(group))
+    def render_blank_slate
+      render(Primer::Beta::Blankslate.new(border: false)) do |component|
+        component.with_visual_icon(icon: blank_icon, size: :medium) if blank_icon
+        component.with_heading(tag: :h2) { blank_title }
+        component.with_description { blank_description }
+        component.with_primary_action(label: t(:label_group_new), tag: :a, href: new_group_path) do |button|
+          button.with_leading_visual_icon(icon: :plus)
+          t("activerecord.models.group")
+        end
+      end
+    end
+
+    def blank_title
+      t(".blank_slate.title")
+    end
+
+    def blank_description
+      t(".blank_slate.description")
+    end
+
+    def blank_icon
+      :people
     end
   end
 end

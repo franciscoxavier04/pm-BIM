@@ -28,26 +28,18 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
-
-RSpec.describe "group memberships through groups page", :js do
-  shared_let(:admin) { create(:admin) }
-  let!(:group) { create(:group, lastname: "Bob's Team") }
-
-  let(:groups_page) { Pages::Groups.new }
-
-  context "as an admin" do
-    before do
-      allow(User).to receive(:current).and_return admin
+module Groups
+  class RowComponent < OpPrimer::BorderBoxRowComponent
+    def name
+      render(Primer::Beta::Link.new(href: edit_group_path(model), font_weight: :bold)) { model.name }
     end
 
-    it "I can see groups" do
-      groups_page.visit!
-      expect(groups_page).to have_group "Bob's Team"
+    def user_count
+      model.users.count
+    end
 
-      click_on "Bob's Team"
-
-      expect(page).to have_current_path(edit_group_path(group))
+    def created_at
+      helpers.format_date(model.created_at)
     end
   end
 end
