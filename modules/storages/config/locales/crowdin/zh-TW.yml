@@ -22,10 +22,10 @@ zh-TW:
         storage: 儲存空間
         storage_url: 儲存 URL
       storages/share_point_storage:
-        host: Sharepoint Site URL
+        host: Sharepoint 網站 URL
         library: Library ID
-        name: Name
-        site: Site ID
+        name: 名稱
+        site: 站點 ID
       storages/storage:
         authentication_method: 驗證方式
         creator: 建立者
@@ -37,7 +37,7 @@ zh-TW:
     errors:
       messages:
         invalid_host_url: 不是有效的 URL。
-        invalid_sharepoint_url: is not a valid SharePoint site, library, or document URL.
+        invalid_sharepoint_url: 不是有效的 SharePoint 站點、library 或文件 URL。
         not_linked_to_project: 未鏈結至專案。
       models:
         storages/file_link:

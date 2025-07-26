@@ -3,7 +3,7 @@ ro:
     attributes:
       oauth_client:
         client_id: ID Client
-        client_secret: Client Secret
+        client_secret: Secret Client
       project:
         project_folder_type: Project folder type
       storages/file_link:

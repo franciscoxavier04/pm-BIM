@@ -81,9 +81,9 @@ tr:
       delete_dialog:
         title: "Delete enterprise token"
         heading: "Delete this enterprise token?"
-        confirmation: "Are you sure you want to delete this Enterprise edition support token?"
+        confirmation: "Bu Enterprise sürümü destek belirtecini silmek istediğinizden emin misiniz?"
       create_dialog:
-        title: "Add Enterprise token"
+        title: "Kurumsal belirteç ekleme"
         type_token_text: "Type support token text"
         token_placeholder: "Paste your Enterprise edition support token here"
       add_token: "Bir Enterprise sürümü destek belirteci yükleyin"
@@ -99,11 +99,11 @@ tr:
         upgrade: "Şimdi yükselt"
         contact: "Demo için bizimle iletişime geçin"
       status:
-        expired: "Expired"
-        expiring_soon: "Expiring soon"
-        in_grace_period: "In grace period"
-        invalid_domain: "Invalid domain"
-        not_active: "Not active"
+        expired: "Süresi doldu"
+        expiring_soon: "Süresi yakında dolacak"
+        in_grace_period: "Ödemesiz dönemde"
+        invalid_domain: "Geçersiz alan adı"
+        not_active: "Etkin Değil"
         trial: "Deneme"
     jemalloc_allocator: Jemalloc bellek ayırıcı
     journal_aggregation:
@@ -744,7 +744,7 @@ tr:
           click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for Gantt overview.'
           manual_mobile: "Ignoring relations."
           manual_gap_between_predecessors: "There is a gap between this and all predecessors."
-          manual_overlap_with_predecessors: "Overlaps with at least one predecessor."
+          manual_overlap_with_predecessors: "En az bir öncül ile kesişir."
           manual_with_children: "This has child work packages but their start dates are ignored."
         title:
           automatic_mobile: "Otomatik planlandı."
@@ -753,12 +753,12 @@ tr:
           manual_mobile: "Elle planlanmış."
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
-        title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
+        title: "Öncül yok"
+        description: "Otomatik zamanlamayı etkinleştirmek için bu iş paketinin en az bir öncülü olması gerekir. Daha sonra otomatik olarak en yakın öncülden sonra başlayacak şekilde planlayacaktır."
       ignore_non_working_days:
         title: "Sadece iş günleri"
       mode:
-        title: "Programlama modu"
+        title: "Planlama modu"
         automatic: "Otomatik"
         manual: "Elle"
       show_relations: "İlişkileri göster"
@@ -767,18 +767,18 @@ tr:
         aria_label: "Tarih seçme sekmesi"
         children: "Alt"
         dates: "Tarih"
-        predecessors: "Predecessors"
-        successors: "Successors"
+        predecessors: "Öncüller"
+        successors: "Ardıllar"
         blankslate:
           predecessors:
-            title: "No predecessors"
-            description: "This work package does not have any predecessors."
+            title: "Öncül yok"
+            description: "Bu iş paketi herhangi bir öncüle sahip değil."
           successors:
-            title: "No successors"
-            description: "This work package does not have any successors."
+            title: "Ardıl yok"
+            description: "Bu iş paketi herhangi bir ardıla sahip değil."
           children:
             title: "Alt yok"
-            description: "This work package does not have any children."
+            description: "Bu iş paketinin herhangi bir altı yoktur."
     x_descendants:
       one: "Bir soydan iş paketi"
       other: "%{count} Bir soydan iş paketi"
