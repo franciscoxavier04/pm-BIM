@@ -3000,7 +3000,7 @@ ro:
   label_modules: "Module"
   label_months_from: "luni de la"
   label_more: "Mai mult"
-  label_more_information: "Mai multe informatii"
+  label_more_information: "Mai multe informații"
   label_more_than_ago: "acum mai mult de zile"
   label_move_column_left: "Mută coloana la stânga"
   label_move_column_right: "Mută coloana la dreapta"
@@ -3579,7 +3579,7 @@ ro:
   #Default format for numbers
   number:
     format:
-      delimiter: "."
+      delimiter: ","
       precision: 3
       separator: ","
     human:
@@ -3599,7 +3599,7 @@ ro:
           tb: "TB"
   onboarding:
     heading_getting_started: "Urmărește prezentarea generală"
-    text_getting_started_description: "Obțineți o imagine de ansamblu rapidă a gestionării proiectelor și a colaborării în echipă cu OpenProject. Puteți reporni acest videoclip din meniul de ajutor."
+    text_getting_started_description: "Obține o imagine de ansamblu rapidă a gestionării proiectelor și a colaborării în echipă cu OpenProject. Poți reporni acest videoclip din meniul de ajutor."
     welcome: "Bun venit la %{app_title}"
     select_language: "Te rog selectează limba"
   permission_add_work_package_comments: "Add comments"
@@ -3796,7 +3796,7 @@ ro:
       info_not_managed: "Atenție: Această acțiune NU va șterge conținutul repo-ului, deoarece acesta nu este gestionat de OpenProject."
       managed_path_note: "Urmatorul director va fi şters: %{path}"
       repository_verification: "Introduceţi identificatorul proiectului %{identifier} pentru a verifica ștergerea sa din repo."
-      subtitle: "Sunteți sigur că doriţi să ştergeţi %{repository_type} din proiectul %{project_name}?"
+      subtitle: "Ești sigur că vrei să ştergi %{repository_type} din proiectul %{project_name}?"
       subtitle_not_managed: "Sunteți sigur că doriţi să ştergeţi %{repository_type} %{url} din proiectul %{project_name}?"
       title: "Ștergere %{repository_type}"
       title_not_managed: "Doriți eliminarea %{repository_type} corespunzător?"
@@ -3848,9 +3848,9 @@ ro:
     storage:
       not_available: "Consumul de spațiu de stocare nu este disponibil pentru acest repo."
       update_timeout: "Păstrează ultimele informații privind spațiul necesar pe disc pentru un depozit timp de N minute.\nDeoarece numărarea spațiului necesar pe disc al unui depozit poate fi costisitoare, crește această valoare pentru a reduce impactul asupra performanței."
-      oauth_application_details: "Valoarea secretă a clientului nu va mai fi accesibilă după ce închideți această fereastră. Vă rugăm să copiați aceste valori în setările Nextcloud OpenProject Integration:"
+      oauth_application_details: "Valoarea secretă a clientului nu va mai fi accesibilă după ce închizi această fereastră. Te rog să copiezi aceste valori în setările Nextcloud OpenProject Integration:"
       oauth_application_details_link_text: "Mergi la pagina setări"
-      setup_documentation_details: "Dacă aveți nevoie de ajutor pentru configurarea unui nou depozit de fișiere, consultați documentația: "
+      setup_documentation_details: "Dacă ai nevoie de ajutor pentru configurarea unui nou depozit de fișiere, consultă documentația: "
       setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "Pentru a utiliza acest spațiu de stocare a fișierelor, nu uita să activezi modulul și spațiul de stocare specific în setările de proiect ale fiecărui proiect dorit."
     subversion:
@@ -3894,11 +3894,11 @@ ro:
     If enabled, the API will allow administrators to write static read-only attributes during creation, such as createdAt and author. <br/> <strong>Warning:</strong> This setting has a use-case for e.g., importing data, but allows administrators to impersonate the creation of items as other users. All creation requests are being logged however with the true author. </br> For more information on attributes and supported resources, please see the %{api_documentation_link}.
   setting_apiv3_max_page_size: "Dimensiunea maximă a paginii API"
   setting_apiv3_max_page_instructions_html: >
-    Setaţi dimensiunea maximă a paginii cu care API-ul va răspunde. Nu va fi posibil să efectuați cereri API care returnează mai multe valori pe o singură pagină. <br/> <strong>Avertisment:</strong> Vă rugăm să schimbaţi această valoare numai dacă sunteţi sigur de ce aveţi nevoie. Stabilirea unei valori ridicate va avea ca rezultat un impact semnificativ asupra performanței; în timp ce o valoare mai mică decât opţiunile per pagină va cauza erori în vizualizările paginate.
+    Seteză dimensiunea maximă a paginii cu care API-ul va răspunde. Nu va fi posibil să efectuzi cereri API care returnează mai multe valori pe o singură pagină. <br/> <strong>Avertisment:</strong> Te rog să schimbi această valoare numai dacă ești sigur de ce ai nevoie. Stabilirea unei valori ridicate va avea ca rezultat un impact semnificativ asupra performanței; în timp ce o valoare mai mică decât opţiunile per pagină va cauza erori în vizualizările paginate.
   setting_apiv3_docs: "Documentație"
   setting_apiv3_docs_enabled: "Activare pagină documente"
   setting_apiv3_docs_enabled_instructions_html: >
-    Dacă pagina de documente este activată, puteți obține o vizualizare interactivă a documentației APIv3 la adresa <a href="%{link}" target="_blank">%{link}</a>.
+    Dacă pagina de documente este activată, poți obține o vizualizare interactivă a documentației APIv3 la adresa <a href="%{link}" target="_blank">%{link}</a>.
   setting_attachment_whitelist: "Lista albă de încărcare a atașamentelor"
   setting_email_delivery_method: "Metoda de livrare e-mail"
   setting_emails_salutation: "Adresează utilizator în e-mailuri cu"
@@ -4300,7 +4300,7 @@ ro:
     views:
       project: >
         %{plural} are always attached to a project. You can only select projects here where the %{plural} module is active. After creating a %{singular} you can add work packages from other projects to it.
-      public: "Publicați această vizualizare, permițând altor utilizatori să vă acceseze vizualizarea. Utilizatorii cu permisiunea \"Manage public views\" pot modifica sau elimina interogarea publică. Acest lucru nu afectează vizibilitatea rezultatelor pachetului de lucru în vizualizarea respectivă și, în funcție de permisiunile lor, utilizatorii pot vedea rezultate diferite."
+      public: "Publică această vizualizare, permițând altor utilizatori să vă acceseze vizualizarea. Utilizatorii cu permisiunea \"Manage public views\" pot modifica sau elimina interogarea publică. Acest lucru nu afectează vizibilitatea rezultatelor pachetului de lucru în vizualizarea respectivă și, în funcție de permisiunile lor, utilizatorii pot vedea rezultate diferite."
       favoured: "Mark this view as favourite and add to the saved views sidebar on the left."
   time:
     am: "AM"

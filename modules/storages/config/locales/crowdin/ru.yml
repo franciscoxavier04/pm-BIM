@@ -81,7 +81,7 @@ ru:
     edit_project_folder:
       label: Изменить папку проекта
     open:
-      contact_admin: Please contact your administrator to resolve this error.
+      contact_admin: Пожалуйста, свяжитесь с Вашим администратором, чтобы устранить эту ошибку.
       remote_identity_error: Произошла непредвиденная ошибка при подключении к хранилищу.
     project_folder_mode:
       automatic: Автоматическое управление
@@ -129,7 +129,7 @@ ru:
               conflict: 'Пользователь %{user} не может быть добавлен в группу %{group} по следующей причине: %{reason}'
               failed_to_add: 'Пользователь %{user} не может быть добавлен в группу %{group} по следующей причине: %{reason}'
             create_folder:
-              conflict: The folder %{folder_name} already exists on %{parent_location}.
+              conflict: Папка %{folder_name} уже существует на %{parent_location}.
               not_found: "%{parent_location} не найден."
             ensure_root_folder_permissions:
               not_found: "%{group_folder} не найдена. Пожалуйста, проверьте настройки групп в Nextcloud."

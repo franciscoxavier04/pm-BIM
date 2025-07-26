@@ -149,7 +149,7 @@ de:
       table_component:
         blank_slate:
           title: "Noch keine SCIM-Clients konfiguriert"
-          description: "Kunden hinzufügen, um sie hier zu sehen"
+          description: "Clients hinzufügen, um sie hier zu sehen"
         user_count: "Benutzer"
       token_list_component:
         description: "Die Token, die Sie hier erzeugen, können von einem SCIM-Client weitergegeben werden, um auf die OpenProject SCIM-API zuzugreifen."
