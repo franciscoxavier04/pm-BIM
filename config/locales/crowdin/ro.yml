@@ -720,7 +720,7 @@ ro:
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
           supported_attributes_link: "supported attributes"
       export_configuration:
-        tab: "Generate PDF"
+        tab: "Generează PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
         pdf_export_templates:
           label: "PDF Export templates"
@@ -1168,8 +1168,8 @@ ro:
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
-        button_update_look_and_feel: "Update look and feel"
-        button_update_alerts: "Update alerts"
+        button_update_look_and_feel: "Actualizează aspectul și simțul"
+        button_update_alerts: "Actualizează alerte"
         comments_sorting: "Display work package activity sorted by"
         disable_keyboard_shortcuts: "Disable keyboard shortcuts"
         disable_keyboard_shortcuts_caption_html: |-
@@ -1921,7 +1921,7 @@ ro:
   button_save_as: "Salvează ca"
   button_apply_changes: "Aplică modificările"
   button_save_back: "Salvează și înapoi"
-  button_set_reminder: "Set reminder"
+  button_set_reminder: "Setează memento"
   button_show: "Afişare"
   button_sort: "Sortare"
   button_submit: "Trimite"
@@ -2206,7 +2206,7 @@ ro:
         description: "What are the benefits of the Enterprise on-premises edition?"
         high_security: "Security features"
         high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
-        installation: "Installation support"
+        installation: "Suport instalare"
         installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
         premium_features: "Enterprise add-ons"
         premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
@@ -2464,7 +2464,7 @@ ro:
       label: "Contract"
       caption: Work package details formatted to the standard German contract form.
     dialog:
-      title: Generate PDF
+      title: Generează PDF
       submit: Descărcare
       templates:
         label: "Șablon"
@@ -2509,8 +2509,8 @@ ro:
   gui_validation_error_plural: "%{count} erori"
   homescreen:
     additional:
-      projects: "Cele mai noi proiecte vizibile."
-      no_visible_projects: "Cele mai noi proiecte vizibile."
+      projects: "Proiecte vizibile noi."
+      no_visible_projects: "Nu există proiecte vizibile."
       users: "Cei mai noi utilizatori înregistrați."
     blocks:
       community: "Comunitatea OpenProject"
@@ -2922,7 +2922,7 @@ ro:
   label_interface: "Interface"
   label_internal: "Intern"
   label_introduction_video: "Video de introducere"
-  label_invite_user: "Invitare utilizator"
+  label_invite_user: "Invită utilizator"
   label_item: "Item"
   label_item_plural: "Items"
   label_share: "Distribuie"
@@ -4359,7 +4359,7 @@ ro:
     confirm_status_change: "Sunteți pe cale să modificați statutul lui \"%{name}\". Sunteți sigur că doriți să continuați?"
     deleted: "Utilizator șters"
     error_status_change_failed: "Modificarea stării utilizatorului a eșuat din cauza următoarelor erori: %{errors}"
-    invite: Invitare utilizator prin e-mail
+    invite: Invită utilizator prin e-mail
     invited: invitat
     lock: "Blocare permanentă"
     locked: "blocat permanent"
@@ -4447,8 +4447,8 @@ ro:
       view_description: "Can view this work package."
     reminders:
       label_remind_at: "Dată"
-      note_placeholder: "Why are you setting this reminder?"
-      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
+      note_placeholder: "De ce setezi acest memento?"
+      create_success_message: "Memento setat cu succes. Vei primi o notificare pentru acest pachet de lucru %{reminder_time}."
       success_update_message: "Reminder updated successfully."
       success_deletion_message: "Reminder deleted successfully."
   sharing:
@@ -4553,7 +4553,7 @@ ro:
         emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       conflict:
         multiple_reminders_not_allowed: |-
-          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
+          Poți seta doar un memento la un moment dat pentru un pachet de lucru. Te rog să ștergi sau să actualizezi memento-ul existent.
       not_found:
         work_package: "Pachetul de lucru pe care îl căutați nu poate fi găsit sau a fost șters."
         reminder: "The reminder you are looking for cannot be found or has been deleted."
