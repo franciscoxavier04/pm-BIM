@@ -32,27 +32,24 @@ require "spec_helper"
 
 RSpec.describe CustomValue::IntStrategy do
   let(:instance) { described_class.new(custom_value) }
-  let(:custom_value) do
-    double("CustomValue",
-           value:)
-  end
+  let(:custom_value) { instance_double(CustomValue, value:) }
 
   describe "#typed_value" do
     subject { instance.typed_value }
 
-    context "value is some float string" do
+    context "when value is a float string" do
       let(:value) { "10" }
 
       it { is_expected.to be(10) }
     end
 
-    context "value is blank" do
+    context "when value is blank" do
       let(:value) { "" }
 
       it { is_expected.to be_nil }
     end
 
-    context "value is nil" do
+    context "when value is nil" do
       let(:value) { nil }
 
       it { is_expected.to be_nil }
@@ -62,19 +59,19 @@ RSpec.describe CustomValue::IntStrategy do
   describe "#formatted_value" do
     subject { instance.typed_value }
 
-    context "value is some int string" do
+    context "when value is an int string" do
       let(:value) { "10" }
 
       it { is_expected.to be(10) }
     end
 
-    context "value is blank" do
+    context "when value is blank" do
       let(:value) { "" }
 
       it { is_expected.to be_nil }
     end
 
-    context "value is nil" do
+    context "when value is nil" do
       let(:value) { nil }
 
       it { is_expected.to be_nil }
@@ -84,7 +81,7 @@ RSpec.describe CustomValue::IntStrategy do
   describe "#validate_type_of_value" do
     subject { instance.validate_type_of_value }
 
-    context "value is positive int string" do
+    context "when value is a positive int string" do
       let(:value) { "10" }
 
       it "accepts" do
@@ -92,7 +89,7 @@ RSpec.describe CustomValue::IntStrategy do
       end
     end
 
-    context "value is negative int string" do
+    context "when value is a negative int string" do
       let(:value) { "-10" }
 
       it "accepts" do
@@ -100,7 +97,7 @@ RSpec.describe CustomValue::IntStrategy do
       end
     end
 
-    context "value is not an int string" do
+    context "when value is not an int string" do
       let(:value) { "unicorn" }
 
       it "rejects" do
@@ -108,7 +105,7 @@ RSpec.describe CustomValue::IntStrategy do
       end
     end
 
-    context "value is an actual int" do
+    context "when value is an actual int" do
       let(:value) { 10 }
 
       it "accepts" do
@@ -116,7 +113,7 @@ RSpec.describe CustomValue::IntStrategy do
       end
     end
 
-    context "value is a float" do
+    context "when value is a float" do
       let(:value) { 2.3 }
 
       it "rejects" do

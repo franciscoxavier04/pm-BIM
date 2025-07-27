@@ -363,6 +363,10 @@ fil:
       parent: "Magulang"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
       all: "All"
@@ -1242,6 +1246,7 @@ fil:
         error_unauthorized: "may not be accessed."
         error_readonly: "was attempted to be written but is not writable."
         error_conflict: "Ang impormasyon ay naka-update sa kahit hindi baba isa o."
+        error_not_found: "not found."
         email: "is not a valid email address."
         empty: "hindi pwedeng blanko."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1401,8 +1406,6 @@ fil:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "hindi nakita"
             public:
               error_unauthorized: "- The user has no permission to create public views."
             group_by:
@@ -1442,10 +1445,8 @@ fil:
             circular_dependency: "Ang relasyon ay lumilikha ng mga bilog na relasyon."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "Ang SCM vendor ay hindi available"
@@ -1585,10 +1586,6 @@ fil:
                 description: "'Kompirmasyon ng password' ay dapat tugma sa input ng 'Bagong password' na patlang."
             status:
               invalid_on_create: "ay hindi isang balidong estado para sa mga bagong gumagamit."
-            ldap_auth_source:
-              error_not_found: "hindi nakita"
-            auth_source:
-              error_not_found: "hindi nakita"
         member:
           principal_blank: "Mangayring pumili na kahit isang gumagamit o grupo."
           role_blank: "need to be assigned."
@@ -1798,6 +1795,7 @@ fil:
     title: "Pamagat"
     type: "Uri"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Naka-update sa"
     updated_on: "Naka-update sa"
     uploader: "Uploader"

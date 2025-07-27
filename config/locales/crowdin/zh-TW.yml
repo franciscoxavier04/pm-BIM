@@ -362,6 +362,10 @@ zh-TW:
       parent: "上層"
       blueprint: "樣式藍圖"
   global_search:
+    title:
+      all_projects: '在所有專案中搜尋 "%{search_term}"'
+      current_project: '在 %{project_name}中搜尋 "%{search_term}"'
+      project_and_subprojects: '在 %{project_name} 和所有子專案中搜尋 "%{search_term}"'
     placeholder: "在 %{app_title} 搜尋"
     overwritten_tabs:
       all: "全部"
@@ -1230,6 +1234,7 @@ zh-TW:
         error_unauthorized: "無法被存取。"
         error_readonly: "被嘗試寫入但是無法寫入。"
         error_conflict: "在此同時，資訊已經被至少一個使用者更新"
+        error_not_found: "未找到。"
         email: "不是一個有效的電子郵件地址。 "
         empty: "不可為空"
         enterprise_plan_required: "最少需要 %{plan_name}。"
@@ -1389,8 +1394,6 @@ zh-TW:
           cannot_be_a_non_working_day: "不能是非工作日。"
         query:
           attributes:
-            project:
-              error_not_found: "未找到"
             public:
               error_unauthorized: "- 此用戶沒有建立公共查詢的權限。"
             group_by:
@@ -1430,10 +1433,8 @@ zh-TW:
             circular_dependency: "無限迴圈的關聯。"
           attributes:
             to_id:
-              error_not_found: "未找到或不可見。"
               error_readonly: "無法變更現有的關係。"
             from_id:
-              error_not_found: "未找到或不可見。"
               error_readonly: "無法變更現有的關係。"
         repository:
           not_available: "版本控制無法使用"
@@ -1572,10 +1573,6 @@ zh-TW:
                 description: "‘確認密碼’ 應該要符合 '新密碼'"
             status:
               invalid_on_create: "不是新用戶的有效狀態"
-            ldap_auth_source:
-              error_not_found: "未找到"
-            auth_source:
-              error_not_found: "未找到"
         member:
           principal_blank: "請至少選擇一個使用者或群組。"
           role_blank: "需要被指定"
@@ -1772,6 +1769,7 @@ zh-TW:
     title: "標題"
     type: "類型"
     typeahead: "自動完成"
+    uid: "唯一識別碼"
     updated_at: "更新於"
     updated_on: "更新於"
     uploader: "上傳者"
@@ -2785,7 +2783,7 @@ zh-TW:
   label_filter_add: "新增條件"
   label_filter_by: "篩選條件："
   label_filter_any_name_attribute: "名稱屬性"
-  label_filter_plural: "篩選條件"
+  label_filter_plural: "篩選器"
   label_filters_toggle: "顯示/隱藏篩選條件"
   label_float: "浮點數"
   label_folder: "資料夾"
@@ -2800,7 +2798,7 @@ zh-TW:
   label_global_roles: "全域角色"
   label_git_path: ".git 目錄的路徑"
   label_greater_or_equal: ">="
-  label_group_by: "分類"
+  label_group_by: "分組依據"
   label_group_new: "新增群組"
   label_group: "群組"
   label_group_named: "群組名稱 %{name}"
@@ -2812,7 +2810,7 @@ zh-TW:
   label_hierarchy: "階層"
   label_hierarchy_leaf: "頁面結構頁"
   label_home: "Home"
-  label_subject_or_id: "名稱或 id"
+  label_subject_or_id: "主旨或 id"
   label_calendar_subscriptions: "訂閱行事曆"
   label_identifier: "識別碼"
   label_in: "在"
@@ -2859,7 +2857,7 @@ zh-TW:
   label_latest_revision_plural: "最新版本"
   label_ldap_authentication: "LDAP 認證"
   label_learn_more: "了解更多"
-  label_less_or_equal: "之後"
+  label_less_or_equal: "<="
   label_less_than_ago: "幾天內"
   label_link_url: "連結(URL)"
   label_list: "清單"

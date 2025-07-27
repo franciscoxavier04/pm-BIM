@@ -361,6 +361,10 @@ da:
       parent: "Overordnet"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
       all: "Alle"
@@ -1240,6 +1244,7 @@ da:
         error_unauthorized: "kan muligvis ikke tilgås."
         error_readonly: "was attempted to be written but is not writable."
         error_conflict: "Oplysning er opdateret af mindst én anden bruger i mellemtiden."
+        error_not_found: "not found."
         email: "is not a valid email address."
         empty: "må ikke være tomt."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1399,8 +1404,6 @@ da:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "not found"
             public:
               error_unauthorized: "- The user has no permission to create public views."
             group_by:
@@ -1440,10 +1443,8 @@ da:
             circular_dependency: "The relationship creates a circle of relationships."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "SCM-leverandør utilgængelig"
@@ -1583,10 +1584,6 @@ da:
                 description: "'Adgangskodebekræftelse' skal matche input fra feltet 'Ny adgangskode'."
             status:
               invalid_on_create: "is not a valid status for new users."
-            ldap_auth_source:
-              error_not_found: "not found"
-            auth_source:
-              error_not_found: "not found"
         member:
           principal_blank: "Vælg venligst mindst én bruger eller gruppe."
           role_blank: "need to be assigned."
@@ -1796,6 +1793,7 @@ da:
     title: "Titel"
     type: "Type"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Opdateret den"
     updated_on: "Opdateret den"
     uploader: "Uploader"

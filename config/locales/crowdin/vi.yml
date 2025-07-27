@@ -363,6 +363,10 @@ vi:
       parent: "Cha"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Tìm kiếm trong %{app_title}"
     overwritten_tabs:
       all: "Tất cả"
@@ -1234,6 +1238,7 @@ vi:
         error_unauthorized: "Có thể không được truy cập."
         error_readonly: "đã bị ghi lại nhưng không thể ghi."
         error_conflict: "Thông tin đã được cập nhật bởi ít nhất một người dùng khác trong thời gian này."
+        error_not_found: "not found."
         email: "không phải là địa chỉ email hợp lệ."
         empty: "không thể để trống"
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1393,8 +1398,6 @@ vi:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "không tìm thấy"
             public:
               error_unauthorized: "-Người dùng không có quyền tạo ra khu vực xem công cộng."
             group_by:
@@ -1434,10 +1437,8 @@ vi:
             circular_dependency: "Mối quan hệ tạo ra một vòng tròn các mối quan hệ."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "Nhà cung cấp SCM không có sẵn"
@@ -1576,10 +1577,6 @@ vi:
                 description: "'Xác nhận mật khẩu ' phải trùng với dữ liệu trong mục 'Mật khẩu mới'."
             status:
               invalid_on_create: "không phải là trạng thái hợp lệ cho người dùng mới."
-            ldap_auth_source:
-              error_not_found: "không tìm thấy"
-            auth_source:
-              error_not_found: "không tìm thấy"
         member:
           principal_blank: "Vui lòng chọn ít nhất một người dùng hoặc nhóm."
           role_blank: "cần được chỉ định."
@@ -1776,6 +1773,7 @@ vi:
     title: "Tiêu đề"
     type: "Loại"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Được cập nhật vào lúc"
     updated_on: "Cập nhật vào"
     uploader: "Tải lên"
@@ -2789,7 +2787,7 @@ vi:
   label_filter_add: "Thêm bộ lọc"
   label_filter_by: "Filter by"
   label_filter_any_name_attribute: "Name attributes"
-  label_filter_plural: "Các bộ lọc"
+  label_filter_plural: "Bộ lọc"
   label_filters_toggle: "Hiển thị/ẩn bộ lọc"
   label_float: "Số thực"
   label_folder: "Thư mục"

@@ -695,6 +695,7 @@ ms:
           first_day: "Hari pertama"
           last_day: "Hari terakhir"
     text_are_you_sure: "Adakah anda pasti?"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
     breadcrumb: "Breadcrumb"
     text_data_lost: "Semua data yang dimasukkan akan hilang."
     text_user_wrote: "%{value} menulis:"

@@ -360,6 +360,10 @@ pl:
       parent: "Element nadrzędny"
       blueprint: "Plan wzorca"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Wyszukaj w %{app_title}"
     overwritten_tabs:
       all: "Wszystkie"
@@ -1254,6 +1258,7 @@ pl:
         error_unauthorized: "— nie można uzyskac dostępu."
         error_readonly: "— podjęto próbę zapisu, ale nie jest zapisywalny."
         error_conflict: "Information has been updated by at least one other user in the meantime."
+        error_not_found: "nie znaleziono."
         email: "nie jest poprawnym adresem e-mail."
         empty: "nie może być puste."
         enterprise_plan_required: "wymaga co najmniej planu %{plan_name}."
@@ -1413,8 +1418,6 @@ pl:
           cannot_be_a_non_working_day: "nie może być dniem wolnym od pracy."
         query:
           attributes:
-            project:
-              error_not_found: "nie znaleziono"
             public:
               error_unauthorized: "– Użytkownik nie ma uprawnień do tworzenia widoków publicznych."
             group_by:
@@ -1454,10 +1457,8 @@ pl:
             circular_dependency: "Relacja tworzy krąg relacji."
           attributes:
             to_id:
-              error_not_found: "nie znaleziono lub niewidoczny."
               error_readonly: "nie można zmienić dla istniejących relacji."
             from_id:
-              error_not_found: "nie znaleziono lub niewidoczny."
               error_readonly: "nie można zmienić dla istniejących relacji."
         repository:
           not_available: "Producent SCM nie jest dostępny"
@@ -1599,10 +1600,6 @@ pl:
                 description: "\"Potwierdzenie hasła\" powinno być zgodne z wartością w polu 'Nowe hasło'."
             status:
               invalid_on_create: "nie jest prawidłowym statusem dla nowych użytkowników."
-            ldap_auth_source:
-              error_not_found: "nie znaleziono"
-            auth_source:
-              error_not_found: "nie znaleziono"
         member:
           principal_blank: "Wybierz co najmniej jeden użytkownik lub Grupa."
           role_blank: "musi być przypisany."
@@ -1838,6 +1835,7 @@ pl:
     title: "Tytuł"
     type: "Typ"
     typeahead: "Autouzupełnianie"
+    uid: "Unikalny identyfikator"
     updated_at: "Aktualizacja"
     updated_on: "Aktualizacja"
     uploader: "Osoba przesyłająca"

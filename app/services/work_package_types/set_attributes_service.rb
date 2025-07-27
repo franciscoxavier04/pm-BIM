@@ -85,7 +85,7 @@ module WorkPackageTypes
     def check_projects(params)
       return unless params.key?(:project_ids)
 
-      invalid_project_ids = params[:project_ids].reject { |id| Project.exists?(id) }
+      invalid_project_ids = params[:project_ids].reject { |id| id.blank? || Project.exists?(id) }
       unless invalid_project_ids.empty?
         @param_validations.update({ project_ids: "Projects with ids #{invalid_project_ids.join(', ')} do not exist." })
       end

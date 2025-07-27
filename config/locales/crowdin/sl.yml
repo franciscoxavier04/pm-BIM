@@ -362,6 +362,10 @@ sl:
       parent: "Nadrejeni"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
       all: "Vse"
@@ -1257,6 +1261,7 @@ sl:
         error_unauthorized: "morda ni mogoče dostopati."
         error_readonly: "poskušano je bilo napisati, vendar ni mogoče pisati."
         error_conflict: "Medtem so bili podatki posodobljeni od vsaj še enega uporabnika."
+        error_not_found: "not found."
         email: "is not a valid email address."
         empty: "ne sme biti prazno. "
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1416,8 +1421,6 @@ sl:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "Ni najdeno"
             public:
               error_unauthorized: "Uporabnik nima dovoljenja za ustvarjanje javnih pogledov."
             group_by:
@@ -1457,10 +1460,8 @@ sl:
             circular_dependency: "Odnos ustvarja krog odnosov."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "SCM prodajalec ni na voljo"
@@ -1602,10 +1603,6 @@ sl:
                 description: "'Potrditev gesla' se mora ujemati z vnosom v polju 'Novo geslo'."
             status:
               invalid_on_create: "za nove uporabnike ni veljaven status."
-            ldap_auth_source:
-              error_not_found: "Ni najdeno"
-            auth_source:
-              error_not_found: "Ni najdeno"
         member:
           principal_blank: "Prosimo izberite vsaj eno osebo ali kategorijo."
           role_blank: "treba dodeliti"
@@ -1841,6 +1838,7 @@ sl:
     title: "Naslov"
     type: "Vrsta"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Posodobljeno"
     updated_on: "Posodobljeno"
     uploader: "Posodobitelj"
@@ -2060,8 +2058,8 @@ sl:
       - "avgust"
       - "september"
       - "oktober"
-      - "november"
-      - "december"
+      - "November"
+      - "December"
     order:
       - :leto
       - :mesec

@@ -361,6 +361,10 @@ ja:
       parent: "親項目"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "%{app_title}で検索"
     overwritten_tabs:
       all: "全て"
@@ -1232,6 +1236,7 @@ ja:
         error_unauthorized: "アクセスできません。"
         error_readonly: "書けませんでした。"
         error_conflict: "別のユーザーが同時にデータを更新しています。"
+        error_not_found: "not found."
         email: "is not a valid email address."
         empty: "は空にすることができません。"
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1391,8 +1396,6 @@ ja:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "存在しません"
             public:
               error_unauthorized: "- ユーザーにはパブリックビューを作成する権限がありません。"
             group_by:
@@ -1432,10 +1435,8 @@ ja:
             circular_dependency: "関係が、関係のループを作ります。"
           attributes:
             to_id:
-              error_not_found: "見つからないか、非表示になっています。"
               error_readonly: "既存のリレーションを変更することはできません。"
             from_id:
-              error_not_found: "見つからないか、非表示になっています。"
               error_readonly: "既存のリレーションを変更することはできません。"
         repository:
           not_available: "SCMベンダーは使用できません。"
@@ -1574,10 +1575,6 @@ ja:
                 description: "「パスワードの確認」は、「新しいパスワード」フィールドの入力と一致する必要があります。"
             status:
               invalid_on_create: "新規ユーザーの有効なステータスではありません。"
-            ldap_auth_source:
-              error_not_found: "存在しません"
-            auth_source:
-              error_not_found: "存在しません"
         member:
           principal_blank: "一つ以上のユーザまたはグループを選択してください。"
           role_blank: "を割り当てる必要があります。"
@@ -1774,6 +1771,7 @@ ja:
     title: "タイトル"
     type: "タイプ"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "更新日時"
     updated_on: "更新日時"
     uploader: "アップロード"

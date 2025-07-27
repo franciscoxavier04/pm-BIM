@@ -2,6 +2,7 @@ import { ControllerConstructor } from '@hotwired/stimulus/dist/types/core/contro
 import { ApplicationController } from 'stimulus-use';
 import { AttributeObserver } from '@hotwired/stimulus';
 import { debugLog } from 'core-app/shared/helpers/debug_output';
+import { OpenProjectStimulusApplication } from 'core-stimulus/openproject-stimulus-application';
 
 export class OpApplicationController extends ApplicationController {
   private loaded = new Set<string>();
@@ -30,17 +31,41 @@ export class OpApplicationController extends ApplicationController {
     const registered = this.application.router.modules.map((module) => module.definition.identifier);
 
     controllers.forEach((controller) => {
-      const path = this.derivePath(controller);
       if (!registered.includes(controller) && !this.loaded.has(controller)) {
         debugLog(`Loading controller ${controller}`);
         this.loaded.add(controller);
-        void import(/* webpackChunkName: "[request]" */`./dynamic/${path}.controller`)
-          .then((imported:{ default:ControllerConstructor }) => this.application.register(controller, imported.default))
-          .catch((err:unknown) => {
-            console.error('Failed to load dynamic controller chunk %O: %O', controller, err);
+
+        void this
+          .importController(controller)
+          .then((clazz) => {
+            if (clazz) {
+              this.application.register(controller, clazz);
+            }
           });
       }
     });
+  }
+
+  private async importController(controller:string):Promise<ControllerConstructor|null> {
+    try {
+      const imported = await this.fetchDynamicController(controller);
+      return imported.default;
+    } catch (err) {
+      console.error('Failed to load dynamic controller chunk %O: %O', controller, err);
+      return null;
+    }
+  }
+
+  private async fetchDynamicController(controller:string) {
+    if (OpenProjectStimulusApplication.dynamicImports.has(controller)) {
+      return OpenProjectStimulusApplication.dynamicImports.get(controller)!();
+    }
+
+    // Default: Try to load the controller from dynamic/ subfolder.
+    const path = this.derivePath(controller);
+    return await import(`./dynamic/${path}.controller.ts`) as Promise<{
+      default:ControllerConstructor
+    }>;
   }
 
   /**

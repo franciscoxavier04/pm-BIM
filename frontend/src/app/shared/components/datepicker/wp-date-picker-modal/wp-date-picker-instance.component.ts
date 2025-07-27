@@ -49,7 +49,7 @@ import { PathHelperService } from 'core-app/core/path-helper/path-helper.service
 import { populateInputsFromDataset } from 'core-app/shared/components/dataset-inputs';
 import { fromEvent } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import * as _ from 'lodash';
+import _ from 'lodash';
 
 export type DateMode = 'single'|'range';
 
@@ -62,6 +62,7 @@ export type DateMode = 'single'|'range';
       hidden>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class OpWpDatePickerInstanceComponent extends UntilDestroyedMixin implements AfterViewInit {
   @Input() public ignoreNonWorkingDays:boolean;

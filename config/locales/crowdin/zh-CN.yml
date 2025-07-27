@@ -88,7 +88,7 @@ zh-CN:
         token_placeholder: "在此处粘贴您的企业版支持令牌"
       add_token: "上传企业版支持令牌"
       replace_token: "替换您当前的支持令牌"
-      order: "订购本地部署版的 Enterprise edition"
+      order: "订购本地部署的 Enterprise edition"
       paste: "粘贴您企业版的支持令牌"
       required_for_feature: "此功能仅限具激活的企业版支持令牌的订阅者使用。"
       enterprise_link: "如需了解详细信息，请单击此处。"
@@ -360,6 +360,10 @@ zh-CN:
       parent: "父级"
       blueprint: "图案蓝图"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "在%{app_title}中搜索"
     overwritten_tabs:
       all: "全部"
@@ -985,7 +989,7 @@ zh-CN:
         page: "页"
         row_count: "行数"
         column_count: "列数"
-        widgets: "微件"
+        widgets: "小部件"
       journal:
         notes: "备注"
         cause_type: "Cause 类型"
@@ -1230,6 +1234,7 @@ zh-CN:
         error_unauthorized: "无法访问。"
         error_readonly: "曾尝试被写入，但不可写。"
         error_conflict: "在此期间，至少有一位其他用户更新了信息。"
+        error_not_found: "未找到。"
         email: "不是一个有效的电子邮件地址。"
         empty: "不能为空。"
         enterprise_plan_required: "至少需要 %{plan_name}。"
@@ -1389,8 +1394,6 @@ zh-CN:
           cannot_be_a_non_working_day: "不能是非工作日。"
         query:
           attributes:
-            project:
-              error_not_found: "未找到"
             public:
               error_unauthorized: "- 用户没有创建公公查询的权限。"
             group_by:
@@ -1430,10 +1433,8 @@ zh-CN:
             circular_dependency: "关系会创建关系的循环。"
           attributes:
             to_id:
-              error_not_found: "找不到或不可见。"
               error_readonly: "无法针对现有关系更改。"
             from_id:
-              error_not_found: "找不到或不可见。"
               error_readonly: "无法针对现有关系更改。"
         repository:
           not_available: "SCM提供商不可用"
@@ -1572,10 +1573,6 @@ zh-CN:
                 description: "“确认密码”应该与“新密码”相同。"
             status:
               invalid_on_create: "不是新用户的有效状态"
-            ldap_auth_source:
-              error_not_found: "未找到"
-            auth_source:
-              error_not_found: "未找到"
         member:
           principal_blank: "请选择至少一个用户或组。"
           role_blank: "需要进行分配。"
@@ -1772,6 +1769,7 @@ zh-CN:
     title: "标题"
     type: "类型"
     typeahead: "自动补全"
+    uid: "唯一标识符"
     updated_at: "更新于"
     updated_on: "更新于"
     uploader: "上载程序"
@@ -3060,7 +3058,7 @@ zh-CN:
   label_revision_id: "修订版本 %{value}"
   label_revision_plural: "修订"
   label_roadmap: "路线图"
-  label_roadmap_edit: "编辑路线图%{name}"
+  label_roadmap_edit: "编辑路线图 %{name}"
   label_roadmap_due_in: "%{value} 到期"
   label_roadmap_no_work_packages: "该版本没有工作包。"
   label_roadmap_overdue: "%{value} 超时"
@@ -3749,7 +3747,7 @@ zh-CN:
       managed: "在 OpenProject 中创建新的存储库"
     storage:
       not_available: "磁盘存储开销不可用于此存储库。"
-      update_timeout: "在 N 分钟内保留存储库最后所需的磁盘空间信息。由于计算存储库所需的磁盘空间可能增加系统开销，增加该值可以减少性能影响。"
+      update_timeout: "在 N 分钟内保留存储库最后所需磁盘空间的信息。由于计算存储库所需的磁盘空间可能增加系统开销，增加该值可以减少性能影响。"
       oauth_application_details: "关闭此窗口后，将无法再次访问客户端密钥值。请将这些值复制到 Nextcloud OpenProject 集成设置中："
       oauth_application_details_link_text: "转到设置页面"
       setup_documentation_details: "如果您在配置新文件存储方面需要帮助，请查看文档："
@@ -3941,7 +3939,7 @@ zh-CN:
   setting_session_ttl_hint: "当设置的值低于5时，其作用类似于禁用。"
   setting_session_ttl_enabled: "会话过期"
   setting_start_of_week: "一周起始日"
-  setting_sys_api_enabled: "启用存储库管理网页服务"
+  setting_sys_api_enabled: "启用版本库管理 web 服务"
   setting_sys_api_description: "存储库管理网页服务提供了集成的，用户授权的存储库访问。"
   setting_time_format: "时间"
   setting_total_percent_complete_mode: "计算 完成% 层次结构总数"
@@ -4289,7 +4287,7 @@ zh-CN:
   warning_user_limit_reached_admin: >
     添加额外的用户将超出当前限制。请<a href="%{upgrade_url}">升级您的计划</a>，以确保外部用户能够访问此实例。
   warning_user_limit_reached_instructions: >
-    您已达到用户限制（%{current}/%{max} 活跃用户）。请联系 sales@openproject.com 升级您的企业版计划以添加额外用户。
+    您达到了用户限制（%{current}/%{max}活跃用户）。 请联系sales@openproject.com以升级您的Enterprise edition计划并添加其他用户。
   warning_protocol_mismatch_html: >
 
   warning_bar:

@@ -265,7 +265,7 @@ pl:
         caption: Jeśli wyniki planu spotkania zawierają informacje poufne, możesz nie uwzględniać ich w eksporcie.
       footer_text:
         label: Tekst stopki
-        caption: Ten tekst będzie wyświetlany na każdej stronie po prawej stronie stopki.
+        caption: This text will appear on every page at the center of the footer.
       submit_button: Pobierz
   meeting_section:
     untitled_title: "Sekcja bez nazwy"

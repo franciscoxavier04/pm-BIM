@@ -30,6 +30,7 @@
 
 import { Controller } from '@hotwired/stimulus';
 import { renderStreamMessage } from '@hotwired/turbo';
+import { useMeta } from 'stimulus-use';
 import type IndexController from './index.controller';
 
 export default class InternalCommentController extends Controller {
@@ -52,6 +53,14 @@ export default class InternalCommentController extends Controller {
   declare isInternalValue:boolean;
 
   declare hasInternalCheckboxTarget:boolean;
+
+  static metaNames = ['csrf-token'];
+
+  declare readonly csrfToken:string;
+
+  connect() {
+    useMeta(this, { suffix: false });
+  }
 
   onSubmitEnd(_event:CustomEvent):void {
     if (this.hasInternalCheckboxTarget) {
@@ -107,14 +116,13 @@ export default class InternalCommentController extends Controller {
       if (editorData.length === 0) return;
 
       const sanitizePath = `/work_packages/${this.workPackagesActivitiesTabIndexOutlet.workPackageIdValue}/activities/sanitize_internal_mentions`;
-      const csrfToken = (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement).content;
 
       try {
         const response = await fetch(sanitizePath, {
           method: 'POST',
           body: JSON.stringify({ journal: { notes: editorData } }),
           headers: {
-            'X-CSRF-Token': csrfToken,
+            'X-CSRF-Token': this.csrfToken,
             'Content-Type': 'application/json',
           },
         });
@@ -150,6 +158,6 @@ export default class InternalCommentController extends Controller {
   }
 
   private get ckEditorInstance() {
-    return this.workPackagesActivitiesTabIndexOutlet.getCkEditorInstance();
+    return this.workPackagesActivitiesTabIndexOutlet.ckEditorInstance;
   }
 }

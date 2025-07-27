@@ -363,6 +363,10 @@ ro:
       parent: "Părinte"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Caută în %{app_title}"
     overwritten_tabs:
       all: "Toate"
@@ -1250,6 +1254,7 @@ ro:
         error_unauthorized: "nu pot fi accesate."
         error_readonly: "a fost încercat să fie scris, dar nu este inscriptibil."
         error_conflict: "Informaţia a fost actualizată de cel puţin un alt utilizator între timp."
+        error_not_found: "not found."
         email: "nu este o adresă de e-mail validă."
         empty: "nu poate fi gol."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1409,8 +1414,6 @@ ro:
           cannot_be_a_non_working_day: "nu poate fi o zi nelucrătoare."
         query:
           attributes:
-            project:
-              error_not_found: "%s nu a fost găsit"
             public:
               error_unauthorized: "- Utilizatorul nu are permisiunea de a crea vizualizări publice."
             group_by:
@@ -1450,10 +1453,8 @@ ro:
             circular_dependency: "Relația creează un cerc închis."
           attributes:
             to_id:
-              error_not_found: "negăsit sau invizibil."
               error_readonly: "nu poate fi schimbat pentru relaţiile existente."
             from_id:
-              error_not_found: "negăsit sau invizibil."
               error_readonly: "nu poate fi schimbat pentru relaţiile existente."
         repository:
           not_available: "Nu este disponibil furnizorul de SCM"
@@ -1594,10 +1595,6 @@ ro:
                 description: "Valoarea din 'Confirmare parolă' ar trebui să fie identică cu cea introdusă în 'Parolă nouă'."
             status:
               invalid_on_create: "nu este un statut valabil pentru utilizatorii noi."
-            ldap_auth_source:
-              error_not_found: "nu a fost găsit"
-            auth_source:
-              error_not_found: "nu a fost găsit"
         member:
           principal_blank: "Trebuie să alegeţi cel puţin un utilizator sau grup."
           role_blank: "trebuie să fie atribuite."
@@ -1820,6 +1817,7 @@ ro:
     title: "Titlu"
     type: "Tip"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Actualizat pe"
     updated_on: "Actualizat în"
     uploader: "Autor"
@@ -2834,7 +2832,7 @@ ro:
   label_duplicated_by: "dublat de"
   label_duplicate: "duplicat"
   label_duplicates: "dublează"
-  label_edit: "Editează"
+  label_edit: "Editare"
   label_edit_x: "Editare: %{x}"
   label_enable_multi_select: "Comutare selecție multiplă"
   label_enabled_project_custom_fields: "Câmpuri personalizate activate"
@@ -2890,7 +2888,7 @@ ro:
   label_global_roles: "Global roles"
   label_git_path: "Calea catre directorul .git"
   label_greater_or_equal: ">="
-  label_group_by: "Grupează după"
+  label_group_by: "Grupare după"
   label_group_new: "Grupare nouă"
   label_group: "Grup"
   label_group_named: "Grup %{name}"

@@ -261,7 +261,7 @@ ro:
         caption: If your agenda outcomes contain confidential information, you can choose to not include them in the export.
       footer_text:
         label: Text subsol
-        caption: This text will appear on every page on the right of the footer.
+        caption: Acest text va apărea pe fiecare pagină în centrul subsolului.
       submit_button: Descarcă
   meeting_section:
     untitled_title: "Untitled section"

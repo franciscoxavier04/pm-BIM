@@ -201,6 +201,14 @@ RSpec.describe Meeting do
     end
   end
 
+  describe "uid" do
+    it "assigns a uid on create" do
+      meeting = described_class.new(project:, author: user1)
+      expect(meeting.uid).to be_present
+      expect(meeting.uid).to include "@#{Setting.host_name}"
+    end
+  end
+
   describe "#destroy" do
     context "with an attachment" do
       let!(:meeting) { create(:meeting, project: project) }

@@ -207,7 +207,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
   end
   let(:options) do
     {
-      footer_text_right: project.name
+      footer_text: project.name
     }
   end
   let(:exporter) do

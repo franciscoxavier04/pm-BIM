@@ -13,6 +13,7 @@ import {
 
 @Component({
   templateUrl: './columns-tab.component.html',
+  standalone: false,
 })
 export class WpTableConfigurationColumnsTabComponent implements TabComponent, OnInit {
   public availableColumnsOptions = this.wpTableColumns.all.map((c) => this.column2Like(c));

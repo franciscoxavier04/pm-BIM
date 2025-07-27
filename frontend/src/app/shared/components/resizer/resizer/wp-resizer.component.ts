@@ -26,7 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, OnDestroy } from '@angular/core';
 import { debounceTime } from 'rxjs/operators';
 import { TransitionService } from '@uirouter/core';
 import { UntilDestroyedMixin } from 'core-app/shared/helpers/angular/until-destroyed.mixin';
@@ -45,8 +45,9 @@ import { fromEvent } from 'rxjs';
     </op-resizer>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
-export class WpResizerDirective extends UntilDestroyedMixin implements OnInit, AfterViewInit {
+export class WpResizerComponent extends UntilDestroyedMixin implements OnInit, AfterViewInit, OnDestroy {
   @Input() elementClass:string;
 
   @Input() resizeEvent:string;
@@ -55,7 +56,7 @@ export class WpResizerDirective extends UntilDestroyedMixin implements OnInit, A
 
   @Input() variableName:string = '--split-screen-width';
 
-  private resizingElement:HTMLElement;
+  private resizingElement:HTMLElement|null;
 
   private elementWidth:number;
 
@@ -71,7 +72,7 @@ export class WpResizerDirective extends UntilDestroyedMixin implements OnInit, A
   public resizerClass = 'work-packages--resizer icon-resizer-vertical-lines';
 
   constructor(
-    private elementRef:ElementRef,
+    private elementRef:ElementRef<HTMLElement>,
     readonly $transitions:TransitionService,
   ) {
     super();
@@ -82,7 +83,7 @@ export class WpResizerDirective extends UntilDestroyedMixin implements OnInit, A
     // We use this more complicated approach of taking the last element of the class as it allows
     // to still work in case an element is duplicated by Angular.
     const elements = document.getElementsByClassName(this.elementClass);
-    this.resizingElement = <HTMLElement>elements[elements.length - 1];
+    this.resizingElement = elements[elements.length - 1] as HTMLElement|null;
 
     if (!this.resizingElement) {
       return;
@@ -117,7 +118,7 @@ export class WpResizerDirective extends UntilDestroyedMixin implements OnInit, A
 
   ngAfterViewInit():void {
     // Get the reziser
-    this.resizer = <HTMLElement> this.elementRef.nativeElement.getElementsByClassName(this.resizerClass)[0];
+    this.resizer = this.elementRef.nativeElement.getElementsByClassName(this.resizerClass)[0] as HTMLElement;
 
     this.applyColumnLayout();
   }
@@ -130,7 +131,7 @@ export class WpResizerDirective extends UntilDestroyedMixin implements OnInit, A
     // In case we dragged the resizer farther than the element can actually grow,
     // we reset it to the actual width at the start of the new resizing
     const localStorageValue = this.parseLocalStorageValue();
-    const actualElementWidth = this.resizingElement.offsetWidth;
+    const actualElementWidth = this.resizingElement?.offsetWidth || 0;
     if (localStorageValue && localStorageValue > actualElementWidth) {
       this.elementWidth = actualElementWidth;
     }
@@ -186,8 +187,9 @@ export class WpResizerDirective extends UntilDestroyedMixin implements OnInit, A
 
     return undefined;
   }
+
   private applyColumnLayout(checkWidth = 750) {
-    const singleView = document.querySelectorAll("[data-selector='wp-single-view']")[0] as HTMLElement;
+    const singleView = document.querySelector<HTMLElement>("[data-selector='wp-single-view']");
     if (singleView) {
       jQuery(singleView).toggleClass('work-package--single-view_with-columns', singleView.offsetWidth > checkWidth);
     }

@@ -359,6 +359,10 @@ id:
       parent: "Induk"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
       all: "Semua"
@@ -1230,6 +1234,7 @@ id:
         error_unauthorized: "mungkin tidak dapat diakses."
         error_readonly: "Mencoba untuk ditulis tetapi tidak dapat ditulis."
         error_conflict: "Informasi telah diperbarui oleh setidaknya satu user lain."
+        error_not_found: "not found."
         email: "bukan alamat email yang valid."
         empty: "harus di isi."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1389,8 +1394,6 @@ id:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "tidak ditemukan"
             public:
               error_unauthorized: "- The user has no permission to create public views."
             group_by:
@@ -1430,10 +1433,8 @@ id:
             circular_dependency: "Relasi menciptakan lingkaran relasi-relasi."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "Vendor SCM tidak tersedia"
@@ -1572,10 +1573,6 @@ id:
                 description: "Isian konfirmasi password tidak sama dengan masukan password."
             status:
               invalid_on_create: "bukan status yang valid untuk user baru."
-            ldap_auth_source:
-              error_not_found: "tidak ditemukan"
-            auth_source:
-              error_not_found: "tidak ditemukan"
         member:
           principal_blank: "Silakan pilih setidaknya satu user atau grup."
           role_blank: "need to be assigned."
@@ -1772,6 +1769,7 @@ id:
     title: "Judul"
     type: "Tipe"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Diperbarui"
     updated_on: "Diperbarui"
     uploader: "Pengunggah"
@@ -2785,7 +2783,7 @@ id:
   label_filter_add: "Tambah Filter"
   label_filter_by: "Filter by"
   label_filter_any_name_attribute: "Name attributes"
-  label_filter_plural: "Penyaring"
+  label_filter_plural: "Filter"
   label_filters_toggle: "Tampilkan/Sembunyikan penyaringan"
   label_float: "Float"
   label_folder: "Folder"

@@ -34,6 +34,7 @@ import { WorkPackageCopyController } from 'core-app/features/work-packages/compo
   host: { class: 'work-packages-page--ui-view' },
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: '../wp-new/wp-new-full-view.html',
+  standalone: false,
 })
 export class WorkPackageCopyFullViewComponent extends WorkPackageCopyController {
   public successState = 'work-packages.show';

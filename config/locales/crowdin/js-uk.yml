@@ -698,6 +698,7 @@ uk:
           first_day: "Перший день"
           last_day: "Останній день"
     text_are_you_sure: "Ви впевненені?"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
     breadcrumb: "Ланцюжок навігації"
     text_data_lost: "Усі введені дані буде втрачено."
     text_user_wrote: "%{value} написав(-ла):"

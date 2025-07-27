@@ -44,7 +44,7 @@ module Meetings
         @project = project
       end
 
-      def default_footer_text_right
+      def default_footer_text
         @project.name
       end
     end

@@ -82,8 +82,7 @@ class OAuthClientsController < ApplicationController
     storage = oauth_client.integration
     # check if the origin is the same
     destination_url = destination_url(params.fetch(:destination_url, ""))
-    auth_state = ::Storages::Peripherals::StorageInteraction::Authentication
-                   .authorization_state(storage:, user: User.current)
+    auth_state = ::Storages::Adapters::Authentication.authorization_state(storage:, user: User.current)
 
     if auth_state == :connected
       redirect_to(destination_url)
@@ -233,7 +232,7 @@ class OAuthClientsController < ApplicationController
   end
 
   def nextcloud?
-    @oauth_client&.integration&.provider_type == ::Storages::Storage::PROVIDER_TYPE_NEXTCLOUD
+    @oauth_client&.integration&.provider_type == ::Storages::NextcloudStorage.name
   end
 
   def one_drive?

@@ -26,8 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { Inject, Injectable, Injector } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Inject, Injectable, Injector, DOCUMENT } from '@angular/core';
 import { OpModalService } from 'core-app/shared/components/modal/modal.service';
 import { DynamicContentModalComponent } from 'core-app/shared/components/modals/modal-wrapper/dynamic-content.modal';
 

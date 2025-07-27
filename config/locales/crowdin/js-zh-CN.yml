@@ -695,6 +695,7 @@ zh-CN:
           first_day: "第一天"
           last_day: "最后一天"
     text_are_you_sure: "是否确定？"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
     breadcrumb: "面包屑导航"
     text_data_lost: "输入的所有数据将全部丢失。"
     text_user_wrote: "%{value} 写道："

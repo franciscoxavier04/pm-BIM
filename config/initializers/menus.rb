@@ -72,6 +72,22 @@ Redmine::MenuManager.map :top_menu do |menu|
             html: { accesskey: OpenProject::AccessKeys.key_for(:help),
                     title: I18n.t("label_help"),
                     target: "_blank" }
+
+  menu.push :home,
+            { controller: "/homescreen", action: "index" },
+            context: :my,
+            icon: "home",
+            first: true
+
+  menu.push :my_page,
+            { controller: "/my/page", action: "show" },
+            context: :my,
+            after: :home,
+            icon: "person",
+            caption: I18n.t("my_page.label"),
+            if: ->(*) do
+              User.current.logged?
+            end
 end
 
 Redmine::MenuManager.map :quick_add_menu do |menu|
@@ -329,7 +345,7 @@ Redmine::MenuManager.map :admin_menu do |menu|
             parent: :admin_work_packages
 
   menu.push :types,
-            { controller: "/types" },
+            { controller: "/work_package_types/types" },
             if: ->(_) { User.current.admin? },
             caption: :label_type_plural,
             parent: :admin_work_packages

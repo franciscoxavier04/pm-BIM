@@ -363,6 +363,10 @@ sv:
       parent: "Överordnad"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
       all: "Alla"
@@ -1242,6 +1246,7 @@ sv:
         error_unauthorized: "åtkomst nekas."
         error_readonly: "försökte skrivas men är inte skrivbart."
         error_conflict: "Informationen har uppdaterats av minst en annan användare under tiden."
+        error_not_found: "not found."
         email: "är inte en giltig e-postadress."
         empty: "kan inte vara tomt."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1401,8 +1406,6 @@ sv:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "hittades inte"
             public:
               error_unauthorized: "- Användaren har ingen behörighet att skapa offentliga vyer."
             group_by:
@@ -1442,10 +1445,8 @@ sv:
             circular_dependency: "Förhållandet skapar en cirkel av relationer."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "SCM leverantör är inte tillgänglig"
@@ -1585,10 +1586,6 @@ sv:
                 description: "Lösenorden som anges i de två fälten måste matcha varandra."
             status:
               invalid_on_create: "är inte en giltig status för nya användare."
-            ldap_auth_source:
-              error_not_found: "hittades inte"
-            auth_source:
-              error_not_found: "hittades inte"
         member:
           principal_blank: "Välj minst en användare eller grupp."
           role_blank: "måste tilldelas."
@@ -1798,6 +1795,7 @@ sv:
     title: "Titel"
     type: "Typ"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Uppdaterat den"
     updated_on: "Uppdaterat den"
     uploader: "Uploader"

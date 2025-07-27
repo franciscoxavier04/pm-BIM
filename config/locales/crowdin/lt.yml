@@ -360,6 +360,10 @@ lt:
       parent: "Tėvas"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Ieškoti %{app_title}"
     overwritten_tabs:
       all: "Visi"
@@ -1255,6 +1259,7 @@ lt:
         error_unauthorized: "negali būti pasiektas."
         error_readonly: "bandytas įrašyti, bet įrašyti nebuvo galima."
         error_conflict: "Tuo metu informaciją pakeitė bent vienas kitas naudotojas."
+        error_not_found: "not found."
         email: "nėra tinkamas el. pašto adresas."
         empty: "negali būti tuščia."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1414,8 +1419,6 @@ lt:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "nerasta"
             public:
               error_unauthorized: "- Naudotojas neturi teisių kurti viešus vaizdus."
             group_by:
@@ -1455,10 +1458,8 @@ lt:
             circular_dependency: "Ryšys sukuria ryšių ciklą."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "SCM tiekėjas neprieinamas"
@@ -1600,10 +1601,6 @@ lt:
                 description: "„Slaptažodžio patvirtinimas“ turi sutapti su įvestu į laukelį „Naujas slaptažodis“."
             status:
               invalid_on_create: "yra netinkama naujų naudotojų būsena."
-            ldap_auth_source:
-              error_not_found: "nerasta"
-            auth_source:
-              error_not_found: "nerasta"
         member:
           principal_blank: "Prašome pasirinkti bent vieną naudotoją ar grupę."
           role_blank: "turi būti priskirtas."
@@ -1839,6 +1836,7 @@ lt:
     title: "Pavadinimas"
     type: "Tipas"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Atnaujinta"
     updated_on: "Atnaujinta"
     uploader: "Įkėlėjas"

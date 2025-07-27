@@ -361,6 +361,10 @@ pt-PT:
       parent: "Principal"
       blueprint: "Modelo do plano"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Pesquisar em %{app_title}"
     overwritten_tabs:
       all: "Todas"
@@ -1239,6 +1243,7 @@ pt-PT:
         error_unauthorized: "não pode ser acedido."
         error_readonly: "tentou escrever, mas não é gravável."
         error_conflict: "A informação foi atualizada entretanto por pelo menos por um outro utilizador."
+        error_not_found: "não encontrado."
         email: "não é um endereço de correio válido."
         empty: "não pode estar em branco."
         enterprise_plan_required: "requer pelo menos o %{plan_name}."
@@ -1398,8 +1403,6 @@ pt-PT:
           cannot_be_a_non_working_day: "não pode ser um dia não útil."
         query:
           attributes:
-            project:
-              error_not_found: "não encontrado"
             public:
               error_unauthorized: "O utilizador não tem autorização para criar visualizações públicas."
             group_by:
@@ -1439,10 +1442,8 @@ pt-PT:
             circular_dependency: "A relação cria um círculo de relações."
           attributes:
             to_id:
-              error_not_found: "não encontrado ou não visível."
               error_readonly: "não pode ser alterado para as relações existentes."
             from_id:
-              error_not_found: "não encontrado ou não visível."
               error_readonly: "não pode ser alterado para as relações existentes."
         repository:
           not_available: "Fornecedor SCM não está disponível"
@@ -1582,10 +1583,6 @@ pt-PT:
                 description: "A 'confirmação de senha' deverá coincidir com a entrada no campo 'Nova senha'."
             status:
               invalid_on_create: "não é um estado válido para novos utilizadores."
-            ldap_auth_source:
-              error_not_found: "não encontrado"
-            auth_source:
-              error_not_found: "não encontrado"
         member:
           principal_blank: "Por favor, escolha pelo menos um utilizador ou grupo."
           role_blank: "tem de ser atribuído."
@@ -1795,6 +1792,7 @@ pt-PT:
     title: "Título"
     type: "Tipo"
     typeahead: "Preenchimento automático"
+    uid: "Identificador único"
     updated_at: "Atualizado em"
     updated_on: "Atualizado em"
     uploader: "Enviado por"

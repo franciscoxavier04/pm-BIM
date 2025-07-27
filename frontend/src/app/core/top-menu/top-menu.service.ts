@@ -26,8 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 import { findAllFocusableElementsWithin } from 'core-app/shared/helpers/focus-helpers';
-import { Inject, Injectable } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Inject, Injectable, DOCUMENT } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 export const ANIMATION_RATE_MS = 100;

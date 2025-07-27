@@ -34,6 +34,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   host: { class: 'work-packages-page--ui-view' },
   templateUrl: './wp-new-full-view.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class WorkPackageNewFullViewComponent extends WorkPackageCreateComponent {
   public successState = this.$state.current.data.successState as string;

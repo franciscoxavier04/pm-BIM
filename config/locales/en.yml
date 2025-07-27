@@ -393,6 +393,10 @@ en:
       blueprint: "Pattern blueprint"
 
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
       all: "All"
@@ -1321,6 +1325,7 @@ en:
         error_unauthorized: "may not be accessed."
         error_readonly: "was attempted to be written but is not writable."
         error_conflict: "Information has been updated by at least one other user in the meantime."
+        error_not_found: "not found."
         email: "is not a valid email address."
         empty: "can't be empty."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1480,8 +1485,6 @@ en:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "not found"
             public:
               error_unauthorized: "- The user has no permission to create public views."
             group_by:
@@ -1521,10 +1524,8 @@ en:
             circular_dependency: "The relationship creates a circle of relationships."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "SCM vendor is not available"
@@ -1664,10 +1665,6 @@ en:
                 description: "'Password confirmation' should match the input in the 'New password' field."
             status:
               invalid_on_create: "is not a valid status for new users."
-            ldap_auth_source:
-              error_not_found: "not found"
-            auth_source:
-              error_not_found: "not found"
         member:
           principal_blank: "Please choose at least one user or group."
           role_blank: "need to be assigned."
@@ -1881,6 +1878,7 @@ en:
     title: "Title"
     type: "Type"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Updated on"
     updated_on: "Updated on"
     uploader: "Uploader"

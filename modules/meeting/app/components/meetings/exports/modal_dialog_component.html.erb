@@ -69,12 +69,12 @@
         end
         modal_body.with_row(mt: 3) do
           render Primer::Alpha::TextField.new(
-            id: "pdf_footer_text_right",
-            name: :footer_text_right,
+            id: "pdf_footer_text",
+            name: :footer_text,
             label: I18n.t("meeting.export_pdf_dialog.footer_text.label"),
             caption: I18n.t("meeting.export_pdf_dialog.footer_text.caption"),
             visually_hide_label: false,
-            value: default_footer_text_right
+            value: default_footer_text
           )
         end
       end

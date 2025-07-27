@@ -257,7 +257,7 @@ fr:
         caption: Si les résultats de votre ordre du jour contiennent des informations confidentielles, vous pouvez choisir de ne pas les inclure dans l'exportation.
       footer_text:
         label: Texte de pied de page
-        caption: Ce texte apparaîtra sur chaque page à droite du pied de page.
+        caption: Ce texte apparaîtra sur chaque page au centre du pied de page.
       submit_button: Télécharger
   meeting_section:
     untitled_title: "Section sans titre"

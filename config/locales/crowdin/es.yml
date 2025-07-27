@@ -361,6 +361,10 @@ es:
       parent: "Principal"
       blueprint: "Plano de patrón"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Buscar en %{app_title}"
     overwritten_tabs:
       all: "Todos"
@@ -746,7 +750,7 @@ es:
           automatic_with_children: "Fechas determinadas por paquetes de trabajo secundarios."
           automatic_with_predecessor: "La fecha de inicio la fija un predecesor."
           manual_mobile: "Programado manualmente."
-          manually_scheduled: "Programado manualmente. No afectadas por relaciones."
+          manually_scheduled: "Programado manualmente. Fechas no afectadas por relaciones."
       blankslate:
         title: "Sin predecesores"
         description: "Para activar la programación automática, este paquete de trabajo debe tener al menos un predecesor. Entonces se programará automáticamente para que comience después del predecesor más cercano."
@@ -1239,6 +1243,7 @@ es:
         error_unauthorized: "no se puede acceder."
         error_readonly: "se intentó escribir pero no se puede escribir."
         error_conflict: "La información ha sido actualizada por al menos otro usuario mientras tanto."
+        error_not_found: "no encontrado."
         email: "no es una dirección de correo válida."
         empty: "No puede estar vacío."
         enterprise_plan_required: "requiere al menos el plan %{plan_name}."
@@ -1398,8 +1403,6 @@ es:
           cannot_be_a_non_working_day: "no puede ser un día no laborable."
         query:
           attributes:
-            project:
-              error_not_found: "no encontrado"
             public:
               error_unauthorized: "- El usuario no tiene permiso para crear vistas públicas."
             group_by:
@@ -1439,10 +1442,8 @@ es:
             circular_dependency: "La relación crea un bucle de relaciones."
           attributes:
             to_id:
-              error_not_found: "no se encuentra o no es visible."
               error_readonly: "no se puede cambiar para las relaciones existentes."
             from_id:
-              error_not_found: "no se encuentra o no es visible."
               error_readonly: "no se puede cambiar para las relaciones existentes."
         repository:
           not_available: "El proveedor SMC no está disponible"
@@ -1582,10 +1583,6 @@ es:
                 description: "'La confirmación de la contraseña' debe coincidir con la ingresada en el campo 'Nueva contraseña'."
             status:
               invalid_on_create: "no es un estado válido para nuevos usuarios."
-            ldap_auth_source:
-              error_not_found: "no encontrado"
-            auth_source:
-              error_not_found: "no encontrado"
         member:
           principal_blank: "Por favor seleccione al menos un usuario o grupo."
           role_blank: "necesita ser asignado."
@@ -1795,6 +1792,7 @@ es:
     title: "Título"
     type: "Tipo"
     typeahead: "Autocompletar"
+    uid: "Identificador único"
     updated_at: "Actualizada el"
     updated_on: "Actualizada el"
     uploader: "Cargador"
