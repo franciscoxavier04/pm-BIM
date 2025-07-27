@@ -38,7 +38,7 @@ module MembersHelper
     if member.roles.length == 1
       link_to("",
               principal_membership_path(member.principal, member),
-              { method: :delete, class: "icon icon-delete", title: t(:button_delete),
+              { turbo_method: :delete, class: "icon icon-delete", title: t(:button_delete),
                 data: { "test-selector" => "delete-global-role" } })
     else
       link_to("",

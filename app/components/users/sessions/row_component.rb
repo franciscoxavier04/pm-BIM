@@ -86,8 +86,8 @@ module Users
           { controller: "/my/sessions", action: "destroy", id: session },
           class: "button--link",
           role: :button,
-          method: :delete,
-          data: { confirm: I18n.t(:text_are_you_sure), disable_with: I18n.t(:label_loading) },
+          turbo_method: :delete,
+          data: { turbo_confirm: I18n.t(:text_are_you_sure), disable_with: I18n.t(:label_loading) },
           title: I18n.t(:button_delete)
         )
       end

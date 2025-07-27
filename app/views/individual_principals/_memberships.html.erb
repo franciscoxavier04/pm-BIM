@@ -105,9 +105,13 @@ See COPYRIGHT and LICENSE files for more details.
                         <% end %>
                       </div>
                       <p><%= submit_tag t(:button_change), class: 'memberships--edit-submit-button button -primary -small' %>
-                        <%= link_to_function t(:button_cancel),
-                                             "jQuery('.member-#{membership.id}--edit-toggle-item').toggle();",
-                  class: 'button -small' %></p>
+                        <%= link_to(t(:button_cancel), "#",
+                                             class: "button -small",
+                                             data: {
+                                               controller: "element-toggle",
+                                               action: "click->element-toggle#toggle",
+                                               "element-toggle-target-selector-value": ".member-#{membership.id}--edit-toggle-item"
+                                             }) %></p>
                     <% end %>
                   </td>
                   <%= call_individual_principals_memberships_hook(@individual_principal,
@@ -117,13 +121,19 @@ See COPYRIGHT and LICENSE files for more details.
                                                                  projects: projects) %>
                   <td class="buttons">
                     <% if User.current.allowed_in_project?(:manage_members, membership.project) %>
-                      <%= link_to_function icon_wrapper('icon icon-edit', t(:button_edit)),
-                                           "jQuery('.member-#{membership.id}--edit-toggle-item').toggle();",
+                      <%= link_to("#",
                                            class: "member-#{membership.id}--edit-toggle-item memberships--edit-button",
-                                           title: t(:button_edit) %>
+                                           title: t(:button_edit),
+                                           data: {
+                                             controller: "element-toggle",
+                                             action: "click->element-toggle#toggle",
+                                             "element-toggle-target-selector-value": ".member-#{membership.id}--edit-toggle-item"
+                                           }) do %>
+                        <%= icon_wrapper('icon icon-edit', t(:button_edit)) %>
+                      <% end %>
                       <%= link_to(icon_wrapper('icon icon-remove', t(:button_remove)),
                                   polymorphic_path([@individual_principal, :membership], id: membership),
-                                  method: :delete,
+                                  turbo_method: :delete,
                                   title: t(:button_remove)) if membership.deletable? %>
                     <% end %>
                   </td>

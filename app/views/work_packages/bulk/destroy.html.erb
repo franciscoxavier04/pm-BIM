@@ -58,16 +58,20 @@ See COPYRIGHT and LICENSE files for more details.
           <%= styled_radio_button_tag "to_do[action]", "nullify" %>
         </div>
       </div>
-      <div class="grid-block">
+      <div class="grid-block"
+           data-controller="focus-when-selected"
+      >
         <div class="grid-block small-3">
           <div class="form--field -trailing-label">
             <%= styled_label_tag "to_do_action_reassign", t(:text_reassign) %>
-            <div class="form--field-container">
-              <%= styled_radio_button_tag "to_do[action]", "reassign" %>
-              <% csp_onclick(
-                   'if(jQuery("#to_do_action_reassign").prop("checked")) { jQuery("#to_do_reassign_to_id").focus(); }',
-                   "#reassign"
-                 ) %>
+            <div class="form--field-container" id="reassign">
+              <%= styled_radio_button_tag "to_do[action]",
+                                          "reassign",
+                                          false,
+                                          data: {
+                                            "focus-when-selected-target": "valueInput",
+                                            action: "focus-when-selected#focus"
+                                          } %>
             </div>
           </div>
         </div>
@@ -75,7 +79,13 @@ See COPYRIGHT and LICENSE files for more details.
           <div class="form--field">
             <div class="form--text-field-container -xslim">
               <%= styled_label_tag "to_do_reassign_to_id", t(:text_reassign), class: "form--label sr-only" %>
-              <%= f.text_field "reassign_to_id", placeholder: WorkPackage.human_attribute_name(:id), value: params[:reassign_to_id], size: 6, onfocus: 'jQuery("#to_do_action_reassign").prop("checked", true);' %>
+              <%= f.text_field "reassign_to_id",
+                               placeholder: WorkPackage.human_attribute_name(:id), value: params[:reassign_to_id],
+                               size: 6,
+                               data: {
+                                 "focus-when-selected-target": "focusInput",
+                                 action: "click->focus-when-selected#setInputValue"
+                               } %>
             </div>
           </div>
         </div>
@@ -83,13 +93,16 @@ See COPYRIGHT and LICENSE files for more details.
     <% end %>
     <div class="danger-zone--verification">
       <%= styled_button_tag title: t(:button_delete), class: "-primary" do
-            concat content_tag :i, "", class: "button--icon icon-delete"
-            concat content_tag :span, t(:button_delete), class: "button--text"
-          end %>
-      <%= link_to_function t(:button_cancel),
-                           "history.back()",
-                           title: t(:button_cancel),
-                           class: "button -with-icon icon-cancel" %>
+        concat content_tag :i, "", class: "button--icon icon-delete"
+        concat content_tag :span, t(:button_delete), class: "button--text"
+      end %>
+      <%= link_to(t(:button_cancel), "#",
+                  title: t(:button_cancel),
+                  class: "button -with-icon icon-cancel",
+                  data: {
+                    controller: "navigation",
+                    action: "click->navigation#back"
+                  }) %>
   </section>
 
 <% end %>

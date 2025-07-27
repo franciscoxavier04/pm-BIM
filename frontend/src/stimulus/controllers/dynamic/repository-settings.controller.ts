@@ -62,6 +62,12 @@ export default class RepositorySettingsController extends Controller {
     this.selectFieldset((event.target as HTMLInputElement).value);
   }
 
+  enablePasswordInput(event:MouseEvent):void {
+    const el = event.target as HTMLInputElement;
+    el.value = '';
+    el.name = 'repository[password]';
+  }
+
   private selectFieldset(selected:string) {
     const vendor = this.scmVendorTarget.value;
     const targetName = `${vendor}-${selected}`;

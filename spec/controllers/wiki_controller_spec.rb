@@ -508,7 +508,7 @@ RSpec.describe WikiController do
 
         it "responds with success" do
           expect(subject)
-            .to have_http_status(:ok)
+            .to have_http_status(:unprocessable_entity)
         end
 
         it "destroys the page" do

@@ -96,17 +96,29 @@ See COPYRIGHT and LICENSE files for more details.
                         <% end %>
                         <p class="generic-table--cell-controls">
                           <%= submit_tag t(:button_change), class: 'button -primary -small' %>
-                          <%= link_to_function t(:button_cancel), "jQuery('#member-#{membership.id}-roles').show(); jQuery('#member-#{membership.id}-roles-form').hide();",
-                                                                  class: 'button -small' %>
+                          <%= link_to(t(:button_cancel), "#",
+                                                                  class: "button -small", 
+                                                                  data: {
+                                                                    controller: "element-toggle",
+                                                                    action: "click->element-toggle#showAndHide",
+                                                                    "element-toggle-show-target-value": "#member-#{membership.id}-roles",
+                                                                    "element-toggle-hide-target-value": "#member-#{membership.id}-roles-form"
+                                                                  }) %>
                         </p>
                       <% end %>
                     </td>
                     <td class="buttons">
-                      <%= link_to_function icon_wrapper('icon icon-edit', t(:button_edit)),
-                                           "jQuery('#member-#{membership.id}-roles').hide(); jQuery('#member-#{membership.id}-roles-form').show();" do %>
+                      <%= link_to("#",
+                                           data: {
+                                             controller: "element-toggle",
+                                             action: "click->element-toggle#showAndHide",
+                                             "element-toggle-show-target-value": "#member-#{membership.id}-roles-form",
+                                             "element-toggle-hide-target-value": "#member-#{membership.id}-roles"
+                                           }) do %>
+                        <%= icon_wrapper('icon icon-edit', t(:button_edit)) %>
                       <% end %>
                       <%= link_to t(:button_remove), membership_of_group_path(@group, membership),
-                                           method: :delete,
+                                           turbo_method: :delete,
                                            class: 'icon icon-remove' %>
                     </td>
                   </tr>

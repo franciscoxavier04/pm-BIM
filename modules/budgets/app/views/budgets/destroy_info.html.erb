@@ -52,16 +52,27 @@ See COPYRIGHT and LICENSE files for more details.
     </div>
 
     <% if @possible_other_budgets.any? %>
-      <div class="form--field">
+      <div class="form--field" data-controller="focus-when-selected">
         <label class="form--label" for="todo_reassign"><%= t(:text_budget_reassign_to) %></label>
         <div class="form--field-container">
-          <%= styled_radio_button_tag "todo", "reassign", true %>
+          <%= styled_radio_button_tag "todo",
+                                      "reassign",
+                                      true,
+                                      data: {
+                                        "focus-when-selected-target": "valueInput",
+                                        action: "focus-when-selected#focus"
+                                      } %>
         </div>
 
         <%= label_tag "reassign_to_id", t(:text_budget_reassign_to), class: "sr-only" %>
-        <%= styled_select_tag "reassign_to_id", options_from_collection_for_select(@possible_other_budgets, "id", "name"), container_class: "-middle" %>
-
-        <% csp_onclick("document.getElementById('todo_reassign').checked = true", "#reassign_to_id") %>
+                <%= styled_select_tag "reassign_to_id",
+                              options_from_collection_for_select(@possible_other_budgets, "id", "name"),
+                              container_class: "-middle",
+                              data: {
+                                controller: "focus-when-selected",
+                                action: "click->focus-when-selected#setInputValue",
+                                "focus-when-selected-target": "focusInput"
+                              } %>
       </div>
     <% end %>
   </section>

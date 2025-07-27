@@ -45,7 +45,7 @@ module ApplicationHelper
   include OpenProject::PageHierarchyHelper
 
   # Return true if user is authorized for controller/action, otherwise false
-  def authorize_for(controller, action, project: @project)
+  def authorize_for(controller, action, project: @project) # rubocop:disable Rails/HelperInstanceVariable
     User.current.allowed_in_project?({ controller:, action: }, project)
   rescue Authorization::UnknownPermissionError
     # TODO: Temporary fix until we find something better
@@ -99,8 +99,8 @@ module ApplicationHelper
 
   def delete_link(url, options = {})
     options = {
-      method: :delete,
-      data: { confirm: I18n.t(:text_are_you_sure) },
+      turbo_method: :delete,
+      data: { turbo_confirm: I18n.t(:text_are_you_sure) },
       class: "icon icon-delete"
     }.merge(options)
 
@@ -199,16 +199,21 @@ module ApplicationHelper
 
   def time_tag(time)
     text = distance_of_time_in_words(Time.now, time)
-    if @project and @project.module_enabled?("activity")
-      link_to(text, { controller: "/activities",
-                      action: "index",
-                      project_id: @project,
-                      from: time.to_date },
+    if @project&.module_enabled?("activity")
+      link_to(text,
+              {
+                controller: "/activities",
+                action: "index",
+                project_id: @project,
+                from: time.to_date
+              },
               title: format_time(time))
     else
       datetime = time.acts_like?(:time) ? time.xmlschema : time.iso8601
-      content_tag(:time, text, datetime:,
-                               title: format_time(time), class: "timestamp")
+      content_tag(:time,
+                  text,
+                  datetime:,
+                  title: format_time(time), class: "timestamp")
     end
   end
 
@@ -362,9 +367,30 @@ module ApplicationHelper
   end
 
   def check_all_links(form_name)
-    link_to_function(t(:button_check_all), "OpenProject.helpers.checkAll('#{form_name}', true)") +
-      " | " +
-      link_to_function(t(:button_uncheck_all), "OpenProject.helpers.checkAll('#{form_name}', false)")
+    links = "".html_safe
+    links << link_to(
+      t(:button_check_all),
+      "#",
+      data: {
+        controller: "checkbox-toggle",
+        action: "click->checkbox-toggle#checkAll",
+        "checkbox-toggle-form-name-value": form_name,
+        "checkbox-toggle-checked-value": true
+      }
+    )
+    links << " | "
+    links << link_to(
+      t(:button_uncheck_all),
+      "#",
+      data: {
+        controller: "checkbox-toggle",
+        action: "click->checkbox-toggle#checkAll",
+        "checkbox-toggle-form-name-value": form_name,
+        "checkbox-toggle-checked-value": false
+      }
+    )
+
+    links
   end
 
   def current_layout

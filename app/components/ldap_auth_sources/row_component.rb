@@ -62,8 +62,8 @@ module LdapAuthSources
 
       link_to I18n.t(:button_delete),
               { controller: "ldap_auth_sources", id: model.id, action: :destroy },
-              method: :delete,
-              data: { confirm: I18n.t(:text_are_you_sure) },
+              turbo_method: :delete,
+              data: { turbo_confirm: I18n.t(:text_are_you_sure) },
               class: "icon icon-delete",
               title: I18n.t(:button_delete)
     end
