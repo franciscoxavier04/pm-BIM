@@ -36,13 +36,19 @@ import { useEffect, useState } from "react";
 import { OpColorMode } from "core-app/core/setup/globals/theme-utils";
 import { HocuspocusProvider } from "@hocuspocus/provider";
 import * as Y from 'yjs';
+import {
+  DefaultThreadStoreAuth,
+  YjsThreadStore,
+} from "@blocknote/core/comments";
+import { User } from "@blocknote/core/comments";
 
 export interface OpBlockNoteContainerProps {
   inputField: HTMLInputElement;
   inputText?: string;
   hocuspocusUrl: string;
   hocuspocusAccessToken: string;
-  userName: string;
+  users: Array<User>;
+  activeUser: User;
   documentId: string;
 }
 
@@ -58,15 +64,18 @@ const detectTheme = ():OpColorMode => { return window.OpenProject.theme.detectOp
 
 export default function OpBlockNoteContainer({ inputField,
                                                inputText,
-                                               userName,
+                                               users,
+                                               activeUser,
                                                hocuspocusUrl,
                                                hocuspocusAccessToken,
                                                documentId }: OpBlockNoteContainerProps) {
   const [isLoading, setIsLoading] = useState(true);
 
   let collaboration: any;
-  const collaborationEnabled: boolean = Boolean(hocuspocusUrl && documentId && hocuspocusAccessToken && userName);
+  let comments: any;
+  const collaborationEnabled: boolean = Boolean(hocuspocusUrl && documentId && hocuspocusAccessToken && activeUser);
   let provider: HocuspocusProvider | null = null;
+  let threadStore: any;
 
   if(collaborationEnabled) {
     const doc = new Y.Doc()
@@ -81,13 +90,42 @@ export default function OpBlockNoteContainer({ inputField,
       provider,
       fragment: doc.getXmlFragment("document-store"),
       user: {
-        name: userName,
+        name: activeUser.username,
         color: cursorColor,
       },
       showCursorLabels: "activity"
     }
+    console.log("ACTIVE USER", activeUser);
+    threadStore = new YjsThreadStore(
+      activeUser.id,
+      doc.getMap("threads"),
+      new DefaultThreadStoreAuth(activeUser.id, "editor"),
+    );
+    comments = {
+      threadStore: threadStore,
+    };
   }
-  const editor = useCreateBlockNote(collaboration ? { collaboration, schema } : { schema });
+
+  let editor: any;
+  if(collaboration) {
+    const resolveUsers = async (userIds: string[]) => {
+      return users.filter((user) => userIds.includes(user.id));
+    }
+
+    editor = useCreateBlockNote(
+      {
+        resolveUsers,
+        collaboration,
+        schema,
+        comments
+      },
+      [activeUser, threadStore]
+    );
+  } else {
+    editor = useCreateBlockNote(
+      { schema },
+    );
+  };
   type EditorType = typeof editor;
 
   const getCustomSlashMenuItems = (editor: EditorType) => {
