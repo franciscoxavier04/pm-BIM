@@ -400,8 +400,8 @@ module Components
 
       def trigger_update_streams_poll
         page.execute_script(<<~JS)
-          var target = document.querySelector('[data-controller*="work-packages--activities-tab--index"]')
-          var controller = window.Stimulus.getControllerForElementAndIdentifier(target, 'work-packages--activities-tab--index')
+          var target = document.querySelector('[data-controller*="work-packages--activities-tab--polling"]')
+          var controller = window.Stimulus.getControllerForElementAndIdentifier(target, 'work-packages--activities-tab--polling')
           controller.updateActivitiesList();
         JS
 

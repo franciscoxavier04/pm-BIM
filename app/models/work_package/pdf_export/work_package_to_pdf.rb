@@ -96,7 +96,7 @@ class WorkPackage::PDFExport::WorkPackageToPdf < Exports::Exporter
           { text: " " },
           prawn_badge(badge_text, wp_status_prawn_color(work_package), offset:)
         ],
-        { draw_text_callback: prawn_badge_draw_text_callback(badge_text, offset) }
+        styles.page_heading.merge({ draw_text_callback: prawn_badge_draw_text_callback(badge_text, offset) })
       )
     end
   end

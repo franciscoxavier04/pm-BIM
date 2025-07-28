@@ -109,6 +109,12 @@ module OpenProject::OpenIDConnect
     end
 
     config.to_prepare do
+      Group.add_synchronized_group_partial(
+        title: "openid_connect.group_links_heading",
+        partial: "openid_connect/group_links/table",
+        count_callback: ->(group) { group.oidc_group_links.count }
+      )
+
       ::OpenProject::OpenIDConnect::Hooks::Hook
 
       # Load AuthProvider descendants due to STI

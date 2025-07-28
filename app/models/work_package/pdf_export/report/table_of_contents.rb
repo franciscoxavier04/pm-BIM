@@ -83,7 +83,7 @@ module WorkPackage::PDFExport::Report::TableOfContents
 
   def write_toc_item_subject!(toc_item, indent, subject_style)
     pdf.indent(indent, toc_item[:page_nr_string_width]) do
-      pdf.formatted_text([subject_style.merge({ text: toc_item[:title] })])
+      pdf.formatted_text([subject_style.merge({ text: toc_item[:title] })], subject_style)
     end
   end
 

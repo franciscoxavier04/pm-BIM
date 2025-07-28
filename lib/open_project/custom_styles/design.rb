@@ -71,7 +71,6 @@ module OpenProject::CustomStyles
       %w( primary-button-color
           accent-color
           header-bg-color
-          header-item-bg-hover-color
           main-menu-bg-color
           main-menu-bg-selected-background)
     end

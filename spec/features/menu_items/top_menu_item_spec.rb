@@ -69,7 +69,7 @@ RSpec.describe "Top menu items", :js do
   end
 
   describe "Modules" do
-    let!(:top_menu) { find("[title=#{I18n.t('label_modules')}]") }
+    let!(:top_menu) { page.find_test_selector("op-app-header--modules-menu-button") }
 
     shared_let(:menu_link_item) { Struct.new(:label, :path) }
 

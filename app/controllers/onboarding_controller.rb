@@ -29,7 +29,9 @@
 #++
 
 class OnboardingController < ApplicationController
-  no_authorization_required! :user_settings
+  include OpTurbo::ComponentStream
+
+  no_authorization_required! :user_settings, :onboarding_video_dialog
 
   def user_settings
     @user = User.current
@@ -48,5 +50,9 @@ class OnboardingController < ApplicationController
     uri = Addressable::URI.parse(request.referer.to_s)
     uri.query_values = {}
     redirect_to uri.to_s
+  end
+
+  def onboarding_video_dialog
+    respond_with_dialog Onboarding::VideoDialogComponent.new
   end
 end
