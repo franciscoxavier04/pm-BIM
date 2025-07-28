@@ -12,11 +12,17 @@
     background: no-repeat center
     background-size: contain
 
-  &-icon, &-icon_dark
-    margin-left: 0.5rem
-    height: 32px
-    background: no-repeat left center
-    background-size: contain
-
   @media screen and (max-width: 850px)
     display: none
+
+  &-icon, &-icon_dark
+    display: none
+    @media screen and (max-width: 850px)
+      margin: 16px 8px 0 8px
+      display: block
+      height: 24px
+      width: 24px
+      padding: 0 8px
+      background-repeat: no-repeat
+      background-position: left center
+      background-size: contain

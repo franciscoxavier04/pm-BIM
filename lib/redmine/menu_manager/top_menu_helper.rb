@@ -40,6 +40,7 @@ module Redmine::MenuManager::TopMenuHelper
   def top_menu_left_menu_items
     [render_module_top_menu_node,
      render_logo,
+     render_logo_icon,
      render_main_top_menu_nodes]
   end
 
@@ -57,6 +58,11 @@ module Redmine::MenuManager::TopMenuHelper
   end
 
   def render_logo_icon
+    mode_class = User.current.pref.theme === "op-logo--link_high_contrast" ? "op-logo-icon" : "op-logo-icon_dark"
+    render Primer::BaseComponent.new(tag: :div, classes: mode_class)
+  end
+
+  def render_waffle_menu_logo_icon
     mode_class = User.current.pref.theme === "dark" ? "op-logo-icon_dark" : "op-logo-icon"
     render Primer::BaseComponent.new(tag: :div, classes: mode_class)
   end
@@ -193,7 +199,7 @@ module Redmine::MenuManager::TopMenuHelper
                                 "aria-controls": "op-app-header--modules-menu-list",
                                 "aria-label": I18n.t("label_modules"))
         dialog.with_header(classes: "op-app-header--modules-menu-header") do
-          render_logo_icon
+          render_waffle_menu_logo_icon
         end
 
         item_groups.each do |item_group|
