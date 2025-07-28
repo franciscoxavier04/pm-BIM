@@ -76,6 +76,7 @@ module Storages
               register_checks(
                 :non_provisioned_user,
                 :provisioned_user_provider,
+                :provider_capabilities,
                 :token_negotiable,
                 :user_bound_request,
                 :offline_access
@@ -83,6 +84,7 @@ module Storages
 
               non_provisioned_user
               non_oidc_provisioned_user
+              provider_capabilities
               token_negotiable
               user_bound_request
               offline_access
@@ -101,6 +103,14 @@ module Storages
                 pass_check(:provisioned_user_provider)
               else
                 warn_check(:provisioned_user_provider, :oidc_non_oidc_user, halt_validation: true)
+              end
+            end
+
+            def provider_capabilities
+              if !@storage.exchanges_token? || @user.authentication_provider.token_exchange_capable?
+                pass_check(:provider_capabilities)
+              else
+                fail_check(:provider_capabilities, :oidc_provider_cant_exchange)
               end
             end
 
