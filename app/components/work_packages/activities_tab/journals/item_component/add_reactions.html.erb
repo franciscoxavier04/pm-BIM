@@ -32,7 +32,7 @@
                   data: {
                     turbo_stream: true,
                     turbo_method: :put,
-                    "work-packages--activities-tab--index-target": "reactionButton"
+                    "#{polling_stimulus_controller}-target": "reactionButton"
                   },
                   aria: { label: I18n.t("reactions.react_with", reaction: reaction.to_s.humanize(capitalize: false)) },
                   font_size: 4,
