@@ -67,7 +67,13 @@
                 "src/assets/sass"
               ]
             },
-            "scripts": []
+            "scripts": [
+              {
+                "input": "node_modules/jquery/dist/jquery.min.js",
+                "inject": false,
+                "bundleName": "jquery"
+              }
+            ]
           },
           "configurations": {
             "production": {
