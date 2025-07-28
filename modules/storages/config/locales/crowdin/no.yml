@@ -21,6 +21,11 @@
         project_folder_mode: Project folder mode
         storage: Lagringssted
         storage_url: Storage URL
+      storages/share_point_storage:
+        host: Sharepoint Site URL
+        library: Library ID
+        name: Name
+        site: Site ID
       storages/storage:
         authentication_method: Authentication Method
         creator: Skaper
@@ -32,6 +37,7 @@
     errors:
       messages:
         invalid_host_url: er ikke en gyldig URL.
+        invalid_sharepoint_url: is not a valid SharePoint site, library, or document URL.
         not_linked_to_project: er ikke knyttet til prosjektet.
       models:
         storages/file_link:

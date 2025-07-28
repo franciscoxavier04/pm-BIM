@@ -21,6 +21,11 @@ zh-CN:
         project_folder_mode: 项目文件夹模式
         storage: 存储
         storage_url: 存储 URL
+      storages/share_point_storage:
+        host: Sharepoint Site URL
+        library: Library ID
+        name: Name
+        site: Site ID
       storages/storage:
         authentication_method: 身份验证方式
         creator: 创建者
@@ -32,6 +37,7 @@ zh-CN:
     errors:
       messages:
         invalid_host_url: 不是有效的 URL。
+        invalid_sharepoint_url: is not a valid SharePoint site, library, or document URL.
         not_linked_to_project: 未链接到项目。
       models:
         storages/file_link:

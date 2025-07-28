@@ -21,6 +21,11 @@ uk:
         project_folder_mode: Режим папки проєкту
         storage: Сховище
         storage_url: URL-адреса сховища
+      storages/share_point_storage:
+        host: Sharepoint Site URL
+        library: Library ID
+        name: Name
+        site: Site ID
       storages/storage:
         authentication_method: Метод автентифікації
         creator: Автор
@@ -32,6 +37,7 @@ uk:
     errors:
       messages:
         invalid_host_url: не є дійсною URL-адресою.
+        invalid_sharepoint_url: is not a valid SharePoint site, library, or document URL.
         not_linked_to_project: '– не пов’язано з проєктом.'
       models:
         storages/file_link:

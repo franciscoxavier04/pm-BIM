@@ -33,7 +33,6 @@ import {
   StarFillIconComponent,
   StarIconComponent,
   XIconComponent,
-  BellFillIconComponent,
   OpGitlabIssueClosedIconComponent,
   OpGitlabLabelsIconComponent,
   OpGitlabIssueOpenIconComponent,
@@ -95,7 +94,6 @@ import {
     StarFillIconComponent,
     StarIconComponent,
     XIconComponent,
-    BellFillIconComponent,
 
     OpGitlabIssueClosedIconComponent,
     OpGitlabLabelsIconComponent,
@@ -162,7 +160,6 @@ import {
     StarFillIconComponent,
     StarIconComponent,
     XIconComponent,
-    BellFillIconComponent,
 
     OpGitlabIssueOpenIconComponent,
     OpGitlabIssueClosedIconComponent,

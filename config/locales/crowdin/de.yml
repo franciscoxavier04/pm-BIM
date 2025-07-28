@@ -149,7 +149,7 @@ de:
       table_component:
         blank_slate:
           title: "Noch keine SCIM-Clients konfiguriert"
-          description: "Kunden hinzufügen, um sie hier zu sehen"
+          description: "Clients hinzufügen, um sie hier zu sehen"
         user_count: "Benutzer"
       token_list_component:
         description: "Die Token, die Sie hier erzeugen, können von einem SCIM-Client weitergegeben werden, um auf die OpenProject SCIM-API zuzugreifen."
@@ -361,9 +361,9 @@ de:
       blueprint: "Blaupause für Muster"
   global_search:
     title:
-      all_projects: 'Search for "%{search_term}" in all projects'
-      current_project: 'Search for "%{search_term}" in %{project_name}'
-      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
+      all_projects: 'Suche nach "%{search_term}" in allen Projekten'
+      current_project: 'Suche nach "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Suche nach "%{search_term}" in %{project_name} und allen Unterprojekten'
     placeholder: "Suche in %{app_title}"
     overwritten_tabs:
       all: "Alle"

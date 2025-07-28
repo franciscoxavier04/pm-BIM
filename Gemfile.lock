@@ -8,12 +8,12 @@ GIT
 
 GIT
   remote: https://github.com/opf/md-to-pdf
-  revision: 9961752e4d1e990ec1d4bf48436de9277838763f
-  ref: 9961752e4d1e990ec1d4bf48436de9277838763f
+  revision: 6c565541bfa390c58d90d49aa9b487777704fc66
+  ref: 6c565541bfa390c58d90d49aa9b487777704fc66
   specs:
-    md_to_pdf (0.2.4)
+    md_to_pdf (0.2.5)
       base64 (~> 0.2)
-      bigdecimal (~> 3.1)
+      bigdecimal (~> 3.2)
       color_conversion (~> 0.1)
       front_matter_parser (~> 1.0)
       json-schema (~> 4.3)
@@ -709,7 +709,7 @@ GEM
       reline (>= 0.4.2)
     iso8601 (0.13.0)
     jmespath (1.6.2)
-    json (2.13.0)
+    json (2.13.1)
     json-jwt (1.16.7)
       activesupport (>= 4.2)
       aes_key_wrap
@@ -854,10 +854,10 @@ GEM
       validate_email
       validate_url
       webfinger (~> 2.0)
-    openproject-octicons (19.26.0)
-    openproject-octicons_helper (19.26.0)
+    openproject-octicons (19.26.2)
+    openproject-octicons_helper (19.26.2)
       actionview
-      openproject-octicons (= 19.26.0)
+      openproject-octicons (= 19.26.2)
       railties
     openproject-primer_view_components (0.70.4)
       actionview (>= 7.1.0)
@@ -880,7 +880,7 @@ GEM
     parallel (1.27.0)
     parallel_tests (4.10.1)
       parallel
-    parser (3.3.8.0)
+    parser (3.3.9.0)
       ast (~> 2.4.1)
       racc
     pdf-core (0.9.0)
@@ -1100,7 +1100,7 @@ GEM
     rspec-support (3.13.4)
     rspec-wait (1.0.2)
       rspec (>= 3.4)
-    rubocop (1.78.0)
+    rubocop (1.79.0)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -1108,8 +1108,9 @@ GEM
       parser (>= 3.3.0.2)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 2.9.3, < 3.0)
-      rubocop-ast (>= 1.45.1, < 2.0)
+      rubocop-ast (>= 1.46.0, < 2.0)
       ruby-progressbar (~> 1.7)
+      tsort (>= 0.2.0)
       unicode-display_width (>= 2.4.0, < 4.0)
     rubocop-ast (1.46.0)
       parser (>= 3.3.7.2)
@@ -1229,14 +1230,13 @@ GEM
       openssl (> 2.0)
       openssl-signature_algorithm (~> 1.0)
     trailblazer-option (0.1.2)
+    tsort (0.2.0)
     ttfunk (1.7.0)
     turbo-rails (2.0.16)
       actionpack (>= 7.1.0)
       railties (>= 7.1.0)
     turbo_power (0.7.0)
       turbo-rails (>= 1.3.0)
-    typed_dag (2.0.2)
-      rails (>= 5.0.4)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     tzinfo-data (1.2025.2)
@@ -1447,8 +1447,8 @@ DEPENDENCIES
   openproject-job_status!
   openproject-ldap_groups!
   openproject-meeting!
-  openproject-octicons (~> 19.26.0)
-  openproject-octicons_helper (~> 19.26.0)
+  openproject-octicons (~> 19.26.2)
+  openproject-octicons_helper (~> 19.26.2)
   openproject-openid_connect!
   openproject-primer_view_components (~> 0.70.4)
   openproject-recaptcha!
@@ -1533,7 +1533,6 @@ DEPENDENCIES
   turbo-rails (~> 2.0.0)
   turbo_power (~> 0.7.0)
   turbo_tests!
-  typed_dag (~> 2.0.2)
   tzinfo-data (~> 1.2025.1)
   validate_url
   vcr
@@ -1741,7 +1740,7 @@ CHECKSUMS
   irb (1.15.2) sha256=222f32952e278da34b58ffe45e8634bf4afc2dc7aa9da23fed67e581aa50fdba
   iso8601 (0.13.0) sha256=298c2b15b7be5fa95a1372813d36a2257656cd8e906dfbc1f5cb409851425aa2
   jmespath (1.6.2) sha256=238d774a58723d6c090494c8879b5e9918c19485f7e840f2c1c7532cf84ebcb1
-  json (2.13.0) sha256=a4bdf1ce8db5617ec6c59e021db4a398e54b57b335e1fa417ac7badc3fb7c1a0
+  json (2.13.1) sha256=8e7cf4bb44a789ac5fc62869c7187986251c3172d9bdfa60b92c63d6ecab0ffc
   json-jwt (1.16.7) sha256=ccabff4c6d1a14276b23178e8bebe513ef236399b72a0b886d7ed94800d172a5
   json-schema (4.3.1) sha256=d5e68dc32b94408d0b06ad04f9382ccbb6fe5a44910e066f8547f56c471a7825
   json_schemer (2.4.0) sha256=56cb6117bb5748d925b33ad3f415b513d41d25d0bbf57fe63c0a78ff05597c24
@@ -1764,7 +1763,7 @@ CHECKSUMS
   marcel (1.0.4) sha256=0d5649feb64b8f19f3d3468b96c680bae9746335d02194270287868a661516a4
   markly (0.13.1) sha256=01317a045fe89032732a520e71593deeb62187562ca82effa0ed3ea23b5fd46a
   matrix (0.4.3) sha256=a0d5ab7ddcc1973ff690ab361b67f359acbb16958d1dc072b8b956a286564c5b
-  md_to_pdf (0.2.4)
+  md_to_pdf (0.2.5)
   messagebird-rest (1.4.2) sha256=1501e16ad76c87558f20f3b26cb39d05f587b349b44b8bf8056b040e9b495301
   meta-tags (2.22.1) sha256=e5ae1febbd320d396c7226d7edb868e5d63466c14b9c8b06622a1a74e6dce354
   method_source (1.1.0) sha256=181301c9c45b731b4769bc81e8860e72f9161ad7d66dd99103c9ab84f560f5c5
@@ -1819,8 +1818,8 @@ CHECKSUMS
   openproject-job_status (1.0.0)
   openproject-ldap_groups (1.0.0)
   openproject-meeting (1.0.0)
-  openproject-octicons (19.26.0) sha256=23c85a048c999101f467c098aa5aaeb65fb9824c94f6d59be613842def7a12b6
-  openproject-octicons_helper (19.26.0) sha256=f17594c094d661bd81485c7284045407185913e097e796ddec1c3579829869d1
+  openproject-octicons (19.26.2) sha256=a771a5cde922a9d8f10033574be2ec23710277ad92faa843f0642ab49de82eae
+  openproject-octicons_helper (19.26.2) sha256=e6bde57aa71986b9ee018a525e9a711b1e4b97a81d5568d45cd30925c15467ef
   openproject-openid_connect (1.0.0)
   openproject-primer_view_components (0.70.4) sha256=997bfdb3a3f72e44035b94024f499854dd870ef92fe7bc9e4e654050b70926ee
   openproject-recaptcha (1.0.0)
@@ -1841,7 +1840,7 @@ CHECKSUMS
   paper_trail (16.0.0) sha256=e9b9f0fb1b8b590c8231cfa931b282ba92f90e066e393930a5e1c61ae4c5019d
   parallel (1.27.0) sha256=4ac151e1806b755fb4e2dc2332cbf0e54f2e24ba821ff2d3dcf86bf6dc4ae130
   parallel_tests (4.10.1) sha256=df05458c691462b210f7a41fc2651d4e4e8a881e8190e6d1e122c92c07735d70
-  parser (3.3.8.0) sha256=2476364142b307fa5a1b1ece44f260728be23858a9c71078e956131a75453c45
+  parser (3.3.9.0) sha256=94d6929354b1a6e3e1f89d79d4d302cc8f5aa814431a6c9c7e0623335d7687f2
   pdf-core (0.9.0) sha256=4f368b2f12b57ec979872d4bf4bd1a67e8648e0c81ab89801431d2fc89f4e0bb
   pdf-inspector (1.3.0) sha256=fc107579d6f29b636e2da3d6743479b2624d9e390bf2d84beef8fd4ebe1a05bd
   pdf-reader (2.14.1) sha256=b45a4521c249a394ad7ad9e691bfd46d4d00998cfc4f019e4525afb4963b411b
@@ -1919,7 +1918,7 @@ CHECKSUMS
   rspec-retry (0.6.2) sha256=6101ba23a38809811ae3484acde4ab481c54d846ac66d5037ccb40131a60d858
   rspec-support (3.13.4) sha256=184b1814f6a968102b57df631892c7f1990a91c9a3b9e80ef892a0fc2a71a3f7
   rspec-wait (1.0.2) sha256=865f921239325d3d26fc10ded4bdd485d8b58bcaaad1a28dd85ed15266b5a912
-  rubocop (1.78.0) sha256=8b74a6f912eb4fd3e6878851f7f7f45dcad8c7185c34250d4f952b0ee80d6bc0
+  rubocop (1.79.0) sha256=c709e83b16f9fced295d83d190a3a5bbcc46c419d8f9b85f259b99ba6faf5bbe
   rubocop-ast (1.46.0) sha256=0da7f6ad5b98614f89b74f11873c191059c823eae07d6ffd40a42a3338f2232b
   rubocop-capybara (2.22.1) sha256=ced88caef23efea53f46e098ff352f8fc1068c649606ca75cb74650970f51c0c
   rubocop-factory_bot (2.27.1) sha256=9d744b5916778c1848e5fe6777cc69855bd96548853554ec239ba9961b8573fe
@@ -1975,11 +1974,11 @@ CHECKSUMS
   timeout (0.4.3) sha256=9509f079b2b55fe4236d79633bd75e34c1c1e7e3fb4b56cb5fda61f80a0fe30e
   tpm-key_attestation (0.14.1) sha256=7fd4e4653a7afd0a386632ddfb05d10ecfdd47678299c5e69165bc9ae111193f
   trailblazer-option (0.1.2) sha256=20e4f12ea4e1f718c8007e7944ca21a329eee4eed9e0fa5dde6e8ad8ac4344a3
+  tsort (0.2.0) sha256=9650a793f6859a43b6641671278f79cfead60ac714148aabe4e3f0060480089f
   ttfunk (1.7.0) sha256=2370ba484b1891c70bdcafd3448cfd82a32dd794802d81d720a64c15d3ef2a96
   turbo-rails (2.0.16) sha256=d24e1b60f0c575b3549ecda967e5391027143f8220d837ed792c8d48ea0ea38d
   turbo_power (0.7.0) sha256=ad95d147e0fa761d0023ad9ca00528c7b7ddf6bba8ca2e23755d5b21b290d967
   turbo_tests (2.2.0)
-  typed_dag (2.0.2) sha256=b8dc65bf8cb5461715aa64650b7c96fc2075ef29fdd94554a93896c43453828c
   tzinfo (2.0.6) sha256=8daf828cc77bcf7d63b0e3bdb6caa47e2272dcfaf4fbfe46f8c3a9df087a829b
   tzinfo-data (1.2025.2) sha256=a92375a1fbb47d38fe88fd514c40a38cc8f97d168da2a6479f15185e86470939
   uber (0.1.0) sha256=5beeb407ff807b5db994f82fa9ee07cfceaa561dad8af20be880bc67eba935dc

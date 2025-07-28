@@ -1106,7 +1106,7 @@ eo:
         remindable: "Reminded object"
         remind_at: "Remind at"
         remind_at_date: "Dato"
-        remind_at_time: "Time"
+        remind_at_time: "Tempo"
       reminder_notification:
         notification: "Notification"
       repository:
@@ -1637,7 +1637,7 @@ eo:
         one: "Project list"
         other: "Project lists"
       query: "Propra informpeto"
-      reminder: "Reminder"
+      reminder: "Memorigilo"
       role:
         one: "Rolo"
         other: "Roloj"
@@ -2589,7 +2589,7 @@ eo:
       responsible: "Respondeculo"
       shared: "Shared"
       watched: "Atentanto"
-      reminder: "Reminder"
+      reminder: "Memorigilo"
     facets:
       unread: "Unread"
       unread_title: "Show unread"
@@ -3338,12 +3338,12 @@ eo:
         prefix: "Received because of the notification setting: %{reason}"
         date_alert_start_date: "Date alert"
         date_alert_due_date: "Date alert"
-        reminder: "Reminder"
+        reminder: "Memorigilo"
       see_all: "See all"
       updated_at: "Updated at %{timestamp} by %{user}"
     reminder_notifications:
       subject: "Reminder: %{note}"
-      heading: "You have a new reminder"
+      heading: "Vi havas novan memorigilon"
       note: "Note: “%{note}”"
     sharing:
       work_packages:

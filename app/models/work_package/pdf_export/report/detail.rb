@@ -63,7 +63,7 @@ module WorkPackage::PDFExport::Report::Detail
       level_string_width = write_work_package_level!(level_path, text_style)
       title = get_column_value work_package, :subject
       pdf.indent(level_string_width) do
-        pdf.formatted_text([text_style.merge({ text: title })])
+        pdf.formatted_text([text_style.merge({ text: title })], text_style)
       end
     end
   end
@@ -73,7 +73,7 @@ module WorkPackage::PDFExport::Report::Detail
 
     level_string = "#{level_path.join('.')}. "
     level_string_width = measure_text_width(level_string, text_style)
-    pdf.float { pdf.formatted_text([text_style.merge({ text: level_string })]) }
+    pdf.float { pdf.formatted_text([text_style.merge({ text: level_string })], text_style) }
     level_string_width
   end
 

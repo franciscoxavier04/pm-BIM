@@ -67,10 +67,9 @@ Redmine::MenuManager.map :top_menu do |menu|
   menu.push :help,
             OpenProject::Static::Links.help_link,
             last: true,
-            caption: "",
+            caption: I18n.t("label_help"),
             icon: "question",
             html: { accesskey: OpenProject::AccessKeys.key_for(:help),
-                    title: I18n.t("label_help"),
                     target: "_blank" }
 
   menu.push :home,
@@ -98,8 +97,7 @@ Redmine::MenuManager.map :quick_add_menu do |menu|
             caption: ->(_) { Project.model_name.human },
             icon: "plus",
             html: {
-              aria: { label: I18n.t(:label_project_new) },
-              title: I18n.t(:label_project_new)
+              aria: { label: I18n.t(:label_project_new) }
             },
             if: ->(project) {
               User.current.allowed_globally?(:add_project) ||
@@ -123,21 +121,27 @@ Redmine::MenuManager.map :account_menu do |menu|
   menu.push :my_page,
             :my_page_path,
             caption: I18n.t("my_page.label"),
+            icon: :person,
             if: ->(_) { User.current.logged? }
   menu.push :my_profile,
             { controller: "/users", action: "show", id: "me" },
             caption: :label_my_activity,
+            icon: :history,
             if: ->(_) { User.current.logged? }
   menu.push :my_account,
             { controller: "/my", action: "account" },
+            icon: :gear,
             if: ->(_) { User.current.logged? }
   menu.push :administration,
             { controller: "/admin", action: "index" },
+            icon: :sliders,
             if: ->(_) {
               User.current.allowed_globally?({ controller: "/admin", action: "index" })
             }
   menu.push :logout,
             :signout_path,
+            icon: :"sign-out",
+            scheme: :danger,
             if: ->(_) { User.current.logged? },
             html: {
               data: {

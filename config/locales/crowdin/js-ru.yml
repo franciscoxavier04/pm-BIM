@@ -644,7 +644,7 @@ ru:
       title: "Для продолжения введите свой пароль"
     pagination:
       no_other_page: "Вы находитесь на единственной странице."
-      pages_skipped: "Pages skipped."
+      pages_skipped: "Страницы пропущены."
       page_navigation: "Навигация по страницам"
       per_page_navigation: 'Количество элементов на страницу'
       pages:
@@ -697,7 +697,7 @@ ru:
           first_day: "Первый день"
           last_day: "Последний день"
     text_are_you_sure: "Уверены?"
-    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
+    text_are_you_sure_to_cancel: "У Вас есть несохраненные изменения на этой странице. Вы уверены, что хотите их отменить?"
     breadcrumb: "Навигационная цепочка"
     text_data_lost: "Все введенные данные будут потеряны."
     text_user_wrote: "%{value} написал:"

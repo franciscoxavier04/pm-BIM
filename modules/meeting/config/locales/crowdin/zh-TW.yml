@@ -253,7 +253,7 @@ zh-TW:
         caption: 如果您的議程成果包含機密資訊，您可以選擇不將其包含在匯出內容中。
       footer_text:
         label: 頁尾文字
-        caption: This text will appear on every page at the center of the footer.
+        caption: 此文字將出現在每頁的頁尾中央。
       submit_button: 下載
   meeting_section:
     untitled_title: "無標題章節"

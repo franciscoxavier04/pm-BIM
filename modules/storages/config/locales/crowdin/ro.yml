@@ -3,7 +3,7 @@ ro:
     attributes:
       oauth_client:
         client_id: ID Client
-        client_secret: Client Secret
+        client_secret: Secret Client
       project:
         project_folder_type: Project folder type
       storages/file_link:
@@ -21,6 +21,11 @@ ro:
         project_folder_mode: Project folder mode
         storage: Depozitare
         storage_url: Storage URL
+      storages/share_point_storage:
+        host: Sharepoint Site URL
+        library: Library ID
+        name: Name
+        site: Site ID
       storages/storage:
         authentication_method: Authentication Method
         creator: Creator
@@ -32,6 +37,7 @@ ro:
     errors:
       messages:
         invalid_host_url: nu este o adresa URL validă.
+        invalid_sharepoint_url: is not a valid SharePoint site, library, or document URL.
         not_linked_to_project: nu este legat de proiect.
       models:
         storages/file_link:
@@ -227,7 +233,7 @@ ro:
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: Project folders
-      redirect_uri: URI redirecționare
+      redirect_uri: Redirecționați URI
       storage_audience_blank: No audience has been configured.
       storage_audience_description: Exchanging tokens for audience "%{audience}".
       storage_audience_idp: Using access token obtained by identity provider during login, regardless of audience.

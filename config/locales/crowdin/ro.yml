@@ -724,7 +724,7 @@ ro:
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
           supported_attributes_link: "supported attributes"
       export_configuration:
-        tab: "Generate PDF"
+        tab: "Generează PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
         pdf_export_templates:
           label: "PDF Export templates"
@@ -1116,7 +1116,7 @@ ro:
         remind_at_date: "Dată"
         remind_at_time: "Timp"
       reminder_notification:
-        notification: "Notificari"
+        notification: "Notificări"
       repository:
         url: "URL"
       role:
@@ -1172,8 +1172,8 @@ ro:
       user_preference:
         header_look_and_feel: "Look and feel"
         header_alerts: "Alerts"
-        button_update_look_and_feel: "Update look and feel"
-        button_update_alerts: "Update alerts"
+        button_update_look_and_feel: "Actualizează aspectul și simțul"
+        button_update_alerts: "Actualizează alerte"
         comments_sorting: "Display work package activity sorted by"
         disable_keyboard_shortcuts: "Disable keyboard shortcuts"
         disable_keyboard_shortcuts_caption_html: |-
@@ -1521,7 +1521,7 @@ ro:
               inclusion: "trebuie să fie între 0 și 100."
             due_date:
               not_start_date: "nu este în data de început, deși acest lucru este necesar pentru etape."
-              cannot_be_null: "nu poate fi setat la null, deoarece data de începere și durata sunt cunoscute."
+              cannot_be_null: "nu poate fi setat la null, deoarece data de început și durata sunt cunoscute."
             duration:
               larger_than_dates: "este mai mare decât intervalul dintre data de început și data de sfârșit."
               smaller_than_dates: "este mai mică decât intervalul dintre data de început și data de sfârșit."
@@ -1587,9 +1587,9 @@ ro:
               numeric: "cifre (ex. ' 1')"
               special: "caractere speciale (ex. '%')"
               reused:
-                one: "a fost deja utilizată. Vă rugăm să alegeți una diferită de anterioara."
-                few: "a fost deja utilizată. Vă rugăm să alegeți una diferită de ultimele %{count}."
-                other: "a fost deja utilizată. Vă rugăm să alegeți una diferită de ultimele %{count}."
+                one: "a fost deja utilizată. Te rog să alegi una diferită de anterioara."
+                few: "a fost deja utilizată. Te rog să alegi una diferită de ultimele %{count}."
+                other: "a fost deja utilizată. Te rog să alegi una diferită de ultimele %{count}."
               match:
                 confirm: "Confirmă noua parolă."
                 description: "Valoarea din 'Confirmare parolă' ar trebui să fie identică cu cea introdusă în 'Parolă nouă'."
@@ -1716,7 +1716,7 @@ ro:
       changeset: "Seturi de modificări"
       message: "Forumuri"
       news: "Noutăţi"
-      project_details: "Arată detaliile proietului"
+      project_details: "Detalii proiect"
       subproject: "Include subproiecte"
       time_entry: "Timp consumat"
       wiki_edit: "Wiki"
@@ -1789,7 +1789,7 @@ ro:
     mail: "E-mail"
     name: "Nume"
     note: "Notă"
-    notes: "Mențiuni"
+    notes: "Note"
     number: "Number"
     options: "Opțiuni"
     operator: "Operator"
@@ -1805,7 +1805,7 @@ ro:
     recipient: "Recipient"
     role: "Rol"
     roles: "Roluri"
-    search: "Căutare"
+    search: "Caută"
     start_date: "Dată început"
     status: "Stare"
     state: "State"
@@ -1919,7 +1919,7 @@ ro:
   button_save_as: "Salvează ca"
   button_apply_changes: "Aplică modificările"
   button_save_back: "Salvează și înapoi"
-  button_set_reminder: "Set reminder"
+  button_set_reminder: "Setează memento"
   button_show: "Afişare"
   button_sort: "Sortare"
   button_submit: "Trimite"
@@ -2204,7 +2204,7 @@ ro:
         description: "What are the benefits of the Enterprise on-premises edition?"
         high_security: "Security features"
         high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
-        installation: "Installation support"
+        installation: "Suport instalare"
         installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
         premium_features: "Enterprise add-ons"
         premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
@@ -2462,7 +2462,7 @@ ro:
       label: "Contract"
       caption: Work package details formatted to the standard German contract form.
     dialog:
-      title: Generate PDF
+      title: Generează PDF
       submit: Descărcare
       templates:
         label: "Șablon"
@@ -2507,8 +2507,8 @@ ro:
   gui_validation_error_plural: "%{count} erori"
   homescreen:
     additional:
-      projects: "Cele mai noi proiecte vizibile."
-      no_visible_projects: "Cele mai noi proiecte vizibile."
+      projects: "Proiecte vizibile noi."
+      no_visible_projects: "Nu există proiecte vizibile."
       users: "Cei mai noi utilizatori înregistrați."
     blocks:
       community: "Comunitatea OpenProject"
@@ -2920,7 +2920,7 @@ ro:
   label_interface: "Interface"
   label_internal: "Intern"
   label_introduction_video: "Video de introducere"
-  label_invite_user: "Invitare utilizator"
+  label_invite_user: "Invită utilizator"
   label_item: "Item"
   label_item_plural: "Items"
   label_share: "Distribuie"
@@ -2998,7 +2998,7 @@ ro:
   label_modules: "Module"
   label_months_from: "luni de la"
   label_more: "Mai mult"
-  label_more_information: "Mai multe informatii"
+  label_more_information: "Mai multe informații"
   label_more_than_ago: "acum mai mult de zile"
   label_move_column_left: "Mută coloana la stânga"
   label_move_column_right: "Mută coloana la dreapta"
@@ -3577,7 +3577,7 @@ ro:
   #Default format for numbers
   number:
     format:
-      delimiter: "."
+      delimiter: ","
       precision: 3
       separator: ","
     human:
@@ -3597,7 +3597,7 @@ ro:
           tb: "TB"
   onboarding:
     heading_getting_started: "Urmărește prezentarea generală"
-    text_getting_started_description: "Obțineți o imagine de ansamblu rapidă a gestionării proiectelor și a colaborării în echipă cu OpenProject. Puteți reporni acest videoclip din meniul de ajutor."
+    text_getting_started_description: "Obține o imagine de ansamblu rapidă a gestionării proiectelor și a colaborării în echipă cu OpenProject. Poți reporni acest videoclip din meniul de ajutor."
     welcome: "Bun venit la %{app_title}"
     select_language: "Te rog selectează limba"
   permission_add_work_package_comments: "Add comments"
@@ -3794,7 +3794,7 @@ ro:
       info_not_managed: "Atenție: Această acțiune NU va șterge conținutul repo-ului, deoarece acesta nu este gestionat de OpenProject."
       managed_path_note: "Urmatorul director va fi şters: %{path}"
       repository_verification: "Introduceţi identificatorul proiectului %{identifier} pentru a verifica ștergerea sa din repo."
-      subtitle: "Sunteți sigur că doriţi să ştergeţi %{repository_type} din proiectul %{project_name}?"
+      subtitle: "Ești sigur că vrei să ştergi %{repository_type} din proiectul %{project_name}?"
       subtitle_not_managed: "Sunteți sigur că doriţi să ştergeţi %{repository_type} %{url} din proiectul %{project_name}?"
       title: "Ștergere %{repository_type}"
       title_not_managed: "Doriți eliminarea %{repository_type} corespunzător?"
@@ -3846,9 +3846,9 @@ ro:
     storage:
       not_available: "Consumul de spațiu de stocare nu este disponibil pentru acest repo."
       update_timeout: "Păstrează ultimele informații privind spațiul necesar pe disc pentru un depozit timp de N minute.\nDeoarece numărarea spațiului necesar pe disc al unui depozit poate fi costisitoare, crește această valoare pentru a reduce impactul asupra performanței."
-      oauth_application_details: "Valoarea secretă a clientului nu va mai fi accesibilă după ce închideți această fereastră. Vă rugăm să copiați aceste valori în setările Nextcloud OpenProject Integration:"
+      oauth_application_details: "Valoarea secretă a clientului nu va mai fi accesibilă după ce închizi această fereastră. Te rog să copiezi aceste valori în setările Nextcloud OpenProject Integration:"
       oauth_application_details_link_text: "Mergi la pagina setări"
-      setup_documentation_details: "Dacă aveți nevoie de ajutor pentru configurarea unui nou depozit de fișiere, consultați documentația: "
+      setup_documentation_details: "Dacă ai nevoie de ajutor pentru configurarea unui nou depozit de fișiere, consultă documentația: "
       setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "Pentru a utiliza acest spațiu de stocare a fișierelor, nu uita să activezi modulul și spațiul de stocare specific în setările de proiect ale fiecărui proiect dorit."
     subversion:
@@ -3892,11 +3892,11 @@ ro:
     If enabled, the API will allow administrators to write static read-only attributes during creation, such as createdAt and author. <br/> <strong>Warning:</strong> This setting has a use-case for e.g., importing data, but allows administrators to impersonate the creation of items as other users. All creation requests are being logged however with the true author. </br> For more information on attributes and supported resources, please see the %{api_documentation_link}.
   setting_apiv3_max_page_size: "Dimensiunea maximă a paginii API"
   setting_apiv3_max_page_instructions_html: >
-    Setaţi dimensiunea maximă a paginii cu care API-ul va răspunde. Nu va fi posibil să efectuați cereri API care returnează mai multe valori pe o singură pagină. <br/> <strong>Avertisment:</strong> Vă rugăm să schimbaţi această valoare numai dacă sunteţi sigur de ce aveţi nevoie. Stabilirea unei valori ridicate va avea ca rezultat un impact semnificativ asupra performanței; în timp ce o valoare mai mică decât opţiunile per pagină va cauza erori în vizualizările paginate.
+    Seteză dimensiunea maximă a paginii cu care API-ul va răspunde. Nu va fi posibil să efectuzi cereri API care returnează mai multe valori pe o singură pagină. <br/> <strong>Avertisment:</strong> Te rog să schimbi această valoare numai dacă ești sigur de ce ai nevoie. Stabilirea unei valori ridicate va avea ca rezultat un impact semnificativ asupra performanței; în timp ce o valoare mai mică decât opţiunile per pagină va cauza erori în vizualizările paginate.
   setting_apiv3_docs: "Documentație"
   setting_apiv3_docs_enabled: "Activare pagină documente"
   setting_apiv3_docs_enabled_instructions_html: >
-    Dacă pagina de documente este activată, puteți obține o vizualizare interactivă a documentației APIv3 la adresa <a href="%{link}" target="_blank">%{link}</a>.
+    Dacă pagina de documente este activată, poți obține o vizualizare interactivă a documentației APIv3 la adresa <a href="%{link}" target="_blank">%{link}</a>.
   setting_attachment_whitelist: "Lista albă de încărcare a atașamentelor"
   setting_email_delivery_method: "Metoda de livrare e-mail"
   setting_emails_salutation: "Adresează utilizator în e-mailuri cu"
@@ -4298,7 +4298,7 @@ ro:
     views:
       project: >
         %{plural} are always attached to a project. You can only select projects here where the %{plural} module is active. After creating a %{singular} you can add work packages from other projects to it.
-      public: "Publicați această vizualizare, permițând altor utilizatori să vă acceseze vizualizarea. Utilizatorii cu permisiunea \"Manage public views\" pot modifica sau elimina interogarea publică. Acest lucru nu afectează vizibilitatea rezultatelor pachetului de lucru în vizualizarea respectivă și, în funcție de permisiunile lor, utilizatorii pot vedea rezultate diferite."
+      public: "Publică această vizualizare, permițând altor utilizatori să vă acceseze vizualizarea. Utilizatorii cu permisiunea \"Manage public views\" pot modifica sau elimina interogarea publică. Acest lucru nu afectează vizibilitatea rezultatelor pachetului de lucru în vizualizarea respectivă și, în funcție de permisiunile lor, utilizatorii pot vedea rezultate diferite."
       favoured: "Mark this view as favourite and add to the saved views sidebar on the left."
   time:
     am: "AM"
@@ -4357,7 +4357,7 @@ ro:
     confirm_status_change: "Sunteți pe cale să modificați statutul lui \"%{name}\". Sunteți sigur că doriți să continuați?"
     deleted: "Utilizator șters"
     error_status_change_failed: "Modificarea stării utilizatorului a eșuat din cauza următoarelor erori: %{errors}"
-    invite: Invitare utilizator prin e-mail
+    invite: Invită utilizator prin e-mail
     invited: invitat
     lock: "Blocare permanentă"
     locked: "blocat permanent"
@@ -4445,8 +4445,8 @@ ro:
       view_description: "Can view this work package."
     reminders:
       label_remind_at: "Dată"
-      note_placeholder: "Why are you setting this reminder?"
-      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
+      note_placeholder: "De ce setezi acest memento?"
+      create_success_message: "Memento setat cu succes. Vei primi o notificare pentru acest pachet de lucru %{reminder_time}."
       success_update_message: "Reminder updated successfully."
       success_deletion_message: "Reminder deleted successfully."
   sharing:
@@ -4551,7 +4551,7 @@ ro:
         emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       conflict:
         multiple_reminders_not_allowed: |-
-          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
+          Poți seta doar un memento la un moment dat pentru un pachet de lucru. Te rog să ștergi sau să actualizezi memento-ul existent.
       not_found:
         work_package: "Pachetul de lucru pe care îl căutați nu poate fi găsit sau a fost șters."
         reminder: "The reminder you are looking for cannot be found or has been deleted."

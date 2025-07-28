@@ -257,7 +257,7 @@ de:
         caption: Wenn Ihre Ergebnisse vertrauliche Informationen enthalten, können Sie wählen, diese nicht in den Export aufzunehmen.
       footer_text:
         label: Text in der Fußzeile
-        caption: This text will appear on every page at the center of the footer.
+        caption: Dieser Text wird auf jeder Seite in der Mitte der Fußzeile angezeigt.
       submit_button: Download
   meeting_section:
     untitled_title: "Unbenannter Abschnitt"

@@ -21,6 +21,11 @@ es:
         project_folder_mode: Modo de carpeta del proyecto
         storage: Almacenamiento
         storage_url: URL de almacenamiento
+      storages/share_point_storage:
+        host: Sharepoint Site URL
+        library: Library ID
+        name: Name
+        site: Site ID
       storages/storage:
         authentication_method: Método de autenticación
         creator: Autor
@@ -32,6 +37,7 @@ es:
     errors:
       messages:
         invalid_host_url: no es una URL válida.
+        invalid_sharepoint_url: is not a valid SharePoint site, library, or document URL.
         not_linked_to_project: no está vinculado al proyecto.
       models:
         storages/file_link:

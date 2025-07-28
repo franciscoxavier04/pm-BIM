@@ -21,6 +21,11 @@ ms:
         project_folder_mode: Mod Folder Projek
         storage: Storan
         storage_url: URL Simpanan
+      storages/share_point_storage:
+        host: Sharepoint Site URL
+        library: Library ID
+        name: Name
+        site: Site ID
       storages/storage:
         authentication_method: Kaedah Pengesahan
         creator: Pencipta
@@ -32,6 +37,7 @@ ms:
     errors:
       messages:
         invalid_host_url: adalah bukan URL yang sah.
+        invalid_sharepoint_url: is not a valid SharePoint site, library, or document URL.
         not_linked_to_project: tidak terpaut dengan projek.
       models:
         storages/file_link:

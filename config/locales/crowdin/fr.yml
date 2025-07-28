@@ -364,9 +364,9 @@ fr:
       blueprint: "Modèle de plan"
   global_search:
     title:
-      all_projects: 'Search for "%{search_term}" in all projects'
-      current_project: 'Search for "%{search_term}" in %{project_name}'
-      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
+      all_projects: 'Recherche de "%{search_term}" dans tous les projets'
+      current_project: 'Recherche de "%{search_term}" dans %{project_name}'
+      project_and_subprojects: 'Recherche de "%{search_term}" dans %{project_name} et tous les sous-projets'
     placeholder: "Rechercher dans %{app_title}"
     overwritten_tabs:
       all: "Tous"

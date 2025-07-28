@@ -21,6 +21,11 @@ ne:
         project_folder_mode: Project folder mode
         storage: Storage
         storage_url: Storage URL
+      storages/share_point_storage:
+        host: Sharepoint Site URL
+        library: Library ID
+        name: Name
+        site: Site ID
       storages/storage:
         authentication_method: Authentication Method
         creator: Creator
@@ -32,6 +37,7 @@ ne:
     errors:
       messages:
         invalid_host_url: is not a valid URL.
+        invalid_sharepoint_url: is not a valid SharePoint site, library, or document URL.
         not_linked_to_project: is not linked to project.
       models:
         storages/file_link:

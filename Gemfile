@@ -66,9 +66,6 @@ gem "acts_as_tree", "~> 2.9.0"
 gem "awesome_nested_set", "~> 3.8.0"
 gem "closure_tree", "~> 9.0.0"
 gem "rubytree", "~> 2.1.0"
-# Only used in down migrations now.
-# Is to be removed once the referencing migrations have been squashed.
-gem "typed_dag", "~> 2.0.2", require: false
 
 gem "addressable", "~> 2.8.0"
 
@@ -157,7 +154,7 @@ gem "structured_warnings", "~> 0.5.0"
 gem "airbrake", "~> 13.0.0", require: false
 
 gem "markly", "~> 0.13" # another markdown parser like commonmarker, but with AST support used in PDF export
-gem "md_to_pdf", git: "https://github.com/opf/md-to-pdf", ref: "9961752e4d1e990ec1d4bf48436de9277838763f"
+gem "md_to_pdf", git: "https://github.com/opf/md-to-pdf", ref: "6c565541bfa390c58d90d49aa9b487777704fc66"
 gem "prawn", "~> 2.4"
 gem "ttfunk", "~> 1.7.0" # remove after https://github.com/prawnpdf/prawn/issues/1346 resolved.
 
@@ -417,6 +414,6 @@ gemfiles.each do |file|
   send(:eval_gemfile, file) if File.readable?(file)
 end
 
-gem "openproject-octicons", "~>19.26.0"
-gem "openproject-octicons_helper", "~>19.26.0"
+gem "openproject-octicons", "~>19.26.2"
+gem "openproject-octicons_helper", "~>19.26.2"
 gem "openproject-primer_view_components", "~>0.70.4"

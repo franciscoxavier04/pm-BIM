@@ -54,6 +54,12 @@ module GroupsHelper
         partial: "principals/global_roles",
         path: edit_group_path(group, tab: :global_roles),
         label: :label_global_roles
+      },
+      {
+        name: "synchronized_groups",
+        partial: "groups/synchronized_groups",
+        path: edit_group_path(group, tab: :synchronized_groups),
+        label: :"groups.edit.synchronized_groups"
       }
     ]
   end
