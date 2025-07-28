@@ -39,7 +39,7 @@ type FilteredSuggestions = Array<{
 
 type TokenElement = HTMLElement&{ dataset:{ role:'token', prop:string } };
 type ListElement = HTMLElement&{ dataset:{ role:'list_item', prop:string } };
-type AttributeToken = { key:string, label:string, label_with_context:string, insert_as_text?:boolean };
+type AttributeToken = { key:string, label:string, label_with_context?:string, insert_as_text?:boolean };
 
 const COMPLETION_CHARACTER = '/';
 const TOKEN_REGEX = /{{([0-9A-Za-z_]+)}}/g;
@@ -349,7 +349,7 @@ export default class PatternInputController extends Controller {
 
     if (this.isToken(parent)) {
       const token = this.validTokenMap[parent.dataset.prop];
-      const prefix = token.label_with_context.replace(token.label, '');
+      const prefix = token.label_with_context?.replace(token.label, '');
       const start = prefix && textContent.startsWith(prefix) ? prefix.length : 0;
 
       return textContent.slice(start, selection.anchorOffset);
@@ -518,8 +518,10 @@ export default class PatternInputController extends Controller {
       return key;
     }
 
-    if (token.key.startsWith('parent_') || token.key.startsWith('project_')) {
-      return token.label_with_context;
+    if (token.label_with_context) {
+      if (token.key.startsWith('parent_') || token.key.startsWith('project_')) {
+        return token.label_with_context;
+      }
     }
 
     return token.label;
