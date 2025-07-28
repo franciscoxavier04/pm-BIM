@@ -67,6 +67,10 @@ module CustomField::CalculatedValue
       formula ? formula.fetch("formula", "") : ""
     end
 
+    def formula_referenced_custom_field_ids
+      formula ? formula.fetch("referenced_custom_fields", []) : []
+    end
+
     def usable_custom_field_references_for_formula
       visible_cfs = ProjectCustomField
                       .where(field_format: FIELD_FORMATS_FOR_FORMULA)

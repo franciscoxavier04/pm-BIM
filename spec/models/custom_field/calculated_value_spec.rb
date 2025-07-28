@@ -156,6 +156,26 @@ RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_proje
     end
   end
 
+  describe "#formula_referenced_custom_field_ids" do
+    it "returns an empty array if no formula is set" do
+      subject.formula = nil
+
+      expect(subject.formula_referenced_custom_field_ids).to eq([])
+    end
+
+    it "returns an empty array if formula doesn't reference custom fields" do
+      subject.formula = "2 + 2"
+
+      expect(subject.formula_referenced_custom_field_ids).to eq([])
+    end
+
+    it "returns ids if formula references custom fields" do
+      subject.formula = "1 * {{cf_7}} + {{cf_42}}"
+
+      expect(subject.formula_referenced_custom_field_ids).to eq([7, 42])
+    end
+  end
+
   describe "#has_circular_reference?" do
     let!(:int_field) { create(:project_custom_field, :integer, default_value: 10, is_for_all: true) }
     let!(:float_field) { create(:project_custom_field, :float, default_value: 5.5, is_for_all: true) }
