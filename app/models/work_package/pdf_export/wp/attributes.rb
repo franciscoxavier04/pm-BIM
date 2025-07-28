@@ -58,8 +58,9 @@ module WorkPackage::PDFExport::Wp::Attributes
   end
 
   def write_long_text_custom_field_label(label)
+    style = styles.wp_attributes_table_label
     with_margin(styles.markdown_field_label_margins) do
-      pdf.formatted_text([styles.wp_attributes_table_label.merge({ text: label })])
+      pdf.formatted_text([style.merge({ text: label })], style)
     end
   end
 
@@ -77,14 +78,16 @@ module WorkPackage::PDFExport::Wp::Attributes
   end
 
   def write_inline_hint(text)
+    style = styles.inline_hint
     with_margin(styles.wp_table_margins) do
-      pdf.formatted_text([styles.inline_hint.merge({ text: })])
+      pdf.formatted_text([style.merge({ text: })], style)
     end
   end
 
   def write_inline_error(text)
+    style = styles.inline_error
     with_margin(styles.markdown_field_label_margins) do
-      pdf.formatted_text([styles.inline_error.merge({ text: })])
+      pdf.formatted_text([style.merge({ text: })], style)
     end
   end
 
@@ -176,8 +179,8 @@ module WorkPackage::PDFExport::Wp::Attributes
   def write_group_title(group, with_hr: true)
     write_optional_page_break
     with_margin(styles.wp_attributes_group_label_margins) do
-      pdf.formatted_text([styles.wp_attributes_group_label
-                                .merge({ text: group.translated_key })])
+      style = styles.wp_attributes_group_label
+      pdf.formatted_text([style.merge({ text: group.translated_key })], style)
       write_group_title_hr if with_hr
     end
   end

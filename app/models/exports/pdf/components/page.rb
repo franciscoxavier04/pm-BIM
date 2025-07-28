@@ -73,7 +73,8 @@ module Exports::PDF::Components::Page
   def write_title!
     pdf.title = heading
     with_margin(styles.page_heading_margins) do
-      pdf.formatted_text([styles.page_heading.merge({ text: heading })])
+      style = styles.page_heading
+      pdf.formatted_text([style.merge({ text: heading })], style)
     end
   end
 

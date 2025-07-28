@@ -46,8 +46,9 @@ module WorkPackage::PDFExport::Report::SumsTable
   end
 
   def write_sums_title
+    style = styles.page_heading
     with_margin(styles.page_heading_margins) do
-      pdf.formatted_text([styles.page_heading.merge({ text: I18n.t("js.work_packages.tabs.overview") })])
+      pdf.formatted_text([style.merge({ text: I18n.t("js.work_packages.tabs.overview") })], style)
     end
   end
 
