@@ -30,10 +30,11 @@
 
 module Storages
   class SharePointStorage < Storage
+    store_attribute :provider_fields, :tenant_id, :string
     # For now SharePoint is visible only in tests.
     # This is to prevent it from being shown in the UI, as it is not ready yet.
     def self.visible?
-      Rails.env.test?
+      Rails.env.local?
     end
 
     def self.short_provider_name = :share_point
@@ -52,6 +53,35 @@ module Storages
     end
 
     def oauth_configuration = Adapters::Providers::SharePoint::OAuthConfiguration.new(self)
+
+    PROVIDER_FIELDS_DEFAULTS = {
+      "health_notifications_enabled" => true,
+      "automatically_managed" => false
+    }.freeze
+
+    def provider_fields_defaults
+      PROVIDER_FIELDS_DEFAULTS
+    end
+
+    def automatic_management_new_record?
+      if provider_fields_changed?
+        previous_configuration = provider_fields_change.first
+        previous_configuration.values_at("automatically_managed").compact.empty?
+      else
+        automatic_management_unspecified?
+      end
+    end
+
+    # TODO: do we need all of this?
+    def configuration_checks
+      {
+        storage_oauth_client_configured: oauth_client.present?,
+        storage_redirect_uri_configured: oauth_client&.persisted?,
+        storage_tenant_drive_configured: tenant_id.present?,
+        access_management_configured: !automatic_management_unspecified?,
+        name_configured: name.present?
+      }
+    end
 
     # To implement
     # configuration_checks

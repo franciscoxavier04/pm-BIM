@@ -35,7 +35,7 @@ class Storages::Admin::AccessManagementController < ApplicationController
 
   before_action :require_admin
 
-  model_object Storages::OneDriveStorage
+  model_object Storages::Storage
   before_action :find_model_object, only: %i[new create edit update]
 
   # menu_item is defined in the Redmine::MenuManager::MenuController
@@ -52,6 +52,11 @@ class Storages::Admin::AccessManagementController < ApplicationController
     respond_to do |format|
       format.turbo_stream
     end
+  end
+
+  def edit
+    update_via_turbo_stream(component: Storages::Admin::Forms::AccessManagementFormComponent.new(@storage))
+    respond_with_turbo_streams
   end
 
   def create
@@ -81,11 +86,6 @@ class Storages::Admin::AccessManagementController < ApplicationController
     respond_with_turbo_streams
   end
 
-  def edit
-    update_via_turbo_stream(component: Storages::Admin::Forms::AccessManagementFormComponent.new(@storage))
-    respond_with_turbo_streams
-  end
-
   private
 
   def find_model_object(object_id = :storage_id)
@@ -100,8 +100,8 @@ class Storages::Admin::AccessManagementController < ApplicationController
   end
 
   def permitted_storage_params
-    params
-      .require(:storages_one_drive_storage)
-      .permit("automatic_management_enabled")
+    key = params.key?(:storages_one_drive_storage) ? :storages_one_drive_storage : :storages_share_point_storage
+
+    params.require(key).permit("automatic_management_enabled")
   end
 end
