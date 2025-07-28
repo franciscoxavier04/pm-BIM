@@ -43,8 +43,9 @@ module WorkPackage::PDFExport::Common::MarkdownField
   private
 
   def write_markdown_field_label(label)
+    style = styles.markdown_field_label
     with_margin(styles.markdown_field_label_margins) do
-      pdf.formatted_text([styles.markdown_field_label.merge({ text: label })])
+      pdf.formatted_text([style.merge({ text: label })], style)
     end
   end
 
