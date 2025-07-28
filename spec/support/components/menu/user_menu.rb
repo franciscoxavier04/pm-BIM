@@ -28,31 +28,24 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class OnboardingController < ApplicationController
-  include OpTurbo::ComponentStream
+module Components
+  class UserMenu
+    include Capybara::DSL
+    include Capybara::RSpecMatchers
+    include RSpec::Matchers
 
-  no_authorization_required! :user_settings, :onboarding_video_dialog
-
-  def user_settings
-    @user = User.current
-
-    result = Users::UpdateService
-             .new(model: @user, user: @user)
-             .call(permitted_params.user.to_h)
-
-    if result.success?
-      flash[:notice] = I18n.t(:notice_account_updated)
+    def open
+      page.find_test_selector("op-app-header--user-menu-button").click
     end
 
-    # Remove all query params:
-    # the first_time_user param so that the modal is not shown again after redirect,
-    # the welcome param so that the analytics is not fired again
-    uri = Addressable::URI.parse(request.referer.to_s)
-    uri.query_values = {}
-    redirect_to uri.to_s
-  end
+    def close
+      page.find(".op-app-header--modules-menu-header .close-button").click
+    end
 
-  def onboarding_video_dialog
-    respond_with_dialog Onboarding::VideoDialogComponent.new
+    def expect_user_shown(user_name)
+      page.within_test_selector "op-app-header--user-menu-button" do
+        expect(page).to have_element "data-title": "\"#{user_name}\""
+      end
+    end
   end
 end
