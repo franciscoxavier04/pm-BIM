@@ -469,6 +469,7 @@ class MeetingsController < ApplicationController
 
     @converted_params[:project] = @project if @project.present?
     @converted_params[:duration] = @converted_params[:duration].to_hours if @converted_params[:duration].present?
+    @converted_params[:send_notifications] = meeting_params[:notify] == "1" && params[:meeting][:copied_from_meeting_id].present?
 
     # Handle participants separately for each meeting type
     @converted_params[:participants_attributes] ||= {}
@@ -485,9 +486,10 @@ class MeetingsController < ApplicationController
   def meeting_params
     if params[:meeting].present?
       params
-        .expect(meeting: [:title, :location, :start_time, :project_id,
-                          :duration, :start_date, :start_time_hour, :notify,
-                          { participants_attributes: %i[email name invited attended user user_id meeting id] }])
+        .require(:meeting) # rubocop:disable Rails/StrongParametersExpect
+        .permit(:title, :location, :start_time, :project_id,
+                :duration, :start_date, :start_time_hour, :notify,
+                participants_attributes: %i[email name invited attended user user_id meeting id])
     end
   end
 
@@ -539,7 +541,7 @@ class MeetingsController < ApplicationController
     {
       copy_agenda: copy_param(:copy_agenda),
       copy_attachments: copy_param(:copy_attachments),
-      send_notifications: meeting_params[:notify] == "1" && params[:meeting][:copied_from_meeting_id].present?
+      send_notifications: @converted_params[:send_notifications]
     }
   end
 

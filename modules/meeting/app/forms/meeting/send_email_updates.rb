@@ -33,7 +33,7 @@ class Meeting::SendEmailUpdates < ApplicationForm
     meeting_form.check_box(
       name: "notify",
       label: I18n.t("label_meeting_send_updates"),
-      checked: checked?,
+      checked: true,
       data: {
         "show-when-checked-target": "cause",
         "show-when-checked-target-name": "notification-banner"
@@ -46,11 +46,5 @@ class Meeting::SendEmailUpdates < ApplicationForm
 
     @meeting = meeting
     @copy_from = copy_from
-  end
-
-  def checked?
-    return true unless @copy_from.nil?
-
-    @meeting.notify? != false
   end
 end

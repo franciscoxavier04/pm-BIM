@@ -37,7 +37,7 @@ module Meetings
     end
 
     def call
-      render(Primer::Alpha::Banner.new(description:, scheme:, icon:))
+      render(Primer::Alpha::Banner.new(description:, scheme:, icon:, data: { "test-selector": "notifications-banner" }))
     end
 
     private
