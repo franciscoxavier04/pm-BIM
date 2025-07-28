@@ -142,6 +142,10 @@ module OpenIDConnect
       (scope || "").split
     end
 
+    def backchannel_logout_url
+      URI.join(auth_url, "backchannel-logout").to_s
+    end
+
     def group_matchers
       if group_prefixes.present?
         group_prefixes.map { |p| Regexp.new("^#{Regexp.escape(p)}(.+)$") }
