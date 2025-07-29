@@ -30,7 +30,14 @@
 
 module Storages
   class SharePointStorage < Storage
+    PROVIDER_FIELDS_DEFAULTS = {
+      automatically_managed: false,
+      automatic_management_enabled: true,
+      health_notifications_enabled: true
+    }.freeze
+
     store_attribute :provider_fields, :tenant_id, :string
+
     # For now SharePoint is visible only in tests.
     # This is to prevent it from being shown in the UI, as it is not ready yet.
     def self.visible?
@@ -53,11 +60,6 @@ module Storages
     end
 
     def oauth_configuration = Adapters::Providers::SharePoint::OAuthConfiguration.new(self)
-
-    PROVIDER_FIELDS_DEFAULTS = {
-      "health_notifications_enabled" => true,
-      "automatically_managed" => false
-    }.freeze
 
     def provider_fields_defaults
       PROVIDER_FIELDS_DEFAULTS
