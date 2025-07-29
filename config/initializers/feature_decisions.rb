@@ -59,4 +59,4 @@ OpenProject::FeatureDecisions.add :block_note_editor,
 
 OpenProject::FeatureDecisions.add :minutes_styling_meeting_pdf,
                                   description: "Allow exporting a meeting with FITKO styling." \
-                                    "See #65124 for details."
+                                               "See #65124 for details."
