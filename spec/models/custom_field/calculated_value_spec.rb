@@ -176,7 +176,7 @@ RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_proje
     end
   end
 
-  describe "#has_circular_reference?" do
+  describe "#formula_contains_reference_to_id?" do
     let!(:int_field) { create(:project_custom_field, :integer, default_value: 10, is_for_all: true) }
     let!(:float_field) { create(:project_custom_field, :float, default_value: 5.5, is_for_all: true) }
     let!(:text_field) { create(:project_custom_field, :text, default_value: "text", is_for_all: true) }
@@ -185,15 +185,15 @@ RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_proje
 
     context "when checking a non-calculated value custom field" do
       it "returns false for integer custom field" do
-        expect(subject.send(:has_circular_reference?, int_field, subject.id)).to be false
+        expect(subject.send(:formula_references_id?, int_field, subject.id)).to be false
       end
 
       it "returns false for float custom field" do
-        expect(subject.send(:has_circular_reference?, float_field, subject.id)).to be false
+        expect(subject.send(:formula_references_id?, float_field, subject.id)).to be false
       end
 
       it "returns false for text custom field" do
-        expect(subject.send(:has_circular_reference?, text_field, subject.id)).to be false
+        expect(subject.send(:formula_references_id?, text_field, subject.id)).to be false
       end
     end
 
@@ -203,7 +203,7 @@ RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_proje
       end
 
       it "returns false" do
-        expect(subject.send(:has_circular_reference?, simple_calculated_field, subject.id)).to be false
+        expect(subject.send(:formula_references_id?, simple_calculated_field, subject.id)).to be false
       end
     end
 
@@ -221,7 +221,7 @@ RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_proje
       end
 
       it "returns true when field references itself" do
-        circular = self_referencing_field.send(:has_circular_reference?, self_referencing_field, self_referencing_field.id)
+        circular = self_referencing_field.send(:formula_references_id?, self_referencing_field, self_referencing_field.id)
         expect(circular).to be true
       end
     end
@@ -257,12 +257,12 @@ RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_proje
       end
 
       it "returns true when there is an indirect circular reference" do
-        expect(field_a.send(:has_circular_reference?, field_a, field_a.id)).to be true
+        expect(field_a.send(:formula_references_id?, field_a, field_a.id)).to be true
       end
 
       it "returns true when checking from any field in the circular chain" do
-        expect(field_b.send(:has_circular_reference?, field_b, field_b.id)).to be true
-        expect(field_c.send(:has_circular_reference?, field_c, field_c.id)).to be true
+        expect(field_b.send(:formula_references_id?, field_b, field_b.id)).to be true
+        expect(field_c.send(:formula_references_id?, field_c, field_c.id)).to be true
       end
     end
 
@@ -287,9 +287,9 @@ RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_proje
       end
 
       it "returns false when there is no circular reference" do
-        expect(field_x.send(:has_circular_reference?, field_x, field_x.id)).to be false
-        expect(field_y.send(:has_circular_reference?, field_y, field_y.id)).to be false
-        expect(field_z.send(:has_circular_reference?, field_z, field_z.id)).to be false
+        expect(field_x.send(:formula_references_id?, field_x, field_x.id)).to be false
+        expect(field_y.send(:formula_references_id?, field_y, field_y.id)).to be false
+        expect(field_z.send(:formula_references_id?, field_z, field_z.id)).to be false
       end
     end
 
@@ -308,12 +308,12 @@ RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_proje
 
       it "returns true when a node has already been visited" do
         visited = Set.new([field1.id])
-        expect(field2.send(:has_circular_reference?, field1, field2.id, visited)).to be true
+        expect(field2.send(:formula_references_id?, field1, field2.id, visited)).to be true
       end
 
       it "returns false when checking a new node with empty visited set" do
         visited = Set.new
-        expect(field2.send(:has_circular_reference?, field1, field2.id, visited)).to be false
+        expect(field2.send(:formula_references_id?, field1, field2.id, visited)).to be false
       end
     end
 
@@ -330,7 +330,7 @@ RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_proje
       end
 
       it "returns false when referenced custom field does not exist" do
-        circular = field_with_invalid_ref.send(:has_circular_reference?, field_with_invalid_ref, field_with_invalid_ref.id)
+        circular = field_with_invalid_ref.send(:formula_references_id?, field_with_invalid_ref, field_with_invalid_ref.id)
         expect(circular).to be false
       end
     end
