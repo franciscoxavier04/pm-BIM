@@ -78,7 +78,7 @@ module CustomField::CalculatedValue
                       .visible
 
       visible_cfs.reject do |custom_field|
-        has_circular_reference?(custom_field, id)
+        formula_references_id?(custom_field, id)
       end
     end
 
@@ -140,7 +140,7 @@ module CustomField::CalculatedValue
       formula_string.gsub(/\{\{(cf_\d+)}}/, '\1')
     end
 
-    def has_circular_reference?(custom_field, original_id, visited = Set.new)
+    def formula_references_id?(custom_field, original_id, visited = Set.new)
       return true unless visited.add?(custom_field.id)
 
       if custom_field.field_format_calculated_value?
@@ -149,7 +149,7 @@ module CustomField::CalculatedValue
         return true if referenced_custom_fields.include?(original_id)
 
         ProjectCustomField.where(id: referenced_custom_fields).any? do |referenced_field|
-          has_circular_reference?(referenced_field, original_id, visited)
+          formula_references_id?(referenced_field, original_id, visited)
         end
       else
         false
