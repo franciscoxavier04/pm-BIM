@@ -29,29 +29,49 @@
 #++
 
 module Meetings
-  class DeleteService < ::BaseServices::Delete
-    protected
-
-    def after_validate(call)
-      send_cancellation_mail(model) if model.notify?
-      cancel_scheduled_meeting(model)
-
-      call
+  class EmailUpdatesBannerComponent < ApplicationComponent
+    def initialize(meeting, override: nil)
+      super
+      @meeting = meeting
+      @override = override
     end
 
-    def send_cancellation_mail(meeting)
-      meeting.participants.where(invited: true).find_each do |participant|
-        MeetingMailer
-          .cancelled(meeting, participant.user, User.current)
-          .deliver_now
+    def call
+      render(Primer::Alpha::Banner.new(description:, scheme:, icon:, data: { "test-selector": "notifications-banner" }))
+    end
+
+    private
+
+    def type
+      if @meeting.is_a?(RecurringMeeting) || (@meeting.recurring? && @meeting.templated?)
+        "template"
+      elsif @meeting.recurring?
+        "occurrence"
+      else
+        "onetime"
       end
     end
 
-    def cancel_scheduled_meeting(meeting)
-      schedule = meeting.scheduled_meeting
-      return if schedule.nil?
+    def status
+      if @override.present?
+        @override.to_s
+      elsif @meeting.notify?
+        "enabled"
+      else
+        "disabled"
+      end
+    end
 
-      schedule.update_column(:cancelled, true)
+    def description
+      I18n.t("meeting.notifications.banner.#{type}.#{status}")
+    end
+
+    def scheme
+      status == "enabled" ? :default : :warning
+    end
+
+    def icon
+      status == "enabled" ? :info : nil
     end
   end
 end

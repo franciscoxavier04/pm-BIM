@@ -29,29 +29,47 @@
 #++
 
 module Meetings
-  class DeleteService < ::BaseServices::Delete
-    protected
+  class SidePanel::ToggleNotificationsDialogComponent < ApplicationComponent
+    include ApplicationHelper
+    include OpTurbo::Streamable
 
-    def after_validate(call)
-      send_cancellation_mail(model) if model.notify?
-      cancel_scheduled_meeting(model)
+    def initialize(meeting)
+      super
 
-      call
+      @meeting = meeting
+      @project = meeting.project
     end
 
-    def send_cancellation_mail(meeting)
-      meeting.participants.where(invited: true).find_each do |participant|
-        MeetingMailer
-          .cancelled(meeting, participant.user, User.current)
-          .deliver_now
+    private
+
+    def id = "toggle-notifications-dialog"
+
+    def title
+      if @meeting.notify?
+        I18n.t("meeting.notifications.dialog.title.disable")
+      else
+        I18n.t("meeting.notifications.dialog.title.enable")
       end
     end
 
-    def cancel_scheduled_meeting(meeting)
-      schedule = meeting.scheduled_meeting
-      return if schedule.nil?
+    def confirmation_message
+      if @meeting.notify?
+        I18n.t("meeting.notifications.dialog.message.disable")
+      else
+        I18n.t("meeting.notifications.dialog.message.enable")
+      end
+    end
 
-      schedule.update_column(:cancelled, true)
+    def confirm_button_text
+      if @meeting.notify?
+        I18n.t("meeting.notifications.dialog.confirm_label.disable")
+      else
+        I18n.t("meeting.notifications.dialog.confirm_label.enable")
+      end
+    end
+
+    def cancel_button_text
+      I18n.t("button_cancel")
     end
   end
 end
