@@ -188,7 +188,7 @@ module OpenProject
     describe "link_translation" do
       let(:locale) { :en }
       let(:urls) do
-        { url_1: "http://openproject.com/foobar", url_2: "/baz" }
+        { url_1: "http://openproject.com/foo", url_2: "/baz" }
       end
 
       before do
@@ -202,8 +202,8 @@ module OpenProject
         translated = link_translate :translation_with_a_link, links: urls
 
         expect(translated).to eq(
-          'There is a <a href="http://openproject.com/foobar" data-view-component="true" class="Link">link</a> in this' +
-          ' translation! Maybe even <a href="/baz" data-view-component="true" class="Link">two</a>?'
+          'There is a <a href="http://openproject.com/foo" data-view-component="true" class="Link Link--underline">link</a>' +
+          ' in this translation! Maybe even <a href="/baz" data-view-component="true" class="Link Link--underline">two</a>?'
         )
       end
 
@@ -214,8 +214,8 @@ module OpenProject
           translated = link_translate(:translation_with_a_link, links: urls, locale:)
 
           expect(translated).to eq(
-            'There is a <a href="http://openproject.com/foobar" data-view-component="true" class="Link">link</a> in this' +
-            ' translation! Maybe even <a href="/baz" data-view-component="true" class="Link">two</a>?'
+            'There is a <a href="http://openproject.com/foo" data-view-component="true" class="Link Link--underline">link</a>' +
+            ' in this translation! Maybe even <a href="/baz" data-view-component="true" class="Link Link--underline">two</a>?'
           )
           expect(I18n).to have_received(:t).with(anything, locale:)
         end
@@ -236,8 +236,8 @@ module OpenProject
           translated = link_translate :translation_with_a_link, links: urls
 
           expect(translated).to eq(
-            'There is a <a href="https://example.com/a-b" data-view-component="true" class="Link">link</a> in this' +
-            ' translation! Maybe even <a href="/a-c" data-view-component="true" class="Link">two</a>?'
+            'There is a <a href="https://example.com/a-b" data-view-component="true" class="Link Link--underline">link</a>' +
+            ' in this translation! Maybe even <a href="/a-c" data-view-component="true" class="Link Link--underline">two</a>?'
           )
         end
       end
