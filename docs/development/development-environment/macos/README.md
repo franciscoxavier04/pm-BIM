@@ -28,7 +28,7 @@ their homepage.
 Use [rbenv](https://github.com/rbenv/rbenv) and [ruby-build](https://github.com/rbenv/ruby-build#readme) to install
 Ruby. We always require the latest ruby versions, and you can check which version is required
 by [checking the Gemfile](https://github.com/opf/openproject/blob/dev/Gemfile#L31) for the `ruby "~> X.Y"` statement. At
-the time of writing, this version is "3.4.4"
+the time of writing, this version is "3.4.5"
 
 #### Install rbenv and ruby-build
 
@@ -48,18 +48,18 @@ With both installed, we can now install the actual ruby version.
 You can check available ruby versions with `rbenv install --list`.
 
 We suggest you install the version we require in [.ruby-version](https://github.com/opf/openproject/blob/dev/.ruby-version).
-Read the first line e.g. `3.4.4` and install that version.
+Read the first line e.g. `3.4.5` and install that version.
 
 ```shell
 # Install the required version as read from the .ruby-version file
-rbenv install 3.4.4
+rbenv install 3.4.5
 ```
 
 This might take a while depending on whether ruby is built from source. After it is complete, you need to tell rbenv to
 globally activate this version
 
 ```shell
-rbenv global 3.4.4
+rbenv global 3.4.5
 ```
 
 You also need to install [bundler](https://github.com/bundler/bundler/), the ruby gem bundler.
@@ -134,10 +134,10 @@ You should now have an active ruby and node installation. Verify that it works w
 
 ```shell
 $ ruby --version
-ruby 3.4.4 (2025-05-14 revision a38531fd3f) +PRISM [arm64-darwin24]
+ruby 3.4.5 (2025-07-16 revision 20cda200d3) +PRISM [arm64-darwin24]
 
 $ bundler --version
-Bundler version 2.6.9
+Bundler version 2.7.0
 
 node --version
 v22.15.0

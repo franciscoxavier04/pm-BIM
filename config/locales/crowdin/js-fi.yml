@@ -643,10 +643,10 @@ fi:
       title: "Vahvista salasanasi jatkaaksesi"
     pagination:
       no_other_page: "Olet jo ainoalla sivulla."
-      pagination_controls: "Pagination controls"
+      pages_skipped: "Pages skipped."
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
-        next: "Next page"
-        previous: "Previous page"
         page_number: Page %{number}
         show_per_page: Show %{number} per page
     placeholders:
@@ -696,6 +696,7 @@ fi:
           first_day: "First day"
           last_day: "Last day"
     text_are_you_sure: "Oletko varma?"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
     breadcrumb: "Breadcrumb"
     text_data_lost: "All entered data will be lost."
     text_user_wrote: "%{value} kirjoitti:"
@@ -827,10 +828,10 @@ fi:
         mixed: "Mixed"
     work_packages:
       bulk_actions:
-        move: "Bulk change of project"
         edit: "Bulk edit"
-        copy: "Bulk copy"
         delete: "Bulk delete"
+        duplicate: "Bulk duplicate"
+        move: "Bulk change of project"
       button_clear: "Tyhjennä"
       comment_added: "Kommentin lisääminen onnistui."
       comment_send_failed: "On tapahtunut virhe. Kommenttia ei voitu lähettää."
@@ -874,8 +875,8 @@ fi:
         header_no_type: "Uusi tehtävä (tyyppi määrittelemättä)"
         header_with_parent: "Uusi %{type} (Ylätaso %{parent_type} #%{id})"
         button: "Uusi"
-      copy:
-        title: "Copy work package"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Näytä hierarkia tila"
         hide: "Piilota hierarkia tila"

@@ -212,9 +212,10 @@ es:
         change_button: "Guardar y reprogramar"
         change_title: "Cambiar los días laborables"
         removed_title: "Eliminará los siguientes días de la lista de días no laborables:"
-        change_description: "Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance."
+        change_description: "Cambiar qué días de la semana se consideran laborables y cuáles no, puede afectar a las fechas de inicio y fin de todos los paquetes de trabajo y ciclos de vida en todos los proyectos de esta instancia."
         warning: >
-
+          Los cambios pueden tardar algún tiempo en surtir efecto. Se le notificará cuando todos los paquetes de trabajo pertinentes se hayan actualizado.
+          ¿Seguro que desea continuar?
       work_packages_settings:
         warning_progress_calculation_mode_change_from_status_to_field_html: >-
           Cambiar el modo de cálculo del progreso de basado en el estado a basado en el trabajo hará que el campo <i>% completado</i> se pueda editar libremente. Si introduce opcionalmente valores para <i>Trabajo</i> o <i>Trabajo restante</i>, también se vincularán a <i>% completado</i>. Cambiar <i>Trabajo restante</i> puede entonces actualizar <i>% completado</i>.
@@ -297,7 +298,7 @@ es:
           "16_2":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>New header and sidebar with improved navigation and design.</li> <li>Smoother experience with Custom fields, Relations, Reminders, Meetings, and My time tracking.</li> <li>Non-latin languages and emojis supported in PDF exports.</li> <li>Option to disable keyboard shortcuts for better accessibility.</li> <li>SCIM server via API (Enterprise add-on).</li> <li>API support for internal comments.</li> </ul>
+                El lanzamiento contiene varias funciones y mejoras nuevas, como <br>. <ul class="%{list_styling_class}"> <li>Nuevo encabezado y barra lateral con navegación y diseño mejorados.</li> <li>Experiencia mejorada con Campos personalizados, Relaciones, Recordatorios, Reuniones y Seguimiento de mi tiempo.</li> <li>Idiomas no latinos y emojis compatibles en las exportaciones a PDF.</li> <li>Opción de desactivar los atajos de teclado para mejorar la accesibilidad.</li> <li>Servidor SCIM mediante API (extensión Enterprise).</li> <li>Soporte de API para comentarios internos.</li> </ul>
     ical_sharing_modal:
       title: "Suscribirse al calendario"
       inital_setup_error_message: "Se ha producido un error al obtener los datos."
@@ -323,7 +324,7 @@ es:
     label_added_time_by: 'Agregado por <a href="%{authorLink}">%{author}</a> a las %{age}'
     label_ago: "días antes"
     label_all: "todos"
-    label_all_projects: "All projects"
+    label_all_projects: "Todos los proyectos"
     label_all_uppercase: "Todos"
     label_all_work_packages: "todos los paquetes de trabajo"
     label_and: "y"
@@ -642,12 +643,12 @@ es:
       title: "Confirma tu contraseña para continuar"
     pagination:
       no_other_page: "Usted está en la única página."
-      pagination_controls: "Pagination controls"
+      pages_skipped: "Páginas omitidas."
+      page_navigation: "Navegación de paginación"
+      per_page_navigation: 'Selección de elementos por página'
       pages:
-        next: "Next page"
-        previous: "Previous page"
-        page_number: Page %{number}
-        show_per_page: Show %{number} per page
+        page_number: Página %{number}
+        show_per_page: Mostrar %{number} por página
     placeholders:
       default: "-"
       subject: "Escriba aquí el asunto"
@@ -695,7 +696,8 @@ es:
           first_day: "Primer día"
           last_day: "Último día"
     text_are_you_sure: "¿Estás seguro?"
-    breadcrumb: "Breadcrumb"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
+    breadcrumb: "Ruta de navegación"
     text_data_lost: "Todos los datos introducidos se perderán."
     text_user_wrote: "%{value} escribió:"
     types:
@@ -780,7 +782,7 @@ es:
     autocompleter:
       placeholder: "Escriba para buscar"
       notFoundText: "No se encontraron elementos"
-      search: "Search"
+      search: "Buscar"
       project:
         placeholder: "Seleccionar proyecto"
     repositories:
@@ -826,10 +828,10 @@ es:
         mixed: "Mixto"
     work_packages:
       bulk_actions:
-        move: "Cambio masivo del proyecto"
         edit: "Edición en masa"
-        copy: "Copia en masa"
         delete: "Eliminación en masa"
+        duplicate: "Duplicado en masa"
+        move: "Cambio masivo del proyecto"
       button_clear: "Eliminar"
       comment_added: "El comentario fue añadido con éxito."
       comment_send_failed: "Ha ocurrido un error. No se pudo añadir el comentario."
@@ -873,8 +875,8 @@ es:
         header_no_type: "Nuevo paquete de trabajo (tipo aún no establecido)"
         header_with_parent: "Nuevo %{type} (Sub-elemento de %{parent_type} #%{id})"
         button: "Crear"
-      copy:
-        title: "Copiar paquete de trabajo"
+      duplicate:
+        title: "Duplicar paquete de trabajo"
       hierarchy:
         show: "Mostrar modo de jerarquía"
         hide: "Ocultar modo de jerarquía"

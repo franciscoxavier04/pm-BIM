@@ -19,28 +19,26 @@ To **create a new custom field** navigate to *Administration* -> *Custom fields*
 
 You will see the list of all the custom fields that have been created so far, divided by the section on the different tabs for which they were created.
 
-If none have been created so far, click on the link **Create a new custom field** in the respective section, e.g. on the tab for work packages.
+If none have been created so far, click on the link **Create a new custom field** in the respective section, e.g. on the tab for work packages and select the custom field format.
 
 ![Custom fields in OpenProject administration settings](administration-custom-fields.png)
 
-Depending on the module, for which the new custom field is being  created, slightly different options may be offered. This is an example of a new custom field for a work package.
+Depending on the module for which the new custom field is being created, slightly different options may be available. The example below shows a new custom field (with the **Text** format selected) for a **Work Package**.
+
+> [!TIP]
+> Depending on the format of the custom field, the fields to specify vary.
 
 ![Sys-admin-create-custom-field](openproject_system_guide_new_custom_field_new.png)
 
 1. Custom field **Name**, which will appear as the attribute name on the work package form.
-2. Choose a **Format** of the custom field, e.g. text, list, date, boolean. In this example the format *Text* is selected.
-   
-> [!TIP]
-> Depending on the format of the custom field, the fields to specify vary.
-
-3. Specify the **minimal and maximal length**. If a 0 is chosen, no restriction will be imposed on the length of the custom field.
-4. **Regular expression** specifying which values are allowed for the custom field.
-5. **Default value** will be used as a default value for the custom field.
-6. Set if the new custom field should be a **required** field.
-7. Specify if the new custom field should be **used for all projects**. This means the custom field will be active for all projects and does not need to be activated separately per project.
-8. Specify if the new custom field should be **used as a filter for work packages**. See [here](../../user-guide/work-packages/work-package-table-configuration/#filter-work-packages) how to filter work packages.
-9. Specify if the new custom field should be **searchable** via the global search.
-10. **Save** the new custom field.
+2. Specify the **minimal and maximal length**. If a 0 is chosen, no restriction will be imposed on the length of the custom field.
+3. **Regular expression** specifying which values are allowed for the custom field.
+4. **Default value** will be used as a default value for the custom field.
+5. Set if the new custom field should be a **required** field.
+6. Specify if the new custom field should be **used for all projects**. This means the custom field will be active for all projects and does not need to be activated separately per project.
+7. Specify if the new custom field should be **used as a filter for work packages**. See [here](../../user-guide/work-packages/work-package-table-configuration/#filter-work-packages) how to filter work packages.
+8. Specify if the new custom field should be **searchable** via the global search.
+9. **Save** the new custom field.
 
 ## Custom field formats
 

@@ -63,6 +63,7 @@ import { uniqueId } from 'lodash';
 @Component({
   templateUrl: './ckeditor-augmented-textarea.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin implements OnInit {
   // Track form submission "in-flight" state per form, to prevent multiple
@@ -146,7 +147,7 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
     // Parse the resource if any exists
     this.halResource = this.resource ? this.halResourceService.createHalResource(this.resource, true) : undefined;
 
-    this.formElement = this.element.closest<HTMLFormElement>('form') as HTMLFormElement;
+    this.formElement = this.element.closest('form')!;
 
     this.wrappedTextArea = document.getElementById(this.textAreaId) as HTMLTextAreaElement;
 
@@ -191,7 +192,7 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
     CkeditorAugmentedTextareaComponent.inFlight.set(this.formElement, true);
 
     this.syncToTextarea();
-    window.OpenProject.pageIsSubmitted = true;
+    window.OpenProject.pageState = 'submitted';
 
     setTimeout(() => {
       if (evt?.submitter) {
@@ -212,10 +213,6 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
   }
 
   public setup(editor:ICKEditorInstance) {
-    // Have a hacky way to access the editor from outside of angular.
-    // This is e.g. employed to set the text from outside to reuse the same editor for different languages.
-    jQuery(this.element).data('editor', editor);
-
     this.setupMarkingReadonlyWhenTextareaIsDisabled(editor);
 
     if (this.halResource?.attachments) {
@@ -236,7 +233,7 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
   }
 
   public syncToTextarea() {
-    window.OpenProject.pageWasEdited = true;
+    window.OpenProject.pageState = 'edited';
 
     try {
       this.wrappedTextArea.value = this.ckEditorInstance.getTransformedContent(true);

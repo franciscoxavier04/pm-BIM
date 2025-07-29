@@ -253,7 +253,7 @@ ja:
         caption: If your agenda outcomes contain confidential information, you can choose to not include them in the export.
       footer_text:
         label: フッターのテキスト
-        caption: This text will appear on every page on the right of the footer.
+        caption: This text will appear on every page at the center of the footer.
       submit_button: ダウンロード
   meeting_section:
     untitled_title: "タイトルなしセクション"
@@ -261,6 +261,10 @@ ja:
     placeholder_title: "新しいセクション"
     empty_text: "アイテムをここにドラッグするか、新しいアイテムを作成してください"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Time zone difference"
+      description: >
+        The dates below are referencing the time zone of the meeting series (%{actual_zone}), not your local time zone (%{user_zone}).
     ended_blankslate:
       title: "一連の会議が終了しました"
       message: "一連の会議は終了しました。今後の会議はありません "

@@ -45,7 +45,7 @@ es:
       meeting_agenda_item:
         title: "Título"
         author: "Autor"
-        duration_in_minutes: "Duration"
+        duration_in_minutes: "Duración"
         description: "Notas"
         presenter: "Responsable"
       meeting_section:
@@ -257,7 +257,7 @@ es:
         caption: Si los resultados de su agenda contienen información confidencial, puede optar por no incluirlos en la exportación.
       footer_text:
         label: Texto a pie de página
-        caption: Este texto aparecerá en cada página a la derecha del pie de página.
+        caption: This text will appear on every page at the center of the footer.
       submit_button: Descargar
   meeting_section:
     untitled_title: "Sección sin título"
@@ -265,6 +265,10 @@ es:
     placeholder_title: "Nueva sección"
     empty_text: "Arrastre los elementos aquí o cree uno nuevo"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Diferencia de zona horaria"
+      description: >
+        Las fechas de abajo se refieren a la zona horaria de la serie de reuniones (%{actual_zone}), no a su zona horaria local (%{user_zone}).
     ended_blankslate:
       title: "Serie de reuniones finalizada"
       message: "Esta serie de reuniones ha llegado a su fin. No hay reuniones programadas. "
@@ -350,7 +354,7 @@ es:
   permission_delete_meetings: "Eliminar reuniones"
   permission_view_meetings: "Ver reuniones"
   permission_manage_agendas: "Gestionar agendas"
-  permission_manage_agendas_explanation: ""
+  permission_manage_agendas_explanation: "Permite crear, editar y eliminar puntos de la agenda"
   permission_manage_outcomes: "Gestionar resultados"
   permission_send_meeting_invites_and_outcomes: "Enviar invitaciones a reuniones y resultados a los participantes"
   project_module_meetings: "Reuniones"

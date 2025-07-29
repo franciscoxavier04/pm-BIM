@@ -644,10 +644,10 @@ ru:
       title: "Для продолжения введите свой пароль"
     pagination:
       no_other_page: "Вы находитесь на единственной странице."
-      pagination_controls: "Управление постраничным отображением"
+      pages_skipped: "Страницы пропущены."
+      page_navigation: "Навигация по страницам"
+      per_page_navigation: 'Количество элементов на страницу'
       pages:
-        next: "Следующая страница"
-        previous: "Предыдущая страница"
         page_number: Страница %{number}
         show_per_page: Показать %{number} на странице
     placeholders:
@@ -697,6 +697,7 @@ ru:
           first_day: "Первый день"
           last_day: "Последний день"
     text_are_you_sure: "Уверены?"
+    text_are_you_sure_to_cancel: "У Вас есть несохраненные изменения на этой странице. Вы уверены, что хотите их отменить?"
     breadcrumb: "Навигационная цепочка"
     text_data_lost: "Все введенные данные будут потеряны."
     text_user_wrote: "%{value} написал:"
@@ -828,10 +829,10 @@ ru:
         mixed: "Смешанное"
     work_packages:
       bulk_actions:
-        move: "Массовое изменение проекта"
         edit: "Массовое изменение"
-        copy: "Массовое копирование"
         delete: "Массовое удаление"
+        duplicate: "Групповое дублирование"
+        move: "Массовое изменение проекта"
       button_clear: "Очистить"
       comment_added: "Комментарий успешно добавлен."
       comment_send_failed: "Произошла ошибка. Не удалось отправить комментарий."
@@ -875,8 +876,8 @@ ru:
         header_no_type: "Новый пакет работ (Тип еще не установлен)"
         header_with_parent: "Новый %{type} (дочерний пакет работ %{parent_type} № %{id})"
         button: "Создать"
-      copy:
-        title: "Копировать пакет работ"
+      duplicate:
+        title: "Дублировать пакет работ"
       hierarchy:
         show: "Скрыть режим иерархии"
         hide: "Скрыть режим иерархии"

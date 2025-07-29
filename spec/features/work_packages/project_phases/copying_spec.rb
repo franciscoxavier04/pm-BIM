@@ -84,7 +84,7 @@ RSpec.describe "Copying a work package with linked project phases", :js do
 
       wait_for_network_idle
 
-      click_on "Copy and follow"
+      click_on "Duplicate and follow"
 
       # Not actually the same work package page any more but works just the same.
       work_package_page.expect_and_dismiss_flash(message: "Successful creation.")
@@ -110,7 +110,7 @@ RSpec.describe "Copying a work package with linked project phases", :js do
 
       wait_for_network_idle
 
-      click_on "Copy and follow"
+      click_on "Duplicate and follow"
 
       # Not actually the same work package page any more but works just the same.
       work_package_page.expect_and_dismiss_flash(message: "Successful creation.")

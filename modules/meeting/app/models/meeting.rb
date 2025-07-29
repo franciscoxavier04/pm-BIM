@@ -42,6 +42,8 @@ class Meeting < ApplicationRecord
   belongs_to :recurring_meeting, optional: true
   has_one :scheduled_meeting, inverse_of: :meeting
 
+  has_many :time_entries, dependent: :delete_all, inverse_of: :entity, as: :entity
+
   # Legacy association to minutes, agendas, contents
   # to be removed in 17.0
   has_one :agenda, dependent: :destroy, class_name: "MeetingAgenda"
@@ -166,6 +168,12 @@ class Meeting < ApplicationRecord
 
   def templated?
     !!template
+  end
+
+  # One-time meeting time zone
+  # is always in the user's time zone
+  def time_zone
+    User.current.time_zone
   end
 
   # Returns true if user or current user is allowed to view the meeting

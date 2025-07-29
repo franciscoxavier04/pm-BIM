@@ -63,7 +63,6 @@ fil:
         primary-button-color: "Primary button"
         accent-color: "Accent"
         header-bg-color: "Header background"
-        header-item-bg-hover-color: "Header background on hover"
         main-menu-bg-color: "Main menu background"
         main-menu-bg-selected-background: "Main menu when selected"
       custom_colors: "Naka-kustom ng mga kukay"
@@ -71,10 +70,6 @@ fil:
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
         accent-color: "Color for links and other decently highlighted elements."
-        header-item-bg-hover-color: "Ang nakapalibot na kulay ng madaling pindutin aytem ng header kung naka-hover gamit ang mouse."
-        header-item-font-color: "Ang kulay ng font sa madaling pinduting header ng mga aytem."
-        header-item-font-hover-color: "Ang kulay ng font ng madaling pinduting mga aytem kung naka-hover gamit ang mouse."
-        header-border-bottom-color: "Manipis na kinya sa ibaba ng header. Iwanan itong patlang walang laman kung ayaw mo sa kahit anong linya."
         main-menu-bg-color: "Kabilang kaliwa ang kulay ng pagpipiliang nakapalibot na kulay."
       theme_warning: Changing the theme will overwrite you custom style. The design will then be lost. Are you sure you want to continue?
     enterprise:
@@ -121,7 +116,7 @@ fil:
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -363,19 +358,34 @@ fil:
       parent: "Magulang"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
       all: "All"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Sa kasalukuyan ay walang mga grupo.
-      no_results_content_text: Gumawa ng bagong grupo
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Sa kasalukuyan ay walang parte ng mga users sa grupong ito.
     memberships:
       no_results_title_text: Sa kasalukuyan ay walang parte ng mga proyekto sa grupong ito.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Specify a list of names to ignore when processing attachments for incoming mails (e.g., signatures or icons). Enter one filename per line.
@@ -1110,7 +1120,6 @@ fil:
       role:
         permissions: "Mga pahintulot"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1165,7 +1174,7 @@ fil:
         comments_sorting: "Display work package activity sorted by"
         disable_keyboard_shortcuts: "Disable keyboard shortcuts"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Aksezibilidad mode"
         auto_hide_popups: "Automatically hide success banners"
@@ -1606,6 +1615,9 @@ fil:
     models:
       attachment: "File"
       attribute_help_text: "Tekstong tulong na katangian"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "Kategorya"
       comment: "Komento"
       custom_action: "Custom aksyon"
@@ -1742,7 +1754,7 @@ fil:
     estimated_time: "Work"
     email: "Email"
     entity_type: "Entity"
-    expires_at: "Matapos sa"
+    expires_at: "Expires on"
     firstname: "Unang pangalan"
     filter: "Salain"
     group: "Grupo"
@@ -1858,7 +1870,6 @@ fil:
   button_copy: "Kopyahin"
   button_copy_to_clipboard: "Kopyahin sa clipboard"
   button_copy_link_to_clipboard: "Copy link to clipboard"
-  button_copy_and_follow: "Kopyahin at sundin"
   button_create: "Lumikha"
   button_create_and_continue: "Lumikha at magpatuloy"
   button_decline: "Decline"
@@ -1867,6 +1878,7 @@ fil:
   button_delete_watcher: "Burahin ang manunuod %{name}"
   button_download: "I-download"
   button_duplicate: "Kapareha"
+  button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "I-edit"
   button_edit_associated_wikipage: "I-edit ang kaugnay ng Wiki na pahina: %{page_title}"
   button_expand_all: "Malakihin lahat"
@@ -2538,7 +2550,7 @@ fil:
       aggregation: "Aggregation"
       api_and_webhooks: "API and webhooks"
     quick_add:
-      label: "Open quick add menu"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2838,6 +2850,7 @@ fil:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Pangkalahatan"
   label_generate_key: "Bumuo ng susi"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: "Landas sa .git direktoryo"
   label_greater_or_equal: ">=="
@@ -2981,6 +2994,7 @@ fil:
   label_no_due_date: "no finish date"
   label_no_start_date: "walang simulang petsa"
   label_no_parent_page: "No parent page"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Walang maipakita"
   label_nobody: "walang sinuman"
   label_not_configured: "Not configured"
@@ -3013,7 +3027,7 @@ fil:
   label_password_rule_special: "Mga espesyal karakter"
   label_password_rule_uppercase: "Uppercase"
   label_path_encoding: "Landas ng page-encode"
-  label_per_page: "Bawat pahina"
+  label_per_page: "Per page:"
   label_people: "Mga tao"
   label_permissions: "Mga pahintulot"
   label_permissions_report: "Mga pinahintulutan na ulat"
@@ -3189,6 +3203,7 @@ fil:
   label_user_mail_option_only_my_events: "Sa mga bagay ako tumingin o kasama ako sa"
   label_user_mail_option_only_owner: "Sa mga bagay lamg ako na ako ang may-ari ng"
   label_user_mail_option_selected: "Sa kahit anong kaganapan sa mga napiling proyekto lamang"
+  label_user_menu: "User menu"
   label_user_new: "Bagong gumagamit"
   label_user_plural: "Mga gumagamit"
   label_user_search: "Maghanap para sa gumagamit"
@@ -3573,7 +3588,7 @@ fil:
   permission_comment_news: "Mga komento ng balita"
   permission_commit_access: "Magbasa/magsulat acess sa repositoryo (commit)"
   permission_copy_projects: "Kopyahin ang mga proyekto"
-  permission_copy_work_packages: "Copy work packages"
+  permission_copy_work_packages: "Duplicate work packages"
   permission_create_backup: "Create backups"
   permission_delete_work_package_watchers: "Burahin ang mga manunuod"
   permission_delete_work_packages: "Burahin ang mga work package"

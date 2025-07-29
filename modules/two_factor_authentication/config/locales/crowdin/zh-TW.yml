@@ -121,7 +121,7 @@ zh-TW:
       2fa_from_webauthn: 請提供支援「 WebAuthn」裝置 <strong>%{device_name}</strong>. 如果是USB設備，請確定插入以及觸碰驗證後，再點選登入按鈕。
       webauthn:
         title: "WebAuthn"
-        description: 註冊 FIDO2 設備(如 YubiKey)或行動裝置的安全區域。
+        description: 註冊 FIDO2 裝置（例如 YubiKey）或您行動裝置的安全區域（Secure Enclave）。
         further_steps: 選擇名稱後，可以點擊“繼續”按鈕。瀏覽器將提示您出示 WebAuthn 設備。完成後，設備註冊即告完成。
       totp:
         title: "基於應用程式的身份驗證器"

@@ -21,6 +21,11 @@ tr:
         project_folder_mode: Proje klasör modu
         storage: Depolama
         storage_url: Depolama adresi
+      storages/share_point_storage:
+        host: Sharepoint Site URL
+        library: Library ID
+        name: Name
+        site: Site ID
       storages/storage:
         authentication_method: Kimlik Doğrulama Metodu
         creator: Oluşturan
@@ -32,6 +37,7 @@ tr:
     errors:
       messages:
         invalid_host_url: geçerli bir adres değil.
+        invalid_sharepoint_url: is not a valid SharePoint site, library, or document URL.
         not_linked_to_project: projeye bağlı değildir.
       models:
         storages/file_link:
@@ -81,6 +87,7 @@ tr:
     edit_project_folder:
       label: Proje türünü düzenle
     open:
+      contact_admin: Please contact your administrator to resolve this error.
       remote_identity_error: An unexpected error occurred while connecting to the storage.
     project_folder_mode:
       automatic: Otomatik olarak yönetilir
@@ -128,7 +135,7 @@ tr:
               conflict: 'The user %{user} could not be added to the %{group} group for the following reason: %{reason}'
               failed_to_add: 'The user %{user} could not be added to the %{group} group for the following reason: %{reason}'
             create_folder:
-              conflict: The %{folder_name} already exists on %{parent_location}.
+              conflict: The folder %{folder_name} already exists on %{parent_location}.
               not_found: "%{parent_location} bulunamadı."
             ensure_root_folder_permissions:
               not_found: "%{group_folder} bulunamadı. Lütfen Nextcloud Grup Klasörü kurulumunuzu kontrol edin."
@@ -142,6 +149,7 @@ tr:
               conflict: 'The user %{user} could not be removed from the %{group} group for the following reason: %{reason}'
               failed_to_remove: 'The user %{user} could not be removed from the %{group} group for the following reason: %{reason}'
             rename_project_folder:
+              conflict: OpenProject could not rename the project folder to %{current_path} as a folder with the same name already exists
               forbidden: OpenProject user does not have access to %{current_path} folder.
               not_found: "%{current_path} bulunamadı."
             set_folders_permissions:
@@ -167,7 +175,7 @@ tr:
               not_found: "%{current_path} bulunamadı."
             set_folders_permissions:
               permission_not_set: '%{path} üzerinde izinler ayarlanamadı.'
-          error: An unexpected error occurred. Please ensure that OneDrive/SharePoint is reachable and check OpenProject worker logs for more information
+          error: An unexpected error occurred. Please ensure that OneDrive is reachable and check OpenProject worker logs for more information
           not_allowed: OpenProject'in OneDrive sürücünüze erişmesine izin verilmedi. Lütfen Azure Uygulamasında ayarlanan izinleri kontrol edin.
           unauthorized: OpenProject OneDrive ile eşitlenemedi. Lütfen depolama alanınızı ve Azure Uygulaması yapılandırmanızı kontrol edin.
           user_does_not_exist: "%{user} does not exist in Nextcloud."
@@ -186,7 +194,7 @@ tr:
     configuration_checks:
       oauth_client_incomplete:
         nextcloud: OpenProject'in OAuth kullanarak Nextcloud verilerine erişmesine izin verin.
-        one_drive: OpenProject'in OneDrive/Sharepoint'e bağlanmak için OAuth kullanarak Azure verilerine erişmesine izin verin.
+        one_drive: Allow OpenProject to access Azure data using OAuth to connect OneDrive.
       redirect_uri_incomplete:
         one_drive: Doğru adres yönlendirmesi ile kurulumu tamamlayın.
     confirm_replace_oauth_application: This action will reset the current OAuth credentials. After confirming you will have to reenter the credentials at the storage provider and all remote users will have to authorize against OpenProject again. Are you sure you want to proceed?
@@ -296,7 +304,7 @@ tr:
         od_drive_id_not_found: The configured drive id could not be found. Please check the configuration.
         od_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
         od_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
-        od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
+        od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive as the user did not yet link their Microsoft account.
         od_tenant_id_wrong: The configured directory (tenant) id is invalid. Please check the configuration.
         od_test_folder_exists: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
         od_unexpected_content: Sürücüde beklenmeyen içerik bulundu.
@@ -362,9 +370,9 @@ tr:
       one_drive:
         application_link_text: Azure portalı
         copy_redirect_uri: Copy redirect URI
-        documentation_link_text: OneDrive/SharePoint dosya depoları belgeleri
+        documentation_link_text: OneDrive file storages documentation
         drive_id: Lütfen %{drive_id_link_text} adresindeki adımları izleyerek kimliği istediğiniz sürücüden kopyalayın.
-        integration: OneDrive/SharePoint
+        integration: OneDrive
         missing_client_id_for_redirect_uri: Please fill the OAuth values to generate a URI
         oauth_client_redirect_uri: Please copy this value to a new Web redirect URI under Redirect URIs.
         oauth_client_secret: İstemci kimlik bilgileri altında uygulama istemci sırrı yoksa, lütfen yeni bir tane oluşturun.
@@ -475,8 +483,13 @@ tr:
       one_drive:
         label_oauth_client_id: Azure OAuth Application (client) ID
         label_oauth_client_secret: Azure OAuth Client Secret Value
-        name: OneDrive/SharePoint
+        name: OneDrive
         name_placeholder: ör. OneDrive
+      share_point:
+        label_oauth_client_id: Azure OAuth Application (client) ID
+        label_oauth_client_secret: Azure OAuth Client Secret Value
+        name: SharePoint
+        name_placeholder: e.g. SharePoint
     show_attachments_toggle:
       description: Bu seçeneğin devre dışı bırakılması, iş paketleri dosyaları sekmesindeki ekler listesini gizleyecektir. Bir iş paketinin açıklamasına eklenen dosyalar dahili ekler deposuna yüklenmeye devam edecektir.
       label: İş paketleri dosyaları sekmesinde ekleri göster
@@ -494,5 +507,6 @@ tr:
     successful_storage_connection: Depolama başarıyla bağlandı! Kullanmak istediğiniz her proje için Projeler sekmesinde depolamayı etkinleştirmeyi unutmayın.
     upsell:
       description: |-
-        OneDrive/SharePoint'inizi OpenProject ile bir dosya depolama alanı olarak entegre edin. Dosyaları yükleyin ve bunları doğrudan bir projedeki iş paketlerine bağlayın.
-      title: OneDrive/SharePoint entegrasyonu
+        Integrate your OneDrive as a file storage with OpenProject. Upload files and link them directly to
+        work packages in a project.
+      title: OneDrive integration

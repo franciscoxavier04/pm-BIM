@@ -44,7 +44,7 @@ zh-TW:
       meeting_agenda_item:
         title: "標題"
         author: "會議發起者"
-        duration_in_minutes: "Duration"
+        duration_in_minutes: "時長"
         description: "備註"
         presenter: "簡報者"
       meeting_section:
@@ -253,7 +253,7 @@ zh-TW:
         caption: 如果您的議程成果包含機密資訊，您可以選擇不將其包含在匯出內容中。
       footer_text:
         label: 頁尾文字
-        caption: 此文字將會出現在每一頁頁尾右邊。
+        caption: 此文字將出現在每頁的頁尾中央。
       submit_button: 下載
   meeting_section:
     untitled_title: "無標題章節"
@@ -261,6 +261,10 @@ zh-TW:
     placeholder_title: "新增章節"
     empty_text: "將項目拖曳至此處或建立新項目"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "時區差異"
+      description: >
+        以下日期是以會議系列的時區 (%{actual_zone}) 為準，而非您所在地的時區 (%{user_zone})。
     ended_blankslate:
       title: "系列會議結束"
       message: "本系列會議已結束。沒有接下來的會議。 "

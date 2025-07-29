@@ -643,10 +643,10 @@ si:
       title: "දිගටම කරගෙන යාමට ඔබගේ මුරපදය තහවුරු කරන්න"
     pagination:
       no_other_page: "ඔබ සිටින්නේ එකම පිටුවේ ය."
-      pagination_controls: "Pagination controls"
+      pages_skipped: "Pages skipped."
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
-        next: "Next page"
-        previous: "Previous page"
         page_number: Page %{number}
         show_per_page: Show %{number} per page
     placeholders:
@@ -696,6 +696,7 @@ si:
           first_day: "First day"
           last_day: "Last day"
     text_are_you_sure: "ඔබට විශ්වාසද?"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
     breadcrumb: "Breadcrumb"
     text_data_lost: "All entered data will be lost."
     text_user_wrote: "%{value} ලිවීය:"
@@ -827,10 +828,10 @@ si:
         mixed: "Mixed"
     work_packages:
       bulk_actions:
-        move: "ව්යාපෘතියේ තොග වෙනසක්"
         edit: "තොග සංස්කරණය"
-        copy: "තොග පිටපතක්"
         delete: "තොග මකන්න"
+        duplicate: "Bulk duplicate"
+        move: "ව්යාපෘතියේ තොග වෙනසක්"
       button_clear: "පැහැදිලි"
       comment_added: "අදහස් දැක්වීම සාර්ථකව එකතු කරන ලදී."
       comment_send_failed: "දෝෂයක් සිදුවී ඇත. අදහස ඉදිරිපත් කළ නොහැකි විය."
@@ -874,8 +875,8 @@ si:
         header_no_type: "නව වැඩ පැකේජය (ටයිප් තවමත් සකසා නැත)"
         header_with_parent: "නව %{type} ( %{parent_type} #%{id}දරුවා)"
         button: "සාදන්න"
-      copy:
-        title: "වැඩ පැකේජය පිටපත් කරන්න"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "ධූරාවලිය මාදිලිය පෙන්වන්න"
         hide: "ධූරාවලිය මාදිලිය සඟවන්න"

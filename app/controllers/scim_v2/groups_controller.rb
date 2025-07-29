@@ -32,6 +32,8 @@ module ScimV2
   class GroupsController < Scimitar::ResourcesController
     include BaseControllerActions
 
+    before_action :remove_breaking_fields_from_params, only: %i[create replace]
+
     def create
       super do |scim_resource|
         storage_class.transaction do
@@ -40,26 +42,15 @@ module ScimV2
           call = Groups::CreateService
                    .new(user: User.current, model: group)
                    .call(group.attributes)
-                   .on_failure do |result|
-            uniqueness_error = result.errors.find { |e| e.type == :taken }
-            if uniqueness_error.present?
-              raise Scimitar::ErrorResponse.new(
-                status: 409,
-                scimType: "uniqueness",
-                detail: "Operation failed due to a uniqueness constraint: #{result.message}"
-              )
-            else
-              raise result.message
-            end
-          end
+          raise_result_errors_for_scim(call)
           group = call.result
-
           members = scim_resource.members
           if members.present?
-            Groups::AddUsersService
-              .new(group, current_user: User.system)
-              .call(ids: members.map(&:value), send_notifications: false)
-              .on_failure { |call| raise call.message }
+            raise_result_errors_for_scim(
+              Groups::AddUsersService
+                .new(group, current_user: User.system)
+                .call(ids: members.map(&:value), send_notifications: false)
+            )
           end
 
           group.to_scim(
@@ -75,10 +66,11 @@ module ScimV2
         storage_class.transaction do
           group = storage_scope.find(group_id)
           group.from_scim!(scim_hash: scim_resource.as_json)
-          Groups::UpdateService
-            .new(user: User.current, model: group)
-            .call(user_ids: scim_resource.members.map(&:value))
-            .on_failure { |call| raise call.message }
+          raise_result_errors_for_scim(
+            Groups::UpdateService
+              .new(user: User.current, model: group)
+              .call(user_ids: scim_resource.members&.map(&:value))
+          )
           group.reload
           group.to_scim(
             location: url_for(action: :show, id: group.id),
@@ -94,10 +86,11 @@ module ScimV2
           group = storage_scope.find(group_id)
           group.from_scim_patch!(patch_hash: patch_hash)
           user_ids = group.scim_members.map(&:id)
-          Groups::UpdateService
-            .new(user: User.current, model: group)
-            .call(user_ids:)
-            .on_failure { |call| raise call.message }
+          raise_result_errors_for_scim(
+            Groups::UpdateService
+              .new(user: User.current, model: group)
+              .call(user_ids:)
+          )
           group.reload
           group.to_scim(
             location: url_for(action: :show, id: group.id),
@@ -110,10 +103,11 @@ module ScimV2
     def destroy
       super do |group_id|
         group = storage_scope.find(group_id)
-        Groups::DeleteService
-          .new(user: User.current, model: group)
-          .call
-          .on_failure { |call| raise call.message }
+        raise_result_errors_for_scim(
+          Groups::DeleteService
+            .new(user: User.current, model: group)
+            .call
+        )
       end
     end
 
@@ -128,6 +122,21 @@ module ScimV2
         .left_joins(:users, :user_auth_provider_links)
         .includes(:users, :user_auth_provider_links)
         .not_builtin
+    end
+
+    private
+
+    # There is a bug in scimitar gem.
+    # When "$ref" sub-attribute is present then scim_reosource cannot be intialized
+    # Firstly it fails because $ref is not part of the schema.
+    # Secondly if it has been added to the schema then "$ref" cannot be a parameter for `attr_accessor` call.
+    # Hopefully helpful code links:
+    # 1. https://github.com/pond/scimitar/blob/09b284778340ee067df9e5140d0230386afb9992/app/controllers/scimitar/resources_controller.rb#L176C25-L176C38
+    # 2. https://github.com/pond/scimitar/blob/09b284778340ee067df9e5140d0230386afb9992/app/models/scimitar/schema/derived_attributes.rb#L13C13-L13C42
+    #
+    # Therefore, before scimitar accepts "$ref" sub-attributes we just remove them from payload.
+    def remove_breaking_fields_from_params
+      params[:members]&.each { |member| member.delete("$ref") }
     end
   end
 end

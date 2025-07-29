@@ -600,12 +600,7 @@ class PermittedParams
           offset
           previous
           scope
-          work_packages
-          news
-          changesets
-          wiki_pages
-          messages
-          projects
+          filter
           submit
         ),
         status: %i(

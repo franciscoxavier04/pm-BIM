@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -45,6 +47,7 @@ module WorkPackage::Exports
     #   projectValue:1234:active # Outputs project with id 1234 value for "active"
     #   projectValue:my-project-identifier:active # Outputs project with identifier my-project-identifier value for "active"
     class Attributes < OpenProject::TextFormatting::Matchers::RegexMatcher
+      extend WorkPackage::Exports::Attributes
       DISABLED_PROJECT_RICH_TEXT_FIELDS = %i[description status_explanation status_description].freeze
       DISABLED_WORK_PACKAGE_RICH_TEXT_FIELDS = %i[description].freeze
 
@@ -101,10 +104,21 @@ module WorkPackage::Exports
       end
 
       def self.resolve_label(model, attribute)
-        model.human_attribute_name(
-          ::API::Utilities::PropertyNameConverter.to_ar_name(attribute.to_sym, context: model.new)
-        )
+        model.human_attribute_name(to_ar_name(attribute, model.new))
       end
+
+      def self.to_ar_name(attribute, context)
+        ::API::Utilities::PropertyNameConverter.to_ar_name(attribute.to_sym, context:)
+      end
+
+      ##
+      # Resolves a work package or project match based on the type and id.
+      # Returns the formatted value or an error message if not found.
+      #
+      # @param id [String] The ID of the work package or project.
+      # @param type [String] The type of the match (label or value).
+      # @param attribute [String] The attribute to resolve.
+      # @param user [User] The user context for visibility checks.
 
       def self.resolve_work_package_match(id, type, attribute, user)
         return resolve_label_work_package(attribute) if type == "label"
@@ -145,18 +159,30 @@ module WorkPackage::Exports
       end
 
       def self.resolve_value(obj, attribute, disabled_rich_text_fields)
-        cf = obj.available_custom_fields.find { |pcf| pcf.name == attribute }
+        custom_field = find_custom_field(obj, attribute)
+        return msg_macro_error_rich_text if custom_field&.formattable?
 
-        return msg_macro_error_rich_text if cf&.formattable?
+        attribute_name = convert_to_attribute_name(custom_field, attribute, obj)
+        return " " unless can_view_attribute?(custom_field, obj, attribute_name)
+        return msg_macro_error_rich_text if disabled_rich_text_fields.include?(attribute_name.to_sym)
 
-        ar_name = if cf.nil?
-                    ::API::Utilities::PropertyNameConverter.to_ar_name(attribute.to_sym, context: obj)
-                  else
-                    "cf_#{cf.id}"
-                  end
-        return msg_macro_error_rich_text if disabled_rich_text_fields.include?(ar_name.to_sym)
+        format_attribute_value(attribute_name, obj.class, obj)
+      end
 
-        format_attribute_value(ar_name, obj.class, obj)
+      def self.can_view_attribute?(custom_field, obj, attribute_name)
+        custom_field || allowed_to_view_attribute?(obj, attribute_name)
+      end
+
+      def self.convert_to_attribute_name(custom_field, attribute, obj)
+        if custom_field.nil?
+          to_ar_name(attribute, obj)
+        else
+          "cf_#{custom_field.id}"
+        end
+      end
+
+      def self.find_custom_field(obj, attribute)
+        obj.available_custom_fields.find { |pcf| pcf.name == attribute }
       end
 
       def self.format_attribute_value(ar_name, model, obj)

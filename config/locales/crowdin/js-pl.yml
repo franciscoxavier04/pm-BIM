@@ -212,10 +212,10 @@ pl:
         change_button: "Zapisz i zmień harmonogram"
         change_title: "Zmień dni robocze"
         removed_title: "Z listy dni nieroboczych usuniesz następujące dni:"
-        change_description: "Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance."
+        change_description: "Zmiana dni tygodnia, które są uważane za dni robocze lub nierobocze, może wpłynąć na dni rozpoczęcia i zakończenia wszystkich pakietów roboczych i cykli życia we wszystkich projektach w tym wystąpieniu."
         warning: >
-          The changes might take some time to take effect. You will be notified when all relevant work packages and project life cycles have been updated.
-          Are you sure you want to continue?
+          Zmiany mogą wejść w życie po pewnym czasie. Gdy wszystkie odpowiednie pakiety robocze i cykle życia projektów zostaną zaktualizowane, otrzymasz powiadomienie.
+          Czy na pewno chcesz kontynuować?
       work_packages_settings:
         warning_progress_calculation_mode_change_from_status_to_field_html: >-
           Zmiana trybu obliczania postępu z opartego na statusie na oparty na pracy spowoduje, że pole <i>% ukończenia</i> będzie można dowolnie edytować. Jeśli opcjonalnie wprowadzisz wartości <i>Praca</i> lub <i>Pozostała praca</i>, zostaną one również powiązane z wartością <i>% ukończenia</i>. Zmiana wartości <i>Pozostała praca</i> może wówczas skutkować zaktualizowaniem wartości <i>% ukończenia</i>.
@@ -298,7 +298,7 @@ pl:
           "16_2":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>New header and sidebar with improved navigation and design.</li> <li>Smoother experience with Custom fields, Relations, Reminders, Meetings, and My time tracking.</li> <li>Non-latin languages and emojis supported in PDF exports.</li> <li>Option to disable keyboard shortcuts for better accessibility.</li> <li>SCIM server via API (Enterprise add-on).</li> <li>API support for internal comments.</li> </ul>
+                Wersja zawiera różne nowe funkcje i ulepszenia, takie jak <br> <ul class="%{list_styling_class}"> <li>Nowy nagłówek i pasek boczny z ulepszoną nawigacją i wyglądem.</li> <li>Płynniejsza praca z polami niestandardowymi, relacjami, przypomnieniami, spotkaniami i funkcją Moje śledzenie czasu.</li> <li>Obsługa języków niełacińskich i emotikonów w eksportach w formacie PDF.</li> <li>Opcja wyłączenia skrótów klawiaturowych dla lepszej dostępności.</li> <li>Serwer SCIM przez interfejs API (dodatek wersji Enterprise).</li> <li>Obsługa interfejsu API dla komentarzy wewnętrznych.</li> </ul>
     ical_sharing_modal:
       title: "Subskrybuj kalendarz"
       inital_setup_error_message: "Podczas pobierania danych wystąpił błąd."
@@ -324,7 +324,7 @@ pl:
     label_added_time_by: 'Dodany przez <a href="%{authorLink}">%{author}</a> o %{age}'
     label_ago: "dni temu"
     label_all: "wszystkie"
-    label_all_projects: "All projects"
+    label_all_projects: "Wszystkie projekty"
     label_all_uppercase: "Wszystkie"
     label_all_work_packages: "wszystkie pakiety pracy"
     label_and: "i"
@@ -645,12 +645,12 @@ pl:
       title: "Potwierdź hasło aby kontynuować"
     pagination:
       no_other_page: "Jesteś na jedynej stronie."
-      pagination_controls: "Pagination controls"
+      pages_skipped: "Pominięte strony."
+      page_navigation: "Nawigacja po paginacji"
+      per_page_navigation: 'Wybór liczby pozycji na jednej stronie'
       pages:
-        next: "Next page"
-        previous: "Previous page"
-        page_number: Page %{number}
-        show_per_page: Show %{number} per page
+        page_number: Strona %{number}
+        show_per_page: Pokaż %{number} na jednej stronie
     placeholders:
       default: "-"
       subject: "Wpisz tutaj temat"
@@ -698,7 +698,8 @@ pl:
           first_day: "Pierwszy dzień"
           last_day: "Ostatni dzień"
     text_are_you_sure: "Jesteś pewny?"
-    breadcrumb: "Breadcrumb"
+    text_are_you_sure_to_cancel: "Na tej stronie znajdują się niezapisane zmiany. Czy na pewno chcesz je odrzucić?"
+    breadcrumb: "Ścieżka"
     text_data_lost: "Wszystkie wprowadzone dane zostaną utracone."
     text_user_wrote: "%{value} napisał(a):"
     types:
@@ -783,7 +784,7 @@ pl:
     autocompleter:
       placeholder: "Wpisz szukaną frazę"
       notFoundText: "Nie znaleziono elementów"
-      search: "Search"
+      search: "Wyszukaj"
       project:
         placeholder: "Wybierz projekt"
     repositories:
@@ -829,10 +830,10 @@ pl:
         mixed: "Mieszane"
     work_packages:
       bulk_actions:
-        move: "Masowa zmiana projektu"
         edit: "Masowa edycja"
-        copy: "Masowe kopiowanie"
         delete: "Masowe usuwanie"
+        duplicate: "Duplikacja zbiorcza"
+        move: "Masowa zmiana projektu"
       button_clear: "Wyczyść"
       comment_added: "Komentarz został dodany pomyślnie."
       comment_send_failed: "Wystąpił błąd. Nie można zamieścić komentarza."
@@ -876,8 +877,8 @@ pl:
         header_no_type: "Nowy pakiet roboczy (typ jeszcze nie ustawiony)"
         header_with_parent: "Nowy %{type} (podrzędny %{parent_type} #%{id})"
         button: "Utwórz"
-      copy:
-        title: "Kopiuj pakiet roboczy"
+      duplicate:
+        title: "Zduplikuj pakiet roboczy"
       hierarchy:
         show: "Pokaż tryb hierarchii"
         hide: "Ukryj tryb hierarchii"

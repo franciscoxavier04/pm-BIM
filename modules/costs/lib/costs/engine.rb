@@ -147,6 +147,20 @@ module Costs
            { controller: "/my/time_tracking", action: "index" },
            after: :my_page,
            caption: :label_my_time_tracking,
+           if: ->(*) do
+             User.current.allowed_in_any_project?(:log_own_time) || User.current.allowed_in_any_project?(:log_time)
+           end,
+           icon: :stopwatch
+
+      menu :top_menu,
+           :my_time_tracking,
+           { controller: "/my/time_tracking", action: "index" },
+           after: :my_page,
+           context: :my,
+           caption: :label_my_time_tracking,
+           if: ->(*) do
+             User.current.allowed_in_any_project?(:log_own_time) || User.current.allowed_in_any_project?(:log_time)
+           end,
            icon: :stopwatch
     end
 

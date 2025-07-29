@@ -63,7 +63,6 @@ hi:
         primary-button-color: "Primary button"
         accent-color: "Accent"
         header-bg-color: "Header background"
-        header-item-bg-hover-color: "Header background on hover"
         main-menu-bg-color: "Main menu background"
         main-menu-bg-selected-background: "Main menu when selected"
       custom_colors: "Custom colors"
@@ -71,10 +70,6 @@ hi:
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
         accent-color: "Color for links and other decently highlighted elements."
-        header-item-bg-hover-color: "क्लिक करने वाले शीर्ष लेख आइटम जब माउस के साथ होवर्ड की पृष्ठभूमि रंग ।"
-        header-item-font-color: "क्लिक करने के लिए शीर्ष लेख आइटम का फ़ॉंट रंग ।"
-        header-item-font-hover-color: "क्लिक करने वाले शीर्ष लेख आइटम जब माउस के साथ होवर्ड की पृष्ठभूमि रंग ।"
-        header-border-bottom-color: "शीर्षक के तहत पतली रेखा । यदि आप कोई पंक्ति नहीं चाहते है तो इस फ़ील्ड को खाली छोड़ें ।"
         main-menu-bg-color: "बाईं ओर मेनू पृष्ठभूमि रंग ।"
       theme_warning: Changing the theme will overwrite you custom style. The design will then be lost. Are you sure you want to continue?
     enterprise:
@@ -121,7 +116,7 @@ hi:
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -363,19 +358,34 @@ hi:
       parent: "जनक"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
       all: "All"
       messages: "मंच"
       wiki_pages: "विकी"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: There are currently no groups.
-      no_results_content_text: Create a new group
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: There are currently no users part of this group.
     memberships:
       no_results_title_text: There are currently no projects part of this group.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Specify a list of names to ignore when processing attachments for incoming mails (e.g., signatures or icons). Enter one filename per line.
@@ -1109,7 +1119,6 @@ hi:
       role:
         permissions: "अनुमतियाँ"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1164,7 +1173,7 @@ hi:
         comments_sorting: "Display work package activity sorted by"
         disable_keyboard_shortcuts: "Disable keyboard shortcuts"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "पहुँच क्षमता"
         auto_hide_popups: "Automatically hide success banners"
@@ -1605,6 +1614,9 @@ hi:
     models:
       attachment: "फ़ाइल"
       attribute_help_text: "Attribute help text"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "श्रेणी"
       comment: "टिप्पणी"
       custom_action: "विशेष या कस्टम क्रियाएँ"
@@ -1741,7 +1753,7 @@ hi:
     estimated_time: "Work"
     email: "ईमेल"
     entity_type: "Entity"
-    expires_at: "Expires at"
+    expires_at: "Expires on"
     firstname: "First name"
     filter: "Filter"
     group: "समूह"
@@ -1857,7 +1869,6 @@ hi:
   button_copy: "प्रतिलिपि बनाएँ"
   button_copy_to_clipboard: "Copy to clipboard"
   button_copy_link_to_clipboard: "Copy link to clipboard"
-  button_copy_and_follow: "Copy and follow"
   button_create: "रचना करें"
   button_create_and_continue: "सहेजें और जारी रखें"
   button_decline: "Decline"
@@ -1866,6 +1877,7 @@ hi:
   button_delete_watcher: "द्रष्टा हटाएं %{name}"
   button_download: "डाउनलोड"
   button_duplicate: "प्रतिलिपि"
+  button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "संपादित करें"
   button_edit_associated_wikipage: "संबद्ध विकी पृष्ठ संपादित करें: %{page_title}"
   button_expand_all: "सभी विस्तृत करें"
@@ -2537,7 +2549,7 @@ hi:
       aggregation: "Aggregation"
       api_and_webhooks: "API and webhooks"
     quick_add:
-      label: "Open quick add menu"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2837,6 +2849,7 @@ hi:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "सामान्य"
   label_generate_key: "कोई कुंजी जैनेरेट करें"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: ". git निर्देशिका के लिए पथ"
   label_greater_or_equal: ">="
@@ -2980,6 +2993,7 @@ hi:
   label_no_due_date: "no finish date"
   label_no_start_date: "कोई प्रारंभ दिनांक नहीं"
   label_no_parent_page: "कोई पैरेंट पृष्ठ नहीं"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Nothing to display"
   label_nobody: "कोई नहीं"
   label_not_configured: "Not configured"
@@ -3012,7 +3026,7 @@ hi:
   label_password_rule_special: "विशेष अक्षर"
   label_password_rule_uppercase: "अपरकेस"
   label_path_encoding: "पथ एंकोडिंग"
-  label_per_page: "प्रति पृष्ठ"
+  label_per_page: "Per page:"
   label_people: "People"
   label_permissions: "अनुमतियाँ"
   label_permissions_report: "अनुमतियाँ रिपोर्ट"
@@ -3188,6 +3202,7 @@ hi:
   label_user_mail_option_only_my_events: "Only for things I watch or I'm involved in"
   label_user_mail_option_only_owner: "Only for things I am the owner of"
   label_user_mail_option_selected: "For any event on the selected projects only"
+  label_user_menu: "User menu"
   label_user_new: "New user"
   label_user_plural: "Users"
   label_user_search: "Search for user"
@@ -3572,7 +3587,7 @@ hi:
   permission_comment_news: "Comment news"
   permission_commit_access: "Read/write access to repository (commit)"
   permission_copy_projects: "Copy projects"
-  permission_copy_work_packages: "Copy work packages"
+  permission_copy_work_packages: "Duplicate work packages"
   permission_create_backup: "Create backups"
   permission_delete_work_package_watchers: "Delete watchers"
   permission_delete_work_packages: "Delete work packages"

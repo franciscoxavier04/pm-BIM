@@ -44,7 +44,7 @@ zh-CN:
       meeting_agenda_item:
         title: "标题"
         author: "作者"
-        duration_in_minutes: "时长"
+        duration_in_minutes: "持续时间"
         description: "备注"
         presenter: "演讲者"
       meeting_section:
@@ -253,7 +253,7 @@ zh-CN:
         caption: 如果您的议程结果包含机密信息，您可以选择不在导出内容中包括它们。
       footer_text:
         label: 页脚文本
-        caption: 此文本将出现在每一页的页脚右侧。
+        caption: This text will appear on every page at the center of the footer.
       submit_button: 下载
   meeting_section:
     untitled_title: "无标题章节"
@@ -261,6 +261,10 @@ zh-CN:
     placeholder_title: "新建章节"
     empty_text: "拖动项目到此处或创建一个新项目"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Time zone difference"
+      description: >
+        The dates below are referencing the time zone of the meeting series (%{actual_zone}), not your local time zone (%{user_zone}).
     ended_blankslate:
       title: "结束"
       message: "本系列会议已经结束，没有即将举行的会议。 "
@@ -344,7 +348,7 @@ zh-CN:
   permission_delete_meetings: "删除会议"
   permission_view_meetings: "查看会议"
   permission_manage_agendas: "管理议程"
-  permission_manage_agendas_explanation: "允许创建、编辑和删除议程项目"
+  permission_manage_agendas_explanation: "允许创建、编辑和移除议程条目"
   permission_manage_outcomes: "管理结果"
   permission_send_meeting_invites_and_outcomes: "向与会者发送会议邀请和结果"
   project_module_meetings: "会议"

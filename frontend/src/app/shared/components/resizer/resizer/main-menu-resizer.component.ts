@@ -57,8 +57,8 @@ import {
       </button>
     </op-resizer>
   `,
+  standalone: false,
 })
-
 export class MainMenuResizerComponent extends UntilDestroyedMixin implements OnInit {
   public toggleTitle:string;
 

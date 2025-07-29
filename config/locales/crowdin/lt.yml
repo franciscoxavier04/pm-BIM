@@ -63,7 +63,6 @@ lt:
         primary-button-color: "Pagrindinis mygtukas"
         accent-color: "Akcentas"
         header-bg-color: "Antraštės fonas"
-        header-item-bg-hover-color: "Atraštės fonas užvedus pelę"
         main-menu-bg-color: "Pagrindinio meniu fonas"
         main-menu-bg-selected-background: "Pagrindinis meniu kai pasirinktas"
       custom_colors: "Pasirinktinės spalvos"
@@ -71,10 +70,6 @@ lt:
       instructions:
         primary-button-color: "Stipraus akcento spalva, naudojama svarbiausiam ekrano mygtukui."
         accent-color: "Spalvos nuorodoms ir kitiems dalinai paryškintiems elementams."
-        header-item-bg-hover-color: "Antraštės fono spalva galimiems paspausti antraštės įrašams, kai užvedama pelė."
-        header-item-font-color: "Šrifto spalva galimiems paspausti antraštės įrašams."
-        header-item-font-hover-color: "Šrifto spalva galimiems paspausti antraštės įrašams, kai užvedama pelė."
-        header-border-bottom-color: "Linija po antrašte. Palikite laukelį tuščią, jei nenorite jokios linijos."
         main-menu-bg-color: "Kairiojo šoninio meniu fono spalva."
       theme_warning: Temos keitimas perrašys jūsų pritaikytą stilių. Ankstesnis dizainas bus prarastas. Ar tikrai norite tęsti?
     enterprise:
@@ -121,7 +116,7 @@ lt:
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -360,19 +355,34 @@ lt:
       parent: "Tėvas"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Ieškoti %{app_title}"
     overwritten_tabs:
       all: "Visi"
       messages: "Forumas"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Nėra jokių grupių.
-      no_results_content_text: Sukurti naują grupę
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Nėra šios grupės naudotojų.
     memberships:
       no_results_title_text: Nėra projektų šiai grupei.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Nurodykite sąrašą, kurį reikia ignoruoti apdorojant įeinančių laiškų priedus (pvz. parašus ar piešinius). Įveskite po vieną failo pavadinimą eilutėje.
@@ -1123,7 +1133,6 @@ lt:
       role:
         permissions: "Leidimai"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1178,7 +1187,7 @@ lt:
         comments_sorting: "Display work package activity sorted by"
         disable_keyboard_shortcuts: "Disable keyboard shortcuts"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Pritaikymas neįgaliesiems"
         auto_hide_popups: "Automatically hide success banners"
@@ -1623,6 +1632,11 @@ lt:
     models:
       attachment: "Failas"
       attribute_help_text: "Atributo pagalbos tekstas"
+      auth_provider:
+        one: "Authentication provider"
+        few: "Authentication providers"
+        many: "Authentication providers"
+        other: "Authentication providers"
       category: "Kategorija"
       comment: "Komentaras"
       custom_action: "Pasirinktinis veiksmas"
@@ -1783,7 +1797,7 @@ lt:
     estimated_time: "Darbas"
     email: "El. paštas"
     entity_type: "Entity"
-    expires_at: "Baigia galioti"
+    expires_at: "Expires on"
     firstname: "Vardas"
     filter: "Filtras"
     group: "Grupė"
@@ -1899,7 +1913,6 @@ lt:
   button_copy: "Kopijuoti"
   button_copy_to_clipboard: "Kopijuoti į iškarpinę"
   button_copy_link_to_clipboard: "Kopijuoti nuorodą į iškarpinę"
-  button_copy_and_follow: "Kopijuoti ir sekti"
   button_create: "Sukurti"
   button_create_and_continue: "Sukurti ir tęsti"
   button_decline: "Atmesti"
@@ -1908,6 +1921,7 @@ lt:
   button_delete_watcher: "Pašalinti stebėtoją vardu %{name}"
   button_download: "Atsiųsti"
   button_duplicate: "Dublikuoti"
+  button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Redaguoti"
   button_edit_associated_wikipage: "Redaguoti susijusį Wiki puslapį: %{page_title}"
   button_expand_all: "Išskleisti visus"
@@ -2621,7 +2635,7 @@ lt:
       aggregation: "Agregacija"
       api_and_webhooks: "API ir tinklo jungtys"
     quick_add:
-      label: "Atidaryti greitą pridėjimo meniu"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2921,6 +2935,7 @@ lt:
   label_gantt_chart_plural: "Ganto diagramos"
   label_general: "Bendra"
   label_generate_key: "Generuoti raktą"
+  label_global_modules: "Global modules"
   label_global_roles: "Visuotiniai vaidmenys"
   label_git_path: "Kelias į .git aplanką"
   label_greater_or_equal: ">="
@@ -3064,6 +3079,7 @@ lt:
   label_no_due_date: "be pabaigos datos"
   label_no_start_date: "nėra pradžios datos"
   label_no_parent_page: "Nėra tėvinio puslapio"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Nėra ką rodyti"
   label_nobody: "niekas"
   label_not_configured: "Not configured"
@@ -3096,7 +3112,7 @@ lt:
   label_password_rule_special: "Specialūs simboliai"
   label_password_rule_uppercase: "Didžiosios raidės"
   label_path_encoding: "Kelio koduotė"
-  label_per_page: "Per puslapį"
+  label_per_page: "Per page:"
   label_people: "Žmonės"
   label_permissions: "Leidimai"
   label_permissions_report: "Leidimų ataskaita"
@@ -3272,6 +3288,7 @@ lt:
   label_user_mail_option_only_my_events: "Tiktai dalykams, kuriuos stebiu arba esu įtrauktas"
   label_user_mail_option_only_owner: "Tiktai dalykams, kurių šeimininkas esu aš"
   label_user_mail_option_selected: "Bet kokiam įvykiui tiktai pasirinktuose projektuose"
+  label_user_menu: "User menu"
   label_user_new: "Naujas vartotojas"
   label_user_plural: "Naudotojai"
   label_user_search: "Ieškoti vartotojo"
@@ -3659,7 +3676,7 @@ lt:
   permission_comment_news: "Komentuoti naujienas"
   permission_commit_access: "Skaitymo/rašymo prieiga į repozitoriją"
   permission_copy_projects: "Kopijuoti projekus"
-  permission_copy_work_packages: "Kopijuoti darbų paketus"
+  permission_copy_work_packages: "Duplicate work packages"
   permission_create_backup: "Kurti atsargines kopijas"
   permission_delete_work_package_watchers: "Pašalinti stebėtojus"
   permission_delete_work_packages: "Pašalinti darbų paketus"

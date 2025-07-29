@@ -45,7 +45,7 @@ pt-PT:
       meeting_agenda_item:
         title: "Título"
         author: "Autor"
-        duration_in_minutes: "Duration"
+        duration_in_minutes: "Duração"
         description: "Notas"
         presenter: "Apresentador"
       meeting_section:
@@ -257,7 +257,7 @@ pt-PT:
         caption: Se os resultados da ordem de trabalhos tiverem informações confidenciais, pode optar por não os incluir na exportação.
       footer_text:
         label: Texto do rodapé
-        caption: Esse texto vai aparecer em todas as páginas à direita do rodapé.
+        caption: This text will appear on every page at the center of the footer.
       submit_button: Transferir
   meeting_section:
     untitled_title: "Secção sem título"
@@ -265,6 +265,10 @@ pt-PT:
     placeholder_title: "Nova secção"
     empty_text: "Arraste itens para aqui ou crie um novo"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Diferença de fuso horário"
+      description: >
+        As datas abaixo referem-se ao fuso horário da série de reuniões (%{actual_zone}) e não ao seu fuso horário local (%{user_zone}).
     ended_blankslate:
       title: "A série de reuniões terminou"
       message: "Esta série de reuniões chegou ao fim. Não existem mais reuniões. "
@@ -350,7 +354,7 @@ pt-PT:
   permission_delete_meetings: "Apagar reuniões"
   permission_view_meetings: "Ver reuniões"
   permission_manage_agendas: "Gerir agendas"
-  permission_manage_agendas_explanation: "Allows creating, editing and removing agenda items"
+  permission_manage_agendas_explanation: "Permite criar, editar e remover elementos da ordem de trabalhos"
   permission_manage_outcomes: "Gerir resultados"
   permission_send_meeting_invites_and_outcomes: "Enviar convites para reuniões e resultados para participantes"
   project_module_meetings: "Reuniões"

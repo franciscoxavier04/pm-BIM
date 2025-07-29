@@ -257,7 +257,7 @@ de:
         caption: Wenn Ihre Ergebnisse vertrauliche Informationen enthalten, können Sie wählen, diese nicht in den Export aufzunehmen.
       footer_text:
         label: Text in der Fußzeile
-        caption: Dieser Text wird auf jeder Seite in der rechten Ecke der Fußzeile angezeigt.
+        caption: Dieser Text wird auf jeder Seite in der Mitte der Fußzeile angezeigt.
       submit_button: Download
   meeting_section:
     untitled_title: "Unbenannter Abschnitt"
@@ -265,6 +265,10 @@ de:
     placeholder_title: "Neuer Abschnitt"
     empty_text: "Neue Agendapunkte hierhin bewegen oder neu erstellen"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Unterschiedliche Zeitzone"
+      description: >
+        Die unten stehenden Daten beziehen sich auf die Zeitzone der Terminserie (%{actual_zone}), nicht auf Ihre lokale Zeitzone (%{user_zone}).
     ended_blankslate:
       title: "Terminserie beendet"
       message: "Diese Terminserie ist beendet. Es finden keine weiteren Ereignisse statt. "

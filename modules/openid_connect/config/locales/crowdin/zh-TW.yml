@@ -6,14 +6,18 @@ zh-TW:
     你已被登出，你嘗試送出的內容可能都會遺失。請登入。
   activerecord:
     attributes:
+      openid_connect/group_link:
+        oidc_group_name: OpenID group identifier
       openid_connect/provider:
         name: 名稱
         slug: 唯一識別碼
         display_name: 顯示名稱
         client_id: 客戶端 ID
         client_secret: 客戶端金鑰
+        groups_claim: Groups claim
         secret: 金鑰
         scope: 範圍
+        sync_groups: Synchronize groups
         grant_types_supported: 支援授權類型
         limit_self_registration: 限制自行註冊
         authorization_endpoint: 授權端點
@@ -52,9 +56,14 @@ zh-TW:
   openid_connect:
     menu_title: OpenID 提供商
     delete_title: "刪除 OpenID Connect 提供者"
+    group_links_heading: OpenID Connect group links
     instructions:
       redirect_url: 這是 OpenID Connect 提供者應使用的重新導向網址，以便在登入成功後導回 OpenProject。
       endpoint_url: OpenID Connect 提供者給予您的端點 URL
+      group_regexes: One regular expression pattern per line. Please read [the documentation](docs_url) for more information on how to do this.
+      group_regexes_detail: Define patterns using regular expressions to match group names from the groups claim. For example, entering a pattern like <code>^Level1/Level2/([\w/]+)$</code> will extract the group “Groupname/SubGroup” from a response including “Level1/Level2/GroupName/SubGroup”.
+      group_sync: Automatically extract and synchronise group membership information from the identity provider.
+      groups_claim: Specify the name of the claim that's expected to indicate the group names that the user is a member of.
       metadata_none: 我沒有這些資訊
       metadata_url: 我有一個發現端點 URL
       client_id: 這是 OpenID Connect 提供者給予您的用戶端 ID
@@ -98,6 +107,8 @@ zh-TW:
       label_edit: 編輯 OpenID 提供商：%{name}
       label_empty_title: 尚未設定 Saml 提供商。
       label_empty_description: 增加可供查詢之提供商名稱
+      label_group_mapping: Group mapping
+      label_group_regexes: Pattern (regular expression)
       label_metadata: OpenID 連接搜尋端點
       label_automatic_configuration: 自動設定
       label_optional_configuration: 可選配置
@@ -110,6 +121,7 @@ zh-TW:
       plural: OpenID 提供商
       singular: OpenID 提供商
       section_texts:
+        group_mapping: Map group names provided by the identity provider to groups in OpenProject.
         metadata: 使用 OpenID Connect 發現端點 URL 預先填寫設定
         metadata_form_banner: 編輯發現端點可能會覆寫現有預先填入的後置資料值。
         metadata_form_title: OpenID Connect 發現端點
@@ -119,6 +131,9 @@ zh-TW:
         display_name: 使用者可見的顯示名稱。
         attribute_mapping: 設定 OpenProject 與 OpenID Connect 提供者之間的屬性對應。
         claims: 要求 ID 令牌 或 使用者資訊回應額外聲明。
+      side_panel:
+        information_component:
+          backchannel_logout_url: Backchannel logout URL
     setting_instructions:
       limit_self_registration: >
         如果啟用，使用者只能在允許自行註冊情況下，使用此提供者進行註冊。

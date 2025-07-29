@@ -30,17 +30,24 @@
 
 import { ApplicationController } from 'stimulus-use';
 import { renderStreamMessage } from '@hotwired/turbo';
-import { TurboHelpers } from '../../turbo/helpers';
+import { TurboHelpers } from 'core-turbo/helpers';
 
 export default class AsyncDialogController extends ApplicationController {
   connect() {
-    this.element.addEventListener('click', (e) => {
-      e.preventDefault();
+    this.element.addEventListener('click', (event:MouseEvent) => {
+      event.preventDefault();
       this.triggerTurboStream();
+    });
+
+    this.element.addEventListener('keydown', (event:KeyboardEvent) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        this.triggerTurboStream();
+      }
     });
   }
 
-  triggerTurboStream():void {
+  private triggerTurboStream():void {
     TurboHelpers.showProgressBar();
 
     void fetch(this.href, {

@@ -43,18 +43,20 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%=
   render(Primer::OpenProject::SubHeader.new) do |component|
-    component.with_action_button(leading_icon: :plus,
-                                 label: t(".label_create_button"),
-                                 scheme: :primary,
-                                 tag: :a,
-                                 href: new_admin_scim_client_path) { ScimClient.model_name.human }
+    if EnterpriseToken.allows_to?(:scim_api)
+      component.with_action_button(leading_icon: :plus,
+                                   label: t(".label_create_button"),
+                                   scheme: :primary,
+                                   tag: :a,
+                                   href: new_admin_scim_client_path) { ScimClient.model_name.human }
+    end
   end
 %>
 
 <%= with_enterprise_banner_guard(
   :scim_api,
   variant: :medium,
-  image: "enterprise/automatically-generated-subjects.png" # TODO: exchange for correct image
+  image: "enterprise/scim-api.png"
 ) do
   render(Admin::ScimClients::TableComponent.new(rows: @scim_clients))
 end %>

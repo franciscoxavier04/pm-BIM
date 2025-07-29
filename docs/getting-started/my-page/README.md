@@ -40,7 +40,7 @@ In order to **add a widget to My page**, decide where you want to place the widg
 
 Press the plus icon and choose from a number of different widgets that can be included on your dashboard.
 
-![My page new widgets](my-page-widget-list.png)
+![A list of available widgets in a popover form on My page in OpenProject](openproject_getting_started_my_page_widget_list.png)
 
 For a **detailed explanation of the widgets**, visit the section in the [project overview](../../user-guide/project-overview/#available-project-overview-widgets).
 
@@ -50,37 +50,34 @@ You can change the position of a widget on the dashboard with drag and drop.
 
 Click the dots next to the title and drag it to the new place.
 
-![Move-widget](Move-widget.png)
+![Move a widget by drag and drop on My page in OpenProject](openproject_getting_started_my_page_move_widget.png)
 
 ### Change the size of a widget
 
 If you click the dots on the lower right hand corner in a widget you can change the size of a widget by pulling the widget left and right, up and down with the mouse.
 
-![Change widget size in OpenProject My page](my-page-size-handle.png)
+![Change widget size in OpenProject My page](openproject_getting_started_my_page_resize_widget.png)
 
 ### Configure the view of a widget (for work package tables)
 
 You can configure the view of a work package widget to have the information included that you need.
 
 <div class="glossary">
-
 **Work package** is a subset of a project that can be assigned to users for execution, such as Tasks, Bugs, User Stories, Milestones, and more. Work packages have a type, an ID and a subject and may have additional attributes, such as assignee, responsible, story points or target version. Work packages are displayed in a project timeline (unless they are filtered out in the timeline configuration) - either as a milestone or as a phase. In order to use the work packages, the work package module has to be activated in the project settings.
 
 </div>
-
-![change the size of a widget](change-size-of-widget.gif)
 
 On a work package widget, click on the button with the three dots and select **Configure view...**
 
 You can configure the work package table (e.g. filter, group, highlight, sort) according to the [filter, sorting and grouping criteria for work packages](../../user-guide/work-packages/work-package-table-configuration/).
 
-![configure-view-widget](configure-view-widget.gif)
+![Configure a widget view on My page of OpenProject](openproject_getting_started_configure_widget_view.gif)
 
 ### Remove a widget
 
 To delete a widget from the dashboard, click on the three dots in the upper right corner of the widget and select **Remove widget**.
 
-![My page remove widget](my-page-remove-widget.png)
+![Remove a widget on My page in OpenProject](openproject_getting_started_my_page_remove_widget.png)
 
 ## My spent time widget
 

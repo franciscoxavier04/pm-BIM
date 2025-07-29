@@ -31,6 +31,19 @@
 class Group < Principal
   include ::Scopes::Scoped
 
+  # Register a partial to be rendered on the synchronized groups tab of the groups admin page
+  #
+  # @param title[String] I18n key that will be used as a title for the section
+  # @param partial[String] The partial path as it would be passed to `render partial:` for the partial that renders
+  #                        a list of synchronized groups to the group
+  def self.add_synchronized_group_partial(title:, partial:, count_callback:)
+    synchronized_group_partials.push(title:, partial:, count_callback:)
+  end
+
+  def self.synchronized_group_partials
+    @synchronized_group_partials ||= []
+  end
+
   has_many :group_users,
            autosave: true,
            dependent: :destroy

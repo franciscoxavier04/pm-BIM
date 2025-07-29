@@ -645,10 +645,10 @@ cs:
       title: "Pro pokračování potvrďte vaše heslo"
     pagination:
       no_other_page: "Jste na jediné stránce."
-      pagination_controls: "Pagination controls"
+      pages_skipped: "Pages skipped."
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
-        next: "Next page"
-        previous: "Previous page"
         page_number: Page %{number}
         show_per_page: Show %{number} per page
     placeholders:
@@ -698,6 +698,7 @@ cs:
           first_day: "První den"
           last_day: "Poslední den"
     text_are_you_sure: "Jste si jisti?"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
     breadcrumb: "Breadcrumb"
     text_data_lost: "Všechna zadaná data budou ztracena."
     text_user_wrote: "%{value} napsal:"
@@ -829,10 +830,10 @@ cs:
         mixed: "Smíšená"
     work_packages:
       bulk_actions:
-        move: "Hromadná změna projektu"
         edit: "Hromadná úprava"
-        copy: "Hromadné kopírování"
         delete: "Hromadné odstranění"
+        duplicate: "Bulk duplicate"
+        move: "Hromadná změna projektu"
       button_clear: "Vyčistit"
       comment_added: "Komentář byl úspěšně přidán."
       comment_send_failed: "Došlo k chybě. Nelze odeslat komentář."
@@ -876,8 +877,8 @@ cs:
         header_no_type: "Nový pracovní balíček (ještě není nastaven typ)"
         header_with_parent: "Nový %{type} (podřazený %{parent_type} #%{id})"
         button: "Vytvořit"
-      copy:
-        title: "Kopírovat pracovní balíček"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Zobrazit režim hierarchie"
         hide: "Skrýt režim hierarchie"

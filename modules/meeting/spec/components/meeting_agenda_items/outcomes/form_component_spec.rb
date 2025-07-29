@@ -69,7 +69,7 @@ RSpec.describe MeetingAgendaItems::Outcomes::FormComponent, type: :component do
   end
 
   it "renders outcome field" do
-    expect(rendered_component).to have_field "Outcome", type: :textarea, visible: :hidden do |textarea| # rubocop:disable OpenProject/NoDoEndBlockWithRSpecCapybaraMatcherInExpect
+    expect(rendered_component).to have_field "Outcome", type: :textarea, visible: :hidden do |textarea|
       expect(rendered_component).to have_element "opce-ckeditor-augmented-textarea",
                                                  "data-test-selector": "augmented-text-area-notes",
                                                  "data-text-area-id": textarea["id"].to_json

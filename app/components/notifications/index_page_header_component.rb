@@ -46,8 +46,7 @@ module Notifications
     end
 
     def breadcrumb_items
-      [{ href: home_path, text: helpers.organization_name },
-       { href: notifications_path, text: I18n.t("js.notifications.title") },
+      [{ href: notifications_path, text: I18n.t("js.notifications.title"), skip_for_mobile: first_menu_item? },
        current_breadcrumb_element]
     end
 
@@ -73,6 +72,10 @@ module Notifications
       @current_item = Notifications::Menu
                         .new(params:, current_user: User.current)
                         .selected_menu_item
+    end
+
+    def first_menu_item?
+      current_item&.href == notifications_path
     end
   end
 end

@@ -8,6 +8,7 @@ module RecurringMeetings
 
     def humanize_schedule
       text = @recurring_meeting.human_frequency_schedule
+
       respond_to do |format|
         format.html { render plain: text }
         format.turbo_stream do
@@ -28,9 +29,7 @@ module RecurringMeetings
     end
 
     def schedule_params
-      params
-        .require(:meeting)
-        .permit(:start_date, :start_time_hour, :frequency, :interval)
+      params.expect(meeting: %i[start_date start_time_hour frequency interval time_zone])
     end
   end
 end

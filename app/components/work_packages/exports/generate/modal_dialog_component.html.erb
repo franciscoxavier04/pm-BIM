@@ -80,11 +80,11 @@
           }
         ) do
           render Primer::Alpha::TextField.new(
-            name: :footer_text_right,
-            label: I18n.t("pdf_generator.dialog.footer_right.label"),
-            caption: I18n.t("pdf_generator.dialog.footer_right.caption"),
+            name: :footer_text,
+            label: I18n.t("pdf_generator.dialog.footer_center.label"),
+            caption: I18n.t("pdf_generator.dialog.footer_center.caption"),
             visually_hide_label: false,
-            value: default_footer_text_right
+            value: default_footer_text
           )
         end
         modal_body.with_row(

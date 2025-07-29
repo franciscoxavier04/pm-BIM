@@ -40,6 +40,7 @@ import { UserResource } from 'core-app/features/hal/resources/user-resource';
 @Component({
   templateUrl: './multi-select-edit-field.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class MultiSelectEditFieldComponent extends EditFieldComponent implements OnInit {
   @ViewChild(NgSelectComponent, { static: true }) public ngSelectComponent:NgSelectComponent;

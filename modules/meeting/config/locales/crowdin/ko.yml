@@ -44,7 +44,7 @@ ko:
       meeting_agenda_item:
         title: "제목"
         author: "작성자"
-        duration_in_minutes: "Duration"
+        duration_in_minutes: "기간"
         description: "메모"
         presenter: "발표자"
       meeting_section:
@@ -253,7 +253,7 @@ ko:
         caption: 의제 결과에 기밀 정보가 포함되어 있는 경우 내보내기에 이 기밀 정보를 포함하지 않도록 선택할 수 있습니다.
       footer_text:
         label: 바닥글 텍스트
-        caption: 이 텍스트는 모든 페이지의 바닥글 오른쪽에 나타납니다.
+        caption: This text will appear on every page at the center of the footer.
       submit_button: 다운로드
   meeting_section:
     untitled_title: "제목 없는 섹션"
@@ -261,6 +261,10 @@ ko:
     placeholder_title: "새 섹션"
     empty_text: "항목을 여기에 끌어오거나 새로 만들기"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "표준 시간대 차이"
+      description: >
+        아래 날짜는 현지 표준 시간대(%{user_zone})가 아닌 미팅 시리즈의 표준 시간대(%{actual_zone})를 참조합니다.
     ended_blankslate:
       title: "미팅 시리즈 종료됨"
       message: "이 미팅 시리즈는 종료되었습니다. 향후 미팅이 없습니다. "
@@ -344,7 +348,7 @@ ko:
   permission_delete_meetings: "미팅 삭제"
   permission_view_meetings: "미팅 보기"
   permission_manage_agendas: "의제 관리"
-  permission_manage_agendas_explanation: "Allows creating, editing and removing agenda items"
+  permission_manage_agendas_explanation: "의제 항목 생성, 편집 및 제거를 허용합니다"
   permission_manage_outcomes: "결과 관리"
   permission_send_meeting_invites_and_outcomes: "참가자에게 미팅 초대장 및 결과 보내기"
   project_module_meetings: "미팅"

@@ -642,10 +642,10 @@ hu:
       title: "Adja meg a jelszavát a folytatáshoz"
     pagination:
       no_other_page: "Csak egyetlen oldalon tartózkodik."
-      pagination_controls: "Pagination controls"
+      pages_skipped: "Pages skipped."
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
-        next: "Next page"
-        previous: "Previous page"
         page_number: Page %{number}
         show_per_page: Show %{number} per page
     placeholders:
@@ -695,6 +695,7 @@ hu:
           first_day: "Első nap"
           last_day: "Utolsó nap"
     text_are_you_sure: "Biztos vagy benne?"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
     breadcrumb: "Breadcrumb"
     text_data_lost: "Az összes adat elveszhet"
     text_user_wrote: "%{value} írta:"
@@ -826,10 +827,10 @@ hu:
         mixed: "Mixed"
     work_packages:
       bulk_actions:
-        move: "A projekt tömeges megváltoztatása"
         edit: "Tömeges szerkesztés"
-        copy: "Tömeges másolás"
         delete: "Tömeges törlés"
+        duplicate: "Bulk duplicate"
+        move: "A projekt tömeges megváltoztatása"
       button_clear: "Törlés"
       comment_added: "Megjegyzés sikeresen hozzáadva."
       comment_send_failed: "Hiba történt. A megjegyzés elküldése meghiúsult."
@@ -873,8 +874,8 @@ hu:
         header_no_type: "Új feladatcsoport (a típus még nem meghatározott)"
         header_with_parent: "Új %{type} (%{parent_type} #%{id} gyermek)"
         button: "Létrehoz"
-      copy:
-        title: "Feladatcsoport másolása"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Hierarchikus mód megjelenítése"
         hide: "Hierarchikus mód elrejtése"

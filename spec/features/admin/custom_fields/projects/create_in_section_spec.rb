@@ -58,7 +58,7 @@ RSpec.describe "Create project custom fields in sections", :js do
         expect(page).to have_link("Administration")
         expect(page).to have_link("Projects")
         expect(page).to have_link("Project attributes")
-        expect(page).to have_text("New attribute")
+        expect(page).to have_text("Integer: New attribute")
       end
     end
 

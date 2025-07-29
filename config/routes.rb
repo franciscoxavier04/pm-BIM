@@ -137,29 +137,25 @@ Rails.application.routes.draw do
 
   get "/roles/workflow/:id/:role_id/:type_id" => "roles#workflow"
 
-  resources :types do
-    resource :form_configuration, only: %i[edit update], controller: "work_package_types/form_configuration_tab"
-    resource :projects, controller: "work_package_types/projects_tab", only: %i[update edit] do
+  resources :types, module: "work_package_types", except: [:update] do
+    resource :form_configuration, only: %i[edit update], controller: "form_configuration_tab"
+    resource :projects, controller: "projects_tab", only: %i[update edit] do
       collection do
-        post :enable_all, to: "work_package_types/projects_tab#enable_all_projects"
+        post :enable_all, to: "projects_tab#enable_all_projects"
       end
     end
-    resource :settings, controller: "work_package_types/settings_tab", only: %i[update edit]
-    resource :subject_configuration, controller: "work_package_types/subject_configuration_tab", only: %i[update edit]
-
-    member do
-      get "edit/:tab" => "types#edit", as: "edit_tab"
-      match "update/:tab" => "types#update", as: "update_tab", via: %i[post patch]
-    end
+    resource :settings, controller: "settings_tab", only: %i[update edit]
+    resource :subject_configuration, controller: "subject_configuration_tab", only: %i[update edit]
 
     resources :pdf_export_template, only: %i[],
-                                    controller: "work_package_types/pdf_export_template",
+                                    controller: "pdf_export_template",
                                     path: "pdf_export_template" do
       member do
         post :toggle
         put :drop
       end
       collection do
+        get :edit
         put :enable_all
         put :disable_all
       end
@@ -882,6 +878,7 @@ Rails.application.routes.draw do
 
   scope controller: "onboarding" do
     patch "user_settings", action: "user_settings"
+    get "onboarding_video_dialog", action: "onboarding_video_dialog"
   end
 
   resources :colors do

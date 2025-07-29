@@ -63,7 +63,6 @@ ms:
         primary-button-color: "Butang utama"
         accent-color: "Aksen"
         header-bg-color: "Latar belakang pengepala"
-        header-item-bg-hover-color: "Latar belakang pengepala pada hover"
         main-menu-bg-color: "Latar belakang menu utama"
         main-menu-bg-selected-background: "Menu utama apabila dipilih"
       custom_colors: "Pilihan warna tersuai"
@@ -71,10 +70,6 @@ ms:
       instructions:
         primary-button-color: "Warna aksen yang kuat, digunakan untuk butang paling penting pada skrin"
         accent-color: "Warna untuk pautan dan elemen-elemen lain yang disorotkan."
-        header-item-bg-hover-color: "Warna latar belakang item pengepala boleh diklik apabila hover dengan tetikus."
-        header-item-font-color: "Warna fon item pengepala boleh diklik."
-        header-item-font-hover-color: "Warna fon item pengepala boleh diklik apabila hover dengan tetikus."
-        header-border-bottom-color: "Garisan halus di bawah pengepala. Biarkan ruangan ini kosong jika anda tidak mahu sebarang garisan."
         main-menu-bg-color: "Warna latar belakang menu sebelah kiri."
       theme_warning: Penukaran tema akan menulis ganti gaya tersuai anda. Reka bentuk tersebut akan hilang. Adakah anda pasti anda ingin teruskan?
     enterprise:
@@ -121,7 +116,7 @@ ms:
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -362,19 +357,34 @@ ms:
       parent: "Induk"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Cari dalam %{app_title}"
     overwritten_tabs:
       all: "Semua"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Tiada kumpulan buat masa ini.
-      no_results_content_text: Cipta kumpulan baru
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Saat ini tiada pengguna yang menjadi sebahagian daripada kumpulan ini.
     memberships:
       no_results_title_text: Saat ini tiada projek yang menjadi sebahagian daripada kumpulan ini.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Nyatakan senarai nama untuk diabaikan apabila memproses lampiran untuk mel yang akan datang (cth, tandatangan atau ikon). Masukkan satu nama fail setiap baris.
@@ -1100,7 +1110,6 @@ ms:
       role:
         permissions: "Kebenaran"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1155,7 +1164,7 @@ ms:
         comments_sorting: "Display work package activity sorted by"
         disable_keyboard_shortcuts: "Disable keyboard shortcuts"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Mod ketercapaian"
         auto_hide_popups: "Automatically hide success banners"
@@ -1594,6 +1603,8 @@ ms:
     models:
       attachment: "Fail"
       attribute_help_text: "Teks bantuan atribut"
+      auth_provider:
+        other: "Authentication providers"
       category: "Kategori"
       comment: "Komen"
       custom_action: "Tindakan tersuai"
@@ -1718,7 +1729,7 @@ ms:
     estimated_time: "Kerja"
     email: "E-mel"
     entity_type: "Entity"
-    expires_at: "Tamat tempoh pada"
+    expires_at: "Expires on"
     firstname: "Nama pertama"
     filter: "Penyaring"
     group: "Kumpulan"
@@ -1834,7 +1845,6 @@ ms:
   button_copy: "Salin"
   button_copy_to_clipboard: "Salin ke papan klip"
   button_copy_link_to_clipboard: "Salin pautan ke papan klip"
-  button_copy_and_follow: "Salin dan ikut"
   button_create: "Cipta"
   button_create_and_continue: "Simpan dan teruskan"
   button_decline: "Tolak"
@@ -1843,6 +1853,7 @@ ms:
   button_delete_watcher: "Buang pemerhati %{name}"
   button_download: "Muat turun"
   button_duplicate: "Duplikasi"
+  button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Edit"
   button_edit_associated_wikipage: "Edit halaman Wiki berkaitan: %{page_title}"
   button_expand_all: "Kembangkan semua"
@@ -2493,7 +2504,7 @@ ms:
       aggregation: "Pengumpulan"
       api_and_webhooks: "API dan webhooks"
     quick_add:
-      label: "Buka menu tambah cepat"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2793,6 +2804,7 @@ ms:
   label_gantt_chart_plural: "Carta Gantt"
   label_general: "Umum"
   label_generate_key: "Jana kunci"
+  label_global_modules: "Global modules"
   label_global_roles: "Peranan global"
   label_git_path: "Laluan ke direktori .git"
   label_greater_or_equal: ">="
@@ -2936,6 +2948,7 @@ ms:
   label_no_due_date: "tiada tarikh tamat"
   label_no_start_date: "tiada tarikh mula"
   label_no_parent_page: "Tiada halaman induk"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Tiada apa untuk dipaparkan"
   label_nobody: "tiada siapa"
   label_not_configured: "Tidak dikonfigurasikan"
@@ -2968,7 +2981,7 @@ ms:
   label_password_rule_special: "Aksara Khas"
   label_password_rule_uppercase: "Huruf Besar"
   label_path_encoding: "Laluan pengekodan"
-  label_per_page: "Setiap halaman"
+  label_per_page: "Per page:"
   label_people: "Orang"
   label_permissions: "Kebenaran"
   label_permissions_report: "Laporan kebenaran"
@@ -3144,6 +3157,7 @@ ms:
   label_user_mail_option_only_my_events: "Hanya untuk perkara yang saya perhatikan atau yang saya terlibat dalam"
   label_user_mail_option_only_owner: "Hanya untuk perkara yang merupakan saya pemiliknya"
   label_user_mail_option_selected: "Untuk sebarang peristiwa pada projek yang terpilih sahaja"
+  label_user_menu: "User menu"
   label_user_new: "Pengguna baharu"
   label_user_plural: "Pengguna-pengguna"
   label_user_search: "Cari pengguna"
@@ -3525,7 +3539,7 @@ ms:
   permission_comment_news: "Komen berita"
   permission_commit_access: "Baca/tulis akses ke repositori (komit)"
   permission_copy_projects: "Salin projek"
-  permission_copy_work_packages: "Salin pakej kerja"
+  permission_copy_work_packages: "Duplicate work packages"
   permission_create_backup: "Cipta sandaran"
   permission_delete_work_package_watchers: "Buang pemerhati"
   permission_delete_work_packages: "Padam pakej kerja"

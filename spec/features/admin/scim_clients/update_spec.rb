@@ -51,7 +51,6 @@ RSpec.describe "Updating a SCIM client", :js, :selenium, driver: :firefox_de do
   it "can update a SCIM client authenticating through JWT", :aggregate_failures, with_ee: [:scim_api] do
     visit edit_admin_scim_client_path(sso_scim_client)
     expect(page).to be_axe_clean.within("#content")
-                                .skipping("link-in-text-block") # https://community.openproject.org/wp/65252
 
     expect(page.find_field("Authentication method", disabled: :all)).to be_disabled
     fill_in "Name", with: ""
@@ -81,7 +80,6 @@ RSpec.describe "Updating a SCIM client", :js, :selenium, driver: :firefox_de do
   it "can update a SCIM client authenticating through client credentials", :aggregate_failures, with_ee: [:scim_api] do
     visit edit_admin_scim_client_path(oauth_client_scim_client)
     expect(page).to be_axe_clean.within("#content")
-                                .skipping("link-in-text-block") # https://community.openproject.org/wp/65252
 
     expect(page.find_field("Authentication method", disabled: :all)).to be_disabled
     fill_in "Name", with: ""
@@ -111,7 +109,6 @@ RSpec.describe "Updating a SCIM client", :js, :selenium, driver: :firefox_de do
   it "can update a SCIM client authenticating through a static access token", :aggregate_failures, with_ee: [:scim_api] do
     visit edit_admin_scim_client_path(token_scim_client)
     expect(page).to be_axe_clean.within("#content")
-                                .skipping("link-in-text-block") # https://community.openproject.org/wp/65252
 
     expect(page.find_field("Authentication method", disabled: :all)).to be_disabled
     fill_in "Name", with: ""

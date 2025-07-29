@@ -63,7 +63,6 @@ pt-PT:
         primary-button-color: "Botão principal"
         accent-color: "Destaque"
         header-bg-color: "Fundo do cabeçalho"
-        header-item-bg-hover-color: "Fundo do cabeçalho ao passar o rato"
         main-menu-bg-color: "Fundo do menu principal"
         main-menu-bg-selected-background: "Menu principal quando selecionado"
       custom_colors: "Cores personalizadas"
@@ -71,10 +70,6 @@ pt-PT:
       instructions:
         primary-button-color: "Cor de contraste forte, utilizada no botão mais importante de um ecrã."
         accent-color: "Cor para as ligações e outros elementos bem realçados."
-        header-item-bg-hover-color: "Cor de fundo de itens do cabeçalho clicáveis quando se passa com o rato por cima."
-        header-item-font-color: "Cor da fonte dos itens clicáveis do cabeçalho."
-        header-item-font-hover-color: "Cor da fonte de itens clicáveis do cabeçalho quando se passa com o mouse por cima."
-        header-border-bottom-color: "Linha fina sob o cabeçalho. Deixe este campo vazio se não deseja qualquer linha."
         main-menu-bg-color: "Cor de fundo do menu do lado esquerdo."
       theme_warning: Alterar o tema irá sobrescrever seu estilo personalizado. O design será perdido. Tem certeza que deseja continuar?
     enterprise:
@@ -101,7 +96,7 @@ pt-PT:
       status:
         expired: "Expirado"
         expiring_soon: "Expira em breve"
-        in_grace_period: "In grace period"
+        in_grace_period: "Em período de carência"
         invalid_domain: "Domínio inválido"
         not_active: "Não ativo"
         trial: "Teste"
@@ -112,57 +107,57 @@ pt-PT:
         link: "webhook"
     scim_clients:
       authentication_methods:
-        sso: "JWT from identity provider"
-        oauth2_client: "OAuth 2.0 client credentials"
-        oauth2_token: "Static access token"
+        sso: "JWT do fornecedor de identidade"
+        oauth2_client: "Credenciais do cliente OAuth 2.0"
+        oauth2_token: "Token de acesso estático"
       created_client_credentials_dialog_component:
-        title: "Client credentials created"
-        heading: "Client credentials have been generated"
-        one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
+        title: "Credenciais de cliente criadas"
+        heading: "As credenciais do cliente foram geradas"
+        one_time_hint: "Esta é a única vez que verá o segredo do cliente. Não se esqueça de o copiar agora."
       created_token_dialog_component:
-        title: "Token created"
-        heading: "An token has been generated"
+        title: "Token criado"
+        heading: "A token has been generated"
         label_token: "Token"
-        one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
+        one_time_hint: "Esta é a única vez que verá este token. Não se esqueça de o copiar agora."
       delete_scim_client_dialog_component:
-        title: "Delete SCIM client"
-        heading: "Are you sure you want to delete this SCIM client?"
-        description: "Users managed by this SCIM client can no longer be updated by it."
+        title: "Eliminar o cliente SCIM"
+        heading: "Tem a certeza de que quer eliminar este cliente SCIM?"
+        description: "Os utilizadores geridos por este cliente SCIM já não podem ser atualizados por ele."
       edit:
-        label_delete_scim_client: "Delete SCIM client"
+        label_delete_scim_client: "Eliminar o cliente SCIM"
       form:
-        auth_provider_description: "This is the service that users added by the SCIM provider will use to authenticate in OpenProject."
-        authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM clients</a> for more information on these configuration options.'
-        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
-        name_description: "Choose a name that will help other admins better understand why this client was configured."
+        auth_provider_description: "Este é o serviço que os utilizadores adicionados pelo fornecedor SCIM utilizarão para se autenticarem no OpenProject."
+        authentication_method_description_html: "É assim que o cliente SCIM se autentica no OpenProject. Garanta que os tokens OAuth incluem o âmbito <code>scim_v2</code>."
+        description_html: 'Consulte a nossa <a href="%{docs_url}">documentação sobre a configuração de clientes SCIM</a> para mais informações sobre estas opções de configuração.'
+        jwt_sub_description_html: 'Por exemplo, para o Keycloak, este é o UUID da conta de serviço associada ao cliente SCIM. Consulte <a href="%{docs_url}">a nossa documentação</a> para saber como encontrar a declaração de assunto para o seu caso de utilização.'
+        name_description: "Escolha um nome que ajude os outros administradores a perceber melhor porque é que este cliente foi configurado."
       index:
-        description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
-        label_create_button: "Add SCIM client"
+        description: "Os clientes SCIM aqui configurados conseguem interagir com a API do servidor OpenProject SCIM para prover, atualizar e desprover contas e grupos de utilizadores."
+        label_create_button: "Adicionar cliente SCIM"
       new:
-        title: "New SCIM client"
+        title: "Novo cliente SCIM"
       revoke_static_token_dialog_component:
-        confirm_button: "Revoke"
-        title: "Revoke static token"
-        heading: "Are you sure you want to revoke this token?"
-        description: "The SCIM client that uses this token will no longer be able to access OpenProject's SCIM server API."
+        confirm_button: "Revogar"
+        title: "Revogar token estático"
+        heading: "Tem a certeza de que deseja revogar este token?"
+        description: "O cliente SCIM que utiliza este token deixará de poder aceder à API do servidor SCIM do OpenProject."
       table_component:
         blank_slate:
-          title: "No SCIM clients configured yet"
-          description: "Add clients to see them here"
-        user_count: "Users"
+          title: "Ainda não há clientes SCIM configurados"
+          description: "Adicione clientes para os ver aqui"
+        user_count: "Utilizadores"
       token_list_component:
-        description: "The tokens you generate here can be passed by a SCIM client to access the OpenProject SCIM API."
+        description: "Os tokens que gerar aqui podem ser passados por um cliente SCIM para aceder à API do OpenProject SCIM."
         heading: "Tokens"
         label_add_token: "Token"
-        label_aria_add_token: "Add token"
+        label_aria_add_token: "Adicionar token"
       token_table_component:
         blank_slate:
-          title: "No tokens have been created yet"
-          description: "You can create one now"
-        expired: "Expired on %{date}"
-        revoked: "Revoked on %{date}"
-        title: "Access token table"
+          title: "Ainda não foram criados tokens"
+          description: "Pode criar um agora"
+        expired: "Expirou em %{date}"
+        revoked: "Revogado em %{date}"
+        title: "Tabela de tokens de acesso"
   authentication:
     login_and_registration: "Iniciar sessão e registo"
   announcements:
@@ -327,7 +322,7 @@ pt-PT:
       admin_only: "Selecione para tornar este atributo visível apenas para os administradores. Os utilizadores sem direitos de administrador não o poderão ver ou editar."
       is_filter: >
         Permita que o campo personalizado seja utilizado num filtro nas vistas do pacote de trabalho. Note que apenas com a opção "Para todos os projetos" selecionada, o campo personalizado irá aparecer nas vistas globais.
-      formula: "Add numeric values or type / to search for an attribute or a mathematical operator."
+      formula: "Adicione valores numéricos ou escreva / para procurar um atributo ou um operador matemático."
     tab:
       no_results_title_text: Atualmente, não existem campos personalizados.
       no_results_content_text: Criar um novo campo personalizado
@@ -352,7 +347,7 @@ pt-PT:
         parent:
           not_descendant: "tem de ser um descendente da raiz da hierarquia."
     rules:
-      copy_workflow_from: "Type for workflow copy"
+      copy_workflow_from: "Tipo de cópia do fluxo de trabalho"
       enabled: "Ativado"
       depth: "Profundidade"
       item: "Item"
@@ -361,19 +356,34 @@ pt-PT:
       parent: "Principal"
       blueprint: "Modelo do plano"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Pesquisar em %{app_title}"
     overwritten_tabs:
       all: "Todas"
       messages: "Fórum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Atualmente, não existem grupos.
-      no_results_content_text: Criar um novo grupo
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Atualmente, não existem utilizadores pertencentes a este grupo.
     memberships:
       no_results_title_text: Atualmente, não existem projetos pertencentes a este grupo.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Especifique uma lista de nomes a ignorar ao processar anexos para emails recebidos (por exemplo, assinaturas ou ícones). Digite um nome de ficheiro por linha.
@@ -684,9 +694,9 @@ pt-PT:
         tab: "Configuração do formulário"
       projects:
         tab: Projetos
-        enable_all: Enable for all projects
-        select_projects: Select projects
-        select_projects_description: Select the projects in which you would like to use this type.
+        enable_all: Ativar para todos os projetos
+        select_projects: Selecionar projetos
+        select_projects_description: Selecione os projetos em que pretende utilizar este tipo.
       settings:
         tab: "Definições"
         type_color_text: A cor selecionada distingue diferentes tipos em gráficos de Gantt ou tabelas de pacotes de trabalho. Portanto é recomendado usar uma cor forte.
@@ -941,7 +951,7 @@ pt-PT:
         attribute_name: "Atributo"
         help_text: "Texto de ajuda"
       auth_provider:
-        scim_clients: "SCIM clients"
+        scim_clients: "Clientes SCIM"
       capability:
         context: "Contexto"
       changeset:
@@ -955,7 +965,7 @@ pt-PT:
         default_value: "Valor predefinido"
         editable: "Editável"
         field_format: "Formato"
-        formula: "Formula"
+        formula: "Fórmula"
         is_filter: "Usado como filtro"
         is_for_all: "Para todos os projetos"
         is_required: "Obrigatório"
@@ -1107,9 +1117,8 @@ pt-PT:
       role:
         permissions: "Permissões"
       scim_client:
-        auth_provider: "Authentication provider"
-        authentication_method: "Authentication method"
-        jwt_sub: "Subject claim"
+        authentication_method: "Método de autenticação"
+        jwt_sub: "Reivindicação do sujeito"
       status:
         is_closed: "Pacote de trabalho fechado"
         is_readonly: "Pacote de trabalho só de leitura"
@@ -1126,7 +1135,7 @@ pt-PT:
         ongoing: "Em curso"
       type:
         description: "Texto padrão para a descrição"
-        attribute_groups: "Form configuration"
+        attribute_groups: "Configuração do formulário"
         is_in_roadmap: "Apresentado no roteiro por defeito"
         is_default: "Ativado para novos projetos por padrão"
         is_milestone: "É um marco"
@@ -1153,20 +1162,20 @@ pt-PT:
         password_confirmation: "Confirmação"
         consented_at: "Consentiu em"
       group:
-        identity_url: "Identity URL"
+        identity_url: "URL de identidade"
       user_preference:
-        header_look_and_feel: "Look and feel"
+        header_look_and_feel: "Aspeto e sensação"
         header_alerts: "Alertas"
-        button_update_look_and_feel: "Update look and feel"
+        button_update_look_and_feel: "Atualizar o aspeto e a sensação"
         button_update_alerts: "Atualizar alertas"
         comments_sorting: "Exibir a atividade do pacote de trabalho ordenada por"
         disable_keyboard_shortcuts: "Desativar atalhos de teclado"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Faixas de empresas ocultas"
         impaired: "Modo de acessibilidade"
-        auto_hide_popups: "Automatically hide success banners"
-        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
+        auto_hide_popups: "Ocultar automaticamente os banners de sucesso"
+        auto_hide_popups_caption: "Quando ativado, os banners verdes de sucesso desaparecerão automaticamente após 5 segundos."
         warn_on_leaving_unsaved: "Alertar-me quando sair de um pacote de trabalho sem guardar as alterações"
         theme: "Modo de cor"
         time_zone: "Fuso horário"
@@ -1239,7 +1248,7 @@ pt-PT:
         error_unauthorized: "não pode ser acedido."
         error_readonly: "tentou escrever, mas não é gravável."
         error_conflict: "A informação foi atualizada entretanto por pelo menos por um outro utilizador."
-        error_not_found: "not found."
+        error_not_found: "não encontrado."
         email: "não é um endereço de correio válido."
         empty: "não pode estar em branco."
         enterprise_plan_required: "requer pelo menos o %{plan_name}."
@@ -1257,7 +1266,7 @@ pt-PT:
         inclusion: "não está definido como um dos valores permitidos."
         inclusion_nested: "não está definido como um dos valores permitidos no caminho '%{path}'."
         invalid: "é inválido."
-        invalid_characters: "contains invalid characters."
+        invalid_characters: "contém caracteres inválidos."
         invalid_url: "não é um URL válido."
         invalid_url_scheme: "não é um protocolo suportado (permitido: %{allowed_schemes})."
         less_than_or_equal_to: "deve ser menor ou igual a %{count}."
@@ -1603,6 +1612,9 @@ pt-PT:
     models:
       attachment: "Ficheiro"
       attribute_help_text: "Texto de ajuda do atributo"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "Categoria"
       comment: "Comentario"
       custom_action: "Ação personalizada"
@@ -1635,8 +1647,8 @@ pt-PT:
         one: "Função"
         other: "Papel"
       scim_client:
-        one: "SCIM client"
-        other: "SCIM clients"
+        one: "Cliente SCIM"
+        other: "Clientes SCIM"
       status: "Estado do pacote de trabalho"
       token/api:
         one: Token de acesso
@@ -1739,7 +1751,7 @@ pt-PT:
     estimated_time: "Trabalho"
     email: "E-mail"
     entity_type: "Entidade"
-    expires_at: "Expira a"
+    expires_at: "Expira em"
     firstname: "Primeiro nome"
     filter: "Filtro"
     group: "Grupo"
@@ -1788,7 +1800,7 @@ pt-PT:
     title: "Título"
     type: "Tipo"
     typeahead: "Preenchimento automático"
-    uid: "Unique identifier"
+    uid: "Identificador único"
     updated_at: "Atualizado em"
     updated_on: "Atualizado em"
     uploader: "Enviado por"
@@ -1855,7 +1867,6 @@ pt-PT:
   button_copy: "Copiar"
   button_copy_to_clipboard: "Copiar para a Área de transferência"
   button_copy_link_to_clipboard: "Copiar link para a área de transferência"
-  button_copy_and_follow: "Copiar e seguir"
   button_create: "Criar"
   button_create_and_continue: "Criar e continuar"
   button_decline: "Rejeitar"
@@ -1864,6 +1875,7 @@ pt-PT:
   button_delete_watcher: "Eliminar observador %{name}"
   button_download: "Transferir"
   button_duplicate: "Duplicar"
+  button_duplicate_and_follow: "Duplicar e seguir"
   button_edit: "Editar"
   button_edit_associated_wikipage: "Editar página Wiki associada: %{page_title}"
   button_expand_all: "Expandir Tudo"
@@ -1947,13 +1959,13 @@ pt-PT:
     text:
       failed: 'Não foi possível copiar o projecto "%{source_project_name}" para o projecto "%{target_project_name}".'
       succeeded: 'Projecto "%{source_project_name}" copiado para "%{target_project_name}".'
-    source_project_label: "Project copied"
+    source_project_label: "Projeto copiado"
     copy_options:
-      dependencies_label: 'Copy from project'
+      dependencies_label: 'Copiar do projeto'
   create_project:
-    template_label: "Use template"
+    template_label: "Utilizar modelo"
     copy_options:
-      dependencies_label: 'Copy from template'
+      dependencies_label: 'Copiar do modelo'
   create_wiki_page: "Criar nova página wiki"
   create_wiki_page_button: "Página wiki"
   date:
@@ -2071,7 +2083,7 @@ pt-PT:
     units:
       minute_abbreviated:
         one: "min"
-        other: "mins"
+        other: "min"
       hour:
         one: "hora"
         other: "horas"
@@ -2128,7 +2140,7 @@ pt-PT:
       placeholder_users: Utilizadores de marcador de posição
       project_list_sharing: Partilha da lista de projetos
       readonly_work_packages: Pacotes de trabalho só de leitura
-      scim_api: SCIM server API
+      scim_api: API do servidor SCIM
       sso_auth_providers: Início de sessão único
       team_planner_view: Vista do planeador de equipas
       virus_scanning: Análise antivírus
@@ -2144,7 +2156,7 @@ pt-PT:
       plan_text_html: "Disponível a partir do %{plan_name}."
       unlimited: "Ilimitado"
       already_have_token: >
-        Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
+        Já tem um token? Adicione-o com o botão abaixo para atualizar para o plano Enterprise reservado.
       hide_banner: "Ocultar esta faixa"
       homescreen_description: >
         Os planos Enterprise aumentam a Edição Community do OpenProject que está atualmente a usar. Eles incluem complementos, funcionalidades adicionais e assistência profissional que permite que organizações de todas as dimensões alcancem grandes coisas em conjunto.
@@ -2152,15 +2164,15 @@ pt-PT:
       baseline_comparison:
         description: Destacar as alterações introduzidas nesta lista desde qualquer ponto no passado.
       benefits:
-        description: "What are the benefits of the Enterprise on-premises edition?"
+        description: "Quais são os benefícios da edição Empresarial no local?"
         high_security: "Funcionalidades de segurança"
-        high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
+        high_security_text: "Início de sessão único (SAML, OpenID Connect, CAS), grupos LDAP."
         installation: "Apoio à instalação"
         installation_text: "Engenheiros de software experientes darão orientações durante toda a instalação e processo de configuração na sua própria infraestrutura."
-        premium_features: "Enterprise add-ons"
-        premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
-        professional_support: "Professional support"
-        professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
+        premium_features: "Complementos Enterprise"
+        premium_features_text: "Agile boards, gráficos de temas e logótipos personalizados, fluxos de trabalho inteligentes com ações personalizadas, pesquisa de texto completo para anexos em pacotes de trabalho, e campos personalizados de multi-seleção."
+        professional_support: "Apoio profissional"
+        professional_support_text: "Receba apoio fiável e de alto nível de engenheiros séniores de suporte, com conhecimento especializado sobre a gestão do OpenProject em ambientes de negócios críticos."
       work_package_subject_generation:
         description: "Crie temas gerados automaticamente utilizando atributos e texto referenciados."
       customize_life_cycle:
@@ -2196,8 +2208,8 @@ pt-PT:
         title: "Início de sessão único para armazenamento Nextcloud"
         description: "Permita uma autenticação perfeita e segura para o seu armazenamento Nextcloud com o início de sessão único. Simplifique a gestão do acesso e aumente a conveniência do utilizador."
       scim_api:
-        title: "SCIM clients"
-        description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
+        title: "Clientes SCIM"
+        description: "Automatize a gestão de utilizadores no OpenProject, integrando na perfeição serviços de identidade externos, como Microsoft Entra ou Keycloak, através da nossa API do Servidor SCIM. Disponível a partir do plano Enterprise empresarial."
       virus_scanning:
         description: "Assegure-se que os ficheiros carregados no OpenProject são verificados quanto à presença de vírus antes de serem acessíveis a outros utilizadores."
       placeholder_users:
@@ -2212,29 +2224,29 @@ pt-PT:
         description: " "
     teaser:
       title:
-        one: "One day left of %{trial_plan} trial token"
-        other: "%{count} days left of %{trial_plan} trial token"
-      description: "You have access to all %{trial_plan} features."
+        one: "Um dia restante do token de teste %{trial_plan}"
+        other: "F%{count} dias restantes do token de teste %{trial_plan}"
+      description: "Tem acesso a todas as funcionalidades de %{trial_plan}."
     trial:
-      not_found: "You have requested a trial token, but that request is no longer available. Please try again."
-      wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
+      not_found: "Solicitou um token de teste, mas esse pedido já não está disponível. Tente novamente."
+      wait_for_confirmation: "Enviámos um e-mail para confirmar o seu endereço, a fim de obter um token de avaliação."
       already_retrieved: >
-        Your trial enterprise token was already retrieved. Please check your emails for the token being attached. Please reach out to our support team if you need a new one.
-      successfully_saved: "Your trial enterprise token has been successfully retrieved."
-      token_sent: "Trial token requested"
-      request_again: "Request again"
-      resend_action: "Resend confirmation email"
-      welcome_title: "Quick feature overview"
-      welcome_description: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
+        O seu token de teste Enterprise já foi recuperado. Verifique os seus e-mails para ver se o token foi anexado. Contacte a nossa equipa de apoio se precisar de um novo token.
+      successfully_saved: "O seu token de teste Enterprise foi recuperado com êxito."
+      token_sent: "Token de teste solicitado"
+      request_again: "Solicitar novamente"
+      resend_action: "Reenviar e-mail de confirmação"
+      welcome_title: "Síntese rápida das funcionalidades"
+      welcome_description: "Obter uma síntese da gestão do projeto e colaboração em equipa com a edição OpenProject Enterprise."
       confirmation_info: >
-        We sent you an email on %{date} to %{email} with all the information to start the free trial of OpenProject Enterprise. Please check your inbox and click the confirmation link provided to start your 14-day free trial.
+        Enviámos-lhe um e-mail para %{date} para %{email} com todas as informações para iniciar o teste gratuito do OpenProject Enterprise. Verifique a sua caixa de entrada e clique na ligação de confirmação fornecida para iniciar o teste gratuito de 14 dias.
       confirmation_subline: >
-        Please, check your inbox and follow the steps to start your 14-day free trial.
-      domain_caption: The token will be valid for your currently configured host name.
+        Verifique a sua caixa de correio eletrónico e siga os passos para iniciar o seu teste gratuito de 14 dias.
+      domain_caption: O token será válido para o nome do anfitrião configurado atualmente.
       receive_newsletter_html: >
-        I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
+        Quero receber a <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a> do OpenProject.
       consent_html: >
-        I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
+        Concordo com os <a target="_blank" href="https://www.openproject.org/terms-of-service/">termos de serviço</a> e a <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">política de privacidade</a>.
   enumeration_activities: "Atividades de controlo de tempo"
   enumeration_work_package_priorities: "Prioridades do pacote de trabalho"
   enumeration_reported_project_statuses: "Estado do projeto reportado"
@@ -2535,7 +2547,7 @@ pt-PT:
       aggregation: "Agregação"
       api_and_webhooks: "API e webhooks"
     quick_add:
-      label: "Abrir menu de adição rápida"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2694,7 +2706,7 @@ pt-PT:
   label_select_main_menu_item: Seleccione novo item do menu principal
   label_required_disk_storage: "Espaço em disco necessário"
   label_send_invitation: Enviar convite
-  label_calculated_value: "Calculated value"
+  label_calculated_value: "Valor calculado"
   label_change_plural: "Alterações"
   label_change_properties: "Alterar propriedades"
   label_change_status: "Alterar estado"
@@ -2830,11 +2842,12 @@ pt-PT:
   label_follows: "segue"
   label_force_user_language_to_default: "Idioma de utilizadores definida com uma linguagem não permitida como padrão"
   label_form_configuration: "Configuração do formulário"
-  label_formula: "Formula"
+  label_formula: "Fórmula"
   label_gantt_chart: "Gráfico de Gantt"
   label_gantt_chart_plural: "Gráficos de Gantt"
   label_general: "Geral"
   label_generate_key: "Gerar uma chave"
+  label_global_modules: "Global modules"
   label_global_roles: "Funções globais"
   label_git_path: "Caminho para o diretório .git"
   label_greater_or_equal: ">="
@@ -2978,6 +2991,7 @@ pt-PT:
   label_no_due_date: "sem data de término"
   label_no_start_date: "sem data de início"
   label_no_parent_page: "Sem página pai"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Nada para exibir"
   label_nobody: "ninguém"
   label_not_configured: "Não configurado"
@@ -3010,7 +3024,7 @@ pt-PT:
   label_password_rule_special: "Carateres Especiais"
   label_password_rule_uppercase: "Maiúsculas"
   label_path_encoding: "Codificação do caminho"
-  label_per_page: "Por página"
+  label_per_page: "Per page:"
   label_people: "Pessoas"
   label_permissions: "Permissões"
   label_permissions_report: "Relatório de Permissões"
@@ -3186,6 +3200,7 @@ pt-PT:
   label_user_mail_option_only_my_events: "Apenas para coisas que observo ou em que estou envolvido"
   label_user_mail_option_only_owner: "Apenas para coisas das quais sou proprietário"
   label_user_mail_option_selected: "Para qualquer evento apenas nos projetos selecionados"
+  label_user_menu: "User menu"
   label_user_new: "Novo Utilizador"
   label_user_plural: "Utilizadores"
   label_user_search: "Procurar utilizadores"
@@ -3228,7 +3243,7 @@ pt-PT:
   label_work_package_attachments: "Anexos do pacote de trabalho"
   label_work_package_category_new: "Nova categoria"
   label_work_package_category_plural: "Categorias de pacotes de trabalho"
-  label_work_package_comments: "Work package comments"
+  label_work_package_comments: "Comentários do pacote de trabalho"
   label_work_package_hierarchy: "Hierarquia de pacotes de trabalho"
   label_work_package_new: "Novo pacote de trabalho"
   label_work_package_edit: "Editar pacote de trabalho %{name}"
@@ -3569,7 +3584,7 @@ pt-PT:
   permission_comment_news: "Comentar notícias"
   permission_commit_access: "Acesso de leitura/escrita ao repositório (comprometer)"
   permission_copy_projects: "Copiar projeto"
-  permission_copy_work_packages: "Copiar pacotes de trabalho"
+  permission_copy_work_packages: "Duplicar pacotes de trabalho"
   permission_create_backup: "Criar cópias de segurança"
   permission_delete_work_package_watchers: "Eliminar observador"
   permission_delete_work_packages: "Eliminar pacotes de trabalho"
@@ -4087,7 +4102,7 @@ pt-PT:
       phase_gates: "Portas de fases"
       new:
         description: "As alterações a esta fase do projeto serão refletidas em todos os projetos em que estiver ativada."
-        heading: "New phase"
+        heading: "Nova fase"
       both_gate: "Porta de início e conclusão"
       no_gate: "Sem porta"
       start_gate: "Porta de início"
@@ -4391,7 +4406,7 @@ pt-PT:
     reminders:
       label_remind_at: "Data"
       note_placeholder: "Porque está a definir este lembrete?"
-      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
+      create_success_message: "Lembrete definido com sucesso. Irá receber uma notificação para este pacote de trabalho %{reminder_time}."
       success_update_message: "Lembrete atualizado com sucesso."
       success_deletion_message: "Lembrete eliminado com sucesso."
   sharing:

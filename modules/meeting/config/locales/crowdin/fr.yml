@@ -45,7 +45,7 @@ fr:
       meeting_agenda_item:
         title: "Titre"
         author: "Auteur"
-        duration_in_minutes: "Duration"
+        duration_in_minutes: "Durée"
         description: "Notes"
         presenter: "Responsable"
       meeting_section:
@@ -257,7 +257,7 @@ fr:
         caption: Si les résultats de votre ordre du jour contiennent des informations confidentielles, vous pouvez choisir de ne pas les inclure dans l'exportation.
       footer_text:
         label: Texte de pied de page
-        caption: Ce texte apparaîtra sur chaque page à droite du pied de page.
+        caption: Ce texte apparaîtra sur chaque page au centre du pied de page.
       submit_button: Télécharger
   meeting_section:
     untitled_title: "Section sans titre"
@@ -265,6 +265,10 @@ fr:
     placeholder_title: "Nouvelle section"
     empty_text: "Faites glisser des éléments ici ou créez-en un nouveau"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Différence de fuseau horaire"
+      description: >
+        Les dates ci-dessous se réfèrent au fuseau horaire de la série de réunions (%{actual_zone}), et non à votre fuseau horaire local (%{user_zone}).
     ended_blankslate:
       title: "La série de réunions est terminée"
       message: "Cette série de réunions est terminée. Il n'y a pas de prochaines réunions. "
@@ -350,7 +354,7 @@ fr:
   permission_delete_meetings: "Supprimer des réunions"
   permission_view_meetings: "Afficher les réunions"
   permission_manage_agendas: "Gérer les ordres du jour"
-  permission_manage_agendas_explanation: "Allows creating, editing and removing agenda items"
+  permission_manage_agendas_explanation: "Autorise la création, la modification et la suppression de points de l'ordre du jour"
   permission_manage_outcomes: "Gérer les résultats"
   permission_send_meeting_invites_and_outcomes: "Envoyer des invitations à des réunions et des résultats aux participants"
   project_module_meetings: "Réunions"

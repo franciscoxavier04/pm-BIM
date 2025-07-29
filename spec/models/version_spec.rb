@@ -571,4 +571,32 @@ RSpec.describe Version do
       end
     end
   end
+
+  describe "order by name" do
+    shared_let(:project) { create(:project) }
+    shared_let(:ordered_names) do
+      [
+        "1. xxxx",
+        "1.1. aaa",
+        "1.1. zzz",
+        "1.2. mmm",
+        "1.10. aaa",
+        "9",
+        "10.2",
+        "10.10.2",
+        "10.10.10",
+        "aaaaa",
+        "aaaaa 1."
+      ]
+    end
+    shared_let(:versions) { ordered_names.shuffle.map { |name| create(:version, name:, project:) } }
+
+    it "returns the versions in ascending semver order" do
+      expect(described_class.order(:name).pluck(:name)).to eql ordered_names
+    end
+
+    it "returns the versions in descending semver order" do
+      expect(described_class.order(name: :desc).pluck(:name)).to eql ordered_names.reverse
+    end
+  end
 end

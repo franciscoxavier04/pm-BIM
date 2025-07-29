@@ -11,7 +11,6 @@ import {
   TemplateRef,
   ViewChild,
 } from '@angular/core';
-import { KeyCodes } from 'core-app/shared/helpers/keyCodes.enum';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { findAllFocusableElementsWithin } from 'core-app/shared/helpers/focus-helpers';
 import { SpotDropModalTeleportationService } from './drop-modal-teleportation.service';
@@ -23,6 +22,7 @@ import { autoUpdate, computePosition, flip, limitShift, Placement, shift } from 
   selector: 'spot-drop-modal',
   templateUrl: './drop-modal.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SpotDropModalComponent implements OnDestroy {
   @HostBinding('class.spot-drop-modal') public className = true;
@@ -218,7 +218,7 @@ export class SpotDropModalComponent implements OnDestroy {
   }
 
   private escapeCallback = (evt:KeyboardEvent) => {
-    if (evt.keyCode === KeyCodes.ESCAPE) {
+    if (evt.key === 'Escape') {
       this.close();
     }
   };

@@ -71,6 +71,10 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
            # cf_disabled_in_project.id not included == disabled
            work_package_custom_field_ids: [cf_long_text.id, cf_empty_long_text.id, cf_global_bool.id, cf_link.id])
   end
+  let(:phase_definition) { create(:project_phase_definition, name: "Test Phase") }
+  let!(:project_phase) do
+    create(:project_phase, project: project, definition: phase_definition, active: true)
+  end
   let(:forbidden_project) do
     create(:project,
            name: "Forbidden project",
@@ -88,7 +92,9 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
   end
   let(:user) do
     create(:user,
-           member_with_permissions: { project => %w[view_work_packages export_work_packages view_project_attributes] })
+           member_with_permissions: {
+             project => %w[view_work_packages export_work_packages view_project_attributes view_project_phases]
+           })
   end
   let(:another_user) do
     create(:user, firstname: "Secret User")
@@ -201,7 +207,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
   end
   let(:options) do
     {
-      footer_text_right: project.name
+      footer_text: project.name
     }
   end
   let(:exporter) do
@@ -285,7 +291,8 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
           "amet", ", consetetur sadipscing elitr.", " ", "@OpenProject Admin",
           "Image Caption",
           "Foo",
-          "1", export_date_formatted, project.name
+          "1", export_date_formatted, project.name,
+          "2", export_date_formatted, project.name
         ].flatten.join(" ")
         expect(result).to eq(expected_result)
         expect(result).not_to include("DisabledCustomField")
@@ -465,6 +472,8 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
         [
           *expected_details,
           label_title(:description),
+          "1", export_date_formatted, project.name,
+
           "Project attributes and labels",
           supported_project_embeds.map do |embed|
             [Project.human_attribute_name(
@@ -472,9 +481,6 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
             ), embed[1]]
           end,
           "Custom field boolean", I18n.t(:general_text_Yes),
-
-          "1", export_date_formatted, project.name,
-
           "Custom field rich text", "[#{I18n.t('export.macro.rich_text_unsupported')}]",
           "Custom field hidden",
           "No replacement of:",

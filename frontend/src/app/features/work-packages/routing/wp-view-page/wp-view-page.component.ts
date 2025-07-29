@@ -45,6 +45,7 @@ import { of } from 'rxjs';
 import { WorkPackageFoldToggleButtonComponent } from 'core-app/features/work-packages/components/wp-buttons/wp-fold-toggle-button/wp-fold-toggle-button.component';
 import { OpProjectIncludeComponent } from 'core-app/shared/components/project-include/project-include.component';
 import { OpBaselineModalComponent } from 'core-app/features/work-packages/components/wp-baseline/baseline-modal/baseline-modal.component';
+import { BreadcrumbItem } from 'core-app/shared/components/breadcrumbs/op-breadcrumbs.component';
 
 @Component({
   selector: 'wp-view-page',
@@ -59,6 +60,7 @@ import { OpBaselineModalComponent } from 'core-app/features/work-packages/compon
     { provide: HalResourceNotificationService, useClass: WorkPackageNotificationService },
     QueryParamListenerService,
   ],
+  standalone: false,
 })
 export class WorkPackageViewPageComponent extends PartitionedQuerySpacePageComponent implements OnInit {
   toolbarButtonComponents:ToolbarButtonComponentDefinition[] = [
@@ -109,20 +111,20 @@ export class WorkPackageViewPageComponent extends PartitionedQuerySpacePageCompo
   }
 
   breadcrumbItems() {
-    const items = [];
+    const items:BreadcrumbItem[] = [{
+      href: this.pathHelperService.homePath(),
+      text: this.titleService.appTitle,
+    }];
 
     if (this.currentProject?.identifier) {
       items.push({
         href: this.pathHelperService.projectPath(this.currentProject.identifier),
-        text: this.currentProject.name,
-      });
-    } else {
-      items.push({
-        href: this.pathHelperService.homePath(),
-        text: this.titleService.appTitle,
+        text: this.currentProject.name as string,
       });
     }
+
     items.push(this.breadcrumbModuleEntry());
+
     if (this.selectedTitle) {
       items.push(this.selectedTitle);
     }

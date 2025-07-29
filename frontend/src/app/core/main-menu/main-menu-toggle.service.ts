@@ -41,7 +41,7 @@ export class MainMenuToggleService {
 
   private elementMinWidth = 11;
 
-  private readonly defaultWidth:number = 230;
+  private readonly defaultWidth:number = 280;
 
   private readonly localStorageKey:string = 'openProject-mainMenuWidth';
 
@@ -76,7 +76,7 @@ export class MainMenuToggleService {
       return;
     }
 
-    this.elementWidth = parseInt(window.OpenProject.guardedLocalStorage(this.localStorageKey) as string);
+    this.elementWidth = parseInt(window.OpenProject.guardedLocalStorage(this.localStorageKey) as string, 10);
     const menuCollapsed = window.OpenProject.guardedLocalStorage(this.localStorageStateKey) === 'true';
 
     // Set the initial value of the collapse tracking flag
@@ -143,8 +143,9 @@ export class MainMenuToggleService {
   }
 
   public openMenu():void {
-    this.setWidth(this.defaultWidth);
-    this.changeData.next(this.defaultWidth);
+    const width = parseInt(window.OpenProject.guardedLocalStorage(this.localStorageKey) as string, 10) || this.defaultWidth;
+    this.setWidth(width);
+    this.changeData.next(width);
   }
 
   public setWidth(width?:number):void {

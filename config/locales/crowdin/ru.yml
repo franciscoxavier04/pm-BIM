@@ -63,7 +63,6 @@ ru:
         primary-button-color: "Основная кнопка"
         accent-color: "Оттенок"
         header-bg-color: "Фон заголовка"
-        header-item-bg-hover-color: "Фон заголовка при наведении курсора"
         main-menu-bg-color: "Фон главного меню"
         main-menu-bg-selected-background: "Главное меню при выборе"
       custom_colors: "Настроить цвета"
@@ -71,10 +70,6 @@ ru:
       instructions:
         primary-button-color: "Яркий контрастный цвет, который обычно используют для важных кнопок на экране."
         accent-color: "Цвет ссылок и других удачно выделенных элементов."
-        header-item-bg-hover-color: "Цвет фона в заголовках интерактивных элементов при наведении мыши."
-        header-item-font-color: "Цвет шрифта в заголовках интерактивных элементов."
-        header-item-font-hover-color: "Цвет шрифта в заголовках интерактивных элементов при наведении мыши."
-        header-border-bottom-color: "Тонкая линия под заголовком. Оставьте это поле пустым, если вы не хотите какой-либо линии."
         main-menu-bg-color: "Цвет фона меню слева."
       theme_warning: Изменение темы перезапишет ваш пользовательский стиль. Дизайн будет утерян. Вы уверены, что хотите продолжить?
     enterprise:
@@ -362,19 +357,34 @@ ru:
       parent: "Родитель"
       blueprint: "Шаблон чертежа"
   global_search:
+    title:
+      all_projects: 'Поиск "%{search_term}" во всех проектах'
+      current_project: 'Поиск "%{search_term}" в проекте "%{project_name}"'
+      project_and_subprojects: 'Поиск "%{search_term}" в проекте "%{project_name}" и его подпроектах'
     placeholder: "Поиск в %{app_title}"
     overwritten_tabs:
       all: "Bсе"
       messages: "Форум"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Нет групп.
-      no_results_content_text: Создать новую группу
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Нет пользователей в этой группе.
     memberships:
       no_results_title_text: На данный момент проектов этой группы нет.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Укажите список имен для игнорирования при обработке вложений для входящих почтовых сообщений (например, подписей или значков). Введите одно имя файла в строке.
@@ -1124,7 +1134,6 @@ ru:
       role:
         permissions: "Разрешения"
       scim_client:
-        auth_provider: "Провайдер аутентификации"
         authentication_method: "Метод аутентификации"
         jwt_sub: "Необходима тема"
       status:
@@ -1624,6 +1633,11 @@ ru:
     models:
       attachment: "Файл"
       attribute_help_text: "Атрибут текста справки"
+      auth_provider:
+        one: "Authentication provider"
+        few: "Authentication providers"
+        many: "Authentication providers"
+        other: "Authentication providers"
       category: "Категория"
       comment: "Комментарий"
       custom_action: "Пользовательское действие"
@@ -1784,7 +1798,7 @@ ru:
     estimated_time: "Предполагаемое время"
     email: "Электронная почта"
     entity_type: "Тип сущности"
-    expires_at: "Срок действия до"
+    expires_at: "Истекает"
     firstname: "Имя"
     filter: "Фильтр"
     group: "Группа"
@@ -1900,7 +1914,6 @@ ru:
   button_copy: "Копировать"
   button_copy_to_clipboard: "Копировать в буфер обмена"
   button_copy_link_to_clipboard: "Копировать ссылку в буфер обмена"
-  button_copy_and_follow: "Скопировать и продолжить"
   button_create: "Создать"
   button_create_and_continue: "Создать и продолжить"
   button_decline: "Отклонить"
@@ -1909,6 +1922,7 @@ ru:
   button_delete_watcher: "Удаление наблюдателя %{name}"
   button_download: "Скачать"
   button_duplicate: "Дублировать"
+  button_duplicate_and_follow: "Дублировать и следить"
   button_edit: "Правка"
   button_edit_associated_wikipage: "Редактирование связанной wiki-страницы: %{page_title}"
   button_expand_all: "Развернуть все"
@@ -2149,10 +2163,10 @@ ru:
         other: "%{count} секунд"
     units:
       minute_abbreviated:
-        one: "min"
-        few: "mins"
-        many: "mins"
-        other: "минуты"
+        one: "мин"
+        few: "минута"
+        many: "минут"
+        other: "мин"
       hour:
         one: "час"
         few: "час"
@@ -2622,7 +2636,7 @@ ru:
       aggregation: "Агрегация"
       api_and_webhooks: "API и вебхуки"
     quick_add:
-      label: "Открыть меню быстрого добавления"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2922,6 +2936,7 @@ ru:
   label_gantt_chart_plural: "Диаграммы Ганта"
   label_general: "Общие"
   label_generate_key: "Сгенерируйте ключ"
+  label_global_modules: "Global modules"
   label_global_roles: "Глобальные роли"
   label_git_path: "Путь к директории .git"
   label_greater_or_equal: ">="
@@ -3065,6 +3080,7 @@ ru:
   label_no_due_date: "нет даты окончания"
   label_no_start_date: "нет даты начала"
   label_no_parent_page: "Без родительской страницы"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Нет данных для отображения"
   label_nobody: "никто"
   label_not_configured: "Не настроено"
@@ -3097,7 +3113,7 @@ ru:
   label_password_rule_special: "Специальные символы"
   label_password_rule_uppercase: "Верхний регистр"
   label_path_encoding: "Кодирование пути"
-  label_per_page: "Постранично"
+  label_per_page: "На страницу:"
   label_people: "Люди"
   label_permissions: "Разрешения"
   label_permissions_report: "Отчёт о разрешениях"
@@ -3273,6 +3289,7 @@ ru:
   label_user_mail_option_only_my_events: "Только для тех, в которых я наблюдатель или участник"
   label_user_mail_option_only_owner: "Только для тех, которыми я владею"
   label_user_mail_option_selected: "Для любого события, но только для выбранных проектов"
+  label_user_menu: "User menu"
   label_user_new: "Новый пользователь"
   label_user_plural: "Пользователи"
   label_user_search: "Найти пользователя"
@@ -3660,7 +3677,7 @@ ru:
   permission_comment_news: "Комментировать новость"
   permission_commit_access: "Возможность чтения/записи в репозиторий (commit)"
   permission_copy_projects: "Копировать проект"
-  permission_copy_work_packages: "Копировать пакеты работ"
+  permission_copy_work_packages: "Дублировать пакеты работ"
   permission_create_backup: "Создание резервных копий"
   permission_delete_work_package_watchers: "Удалить наблюдателей"
   permission_delete_work_packages: "Удалить пакеты работ"

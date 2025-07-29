@@ -643,10 +643,10 @@ ja:
       title: "続行するにはパスワードを確認してください"
     pagination:
       no_other_page: "このページだけです。"
-      pagination_controls: "Pagination controls"
+      pages_skipped: "Pages skipped."
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
-        next: "Next page"
-        previous: "Previous page"
         page_number: Page %{number}
         show_per_page: Show %{number} per page
     placeholders:
@@ -696,6 +696,7 @@ ja:
           first_day: "First day"
           last_day: "Last day"
     text_are_you_sure: "よろしいですか？"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
     breadcrumb: "Breadcrumb"
     text_data_lost: "All entered data will be lost."
     text_user_wrote: "%{value} が書き込みました："
@@ -827,10 +828,10 @@ ja:
         mixed: "Mixed"
     work_packages:
       bulk_actions:
-        move: "プロジェクトの一括変更"
         edit: "一括編集"
-        copy: "一括コピー"
         delete: "一括削除"
+        duplicate: "Bulk duplicate"
+        move: "プロジェクトの一括変更"
       button_clear: "クリア"
       comment_added: "正常にコメントを追加しました。"
       comment_send_failed: "エラーが発生しました。コメントを投稿できませんでした。"
@@ -874,8 +875,8 @@ ja:
         header_no_type: "新しいワークパッケージ（タイプ未設定）"
         header_with_parent: "新しい %{type}（%{parent_type} #%{id} の子要素）"
         button: "作成"
-      copy:
-        title: "作業項目をコピー"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "階層モードを表示"
         hide: "階層モードを非表示"

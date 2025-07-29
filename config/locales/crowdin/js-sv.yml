@@ -642,10 +642,10 @@ sv:
       title: "Bekräfta ditt lösenord för att fortsätta"
     pagination:
       no_other_page: "Du befinner dig på den enda sidan."
-      pagination_controls: "Pagination controls"
+      pages_skipped: "Pages skipped."
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
-        next: "Next page"
-        previous: "Previous page"
         page_number: Page %{number}
         show_per_page: Show %{number} per page
     placeholders:
@@ -695,6 +695,7 @@ sv:
           first_day: "First day"
           last_day: "Last day"
     text_are_you_sure: "Är du säker?"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
     breadcrumb: "Breadcrumb"
     text_data_lost: "All entered data will be lost."
     text_user_wrote: "%{value} skrev:"
@@ -826,10 +827,10 @@ sv:
         mixed: "Mixed"
     work_packages:
       bulk_actions:
-        move: "Bulk-ändra projekt"
         edit: "Lägg till/Ändra"
-        copy: "Bulkkopiera"
         delete: "Massborttagning"
+        duplicate: "Bulk duplicate"
+        move: "Bulk-ändra projekt"
       button_clear: "Rensa"
       comment_added: "Kommentaren lades till."
       comment_send_failed: "Ett fel har inträffat. Kommentaren kunde inte läggas till."
@@ -873,8 +874,8 @@ sv:
         header_no_type: "Nytt arbetspaket (typ har inte angetts än)"
         header_with_parent: "Ny %{type} (barn till %{parent_type} #%{id})"
         button: "Skapa"
-      copy:
-        title: "Kopiera arbetspaket"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Visa hierarkiläge"
         hide: "Dölj hierarkiläge"

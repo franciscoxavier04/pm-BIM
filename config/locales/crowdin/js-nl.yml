@@ -643,10 +643,10 @@ nl:
       title: "Voer uw wachtwoord in om door te gaan"
     pagination:
       no_other_page: "U bent op de enige pagina."
-      pagination_controls: "Pagination controls"
+      pages_skipped: "Pages skipped."
+      page_navigation: "Pagination navigation"
+      per_page_navigation: 'Items per page selection'
       pages:
-        next: "Next page"
-        previous: "Previous page"
         page_number: Page %{number}
         show_per_page: Show %{number} per page
     placeholders:
@@ -696,6 +696,7 @@ nl:
           first_day: "Eerste dag"
           last_day: "Laatste dag"
     text_are_you_sure: "Weet u het zeker?"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
     breadcrumb: "Breadcrumb"
     text_data_lost: "Alle ingevoerde gegevens zullen verloren gaan."
     text_user_wrote: "%{value} schreef:"
@@ -827,10 +828,10 @@ nl:
         mixed: "Gemengd"
     work_packages:
       bulk_actions:
-        move: "Bulk verandering van project"
         edit: "Aanpassen in bulk"
-        copy: "Selectie kopiëren"
         delete: "Selectie verwijderen"
+        duplicate: "Bulk duplicate"
+        move: "Bulk verandering van project"
       button_clear: "Wissen"
       comment_added: "De opmerking is succesvol toegevoegd."
       comment_send_failed: "Er is een fout opgetreden. De opmerking is niet ingediend."
@@ -874,8 +875,8 @@ nl:
         header_no_type: "Nieuw werkpakket (Type nog niet ingesteld)"
         header_with_parent: "Nieuw %{type} (Kind van %{parent_type} #%{id})"
         button: "Maken"
-      copy:
-        title: "Werkpakketten kopiëren"
+      duplicate:
+        title: "Duplicate work package"
       hierarchy:
         show: "Toon hiërarchie modus"
         hide: "Hiërarchie modus verbergen"

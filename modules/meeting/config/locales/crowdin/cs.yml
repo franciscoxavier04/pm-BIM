@@ -265,7 +265,7 @@ cs:
         caption: If your agenda outcomes contain confidential information, you can choose to not include them in the export.
       footer_text:
         label: Footer text
-        caption: This text will appear on every page on the right of the footer.
+        caption: This text will appear on every page at the center of the footer.
       submit_button: Stáhnout
   meeting_section:
     untitled_title: "Sekce bez názvu"
@@ -273,6 +273,10 @@ cs:
     placeholder_title: "Nová sekce"
     empty_text: "Přetáhněte položky sem nebo vytvořte nové"
   recurring_meeting:
+    time_zone_difference_banner:
+      title: "Time zone difference"
+      description: >
+        The dates below are referencing the time zone of the meeting series (%{actual_zone}), not your local time zone (%{user_zone}).
     ended_blankslate:
       title: "Řada schůzek skončila"
       message: "This meeting series has come to an end. There are no upcoming meetings. "

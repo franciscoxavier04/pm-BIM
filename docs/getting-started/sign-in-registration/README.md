@@ -10,7 +10,8 @@ keywords: sign in, login, registration
 
 This page will give you an overview of how to register or sign in to an existing OpenProject installation.
 
-> **Note**: If you do not have an OpenProject installation yet, please visit our site on [how to create an OpenProject trial installation](../../enterprise-guide/enterprise-cloud-guide/create-cloud-trial/).
+> [!NOTE]
+> If you do not have an OpenProject installation yet, please visit our site on [how to create an OpenProject trial installation](../../enterprise-guide/enterprise-cloud-guide/create-cloud-trial/).
 
 | Topic                                                                         | Content                                                            |
 |-------------------------------------------------------------------------------|--------------------------------------------------------------------|
@@ -41,7 +42,7 @@ Please enter your email and click the blue Next button.
 
 ![Google-sign-in](1566204061662.png)
 
-Enter you password and click the blue Next button.
+Enter your password and click the blue Next button.
 
 ![Google-password](1566204173462.png)
 
@@ -51,7 +52,7 @@ If you have activated Two-factor authentication, please enter your second factor
 
 Then, you are asked to create your OpenProject Account.
 
-![Create-account](1566204388512.png)
+![Create your OpenProject account](1566204388512.png)
 
 ## Sign in from the OpenProject website
 
@@ -65,7 +66,7 @@ If you have been invited via email to an OpenProject installation, or if you hav
 
 Please click the link in the invitation email:
 
-![email-activation](1566206190563.png)
+![Email activation screen for OpenProject registration](1566206190563.png)
 
 Enter the following information:
 
@@ -76,15 +77,16 @@ Enter the following information:
 
 Please confirm the Privacy policy and terms of service and click the blue **Create new account** button.
 
-![create-new-account](1566204790146.png)
+![Create a new account for OpenProject](1566204790146.png)
 
-Make sure to remember your password in order to sign-in again at a later point.
+Make sure to remember your password in order to sign in again at a later point.
 
 ## Choose your language
 
 After the creation of your account you are logged into the system. You will then be asked to set your language in the system. Please choose your preferred language from the drop-down list.
 
-> **Note**: OpenProject is available in more than 30 languages. If you do not find your preferred language, it first needs to be activated in the system's administration. Please talk to your system administrator so set up the language.
+> [!TIP]
+> OpenProject is available in more than 30 languages. If you do not find your preferred language, it first needs to be activated in the system's administration. Please talk to your system administrator to set up the language.
 
 ![select language](20191202171349241.png)
 
@@ -94,12 +96,13 @@ If you have already logged in before, you can [set your language in your user pr
 
 If you forgot your password, you can reset your password by clicking the blue **Forgot your password** link directly below the Sign in field.
 
-![Forgot-password](1566205596114.png)
+![Forgot password link on OpenProject sign in page](1566205596114.png)
 
 You are then asked to enter your email address with which you registered to OpenProject.
 
-![enter-email-address](1566205903097.png)
+![Enter your email address to log into OpenProject](1566205903097.png)
 
 You will then receive an email with a link to reset your password.
 
-> **Note**: If you have [signed-in with a Google account](#sign-in-with-a-google-account), you are not able to reset your password at this point.
+> [!NOTE]
+> If you have [signed-in with a Google account](#sign-in-with-a-google-account), you are not able to reset your password at this point.
