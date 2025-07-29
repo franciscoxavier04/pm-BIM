@@ -78,7 +78,7 @@ module CustomField::CalculatedValue
                       .visible
 
       visible_cfs.reject do |custom_field|
-        formula_references_id?(custom_field, id)
+        custom_field.formula_references_id?(id)
       end
     end
 
@@ -94,6 +94,22 @@ module CustomField::CalculatedValue
       if surplus_cfs.any?
         custom_field_names = CustomField.where(id: surplus_cfs).pluck(:name)
         errors.add(:formula, :not_allowed_custom_fields_referenced, custom_fields: custom_field_names.join(", "))
+      end
+    end
+
+    def formula_references_id?(original_id, visited = Set.new)
+      return true unless visited.add?(id)
+
+      if field_format_calculated_value?
+        referenced_custom_fields = formula_referenced_custom_field_ids
+
+        return true if referenced_custom_fields.include?(original_id)
+
+        ProjectCustomField.where(id: referenced_custom_fields).any? do |referenced_field|
+          referenced_field.formula_references_id?(original_id, visited)
+        end
+      else
+        false
       end
     end
 
@@ -138,22 +154,6 @@ module CustomField::CalculatedValue
     # For example, for `2 + {{cf_12}} + {{cf_4}}` it returns `2 + cf_12 + cf_4`.
     def formula_str_without_patterns
       formula_string.gsub(/\{\{(cf_\d+)}}/, '\1')
-    end
-
-    def formula_references_id?(custom_field, original_id, visited = Set.new)
-      return true unless visited.add?(custom_field.id)
-
-      if custom_field.field_format_calculated_value?
-        referenced_custom_fields = custom_field.formula_referenced_custom_field_ids
-
-        return true if referenced_custom_fields.include?(original_id)
-
-        ProjectCustomField.where(id: referenced_custom_fields).any? do |referenced_field|
-          formula_references_id?(referenced_field, original_id, visited)
-        end
-      else
-        false
-      end
     end
   end
 end
