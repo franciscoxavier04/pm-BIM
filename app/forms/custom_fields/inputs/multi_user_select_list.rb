@@ -39,7 +39,7 @@ class CustomFields::Inputs::MultiUserSelectList < CustomFields::Inputs::Base::Au
       **input_attributes,
       scope_name_to_model: false,
       name: "#{@object.model_name.element}[custom_field_values][#{input_attributes[:name]}][]",
-      value:
+      value: nil
     )
 
     custom_value_form.autocompleter(**input_attributes)
