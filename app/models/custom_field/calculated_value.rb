@@ -143,8 +143,8 @@ module CustomField::CalculatedValue
     def has_circular_reference?(custom_field, original_id, visited = Set.new)
       return true unless visited.add?(custom_field.id)
 
-      if custom_field.field_format_calculated_value? && custom_field.formula
-        referenced_custom_fields = custom_field.formula.fetch("referenced_custom_fields", [])
+      if custom_field.field_format_calculated_value?
+        referenced_custom_fields = custom_field.formula_referenced_custom_field_ids
 
         return true if referenced_custom_fields.include?(original_id)
 
