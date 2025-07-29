@@ -78,6 +78,10 @@ module Storages
       storage_audience
     end
 
+    def exchanges_token?
+      storage_audience.present? && storage_audience != OpenIDConnect::UserToken::IDP_AUDIENCE
+    end
+
     def authenticate_via_idp?
       %w[oauth2_sso oauth2_sso_with_two_way_oauth2_fallback].include?(authentication_method)
     end
