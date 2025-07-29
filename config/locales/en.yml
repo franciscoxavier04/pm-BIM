@@ -1349,7 +1349,7 @@ en:
         inclusion_nested: "is not set to one of the allowed values at path '%{path}'."
         invalid: "is invalid."
         invalid_characters: "contains invalid characters."
-        invalid_custom_fields: "contains custom fields that are not allowed: %{custom_fields}."
+        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
         invalid_url: "is not a valid URL."
         invalid_url_scheme: "is not a supported protocol (allowed: %{allowed_schemes})."
         less_than_or_equal_to: "must be less than or equal to %{count}."

@@ -41,7 +41,6 @@ module CustomField::CalculatedValue
 
   included do
     validate :validate_formula, if: :field_format_calculated_value?
-    validate :validate_referenced_custom_fields_allowed, if: :field_format_calculated_value?
 
     def validate_formula
       if formula_string.blank?
@@ -50,6 +49,8 @@ module CustomField::CalculatedValue
         errors.add(:formula, :invalid_characters)
       elsif !valid_formula_syntax?
         errors.add(:formula, :invalid)
+      else
+        validate_referenced_custom_fields
       end
     end
 
@@ -77,7 +78,7 @@ module CustomField::CalculatedValue
       end
     end
 
-    def validate_referenced_custom_fields_allowed
+    def validate_referenced_custom_fields
       # We can only validate used custom fields from a high-level perspective, since at this point in validation,
       # we do not have a project context to check against. So we cannot check if the custom fields are actually
       # enabled for a project and visible to a non-admin user.
@@ -88,7 +89,7 @@ module CustomField::CalculatedValue
 
       if surplus_cfs.any?
         custom_field_names = CustomField.where(id: surplus_cfs).pluck(:name)
-        errors.add(:formula, :invalid_custom_fields, custom_fields: custom_field_names.join(", "))
+        errors.add(:formula, :not_allowed_custom_fields_referenced, custom_fields: custom_field_names.join(", "))
       end
     end
 
@@ -118,15 +119,15 @@ module CustomField::CalculatedValue
       allowed_chars = MATH_OPERATORS_FOR_FORMULA + [" "]
       allowed_tokens = /\A(\{\{cf_\d+}}|[\d.]+)\z/
 
-      formula_string.split(Regexp.union(allowed_chars)).reject(&:empty?).all? do |token|
-        token.match?(allowed_tokens)
+      formula_string.split(Regexp.union(allowed_chars)).all? do |token|
+        token.empty? || token.match?(allowed_tokens)
       end
     end
 
     # Returns a list of custom field IDs used in the formula.
     # For a formula like `2 + {{cf_12}} + {{cf_4}}` it returns `[12, 4]`.
     def cf_ids_used_in_formula(formula_str)
-      formula_str.scan(/(?<=\{\{cf_)\d+(?=}})/).map(&:to_i)
+      formula_str.scan(/(?<=\{\{cf_)\d+(?=}})/).map(&:to_i).uniq
     end
 
     # Returns `formula_string` with all custom field references detokenized so that they are parseable by Dentaku.
@@ -136,18 +137,15 @@ module CustomField::CalculatedValue
     end
 
     def has_circular_reference?(custom_field, original_id, visited = Set.new)
-      return true if visited.include?(custom_field.id)
-
-      visited.add(custom_field.id)
+      return true unless visited.add?(custom_field.id)
 
       if custom_field.field_format_calculated_value? && custom_field.formula
         referenced_custom_fields = custom_field.formula.fetch("referenced_custom_fields", [])
 
         return true if referenced_custom_fields.include?(original_id)
 
-        referenced_custom_fields.any? do |ref_id|
-          referenced_field = ProjectCustomField.find_by(id: ref_id)
-          referenced_field && has_circular_reference?(referenced_field, original_id, visited)
+        ProjectCustomField.where(id: referenced_custom_fields).any? do |referenced_field|
+          has_circular_reference?(referenced_field, original_id, visited)
         end
       else
         false
