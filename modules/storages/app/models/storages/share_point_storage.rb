@@ -74,7 +74,6 @@ module Storages
       end
     end
 
-    # TODO: do we need all of this?
     def configuration_checks
       {
         storage_oauth_client_configured: oauth_client.present?,
@@ -84,10 +83,5 @@ module Storages
         name_configured: name.present?
       }
     end
-
-    # To implement
-    # configuration_checks
-    # automatic_management_new_record?
-    # provider_fields_defaults
   end
 end

@@ -178,7 +178,6 @@ module Storages
       is_a?(OneDriveStorage)
     end
 
-    # TODO: rename to provider_share_point?
     def provider_type_share_point?
       is_a?(SharePointStorage)
     end
