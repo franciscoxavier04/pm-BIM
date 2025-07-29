@@ -81,6 +81,13 @@ export function initializeGlobalListeners():void {
     document.body.classList.toggle('zen-mode', event.detail.active);
   });
 
+  window.addEventListener('popstate', () => {
+    // If you're returning to Angular, force full reload
+    const shouldReload = document.querySelector('openproject-base');
+    if (shouldReload) {
+      window.location.reload();
+    }
+  });
   // Jump to the element given by location.hash, if present
   const { hash } = window.location;
   if (hash && hash.startsWith('#')) {
