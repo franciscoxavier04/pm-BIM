@@ -42,9 +42,12 @@ module Redmine::MenuManager::TopMenuHelper
   end
 
   def top_menu_left_menu_items
-    [render_module_top_menu_node,
-     render_logo,
-     render_logo_icon]
+    items = [
+      render_module_top_menu_node,
+      render_logo
+    ]
+    items << render_logo_icon unless custom_logo?
+    items
   end
 
   def render_top_menu_center
