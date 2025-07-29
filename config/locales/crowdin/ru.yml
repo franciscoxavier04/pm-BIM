@@ -2156,8 +2156,8 @@ ru:
     units:
       minute_abbreviated:
         one: "мин"
-        few: "mins"
-        many: "mins"
+        few: "минута"
+        many: "минут"
         other: "мин"
       hour:
         one: "час"
