@@ -78,6 +78,8 @@ module API
             work_package
           end
 
+          delegate :risk?, to: :model
+
           private
 
           def contract

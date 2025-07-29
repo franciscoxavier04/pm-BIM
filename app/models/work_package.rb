@@ -47,6 +47,9 @@ class WorkPackage < ApplicationRecord
 
   include OpenProject::Journal::AttachmentHelper
 
+  # STI configuration
+  self.inheritance_column = :work_package_type
+
   DONE_RATIO_OPTIONS = %w[field status].freeze
   TOTAL_PERCENT_COMPLETE_MODE_OPTIONS = %w[work_weighted_average simple_average].freeze
 
@@ -295,6 +298,10 @@ class WorkPackage < ApplicationRecord
 
   def milestone?
     type&.is_milestone?
+  end
+
+  def risk?
+    work_package_type == "Risk"
   end
 
   alias_method :is_milestone?, :milestone?

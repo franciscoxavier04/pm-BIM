@@ -1,0 +1,31 @@
+en:
+  label_risks: "Risks"
+  label_risk: "Risk"
+  label_risks_plural: "Risks"
+
+  activerecord:
+    models:
+      risk: "Risk"
+      risks: "Risks"
+    attributes:
+      work_package:
+        risk_impact: "Impact"
+        risk_likelihood: "Likelihood"
+        risk_level: "Level"
+    risk:
+      impact:
+        very_low: "Very Low"
+        low: "Low"
+        medium: "Medium"
+        high: "High"
+        very_high: "Very High"
+      likelihood:
+        very_low: "Very Low"
+        low: "Low"
+        medium: "Medium"
+        high: "High"
+        very_high: "Very High"
+      level:
+        low: "Low"
+        medium: "Medium"
+        high: "High"

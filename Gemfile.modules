@@ -42,6 +42,7 @@ group :opf_plugins do
   gem 'openproject-calendar',                  path: 'modules/calendar'
   gem 'openproject-storages',                  path: 'modules/storages'
   gem 'openproject-documents',                 path: 'modules/documents'
+  gem 'openproject-risks',                     path: 'modules/risks'
 
   gem 'openproject-bim',                       path: 'modules/bim'
 end
