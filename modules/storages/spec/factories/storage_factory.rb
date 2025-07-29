@@ -230,10 +230,6 @@ FactoryBot.define do
     host { "https://openproject.sharepoint.com/sites/ProjectX" }
     automatically_managed { false }
 
-    trait :as_automatically_managed do
-      automatically_managed { true }
-    end
-
     trait :with_tenant_id do
       tenant_id { SecureRandom.uuid }
     end
