@@ -62,7 +62,7 @@ class CustomFields::Inputs::MultiVersionSelectList < CustomFields::Inputs::Base:
   end
 
   def selected?(version)
-    @custom_values.pluck(:value).map { |value| value&.to_i }.include?(version.id)
+    custom_values.pluck(:value).map { |value| value&.to_i }.include?(version.id)
   end
 
   def group_key(project)

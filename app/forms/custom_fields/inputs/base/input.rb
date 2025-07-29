@@ -48,8 +48,7 @@ class CustomFields::Inputs::Base::Input < ApplicationForm
   def input_attributes
     base_input_attributes.merge(
       {
-        data: { "qa-field-name": qa_field_name },
-        value:
+        data: { "qa-field-name": qa_field_name }
       }
     )
   end

@@ -56,6 +56,6 @@ class CustomFields::Inputs::MultiUserSelectList < CustomFields::Inputs::Base::Au
   end
 
   def custom_input_value
-    @custom_values.filter_map(&:value)
+    custom_values.filter_map(&:value)
   end
 end
