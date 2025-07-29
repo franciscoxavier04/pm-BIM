@@ -32,7 +32,7 @@ module DynamicContentSecurityPolicy
   extend ActiveSupport::Concern
 
   included do
-    before_action :add_websocket_server_url_to_csp
+    before_action :add_hocuspocus_host_to_csp
   end
 
   ##
@@ -54,12 +54,12 @@ module DynamicContentSecurityPolicy
     end
   end
 
-  private
+ private
 
-  def add_websocket_server_url_to_csp
-    websocket_server_url = Setting.websocket_server_url
-    if websocket_server_url.present?
-      uri = URI.parse(websocket_server_url)
+  def add_hocuspocus_host_to_csp
+    hocuspocus_url = Setting.collaborative_editing_hocuspocus_url
+    if hocuspocus_url.present?
+      uri = URI.parse(hocuspocus_url)
       base_url = "#{uri.scheme}://#{uri.host}"
 
       append_content_security_policy_directives(connect_src: [base_url])
