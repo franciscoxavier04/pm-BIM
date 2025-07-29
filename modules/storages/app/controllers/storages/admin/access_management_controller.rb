@@ -31,6 +31,8 @@
 class Storages::Admin::AccessManagementController < ApplicationController
   include OpTurbo::ComponentStream
 
+  ALLOWED_STORAGES = %i[storages_one_drive_storage storages_share_point_storage].freeze
+
   layout "admin"
 
   before_action :require_admin
@@ -100,8 +102,7 @@ class Storages::Admin::AccessManagementController < ApplicationController
   end
 
   def permitted_storage_params
-    key = params.key?(:storages_one_drive_storage) ? :storages_one_drive_storage : :storages_share_point_storage
-
-    params.require(key).permit("automatic_management_enabled")
+    key = params.keys.find { |k| ALLOWED_STORAGES.include?(k.to_sym) }
+    params.expect(key => ["automatic_management_enabled"])
   end
 end
