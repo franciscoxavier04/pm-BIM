@@ -61,7 +61,7 @@ module Storages
             URI(@storage.host)
           end
 
-          def drive_and_location(location)
+          def split_identifier(location)
             drive_id, item_id = location.to_s.split(SharePointStorage::IDENTIFIER_SEPARATOR)
             { drive_id:, location: Peripherals::ParentFolder.new(item_id || "/") }
           end

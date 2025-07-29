@@ -37,13 +37,13 @@ http_interactions:
       P3p:
       - CP="DSP CUR OTPi IND OTRi ONL FIN"
       X-Ms-Request-Id:
-      - b2ce4ada-b8ef-46c7-8cf4-c9b83db6a500
+      - e0ae382e-610b-4540-bf8e-b647a3c60100
       X-Ms-Ests-Server:
-      - 2.1.21415.7 - FRC ProdSlices
+      - 2.1.21415.8 - SEC ProdSlices
       X-Ms-Srs:
       - 1.P
       Content-Security-Policy-Report-Only:
-      - object-src 'none'; base-uri 'self'; script-src 'self' 'nonce-GFNiZX_zRLvj3WVU7ogLeQ'
+      - object-src 'none'; base-uri 'self'; script-src 'self' 'nonce-8nuxlo41p8YUlOGBkvr0QA'
         'unsafe-inline' 'unsafe-eval' https://*.msauth.net https://*.msftauth.net
         https://*.msftauthimages.net https://*.msauthimages.net https://*.msidentity.com
         https://*.microsoftonline-p.com https://*.microsoftazuread-sso.com https://*.azureedge.net
@@ -52,21 +52,21 @@ http_interactions:
       X-Xss-Protection:
       - '0'
       Set-Cookie:
-      - fpc=AkeDXHb9l0ZCgY-m-IGrBzhZ-dCOAQAAAG5tGeAOAAAA; expires=Wed, 27-Aug-2025
-        13:09:03 GMT; path=/; secure; HttpOnly; SameSite=None, x-ms-gateway-slice=estsfd;
+      - fpc=AgPm81TOrBRGsI8ii7mxCF5Z-dCOAQAAALCAGuAOAAAA; expires=Thu, 28-Aug-2025
+        08:43:28 GMT; path=/; secure; HttpOnly; SameSite=None, x-ms-gateway-slice=estsfd;
         path=/; secure; samesite=none; httponly, stsservicecookie=estsfd; path=/;
         secure; samesite=none; httponly
       Date:
-      - Mon, 28 Jul 2025 13:09:02 GMT
+      - Tue, 29 Jul 2025 08:43:27 GMT
       Content-Length:
-      - '1932'
+      - '1927'
     body:
       encoding: UTF-8
       string: '{"token_type":"Bearer","expires_in":3599,"ext_expires_in":3599,"access_token":"<ACCESS_TOKEN>"}'
-  recorded_at: Mon, 28 Jul 2025 13:09:03 GMT
+  recorded_at: Tue, 29 Jul 2025 08:43:28 GMT
 - request:
     method: get
-    uri: https://graph.microsoft.com/v1.0/drives/b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY9jo6leJDqrT7muzvmiWjFW/items/POTATO/children?$select=id,name,size,webUrl,lastModifiedBy,createdBy,fileSystemInfo,file,folder,parentReference
+    uri: https://graph.microsoft.com/v1.0/drives/b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY9jo6leJDqrT7muzvmiWjFW/root:/POTATO:/children?$select=id,name,size,webUrl,lastModifiedBy,createdBy,fileSystemInfo,file,folder,parentReference
     body:
       encoding: US-ASCII
       string: ''
@@ -87,7 +87,8 @@ http_interactions:
       Cache-Control:
       - no-store, no-cache
       Content-Type:
-      - application/json; charset=utf-8
+      - application/json; odata.metadata=minimal; odata.streaming=true; IEEE754Compatible=false;
+        charset=utf-8
       Content-Encoding:
       - gzip
       Vary:
@@ -95,17 +96,18 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=31536000
       Request-Id:
-      - 8470c2a4-e9b1-480a-84c2-8abf72f91adf
+      - 82303d0a-e686-47d0-a59d-4a1aa1aed489
       Client-Request-Id:
-      - 8470c2a4-e9b1-480a-84c2-8abf72f91adf
+      - 82303d0a-e686-47d0-a59d-4a1aa1aed489
       X-Ms-Ags-Diagnostic:
-      - '{"ServerInfo":{"DataCenter":"Germany West Central","Slice":"E","Ring":"4","ScaleUnit":"008","RoleInstance":"FR3PEPF00000DD5"}}'
+      - '{"ServerInfo":{"DataCenter":"Germany West Central","Slice":"E","Ring":"4","ScaleUnit":"001","RoleInstance":"FR2PEPF000001DD"}}'
       Splogid:
-      - 3735b6a1-60b6-0000-7566-a31011c0b744
+      - 6b78b6a1-c0a3-0000-7534-c1315b3a5d62
       Date:
-      - Mon, 28 Jul 2025 13:09:03 GMT
+      - Tue, 29 Jul 2025 08:43:30 GMT
     body:
       encoding: UTF-8
-      string: '{"error":{"code":"itemNotFound","message":"Item not found"}}'
-  recorded_at: Mon, 28 Jul 2025 13:09:03 GMT
+      string: '{"error":{"code":"itemNotFound","message":"The resource could not be
+        found."}}'
+  recorded_at: Tue, 29 Jul 2025 08:43:30 GMT
 recorded_with: VCR 6.3.1

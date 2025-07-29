@@ -62,6 +62,10 @@ module Storages
       end
     end
 
+    def configuration_checks
+      { all: true }
+    end
+
     def uri
       @uri ||= URI("https://graph.microsoft.com").normalize
     end

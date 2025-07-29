@@ -235,7 +235,6 @@ FactoryBot.define do
     end
   end
 
-
   factory :share_point_dev_storage, parent: :storage, class: "::Storages::SharePointStorage" do
     tenant_id { ENV.fetch("SHARE_POINT_TEST_TENANT_ID", "e36f1dbc-fdae-427e-b61b-0d96ddfb81a4") }
     host { ENV.fetch("SHARE_POINT_TEST_HOST", "https://ymt6d.sharepoint.com/sites/OPTest") }

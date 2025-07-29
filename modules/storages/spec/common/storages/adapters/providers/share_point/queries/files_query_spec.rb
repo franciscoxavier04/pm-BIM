@@ -120,14 +120,14 @@ module Storages
             end
 
             context "when requesting a drive", vcr: "share_point/files_query_drive" do
-              let(:folder) { "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY9jo6leJDqrT7muzvmiWjFW||" }
+              let(:folder) { "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY9jo6leJDqrT7muzvmiWjFW||/" }
               let(:files_result) do
                 Results::StorageFileCollection.new(
                   files: [
                     Results::StorageFile.new(
                       id: "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY9jo6leJDqrT7muzvmiWjFW||01ANJ53W5P3SUY3ZCDTRA3KLXRGA5A2M3S",
                       name: "data",
-                      size: 760,
+                      size: 12605,
                       mime_type: "application/x-op-directory",
                       created_at: Time.zone.parse("2025-04-07 12:02:26Z"),
                       last_modified_at: Time.zone.parse("2025-04-07 12:02:26Z"),
@@ -168,12 +168,7 @@ module Storages
                     permissions: %i[readable writeable]
                   ),
                   ancestors: [
-                    Results::StorageFile.new(
-                      id: "a1d45ff742d2175c095f0a7173f93fc3fc23664a953ceae6778fe15398818c2d",
-                      name: "OPTest",
-                      location: "/",
-                      permissions: %i[readable writeable]
-                    )
+                    Results::StorageFileAncestor.new(name: "OPTest", location: "/")
                   ]
                 )
               end
@@ -183,12 +178,24 @@ module Storages
 
             context "when requesting an folder", vcr: "share_point/files_query_folder" do
               let(:folder) do
-                "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY9jo6leJDqrT7muzvmiWjFW||01ANJ53W5P3SUY3ZCDTRA3KLXRGA5A2M3S"
+                "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY9jo6leJDqrT7muzvmiWjFW||data"
               end
 
               let(:files_result) do
                 Results::StorageFileCollection.new(
                   files: [
+                    Results::StorageFile.new(
+                      id: "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY9jo6leJDqrT7muzvmiWjFW||01ANJ53W6DBDYX553L4REYNOMUI6XVMTO6",
+                      name: "subfolder",
+                      size: 11845,
+                      mime_type: "application/x-op-directory",
+                      location: "/Marcello%20VCR/data/subfolder",
+                      created_at: Time.zone.parse("2025-07-28 15:03:27.000000000 UTC +00:00"),
+                      last_modified_at: Time.zone.parse("2025-07-28 15:03:27.000000000 UTC +00:00"),
+                      created_by_name: "Eric Schubert",
+                      last_modified_by_name: "Eric Schubert",
+                      permissions: %i[readable writeable]
+                    ),
                     Results::StorageFile.new(
                       id: "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY9jo6leJDqrT7muzvmiWjFW||01ANJ53W26P5RNXU7V2JBKCVQQAGGTO46A",
                       name: "edge one_drive_health_report_2025-07-22T16_03_25Z.txt",
@@ -209,18 +216,69 @@ module Storages
                     permissions: %i[readable writeable]
                   ),
                   ancestors: [
+                    Results::StorageFileAncestor.new(name: "OPTest", location: "/"),
+                    Results::StorageFileAncestor.new(name: "Marcello VCR", location: "/Marcello VCR")
+                  ]
+                )
+              end
+
+              it_behaves_like "adapter files_query: successful files response"
+            end
+
+            context "when requesting a sub folder", vcr: "share_point/files_query_sub_folder" do
+              let(:folder) do
+                "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY9jo6leJDqrT7muzvmiWjFW||data/subfolder"
+              end
+              let(:files_result) do
+                Results::StorageFileCollection.new(
+                  files: [
                     Results::StorageFile.new(
-                      id: "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY9jo6leJDqrT7muzvmiWjFW||",
-                      name: "Marcello VCR",
-                      location: "/Marcello%20VCR",
-                      permissions: %i[readable writeable]
-                    ),
-                    Results::StorageFile.new(
-                      id: "a1d45ff742d2175c095f0a7173f93fc3fc23664a953ceae6778fe15398818c2d",
-                      name: "OPTest",
-                      location: "/",
+                      id: "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY9jo6leJDqrT7muzvmiWjFW||01ANJ53W7MUYDYQAA3WVEYDJQNZVSKNPGD",
+                      name: "fw13-easy-effects.json",
+                      size: 11845,
+                      mime_type: "application/json",
+                      created_at: Time.zone.parse("2025-07-28 15:06:31.000000000 UTC +00:00"),
+                      last_modified_at: Time.zone.parse("2025-07-28 15:06:31.000000000 UTC +00:00"),
+                      created_by_name: "Eric Schubert",
+                      last_modified_by_name: "Eric Schubert",
+                      location: "/Marcello%20VCR/data/subfolder/fw13-easy-effects.json",
                       permissions: %i[readable writeable]
                     )
+                  ],
+                  parent: Results::StorageFile.new(
+                    id: "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY9jo6leJDqrT7muzvmiWjFW||01ANJ53W6DBDYX553L4REYNOMUI6XVMTO6",
+                    name: "subfolder",
+                    location: "/Marcello%20VCR/data/subfolder",
+                    permissions: %i[readable writeable]
+                  ),
+                  ancestors: [
+                    Results::StorageFileAncestor.new(name: "OPTest", location: "/"),
+                    Results::StorageFileAncestor.new(name: "Marcello VCR", location: "/Marcello VCR"),
+                    Results::StorageFileAncestor.new(name: "data", location: "/Marcello VCR/data")
+                  ]
+                )
+              end
+
+              it_behaves_like "adapter files_query: successful files response"
+            end
+
+            context "when requesting an empty folder", vcr: "share_point/files_query_empty_folder" do
+              let(:folder) do
+                "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY9jo6leJDqrT7muzvmiWjFW||empty"
+              end
+
+              let(:files_result) do
+                Results::StorageFileCollection.new(
+                  files: [],
+                  parent: Results::StorageFile.new(
+                    id: "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY9jo6leJDqrT7muzvmiWjFW||01ANJ53W2MWJ6SKEZPHFGIAAB325KYYMPE",
+                    name: "empty",
+                    location: "/Marcello%20VCR/empty",
+                    permissions: %i[readable writeable]
+                  ),
+                  ancestors: [
+                    Results::StorageFileAncestor.new(name: "OPTest", location: "/"),
+                    Results::StorageFileAncestor.new(name: "Marcello VCR", location: "/Marcello VCR")
                   ]
                 )
               end

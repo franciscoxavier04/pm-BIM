@@ -46,7 +46,7 @@ module Storages
               if folder.root?
                 Internal::ListsQuery.call(storage: @storage, http:)
               else
-                Internal::ChildrenQuery.call(storage: @storage, http:, **drive_and_location(folder))
+                Internal::ChildrenQuery.call(storage: @storage, http:, **split_identifier(folder))
               end
             end
           end

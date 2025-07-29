@@ -30,33 +30,13 @@
 
 module Storages
   module Adapters
-    module Providers
-      module SharePoint
-        module Commands
-          class CreateFolderCommand < Base
-            # @param auth_strategy [Result(Input::Strategy)]
-            # @param input_data [Input::CreateFolder]
-            def call(auth_strategy:, input_data:)
-              Authentication[auth_strategy].call(storage: @storage) do |_http|
-                # Input data has: folder name, parent_location
-                # Parent Location here need to be eiter a Drive
-                #   Or a pair of Drive + Parent Folder
-                Rails.logger.debug request_uri(**drive_and_location(input_data.parent_location))
-              end
-            end
-
-            private
-
-            def request_uri(drive_id:, location:)
-              last_fragment = if location.root?
-                                ["/root/children"]
-                              else
-                                ["/items", parent_location.path, "/children"]
-                              end
-
-              UrlBuilder.url(base_uri, "/drives/", drive_id, *last_fragment)
-            end
-          end
+    module Results
+      class StorageFileAncestor < StorageFile
+        def initialize(name:, location:)
+          super(name:,
+                location: UrlBuilder.path(location),
+                id: Digest::SHA256.hexdigest(name),
+                permissions: %i[readable writeable])
         end
       end
     end

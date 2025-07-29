@@ -102,7 +102,8 @@ module Storages
               _, _, name = parent_reference[:path].gsub(/.*root:/, "").rpartition "/"
 
               if name.empty?
-                root(parent_reference[:id])
+                Results::StorageFile.new(id: parent_reference[:id], name: "Root", location: "/",
+                                         permissions: %i[readable writeable])
               else
                 @transformer.parent_transform(id: parent_reference[:id], name:, location: parent_reference)
               end
@@ -112,17 +113,13 @@ module Storages
               path_elements = parent_reference[:path].gsub(/.+root:/, "").split("/")
 
               path_elements[0..-2].map do |component|
-                next root(Digest::SHA256.hexdigest("i_am_root")) if component.blank?
+                next root if component.blank?
 
-                Results::StorageFile.new(
-                  id: Digest::SHA256.hexdigest(component),
-                  name: component,
-                  location: UrlBuilder.path(component)
-                )
+                Results::StorageFileAncestor.new(name: component, location: component)
               end
             end
 
-            def root(id) = Results::StorageFile.new(name: "Root", location: "/", id:, permissions: %i[readable writeable])
+            def root = Results::StorageFileAncestor.new(name: "Root", location: "/")
 
             def children_url_for(folder)
               return UrlBuilder.url(base_uri, "/root/children") if folder.root?
