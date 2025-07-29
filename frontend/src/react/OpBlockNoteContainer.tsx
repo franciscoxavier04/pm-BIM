@@ -54,18 +54,25 @@ import { useEffect, useState } from "react";
 
 import { HocuspocusProvider } from "@hocuspocus/provider";
 import * as Y from 'yjs';
+import {
+  DefaultThreadStoreAuth,
+  YjsThreadStore,
+} from "@blocknote/core/comments";
+import { User } from "@blocknote/core/comments";
 
 import { en } from "@blocknote/core/locales";
 import { en as aiEn } from "@blocknote/xl-ai/locales";
 import { AIMenuController, AIToolbarButton, createAIExtension, getAISlashMenuItems, } from "@blocknote/xl-ai";
 import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+/* import styles from './OpBlockNoteContainer.module.css'; */
 
 export interface OpBlockNoteContainerProps {
   inputField: HTMLInputElement;
   inputText?: string;
-  websocketUrl: string;
-  websocketAccessToken: string;
-  userName: string;
+  hocuspocusUrl: string;
+  hocuspocusAccessToken: string;
+  users: Array<User>;
+  activeUser: User;
   documentId: string;
 }
 
@@ -104,38 +111,69 @@ const extensions:Array<BlockNoteExtensionFactory> = [
 
 export default function OpBlockNoteContainer({ inputField,
                                                inputText,
-                                               userName,
-                                               websocketUrl,
-                                               websocketAccessToken,
+                                               users,
+                                               activeUser,
+                                               hocuspocusUrl,
+                                               hocuspocusAccessToken,
                                                documentId }: OpBlockNoteContainerProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [theme, setTheme] = useState<"light" | "dark">(detectTheme);
 
   let collaboration: any;
-  if(websocketUrl != '' && documentId != '' && websocketAccessToken != '' && userName != '') {
+  let comments: any;
+  const collaborationEnabled: boolean = Boolean(hocuspocusUrl && documentId && hocuspocusAccessToken && activeUser);
+  let hocuspocusProvider: HocuspocusProvider | null = null;
+  let threadStore: any;
+  if(collaborationEnabled) {
     const doc = new Y.Doc()
-    const provider = new HocuspocusProvider({
-      url: websocketUrl,
+    hocuspocusProvider = new HocuspocusProvider({
+      url: hocuspocusUrl,
       name: documentId,
-      token: websocketAccessToken,
+      token: hocuspocusAccessToken,
       document: doc
     });
     const cursorColor = '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
     collaboration = {
-      provider,
+      hocuspocusProvider,
       fragment: doc.getXmlFragment("document-store"),
       user: {
-        name: userName,
+        name: activeUser.username,
         color: cursorColor,
       },
       showCursorLabels: "activity"
     }
+    threadStore = new YjsThreadStore(
+      activeUser.id,
+      doc.getMap("threads"),
+      new DefaultThreadStoreAuth(activeUser.id, "editor"),
+    );
+    comments = {
+      threadStore: threadStore,
+    };
   }
 
-  // const editor = useCreateBlockNote({collaboration, schema, dictionary, extensions });
-  // Create the editor without collaboration until persistence is fixed.
-  console.log(collaboration);
-  const editor = useCreateBlockNote({ schema, dictionary, extensions });
+  let editor: any;
+  if(collaboration) {
+    const resolveUsers = async (userIds: string[]) => {
+      return users.filter((user) => userIds.includes(user.id));
+    }
+
+    editor = useCreateBlockNote(
+      {
+        resolveUsers,
+        collaboration,
+        schema,
+        dictionary,
+        extensions,
+        comments
+      },
+      [activeUser, threadStore]
+    );
+  } else {
+    editor = useCreateBlockNote(
+      { schema, dictionary, extensions },
+    );
+  };
 
   useEffect(() => {
     const observer = new MutationObserver((mutations) => {
@@ -158,14 +196,28 @@ export default function OpBlockNoteContainer({ inputField,
   }, []);
 
   useEffect(() => {
-    async function loadInitialContent() {
-      const blocks = await editor.tryParseMarkdownToBlocks(inputText || "");
-      editor.replaceBlocks(editor.document, blocks);
-      setIsLoading(false);
+    async function prepareEditor() {
+      if(collaborationEnabled && hocuspocusProvider) {
+        hocuspocusProvider.on('synced', async () => {
+          console.log('BlockNote collaboration synced');
+          setIsLoading(false);
+        });
+        hocuspocusProvider.on('disconnect', () => {
+          console.error('BlockNote collaboration disconnected');
+        });
+      } else {
+        const blocks = await editor.tryParseMarkdownToBlocks(inputText || "");
+        editor.replaceBlocks(editor.document, blocks);
+        setIsLoading(false);
+      }
     }
-
-    void loadInitialContent();
-  }, [editor]);
+    void prepareEditor();
+    return  ()  => {
+      if (hocuspocusProvider) {
+        hocuspocusProvider.destroy();
+      }
+    };
+  }, []);
 
   return (
     <>
@@ -180,6 +232,7 @@ export default function OpBlockNoteContainer({ inputField,
           }}
           slashMenu={false}
           formattingToolbar={false}
+          className={"block-note-editor-container"}
         >
           <AIMenuController/>
           <FormattingToolbarWithAI/>

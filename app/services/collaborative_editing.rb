@@ -40,14 +40,15 @@ module CollaborativeEditing
   module DocumentAccessTokenGenerator
     module_function
 
-    def call(document_id)
-      if Setting.websocket_server_secret.present?
+    def call(document_id, document_text)
+      if Setting.collaborative_editing_hocuspocus_secret.present?
         JWT.encode(
           {
             document_id:,
+            document_text:,
             exp: 20.minutes.from_now.to_i
           },
-          Setting.websocket_server_secret,
+          Setting.collaborative_editing_hocuspocus_secret,
           "HS256"
         )
       end
