@@ -391,7 +391,6 @@ en:
       setting_up_storages_non_admin: Administrators can set up file storages in Administration / File storages.
       share_point:
         application_link_text: SharePoint site
-        documentation_link_text: SharePoint file storages documentation
         integration: SharePoint Administration / OpenProject
         oauth_configuration: Copy these values from the desired application in the %{application_link_text}.
         provider_configuration: Please make sure you have administration privileges in your SharePoint instance and the OpenProject integration app is installed before doing the setup.
