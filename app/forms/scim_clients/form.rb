@@ -81,9 +81,9 @@ module ScimClients
           name: :jwt_sub,
           label: ScimClient.human_attribute_name(:jwt_sub),
           required: true,
-          caption: link_translate("admin.scim_clients.form.jwt_sub_description", links: {
-                                    docs_url: ::OpenProject::Static::Links.url_for(:sysadmin_docs, :scim_jwt_authetication_method)
-                                  }),
+          caption: link_translate("admin.scim_clients.form.jwt_sub_description",
+                                  links: { docs_url: %i[sysadmin_docs scim_jwt_authetication_method] },
+                                  external: true),
           input_width: :large
         )
       end

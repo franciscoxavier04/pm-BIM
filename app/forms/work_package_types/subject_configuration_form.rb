@@ -87,7 +87,7 @@ module WorkPackageTypes
 
     def pattern_input_caption
       link_translate("types.edit.subject_configuration.pattern.caption", links: {
-                       attributes_url: ::OpenProject::Static::Links.url_for(:enterprise_features, :work_package_subject_generation)
+                       attributes_url: %i[enterprise_features work_package_subject_generation]
                      })
     end
   end
