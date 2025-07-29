@@ -74,12 +74,11 @@ export default function OpBlockNoteContainer({ inputField,
   let collaboration: any;
   let comments: any;
   const collaborationEnabled: boolean = Boolean(hocuspocusUrl && documentId && hocuspocusAccessToken && activeUser);
-  let provider: HocuspocusProvider | null = null;
+  let hocuspocusProvider: HocuspocusProvider | null = null;
   let threadStore: any;
-
   if(collaborationEnabled) {
     const doc = new Y.Doc()
-    provider = new HocuspocusProvider({
+    hocuspocusProvider = new HocuspocusProvider({
       url: hocuspocusUrl,
       name: documentId,
       token: hocuspocusAccessToken,
@@ -87,7 +86,7 @@ export default function OpBlockNoteContainer({ inputField,
     });
     const cursorColor = '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
     collaboration = {
-      provider,
+      provider: hocuspocusProvider,
       fragment: doc.getXmlFragment("document-store"),
       user: {
         name: activeUser.username,
@@ -95,7 +94,6 @@ export default function OpBlockNoteContainer({ inputField,
       },
       showCursorLabels: "activity"
     }
-    console.log("ACTIVE USER", activeUser);
     threadStore = new YjsThreadStore(
       activeUser.id,
       doc.getMap("threads"),
@@ -107,7 +105,7 @@ export default function OpBlockNoteContainer({ inputField,
   }
 
   let editor: any;
-  if(collaboration) {
+  if(collaborationEnabled) {
     const resolveUsers = async (userIds: string[]) => {
       return users.filter((user) => userIds.includes(user.id));
     }
@@ -137,13 +135,14 @@ export default function OpBlockNoteContainer({ inputField,
 
   useEffect(() => {
     async function prepareEditor() {
-      if(collaborationEnabled && provider) {
-        provider.on('synced', async () => {
+      if(collaborationEnabled && hocuspocusProvider) {
+        hocuspocusProvider.on('synced', async () => {
           console.log('BlockNote collaboration synced');
           setIsLoading(false);
         });
-        provider.on('disconnect', () => {
+        hocuspocusProvider.on('disconnect', () => {
           console.error('BlockNote collaboration disconnected');
+          setIsLoading(true);
         });
       } else {
         const blocks = await editor.tryParseMarkdownToBlocks(inputText || "");
@@ -153,8 +152,8 @@ export default function OpBlockNoteContainer({ inputField,
     }
     void prepareEditor();
     return  ()  => {
-      if (provider) {
-        provider.destroy();
+      if (hocuspocusProvider) {
+        hocuspocusProvider.destroy();
       }
     };
   }, []);
@@ -170,6 +169,7 @@ export default function OpBlockNoteContainer({ inputField,
             const content = await editor.blocksToMarkdownLossy();
             inputField.value = content;
           }}
+          className={"block-note-editor-container"}
         >
           <SuggestionMenuController
             triggerCharacter="/"
