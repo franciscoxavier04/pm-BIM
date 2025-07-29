@@ -22,10 +22,10 @@ fr:
         storage: Stockage
         storage_url: URL de stockage
       storages/share_point_storage:
-        host: Sharepoint Site URL
-        library: Library ID
-        name: Name
-        site: Site ID
+        host: URL du site SharePoint
+        library: ID de la bibliothèque
+        name: Nom
+        site: Identifiant du site
       storages/storage:
         authentication_method: Méthode d’authentification
         creator: Créateur
@@ -37,7 +37,7 @@ fr:
     errors:
       messages:
         invalid_host_url: n’est pas une URL valide.
-        invalid_sharepoint_url: is not a valid SharePoint site, library, or document URL.
+        invalid_sharepoint_url: n'est pas une URL valide de site, de bibliothèque ou de document SharePoint.
         not_linked_to_project: n'est pas lié au projet.
       models:
         storages/file_link:

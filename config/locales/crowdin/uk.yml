@@ -63,7 +63,6 @@ uk:
         primary-button-color: "Основна кнопка"
         accent-color: "Акцент"
         header-bg-color: "Фон заголовка"
-        header-item-bg-hover-color: "Фон заголовка в разі наведення курсора"
         main-menu-bg-color: "Фон головного меню"
         main-menu-bg-selected-background: "Головне меню в разі вибору"
       custom_colors: "Кольори за власними вподобаннями"
@@ -71,10 +70,6 @@ uk:
       instructions:
         primary-button-color: "Насичений акцентний колір використовується для більшості важливих кнопок на екрані."
         accent-color: "Колір для посилань та інших елементів, які має бути виділено."
-        header-item-bg-hover-color: "Колір фону в заголовках інтерактивних елементів під курсором миші."
-        header-item-font-color: "Колір шрифту в заголовках інтерактивних елементів."
-        header-item-font-hover-color: "Колір шрифту в заголовках інтерактивних елементів під курсором миші."
-        header-border-bottom-color: "Тонка лінія під заголовком. Залиште це поле порожнім, якщо ви не хочете будь-якої лінії."
         main-menu-bg-color: "Колір фону меню зліва."
       theme_warning: Змінення теми перезапише ваш власний стиль. У такому разі дизайн буде втрачено. Справді продовжити?
     enterprise:
@@ -369,13 +364,24 @@ uk:
       messages: "Форум"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Наразі немає груп.
-      no_results_content_text: Створити нову групу
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Наразі в цій групі немає користувачів.
     memberships:
       no_results_title_text: Наразі жодних проектів цієї групи немає.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Вкажіть список імен, які ігноруватимуться під час обробки вкладень для вхідних повідомлень (наприклад, підписів або значків). Введіть одне ім'я файлу у рядок.
@@ -1123,7 +1129,6 @@ uk:
       role:
         permissions: "Дозволи"
       scim_client:
-        auth_provider: "Постачальник послуг автентифікації"
         authentication_method: "Метод автентифікації"
         jwt_sub: "Потрібна тема"
       status:
@@ -1623,6 +1628,11 @@ uk:
     models:
       attachment: "Файл"
       attribute_help_text: "Текст довідки атрибута"
+      auth_provider:
+        one: "Authentication provider"
+        few: "Authentication providers"
+        many: "Authentication providers"
+        other: "Authentication providers"
       category: "Категорія"
       comment: "Коментар"
       custom_action: "Спеціальні дії"
@@ -2621,7 +2631,7 @@ uk:
       aggregation: "Агрегація"
       api_and_webhooks: "API та вебгуки"
     quick_add:
-      label: "Відкрити меню швидкого додавання"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2921,6 +2931,7 @@ uk:
   label_gantt_chart_plural: "Діаграми Ґанта"
   label_general: "Загальні"
   label_generate_key: "Згенерувати ключ"
+  label_global_modules: "Global modules"
   label_global_roles: "Глобальні ролі"
   label_git_path: "Шлях до каталогу .git"
   label_greater_or_equal: ">="
@@ -3064,6 +3075,7 @@ uk:
   label_no_due_date: "немає дати завершення"
   label_no_start_date: "немає дати початку"
   label_no_parent_page: "Немає початкової сторінки"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Нічого не відображається"
   label_nobody: "жодні"
   label_not_configured: "Не налаштовано"
@@ -3272,6 +3284,7 @@ uk:
   label_user_mail_option_only_my_events: "Тільки для речей які я дивлюся чи я займаюся"
   label_user_mail_option_only_owner: "Тільки для речей, за якими я спостерігаю або є власником"
   label_user_mail_option_selected: "Для будь-якої події на вибраних проектах"
+  label_user_menu: "User menu"
   label_user_new: "Новий користувач"
   label_user_plural: "Користувачі"
   label_user_search: "Знайти користувача:"

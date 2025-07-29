@@ -31,9 +31,9 @@ de:
         spent: "Verbraucht"
         spent_on: "Datum"
         logged_by: "Gebucht von"
-        entity: Logged for
-        entity_id: Logged for
-        entity_gid: Logged for
+        entity: Eintrag für
+        entity_id: Eintrag für
+        entity_gid: Eintrag für
       cost_type:
         unit: "Einheit"
         unit_plural: "Einheit plural"
@@ -61,9 +61,9 @@ de:
         start_time: Startzeit
         end_time: Endzeit
         time: Zeit
-        entity: Logged for
-        entity_id: Logged for
-        entity_gid: Logged for
+        entity: Gebucht für
+        entity_id: Gebucht für
+        entity_gid: Gebucht für
     models:
       time_entry:
         one: "Zeitbuchung"

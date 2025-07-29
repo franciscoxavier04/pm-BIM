@@ -63,7 +63,6 @@ cs:
         primary-button-color: "Primární tlačítko"
         accent-color: "Odstín"
         header-bg-color: "Pozadí záhlaví"
-        header-item-bg-hover-color: "Pozadí záhlaví při přejetí myší"
         main-menu-bg-color: "Pozadí hlavního menu"
         main-menu-bg-selected-background: "Hlavní menu při výběru"
       custom_colors: "Vlastní barvy"
@@ -71,10 +70,6 @@ cs:
       instructions:
         primary-button-color: "Výrazná akcentní barva, která se používá pro nejdůležitější tlačítko na obrazovce."
         accent-color: "Barva pro odkazy a další decentně zvýrazněné prvky."
-        header-item-bg-hover-color: "Barva pozadí klikacích položek záhlaví při najetí myší."
-        header-item-font-color: "Barva pozadí klikacích položek záhlaví."
-        header-item-font-hover-color: "Barva pozadí klikacích položek záhlaví při najetí myší."
-        header-border-bottom-color: "Tenký řádek pod záhlavím. Ponechte toto pole prázdné, pokud nechcete žádný řádek."
         main-menu-bg-color: "Barva pozadí levého menu."
       theme_warning: Změna motivu přepíše váš vlastní styl. Vzhled pak bude ztracen. Jste si jisti, že chcete pokračovat?
     enterprise:
@@ -373,13 +368,24 @@ cs:
       messages: "Fórum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: V současné době neexistují žádné skupiny.
-      no_results_content_text: Vytvořit novou skupinu
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Momentálně nejsou žádní uživatelé součástí této skupiny.
     memberships:
       no_results_title_text: V současné době nejsou žádné projekty součástí této skupiny.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Zadejte seznam názvů, které budou ignorovány při zpracování příloh pro příchozí poštu (např. podpisy nebo ikony). Zadejte jeden název souboru na řádek.
@@ -1130,7 +1136,6 @@ cs:
       role:
         permissions: "Práva"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1630,6 +1635,11 @@ cs:
     models:
       attachment: "Soubor"
       attribute_help_text: "Text nápovědy pro atribut"
+      auth_provider:
+        one: "Authentication provider"
+        few: "Authentication providers"
+        many: "Authentication providers"
+        other: "Authentication providers"
       category: "Kategorie"
       comment: "Komentář"
       custom_action: "Vlastní akce"
@@ -2628,7 +2638,7 @@ cs:
       aggregation: "Agregace"
       api_and_webhooks: "API & Webhooky"
     quick_add:
-      label: "Otevřít nabídku rychlého přidání"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2928,6 +2938,7 @@ cs:
   label_gantt_chart_plural: "Gantt diagramy"
   label_general: "Obecné"
   label_generate_key: "Generovat klíč"
+  label_global_modules: "Global modules"
   label_global_roles: "Globální role"
   label_git_path: "Cesta ke složce .git"
   label_greater_or_equal: ">="
@@ -3071,6 +3082,7 @@ cs:
   label_no_due_date: "žádné datum dokončení"
   label_no_start_date: "žádné datum začátku"
   label_no_parent_page: "Žádná nadřazená stránka"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Nic k zobrazení"
   label_nobody: "nikdo"
   label_not_configured: "Není konfigurováno"
@@ -3279,6 +3291,7 @@ cs:
   label_user_mail_option_only_my_events: "Pouze pro věci, které sleduji nebo jsem v nich zapojen"
   label_user_mail_option_only_owner: "Pouze pro věci, kde jsem majitelem"
   label_user_mail_option_selected: "Pouze pro každou událost na vybraných projektech"
+  label_user_menu: "User menu"
   label_user_new: "Nový uživatel"
   label_user_plural: "Uživatelé"
   label_user_search: "Vyhledat uživatele"

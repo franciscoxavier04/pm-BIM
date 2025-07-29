@@ -63,7 +63,6 @@ bg:
         primary-button-color: "Основен бутон"
         accent-color: "Акцент"
         header-bg-color: "Фон на заглавната част"
-        header-item-bg-hover-color: "Фон на заглавието при поставяне на мишката"
         main-menu-bg-color: "Фон на главното меню"
         main-menu-bg-selected-background: "Основно меню, когато е избрано"
       custom_colors: "Персонализирани цветове"
@@ -71,10 +70,6 @@ bg:
       instructions:
         primary-button-color: "Силен акцентен цвят, използван за най-важния бутон на екрана."
         accent-color: "Цвят за връзки и други добре подчертани елементи."
-        header-item-bg-hover-color: "Цвят на фона на елементите на заглавието, върху които може да се кликне, когато се премине с мишката."
-        header-item-font-color: "Цвят на шрифта на елементите на заглавието, върху които може да се кликне."
-        header-item-font-hover-color: "Цвят на шрифта на елементите на заглавието, върху които може да се кликне, когато се премине с мишката."
-        header-border-bottom-color: "Тънка линия под заглавието. Оставете това поле празно, ако не искате да има никаква линия."
         main-menu-bg-color: "Цвят на фона на менюто от лявата страна."
       theme_warning: Промяната на темата ще презапише потребителския ви стил. Тогава дизайнът ще бъде загубен. Сигурни ли сте, че искате да продължите?
     enterprise:
@@ -373,13 +368,24 @@ bg:
       messages: "Форум"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: В момента няма групи.
-      no_results_content_text: Създаване на нова група
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Има в момента няма потребители част от тази група.
     memberships:
       no_results_title_text: В момента има няма проекти част от тази група.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Посочете списък с имена, които да се игнорират при обработката на прикачени файлове за входящи писма (напр. подписи или икони). Въведете по едно име на файл на ред.
@@ -1114,7 +1120,6 @@ bg:
       role:
         permissions: "Права"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1610,6 +1615,9 @@ bg:
     models:
       attachment: "Файл"
       attribute_help_text: "Attribute help text"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "Категория"
       comment: "Коментар"
       custom_action: "Custom action"
@@ -2542,7 +2550,7 @@ bg:
       aggregation: "Aggregation"
       api_and_webhooks: "API и уеб куки"
     quick_add:
-      label: "Отворете менюто за бързо добавяне"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2842,6 +2850,7 @@ bg:
   label_gantt_chart_plural: "Диаграми на Гант"
   label_general: "Общ"
   label_generate_key: "Генериране на ключ"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: "Път до .git директория"
   label_greater_or_equal: ">="
@@ -2985,6 +2994,7 @@ bg:
   label_no_due_date: "без крайна дата"
   label_no_start_date: "няма начална дата"
   label_no_parent_page: "Няма родителска страница"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Нищо за показване"
   label_nobody: "nobody"
   label_not_configured: "Not configured"
@@ -3193,6 +3203,7 @@ bg:
   label_user_mail_option_only_my_events: "Само за неща, които наблюдавам или съм включен в тях"
   label_user_mail_option_only_owner: "Само за неща, на които аз съм собственик"
   label_user_mail_option_selected: "За всяко събитие само в избраните проекти"
+  label_user_menu: "User menu"
   label_user_new: "Нов потребител"
   label_user_plural: "Потребители"
   label_user_search: "Търсене на потребител"

@@ -63,7 +63,6 @@ de:
         primary-button-color: "Primäre Schaltfläche"
         accent-color: "Akzent"
         header-bg-color: "Hintergrund der Kopfzeile"
-        header-item-bg-hover-color: "Hintergrund der Kopfzeile bei Hover"
         main-menu-bg-color: "Hintergrundfarbe des Hauptmenüs"
         main-menu-bg-selected-background: "Hintergrundfarbe des Hauptmenüs bei Auswahl"
       custom_colors: "Benutzerdefinierte Farben"
@@ -71,10 +70,6 @@ de:
       instructions:
         primary-button-color: "Starke Akzentfarbe, die für die wichtigste Schaltfläche auf einem Bildschirm verwendet wird."
         accent-color: "Farbe für Links und andere dezent hervorgehobene Elemente."
-        header-item-bg-hover-color: "Hintergrundfarbe von Header-Elementen während Mouse-hover."
-        header-item-font-color: "Schriftfarbe von anklickbaren Header-Elementen."
-        header-item-font-hover-color: "Schriftfarbe von anklickbaren Header-Elementen während Mouse-hover."
-        header-border-bottom-color: "Rahmenlinie unterhalb des Headers. Freilassen, um keine Linie darzustellen."
         main-menu-bg-color: "Hintergrundfarbe des Menüs in der linken Seitenleiste."
       theme_warning: Das Ändern des Themes wird Ihr benutzerdefiniertes Design überschreiben. Alle Änderungen werden dann verloren gehen. Sind Sie sicher, dass Sie fortfahren möchten?
     enterprise:
@@ -370,13 +365,24 @@ de:
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Derzeit gibt es keine Gruppen.
-      no_results_content_text: Neue Gruppe erstellen
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Diese Gruppe hat zur Zeit keine Mitglieder.
     memberships:
       no_results_title_text: Diese Gruppe ist zur Zeit keinem Projekt zugewiesen.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Geben Sie eine Liste von Dateinamen an, die beim Verarbeiten von Anhängen für eingehende Mails (z.B. Signaturen oder Symbole) ignoriert werden sollen. Geben Sie einen Dateinamen pro Zeile ein.
@@ -1106,7 +1112,6 @@ de:
       role:
         permissions: "Berechtigungen"
       scim_client:
-        auth_provider: "Authentifizierungsanbieter"
         authentication_method: "Authentifizierungsmethode"
         jwt_sub: "Subject claim"
       status:
@@ -1602,6 +1607,9 @@ de:
     models:
       attachment: "Datei"
       attribute_help_text: "Hilfe-Text für Attribute"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "Kategorie"
       comment: "Kommentar"
       custom_action: "Benutzerdefinierte Aktion"
@@ -2534,7 +2542,7 @@ de:
       aggregation: "Zusammenfassungen"
       api_and_webhooks: "API und Webhooks"
     quick_add:
-      label: "Schnellmenue öffnen"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2834,6 +2842,7 @@ de:
   label_gantt_chart_plural: "Gantt Diagramme"
   label_general: "Allgemein"
   label_generate_key: "Schlüssel generieren"
+  label_global_modules: "Global modules"
   label_global_roles: "Globale Rollen"
   label_git_path: "Pfad zum .git-Verzeichnis"
   label_greater_or_equal: ">="
@@ -2977,6 +2986,7 @@ de:
   label_no_due_date: "kein Endtermin"
   label_no_start_date: "kein Startdatum"
   label_no_parent_page: "Keine übergeordnete Seite"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Nichts anzuzeigen"
   label_nobody: "Niemand"
   label_not_configured: "Nicht konfiguriert"
@@ -3185,6 +3195,7 @@ de:
   label_user_mail_option_only_my_events: "Nur für Aufgaben, die ich beobachte oder an welchen ich mitarbeite"
   label_user_mail_option_only_owner: "Nur für Aufgaben, die ich angelegt habe"
   label_user_mail_option_selected: "Für alle Ereignisse in den ausgewählten Projekten"
+  label_user_menu: "User menu"
   label_user_new: "Neuer Benutzer"
   label_user_plural: "Benutzer"
   label_user_search: "Nach Benutzer suchen"
