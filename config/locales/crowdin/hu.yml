@@ -63,7 +63,6 @@ hu:
         primary-button-color: "Elsődleges gomb"
         accent-color: "Kiemelőszín"
         header-bg-color: "Fejléc háttér"
-        header-item-bg-hover-color: "Fejléc háttere, ha az egér rajta áll"
         main-menu-bg-color: "Főmenü háttere"
         main-menu-bg-selected-background: "Főmenü, ha ki van választva"
       custom_colors: "Egyéni színek"
@@ -71,10 +70,6 @@ hu:
       instructions:
         primary-button-color: "Kiemelt szín, tipikusan a képernyőn megjelenő legfontosabb gomb esetén."
         accent-color: "Szín a linkekhez és más kiemelt elemekhez."
-        header-item-bg-hover-color: "Kattintható fejléc háttérszíne egér hatására."
-        header-item-font-color: "Kattintható fejléc betűszíne."
-        header-item-font-hover-color: "Kattintható fejléc betűszíne egér hatására."
-        header-border-bottom-color: "Vékony vonal a fejléc alatt. Hagyja üresen, ha semmilyen vonalat nem szeretne."
         main-menu-bg-color: "Baloldali menü háttérszíne."
       theme_warning: A téma megváltoztatása felülírja az egyéni stílust. A forma elvész. Biztos, hogy folytatni akarod?
     enterprise:
@@ -372,13 +367,24 @@ hu:
       messages: "Fórum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Jelenleg nincsenek csoportok.
-      no_results_content_text: Új csoport létrehozása
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Jelenleg egy felhasználó sem tagja a csoportnak.
     memberships:
       no_results_title_text: Jelenleg egy projekt sem tagja a csoportnak.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Adja meg azoknak a neveknek a listáját, amelyeket figyelmen kívül kell hagyni a bejövő levelek mellékleteinek feldolgozásakor (pl. Aláírások vagy ikonok). Írjon be egy fájlnevet soronként.
@@ -1113,7 +1119,6 @@ hu:
       role:
         permissions: "Jogosultságok"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1609,6 +1614,9 @@ hu:
     models:
       attachment: "File"
       attribute_help_text: "Attribútum-súgószöveg"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "Kategória"
       comment: "Vélemény"
       custom_action: "Egyéni művelet"
@@ -2541,7 +2549,7 @@ hu:
       aggregation: "Aggregálás"
       api_and_webhooks: "API és webhookok"
     quick_add:
-      label: "Gyorsmenü megnyitása"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2841,6 +2849,7 @@ hu:
   label_gantt_chart_plural: "Gantt-diagram"
   label_general: "Általános"
   label_generate_key: "Létrehoz egy kulcsot"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: ".Git könyvtár elérési útja"
   label_greater_or_equal: ">="
@@ -2984,6 +2993,7 @@ hu:
   label_no_due_date: "nincs befejezési dátum"
   label_no_start_date: "nincs kezdő dátuma"
   label_no_parent_page: "Nincs szülő oldal"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Nincs megjeleníthető"
   label_nobody: "senki sem"
   label_not_configured: "Not configured"
@@ -3192,6 +3202,7 @@ hu:
   label_user_mail_option_only_my_events: "Csak a megfigyelt feladatok vagy amelyben részt veszek"
   label_user_mail_option_only_owner: "Csak azok a feladatok, amelyeknek én vagyok a tulajdonosa"
   label_user_mail_option_selected: "Minden eseményről a kiválasztott projektekben"
+  label_user_menu: "User menu"
   label_user_new: "Új felhasználó"
   label_user_plural: "Felhasználók"
   label_user_search: "Felhasználó keresése"

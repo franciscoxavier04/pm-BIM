@@ -63,7 +63,6 @@ tr:
         primary-button-color: "Birincil düğme"
         accent-color: "Vurgu rengi"
         header-bg-color: "Üstbilgi arka planı"
-        header-item-bg-hover-color: "Fareyle üzerine gelindiğinde başlık arka planı"
         main-menu-bg-color: "Ana menü arka planı"
         main-menu-bg-selected-background: "Seçildiğinde ana menü"
       custom_colors: "Özel renkler"
@@ -71,10 +70,6 @@ tr:
       instructions:
         primary-button-color: "Güçlü vurgu rengi, genellikle ekrandaki en önemli düğme için kullanılır."
         accent-color: "Bağlantılar ve diğer uygun biçimde vurgulanmış öğeler için renk."
-        header-item-bg-hover-color: "Tıklanabilir başlık bileşenleri nin üzerine gelindiğinde kullanılacak arka plan rengi."
-        header-item-font-color: "Tıklanabilir başlık bileşenleri için yazı rengi."
-        header-item-font-hover-color: "Tıklanabilir başlık bileşenleri nin üzerine gelindiğinde kullanılacak yazı rengi."
-        header-border-bottom-color: "Başlığının altında ince bir çizgi. Bu alanda herhangi bir hat istemiyorsanız boş bırakın."
         main-menu-bg-color: "Sol taraftaki menünün arka plan rengi."
       theme_warning: Temayı değiştirmek size özel stilin üzerine yazacaktır. Tasarım daha sonra kaybolacak. Devam etmek istediğine emin misin?
     enterprise:
@@ -373,13 +368,24 @@ tr:
       messages: "Forum"
       wiki_pages: "Viki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Şu anda hiç grup bulunmamakta.
-      no_results_content_text: Yeni bir grup oluştur
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Şu anda bu gruba kayıtlı kullanıcı bulunmamakta.
     memberships:
       no_results_title_text: Şu anda bu grubun bir parçası olan, bir proje bulunmamakta.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Gelen postalar için ekleri işlerken yok sayılacak adların bir listesini belirtin (örneğin, imzalar veya simgeler). Her satıra bir dosya adı girin.
@@ -1113,7 +1119,6 @@ tr:
       role:
         permissions: "İzinler"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1609,6 +1614,9 @@ tr:
     models:
       attachment: "Dosya"
       attribute_help_text: "Öznitelik yardım metni"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "Kategori"
       comment: "Yorum"
       custom_action: "Özel eylem"
@@ -2541,7 +2549,7 @@ tr:
       aggregation: "Birleştirme"
       api_and_webhooks: "API ve web kancaları"
     quick_add:
-      label: "Hızlı ekle menüsünü aç"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2841,6 +2849,7 @@ tr:
   label_gantt_chart_plural: "Gantt grafikleri"
   label_general: "Genel"
   label_generate_key: "Anahtar oluştur"
+  label_global_modules: "Global modules"
   label_global_roles: "Genel roller"
   label_git_path: ".git dizininin yolu"
   label_greater_or_equal: ">="
@@ -2984,6 +2993,7 @@ tr:
   label_no_due_date: "bitiş tarihi yok"
   label_no_start_date: "başlangıç tarihi yok"
   label_no_parent_page: "Üst sayfa yok"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Görüntülenecek bir şey yok"
   label_nobody: "hiçkimse"
   label_not_configured: "Yapılandırılmamış"
@@ -3192,6 +3202,7 @@ tr:
   label_user_mail_option_only_my_events: "Sadece takip ettiğim ya da dahil olduklarım için"
   label_user_mail_option_only_owner: "Sadece sahibi olduğum şeyler için"
   label_user_mail_option_selected: "Yalnızca seçilen projelerdeki herhangi bir etkinlik için"
+  label_user_menu: "User menu"
   label_user_new: "Yeni kullanıcı"
   label_user_plural: "Kullanıcılar"
   label_user_search: "Kullanıcı ara"

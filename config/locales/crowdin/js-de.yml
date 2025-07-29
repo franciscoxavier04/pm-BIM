@@ -695,7 +695,7 @@ de:
           first_day: "Erster Tag"
           last_day: "Letzter Tag"
     text_are_you_sure: "Sind Sie sicher?"
-    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
+    text_are_you_sure_to_cancel: "Sie haben ungespeicherte Änderungen auf dieser Seite. Sind Sie sicher, dass Sie diese verwerfen möchten?"
     breadcrumb: "Navigationspfad"
     text_data_lost: "Alle eingegebenen Daten gehen verloren."
     text_user_wrote: "%{value} schrieb:"

@@ -63,7 +63,6 @@ zh-TW:
         primary-button-color: "主按鈕"
         accent-color: "強調（Accent）"
         header-bg-color: "頁首背景"
-        header-item-bg-hover-color: "頁首背景（滑鼠停留）"
         main-menu-bg-color: "主畫面背景"
         main-menu-bg-selected-background: "主畫面背景（當選擇時）"
       custom_colors: "自訂顏色"
@@ -71,10 +70,6 @@ zh-TW:
       instructions:
         primary-button-color: "強烈的重點顏色，用於螢幕上最重要的按鈕。"
         accent-color: "連結和其他適當高亮元素的顏色。"
-        header-item-bg-hover-color: "當滑鼠移動到可點選的標題項目的背景顏色"
-        header-item-font-color: "可點擊的標題項目的文字顏色"
-        header-item-font-hover-color: "當滑鼠移動到可點選的標題項目的文字顏色"
-        header-border-bottom-color: "標題下方的細線。如果你不想要任何線段，請保持此欄位空白。"
         main-menu-bg-color: "左側選單的背景顏色"
       theme_warning: 改變佈景主題會覆蓋你的自訂樣式，你的變更將會遺失。你確定要繼續嗎？
     enterprise:
@@ -372,13 +367,24 @@ zh-TW:
       messages: "討論區"
       wiki_pages: "維基"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: 目前沒有群組
-      no_results_content_text: 建立一個新的群組
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: 目前沒有使用者在這個群組
     memberships:
       no_results_title_text: 目前沒有專案在這個群組
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       請列出要排除的檔案名稱（比如：簽名或大頭貼）。每行請輸入一個檔案名稱。
@@ -1102,7 +1108,6 @@ zh-TW:
       role:
         permissions: "權限"
       scim_client:
-        auth_provider: "身份驗證提供者"
         authentication_method: "驗證方式"
         jwt_sub: "主體宣告"
       status:
@@ -1596,6 +1601,8 @@ zh-TW:
     models:
       attachment: "檔案"
       attribute_help_text: "屬性說明文字"
+      auth_provider:
+        other: "Authentication providers"
       category: "類別"
       comment: "留言"
       custom_action: "自訂動作"
@@ -2495,7 +2502,7 @@ zh-TW:
       aggregation: "合併"
       api_and_webhooks: "API 和 Webhook"
     quick_add:
-      label: "打開快速添加菜單"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2795,6 +2802,7 @@ zh-TW:
   label_gantt_chart_plural: "甘特圖"
   label_general: "一般"
   label_generate_key: "產生一個金鑰"
+  label_global_modules: "Global modules"
   label_global_roles: "全域角色"
   label_git_path: ".git 目錄的路徑"
   label_greater_or_equal: ">="
@@ -2938,6 +2946,7 @@ zh-TW:
   label_no_due_date: "無完成日期"
   label_no_start_date: "無開始日期"
   label_no_parent_page: "無上層頁面"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "沒有可以顯示的"
   label_nobody: "沒有人"
   label_not_configured: "尚未設定"
@@ -3146,6 +3155,7 @@ zh-TW:
   label_user_mail_option_only_my_events: "只針對我關注的或者與我有關的事情"
   label_user_mail_option_only_owner: "針對我是擁有者的事情"
   label_user_mail_option_selected: "只有在已選取的專案的任何事件"
+  label_user_menu: "User menu"
   label_user_new: "新增使用者"
   label_user_plural: "使用者"
   label_user_search: "搜尋使用者"

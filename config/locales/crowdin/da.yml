@@ -63,7 +63,6 @@ da:
         primary-button-color: "Primary button"
         accent-color: "Accent"
         header-bg-color: "Overskriftsbaggrund"
-        header-item-bg-hover-color: "Overskriftsbaggrund ved mus over"
         main-menu-bg-color: "Hovedmenu baggrund"
         main-menu-bg-selected-background: "Hovedmenu når valgt"
       custom_colors: "Brugerdefinerede farver"
@@ -71,10 +70,6 @@ da:
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
         accent-color: "Color for links and other decently highlighted elements."
-        header-item-bg-hover-color: "Baggrundsfarve på knapper i headeren, når musen føres over."
-        header-item-font-color: "Tekst-farve på knapper i headeren."
-        header-item-font-hover-color: "Tekst-farve på knapper i headeren, når musen føres over."
-        header-border-bottom-color: "Tynd linje under headeren. Efterlad dette felt tomt hvis du ikke ønsker en linje."
         main-menu-bg-color: "Baggrundsfarve på venstre sidemenu."
       theme_warning: Ændring af temaet vil overskrive din brugerdefinerede stil. Designet vil derefter gå tabt. Er du sikker på du vil fortsætte?
     enterprise:
@@ -371,13 +366,24 @@ da:
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Der er i øjeblikket ingen grupper.
-      no_results_content_text: Opret en ny gruppe
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Der er i øjeblikket ingen brugere i denne gruppe.
     memberships:
       no_results_title_text: Der er i øjeblikket ingen projekter i denne gruppe.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Angiv en liste over navne der skal ignoreres ved behandling af vedhæftede filer for indgående breve (f.eks. signaturer eller ikoner). Indtast et filnavn pr. linje.
@@ -1112,7 +1118,6 @@ da:
       role:
         permissions: "Tilladelser"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1608,6 +1613,9 @@ da:
     models:
       attachment: "Fil"
       attribute_help_text: "Attribute help text"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "Kategori"
       comment: "Kommentér"
       custom_action: "Custom action"
@@ -2540,7 +2548,7 @@ da:
       aggregation: "Aggregation"
       api_and_webhooks: "API and webhooks"
     quick_add:
-      label: "Åbn hurtig-tilføj menu"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2840,6 +2848,7 @@ da:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Generelle"
   label_generate_key: "Skab nøgle"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: "Sti til .git-mappe"
   label_greater_or_equal: ">="
@@ -2983,6 +2992,7 @@ da:
   label_no_due_date: "ingen slutdato"
   label_no_start_date: "ingen startdato"
   label_no_parent_page: "No parent page"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Intet at vise"
   label_nobody: "ingen"
   label_not_configured: "Not configured"
@@ -3191,6 +3201,7 @@ da:
   label_user_mail_option_only_my_events: "Kun for det jeg fører tilsyn med eller er involveret i"
   label_user_mail_option_only_owner: "Kun for det jeg er ejer af"
   label_user_mail_option_selected: "Kun for hændelser i de valgte projekter"
+  label_user_menu: "User menu"
   label_user_new: "Ny bruger"
   label_user_plural: "Brugere"
   label_user_search: "Søg efter bruger"

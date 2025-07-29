@@ -63,7 +63,6 @@ th:
         primary-button-color: "Primary button"
         accent-color: "Accent"
         header-bg-color: "พื้นหลังหัวข้อ"
-        header-item-bg-hover-color: "พื้นหลังส่วนหัวบนโฮเวอร์"
         main-menu-bg-color: "Main menu background"
         main-menu-bg-selected-background: "Main menu when selected"
       custom_colors: "กำหนดสีเอง"
@@ -71,10 +70,6 @@ th:
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
         accent-color: "Color for links and other decently highlighted elements."
-        header-item-bg-hover-color: "Background color of clickable header items when hovered with the mouse."
-        header-item-font-color: "Font color of clickable header items."
-        header-item-font-hover-color: "Font color of clickable header items when hovered with the mouse."
-        header-border-bottom-color: "Thin line under the header. Leave this field empty if you don't want any line."
         main-menu-bg-color: "Left side menu's background color."
       theme_warning: Changing the theme will overwrite you custom style. The design will then be lost. Are you sure you want to continue?
     enterprise:
@@ -373,13 +368,24 @@ th:
       messages: "ฟอรั่ม"
       wiki_pages: "วิกิ"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: ขณะนี้ยังไม่มีกลุ่มใดๆ
-      no_results_content_text: สร้างกลุ่มใหม่
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: ขณะนี้ยังไม่มีผู้ใช้เป็นสมาชิกของกลุ่มนี้
     memberships:
       no_results_title_text: ขณะนี้ยังไม่มีโครงการที่เป็นส่วนหนึ่งของกลุ่มนี้
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Specify a list of names to ignore when processing attachments for incoming mails (e.g., signatures or icons). Enter one filename per line.
@@ -1106,7 +1112,6 @@ th:
       role:
         permissions: "สิทธิ์"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1600,6 +1605,8 @@ th:
     models:
       attachment: "ไฟล์"
       attribute_help_text: "Attribute help text"
+      auth_provider:
+        other: "Authentication providers"
       category: "ประเภท"
       comment: "ความคิดเห็น"
       custom_action: "Custom action"
@@ -2499,7 +2506,7 @@ th:
       aggregation: "Aggregation"
       api_and_webhooks: "API and webhooks"
     quick_add:
-      label: "เปิดเมนูเพิ่มด่วน"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2799,6 +2806,7 @@ th:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "ทั่วไป"
   label_generate_key: "สร้างคีย์"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: "เส้นทางไปยังไดเรคทอรี่ ของไฟล์ .git"
   label_greater_or_equal: ">="
@@ -2942,6 +2950,7 @@ th:
   label_no_due_date: "no finish date"
   label_no_start_date: "ไม่มีวันเริ่มต้น"
   label_no_parent_page: "No parent page"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Nothing to display"
   label_nobody: "ไม่มีใคร"
   label_not_configured: "Not configured"
@@ -3150,6 +3159,7 @@ th:
   label_user_mail_option_only_my_events: "เฉพาะสิ่งที่ฉันเฝ้าดูหรือมีความเกี่ยวข้องด้วย"
   label_user_mail_option_only_owner: "เฉพาะสิ่งที่ฉันเป็นเจ้าของ"
   label_user_mail_option_selected: "For any event on the selected projects only"
+  label_user_menu: "User menu"
   label_user_new: "ผู้ใช้ใหม่"
   label_user_plural: "ผู้ใช้"
   label_user_search: "ค้นหาผู้ใช้"

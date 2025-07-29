@@ -63,7 +63,6 @@ sv:
         primary-button-color: "Primary button"
         accent-color: "Accent"
         header-bg-color: "Rubrikbakgrund"
-        header-item-bg-hover-color: "Rubrikbakgrund vid hovring"
         main-menu-bg-color: "Huvudmeny bakgrund"
         main-menu-bg-selected-background: "Huvudmeny när vald"
       custom_colors: "Anpassade färger"
@@ -71,10 +70,6 @@ sv:
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
         accent-color: "Color for links and other decently highlighted elements."
-        header-item-bg-hover-color: "Bakgrundsfärg på klickbara objekt i sidhuvudet när man hovrar med muspekaren."
-        header-item-font-color: "Teckenfärg på klickbara objekt i sidhuvudet."
-        header-item-font-hover-color: "Teckenfärg på klickbara objekt i sidhuvudet när man hovrar med muspekaren."
-        header-border-bottom-color: "Tunn linje under sidhuvudet. Lämna fältet tomt om du inte vill ha någon linje."
         main-menu-bg-color: "Bakgrundsfärg på den vänstra sidomenyn."
       theme_warning: Ändra temat kommer att skriva över din egen stil. Designen kommer då att gå förlorad. Är du säker på att du vill fortsätta?
     enterprise:
@@ -373,13 +368,24 @@ sv:
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Det finns för närvarande inga grupper.
-      no_results_content_text: Skapa en ny grupp
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Det finns för närvarande inga användare i denna grupp.
     memberships:
       no_results_title_text: Det finns för närvarande inga projekt i denna grupp.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Specificera en lista med namn att ignorera när bilagor för inkommande e-post bearbetas (t. ex. signaturer och ikoner). Ange ett filnamn per rad.
@@ -1114,7 +1120,6 @@ sv:
       role:
         permissions: "Behörigheter"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1610,6 +1615,9 @@ sv:
     models:
       attachment: "Fil"
       attribute_help_text: "Hjälptexter för attribut"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "Kategori"
       comment: "Kommentar"
       custom_action: "Anpassad åtgärd"
@@ -2542,7 +2550,7 @@ sv:
       aggregation: "Aggregation"
       api_and_webhooks: "API and webhooks"
     quick_add:
-      label: "Open quick add menu"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2842,6 +2850,7 @@ sv:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Allmänt"
   label_generate_key: "Generera en nyckel"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: "Sökväg till .git katalog"
   label_greater_or_equal: ">="
@@ -2985,6 +2994,7 @@ sv:
   label_no_due_date: "no finish date"
   label_no_start_date: "inget startdatum"
   label_no_parent_page: "Ingen överordnad sida"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Inget att visa"
   label_nobody: "ingen"
   label_not_configured: "Not configured"
@@ -3193,6 +3203,7 @@ sv:
   label_user_mail_option_only_my_events: "Endast för saker jag bevakar eller deltar i"
   label_user_mail_option_only_owner: "Endast för saker är jag ägare till"
   label_user_mail_option_selected: "Endast för alla händelser i valda projekt"
+  label_user_menu: "User menu"
   label_user_new: "Ny användare"
   label_user_plural: "Användare"
   label_user_search: "Sök efter användare"

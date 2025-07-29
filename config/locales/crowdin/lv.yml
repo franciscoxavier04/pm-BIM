@@ -63,7 +63,6 @@ lv:
         primary-button-color: "Primary button"
         accent-color: "Accent"
         header-bg-color: "Header background"
-        header-item-bg-hover-color: "Header background on hover"
         main-menu-bg-color: "Main menu background"
         main-menu-bg-selected-background: "Main menu when selected"
       custom_colors: "Custom colors"
@@ -71,10 +70,6 @@ lv:
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
         accent-color: "Color for links and other decently highlighted elements."
-        header-item-bg-hover-color: "Background color of clickable header items when hovered with the mouse."
-        header-item-font-color: "Font color of clickable header items."
-        header-item-font-hover-color: "Font color of clickable header items when hovered with the mouse."
-        header-border-bottom-color: "Thin line under the header. Leave this field empty if you don't want any line."
         main-menu-bg-color: "Left side menu's background color."
       theme_warning: Changing the theme will overwrite you custom style. The design will then be lost. Are you sure you want to continue?
     enterprise:
@@ -373,13 +368,24 @@ lv:
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Pašlaik nav nevienu grupu.
-      no_results_content_text: Izveidot jaunu grupu
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Pašlaik šajā grupā nav neviena lietotāja.
     memberships:
       no_results_title_text: Pašlaik šajā grupā nav neviens projekts.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Specify a list of names to ignore when processing attachments for incoming mails (e.g., signatures or icons). Enter one filename per line.
@@ -1122,7 +1128,6 @@ lv:
       role:
         permissions: "Permissions"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1620,6 +1625,10 @@ lv:
     models:
       attachment: "Fails"
       attribute_help_text: "Attribute help text"
+      auth_provider:
+        zero: "Authentication providers"
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "Sadaļa"
       comment: "Komentârs"
       custom_action: "Custom action"
@@ -2585,7 +2594,7 @@ lv:
       aggregation: "Aggregation"
       api_and_webhooks: "API and webhooks"
     quick_add:
-      label: "Open quick add menu"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2885,6 +2894,7 @@ lv:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "General"
   label_generate_key: "Generate a key"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: "Path to .git directory"
   label_greater_or_equal: ">="
@@ -3028,6 +3038,7 @@ lv:
   label_no_due_date: "no finish date"
   label_no_start_date: "bez sākuma datuma"
   label_no_parent_page: "No parent page"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Nav nekas ko parādīt"
   label_nobody: "nobody"
   label_not_configured: "Not configured"
@@ -3236,6 +3247,7 @@ lv:
   label_user_mail_option_only_my_events: "Tikai par lietām, kam sekoju, vai es esmu iesaistīts"
   label_user_mail_option_only_owner: "Tikai par lietām, kuras es esmu izveidojis"
   label_user_mail_option_selected: "For any event on the selected projects only"
+  label_user_menu: "User menu"
   label_user_new: "New user"
   label_user_plural: "Lietotāji"
   label_user_search: "Search for user"

@@ -63,7 +63,6 @@ ro:
         primary-button-color: "Butonul principal"
         accent-color: "Accent"
         header-bg-color: "Fundal antet"
-        header-item-bg-hover-color: "Fundal antet la plutire"
         main-menu-bg-color: "Fundal meniu principal"
         main-menu-bg-selected-background: "Meniul principal când este selectat"
       custom_colors: "Culori personalizate"
@@ -71,10 +70,6 @@ ro:
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
         accent-color: "Color for links and other decently highlighted elements."
-        header-item-bg-hover-color: "Culoarea de fundal a obiectelor care pot fi selectate când cursorului se află deasupra lor."
-        header-item-font-color: "Culoare fontului pentru elementele selectabile din antet."
-        header-item-font-hover-color: "Culoarea fontului pentru elementele selectabile din antet când cursorul se află deasupra lor."
-        header-border-bottom-color: "Linia de sub antet. Lăsați acest câmp gol dacă nu doriți această linie."
         main-menu-bg-color: "Culoarea de fundal pentru meniul din partea stângă."
       theme_warning: Schimbarea temei va suprascrie stilul personalizat. În acest caz, designul va fi pierdut. Sunteți sigur că doriți să continuați?
     enterprise:
@@ -373,13 +368,24 @@ ro:
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: În acest moment nu există grupuri.
-      no_results_content_text: Creează grup nou
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: În acest moment nu există utilizatori care să facă parte din acest grup.
     memberships:
       no_results_title_text: În acest moment nu există proiecte care să facă parte din acest grup.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Specifică o listă de nume care trebuie ignorate la procesarea atașamentelor pentru mesajele primite (de exemplu, semnături sau pictograme). Introdu un nume de fișier pe linie.
@@ -1122,7 +1128,6 @@ ro:
       role:
         permissions: "Drepturi"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1620,6 +1625,10 @@ ro:
     models:
       attachment: "Fișier"
       attribute_help_text: "Text de ajutor pentru atribute"
+      auth_provider:
+        one: "Authentication provider"
+        few: "Authentication providers"
+        other: "Authentication providers"
       category: "Categorie"
       comment: "Comentariu"
       custom_action: "Adaugă acțiune personalizată"
@@ -2585,7 +2594,7 @@ ro:
       aggregation: "Agregare"
       api_and_webhooks: "API și webhook-uri"
     quick_add:
-      label: "Deschide meniul adăugare rapidă"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2885,6 +2894,7 @@ ro:
   label_gantt_chart_plural: "Diagrame Gantt"
   label_general: "General"
   label_generate_key: "Generare cheie"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: "Calea catre directorul .git"
   label_greater_or_equal: ">="
@@ -3028,6 +3038,7 @@ ro:
   label_no_due_date: "fără dată finalizare"
   label_no_start_date: "fără dată început"
   label_no_parent_page: "Pagină părinte:"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Nimic de afișat"
   label_nobody: "nimeni"
   label_not_configured: "Not configured"
@@ -3236,6 +3247,7 @@ ro:
   label_user_mail_option_only_my_events: "Doar pentru tichete pentru care sunt observator sau în care sunt implicat"
   label_user_mail_option_only_owner: "Doar pentru tichete pentru care sunt responsabil"
   label_user_mail_option_selected: "Pentru orice eveniment doar în proiectele selectate"
+  label_user_menu: "User menu"
   label_user_new: "Utilizator nou"
   label_user_plural: "Utilizatori"
   label_user_search: "Căutare utilizator"

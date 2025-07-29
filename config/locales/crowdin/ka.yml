@@ -63,7 +63,6 @@ ka:
         primary-button-color: "Primary button"
         accent-color: "Accent"
         header-bg-color: "Header background"
-        header-item-bg-hover-color: "Header background on hover"
         main-menu-bg-color: "Main menu background"
         main-menu-bg-selected-background: "Main menu when selected"
       custom_colors: "მორგებული ფერები"
@@ -71,10 +70,6 @@ ka:
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
         accent-color: "Color for links and other decently highlighted elements."
-        header-item-bg-hover-color: "Background color of clickable header items when hovered with the mouse."
-        header-item-font-color: "Font color of clickable header items."
-        header-item-font-hover-color: "Font color of clickable header items when hovered with the mouse."
-        header-border-bottom-color: "Thin line under the header. Leave this field empty if you don't want any line."
         main-menu-bg-color: "Left side menu's background color."
       theme_warning: Changing the theme will overwrite you custom style. The design will then be lost. Are you sure you want to continue?
     enterprise:
@@ -373,13 +368,24 @@ ka:
       messages: "ფორუმი"
       wiki_pages: "ვიკი"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: There are currently no groups.
-      no_results_content_text: Create a new group
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: There are currently no users part of this group.
     memberships:
       no_results_title_text: There are currently no projects part of this group.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Specify a list of names to ignore when processing attachments for incoming mails (e.g., signatures or icons). Enter one filename per line.
@@ -1114,7 +1120,6 @@ ka:
       role:
         permissions: "წვდომები"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1610,6 +1615,9 @@ ka:
     models:
       attachment: "ფაილი"
       attribute_help_text: "Attribute help text"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "კატეგორია"
       comment: "კომენტარი"
       custom_action: "მორგებული ქმედება"
@@ -2542,7 +2550,7 @@ ka:
       aggregation: "აგრეგაცია"
       api_and_webhooks: "API and webhooks"
     quick_add:
-      label: "Open quick add menu"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2842,6 +2850,7 @@ ka:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "ზოგადი"
   label_generate_key: "გასაღების გენერაცია"
+  label_global_modules: "Global modules"
   label_global_roles: "გლობალური როლები"
   label_git_path: "Path to .git directory"
   label_greater_or_equal: ">="
@@ -2985,6 +2994,7 @@ ka:
   label_no_due_date: "დასრულების თარიღის გარეშე"
   label_no_start_date: "დაწყების თარიღის გარეშე"
   label_no_parent_page: "მშობელი გვერდის გარეშე"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Nothing to display"
   label_nobody: "არავინ"
   label_not_configured: "Not configured"
@@ -3193,6 +3203,7 @@ ka:
   label_user_mail_option_only_my_events: "Only for things I watch or I'm involved in"
   label_user_mail_option_only_owner: "Only for things I am the owner of"
   label_user_mail_option_selected: "For any event on the selected projects only"
+  label_user_menu: "User menu"
   label_user_new: "ახალი მომხმარებელი"
   label_user_plural: "მომხმარებლები"
   label_user_search: "Search for user"

@@ -63,7 +63,6 @@ zh-CN:
         primary-button-color: "主按钮色"
         accent-color: "强调色"
         header-bg-color: "标题背景"
-        header-item-bg-hover-color: "悬停时的标题背景"
         main-menu-bg-color: "主菜单背景"
         main-menu-bg-selected-background: "选择时的主菜单"
       custom_colors: "自定义颜色"
@@ -71,10 +70,6 @@ zh-CN:
       instructions:
         primary-button-color: "强烈的强调色，通常用于屏幕上最重要的按钮。"
         accent-color: "链接和其他适当突出元素的颜色。"
-        header-item-bg-hover-color: "鼠标悬停时可点击的标题的背景色。"
-        header-item-font-color: "可点击标题的特定颜色。"
-        header-item-font-hover-color: "鼠标悬停时可点击标题的特定颜色。"
-        header-border-bottom-color: "页眉下方法细线。如果你不想看到，将其留白。"
         main-menu-bg-color: "左菜单的背景色。"
       theme_warning: 更改主题将覆盖您的自定义样式。设计将会丢失。您确定要继续吗？
     enterprise:
@@ -370,13 +365,24 @@ zh-CN:
       messages: "论坛"
       wiki_pages: "维基"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: 目前没有组。
-      no_results_content_text: 创建新的组
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: 这个组目前没有用户。
     memberships:
       no_results_title_text: 这个组目前没有项目。
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       指定在处理收到的邮件的附件（例如，签名或图标）时要忽略的名称列表。每行输入一个文件名。
@@ -1102,7 +1108,6 @@ zh-CN:
       role:
         permissions: "权限"
       scim_client:
-        auth_provider: "身份验证提供商"
         authentication_method: "身份验证方式"
         jwt_sub: "主体声明"
       status:
@@ -1596,6 +1601,8 @@ zh-CN:
     models:
       attachment: "文件"
       attribute_help_text: "属性帮助文本"
+      auth_provider:
+        other: "Authentication providers"
       category: "类别"
       comment: "评论"
       custom_action: "自定义操作"
@@ -2495,7 +2502,7 @@ zh-CN:
       aggregation: "聚合"
       api_and_webhooks: "API 和 Webhook"
     quick_add:
-      label: "打开快速添加菜单"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2795,6 +2802,7 @@ zh-CN:
   label_gantt_chart_plural: "甘特图"
   label_general: "通用"
   label_generate_key: "生成密钥"
+  label_global_modules: "Global modules"
   label_global_roles: "全局角色"
   label_git_path: ".git 目录的路径"
   label_greater_or_equal: ">="
@@ -2938,6 +2946,7 @@ zh-CN:
   label_no_due_date: "没有完成日期"
   label_no_start_date: "没有开始日期"
   label_no_parent_page: "无父级页面"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "不显示"
   label_nobody: "没人"
   label_not_configured: "未配置"
@@ -3146,6 +3155,7 @@ zh-CN:
   label_user_mail_option_only_my_events: "仅为我关注或参与的内容"
   label_user_mail_option_only_owner: "仅为我是所有者的内容"
   label_user_mail_option_selected: "只对于所选项目的任何事件......"
+  label_user_menu: "User menu"
   label_user_new: "新用户"
   label_user_plural: "用户"
   label_user_search: "搜索用户"
