@@ -59,7 +59,8 @@ module CustomStylesHelper
   end
 
   def custom_logo?
-    CustomStyle.current.logo.present? || CustomStyle.current.theme_logo.present?
+    CustomStyle.current.present? &&
+      (CustomStyle.current.logo.present? || CustomStyle.current.theme_logo.present?)
   end
 
   # The default favicon and touch icons are both the same for normal OP and BIM.
