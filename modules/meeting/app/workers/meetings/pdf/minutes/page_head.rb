@@ -57,20 +57,29 @@ module Meetings::PDF::Minutes
       end
     end
 
-    def meeting_subtitle
+    def meeting_subtitle_date
+      format_date(meeting.start_time)
+    end
+
+    def meeting_subtitle_time
+      "#{format_time(meeting.start_time, include_date: false)} – #{format_time(meeting.end_time, include_date: false)}"
+    end
+
+    def meeting_subtitle_first_line
       list = [
-        "#{I18n.t("meeting.export.minutes.date")}:",
-        format_date(meeting.start_time),
-        "|",
-        "#{I18n.t("meeting.export.minutes.time")}:",
-        format_time(meeting.start_time, include_date: false), "–", format_time(meeting.end_time, include_date: false),
+        "#{I18n.t('meeting.export.minutes.date')}:", meeting_subtitle_date, "|",
+        "#{I18n.t('meeting.export.minutes.time')}:", meeting_subtitle_time
       ]
       if meeting.location.present?
-        list += ["|", "#{I18n.t("meeting.export.minutes.location")}:", meeting.location]
+        list += ["|", "#{I18n.t('meeting.export.minutes.location')}:", meeting.location]
       end
-      result = list.join(" ")
+      list.join(" ")
+    end
+
+    def meeting_subtitle
+      result = meeting_subtitle_first_line
       if minutes_author.present?
-        result += "\n#{I18n.t("meeting.export.minutes.author")}: #{minutes_author}"
+        result += "\n#{I18n.t('meeting.export.minutes.author')}: #{minutes_author}"
       end
       result
     end
