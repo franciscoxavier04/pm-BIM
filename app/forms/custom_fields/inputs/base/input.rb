@@ -54,6 +54,10 @@ class CustomFields::Inputs::Base::Input < ApplicationForm
     )
   end
 
+  def value
+    custom_value
+  end
+
   def custom_value
     @custom_value ||= @object.custom_value_for(@custom_field.id)
   end
