@@ -28,21 +28,17 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings::PDF
+module Meetings::PDF::Minutes
   class Exporter < ::Exports::Exporter
     include Exports::PDF::Common::Common
     include Exports::PDF::Common::Logo
     include Exports::PDF::Common::Markdown
     include Exports::PDF::Common::Attachments
-    include Exports::PDF::Common::Badge
     include Exports::PDF::Common::Macro
     include Exports::PDF::Components::Page
-    include Exports::PDF::Components::Cover
-    include Meetings::PDF::Styles
-    include Meetings::PDF::PageHead
-    include Meetings::PDF::Participants
-    include Meetings::PDF::Agenda
-    include Meetings::PDF::Attachments
+    include Meetings::PDF::Minutes::Styles
+    include Meetings::PDF::Minutes::PageHead
+    include Meetings::PDF::Minutes::Agenda
 
     attr_accessor :pdf
 
@@ -54,7 +50,7 @@ module Meetings::PDF
       :pdf
     end
 
-    def initialize(meeting, options = {})
+    def initialize(meeting, options)
       super(meeting, options[:options] || options)
       @total_page_nr = nil
       @page_count = 0
@@ -70,6 +66,7 @@ module Meetings::PDF
 
     def export!
       render_doc
+      render_doc_again_with_total_page_nrs if wants_total_page_nrs?
       success(pdf.render)
     rescue StandardError => e
       Rails.logger.error "Failed to generate PDF export:  #{e.message}:\n#{e.backtrace.join("\n")}"
@@ -77,29 +74,28 @@ module Meetings::PDF
     end
 
     def render_doc
-      write_cover_page! if with_cover?
-      render_meeting!
+      render_meeting
     end
 
-    def render_meeting!
+    def render_doc_again_with_total_page_nrs
+      @total_page_nr = pdf.page_count + @page_count
+      @page_count = 0
+      setup_page! # clear current pdf
+      render_doc
+    end
+
+    def render_meeting
       write_page_head
-      write_participants if with_participants?
       write_agenda
-      write_attachments_list if with_attachments_list?
-      write_backlog if with_backlog?
       write_headers!
-      write_footers!
+      write_minutes_footers
+      write_footer_logo
     end
 
     def write_heading(text)
-      pdf.formatted_text([styles.heading.merge({ text: })])
-      pdf.move_down(10)
-    end
-
-    def write_hr
-      hr_style = styles.heading_hr
-      with_vertical_margin(styles.heading_hr_margins) do
-        write_horizontal_line(pdf.cursor, hr_style[:height], hr_style[:color])
+      style = styles.heading
+      with_vertical_margin(styles.heading_margins) do
+        pdf.formatted_text([style.merge({ text: })], style)
       end
     end
 
@@ -137,8 +133,52 @@ module Meetings::PDF
       meeting.project&.name || ""
     end
 
-    def footer_title
-      options[:footer_text] || project_title
+    def write_minutes_footers
+      pdf.repeat lambda { |pg| header_footer_filter_pages.exclude?(pg) }, dynamic: true do
+        draw_minutes_footer_on_page
+      end
+    end
+
+    def write_footer_logo
+      footer_image = File.join(File.dirname(File.expand_path(__FILE__)), "footer.png")
+      image_obj, image_info = pdf.build_image_object(footer_image)
+      pdf.repeat lambda { |pg| header_footer_filter_pages.exclude?(pg) } do
+        pdf.embed_image image_obj, image_info, { at: [-styles.page_margin_left, -23], height: 8 }
+      end
+    end
+
+    def draw_minutes_footer_on_page
+      top = styles.page_footer_offset
+      text_style = styles.page_footer
+      pos_right = draw_text_right(footer_page_nr, text_style, top)
+      spacing = styles.page_footer_horizontal_spacing
+      draw_text_multiline_left(
+        text: footer_minutes,
+        text_style:,
+        available_width: pdf.bounds.width - spacing - pos_right,
+        top:,
+        max_lines: :MAX_NR_OF_PDF_FOOTER_LINES
+      )
+    end
+
+    def minutes_author
+      options[:author] || ""
+    end
+
+    def footer_minutes
+      "#{meeting.title} • #{format_date(meeting.start_time)}"
+    end
+
+    def footer_page_nr
+      "S. #{current_page_nr}#{total_page_nr_text}"
+    end
+
+    def total_page_nr_text
+      if @total_page_nr
+        " von #{@total_page_nr - (with_cover? ? 1 : 0)}"
+      else
+        ""
+      end
     end
 
     def title_datetime
@@ -166,6 +206,10 @@ module Meetings::PDF
     end
 
     def with_cover?
+      false
+    end
+
+    def wants_total_page_nrs?
       true
     end
 

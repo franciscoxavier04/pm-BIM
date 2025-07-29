@@ -407,7 +407,7 @@ outcome:
 heading:
   size: 11
   styles: [ "bold" ]
-  margin_bottom: 8
+  margin_bottom: 10
   hr:
     color: "6E7781"
     height: 1

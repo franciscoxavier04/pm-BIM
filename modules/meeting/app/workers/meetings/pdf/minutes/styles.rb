@@ -28,13 +28,21 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings::PDF::Styles
+module Meetings::PDF::Minutes::Styles
   class PDFStyles
     include MarkdownToPDF::Common
     include MarkdownToPDF::StyleHelper
     include Exports::PDF::Common::Styles
     include Exports::PDF::Components::PageStyles
     include Exports::PDF::Components::CoverStyles
+
+    def page_subheading
+      resolve_font(@styles[:page_subheading])
+    end
+
+    def page_subheading_margins
+      resolve_margin(@styles[:page_subheading])
+    end
 
     def page_subtitle
       resolve_font(@styles[:page_subtitle])
@@ -45,7 +53,7 @@ module Meetings::PDF::Styles
     end
 
     def notes_markdown_margins
-      resolve_margin(@styles.dig(:work_package, :markdown_margin))
+      resolve_margin(@styles.dig(:notes, :markdown_margin))
     end
 
     def notes_markdown_styling_yml
@@ -58,17 +66,6 @@ module Meetings::PDF::Styles
 
     def heading
       resolve_font(@styles[:heading])
-    end
-
-    def heading_hr
-      {
-        color: @styles.dig(:heading, :hr, :color),
-        height: resolve_pt(@styles.dig(:heading, :hr, :height), 1)
-      }
-    end
-
-    def heading_hr_margins
-      resolve_margin(@styles.dig(:heading, :hr))
     end
 
     def agenda_item_title_margins
@@ -111,15 +108,8 @@ module Meetings::PDF::Styles
       resolve_font(@styles.dig(:agenda_item, :subtitle))
     end
 
-    def agenda_item_hr
-      {
-        color: @styles.dig(:agenda_item, :hr, :color),
-        height: resolve_pt(@styles.dig(:agenda_item, :hr, :height), 1)
-      }
-    end
-
     def agenda_item_margins
-      resolve_margin(@styles.dig(:agenda_item, :hr))
+      resolve_margin(@styles.dig(:agenda_item, :margin))
     end
 
     def heading_margins

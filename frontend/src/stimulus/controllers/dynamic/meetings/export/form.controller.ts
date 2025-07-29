@@ -7,7 +7,10 @@ export default class FormController extends Controller<HTMLFormElement> {
     jobStatusDialogUrl: String,
   };
 
+  static targets = ['templates', 'inputGroups'];
+
   declare jobStatusDialogUrlValue:string;
+  declare inputGroupsTargets:Array<HTMLElement>;
 
   jobModalUrl(job_id:string):string {
     return this.jobStatusDialogUrlValue.replace('_job_uuid_', job_id);
@@ -72,5 +75,24 @@ export default class FormController extends Controller<HTMLFormElement> {
       query.append(key, value);
     });
     return query.toString();
+  }
+
+  templatesChanged(event:Event) {
+    const target = event.target as HTMLSelectElement;
+    const data = target.options[target.selectedIndex].dataset;
+    const template = target.options[target.selectedIndex].value;
+
+    const formControl = target.closest('.FormControl') as HTMLElement;
+    const captionElement = formControl.querySelector('.FormControl-caption') as HTMLElement;
+    if (captionElement) {
+      captionElement.innerText = (data.caption || '');
+    }
+    this.inputGroupsTargets.forEach((inputGroup:HTMLElement) => {
+      if (inputGroup.dataset.template === template) {
+        inputGroup.classList.remove('d-none');
+      } else {
+        inputGroup.classList.add('d-none');
+      }
+    });
   }
 }

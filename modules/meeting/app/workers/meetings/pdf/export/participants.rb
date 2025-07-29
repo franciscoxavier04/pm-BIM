@@ -28,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings::PDF
+module Meetings::PDF::Export
   module Participants
     def write_participants
       return if participants.empty?

@@ -31,7 +31,7 @@
 require "spec_helper"
 require "pdf/inspector"
 
-RSpec.describe Meetings::PDF::Exporter do
+RSpec.describe Meetings::PDF::Export::Exporter do
   include Redmine::I18n
   shared_let(:role) { create(:project_role, permissions: [:view_work_packages]) }
   shared_let(:user) { create(:user, firstname: "Export", lastname: "User") }

@@ -28,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings::PDF
+module Meetings::PDF::Export
   module Attachments
     def write_attachments_list
       return if meeting.attachments.empty?

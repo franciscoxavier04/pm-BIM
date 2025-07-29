@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# -- copyright
+#-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,52 +26,40 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-# ++
+#++
 
-module Meetings
-  module Exports
-    class ModalDialogComponent < ApplicationComponent
-      include OpTurbo::Streamable
-      include OpPrimer::ComponentHelpers
-
-      MODAL_ID = "op-meeting-export-pdf-dialog"
-      MEETING_PDF_EXPORT_FORM_ID = "op-meeting-pdf-export-dialog-form"
-
-      attr_reader :meeting, :project
-
-      def initialize(meeting:, project:)
-        super
-
-        @meeting = meeting
-        @project = project
+module Meetings::PDF::Export
+  module PageHead
+    def write_page_head
+      with_vertical_margin(styles.page_heading_margins) do
+        write_page_title
       end
-
-      def templates_options
-        [
-          {
-            id: "default",
-            label: I18n.t("meeting.export_pdf_dialog.templates.default.label"),
-            caption: I18n.t("meeting.export_pdf_dialog.templates.default.caption")
-          },
-          {
-            id: "minutes",
-            label: I18n.t("meeting.export_pdf_dialog.templates.minutes.label"),
-            caption: I18n.t("meeting.export_pdf_dialog.templates.minutes.caption")
-          }
-        ]
+      with_vertical_margin(styles.page_subtitle_margins) do
+        write_meeting_subtitle
       end
+      write_hr
+    end
 
-      def templates_default
-        templates_options[0]
-      end
+    def write_page_title
+      style = styles.page_heading
+      pdf.formatted_text([style.merge(
+        { text: meeting.title, link: url_helpers.meeting_url(meeting) }
+      )], style)
+    end
 
-      def default_footer_text
-        @project.name
-      end
+    def write_meeting_subtitle
+      style = styles.page_subtitle
+      pdf.formatted_text([style.merge({ text: meeting_subtitle })], style)
+    end
 
-      def default_author_text
-        @meeting.author&.name || User.current.name
-      end
+    def meeting_subtitle
+      [
+        "#{meeting_mode} (#{I18n.t("label_meeting_state_#{meeting.state}")}),",
+        "#{format_date(meeting.start_time)},",
+        format_time(meeting.start_time, include_date: false),
+        "–",
+        format_time(meeting.end_time, include_date: false)
+      ].join(" ")
     end
   end
 end

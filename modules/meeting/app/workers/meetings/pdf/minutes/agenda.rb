@@ -28,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings::PDF
+module Meetings::PDF::Minutes
   module Agenda
     def write_agenda
       return if meeting.sections.empty?
@@ -40,7 +40,6 @@ module Meetings::PDF
     def write_backlog
       return if meeting.backlog.blank? || meeting.backlog.agenda_items.empty?
 
-      write_hr
       write_heading(meeting.recurring? ? I18n.t("label_series_backlog") : I18n.t("label_agenda_backlog"))
       write_agenda_items(meeting.backlog)
     end
@@ -49,21 +48,22 @@ module Meetings::PDF
       meeting.sections.each_with_index { |section, index| write_section(section, index) }
     end
 
-    def write_section(section, section_index)
+    def write_section(section, index)
       write_optional_page_break
-      unless section.title.blank? && section_index == 0 && meeting.sections.count == 1
-        write_section_title(section, section_index)
-      end
-      write_agenda_items(section)
+      write_section_title(section, index)
+      write_agenda_items(section, index)
     end
 
-    def write_section_title(section, section_index)
+    def write_section_title(section, index)
       margins = styles.agenda_section_title_table_margins
-      margins = margins.merge({ top_margin: 0 }) if section_index == 0
       with_vertical_margin(margins) do
         pdf.table(
-          [[{ content: format_agenda_section_title_cell(section) }]],
+          [[
+             { content: "#{index + 1}." },
+             { content: format_agenda_section_title_cell(section) }
+           ]],
           width: pdf.bounds.width,
+          column_widths: [40, pdf.bounds.width - 40],
           cell_style: { inline_format: true }.merge(styles.agenda_section_title_cell)
         )
       end
@@ -90,42 +90,35 @@ module Meetings::PDF
       section.title.presence || I18n.t("meeting_section.untitled_title")
     end
 
-    def write_agenda_items(section)
+    def write_agenda_items(section, section_index)
       section.agenda_items.each_with_index do |item, index|
-        write_agenda_item_hr if index > 0
         write_optional_page_break
-        write_agenda_item(item)
+        with_vertical_margin(styles.agenda_item_margins) do
+          write_agenda_item(item, section_index, index)
+        end
       end
     end
 
-    def write_agenda_item_hr
-      hr_style = styles.agenda_item_hr
-      with_vertical_margin(styles.agenda_item_margins) do
-        write_horizontal_line(
-          pdf.cursor,
-          hr_style[:height],
-          hr_style[:color],
-          left_padding: styles.agenda_item_indent
-        )
-      end
-    end
-
-    def write_agenda_item(agenda_item)
+    def write_agenda_item(agenda_item, section_index, index)
       case agenda_item.item_type.to_sym
       when :simple
-        write_agenda_title_item_simple(agenda_item)
+        write_agenda_title_item_simple(agenda_item, section_index, index)
       when :work_package
-        write_agenda_title_item_wp(agenda_item)
+        write_agenda_title_item_wp(agenda_item, section_index, index)
       end
       write_notes(agenda_item)
       write_outcome(agenda_item) if with_outcomes?
     end
 
-    def write_agenda_item_title(title, duration, user)
+    def write_agenda_item_title(title, section_index, index)
       with_vertical_margin(styles.agenda_item_title_margins) do
         pdf.table(
-          [[{ content: format_agenda_item_cell(title, duration, user) }]],
+          [[
+             { content: "#{section_index + 1}.#{index + 1}." },
+             { content: title }
+           ]],
           width: pdf.bounds.width,
+          column_widths: [40, pdf.bounds.width - 40],
           cell_style: { inline_format: true }.merge(styles.agenda_item_title_cell)
         )
       end
@@ -157,12 +150,8 @@ module Meetings::PDF
       )
     end
 
-    def write_agenda_title_item_wp(agenda_item)
-      write_agenda_item_title(
-        agenda_wp_title_row(agenda_item),
-        agenda_item.duration_in_minutes || 0,
-        agenda_item.presenter
-      )
+    def write_agenda_title_item_wp(agenda_item, section_index, index)
+      write_agenda_item_title(agenda_wp_title_row(agenda_item), section_index, index)
     end
 
     def agenda_wp_title_row(agenda_item)
@@ -178,14 +167,14 @@ module Meetings::PDF
       end
     end
 
-    def write_agenda_title_item_simple(agenda_item)
-      write_agenda_item_title(agenda_item.title, agenda_item.duration_in_minutes || 0, agenda_item.presenter)
+    def write_agenda_title_item_simple(agenda_item, section_index, index)
+      write_agenda_item_title(agenda_item.title, section_index, index)
     end
 
     def write_notes(agenda_item)
       return if agenda_item.notes.blank?
 
-      pdf.indent(styles.agenda_item_indent) do
+      with_vertical_margin(styles.notes_markdown_margins) do
         write_markdown!(
           apply_markdown_field_macros(agenda_item.notes, { project: meeting.project, user: User.current }),
           styles.notes_markdown_styling_yml
@@ -208,10 +197,11 @@ module Meetings::PDF
 
     def write_outcome_title
       with_vertical_margin(styles.outcome_title_margins) do
+        style = styles.outcome_title
         pdf.formatted_text([
-                             { text: "✓ " }.merge(styles.outcome_symbol),
-                             { text: I18n.t("label_agenda_outcome") }.merge(styles.outcome_title)
-                           ])
+                             styles.outcome_symbol.merge({ text: "✓ " }),
+                             style.merge({ text: I18n.t("label_agenda_outcome") })
+                           ], style)
       end
     end
 
