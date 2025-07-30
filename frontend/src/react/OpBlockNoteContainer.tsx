@@ -161,7 +161,7 @@ export default function OpBlockNoteContainer({ inputField,
     const provider = createOpenAICompatible({
       name: 'haystack-op',
       apiKey: 'DUMMY_KEY',
-      baseURL: haystackBaseUrl,
+      baseURL: haystackBaseUrl + '/v1',
     });
 
     const model = provider("mistral:latest");
