@@ -74,8 +74,8 @@ RSpec.describe Storages::Adapters::Providers::SharePoint::StorageWizard do
         expect(wizard.completed_steps).to eq(%i[general_information access_management])
       end
 
-      it "enabled automatic storage management, but didn't persist it" do
-        expect(model).to be_automatic_management_enabled
+      it "disabled automatic storage management, and didn't persist it" do
+        expect(model).not_to be_automatic_management_enabled
         before, after = model.changes["provider_fields"]
         expect(before.keys).not_to include("automatically_managed")
         expect(after.keys).to include("automatically_managed")

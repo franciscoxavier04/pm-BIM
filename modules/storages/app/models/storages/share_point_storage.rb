@@ -32,13 +32,12 @@ module Storages
   class SharePointStorage < Storage
     PROVIDER_FIELDS_DEFAULTS = {
       automatically_managed: false,
-      automatic_management_enabled: true,
-      health_notifications_enabled: true
+      automatic_management_enabled: false
     }.freeze
 
     store_attribute :provider_fields, :tenant_id, :string
 
-    # For now SharePoint is visible only in tests.
+    # For now SharePoint is visible only for development and tests.
     # This is to prevent it from being shown in the UI, as it is not ready yet.
     def self.visible?
       Rails.env.local?
