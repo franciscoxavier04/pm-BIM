@@ -33,7 +33,7 @@ module Meetings
     protected
 
     def after_validate(call)
-      send_cancellation_mail(model)
+      send_cancellation_mail(model) if model.notify?
       cancel_scheduled_meeting(model)
 
       call

@@ -262,6 +262,7 @@ pt-PT:
           header: Autenticação
           non_provisioned_user: Utilizador fornecido por IDP
           offline_access: Âmbito OIDC offline_access configurado
+          provider_capabilities: Provider capabilities
           provisioned_user_provider: Utilizador fornecido por OIDC
           token_negotiable: Capacidades da ficha do utilizador
           user_bound_request: Autenticação da solicitação com base no utilizador
@@ -312,6 +313,7 @@ pt-PT:
         oidc_cant_refresh_token: Ocorreu um erro ao tentar verificar o seu acesso ao armazenamento. Consulte os registos do servidor para obter mais informações.
         oidc_non_oidc_user: O utilizador atual, embora aprovisionado, não foi aprovisionado por um fornecedor de identidade OpenID Connect (OIDC). Volte a executar a verificação com um utilizador aprovisionado pelo OIDC.
         oidc_non_provisioned_user: O utilizador atual não é fornecido por um fornecedor de identidade OpenID Connect. Volte a executar a verificação com um utilizador fornecido.
+        oidc_provider_cant_exchange: The OpenID Connect provider does not seem to support token exchange, but token exchange was configured for the storage.
         oidc_token_acquisition_failed: A sua configuração do OpenID Connect não fornece a audiência necessária, nem fornece capacidades de intercâmbio de tokens. Consulte a nossa documentação para mais informações.
         oidc_token_exchange_failed: Parece haver um problema com a configuração do Token Exchange no seu fornecedor OpenID Connect. Verifique a sua configuração e tente novamente.
         oidc_token_refresh_failed: Ocorreu um erro ao tentar verificar o seu acesso ao armazenamento. Consulte os registos do servidor para mais informações.

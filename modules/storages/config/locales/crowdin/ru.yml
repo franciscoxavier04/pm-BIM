@@ -262,6 +262,7 @@ ru:
           header: Аутентификация
           non_provisioned_user: Пользователь зарегистрирован через IDC
           offline_access: Конфигурация OIDC для автономного доступа
+          provider_capabilities: Provider capabilities
           provisioned_user_provider: Пользователь зарегистрирован через OIDC
           token_negotiable: Права пользовательского токена
           user_bound_request: Пользовательский запрос аутентификации
@@ -316,6 +317,7 @@ ru:
         oidc_cant_refresh_token: Произошла ошибка во время проверки Вашего доступа к хранилищу. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
         oidc_non_oidc_user: Текущий пользователь не представлен провайдером идентификации OpenID Connect(OIDC). Пожалуйста, повторите проверку пользователя, идентифицированного через OIDC.
         oidc_non_provisioned_user: Текущий пользователь не представлен провайдером идентификации OpenID Connect. Пожалуйста, повторите проверку пользователя.
+        oidc_provider_cant_exchange: The OpenID Connect provider does not seem to support token exchange, but token exchange was configured for the storage.
         oidc_token_acquisition_failed: Ваша настройка OpenID Connect не обеспечивает необходимую аудиторию и не предоставляет возможности обмена токенами. Пожалуйста, ознакомьтесь с нашей документацией для получения дополнительной информации.
         oidc_token_exchange_failed: Похоже, возникла проблема с настройкой Token Exchange вашего провайдера OpenID Connect. Пожалуйста, проверьте его конфигурацию и повторите попытку.
         oidc_token_refresh_failed: Произошла ошибка во время проверки Вашего доступа к хранилищу. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.

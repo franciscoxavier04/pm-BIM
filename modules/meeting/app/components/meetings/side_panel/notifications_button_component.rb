@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -27,13 +28,48 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Meeting::EmailParticipants < ApplicationForm
-  form do |meeting_form|
-    meeting_form.check_box(
-      name: "send_notificationss",
-      label: I18n.t("meeting.email.send_emails"),
-      checked: false,
-      caption: I18n.t("meeting.email.send_invitation_emails_structured")
-    )
+module Meetings
+  class SidePanel::NotificationsButtonComponent < ApplicationComponent
+    include ApplicationHelper
+    include OpTurbo::Streamable
+    include OpPrimer::ComponentHelpers
+
+    def initialize(meeting:)
+      super
+
+      @meeting = meeting
+      @project = meeting.project
+    end
+
+    private
+
+    def key
+      @key ||= @meeting.notify? ? "enabled" : "disabled"
+    end
+
+    def state
+      I18n.t("meeting.notifications.sidepanel.state.#{key}")
+    end
+
+    def description
+      I18n.t("meeting.notifications.sidepanel.description.#{key}")
+    end
+
+    def additional_text
+      I18n.t("meeting.notifications.sidepanel.description.change_via_template")
+    end
+
+    def button_label
+      label_key = @meeting.notify? ? "disable" : "enable"
+      I18n.t("meeting.notifications.sidepanel.button.#{label_key}")
+    end
+
+    def button_icon
+      @meeting.notify? ? :"bell-slash" : :bell
+    end
+
+    def show_button?
+      !@meeting.recurring? || @meeting.templated?
+    end
   end
 end
