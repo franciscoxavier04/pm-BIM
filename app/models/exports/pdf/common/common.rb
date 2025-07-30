@@ -157,6 +157,7 @@ module Exports::PDF::Common::Common
     @pdf.save_font do
       @pdf.font(opts[:font], opts) if opts[:font]
       @pdf.fill_color = opts[:color] if opts[:color]
+      opts[:style] = opts[:styles][0] if opts[:styles]
       @pdf.draw_text(text, opts)
     end
     pdf.fill_color = color_before
