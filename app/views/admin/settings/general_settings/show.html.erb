@@ -60,6 +60,18 @@ See COPYRIGHT and LICENSE files for more details.
       </span>
     </div>
     <div class="form--field">
+      <%= setting_check_box :ai_enabled %>
+    </div>
+    <div class="form--field">
+      <%= setting_url_field :haystack_base_url, size: 60, container_class: "-middle" %>
+      <span class="form--field-instructions">
+        <%= t(:label_example) %>: https://haystack.local/
+      </span>
+    </div>
+    <div class="form--field">
+      <%= setting_check_box :collaborative_editing_enabled %>
+    </div>
+    <div class="form--field">
       <%= setting_url_field :collaborative_editing_hocuspocus_url, size: 60, container_class: "-middle" %>
       <span class="form--field-instructions">
         <%= t(:label_example) %>: wss://websocket.server/path

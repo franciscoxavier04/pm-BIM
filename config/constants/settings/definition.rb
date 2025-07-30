@@ -566,12 +566,22 @@ module Settings
         description: "Additional allowed host names for the application.",
         default: []
       },
+      ai_enabled: {
+        format: :boolean,
+        default: false,
+        description: "Enables AI features in OpenProject. haystack_base_url and haystack_secret must be set as well.",
+      },
       haystack_base_url: {
         format: :string,
         description: "BMDS Hackathon: The base URL of the Haystack server where LLM-requests are being posted",
         default: nil
       },
-     collaborative_editing_hocuspocus_url: {
+      collaborative_editing_enabled: {
+        format: :boolean,
+        default: false,
+        description: "Enables collaborative editing in Documents. collaborative_editing_hocuspocus_url and collaborative_editing_hocuspocus_secret must be set as well.",
+      },
+      collaborative_editing_hocuspocus_url: {
         format: :string,
         default: nil,
         description: "The URL of the hocuspocus server used by BlockNoteJS editor to enable collaborative editing.",

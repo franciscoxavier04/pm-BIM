@@ -40,6 +40,9 @@ module Primer
                     :value,
                     :users,
                     :active_user,
+                    :ai_enabled,
+                    :haystack_base_url,
+                    :collaborative_editing_enabled,
                     :hocuspocus_url,
                     :hocuspocus_access_token,
                     :document_id
@@ -63,7 +66,10 @@ module Primer
             avatarUrl: avatar_url(User.current)
           }
           @document_id = document_id
+          @ai_enabled = Setting.ai_enabled
+          @haystack_base_url = Setting.haystack_base_url
           @hocuspocus_url = Setting.collaborative_editing_hocuspocus_url
+          @collaborative_editing_enabled = Setting.collaborative_editing_enabled
           @hocuspocus_access_token = ::CollaborativeEditing::DocumentAccessTokenGenerator.call(document_id, value)
         end
       end
