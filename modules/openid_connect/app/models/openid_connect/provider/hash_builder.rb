@@ -55,7 +55,8 @@ module OpenIDConnect
         token_endpoint:,
         limit_self_registration:,
         end_session_endpoint:,
-        attribute_map:
+        attribute_map:,
+        post_logout_redirect_uri:
       }.merge(attribute_map)
        .merge(provider_specific_to_h)
        .compact_blank
