@@ -347,7 +347,10 @@ RSpec.describe MeetingAgendaItem do
         duration_in_minutes: 10
       )
     end
-    let(:meeting_time) { meeting.start_time }
+    let(:meeting_time) do
+      meeting.reload
+      meeting.start_time
+    end
 
     context "when creating agenda items" do
       before do
