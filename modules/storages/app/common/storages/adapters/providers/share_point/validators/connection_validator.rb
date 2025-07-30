@@ -32,18 +32,10 @@ module Storages
   module Adapters
     module Providers
       module SharePoint
-        class SharePointContract < ::ModelContract
-          attribute :name
-          validates :name, presence: true, length: { maximum: 255 }
-
-          attribute :tenant_id
-          validates :tenant_id,
-                    format: { with: /\A(?:[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}|consumers)\z/i }
-          attribute :host
-          validates :host, presence: true, format: { with: URI::DEFAULT_PARSER.make_regexp }
-          validates :host,
-                    format: { with: %r{\Ahttps://[^/]+/sites/[^/]+(/.*)?\z}i,
-                              message: I18n.t("activerecord.errors.messages.invalid_sharepoint_url") }
+        module Validators
+          class ConnectionValidator < ConnectionValidators::BaseConnectionValidator
+            # TODO: #64183 Implement the connection validation logic for SharePoint
+          end
         end
       end
     end

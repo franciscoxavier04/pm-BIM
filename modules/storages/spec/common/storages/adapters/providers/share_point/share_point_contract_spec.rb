@@ -37,7 +37,7 @@ module Storages
       module SharePoint
         RSpec.describe SharePointContract, :storage_server_helpers, :webmock do
           let(:current_user) { create(:admin) }
-          let(:storage) { build(:share_point_storage) }
+          let(:storage) { build(:share_point_storage, :with_tenant_id) }
 
           # As the SharePointContract is selected by the BaseContract to make writable attributes available,
           # the BaseContract needs to be instantiated here.
