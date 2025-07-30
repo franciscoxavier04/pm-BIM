@@ -134,7 +134,7 @@ module Meetings::PDF::Minutes
     end
 
     def page_header_text
-      options[:page_header_left] || Setting.software_name
+      options[:page_header_left] || ""
     end
 
     def write_minutes_headers
