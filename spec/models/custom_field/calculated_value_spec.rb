@@ -195,7 +195,7 @@ RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_proje
     end
   end
 
-  describe "#formula_contains_reference_to_id?" do
+  describe "#formula_references_id?" do
     let!(:int_field) { create(:project_custom_field, :integer, default_value: 10, is_for_all: true) }
     let!(:float_field) { create(:project_custom_field, :float, default_value: 5.5, is_for_all: true) }
     let!(:text_field) { create(:project_custom_field, :text, default_value: "text", is_for_all: true) }
