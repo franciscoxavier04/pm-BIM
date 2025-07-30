@@ -120,6 +120,7 @@ ru:
   label_meeting_date_time: "Дата/Время"
   label_meeting_date_and_time: "Дата и время"
   label_meeting_diff: "Различия"
+  label_meeting_send_updates: "Send email calendar updates"
   label_recurring_meeting: "Повторяющееся совещание"
   label_recurring_meeting_part_of: "Часть серии совещаний"
   label_recurring_meeting_new: "Новое повторяющееся совещание"
@@ -267,6 +268,47 @@ ru:
         label: Текст нижнего колонтитула
         caption: Этот текст появится на каждой странице в центре нижнего колонтитула.
       submit_button: Скачать
+    notifications:
+      sidepanel:
+        title: "Email calendar updates"
+        state:
+          disabled: "Disabled."
+          enabled: "Enabled."
+        description:
+          disabled: "Participants will not receive an email informing them of changes."
+          enabled: "All participants will receive updated calendar invites via email informing them of changes."
+          change_via_template: "To change this, edit the series template."
+        button:
+          disable: "Disable"
+          enable: "Enable"
+      dialog:
+        title:
+          enable: "Enable email calendar updates?"
+          disable: "Disable email calendar updates?"
+        message:
+          enable: >
+            All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants.
+          disable: >
+            Participants will no longer receive updated calendar invites via email when there are changes to the meeting date, time, location or participants. If they already had an invite for this meeting, it might no longer be accurate.
+        confirm_label:
+          enable: "Enable email updates"
+          disable: "Disable email updates"
+      banner:
+        onetime:
+          enabled: >
+            All participants will receive updated calendar invites via email informing them of your changes.
+          disabled: >
+            Email calendar updates are disabled. Participants will not receive an email informing them of your changes.
+        occurrence:
+          enabled: >
+            Email calendar updates are enabled for the meeting series. All participants will receive updated calendar invites informing them of your changes to this occurrence.
+          disabled: >
+            Email calendar updates are disabled for the meeting series. Participants will not receive an email informing them of your changes to this occurrence.
+        template:
+          enabled: >
+            Email calendar updates are enabled for the meeting series. All participants will receive updated calendar invites informing them of your changes to this template or to individual occurrences.
+          disabled: >
+            Email calendar updates are disabled for the meeting series. Participants will not receive an email informing them of your changes to this template or to individual occurrences.
   meeting_section:
     untitled_title: "Раздел без названия"
     delete_confirmation: "Удаление раздела также удалит все пункты его повестки дня. Вы уверены, что хотите это сделать?"
@@ -477,3 +519,6 @@ ru:
   text_agenda_item_move_next_meeting_cancelled: "Не удалось переместить на следующее совещание, так как оно было отменено."
   text_work_package_add_to_meeting_hint: 'Используйте кнопку "Добавить к совещанию", чтобы добавить этот пакет работ к предстоящему совещанию.'
   text_work_package_has_no_past_meeting_agenda_items: "Этот пакет работ не упоминался на прошлом совещании."
+  text_email_updates_muted: "Email calendar updates are muted. Participants will not receive updated invites via email when you make changes."
+  text_email_updates_enabled: "Email calendar updates are enabled. All participants will receive updated invites via email when you make changes."
+

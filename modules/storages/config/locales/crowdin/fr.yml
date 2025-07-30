@@ -262,6 +262,7 @@ fr:
           header: Authentification
           non_provisioned_user: Utilisateur fourni par IDP
           offline_access: Portée OIDC offline_access configurée
+          provider_capabilities: Provider capabilities
           provisioned_user_provider: Utilisateur fourni par OIDC
           token_negotiable: Capacités du jeton d'utilisateur
           user_bound_request: Authentification de demande basée sur l'utilisateur
@@ -312,6 +313,7 @@ fr:
         oidc_cant_refresh_token: Une erreur s'est produite lors de la vérification de votre accès à l'espace de stockage. Veuillez consulter les journaux du serveur pour obtenir plus d'informations.
         oidc_non_oidc_user: L'utilisateur actuel, même s'il est provisionné, n'a pas été provisionné par un fournisseur d'identité OpenID Connect (OIDC). Veuillez refaire la vérification avec un utilisateur OIDC provisionné.
         oidc_non_provisioned_user: L'utilisateur actuel n'est pas fourni par un fournisseur d'identité OpenID Connect. Veuillez réexécuter la vérification avec un utilisateur fourni.
+        oidc_provider_cant_exchange: The OpenID Connect provider does not seem to support token exchange, but token exchange was configured for the storage.
         oidc_token_acquisition_failed: Votre configuration OpenID Connect ne fournit pas l'audience nécessaire, ni les capacités d'échange de jetons. Veuillez consulter notre documentation pour obtenir plus d'informations.
         oidc_token_exchange_failed: Il semble y avoir un problème avec la configuration de l'échange de jetons sur votre fournisseur OpenID Connect. Veuillez vérifier sa configuration et réessayer.
         oidc_token_refresh_failed: Une erreur s'est produite lors de la vérification de votre accès à l'espace de stockage. Veuillez consulter les journaux du serveur pour obtenir plus d'informations.

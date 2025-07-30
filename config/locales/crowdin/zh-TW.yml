@@ -368,23 +368,23 @@ zh-TW:
       wiki_pages: "維基"
   groups:
     edit:
-      synchronized_groups: "Synchronized groups"
+      synchronized_groups: "同步群組"
     index:
-      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+      description: 透過將使用者分組，您可以將他們新增為相同專案的成員，或指派相同的全局角色給他們。
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
-        title: No groups set up yet
-      user_count: User count
+        description: 您可以定義具有特定名稱的使用者群組
+        title: 尚未建立群組
+      user_count: 用户數
     users:
       no_results_title_text: 目前沒有使用者在這個群組
     memberships:
       no_results_title_text: 目前沒有專案在這個群組
     synchronized_groups:
       blankslate:
-        action: Authentication settings
-        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
-        title: No synchronized groups yet
+        action: 驗證設定
+        description: 當此群組與 OpenID 等外部身分提供者的群組自動同步時，將會顯示在此處。你可以在「驗證設定」中進行相關設定。
+        title: 尚未有同步群組
   incoming_mails:
     ignore_filenames: >
       請列出要排除的檔案名稱（比如：簽名或大頭貼）。每行請輸入一個檔案名稱。
@@ -1602,7 +1602,7 @@ zh-TW:
       attachment: "檔案"
       attribute_help_text: "屬性說明文字"
       auth_provider:
-        other: "Authentication providers"
+        other: "驗證提供者"
       category: "類別"
       comment: "留言"
       custom_action: "自訂動作"
@@ -2502,7 +2502,7 @@ zh-TW:
       aggregation: "合併"
       api_and_webhooks: "API 和 Webhook"
     quick_add:
-      label: "Add…"
+      label: "新增…"
   my_account:
     access_tokens:
       no_results:
@@ -2802,7 +2802,7 @@ zh-TW:
   label_gantt_chart_plural: "甘特圖"
   label_general: "一般"
   label_generate_key: "產生一個金鑰"
-  label_global_modules: "Global modules"
+  label_global_modules: "全域模組"
   label_global_roles: "全域角色"
   label_git_path: ".git 目錄的路徑"
   label_greater_or_equal: ">="
@@ -2946,7 +2946,7 @@ zh-TW:
   label_no_due_date: "無完成日期"
   label_no_start_date: "無開始日期"
   label_no_parent_page: "無上層頁面"
-  label_notification_center_plural: "Notifications"
+  label_notification_center_plural: "通知"
   label_nothing_display: "沒有可以顯示的"
   label_nobody: "沒有人"
   label_not_configured: "尚未設定"
@@ -3155,7 +3155,7 @@ zh-TW:
   label_user_mail_option_only_my_events: "只針對我關注的或者與我有關的事情"
   label_user_mail_option_only_owner: "針對我是擁有者的事情"
   label_user_mail_option_selected: "只有在已選取的專案的任何事件"
-  label_user_menu: "User menu"
+  label_user_menu: "使用者選單"
   label_user_new: "新增使用者"
   label_user_plural: "使用者"
   label_user_search: "搜尋使用者"
