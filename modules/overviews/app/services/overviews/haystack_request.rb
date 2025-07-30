@@ -62,7 +62,7 @@ class Overviews::HaystackRequest
   end
 
   def base_url
-    OpenProject::Configuration.haystack_base_url || raise("Missing configuration for OPENPROJECT_HAYSTACK_BASE_URL")
+    Setting.haystack_base_url || raise("Missing configuration for OPENPROJECT_HAYSTACK_BASE_URL")
   end
 
   def openproject_base_url
