@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "Updating a SCIM client", :js, :selenium, driver: :firefox_de do
+RSpec.describe "Updating a SCIM-client", :js, :selenium, driver: :firefox_de do
   shared_let(:admin) { create(:admin, preferences: { time_zone: "Etc/UTC" }) }
   shared_let(:auth_provider) { create(:oidc_provider) }
 
@@ -48,7 +48,7 @@ RSpec.describe "Updating a SCIM client", :js, :selenium, driver: :firefox_de do
 
   current_user { admin }
 
-  it "can update a SCIM client authenticating through JWT", :aggregate_failures, with_ee: [:scim_api] do
+  it "can update a SCIM-client authenticating through JWT", :aggregate_failures, with_ee: [:scim_api] do
     visit edit_admin_scim_client_path(sso_scim_client)
     expect(page).to be_axe_clean.within("#content")
 
@@ -72,12 +72,12 @@ RSpec.describe "Updating a SCIM client", :js, :selenium, driver: :firefox_de do
     visit edit_admin_scim_client_path(sso_scim_client)
 
     within(".PageHeader") { click_on "Delete" }
-    page.within_modal("Delete SCIM client") { click_on "Delete" }
+    page.within_modal("Delete SCIM-client") { click_on "Delete" }
     expect(page).to have_current_path(admin_scim_clients_path)
     expect(ScimClient.where(id: sso_scim_client.id)).to be_empty
   end
 
-  it "can update a SCIM client authenticating through client credentials", :aggregate_failures, with_ee: [:scim_api] do
+  it "can update a SCIM-client authenticating through client credentials", :aggregate_failures, with_ee: [:scim_api] do
     visit edit_admin_scim_client_path(oauth_client_scim_client)
     expect(page).to be_axe_clean.within("#content")
 
@@ -101,12 +101,12 @@ RSpec.describe "Updating a SCIM client", :js, :selenium, driver: :firefox_de do
     expect(page).to have_no_field("Client secret")
 
     within(".PageHeader") { click_on "Delete" }
-    page.within_modal("Delete SCIM client") { click_on "Delete" }
+    page.within_modal("Delete SCIM-client") { click_on "Delete" }
     expect(page).to have_current_path(admin_scim_clients_path)
     expect(ScimClient.where(id: oauth_client_scim_client.id)).to be_empty
   end
 
-  it "can update a SCIM client authenticating through a static access token", :aggregate_failures, with_ee: [:scim_api] do
+  it "can update a SCIM-client authenticating through a static access token", :aggregate_failures, with_ee: [:scim_api] do
     visit edit_admin_scim_client_path(token_scim_client)
     expect(page).to be_axe_clean.within("#content")
 
@@ -159,7 +159,7 @@ RSpec.describe "Updating a SCIM client", :js, :selenium, driver: :firefox_de do
     end
 
     within(".PageHeader") { click_on "Delete" }
-    page.within_modal("Delete SCIM client") { click_on "Delete" }
+    page.within_modal("Delete SCIM-client") { click_on "Delete" }
     expect(page).to have_current_path(admin_scim_clients_path)
     expect(ScimClient.where(id: token_scim_client.id)).to be_empty
   end

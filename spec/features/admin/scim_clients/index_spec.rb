@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "Listing SCIM clients", :js, :selenium, driver: :firefox_de do
+RSpec.describe "Listing SCIM-clients", :js, :selenium, driver: :firefox_de do
   shared_let(:admin) { create(:admin, preferences: { time_zone: "Etc/UTC" }) }
 
   current_user { admin }
@@ -46,12 +46,12 @@ RSpec.describe "Listing SCIM clients", :js, :selenium, driver: :firefox_de do
       expect(page).to have_no_test_selector("Admin::ScimClients::TableComponent")
 
       within(".SubHeader") do
-        expect(page).to have_no_link("SCIM client")
+        expect(page).to have_no_link("SCIM-client")
       end
     end
   end
 
-  context "when there are no SCIM clients", with_ee: [:scim_api] do
+  context "when there are no SCIM-clients", with_ee: [:scim_api] do
     it "renders a proper blank slate" do
       visit admin_scim_clients_path
 
@@ -64,14 +64,14 @@ RSpec.describe "Listing SCIM clients", :js, :selenium, driver: :firefox_de do
       end
 
       within(".SubHeader") do
-        click_on "SCIM client"
+        click_on "SCIM-client"
       end
 
       expect(page).to have_current_path(new_admin_scim_client_path)
     end
   end
 
-  context "when there are SCIM clients", with_ee: [:scim_api] do
+  context "when there are SCIM-clients", with_ee: [:scim_api] do
     let!(:sso_client) { create(:scim_client) }
 
     it "renders a proper clients table" do
