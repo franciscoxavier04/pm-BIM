@@ -33,6 +33,7 @@ module DynamicContentSecurityPolicy
 
   included do
     before_action :add_hocuspocus_host_to_csp
+    before_action :add_haystack_host_to_csp
   end
 
   ##
@@ -54,12 +55,22 @@ module DynamicContentSecurityPolicy
     end
   end
 
- private
+  private
 
   def add_hocuspocus_host_to_csp
     hocuspocus_url = Setting.collaborative_editing_hocuspocus_url
     if hocuspocus_url.present?
       uri = URI.parse(hocuspocus_url)
+      base_url = "#{uri.scheme}://#{uri.host}"
+
+      append_content_security_policy_directives(connect_src: [base_url])
+    end
+  end
+
+  def add_haystack_host_to_csp
+    haystack_base_url = Setting.haystack_base_url
+    if haystack_base_url.present?
+      uri = URI.parse(haystack_base_url)
       base_url = "#{uri.scheme}://#{uri.host}"
 
       append_content_security_policy_directives(connect_src: [base_url])

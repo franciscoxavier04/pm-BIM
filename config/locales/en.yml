@@ -4079,8 +4079,12 @@ en:
   setting_feeds_limit: "Feed content limit"
   setting_file_max_size_displayed: "Max size of text files displayed inline"
   setting_host_name: "Host name"
+  setting_collaborative_editing_enabled: "Enable collaborative editing"
   setting_collaborative_editing_hocuspocus_url: "Hocuspocus server URL"
   setting_collaborative_editing_hocuspocus_secret: "Hocuspocus server secret"
+  setting_ai_enabled: "Enable AI features"
+  setting_haystack_base_url: "Haystack server base URL"
+  setting_haystack_secret: "Haystack secret"
   setting_hours_per_day: "Hours per day"
   setting_hours_per_day_explanation: >-
     This defines what is considered a "day" when displaying duration in days and hours

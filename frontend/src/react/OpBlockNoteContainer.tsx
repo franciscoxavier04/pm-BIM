@@ -64,11 +64,14 @@ import { en } from "@blocknote/core/locales";
 import { en as aiEn } from "@blocknote/xl-ai/locales";
 import { AIMenuController, AIToolbarButton, createAIExtension, getAISlashMenuItems, } from "@blocknote/xl-ai";
 import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
-/* import styles from './OpBlockNoteContainer.module.css'; */
+
 
 export interface OpBlockNoteContainerProps {
   inputField: HTMLInputElement;
   inputText?: string;
+  aiEnabled: boolean;
+  haystackBaseUrl: string;
+  collaborativeEditingEnabled: boolean;
   hocuspocusUrl: string;
   hocuspocusAccessToken: string;
   users: Array<User>;
@@ -97,31 +100,30 @@ const dictionary = {
 }
 
 
-const provider = createOpenAICompatible({
-  name: 'haystack-op',
-  apiKey: 'DUMMY_KEY',
-  baseURL: 'https://haystack.pmflex.one/haystack/v1',
-});
-
-const model = provider("mistral:latest");
-
-const extensions:Array<BlockNoteExtensionFactory> = [
-  createAIExtension({model}),
-]
 
 export default function OpBlockNoteContainer({ inputField,
                                                inputText,
                                                users,
                                                activeUser,
+                                               collaborativeEditingEnabled,
+                                               aiEnabled,
+                                               haystackBaseUrl,
                                                hocuspocusUrl,
                                                hocuspocusAccessToken,
                                                documentId }: OpBlockNoteContainerProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [theme, setTheme] = useState<"light" | "dark">(detectTheme);
 
+  let extensions: Array<BlockNoteExtensionFactory> = [];
   let collaboration: any;
   let comments: any;
-  const collaborationEnabled: boolean = Boolean(hocuspocusUrl && documentId && hocuspocusAccessToken && activeUser);
+  const collaborationEnabled: boolean = Boolean(
+    collaborativeEditingEnabled &&
+    hocuspocusUrl &&
+    hocuspocusAccessToken &&
+    documentId &&
+    activeUser
+  );
   let hocuspocusProvider: HocuspocusProvider | null = null;
   let threadStore: any;
   if(collaborationEnabled) {
@@ -134,7 +136,7 @@ export default function OpBlockNoteContainer({ inputField,
     });
     const cursorColor = '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
     collaboration = {
-      hocuspocusProvider,
+      provider: hocuspocusProvider,
       fragment: doc.getXmlFragment("document-store"),
       user: {
         name: activeUser.username,
@@ -142,6 +144,7 @@ export default function OpBlockNoteContainer({ inputField,
       },
       showCursorLabels: "activity"
     }
+    console.log("COLLABORATION:", collaboration);
     threadStore = new YjsThreadStore(
       activeUser.id,
       doc.getMap("threads"),
@@ -153,7 +156,21 @@ export default function OpBlockNoteContainer({ inputField,
   }
 
   let editor: any;
-  if(collaboration) {
+
+  if(aiEnabled && haystackBaseUrl) {
+    const provider = createOpenAICompatible({
+      name: 'haystack-op',
+      apiKey: 'DUMMY_KEY',
+      baseURL: haystackBaseUrl,
+    });
+
+    const model = provider("mistral:latest");
+
+    extensions = [
+      createAIExtension({model}),
+    ]
+  }
+  if(collaborationEnabled) {
     const resolveUsers = async (userIds: string[]) => {
       return users.filter((user) => userIds.includes(user.id));
     }
@@ -203,6 +220,7 @@ export default function OpBlockNoteContainer({ inputField,
           setIsLoading(false);
         });
         hocuspocusProvider.on('disconnect', () => {
+          setIsLoading(true);
           console.error('BlockNote collaboration disconnected');
         });
       } else {
@@ -234,9 +252,17 @@ export default function OpBlockNoteContainer({ inputField,
           formattingToolbar={false}
           className={"block-note-editor-container"}
         >
-          <AIMenuController/>
-          <FormattingToolbarWithAI/>
-          <SuggestionMenuWithAI editor={editor}/>
+          {
+            (aiEnabled && haystackBaseUrl) ? <>
+              <AIMenuController/>
+              <FormattingToolbarWithAI/>
+              <SuggestionMenuWithAI editor={editor}/>
+            </> :
+            <>
+              <FormattingToolbarWithoutAI/>
+              <SuggestionMenuWithoutAI editor={editor}/>
+            </>
+          }
         </BlockNoteView>
       }
     </>
@@ -268,6 +294,37 @@ function SuggestionMenuWithAI(props:{
             ...getDefaultReactSlashMenuItems(props.editor),
             ...getDefaultOpenProjectSlashMenuItems(props.editor),
             ...getAISlashMenuItems(props.editor),
+          ],
+          query,
+        )
+      }
+    />
+  );
+}
+
+function FormattingToolbarWithoutAI() {
+  return (
+    <FormattingToolbarController
+      formattingToolbar={() => (
+        <FormattingToolbar>
+          {...getFormattingToolbarItems()}
+        </FormattingToolbar>
+      )}
+    />
+  );
+}
+
+function SuggestionMenuWithoutAI(props:{
+  editor:BlockNoteEditor<any, any, any>;
+}) {
+  return (
+    <SuggestionMenuController
+      triggerCharacter="/"
+      getItems={async (query) =>
+        filterSuggestionItems(
+          [
+            ...getDefaultReactSlashMenuItems(props.editor),
+            ...getDefaultOpenProjectSlashMenuItems(props.editor),
           ],
           query,
         )

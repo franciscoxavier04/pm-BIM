@@ -34,7 +34,7 @@ module ::Overviews
     before_action :find_project_by_project_id
 
     def create
-      result = if OpenProject::Configuration.haystack_base_url.present?
+      result = if Setting.ai_enabled && Setting.haystack_base_url.present?
                  Overviews::HaystackPmflexHintsRequest.new(user: current_user).call(@project)
                else
                  ServiceResult.success(result: [])

@@ -44,6 +44,9 @@ export default class extends Controller {
     inputText: String,
     users: Array,
     activeUser: Object,
+    aiEnabled: Boolean,
+    haystackBaseUrl: String,
+    collaborativeEditingEnabled: Boolean,
     hocuspocusUrl: String,
     hocuspocusAccessToken: String,
     documentId: String,
@@ -54,6 +57,9 @@ export default class extends Controller {
   declare readonly inputTextValue:string;
   declare readonly usersValue:Array<User>;
   declare readonly activeUserValue:User;
+  declare readonly aiEnabledValue:boolean;
+  declare readonly haystackBaseUrlValue:string;
+  declare readonly collaborativeEditingEnabledValue:boolean;
   declare readonly hocuspocusUrlValue:string;
   declare readonly hocuspocusAccessTokenValue:string;
   declare readonly documentIdValue:string;
@@ -67,8 +73,11 @@ export default class extends Controller {
     return React.createElement(OpBlockNoteContainer, {
       inputField: this.blockNoteInputFieldTarget,
       inputText: this.inputTextValue,
-     users: this.usersValue,
+      users: this.usersValue,
       activeUser: this.activeUserValue,
+      aiEnabled: this.aiEnabledValue,
+      haystackBaseUrl: this.haystackBaseUrlValue,
+      collaborativeEditingEnabled: this.collaborativeEditingEnabledValue,
       hocuspocusUrl: this.hocuspocusUrlValue,
       hocuspocusAccessToken: this.hocuspocusAccessTokenValue,
       documentId: this.documentIdValue,
