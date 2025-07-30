@@ -64,8 +64,8 @@ module Redmine::MenuManager::TopMenuHelper
   end
 
   def render_logo_icon
-    mode_class = User.current.pref.high_contrast_theme? ? "op-logo-icon" : "op-logo-icon_white"
-    link_to(I18n.t("label_home"), configurable_home_url, class: "op-logo op-logo--link #{mode_class}")
+    mode_class = "op-logo-icon_white" unless User.current.pref.high_contrast_theme?
+    link_to(I18n.t("label_home"), configurable_home_url, class: "op-logo op-logo-icon op-logo--link #{mode_class}")
   end
 
   def render_waffle_menu_logo_icon
