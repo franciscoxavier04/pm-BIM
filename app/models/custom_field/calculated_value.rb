@@ -77,8 +77,9 @@ module CustomField::CalculatedValue
                       .where.not(id:)
                       .visible
 
+      cache = {}
       visible_cfs.reject do |custom_field|
-        custom_field.formula_references_id?(id)
+        custom_field.formula_references_id?(id, cache)
       end
     end
 
@@ -97,19 +98,19 @@ module CustomField::CalculatedValue
       end
     end
 
-    def formula_references_id?(original_id, visited = Set.new)
-      return true unless visited.add?(id)
+    def formula_references_id?(original_id, cache = {})
+      cache.fetch(id) do
+        if field_format_calculated_value?
+          referenced_custom_fields = formula_referenced_custom_field_ids
 
-      if field_format_calculated_value?
-        referenced_custom_fields = formula_referenced_custom_field_ids
+          next true if referenced_custom_fields.include?(original_id) || referenced_custom_fields.include?(id)
 
-        return true if referenced_custom_fields.include?(original_id)
-
-        ProjectCustomField.where(id: referenced_custom_fields).any? do |referenced_field|
-          referenced_field.formula_references_id?(original_id, visited)
+          ProjectCustomField.where(id: referenced_custom_fields).any? do |referenced_field|
+            referenced_field.formula_references_id?(original_id, cache)
+          end
+        else
+          false
         end
-      else
-        false
       end
     end
 
