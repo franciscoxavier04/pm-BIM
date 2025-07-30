@@ -8,8 +8,9 @@ page:
   link_color: "175A8E"
 
 page_header:
-  offset: 20
-  size: 8
+  offset: 30
+  width: 200
+  size: 12
 
 page_footer:
   offset: -30
@@ -18,7 +19,7 @@ page_footer:
 
 page_logo:
   height: 43
-  offset: 25
+  offset: 11
   align: "right"
 
 page_heading:

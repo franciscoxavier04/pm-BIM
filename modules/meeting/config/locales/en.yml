@@ -277,6 +277,9 @@ en:
         minutes:
           label: Minutes
           caption: The minutes template is suitable for meetings that have been closed and are archived.
+      page_header_left:
+        label: Page header left
+        caption: This text will appear on every page at the left of the header on the first page.
       author:
         label: Author
         caption: The author of the minutes will be displayed in the subtitle.

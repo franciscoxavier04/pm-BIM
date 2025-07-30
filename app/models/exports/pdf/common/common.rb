@@ -118,7 +118,15 @@ module Exports::PDF::Common::Common
     end
   end
 
-  def draw_text_multiline_left(text:, text_style:, available_width:, top:, max_lines:)
+  def draw_header_text_multiline_left(text:, text_style:, available_width:, top:, max_lines:)
+    lines = wrap_to_lines(text, available_width, text_style, max_lines)
+    starting_position = top
+    lines.reverse_each do |line|
+      starting_position -= draw_text_multiline_part(line, text_style, 0, starting_position)
+    end
+  end
+
+  def draw_footer_text_multiline_left(text:, text_style:, available_width:, top:, max_lines:)
     lines = wrap_to_lines(text, available_width, text_style, max_lines)
     starting_position = top
     lines.reverse_each do |line|

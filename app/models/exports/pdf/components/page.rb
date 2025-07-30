@@ -29,6 +29,7 @@
 #++
 
 module Exports::PDF::Components::Page
+  MAX_NR_OF_PDF_HEADER_LINES = 3
   MAX_NR_OF_PDF_FOOTER_LINES = 3
 
   def configure_page_size!(layout)

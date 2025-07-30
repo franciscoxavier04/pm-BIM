@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "title": "Meetings PDF",
+  "title": "Meeting Minutes PDF",
   "properties": {
     "page": {
       "$ref": "#/$defs/page"
@@ -700,12 +700,20 @@
         "page_header": {
           "align": "left",
           "offset": 20,
+          "width": 400,
           "size": 8
         }
       },
       "properties": {
         "align": {
           "$ref": "#/$defs/alignment"
+        },
+        "width": {
+          "title": "The maximum width of the page header text",
+          "examples": [
+            400
+          ],
+          "$ref": "#/$defs/measurement"
         },
         "offset": {
           "title": "Offset position from page top",

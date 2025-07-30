@@ -87,7 +87,7 @@ module Meetings::PDF::Minutes
     def render_meeting
       write_page_head
       write_agenda
-      write_headers!
+      write_minutes_headers
       write_minutes_footers
       write_footer_logo
     end
@@ -133,6 +133,27 @@ module Meetings::PDF::Minutes
       meeting.project&.name || ""
     end
 
+    def page_header_text
+      options[:page_header_left] || Setting.software_name
+    end
+
+    def write_minutes_headers
+      write_logo!
+      write_minutes_headers_text
+    end
+
+    def write_minutes_headers_text
+      pdf.repeat lambda { |pg| pg == 1 } do
+        draw_header_text_multiline_left(
+          text: page_header_text,
+          text_style: styles.page_header,
+          available_width: styles.page_header_width,
+          top: pdf.bounds.top + styles.page_logo_height,
+          max_lines: MAX_NR_OF_PDF_HEADER_LINES
+        )
+      end
+    end
+
     def write_minutes_footers
       pdf.repeat lambda { |pg| header_footer_filter_pages.exclude?(pg) }, dynamic: true do
         draw_minutes_footer_on_page
@@ -152,12 +173,12 @@ module Meetings::PDF::Minutes
       text_style = styles.page_footer
       pos_right = draw_text_right(footer_page_nr, text_style, top)
       spacing = styles.page_footer_horizontal_spacing
-      draw_text_multiline_left(
+      draw_footer_text_multiline_left(
         text: footer_minutes,
         text_style:,
         available_width: pdf.bounds.width - spacing - pos_right,
         top:,
-        max_lines: :MAX_NR_OF_PDF_FOOTER_LINES
+        max_lines: MAX_NR_OF_PDF_FOOTER_LINES
       )
     end
 

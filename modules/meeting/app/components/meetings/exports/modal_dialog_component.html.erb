@@ -54,7 +54,7 @@
             "meetings--export--form-target": "inputGroups"
           },
           classes: templates_default[:id] == "default" ? nil : "d-none",
-          ) do
+        ) do
           render(
             Primer::Alpha::CheckBox.new(
               id: "pdf_include_participants",
@@ -126,6 +126,24 @@
             mt: 3
           ) do
             render Primer::Alpha::TextField.new(
+              id: "pdf_header_left",
+              name: :page_header_left,
+              label: I18n.t("meeting.export_pdf_dialog.page_header_left.label"),
+              caption: I18n.t("meeting.export_pdf_dialog.page_header_left.caption"),
+              input_width: :large,
+              visually_hide_label: false,
+              value: default_page_header_left_text
+            )
+          end
+          modal_body.with_row(
+            data: {
+              template: "minutes",
+              "meetings--export--form-target": "inputGroups"
+            },
+            classes: templates_default[:id] == "minutes" ? nil : "d-none",
+            mt: 3
+          ) do
+            render Primer::Alpha::TextField.new(
               id: "pdf_author",
               name: :author,
               label: I18n.t("meeting.export_pdf_dialog.author.label"),
@@ -136,7 +154,13 @@
             )
           end
         end
-        modal_body.with_row(mt: 3) do
+        modal_body.with_row(
+          mt: 3,
+          data: {
+            template: "default",
+            "meetings--export--form-target": "inputGroups"
+          }
+        ) do
           render Primer::Alpha::TextField.new(
             id: "pdf_footer_text",
             name: :footer_text,
