@@ -91,15 +91,34 @@ RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_proje
 
       it "excludes fields that would create circular references" do
         # field_a should not be able to reference field_b, field_b should not be able to reference field_c, etc.
-        expect(field_a.usable_custom_field_references_for_formula).not_to include(field_b)
-        expect(field_b.usable_custom_field_references_for_formula).not_to include(field_c)
-        expect(field_c.usable_custom_field_references_for_formula).not_to include(field_a)
+        expect(field_a.usable_custom_field_references_for_formula).not_to include(field_b, field_c)
+        expect(field_b.usable_custom_field_references_for_formula).not_to include(field_c, field_a)
+        expect(field_c.usable_custom_field_references_for_formula).not_to include(field_a, field_b)
       end
 
       it "still includes fields that don't create circular references" do
         expect(field_a.usable_custom_field_references_for_formula).to include(int, float)
         expect(field_b.usable_custom_field_references_for_formula).to include(int, float)
         expect(field_c.usable_custom_field_references_for_formula).to include(int, float)
+      end
+    end
+
+    context "when two calculated values reference the same custom field" do
+      let!(:constant_cf1) { create(:project_custom_field, :integer, default_value: 1, is_for_all: true) }
+      let!(:calculated_cf2) do
+        create(:calculated_value_project_custom_field, formula: "{{cf_#{constant_cf1.id}}}", is_for_all: true)
+      end
+      let!(:calculated_cf3) do
+        create(:calculated_value_project_custom_field,
+               formula: "{{cf_#{constant_cf1.id}}} + {{cf_#{calculated_cf2.id}}}",
+               is_for_all: true)
+      end
+
+      it "does not lead to a false positive" do
+        subject.formula = "{{cf_#{calculated_cf3.id}}}"
+        subject.save(validate: false)
+
+        expect(subject.usable_custom_field_references_for_formula).to include(constant_cf1, calculated_cf2, calculated_cf3)
       end
     end
 
@@ -288,6 +307,8 @@ RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_proje
 
       it "returns false when there is no circular reference" do
         expect(field_x.formula_references_id?(field_x.id)).to be false
+        expect(field_x.formula_references_id?(field_y.id)).to be false
+        expect(field_x.formula_references_id?(field_z.id)).to be false
         expect(field_y.formula_references_id?(field_y.id)).to be false
         expect(field_z.formula_references_id?(field_z.id)).to be false
       end
@@ -307,12 +328,12 @@ RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_proje
       end
 
       it "returns true when a node has already been visited" do
-        visited = Set.new([field1.id])
+        visited = { field1.id => true }
         expect(field1.formula_references_id?(field2.id, visited)).to be true
       end
 
       it "returns false when checking a new node with empty visited set" do
-        visited = Set.new
+        visited = {}
         expect(field1.formula_references_id?(field2.id, visited)).to be false
       end
     end
