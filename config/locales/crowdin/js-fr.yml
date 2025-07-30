@@ -212,10 +212,10 @@ fr:
         change_button: "Enregistrer et reprogrammer"
         change_title: "Changer les jours travaillés"
         removed_title: "Vous supprimerez les jours suivants de la liste des jours non travaillés :"
-        change_description: "Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance."
+        change_description: "La modification des jours de la semaine considérés comme des jours ouvrables ou des jours non ouvrables peut affecter les jours de début et de fin de tous les lots de travaux et les cycles de vie de tous les projets dans ce cas."
         warning: >
-          The changes might take some time to take effect. You will be notified when all relevant work packages and project life cycles have been updated.
-          Are you sure you want to continue?
+          Les modifications peuvent prendre un certain temps avant de prendre effet. Vous serez informé(e) lorsque tous les lots de travaux et cycles de vie des projets concernés auront été mis à jour.
+          Voulez-vous continuer ?
       work_packages_settings:
         warning_progress_calculation_mode_change_from_status_to_field_html: >-
           Passer du mode de calcul de la progression basé sur le statut au mode basé sur le travail transformera <i>% réalisé</i> en champ librement modifiable. Si vous complétez les champs <i>Travail</i> et <i>Travail restant</i>, ils seront également liés à <i>% réalisé</i>. Changer le champ <i>Travail restant</i> peut alors changer le <i>% réalisé</i>.
@@ -298,7 +298,7 @@ fr:
           "16_2":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>New header and sidebar with improved navigation and design.</li> <li>Smoother experience with Custom fields, Relations, Reminders, Meetings, and My time tracking.</li> <li>Non-latin languages and emojis supported in PDF exports.</li> <li>Option to disable keyboard shortcuts for better accessibility.</li> <li>SCIM server via API (Enterprise add-on).</li> <li>API support for internal comments.</li> </ul>
+                Cette version contient plusieurs nouvelles fonctionnalités et améliorations, telles que : <br> <ul class="%{list_styling_class}"> <li>Nouvel en-tête et nouvelle barre latérale avec une navigation et une apparence améliorées.</li> <li>Une expérience plus fluide avec les champs personnalisés, les relations, les rappels, les réunions et Mon suivi du temps.</li> <li>Prise en charge des langues non latines et des émojis dans les exportations PDF.</li> <li>Possibilité de désactiver les raccourcis clavier pour assurer une meilleure accessibilité.</li> <li>Serveur SCIM via API (add-on Enterprise).</li> <li>Prise en charge de l'API pour les commentaires internes.</li> </ul>
     ical_sharing_modal:
       title: "S'abonner au calendrier"
       inital_setup_error_message: "Une erreur est survenue lors de la récupération des données."
@@ -324,7 +324,7 @@ fr:
     label_added_time_by: 'Ajouté par <a href="%{authorLink}">%{author}</a> le %{age}'
     label_ago: "il y a"
     label_all: "tous"
-    label_all_projects: "All projects"
+    label_all_projects: "Tous les projets"
     label_all_uppercase: "Tous"
     label_all_work_packages: "tous les lots de travaux"
     label_and: "et"
@@ -643,13 +643,12 @@ fr:
       title: "Confirmez votre mot de passe pour continuer"
     pagination:
       no_other_page: "Vous êtes sur la seule page."
-      page_navigation: "Pagination navigation"
-      per_page_navigation: 'Items per page selection'
+      pages_skipped: "Pages ignorées."
+      page_navigation: "Navigation par pagination"
+      per_page_navigation: 'Sélection des éléments par page'
       pages:
-        next: "Next page"
-        previous: "Previous page"
         page_number: Page %{number}
-        show_per_page: Show %{number} per page
+        show_per_page: Afficher %{number} par page
     placeholders:
       default: "-"
       subject: "Saisir le sujet ici"
@@ -697,7 +696,8 @@ fr:
           first_day: "Premier jour"
           last_day: "Dernier jour"
     text_are_you_sure: "Êtes-vous sûr ?"
-    breadcrumb: "Breadcrumb"
+    text_are_you_sure_to_cancel: "Vous avez des modifications non enregistrées sur cette page. Êtes-vous sûr de vouloir les supprimer ?"
+    breadcrumb: "Fil d'Ariane"
     text_data_lost: "Toutes les données saisies seront perdues."
     text_user_wrote: "%{value} écrit:"
     types:
@@ -782,7 +782,7 @@ fr:
     autocompleter:
       placeholder: "Taper pour rechercher"
       notFoundText: "Aucun élément trouvé"
-      search: "Search"
+      search: "Recherche"
       project:
         placeholder: "Sélectionnez le projet"
     repositories:
@@ -830,7 +830,7 @@ fr:
       bulk_actions:
         edit: "Édition en bloc"
         delete: "Supprimer en bloc"
-        duplicate: "Bulk duplicate"
+        duplicate: "Duplication groupée"
         move: "Changement de projet en bloc"
       button_clear: "Effacer"
       comment_added: "Le commentaire a été ajouté avec succès."
@@ -876,7 +876,7 @@ fr:
         header_with_parent: "Nouveau %{type} (enfant de %{parent_type} #%{id})"
         button: "Créer"
       duplicate:
-        title: "Duplicate work package"
+        title: "Dupliquer les lots de travaux"
       hierarchy:
         show: "Afficher le mode hiérarchie"
         hide: "Masquer le mode hiérarchie"

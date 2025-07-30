@@ -36,6 +36,8 @@ module WorkPackages
       end
 
       def activity_anchor_link(journal)
+        auto_scrolling_controller = WorkPackages::ActivitiesTab::StimulusControllers.auto_scrolling_stimulus_controller
+
         render(Primer::Beta::Link.new(
                  href: activity_url(journal),
                  scheme: :secondary,
@@ -44,9 +46,9 @@ module WorkPackages
                  data: {
                    test_selector: "activity-anchor-link",
                    turbo: false,
-                   action: "click->work-packages--activities-tab--index#setAnchor:prevent",
-                   "work-packages--activities-tab--index-id-param": journal_activity_id(journal),
-                   "work-packages--activities-tab--index-anchor-name-param": activity_anchor_name
+                   action: "click->#{auto_scrolling_controller}#setAnchor:prevent",
+                   "#{auto_scrolling_controller}-id-param": journal_activity_id(journal),
+                   "#{auto_scrolling_controller}-anchor-name-param": activity_anchor_name
                  }
                )) do
           journal_updated_at_formatted_time(journal)

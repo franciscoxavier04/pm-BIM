@@ -212,10 +212,10 @@ uk:
         change_button: "Зберегти й перепланувати"
         change_title: "Змінення робочих днів"
         removed_title: "Ви вилучите ці дні зі списку неробочих:"
-        change_description: "Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance."
+        change_description: "Якщо змінити дні тижня, які вважаються робочими чи неробочими, це може вплинути на дати початку й завершення всіх пакетів робіт і життєвих циклів проєктів в усіх проєктах цього екземпляра."
         warning: >
-          The changes might take some time to take effect. You will be notified when all relevant work packages and project life cycles have been updated.
-          Are you sure you want to continue?
+          Застосування змін може тривати деякий час. Ви отримаєте сповіщення, коли всі відповідні пакети робіт і життєві цикли проєктів буде оновлено.
+          Продовжити?
       work_packages_settings:
         warning_progress_calculation_mode_change_from_status_to_field_html: >-
           Якщо перейти з режиму обчислення прогресу на основі статусу на режим на основі роботи, атрибут <i>% завершення</i> стане доступним для редагування полем. Якщо визначено атрибути <i>Робота</i> й <i>Залишок роботи</i>, їх значення буде також пов’язано з атрибутом <i>% завершення</i>. Змінення значення атрибута <i>Залишок роботи</i> призводить до оновлення атрибута <i>% завершення</i>.
@@ -298,7 +298,7 @@ uk:
           "16_2":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>New header and sidebar with improved navigation and design.</li> <li>Smoother experience with Custom fields, Relations, Reminders, Meetings, and My time tracking.</li> <li>Non-latin languages and emojis supported in PDF exports.</li> <li>Option to disable keyboard shortcuts for better accessibility.</li> <li>SCIM server via API (Enterprise add-on).</li> <li>API support for internal comments.</li> </ul>
+                Реліз містить різні нові функції і покращення, як-от: <br> <ul class="%{list_styling_class}"> <li>нова шапка й бічна панель із покращеною навігацією та дизайном;</li> <li>поліпшена робота з користувацькими полями, зв’язками, нагадуваннями, нарадами й функцією «Мій облік часу».</li> <li>підтримка мов, що використовують нелатинські літери, і смайликів при експорті PDF-файлів;</li> <li>можливість відключити комбінації клавіш для кращої доступності;</li> <li>сервер SCIM через API (надбудова Enterprise);</li> <li>підтримка API для внутрішніх коментарів.</li> </ul>
     ical_sharing_modal:
       title: "Підписатися на календар"
       inital_setup_error_message: "Під час отримання даних сталася помилка."
@@ -316,7 +316,7 @@ uk:
     label_add_column_before: "Додати стовпець перед"
     label_add_columns: "Додати стовпці"
     label_add_comment: "Додати коментар"
-    label_add_comment_title: "Коментар і введіть @, щоб повідомити інших людей"
+    label_add_comment_title: "Напишіть коментар і введіть @, щоб повідомити інших людей"
     label_add_row_after: "Додати рядок після"
     label_add_row_before: "Додати рядок перед"
     label_add_selected_columns: "Додати вибрані стовпці"
@@ -324,7 +324,7 @@ uk:
     label_added_time_by: 'Додано користувачем <a href="%{authorLink}">%{author}</a> о %{age}'
     label_ago: "днів тому"
     label_all: "всі"
-    label_all_projects: "All projects"
+    label_all_projects: "Усі проєкти"
     label_all_uppercase: "Усі"
     label_all_work_packages: "всі пакети в роботі"
     label_and: "і"
@@ -348,12 +348,12 @@ uk:
     label_description: "Опис"
     label_details: "Детальніше"
     label_display: "Вигляд"
-    label_cancel_comment: "Скасувати коментар"
+    label_cancel_comment: "Скасувати додавання коментаря"
     label_closed_work_packages: "закрито"
     label_collapse: "Згорнути"
     label_collapsed: "згорнуто"
     label_collapse_all: "Згорнути все"
-    label_comment: "Коментування"
+    label_comment: "Коментар"
     label_committed_at: "%{committed_revision_link}, %{date}"
     label_committed_link: "зафіксовано редакцію %{revision_identifier}"
     label_contains: "містить"
@@ -450,14 +450,14 @@ uk:
     label_sum: "Сума"
     label_sum_for: "Сума для"
     label_total_sum: "Загальна сума"
-    label_subject: "Заголовок"
+    label_subject: "Тема"
     label_this_week: "цього тижня"
     label_today: "Сьогодні"
     label_time_entry_plural: "Витрачений час"
     label_up: "Вгору"
     label_user_plural: "Користувачі"
-    label_activity_show_only_comments: "Показувати заходи лише з коментарями"
-    label_activity_show_all: "Показати всю активність"
+    label_activity_show_only_comments: "Показувати лише дії з коментарями"
+    label_activity_show_all: "Показати всі дії"
     label_total_progress: "%{percent}% загального прогресу"
     label_total_amount: "Всього: %{amount}"
     label_updated_on: "оновлено"
@@ -530,8 +530,8 @@ uk:
           drag: "Перевпорядкуйте картки в межах даного списку, перетягуючи їх, або перемістіть їх до іншого списку. Щоб переглянути докладні відомості, натисніть значок інформації (i) у верхньому правому куті або двічі натисніть картку."
         wp:
           toggler: "Тепер погляньмо на розділ <b>робочих пакетів</b>, де можна дізнатися більше про вашу роботу."
-          list: "Цей огляд пакета <b>робіт</b> містить список всіх робіт у вашому проєкті, наприклад завдання, віхи, етапи тощо. <br> Пакети робіт можна створювати й редагувати безпосередньо в цьому поданні. Щоб отримати доступ до інформації про певний пакет робіт, просто двічі натисніть його рядок."
-          full_view: "Подання <b>Деталі пакета робіт</b> містить усю відповідну інформацію, пов’язану з даним пакетом робіт, наприклад його опис, статус, пріоритет, діяльність, залежності й коментарі."
+          list: "Цей огляд пакета <b>робіт</b> містить список усіх робіт у вашому проєкті, таких як завдання, контрольні точки, етапи тощо. <br> Пакети робіт можна створювати й редагувати безпосередньо в цьому поданні. Щоб отримати доступ до інформації про певний пакет робіт, просто двічі натисніть його рядок."
+          full_view: "Подання <b>деталей пакета робіт</b> містить усю відповідну інформацію, пов’язану з відповідним пакетом робіт, наприклад його опис, статус, пріоритет, дії, залежності й коментарі."
           back_button: "Щоб вийти й повернутися в список пакета робіт, скористайтеся стрілкою повернення у верхньому лівому куті."
           create_button: "Кнопка <b>+ Створити</b> додасть новий пакет робіт до вашого проєкту."
           gantt_menu: "Легко створюйте розклади й часові шкали проєктів за допомогою модуля «Діаграма Ґанта»."
@@ -645,13 +645,12 @@ uk:
       title: "Підтвердіть ваш пароль щоб продовжити"
     pagination:
       no_other_page: "Ви знаходитесь на єдиній сторінці."
-      page_navigation: "Pagination navigation"
-      per_page_navigation: 'Items per page selection'
+      pages_skipped: "Pages skipped."
+      page_navigation: "Навігація сторінками"
+      per_page_navigation: 'Кількість елементів на сторінку'
       pages:
-        next: "Next page"
-        previous: "Previous page"
-        page_number: Page %{number}
-        show_per_page: Show %{number} per page
+        page_number: Сторінка %{number}
+        show_per_page: Показати %{number} на сторінці
     placeholders:
       default: "-"
       subject: "Введіть тему тут"
@@ -699,7 +698,8 @@ uk:
           first_day: "Перший день"
           last_day: "Останній день"
     text_are_you_sure: "Ви впевненені?"
-    breadcrumb: "Breadcrumb"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
+    breadcrumb: "Ланцюжок навігації"
     text_data_lost: "Усі введені дані буде втрачено."
     text_user_wrote: "%{value} написав(-ла):"
     types:
@@ -784,7 +784,7 @@ uk:
     autocompleter:
       placeholder: "Введіть для пошуку"
       notFoundText: "Елементів не знайдено"
-      search: "Search"
+      search: "Пошук"
       project:
         placeholder: "Виберіть проєкт"
     repositories:
@@ -832,12 +832,12 @@ uk:
       bulk_actions:
         edit: "Масове редагування"
         delete: "Масове видалення"
-        duplicate: "Bulk duplicate"
+        duplicate: "Групове дублювання"
         move: "Групова зміна проєкту"
       button_clear: "Очистити"
-      comment_added: "Коментар був успішно доданий."
+      comment_added: "Коментар успішно додано."
       comment_send_failed: "Сталася помилка. Не вдалося додати коментар."
-      comment_updated: "Коментар був успішно оновлений."
+      comment_updated: "Коментар успішно оновлено."
       confirm_edit_cancel: "Ви дійсно бажаєте скасувати редагування пакету робіт?"
       description_filter: "Фільтр"
       description_enter_text: "Введіть текст"
@@ -857,7 +857,7 @@ uk:
       message_view_spent_time: "Показувати час, витрачений на цей робочий пакет"
       message_work_package_read_only: "Робочий пакет заблоковано в цьому статусі. Атрибут, відмінний від статусу, може бути змінений."
       message_work_package_status_blocked: "Пакет робіт недоступний для запису, оскільки призначено закритий статус або закриту версію."
-      placeholder_filter_by_text: "Тема, опис, коментарі, ..."
+      placeholder_filter_by_text: "Тема, опис, коментарі…"
       progress:
         title: "Оцінки й прогрес виконання роботи"
       baseline:
@@ -878,7 +878,7 @@ uk:
         header_with_parent: "Новий %{type} (дочірній елемент %{parent_type} #%{id})"
         button: "Створити"
       duplicate:
-        title: "Duplicate work package"
+        title: "Дублювати пакет робіт"
       hierarchy:
         show: "Показати режим ієрархії"
         hide: "Приховати режим ієрархії"
@@ -894,7 +894,7 @@ uk:
         description: Або нічого не було створено, або всі пакети робіт відфільтровані.
       limited_results: 'Показати в ручному режимі сортування можна лише стільки робочих пакетів: %{count}. Зменште кількість результатів за допомогою фільтрації або виберіть автоматичне сортування.'
       property_groups:
-        details: "Детальніше"
+        details: "Деталі"
         people: "Люди"
         estimatesAndTime: "Оцінки та час"
         other: "Інше"
@@ -918,7 +918,7 @@ uk:
         responsible: "Відповідальний"
         startDate: "Дата початку"
         status: "Стан"
-        subject: "Заголовок"
+        subject: "Тема"
         subproject: "Підпроєкт"
         title: "Назва "
         type: "Тип"
@@ -930,7 +930,7 @@ uk:
         remainingTime: "Залишок роботи"
       default_queries:
         manually_sorted: "Новий, відсортований уручну запит"
-        latest_activity: "Останні дії"
+        latest_activity: "Остання активність"
         created_by_me: "Створений мною"
         assigned_to_me: "Призначено мені"
         recently_created: "Нещодавно створений"
@@ -1028,7 +1028,7 @@ uk:
           filter_work_packages_by_relation_type: "Фільтрувати пакети робіт за типом зв’язку"
       tabs:
         overview: Огляд
-        activity: Дія
+        activity: Активність
         relations: Зв'язки
         watchers: Спостерігачі
         files: Файли

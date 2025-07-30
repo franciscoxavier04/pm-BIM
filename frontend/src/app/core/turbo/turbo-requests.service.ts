@@ -1,19 +1,36 @@
 import { Injectable } from '@angular/core';
 import { renderStreamMessage } from '@hotwired/turbo';
 import { ToastService } from 'core-app/shared/components/toaster/toast.service';
+import { debugLog } from 'core-app/shared/helpers/debug_output';
+import { TurboHelpers } from 'core-turbo/helpers';
 
 @Injectable({ providedIn: 'root' })
 export class TurboRequestsService {
+  #controllers = new Map<string, AbortController>();
+
   constructor(
     private toast:ToastService,
   ) {
 
   }
 
-  public request(url:string, init:RequestInit = {}, suppressErrorToast = false):Promise<{
+  public request(
+    url:string,
+    init:RequestInit = {},
+    suppressErrorToast = false,
+    requestId?:string,
+  ):Promise<{
     html:string,
     headers:Headers
   }> {
+    if (requestId) {
+      this.abortRequest(requestId);
+
+      const controller = new AbortController();
+      this.#controllers.set(requestId, controller);
+      init.signal = controller.signal;
+    }
+
     const defaultHeaders = {
       'X-Authentication-Scheme': 'Session',
     };
@@ -48,13 +65,22 @@ export class TurboRequestsService {
         }
       })
       .catch((error) => {
+        if (requestId && error instanceof DOMException && error.name === 'AbortError') {
+          debugLog(`Request "${requestId}" was aborted.`);
+
         // this should only catch errors happening in the client side parsing in the above .then() calls
-        if (!suppressErrorToast) {
+        } else if (!suppressErrorToast) {
           this.toast.addError(error as string);
         } else {
           console.error(error);
         }
+
         throw error;
+      })
+      .finally(() => {
+        if (requestId) {
+          this.#controllers.delete(requestId);
+        }
       });
   }
 
@@ -62,11 +88,13 @@ export class TurboRequestsService {
     form:HTMLFormElement,
     params:URLSearchParams|null = null,
     url = form.action,
+    requestId?:string,
   ):Promise<{ html:string, headers:Headers }> {
     const formData = new FormData(form);
     const requestParams = params ? `?${params.toString()}` : '';
+    const requestUrlWithParams = `${url}${requestParams}`;
     return this.request(
-      `${url}${requestParams}`,
+      requestUrlWithParams,
       {
         method: form.method,
         body: formData,
@@ -75,16 +103,43 @@ export class TurboRequestsService {
         },
       },
       true,
+      requestId || requestUrlWithParams,
     );
   }
 
-  public requestStream(url:string):Promise<{ html:string, headers:Headers }> {
-    return this.request(url, {
-      method: 'GET',
-      headers: {
-        Accept: 'text/vnd.turbo-stream.html',
+  public requestStream(
+    url:string,
+    requestId = url,
+  ):Promise<{ html:string, headers:Headers }> {
+    TurboHelpers.showProgressBar();
+
+    return this.request(
+      url,
+      {
+        method: 'GET',
+        headers: {
+          Accept: 'text/vnd.turbo-stream.html',
+        },
+        credentials: 'same-origin',
       },
-      credentials: 'same-origin',
+      false,
+      requestId,
+    )
+    .finally(() => {
+      TurboHelpers.hideProgressBar();
     });
+  }
+
+  public abortRequest(requestId:string):void {
+    const controller = this.#controllers.get(requestId);
+    if (controller) {
+      controller.abort();
+      this.#controllers.delete(requestId);
+    }
+  }
+
+  public abortAll():void {
+    this.#controllers.forEach((controller) => controller.abort());
+    this.#controllers.clear();
   }
 }

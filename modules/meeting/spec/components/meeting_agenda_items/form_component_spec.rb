@@ -85,7 +85,7 @@ RSpec.describe MeetingAgendaItems::FormComponent, type: :component do
   end
 
   it "renders notes field" do
-    expect(rendered_component).to have_field "Notes", type: :textarea, visible: :hidden do |textarea| # rubocop:disable OpenProject/NoDoEndBlockWithRSpecCapybaraMatcherInExpect
+    expect(rendered_component).to have_field "Notes", type: :textarea, visible: :hidden do |textarea|
       expect(rendered_component).to have_element "opce-ckeditor-augmented-textarea",
                                                  "data-test-selector": "augmented-text-area-notes",
                                                  "data-text-area-id": textarea["id"].to_json

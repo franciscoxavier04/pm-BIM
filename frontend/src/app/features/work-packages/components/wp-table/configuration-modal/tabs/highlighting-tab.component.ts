@@ -19,6 +19,7 @@ import { repositionDropdownBugfix } from 'core-app/shared/components/autocomplet
 @Component({
   templateUrl: './highlighting-tab.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class WpTableConfigurationHighlightingTabComponent implements TabComponent {
   // Display mode

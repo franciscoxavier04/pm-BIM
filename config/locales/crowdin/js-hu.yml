@@ -642,11 +642,10 @@ hu:
       title: "Adja meg a jelszavát a folytatáshoz"
     pagination:
       no_other_page: "Csak egyetlen oldalon tartózkodik."
+      pages_skipped: "Pages skipped."
       page_navigation: "Pagination navigation"
       per_page_navigation: 'Items per page selection'
       pages:
-        next: "Next page"
-        previous: "Previous page"
         page_number: Page %{number}
         show_per_page: Show %{number} per page
     placeholders:
@@ -696,6 +695,7 @@ hu:
           first_day: "Első nap"
           last_day: "Utolsó nap"
     text_are_you_sure: "Biztos vagy benne?"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
     breadcrumb: "Breadcrumb"
     text_data_lost: "Az összes adat elveszhet"
     text_user_wrote: "%{value} írta:"

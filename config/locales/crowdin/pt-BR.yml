@@ -43,7 +43,7 @@ pt-BR:
         commented: "comentou"
         internal_comment: Comentário interno
         internal_journal: Comentários internos são visíveis apenas para um grupo restrito de membros.
-        unsaved_changes_confirmation_message: Você tem alterações não salvas. Tem certeza que deseja fechar o editor?
+        unsaved_changes_confirmation_message: Há alterações não salvas. Tem certeza de que deseja fechar o editor?
         internal_comment_confirmation:
           title: "Tornar este comentário público?"
           heading: "Tornar este comentário público?"
@@ -63,7 +63,6 @@ pt-BR:
         primary-button-color: "Botão primário"
         accent-color: "Destaque"
         header-bg-color: "Fundo do cabeçalho"
-        header-item-bg-hover-color: "Fundo do cabeçalho ao passar o mouse"
         main-menu-bg-color: "Fundo do menu principal"
         main-menu-bg-selected-background: "Menu principal quando selecionado"
       custom_colors: "Cores personalizadas"
@@ -71,10 +70,6 @@ pt-BR:
       instructions:
         primary-button-color: "Cor de destaque forte, usada para o botão mais importante na tela."
         accent-color: "Cor para os links e outros elementos destacados adequadamente."
-        header-item-bg-hover-color: "Cor de fundo dos itens clicáveis do cabeçalho ao passar o mouse sobre eles."
-        header-item-font-color: "Cor da fonte dos itens clicáveis do cabeçalho."
-        header-item-font-hover-color: "Cor da fonte dos itens clicáveis do cabeçalho ao passar o mouse sobre eles."
-        header-border-bottom-color: "Linha fina sob o cabeçalho. Deixe este campo vazio se não quiser nenhuma linha."
         main-menu-bg-color: "Cor de fundo do menu esquerdo."
       theme_warning: Alterar o tema irá sobrescrever seu estilo personalizado. O design será perdido. Tem certeza que deseja continuar?
     enterprise:
@@ -100,11 +95,11 @@ pt-BR:
         contact: "Contate-nos para uma demonstração"
       status:
         expired: "Expirado"
-        expiring_soon: "Expirando em breve"
-        in_grace_period: "Em período de carência"
+        expiring_soon: "Prestes a expirar"
+        in_grace_period: "Dentro do período de carência"
         invalid_domain: "Domínio inválido"
         not_active: "Inativo"
-        trial: "Período de avaliação"
+        trial: "Avaliação"
     jemalloc_allocator: Alocador de memória Jemalloc
     journal_aggregation:
       explanation:
@@ -120,45 +115,45 @@ pt-BR:
         heading: "As credenciais do cliente foram geradas"
         one_time_hint: "Esta é a única vez que você verá o segredo do cliente. Certifique-se de copiá-lo agora."
       created_token_dialog_component:
-        title: "Novo token criado"
-        heading: "Uma ficha foi gerada"
-        label_token: "Ficha"
-        one_time_hint: "Esta é a única vez que você verá essa ficha, certifique-se de copiá-la agora."
+        title: "Token criado"
+        heading: "A token has been generated"
+        label_token: "Token"
+        one_time_hint: "Esta é a única vez que você verá este token. Certifique-se de copiá-lo agora."
       delete_scim_client_dialog_component:
         title: "Excluir cliente SCIM"
-        heading: "Tem certeza que deseja excluir este cliente SCIM?"
-        description: "Os usuários gerenciados por este cliente SCIM não podem mais ser atualizados por ele."
+        heading: "Tem certeza de que deseja excluir este cliente SCIM?"
+        description: "Usuários gerenciados por este cliente SCIM não poderão mais ser atualizados por ele."
       edit:
         label_delete_scim_client: "Excluir cliente SCIM"
       form:
-        auth_provider_description: "Este é o serviço que os usuários adicionados pelo provedor SCIM usarão para autenticar no OpenProject."
-        authentication_method_description_html: "É assim que o cliente SCIM se autentica no OpenProject. Por favor, certifique-se de que as fichas OAuth incluam o escopo <code>scim_v2</code>."
-        description_html: 'Por favor, consulte nossa <a href="%{docs_url}"> documentação sobre a configuração de clientes SCIM</a> para mais informações sobre essas opções de configuração.'
-        jwt_sub_description_html: 'Por exemplo, para Keycloak, esse é o UUID da conta de serviço associada com o cliente SCIM. Consulte <a href="%{docs_url}">nossa documentação</a> para saber como encontrar a reivindicação do sujeito para sua utilização.'
-        name_description: "Escolha um nome que ajudará outros administradores a entender melhor porque esse cliente foi configurado."
+        auth_provider_description: "Este é o serviço que os usuários adicionados pelo provedor SCIM usarão para autenticar-se no OpenProject."
+        authentication_method_description_html: "O cliente SCIM autentica-se no OpenProject dessa forma. Verifique se os tokens OAuth contêm o escopo <code>scim_v2</code>."
+        description_html: 'Consulte nossa <a href="%{docs_url}">documentação sobre configuração de clientes SCIM</a> para obter mais informações sobre essas opções de configuração.'
+        jwt_sub_description_html: 'Por exemplo, para o Keycloak, este é o UUID da conta de serviço associada ao cliente SCIM. Consulte <a href="%{docs_url}">nossa documentação</a> para saber como encontrar a declaração de sujeito para o seu caso de uso.'
+        name_description: "Escolha um nome que ajude outros administradores a entender melhor o motivo pelo qual este cliente foi configurado."
       index:
-        description: "Clientes SCIM configurados aqui podem interagir com a API do servidor OpenProject SCIM para provisionar, atualizar e desaprovisionar contas e grupos de usurários."
+        description: "Clientes SCIM configurados aqui podem interagir com a API do servidor SCIM do OpenProject para provisionar, atualizar e desprovisionar contas de usuários e grupos."
         label_create_button: "Adicionar cliente SCIM"
       new:
         title: "Novo cliente SCIM"
       revoke_static_token_dialog_component:
         confirm_button: "Revogar"
         title: "Revogar token estático"
-        heading: "Tem certeza que deseja revogar essa ficha?"
-        description: "Os clientes SCIM que usam esse token não poderão mais acessar a API do servidor SCIM do OpenProject."
+        heading: "Tem certeza de que deseja revogar este token?"
+        description: "O cliente SCIM que usa este token não terá mais acesso à API do servidor SCIM do OpenProject."
       table_component:
         blank_slate:
-          title: "Nenhum cliente SCIM foi configurado ainda"
+          title: "Nenhum cliente SCIM configurado até o momento"
           description: "Adicione clientes para vê-los aqui"
         user_count: "Usuários"
       token_list_component:
-        description: "Os tokens que você gerar aqui podem ser enviados por um cliente SCIM para acessar a API do OPenProject SCIM."
+        description: "Os tokens gerados aqui podem ser transmitido por um cliente SCIM para acessar a API SCIM do OpenProject."
         heading: "Tokens"
         label_add_token: "Token"
         label_aria_add_token: "Adicionar token"
       token_table_component:
         blank_slate:
-          title: "Nenhum token foi criado ainda"
+          title: "Nenhum token criado até o momento"
           description: "Você pode criar um agora"
         expired: "Expirado em %{date}"
         revoked: "Revogado em  %{date}"
@@ -197,9 +192,9 @@ pt-BR:
     sync_failed: "Não foi possível sincronizar do LDAP: %{message}."
     back_to_index: "Clique aqui para voltar para a lista de conexão."
     technical_warning_html: |
-      Este formulário LDAP requer conhecimento técnico da configuração de seu LDAP / Active Directory.
+      Este formulário LDAP requer conhecimento técnico da sua configuração LDAP / Active Directory.
       <br>
-      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Por favor, visite a nossa documentação para instruções mais detalhadas</a>.
+      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Consulte nossa documentação para obter instruções detalhadas</a>.
     attribute_texts:
       name: Nome arbitrário da conexão LDAP
       host: Nome ou endereço IP do host LDAP
@@ -207,7 +202,7 @@ pt-BR:
       generic_map: A chave de atributo no LDAP que é mapeada para o atributo `%{attribute}` do OpenProject
       admin_map_html: "Opcional: A chave de atributo no LDAP que <strong> se presente </strong> marca o usuário do OpenProject como administrador. Deixe vazio se estiver em dúvida."
       system_user_dn_html: |
-        Digite o DN do usuário do sistema usado para acesso somente leitura.
+        Informe o DN do usuário do sistema usado para acesso somente leitura.
         <br>
         Exemplo: uid=openproject,ou=system,dc=example,dc=com
       system_user_password: Digite a senha de vinculação do usuário do sistema
@@ -328,7 +323,7 @@ pt-BR:
       admin_only: "Marque esta opção para tornar este atributo visível apenas para os administradores. Os usuários sem permissões de administrador não poderão vê-lo ou editá-lo."
       is_filter: >
         Permita que o campo personalizado seja utilizado num filtro nas visualizações do pacote de trabalho. Note que apenas com a opção "Para todos os projetos" selecionada, o campo personalizado irá aparecer nas visualizações globais.
-      formula: "Adicione valores numéricos ou digite / para pesquisar por um atributo ou um operador matemático."
+      formula: "Adicione valores numéricos ou digite / para buscar um atributo ou um operador matemático."
     tab:
       no_results_title_text: Atualmente, não há campos personalizados.
       no_results_content_text: Criar um novo campo personalizado
@@ -353,8 +348,8 @@ pt-BR:
         parent:
           not_descendant: "deve ser um descendente da raiz da hierarquia."
     rules:
-      copy_workflow_from: "Tipo para cópia do fluxo de trabalho"
-      enabled: "Ativado"
+      copy_workflow_from: "Tipo de cópia do fluxo de trabalho"
+      enabled: "Habilitado"
       depth: "Profundidade"
       item: "Item"
       label: "Rótulo"
@@ -362,19 +357,34 @@ pt-BR:
       parent: "Pai"
       blueprint: "Esquema de padrão"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Buscar em %{app_title}"
     overwritten_tabs:
       all: "Todos"
       messages: "Fórum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Atualmente, não existem grupos.
-      no_results_content_text: Criar um novo grupo
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Atualmente, não há usuários participantes deste grupo.
     memberships:
       no_results_title_text: Atualmente, não há projetos componentes deste grupo.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Especifique uma lista de nomes para ignorar quando processar anexos para mensagens recebidas (por exemplo, assinaturas ou ícones). Digite um nome de arquivo por linha.
@@ -419,7 +429,7 @@ pt-BR:
         text: "Esta ação não excluirá nenhum projeto contido na lista. Você tem certeza de que deseja excluir esta lista de projetos?"
     settings:
       header_details: Detalhes básicos
-      header_status: Situação do projeto
+      header_status: Status do projeto
       header_relations: Relações do projeto
       button_update_details: Atualizar detalhes
       button_update_status_description: Atualizar descrição do status
@@ -686,7 +696,7 @@ pt-BR:
         tab: Projetos
         enable_all: Habilitar para todos os projetos
         select_projects: Selecionar projetos
-        select_projects_description: Selecione os projetos nos quais você gostaria de usar esse tipo.
+        select_projects_description: Selecione os projetos nos quais deseja usar esse tipo.
       settings:
         tab: "Configurações"
         type_color_text: A cor selecionada distingue os tipos diferentes nas tabelas de Gantt ou tabelas dos pacotes de trabalho. Recomenda-se o uso de uma cor forte.
@@ -707,16 +717,16 @@ pt-BR:
         pattern:
           label: "Padrão de assunto"
           caption_with_supported_attributes_link: Crie padrões adicionando texto, ou digite "/" para pesquisar por %{link}.
-          insert_as_text: "Nenhum atributo encontrado. Digite um texto como: \"%{word}\""
+          insert_as_text: "Nenhum atributo encontrado. Adicione como texto: “%{word}”"
           supported_attributes_link: "atributos compatíveis"
       export_configuration:
         tab: "Gerar PDF"
         intro: "Selecione quais modelos disponíveis você deseja ativar para este tipo. O modelo define o design e os atributos visíveis no PDF exportado de um pacote de trabalho desse tipo. O primeiro modelo da lista é selecionado por padrão."
         pdf_export_templates:
-          label: "Modelos de Exportação PDF"
+          label: "Modelos de exportação de PDF"
           actions:
             label_enable_all: "Habilitar todos"
-            label_disable_all: "Desativar tudo"
+            label_disable_all: "Desabilitar todos"
   versions:
     overview:
       work_packages_in_archived_projects: "A versão é compartilhada com projetos arquivados que ainda possuem pacotes de trabalho atribuídos a esta versão. Eles são contados, mas não aparecerão nas exibições vinculadas."
@@ -734,20 +744,20 @@ pt-BR:
     datepicker_modal:
       banner:
         description:
-          automatic_mobile: "Data de início derivada."
-          click_on_show_relations_to_open_gantt: 'Clique em "%{button_name}" para ter uma visão geral do diagrama de Gantt.'
-          manual_mobile: "Ignorando relações."
-          manual_gap_between_predecessors: "Existe uma lacuna entre isto e todos os antecessores."
-          manual_overlap_with_predecessors: "Sobrepor com pelo menos um antecessor."
-          manual_with_children: "Há pacotes de trabalho filhos na hierarquia, mas suas datas de início serão ignoradas."
+          automatic_mobile: "Data de início calculada."
+          click_on_show_relations_to_open_gantt: 'Clique em “%{button_name}” para exibir a visão geral do Gráfico de Gantt.'
+          manual_mobile: "Ignorar relações."
+          manual_gap_between_predecessors: "Existe um intervalo entre este item e todos os predecessores."
+          manual_overlap_with_predecessors: "Sobrepõe-se a pelo menos um predecessor."
+          manual_with_children: "Este pacote de trabalho possui pacotes de trabalho filho, mas as datas de início deles estão sendo ignoradas."
         title:
           automatic_mobile: "Agendado automaticamente."
-          automatic_with_children: "As datas são definidas pelos pacotes de trabalho filhos na hierarquia."
-          automatic_with_predecessor: "A data de início é definida por um antecessor."
+          automatic_with_children: "As datas são determinadas pelos pacotes de trabalho filhos."
+          automatic_with_predecessor: "A data de início é definida por uma tarefa predecessora."
           manual_mobile: "Agendado manualmente."
-          manually_scheduled: "Agendado manualmente. Datas não afetadas pelas relações."
+          manually_scheduled: "Agendamento manual. Datas não são afetadas por relações."
       blankslate:
-        title: "Nenhum antecessor"
+        title: "Sem predecessores"
         description: "Para ativar o agendamento automático, este pacote de trabalho precisa ter pelo menos um predecessor. Ele será então agendado automaticamente para começar após o predecessor mais próximo."
       ignore_non_working_days:
         title: "Apenas dias úteis"
@@ -758,20 +768,20 @@ pt-BR:
       show_relations: "Exibir relações"
       update_inputs_aria_live_message: "Seletor de data atualizado. %{message}"
       tabs:
-        aria_label: "Abas de seletor de datas"
+        aria_label: "Abas do seletor de data"
         children: "Filhos"
         dates: "Datas"
         predecessors: "Predecessores"
         successors: "Sucessores"
         blankslate:
           predecessors:
-            title: "Nenhum antecessor"
-            description: "Este pacote de trabalho não tem antecessores."
+            title: "Sem predecessores"
+            description: "Este pacote de trabalho não tem predecessores."
           successors:
-            title: "Nenhum sucessor"
+            title: "Sem sucessores"
             description: "Este pacote de trabalho não tem sucessores."
           children:
-            title: "Sem filhos na hierarquia"
+            title: "Sem filhos"
             description: "Este pacote de trabalho não tem filhos."
     x_descendants:
       one: "Um pacote de trabalho descendente"
@@ -844,8 +854,8 @@ pt-BR:
       follows_description: "O pacote de trabalho relacionado deve ser finalizado antes que este possa ser iniciado"
       label_child_singular: "filho"
       label_child_plural: "filhos"
-      new_child: "Novo filho"
-      new_child_description: "Cria um pacote de trabalho relacionado como um subpacote do pacote de trabalho atual (pai)"
+      new_child: "Criar novo filho"
+      new_child_description: "Cria um pacote de trabalho relacionado como subitem do pacote de trabalho atual (pai)"
       child: "Filho"
       child_description: "Torna o pacote de trabalho relacionado uma subtarefa do pacote de trabalho atual (pai)"
       parent: "Pai"
@@ -997,7 +1007,7 @@ pt-BR:
         widgets: "Widgets"
       journal:
         notes: "Anotações"
-        cause_type: "Tipo de Causa"
+        cause_type: "Tipo de causa"
       ldap_auth_source:
         account: "Conta"
         attr_firstname: "Atributo de nome"
@@ -1014,7 +1024,7 @@ pt-BR:
       member:
         roles: "Papéis"
       notification:
-        read_ian: "Ler no aplicativo"
+        read_ian: "Lido no aplicativo"
         resource: "Recurso"
       oauth_client:
         client: "ID do cliente"
@@ -1066,28 +1076,28 @@ pt-BR:
         finish_gate: "Controle de fase final"
         finish_gate_name: "Nome do controle de fase final"
       query:
-        sums: "Somas"
+        sums: "Totais"
         columns: "Colunas"
         column_names: "Colunas"
         relations_to_type_column: "Relações com %{type}"
         relations_of_type_column: "Relações de %{type}"
         child_work_packages: "Pacotes de trabalho filhos"
         group_by: "Agrupar resultados por"
-        sort_by: "Ordenar resultados por"
+        sort_by: "Classificar resultados por"
         filters: "Filtros"
         timeline_labels: "Rótulos de linha do tempo"
         timeline_visible: "Exibir gráfico de Gantt"
-        timeline_zoom_level: "Nível de zoom do diagrama de Gantt"
-        timestamps: "Carimbo de data/hora base da linha de base"
-        sort_criteria: "Critérios de ordenação"
+        timeline_zoom_level: "Nível de zoom do gráfico de Gantt"
+        timestamps: "Carimbos de data/hora da linha de base"
+        sort_criteria: "Critérios de classificação"
         highlighted_attributes: "Atributos destacados"
         highlighting_mode: "Modo de destaque"
         display_representation: "Modo de exibição"
         show_hierarchies: "Modo de exibição"
         starred: "Favorito"
-        hidden: "Ocultado"
-        manual_sorting: "Ordenação manual"
-        ordered_work_packages: "Ordem dos pacotes de trabalho"
+        hidden: "Oculto"
+        manual_sorting: "Classificação manual"
+        ordered_work_packages: "Classificação dos pacotes de trabalho"
         include_subprojects: "Incluir subprojetos"
         results: "Resultados"
       relation:
@@ -1107,9 +1117,8 @@ pt-BR:
       role:
         permissions: "Permissões"
       scim_client:
-        auth_provider: "Provedor de autenticação"
         authentication_method: "Método de autenticação"
-        jwt_sub: "Reivindicação do sujeito"
+        jwt_sub: "Declaração de sujeito"
       status:
         is_closed: "Pacote de trabalho fechado"
         is_readonly: "Pacote de trabalho somente leitura"
@@ -1117,7 +1126,7 @@ pt-BR:
         default_done_ratio: "% de conclusão"
       token/ical:
         calendar: "Calendário"
-        ical_token_query_assignment: "Atribuição da consulta"
+        ical_token_query_assignment: "Atribuição de consulta"
       time_entry:
         activity: "Atividade"
         hours: "horas"
@@ -1133,7 +1142,7 @@ pt-BR:
         color: "Cor"
         patterns: "Padrões"
       remote_identity:
-        auth_source: "Fonte de Autenticação"
+        auth_source: "Fonte de autenticação"
         integration: "Integração"
         user: "Usuário"
       user:
@@ -1145,7 +1154,7 @@ pt-BR:
         force_password_change: "Forçar alteração de senha no próximo acesso"
         language: "Idioma"
         last_login_on: "Último acesso"
-        failed_login_count: "Tentativas de falhas de acesso"
+        failed_login_count: "Tentativas de logon com falha"
         first_name: "Nome"
         last_name: "Sobrenome"
         first_login: "Primeiro acesso"
@@ -1155,22 +1164,22 @@ pt-BR:
       group:
         identity_url: "URL de identidade"
       user_preference:
-        header_look_and_feel: "Aparência e usabilidade"
+        header_look_and_feel: "Aparência e comportamento"
         header_alerts: "Alertas"
-        button_update_look_and_feel: "Atualizar aparência e usabilidade"
+        button_update_look_and_feel: "Atualizar aparência e comportamento"
         button_update_alerts: "Atualizar alertas"
-        comments_sorting: "Exibir atividade do pacote de trabalho ordenada por"
+        comments_sorting: "Exibir atividade do pacote de trabalho classificada por"
         disable_keyboard_shortcuts: "Desativar atalhos de teclado"
         disable_keyboard_shortcuts_caption_html: |-
-          Você pode optar por desativar os <a href="%{href}">atalhos de teclado</a> padrão se utilizar um leitor de tela ou quiser evitar acionar uma ação acidentalmente com um atalho
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Banners empresariais ocultos"
         impaired: "Modo de acessibilidade"
-        auto_hide_popups: "Ocultar automaticamente banners concluídos"
-        auto_hide_popups_caption: "Quando habilitado, os banners de conclusão verdes desaparecerão automaticamente após 5 segundos."
+        auto_hide_popups: "Ocultar automaticamente as notificações de sucesso"
+        auto_hide_popups_caption: "Quando habilitado, as notificações verdes de sucesso desaparecem automaticamente após 5 segundos."
         warn_on_leaving_unsaved: "Alertar-me ao sair de um pacote de trabalho sem salvar as alterações"
         theme: "Modo de cor"
         time_zone: "Fuso horário"
-        mode_guideline: "Alguns modos substituem as cores personalizadas do tema para melhorar a acessibilidade e a legibilidade. Selecione o modo Claro para ter suporte completo a temas personalizados."
+        mode_guideline: "Alguns modos substituirão as cores personalizadas do tema para melhorar acessibilidade e legibilidade. Selecione o modo Claro para suporte total ao tema personalizado."
         daily_reminders: "Lembretes diários"
         workdays: "Dias úteis"
       version:
@@ -1335,10 +1344,10 @@ pt-BR:
               not_match_configured: "não corresponde a escopos disponíveis."
         enterprise_trial:
           already_used: "já foi usado para criar uma avaliação."
-          failed_to_create: "A avaliação não pôde ser criada (%{status})"
-          general_consent: "Por favor, aceite os termos e condições."
+          failed_to_create: "Não foi possível criar a avaliação (%{status})"
+          general_consent: "Aceite os termos e condições."
         enterprise_token:
-          only_one_trial: "Apenas um token de avaliação pode estar ativo. Por favor, exclua o token de avaliação anterior antes de adicionar outro."
+          only_one_trial: "Apenas um token de avaliação pode estar ativo. Exclua o token de avaliação anterior antes de adicionar outro."
           unreadable: "não pode ser lido. Tem certeza que é um token de suporte?"
           already_added: "Este token já foi adicionado."
         grids/grid:
@@ -1603,6 +1612,9 @@ pt-BR:
     models:
       attachment: "Arquivo"
       attribute_help_text: "Texto de ajuda do atributo"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "Categoria"
       comment: "Comentário"
       custom_action: "Ação personalizada"
@@ -1697,7 +1709,7 @@ pt-BR:
       added_date: "definido para %{date}"
       changed_date: "alterado de %{from} para %{to}"
       deactivated: "desativado"
-      deleted_project_phase: "Excluir fase de projeto"
+      deleted_project_phase: "Fase do projeto excluída"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message} e %{finish_gate_message}"
       phase_and_one_gate: "%{phase_message}. %{gate_message}"
       removed_date: "data excluída %{date}"
@@ -1710,7 +1722,7 @@ pt-BR:
     actor: "Ator"
     action: "Ação"
     author: "Autor"
-    avatar: "Imagem do perfil"
+    avatar: "Avatar"
     base: "Erro geral:"
     body: "Mensagem"
     blocks_ids: "IDs dos pacotes de trabalho bloqueados"
@@ -1725,7 +1737,7 @@ pt-BR:
     custom_options: "Valores possíveis"
     custom_values: "Campos personalizados"
     date: "Data"
-    dates_interval: "Período"
+    dates_interval: "Intervalo de datas"
     default_columns: "Colunas padrão"
     description: "Descrição"
     derived_due_date: "Data de término derivada"
@@ -1739,7 +1751,7 @@ pt-BR:
     estimated_time: "Trabalho"
     email: "E-mail"
     entity_type: "Entidade"
-    expires_at: "Expires on"
+    expires_at: "Expira em"
     firstname: "Nome"
     filter: "Filtro"
     group: "Grupo"
@@ -1760,10 +1772,10 @@ pt-BR:
     mail: "E-mail"
     name: "Nome"
     note: "Nota"
-    notes: "Anotações"
+    notes: "Observações"
     number: "Número"
     options: "Opções"
-    operator: "Operador(a)"
+    operator: "Operador"
     password: "Senha"
     priority: "Prioridade"
     project: "Projeto"
@@ -1781,7 +1793,7 @@ pt-BR:
     status: "Status"
     state: "Estado"
     subject: "Assunto"
-    slug: "Link encurtado"
+    slug: "Identificador simples"
     summary: "Sumário"
     time_zone: "Fuso horário"
     text: "Texto"
@@ -1863,7 +1875,7 @@ pt-BR:
   button_delete_watcher: "Excluir observador %{name}"
   button_download: "Baixar"
   button_duplicate: "Duplicar"
-  button_duplicate_and_follow: "Duplicate and follow"
+  button_duplicate_and_follow: "Duplicar e seguir"
   button_edit: "Editar"
   button_edit_associated_wikipage: "Editar página wiki associada: %{page_title}"
   button_expand_all: "Expandir todos"
@@ -1951,11 +1963,11 @@ pt-BR:
     copy_options:
       dependencies_label: 'Copiar do projeto'
   create_project:
-    template_label: "Utilizar modelo"
+    template_label: "Usar modelo"
     copy_options:
       dependencies_label: 'Copiar do modelo'
   create_wiki_page: "Criar nova página wiki"
-  create_wiki_page_button: "Página wiki"
+  create_wiki_page_button: "Página Wiki"
   date:
     abbr_day_names:
       - "Dom"
@@ -2197,7 +2209,7 @@ pt-BR:
         description: "Ative a autenticação segura e contínua para o seu armazenamento Nextcloud com Autenticação única. Simplifique o gerenciamento de acessos e melhore a experiência do usuário."
       scim_api:
         title: "Clientes SCIM"
-        description: "Automatize o gerenciamento de usuários no OpenProject integrando de forma suave os serviços de identidade externos como Microsoft Entra ou Keycloak através da nossa API do servidor SCIM. Disponível começando com o Plano corporativo empresarial."
+        description: "Automatize o gerenciamento de usuários no OpenProject integrando de forma contínua serviços de identidade externos como Microsoft Entra ou Keycloak por meio da nossa API SCIM Server. Disponível a partir do plano corporativo Enterprise."
       virus_scanning:
         description: "Garantir que os arquivos carregados no OpenProject sejam verificados quanto à presença de vírus antes de serem acessados por outros usuários."
       placeholder_users:
@@ -2535,7 +2547,7 @@ pt-BR:
       aggregation: "Agregação"
       api_and_webhooks: "API e webhooks"
     quick_add:
-      label: "Abrir menu de adição rápida"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2835,6 +2847,7 @@ pt-BR:
   label_gantt_chart_plural: "Gráficos de Gantt"
   label_general: "Geral"
   label_generate_key: "Gerar uma chave"
+  label_global_modules: "Global modules"
   label_global_roles: "Funções globais"
   label_git_path: "Caminho para o diretório .git"
   label_greater_or_equal: ">="
@@ -2978,6 +2991,7 @@ pt-BR:
   label_no_due_date: "sem data de conclusão"
   label_no_start_date: "nenhuma data de início"
   label_no_parent_page: "Nenhuma página pai"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Nada para exibir"
   label_nobody: "ninguém"
   label_not_configured: "Não configurado"
@@ -3010,7 +3024,7 @@ pt-BR:
   label_password_rule_special: "Caracteres Especiais"
   label_password_rule_uppercase: "Letras maiúsculas"
   label_path_encoding: "Codificação"
-  label_per_page: "Por página"
+  label_per_page: "Per page:"
   label_people: "Pessoas"
   label_permissions: "Permissões"
   label_permissions_report: "Relatório de permissões"
@@ -3186,6 +3200,7 @@ pt-BR:
   label_user_mail_option_only_my_events: "Somente para as coisas que eu acompanho ou participo"
   label_user_mail_option_only_owner: "Somente para as coisas que eu sou o dono"
   label_user_mail_option_selected: "Para qualquer evento somente nos projetos selecionados"
+  label_user_menu: "User menu"
   label_user_new: "Novo usuário"
   label_user_plural: "Usuários"
   label_user_search: "Busca por usuário"
@@ -3569,7 +3584,7 @@ pt-BR:
   permission_comment_news: "Comentar notícias"
   permission_commit_access: "Acesso de leitura/gravação para o repositório (commit)"
   permission_copy_projects: "Copiar projetos"
-  permission_copy_work_packages: "Duplicate work packages"
+  permission_copy_work_packages: "Duplicar pacotes de trabalho"
   permission_create_backup: "Criar backups"
   permission_delete_work_package_watchers: "Excluir observadores"
   permission_delete_work_packages: "Excluir pacotes de trabalho"

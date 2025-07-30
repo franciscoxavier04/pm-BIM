@@ -63,7 +63,6 @@ ar:
         primary-button-color: "Primary button"
         accent-color: "Accent"
         header-bg-color: "خلفية الترويسة"
-        header-item-bg-hover-color: "خلفية الترويسة على الحافة"
         main-menu-bg-color: "خلفية القائمة الرئيسية"
         main-menu-bg-selected-background: "القائمة الرئيسية عند تحديد"
       custom_colors: "تخصيص الألوان"
@@ -71,10 +70,6 @@ ar:
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
         accent-color: "Color for links and other decently highlighted elements."
-        header-item-bg-hover-color: "لون الخلفية لعناصر الترويسة القابلة للنقر عند ربطها بالفأرة."
-        header-item-font-color: "لون الخط لعناصر الترويسة النقر عليها."
-        header-item-font-hover-color: "لون الخط لعناصر الترويسة القابلة للنقر عند ربطها بالفأرة."
-        header-border-bottom-color: "خط تحت الرأس. اترك هذا الحقل فارغاً إذا كنت لا تريد أي سطر."
         main-menu-bg-color: "لون خلفية القائمة اليسرى "
       theme_warning: Changing the theme will overwrite you custom style. The design will then be lost. Are you sure you want to continue?
     enterprise:
@@ -121,7 +116,7 @@ ar:
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -363,19 +358,34 @@ ar:
       parent: "الجذر"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
       all: "الجميع"
       messages: "المنتدى"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: لا يوجد حالياً مجموعات.
-      no_results_content_text: إنشاء مجموعة جديدة
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: لا يوجد حالياً قسم للمستخدمين في هذه المجموعة.
     memberships:
       no_results_title_text: لا يوجد حالياً قسم للمشاريع في هذه المجموعة.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Specify a list of names to ignore when processing attachments for incoming mails (e.g., signatures or icons). Enter one filename per line.
@@ -1142,7 +1152,6 @@ ar:
       role:
         permissions: "السماحيات"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1197,7 +1206,7 @@ ar:
         comments_sorting: "Display work package activity sorted by"
         disable_keyboard_shortcuts: "Disable keyboard shortcuts"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "نمط إمكانية الدخول"
         auto_hide_popups: "Automatically hide success banners"
@@ -1646,6 +1655,13 @@ ar:
     models:
       attachment: "ملف"
       attribute_help_text: "Attribute help text"
+      auth_provider:
+        zero: "Authentication providers"
+        one: "Authentication provider"
+        two: "Authentication providers"
+        few: "Authentication providers"
+        many: "Authentication providers"
+        other: "Authentication providers"
       category: "الفئة"
       comment: "تعليق"
       custom_action: "Custom action"
@@ -2710,7 +2726,7 @@ ar:
       aggregation: "Aggregation"
       api_and_webhooks: "API and webhooks"
     quick_add:
-      label: "Open quick add menu"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -3010,6 +3026,7 @@ ar:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "عام"
   label_generate_key: "توليد مفتاح"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: "المسار إلى .دليل البوابة"
   label_greater_or_equal: "=<"
@@ -3153,6 +3170,7 @@ ar:
   label_no_due_date: "no finish date"
   label_no_start_date: "لا يوجد تاريخ بدء"
   label_no_parent_page: "No parent page"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "لا يوجد شيء لعرضه"
   label_nobody: "لا أحد"
   label_not_configured: "Not configured"
@@ -3185,7 +3203,7 @@ ar:
   label_password_rule_special: "أحرف خاصة"
   label_password_rule_uppercase: "أحرف كبيرة"
   label_path_encoding: "ترميز المسار"
-  label_per_page: "في كل صفحة"
+  label_per_page: "Per page:"
   label_people: "الناس"
   label_permissions: "السماحيات"
   label_permissions_report: "تقرير السماحيات"
@@ -3361,6 +3379,7 @@ ar:
   label_user_mail_option_only_my_events: "فقط لأشياء أشاهدها أو أشارك فيها"
   label_user_mail_option_only_owner: "فقط لأشياء أملكها"
   label_user_mail_option_selected: "من أجل أي حدث في المشاريع المحددة فقط"
+  label_user_menu: "User menu"
   label_user_new: "مستخدم جديد"
   label_user_plural: "المستخدمين"
   label_user_search: "البحث عن مستخدم"

@@ -28,15 +28,15 @@ properties:
   tenantId:
     type: string
     description: |-
-      The tenant id of a file storage of type OneDrive/SharePoint.
+      The tenant id of a file storage of type OneDrive.
 
-      Ignored if the provider type is not OneDrive/SharePoint.
+      Ignored if the provider type is not OneDrive.
   driveId:
     type: string
     description: |-
-      The drive id of a file storage of type OneDrive/SharePoint.
+      The drive id of a file storage of type OneDrive.
 
-      Ignored if the provider type is not OneDrive/SharePoint.
+      Ignored if the provider type is not OneDrive.
   hasApplicationPassword:
     type: boolean
     description: |-
@@ -101,7 +101,7 @@ properties:
           - $ref: './link.yml'
           - description: |-
               Web URI of the storage instance. This link is ignored, if the storage is hosted in a cloud and has no own
-              URL, like file storages of type OneDrive/SharePoint.
+              URL, like file storages of type OneDrive.
 
               **Resource**: N/A
       open:

@@ -38,6 +38,7 @@ RSpec.describe "OpenID Connect end_session_redirect",
            slug: "keycloak",
            end_session_endpoint: "https://example.com")
   end
+  let(:user_menu) { Components::UserMenu.new }
 
   let(:password) { "password!123" }
   let(:user) { create(:user, authentication_provider: provider, password:, password_confirmation: password) }
@@ -47,7 +48,7 @@ RSpec.describe "OpenID Connect end_session_redirect",
 
     visit home_path
 
-    page.find(".op-top-menu-user").click
+    user_menu.open
     click_link_or_button "Sign out"
 
     expect(page).to have_current_path("https://example.com")

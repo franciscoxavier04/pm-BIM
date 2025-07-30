@@ -63,7 +63,6 @@ sl:
         primary-button-color: "Primary button"
         accent-color: "Accent"
         header-bg-color: "Ozadje glave"
-        header-item-bg-hover-color: "Ozadje glave, ko smo z miško na vsebini"
         main-menu-bg-color: "Ozadje glavnega menija"
         main-menu-bg-selected-background: "Glavni meni, ko je izbran"
       custom_colors: "Barve po meri"
@@ -71,10 +70,6 @@ sl:
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
         accent-color: "Color for links and other decently highlighted elements."
-        header-item-bg-hover-color: "Barva ozadja enot v glavi katere je mogoče klikniti, ko se z miško premaknete na njih."
-        header-item-font-color: "Barva pisave enot v glavi, na katere lahko kliknemo."
-        header-item-font-hover-color: "Barva pisave elementov v glavi, na katere lahko kliknemo, ko se z miško premaknemo na njih."
-        header-border-bottom-color: "Tanka črta pod glavo. Pustite to polje prazno, če ne želite črte."
         main-menu-bg-color: "Barva ozadja levega menija."
       theme_warning: "Sprememba teme bo nadomestilo vaš slog po meri. Oblikovanje bo tako izgubljeno. Ali ste prepričani, da bi radi nadaljevali?\n"
     enterprise:
@@ -121,7 +116,7 @@ sl:
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -362,19 +357,34 @@ sl:
       parent: "Nadrejeni"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
       all: "Vse"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Trenutno ni nobene skupine.
-      no_results_content_text: Ustvarite novo skupino
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: V tej skupini trenutno ni uporabnikov.
     memberships:
       no_results_title_text: Trenutno ni projektov, ki so del te skupine.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Določite seznam imen, ki jih ne upoštevate pri obdelavi prilog za dohodne pošte (npr. podpise ali ikone). Vnesite eno ime datoteke v vrstico.
@@ -1125,7 +1135,6 @@ sl:
       role:
         permissions: "Dovoljenja"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1180,7 +1189,7 @@ sl:
         comments_sorting: "Display work package activity sorted by"
         disable_keyboard_shortcuts: "Disable keyboard shortcuts"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Dostopnost"
         auto_hide_popups: "Automatically hide success banners"
@@ -1625,6 +1634,11 @@ sl:
     models:
       attachment: "Datoteka"
       attribute_help_text: "Tekst pomoči atributa"
+      auth_provider:
+        one: "Authentication provider"
+        two: "Authentication providers"
+        few: "Authentication providers"
+        other: "Authentication providers"
       category: "Kategorija"
       comment: "Komentar"
       custom_action: "Dejanja po meri"
@@ -2623,7 +2637,7 @@ sl:
       aggregation: "Aggregation"
       api_and_webhooks: "API and webhooks"
     quick_add:
-      label: "Odpri meni za hitro dodajanje"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2923,6 +2937,7 @@ sl:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Splošno"
   label_generate_key: "Ustvari ključ"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: "Pot do datoteke ali mape"
   label_greater_or_equal: ">="
@@ -3066,6 +3081,7 @@ sl:
   label_no_due_date: "brez končnega datuma"
   label_no_start_date: "Brez začetnega datuma"
   label_no_parent_page: "Brez matične strani"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Ni podatkov za prikaz"
   label_nobody: "nihče"
   label_not_configured: "Not configured"
@@ -3098,7 +3114,7 @@ sl:
   label_password_rule_special: "Posebni znaki"
   label_password_rule_uppercase: "Velika črka"
   label_path_encoding: "Kodiranje poti"
-  label_per_page: "na stran"
+  label_per_page: "Per page:"
   label_people: "Ljudje"
   label_permissions: "Dovoljenja"
   label_permissions_report: "Poročilo o dovoljenjih"
@@ -3274,6 +3290,7 @@ sl:
   label_user_mail_option_only_my_events: "Samo za stvari, ki jih opazujem ali v katere sem vpleten"
   label_user_mail_option_only_owner: "Samo za stvari katerih lastnik sem"
   label_user_mail_option_selected: "Za vsak dogodek samo na izbranih projektih..."
+  label_user_menu: "User menu"
   label_user_new: "Nov uporabnik"
   label_user_plural: "Uporabniki"
   label_user_search: "Išči uporabnika"

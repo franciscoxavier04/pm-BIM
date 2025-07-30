@@ -644,11 +644,10 @@ sl:
       title: "Potrdite svoje geslo za nadaljevanje"
     pagination:
       no_other_page: "Ste na edini strani. "
+      pages_skipped: "Pages skipped."
       page_navigation: "Pagination navigation"
       per_page_navigation: 'Items per page selection'
       pages:
-        next: "Next page"
-        previous: "Previous page"
         page_number: Page %{number}
         show_per_page: Show %{number} per page
     placeholders:
@@ -698,6 +697,7 @@ sl:
           first_day: "First day"
           last_day: "Last day"
     text_are_you_sure: "Ste prepričani?"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
     breadcrumb: "Breadcrumb"
     text_data_lost: "All entered data will be lost."
     text_user_wrote: "%{value} je napisal(a):"

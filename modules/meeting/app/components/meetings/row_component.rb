@@ -39,18 +39,19 @@ module Meetings
 
     def title
       if recurring?
-        link_to model.title, project_recurring_meeting_path(project, model)
+        render(Primer::Beta::Link.new(href: project_recurring_meeting_path(project, model), font_weight: :bold)) { model.title }
       elsif recurring_meeting.present?
         occurrence_title
       else
-        link_to model.title, project_meeting_path(project, model)
+        render(Primer::Beta::Link.new(href: project_meeting_path(project, model), font_weight: :bold)) { model.title }
       end
     end
 
     def occurrence_title
       safe_join(
-        [(link_to model.title, project_meeting_path(project, model)),
-         (link_to recurring_label, project_recurring_meeting_path(project, recurring_meeting))], "  "
+        [(render(Primer::Beta::Link.new(href: project_meeting_path(project, model), font_weight: :bold)) { model.title }),
+         (render(Primer::Beta::Link.new(href: project_recurring_meeting_path(project, recurring_meeting))) { recurring_label })],
+        "  "
       )
     end
 

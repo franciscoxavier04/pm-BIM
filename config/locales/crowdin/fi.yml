@@ -63,7 +63,6 @@ fi:
         primary-button-color: "Primary button"
         accent-color: "Accent"
         header-bg-color: "Header background"
-        header-item-bg-hover-color: "Header background on hover"
         main-menu-bg-color: "Main menu background"
         main-menu-bg-selected-background: "Main menu when selected"
       custom_colors: "Mukautetut värit"
@@ -71,10 +70,6 @@ fi:
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
         accent-color: "Color for links and other decently highlighted elements."
-        header-item-bg-hover-color: "Taustan väri klikattava otsikko eriä kun leijui hiirellä."
-        header-item-font-color: "Fontin väri klikattava otsikko eriä."
-        header-item-font-hover-color: "Fontin väri klikattava otsikko eriä kun leijui hiirellä."
-        header-border-bottom-color: "Thin line under the header. Leave this field empty if you don't want any line."
         main-menu-bg-color: "Left side menu's background color."
       theme_warning: Changing the theme will overwrite you custom style. The design will then be lost. Are you sure you want to continue?
     enterprise:
@@ -121,7 +116,7 @@ fi:
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -363,19 +358,34 @@ fi:
       parent: "Ylätaso"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
       all: "Kaikki"
       messages: "Keskustelupalsta"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Tällä hetkellä ei ole ryhmiä.
-      no_results_content_text: Luo uusi ryhmä
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Tällä hetkellä tähän ryhmään ei kuulu yhtään käyttäjää.
     memberships:
       no_results_title_text: Tällä hetkellä tähän ryhmään ei kuulu projekteja.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Specify a list of names to ignore when processing attachments for incoming mails (e.g., signatures or icons). Enter one filename per line.
@@ -1110,7 +1120,6 @@ fi:
       role:
         permissions: "Oikeudet"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1165,7 +1174,7 @@ fi:
         comments_sorting: "Display work package activity sorted by"
         disable_keyboard_shortcuts: "Disable keyboard shortcuts"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Helppokäyttötoimintojen tila"
         auto_hide_popups: "Automatically hide success banners"
@@ -1606,6 +1615,9 @@ fi:
     models:
       attachment: "Tiedosto"
       attribute_help_text: "Attribute help text"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "Kategoria"
       comment: "Kommentti"
       custom_action: "Custom action"
@@ -2538,7 +2550,7 @@ fi:
       aggregation: "Aggregation"
       api_and_webhooks: "API and webhooks"
     quick_add:
-      label: "Open quick add menu"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2838,6 +2850,7 @@ fi:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Yleinen"
   label_generate_key: "Luo avain"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: "Polku .git hakemistoon"
   label_greater_or_equal: ">="
@@ -2981,6 +2994,7 @@ fi:
   label_no_due_date: "no finish date"
   label_no_start_date: "ei aloituspäivää"
   label_no_parent_page: "Ei yläsivua"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Ei näytettävää"
   label_nobody: "ei kukaan"
   label_not_configured: "Not configured"
@@ -3013,7 +3027,7 @@ fi:
   label_password_rule_special: "Erikoismerkit"
   label_password_rule_uppercase: "Suuri kirjainkoko"
   label_path_encoding: "Polun koodaus"
-  label_per_page: "Per sivu"
+  label_per_page: "Per page:"
   label_people: "Henkilöresurssit"
   label_permissions: "Oikeudet"
   label_permissions_report: "Käyttöoikeudet-raportti"
@@ -3189,6 +3203,7 @@ fi:
   label_user_mail_option_only_my_events: "Vain niistä, joita seuraan tai joissa olen mukana"
   label_user_mail_option_only_owner: "Vain niistä, jotka omistan"
   label_user_mail_option_selected: "Kaikista tapahtumista vain valitsemistani projekteista"
+  label_user_menu: "User menu"
   label_user_new: "Uusi käyttäjä"
   label_user_plural: "Käyttäjät"
   label_user_search: "Etsi käyttäjä"

@@ -297,7 +297,8 @@ zh-TW:
           "16_2":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>New header and sidebar with improved navigation and design.</li> <li>Smoother experience with Custom fields, Relations, Reminders, Meetings, and My time tracking.</li> <li>Non-latin languages and emojis supported in PDF exports.</li> <li>Option to disable keyboard shortcuts for better accessibility.</li> <li>SCIM server via API (Enterprise add-on).</li> <li>API support for internal comments.</li> </ul>
+                <br>
+                <ul class="%{list_styling_class}"> <li>全新標頭與側邊欄，提供更佳的導航與設計體驗。</li> <li>自訂欄位、關聯、提醒、會議與我的時間追蹤功能更順暢。</li> <li>PDF 匯出支援非拉丁文字與表情符號。</li> <li>可選擇關閉快捷鍵以提升無障礙使用體驗。</li> <li>透過 API 提供 SCIM 伺服器功能（企業加值模組）。</li> <li>API 支援內部評論。</li> </ul>
     ical_sharing_modal:
       title: "訂閱日曆"
       inital_setup_error_message: "更新資料時發生錯誤"
@@ -641,11 +642,10 @@ zh-TW:
       title: "確認您的密碼以便繼續"
     pagination:
       no_other_page: "您位於唯一頁面上。"
-      page_navigation: "Pagination navigation"
-      per_page_navigation: 'Items per page selection'
+      pages_skipped: "跳過的頁面。"
+      page_navigation: "分頁導航"
+      per_page_navigation: '每頁顯示項目數選擇'
       pages:
-        next: "下一頁"
-        previous: "上一頁"
         page_number: 頁面 %{number}
         show_per_page: 每頁顯示 %{number} 筆
     placeholders:
@@ -695,6 +695,7 @@ zh-TW:
           first_day: "第一天"
           last_day: "最後一天"
     text_are_you_sure: "是否確定？"
+    text_are_you_sure_to_cancel: "您在此頁面上有未儲存的變更。您確定要捨棄它們嗎？"
     breadcrumb: "導覽軌跡"
     text_data_lost: "所有資料將遺失"
     text_user_wrote: "%{value} 寫道："
@@ -828,7 +829,7 @@ zh-TW:
       bulk_actions:
         edit: "整批編輯"
         delete: "整批刪除"
-        duplicate: "Bulk duplicate"
+        duplicate: "大量複製"
         move: "專案整批變動"
       button_clear: "清除"
       comment_added: "留言成功"
@@ -874,7 +875,7 @@ zh-TW:
         header_with_parent: "新 %{type} (%{parent_type}＃%{id} 子元素)"
         button: "建立"
       duplicate:
-        title: "Duplicate work package"
+        title: "複製工作套件"
       hierarchy:
         show: "顯示層次結構模式"
         hide: "隱藏層次結構模式"

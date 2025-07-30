@@ -559,7 +559,7 @@ eo:
         prioritized: "Prioritized"
         dateAlert: "Date alert"
         shared: "Shared"
-        reminder: "Reminder"
+        reminder: "Memorigilo"
       date_alerts:
         milestone_date: "Milestone date"
         overdue: "Overdue"
@@ -643,11 +643,10 @@ eo:
       title: "Konfirmu vian pasvorton por daŭrigi"
     pagination:
       no_other_page: "You are on the only page."
+      pages_skipped: "Pages skipped."
       page_navigation: "Pagination navigation"
       per_page_navigation: 'Items per page selection'
       pages:
-        next: "Next page"
-        previous: "Previous page"
         page_number: Page %{number}
         show_per_page: Show %{number} per page
     placeholders:
@@ -697,6 +696,7 @@ eo:
           first_day: "First day"
           last_day: "Last day"
     text_are_you_sure: "Are you sure?"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
     breadcrumb: "Breadcrumb"
     text_data_lost: "All entered data will be lost."
     text_user_wrote: "%{value} wrote:"
@@ -978,9 +978,9 @@ eo:
         subtitle: "You will receive a notification for this work package at the chosen time."
         presets:
           tomorrow: "Tomorrow"
-          three_days: "In 3 days"
-          week: "In a week"
-          month: "In a month"
+          three_days: "En 3 tagoj"
+          week: "En unu semajno"
+          month: "En unu monato"
           custom: "At a particular date/time"
       scheduling:
         is_parent: "The dates of this work package are automatically deduced from its children. Activate 'Manual scheduling' to set the dates."

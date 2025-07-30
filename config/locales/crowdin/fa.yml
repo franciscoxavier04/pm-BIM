@@ -63,7 +63,6 @@ fa:
         primary-button-color: "Primary button"
         accent-color: "Accent"
         header-bg-color: "پس زمینه سربرگ"
-        header-item-bg-hover-color: "Header background on hover"
         main-menu-bg-color: "Main menu background"
         main-menu-bg-selected-background: "Main menu when selected"
       custom_colors: "رنگ های سفارشی"
@@ -71,10 +70,6 @@ fa:
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
         accent-color: "Color for links and other decently highlighted elements."
-        header-item-bg-hover-color: "Background color of clickable header items when hovered with the mouse."
-        header-item-font-color: "Font color of clickable header items."
-        header-item-font-hover-color: "Font color of clickable header items when hovered with the mouse."
-        header-border-bottom-color: "Thin line under the header. Leave this field empty if you don't want any line."
         main-menu-bg-color: "Left side menu's background color."
       theme_warning: Changing the theme will overwrite you custom style. The design will then be lost. Are you sure you want to continue?
     enterprise:
@@ -121,7 +116,7 @@ fa:
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -363,19 +358,34 @@ fa:
       parent: "بالادستی"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
       all: "همه"
       messages: "تالار گفتگو"
       wiki_pages: "دانشنامه"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: There are currently no groups.
-      no_results_content_text: Create a new group
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: There are currently no users part of this group.
     memberships:
       no_results_title_text: There are currently no projects part of this group.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Specify a list of names to ignore when processing attachments for incoming mails (e.g., signatures or icons). Enter one filename per line.
@@ -1110,7 +1120,6 @@ fa:
       role:
         permissions: "Permissions"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1165,7 +1174,7 @@ fa:
         comments_sorting: "Display work package activity sorted by"
         disable_keyboard_shortcuts: "Disable keyboard shortcuts"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "حالت دسترسی"
         auto_hide_popups: "Automatically hide success banners"
@@ -1606,6 +1615,9 @@ fa:
     models:
       attachment: "فایل"
       attribute_help_text: "Attribute help text"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "Category"
       comment: "نظر"
       custom_action: "اقدام سفارشی"
@@ -2538,7 +2550,7 @@ fa:
       aggregation: "Aggregation"
       api_and_webhooks: "API and webhooks"
     quick_add:
-      label: "Open quick add menu"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2838,6 +2850,7 @@ fa:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "General"
   label_generate_key: "Generate a key"
+  label_global_modules: "Global modules"
   label_global_roles: "نقش‌های جهانی"
   label_git_path: "Path to .git directory"
   label_greater_or_equal: ">="
@@ -2981,6 +2994,7 @@ fa:
   label_no_due_date: "no finish date"
   label_no_start_date: "بدون تاریخ شروع"
   label_no_parent_page: "No parent page"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Nothing to display"
   label_nobody: "هیچ‌کس"
   label_not_configured: "Not configured"
@@ -3013,7 +3027,7 @@ fa:
   label_password_rule_special: "Special Characters"
   label_password_rule_uppercase: "Uppercase"
   label_path_encoding: "Path encoding"
-  label_per_page: "Per page"
+  label_per_page: "Per page:"
   label_people: "افراد"
   label_permissions: "Permissions"
   label_permissions_report: "Permissions report"
@@ -3189,6 +3203,7 @@ fa:
   label_user_mail_option_only_my_events: "Only for things I watch or I'm involved in"
   label_user_mail_option_only_owner: "Only for things I am the owner of"
   label_user_mail_option_selected: "For any event on the selected projects only"
+  label_user_menu: "User menu"
   label_user_new: "New user"
   label_user_plural: "Users"
   label_user_search: "Search for user"

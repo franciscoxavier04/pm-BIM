@@ -55,6 +55,7 @@ import { ConfigurationService } from 'core-app/core/config/configuration.service
   providers: [
     SearchableProjectListService,
   ],
+  standalone: false,
 })
 export class OpHeaderProjectSelectComponent extends UntilDestroyedMixin implements OnInit {
   @HostBinding('class.op-project-select') className = true;

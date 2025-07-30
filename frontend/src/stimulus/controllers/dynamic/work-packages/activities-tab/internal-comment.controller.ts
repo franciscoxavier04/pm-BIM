@@ -28,30 +28,31 @@
  * ++
  */
 
-import { Controller } from '@hotwired/stimulus';
 import { renderStreamMessage } from '@hotwired/turbo';
-import type IndexController from './index.controller';
+import type EditorController from './editor.controller';
+import BaseController from './base.controller';
 
-export default class InternalCommentController extends Controller {
+export default class InternalCommentController extends BaseController {
+  static outlets = ['work-packages--activities-tab--editor'];
+  declare readonly workPackagesActivitiesTabEditorOutlet:EditorController;
+  private get editorOutlet() { return this.workPackagesActivitiesTabEditorOutlet; }
+
   static targets = ['confirmationDialog', 'internalCheckbox', 'formContainer', 'learnMoreLink'];
-  static outlets = ['work-packages--activities-tab--index'];
+  declare readonly confirmationDialogTarget:HTMLDialogElement;
+  declare readonly internalCheckboxTarget:HTMLInputElement;
+  declare readonly formContainerTarget:HTMLElement;
+  declare readonly learnMoreLinkTarget:HTMLAnchorElement;
+  declare hasInternalCheckboxTarget:boolean;
+
   static classes = ['highlight', 'hidden'];
+  declare readonly highlightClass:string;
+  declare readonly hiddenClass:string;
 
   static values = {
     isInternal: { type: Boolean, default: false },
   };
 
-  declare readonly confirmationDialogTarget:HTMLDialogElement;
-  declare readonly internalCheckboxTarget:HTMLInputElement;
-  declare readonly formContainerTarget:HTMLElement;
-  declare readonly learnMoreLinkTarget:HTMLAnchorElement;
-  declare readonly workPackagesActivitiesTabIndexOutlet:IndexController;
-  declare readonly highlightClass:string;
-  declare readonly hiddenClass:string;
-
   declare isInternalValue:boolean;
-
-  declare hasInternalCheckboxTarget:boolean;
 
   onSubmitEnd(_event:CustomEvent):void {
     if (this.hasInternalCheckboxTarget) {
@@ -79,11 +80,11 @@ export default class InternalCommentController extends Controller {
         const confirmed = await this.askForConfirmation();
 
         if (confirmed) {
-          this.workPackagesActivitiesTabIndexOutlet.focusEditor();
+          this.editorOutlet.focusEditor();
         } else {
           this.internalCheckboxTarget.checked = true;
           this.setInternalState(this.internalCheckboxTarget.checked);
-          this.workPackagesActivitiesTabIndexOutlet.focusEditor();
+          this.editorOutlet.focusEditor();
         }
       }
     }
@@ -96,7 +97,7 @@ export default class InternalCommentController extends Controller {
   }
 
   private toggleLearnMoreLink(isChecked:boolean):void {
-    if (this.workPackagesActivitiesTabIndexOutlet.isMobile()) return; // hidden on mobile
+    if (this.isMobile()) return; // hidden on mobile
 
     this.learnMoreLinkTarget.classList.toggle(this.hiddenClass, !isChecked);
   }
@@ -106,15 +107,14 @@ export default class InternalCommentController extends Controller {
       const editorData = this.ckEditorInstance.getData({ trim: false });
       if (editorData.length === 0) return;
 
-      const sanitizePath = `/work_packages/${this.workPackagesActivitiesTabIndexOutlet.workPackageIdValue}/activities/sanitize_internal_mentions`;
-      const csrfToken = (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement).content;
+      const sanitizePath = `/work_packages/${this.indexOutlet.workPackageIdValue}/activities/sanitize_internal_mentions`;
 
       try {
         const response = await fetch(sanitizePath, {
           method: 'POST',
           body: JSON.stringify({ journal: { notes: editorData } }),
           headers: {
-            'X-CSRF-Token': csrfToken,
+            'X-CSRF-Token': this.csrfToken,
             'Content-Type': 'application/json',
           },
         });
@@ -150,6 +150,6 @@ export default class InternalCommentController extends Controller {
   }
 
   private get ckEditorInstance() {
-    return this.workPackagesActivitiesTabIndexOutlet.getCkEditorInstance();
+    return this.editorOutlet.ckEditorInstance;
   }
 }

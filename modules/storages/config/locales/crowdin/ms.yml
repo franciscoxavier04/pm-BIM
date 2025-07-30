@@ -5,24 +5,29 @@ ms:
         client_id: ID pelanggan
         client_secret: Rahsia pelanggan
       project:
-        project_folder_type: Project folder type
+        project_folder_type: Jenis folder projek
       storages/file_link:
-        origin: Origin
+        origin: Asal
         storage: Penyimpanan
       storages/nextcloud_storage:
         authentication_methods:
-          oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
-          oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On with Two-Way OAuth 2.0 as fallback
+          oauth2_sso: Daftar-Masuk-Tunggal Melalui OpenID Penyambung Pembekal Identiti
+          oauth2_sso_with_two_way_oauth2_fallback: Daftar-Masuk-Tunggal dengan Dua-Cara OAuth 2.0 sebagai 
           two_way_oauth2: Two-way OAuth 2.0 authorization code flow
-        storage_audience: Storage Audience
-        token_exchange_scope: Storage Scope
+        storage_audience: Penemu Simpanan
+        token_exchange_scope: Skop Simpanan
       storages/project_storage:
         project_folder: Folder projek
-        project_folder_mode: Project folder mode
+        project_folder_mode: Mod Folder Projek
         storage: Storan
-        storage_url: Storage URL
+        storage_url: URL Simpanan
+      storages/share_point_storage:
+        host: Sharepoint Site URL
+        library: Library ID
+        name: Name
+        site: Site ID
       storages/storage:
-        authentication_method: Authentication Method
+        authentication_method: Kaedah Pengesahan
         creator: Pencipta
         drive: ID Pemacu
         host: Hos
@@ -32,6 +37,7 @@ ms:
     errors:
       messages:
         invalid_host_url: adalah bukan URL yang sah.
+        invalid_sharepoint_url: is not a valid SharePoint site, library, or document URL.
         not_linked_to_project: tidak terpaut dengan projek.
       models:
         storages/file_link:
@@ -81,7 +87,8 @@ ms:
     edit_project_folder:
       label: Edit folder projek
     open:
-      remote_identity_error: An unexpected error occurred while connecting to the storage.
+      contact_admin: Please contact your administrator to resolve this error.
+      remote_identity_error: Terdapat 
     project_folder_mode:
       automatic: Dikendalikan secara automatik
       inactive: Tiada folder spesifik
@@ -128,7 +135,7 @@ ms:
               conflict: 'Pengguna %{user} tidak boleh ditambah ke kumpulan %{group} atas sebab: %{reason}'
               failed_to_add: 'Pengguna %{user} tidak boleh ditambah ke kumpulan %{group} atas sebab: %{reason}'
             create_folder:
-              conflict: '%{folder_name} sudah wujud di %{parent_location}.'
+              conflict: The folder %{folder_name} already exists on %{parent_location}.
               not_found: "%{parent_location} tidak ditemui."
             ensure_root_folder_permissions:
               not_found: "%{group_folder} tidak ditemui. Sila semak persediaan Folder Kumpulan Nextcloud anda."
@@ -142,6 +149,7 @@ ms:
               conflict: 'Pengguna %{user} tidak dapat dialih keluar daripada kumpulan %{group} atas sebab berikut: %{reason}'
               failed_to_remove: 'Pengguna %{user} tidak dapat dialih keluar daripada kumpulan %{group} atas sebab berikut: %{reason}'
             rename_project_folder:
+              conflict: OpenProject could not rename the project folder to %{current_path} as a folder with the same name already exists
               forbidden: Pengguna OpenProject tidak mempunyai akses kepada folder %{current_path}.
               not_found: "%{current_path} tidak ditemui."
             set_folders_permissions:
@@ -167,7 +175,7 @@ ms:
               not_found: "%{current_path} tidak ditemui."
             set_folders_permissions:
               permission_not_set: tidak dapat menetapkan kebenaran pada %{path}.
-          error: Ralat yang tidak dijangka berlaku. Sila pastikan bahawa OneDrive/SharePoint boleh dicapai dan semak log pekerja OpenProject untuk mendapatkan maklumat lanjut
+          error: An unexpected error occurred. Please ensure that OneDrive is reachable and check OpenProject worker logs for more information
           not_allowed: OpenProject tidak dibenarkan mengakses pemacu OneDrive anda. Sila semak kebenaran yang ditetapkan pada Aplikasi Azure.
           unauthorized: OpenProject tidak dapat disegerakkan dengan OneDrive. Sila semak storan dan konfigurasi Aplikasi Azure anda.
           user_does_not_exist: "%{user} tidak wujud dalam Nextcloud."
@@ -186,7 +194,7 @@ ms:
     configuration_checks:
       oauth_client_incomplete:
         nextcloud: Benarkan OpenProject untuk mengakses data Nextcloud menggunakan OAuth.
-        one_drive: Benarkan OpenProject untuk mengakses data Azure menggunakan OAuth untuk disambungkan ke OneDrive/Sharepoint.
+        one_drive: Allow OpenProject to access Azure data using OAuth to connect OneDrive.
       redirect_uri_incomplete:
         one_drive: Lengkapkan penyediaan dengan pengubah hala URI yang betul.
     confirm_replace_oauth_application: Tindakan ini akan menetapkan semula kelayakan OAuth semasa. Selepas pengesahan, anda perlu masukkan semula kelayakan di penyedia storan dan semua pengguna jauh perlu membenarkan OpenProject sekali lagi. Adakah anda pasti anda mahu teruskan?
@@ -254,6 +262,7 @@ ms:
           header: Pengesahan
           non_provisioned_user: User provisioned by IDP
           offline_access: Configured OIDC offline_access scope
+          provider_capabilities: Provider capabilities
           provisioned_user_provider: User provisioned by OIDC
           token_negotiable: User token capabilities
           user_bound_request: User-based request authentication
@@ -294,7 +303,7 @@ ms:
         od_drive_id_not_found: Id pemacu yang dikonfigurasikan tidak dapat ditemui. Sila semak konfigurasi.
         od_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
         od_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
-        od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
+        od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive as the user did not yet link their Microsoft account.
         od_tenant_id_wrong: Id direktori (penyewa) yang dikonfigurasikan adalah tidak sah. Sila semak konfigurasi.
         od_test_folder_exists: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
         od_unexpected_content: Kandungan yang tidak dijangka ditemui dalam pemacu.
@@ -302,6 +311,7 @@ ms:
         oidc_cant_refresh_token: There was an error while trying to check your access to the storage. Please check the server logs for further information.
         oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
         oidc_non_provisioned_user: The current user isn't provided by an OpenID Connect Identity Provider. Please re-run the check with a provided user.
+        oidc_provider_cant_exchange: The OpenID Connect provider does not seem to support token exchange, but token exchange was configured for the storage.
         oidc_token_acquisition_failed: Your OpenID Connect setup doesn't provide the necessary audience, nor does it provide token exchange capabilities. Please check out our documentation for more information.
         oidc_token_exchange_failed: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
         oidc_token_refresh_failed: There was an error while trying to check your access to the storage. Please check the server logs for further information.
@@ -360,9 +370,9 @@ ms:
       one_drive:
         application_link_text: Portal Azure
         copy_redirect_uri: Salin ubah hala URI
-        documentation_link_text: Dokumentasi storan fail OneDrive/SharePoint
+        documentation_link_text: OneDrive file storages documentation
         drive_id: Sila salin ID daripada pemacu yang diingini dengan mengikuti langkah-langkah di %{drive_id_link_text}.
-        integration: OneDrive/SharePoint
+        integration: OneDrive
         missing_client_id_for_redirect_uri: Sila isikan nilai-nilai OAuth untuk menjana URI
         oauth_client_redirect_uri: Sila salin nilai ini ke URI ubah hala Web baharu di bawah Ubah Hala URI.
         oauth_client_secret: Sekiranya tiada aplikasi rahsia pelanggan di bawah kelayakan Pelanggan, sila cipta yang baharu. 
@@ -473,8 +483,13 @@ ms:
       one_drive:
         label_oauth_client_id: ID Aplikasi (pelanggan) OAuth Azure 
         label_oauth_client_secret: Nilai Pelanggan Rahsia OAuth Azure
-        name: OneDrive/SharePoint
+        name: OneDrive
         name_placeholder: cth. OneDrive
+      share_point:
+        label_oauth_client_id: Azure OAuth Application (client) ID
+        label_oauth_client_secret: Azure OAuth Client Secret Value
+        name: SharePoint
+        name_placeholder: e.g. SharePoint
     show_attachments_toggle:
       description: Deactivating this option will hide the attachments list on the work packages files tab. The files attached in the description of a work package will still be uploaded in the internal attachments storage.
       label: Paparkan lampiran di tab fail pakej kerja
@@ -492,6 +507,6 @@ ms:
     successful_storage_connection: Storan berjaya disambungkan! Ingat untuk mengaktifkan storan dalam tab Projek untuk setiap projek yang diingini untuk menggunakannya.
     upsell:
       description: |-
-        Integrasikan OneDrive/SharePoint anda sebagai storan fail dengan OpenProject. Muat naik fail dan pautkan terus ke 
-        pakej kerja dalam projek.
-      title: Integrasi OneDrive/SharePoint
+        Integrate your OneDrive as a file storage with OpenProject. Upload files and link them directly to
+        work packages in a project.
+      title: OneDrive integration

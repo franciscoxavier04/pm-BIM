@@ -63,7 +63,6 @@ de:
         primary-button-color: "Primäre Schaltfläche"
         accent-color: "Akzent"
         header-bg-color: "Hintergrund der Kopfzeile"
-        header-item-bg-hover-color: "Hintergrund der Kopfzeile bei Hover"
         main-menu-bg-color: "Hintergrundfarbe des Hauptmenüs"
         main-menu-bg-selected-background: "Hintergrundfarbe des Hauptmenüs bei Auswahl"
       custom_colors: "Benutzerdefinierte Farben"
@@ -71,10 +70,6 @@ de:
       instructions:
         primary-button-color: "Starke Akzentfarbe, die für die wichtigste Schaltfläche auf einem Bildschirm verwendet wird."
         accent-color: "Farbe für Links und andere dezent hervorgehobene Elemente."
-        header-item-bg-hover-color: "Hintergrundfarbe von Header-Elementen während Mouse-hover."
-        header-item-font-color: "Schriftfarbe von anklickbaren Header-Elementen."
-        header-item-font-hover-color: "Schriftfarbe von anklickbaren Header-Elementen während Mouse-hover."
-        header-border-bottom-color: "Rahmenlinie unterhalb des Headers. Freilassen, um keine Linie darzustellen."
         main-menu-bg-color: "Hintergrundfarbe des Menüs in der linken Seitenleiste."
       theme_warning: Das Ändern des Themes wird Ihr benutzerdefiniertes Design überschreiben. Alle Änderungen werden dann verloren gehen. Sind Sie sicher, dass Sie fortfahren möchten?
     enterprise:
@@ -113,15 +108,15 @@ de:
     scim_clients:
       authentication_methods:
         sso: "JWT vom Identitätsanbieter"
-        oauth2_client: "OAuth 2.0 client credentials"
+        oauth2_client: "OAuth 2.0 Client-Anmeldeinformationen"
         oauth2_token: "Statisches Zugriffstoken"
       created_client_credentials_dialog_component:
-        title: "Client credentials created"
-        heading: "Client credentials have been generated"
+        title: "Client-Zugangsdaten erstellt"
+        heading: "Client-Zugangsdaten wurden generiert"
         one_time_hint: "Dies ist das einzige Mal, dass dieses Token angezeigt wird. Stellen Sie sicher, dass Sie es jetzt kopieren."
       created_token_dialog_component:
         title: "Token erstellt"
-        heading: "An token has been generated"
+        heading: "Ein Token wurde generiert"
         label_token: "Token"
         one_time_hint: "Dies ist das einzige Mal, dass dieses Token angezeigt wird. Stellen Sie sicher, dass Sie es jetzt kopieren."
       delete_scim_client_dialog_component:
@@ -131,13 +126,13 @@ de:
       edit:
         label_delete_scim_client: "SCIM-Client löschen"
       form:
-        auth_provider_description: "This is the service that users added by the SCIM provider will use to authenticate in OpenProject."
-        authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
+        auth_provider_description: "Dies ist der Dienst, den die vom SCIM-Anbieter hinzugefügten Benutzer für die Authentifizierung in OpenProject verwenden werden."
+        authentication_method_description_html: "So authentifiziert sich der SCIM-Client bei OpenProject. Bitte stellen Sie sicher, dass OAuth Tokens den <code>scim_v2</code> Scope enthalten."
         description_html: 'Weitere Informationen zu diesen Konfigurationsoptionen finden Sie in unserer <a href="%{docs_url}">Dokumentation zur Konfiguration von SCIM-Clients</a>.'
-        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
+        jwt_sub_description_html: 'Bei Keycloak ist dies beispielsweise die UUID des mit dem SCIM-Client verbundenen Servicekontos. Lesen Sie <a href="%{docs_url}">unsere Dokumentation</a>, um zu erfahren, wie Sie den Subject Claim für Ihren Anwendungsfall finden.'
         name_description: "Wählen Sie einen Namen, der anderen Administratoren hilft, besser zu verstehen, warum dieser Client konfiguriert wurde."
       index:
-        description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
+        description: "SCIM-Clients, die hier konfiguriert werden, können mit der OpenProject SCIM-Server-API interagieren, um Benutzerkonten und Gruppen zu erstellen, zu aktualisieren und zu entfernen."
         label_create_button: "SCIM-Client hinzufügen"
       new:
         title: "Neuer SCIM-Client"
@@ -145,15 +140,15 @@ de:
         confirm_button: "Widerrufen"
         title: "Statisches Token widerrufen"
         heading: "Sind Sie sicher, dass Sie dieses Token widerrufen möchten?"
-        description: "The SCIM client that uses this token will no longer be able to access OpenProject's SCIM server API."
+        description: "Der SCIM-Client, der dieses Token verwendet, kann nicht mehr auf die SCIM-Server-API von OpenProject zugreifen."
       table_component:
         blank_slate:
-          title: "No SCIM clients configured yet"
-          description: "Add clients to see them here"
+          title: "Noch keine SCIM-Clients konfiguriert"
+          description: "Clients hinzufügen, um sie hier zu sehen"
         user_count: "Benutzer"
       token_list_component:
-        description: "The tokens you generate here can be passed by a SCIM client to access the OpenProject SCIM API."
-        heading: "Tokens"
+        description: "Die Token, die Sie hier erzeugen, können von einem SCIM-Client weitergegeben werden, um auf die OpenProject SCIM-API zuzugreifen."
+        heading: "Token"
         label_add_token: "Token"
         label_aria_add_token: "Token hinzufügen"
       token_table_component:
@@ -162,7 +157,7 @@ de:
           description: "Sie können jetzt eins erstellen"
         expired: "Abgelaufen am %{date}"
         revoked: "Widerrufen am %{date}"
-        title: "Access token table"
+        title: "Zugangs-Token Tabelle"
   authentication:
     login_and_registration: "Anmeldung und Registrierung"
   announcements:
@@ -351,7 +346,7 @@ de:
         parent:
           not_descendant: "muss ein Unterelement der Hierarchiewurzel sein."
     rules:
-      copy_workflow_from: "Type for workflow copy"
+      copy_workflow_from: "Typ für Workflow-Kopie"
       enabled: "Aktiviert"
       depth: "Tiefe"
       item: "Element"
@@ -360,19 +355,34 @@ de:
       parent: "Übergeordnetes Arbeitspaket"
       blueprint: "Blaupause für Muster"
   global_search:
+    title:
+      all_projects: 'Suche nach "%{search_term}" in allen Projekten'
+      current_project: 'Suche nach "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Suche nach "%{search_term}" in %{project_name} und allen Unterprojekten'
     placeholder: "Suche in %{app_title}"
     overwritten_tabs:
       all: "Alle"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Derzeit gibt es keine Gruppen.
-      no_results_content_text: Neue Gruppe erstellen
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Diese Gruppe hat zur Zeit keine Mitglieder.
     memberships:
       no_results_title_text: Diese Gruppe ist zur Zeit keinem Projekt zugewiesen.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Geben Sie eine Liste von Dateinamen an, die beim Verarbeiten von Anhängen für eingehende Mails (z.B. Signaturen oder Symbole) ignoriert werden sollen. Geben Sie einen Dateinamen pro Zeile ein.
@@ -658,7 +668,7 @@ de:
         Wählen Sie diese Option um Bearbeitung von Arbeitspaketen in diesem Status zu sperren.
         Außer dem Status selbst können dann keine Attribute verändert werden.
         <br>
-        <strong>Hinweis</strong>: Vererbte Attribute (z.B. von Kinderelementen oder Relationen) werden auch auf Arbeitspakete in diesen Status angewandt.
+        <strong>Hinweis</strong>: Vererbte Attribute (z.B. von Unteraufgaben oder Relationen) werden auch auf Arbeitspakete in diesen Status angewandt.
     index:
       no_results_title_text: Derzeit gibt es keine Arbeitspaket-Status.
       no_results_content_text: Neuen Status hinzufügen
@@ -682,7 +692,7 @@ de:
         tab: Projekte
         enable_all: Für alle Projekte aktivieren
         select_projects: Projekte auswählen
-        select_projects_description: Select the projects in which you would like to use this type.
+        select_projects_description: Wählen Sie die Projekte aus, in denen Sie diesen Typ verwenden möchten.
       settings:
         tab: "Einstellungen"
         type_color_text: "Die ausgewählte Farbe unterscheidet verschiedene Typen\nin Gantt-Diagrammen und Arbeitspakettabellen. Es wird daher empfohlen, gut unterscheidbare Farben zu verwenden."
@@ -735,10 +745,10 @@ de:
           manual_mobile: "Beziehungen werden ignoriert."
           manual_gap_between_predecessors: "Es gibt eine Verzögerung zu allen Vorgängern."
           manual_overlap_with_predecessors: "Überlappt mit mindestens einem Vorgänger."
-          manual_with_children: "Hat untergeordnete Arbeitspakete aber ihre Startdaten werden ignoriert."
+          manual_with_children: "Hat Unteraufgaben aber ihre Startdaten werden ignoriert."
         title:
           automatic_mobile: "Automatisch geplant."
-          automatic_with_children: "Untergeordenete Arbeitspakete bestimmen Termine."
+          automatic_with_children: "Unteraufgaben bestimmen Termine."
           automatic_with_predecessor: "Der Anfangstermin wird von einem Vorgänger festgelegt."
           manual_mobile: "Manuell geplant."
           manually_scheduled: "Manuell geplant – Daten unabhängig von Beziehungen."
@@ -755,7 +765,7 @@ de:
       update_inputs_aria_live_message: "Datumsauswahl aktualisiert. %{message}"
       tabs:
         aria_label: "Datumsauswahl Reiter"
-        children: "Untergeordnete Arbeitspakete"
+        children: "Unteraufgaben"
         dates: "Daten"
         predecessors: "Vorgänger"
         successors: "Nachfolger"
@@ -767,8 +777,8 @@ de:
             title: "Keine Nachfolger"
             description: "Dieses Arbeitspaket hat noch keine Nachfolger."
           children:
-            title: "Keine Kinder"
-            description: "Dieses Arbeitspaket hat noch keine untergeordnete Arbeitspakete."
+            title: "Keine Unteraufgaben"
+            description: "Dieses Arbeitspaket hat noch keine Unteraufgaben."
     x_descendants:
       one: "Ein untergeordnetes Arbeitspaket"
       other: "%{count} untergeordnete Arbeitspakete"
@@ -824,7 +834,7 @@ de:
       caption: |-
         Die minimale Anzahl von Arbeitstagen zwischen den zwei Arbeitspaketen; kann auch negativ sein.
     relations:
-      label_new_child_created: "Neues Arbeitspaket erstellt und als Kind hinzugefügt"
+      label_new_child_created: "Neues Arbeitspaket erstellt und als Unteraufgabe hinzugefügt"
       label_relates_singular: "Beziehung mit"
       label_relates_plural: "Beziehung mit"
       label_relates_to_singular: "Beziehungen mit"
@@ -837,12 +847,12 @@ de:
       label_follows_singular: "Vorgänger"
       label_follows_plural: "Vorgänger"
       follows_description: "Das verknüpfte Arbeitspaket muss beendet sein bevor dieses Arbeitspaket starten kann"
-      label_child_singular: "Untergeordnetes Arbeitspaket"
-      label_child_plural: "Untergeordnete Arbeitspakete"
-      new_child: "Neues Kind"
+      label_child_singular: "Unteraufgabe"
+      label_child_plural: "Unteraufgaben"
+      new_child: "Neue Unteraufgabe"
       new_child_description: "Erstellt ein zugehöriges Arbeitspaket als Unterelement des aktuellen (übergeordneten) Arbeitspakets"
       child: "Unteraufgabe"
-      child_description: "Macht das zugehörige Arbeitspaket zu einem Unterelement des aktuellen (übergeordneten) Arbeitspakets"
+      child_description: "Macht das zugehörige Arbeitspaket zu einer Unteraufgabe des aktuellen (übergeordneten) Arbeitspakets"
       parent: "Übergeordnetes Arbeitspaket"
       parent_description: "Wandelt das verknüpfte in ein übergeordnetes Arbeitspaket dieses Arbeitspakets um"
       label_closest: "Am nächsten"
@@ -1066,7 +1076,7 @@ de:
         column_names: "Spalten"
         relations_to_type_column: "Beziehungen zu %{type}"
         relations_of_type_column: "Beziehungen der Art: %{type}"
-        child_work_packages: "Kinder"
+        child_work_packages: "Unteraufgaben"
         group_by: "Gruppiere Ergebnisse nach"
         sort_by: "Ergebnisse sortieren nach"
         filters: "Filter"
@@ -1102,7 +1112,6 @@ de:
       role:
         permissions: "Berechtigungen"
       scim_client:
-        auth_provider: "Authentifizierungsanbieter"
         authentication_method: "Authentifizierungsmethode"
         jwt_sub: "Subject claim"
       status:
@@ -1160,8 +1169,8 @@ de:
           Sie können die standardmäßigen <a href="%{href}">Tastenkombinationen</a> deaktivieren, wenn Sie einen Screenreader verwenden oder unbeabsichtigtes Auslösen einer Aktion durch eine Tastenkombination vermeiden möchten.
         dismissed_enterprise_banners: "Ausgeblendete Unternehmensbanner"
         impaired: "Für die barrierefreie Nutzung optimierte Oberfläche"
-        auto_hide_popups: "Automatically hide success banners"
-        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
+        auto_hide_popups: "Automatisches Ausblenden von Erfolgsbannern"
+        auto_hide_popups_caption: "Wenn diese Funktion aktiviert ist, verschwinden die grünen Erfolgsbanner automatisch nach 5 Sekunden."
         warn_on_leaving_unsaved: "Beim Verlassen einer Arbeitspaket-Seite mit ungespeichertem Text warnen"
         theme: "Farbmodus"
         time_zone: "Zeitzone"
@@ -1181,7 +1190,7 @@ de:
         ancestor: "Nachkommen von" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Beginn der Einfügung"
         begin_deletion: "Beginn des Löschvorgangs"
-        children: "Kindelemente"
+        children: "Unteraufgaben"
         derived_done_ratio: "Insgesamt % abgeschlossen"
         derived_remaining_hours: "Verbleibende Arbeit insgesamt"
         derived_remaining_time: "Verbleibende Arbeit insgesamt"
@@ -1489,7 +1498,7 @@ de:
           attributes:
             id:
               format: "%{message}"
-              cannot_add_child_because_of_lack_of_permission: "Sie können kein Kind hinzufügen, weil Sie keine Berechtigung haben, das ausgewählte Arbeitspaket zu bearbeiten."
+              cannot_add_child_because_of_lack_of_permission: "Sie können keine Unteraufgabe hinzufügen, weil Sie keine Berechtigung haben, das ausgewählte Arbeitspaket zu bearbeiten."
               blank: "ID darf nicht leer sein."
             assigned_to:
               format: "%{message}"
@@ -1514,7 +1523,7 @@ de:
               cannot_be_in_another_project: "darf nicht in einem anderen Projekt sein."
               not_a_valid_parent: "ist ungültig."
             schedule_manually:
-              cannot_be_automatically_scheduled: "kann nicht auf false gesetzt werden (automatisch geplant), da es keine Vorgänger oder Kinder hat."
+              cannot_be_automatically_scheduled: "kann nicht auf false gesetzt werden (automatisch geplant), da es keine Vorgänger oder Unteraufgaben hat."
             start_date:
               violates_relationships: "muss mindestens auf %{soonest_start} gesetzt werden, um Beziehungen zu anderen Arbeitspaketen nicht zu verletzten."
               cannot_be_null: "kann nicht auf Null gesetzt werden, als Enddatum und Dauer bekannt sind."
@@ -1598,6 +1607,9 @@ de:
     models:
       attachment: "Datei"
       attribute_help_text: "Hilfe-Text für Attribute"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "Kategorie"
       comment: "Kommentar"
       custom_action: "Benutzerdefinierte Aktion"
@@ -1734,7 +1746,7 @@ de:
     estimated_time: "Aufwand"
     email: "E-Mail"
     entity_type: "Entität"
-    expires_at: "Expires on"
+    expires_at: "Verfällt am"
     firstname: "Vorname"
     filter: "Filter"
     group: "Gruppe"
@@ -1858,7 +1870,7 @@ de:
   button_delete_watcher: "Lösche Beobachter %{name}"
   button_download: "Download"
   button_duplicate: "Duplizieren"
-  button_duplicate_and_follow: "Duplicate and follow"
+  button_duplicate_and_follow: "Duplizieren und folgen"
   button_edit: "Bearbeiten"
   button_edit_associated_wikipage: "Zugehörige Wikiseite bearbeiten: %{page_title}"
   button_expand_all: "Alle ausklappen"
@@ -2065,8 +2077,8 @@ de:
         other: "%{count} Sek."
     units:
       minute_abbreviated:
-        one: "min"
-        other: "mins"
+        one: "Min"
+        other: "Min"
       hour:
         one: "Stunde"
         other: "Stunde"
@@ -2123,7 +2135,7 @@ de:
       placeholder_users: Platzhalter-Benutzer
       project_list_sharing: Projektlistenfreigabe
       readonly_work_packages: Schreibgeschützte Arbeitspakete
-      scim_api: SCIM server API
+      scim_api: SCIM-Server-API
       sso_auth_providers: Single Sign-on
       team_planner_view: Teamplaner
       virus_scanning: Antivirus-Überprüfung
@@ -2163,7 +2175,7 @@ de:
       conditional_highlighting:
         description: "Benötigen Sie bestimmte Arbeitspakete, um sich von der Masse abzuheben? Verwenden Sie die bedingte Hervorhebung in der Arbeitspaketstabelle."
       work_package_query_relation_columns:
-        description: "Möchten Sie Beziehungen oder Kinder als Spalten in der Arbeitspaketliste sehen können?"
+        description: "Möchten Sie Beziehungen oder Unteraufgaben als Spalten in der Arbeitspaketliste sehen können?"
       edit_attribute_groups:
         description: "Anpassen der Form-Konfiguration mit diesen zusätzlichen Add-ons:"
         features:
@@ -2191,8 +2203,8 @@ de:
         title: "Single Sign-On für Nextcloud-Speicher"
         description: "Aktivieren Sie nahtlose und sichere Authentifizierung für Ihren Nextcloud-Speicher mit Single Sign-On. Vereinfachen Sie das Zugriffsmanagement und erhöhen Sie den Benutzerkomfort."
       scim_api:
-        title: "SCIM clients"
-        description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
+        title: "SCIM-Clients"
+        description: "Automatisieren Sie die Benutzerverwaltung in OpenProject durch nahtlose Integration externer Identitätsdienste wie Microsoft Entra oder Keycloak über unsere SCIM Server API. Verfügbar ab dem Enterprise Corporate Plan."
       virus_scanning:
         description: "Stellen Sie sicher, dass hochgeladene Dateien in OpenProject auf Viren gescannt werden, bevor sie für andere Benutzer zugänglich sind."
       placeholder_users:
@@ -2486,7 +2498,7 @@ de:
     cause_descriptions:
       work_package_predecessor_changed_times: durch Änderungen am Vorgänger %{link}
       work_package_parent_changed_times: durch Änderungen am übergeordneten Arbeitspaket %{link}
-      work_package_children_changed_times: durch Änderungen an Kind-Arbeitspaket %{link}
+      work_package_children_changed_times: durch Änderungen an Unteraufgabe %{link}
       work_package_related_changed_times: durch Änderungen an verwandtem Arbeitspaket %{link}
       work_package_duplicate_closed: Der Status wurde automatisch durch das als Duplikat markierte Arbeitspaket %{link} aktualisiert
       unaccessable_work_package_changed: nach Änderungen an einem zugehörigen Arbeitspaket
@@ -2514,9 +2526,9 @@ de:
         totals_removed_from_childless_work_packages: >-
           Arbeits- und Fortschrittssummen werden bei der <a href="%{href}" target="_blank">Versionsaktualisierung</a> automatisch für nicht übergeordnete Arbeitspakete entfernt. Diese Änderung entstand durch ein Upgrade und kann ignoriert werden.
       total_percent_complete_mode_changed_to_work_weighted_average: >-
-        Untergeordnete Arbeitspakete ohne Arbeit werden ignoriert.
+        Unteraufgaben ohne Arbeit werden ignoriert.
       total_percent_complete_mode_changed_to_simple_average: >-
-        Arbeitswerte von untergeordneten Arbeitspaketen werden ignoriert.
+        Arbeitswerte von Unteraufgaben werden ignoriert.
   links:
     configuration_guide: "Konfigurationsanleitung"
     get_in_touch: "Sie haben Fragen? Nehmen Sie Kontakt mit uns auf."
@@ -2530,7 +2542,7 @@ de:
       aggregation: "Zusammenfassungen"
       api_and_webhooks: "API und Webhooks"
     quick_add:
-      label: "Schnellmenue öffnen"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2830,6 +2842,7 @@ de:
   label_gantt_chart_plural: "Gantt Diagramme"
   label_general: "Allgemein"
   label_generate_key: "Schlüssel generieren"
+  label_global_modules: "Global modules"
   label_global_roles: "Globale Rollen"
   label_git_path: "Pfad zum .git-Verzeichnis"
   label_greater_or_equal: ">="
@@ -2973,6 +2986,7 @@ de:
   label_no_due_date: "kein Endtermin"
   label_no_start_date: "kein Startdatum"
   label_no_parent_page: "Keine übergeordnete Seite"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Nichts anzuzeigen"
   label_nobody: "Niemand"
   label_not_configured: "Nicht konfiguriert"
@@ -3005,7 +3019,7 @@ de:
   label_password_rule_special: "Sonderzeichen"
   label_password_rule_uppercase: "Großbuchstaben"
   label_path_encoding: "Path encoding"
-  label_per_page: "Pro Seite"
+  label_per_page: "Pro Seite:"
   label_people: "Personen"
   label_permissions: "Berechtigungen"
   label_permissions_report: "Berechtigungsübersicht"
@@ -3181,6 +3195,7 @@ de:
   label_user_mail_option_only_my_events: "Nur für Aufgaben, die ich beobachte oder an welchen ich mitarbeite"
   label_user_mail_option_only_owner: "Nur für Aufgaben, die ich angelegt habe"
   label_user_mail_option_selected: "Für alle Ereignisse in den ausgewählten Projekten"
+  label_user_menu: "User menu"
   label_user_new: "Neuer Benutzer"
   label_user_plural: "Benutzer"
   label_user_search: "Nach Benutzer suchen"
@@ -3565,7 +3580,7 @@ de:
   permission_comment_news: "Nachricht kommentieren"
   permission_commit_access: "Lese- und Schreibzugriff auf Projektarchiv (Commit)"
   permission_copy_projects: "Projekte kopieren"
-  permission_copy_work_packages: "Duplicate work packages"
+  permission_copy_work_packages: "Arbeitspakete duplizieren"
   permission_create_backup: "Backups erstellen"
   permission_delete_work_package_watchers: "Beobachter löschen"
   permission_delete_work_packages: "Arbeitspakete löschen"

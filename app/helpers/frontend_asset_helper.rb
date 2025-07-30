@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -47,8 +49,10 @@ module FrontendAssetHelper
   # or referencing the running CLI proxy that hosts the assets in memory.
   def include_frontend_assets
     capture do
-      %w(vendor.js polyfills.js runtime.js main.js).each do |file|
-        concat nonced_javascript_include_tag variable_asset_path(file), skip_pipeline: true
+      concat nonced_javascript_include_tag variable_asset_path("jquery.js"), skip_pipeline: true
+
+      %w(polyfills.js main.js).each do |file|
+        concat nonced_javascript_include_tag variable_asset_path(file), skip_pipeline: true, type: "module"
       end
 
       concat frontend_stylesheet_link_tag("styles.css")

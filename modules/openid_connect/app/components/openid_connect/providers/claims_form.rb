@@ -37,7 +37,7 @@ module OpenIDConnect
         f.text_area(
           name: :claims,
           rows: 10,
-          label: I18n.t("activerecord.attributes.openid_connect/provider.claims"),
+          label: OpenIDConnect::Provider.human_attribute_name(:claims),
           caption: link_translate(
             "openid_connect.instructions.claims",
             links: {
@@ -51,7 +51,7 @@ module OpenIDConnect
 
         f.text_field(
           name: :acr_values,
-          label: I18n.t("activerecord.attributes.openid_connect/provider.acr_values"),
+          label: OpenIDConnect::Provider.human_attribute_name(:acr_values),
           caption: link_translate(
             "openid_connect.instructions.acr_values",
             links: {

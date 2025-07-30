@@ -26,9 +26,9 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { APP_INITIALIZER, ApplicationRef, DoBootstrap, Injector, NgModule } from '@angular/core';
+import { ApplicationRef, DoBootstrap, Injector, NgModule, inject, provideAppInitializer } from '@angular/core';
 import { A11yModule } from '@angular/cdk/a11y';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   OpContextMenuTrigger,
@@ -179,7 +179,6 @@ import { NoResultsComponent } from 'core-app/shared/components/no-results/no-res
 import {
   OpNonWorkingDaysListComponent,
 } from 'core-app/shared/components/op-non-working-days-list/op-non-working-days-list.component';
-import { GlobalSearchTitleComponent } from 'core-app/core/global_search/title/global-search-title.component';
 import { PersistentToggleComponent } from 'core-app/shared/components/persistent-toggle/persistent-toggle.component';
 import { TypeFormConfigurationComponent } from 'core-app/features/admin/types/type-form-configuration.component';
 import { ToastsContainerComponent } from 'core-app/shared/components/toaster/toasts-container.component';
@@ -188,7 +187,6 @@ import {
   CustomDateActionAdminComponent,
 } from 'core-app/features/work-packages/components/wp-custom-actions/date-action/custom-date-action-admin.component';
 import { HomescreenNewFeaturesBlockComponent } from 'core-app/features/homescreen/blocks/new-features.component';
-import { GlobalSearchTabsComponent } from 'core-app/core/global_search/tabs/global-search-tabs.component';
 import {
   ZenModeButtonComponent,
 } from 'core-app/features/work-packages/components/wp-buttons/zen-mode-toggle-button/zen-mode-toggle-button.component';
@@ -206,6 +204,7 @@ import {
 import {
   OpWpDatePickerInstanceComponent,
 } from 'core-app/shared/components/datepicker/wp-date-picker-modal/wp-date-picker-instance.component';
+import { OpInviteUserModalAugmentService } from 'core-app/features/invite-user-modal/invite-user-modal-augment.service';
 
 export function initializeServices(injector:Injector) {
   return () => {
@@ -213,17 +212,22 @@ export function initializeServices(injector:Injector) {
     const keyboardShortcuts = injector.get(KeyboardShortcutService);
     const contextMenu = injector.get(OPContextMenuService);
     const currentProject = injector.get(CurrentProjectService);
+    const inviteUserAugmentService = injector.get(OpInviteUserModalAugmentService);
 
     // Conditionally add the Revit Add-In settings button
     injector.get(RevitAddInSettingsButtonService);
 
-    topMenuService.register();
-    contextMenu.register();
-
-    // Re-register on turbo:load
-    document.addEventListener('turbo:load', () => {
+    const runOnRenderAndLoad = () => {
       topMenuService.register();
       contextMenu.register();
+      inviteUserAugmentService.setupListener();
+    };
+    runOnRenderAndLoad();
+
+    // Register on turbo:render, turbo:load
+    document.addEventListener('turbo:render', runOnRenderAndLoad);
+    document.addEventListener('turbo:load', () => {
+      runOnRenderAndLoad();
       currentProject.detect();
     });
 
@@ -234,6 +238,24 @@ export function initializeServices(injector:Injector) {
 }
 
 @NgModule({
+  declarations: [
+    OpContextMenuTrigger,
+
+    // Modals
+    ConfirmDialogModalComponent,
+    DynamicContentModalComponent,
+    PasswordConfirmationModalComponent,
+
+    // Main menu
+    MainMenuResizerComponent,
+
+    // Project selector
+    OpHeaderProjectSelectComponent,
+    OpHeaderProjectSelectListComponent,
+
+    // Form configuration
+    OpDragScrollDirective,
+  ],
   imports: [
     // The BrowserModule must only be loaded here!
     BrowserModule,
@@ -264,7 +286,6 @@ export function initializeServices(injector:Injector) {
 
     // Work packages in graph representation
     OpenprojectWorkPackageGraphsModule,
-
     // Calendar module
     OpenprojectCalendarModule,
 
@@ -295,9 +316,6 @@ export function initializeServices(injector:Injector) {
     // Angular Forms
     ReactiveFormsModule,
 
-    // Angular Http Client
-    HttpClientModule,
-
     // Augmenting Module
     OpenprojectAugmentingModule,
 
@@ -322,13 +340,13 @@ export function initializeServices(injector:Injector) {
   providers: [
     { provide: States, useValue: new States() },
     { provide: HTTP_INTERCEPTORS, useClass: OpenProjectHeaderInterceptor, multi: true },
-    {
-      provide: APP_INITIALIZER, useFactory: initializeServices, deps: [Injector], multi: true,
-    },
+    provideAppInitializer(() => {
+      const initializerFn = (initializeServices)(inject(Injector));
+      return initializerFn();
+    }),
     {
       provide: OpUploadService,
-      useFactory: (config:ConfigurationService, http:HttpClient) =>
-        (config.isDirectUploads() ? new FogUploadService(http) : new LocalUploadService(http)),
+      useFactory: (config:ConfigurationService, http:HttpClient) => (config.isDirectUploads() ? new FogUploadService(http) : new LocalUploadService(http)),
       deps: [ConfigurationService, HttpClient],
     },
     PaginationService,
@@ -336,24 +354,7 @@ export function initializeServices(injector:Injector) {
     ConfirmDialogService,
     RevitAddInSettingsButtonService,
     CopyToClipboardService,
-  ],
-  declarations: [
-    OpContextMenuTrigger,
-
-    // Modals
-    ConfirmDialogModalComponent,
-    DynamicContentModalComponent,
-    PasswordConfirmationModalComponent,
-
-    // Main menu
-    MainMenuResizerComponent,
-
-    // Project selector
-    OpHeaderProjectSelectComponent,
-    OpHeaderProjectSelectListComponent,
-
-    // Form configuration
-    OpDragScrollDirective,
+    provideHttpClient(withInterceptorsFromDi()),
   ],
 })
 export class OpenProjectModule implements DoBootstrap {
@@ -429,14 +430,12 @@ export class OpenProjectModule implements DoBootstrap {
     registerCustomElement('opce-no-results', NoResultsComponent, { injector });
     registerCustomElement('opce-non-working-days-list', OpNonWorkingDaysListComponent, { injector });
     registerCustomElement('opce-main-menu-resizer', MainMenuResizerComponent, { injector });
-    registerCustomElement('opce-global-search-title', GlobalSearchTitleComponent, { injector });
     registerCustomElement('opce-persistent-toggle', PersistentToggleComponent, { injector });
     registerCustomElement('opce-admin-type-form-configuration', TypeFormConfigurationComponent, { injector });
     registerCustomElement('opce-toasts-container', ToastsContainerComponent, { injector });
     registerCustomElement('opce-global-search-work-packages', GlobalSearchWorkPackagesComponent, { injector });
     registerCustomElement('opce-custom-date-action-admin', CustomDateActionAdminComponent, { injector });
     registerCustomElement('opce-homescreen-new-features-block', HomescreenNewFeaturesBlockComponent, { injector });
-    registerCustomElement('opce-global-search-tabs', GlobalSearchTabsComponent, { injector });
     registerCustomElement('opce-zen-mode-toggle-button', ZenModeButtonComponent, { injector });
     registerCustomElement('opce-colors-autocompleter', ColorsAutocompleterComponent, { injector });
   }

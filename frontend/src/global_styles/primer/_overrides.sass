@@ -85,12 +85,14 @@ ul.SegmentedControl,
       row-gap: 1rem
 
 .Button.op-app-header--primer-button,
-.Button.op-app-header--primer-button .Button-visual
+.Button.op-app-header--primer-button svg
+  align-self: center
   color: var(--header-item-font-color)
-  width: auto
+
+.Button.op-app-header--primer-button
+  min-width: var(--control-medium-size)
 
   &:hover
-    background: var(--header-item-bg-hover-color)
     color: var(--header-item-font-hover-color)
 
 // Prototypical CKEditor adjustments to better match Primer styles

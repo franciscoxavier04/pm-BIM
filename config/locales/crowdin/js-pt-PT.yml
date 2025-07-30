@@ -298,7 +298,7 @@ pt-PT:
           "16_2":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>New header and sidebar with improved navigation and design.</li> <li>Smoother experience with Custom fields, Relations, Reminders, Meetings, and My time tracking.</li> <li>Non-latin languages and emojis supported in PDF exports.</li> <li>Option to disable keyboard shortcuts for better accessibility.</li> <li>SCIM server via API (Enterprise add-on).</li> <li>API support for internal comments.</li> </ul>
+                A versão contém várias novas funcionalidades e melhorias, tais como <br> <ul class="%{list_styling_class}"> <li>Novo cabeçalho e barra lateral com navegação e design melhorados.</li> <li>Experiência mais fácil com campos personalizados, relações, lembretes, reuniões e controlo do meu tempo.</li> <li>Línguas não latinas e emojis suportados nas exportações de PDF.</li> <li>Opção para desativar os atalhos de teclado para melhor acessibilidade.</li> <li>Servidor SCIM através de API (complemento Enterprise).</li> <li>Suporte da API para comentários internos.</li> </ul>
     ical_sharing_modal:
       title: "Subscrever o calendário"
       inital_setup_error_message: "Ocorreu um erro ao recuperar os dados."
@@ -324,7 +324,7 @@ pt-PT:
     label_added_time_by: 'Adicionado por <a href="%{authorLink}">%{author}</a> a %{age}'
     label_ago: "dias atrás"
     label_all: "todos"
-    label_all_projects: "All projects"
+    label_all_projects: "Todos os projetos"
     label_all_uppercase: "Todas"
     label_all_work_packages: "todas as tarefas"
     label_and: "e"
@@ -643,13 +643,12 @@ pt-PT:
       title: "Confirme a sua palavra-passe para continuar"
     pagination:
       no_other_page: "Mais nenhuma página a apresentar."
-      page_navigation: "Pagination navigation"
-      per_page_navigation: 'Items per page selection'
+      pages_skipped: "Pages skipped."
+      page_navigation: "Navegação por página"
+      per_page_navigation: 'Seleção de elementos por página'
       pages:
-        next: "Next page"
-        previous: "Previous page"
-        page_number: Page %{number}
-        show_per_page: Show %{number} per page
+        page_number: Página %{number}
+        show_per_page: Mostrar %{number} por página
     placeholders:
       default: "-"
       subject: "Introduzir assunto aqui"
@@ -697,7 +696,8 @@ pt-PT:
           first_day: "Primeiro dia"
           last_day: "Último dia"
     text_are_you_sure: "Tem a certeza?"
-    breadcrumb: "Breadcrumb"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
+    breadcrumb: "Estrutural"
     text_data_lost: "Todos os dados inseridos serão perdidos."
     text_user_wrote: "%{value} escreveu:"
     types:
@@ -830,7 +830,7 @@ pt-PT:
       bulk_actions:
         edit: "Editar vários"
         delete: "Apagar vários"
-        duplicate: "Bulk duplicate"
+        duplicate: "Duplicado em massa"
         move: "Mudança em massa de projeto"
       button_clear: "Limpar"
       comment_added: "O comentário foi adicionado com sucesso."
@@ -876,7 +876,7 @@ pt-PT:
         header_with_parent: "Nova %{type} (Filho de %{parent_type} #%{id})"
         button: "Criar"
       duplicate:
-        title: "Duplicate work package"
+        title: "Duplicar pacote de trabalho"
       hierarchy:
         show: "Mostrar modo de hierarquia"
         hide: "Ocultar modo de hierarquia"

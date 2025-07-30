@@ -63,7 +63,6 @@ zh-TW:
         primary-button-color: "主按鈕"
         accent-color: "強調（Accent）"
         header-bg-color: "頁首背景"
-        header-item-bg-hover-color: "頁首背景（滑鼠停留）"
         main-menu-bg-color: "主畫面背景"
         main-menu-bg-selected-background: "主畫面背景（當選擇時）"
       custom_colors: "自訂顏色"
@@ -71,10 +70,6 @@ zh-TW:
       instructions:
         primary-button-color: "強烈的重點顏色，用於螢幕上最重要的按鈕。"
         accent-color: "連結和其他適當高亮元素的顏色。"
-        header-item-bg-hover-color: "當滑鼠移動到可點選的標題項目的背景顏色"
-        header-item-font-color: "可點擊的標題項目的文字顏色"
-        header-item-font-hover-color: "當滑鼠移動到可點選的標題項目的文字顏色"
-        header-border-bottom-color: "標題下方的細線。如果你不想要任何線段，請保持此欄位空白。"
         main-menu-bg-color: "左側選單的背景顏色"
       theme_warning: 改變佈景主題會覆蓋你的自訂樣式，你的變更將會遺失。你確定要繼續嗎？
     enterprise:
@@ -362,19 +357,34 @@ zh-TW:
       parent: "上層"
       blueprint: "樣式藍圖"
   global_search:
+    title:
+      all_projects: '在所有專案中搜尋 "%{search_term}"'
+      current_project: '在 %{project_name}中搜尋 "%{search_term}"'
+      project_and_subprojects: '在 %{project_name} 和所有子專案中搜尋 "%{search_term}"'
     placeholder: "在 %{app_title} 搜尋"
     overwritten_tabs:
       all: "全部"
       messages: "討論區"
       wiki_pages: "維基"
   groups:
+    edit:
+      synchronized_groups: "同步群組"
     index:
-      no_results_title_text: 目前沒有群組
-      no_results_content_text: 建立一個新的群組
+      description: 透過將使用者分組，您可以將他們新增為相同專案的成員，或指派相同的全局角色給他們。
+    table_component:
+      blank_slate:
+        description: 您可以定義具有特定名稱的使用者群組
+        title: 尚未建立群組
+      user_count: 用户數
     users:
       no_results_title_text: 目前沒有使用者在這個群組
     memberships:
       no_results_title_text: 目前沒有專案在這個群組
+    synchronized_groups:
+      blankslate:
+        action: 驗證設定
+        description: 當此群組與 OpenID 等外部身分提供者的群組自動同步時，將會顯示在此處。你可以在「驗證設定」中進行相關設定。
+        title: 尚未有同步群組
   incoming_mails:
     ignore_filenames: >
       請列出要排除的檔案名稱（比如：簽名或大頭貼）。每行請輸入一個檔案名稱。
@@ -677,9 +687,9 @@ zh-TW:
         tab: "表單設置"
       projects:
         tab: 專案
-        enable_all: Enable for all projects
-        select_projects: Select projects
-        select_projects_description: Select the projects in which you would like to use this type.
+        enable_all: 在所有專案中啟用
+        select_projects: 選取專案
+        select_projects_description: 選擇要使用此類型的專案。
       settings:
         tab: "設定"
         type_color_text: 選取的顏色可區分甘特圖或工作套件表格中的不同類型。因此建議使用強烈的顏色。
@@ -1098,7 +1108,6 @@ zh-TW:
       role:
         permissions: "權限"
       scim_client:
-        auth_provider: "身份驗證提供者"
         authentication_method: "驗證方式"
         jwt_sub: "主體宣告"
       status:
@@ -1144,7 +1153,7 @@ zh-TW:
         password_confirmation: "確認密碼"
         consented_at: "同意在"
       group:
-        identity_url: "Identity URL"
+        identity_url: "身份識別 URL"
       user_preference:
         header_look_and_feel: "介面與外觀"
         header_alerts: "提醒"
@@ -1153,11 +1162,11 @@ zh-TW:
         comments_sorting: "顯示工作套件活動，排序方式為"
         disable_keyboard_shortcuts: "停用鍵盤快速鍵"
         disable_keyboard_shortcuts_caption_html: |-
-          如果您使用螢幕閱讀器，或是想避免不小心觸發快捷操作，可以選擇停用預設的 <a href="%{href}">鍵盤快速鍵</a>。
+          如果你使用螢幕閱讀器，或想避免不小心觸發快捷鍵操作，你可以選擇停用預設的<a href="%{href}">鍵盤快捷鍵</a>。
         dismissed_enterprise_banners: "隱藏的企業版廣告"
         impaired: "協助工具模式"
-        auto_hide_popups: "Automatically hide success banners"
-        auto_hide_popups_caption: "When enabled, the green success banners will automatically disappear after 5 seconds."
+        auto_hide_popups: "自動關閉成功通知"
+        auto_hide_popups_caption: "啟用時，綠色的成功通知會在 5 秒內自動關閉。"
         warn_on_leaving_unsaved: "離開尚未儲存的工作套件時提示我"
         theme: "顏色模式"
         time_zone: "時區"
@@ -1230,7 +1239,7 @@ zh-TW:
         error_unauthorized: "無法被存取。"
         error_readonly: "被嘗試寫入但是無法寫入。"
         error_conflict: "在此同時，資訊已經被至少一個使用者更新"
-        error_not_found: "not found."
+        error_not_found: "未找到。"
         email: "不是一個有效的電子郵件地址。 "
         empty: "不可為空"
         enterprise_plan_required: "最少需要 %{plan_name}。"
@@ -1592,6 +1601,8 @@ zh-TW:
     models:
       attachment: "檔案"
       attribute_help_text: "屬性說明文字"
+      auth_provider:
+        other: "驗證提供者"
       category: "類別"
       comment: "留言"
       custom_action: "自訂動作"
@@ -1716,7 +1727,7 @@ zh-TW:
     estimated_time: "工時"
     email: "電子郵件"
     entity_type: "實體"
-    expires_at: "Expires on"
+    expires_at: "失效於"
     firstname: "名字"
     filter: "篩選條件"
     group: "群組"
@@ -1765,7 +1776,7 @@ zh-TW:
     title: "標題"
     type: "類型"
     typeahead: "自動完成"
-    uid: "Unique identifier"
+    uid: "唯一識別碼"
     updated_at: "更新於"
     updated_on: "更新於"
     uploader: "上傳者"
@@ -1840,7 +1851,7 @@ zh-TW:
   button_delete_watcher: "刪除監看者 %{name}"
   button_download: "下載"
   button_duplicate: "複本"
-  button_duplicate_and_follow: "Duplicate and follow"
+  button_duplicate_and_follow: "複製並追蹤"
   button_edit: "編輯"
   button_edit_associated_wikipage: "編輯關聯的維基頁面：%{page_title}"
   button_expand_all: "全部展開"
@@ -2030,7 +2041,7 @@ zh-TW:
         other: "%{count}  秒"
     units:
       minute_abbreviated:
-        other: "mins"
+        other: "分鐘"
       hour:
         other: "小時"
       day:
@@ -2085,7 +2096,7 @@ zh-TW:
       placeholder_users: 佔位使用者
       project_list_sharing: 專案清單分享
       readonly_work_packages: 唯讀工作套件
-      scim_api: SCIM server API
+      scim_api: SCIM 伺服器 API
       sso_auth_providers: 單一登入
       team_planner_view: 團隊規劃檢視
       virus_scanning: 掃描病毒
@@ -2153,8 +2164,8 @@ zh-TW:
         title: "Nextcloud 儲存空間的單一登入(SSO)"
         description: "使用單一登入為您的 Nextcloud 儲存空間啟用無縫且安全的驗證。簡化存取管理並提升使用者便利性。"
       scim_api:
-        title: "SCIM clients"
-        description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
+        title: "SCIM 用戶端"
+        description: "透過我們的 SCIM Server API，將 OpenProject 與 Microsoft Entra 或 Keycloak 等外部身分識別服務無縫整合，自動化使用者管理功能。此功能自企業版訂閱方案起提供。"
       virus_scanning:
         description: "確保在其他使用者存取 OpenProject 中上傳的檔案前，對其進行病毒掃描。"
       placeholder_users:
@@ -2491,7 +2502,7 @@ zh-TW:
       aggregation: "合併"
       api_and_webhooks: "API 和 Webhook"
     quick_add:
-      label: "打開快速添加菜單"
+      label: "新增…"
   my_account:
     access_tokens:
       no_results:
@@ -2791,6 +2802,7 @@ zh-TW:
   label_gantt_chart_plural: "甘特圖"
   label_general: "一般"
   label_generate_key: "產生一個金鑰"
+  label_global_modules: "全域模組"
   label_global_roles: "全域角色"
   label_git_path: ".git 目錄的路徑"
   label_greater_or_equal: ">="
@@ -2934,6 +2946,7 @@ zh-TW:
   label_no_due_date: "無完成日期"
   label_no_start_date: "無開始日期"
   label_no_parent_page: "無上層頁面"
+  label_notification_center_plural: "通知"
   label_nothing_display: "沒有可以顯示的"
   label_nobody: "沒有人"
   label_not_configured: "尚未設定"
@@ -2966,7 +2979,7 @@ zh-TW:
   label_password_rule_special: "特殊字元"
   label_password_rule_uppercase: "大寫"
   label_path_encoding: "路徑編碼"
-  label_per_page: "每頁"
+  label_per_page: "每頁："
   label_people: "人員"
   label_permissions: "權限"
   label_permissions_report: "權限列表"
@@ -3142,6 +3155,7 @@ zh-TW:
   label_user_mail_option_only_my_events: "只針對我關注的或者與我有關的事情"
   label_user_mail_option_only_owner: "針對我是擁有者的事情"
   label_user_mail_option_selected: "只有在已選取的專案的任何事件"
+  label_user_menu: "使用者選單"
   label_user_new: "新增使用者"
   label_user_plural: "使用者"
   label_user_search: "搜尋使用者"
@@ -3522,7 +3536,7 @@ zh-TW:
   permission_comment_news: "在「最新消息」留言"
   permission_commit_access: "讀/寫 權限版本庫 (Commit)"
   permission_copy_projects: "複製專案"
-  permission_copy_work_packages: "Duplicate work packages"
+  permission_copy_work_packages: "複製工作套件"
   permission_create_backup: "建立備份"
   permission_delete_work_package_watchers: "刪除監看者"
   permission_delete_work_packages: "刪除工作套件"

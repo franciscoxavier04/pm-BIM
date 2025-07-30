@@ -64,11 +64,8 @@ gem "scimitar", "~> 2.11"
 gem "acts_as_list", "~> 1.2.0"
 gem "acts_as_tree", "~> 2.9.0"
 gem "awesome_nested_set", "~> 3.8.0"
-gem "closure_tree", "~> 8.0.0"
+gem "closure_tree", "~> 9.0.0"
 gem "rubytree", "~> 2.1.0"
-# Only used in down migrations now.
-# Is to be removed once the referencing migrations have been squashed.
-gem "typed_dag", "~> 2.0.2", require: false
 
 gem "addressable", "~> 2.8.0"
 
@@ -124,7 +121,7 @@ gem "sys-filesystem", "~> 1.5.0", require: false
 
 gem "bcrypt", "~> 3.1.6"
 
-gem "multi_json", "~> 1.15.0"
+gem "multi_json", "~> 1.17.0"
 gem "oj", "~> 3.16.0"
 
 gem "daemons"
@@ -157,7 +154,7 @@ gem "structured_warnings", "~> 0.5.0"
 gem "airbrake", "~> 13.0.0", require: false
 
 gem "markly", "~> 0.13" # another markdown parser like commonmarker, but with AST support used in PDF export
-gem "md_to_pdf", git: "https://github.com/opf/md-to-pdf", ref: "9961752e4d1e990ec1d4bf48436de9277838763f"
+gem "md_to_pdf", git: "https://github.com/opf/md-to-pdf", ref: "6c565541bfa390c58d90d49aa9b487777704fc66"
 gem "prawn", "~> 2.4"
 gem "ttfunk", "~> 1.7.0" # remove after https://github.com/prawnpdf/prawn/issues/1346 resolved.
 
@@ -169,6 +166,9 @@ gem "meta-tags", "~> 2.22.0"
 gem "paper_trail", "~> 16.0.0"
 
 gem "op-clamav-client", "~> 3.4", require: "clamav"
+
+# Global ID for polymorphic associations
+gem "globalid", "~> 1.2"
 
 # Recurring meeting events definition
 gem "ice_cube", "~> 0.17.0"
@@ -206,12 +206,11 @@ gem "plaintext", "~> 0.3.2"
 
 gem "ruby-progressbar", "~> 1.13.0", require: false
 
-gem "mini_magick", "~> 5.2.0", require: false
+gem "mini_magick", "~> 5.3.0", require: false
 
 gem "validate_url"
 
 # Storages support code
-gem "dry-auto_inject"
 gem "dry-container"
 gem "dry-monads"
 gem "dry-validation"
@@ -363,7 +362,7 @@ group :development, :test do
   gem "erblint-github", require: false
 
   # Brakeman scanner
-  gem "brakeman", "~> 7.0.0"
+  gem "brakeman", "~> 7.1.0"
 
   # i18n-tasks helps find and manage missing and unused translations.
   gem "i18n-tasks", "~> 1.0.13", require: false
@@ -376,7 +375,7 @@ gem "bootsnap", "~> 1.18.0", require: false
 
 # API gems
 gem "grape", "~> 2.3.0"
-gem "grape_logging", "~> 1.8.4"
+gem "grape_logging", "~> 2.1.1"
 gem "roar", "~> 1.2.0"
 
 # CORS for API
@@ -392,18 +391,16 @@ gem "disposable", "~> 0.6.2"
 # Used for formula evaluation of calculated values
 gem "dentaku", "~> 3.5"
 
-platforms :mri, :mingw, :x64_mingw do
-  group :postgres do
-    gem "pg", "~> 1.5.0"
-  end
-
-  # Support application loading when no database exists yet.
-  gem "activerecord-nulldb-adapter", "~> 1.1.1"
-
-  # Have application level locks on the database to have a mutex shared between workers/hosts.
-  # We e.g. employ this to safeguard the creation of journals.
-  gem "with_advisory_lock", "~> 5.3.0"
+group :postgres do
+  gem "pg", "~> 1.5.0"
 end
+
+# Support application loading when no database exists yet.
+gem "activerecord-nulldb-adapter", "~> 1.1.1"
+
+# Have application level locks on the database to have a mutex shared between workers/hosts.
+# We e.g. employ this to safeguard the creation of journals.
+gem "with_advisory_lock", "~> 7.0.1"
 
 # Load Gemfile.modules explicitly to allow dependabot to work
 eval_gemfile "./Gemfile.modules"
@@ -417,6 +414,6 @@ gemfiles.each do |file|
   send(:eval_gemfile, file) if File.readable?(file)
 end
 
-gem "openproject-octicons", "~>19.25.0"
-gem "openproject-octicons_helper", "~>19.25.0"
-gem "openproject-primer_view_components", "~>0.70.3"
+gem "openproject-octicons", "~>19.26.2"
+gem "openproject-octicons_helper", "~>19.26.2"
+gem "openproject-primer_view_components", "~>0.70.4"

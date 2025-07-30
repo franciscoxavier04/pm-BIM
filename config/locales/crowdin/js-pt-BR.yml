@@ -297,7 +297,7 @@ pt-BR:
           "16_2":
             standard:
               new_features_html: >
-                A versão contém vários novos recursos e aprimoramentos, como <br> <ul class="%{list_styling_class}"> <li>Novo cabeçalho e barra lateral com navegação e design aprimorados.</li> <li>Experiência mais suave com campos personalizados, relações, lembretes, reuniões e controle do meu tempo.</li> <li>Suporte a idiomas não latinos e emojis nas exportações de PDF.</li> <li>Opção para desativar os atalhos de teclado para melhorar a acessibilidade.</li> <li>Servidor SCIM via API (complemento Enterprise).</li> <li>Suporte à API para comentários internos.</li> </ul>
+                A versão inclui vários novos recursos e melhorias, tais como <br> <ul class="%{list_styling_class}"> <li>Novo cabeçalho e barra lateral com navegação e design aprimorados.</li> <li>Experiência mais fluida com Campos personalizados, Relações, Lembretes, Reuniões e Meu acompanhamento de tempo.</li> <li>Suporte a idiomas não latinos e emojis em exportações PDF.</li> <li>Opção para desativar atalhos de teclado para melhor acessibilidade.</li> <li>Servidor SCIM via API (add-on Enterprise).</li> <li>Suporte à API para comentários internos.</li> </ul>
     ical_sharing_modal:
       title: "Assinar calendário"
       inital_setup_error_message: "Ocorreu um erro ao buscar dados."
@@ -642,12 +642,12 @@ pt-BR:
       title: "Confirme sua senha para continuar"
     pagination:
       no_other_page: "Você está na página única."
-      pagination_controls: "Controles de paginação"
+      pages_skipped: "Pages skipped."
+      page_navigation: "Navegação de página"
+      per_page_navigation: 'Itens por seleção de página'
       pages:
-        next: "Próxima página"
-        previous: "Página anterior"
         page_number: Página %{number}
-        show_per_page: Mostrar %{number} por página
+        show_per_page: Exibir %{number} por página
     placeholders:
       default: "-"
       subject: "Informe o assunto aqui"
@@ -695,7 +695,8 @@ pt-BR:
           first_day: "Primeiro dia"
           last_day: "Último dia"
     text_are_you_sure: "Você tem certeza?"
-    breadcrumb: "Rota de navegação"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
+    breadcrumb: "Trilha de navegação"
     text_data_lost: "Todos os dados inseridos serão perdidos."
     text_user_wrote: "%{value} escreveu:"
     types:
@@ -828,7 +829,7 @@ pt-BR:
       bulk_actions:
         edit: "Edição em massa"
         delete: "Exclusão em massa"
-        duplicate: "Bulk duplicate"
+        duplicate: "Duplicar em lote"
         move: "Mudança em massa de projeto"
       button_clear: "Limpar"
       comment_added: "O comentário foi adicionado com sucesso."
@@ -874,7 +875,7 @@ pt-BR:
         header_with_parent: "Novo %{type} (Filho de %{parent_type} #%{id})"
         button: "Criar"
       duplicate:
-        title: "Duplicate work package"
+        title: "Duplicar pacote de trabalho"
       hierarchy:
         show: "Mostrar o modo de hierarquia"
         hide: "Ocultar o modo de hierarquia"

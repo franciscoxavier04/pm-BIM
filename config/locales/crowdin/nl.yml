@@ -63,7 +63,6 @@ nl:
         primary-button-color: "Primaire knop"
         accent-color: "Accent"
         header-bg-color: "Koptekst achtergrond"
-        header-item-bg-hover-color: "Header background on hover"
         main-menu-bg-color: "Achtergrond hoofdmenu"
         main-menu-bg-selected-background: "Hoofdmenu wanneer geselecteerd"
       custom_colors: "Aangepaste kleuren"
@@ -71,10 +70,6 @@ nl:
       instructions:
         primary-button-color: "Sterke accentkleur, gebruikt voor de belangrijkste knop op een scherm."
         accent-color: "Kleur voor links en andere goed uitgelichte elementen."
-        header-item-bg-hover-color: "De achtergrondkleur van klikbare header items wanneer deze aangewezen door de muis."
-        header-item-font-color: "De lettertypekleur van klikbare header items."
-        header-item-font-hover-color: "De achtergrondkleur van klikbare header items wanneer deze aangewezen worden door de muis."
-        header-border-bottom-color: "Dunne lijn onder de kop. Laat dit veld leeg als u geen lijn wilt."
         main-menu-bg-color: "De kleur van de achtergrond van de linkerzijde menu's."
       theme_warning: Als u het thema wijzigt, wordt uw aangepaste stijl overschreven. Het ontwerp gaat dan verloren. Weet je zeker dat je door wilt gaan?
     enterprise:
@@ -121,7 +116,7 @@ nl:
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -360,19 +355,34 @@ nl:
       parent: "Bovenliggend werkpakket"
       blueprint: "Patroonblauwdruk"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Zoeken in %{app_title}"
     overwritten_tabs:
       all: "Alle"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Er zijn momenteel geen groepen.
-      no_results_content_text: Maak een nieuwe groep
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Er zijn momenteel geen gebruikers deel van deze groep.
     memberships:
       no_results_title_text: Er zijn momenteel projecten deel van deze groep.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Geef een lijst van namen op om te negeren bij het verwerken van bijlagen voor inkomende mails (bijv. handtekeningen of iconen). Voer één bestandsnaam per regel in.
@@ -1106,7 +1116,6 @@ nl:
       role:
         permissions: "Machtigingen"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1161,7 +1170,7 @@ nl:
         comments_sorting: "Display work package activity sorted by"
         disable_keyboard_shortcuts: "Disable keyboard shortcuts"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Toegankelijkheidsmodus"
         auto_hide_popups: "Automatically hide success banners"
@@ -1602,6 +1611,9 @@ nl:
     models:
       attachment: "Bestand"
       attribute_help_text: "Kenmerk help-teksten"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "Categorie"
       comment: "Commentaar"
       custom_action: "Aangepaste actie"
@@ -2534,7 +2546,7 @@ nl:
       aggregation: "Aggregatie"
       api_and_webhooks: "API en webhooks"
     quick_add:
-      label: "Open snel toevoegenmenu"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2834,6 +2846,7 @@ nl:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Algemeen"
   label_generate_key: "Genereren van een sleutel"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: "Pad naar .git map"
   label_greater_or_equal: ">="
@@ -2977,6 +2990,7 @@ nl:
   label_no_due_date: "geen einddatum"
   label_no_start_date: "geen startdatum"
   label_no_parent_page: "Geen bovenliggende pagina"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Niets om weer te geven"
   label_nobody: "niemand"
   label_not_configured: "Not configured"
@@ -3009,7 +3023,7 @@ nl:
   label_password_rule_special: "Speciale tekens"
   label_password_rule_uppercase: "Hoofdletters"
   label_path_encoding: "Pad codering"
-  label_per_page: "Per pagina"
+  label_per_page: "Per page:"
   label_people: "Mensen"
   label_permissions: "Machtigingen"
   label_permissions_report: "Machtigingen verslag"
@@ -3185,6 +3199,7 @@ nl:
   label_user_mail_option_only_my_events: "Alleen voor dingen die ik kijk of waar ik bij betrokken ben"
   label_user_mail_option_only_owner: "Alleen voor dingen waar ik de eigenaar van ben"
   label_user_mail_option_selected: "Voor een gebeurtenis op de geselecteerde projecten alleen"
+  label_user_menu: "User menu"
   label_user_new: "Nieuwe gebruiker"
   label_user_plural: "Gebruikers"
   label_user_search: "Zoeken naar gebruiker"

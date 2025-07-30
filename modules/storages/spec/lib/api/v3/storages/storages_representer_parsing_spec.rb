@@ -37,11 +37,11 @@ RSpec.describe API::V3::Storages::StorageRepresenter, "parsing" do
 
   subject(:parsed) { representer.from_hash parsed_hash }
 
-  describe "OneDrive/SharePoint" do
+  describe "OneDrive" do
     let(:storage) { build_stubbed(:one_drive_storage) }
     let(:parsed_hash) do
       {
-        "name" => "My SharePoint",
+        "name" => "My OneDrive",
         "tenantId" => "e36f1dbc-fdae-427e-b61b-0d96ddfb81a4",
         "_links" => {
           "type" => {
@@ -53,7 +53,7 @@ RSpec.describe API::V3::Storages::StorageRepresenter, "parsing" do
 
     context "with basic attributes" do
       it "is parsed correctly" do
-        expect(parsed).to have_attributes(name: "My SharePoint",
+        expect(parsed).to have_attributes(name: "My OneDrive",
                                           tenant_id: "e36f1dbc-fdae-427e-b61b-0d96ddfb81a4",
                                           provider_type: "Storages::OneDriveStorage")
 

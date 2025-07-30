@@ -643,11 +643,10 @@ ca:
       title: "Confirma la teva contrasenya per continuar"
     pagination:
       no_other_page: "Estàs en la pàgina única."
+      pages_skipped: "Pages skipped."
       page_navigation: "Pagination navigation"
       per_page_navigation: 'Items per page selection'
       pages:
-        next: "Next page"
-        previous: "Previous page"
         page_number: Page %{number}
         show_per_page: Show %{number} per page
     placeholders:
@@ -697,6 +696,7 @@ ca:
           first_day: "Primer dia"
           last_day: "Últim dia"
     text_are_you_sure: "N'esteu segur?"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
     breadcrumb: "Breadcrumb"
     text_data_lost: "Totes les dades entrades es perdran."
     text_user_wrote: "%{value} va escriure:"

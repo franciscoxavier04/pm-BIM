@@ -162,7 +162,7 @@ ru:
                     6. *Завершите ваши задачи в проекте*: &rightarrow; Перейдите в [Пакеты работ &rightarrow; Задачи]({{opSetting:base_url}}/projects/demo-project/work_packages/details/##wp.id:set_date_and_location_of_conference/overview?query_id=##query.id:demo_project__query__tasks).
 
                     Здесь вы найдете наши [руководства пользователя](https://www.openproject.org/docs/user-guide/).
-                    Пожалуйста, сообщите нам, если у вас есть какие-либо вопросы или нужна поддержка. Свяжитесь с нами: [поддержка[at]openproject.com](mailto:support@openproject.com).
+                    Пожалуйста, сообщите нам, если у вас есть какие-либо вопросы или нужна поддержка. Свяжитесь с нами: [support[at]openproject.com](mailto:support@openproject.com).
               item_5:
                 options:
                   name: Пакет работ

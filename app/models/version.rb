@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -93,8 +95,8 @@ class Version < ApplicationRecord
   def spent_hours
     @spent_hours ||= TimeEntry
       .not_ongoing
-      .includes(:work_package)
-      .where(work_packages: { version_id: id })
+      .joins("INNER JOIN work_packages ON entity_type = 'WorkPackage' AND work_packages.id = entity_id")
+      .where(work_packages: { version_id: id }, entity_type: "WorkPackage")
       .sum(:hours)
       .to_f
   end

@@ -645,11 +645,10 @@ lt:
       title: "Norėdami tęsti, patvirtinkite savo slaptažodį"
     pagination:
       no_other_page: "Jūs esate vieninteliame puslapyje."
+      pages_skipped: "Pages skipped."
       page_navigation: "Pagination navigation"
       per_page_navigation: 'Items per page selection'
       pages:
-        next: "Next page"
-        previous: "Previous page"
         page_number: Page %{number}
         show_per_page: Show %{number} per page
     placeholders:
@@ -699,6 +698,7 @@ lt:
           first_day: "Pirma diena"
           last_day: "Paskutinė diena"
     text_are_you_sure: "Ar esate įsitikinę?"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
     breadcrumb: "Breadcrumb"
     text_data_lost: "Visa įvesta informacija bus prarasta."
     text_user_wrote: "%{value} parašė:"

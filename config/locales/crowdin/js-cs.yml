@@ -645,11 +645,10 @@ cs:
       title: "Pro pokračování potvrďte vaše heslo"
     pagination:
       no_other_page: "Jste na jediné stránce."
+      pages_skipped: "Pages skipped."
       page_navigation: "Pagination navigation"
       per_page_navigation: 'Items per page selection'
       pages:
-        next: "Next page"
-        previous: "Previous page"
         page_number: Page %{number}
         show_per_page: Show %{number} per page
     placeholders:
@@ -699,6 +698,7 @@ cs:
           first_day: "První den"
           last_day: "Poslední den"
     text_are_you_sure: "Jste si jisti?"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
     breadcrumb: "Breadcrumb"
     text_data_lost: "Všechna zadaná data budou ztracena."
     text_user_wrote: "%{value} napsal:"

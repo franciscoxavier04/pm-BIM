@@ -305,7 +305,7 @@ module ApplicationHelper
 
   def body_data_attributes(local_assigns)
     {
-      controller: "application hover-card-trigger",
+      controller: "application hover-card-trigger beforeunload",
       relative_url_root: root_path,
       overflowing_identifier: ".__overflowing_body",
       rendered_at: Time.zone.now.iso8601,
@@ -482,8 +482,8 @@ module ApplicationHelper
     end
   end
 
-  def link_to_content_update(text, url_params = {}, html_options = {})
-    link_to(text, url_params, html_options.reverse_merge(target: "_top"))
+  def link_to_content_update(name, options = {}, html_options = {}, &)
+    link_to(name, options, html_options.reverse_merge(target: "_top"), &)
   end
 
   def password_complexity_requirements

@@ -45,6 +45,7 @@ import { fromEvent } from 'rxjs';
     </op-resizer>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class WpResizerComponent extends UntilDestroyedMixin implements OnInit, AfterViewInit, OnDestroy {
   @Input() elementClass:string;

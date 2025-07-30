@@ -642,11 +642,10 @@ vi:
       title: "Xác nhận mật khẩu của bạn để tiếp tục"
     pagination:
       no_other_page: "Bạn đang ở trang duy nhất."
+      pages_skipped: "Pages skipped."
       page_navigation: "Pagination navigation"
       per_page_navigation: 'Items per page selection'
       pages:
-        next: "Next page"
-        previous: "Previous page"
         page_number: Page %{number}
         show_per_page: Show %{number} per page
     placeholders:
@@ -696,6 +695,7 @@ vi:
           first_day: "Ngày đầu tiên"
           last_day: "Ngày cuối cùng"
     text_are_you_sure: "Bạn có chắc không?"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
     breadcrumb: "Breadcrumb"
     text_data_lost: "Tất cả dữ liệu đã nhập sẽ bị mất."
     text_user_wrote: "%{value} đã viết:"

@@ -31,6 +31,9 @@ zh-TW:
         spent: "花費"
         spent_on: "日期"
         logged_by: "記錄者"
+        entity: 登錄為
+        entity_id: 登錄為
+        entity_gid: 登錄為
       cost_type:
         unit: "單位名稱"
         unit_plural: "單位名稱(複數)"
@@ -58,6 +61,9 @@ zh-TW:
         start_time: 開始時間
         end_time: 完成時間
         time: 時間
+        entity: 登錄為
+        entity_id: 登錄為
+        entity_gid: 登錄為
     models:
       time_entry:
         other: "時間項"
@@ -91,6 +97,7 @@ zh-TW:
   button_log_time: "日誌"
   button_add_activity: "活動"
   button_add_time_entry: "工時紀錄"
+  button_stop_timer: "停止計時器"
   caption_booked_on_project: "已記錄在專案上"
   caption_default: "預設"
   caption_default_rate_history_for: "%{user} 的費率歷史記錄"
@@ -169,6 +176,7 @@ zh-TW:
   label_day: "日"
   label_today_capitalized: "今天"
   label_view_mode_switcher: "變更檢視"
+  label_timer_since: "從 %{time}開始"
   placeholder_activity_select_work_package_first: 需要先選擇工作套件
   notice_something_wrong: "發生錯誤，請重試。"
   notice_successful_restore: "復原成功。"
@@ -176,6 +184,7 @@ zh-TW:
   notice_cost_logged_successfully: "單位成本紀錄成功。"
   notice_different_time_zones: "此使用者使用不同的時區 (%{tz})。將使用他們的時區記錄時間。"
   notice_time_entry_update_failed: "更新工時紀錄失敗。錯誤內容：%{errors}"
+  notice_time_entry_delete_failed: "刪除時間紀錄時發生錯誤：%{errors}"
   permission_edit_cost_entries: "編輯自己紀錄的單位成本"
   permission_edit_own_cost_entries: "編輯自己紀錄的單位成本"
   permission_edit_hourly_rates: "編輯小時費率"
