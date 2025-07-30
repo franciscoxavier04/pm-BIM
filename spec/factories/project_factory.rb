@@ -43,6 +43,7 @@ FactoryBot.define do
     enabled_module_names { OpenProject::AccessControl.available_project_modules }
     public { false }
     templated { false }
+    type { "Project" }
 
     callback(:after_build) do |project, evaluator|
       disabled_modules = Array(evaluator.disable_modules).map(&:to_s)
