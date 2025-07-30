@@ -41,7 +41,6 @@ import each from 'lodash-es/each';
 import extend from 'lodash-es/extend';
 import get from 'lodash-es/get';
 import isEmpty from 'lodash-es/isEmpty';
-import map from 'lodash-es/map';
 import merge from 'lodash-es/merge';
 
 export interface QueryPropsFilter {
@@ -458,11 +457,11 @@ export class UrlParamsHelperService {
     return idFromLink(href as string);
   }
 
-  public buildV3GetValuesFromFilter(filter:QueryFilterInstanceResource|QueryFilterResource) {
+  public buildV3GetValuesFromFilter(filter:QueryFilterInstanceResource|QueryFilterResource):string[] {
     if (filter.values) {
-      return map(filter.values, (v:any) => this.queryFilterValueToParam(v));
+      return filter.values.map((v:any) => this.queryFilterValueToParam(v));
     }
-    return map(filter._links.values, (v:any) => idFromLink(v.href as string));
+    return filter._links.values.map((v:any) => idFromLink(v.href as string));
   }
 
   private buildV3GetOperatorIdFromFilter(filter:QueryFilterInstanceResource) {

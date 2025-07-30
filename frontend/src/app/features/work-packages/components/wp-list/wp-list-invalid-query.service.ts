@@ -38,7 +38,6 @@ import { QueryGroupByResource } from 'core-app/features/hal/resources/query-grou
 import { QueryColumn } from '../wp-query/query-column';
 import compact from 'lodash-es/compact';
 import each from 'lodash-es/each';
-import map from 'lodash-es/map';
 import without from 'lodash-es/without';
 
 @Injectable()
@@ -55,7 +54,7 @@ export class WorkPackagesListInvalidQueryService {
   }
 
   private restoreFilters(query:QueryResource, payload:QueryResource, querySchema:SchemaResource) {
-    let filters = map((payload.filters), (filter) => {
+    let filters = payload.filters.map((filter) => {
       const filterInstanceSchema = querySchema.filtersSchemas.elements.find((schema:QueryFilterInstanceSchemaResource) => (schema.filter.allowedValues as QueryFilterResource[])[0].href === filter.filter.href);
 
       if (!filterInstanceSchema) {
@@ -84,7 +83,7 @@ export class WorkPackagesListInvalidQueryService {
   }
 
   private restoreColumns(query:QueryResource, stubQuery:QueryResource, schema:SchemaResource) {
-    let columns = map(stubQuery.columns, (column) => (schema.columns.allowedValues as QueryColumn[]).find((candidate) => candidate.href === column.href));
+    let columns = stubQuery.columns.map((column) => (schema.columns.allowedValues as QueryColumn[]).find((candidate) => candidate.href === column.href));
 
     columns = compact(columns);
 
@@ -93,7 +92,7 @@ export class WorkPackagesListInvalidQueryService {
   }
 
   private restoreSortBy(query:QueryResource, stubQuery:QueryResource, schema:SchemaResource) {
-    let sortBys = map((stubQuery.sortBy), (sortBy) => (schema.sortBy.allowedValues as QuerySortByResource[]).find((candidate) => candidate.href === sortBy.href));
+    let sortBys = stubQuery.sortBy.map((sortBy) => (schema.sortBy.allowedValues as QuerySortByResource[]).find((candidate) => candidate.href === sortBy.href));
 
     sortBys = compact(sortBys);
 

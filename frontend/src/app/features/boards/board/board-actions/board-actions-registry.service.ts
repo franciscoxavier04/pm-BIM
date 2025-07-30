@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BoardActionService } from 'core-app/features/boards/board/board-actions/board-action.service';
 import { BannersService } from 'core-app/core/enterprise/banners.service';
-import map from 'lodash-es/map';
 
 export interface ITileViewEntry {
   text:string;
@@ -25,7 +24,7 @@ export class BoardActionsRegistryService {
   }
 
   public available():ITileViewEntry[] {
-    return map(this.mapping, (service:BoardActionService, attribute:string) => ({
+    return Object.entries(this.mapping).map(([attribute, service]) => ({
       attribute,
       text: service.localizedName,
       icon: '',

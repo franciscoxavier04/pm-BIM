@@ -18,7 +18,6 @@ import {
 } from './grouped-rows-helpers';
 import isArray from 'lodash-es/isArray';
 import isEqualWith from 'lodash-es/isEqualWith';
-import map from 'lodash-es/map';
 
 export const groupRowClass = '-group-row';
 
@@ -112,7 +111,7 @@ export class GroupedRenderPass extends PlainRenderPass {
       return false;
     }
 
-    const joinedOrderedHrefs = (objects:any[]) => map(objects, (object) => object.href).sort().join(', ');
+    const joinedOrderedHrefs = (objects:any[]) => objects.map((object) => object.href).sort().join(', ');
 
     return isEqualWith(
       property,

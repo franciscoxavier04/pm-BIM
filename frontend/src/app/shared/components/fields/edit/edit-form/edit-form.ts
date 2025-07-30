@@ -46,7 +46,6 @@ import { FormResource } from 'core-app/features/hal/resources/form-resource';
 import each from 'lodash-es/each';
 import isEmpty from 'lodash-es/isEmpty';
 import keys from 'lodash-es/keys';
-import map from 'lodash-es/map';
 
 export const activeFieldContainerClassName = 'inline-edit--active-field';
 export const activeFieldClassName = 'inline-edit--field';
@@ -185,7 +184,7 @@ export abstract class EditForm<T extends HalResource = HalResource> {
     const openFields = keys(this.activeFields);
 
     // Call onSubmit handlers
-    await Promise.all(map(this.activeFields, (handler:EditFieldHandler) => handler.onSubmit()));
+    await Promise.all(Object.values(this.activeFields).map((handler) => handler.onSubmit()));
 
     return new Promise<T>((resolve, reject) => {
       this.halEditing.save<T, ResourceChangeset<T>>(this.change)

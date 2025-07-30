@@ -4,7 +4,6 @@ import { ChartOptions, Plugin } from 'chart.js';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { GroupObject } from 'core-app/features/hal/resources/wp-collection-resource';
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
-import map from 'lodash-es/map';
 import uniq from 'lodash-es/uniq';
 
 export interface WorkPackageEmbeddedGraphDataset {
@@ -185,12 +184,12 @@ export class WorkPackageEmbeddedGraphComponent {
   }
 
   public get chartDescription():string {
-    const chartDataDescriptions = map(this.chartLabels, (label, index) => {
+    const chartDataDescriptions = this.chartLabels.map((label, index) => {
       if (this.chartData.length === 1) {
         const allCount = this.chartData[0].data[index];
         return `${allCount} ${label}`;
       }
-      const labelCounts = map(this.chartData, (dataset) => `${dataset.data[index]} ${dataset.label}`);
+      const labelCounts = this.chartData.map((dataset) => `${dataset.data[index]} ${dataset.label}`);
       return `${label}: ${labelCounts.join(', ')}`;
     });
 
