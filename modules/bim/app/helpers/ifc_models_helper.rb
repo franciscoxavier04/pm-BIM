@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module IfcModelsHelper
   def ifc_model_data_object(all_models, shown_models)
     all_converted_models = converted_ifc_models(all_models)
@@ -41,6 +43,6 @@ module IfcModelsHelper
   end
 
   def ifc_model_xkt_attachment_ids(models)
-    models.map { |model| [model.id, model.xkt_attachment.id] }.to_h
+    models.to_h { |model| [model.id, model.xkt_attachment.id] }
   end
 end
