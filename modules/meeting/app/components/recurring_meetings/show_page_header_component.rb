@@ -49,6 +49,11 @@ module RecurringMeetings
       end
     end
 
+    def send_emails?
+      @meeting.notify? &&
+        User.current.allowed_in_project?(:send_meeting_invites_and_outcomes, @meeting.project)
+    end
+
     def dynamic_path
       polymorphic_path([:new, @project, :recurring_meeting])
     end
