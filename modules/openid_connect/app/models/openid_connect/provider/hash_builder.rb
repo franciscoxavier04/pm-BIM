@@ -56,7 +56,9 @@ module OpenIDConnect
         limit_self_registration:,
         end_session_endpoint:,
         attribute_map:,
-        post_logout_redirect_uri:
+        post_logout_redirect_uri:,
+        claims:,
+        acr_values:
       }.merge(attribute_map)
        .merge(provider_specific_to_h)
        .compact_blank
