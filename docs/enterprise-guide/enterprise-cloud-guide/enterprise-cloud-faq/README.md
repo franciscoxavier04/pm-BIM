@@ -123,7 +123,7 @@ Yes. The protection of personal data is for OpenProject more than just a legal r
 
 ### Is the Enterprise cloud certified?
 
-Yes, both data centers AWS and Netways are ISO 27001 certified. For more information please visit the [information regarding security measures](https://www.openproject.org/legal/data-processing-agreement/technical-and-organizational-data-security-measures) on our website.
+Yes, both data centers AWS and Scaleway are ISO 27001 certified. For more information please visit the [information regarding security measures](https://www.openproject.org/legal/data-processing-agreement/technical-and-organizational-data-security-measures) on our website.
 
 ### Does OpenProject employ sub-processors for the OpenProject Enterprise cloud edition from outside the EU?
 
@@ -138,3 +138,11 @@ This infrastructure is hosted at AWS in Dublin. For sending transactional emails
 **OpenProject.eu**
 
 This hosting infrastructure all sub-processors are located in the EU. There is no transfer to sub-processors outside the EU (e.g. AWS). We send transactional emails with Rapidmail. 
+
+**Old OpenProject.eu Shard (Germany)**
+
+Prior to July 2025, our services were hosted across both Netways and Scaleway data center environments. Starting July 2025, Scaleway will become our sole data center provider.
+
+All existing customers will be migrated to Scaleway in September 2025. Customers who choose not to transition to Scaleway can opt out. In that case:
+-   Contracts will be automatically terminated by February 2026, or
+-   Customers may cancel their contracts earlier if they wish.
