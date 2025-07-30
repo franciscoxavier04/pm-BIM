@@ -56,7 +56,7 @@ import {
   getPartsFromTimestamp,
   offsetToUtcString,
 } from 'core-app/features/work-packages/components/wp-baseline/baseline-helpers';
-import * as moment from 'moment-timezone';
+import moment from 'moment-timezone';
 import { BannersService } from 'core-app/core/enterprise/banners.service';
 import { enterpriseDocsUrl } from 'core-app/core/setup/globals/constants.const';
 import { DayElement } from 'flatpickr/dist/types/instance';
@@ -68,6 +68,7 @@ const DEFAULT_SELECTED_TIME = '08:00';
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './baseline.component.html',
   styleUrls: ['./baseline.component.sass'],
+  standalone: false,
 })
 export class OpBaselineComponent extends UntilDestroyedMixin implements OnInit {
   @HostBinding('class.op-baseline') className = true;

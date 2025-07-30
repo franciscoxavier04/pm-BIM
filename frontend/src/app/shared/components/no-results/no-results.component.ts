@@ -34,6 +34,7 @@ import { populateInputsFromDataset } from 'core-app/shared/components/dataset-in
   templateUrl: './no-results.component.html',
   selector: 'op-no-results',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class NoResultsComponent {
   @Input() title:string;

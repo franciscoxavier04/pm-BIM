@@ -63,7 +63,6 @@ ca:
         primary-button-color: "Botó principal"
         accent-color: "Accent"
         header-bg-color: "Fons de capçalera"
-        header-item-bg-hover-color: "Fons de capçalera en passar el ratolí"
         main-menu-bg-color: "Fons del menú principal"
         main-menu-bg-selected-background: "Menú principal quan es selecciona"
       custom_colors: "Colors personalitzats"
@@ -71,10 +70,6 @@ ca:
       instructions:
         primary-button-color: "Color d'accent fort, utilitzat per al botó més important de la pantalla."
         accent-color: "Color per a enllaços i altres elements ben destacats."
-        header-item-bg-hover-color: "Color de fons dels elements clicables de la capçalera quan el ratolí hi passa per damunt."
-        header-item-font-color: "Color de lletra dels elements clicables de la capçalera."
-        header-item-font-hover-color: "Color de lletra dels elements clicables de la capçalera quan el ratolí hi passa per damunt."
-        header-border-bottom-color: "Una línia prima sota la capçalera. Deixa aquest camp buit si no vols cap línia."
         main-menu-bg-color: "Color de fons del menú lateral de l'esquerra."
       theme_warning: Canviant el tema substituiràs el teu estil personalitzat. El disseny es perdrà. Estàs segur que vols continuar?
     enterprise:
@@ -121,7 +116,7 @@ ca:
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -360,19 +355,34 @@ ca:
       parent: "Pare"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Cerca a %{app_title}"
     overwritten_tabs:
       all: "Totes"
       messages: "Fòrum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Actualment no hi ha cap grup.
-      no_results_content_text: Crear un nou grup
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Actualment cap usuari forma part d'aquest grup.
     memberships:
       no_results_title_text: Actualment no hi ha projectes que formin part d'aquest grup.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Especifica una llista de noms per a ignorar quan es processin adjuncions per a correus electrònics entrants (p.e. signatures o icones). Introduïu un nom de fitxer per línia.
@@ -1107,7 +1117,6 @@ ca:
       role:
         permissions: "Permisos"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1603,6 +1612,9 @@ ca:
     models:
       attachment: "Fitxer"
       attribute_help_text: "Texts d'ajuda d'atributs"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "Categoria"
       comment: "Comentari"
       custom_action: "Accions personalitzades"
@@ -2535,7 +2547,7 @@ ca:
       aggregation: "Agregació"
       api_and_webhooks: "API i webhooks"
     quick_add:
-      label: "Obre el menú d'afegir ràpidament"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2835,6 +2847,7 @@ ca:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "General"
   label_generate_key: "Generar una clau"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: "Ruta del directori de .git"
   label_greater_or_equal: ">="
@@ -2978,6 +2991,7 @@ ca:
   label_no_due_date: "sense data de final"
   label_no_start_date: "no hi ha data d'inici"
   label_no_parent_page: "Sense pàgina pare"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Res a mostrar"
   label_nobody: "ningú"
   label_not_configured: "Not configured"
@@ -3186,6 +3200,7 @@ ca:
   label_user_mail_option_only_my_events: "Només pels objectes que estic en observant o involucrat"
   label_user_mail_option_only_owner: "Només pels objectes dels que en sóc propietari"
   label_user_mail_option_selected: "Només per qualsevol esdeveniment dels projectes seleccionats"
+  label_user_menu: "User menu"
   label_user_new: "Nou usuari"
   label_user_plural: "Usuaris"
   label_user_search: "Cercar per usuari"

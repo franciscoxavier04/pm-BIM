@@ -79,7 +79,8 @@ module ScimClients
           name: :jwt_sub,
           label: ScimClient.human_attribute_name(:jwt_sub),
           required: true,
-          caption: I18n.t("admin.scim_clients.form.jwt_sub_description_html", docs_url: "#").html_safe, # TODO: correct docs url
+          caption: I18n.t("admin.scim_clients.form.jwt_sub_description_html",
+                          docs_url: ::OpenProject::Static::Links.url_for(:sysadmin_docs, :scim_jwt_authetication_method)).html_safe,
           input_width: :large
         )
       end

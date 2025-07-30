@@ -54,7 +54,7 @@ module My
       end
 
       def today_href
-        my_time_tracking_path(date: Date.current, view_mode:, mode:)
+        my_time_tracking_path(date: "today", view_mode:, mode:)
       end
 
       def previous_attrs # rubocop:disable Metrics/AbcSize

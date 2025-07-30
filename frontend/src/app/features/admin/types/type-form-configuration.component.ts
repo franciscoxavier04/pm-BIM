@@ -36,6 +36,7 @@ export const emptyTypeGroup = '__empty';
   providers: [
     TypeBannerService,
   ],
+  standalone: false,
 })
 export class TypeFormConfigurationComponent extends UntilDestroyedMixin implements OnInit, AfterViewInit, OnDestroy {
   public text = {

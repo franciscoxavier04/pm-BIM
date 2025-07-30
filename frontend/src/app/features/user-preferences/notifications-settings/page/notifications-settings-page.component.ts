@@ -46,6 +46,7 @@ interface IFullNotificationSettingsValue extends IToastSettingsValue {
   templateUrl: './notifications-settings-page.component.html',
   styleUrls: ['./notifications-settings-page.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class NotificationsSettingsPageComponent extends UntilDestroyedMixin implements OnInit {
   @Input() userId:string;

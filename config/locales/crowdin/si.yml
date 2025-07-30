@@ -63,7 +63,6 @@ si:
         primary-button-color: "Primary button"
         accent-color: "Accent"
         header-bg-color: "පසුබිම ශීර්ෂකය"
-        header-item-bg-hover-color: "හැවර් මත ශීර්ෂකය පසුබිම"
         main-menu-bg-color: "ප්රධාන මෙනු පසුබිම"
         main-menu-bg-selected-background: "තෝරාගත් විට ප්රධාන මෙනුව"
       custom_colors: "අභිරුචි වර්ණ"
@@ -71,10 +70,6 @@ si:
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
         accent-color: "Color for links and other decently highlighted elements."
-        header-item-bg-hover-color: "මූසිකය සමඟ සැරිසැරූ විට ක්ලික් කළ හැකි ශීර්ෂ අයිතමවල පසුබිම් වර්ණය."
-        header-item-font-color: "ක්ලික් කළ හැකි ශීර්ෂ අයිතමවල අකුරු වර්ණය."
-        header-item-font-hover-color: "මූසිකය සමඟ සැරිසැරූ විට ක්ලික් කළ හැකි ශීර්ෂ අයිතමවල අකුරු වර්ණය."
-        header-border-bottom-color: "ශීර්ෂකය යටතේ තුනී රේඛාවක්. ඔබට කිසිදු රේඛාවක් අවශ්ය නැති නම් මෙම ක්ෂේත්රය හිස්ව තබන්න."
         main-menu-bg-color: "වම් පැත්තේ මෙනුවේ පසුබිම් වර්ණය."
       theme_warning: තේමාව වෙනස් කිරීම ඔබට අභිරුචි විලාසිතාව උඩින් ලියනු ඇත. එවිට සැලසුම අහිමි වනු ඇත. ඔබට දිගටම කරගෙන යාමට අවශ්ය බව ඔබට විශ්වාසද?
     enterprise:
@@ -121,7 +116,7 @@ si:
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -363,19 +358,34 @@ si:
       parent: "මාපිය"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
       all: "සියලු"
       messages: "සංසදය"
       wiki_pages: "විකි"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: දැනට කණ්ඩායම් නොමැත.
-      no_results_content_text: නව සමූහයක් සාදන්න
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: දැනට මෙම කණ්ඩායමේ පරිශීලකයින් කොටසක් නොමැත.
     memberships:
       no_results_title_text: දැනට මෙම කණ්ඩායමේ කිසිදු ව්යාපෘති කොටසක් නොමැත.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       ලැබෙන මේල් සඳහා ඇමුණුම් සැකසීමේදී නොසලකා හැරීමට නම් ලැයිස්තුවක් සඳහන් කරන්න (උදා: අත්සන් හෝ අයිකන). එක් පේළියකට එක් ගොනු නාමයක් ඇතුළත් කරන්න.
@@ -1110,7 +1120,6 @@ si:
       role:
         permissions: "අවසර"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1606,6 +1615,9 @@ si:
     models:
       attachment: "ගොනුව"
       attribute_help_text: "උපකාරය පෙළ ගුණාංග"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "ප්රවර්ගය"
       comment: "අදහස් දක්වන්න"
       custom_action: "අභිරුචි පියවර"
@@ -2538,7 +2550,7 @@ si:
       aggregation: "Aggregation"
       api_and_webhooks: "API and webhooks"
     quick_add:
-      label: "Open quick add menu"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2838,6 +2850,7 @@ si:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "පොදු"
   label_generate_key: "යතුරක් ජනනය කරන්න"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: ".git බහලුම වෙත මාර්ගය"
   label_greater_or_equal: ">="
@@ -2981,6 +2994,7 @@ si:
   label_no_due_date: "no finish date"
   label_no_start_date: "ආරම්භක දිනයක් නැත"
   label_no_parent_page: "මව් පිටුවක් නැත"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "ප්රදර්ශනය කිරීමට කිසිවක් නැත"
   label_nobody: "කිසිවෙක් නැත"
   label_not_configured: "Not configured"
@@ -3189,6 +3203,7 @@ si:
   label_user_mail_option_only_my_events: "මම නරඹන දේවල් සඳහා පමණක් හෝ මම සම්බන්ධ වෙනවා"
   label_user_mail_option_only_owner: "මම අයිතිකරු වන්නේ දේවල් සඳහා පමණි"
   label_user_mail_option_selected: "තෝරාගත් ව්යාපෘතිවල ඕනෑම සිදුවීමක් සඳහා පමණි"
+  label_user_menu: "User menu"
   label_user_new: "නව පරිශීලක"
   label_user_plural: "පරිශීලකයන්"
   label_user_search: "පරිශීලකයා සඳහා සොයන්න"

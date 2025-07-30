@@ -39,6 +39,8 @@ export interface OpBlockNoteContainerProps {
   inputText?: string;
 }
 
+type OpTheme = "light" | "dark";
+
 const schema = BlockNoteSchema.create({
   blockSpecs: {
     ...defaultBlockSpecs,
@@ -46,6 +48,13 @@ const schema = BlockNoteSchema.create({
     dummy: dummyBlockSpec,
   },
 });
+
+const detectTheme = (): OpTheme => {
+  if (document.body.getAttribute('data-color-mode') === 'dark') {
+    return 'dark';
+  }
+  return 'light';
+};
 
 export default function OpBlockNoteContainer({ inputField, inputText }: OpBlockNoteContainerProps) {
   const [isLoading, setIsLoading] = useState(true);
@@ -75,6 +84,7 @@ export default function OpBlockNoteContainer({ inputField, inputText }: OpBlockN
         :
         <BlockNoteView
           editor={editor}
+          theme={detectTheme()}
           onChange={async (editor) => {
             const content = await editor.blocksToMarkdownLossy();
             inputField.value = content;

@@ -698,6 +698,7 @@ lt:
           first_day: "Pirma diena"
           last_day: "Paskutinė diena"
     text_are_you_sure: "Ar esate įsitikinę?"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
     breadcrumb: "Breadcrumb"
     text_data_lost: "Visa įvesta informacija bus prarasta."
     text_user_wrote: "%{value} parašė:"

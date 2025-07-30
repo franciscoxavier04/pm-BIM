@@ -50,7 +50,7 @@ module CustomFields::Inputs::Base::Utils
   end
 
   def value
-    @custom_value
+    custom_value
   end
 
   def required?

@@ -21,6 +21,11 @@ uk:
         project_folder_mode: Режим папки проєкту
         storage: Сховище
         storage_url: URL-адреса сховища
+      storages/share_point_storage:
+        host: Sharepoint Site URL
+        library: Library ID
+        name: Name
+        site: Site ID
       storages/storage:
         authentication_method: Метод автентифікації
         creator: Автор
@@ -32,6 +37,7 @@ uk:
     errors:
       messages:
         invalid_host_url: не є дійсною URL-адресою.
+        invalid_sharepoint_url: is not a valid SharePoint site, library, or document URL.
         not_linked_to_project: '– не пов’язано з проєктом.'
       models:
         storages/file_link:
@@ -256,6 +262,7 @@ uk:
           header: Автентифікація
           non_provisioned_user: Користувач, створений постачальником IDP
           offline_access: Налаштована область offline_access для OIDC
+          provider_capabilities: Provider capabilities
           provisioned_user_provider: Користувач, створений постачальником OIDC
           token_negotiable: Можливості маркерів користувачів
           user_bound_request: Автентифікація запиту за користувачем
@@ -310,6 +317,7 @@ uk:
         oidc_cant_refresh_token: Під час перевірки доступу до сховища сталася помилка. Щоб отримати додаткову інформацію, перевірте журнали сервера.
         oidc_non_oidc_user: Поточний користувач має доступ, але його надав не постачальник ідентифікаційних даних OpenID Connect (OIDC). Повторіть перевірку з користувачем, створеним через OIDC.
         oidc_non_provisioned_user: Поточного користувача не надано постачальником ідентифікаційних даних OpenID Connect. Повторіть перевірку з наданим користувачем.
+        oidc_provider_cant_exchange: The OpenID Connect provider does not seem to support token exchange, but token exchange was configured for the storage.
         oidc_token_acquisition_failed: Ваша конфігурація OpenID Connect не передбачає наявності необхідної аудиторії та можливостей обміну маркерів. Щоб дізнатися більше, ознайомтеся з нашою документацією.
         oidc_token_exchange_failed: Схоже, виникла проблема з конфігурацією Token Exchange у вашого постачальника OpenID Connect. Перевірте конфігурацію і повторіть спробу.
         oidc_token_refresh_failed: Під час перевірки доступу до сховища сталася помилка. Щоб отримати додаткову інформацію, перевірте журнали сервера.

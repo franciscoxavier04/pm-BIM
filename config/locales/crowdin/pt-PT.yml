@@ -63,7 +63,6 @@ pt-PT:
         primary-button-color: "Botão principal"
         accent-color: "Destaque"
         header-bg-color: "Fundo do cabeçalho"
-        header-item-bg-hover-color: "Fundo do cabeçalho ao passar o rato"
         main-menu-bg-color: "Fundo do menu principal"
         main-menu-bg-selected-background: "Menu principal quando selecionado"
       custom_colors: "Cores personalizadas"
@@ -71,10 +70,6 @@ pt-PT:
       instructions:
         primary-button-color: "Cor de contraste forte, utilizada no botão mais importante de um ecrã."
         accent-color: "Cor para as ligações e outros elementos bem realçados."
-        header-item-bg-hover-color: "Cor de fundo de itens do cabeçalho clicáveis quando se passa com o rato por cima."
-        header-item-font-color: "Cor da fonte dos itens clicáveis do cabeçalho."
-        header-item-font-hover-color: "Cor da fonte de itens clicáveis do cabeçalho quando se passa com o mouse por cima."
-        header-border-bottom-color: "Linha fina sob o cabeçalho. Deixe este campo vazio se não deseja qualquer linha."
         main-menu-bg-color: "Cor de fundo do menu do lado esquerdo."
       theme_warning: Alterar o tema irá sobrescrever seu estilo personalizado. O design será perdido. Tem certeza que deseja continuar?
     enterprise:
@@ -121,7 +116,7 @@ pt-PT:
         one_time_hint: "Esta é a única vez que verá o segredo do cliente. Não se esqueça de o copiar agora."
       created_token_dialog_component:
         title: "Token criado"
-        heading: "Foi gerado um token"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "Esta é a única vez que verá este token. Não se esqueça de o copiar agora."
       delete_scim_client_dialog_component:
@@ -361,19 +356,34 @@ pt-PT:
       parent: "Principal"
       blueprint: "Modelo do plano"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Pesquisar em %{app_title}"
     overwritten_tabs:
       all: "Todas"
       messages: "Fórum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Atualmente, não existem grupos.
-      no_results_content_text: Criar um novo grupo
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Atualmente, não existem utilizadores pertencentes a este grupo.
     memberships:
       no_results_title_text: Atualmente, não existem projetos pertencentes a este grupo.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Especifique uma lista de nomes a ignorar ao processar anexos para emails recebidos (por exemplo, assinaturas ou ícones). Digite um nome de ficheiro por linha.
@@ -1107,7 +1117,6 @@ pt-PT:
       role:
         permissions: "Permissões"
       scim_client:
-        auth_provider: "Fornecedor de autenticação"
         authentication_method: "Método de autenticação"
         jwt_sub: "Reivindicação do sujeito"
       status:
@@ -1603,6 +1612,9 @@ pt-PT:
     models:
       attachment: "Ficheiro"
       attribute_help_text: "Texto de ajuda do atributo"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "Categoria"
       comment: "Comentario"
       custom_action: "Ação personalizada"
@@ -2535,7 +2547,7 @@ pt-PT:
       aggregation: "Agregação"
       api_and_webhooks: "API e webhooks"
     quick_add:
-      label: "Abrir menu de adição rápida"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2835,6 +2847,7 @@ pt-PT:
   label_gantt_chart_plural: "Gráficos de Gantt"
   label_general: "Geral"
   label_generate_key: "Gerar uma chave"
+  label_global_modules: "Global modules"
   label_global_roles: "Funções globais"
   label_git_path: "Caminho para o diretório .git"
   label_greater_or_equal: ">="
@@ -2978,6 +2991,7 @@ pt-PT:
   label_no_due_date: "sem data de término"
   label_no_start_date: "sem data de início"
   label_no_parent_page: "Sem página pai"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Nada para exibir"
   label_nobody: "ninguém"
   label_not_configured: "Não configurado"
@@ -3186,6 +3200,7 @@ pt-PT:
   label_user_mail_option_only_my_events: "Apenas para coisas que observo ou em que estou envolvido"
   label_user_mail_option_only_owner: "Apenas para coisas das quais sou proprietário"
   label_user_mail_option_selected: "Para qualquer evento apenas nos projetos selecionados"
+  label_user_menu: "User menu"
   label_user_new: "Novo Utilizador"
   label_user_plural: "Utilizadores"
   label_user_search: "Procurar utilizadores"

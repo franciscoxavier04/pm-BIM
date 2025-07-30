@@ -72,7 +72,8 @@ module Storages
             end
 
             context "when using OpenID Connect" do
-              let(:storage) { create(:nextcloud_storage_configured, :oidc_sso_enabled) }
+              let(:storage) { create(:nextcloud_storage_configured, :oidc_sso_enabled, storage_audience:) }
+              let(:storage_audience) { OpenIDConnect::UserToken::IDP_AUDIENCE }
 
               let(:user) { create(:user, identity_url: "#{oidc_provider.slug}:123123123123") }
               let!(:oidc_provider) { create(:oidc_provider, scope:) }
@@ -101,7 +102,7 @@ module Storages
                   expect(result[:non_provisioned_user].code).to eq(:oidc_non_provisioned_user)
 
                   state_count = result.tally
-                  expect(state_count).to eq({ skipped: 4, warning: 1 })
+                  expect(state_count).to eq({ skipped: 5, warning: 1 })
                 end
 
                 it "returns a warning if the user is not provisioned by an oidc provider" do
@@ -114,7 +115,7 @@ module Storages
                   expect(result[:provisioned_user_provider].code).to eq(:oidc_non_oidc_user)
 
                   state_count = result.tally
-                  expect(state_count).to eq({ success: 1, skipped: 3, warning: 1 })
+                  expect(state_count).to eq({ success: 1, skipped: 4, warning: 1 })
                 end
 
                 context "when the offline_access scope is not configured" do
@@ -128,22 +129,36 @@ module Storages
                     expect(result[:offline_access].code).to eq(:offline_access_scope_missing)
 
                     state_count = result.tally
-                    expect(state_count).to eq({ success: 4, warning: 1 })
+                    expect(state_count).to eq({ success: 5, warning: 1 })
+                  end
+                end
+
+                context "when configured to exchange a token" do
+                  let(:storage_audience) { "my-audience" }
+
+                  it "returns an error"  do
+                    create(:oidc_user_token, user:, extra_audiences: storage.audience)
+                    result = validator.call
+
+                    expect(result[:provider_capabilities]).to be_failure
+                    expect(result[:provider_capabilities].code).to eq(:oidc_provider_cant_exchange)
+
+                    state_count = result.tally
+                    expect(state_count).to eq({ success: 2, failure: 1, skipped: 3 })
+                  end
+
+                  context "and when the OIDC provider can exchange tokens" do
+                    let!(:oidc_provider) { create(:oidc_provider, :token_exchange_capable, scope:) }
+
+                    it "succeeds" do
+                      create(:oidc_user_token, user:, extra_audiences: storage.audience)
+                      expect(validator.call).to be_success
+                    end
                   end
                 end
               end
 
               describe "checks related to the token" do
-                context "when the token doesn't have the necessary audiences" do
-                  it "returns a validation failure in case the server does not support token exchange" do
-                    create(:oidc_user_token, user:)
-                    result = validator.call
-
-                    expect(result[:token_negotiable]).to be_failure
-                    expect(result[:token_negotiable].code).to eq(:oidc_token_acquisition_failed)
-                  end
-                end
-
                 context "when the existing token requires a refresh" do
                   let(:expired_storage_token) do
                     create(:oidc_user_token, user:, extra_audiences: storage.audience, expires_at: 10.hours.ago)
@@ -182,6 +197,8 @@ module Storages
                   end
 
                   context "when the server supports token exchange" do
+                    let(:storage_audience) { "my-audience" }
+
                     let(:oidc_provider) { create(:oidc_provider, :token_exchange_capable, scope: "offline_access") }
                     let!(:exchangeable_token) { create(:oidc_user_token, user:, refresh_token: nil) }
 

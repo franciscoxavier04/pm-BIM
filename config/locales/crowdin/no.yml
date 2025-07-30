@@ -63,7 +63,6 @@
         primary-button-color: "Primærknapp"
         accent-color: "Uthevet"
         header-bg-color: "Topp bakgrunn"
-        header-item-bg-hover-color: "Topp bakgrunn på hover"
         main-menu-bg-color: "Bakgrunn på hovedmeny"
         main-menu-bg-selected-background: "Hovedmeny når valgt"
       custom_colors: "Egendefinerte farger"
@@ -71,10 +70,6 @@
       instructions:
         primary-button-color: "Sterk uthevingsfarge, vanligvis brukt på den viktigste knappen på en skjerm."
         accent-color: "Farge på lenker og andre moderat uthevede elementer"
-        header-item-bg-hover-color: "Bakgrunnsfarge for klikkbare toppelementer når du peker med musen."
-        header-item-font-color: "Skriftfarge på klikkbare toppelementer."
-        header-item-font-hover-color: "Skriftfarge på klikkbare toppelementer når du peker med musen."
-        header-border-bottom-color: "Tynn linje under overskriften. La dette feltet være tomt hvis du ikke vil ha en linje."
         main-menu-bg-color: "Bakgrunnsfarge på venstremeny."
       theme_warning: Endring av tema vil overskrive din egendefinerte stil. Designet vil da gå tapt. Er du sikker på at du vil fortsette?
     enterprise:
@@ -121,7 +116,7 @@
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -363,19 +358,34 @@
       parent: "Overordnet"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Søk i %{app_title}"
     overwritten_tabs:
       all: "Alle"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Det er for tiden ingen grupper.
-      no_results_content_text: Opprett ny gruppe
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Det er for tiden ingen brukere i denne gruppen.
     memberships:
       no_results_title_text: Det er for tiden ingen prosjekter i denne gruppen.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Angi en liste over navn som skal ignoreres når vedlegg for innkommende meldinger (f.eks. signaturer eller ikoner). Angi ett filnavn per linje.
@@ -1109,7 +1119,6 @@
       role:
         permissions: "Tilganger"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1605,6 +1614,9 @@
     models:
       attachment: "Fil"
       attribute_help_text: "Egenskap hjelpetekster"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "Kategori"
       comment: "Kommentar"
       custom_action: "Tilpasset handling"
@@ -2537,7 +2549,7 @@
       aggregation: "Aggregering"
       api_and_webhooks: "API og webhooks"
     quick_add:
-      label: "Åpne Legg til hurtigmeny"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2837,6 +2849,7 @@
   label_gantt_chart_plural: "Gantt-diagrammer"
   label_general: "Generell"
   label_generate_key: "Genererer en nøkkel"
+  label_global_modules: "Global modules"
   label_global_roles: "Globale roller"
   label_git_path: "Sti til .git-mappe"
   label_greater_or_equal: ">="
@@ -2980,6 +2993,7 @@
   label_no_due_date: "ingen ferdigmeldingsdato"
   label_no_start_date: "ingen startdato"
   label_no_parent_page: "Ingen overordnet side"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Ingenting å vise"
   label_nobody: "ingen"
   label_not_configured: "Ikke konfigurert"
@@ -3188,6 +3202,7 @@
   label_user_mail_option_only_my_events: "Kun for ting jeg overvåker eller er involvert i"
   label_user_mail_option_only_owner: "Kun for ting jeg står som eier av"
   label_user_mail_option_selected: "For alle hendelser kun på valgte prosjekter"
+  label_user_menu: "User menu"
   label_user_new: "Ny bruker"
   label_user_plural: "Brukere"
   label_user_search: "Søk etter bruker"

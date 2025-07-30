@@ -67,7 +67,7 @@ module AuthenticationHelpers
         check autologin_label
       end
 
-      click_button I18n.t(:button_login)
+      click_button I18n.t(:button_login), type: "submit"
       wait_for_network_idle
     end
   end

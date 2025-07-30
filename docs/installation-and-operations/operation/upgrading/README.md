@@ -8,6 +8,8 @@ sidebar_navigation:
 
 > **Note**: We strongly recommend that you have backed up your installation before upgrading OpenProject to a newer version, especially when performing multiple upgrades at once. Please follow the [backup](../backing-up) instructions.
 
+> **Note**: OpenProject supports migrating from one major version to the next. That means that migrating from a version X (and any of its minor and patch level) to version X+1 (and any of its minor and patch level) is supported. Migrating to X+2 however cannot be done directly but requires to install X+1 in between.
+
 | Topic                                                        | Content                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [Package-based installation](#package-based-installation-debrpm) | How to upgrade a package-based installation of OpenProject.  |
@@ -162,6 +164,10 @@ sudo chown -R 102 /volume1/openproject/*
 
 After that it's simply a matter of launching the new container mounted with the copied `pgdata` and `assets` folders
 as described in the [installation section](../../installation/docker/).
+
+## Upgrade notes from 16.x
+
+Starting from 16.x OpenProject only supports migrating from one major version (and its minor and patch levels) to the next major version (and its minor and patch levels). So all installations need to migrate to any 16.x version before continuing.
 
 ## Upgrade notes from 10.5.x
 

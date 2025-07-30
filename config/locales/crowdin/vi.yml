@@ -63,7 +63,6 @@ vi:
         primary-button-color: "Nút chính"
         accent-color: "Nhấn mạnh"
         header-bg-color: "Nền của tiêu đề"
-        header-item-bg-hover-color: "Màu nền tiêu đề khi trỏ chuột"
         main-menu-bg-color: "Nền menu chính"
         main-menu-bg-selected-background: "Menu chính khi được chọn"
       custom_colors: "Tùy chỉnh màu sắc"
@@ -71,10 +70,6 @@ vi:
       instructions:
         primary-button-color: "Màu nhấn mạnh mạnh, được sử dụng cho nút quan trọng nhất trên màn hình."
         accent-color: "Màu cho các liên kết và các yếu tố được nhấn mạnh nhẹ nhàng khác."
-        header-item-bg-hover-color: "Màu nền của các mục tiêu đề có thể nhấp khi di chuột."
-        header-item-font-color: "Màu phông chữ của các mục tiêu đề có thể nhấp."
-        header-item-font-hover-color: "Màu phông chữ của các mục tiêu đề có thể nhấp khi di chuột."
-        header-border-bottom-color: "Đường kẻ mỏng dưới tiêu đề. Để trống nếu bạn không muốn bất kỳ đường kẻ nào."
         main-menu-bg-color: "Màu nền của menu bên trái."
       theme_warning: Thay đổi chủ đề sẽ ghi đè phong cách tùy chỉnh của bạn. Thiết kế sau đó sẽ bị mất. Bạn có chắc chắn muốn tiếp tục không?
     enterprise:
@@ -121,7 +116,7 @@ vi:
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -363,19 +358,34 @@ vi:
       parent: "Cha"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Tìm kiếm trong %{app_title}"
     overwritten_tabs:
       all: "Tất cả"
       messages: "Diễn đàn"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Hiện có không có nhóm.
-      no_results_content_text: Tạo một nhóm
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Hiện có không có người sử dụng thuộc nhóm này.
     memberships:
       no_results_title_text: Hiện có không có dự án thuộc nhóm này.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Chỉ định danh sách các tên cần bỏ qua khi xử lý tệp đính kèm cho thư đến (ví dụ: chữ ký hoặc biểu tượng). Nhập một tên tệp trên mỗi dòng.
@@ -1102,7 +1112,6 @@ vi:
       role:
         permissions: "Quyền hạn"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1596,6 +1605,8 @@ vi:
     models:
       attachment: "Tệp"
       attribute_help_text: "Thuộc tính văn bản trợ giúp"
+      auth_provider:
+        other: "Authentication providers"
       category: "Thể loại"
       comment: "Nhận xét"
       custom_action: "Tác vụ tùy chỉnh"
@@ -2495,7 +2506,7 @@ vi:
       aggregation: "Tổng hợp"
       api_and_webhooks: "API và webhooks"
     quick_add:
-      label: "Mở menu thêm nhanh"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2795,6 +2806,7 @@ vi:
   label_gantt_chart_plural: "Biểu đồ Gantt"
   label_general: "Tổng quan"
   label_generate_key: "Tạo khóa"
+  label_global_modules: "Global modules"
   label_global_roles: "Vai trò toàn cầu"
   label_git_path: "Đường dẫn đến thư mục .git"
   label_greater_or_equal: ">="
@@ -2938,6 +2950,7 @@ vi:
   label_no_due_date: "không có ngày kết thúc"
   label_no_start_date: "không có ngày bắt đầu"
   label_no_parent_page: "Không có trang quan hệ"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Không có gì để hiển thị"
   label_nobody: "không ai"
   label_not_configured: "Not configured"
@@ -3146,6 +3159,7 @@ vi:
   label_user_mail_option_only_my_events: "Chỉ những thứ tôi theo dõi hoặc liên quan"
   label_user_mail_option_only_owner: "Chỉ những thứ tôi sở hữu"
   label_user_mail_option_selected: "Chỉ cho sự kiện trên các dự án đã chọn"
+  label_user_menu: "User menu"
   label_user_new: "Người dùng mới"
   label_user_plural: "Người dùng"
   label_user_search: "Tìm kiếm người dùng"

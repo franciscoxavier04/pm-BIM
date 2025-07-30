@@ -110,6 +110,18 @@ module OpenProject::Bim
                   parent: :ifc_models,
                   partial: "/bim/menus/menu"
       end
+
+      ::Redmine::MenuManager.map(:account_menu) do |menu|
+        menu.push(:revit_add_in,
+                  "",
+                  caption: :"js.revit.revit_add_in_settings",
+                  icon: "op-view-modal",
+                  html: {
+                    id: "user-menu--revit-add-in-entry",
+                    classes: "d-none"
+                  },
+                  after: :administration)
+      end
     end
 
     class_inflection_override("v2_1" => "V2_1")

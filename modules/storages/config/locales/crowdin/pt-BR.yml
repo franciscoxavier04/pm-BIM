@@ -21,6 +21,11 @@ pt-BR:
         project_folder_mode: Modo de pasta de projeto
         storage: Armazenamento
         storage_url: URL de armazenamento
+      storages/share_point_storage:
+        host: Sharepoint Site URL
+        library: Library ID
+        name: Name
+        site: Site ID
       storages/storage:
         authentication_method: Método de Autenticação
         creator: Criador
@@ -32,6 +37,7 @@ pt-BR:
     errors:
       messages:
         invalid_host_url: não é um URL válido.
+        invalid_sharepoint_url: is not a valid SharePoint site, library, or document URL.
         not_linked_to_project: não está vinculado ao projeto.
       models:
         storages/file_link:
@@ -256,6 +262,7 @@ pt-BR:
           header: Autenticação
           non_provisioned_user: Usuário provisionado pelo IDP
           offline_access: Escopo offline_access do OIDC configurado
+          provider_capabilities: Provider capabilities
           provisioned_user_provider: Usuário provisionado pelo OIDP
           token_negotiable: Capacidades do token do usuário
           user_bound_request: Autenticação de solicitação baseada no usuário
@@ -306,6 +313,7 @@ pt-BR:
         oidc_cant_refresh_token: Ocorreu um erro ao tentar verificar seu acesso ao armazenamento. Verifique os logs do servidor para mais informações.
         oidc_non_oidc_user: O usuário atual, embora provisionado, não foi provisionado por um Provedor de Identidade OpenID Connect (OIDC). Execute a verificação novamente com um usuário provisionado pelo OIDC.
         oidc_non_provisioned_user: O usuário atual não foi fornecido por um Provedor de Identidade OpenID Connect. Execute a verificação novamente com um usuário fornecido.
+        oidc_provider_cant_exchange: The OpenID Connect provider does not seem to support token exchange, but token exchange was configured for the storage.
         oidc_token_acquisition_failed: A configuração do seu OpenID Connect não fornece o público-alvo necessário nem oferece recursos de troca de tokens. Consulte nossa documentação para mais informações.
         oidc_token_exchange_failed: Parece haver um problema na configuração da troca de tokens no seu provedor OpenID Connect. Verifique as configurações e tente novamente.
         oidc_token_refresh_failed: Ocorreu um erro ao tentar verificar seu acesso ao armazenamento. Verifique os logs do servidor para mais informações.

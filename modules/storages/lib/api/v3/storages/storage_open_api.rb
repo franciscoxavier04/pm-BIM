@@ -43,7 +43,7 @@ class API::V3::Storages::StorageOpenAPI < API::OpenProjectAPI
     get do
       Storages::Adapters::Registry
         .resolve("#{@storage}.queries.open_storage")
-        .call(storage: @storage, auth_strategy:)
+        .call(storage: @storage, auth_strategy:, input_data: nil)
         .either(
           ->(url) do
             redirect url, body: "The requested resource can be viewed at #{url}"

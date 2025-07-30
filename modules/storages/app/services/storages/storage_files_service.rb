@@ -39,7 +39,6 @@ module Storages
         auth_strategy = strategy(storage, user)
 
         info "Requesting all the files under folder #{folder} for #{storage.name}"
-        info "auth_strategy: #{auth_strategy}"
 
         input_data = Adapters::Input::Files.build(folder:).value_or { return add_validation_error(it) }
 

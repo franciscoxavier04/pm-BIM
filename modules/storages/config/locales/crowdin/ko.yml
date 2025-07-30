@@ -21,6 +21,11 @@ ko:
         project_folder_mode: 프로젝트 폴더 모드
         storage: 저장소
         storage_url: 저장소 URL
+      storages/share_point_storage:
+        host: Sharepoint Site URL
+        library: Library ID
+        name: Name
+        site: Site ID
       storages/storage:
         authentication_method: 인증 방법
         creator: 생성자
@@ -32,6 +37,7 @@ ko:
     errors:
       messages:
         invalid_host_url: '- 올바른 URL이 아닙니다.'
+        invalid_sharepoint_url: is not a valid SharePoint site, library, or document URL.
         not_linked_to_project: '- 프로젝트에 연결되지 않았습니다.'
       models:
         storages/file_link:
@@ -256,6 +262,7 @@ ko:
           header: 인증
           non_provisioned_user: IDP에 의해 프로비저닝되는 사용자
           offline_access: OIDC offline_access 범위 구성됨
+          provider_capabilities: Provider capabilities
           provisioned_user_provider: OIDC에 의해 프로비저닝되는 사용자
           token_negotiable: 사용자 토큰 기능
           user_bound_request: 사용자 기반 요청 인증
@@ -304,6 +311,7 @@ ko:
         oidc_cant_refresh_token: 저장소에 대한 액세스를 확인하는 동안 오류가 발생했습니다. 자세한 내용은 서버 로그를 확인하세요.
         oidc_non_oidc_user: 현재 사용자는 프로비저닝되는 동안, OpenID Connect(OIDC) ID 공급자에 의해 프로비저닝되지 않았습니다. OIDC 프로비저닝 사용자로 확인을 다시 실행하세요.
         oidc_non_provisioned_user: 현재 사용자는 OpenID Connect ID 공급자에 의해 제공되지 않았습니다. 제공된 사용자로 확인을 다시 실행하세요.
+        oidc_provider_cant_exchange: The OpenID Connect provider does not seem to support token exchange, but token exchange was configured for the storage.
         oidc_token_acquisition_failed: 해당 OpenID Connect 설정은 필요한 오디언스를 제공하지 않으며, 토큰 교환 기능도 제공하지 않습니다. 자세한 내용은 설명서를 확인하세요.
         oidc_token_exchange_failed: OpenID Connect 공급자의 Token Exchange 설정에 문제가 있는 것 같습니다. 해당 구성을 확인하고 다시 시도하세요.
         oidc_token_refresh_failed: 저장소에 대한 액세스를 확인하는 동안 오류가 발생했습니다. 자세한 내용은 서버 로그를 확인하세요.

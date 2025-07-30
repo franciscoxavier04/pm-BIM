@@ -63,7 +63,6 @@ ko:
         primary-button-color: "기본 버튼"
         accent-color: "강조 색"
         header-bg-color: "헤더 배경"
-        header-item-bg-hover-color: "가리킬 때 헤더 배경"
         main-menu-bg-color: "기본 메뉴 배경"
         main-menu-bg-selected-background: "선택할 때 기본 메뉴"
       custom_colors: "사용자 정의 색상"
@@ -71,10 +70,6 @@ ko:
       instructions:
         primary-button-color: "강한 강조 색은 화면의 가장 중요한 버튼에 사용됩니다."
         accent-color: "링크 및 기타 적절하게 강조 표시된 요소의 색상을 지정하세요."
-        header-item-bg-hover-color: "마우스로 가리킬 때 클릭 가능한 헤더 항목의 배경색입니다."
-        header-item-font-color: "클릭 가능한 헤더 항목의 글꼴색입니다."
-        header-item-font-hover-color: "마우스로 가리킬 때 클릭 가능한 헤더 항목의 글꼴색입니다."
-        header-border-bottom-color: "헤더 아래 가는 줄입니다. 줄을 원하지 않으면 이 필드를 비워 둡니다."
         main-menu-bg-color: "왼쪽 메뉴의 배경색입니다."
       theme_warning: 테마를 변경하면 사용자 정의 스타일을 덮어 씁니다. 그러면 디자인이 손실됩니다. 너 정말 계속하고 싶니?
     enterprise:
@@ -121,7 +116,7 @@ ko:
         one_time_hint: "이번에만 클라이언트 비밀번호가 표시됩니다. 지금 이 클라이언트 비밀번호를 복사해야 합니다."
       created_token_dialog_component:
         title: "토큰 생성됨"
-        heading: "토큰이 생성되었습니다"
+        heading: "A token has been generated"
         label_token: "토큰"
         one_time_hint: "이번에만 이 토큰이 표시됩니다. 지금 이 토큰을 복사해야 합니다."
       delete_scim_client_dialog_component:
@@ -363,19 +358,34 @@ ko:
       parent: "부모"
       blueprint: "패턴 청사진"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "%{app_title}에서 검색"
     overwritten_tabs:
       all: "모두"
       messages: "포럼"
       wiki_pages: "위키"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: 그룹이 없습니다.
-      no_results_content_text: 새 그룹 생성
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: 이 그룹에 사용자 파트가 없습니다.
     memberships:
       no_results_title_text: 이 그룹에 프로젝트 파트가 없습니다.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       받는 메일의 첨부 파일을 처리할 때 무시할 이름 목록을 지정하십시오(예: 서명 또는 아이콘). 라인 하나에 파일 이름 하나를 입력하십시오.
@@ -1102,7 +1112,6 @@ ko:
       role:
         permissions: "권한"
       scim_client:
-        auth_provider: "인증 공급자"
         authentication_method: "인증 방법"
         jwt_sub: "제목 클레임"
       status:
@@ -1596,6 +1605,8 @@ ko:
     models:
       attachment: "파일"
       attribute_help_text: "특성 도움말 텍스트"
+      auth_provider:
+        other: "Authentication providers"
       category: "카테고리"
       comment: "코멘트"
       custom_action: "사용자 지정 작업"
@@ -2495,7 +2506,7 @@ ko:
       aggregation: "집계"
       api_and_webhooks: "API 및 webhook"
     quick_add:
-      label: "빠른 추가 메뉴 열기"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2795,6 +2806,7 @@ ko:
   label_gantt_chart_plural: "Gantt 차트"
   label_general: "일반"
   label_generate_key: "키 생성"
+  label_global_modules: "Global modules"
   label_global_roles: "글로벌 역할"
   label_git_path: ".git 디렉터리의 경로"
   label_greater_or_equal: ">="
@@ -2938,6 +2950,7 @@ ko:
   label_no_due_date: "완료 날짜 없음"
   label_no_start_date: "시작 날짜 없음"
   label_no_parent_page: "부모 페이지 없음"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "표시할 것이 없음"
   label_nobody: "아무도 없음"
   label_not_configured: "구성되지 않음"
@@ -3146,6 +3159,7 @@ ko:
   label_user_mail_option_only_my_events: "내가 주시하거나 관련된 사항만"
   label_user_mail_option_only_owner: "내가 소유자인 사항만"
   label_user_mail_option_selected: "선택된 프로젝트에서 발생하는 이벤트만"
+  label_user_menu: "User menu"
   label_user_new: "새 사용자"
   label_user_plural: "사용자"
   label_user_search: "사용자 검색"

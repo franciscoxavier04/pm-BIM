@@ -72,6 +72,7 @@ import {
 @Component({
   selector: '[wpInlineCreate]',
   templateUrl: './wp-inline-create.component.html',
+  standalone: false,
 })
 export class WorkPackageInlineCreateComponent extends UntilDestroyedMixin implements OnInit, AfterViewInit {
   @Input() colspan:number;

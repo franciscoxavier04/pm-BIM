@@ -186,7 +186,8 @@ RSpec.describe "SCIM API Groups", with_ee: [:scim_api] do
         user
         request_body = { "displayName" => group_name,
                          "externalId" => external_group_id,
-                         "members" => [{ "value" => user.id.to_s }],
+                         "members" => [{ "value" => user.id.to_s,
+                                         "$ref" => "/Users/#{user.id}" }],
                          "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] }
         expect do
           post "/scim_v2/Groups/", request_body.to_json, headers
@@ -296,10 +297,14 @@ RSpec.describe "SCIM API Groups", with_ee: [:scim_api] do
 
   describe "PUT /scim_v2/Groups/:id" do
     context "with the feature flag enabled", with_flag: { scim_api: true } do
-      it "updates specific group by replacing it with newly provided data" do
+      let(:new_external_group_id) { "new_idp_group_id_123asdqwe12345" }
+
+      before do
         admin
         group
-        new_external_group_id = "new_idp_group_id_123asdqwe12345"
+      end
+
+      it "updates specific group by replacing it with newly provided data" do
         request_body = {
           "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"],
           "active" => true,
@@ -323,6 +328,60 @@ RSpec.describe "SCIM API Groups", with_ee: [:scim_api] do
                                                    "lastModified" => group.updated_at.iso8601,
                                                    "resourceType" => "Group" },
                                        "members" => contain_exactly({ "value" => user.id.to_s }, { "value" => admin.id.to_s }),
+                                       "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"])
+      end
+
+      it "updates members if there is $ref field present for every member(Keycloak plugin adds it for example)" do
+        request_body = {
+          "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"],
+          "externalId" => new_external_group_id,
+          "displayName" => group.name,
+          "members" => [
+            {
+              "value" => user.id.to_s,
+              "$ref" => "/Users/#{user.id}"
+            },
+            {
+              "value" => admin.id.to_s,
+              "$ref" => "/Users/#{admin.id}"
+            }
+          ]
+        }
+
+        put "/scim_v2/Groups/#{group.id}", request_body.to_json, headers
+
+        response_body = JSON.parse(last_response.body)
+        group.reload
+        expect(response_body).to match("displayName" => group.name,
+                                       "externalId" => new_external_group_id,
+                                       "id" => group.id.to_s,
+                                       "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
+                                                   "created" => group.created_at.iso8601,
+                                                   "lastModified" => group.updated_at.iso8601,
+                                                   "resourceType" => "Group" },
+                                       "members" => contain_exactly({ "value" => user.id.to_s }, { "value" => admin.id.to_s }),
+                                       "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"])
+      end
+
+      it "updates members if there is no members field(Keycloak plugin sends memberless group request like that)" do
+        request_body = {
+          "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"],
+          "externalId" => new_external_group_id,
+          "displayName" => group.name
+        }
+
+        put "/scim_v2/Groups/#{group.id}", request_body.to_json, headers
+
+        response_body = JSON.parse(last_response.body)
+        group.reload
+        expect(response_body).to match("displayName" => group.name,
+                                       "externalId" => new_external_group_id,
+                                       "id" => group.id.to_s,
+                                       "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
+                                                   "created" => group.created_at.iso8601,
+                                                   "lastModified" => group.updated_at.iso8601,
+                                                   "resourceType" => "Group" },
+                                       "members" => [],
                                        "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"])
       end
     end
@@ -382,7 +441,8 @@ RSpec.describe "SCIM API Groups", with_ee: [:scim_api] do
             "op" => "replace",
             "path" => "members",
             "value" => [{
-              "value" => user2.id.to_s
+              "value" => user2.id.to_s,
+              "$ref" => "/Users/#{user2.id}"
             }]
           }]
         }

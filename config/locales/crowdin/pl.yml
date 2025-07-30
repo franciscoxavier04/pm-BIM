@@ -63,7 +63,6 @@ pl:
         primary-button-color: "Przycisk główny"
         accent-color: "Akcent"
         header-bg-color: "Tło nagłówka"
-        header-item-bg-hover-color: "Tło nagłowka po najechaniu myszą"
         main-menu-bg-color: "Tło menu głównego"
         main-menu-bg-selected-background: "Menu główne po wybraniu"
       custom_colors: "Kolory użytkownika"
@@ -71,10 +70,6 @@ pl:
       instructions:
         primary-button-color: "Silnie zaakcentowany kolor, stosowany do najważniejszego przycisku na ekranie."
         accent-color: "Kolor linków i innych ostatnio wyróżnionych elementów."
-        header-item-bg-hover-color: "Kolor tła nagłówkowych elementów po najechaniu myszą."
-        header-item-font-color: "Kolor czcionki elementów nagłówkowych."
-        header-item-font-hover-color: "Kolor czcionki elementów nagłówkowych po najechaniu myszą."
-        header-border-bottom-color: "Linia pod nagłówkiem. Zostaw puste, jeśli nie chcesz wyświetlać linii."
         main-menu-bg-color: "Kolor tła lewego menu."
       theme_warning: Zmiana motywu poskutkuje zastąpieniem stylu niestandardowego. Projekt zostanie wówczas utracony. Czy na pewno chcesz kontynuować?
     enterprise:
@@ -360,19 +355,34 @@ pl:
       parent: "Element nadrzędny"
       blueprint: "Plan wzorca"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Wyszukaj w %{app_title}"
     overwritten_tabs:
       all: "Wszystkie"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Nie ma żadnych grup.
-      no_results_content_text: Utwórz nową grupę
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Nie ma jeszcze użytkowników w tej grupie.
     memberships:
       no_results_title_text: Nie ma jeszcze żadnego projektu dla tej grupy.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Określ listę nazw, które mają być ignorowane podczas przetwarzania załączników do poczty przychodzącej (np. sygnatur lub ikon). W każdym wierszu prowadź jedną nazwę pliku.
@@ -1122,7 +1132,6 @@ pl:
       role:
         permissions: "Uprawnienia"
       scim_client:
-        auth_provider: "Dostawca uwierzytelniania"
         authentication_method: "Metody uwierzytelniania"
         jwt_sub: "Oświadczenie podmiotu"
       status:
@@ -1177,7 +1186,7 @@ pl:
         comments_sorting: "Wyświetl działania pakietu roboczego posortowane według"
         disable_keyboard_shortcuts: "Wyłącz skróty klawiaturowe"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
+          Jeśli korzystasz z czytnika ekranu lub chcesz uniknąć przypadkowego uruchomienia działania za pomocą skrótu, możesz wyłączyć domyślne <a href="%{href}">skróty klawiaturowe</a>.
         dismissed_enterprise_banners: "Ukryte banery przedsiębiorstwa"
         impaired: "Ułatwienia dostępu"
         auto_hide_popups: "Automatycznie ukrywaj banery sukcesu"
@@ -1622,6 +1631,11 @@ pl:
     models:
       attachment: "Plik"
       attribute_help_text: "Tekst pomocy atrybutu"
+      auth_provider:
+        one: "Authentication provider"
+        few: "Authentication providers"
+        many: "Authentication providers"
+        other: "Authentication providers"
       category: "Kategoria"
       comment: "Komentarz"
       custom_action: "Działanie niestandardowe"
@@ -2620,7 +2634,7 @@ pl:
       aggregation: "Agregacja"
       api_and_webhooks: "Interfejs API i webhooki"
     quick_add:
-      label: "Otwórz menu szybkiego dodawania"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2920,6 +2934,7 @@ pl:
   label_gantt_chart_plural: "Wykresy Gantta"
   label_general: "Ogólne"
   label_generate_key: "Generuj klucz"
+  label_global_modules: "Global modules"
   label_global_roles: "Role globalne"
   label_git_path: "Ścieżka do katalogu .git"
   label_greater_or_equal: "≥"
@@ -3063,6 +3078,7 @@ pl:
   label_no_due_date: "brak daty zakończenia"
   label_no_start_date: "brak daty rozpoczęcia"
   label_no_parent_page: "Bez strony nadrzędnej"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Brak danych do pokazania"
   label_nobody: "nikt"
   label_not_configured: "Nie skonfigurowano"
@@ -3095,7 +3111,7 @@ pl:
   label_password_rule_special: "Znaki specjalne"
   label_password_rule_uppercase: "Wielkie litery"
   label_path_encoding: "Path encoding"
-  label_per_page: "Per page:"
+  label_per_page: "Na stronę:"
   label_people: "Ludzie"
   label_permissions: "Uprawnienia"
   label_permissions_report: "Raport uprawnień"
@@ -3271,6 +3287,7 @@ pl:
   label_user_mail_option_only_my_events: "Tylko to co obserwuję lub jestem zaangażowany"
   label_user_mail_option_only_owner: "Tylko do rzeczy, których jestem właścicielem"
   label_user_mail_option_selected: "Dla każdego zdarzenia w wybranych projektach"
+  label_user_menu: "User menu"
   label_user_new: "Nowy użytkownik"
   label_user_plural: "Użytkownicy"
   label_user_search: "Szukaj użytkownika"

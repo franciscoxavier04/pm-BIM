@@ -96,7 +96,8 @@ RSpec.describe "SCIM API Schemas", with_ee: [:scim_api] do
                   "mutability" => "immutable",
                   "uniqueness" => "none",
                   "returned" => "default",
-                  "name" => "display", "type" => "string" }
+                  "name" => "display",
+                  "type" => "string" }
               ],
               "name" => "members" },
             { "multiValued" => false,

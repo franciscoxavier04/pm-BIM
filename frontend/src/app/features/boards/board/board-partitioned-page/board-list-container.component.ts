@@ -49,6 +49,7 @@ import { enterpriseDocsUrl } from 'core-app/core/setup/globals/constants.const';
     BoardListCrossSelectionService,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class BoardListContainerComponent extends UntilDestroyedMixin implements OnInit {
   text = {

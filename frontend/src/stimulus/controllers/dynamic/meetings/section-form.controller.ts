@@ -30,6 +30,7 @@
 
 import * as Turbo from '@hotwired/turbo';
 import { Controller } from '@hotwired/stimulus';
+import { useMeta } from 'stimulus-use';
 
 export default class extends Controller {
   static values = {
@@ -38,7 +39,11 @@ export default class extends Controller {
 
   declare cancelUrlValue:string;
 
+  static metaNames = ['csrf-token'];
+  declare readonly csrfToken:string;
+
   connect():void {
+    useMeta(this, { suffix: false });
     this.focusInput();
   }
 
@@ -53,7 +58,7 @@ export default class extends Controller {
     const response = await fetch(this.cancelUrlValue, {
       method: 'GET',
       headers: {
-        'X-CSRF-Token': (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement).content,
+        'X-CSRF-Token': this.csrfToken,
         Accept: 'text/vnd.turbo-stream.html',
       },
     });

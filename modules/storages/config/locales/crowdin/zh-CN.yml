@@ -21,6 +21,11 @@ zh-CN:
         project_folder_mode: 项目文件夹模式
         storage: 存储
         storage_url: 存储 URL
+      storages/share_point_storage:
+        host: Sharepoint Site URL
+        library: Library ID
+        name: Name
+        site: Site ID
       storages/storage:
         authentication_method: 身份验证方式
         creator: 创建者
@@ -32,6 +37,7 @@ zh-CN:
     errors:
       messages:
         invalid_host_url: 不是有效的 URL。
+        invalid_sharepoint_url: is not a valid SharePoint site, library, or document URL.
         not_linked_to_project: 未链接到项目。
       models:
         storages/file_link:
@@ -256,6 +262,7 @@ zh-CN:
           header: 认证
           non_provisioned_user: 由 IDP 提供的用户
           offline_access: 配置的 OIDC 离线访问范围
+          provider_capabilities: Provider capabilities
           provisioned_user_provider: 由 OIDC 提供的用户
           token_negotiable: 用户 token 能力
           user_bound_request: 基于用户的身份验证请求
@@ -304,6 +311,7 @@ zh-CN:
         oidc_cant_refresh_token: 尝试检查您对存储的访问时出错。请检查服务器日志以获取更多信息。
         oidc_non_oidc_user: 当前用户在预配的情况下，没有被 OpenID Connect (OIDC) 身份提供商预置。请重新运行与OIDC 预置用户的检查。
         oidc_non_provisioned_user: 当前用户并非由 OpenID Connect 身份提供商提供。请针对提供的用户重新运行检查。
+        oidc_provider_cant_exchange: The OpenID Connect provider does not seem to support token exchange, but token exchange was configured for the storage.
         oidc_token_acquisition_failed: 您的 OpenID Connect 设置中没有指明令牌的接收方，也没有提供令牌交换功能。请查看我们的文档以获取更多信息。
         oidc_token_exchange_failed: 您的 OpenID Connect 提供商上的 Token Exchange 设置似乎存在问题。请检查其配置并重试。
         oidc_token_refresh_failed: 当检查你对这个存储的访问权限时出现错误。详情请查看服务器日志。

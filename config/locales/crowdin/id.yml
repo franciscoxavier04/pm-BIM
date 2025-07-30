@@ -63,7 +63,6 @@ id:
         primary-button-color: "Primary button"
         accent-color: "Accent"
         header-bg-color: "Latar Belakang Header"
-        header-item-bg-hover-color: "Latar belakang header melayang"
         main-menu-bg-color: "latar belakang menu utama"
         main-menu-bg-selected-background: "Menu utama ketika dipilih"
       custom_colors: "Warna kostum"
@@ -71,10 +70,6 @@ id:
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
         accent-color: "Color for links and other decently highlighted elements."
-        header-item-bg-hover-color: "Warna latar belakang \"item header\" yang bisa di klik ketika ditunjuk dengan mouse."
-        header-item-font-color: "Warna font item header yang bisa diklik."
-        header-item-font-hover-color: "Warna font \"item header\" yang bisa di klik ketika ditunjuk dengan mouse."
-        header-border-bottom-color: "Garis tipis di bawah header. Biarkan filed ini kosong jika Anda tidak ingin garis apapun."
         main-menu-bg-color: "Warna latar belakang menu sisi kiri."
       theme_warning: mengubah tema akan mengubah custom style anda. Desain akan menghilang. Apakah anda ingin melanjutkannya?
     enterprise:
@@ -121,7 +116,7 @@ id:
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -359,19 +354,34 @@ id:
       parent: "Induk"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
       all: "Semua"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Tidak ada grup untuk saat ini.
-      no_results_content_text: Buat grup baru
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Tidak ada pengguna yang menjadi anggota grup ini.
     memberships:
       no_results_title_text: Saat ini tidak ada proyek yang menjadi bagian grup.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Tentukan daftar nama yang harus diabaikan ketika memproses lampiran untuk surat masuk (mis., Tanda tangan atau ikon). Masukkan satu nama file per baris.
@@ -1098,7 +1108,6 @@ id:
       role:
         permissions: "Hak akses"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1592,6 +1601,8 @@ id:
     models:
       attachment: "File"
       attribute_help_text: "Atribut teks bantuan"
+      auth_provider:
+        other: "Authentication providers"
       category: "Kategori"
       comment: "Komentar"
       custom_action: "Custom action"
@@ -2491,7 +2502,7 @@ id:
       aggregation: "Aggregation"
       api_and_webhooks: "API dan webhook"
     quick_add:
-      label: "Buka cepat tambah menu"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2791,6 +2802,7 @@ id:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Umum"
   label_generate_key: "Generate a key"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: "Path to .git directory"
   label_greater_or_equal: ">="
@@ -2934,6 +2946,7 @@ id:
   label_no_due_date: "no finish date"
   label_no_start_date: "tidak ada tanggal mulai"
   label_no_parent_page: "Tidak ada halaman induk"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Tidak ada yang ditampilkan"
   label_nobody: "tidak ada"
   label_not_configured: "Not configured"
@@ -3142,6 +3155,7 @@ id:
   label_user_mail_option_only_my_events: "Hanya untuk hal-hal yang saya pantau atau saya terlibat didalamnya"
   label_user_mail_option_only_owner: "Hanya untuk hal-hal yang saya sebagai Ownernya"
   label_user_mail_option_selected: "For any event on the selected projects only"
+  label_user_menu: "User menu"
   label_user_new: "User baru"
   label_user_plural: "User"
   label_user_search: "Cari user"

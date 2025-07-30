@@ -63,7 +63,6 @@ fr:
         primary-button-color: "Bouton principal"
         accent-color: "Couleur d'accentuation"
         header-bg-color: "Fond de l'en-tête"
-        header-item-bg-hover-color: "Fond d’en-tête au survol"
         main-menu-bg-color: "Arrière-plan du menu principal"
         main-menu-bg-selected-background: "Menu principal quand sélectionné"
       custom_colors: "Couleurs personnalisées"
@@ -71,10 +70,6 @@ fr:
       instructions:
         primary-button-color: "Couleur d'accentuation, utilisée pour le bouton le plus important à l'écran."
         accent-color: "Couleur pour les liens et autres éléments correctement mis en évidence."
-        header-item-bg-hover-color: "Couleur d’arrière-plan des éléments de l’en-tête survolées par la souris."
-        header-item-font-color: "Couleur de la police des éléments de l’en-tête cliquables."
-        header-item-font-hover-color: "Couleur de la police des éléments de l’en-tête survolées par la souris."
-        header-border-bottom-color: "Ligne mince sous l’en-tête. Laissez ce champ vide si vous ne voulez pas de ligne."
         main-menu-bg-color: "Couleur d’arrière-plan du menu de gauche."
       theme_warning: Le changement de thème écrasera votre style personnalisé. Le design sera alors perdu. Êtes-vous sûr de vouloir continuer ?
     enterprise:
@@ -363,19 +358,34 @@ fr:
       parent: "Parent"
       blueprint: "Modèle de plan"
   global_search:
+    title:
+      all_projects: 'Recherche de "%{search_term}" dans tous les projets'
+      current_project: 'Recherche de "%{search_term}" dans %{project_name}'
+      project_and_subprojects: 'Recherche de "%{search_term}" dans %{project_name} et tous les sous-projets'
     placeholder: "Rechercher dans %{app_title}"
     overwritten_tabs:
       all: "Tous"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Il n'y a actuellement aucun groupe.
-      no_results_content_text: Créer un nouveau groupe
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Aucun utilisateur dans ce groupe pour le moment.
     memberships:
       no_results_title_text: Aucun projet dans ce groupe pour le moment.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Spécifiez une liste de noms à ignorer lors du traitement des pièces jointes aux messages entrants (par exemple, signatures ou icônes). Entrez un nom de fichier par ligne.
@@ -1108,7 +1118,6 @@ fr:
       role:
         permissions: "Autorisations"
       scim_client:
-        auth_provider: "Fournisseur d'authentification"
         authentication_method: "Méthode d'authentification"
         jwt_sub: "Revendication de sujet"
       status:
@@ -1163,7 +1172,7 @@ fr:
         comments_sorting: "Afficher l'activité du lot de travaux triée par"
         disable_keyboard_shortcuts: "Désactiver les raccourcis clavier"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
+          Vous pouvez choisir de désactiver les <a href="%{href}">raccourcis clavier</a> par défaut si vous utilisez un lecteur d'écran ou si vous voulez éviter de déclencher accidentellement une action avec un raccourci.
         dismissed_enterprise_banners: "Bannières d'entreprise masquées"
         impaired: "Mode d'accessibilité"
         auto_hide_popups: "Masquer automatiquement les bannières de réussite"
@@ -1604,6 +1613,9 @@ fr:
     models:
       attachment: "Fichier"
       attribute_help_text: "Attribut d’aide de texte"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "Catégorie"
       comment: "Commentaire"
       custom_action: "Action personnalisée"
@@ -2536,7 +2548,7 @@ fr:
       aggregation: "Agrégation"
       api_and_webhooks: "API et webhooks"
     quick_add:
-      label: "Ouvrir le menu d'ajout rapide"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2836,6 +2848,7 @@ fr:
   label_gantt_chart_plural: "Diagrammes de Gantt"
   label_general: "Général"
   label_generate_key: "Générer une clé"
+  label_global_modules: "Global modules"
   label_global_roles: "Rôles globaux"
   label_git_path: "Chemin d'accès au répertoire .git"
   label_greater_or_equal: ">="
@@ -2979,6 +2992,7 @@ fr:
   label_no_due_date: "pas de date de fin"
   label_no_start_date: "pas de date de début"
   label_no_parent_page: "Aucune page parente"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Rien à afficher"
   label_nobody: "personne"
   label_not_configured: "Non configuré"
@@ -3011,7 +3025,7 @@ fr:
   label_password_rule_special: "Caractères spéciaux"
   label_password_rule_uppercase: "Majuscules"
   label_path_encoding: "Encodage du chemin d'accès"
-  label_per_page: "Per page:"
+  label_per_page: "Par page :"
   label_people: "Participants"
   label_permissions: "Autorisations"
   label_permissions_report: "Rapport d'autorisations"
@@ -3187,6 +3201,7 @@ fr:
   label_user_mail_option_only_my_events: "Uniquement pour les éléments que je suis ou auxquels je participe"
   label_user_mail_option_only_owner: "Les éléments dont je suis le propriétaire"
   label_user_mail_option_selected: "Pour chaque événement sur le projet selectionné seulement"
+  label_user_menu: "User menu"
   label_user_new: "Nouvel utilisateur"
   label_user_plural: "Utilisateurs"
   label_user_search: "Recherche d'Utilisateurs"

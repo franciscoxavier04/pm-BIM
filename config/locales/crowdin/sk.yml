@@ -63,7 +63,6 @@ sk:
         primary-button-color: "Primary button"
         accent-color: "Accent"
         header-bg-color: "Pozadie hlavičky"
-        header-item-bg-hover-color: "Header background on hover"
         main-menu-bg-color: "Pozadie hlavného menu"
         main-menu-bg-selected-background: "Main menu when selected"
       custom_colors: "Vlastné farby"
@@ -71,10 +70,6 @@ sk:
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
         accent-color: "Color for links and other decently highlighted elements."
-        header-item-bg-hover-color: "Farba pozadia kliknuteľnej hlavičky pri umiestnení kurzora nad hlavičku."
-        header-item-font-color: "Farba písma kliknuteľnej hlavičky položky."
-        header-item-font-hover-color: "Farba písma kliknuteľnej hlavičky pri umiestnení kurzora nad hlavičku."
-        header-border-bottom-color: "Hrúbka čiary pod hlavičkou. Nechajte toto pole prázdne ak nechcete žiadnu čiaru."
         main-menu-bg-color: "Farba pozadia ľavého menu."
       theme_warning: Changing the theme will overwrite you custom style. The design will then be lost. Are you sure you want to continue?
     enterprise:
@@ -121,7 +116,7 @@ sk:
         one_time_hint: "This is the only time you will see the client secret. Make sure to copy it now."
       created_token_dialog_component:
         title: "Token created"
-        heading: "An token has been generated"
+        heading: "A token has been generated"
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
@@ -363,19 +358,34 @@ sk:
       parent: "Nadradený balíček"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
       all: "Všetky"
       messages: "Diskusia"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Momentálne nie sú k dispozícií žiadne skupiny.
-      no_results_content_text: Vytvoriť novú skupinu
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Momentálne nie sú členmi tejto skupiny žiadni používatelia.
     memberships:
       no_results_title_text: Pre túto skupinu nie sú momentálne vytvorené žiadne projekty.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Zadajte zoznam názvov, ktoré chcete ignorovať pri spracovávaní príloh prichádzajúcich e-mailov (napr. podpisy alebo ikony). Zadajte jeden názov súboru na riadok.
@@ -1126,7 +1136,6 @@ sk:
       role:
         permissions: "Oprávnenia"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1626,6 +1635,11 @@ sk:
     models:
       attachment: "Súbor"
       attribute_help_text: "Text nápovedy atribútu"
+      auth_provider:
+        one: "Authentication provider"
+        few: "Authentication providers"
+        many: "Authentication providers"
+        other: "Authentication providers"
       category: "Kategória"
       comment: "Komentár"
       custom_action: "Vlastná akcia"
@@ -2624,7 +2638,7 @@ sk:
       aggregation: "Aggregation"
       api_and_webhooks: "API and webhooks"
     quick_add:
-      label: "Open quick add menu"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2924,6 +2938,7 @@ sk:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Všeobecné"
   label_generate_key: "Vygenerovať kľúč"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: "Cesta ku .git adresáru"
   label_greater_or_equal: ">="
@@ -3067,6 +3082,7 @@ sk:
   label_no_due_date: "no finish date"
   label_no_start_date: "žiadny dátum začatia"
   label_no_parent_page: "Žiadna nadradená stránka"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Nič na zobrazenie"
   label_nobody: "nikto"
   label_not_configured: "Not configured"
@@ -3275,6 +3291,7 @@ sk:
   label_user_mail_option_only_my_events: "Len pre veci, ktoré sledujem, alebo v ktorých som zapojený"
   label_user_mail_option_only_owner: "Len pre veci, ktorých som vlastníkom"
   label_user_mail_option_selected: "Pre každú udalosť len na vybraných projektoch"
+  label_user_menu: "User menu"
   label_user_new: "Nový uživateľ"
   label_user_plural: "Užívatelia"
   label_user_search: "Hľadať používateľa"
