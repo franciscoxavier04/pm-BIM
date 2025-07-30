@@ -155,5 +155,10 @@ module OpenIDConnect
         [/(.+)/]
       end
     end
+
+    def to_h
+      claims = self.claims.presence || "{}"
+      super.merge(claims:, acr_values:)
+    end
   end
 end
