@@ -58,6 +58,7 @@ module OpenIDConnect
             name: :groups_claim,
             label: OpenIDConnect::Provider.human_attribute_name(:groups_claim),
             caption: I18n.t("openid_connect.instructions.groups_claim"),
+            required: true,
             input_width: :large,
             disabled: provider.seeded_from_env?
           )
