@@ -742,7 +742,7 @@ en:
     dark: "Dark"
     light: "Light"
     light_high_contrast: "Light high contrast"
-    sync_with_system: "Sync with system"
+    sync_with_system: "Auto (system default)"
 
   types:
     index:
