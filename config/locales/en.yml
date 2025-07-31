@@ -2487,6 +2487,7 @@ en:
           label: "Include descriptions"
           caption: "This option will add a description column in raw format."
     your_work_packages_export: "Work packages are being exported"
+    your_projects_export: "Projects are being exported"
     succeeded: "Export completed"
     failed: "An error has occurred while trying to export the work packages: %{message}"
     errors:

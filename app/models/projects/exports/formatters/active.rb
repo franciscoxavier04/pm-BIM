@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -31,7 +29,7 @@ module Projects::Exports
   module Formatters
     class Active < ::Exports::Formatters::Default
       def self.apply?(attribute, export_format)
-        export_format == :pdf && %i[active].include?(attribute.to_sym)
+        export_format == :pdf && attribute.to_sym == :active
       end
 
       ##
