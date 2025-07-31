@@ -178,27 +178,27 @@ See COPYRIGHT and LICENSE files for more details.
 <%# Properly decides main menu expanded state and width before its drawn. Fixes flickering side menu
         where menu is first expanded, then being collapsed in angular. %>
 <%= nonced_javascript_tag type: "module" do %>
-  (function($) {
-    // execute these lines to prevent flickering when page loads:
-    var wrapper = $('#wrapper');
-    var savedMainMenuWidth = window.OpenProject.guardedLocalStorage("openProject-mainMenuWidth");
-    var mainMenuCollapsed =  window.OpenProject.guardedLocalStorage("openProject-mainMenuCollapsed");
+  // execute these lines to prevent flickering when page loads:
+  const wrapper = document.getElementById('wrapper');
+  const mainMenuCollapsed = window.OpenProject.guardedLocalStorage('openProject-mainMenuCollapsed');
 
-    if (window.innerWidth < 1012) {
-      // force hide on load for small desktops
-      $('.can-hide-navigation').addClass('hidden-navigation');
-    }
+  let savedMainMenuWidth;
+  if (mainMenuCollapsed === 'true') {
+    savedMainMenuWidth = 0;
+  } else {
+    savedMainMenuWidth = parseInt(window.OpenProject.guardedLocalStorage('openProject-mainMenuWidth'), 10);
+  }
 
-    if (mainMenuCollapsed === 'true') {
-      savedMainMenuWidth = 0;
-    }
+  if (window.innerWidth < 1012) {
+    // force hide on load for small desktops
+    document.querySelector('.can-hide-navigation')?.classList.add('hidden-navigation');
+  }
 
-    if (savedMainMenuWidth || savedMainMenuWidth === 0) {
-      document.documentElement.style.setProperty("--main-menu-width", savedMainMenuWidth + 'px');
-    }
+  if (savedMainMenuWidth >= 0) {
+    document.documentElement.style.setProperty('--main-menu-width', savedMainMenuWidth + 'px');
+  }
 
-    wrapper.show();
-  }(jQuery));
+  wrapper.style.display = '';
 <% end %>
 
 <%= nonced_javascript_tag do %>
