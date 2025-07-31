@@ -317,13 +317,8 @@ module ApplicationHelper
 
   def user_theme_data_attributes
     if User.current.pref.sync_with_system_theme?
-      # Default to light mode initially before System theme is applied
-      # FIXME: Causes flickering on page navigation and load
-      {
-        color_mode: "light",
-        light_theme: "light",
-        auto_theme_switcher_mode_value: User.current.pref.theme
-      }
+      # Theme will be set by inline script before body renders to prevent flickering
+      { auto_theme_switcher_mode_value: User.current.pref.theme }
     else
       mode, _theme_suffix = User.current.pref.theme.split("_", 2)
       {
