@@ -16,6 +16,7 @@ en:
         client_id: Client ID
         client_secret: Client secret
         groups_claim: Groups claim
+        group_regexes: Patterns (regular expressions)
         secret: Secret
         scope: Scope
         sync_groups: Synchronize groups
@@ -113,7 +114,6 @@ en:
       label_empty_title: No OpenID providers configured yet.
       label_empty_description: Add a provider to see them here.
       label_group_mapping: Group mapping
-      label_group_regexes: Pattern (regular expression)
       label_metadata: OpenID Connect Discovery Endpoint
       label_automatic_configuration: Automatic configuration
       label_optional_configuration: Optional configuration

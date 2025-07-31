@@ -69,7 +69,7 @@ module OpenIDConnect
           group.text_area(
             name: :group_regexes,
             rows: 5,
-            label: I18n.t("openid_connect.providers.label_group_regexes"),
+            label: OpenIDConnect::Provider.human_attribute_name(:group_regexes),
             caption: link_translate("openid_connect.instructions.group_regexes",
                                     links: { docs_url: %i[sysadmin_docs oidc_groups] },
                                     external: true),
