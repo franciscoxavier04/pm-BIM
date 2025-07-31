@@ -53,8 +53,8 @@ See COPYRIGHT and LICENSE files for more details.
                       icon_wrapper("icon-context icon-checkmark", t(:label_check_uncheck_all_in_column).to_s),
                       "OpenProject.helpers.toggleCheckboxesBySelector('table.transitions-#{name} input.new-status-#{new_status.id}')",
                       class: "no-decoration-on-hover",
-                      title: t(:label_check_uncheck_all_in_column).to_s,
-                      alt: t(:label_check_uncheck_all_in_column).to_s
+                      title: t(:label_check_uncheck_all_in_column),
+                      alt: t(:label_check_uncheck_all_in_column)
                     ) %>
                 <%= h new_status.name %>
               </th>
@@ -69,8 +69,8 @@ See COPYRIGHT and LICENSE files for more details.
                     icon_wrapper("icon-context icon-checkmark", t(:label_check_uncheck_all_in_row).to_s),
                     "OpenProject.helpers.toggleCheckboxesBySelector('table.transitions-#{name} input.old-status-#{old_status.id}')",
                     class: "no-decoration-on-hover",
-                    title: t(:label_check_uncheck_all_in_row).to_s,
-                    alt: t(:label_check_uncheck_all_in_row).to_s
+                    title: t(:label_check_uncheck_all_in_row),
+                    alt: t(:label_check_uncheck_all_in_row)
                   ) %>
               <%= h old_status.name %>
             </td>

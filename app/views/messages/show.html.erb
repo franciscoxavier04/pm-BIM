@@ -56,20 +56,20 @@ See COPYRIGHT and LICENSE files for more details.
                       title: t(:button_quote),
                       class: 'boards--quote-button no-decoration-on-hover',
                       data: { 'action': 'forum-messages#quote' },
-                      alt: t(:button_quote)) if !@topic.locked? && authorize_for('messages', 'reply')
+                      aria: { label: t(:button_quote) }) if !@topic.locked? && authorize_for('messages', 'reply')
 
           %>
           <%= link_to(icon_wrapper('icon-context icon-edit', t(:button_edit)),
                       { action: 'edit', id: message },
                       title: t(:button_edit),
                       class: 'no-decoration-on-hover',
-                      alt: t(:button_edit)) if message.editable_by?(User.current) %>
+                      aria: { label: t(:button_edit) }) if message.editable_by?(User.current) %>
           <%= link_to(icon_wrapper('icon-context icon-delete', t(:button_delete)),
                       { action: 'destroy', id: message },
                       data: { turbo_method: :delete, turbo_confirm: t(:text_are_you_sure) },
                       title: t(:button_delete),
                       class: 'no-decoration-on-hover',
-                      alt: t(:button_delete)) if message.destroyable_by?(User.current) %>
+                      aria: { label: t(:button_delete) }) if message.destroyable_by?(User.current) %>
         </div>
         <h4 class="author additional-information">
           <%= avatar(message.author) %>
