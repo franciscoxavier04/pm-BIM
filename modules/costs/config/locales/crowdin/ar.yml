@@ -30,7 +30,7 @@ ar:
         overridden_costs: "تكاليف متجاوزة"
         spent: "أنفق"
         spent_on: "التاريخ"
-        logged_by: "Logged by"
+        logged_by: "\"تم تسجيل الدخول بواسطة \""
       cost_type:
         unit: "اسم الوحدة"
         unit_plural: "اسم الوحدة متعددة الأقطاب"
