@@ -28,37 +28,16 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module OpenIDConnect
-  module Providers
-    class ClaimsForm < BaseForm
-      include Redmine::I18n
+require "spec_helper"
 
-      form do |f|
-        f.text_area(
-          name: :claims,
-          rows: 10,
-          label: OpenIDConnect::Provider.human_attribute_name(:claims),
-          caption: link_translate(
-            "openid_connect.instructions.claims",
-            links: { docs_url: %i[sysadmin_docs oidc_claims] }
-          ),
-          disabled: provider.seeded_from_env?,
-          required: false,
-          input_width: :large
-        )
+RSpec.describe OpenProject::Static::Links do
+  describe ".url_for" do
+    subject { described_class.url_for(*args) }
 
-        f.text_field(
-          name: :acr_values,
-          label: OpenIDConnect::Provider.human_attribute_name(:acr_values),
-          caption: link_translate(
-            "openid_connect.instructions.acr_values",
-            links: { docs_url: %i[sysadmin_docs oidc_acr_values] }
-          ),
-          disabled: provider.seeded_from_env?,
-          required: false,
-          input_width: :large
-        )
-      end
+    let(:args) { %i[enterprise_features board_view] }
+
+    it "resolves the URL stored in the href" do
+      expect(subject).to eq("https://www.openproject.org/docs/user-guide/agile-boards/#action-boards-enterprise-add-on")
     end
   end
 end

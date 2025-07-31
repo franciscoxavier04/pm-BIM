@@ -258,28 +258,10 @@ class Meeting < ApplicationRecord
         top
       end
 
-      # Disable optimistic locking in order to avoid causing `StaleObjectError`.
-      MeetingAgendaItem.skip_optimistic_locking do
-        MeetingAgendaItem.import(
-          changed_items,
-          on_duplicate_key_update: {
-            conflict_target: [:id],
-            columns: %i[meeting_id
-                        author_id
-                        title
-                        notes
-                        position
-                        duration_in_minutes
-                        start_time
-                        end_time
-                        created_at
-                        updated_at
-                        work_package_id
-                        item_type
-                        lock_version]
-          }
-        )
-      end
+      MeetingAgendaItem.upsert_all(
+        changed_items.map(&:attributes),
+        unique_by: :id
+      )
     end
   end
 
