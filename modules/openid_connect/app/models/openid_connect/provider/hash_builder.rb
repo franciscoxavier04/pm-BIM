@@ -59,7 +59,7 @@ module OpenIDConnect
         post_logout_redirect_uri:,
         claims:,
         acr_values:
-      }.merge(attribute_map)
+      }
        .merge(provider_specific_to_h)
        .compact_blank
     end
