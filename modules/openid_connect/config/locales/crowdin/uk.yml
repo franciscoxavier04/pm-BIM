@@ -6,14 +6,18 @@ uk:
     Ви вийшли з системи. Вміст будь-якої форми, яку ви надішлете, може бути втрачено. Спробуйте, [увійти].
   activerecord:
     attributes:
+      openid_connect/group_link:
+        oidc_group_name: OpenID group identifier
       openid_connect/provider:
         name: Назва
         slug: Унікальний ідентифікатор
         display_name: Коротке ім’я
         client_id: ID клієнта
         client_secret: Секретний ключ клієнта
+        groups_claim: Groups claim
         secret: Секретний ключ
         scope: Область
+        sync_groups: Synchronize groups
         grant_types_supported: Підтримувані типи дозволів
         limit_self_registration: Обмежити самостійну реєстрацію
         authorization_endpoint: Кінцева точка авторизації
@@ -52,9 +56,14 @@ uk:
   openid_connect:
     menu_title: Постачальники OpenID
     delete_title: "Видалити постачальника послуг OpenID Connect"
+    group_links_heading: OpenID Connect group links
     instructions:
       redirect_url: Це URL-адреса переспрямування, яку постачальник послуг OpenID Connect має використовувати для переспрямування в OpenProject після успішного входу в систему.
       endpoint_url: URL-адреса кінцевої точки, надана вам постачальником послуг OpenID Connect
+      group_regexes: One regular expression pattern per line. Please read [the documentation](docs_url) for more information on how to do this.
+      group_regexes_detail: Define patterns using regular expressions to match group names from the groups claim. For example, entering a pattern like <code>^Level1/Level2/([\w/]+)$</code> will extract the group “Groupname/SubGroup” from a response including “Level1/Level2/GroupName/SubGroup”.
+      group_sync: Automatically extract and synchronise group membership information from the identity provider.
+      groups_claim: Specify the name of the claim that's expected to indicate the group names that the user is a member of.
       metadata_none: Я не володію такою інформацією
       metadata_url: У мене є URL-адреса кінцевої точки виявлення
       client_id: ID клієнта, наданий вам постачальником OpenID Connect
@@ -98,6 +107,8 @@ uk:
       label_edit: Редагувати OpenID провайдера %{name}
       label_empty_title: Поки не налаштовано жодного постачальника послуг OpenID.
       label_empty_description: Додайте постачальника послуг, і він з’явиться тут.
+      label_group_mapping: Group mapping
+      label_group_regexes: Pattern (regular expression)
       label_metadata: Кінцева точка виявлення OpenID Connect
       label_automatic_configuration: Автоматична конфігурація
       label_optional_configuration: Додаткова конфігурація
@@ -110,6 +121,7 @@ uk:
       plural: Постачальники OpenID
       singular: OpenID постачальник
       section_texts:
+        group_mapping: Map group names provided by the identity provider to groups in OpenProject.
         metadata: Попередньо заповнюйте конфігурацію, використовуючи URL-адресу кінцевої точки виявлення OpenID Connect
         metadata_form_banner: Редагування кінцевої точки виявлення може перевизначити наявні, попередньо заповнені значення метаданих.
         metadata_form_title: Кінцева точка виявлення OpenID Connect
@@ -119,6 +131,9 @@ uk:
         display_name: Коротке імʼя, яке бачать користувачі.
         attribute_mapping: Налаштуйте зіставлення атрибутів між OpenProject і постачальником послуг OpenID Connect.
         claims: Надсилайте додаткові запити відповіді щодо маркера ID або даних користувача.
+      side_panel:
+        information_component:
+          backchannel_logout_url: Backchannel logout URL
     setting_instructions:
       limit_self_registration: >
         Якщо ввімкнено, користувачі можуть зареєструватися лише через цього постачальника послуг (якщо це дозволено параметром самостійної реєстрації).

@@ -63,7 +63,6 @@ ro:
         primary-button-color: "Butonul principal"
         accent-color: "Accent"
         header-bg-color: "Fundal antet"
-        header-item-bg-hover-color: "Fundal antet la plutire"
         main-menu-bg-color: "Fundal meniu principal"
         main-menu-bg-selected-background: "Meniul principal când este selectat"
       custom_colors: "Culori personalizate"
@@ -71,10 +70,6 @@ ro:
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
         accent-color: "Color for links and other decently highlighted elements."
-        header-item-bg-hover-color: "Culoarea de fundal a obiectelor care pot fi selectate când cursorului se află deasupra lor."
-        header-item-font-color: "Culoare fontului pentru elementele selectabile din antet."
-        header-item-font-hover-color: "Culoarea fontului pentru elementele selectabile din antet când cursorul se află deasupra lor."
-        header-border-bottom-color: "Linia de sub antet. Lăsați acest câmp gol dacă nu doriți această linie."
         main-menu-bg-color: "Culoarea de fundal pentru meniul din partea stângă."
       theme_warning: Schimbarea temei va suprascrie stilul personalizat. În acest caz, designul va fi pierdut. Sunteți sigur că doriți să continuați?
     enterprise:
@@ -125,34 +120,34 @@ ro:
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
-        title: "Delete SCIM client"
-        heading: "Are you sure you want to delete this SCIM client?"
-        description: "Users managed by this SCIM client can no longer be updated by it."
+        title: "Delete SCIM-client"
+        heading: "Are you sure you want to delete this SCIM-client?"
+        description: "Users managed by this SCIM-client can no longer be updated by it."
       edit:
-        label_delete_scim_client: "Delete SCIM client"
+        label_delete_scim_client: "Delete SCIM-client"
       form:
         auth_provider_description: "This is the service that users added by the SCIM provider will use to authenticate in OpenProject."
-        authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM clients</a> for more information on these configuration options.'
-        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
+        authentication_method_description_html: "This is how the SCIM-client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
+        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM-clients</a> for more information on these configuration options.'
+        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM-client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
         name_description: "Choose a name that will help other admins better understand why this client was configured."
       index:
-        description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
-        label_create_button: "Add SCIM client"
+        description: "SCIM-clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
+        label_create_button: "Add SCIM-client"
       new:
-        title: "New SCIM client"
+        title: "New SCIM-client"
       revoke_static_token_dialog_component:
         confirm_button: "Revoke"
         title: "Revoke static token"
         heading: "Are you sure you want to revoke this token?"
-        description: "The SCIM client that uses this token will no longer be able to access OpenProject's SCIM server API."
+        description: "The SCIM-client that uses this token will no longer be able to access OpenProject's SCIM server API."
       table_component:
         blank_slate:
-          title: "No SCIM clients configured yet"
+          title: "No SCIM-clients configured yet"
           description: "Add clients to see them here"
         user_count: "Utilizatori"
       token_list_component:
-        description: "The tokens you generate here can be passed by a SCIM client to access the OpenProject SCIM API."
+        description: "The tokens you generate here can be passed by a SCIM-client to access the OpenProject SCIM API."
         heading: "Tokens"
         label_add_token: "Token"
         label_aria_add_token: "Add token"
@@ -363,19 +358,34 @@ ro:
       parent: "Părinte"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Caută în %{app_title}"
     overwritten_tabs:
       all: "Toate"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: În acest moment nu există grupuri.
-      no_results_content_text: Creează grup nou
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: În acest moment nu există utilizatori care să facă parte din acest grup.
     memberships:
       no_results_title_text: În acest moment nu există proiecte care să facă parte din acest grup.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Specifică o listă de nume care trebuie ignorate la procesarea atașamentelor pentru mesajele primite (de exemplu, semnături sau pictograme). Introdu un nume de fișier pe linie.
@@ -952,7 +962,7 @@ ro:
         attribute_name: "Atribut"
         help_text: "Text de ajutor"
       auth_provider:
-        scim_clients: "SCIM clients"
+        scim_clients: "SCIM-clients"
       capability:
         context: "Context"
       changeset:
@@ -1118,7 +1128,6 @@ ro:
       role:
         permissions: "Drepturi"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1250,6 +1259,7 @@ ro:
         error_unauthorized: "nu pot fi accesate."
         error_readonly: "a fost încercat să fie scris, dar nu este inscriptibil."
         error_conflict: "Informaţia a fost actualizată de cel puţin un alt utilizator între timp."
+        error_not_found: "not found."
         email: "nu este o adresă de e-mail validă."
         empty: "nu poate fi gol."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1268,6 +1278,7 @@ ro:
         inclusion_nested: "nu este setată la una dintre valorile permise la calea '%{path}'."
         invalid: "este invalid."
         invalid_characters: "contains invalid characters."
+        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
         invalid_url: "nu este o adresa URL validă."
         invalid_url_scheme: "nu este un protocol permis (allowed: %{allowed_schemes})."
         less_than_or_equal_to: "trebuie să fie mai mic sau egal cu %{count}."
@@ -1409,8 +1420,6 @@ ro:
           cannot_be_a_non_working_day: "nu poate fi o zi nelucrătoare."
         query:
           attributes:
-            project:
-              error_not_found: "%s nu a fost găsit"
             public:
               error_unauthorized: "- Utilizatorul nu are permisiunea de a crea vizualizări publice."
             group_by:
@@ -1450,10 +1459,8 @@ ro:
             circular_dependency: "Relația creează un cerc închis."
           attributes:
             to_id:
-              error_not_found: "negăsit sau invizibil."
               error_readonly: "nu poate fi schimbat pentru relaţiile existente."
             from_id:
-              error_not_found: "negăsit sau invizibil."
               error_readonly: "nu poate fi schimbat pentru relaţiile existente."
         repository:
           not_available: "Nu este disponibil furnizorul de SCM"
@@ -1594,10 +1601,6 @@ ro:
                 description: "Valoarea din 'Confirmare parolă' ar trebui să fie identică cu cea introdusă în 'Parolă nouă'."
             status:
               invalid_on_create: "nu este un statut valabil pentru utilizatorii noi."
-            ldap_auth_source:
-              error_not_found: "nu a fost găsit"
-            auth_source:
-              error_not_found: "nu a fost găsit"
         member:
           principal_blank: "Trebuie să alegeţi cel puţin un utilizator sau grup."
           role_blank: "trebuie să fie atribuite."
@@ -1623,6 +1626,10 @@ ro:
     models:
       attachment: "Fișier"
       attribute_help_text: "Text de ajutor pentru atribute"
+      auth_provider:
+        one: "Authentication provider"
+        few: "Authentication providers"
+        other: "Authentication providers"
       category: "Categorie"
       comment: "Comentariu"
       custom_action: "Adaugă acțiune personalizată"
@@ -1661,9 +1668,9 @@ ro:
         few: "Roluri"
         other: "Roluri"
       scim_client:
-        one: "SCIM client"
-        few: "SCIM clients"
-        other: "SCIM clients"
+        one: "SCIM-client"
+        few: "SCIM-clients"
+        other: "SCIM-clients"
       status: "Stare pachet de lucru"
       token/api:
         one: Token acces
@@ -1820,6 +1827,7 @@ ro:
     title: "Titlu"
     type: "Tip"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Actualizat pe"
     updated_on: "Actualizat în"
     uploader: "Autor"
@@ -2247,7 +2255,7 @@ ro:
         title: "Single Sign-On for Nextcloud Storage"
         description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       scim_api:
-        title: "SCIM clients"
+        title: "SCIM-clients"
         description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
@@ -2587,7 +2595,7 @@ ro:
       aggregation: "Agregare"
       api_and_webhooks: "API și webhook-uri"
     quick_add:
-      label: "Deschide meniul adăugare rapidă"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2834,7 +2842,7 @@ ro:
   label_duplicated_by: "dublat de"
   label_duplicate: "duplicat"
   label_duplicates: "dublează"
-  label_edit: "Editează"
+  label_edit: "Editare"
   label_edit_x: "Editare: %{x}"
   label_enable_multi_select: "Comutare selecție multiplă"
   label_enabled_project_custom_fields: "Câmpuri personalizate activate"
@@ -2887,10 +2895,11 @@ ro:
   label_gantt_chart_plural: "Diagrame Gantt"
   label_general: "General"
   label_generate_key: "Generare cheie"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: "Calea catre directorul .git"
   label_greater_or_equal: ">="
-  label_group_by: "Grupează după"
+  label_group_by: "Grupare după"
   label_group_new: "Grupare nouă"
   label_group: "Grup"
   label_group_named: "Grup %{name}"
@@ -2971,6 +2980,7 @@ ro:
   label_manage: "Gestionează"
   label_manage_groups: "Gestionare grupuri"
   label_managed_repositories_vendor: "Gestionare arhive %{vendor}"
+  label_mathematical_operators: "Mathematical operators"
   label_max_size: "Dimensiunea maximă"
   label_me: "eu"
   label_member_new: "Membru nou"
@@ -3030,6 +3040,7 @@ ro:
   label_no_due_date: "fără dată finalizare"
   label_no_start_date: "fără dată început"
   label_no_parent_page: "Pagină părinte:"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Nimic de afișat"
   label_nobody: "nimeni"
   label_not_configured: "Not configured"
@@ -3238,6 +3249,7 @@ ro:
   label_user_mail_option_only_my_events: "Doar pentru tichete pentru care sunt observator sau în care sunt implicat"
   label_user_mail_option_only_owner: "Doar pentru tichete pentru care sunt responsabil"
   label_user_mail_option_selected: "Pentru orice eveniment doar în proiectele selectate"
+  label_user_menu: "User menu"
   label_user_new: "Utilizator nou"
   label_user_plural: "Utilizatori"
   label_user_search: "Căutare utilizator"

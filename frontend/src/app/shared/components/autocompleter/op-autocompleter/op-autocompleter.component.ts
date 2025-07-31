@@ -84,6 +84,7 @@ export interface IAutocompleterTemplateComponent {
       multi: true,
     },
   ],
+  standalone: false,
 })
 // It is component that you can use whenever you need an autocompleter
 // it has all inputs and outputs of ng-select

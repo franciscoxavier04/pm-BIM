@@ -31,6 +31,9 @@ fr:
         spent: "Consommé"
         spent_on: "Date"
         logged_by: "Saisi par"
+        entity: Connecté(e) pendant
+        entity_id: Connecté(e) pendant
+        entity_gid: Connecté(e) pendant
       cost_type:
         unit: "Nom de l'unité"
         unit_plural: "Nom pluriel de l'unité"
@@ -58,6 +61,9 @@ fr:
         start_time: Heure de début
         end_time: Heure de fin
         time: Heure 
+        entity: Connecté(e) pendant
+        entity_id: Connecté(e) pendant
+        entity_gid: Connecté(e) pendant
     models:
       time_entry:
         one: "Saisie du temps"
@@ -95,6 +101,7 @@ fr:
   button_log_time: "Journal"
   button_add_activity: "Activité"
   button_add_time_entry: "Consigner temps"
+  button_stop_timer: "Arrêter le minuteur"
   caption_booked_on_project: "Réservé pour le projet"
   caption_default: "Défaut"
   caption_default_rate_history_for: "Historique des tarifs par défaut pour %{user}"
@@ -173,6 +180,7 @@ fr:
   label_day: "Jour"
   label_today_capitalized: "Aujourd'hui"
   label_view_mode_switcher: "Changer la vue"
+  label_timer_since: "Commencé à %{time}"
   placeholder_activity_select_work_package_first: La sélection d'un paquet de travail est requise en premier
   notice_something_wrong: "Quelque chose s'est mal passé. Veuillez réessayer."
   notice_successful_restore: "Restauration réussie."
@@ -180,6 +188,7 @@ fr:
   notice_cost_logged_successfully: "Coût unitaire enregistré avec succès."
   notice_different_time_zones: "Cet utilisateur a un fuseau horaire différent (%{tz}). L'heure sera enregistrée en utilisant son fuseau horaire."
   notice_time_entry_update_failed: "Impossible de mettre à jour la saisie de temps. Erreurs : %{errors}"
+  notice_time_entry_delete_failed: "Impossible de supprimer l'entrée de temps. Erreurs: %{errors}"
   permission_edit_cost_entries: "Éditer coûts unitaires réservés"
   permission_edit_own_cost_entries: "Éditer coûts unitaires propres réservés"
   permission_edit_hourly_rates: "Éditer les tarifs horaires"

@@ -29,12 +29,12 @@
 #++
 
 class CostQuery::PDF::TimesheetGenerator
-  include WorkPackage::PDFExport::Common::Common
-  include WorkPackage::PDFExport::Common::Attachments
-  include WorkPackage::PDFExport::Common::Logo
-  include WorkPackage::PDFExport::Export::Cover
-  include WorkPackage::PDFExport::Export::Page
-  include WorkPackage::PDFExport::Export::Timesheet::Styles
+  include Exports::PDF::Common::Common
+  include Exports::PDF::Common::Attachments
+  include Exports::PDF::Common::Logo
+  include Exports::PDF::Components::Cover
+  include Exports::PDF::Components::Page
+  include CostQuery::PDF::Styles
   include ReportingHelper
 
   H1_FONT_SIZE = 26
@@ -165,7 +165,7 @@ class CostQuery::PDF::TimesheetGenerator
               .filter { |r| r.fields["type"] == "TimeEntry" }
               .flat_map { |r| r.fields["id"] }
 
-      TimeEntry.where(id: ids).includes(%i[user activity work_package project])
+      TimeEntry.where(id: ids).includes(%i[user activity project])
     end
   end
 
@@ -220,11 +220,12 @@ class CostQuery::PDF::TimesheetGenerator
   end
 
   def build_table_subject_cell(entry)
-    return "" if entry.work_package.nil?
+    return "" if entry.entity.nil?
+    return "" unless entry.entity.is_a?(WorkPackage)
 
-    href = url_helpers.work_package_url(entry.work_package)
+    href = url_helpers.work_package_url(entry.entity)
     {
-      content: "#{make_link_href(href, "##{entry.work_package.id}")} #{entry.work_package.subject || ''}",
+      content: "#{make_link_href(href, "##{entry.entity.id}")} #{entry.entity.subject || ''}",
       inline_format: true
     }
   end

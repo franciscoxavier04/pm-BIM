@@ -77,7 +77,7 @@ RSpec.describe "Edit project custom field calculated value", :js, with_flag: { c
 
       fill_in("custom_field_name", with: "Updated name", fill_options: { clear: :backspace })
       select(section_for_select_fields.name, from: "custom_field_custom_field_section_id")
-      fill_in("custom_field_formula", with: "1 + 1", fill_options: { clear: :backspace })
+      find_field(id: "custom_field_formula", type: :hidden).set("1 + 1")
 
       click_on "Save"
 
@@ -114,7 +114,7 @@ RSpec.describe "Edit project custom field calculated value", :js, with_flag: { c
     it "prevents saving a calculated value with an empty formula" do
       original_formula = calculated_value.formula_string
 
-      fill_in("custom_field_formula", with: "")
+      find_field(id: "custom_field_formula", type: :hidden).set("")
       click_on "Save"
 
       expect(page).to have_text("Formula can't be blank")
@@ -133,7 +133,7 @@ RSpec.describe "Edit project custom field calculated value", :js, with_flag: { c
         visit new_admin_settings_project_custom_field_path(field_format: "calculated_value",
                                                            custom_field_section_id: section_for_input_fields.id)
         fill_in("custom_field_name", with: "New calculated value")
-        fill_in("custom_field_formula", with: "1 + 1")
+        find_field(id: "custom_field_formula", type: :hidden).set("1 + 1")
         click_on "Save"
 
         expect(page).to have_text("Format is not set to one of the allowed values.")

@@ -89,6 +89,7 @@ import {
     QueryParamListenerService,
   ],
   selector: 'op-ifc-viewer-page',
+  standalone: false,
 })
 export class IFCViewerPageComponent
   extends PartitionedQuerySpacePageComponent

@@ -64,6 +64,7 @@ const featureTeaserImage = `${OpVersionImage}_features.svg`;
   selector: 'opce-homescreen-new-features-block',
   styleUrls: ['./new-features.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 
 /**

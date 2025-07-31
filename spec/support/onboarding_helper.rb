@@ -67,8 +67,10 @@ module OnboardingHelper
       expect(page).to have_text sanitize_string(I18n.t("js.onboarding.steps.quick_add_button")), normalize_ws: true
     end
 
-    next_button.click
-    expect(page).to have_text sanitize_string(I18n.t("js.onboarding.steps.help_menu")), normalize_ws: true
+    retry_block do
+      next_button.click
+      expect(page).to have_text sanitize_string(I18n.t("js.onboarding.steps.help_menu")), normalize_ws: true
+    end
 
     next_button.click
     expect(page).to have_no_css ".enjoy_hint_label"

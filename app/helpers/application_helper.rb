@@ -219,6 +219,12 @@ module ApplicationHelper
     end
   end
 
+  # Backward compatibility helper for secure_headers gem migration
+  # Rails built-in CSP equivalent of nonced_javascript_tag
+  def nonced_javascript_tag(**, &)
+    javascript_tag(nonce: true, **, &)
+  end
+
   def to_path_param(path)
     path.to_s
   end
@@ -299,7 +305,7 @@ module ApplicationHelper
 
   def body_data_attributes(local_assigns)
     {
-      controller: "application hover-card-trigger",
+      controller: "application hover-card-trigger beforeunload",
       relative_url_root: root_path,
       overflowing_identifier: ".__overflowing_body",
       rendered_at: Time.zone.now.iso8601,

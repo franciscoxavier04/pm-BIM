@@ -55,12 +55,12 @@ module MeetingAgendaItems
       !@meeting.closed? && User.current.allowed_in_project?(:manage_agendas, @meeting.project)
     end
 
-    def edit_enabled?
-      !@meeting.closed? && User.current.allowed_in_project?(:manage_agendas, @meeting.project)
+    def can_manage_agendas?
+      User.current.allowed_in_project?(:manage_agendas, @meeting.project)
     end
 
     def add_outcome_action?
-      @meeting_agenda_item.editable? &&
+      editable? &&
         @meeting.in_progress? &&
         !@meeting_agenda_item.outcomes.exists? &&
         !@meeting_agenda_item.in_backlog? &&
@@ -68,7 +68,7 @@ module MeetingAgendaItems
     end
 
     def add_note_action?
-      @meeting_agenda_item.editable? && @meeting_agenda_item.notes.blank?
+      editable? && @meeting_agenda_item.notes.blank?
     end
 
     def first?
@@ -98,6 +98,8 @@ module MeetingAgendaItems
     end
 
     def edit_action_item(menu)
+      return unless editable?
+
       menu.with_item(label: t("label_edit"),
                      href: edit_meeting_agenda_item_path(@meeting_agenda_item.meeting, @meeting_agenda_item),
                      content_arguments: {
@@ -139,6 +141,7 @@ module MeetingAgendaItems
     end
 
     def move_to_next_meeting_action_item(menu)
+      return unless editable?
       return if in_template?
       return if @series.nil?
 
@@ -165,6 +168,8 @@ module MeetingAgendaItems
     end
 
     def move_actions(menu)
+      return unless editable?
+
       move_action_item(menu, :highest, t("label_agenda_item_move_to_top"), "move-to-top") unless first?
       move_action_item(menu, :higher, t("label_agenda_item_move_up"), "chevron-up") unless first?
       move_action_item(menu, :lower, t("label_agenda_item_move_down"), "chevron-down") unless last?
@@ -172,6 +177,8 @@ module MeetingAgendaItems
     end
 
     def delete_action_item(menu)
+      return unless editable?
+
       label = @meeting_agenda_item.work_package_id.present? ? wp_agenda_item_delete_label : t(:text_destroy)
       menu.with_item(label:,
                      scheme: :danger,
@@ -199,6 +206,8 @@ module MeetingAgendaItems
     end
 
     def move_to_backlog_action_item(menu)
+      return unless editable?
+
       menu.with_item(label: I18n.t(:label_agenda_item_move_to_backlog),
                      tag: :button,
                      content_arguments: { data: {
@@ -210,6 +219,8 @@ module MeetingAgendaItems
     end
 
     def move_to_current_meeting_action_item(menu)
+      return unless editable?
+
       menu.with_item(label: I18n.t(:label_agenda_item_move_to_current_meeting),
                      tag: :button,
                      content_arguments: { data: {
@@ -237,7 +248,9 @@ module MeetingAgendaItems
     end
 
     def move_to_next_meeting_enabled?
-      edit_enabled? && @meeting.recurring? && @meeting.recurring_meeting&.next_occurrence.present? && !in_template?
+      return false unless editable?
+
+      @meeting.recurring? && @meeting.recurring_meeting&.next_occurrence.present? && !in_template?
     end
 
     def in_backlog?
@@ -253,7 +266,13 @@ module MeetingAgendaItems
     end
 
     def move_to_different_section_or_meeting_action_added?
+      return false unless editable?
+
       !in_template? || in_backlog? || move_to_next_meeting_enabled?
+    end
+
+    def editable?
+      @editable ||= @meeting_agenda_item.editable? && can_manage_agendas?
     end
   end
 end

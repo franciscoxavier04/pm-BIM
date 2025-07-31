@@ -31,6 +31,9 @@ ro:
         spent: "Cheltuit"
         spent_on: "Dată"
         logged_by: "Logat ca"
+        entity: Logat pentru
+        entity_id: Logat pentru
+        entity_gid: Logat pentru
       cost_type:
         unit: "Denumirea unității"
         unit_plural: "Numele unității pluralizate"
@@ -58,6 +61,9 @@ ro:
         start_time: Dată început
         end_time: Dată finalizare
         time: Timp
+        entity: Logat pentru
+        entity_id: Logat pentru
+        entity_gid: Logat pentru
     models:
       time_entry:
         one: "Înregistrarea timpului"
@@ -99,6 +105,7 @@ ro:
   button_log_time: "Jurnal"
   button_add_activity: "Activitate"
   button_add_time_entry: "Consum timp"
+  button_stop_timer: "Oprește cronometrul"
   caption_booked_on_project: "Rezervat pe proiect"
   caption_default: "Implicit"
   caption_default_rate_history_for: "Istoricul ratei de neplată pentru %{user}"
@@ -177,6 +184,7 @@ ro:
   label_day: "Zi"
   label_today_capitalized: "Azi"
   label_view_mode_switcher: "Schimbă vizualizarea"
+  label_timer_since: "Început la %{time}"
   placeholder_activity_select_work_package_first: Selecția pachetului de lucru este necesară mai întâi
   notice_something_wrong: "Ceva n-a mers bine. Vă rugăm să încercați din nou."
   notice_successful_restore: "Restaurare reușită."
@@ -184,6 +192,7 @@ ro:
   notice_cost_logged_successfully: "Costul unitar a fost înregistrat cu succes."
   notice_different_time_zones: "Acest utilizator are un alt fus orar (%{tz}). Timpul va fi înregistrat folosind fusul orar."
   notice_time_entry_update_failed: "Nu s-a reușit actualizarea intrării orare. Eroări: %{errors}"
+  notice_time_entry_delete_failed: "Eroare la ștergerea intrării orare. Erori: %{errors}"
   permission_edit_cost_entries: "Editarea costurilor unitare înregistrate"
   permission_edit_own_cost_entries: "Editați propriile costuri unitare contabilizate"
   permission_edit_hourly_rates: "Editați tarifele orare"

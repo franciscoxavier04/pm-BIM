@@ -30,6 +30,7 @@
 
 class Meeting < ApplicationRecord
   include VirtualStartTime
+  include MeetingUid
   include ChronicDuration
   include OpenProject::Journal::AttachmentHelper
 
@@ -40,6 +41,8 @@ class Meeting < ApplicationRecord
 
   belongs_to :recurring_meeting, optional: true
   has_one :scheduled_meeting, inverse_of: :meeting
+
+  has_many :time_entries, dependent: :delete_all, inverse_of: :entity, as: :entity
 
   # Legacy association to minutes, agendas, contents
   # to be removed in 17.0
@@ -182,6 +185,14 @@ class Meeting < ApplicationRecord
     !closed? && user.allowed_in_project?(:edit_meetings, project)
   end
 
+  def notify?
+    if recurring?
+      recurring_meeting.template.notify
+    else
+      notify
+    end
+  end
+
   def invited_or_attended_participants
     participants.where(invited: true).or(participants.where(attended: true))
   end
@@ -301,7 +312,7 @@ class Meeting < ApplicationRecord
   end
 
   def send_participant_added_mail(participant)
-    return if templated? || new_record?
+    return if templated? || new_record? || !notify?
 
     if Journal::NotificationConfiguration.active?
       MeetingMailer.invited(self, participant.user, User.current).deliver_later
@@ -309,7 +320,7 @@ class Meeting < ApplicationRecord
   end
 
   def send_rescheduling_mail
-    return if templated? || new_record?
+    return if templated? || new_record? || !notify?
 
     MeetingNotificationService
       .new(self)

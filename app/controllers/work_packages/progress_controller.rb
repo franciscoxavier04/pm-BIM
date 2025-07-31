@@ -38,7 +38,7 @@ class WorkPackages::ProgressController < ApplicationController
                               done_ratio].freeze
 
   layout false
-  authorization_checked! :new, :edit, :create, :update
+  authorization_checked! :new, :edit, :preview, :create, :update
 
   def new
     make_fake_initial_work_package

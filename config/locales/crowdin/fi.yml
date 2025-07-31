@@ -63,7 +63,6 @@ fi:
         primary-button-color: "Primary button"
         accent-color: "Accent"
         header-bg-color: "Header background"
-        header-item-bg-hover-color: "Header background on hover"
         main-menu-bg-color: "Main menu background"
         main-menu-bg-selected-background: "Main menu when selected"
       custom_colors: "Mukautetut värit"
@@ -71,10 +70,6 @@ fi:
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
         accent-color: "Color for links and other decently highlighted elements."
-        header-item-bg-hover-color: "Taustan väri klikattava otsikko eriä kun leijui hiirellä."
-        header-item-font-color: "Fontin väri klikattava otsikko eriä."
-        header-item-font-hover-color: "Fontin väri klikattava otsikko eriä kun leijui hiirellä."
-        header-border-bottom-color: "Thin line under the header. Leave this field empty if you don't want any line."
         main-menu-bg-color: "Left side menu's background color."
       theme_warning: Changing the theme will overwrite you custom style. The design will then be lost. Are you sure you want to continue?
     enterprise:
@@ -125,34 +120,34 @@ fi:
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
-        title: "Delete SCIM client"
-        heading: "Are you sure you want to delete this SCIM client?"
-        description: "Users managed by this SCIM client can no longer be updated by it."
+        title: "Delete SCIM-client"
+        heading: "Are you sure you want to delete this SCIM-client?"
+        description: "Users managed by this SCIM-client can no longer be updated by it."
       edit:
-        label_delete_scim_client: "Delete SCIM client"
+        label_delete_scim_client: "Delete SCIM-client"
       form:
         auth_provider_description: "This is the service that users added by the SCIM provider will use to authenticate in OpenProject."
-        authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM clients</a> for more information on these configuration options.'
-        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
+        authentication_method_description_html: "This is how the SCIM-client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
+        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM-clients</a> for more information on these configuration options.'
+        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM-client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
         name_description: "Choose a name that will help other admins better understand why this client was configured."
       index:
-        description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
-        label_create_button: "Add SCIM client"
+        description: "SCIM-clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
+        label_create_button: "Add SCIM-client"
       new:
-        title: "New SCIM client"
+        title: "New SCIM-client"
       revoke_static_token_dialog_component:
         confirm_button: "Revoke"
         title: "Revoke static token"
         heading: "Are you sure you want to revoke this token?"
-        description: "The SCIM client that uses this token will no longer be able to access OpenProject's SCIM server API."
+        description: "The SCIM-client that uses this token will no longer be able to access OpenProject's SCIM server API."
       table_component:
         blank_slate:
-          title: "No SCIM clients configured yet"
+          title: "No SCIM-clients configured yet"
           description: "Add clients to see them here"
         user_count: "Users"
       token_list_component:
-        description: "The tokens you generate here can be passed by a SCIM client to access the OpenProject SCIM API."
+        description: "The tokens you generate here can be passed by a SCIM-client to access the OpenProject SCIM API."
         heading: "Tokens"
         label_add_token: "Token"
         label_aria_add_token: "Add token"
@@ -363,19 +358,34 @@ fi:
       parent: "Ylätaso"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
       all: "Kaikki"
       messages: "Keskustelupalsta"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Tällä hetkellä ei ole ryhmiä.
-      no_results_content_text: Luo uusi ryhmä
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Tällä hetkellä tähän ryhmään ei kuulu yhtään käyttäjää.
     memberships:
       no_results_title_text: Tällä hetkellä tähän ryhmään ei kuulu projekteja.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Specify a list of names to ignore when processing attachments for incoming mails (e.g., signatures or icons). Enter one filename per line.
@@ -944,7 +954,7 @@ fi:
         attribute_name: "Määre"
         help_text: "Help text"
       auth_provider:
-        scim_clients: "SCIM clients"
+        scim_clients: "SCIM-clients"
       capability:
         context: "Context"
       changeset:
@@ -1110,7 +1120,6 @@ fi:
       role:
         permissions: "Oikeudet"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1242,6 +1251,7 @@ fi:
         error_unauthorized: "may not be accessed."
         error_readonly: "was attempted to be written but is not writable."
         error_conflict: "Vähintään yksi muu käyttäjä on päivitetty tiedot sillä välin."
+        error_not_found: "not found."
         email: "is not a valid email address."
         empty: "ei voi olla tyhjä."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1260,6 +1270,7 @@ fi:
         inclusion_nested: "is not set to one of the allowed values at path '%{path}'."
         invalid: "ei kelpaa."
         invalid_characters: "contains invalid characters."
+        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
         invalid_url: "ei ole kelvollinen URL."
         invalid_url_scheme: "is not a supported protocol (allowed: %{allowed_schemes})."
         less_than_or_equal_to: "täytyy olla pienempi tai yhtä suuri kuin %{count}."
@@ -1401,8 +1412,6 @@ fi:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "ei löydetty"
             public:
               error_unauthorized: "- The user has no permission to create public views."
             group_by:
@@ -1442,10 +1451,8 @@ fi:
             circular_dependency: "The relationship creates a circle of relationships."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "SCM vendor is not available"
@@ -1585,10 +1592,6 @@ fi:
                 description: "\"Salasanan vahvistus\" -kentän arvon tulee olla identtinen \"Uusi salasana\" -kentän arvon kanssa."
             status:
               invalid_on_create: "ei ole kelvollinen tila uusille käyttäjille."
-            ldap_auth_source:
-              error_not_found: "ei löydetty"
-            auth_source:
-              error_not_found: "ei löydetty"
         member:
           principal_blank: "Valitse vähintään yksi käyttäjä tai ryhmä."
           role_blank: "need to be assigned."
@@ -1613,6 +1616,9 @@ fi:
     models:
       attachment: "Tiedosto"
       attribute_help_text: "Attribute help text"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "Kategoria"
       comment: "Kommentti"
       custom_action: "Custom action"
@@ -1645,8 +1651,8 @@ fi:
         one: "Rooli"
         other: "Roolit"
       scim_client:
-        one: "SCIM client"
-        other: "SCIM clients"
+        one: "SCIM-client"
+        other: "SCIM-clients"
       status: "Tehtävän tila"
       token/api:
         one: API-salasana
@@ -1798,6 +1804,7 @@ fi:
     title: "Otsikko"
     type: "Tyyppi"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Päivitetty"
     updated_on: "Päivitetty"
     uploader: "Uploader"
@@ -2205,7 +2212,7 @@ fi:
         title: "Single Sign-On for Nextcloud Storage"
         description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       scim_api:
-        title: "SCIM clients"
+        title: "SCIM-clients"
         description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
@@ -2544,7 +2551,7 @@ fi:
       aggregation: "Aggregation"
       api_and_webhooks: "API and webhooks"
     quick_add:
-      label: "Open quick add menu"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2844,6 +2851,7 @@ fi:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Yleinen"
   label_generate_key: "Luo avain"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: "Polku .git hakemistoon"
   label_greater_or_equal: ">="
@@ -2928,6 +2936,7 @@ fi:
   label_manage: "Manage"
   label_manage_groups: "Ryhmien hallinta"
   label_managed_repositories_vendor: "Managed %{vendor} repositories"
+  label_mathematical_operators: "Mathematical operators"
   label_max_size: "Suurin koko"
   label_me: "minä"
   label_member_new: "Uusi jäsen"
@@ -2987,6 +2996,7 @@ fi:
   label_no_due_date: "no finish date"
   label_no_start_date: "ei aloituspäivää"
   label_no_parent_page: "Ei yläsivua"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Ei näytettävää"
   label_nobody: "ei kukaan"
   label_not_configured: "Not configured"
@@ -3195,6 +3205,7 @@ fi:
   label_user_mail_option_only_my_events: "Vain niistä, joita seuraan tai joissa olen mukana"
   label_user_mail_option_only_owner: "Vain niistä, jotka omistan"
   label_user_mail_option_selected: "Kaikista tapahtumista vain valitsemistani projekteista"
+  label_user_menu: "User menu"
   label_user_new: "Uusi käyttäjä"
   label_user_plural: "Käyttäjät"
   label_user_search: "Etsi käyttäjä"

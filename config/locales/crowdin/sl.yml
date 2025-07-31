@@ -63,7 +63,6 @@ sl:
         primary-button-color: "Primary button"
         accent-color: "Accent"
         header-bg-color: "Ozadje glave"
-        header-item-bg-hover-color: "Ozadje glave, ko smo z miško na vsebini"
         main-menu-bg-color: "Ozadje glavnega menija"
         main-menu-bg-selected-background: "Glavni meni, ko je izbran"
       custom_colors: "Barve po meri"
@@ -71,10 +70,6 @@ sl:
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
         accent-color: "Color for links and other decently highlighted elements."
-        header-item-bg-hover-color: "Barva ozadja enot v glavi katere je mogoče klikniti, ko se z miško premaknete na njih."
-        header-item-font-color: "Barva pisave enot v glavi, na katere lahko kliknemo."
-        header-item-font-hover-color: "Barva pisave elementov v glavi, na katere lahko kliknemo, ko se z miško premaknemo na njih."
-        header-border-bottom-color: "Tanka črta pod glavo. Pustite to polje prazno, če ne želite črte."
         main-menu-bg-color: "Barva ozadja levega menija."
       theme_warning: "Sprememba teme bo nadomestilo vaš slog po meri. Oblikovanje bo tako izgubljeno. Ali ste prepričani, da bi radi nadaljevali?\n"
     enterprise:
@@ -125,34 +120,34 @@ sl:
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
-        title: "Delete SCIM client"
-        heading: "Are you sure you want to delete this SCIM client?"
-        description: "Users managed by this SCIM client can no longer be updated by it."
+        title: "Delete SCIM-client"
+        heading: "Are you sure you want to delete this SCIM-client?"
+        description: "Users managed by this SCIM-client can no longer be updated by it."
       edit:
-        label_delete_scim_client: "Delete SCIM client"
+        label_delete_scim_client: "Delete SCIM-client"
       form:
         auth_provider_description: "This is the service that users added by the SCIM provider will use to authenticate in OpenProject."
-        authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM clients</a> for more information on these configuration options.'
-        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
+        authentication_method_description_html: "This is how the SCIM-client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
+        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM-clients</a> for more information on these configuration options.'
+        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM-client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
         name_description: "Choose a name that will help other admins better understand why this client was configured."
       index:
-        description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
-        label_create_button: "Add SCIM client"
+        description: "SCIM-clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
+        label_create_button: "Add SCIM-client"
       new:
-        title: "New SCIM client"
+        title: "New SCIM-client"
       revoke_static_token_dialog_component:
         confirm_button: "Revoke"
         title: "Revoke static token"
         heading: "Are you sure you want to revoke this token?"
-        description: "The SCIM client that uses this token will no longer be able to access OpenProject's SCIM server API."
+        description: "The SCIM-client that uses this token will no longer be able to access OpenProject's SCIM server API."
       table_component:
         blank_slate:
-          title: "No SCIM clients configured yet"
+          title: "No SCIM-clients configured yet"
           description: "Add clients to see them here"
         user_count: "Users"
       token_list_component:
-        description: "The tokens you generate here can be passed by a SCIM client to access the OpenProject SCIM API."
+        description: "The tokens you generate here can be passed by a SCIM-client to access the OpenProject SCIM API."
         heading: "Tokens"
         label_add_token: "Token"
         label_aria_add_token: "Add token"
@@ -362,19 +357,34 @@ sl:
       parent: "Nadrejeni"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
       all: "Vse"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Trenutno ni nobene skupine.
-      no_results_content_text: Ustvarite novo skupino
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: V tej skupini trenutno ni uporabnikov.
     memberships:
       no_results_title_text: Trenutno ni projektov, ki so del te skupine.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Določite seznam imen, ki jih ne upoštevate pri obdelavi prilog za dohodne pošte (npr. podpise ali ikone). Vnesite eno ime datoteke v vrstico.
@@ -959,7 +969,7 @@ sl:
         attribute_name: "Atribut"
         help_text: "Besedilo pomoči"
       auth_provider:
-        scim_clients: "SCIM clients"
+        scim_clients: "SCIM-clients"
       capability:
         context: "Context"
       changeset:
@@ -1125,7 +1135,6 @@ sl:
       role:
         permissions: "Dovoljenja"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1257,6 +1266,7 @@ sl:
         error_unauthorized: "morda ni mogoče dostopati."
         error_readonly: "poskušano je bilo napisati, vendar ni mogoče pisati."
         error_conflict: "Medtem so bili podatki posodobljeni od vsaj še enega uporabnika."
+        error_not_found: "not found."
         email: "is not a valid email address."
         empty: "ne sme biti prazno. "
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1275,6 +1285,7 @@ sl:
         inclusion_nested: "ni nastavljena na eno od dovoljenih vrednosti na poti '%{path}'."
         invalid: "ni pravo."
         invalid_characters: "contains invalid characters."
+        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
         invalid_url: "ni veljaven URL. "
         invalid_url_scheme: "ni podprt protokol (dovoljeno:%{allowed_schemes})."
         less_than_or_equal_to: "mora biti manjše ali enako %{count}. "
@@ -1416,8 +1427,6 @@ sl:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "Ni najdeno"
             public:
               error_unauthorized: "Uporabnik nima dovoljenja za ustvarjanje javnih pogledov."
             group_by:
@@ -1457,10 +1466,8 @@ sl:
             circular_dependency: "Odnos ustvarja krog odnosov."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "SCM prodajalec ni na voljo"
@@ -1602,10 +1609,6 @@ sl:
                 description: "'Potrditev gesla' se mora ujemati z vnosom v polju 'Novo geslo'."
             status:
               invalid_on_create: "za nove uporabnike ni veljaven status."
-            ldap_auth_source:
-              error_not_found: "Ni najdeno"
-            auth_source:
-              error_not_found: "Ni najdeno"
         member:
           principal_blank: "Prosimo izberite vsaj eno osebo ali kategorijo."
           role_blank: "treba dodeliti"
@@ -1632,6 +1635,11 @@ sl:
     models:
       attachment: "Datoteka"
       attribute_help_text: "Tekst pomoči atributa"
+      auth_provider:
+        one: "Authentication provider"
+        two: "Authentication providers"
+        few: "Authentication providers"
+        other: "Authentication providers"
       category: "Kategorija"
       comment: "Komentar"
       custom_action: "Dejanja po meri"
@@ -1676,10 +1684,10 @@ sl:
         few: "Vloge"
         other: "Vloge"
       scim_client:
-        one: "SCIM client"
-        two: "SCIM clients"
-        few: "SCIM clients"
-        other: "SCIM clients"
+        one: "SCIM-client"
+        two: "SCIM-clients"
+        few: "SCIM-clients"
+        other: "SCIM-clients"
       status: "Stanje delovnega paketa"
       token/api:
         one: Žeton za dostop
@@ -1841,6 +1849,7 @@ sl:
     title: "Naslov"
     type: "Vrsta"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Posodobljeno"
     updated_on: "Posodobljeno"
     uploader: "Posodobitelj"
@@ -2060,8 +2069,8 @@ sl:
       - "avgust"
       - "september"
       - "oktober"
-      - "november"
-      - "december"
+      - "November"
+      - "December"
     order:
       - :leto
       - :mesec
@@ -2288,7 +2297,7 @@ sl:
         title: "Single Sign-On for Nextcloud Storage"
         description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       scim_api:
-        title: "SCIM clients"
+        title: "SCIM-clients"
         description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
@@ -2629,7 +2638,7 @@ sl:
       aggregation: "Aggregation"
       api_and_webhooks: "API and webhooks"
     quick_add:
-      label: "Odpri meni za hitro dodajanje"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2929,6 +2938,7 @@ sl:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Splošno"
   label_generate_key: "Ustvari ključ"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: "Pot do datoteke ali mape"
   label_greater_or_equal: ">="
@@ -3013,6 +3023,7 @@ sl:
   label_manage: "Manage"
   label_manage_groups: "Upravljanje skupin"
   label_managed_repositories_vendor: "Upravljana %{vendor} skladišča"
+  label_mathematical_operators: "Mathematical operators"
   label_max_size: "Največja velikost"
   label_me: "jaz"
   label_member_new: "Nov član"
@@ -3072,6 +3083,7 @@ sl:
   label_no_due_date: "brez končnega datuma"
   label_no_start_date: "Brez začetnega datuma"
   label_no_parent_page: "Brez matične strani"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Ni podatkov za prikaz"
   label_nobody: "nihče"
   label_not_configured: "Not configured"
@@ -3280,6 +3292,7 @@ sl:
   label_user_mail_option_only_my_events: "Samo za stvari, ki jih opazujem ali v katere sem vpleten"
   label_user_mail_option_only_owner: "Samo za stvari katerih lastnik sem"
   label_user_mail_option_selected: "Za vsak dogodek samo na izbranih projektih..."
+  label_user_menu: "User menu"
   label_user_new: "Nov uporabnik"
   label_user_plural: "Uporabniki"
   label_user_search: "Išči uporabnika"

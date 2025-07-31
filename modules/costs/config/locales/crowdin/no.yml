@@ -31,6 +31,9 @@
         spent: "Brukt"
         spent_on: "Dato"
         logged_by: "Logget av"
+        entity: Logged for
+        entity_id: Logged for
+        entity_gid: Logged for
       cost_type:
         unit: "Enhetsnavn"
         unit_plural: "Flertallsnavn på enhet"
@@ -58,6 +61,9 @@
         start_time: Starttid
         end_time: Finish time
         time: Tidspunkt
+        entity: Logged for
+        entity_id: Logged for
+        entity_gid: Logged for
     models:
       time_entry:
         one: "Timeføring"
@@ -95,6 +101,7 @@
   button_log_time: "Log"
   button_add_activity: "Aktivitet"
   button_add_time_entry: "Logg tid"
+  button_stop_timer: "Stop timer"
   caption_booked_on_project: "Bestilt i prosjektet"
   caption_default: "Standard"
   caption_default_rate_history_for: "Standardratehistorikk for %{user}"
@@ -173,6 +180,7 @@
   label_day: "Dag"
   label_today_capitalized: "I dag"
   label_view_mode_switcher: "Change view"
+  label_timer_since: "Started at %{time}"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Noe gikk galt. Prøv på nytt."
   notice_successful_restore: "Vellykket gjenoppretting."
@@ -180,6 +188,7 @@
   notice_cost_logged_successfully: "Enhetskostnaden er logget."
   notice_different_time_zones: "This user has a different time zone (%{tz}). Time will be logged using their time zone."
   notice_time_entry_update_failed: "Failed to update time entry. Errors: %{errors}"
+  notice_time_entry_delete_failed: "Failed to delete time entry. Errors: %{errors}"
   permission_edit_cost_entries: "Rediger bokførte enhetskostnader"
   permission_edit_own_cost_entries: "Rediger egne bokførte enhetskostnader"
   permission_edit_hourly_rates: "Rediger timesatser"

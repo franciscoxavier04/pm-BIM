@@ -58,7 +58,7 @@ RSpec.describe TimeEntry do
   let(:time_entry) do
     create(:time_entry,
            project:,
-           work_package:,
+           entity: work_package,
            spent_on: date,
            hours:,
            start_time: start_time,
@@ -71,7 +71,7 @@ RSpec.describe TimeEntry do
   let(:time_entry2) do
     create(:time_entry,
            project:,
-           work_package:,
+           entity: work_package,
            spent_on: date,
            hours:,
            user:,
@@ -89,6 +89,14 @@ RSpec.describe TimeEntry do
              project:,
              user:,
              roles: [create(:project_role, permissions:)])
+    end
+  end
+
+  describe "#entity=" do
+    it "allows setting an entity via GlobalID" do
+      meeting = create(:meeting)
+      time_entry.entity = meeting.to_gid.to_s
+      expect(time_entry.entity).to eq(meeting)
     end
   end
 
@@ -424,6 +432,12 @@ RSpec.describe TimeEntry do
   end
 
   describe "validations" do
+    it "allows the correct entity types" do
+      expect(described_class::ALLOWED_ENTITY_TYPES).to contain_exactly("WorkPackage", "Meeting")
+    end
+
+    it { is_expected.to validate_inclusion_of(:entity_type).in_array(described_class::ALLOWED_ENTITY_TYPES).allow_blank }
+
     describe "start_time" do
       it "allows blank values" do
         time_entry.start_time = nil
@@ -522,6 +536,11 @@ RSpec.describe TimeEntry do
       expect(time_entry.end_timestamp).to be_nil
     end
 
+    it "returns nil if hours are nil" do
+      time_entry.hours = nil
+      expect(time_entry.end_timestamp).to be_nil
+    end
+
     it "generates a proper timestamp from the stored information" do
       time_entry.start_time = 8 * 60
       time_entry.hours = 2.5
@@ -575,6 +594,57 @@ RSpec.describe TimeEntry do
           it { expect(described_class).not_to be_must_track_start_and_end_time }
         end
       end
+    end
+  end
+
+  describe "deprecated work package association" do
+    it "ignores the deprecated work package association" do
+      expect(described_class.ignored_columns).to include("work_package_id")
+    end
+
+    it "allows access to the work package" do
+      allow(OpenProject::Deprecation).to receive(:replaced)
+
+      time_entry.entity = work_package
+      expect(time_entry.work_package).to eq(work_package)
+
+      time_entry.entity = create(:meeting)
+      expect(time_entry.work_package).to be_nil
+
+      expect(OpenProject::Deprecation).to have_received(:replaced).twice.with(:work_package, :entity, any_args)
+    end
+
+    it "allows access to the work package ID" do
+      allow(OpenProject::Deprecation).to receive(:replaced)
+
+      time_entry.entity = work_package
+      expect(time_entry.work_package_id).to eq(work_package.id)
+
+      time_entry.entity = create(:meeting)
+      expect(time_entry.work_package_id).to be_nil
+
+      expect(OpenProject::Deprecation).to have_received(:replaced).twice.with(:work_package_id, :entity_id, any_args)
+    end
+
+    it "allows setting the work package" do
+      allow(OpenProject::Deprecation).to receive(:replaced)
+
+      time_entry.work_package = work_package
+      expect(time_entry.entity).to eq(work_package)
+
+      expect(OpenProject::Deprecation).to have_received(:replaced).with(:work_package=, :entity=, any_args)
+    end
+
+    it "allows setting the work package ID" do
+      allow(OpenProject::Deprecation).to receive(:replaced)
+
+      time_entry.entity_type = nil # to make sure that we properly set it
+      time_entry.work_package_id = work_package.id
+      expect(time_entry.entity).to eq(work_package)
+      expect(time_entry.entity_type).to eq("WorkPackage")
+      expect(time_entry.entity_id).to eq(work_package.id)
+
+      expect(OpenProject::Deprecation).to have_received(:replaced).with(:work_package_id=, :entity_id=, any_args)
     end
   end
 end

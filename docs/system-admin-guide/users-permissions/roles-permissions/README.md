@@ -181,9 +181,9 @@ Following are the permissions for file storages within OpenProject:
 
 Following user permissions are set on files and folder in **External Storages**:
 
-- **Automatically managed folders: Read files (Nextcloud, OneDrive/SharePoint)**
+- **Automatically managed folders: Read files (Nextcloud, OneDrive)**
 
-- **Automatically managed folders:  Write files (Nextcloud, OneDrive/SharePoint)**
+- **Automatically managed folders: Write files (Nextcloud, OneDrive)**
 
 - **Automatically managed folders: Create files (Nextcloud)**
 

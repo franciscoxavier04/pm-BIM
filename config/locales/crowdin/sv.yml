@@ -63,7 +63,6 @@ sv:
         primary-button-color: "Primary button"
         accent-color: "Accent"
         header-bg-color: "Rubrikbakgrund"
-        header-item-bg-hover-color: "Rubrikbakgrund vid hovring"
         main-menu-bg-color: "Huvudmeny bakgrund"
         main-menu-bg-selected-background: "Huvudmeny när vald"
       custom_colors: "Anpassade färger"
@@ -71,10 +70,6 @@ sv:
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
         accent-color: "Color for links and other decently highlighted elements."
-        header-item-bg-hover-color: "Bakgrundsfärg på klickbara objekt i sidhuvudet när man hovrar med muspekaren."
-        header-item-font-color: "Teckenfärg på klickbara objekt i sidhuvudet."
-        header-item-font-hover-color: "Teckenfärg på klickbara objekt i sidhuvudet när man hovrar med muspekaren."
-        header-border-bottom-color: "Tunn linje under sidhuvudet. Lämna fältet tomt om du inte vill ha någon linje."
         main-menu-bg-color: "Bakgrundsfärg på den vänstra sidomenyn."
       theme_warning: Ändra temat kommer att skriva över din egen stil. Designen kommer då att gå förlorad. Är du säker på att du vill fortsätta?
     enterprise:
@@ -125,34 +120,34 @@ sv:
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
-        title: "Delete SCIM client"
-        heading: "Are you sure you want to delete this SCIM client?"
-        description: "Users managed by this SCIM client can no longer be updated by it."
+        title: "Delete SCIM-client"
+        heading: "Are you sure you want to delete this SCIM-client?"
+        description: "Users managed by this SCIM-client can no longer be updated by it."
       edit:
-        label_delete_scim_client: "Delete SCIM client"
+        label_delete_scim_client: "Delete SCIM-client"
       form:
         auth_provider_description: "This is the service that users added by the SCIM provider will use to authenticate in OpenProject."
-        authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM clients</a> for more information on these configuration options.'
-        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
+        authentication_method_description_html: "This is how the SCIM-client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
+        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM-clients</a> for more information on these configuration options.'
+        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM-client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
         name_description: "Choose a name that will help other admins better understand why this client was configured."
       index:
-        description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
-        label_create_button: "Add SCIM client"
+        description: "SCIM-clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
+        label_create_button: "Add SCIM-client"
       new:
-        title: "New SCIM client"
+        title: "New SCIM-client"
       revoke_static_token_dialog_component:
         confirm_button: "Revoke"
         title: "Revoke static token"
         heading: "Are you sure you want to revoke this token?"
-        description: "The SCIM client that uses this token will no longer be able to access OpenProject's SCIM server API."
+        description: "The SCIM-client that uses this token will no longer be able to access OpenProject's SCIM server API."
       table_component:
         blank_slate:
-          title: "No SCIM clients configured yet"
+          title: "No SCIM-clients configured yet"
           description: "Add clients to see them here"
         user_count: "Users"
       token_list_component:
-        description: "The tokens you generate here can be passed by a SCIM client to access the OpenProject SCIM API."
+        description: "The tokens you generate here can be passed by a SCIM-client to access the OpenProject SCIM API."
         heading: "Tokens"
         label_add_token: "Token"
         label_aria_add_token: "Add token"
@@ -363,19 +358,34 @@ sv:
       parent: "Överordnad"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
       all: "Alla"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Det finns för närvarande inga grupper.
-      no_results_content_text: Skapa en ny grupp
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Det finns för närvarande inga användare i denna grupp.
     memberships:
       no_results_title_text: Det finns för närvarande inga projekt i denna grupp.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Specificera en lista med namn att ignorera när bilagor för inkommande e-post bearbetas (t. ex. signaturer och ikoner). Ange ett filnamn per rad.
@@ -944,7 +954,7 @@ sv:
         attribute_name: "Attributet"
         help_text: "Hjälptext"
       auth_provider:
-        scim_clients: "SCIM clients"
+        scim_clients: "SCIM-clients"
       capability:
         context: "Context"
       changeset:
@@ -1110,7 +1120,6 @@ sv:
       role:
         permissions: "Behörigheter"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1242,6 +1251,7 @@ sv:
         error_unauthorized: "åtkomst nekas."
         error_readonly: "försökte skrivas men är inte skrivbart."
         error_conflict: "Informationen har uppdaterats av minst en annan användare under tiden."
+        error_not_found: "not found."
         email: "är inte en giltig e-postadress."
         empty: "kan inte vara tomt."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1260,6 +1270,7 @@ sv:
         inclusion_nested: "is not set to one of the allowed values at path '%{path}'."
         invalid: "är ogiltig."
         invalid_characters: "contains invalid characters."
+        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
         invalid_url: "är inte ett giltigt URL."
         invalid_url_scheme: "är inte ett tillåtet protokoll (tillåtna: %{allowed_schemes})."
         less_than_or_equal_to: "måste vara mindre än eller lika med %{count}."
@@ -1401,8 +1412,6 @@ sv:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "hittades inte"
             public:
               error_unauthorized: "- Användaren har ingen behörighet att skapa offentliga vyer."
             group_by:
@@ -1442,10 +1451,8 @@ sv:
             circular_dependency: "Förhållandet skapar en cirkel av relationer."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "SCM leverantör är inte tillgänglig"
@@ -1585,10 +1592,6 @@ sv:
                 description: "Lösenorden som anges i de två fälten måste matcha varandra."
             status:
               invalid_on_create: "är inte en giltig status för nya användare."
-            ldap_auth_source:
-              error_not_found: "hittades inte"
-            auth_source:
-              error_not_found: "hittades inte"
         member:
           principal_blank: "Välj minst en användare eller grupp."
           role_blank: "måste tilldelas."
@@ -1613,6 +1616,9 @@ sv:
     models:
       attachment: "Fil"
       attribute_help_text: "Hjälptexter för attribut"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "Kategori"
       comment: "Kommentar"
       custom_action: "Anpassad åtgärd"
@@ -1645,8 +1651,8 @@ sv:
         one: "Roll"
         other: "Roller"
       scim_client:
-        one: "SCIM client"
-        other: "SCIM clients"
+        one: "SCIM-client"
+        other: "SCIM-clients"
       status: "Arbetspaketstatus"
       token/api:
         one: Åtkomstnyckel
@@ -1798,6 +1804,7 @@ sv:
     title: "Titel"
     type: "Typ"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Uppdaterat den"
     updated_on: "Uppdaterat den"
     uploader: "Uploader"
@@ -2205,7 +2212,7 @@ sv:
         title: "Single Sign-On for Nextcloud Storage"
         description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       scim_api:
-        title: "SCIM clients"
+        title: "SCIM-clients"
         description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
@@ -2544,7 +2551,7 @@ sv:
       aggregation: "Aggregation"
       api_and_webhooks: "API and webhooks"
     quick_add:
-      label: "Open quick add menu"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2844,6 +2851,7 @@ sv:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Allmänt"
   label_generate_key: "Generera en nyckel"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: "Sökväg till .git katalog"
   label_greater_or_equal: ">="
@@ -2928,6 +2936,7 @@ sv:
   label_manage: "Hantera"
   label_manage_groups: "Hantera grupper"
   label_managed_repositories_vendor: "Hanterade %{vendor} databaser"
+  label_mathematical_operators: "Mathematical operators"
   label_max_size: "Maximal storlek"
   label_me: "mig"
   label_member_new: "Ny medlem"
@@ -2987,6 +2996,7 @@ sv:
   label_no_due_date: "no finish date"
   label_no_start_date: "inget startdatum"
   label_no_parent_page: "Ingen överordnad sida"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Inget att visa"
   label_nobody: "ingen"
   label_not_configured: "Not configured"
@@ -3195,6 +3205,7 @@ sv:
   label_user_mail_option_only_my_events: "Endast för saker jag bevakar eller deltar i"
   label_user_mail_option_only_owner: "Endast för saker är jag ägare till"
   label_user_mail_option_selected: "Endast för alla händelser i valda projekt"
+  label_user_menu: "User menu"
   label_user_new: "Ny användare"
   label_user_plural: "Användare"
   label_user_search: "Sök efter användare"

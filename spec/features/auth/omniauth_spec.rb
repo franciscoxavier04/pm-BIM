@@ -46,6 +46,7 @@ RSpec.describe "Omniauth authentication" do
            firstname:,
            lastname:)
   end
+  let(:user_menu) { Components::UserMenu.new }
 
   before do
     @omniauth_test_mode = OmniAuth.config.test_mode
@@ -90,7 +91,7 @@ RSpec.describe "Omniauth authentication" do
       fill_in("email", with: user.mail)
       click_link_or_button "Sign In"
 
-      expect(page).to have_link("omni bob")
+      user_menu.expect_user_shown "omni bob"
       expect(page).to have_link("Sign out")
     end
 

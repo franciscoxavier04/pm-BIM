@@ -63,7 +63,6 @@ pl:
         primary-button-color: "Przycisk główny"
         accent-color: "Akcent"
         header-bg-color: "Tło nagłówka"
-        header-item-bg-hover-color: "Tło nagłowka po najechaniu myszą"
         main-menu-bg-color: "Tło menu głównego"
         main-menu-bg-selected-background: "Menu główne po wybraniu"
       custom_colors: "Kolory użytkownika"
@@ -71,10 +70,6 @@ pl:
       instructions:
         primary-button-color: "Silnie zaakcentowany kolor, stosowany do najważniejszego przycisku na ekranie."
         accent-color: "Kolor linków i innych ostatnio wyróżnionych elementów."
-        header-item-bg-hover-color: "Kolor tła nagłówkowych elementów po najechaniu myszą."
-        header-item-font-color: "Kolor czcionki elementów nagłówkowych."
-        header-item-font-hover-color: "Kolor czcionki elementów nagłówkowych po najechaniu myszą."
-        header-border-bottom-color: "Linia pod nagłówkiem. Zostaw puste, jeśli nie chcesz wyświetlać linii."
         main-menu-bg-color: "Kolor tła lewego menu."
       theme_warning: Zmiana motywu poskutkuje zastąpieniem stylu niestandardowego. Projekt zostanie wówczas utracony. Czy na pewno chcesz kontynuować?
     enterprise:
@@ -125,34 +120,34 @@ pl:
         label_token: "Token"
         one_time_hint: "Jest to jedyny raz, gdy zobaczysz ten token. Koniecznie skopiuj go teraz."
       delete_scim_client_dialog_component:
-        title: "Usuń klienta SCIM"
-        heading: "Czy na pewno chcesz usunąć tego klienta SCIM?"
-        description: "Użytkownicy zarządzani przez tego klienta SCIM nie mogą już być przez niego aktualizowani."
+        title: "Delete SCIM-client"
+        heading: "Are you sure you want to delete this SCIM-client?"
+        description: "Users managed by this SCIM-client can no longer be updated by it."
       edit:
-        label_delete_scim_client: "Usuń klienta SCIM"
+        label_delete_scim_client: "Delete SCIM-client"
       form:
         auth_provider_description: "Jest to usługa, której użytkownicy dodani przez dostawcę SCIM będą używać do uwierzytelniania w OpenProject."
-        authentication_method_description_html: "W ten sposób klient SCIM uwierzytelnia się w OpenProject. Upewnij się, że tokeny OAuth zawierają zakres <code>scim_v2</code>."
-        description_html: 'Aby uzyskać więcej informacji na temat tych opcji konfiguracji, zapoznaj się z naszą <a href="%{docs_url}">dokumentacją dotyczącą konfigurowania klientów SCIM</a>.'
-        jwt_sub_description_html: 'Na przykład w przypadku Keycloak jest to identyfikator UUID konta usługi powiązanego z klientem SCIM. Aby dowiedzieć się, jak znaleźć oświadczenie podmiotu dla danego przypadku użycia, zapoznaj się z <a href="%{docs_url}">naszą dokumentacją</a>.'
+        authentication_method_description_html: "This is how the SCIM-client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
+        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM-clients</a> for more information on these configuration options.'
+        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM-client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
         name_description: "Wybierz nazwę, która pomoże innym administratorom lepiej zrozumieć, dlaczego ten klient został skonfigurowany."
       index:
-        description: "Skonfigurowani tutaj klienci SCIM mogą wchodzić w interakcje z interfejsem API serwera SCIM OpenProject w celu dostarczania, aktualizowania i usuwania kont i grup użytkowników."
-        label_create_button: "Dodaj klienta SCIM"
+        description: "SCIM-clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
+        label_create_button: "Add SCIM-client"
       new:
-        title: "Nowy klient SCIM"
+        title: "New SCIM-client"
       revoke_static_token_dialog_component:
         confirm_button: "Unieważnij"
         title: "Unieważnij token statyczny"
         heading: "Czy na pewno chcesz unieważnić ten token?"
-        description: "Klient SCIM, który używa tego tokena, nie będzie już mógł uzyskać dostępu do interfejsu API serwera SCIM OpenProject."
+        description: "The SCIM-client that uses this token will no longer be able to access OpenProject's SCIM server API."
       table_component:
         blank_slate:
-          title: "Nie skonfigurowano jeszcze klientów SCIM"
+          title: "No SCIM-clients configured yet"
           description: "Dodaj klientów, aby zobaczyć ich tutaj"
         user_count: "Użytkownicy"
       token_list_component:
-        description: "Wygenerowane tutaj tokeny mogą być przekazywane przez klienta SCIM w celu uzyskania dostępu do interfejsu API usługi SCIM OpenProject."
+        description: "The tokens you generate here can be passed by a SCIM-client to access the OpenProject SCIM API."
         heading: "Tokeny"
         label_add_token: "Token"
         label_aria_add_token: "Dodaj token"
@@ -360,19 +355,34 @@ pl:
       parent: "Element nadrzędny"
       blueprint: "Plan wzorca"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Wyszukaj w %{app_title}"
     overwritten_tabs:
       all: "Wszystkie"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Nie ma żadnych grup.
-      no_results_content_text: Utwórz nową grupę
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Nie ma jeszcze użytkowników w tej grupie.
     memberships:
       no_results_title_text: Nie ma jeszcze żadnego projektu dla tej grupy.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Określ listę nazw, które mają być ignorowane podczas przetwarzania załączników do poczty przychodzącej (np. sygnatur lub ikon). W każdym wierszu prowadź jedną nazwę pliku.
@@ -956,7 +966,7 @@ pl:
         attribute_name: "Atrybut"
         help_text: "Tekst pomocy"
       auth_provider:
-        scim_clients: "Klienci SCIM"
+        scim_clients: "SCIM-clients"
       capability:
         context: "Kontekst"
       changeset:
@@ -1122,7 +1132,6 @@ pl:
       role:
         permissions: "Uprawnienia"
       scim_client:
-        auth_provider: "Dostawca uwierzytelniania"
         authentication_method: "Metody uwierzytelniania"
         jwt_sub: "Oświadczenie podmiotu"
       status:
@@ -1254,6 +1263,7 @@ pl:
         error_unauthorized: "— nie można uzyskac dostępu."
         error_readonly: "— podjęto próbę zapisu, ale nie jest zapisywalny."
         error_conflict: "Information has been updated by at least one other user in the meantime."
+        error_not_found: "nie znaleziono."
         email: "nie jest poprawnym adresem e-mail."
         empty: "nie może być puste."
         enterprise_plan_required: "wymaga co najmniej planu %{plan_name}."
@@ -1272,6 +1282,7 @@ pl:
         inclusion_nested: "nie jest ustawione na jedną z dozwolonych wartości na ścieżce '%{path}'."
         invalid: "jest nieprawidłowe."
         invalid_characters: "zawiera niedozwolone znaki."
+        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
         invalid_url: "nie jest poprawnym adresem URL."
         invalid_url_scheme: "nie jest obsługiwanym protokołem (dozwolone: %{allowed_schemes})."
         less_than_or_equal_to: "musi być mniejsze niż lub równe %{count}."
@@ -1413,8 +1424,6 @@ pl:
           cannot_be_a_non_working_day: "nie może być dniem wolnym od pracy."
         query:
           attributes:
-            project:
-              error_not_found: "nie znaleziono"
             public:
               error_unauthorized: "– Użytkownik nie ma uprawnień do tworzenia widoków publicznych."
             group_by:
@@ -1454,10 +1463,8 @@ pl:
             circular_dependency: "Relacja tworzy krąg relacji."
           attributes:
             to_id:
-              error_not_found: "nie znaleziono lub niewidoczny."
               error_readonly: "nie można zmienić dla istniejących relacji."
             from_id:
-              error_not_found: "nie znaleziono lub niewidoczny."
               error_readonly: "nie można zmienić dla istniejących relacji."
         repository:
           not_available: "Producent SCM nie jest dostępny"
@@ -1599,10 +1606,6 @@ pl:
                 description: "\"Potwierdzenie hasła\" powinno być zgodne z wartością w polu 'Nowe hasło'."
             status:
               invalid_on_create: "nie jest prawidłowym statusem dla nowych użytkowników."
-            ldap_auth_source:
-              error_not_found: "nie znaleziono"
-            auth_source:
-              error_not_found: "nie znaleziono"
         member:
           principal_blank: "Wybierz co najmniej jeden użytkownik lub Grupa."
           role_blank: "musi być przypisany."
@@ -1629,6 +1632,11 @@ pl:
     models:
       attachment: "Plik"
       attribute_help_text: "Tekst pomocy atrybutu"
+      auth_provider:
+        one: "Authentication provider"
+        few: "Authentication providers"
+        many: "Authentication providers"
+        other: "Authentication providers"
       category: "Kategoria"
       comment: "Komentarz"
       custom_action: "Działanie niestandardowe"
@@ -1673,10 +1681,10 @@ pl:
         many: "Rol"
         other: "Rol"
       scim_client:
-        one: "Klient SCIM"
-        few: "Klienci SCIM"
-        many: "Klienci SCIM"
-        other: "Klienci SCIM"
+        one: "SCIM-client"
+        few: "SCIM-clients"
+        many: "SCIM-clients"
+        other: "SCIM-clients"
       status: "Status pakietu roboczego"
       token/api:
         one: Token dostępu
@@ -1838,6 +1846,7 @@ pl:
     title: "Tytuł"
     type: "Typ"
     typeahead: "Autouzupełnianie"
+    uid: "Unikalny identyfikator"
     updated_at: "Aktualizacja"
     updated_on: "Aktualizacja"
     uploader: "Osoba przesyłająca"
@@ -2285,7 +2294,7 @@ pl:
         title: "Logowanie jednokrotne do magazynu Nextcloud"
         description: "Włącz bezproblemowe, bezpieczne uwierzytelnianie dla swojego magazynu Nextcloud za pomocą logowania jednokrotnego. Uprość zarządzanie dostępem i zwiększ wygodę użytkowników."
       scim_api:
-        title: "Klienci SCIM"
+        title: "SCIM-clients"
         description: "Zautomatyzuj zarządzanie użytkownikami w OpenProject, płynnie integrując zewnętrzne usługi tożsamości, takie jak Microsoft Entra lub Keycloak, za pomocą naszego interfejsu API serwera SCIM. Jest dostępny od planu korporacyjnego Enterprise."
       virus_scanning:
         description: "Upewnij się, że przesłane do OpenProject pliki  są przeskanowane pod kątem wirusów, zanim będą dostępne dla innych użytkowników."
@@ -2626,7 +2635,7 @@ pl:
       aggregation: "Agregacja"
       api_and_webhooks: "Interfejs API i webhooki"
     quick_add:
-      label: "Otwórz menu szybkiego dodawania"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2926,6 +2935,7 @@ pl:
   label_gantt_chart_plural: "Wykresy Gantta"
   label_general: "Ogólne"
   label_generate_key: "Generuj klucz"
+  label_global_modules: "Global modules"
   label_global_roles: "Role globalne"
   label_git_path: "Ścieżka do katalogu .git"
   label_greater_or_equal: "≥"
@@ -3010,6 +3020,7 @@ pl:
   label_manage: "Zarządzaj"
   label_manage_groups: "Zarządzaj grupami"
   label_managed_repositories_vendor: "Zarządzane %{vendor} repozytoria"
+  label_mathematical_operators: "Mathematical operators"
   label_max_size: "Maksymalny rozmiar"
   label_me: "ja"
   label_member_new: "Nowy członek"
@@ -3069,6 +3080,7 @@ pl:
   label_no_due_date: "brak daty zakończenia"
   label_no_start_date: "brak daty rozpoczęcia"
   label_no_parent_page: "Bez strony nadrzędnej"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Brak danych do pokazania"
   label_nobody: "nikt"
   label_not_configured: "Nie skonfigurowano"
@@ -3277,6 +3289,7 @@ pl:
   label_user_mail_option_only_my_events: "Tylko to co obserwuję lub jestem zaangażowany"
   label_user_mail_option_only_owner: "Tylko do rzeczy, których jestem właścicielem"
   label_user_mail_option_selected: "Dla każdego zdarzenia w wybranych projektach"
+  label_user_menu: "User menu"
   label_user_new: "Nowy użytkownik"
   label_user_plural: "Użytkownicy"
   label_user_search: "Szukaj użytkownika"

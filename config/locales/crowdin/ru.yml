@@ -63,7 +63,6 @@ ru:
         primary-button-color: "Основная кнопка"
         accent-color: "Оттенок"
         header-bg-color: "Фон заголовка"
-        header-item-bg-hover-color: "Фон заголовка при наведении курсора"
         main-menu-bg-color: "Фон главного меню"
         main-menu-bg-selected-background: "Главное меню при выборе"
       custom_colors: "Настроить цвета"
@@ -71,10 +70,6 @@ ru:
       instructions:
         primary-button-color: "Яркий контрастный цвет, который обычно используют для важных кнопок на экране."
         accent-color: "Цвет ссылок и других удачно выделенных элементов."
-        header-item-bg-hover-color: "Цвет фона в заголовках интерактивных элементов при наведении мыши."
-        header-item-font-color: "Цвет шрифта в заголовках интерактивных элементов."
-        header-item-font-hover-color: "Цвет шрифта в заголовках интерактивных элементов при наведении мыши."
-        header-border-bottom-color: "Тонкая линия под заголовком. Оставьте это поле пустым, если вы не хотите какой-либо линии."
         main-menu-bg-color: "Цвет фона меню слева."
       theme_warning: Изменение темы перезапишет ваш пользовательский стиль. Дизайн будет утерян. Вы уверены, что хотите продолжить?
     enterprise:
@@ -125,34 +120,34 @@ ru:
         label_token: "Токен доступа"
         one_time_hint: "Это единственный раз, когда Вы увидите токен. Убедитесь, что вы сохранили его."
       delete_scim_client_dialog_component:
-        title: "Удалить клиента SCIM"
-        heading: "Вы уверены, что хотите удалить этого клиента SCIM?"
-        description: "Пользователи, управляемые этим SCIM клиентом, больше не могут быть обновлены им."
+        title: "Delete SCIM-client"
+        heading: "Are you sure you want to delete this SCIM-client?"
+        description: "Users managed by this SCIM-client can no longer be updated by it."
       edit:
-        label_delete_scim_client: "Удалить клиента SCIM"
+        label_delete_scim_client: "Delete SCIM-client"
       form:
         auth_provider_description: "Это служба, которую пользователи, добавленные провайдером SCIM, будут использовать для аутентификации в OpenProject."
-        authentication_method_description_html: "Вот как клиент SCIM аутентифицируется в OpenProject. Пожалуйста, убедитесь, что токены OAuth включают область <code>scim_v2</code>."
-        description_html: 'Пожалуйста, обратитесь к нашей <a href="%{docs_url}">документации по настройке клиентов SCIM</a>.'
-        jwt_sub_description_html: 'Например, для Keycloak это UUID учетной записи службы, связанной с клиентом SCIM. Обратитесь к <a href="%{docs_url}">нашей документации</a>, для поиска необходимых тем.'
+        authentication_method_description_html: "This is how the SCIM-client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
+        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM-clients</a> for more information on these configuration options.'
+        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM-client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
         name_description: "Выберите имя, которое поможет другим администраторам лучше понять, зачем был настроен этот клиент."
       index:
-        description: "Клиенты SCIM, настроенные здесь, могут взаимодействовать с API сервера SCIM для предоставления, обновления и удаления учетных записей и групп пользователей."
-        label_create_button: "Добавить клиента SCIM"
+        description: "SCIM-clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
+        label_create_button: "Add SCIM-client"
       new:
-        title: "Новый клиент SCIM"
+        title: "New SCIM-client"
       revoke_static_token_dialog_component:
         confirm_button: "Отменить"
         title: "Отменить статический токен"
         heading: "Вы уверены, что хотите отменить этот токен?"
-        description: "Клиент SCIM, использующий этот токен, больше не сможет получить доступ к API сервера SCIM."
+        description: "The SCIM-client that uses this token will no longer be able to access OpenProject's SCIM server API."
       table_component:
         blank_slate:
-          title: "Клиенты SCIM еще не настроены"
+          title: "No SCIM-clients configured yet"
           description: "Добавьте клиентов, чтобы увидеть их здесь"
         user_count: "Пользователи"
       token_list_component:
-        description: "Токены, которые Вы генерируете здесь, могут быть переданы SCIM-клиенту для доступа к API серверу SCIM."
+        description: "The tokens you generate here can be passed by a SCIM-client to access the OpenProject SCIM API."
         heading: "Токены"
         label_add_token: "Токен"
         label_aria_add_token: "Добавить токен"
@@ -362,19 +357,34 @@ ru:
       parent: "Родитель"
       blueprint: "Шаблон чертежа"
   global_search:
+    title:
+      all_projects: 'Поиск "%{search_term}" во всех проектах'
+      current_project: 'Поиск "%{search_term}" в проекте "%{project_name}"'
+      project_and_subprojects: 'Поиск "%{search_term}" в проекте "%{project_name}" и его подпроектах'
     placeholder: "Поиск в %{app_title}"
     overwritten_tabs:
       all: "Bсе"
       messages: "Форум"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Нет групп.
-      no_results_content_text: Создать новую группу
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Нет пользователей в этой группе.
     memberships:
       no_results_title_text: На данный момент проектов этой группы нет.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Укажите список имен для игнорирования при обработке вложений для входящих почтовых сообщений (например, подписей или значков). Введите одно имя файла в строке.
@@ -958,7 +968,7 @@ ru:
         attribute_name: "Атрибут"
         help_text: "Текст справки"
       auth_provider:
-        scim_clients: "Клиенты SCIM"
+        scim_clients: "SCIM-clients"
       capability:
         context: "Контекст"
       changeset:
@@ -1124,7 +1134,6 @@ ru:
       role:
         permissions: "Разрешения"
       scim_client:
-        auth_provider: "Провайдер аутентификации"
         authentication_method: "Метод аутентификации"
         jwt_sub: "Необходима тема"
       status:
@@ -1256,6 +1265,7 @@ ru:
         error_unauthorized: "не доступен."
         error_readonly: "запись не разрешена."
         error_conflict: "Информация была обновлена одновременно с вами  по крайней мере одним пользователем."
+        error_not_found: "не найдено."
         email: "неверный адрес электронной почты."
         empty: "не может быть пустым."
         enterprise_plan_required: "требует хотя бы %{plan_name}."
@@ -1274,6 +1284,7 @@ ru:
         inclusion_nested: "не задано одно из допустимых значений в пути '%{path}'."
         invalid: "неверно."
         invalid_characters: "содержит недопустимые символы."
+        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
         invalid_url: "не является допустимым URL-адресом."
         invalid_url_scheme: "не является поддерживаемым протоколом (разрешены следующие: %{allowed_schemes})."
         less_than_or_equal_to: "должно быть меньше или равно %{count}."
@@ -1415,8 +1426,6 @@ ru:
           cannot_be_a_non_working_day: "не может быть нерабочим днем."
         query:
           attributes:
-            project:
-              error_not_found: "не найдено"
             public:
               error_unauthorized: "- У пользователя нет прав для создания общедоступных представлений."
             group_by:
@@ -1456,10 +1465,8 @@ ru:
             circular_dependency: "Зацикливание зависимостей."
           attributes:
             to_id:
-              error_not_found: "не найден или невидим."
               error_readonly: "не может быть изменен для существующих отношений."
             from_id:
-              error_not_found: "не найден или невидим."
               error_readonly: "не может быть изменен для существующих отношений."
         repository:
           not_available: "SCM поставщик не доступен"
@@ -1601,10 +1608,6 @@ ru:
                 description: "«Подтвержденный пароль» должен совпадать с введенным «новым паролем»."
             status:
               invalid_on_create: "не является допустимым статусом для новых пользователей."
-            ldap_auth_source:
-              error_not_found: "не найдено"
-            auth_source:
-              error_not_found: "не найдено"
         member:
           principal_blank: "Пожалуйста, выберите по крайней мере одного пользователя или группу."
           role_blank: "требуется назначить."
@@ -1631,6 +1634,11 @@ ru:
     models:
       attachment: "Файл"
       attribute_help_text: "Атрибут текста справки"
+      auth_provider:
+        one: "Authentication provider"
+        few: "Authentication providers"
+        many: "Authentication providers"
+        other: "Authentication providers"
       category: "Категория"
       comment: "Комментарий"
       custom_action: "Пользовательское действие"
@@ -1675,10 +1683,10 @@ ru:
         many: "Роль"
         other: "Роль"
       scim_client:
-        one: "Клиент SCIM"
-        few: "SCIM clients"
-        many: "SCIM clients"
-        other: "SCIM clients"
+        one: "SCIM-client"
+        few: "SCIM-clients"
+        many: "SCIM-clients"
+        other: "SCIM-clients"
       status: "Статус пакета работ"
       token/api:
         one: Токен доступа
@@ -1840,6 +1848,7 @@ ru:
     title: "Заголовок"
     type: "Тип"
     typeahead: "Автозаполнение"
+    uid: "Уникальный идентификатор"
     updated_at: "Обновлено"
     updated_on: "Обновлено"
     uploader: "Кто загрузил"
@@ -2287,7 +2296,7 @@ ru:
         title: "Единый вход для Nextcloud хранения"
         description: "Включите бесшовную и безопасную аутентификацию для вашего Nextcloud хранилища с помощью Single Sign-On. Упростите управление доступом и сделайте удобным для пользователя."
       scim_api:
-        title: "Клиенты SCIM"
+        title: "SCIM-clients"
         description: "Автоматизируйте управление пользователями в OpenProject, легко интегрируя внешние службы идентификации, такие как Microsoft Entra или Keycloak, через наш сервер API SCIM."
       virus_scanning:
         description: "Будьте уверены в том, что загруженные в OpenProject файлы проверены на наличие вирусов, прежде чем они станут доступны другим пользователям."
@@ -2628,7 +2637,7 @@ ru:
       aggregation: "Агрегация"
       api_and_webhooks: "API и вебхуки"
     quick_add:
-      label: "Открыть меню быстрого добавления"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2928,6 +2937,7 @@ ru:
   label_gantt_chart_plural: "Диаграммы Ганта"
   label_general: "Общие"
   label_generate_key: "Сгенерируйте ключ"
+  label_global_modules: "Global modules"
   label_global_roles: "Глобальные роли"
   label_git_path: "Путь к директории .git"
   label_greater_or_equal: ">="
@@ -3012,6 +3022,7 @@ ru:
   label_manage: "Управление"
   label_manage_groups: "Управление группами"
   label_managed_repositories_vendor: "Управляемые %{vendor} репозиториев"
+  label_mathematical_operators: "Mathematical operators"
   label_max_size: "Максимальный размер"
   label_me: "мне"
   label_member_new: "Новый участник"
@@ -3071,6 +3082,7 @@ ru:
   label_no_due_date: "нет даты окончания"
   label_no_start_date: "нет даты начала"
   label_no_parent_page: "Без родительской страницы"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Нет данных для отображения"
   label_nobody: "никто"
   label_not_configured: "Не настроено"
@@ -3279,6 +3291,7 @@ ru:
   label_user_mail_option_only_my_events: "Только для тех, в которых я наблюдатель или участник"
   label_user_mail_option_only_owner: "Только для тех, которыми я владею"
   label_user_mail_option_selected: "Для любого события, но только для выбранных проектов"
+  label_user_menu: "User menu"
   label_user_new: "Новый пользователь"
   label_user_plural: "Пользователи"
   label_user_search: "Найти пользователя"

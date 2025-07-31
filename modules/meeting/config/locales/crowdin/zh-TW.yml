@@ -117,6 +117,7 @@ zh-TW:
   label_meeting_date_time: "日期 / 時間"
   label_meeting_date_and_time: "日期和時間"
   label_meeting_diff: "比較"
+  label_meeting_send_updates: "透過電子郵件發送行事曆更新"
   label_recurring_meeting: "重複性會議"
   label_recurring_meeting_part_of: "系列會議的一部分"
   label_recurring_meeting_new: "新的重複性會議"
@@ -253,8 +254,49 @@ zh-TW:
         caption: 如果您的議程成果包含機密資訊，您可以選擇不將其包含在匯出內容中。
       footer_text:
         label: 頁尾文字
-        caption: 此文字將會出現在每一頁頁尾右邊。
+        caption: 此文字將出現在每頁的頁尾中央。
       submit_button: 下載
+    notifications:
+      sidepanel:
+        title: "電子郵件行事曆更新"
+        state:
+          disabled: "已停用。"
+          enabled: "已啟用。"
+        description:
+          disabled: "參與者不會收到通知變更的電子郵件。"
+          enabled: "所有與會者都會透過電子郵件收到更新的行事曆邀請，通知他們相關變更。"
+          change_via_template: "若要變更，請編輯系列範本。"
+        button:
+          disable: "停用"
+          enable: "啟用"
+      dialog:
+        title:
+          enable: "啟用電子郵件行事曆更新？"
+          disable: "停用電子郵件行事曆更新？"
+        message:
+          enable: >
+            每次會議日期、時間、地點或與會者有變更時，所有與會者都會透過電子郵件收到更新的行事曆邀請。
+          disable: >
+            當會議日期、時間、地點或與會者有變更時，與會者將不會再透過電子郵件收到更新的行事曆邀請。如果他們已經有這個會議的邀請，則可能不再準確。
+        confirm_label:
+          enable: "啟用電子郵件更新"
+          disable: "停用電子郵件更新"
+      banner:
+        onetime:
+          enabled: >
+            所有參與者都會透過電子郵件收到更新的行事曆邀請，通知他們您的變更。
+          disabled: >
+            電子郵件行事曆更新已停用。參與者將不會收到通知您變更的電子郵件。
+        occurrence:
+          enabled: >
+            已啟用系列會議的電子郵件行事曆更新。所有與會者都會收到更新的行事曆邀請，通知他們您對此事件所做的變更。
+          disabled: >
+            系列會議的電子郵件行事曆更新已停用。與會者將不會收到電子郵件，通知他們您對此發生的變更。
+        template:
+          enabled: >
+            已為會議系列啟用電子郵件行事曆更新。所有與會者都會收到更新的行事曆邀請，通知他們您對此範本或個別事件所做的變更。
+          disabled: >
+            會議系列的電子郵件行事曆更新已停用。與會者將不會收到電子郵件，通知他們您對此範本或個別事件所做的變更。
   meeting_section:
     untitled_title: "無標題章節"
     delete_confirmation: "刪除該章節也會刪除其所有的議程項目。您確定要這麼做？"
@@ -459,3 +501,6 @@ zh-TW:
   text_agenda_item_move_next_meeting_cancelled: "由於下次會議已被取消，因此無法轉到下次會議。"
   text_work_package_add_to_meeting_hint: '使用"增加到會議"按鈕將此工作套件新增到即將舉行的會議。'
   text_work_package_has_no_past_meeting_agenda_items: "在過往會議中沒有提及本工作套件。"
+  text_email_updates_muted: "電子郵件行事曆更新已靜音。當您變更時，參與者將不會透過電子郵件收到更新的邀請。"
+  text_email_updates_enabled: "已啟用電子郵件行事曆更新。當您作出變更時，所有參與者都會透過電子郵件收到更新的邀請。"
+

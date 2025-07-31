@@ -62,6 +62,7 @@ import {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'op-bcf-list',
+  standalone: false,
 })
 export class BcfListComponent extends WorkPackageListViewComponent implements UntilDestroyedMixin, OnInit {
   @Input() showResizer = false;

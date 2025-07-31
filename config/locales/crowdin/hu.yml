@@ -63,7 +63,6 @@ hu:
         primary-button-color: "Elsődleges gomb"
         accent-color: "Kiemelőszín"
         header-bg-color: "Fejléc háttér"
-        header-item-bg-hover-color: "Fejléc háttere, ha az egér rajta áll"
         main-menu-bg-color: "Főmenü háttere"
         main-menu-bg-selected-background: "Főmenü, ha ki van választva"
       custom_colors: "Egyéni színek"
@@ -71,10 +70,6 @@ hu:
       instructions:
         primary-button-color: "Kiemelt szín, tipikusan a képernyőn megjelenő legfontosabb gomb esetén."
         accent-color: "Szín a linkekhez és más kiemelt elemekhez."
-        header-item-bg-hover-color: "Kattintható fejléc háttérszíne egér hatására."
-        header-item-font-color: "Kattintható fejléc betűszíne."
-        header-item-font-hover-color: "Kattintható fejléc betűszíne egér hatására."
-        header-border-bottom-color: "Vékony vonal a fejléc alatt. Hagyja üresen, ha semmilyen vonalat nem szeretne."
         main-menu-bg-color: "Baloldali menü háttérszíne."
       theme_warning: A téma megváltoztatása felülírja az egyéni stílust. A forma elvész. Biztos, hogy folytatni akarod?
     enterprise:
@@ -125,34 +120,34 @@ hu:
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
-        title: "Delete SCIM client"
-        heading: "Are you sure you want to delete this SCIM client?"
-        description: "Users managed by this SCIM client can no longer be updated by it."
+        title: "Delete SCIM-client"
+        heading: "Are you sure you want to delete this SCIM-client?"
+        description: "Users managed by this SCIM-client can no longer be updated by it."
       edit:
-        label_delete_scim_client: "Delete SCIM client"
+        label_delete_scim_client: "Delete SCIM-client"
       form:
         auth_provider_description: "This is the service that users added by the SCIM provider will use to authenticate in OpenProject."
-        authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM clients</a> for more information on these configuration options.'
-        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
+        authentication_method_description_html: "This is how the SCIM-client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
+        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM-clients</a> for more information on these configuration options.'
+        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM-client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
         name_description: "Choose a name that will help other admins better understand why this client was configured."
       index:
-        description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
-        label_create_button: "Add SCIM client"
+        description: "SCIM-clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
+        label_create_button: "Add SCIM-client"
       new:
-        title: "New SCIM client"
+        title: "New SCIM-client"
       revoke_static_token_dialog_component:
         confirm_button: "Revoke"
         title: "Revoke static token"
         heading: "Are you sure you want to revoke this token?"
-        description: "The SCIM client that uses this token will no longer be able to access OpenProject's SCIM server API."
+        description: "The SCIM-client that uses this token will no longer be able to access OpenProject's SCIM server API."
       table_component:
         blank_slate:
-          title: "No SCIM clients configured yet"
+          title: "No SCIM-clients configured yet"
           description: "Add clients to see them here"
         user_count: "Users"
       token_list_component:
-        description: "The tokens you generate here can be passed by a SCIM client to access the OpenProject SCIM API."
+        description: "The tokens you generate here can be passed by a SCIM-client to access the OpenProject SCIM API."
         heading: "Tokens"
         label_add_token: "Token"
         label_aria_add_token: "Add token"
@@ -362,19 +357,34 @@ hu:
       parent: "Szülő"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Keresés:  %{app_title} oldalon"
     overwritten_tabs:
       all: "Összes"
       messages: "Fórum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Jelenleg nincsenek csoportok.
-      no_results_content_text: Új csoport létrehozása
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Jelenleg egy felhasználó sem tagja a csoportnak.
     memberships:
       no_results_title_text: Jelenleg egy projekt sem tagja a csoportnak.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Adja meg azoknak a neveknek a listáját, amelyeket figyelmen kívül kell hagyni a bejövő levelek mellékleteinek feldolgozásakor (pl. Aláírások vagy ikonok). Írjon be egy fájlnevet soronként.
@@ -943,7 +953,7 @@ hu:
         attribute_name: "Attribútum"
         help_text: "Súgószöveg"
       auth_provider:
-        scim_clients: "SCIM clients"
+        scim_clients: "SCIM-clients"
       capability:
         context: "Context"
       changeset:
@@ -1109,7 +1119,6 @@ hu:
       role:
         permissions: "Jogosultságok"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1241,6 +1250,7 @@ hu:
         error_unauthorized: "lehet, hogy nem érhető el."
         error_readonly: "írása megkísérelve, de nem írható."
         error_conflict: "Az adatokat frissítette egy másik felhasználó időközben."
+        error_not_found: "not found."
         email: "nem valós e-mail cím"
         empty: "nem lehet üres."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1259,6 +1269,7 @@ hu:
         inclusion_nested: "nincs beállítva az '%{path}' elérési útvonalon a megengedett értékek egyikére."
         invalid: "érvénytelen."
         invalid_characters: "contains invalid characters."
+        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
         invalid_url: "nem érvényes URL."
         invalid_url_scheme: "nem támogatott protokoll (támogatott: %{allowed_schemes})."
         less_than_or_equal_to: "kisebbnek vagy egyenlőnek kell lennie mint, %{count}."
@@ -1400,8 +1411,6 @@ hu:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "nem található"
             public:
               error_unauthorized: "- A felhasználó nem jogosult nyilvános nézeteket létrehozni."
             group_by:
@@ -1441,10 +1450,8 @@ hu:
             circular_dependency: "A kapcsolat körkörös függőséget hoz létre."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "SCM szolgáltató nem elérhető"
@@ -1584,10 +1591,6 @@ hu:
                 description: "A \"'Jelszó megerősítés\"-nek meg kell egyeznie az \"Új jelszó\" mezővel."
             status:
               invalid_on_create: "ez nem egy érvényes állapot, az új felhasználó számára."
-            ldap_auth_source:
-              error_not_found: "nem található"
-            auth_source:
-              error_not_found: "nem található"
         member:
           principal_blank: "Kérem, válasszon legalább egy felhasználót vagy csoportot."
           role_blank: "Hozzá kell rendelve lennie"
@@ -1612,6 +1615,9 @@ hu:
     models:
       attachment: "File"
       attribute_help_text: "Attribútum-súgószöveg"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "Kategória"
       comment: "Vélemény"
       custom_action: "Egyéni művelet"
@@ -1644,8 +1650,8 @@ hu:
         one: "Szerepkör"
         other: "Szerepkörök"
       scim_client:
-        one: "SCIM client"
-        other: "SCIM clients"
+        one: "SCIM-client"
+        other: "SCIM-clients"
       status: "Feladatcsoport állapot"
       token/api:
         one: Hozzáférési token
@@ -1797,6 +1803,7 @@ hu:
     title: "Cím"
     type: "Típus"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Frissítve"
     updated_on: "Frissítve"
     uploader: "Feltöltő"
@@ -2204,7 +2211,7 @@ hu:
         title: "Single Sign-On for Nextcloud Storage"
         description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       scim_api:
-        title: "SCIM clients"
+        title: "SCIM-clients"
         description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
@@ -2543,7 +2550,7 @@ hu:
       aggregation: "Aggregálás"
       api_and_webhooks: "API és webhookok"
     quick_add:
-      label: "Gyorsmenü megnyitása"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2843,6 +2850,7 @@ hu:
   label_gantt_chart_plural: "Gantt-diagram"
   label_general: "Általános"
   label_generate_key: "Létrehoz egy kulcsot"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: ".Git könyvtár elérési útja"
   label_greater_or_equal: ">="
@@ -2927,6 +2935,7 @@ hu:
   label_manage: "Kezelés"
   label_manage_groups: "Csoportok kezelése"
   label_managed_repositories_vendor: "Kezelt %{vendor} adattárak"
+  label_mathematical_operators: "Mathematical operators"
   label_max_size: "Maximális mérete"
   label_me: "Nekem"
   label_member_new: "Új tag"
@@ -2986,6 +2995,7 @@ hu:
   label_no_due_date: "nincs befejezési dátum"
   label_no_start_date: "nincs kezdő dátuma"
   label_no_parent_page: "Nincs szülő oldal"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Nincs megjeleníthető"
   label_nobody: "senki sem"
   label_not_configured: "Not configured"
@@ -3194,6 +3204,7 @@ hu:
   label_user_mail_option_only_my_events: "Csak a megfigyelt feladatok vagy amelyben részt veszek"
   label_user_mail_option_only_owner: "Csak azok a feladatok, amelyeknek én vagyok a tulajdonosa"
   label_user_mail_option_selected: "Minden eseményről a kiválasztott projektekben"
+  label_user_menu: "User menu"
   label_user_new: "Új felhasználó"
   label_user_plural: "Felhasználók"
   label_user_search: "Felhasználó keresése"
