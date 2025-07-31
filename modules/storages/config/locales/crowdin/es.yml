@@ -195,8 +195,10 @@ es:
       oauth_client_incomplete:
         nextcloud: Permitir a OpenProject acceder a los datos de Nextcloud usando OAuth.
         one_drive: Allow OpenProject to access Azure data using OAuth to connect OneDrive.
+        share_point: Allow OpenProject to access SharePoint data using OAuth.
       redirect_uri_incomplete:
         one_drive: Completa la configuración con la redirección URI correcta.
+        share_point: Complete the setup with the correct URI redirection.
     confirm_replace_oauth_application: Esta acción restablecerá las credenciales OAuth actuales. Después de confirmar tendrá que volver a introducir las credenciales en el proveedor de almacenamiento y todos los usuarios remotos tendrán que autorizarse contra OpenProject de nuevo. ¿Seguro que desea continuar?
     confirm_replace_oauth_client: Esta acción restablecerá las credenciales OAuth actuales. Después de confirmar tendrá que introducir nuevas credenciales del proveedor de almacenamiento y todos los usuarios tendrán que autorizarse contra %{provider_type} de nuevo. ¿Seguro que desea continuar?
     delete_warning:
@@ -386,6 +388,11 @@ es:
       setting_up_additional_storages_non_admin: Los administradores pueden configurar almacenamientos de archivos adicionales en Administración > Almacenamientos de archivos.
       setting_up_storages: Para configurar almacenes de archivos, visite
       setting_up_storages_non_admin: Los administradores pueden configurar almacenamientos de archivos en Administración > Almacenamientos de archivos.
+      share_point:
+        application_link_text: SharePoint site
+        integration: SharePoint Administration / OpenProject
+        oauth_configuration: Copy these values from the desired application in the %{application_link_text}.
+        provider_configuration: Please make sure you have administration privileges in your SharePoint instance and the OpenProject integration app is installed before doing the setup.
       type: 'Por favor, asegúrese de tener privilegios de administrador en su instancia de Nextcloud y tener la siguiente aplicación instalada antes de hacer la configuración:'
       type_link_text: "“Integración OpenProject”"
     label_active: Activo

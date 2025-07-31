@@ -195,8 +195,10 @@ ko:
       oauth_client_incomplete:
         nextcloud: OpenProject가 OAuth를 사용하여 Nextcloud 데이터에 액세스하도록 허용합니다.
         one_drive: Allow OpenProject to access Azure data using OAuth to connect OneDrive.
+        share_point: Allow OpenProject to access SharePoint data using OAuth.
       redirect_uri_incomplete:
         one_drive: 올바른 URI 리디렉션으로 설정을 완료합니다.
+        share_point: Complete the setup with the correct URI redirection.
     confirm_replace_oauth_application: 이 작업은 현재 OAuth 자격 증명을 재설정합니다. 확인 후 저장소 공급자에서 자격 증명을 다시 입력해야 하며 모든 원격 사용자는 OpenProject에 대해 다시 인증해야 합니다. 계속하시겠습니까?
     confirm_replace_oauth_client: 이 작업은 현재 OAuth 자격 증명을 재설정합니다. 확인 후 저장소 공급자의 새로운 자격 증명을 입력해야 하며 모든 사용자는 %{provider_type}에 대해 다시 인증해야 합니다. 계속하시겠습니까?
     delete_warning:
@@ -384,6 +386,11 @@ ko:
       setting_up_additional_storages_non_admin: 관리자는 관리/파일 저장소에서 추가 파일 저장소를 설정할 수 있습니다.
       setting_up_storages: '파일 저장소를 설정하려면 다음을 방문하세요:'
       setting_up_storages_non_admin: 관리자는 관리/파일 저장소에서 파일 저장소를 설정할 수 있습니다.
+      share_point:
+        application_link_text: SharePoint site
+        integration: SharePoint Administration / OpenProject
+        oauth_configuration: Copy these values from the desired application in the %{application_link_text}.
+        provider_configuration: Please make sure you have administration privileges in your SharePoint instance and the OpenProject integration app is installed before doing the setup.
       type: '설정을 수행하기 전에 Nextcloud 인스턴스에서 관리 권한이 있고 다음 애플리케이션이 설치되어 있는지 확인하세요.'
       type_link_text: "“Integration OpenProject”"
     label_active: 활성

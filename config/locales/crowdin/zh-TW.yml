@@ -120,34 +120,34 @@ zh-TW:
         label_token: "令牌"
         one_time_hint: "這是您唯一可以看到此令牌(Token)的時候, 請務必立即複製它。"
       delete_scim_client_dialog_component:
-        title: "刪除 SCIM 用戶端"
-        heading: "您確定要刪除此 SCIM 用戶端嗎？"
-        description: "由此 SCIM 用戶端管理的使用者將無法再由其更新。"
+        title: "Delete SCIM-client"
+        heading: "Are you sure you want to delete this SCIM-client?"
+        description: "Users managed by this SCIM-client can no longer be updated by it."
       edit:
-        label_delete_scim_client: "刪除 SCIM 用戶端"
+        label_delete_scim_client: "Delete SCIM-client"
       form:
         auth_provider_description: "這是由 SCIM 提供者新增的使用者用來在 OpenProject 中進行驗證的服務。"
-        authentication_method_description_html: "這是 SCIM 客戶端在 OpenProject 進行驗證的方式。請確保 OAuth 令牌包含<code>scim_v2</code>範圍。"
-        description_html: '如需這些設定選項的詳細資訊，請參閱我們的 <a href="%{docs_url}">SCIM 用戶端設定文件</a>。'
-        jwt_sub_description_html: '例如，在 Keycloak 中，這是與 SCIM 用戶端相關聯的服務帳號 UUID。請參閱 <a href="%{docs_url}">我們的文件</a>，了解如何依您的使用情境尋找 subject claim（主體宣告）。'
+        authentication_method_description_html: "This is how the SCIM-client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
+        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM-clients</a> for more information on these configuration options.'
+        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM-client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
         name_description: "請選擇一個能幫助其他管理員理解此用戶端設定目的的名稱。"
       index:
-        description: "在此設定的 SCIM 用戶端能與 OpenProject SCIM 伺服器 API 互動，以配置、新增、更新及停用使用者帳號與群組。"
-        label_create_button: "新增 SCIM 用戶端"
+        description: "SCIM-clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
+        label_create_button: "Add SCIM-client"
       new:
-        title: "新的 SCIM 用戶端"
+        title: "New SCIM-client"
       revoke_static_token_dialog_component:
         confirm_button: "撤銷"
         title: "撤銷靜態令牌"
         heading: "你確定要撤銷此令牌(Token)？"
-        description: "使用此令牌的 SCIM 用戶端將不能再存取 OpenProject 的 SCIM 伺服器 API。"
+        description: "The SCIM-client that uses this token will no longer be able to access OpenProject's SCIM server API."
       table_component:
         blank_slate:
-          title: "尚未設定 SCIM 用戶端"
+          title: "No SCIM-clients configured yet"
           description: "新增用戶端後，將會在此顯示"
         user_count: "使用者"
       token_list_component:
-        description: "您在此產生的權杖可由 SCIM 用戶端用來存取 OpenProject SCIM API。"
+        description: "The tokens you generate here can be passed by a SCIM-client to access the OpenProject SCIM API."
         heading: "令牌"
         label_add_token: "令牌"
         label_aria_add_token: "新增令牌"
@@ -942,7 +942,7 @@ zh-TW:
         attribute_name: "属性"
         help_text: "說明文字"
       auth_provider:
-        scim_clients: "SCIM 用戶端"
+        scim_clients: "SCIM-clients"
       capability:
         context: "內容"
       changeset:
@@ -1258,6 +1258,7 @@ zh-TW:
         inclusion_nested: "未設置為路徑“%{path}”中允許的值之一"
         invalid: "不正確。"
         invalid_characters: "包含無效的字元。"
+        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
         invalid_url: "不是有效的 URL。"
         invalid_url_scheme: "不是受支援的協定 (允許的協定: %{allowed_schemes})。"
         less_than_or_equal_to: "必須少於或者等於 %{count}。"
@@ -1629,7 +1630,7 @@ zh-TW:
       role:
         other: "角色"
       scim_client:
-        other: "SCIM 用戶端"
+        other: "SCIM-clients"
       status: "工作套件狀態"
       token/api:
         other: 存取令牌(Token)
@@ -2164,7 +2165,7 @@ zh-TW:
         title: "Nextcloud 儲存空間的單一登入(SSO)"
         description: "使用單一登入為您的 Nextcloud 儲存空間啟用無縫且安全的驗證。簡化存取管理並提升使用者便利性。"
       scim_api:
-        title: "SCIM 用戶端"
+        title: "SCIM-clients"
         description: "透過我們的 SCIM Server API，將 OpenProject 與 Microsoft Entra 或 Keycloak 等外部身分識別服務無縫整合，自動化使用者管理功能。此功能自企業版訂閱方案起提供。"
       virus_scanning:
         description: "確保在其他使用者存取 OpenProject 中上傳的檔案前，對其進行病毒掃描。"
@@ -2887,6 +2888,7 @@ zh-TW:
   label_manage: "管理"
   label_manage_groups: "管理群組"
   label_managed_repositories_vendor: "已管理的 %{vendor} 版本庫"
+  label_mathematical_operators: "Mathematical operators"
   label_max_size: "最大容量"
   label_me: "我"
   label_member_new: "新成員"

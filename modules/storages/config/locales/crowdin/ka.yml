@@ -195,8 +195,10 @@ ka:
       oauth_client_incomplete:
         nextcloud: Allow OpenProject to access Nextcloud data using OAuth.
         one_drive: Allow OpenProject to access Azure data using OAuth to connect OneDrive.
+        share_point: Allow OpenProject to access SharePoint data using OAuth.
       redirect_uri_incomplete:
         one_drive: Complete the setup with the correct URI redirection.
+        share_point: Complete the setup with the correct URI redirection.
     confirm_replace_oauth_application: This action will reset the current OAuth credentials. After confirming you will have to reenter the credentials at the storage provider and all remote users will have to authorize against OpenProject again. Are you sure you want to proceed?
     confirm_replace_oauth_client: This action will reset the current OAuth credentials. After confirming you will have to enter new credentials from the storage provider and all users will have to authorize against %{provider_type} again. Are you sure you want to proceed?
     delete_warning:
@@ -386,6 +388,11 @@ ka:
       setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File storages.
       setting_up_storages: For setting up file storages, please visit
       setting_up_storages_non_admin: Administrators can set up file storages in Administration / File storages.
+      share_point:
+        application_link_text: SharePoint site
+        integration: SharePoint Administration / OpenProject
+        oauth_configuration: Copy these values from the desired application in the %{application_link_text}.
+        provider_configuration: Please make sure you have administration privileges in your SharePoint instance and the OpenProject integration app is installed before doing the setup.
       type: 'Please make sure you have administration privileges in your Nextcloud instance and have the following application installed before doing the setup:'
       type_link_text: "“Integration OpenProject”"
     label_active: აქტიური
