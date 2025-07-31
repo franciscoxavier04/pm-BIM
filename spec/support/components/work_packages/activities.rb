@@ -281,7 +281,10 @@ module Components
 
           check_internal_comment_checkbox if internal
 
-          page.find_test_selector("op-submit-work-package-journal-form").click if save
+          if save
+            page.find_test_selector("op-submit-work-package-journal-form").click
+            wait_for_network_idle
+          end
         end
 
         if save
