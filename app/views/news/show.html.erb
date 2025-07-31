@@ -103,7 +103,7 @@ See COPYRIGHT and LICENSE files for more details.
                                     data: { turbo_method: :delete, turbo_confirm: t(:text_are_you_sure) },
                                     class: "no-decoration-on-hover",
                                     title: t(:button_delete),
-                                    alt: t(:button_delete) %>
+                                    aria: { label: t(:button_delete) } %>
         </div>
         <h4 class="author additional-information"><%= avatar(comment.author) %><%= authoring comment.created_at, comment.author %></h4>
         <%= format_text(comment, :comments) %>
