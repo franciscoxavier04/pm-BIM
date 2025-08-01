@@ -81,12 +81,18 @@ export function initializeGlobalListeners():void {
     document.body.classList.toggle('zen-mode', event.detail.active);
   });
 
+  let wasAngularPage = !!document.querySelector('openproject-base');
+
   window.addEventListener('popstate', () => {
-    // If you're returning to Angular, force full reload
-    const shouldReload = document.querySelector('openproject-base');
-    if (shouldReload) {
+    const isNowAngularPage = !!document.querySelector('openproject-base');
+
+    if (!wasAngularPage && isNowAngularPage) {
+      // Transitioned from non-Angular to Angular — force reload
       window.location.reload();
     }
+
+    // Update for the next navigation
+    wasAngularPage = isNowAngularPage;
   });
   // Jump to the element given by location.hash, if present
   const { hash } = window.location;
