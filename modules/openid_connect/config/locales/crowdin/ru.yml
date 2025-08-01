@@ -7,7 +7,7 @@ ru:
   activerecord:
     attributes:
       openid_connect/group_link:
-        oidc_group_name: OpenID group identifier
+        oidc_group_name: Идентификатор группы OpenID
       openid_connect/provider:
         name: Имя
         slug: Уникальный идентификатор
@@ -17,7 +17,7 @@ ru:
         groups_claim: Groups claim
         secret: Закрытый ключ
         scope: Масштаб
-        sync_groups: Synchronize groups
+        sync_groups: Синхронизировать группы
         grant_types_supported: Поддерживаемые типы разрешений
         limit_self_registration: Ограничение самостоятельной регистрации
         authorization_endpoint: Конечная точка авторизации
@@ -60,9 +60,9 @@ ru:
     instructions:
       redirect_url: Это URL, который провайдер OpenID Connect должен использовать для перенаправления обратно на OpenProject после успешного входа в систему.
       endpoint_url: URL-адрес конечной точки, указанный поставщиком OpenID Connect
-      group_regexes: One regular expression pattern per line. Please read [the documentation](docs_url) for more information on how to do this.
-      group_regexes_detail: Define patterns using regular expressions to match group names from the groups claim. For example, entering a pattern like <code>^Level1/Level2/([\w/]+)$</code> will extract the group “Groupname/SubGroup” from a response including “Level1/Level2/GroupName/SubGroup”.
-      group_sync: Automatically extract and synchronise group membership information from the identity provider.
+      group_regexes: По одному регулярному выражению на строку. Пожалуйста, прочитайте [документацию](docs_url) для получения дополнительной информации о том, как это сделать.
+      group_regexes_detail: Определите шаблоны с помощью регулярных выражений, чтобы сопоставить имена групп. Например, шаблон <code>^Level1/Level2/([\w/]+)$</code> извлечет группу "Groupname/SubGroup" из ответа, включающего "Level1/Level2/GroupName/SubGroup".
+      group_sync: Автоматически извлекать и синхронизировать информацию о членстве в группах от поставщика идентификационных данных.
       groups_claim: Specify the name of the claim that's expected to indicate the group names that the user is a member of.
       metadata_none: У меня нет этой информации
       metadata_url: У меня есть URL конечной точки обнаружения
@@ -107,8 +107,8 @@ ru:
       label_edit: Редактировать провайдера OpenID %{name}
       label_empty_title: Провайдеры OpenID еще не настроены.
       label_empty_description: Добавьте провайдера, чтобы увидеть их здесь.
-      label_group_mapping: Group mapping
-      label_group_regexes: Pattern (regular expression)
+      label_group_mapping: Сопоставление групп
+      label_group_regexes: Шаблон (регулярное выражение)
       label_metadata: Конечная точка обнаружения OpenID Connect
       label_automatic_configuration: Автоматическая настройка
       label_optional_configuration: Необязательные настройки
