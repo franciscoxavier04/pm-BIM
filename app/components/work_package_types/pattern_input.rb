@@ -32,15 +32,16 @@ module WorkPackageTypes
   class PatternInput < Primer::Forms::BaseComponent
     prepend Primer::OpenProject::Forms::WrappedInput
 
-    attr_reader :input
+    attr_reader :input, :disabled
 
     delegate :name, to: :input
 
-    def initialize(input:, value:, suggestions:)
+    def initialize(input:, value:, suggestions:, disabled:)
       super()
       @input = input
       @value = value
       @suggestions = suggestions
+      @disabled = disabled
     end
 
     def suggestions_for_stimulus

@@ -93,9 +93,10 @@ See COPYRIGHT and LICENSE files for more details.
       render(
         Primer::BaseComponent.new(
           tag: :div,
-          contenteditable: true,
+          contenteditable: !disabled,
+          disabled:,
           border: true, border_radius: 2, p: 1,
-          classes: "op-pattern-input--text-field",
+          classes: "op-pattern-input--text-field FormControl-input",
           data: {
             action: "keydown->pattern-input#input_keydown
                    input->pattern-input#input_change
