@@ -33,31 +33,25 @@
 module CustomField::CalculatedValue
   extend ActiveSupport::Concern
 
+  # Mathematical operators that are allowed in the formula.
+  MATH_OPERATORS_FOR_FORMULA = %w[+ - * / % ( )].freeze
+
+  # Field formats that can be used within a formula.
+  FIELD_FORMATS_FOR_FORMULA = %w[int float calculated_value].freeze
+
   included do
-    validate :validate_formula
+    validate :validate_formula, if: :field_format_calculated_value?
 
     def validate_formula
-      return unless field_format_calculated_value?
-
       if formula_string.blank?
         errors.add(:formula, :blank)
-        return
-      end
-
-      unless formula_contains_only_allowed_characters?
+      elsif !formula_contains_only_allowed_characters?
         errors.add(:formula, :invalid_characters)
-        return
+      elsif !valid_formula_syntax?
+        errors.add(:formula, :invalid)
+      else
+        validate_referenced_custom_fields
       end
-
-      # WP-64348: check for valid (i.e., visible & enabled) custom field references (see #cf_ids_used_in_formula)
-
-      # Dentaku will return nil if the formula is invalid.
-      # TODO WP-64348: add support for referenced custom fields by injecting them as variables,
-      #       e.g. calculator.evaluate(formula_string, cf_123: CustomField.find(123).value)
-      errors.add(:formula, :invalid) unless Dentaku::Calculator.new.evaluate(formula_string)
-
-      # TODO: consider differentiating between a formula that contains missing variables, invalid
-      #       syntax, or mathematical errors.
     end
 
     def formula=(value)
@@ -73,29 +67,94 @@ module CustomField::CalculatedValue
       formula ? formula.fetch("formula", "") : ""
     end
 
+    def formula_referenced_custom_field_ids
+      formula ? formula.fetch("referenced_custom_fields", []) : []
+    end
+
+    def usable_custom_field_references_for_formula
+      visible_cfs = ProjectCustomField
+                      .where(field_format: FIELD_FORMATS_FOR_FORMULA)
+                      .where.not(id:)
+                      .visible
+
+      cache = {}
+      visible_cfs.reject do |custom_field|
+        custom_field.formula_references_id?(id, cache)
+      end
+    end
+
+    def validate_referenced_custom_fields
+      # We can only validate used custom fields from a high-level perspective, since at this point in validation,
+      # we do not have a project context to check against. So we cannot check if the custom fields are actually
+      # enabled for a project and visible to a non-admin user.
+      formula_cfs = formula_referenced_custom_field_ids
+      allowed_cfs = usable_custom_field_references_for_formula.pluck(:id)
+
+      surplus_cfs = formula_cfs - allowed_cfs
+
+      if surplus_cfs.any?
+        custom_field_names = CustomField.where(id: surplus_cfs).pluck(:name)
+        errors.add(:formula, :not_allowed_custom_fields_referenced, custom_fields: custom_field_names.join(", "))
+      end
+    end
+
+    def formula_references_id?(original_id, cache = {})
+      cache.fetch(id) do
+        cache[id] = if field_format_calculated_value?
+                      referenced_custom_fields = formula_referenced_custom_field_ids
+
+                      next true if referenced_custom_fields.include?(original_id) || referenced_custom_fields.include?(id)
+
+                      ProjectCustomField.where(id: referenced_custom_fields).any? do |referenced_field|
+                        referenced_field.formula_references_id?(original_id, cache)
+                      end
+                    else
+                      false
+                    end
+      end
+    end
+
     private
+
+    def calculator
+      Dentaku::Calculator.new(case_sensitive: true)
+    end
+
+    def valid_formula_syntax?
+      # Attempt to parse the formula. If no error is returned, the formula is syntactically valid.
+      calculator.ast(formula_str_without_patterns)
+      true
+    rescue Dentaku::ParseError, Dentaku::TokenizerError
+      false
+    end
 
     def formula_contains_only_allowed_characters?
       # List of allowed characters in a formula. This only performs a very basic validation.
-      # Allowed characters are:
-      # + - / * ( ) whitespace digits and decimal points
-      # Additionally, the formula may contain references to custom fields in the form of `cf_123` where 123 is the ID of
-      # the custom field.
+      # The allowed characters are:
+      # Our mathematical operators, whitespace, digits and decimal points
+      # Additionally, the formula may contain references to custom fields in the form of `{{cf_123}}`
+      # where 123 is the ID of the custom field.
       # Once this basic validation passes, the formula will be parsed and validated by Dentaku, which builds an AST
       # and ensures that the formula is really valid. A welcome side effect of the basic validation done here is that
       # it prevents built-in functions from being used in the formula, which we do not want to allow.
-      allowed_chars = %w[+ - / * ( )] + [" "]
-      allowed_tokens = /\A(cf_\d+|\d+\.?\d*|\.\d+)\z/
+      allowed_chars = MATH_OPERATORS_FOR_FORMULA + [" "]
+      allowed_tokens = /\A(\{\{cf_\d+}}|[\d.]+)\z/
 
-      formula_string.split(Regexp.union(allowed_chars)).reject(&:empty?).all? do |token|
-        token.match?(allowed_tokens)
+      formula_string.split(Regexp.union(allowed_chars)).all? do |token|
+        token.empty? || token.match?(allowed_tokens)
       end
     end
 
     # Returns a list of custom field IDs used in the formula.
-    # For a formula like `2 + cf_12 + cf_4` it returns `[12, 4]`.
+    # For a formula like `2 + {{cf_12}} + {{cf_4}}` it returns `[12, 4]`.
     def cf_ids_used_in_formula(formula_str)
-      formula_str.scan(/\bcf_(\d+)\b/).flatten.map(&:to_i)
+      formula_str.scan(/(?<=\{\{cf_)\d+(?=}})/).map(&:to_i).uniq
+    end
+
+    # Returns `formula_string` with all custom field references detokenized so that they are parseable by Dentaku.
+    # For example, for `2 + {{cf_12}} + {{cf_4}}` it returns `2 + cf_12 + cf_4`.
+    def formula_str_without_patterns
+      formula_string.gsub(/\{\{(cf_\d+)}}/, '\1')
     end
   end
 end

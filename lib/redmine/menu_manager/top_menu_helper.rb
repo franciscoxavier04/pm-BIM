@@ -42,8 +42,12 @@ module Redmine::MenuManager::TopMenuHelper
   end
 
   def top_menu_left_menu_items
-    [render_module_top_menu_node,
-     render_logo]
+    items = [
+      render_module_top_menu_node,
+      render_logo
+    ]
+    items << render_logo_icon unless custom_logo?
+    items
   end
 
   def render_top_menu_center
@@ -60,8 +64,13 @@ module Redmine::MenuManager::TopMenuHelper
   end
 
   def render_logo_icon
-    mode_class = User.current.pref.theme === "dark" ? "op-logo-icon_dark" : "op-logo-icon"
-    render Primer::BaseComponent.new(tag: :div, classes: mode_class)
+    mode_class = "op-logo--icon_white" unless User.current.pref.high_contrast_theme?
+    link_to(I18n.t("label_home"), configurable_home_url, class: ["op-logo", "op-logo--icon", "op-logo--link", mode_class])
+  end
+
+  def render_waffle_menu_logo_icon
+    mode_class = User.current.pref.theme === "dark" ? "op-logo--icon_white" : "op-logo--icon"
+    render Primer::BaseComponent.new(tag: :div, classes: ["op-logo", mode_class])
   end
 
   def render_top_menu_search

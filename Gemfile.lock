@@ -36,8 +36,8 @@ GIT
 
 GIT
   remote: https://github.com/opf/omniauth-openid-connect.git
-  revision: 3d5fec65072fb4566fb975a9cbe401d758d22317
-  ref: 3d5fec65072fb4566fb975a9cbe401d758d22317
+  revision: e923d9dd14fa4ca04b98720ac2185807b263f5ed
+  ref: e923d9dd14fa4ca04b98720ac2185807b263f5ed
   specs:
     omniauth-openid-connect (0.4.1)
       addressable (~> 2.5)
@@ -335,7 +335,7 @@ GEM
     android_key_attestation (0.3.0)
     anyway_config (2.7.2)
       ruby-next-core (~> 1.0)
-    appsignal (4.5.17)
+    appsignal (4.6.0)
       logger
       rack (>= 2.0.0)
     ast (2.4.3)
@@ -560,7 +560,7 @@ GEM
     factory_bot_rails (6.5.0)
       factory_bot (~> 6.5)
       railties (>= 6.1.0)
-    faraday (2.13.3)
+    faraday (2.13.4)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
@@ -616,11 +616,6 @@ GEM
     glob (0.4.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    gon (6.4.0)
-      actionpack (>= 3.0.20)
-      i18n (>= 0.7)
-      multi_json
-      request_store (>= 1.0)
     good_job (3.99.1)
       activejob (>= 6.0.0)
       activerecord (>= 6.0.0)
@@ -709,7 +704,7 @@ GEM
       reline (>= 0.4.2)
     iso8601 (0.13.0)
     jmespath (1.6.2)
-    json (2.13.1)
+    json (2.13.2)
     json-jwt (1.16.7)
       activesupport (>= 4.2)
       aes_key_wrap
@@ -761,7 +756,7 @@ GEM
     loofah (2.24.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
-    lookbook (2.3.11)
+    lookbook (2.3.12)
       activemodel
       css_parser
       htmlbeautifier (~> 1.3)
@@ -854,10 +849,10 @@ GEM
       validate_email
       validate_url
       webfinger (~> 2.0)
-    openproject-octicons (19.26.2)
-    openproject-octicons_helper (19.26.2)
+    openproject-octicons (19.26.3)
+    openproject-octicons_helper (19.26.3)
       actionview
-      openproject-octicons (= 19.26.2)
+      openproject-octicons (= 19.26.3)
       railties
     openproject-primer_view_components (0.70.4)
       actionview (>= 7.1.0)
@@ -975,7 +970,7 @@ GEM
       rack (>= 1.0, < 4)
     rack-cors (2.0.2)
       rack (>= 2.0.0)
-    rack-mini-profiler (4.0.0)
+    rack-mini-profiler (4.0.1)
       rack (>= 1.2.0)
     rack-oauth2 (2.2.1)
       activesupport
@@ -1150,7 +1145,7 @@ GEM
       base64
     ruby-progressbar (1.13.0)
     ruby-rc4 (0.1.5)
-    ruby-saml (1.18.0)
+    ruby-saml (1.18.1)
       nokogiri (>= 1.13.10)
       rexml
     ruby2_keywords (0.0.5)
@@ -1394,7 +1389,6 @@ DEPENDENCIES
   friendly_id (~> 5.5.0)
   fuubar (~> 2.5.0)
   globalid (~> 1.2)
-  gon (~> 6.4.0)
   good_job (= 3.99.1)
   google-apis-gmail_v1
   googleauth
@@ -1576,7 +1570,7 @@ CHECKSUMS
   airbrake-ruby (6.2.2) sha256=293e34fb36e763e1b6d67ab584cce7c5b6fe9eea1a70c26d8c13c0f5d7de2fbc
   android_key_attestation (0.3.0) sha256=467eb01a99d2bb48ef9cf24cc13712669d7056cba5a52d009554ff037560570b
   anyway_config (2.7.2) sha256=30f6b087c0b41afdd43fe46c81d65a16f052a8489dab453abaeb4ea67aa74bad
-  appsignal (4.5.17) sha256=1a1f8ed4e74ce8831365b5a6710b9c0313d249eb148b31325b291ccc9d6d9143
+  appsignal (4.6.0) sha256=22e1c9612423da2de316c67f32aaf3cc4853b01c0c5105e20b59e1e08dcad6e7
   ast (2.4.3) sha256=954615157c1d6a382bc27d690d973195e79db7f55e9765ac7c481c60bdb4d383
   attr_required (1.0.2) sha256=f0ebfc56b35e874f4d0ae799066dbc1f81efefe2364ca3803dc9ea6a4de6cb99
   auto_strip_attributes (2.6.0) sha256=a7e2e0cf744de2bcd947fd68014220702bcc88c81274c1cd9ce6f7316aae39b0
@@ -1677,7 +1671,7 @@ CHECKSUMS
   excon (1.2.8) sha256=150f57a0f3919b8d2b3f74535596f9876389c6dde157e0bfac8f26631eb135d0
   factory_bot (6.5.4) sha256=4707fb7d80a7c14d71feb069460587bfc342e4ff1ef28097e0ad69d5ddfce613
   factory_bot_rails (6.5.0) sha256=4a7b61635424a57cc60412a18b72b9dcfb02fabfce2c930447a01dce8b37c0a2
-  faraday (2.13.3) sha256=e9571e7a4ada595b385da5fc749edf7b11dc6aa9d98ab63286c3f28dc4ac01b7
+  faraday (2.13.4) sha256=c719ff52cfd0dbaeca79dd83ed3aeea3f621032abf8bc959d1c05666157cac26
   faraday-follow_redirects (0.3.0) sha256=d92d975635e2c7fe525dd494fcd4b9bb7f0a4a0ec0d5f4c15c729530fdb807f9
   faraday-net_http (3.4.1) sha256=095757fae7872b94eac839c08a1a4b8d84fd91d6886cfbe75caa2143de64ab3b
   fastimage (2.3.1) sha256=23c629f1f3e7d61bcfcc06c25b3d2418bc6bf41d2e615dbf5132c0e3b63ecce9
@@ -1705,7 +1699,6 @@ CHECKSUMS
   fuubar (2.5.1) sha256=b272a7804b282661c7fab583a3764f92543cb482c365ae39c685cd218fdd4880
   glob (0.4.0) sha256=893dc9e2d24abe13dda907ce0cda576f680ff382f2a6cf9e543f98ecbe29238c
   globalid (1.2.1) sha256=70bf76711871f843dbba72beb8613229a49429d1866828476f9c9d6ccc327ce9
-  gon (6.4.0) sha256=e3a618d659392890f1aa7db420f17c75fd7d35aeb5f8fe003697d02c4b88d2f0
   good_job (3.99.1) sha256=7d3869d8a8ee8ef7048fee5d746f41c21987b7822c20038a2f773036bef0830a
   google-apis-core (0.18.0) sha256=96b057816feeeab448139ed5b5c78eab7fc2a9d8958f0fbc8217dedffad054ee
   google-apis-gmail_v1 (0.45.0) sha256=28b12356de6b78e136b5290976633978b23dc0013797b0d25f49bd36882cde78
@@ -1740,7 +1733,7 @@ CHECKSUMS
   irb (1.15.2) sha256=222f32952e278da34b58ffe45e8634bf4afc2dc7aa9da23fed67e581aa50fdba
   iso8601 (0.13.0) sha256=298c2b15b7be5fa95a1372813d36a2257656cd8e906dfbc1f5cb409851425aa2
   jmespath (1.6.2) sha256=238d774a58723d6c090494c8879b5e9918c19485f7e840f2c1c7532cf84ebcb1
-  json (2.13.1) sha256=8e7cf4bb44a789ac5fc62869c7187986251c3172d9bdfa60b92c63d6ecab0ffc
+  json (2.13.2) sha256=02e1f118d434c6b230a64ffa5c8dee07e3ec96244335c392eaed39e1199dbb68
   json-jwt (1.16.7) sha256=ccabff4c6d1a14276b23178e8bebe513ef236399b72a0b886d7ed94800d172a5
   json-schema (4.3.1) sha256=d5e68dc32b94408d0b06ad04f9382ccbb6fe5a44910e066f8547f56c471a7825
   json_schemer (2.4.0) sha256=56cb6117bb5748d925b33ad3f415b513d41d25d0bbf57fe63c0a78ff05597c24
@@ -1758,7 +1751,7 @@ CHECKSUMS
   logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
   lograge (0.14.0) sha256=42371a75823775f166f727639f5ddce73dd149452a55fc94b90c303213dc9ae1
   loofah (2.24.1) sha256=655a30842b70ec476410b347ab1cd2a5b92da46a19044357bbd9f401b009a337
-  lookbook (2.3.11) sha256=847b056cbebc5b004fd838b31ffe77364db2225f6a139f21e22b1952cdaf68e2
+  lookbook (2.3.12) sha256=5473a14c6e29fb267d8f28f2f0848a1ecf30ca2adec585ec2dfaf3b2488047c1
   mail (2.8.1) sha256=ec3b9fadcf2b3755c78785cb17bc9a0ca9ee9857108a64b6f5cfc9c0b5bfc9ad
   marcel (1.0.4) sha256=0d5649feb64b8f19f3d3468b96c680bae9746335d02194270287868a661516a4
   markly (0.13.1) sha256=01317a045fe89032732a520e71593deeb62187562ca82effa0ed3ea23b5fd46a
@@ -1818,8 +1811,8 @@ CHECKSUMS
   openproject-job_status (1.0.0)
   openproject-ldap_groups (1.0.0)
   openproject-meeting (1.0.0)
-  openproject-octicons (19.26.2) sha256=a771a5cde922a9d8f10033574be2ec23710277ad92faa843f0642ab49de82eae
-  openproject-octicons_helper (19.26.2) sha256=e6bde57aa71986b9ee018a525e9a711b1e4b97a81d5568d45cd30925c15467ef
+  openproject-octicons (19.26.3) sha256=88def5f730e93a5d7f0237ca320303c3e41c0c269953d7372bb2f3e9f87c7e04
+  openproject-octicons_helper (19.26.3) sha256=733e6d0d7a73d73ed2bfe2966b7589d3444cb146db131856093ef5f47ef015f7
   openproject-openid_connect (1.0.0)
   openproject-primer_view_components (0.70.4) sha256=997bfdb3a3f72e44035b94024f499854dd870ef92fe7bc9e4e654050b70926ee
   openproject-recaptcha (1.0.0)
@@ -1872,7 +1865,7 @@ CHECKSUMS
   rack (2.2.17) sha256=5fe02a1ca80d6fb2271dba00985ee2962d6f5620b6f46dfed89f5301ac4699dd
   rack-attack (6.7.0) sha256=3ca47e8f66cd33b2c96af53ea4754525cd928ed3fa8da10ee6dad0277791d77c
   rack-cors (2.0.2) sha256=415d4e1599891760c5dc9ef0349c7fecdf94f7c6a03e75b2e7c2b54b82adda1b
-  rack-mini-profiler (4.0.0) sha256=c37bedcb7d01e33ad4addd8c4e742986e75db7cd8908cba3432c60b4e812e00f
+  rack-mini-profiler (4.0.1) sha256=485810c23211f908196c896ea10cad72ed68780ee2998bec1f1dfd7558263d78
   rack-oauth2 (2.2.1) sha256=c73aa87c508043e2258f02b4fb110cacba9b37d2ccf884e22487d014a120d1a5
   rack-protection (3.2.0) sha256=3c74ba7fc59066453d61af9bcba5b6fe7a9b3dab6f445418d3b391d5ea8efbff
   rack-session (1.0.2) sha256=a02115e5420b4de036839b9811e3f7967d73446a554b42aa45106af335851d76
@@ -1933,7 +1926,7 @@ CHECKSUMS
   ruby-prof (1.7.2) sha256=270424fcac37e611f2d15a55226c4628e234f8434e1d7c25ca8a2155b9fc4340
   ruby-progressbar (1.13.0) sha256=80fc9c47a9b640d6834e0dc7b3c94c9df37f08cb072b7761e4a71e22cff29b33
   ruby-rc4 (0.1.5) sha256=00cc40a39d20b53f5459e7ea006a92cf584e9bc275e2a6f7aa1515510e896c03
-  ruby-saml (1.18.0) sha256=de342a55925fd5ce6114d0802651c324428c0fec26e7fe52bf3a7cfa54dbfa6d
+  ruby-saml (1.18.1) sha256=1b0e7a44aef150b4197955f5e015d593672e242cfdc5d06aa7554ec2350b9107
   ruby2_keywords (0.0.5) sha256=ffd13740c573b7301cf7a2e61fc857b2a8e3d3aff32545d6f8300d8bae10e3ef
   rubytree (2.1.1) sha256=4925016356a81730e982f1f8c3b5f8da461f18906c77d238bad4c4ba896abd41
   rubyzip (2.3.2) sha256=3f57e3935dc2255c414484fbf8d673b4909d8a6a57007ed754dde39342d2373f

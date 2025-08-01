@@ -77,12 +77,4 @@ class ApplicationRecord < ActiveRecord::Base
 
     ActiveRecord::Base.connection.select_value(union_query)
   end
-
-  def self.skip_optimistic_locking(&)
-    original_lock_optimistically = ActiveRecord::Base.lock_optimistically
-    ActiveRecord::Base.lock_optimistically = false
-    yield
-  ensure
-    ActiveRecord::Base.lock_optimistically = original_lock_optimistically
-  end
 end

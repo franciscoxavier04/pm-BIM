@@ -246,6 +246,8 @@ class RecurringMeetingsController < ApplicationController
   end
 
   def deliver_invitation_mails
+    return unless @recurring_meeting.template.notify?
+
     @recurring_meeting
       .template
       .participants
@@ -326,9 +328,8 @@ class RecurringMeetingsController < ApplicationController
 
   def recurring_meeting_params
     params
-      .require(:meeting)
-      .permit(:project_id, :title, :location, :start_time_hour, :duration, :start_date,
-              :interval, :frequency, :end_after, :end_date, :iterations)
+      .expect(meeting: %i[project_id title location start_time_hour duration start_date
+                          interval frequency end_after end_date iterations notify])
   end
 
   def find_copy_from_meeting

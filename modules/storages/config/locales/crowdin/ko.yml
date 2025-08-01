@@ -195,8 +195,10 @@ ko:
       oauth_client_incomplete:
         nextcloud: OpenProject가 OAuth를 사용하여 Nextcloud 데이터에 액세스하도록 허용합니다.
         one_drive: Allow OpenProject to access Azure data using OAuth to connect OneDrive.
+        share_point: Allow OpenProject to access SharePoint data using OAuth.
       redirect_uri_incomplete:
         one_drive: 올바른 URI 리디렉션으로 설정을 완료합니다.
+        share_point: Complete the setup with the correct URI redirection.
     confirm_replace_oauth_application: 이 작업은 현재 OAuth 자격 증명을 재설정합니다. 확인 후 저장소 공급자에서 자격 증명을 다시 입력해야 하며 모든 원격 사용자는 OpenProject에 대해 다시 인증해야 합니다. 계속하시겠습니까?
     confirm_replace_oauth_client: 이 작업은 현재 OAuth 자격 증명을 재설정합니다. 확인 후 저장소 공급자의 새로운 자격 증명을 입력해야 하며 모든 사용자는 %{provider_type}에 대해 다시 인증해야 합니다. 계속하시겠습니까?
     delete_warning:
@@ -262,6 +264,7 @@ ko:
           header: 인증
           non_provisioned_user: IDP에 의해 프로비저닝되는 사용자
           offline_access: OIDC offline_access 범위 구성됨
+          provider_capabilities: Provider capabilities
           provisioned_user_provider: OIDC에 의해 프로비저닝되는 사용자
           token_negotiable: 사용자 토큰 기능
           user_bound_request: 사용자 기반 요청 인증
@@ -310,6 +313,7 @@ ko:
         oidc_cant_refresh_token: 저장소에 대한 액세스를 확인하는 동안 오류가 발생했습니다. 자세한 내용은 서버 로그를 확인하세요.
         oidc_non_oidc_user: 현재 사용자는 프로비저닝되는 동안, OpenID Connect(OIDC) ID 공급자에 의해 프로비저닝되지 않았습니다. OIDC 프로비저닝 사용자로 확인을 다시 실행하세요.
         oidc_non_provisioned_user: 현재 사용자는 OpenID Connect ID 공급자에 의해 제공되지 않았습니다. 제공된 사용자로 확인을 다시 실행하세요.
+        oidc_provider_cant_exchange: The OpenID Connect provider does not seem to support token exchange, but token exchange was configured for the storage.
         oidc_token_acquisition_failed: 해당 OpenID Connect 설정은 필요한 오디언스를 제공하지 않으며, 토큰 교환 기능도 제공하지 않습니다. 자세한 내용은 설명서를 확인하세요.
         oidc_token_exchange_failed: OpenID Connect 공급자의 Token Exchange 설정에 문제가 있는 것 같습니다. 해당 구성을 확인하고 다시 시도하세요.
         oidc_token_refresh_failed: 저장소에 대한 액세스를 확인하는 동안 오류가 발생했습니다. 자세한 내용은 서버 로그를 확인하세요.
@@ -382,6 +386,11 @@ ko:
       setting_up_additional_storages_non_admin: 관리자는 관리/파일 저장소에서 추가 파일 저장소를 설정할 수 있습니다.
       setting_up_storages: '파일 저장소를 설정하려면 다음을 방문하세요:'
       setting_up_storages_non_admin: 관리자는 관리/파일 저장소에서 파일 저장소를 설정할 수 있습니다.
+      share_point:
+        application_link_text: SharePoint site
+        integration: SharePoint Administration / OpenProject
+        oauth_configuration: Copy these values from the desired application in the %{application_link_text}.
+        provider_configuration: Please make sure you have administration privileges in your SharePoint instance and the OpenProject integration app is installed before doing the setup.
       type: '설정을 수행하기 전에 Nextcloud 인스턴스에서 관리 권한이 있고 다음 애플리케이션이 설치되어 있는지 확인하세요.'
       type_link_text: "“Integration OpenProject”"
     label_active: 활성

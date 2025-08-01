@@ -119,6 +119,7 @@ lv:
   label_meeting_date_time: "Datums/laiks"
   label_meeting_date_and_time: "Datums un laiks"
   label_meeting_diff: "Atšķirība"
+  label_meeting_send_updates: "Send email calendar updates"
   label_recurring_meeting: "Recurring meeting"
   label_recurring_meeting_part_of: "Part of a meeting series"
   label_recurring_meeting_new: "New recurring meeting"
@@ -263,6 +264,47 @@ lv:
         label: Footer text
         caption: This text will appear on every page at the center of the footer.
       submit_button: Download
+    notifications:
+      sidepanel:
+        title: "Email calendar updates"
+        state:
+          disabled: "Disabled."
+          enabled: "Enabled."
+        description:
+          disabled: "Participants will not receive an email informing them of changes."
+          enabled: "All participants will receive updated calendar invites via email informing them of changes."
+          change_via_template: "To change this, edit the series template."
+        button:
+          disable: "Disable"
+          enable: "Enable"
+      dialog:
+        title:
+          enable: "Enable email calendar updates?"
+          disable: "Disable email calendar updates?"
+        message:
+          enable: >
+            All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants.
+          disable: >
+            Participants will no longer receive updated calendar invites via email when there are changes to the meeting date, time, location or participants. If they already had an invite for this meeting, it might no longer be accurate.
+        confirm_label:
+          enable: "Enable email updates"
+          disable: "Disable email updates"
+      banner:
+        onetime:
+          enabled: >
+            All participants will receive updated calendar invites via email informing them of your changes.
+          disabled: >
+            Email calendar updates are disabled. Participants will not receive an email informing them of your changes.
+        occurrence:
+          enabled: >
+            Email calendar updates are enabled for the meeting series. All participants will receive updated calendar invites informing them of your changes to this occurrence.
+          disabled: >
+            Email calendar updates are disabled for the meeting series. Participants will not receive an email informing them of your changes to this occurrence.
+        template:
+          enabled: >
+            Email calendar updates are enabled for the meeting series. All participants will receive updated calendar invites informing them of your changes to this template or to individual occurrences.
+          disabled: >
+            Email calendar updates are disabled for the meeting series. Participants will not receive an email informing them of your changes to this template or to individual occurrences.
   meeting_section:
     untitled_title: "Untitled section"
     delete_confirmation: "Deleting the section will also delete all of its agenda items. Are you sure you want to do this?"
@@ -471,3 +513,6 @@ lv:
   text_agenda_item_move_next_meeting_cancelled: "Unable to move to the next meeting since it has been cancelled."
   text_work_package_add_to_meeting_hint: 'Use the "Add to meeting" button to add this work package to an upcoming meeting.'
   text_work_package_has_no_past_meeting_agenda_items: "This work package was not mentioned in a past meeting."
+  text_email_updates_muted: "Email calendar updates are muted. Participants will not receive updated invites via email when you make changes."
+  text_email_updates_enabled: "Email calendar updates are enabled. All participants will receive updated invites via email when you make changes."
+

@@ -263,6 +263,8 @@ class Storages::Admin::StoragesController < ApplicationController
       :storages_nextcloud_storage
     elsif params.key?(:storages_one_drive_storage)
       :storages_one_drive_storage
+    elsif params.key?(:storages_share_point_storage)
+      :storages_share_point_storage
     else
       :storages_storage
     end

@@ -184,7 +184,7 @@ de:
   storages:
     buttons:
       complete_without_setup: Ohne fortfahren
-      done_complete_setup: Fertig, Einrichtung abgeschlossen
+      done_complete_setup: Fertig, Einrichtung abschließen
       done_continue: Fertig, Fortfahren
       open_storage: Dateispeicher öffnen
       replace_oauth_application: OpenProject OAuth ersetzen
@@ -195,8 +195,10 @@ de:
       oauth_client_incomplete:
         nextcloud: Erlauben Sie OpenProject Zugriff auf Nextcloud Daten über OAuth.
         one_drive: Erlaube OpenProject auf Azure-Daten über OAuth zuzugreifen, um mit OneDrive zu verbinden.
+        share_point: Allow OpenProject to access SharePoint data using OAuth.
       redirect_uri_incomplete:
         one_drive: Schließen Sie das Setup mit der korrekten Umleitungs-URI ab.
+        share_point: Complete the setup with the correct URI redirection.
     confirm_replace_oauth_application: Diese Aktion setzt die aktuellen OAuth-Anmeldedaten zurück. Nach der Bestätigung müssen Sie die Anmeldedaten beim Speicheranbieter erneut eingeben und alle Remote-Benutzer müssen sich erneut gegenüber OpenProject autorisieren. Sind Sie sicher, dass Sie fortfahren möchten?
     confirm_replace_oauth_client: Diese Aktion setzt die aktuellen OAuth-Anmeldedaten zurück. Nach der Bestätigung müssen Sie neue Anmeldedaten vom Speicheranbieter eingeben und alle Benutzer müssen sich erneut für %{provider_type} autorisieren. Sind Sie sicher, dass Sie fortfahren möchten?
     delete_warning:
@@ -262,6 +264,7 @@ de:
           header: Authentifizierung
           non_provisioned_user: Durch IDP bereitgestellter Benutzer
           offline_access: Konfigurierter OIDC-Scope offline_access
+          provider_capabilities: Provider capabilities
           provisioned_user_provider: Durch OIDC bereitgestellter Benutzer
           token_negotiable: Benutzer-Token-Fähigkeiten
           user_bound_request: Benutzerbasierte Anfrageauthentifizierung
@@ -312,6 +315,7 @@ de:
         oidc_cant_refresh_token: Beim Versuch, Ihren Zugriff auf den Speicher zu überprüfen, ist ein Fehler aufgetreten. Bitte überprüfen Sie die Server-Protokolle auf weitere Informationen.
         oidc_non_oidc_user: Der aktuelle Benutzer wurde zwar bereitgestellt, aber nicht von einem OpenID Connect (OIDC) Identity Provider. Bitte wiederholen Sie die Prüfung mit einem OIDC-bereitgestellten Benutzer.
         oidc_non_provisioned_user: Der aktuelle Benutzer wird nicht von einem OpenID Connect Identity Provider bereitgestellt. Bitte führen Sie die Prüfung mit einem bereitgestellten Benutzer erneut durch.
+        oidc_provider_cant_exchange: The OpenID Connect provider does not seem to support token exchange, but token exchange was configured for the storage.
         oidc_token_acquisition_failed: Ihre OpenID-Connect-Konfiguration stellt weder die erforderliche Audience bereit, noch unterstützt sie die Token-Austausch-Funktion. Bitte lesen Sie unsere Dokumentation für weitere Informationen.
         oidc_token_exchange_failed: Es scheint ein Problem mit der Token-Exchange-Konfiguration Ihres OpenID-Connect-Anbieters zu geben. Bitte überprüfen Sie die Einstellungen und versuchen Sie es erneut.
         oidc_token_refresh_failed: Beim Überprüfen Ihres Zugriffs auf den Speicher ist ein Fehler aufgetreten. Bitte sehen Sie die Serverprotokolle für weitere Informationen ein.
@@ -384,6 +388,11 @@ de:
       setting_up_additional_storages_non_admin: Administratoren können zusätzliche Dateispeicher in Administration / Dateispeicher einrichten.
       setting_up_storages: Zum Einrichten von Dateispeichern besuchen Sie bitte
       setting_up_storages_non_admin: Administratoren können Dateispeicher in Administration / Dateien einrichten.
+      share_point:
+        application_link_text: SharePoint site
+        integration: SharePoint Administration / OpenProject
+        oauth_configuration: Copy these values from the desired application in the %{application_link_text}.
+        provider_configuration: Please make sure you have administration privileges in your SharePoint instance and the OpenProject integration app is installed before doing the setup.
       type: 'Bitte stellen Sie sicher, dass Sie Administrationsrechte in Ihrer Nextcloud-Instanz haben und die folgende Anwendung vor dem Setup installiert wurde:'
       type_link_text: "„OpenProject Integration“"
     label_active: Aktiv

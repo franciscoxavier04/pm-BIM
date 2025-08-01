@@ -185,6 +185,14 @@ class Meeting < ApplicationRecord
     !closed? && user.allowed_in_project?(:edit_meetings, project)
   end
 
+  def notify?
+    if recurring?
+      recurring_meeting.template.notify
+    else
+      notify
+    end
+  end
+
   def invited_or_attended_participants
     participants.where(invited: true).or(participants.where(attended: true))
   end
@@ -250,28 +258,10 @@ class Meeting < ApplicationRecord
         top
       end
 
-      # Disable optimistic locking in order to avoid causing `StaleObjectError`.
-      MeetingAgendaItem.skip_optimistic_locking do
-        MeetingAgendaItem.import(
-          changed_items,
-          on_duplicate_key_update: {
-            conflict_target: [:id],
-            columns: %i[meeting_id
-                        author_id
-                        title
-                        notes
-                        position
-                        duration_in_minutes
-                        start_time
-                        end_time
-                        created_at
-                        updated_at
-                        work_package_id
-                        item_type
-                        lock_version]
-          }
-        )
-      end
+      MeetingAgendaItem.upsert_all(
+        changed_items.map(&:attributes),
+        unique_by: :id
+      )
     end
   end
 
@@ -304,7 +294,7 @@ class Meeting < ApplicationRecord
   end
 
   def send_participant_added_mail(participant)
-    return if templated? || new_record?
+    return if templated? || new_record? || !notify?
 
     if Journal::NotificationConfiguration.active?
       MeetingMailer.invited(self, participant.user, User.current).deliver_later
@@ -312,7 +302,7 @@ class Meeting < ApplicationRecord
   end
 
   def send_rescheduling_mail
-    return if templated? || new_record?
+    return if templated? || new_record? || !notify?
 
     MeetingNotificationService
       .new(self)

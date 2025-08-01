@@ -120,34 +120,34 @@ ru:
         label_token: "Токен доступа"
         one_time_hint: "Это единственный раз, когда Вы увидите токен. Убедитесь, что вы сохранили его."
       delete_scim_client_dialog_component:
-        title: "Удалить клиента SCIM"
-        heading: "Вы уверены, что хотите удалить этого клиента SCIM?"
-        description: "Пользователи, управляемые этим SCIM клиентом, больше не могут быть обновлены им."
+        title: "Delete SCIM-client"
+        heading: "Are you sure you want to delete this SCIM-client?"
+        description: "Users managed by this SCIM-client can no longer be updated by it."
       edit:
-        label_delete_scim_client: "Удалить клиента SCIM"
+        label_delete_scim_client: "Delete SCIM-client"
       form:
         auth_provider_description: "Это служба, которую пользователи, добавленные провайдером SCIM, будут использовать для аутентификации в OpenProject."
-        authentication_method_description_html: "Вот как клиент SCIM аутентифицируется в OpenProject. Пожалуйста, убедитесь, что токены OAuth включают область <code>scim_v2</code>."
-        description_html: 'Пожалуйста, обратитесь к нашей <a href="%{docs_url}">документации по настройке клиентов SCIM</a>.'
-        jwt_sub_description_html: 'Например, для Keycloak это UUID учетной записи службы, связанной с клиентом SCIM. Обратитесь к <a href="%{docs_url}">нашей документации</a>, для поиска необходимых тем.'
+        authentication_method_description_html: "This is how the SCIM-client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
+        description: "Please refer to our [documentation on configuring SCIM-clients](docs_url) for more information on these configuration options."
+        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM-client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
         name_description: "Выберите имя, которое поможет другим администраторам лучше понять, зачем был настроен этот клиент."
       index:
-        description: "Клиенты SCIM, настроенные здесь, могут взаимодействовать с API сервера SCIM для предоставления, обновления и удаления учетных записей и групп пользователей."
-        label_create_button: "Добавить клиента SCIM"
+        description: "SCIM-clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
+        label_create_button: "Add SCIM-client"
       new:
-        title: "Новый клиент SCIM"
+        title: "New SCIM-client"
       revoke_static_token_dialog_component:
         confirm_button: "Отменить"
         title: "Отменить статический токен"
         heading: "Вы уверены, что хотите отменить этот токен?"
-        description: "Клиент SCIM, использующий этот токен, больше не сможет получить доступ к API сервера SCIM."
+        description: "The SCIM-client that uses this token will no longer be able to access OpenProject's SCIM server API."
       table_component:
         blank_slate:
-          title: "Клиенты SCIM еще не настроены"
+          title: "No SCIM-clients configured yet"
           description: "Добавьте клиентов, чтобы увидеть их здесь"
         user_count: "Пользователи"
       token_list_component:
-        description: "Токены, которые Вы генерируете здесь, могут быть переданы SCIM-клиенту для доступа к API серверу SCIM."
+        description: "The tokens you generate here can be passed by a SCIM-client to access the OpenProject SCIM API."
         heading: "Токены"
         label_add_token: "Токен"
         label_aria_add_token: "Добавить токен"
@@ -731,9 +731,8 @@ ru:
             project: "Проект"
         pattern:
           label: "Шаблон темы"
-          caption_with_supported_attributes_link: Создавайте шаблоны, добавляя текст, или наберите "/" для поиска %{link}.
+          caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
           insert_as_text: "Атрибуты не найдены. Добавить как текст: \"%{word}\""
-          supported_attributes_link: "поддерживаемые атрибуты"
       export_configuration:
         tab: "Создать PDF"
         intro: "Выберите, какие шаблоны из имеющихся Вы хотите активировать для этого типа. Шаблон задаёт дизайн и атрибуты в экспортированном PDF-файле пакета работ этого типа. Первый шаблон из списка выбирается по умолчанию."
@@ -968,7 +967,7 @@ ru:
         attribute_name: "Атрибут"
         help_text: "Текст справки"
       auth_provider:
-        scim_clients: "Клиенты SCIM"
+        scim_clients: "SCIM-clients"
       capability:
         context: "Контекст"
       changeset:
@@ -1284,6 +1283,7 @@ ru:
         inclusion_nested: "не задано одно из допустимых значений в пути '%{path}'."
         invalid: "неверно."
         invalid_characters: "содержит недопустимые символы."
+        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
         invalid_url: "не является допустимым URL-адресом."
         invalid_url_scheme: "не является поддерживаемым протоколом (разрешены следующие: %{allowed_schemes})."
         less_than_or_equal_to: "должно быть меньше или равно %{count}."
@@ -1682,10 +1682,10 @@ ru:
         many: "Роль"
         other: "Роль"
       scim_client:
-        one: "Клиент SCIM"
-        few: "SCIM clients"
-        many: "SCIM clients"
-        other: "SCIM clients"
+        one: "SCIM-client"
+        few: "SCIM-clients"
+        many: "SCIM-clients"
+        other: "SCIM-clients"
       status: "Статус пакета работ"
       token/api:
         one: Токен доступа
@@ -2295,7 +2295,7 @@ ru:
         title: "Единый вход для Nextcloud хранения"
         description: "Включите бесшовную и безопасную аутентификацию для вашего Nextcloud хранилища с помощью Single Sign-On. Упростите управление доступом и сделайте удобным для пользователя."
       scim_api:
-        title: "Клиенты SCIM"
+        title: "SCIM-clients"
         description: "Автоматизируйте управление пользователями в OpenProject, легко интегрируя внешние службы идентификации, такие как Microsoft Entra или Keycloak, через наш сервер API SCIM."
       virus_scanning:
         description: "Будьте уверены в том, что загруженные в OpenProject файлы проверены на наличие вирусов, прежде чем они станут доступны другим пользователям."
@@ -3021,6 +3021,7 @@ ru:
   label_manage: "Управление"
   label_manage_groups: "Управление группами"
   label_managed_repositories_vendor: "Управляемые %{vendor} репозиториев"
+  label_mathematical_operators: "Mathematical operators"
   label_max_size: "Максимальный размер"
   label_me: "мне"
   label_member_new: "Новый участник"

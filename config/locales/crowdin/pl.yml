@@ -120,34 +120,34 @@ pl:
         label_token: "Token"
         one_time_hint: "Jest to jedyny raz, gdy zobaczysz ten token. Koniecznie skopiuj go teraz."
       delete_scim_client_dialog_component:
-        title: "Usuń klienta SCIM"
-        heading: "Czy na pewno chcesz usunąć tego klienta SCIM?"
-        description: "Użytkownicy zarządzani przez tego klienta SCIM nie mogą już być przez niego aktualizowani."
+        title: "Delete SCIM-client"
+        heading: "Are you sure you want to delete this SCIM-client?"
+        description: "Users managed by this SCIM-client can no longer be updated by it."
       edit:
-        label_delete_scim_client: "Usuń klienta SCIM"
+        label_delete_scim_client: "Delete SCIM-client"
       form:
         auth_provider_description: "Jest to usługa, której użytkownicy dodani przez dostawcę SCIM będą używać do uwierzytelniania w OpenProject."
-        authentication_method_description_html: "W ten sposób klient SCIM uwierzytelnia się w OpenProject. Upewnij się, że tokeny OAuth zawierają zakres <code>scim_v2</code>."
-        description_html: 'Aby uzyskać więcej informacji na temat tych opcji konfiguracji, zapoznaj się z naszą <a href="%{docs_url}">dokumentacją dotyczącą konfigurowania klientów SCIM</a>.'
-        jwt_sub_description_html: 'Na przykład w przypadku Keycloak jest to identyfikator UUID konta usługi powiązanego z klientem SCIM. Aby dowiedzieć się, jak znaleźć oświadczenie podmiotu dla danego przypadku użycia, zapoznaj się z <a href="%{docs_url}">naszą dokumentacją</a>.'
+        authentication_method_description_html: "This is how the SCIM-client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
+        description: "Please refer to our [documentation on configuring SCIM-clients](docs_url) for more information on these configuration options."
+        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM-client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
         name_description: "Wybierz nazwę, która pomoże innym administratorom lepiej zrozumieć, dlaczego ten klient został skonfigurowany."
       index:
-        description: "Skonfigurowani tutaj klienci SCIM mogą wchodzić w interakcje z interfejsem API serwera SCIM OpenProject w celu dostarczania, aktualizowania i usuwania kont i grup użytkowników."
-        label_create_button: "Dodaj klienta SCIM"
+        description: "SCIM-clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
+        label_create_button: "Add SCIM-client"
       new:
-        title: "Nowy klient SCIM"
+        title: "New SCIM-client"
       revoke_static_token_dialog_component:
         confirm_button: "Unieważnij"
         title: "Unieważnij token statyczny"
         heading: "Czy na pewno chcesz unieważnić ten token?"
-        description: "Klient SCIM, który używa tego tokena, nie będzie już mógł uzyskać dostępu do interfejsu API serwera SCIM OpenProject."
+        description: "The SCIM-client that uses this token will no longer be able to access OpenProject's SCIM server API."
       table_component:
         blank_slate:
-          title: "Nie skonfigurowano jeszcze klientów SCIM"
+          title: "No SCIM-clients configured yet"
           description: "Dodaj klientów, aby zobaczyć ich tutaj"
         user_count: "Użytkownicy"
       token_list_component:
-        description: "Wygenerowane tutaj tokeny mogą być przekazywane przez klienta SCIM w celu uzyskania dostępu do interfejsu API usługi SCIM OpenProject."
+        description: "The tokens you generate here can be passed by a SCIM-client to access the OpenProject SCIM API."
         heading: "Tokeny"
         label_add_token: "Token"
         label_aria_add_token: "Dodaj token"
@@ -730,9 +730,8 @@ pl:
             project: "Projekt"
         pattern:
           label: "Wzorzec tematu"
-          caption_with_supported_attributes_link: Twórz wzorce, dodając tekst lub wpisz „/”, aby wyszukać %{link}.
+          caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
           insert_as_text: "Nie znaleziono atrybutów. Dodaj jako tekst: „%{word}”"
-          supported_attributes_link: "obsługiwane atrybuty"
       export_configuration:
         tab: "Wygeneruj PDF"
         intro: "Wybierz spośród dostępnych szablony, które chcesz włączyć dla tego typu. Szablon określa wygląd i atrybuty widoczne w wyeksportowanym pliku PDF pakietu roboczego używającego tego typu. Domyślnie wybrany jest pierwszy szablon z listy."
@@ -966,7 +965,7 @@ pl:
         attribute_name: "Atrybut"
         help_text: "Tekst pomocy"
       auth_provider:
-        scim_clients: "Klienci SCIM"
+        scim_clients: "SCIM-clients"
       capability:
         context: "Kontekst"
       changeset:
@@ -1282,6 +1281,7 @@ pl:
         inclusion_nested: "nie jest ustawione na jedną z dozwolonych wartości na ścieżce '%{path}'."
         invalid: "jest nieprawidłowe."
         invalid_characters: "zawiera niedozwolone znaki."
+        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
         invalid_url: "nie jest poprawnym adresem URL."
         invalid_url_scheme: "nie jest obsługiwanym protokołem (dozwolone: %{allowed_schemes})."
         less_than_or_equal_to: "musi być mniejsze niż lub równe %{count}."
@@ -1680,10 +1680,10 @@ pl:
         many: "Rol"
         other: "Rol"
       scim_client:
-        one: "Klient SCIM"
-        few: "Klienci SCIM"
-        many: "Klienci SCIM"
-        other: "Klienci SCIM"
+        one: "SCIM-client"
+        few: "SCIM-clients"
+        many: "SCIM-clients"
+        other: "SCIM-clients"
       status: "Status pakietu roboczego"
       token/api:
         one: Token dostępu
@@ -2293,7 +2293,7 @@ pl:
         title: "Logowanie jednokrotne do magazynu Nextcloud"
         description: "Włącz bezproblemowe, bezpieczne uwierzytelnianie dla swojego magazynu Nextcloud za pomocą logowania jednokrotnego. Uprość zarządzanie dostępem i zwiększ wygodę użytkowników."
       scim_api:
-        title: "Klienci SCIM"
+        title: "SCIM-clients"
         description: "Zautomatyzuj zarządzanie użytkownikami w OpenProject, płynnie integrując zewnętrzne usługi tożsamości, takie jak Microsoft Entra lub Keycloak, za pomocą naszego interfejsu API serwera SCIM. Jest dostępny od planu korporacyjnego Enterprise."
       virus_scanning:
         description: "Upewnij się, że przesłane do OpenProject pliki  są przeskanowane pod kątem wirusów, zanim będą dostępne dla innych użytkowników."
@@ -3019,6 +3019,7 @@ pl:
   label_manage: "Zarządzaj"
   label_manage_groups: "Zarządzaj grupami"
   label_managed_repositories_vendor: "Zarządzane %{vendor} repozytoria"
+  label_mathematical_operators: "Mathematical operators"
   label_max_size: "Maksymalny rozmiar"
   label_me: "ja"
   label_member_new: "Nowy członek"

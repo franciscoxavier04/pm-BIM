@@ -76,7 +76,7 @@ module Redmine::MenuManager::TopMenu::QuickAddMenu
         label: item.caption,
         test_selector: "op-menu--item-action"
       ) do |menu_item|
-        menu_item.with_leading_visual_icon(icon: :plus)
+        menu_item.with_leading_visual_icon(icon: item.icon)
       end
     end
   end

@@ -70,9 +70,9 @@ module OpenIDConnect
             name: :group_regexes,
             rows: 5,
             label: I18n.t("openid_connect.providers.label_group_regexes"),
-            caption: link_translate("openid_connect.instructions.group_regexes", links: {
-                                      docs_url: ::OpenProject::Static::Links.url_for(:sysadmin_docs, :oidc_groups)
-                                    }),
+            caption: link_translate("openid_connect.instructions.group_regexes",
+                                    links: { docs_url: %i[sysadmin_docs oidc_groups] },
+                                    external: true),
             disabled: provider.seeded_from_env?,
             required: false,
             input_width: :large,

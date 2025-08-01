@@ -36,6 +36,9 @@ module Storages
           attribute :name
           validates :name, presence: true, length: { maximum: 255 }
 
+          attribute :tenant_id
+          validates :tenant_id,
+                    format: { with: /\A(?:[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}|consumers)\z/i }
           attribute :host
           validates :host, presence: true, format: { with: URI::DEFAULT_PARSER.make_regexp }
           validates :host,

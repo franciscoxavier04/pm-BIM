@@ -120,34 +120,34 @@ zh-TW:
         label_token: "令牌"
         one_time_hint: "這是您唯一可以看到此令牌(Token)的時候, 請務必立即複製它。"
       delete_scim_client_dialog_component:
-        title: "刪除 SCIM 用戶端"
-        heading: "您確定要刪除此 SCIM 用戶端嗎？"
-        description: "由此 SCIM 用戶端管理的使用者將無法再由其更新。"
+        title: "刪除 SCIM-client"
+        heading: "您確定要刪除此 SCIM-client 嗎？"
+        description: "此 SCIM-client 管理的使用者不能再由它更新。"
       edit:
-        label_delete_scim_client: "刪除 SCIM 用戶端"
+        label_delete_scim_client: "刪除 SCIM-client"
       form:
         auth_provider_description: "這是由 SCIM 提供者新增的使用者用來在 OpenProject 中進行驗證的服務。"
         authentication_method_description_html: "這是 SCIM 客戶端在 OpenProject 進行驗證的方式。請確保 OAuth 令牌包含<code>scim_v2</code>範圍。"
-        description_html: '如需這些設定選項的詳細資訊，請參閱我們的 <a href="%{docs_url}">SCIM 用戶端設定文件</a>。'
-        jwt_sub_description_html: '例如，在 Keycloak 中，這是與 SCIM 用戶端相關聯的服務帳號 UUID。請參閱 <a href="%{docs_url}">我們的文件</a>，了解如何依您的使用情境尋找 subject claim（主體宣告）。'
+        description: "Please refer to our [documentation on configuring SCIM-clients](docs_url) for more information on these configuration options."
+        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM-client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
         name_description: "請選擇一個能幫助其他管理員理解此用戶端設定目的的名稱。"
       index:
-        description: "在此設定的 SCIM 用戶端能與 OpenProject SCIM 伺服器 API 互動，以配置、新增、更新及停用使用者帳號與群組。"
-        label_create_button: "新增 SCIM 用戶端"
+        description: "在此設定的 SCIM clients 能夠與 OpenProject SCIM 伺服器 API 互動，以提供、更新及取消提供使用者帳號與群組。"
+        label_create_button: "新增 SCIM-client"
       new:
-        title: "新的 SCIM 用戶端"
+        title: "新增 SCIM-client"
       revoke_static_token_dialog_component:
         confirm_button: "撤銷"
         title: "撤銷靜態令牌"
         heading: "你確定要撤銷此令牌(Token)？"
-        description: "使用此令牌的 SCIM 用戶端將不能再存取 OpenProject 的 SCIM 伺服器 API。"
+        description: "使用此標記的 SCIM-client 將無法再存取 OpenProject 的 SCIM 伺服器 API。"
       table_component:
         blank_slate:
-          title: "尚未設定 SCIM 用戶端"
+          title: "尚未設定 SCIM-clients"
           description: "新增用戶端後，將會在此顯示"
         user_count: "使用者"
       token_list_component:
-        description: "您在此產生的權杖可由 SCIM 用戶端用來存取 OpenProject SCIM API。"
+        description: "您在此產生的令牌可由 SCIM-client 傳送，以存取 OpenProject SCIM API。"
         heading: "令牌"
         label_add_token: "令牌"
         label_aria_add_token: "新增令牌"
@@ -368,23 +368,23 @@ zh-TW:
       wiki_pages: "維基"
   groups:
     edit:
-      synchronized_groups: "Synchronized groups"
+      synchronized_groups: "同步群組"
     index:
-      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+      description: 透過將使用者分組，您可以將他們新增為相同專案的成員，或指派相同的全局角色給他們。
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
-        title: No groups set up yet
-      user_count: User count
+        description: 您可以定義具有特定名稱的使用者群組
+        title: 尚未建立群組
+      user_count: 用户數
     users:
       no_results_title_text: 目前沒有使用者在這個群組
     memberships:
       no_results_title_text: 目前沒有專案在這個群組
     synchronized_groups:
       blankslate:
-        action: Authentication settings
-        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
-        title: No synchronized groups yet
+        action: 驗證設定
+        description: 當此群組與 OpenID 等外部身分提供者的群組自動同步時，將會顯示在此處。你可以在「驗證設定」中進行相關設定。
+        title: 尚未有同步群組
   incoming_mails:
     ignore_filenames: >
       請列出要排除的檔案名稱（比如：簽名或大頭貼）。每行請輸入一個檔案名稱。
@@ -709,9 +709,8 @@ zh-TW:
             project: "專案"
         pattern:
           label: "主題模板"
-          caption_with_supported_attributes_link: 輸入文字以建立樣式，或輸入「/」搜尋 %{link}。
+          caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
           insert_as_text: "未找到屬性。以文字新增：\"%{word}"
-          supported_attributes_link: "支援的屬性"
       export_configuration:
         tab: "產生PDF檔案"
         intro: "從可用的範本中選擇您想要為此類型啟用的範本。範本決定了使用此類工作套件匯出的 PDF 中顯示的設計和屬性。預設為選定清單中的第一個模板。"
@@ -942,7 +941,7 @@ zh-TW:
         attribute_name: "属性"
         help_text: "說明文字"
       auth_provider:
-        scim_clients: "SCIM 用戶端"
+        scim_clients: "SCIM-clients"
       capability:
         context: "內容"
       changeset:
@@ -1258,6 +1257,7 @@ zh-TW:
         inclusion_nested: "未設置為路徑“%{path}”中允許的值之一"
         invalid: "不正確。"
         invalid_characters: "包含無效的字元。"
+        not_allowed_custom_fields_referenced: "包含不允許使用的自訂欄位： %{custom_fields}。"
         invalid_url: "不是有效的 URL。"
         invalid_url_scheme: "不是受支援的協定 (允許的協定: %{allowed_schemes})。"
         less_than_or_equal_to: "必須少於或者等於 %{count}。"
@@ -1602,7 +1602,7 @@ zh-TW:
       attachment: "檔案"
       attribute_help_text: "屬性說明文字"
       auth_provider:
-        other: "Authentication providers"
+        other: "驗證提供者"
       category: "類別"
       comment: "留言"
       custom_action: "自訂動作"
@@ -1629,7 +1629,7 @@ zh-TW:
       role:
         other: "角色"
       scim_client:
-        other: "SCIM 用戶端"
+        other: "SCIM-client"
       status: "工作套件狀態"
       token/api:
         other: 存取令牌(Token)
@@ -2164,7 +2164,7 @@ zh-TW:
         title: "Nextcloud 儲存空間的單一登入(SSO)"
         description: "使用單一登入為您的 Nextcloud 儲存空間啟用無縫且安全的驗證。簡化存取管理並提升使用者便利性。"
       scim_api:
-        title: "SCIM 用戶端"
+        title: "SCIM-clients"
         description: "透過我們的 SCIM Server API，將 OpenProject 與 Microsoft Entra 或 Keycloak 等外部身分識別服務無縫整合，自動化使用者管理功能。此功能自企業版訂閱方案起提供。"
       virus_scanning:
         description: "確保在其他使用者存取 OpenProject 中上傳的檔案前，對其進行病毒掃描。"
@@ -2502,7 +2502,7 @@ zh-TW:
       aggregation: "合併"
       api_and_webhooks: "API 和 Webhook"
     quick_add:
-      label: "Add…"
+      label: "新增…"
   my_account:
     access_tokens:
       no_results:
@@ -2790,7 +2790,7 @@ zh-TW:
   label_filter_add: "新增條件"
   label_filter_by: "篩選條件："
   label_filter_any_name_attribute: "名稱屬性"
-  label_filter_plural: "篩選器"
+  label_filter_plural: "篩選條件"
   label_filters_toggle: "顯示/隱藏篩選條件"
   label_float: "浮點數"
   label_folder: "資料夾"
@@ -2802,11 +2802,11 @@ zh-TW:
   label_gantt_chart_plural: "甘特圖"
   label_general: "一般"
   label_generate_key: "產生一個金鑰"
-  label_global_modules: "Global modules"
+  label_global_modules: "全域模組"
   label_global_roles: "全域角色"
   label_git_path: ".git 目錄的路徑"
   label_greater_or_equal: ">="
-  label_group_by: "分組依據"
+  label_group_by: "分類"
   label_group_new: "新增群組"
   label_group: "群組"
   label_group_named: "群組名稱 %{name}"
@@ -2818,7 +2818,7 @@ zh-TW:
   label_hierarchy: "階層"
   label_hierarchy_leaf: "頁面結構頁"
   label_home: "Home"
-  label_subject_or_id: "主旨或 id"
+  label_subject_or_id: "名稱或 id"
   label_calendar_subscriptions: "訂閱行事曆"
   label_identifier: "識別碼"
   label_in: "在"
@@ -2865,7 +2865,7 @@ zh-TW:
   label_latest_revision_plural: "最新版本"
   label_ldap_authentication: "LDAP 認證"
   label_learn_more: "了解更多"
-  label_less_or_equal: "<="
+  label_less_or_equal: "之後"
   label_less_than_ago: "幾天內"
   label_link_url: "連結(URL)"
   label_list: "清單"
@@ -2887,6 +2887,7 @@ zh-TW:
   label_manage: "管理"
   label_manage_groups: "管理群組"
   label_managed_repositories_vendor: "已管理的 %{vendor} 版本庫"
+  label_mathematical_operators: "數學運算元"
   label_max_size: "最大容量"
   label_me: "我"
   label_member_new: "新成員"
@@ -2946,7 +2947,7 @@ zh-TW:
   label_no_due_date: "無完成日期"
   label_no_start_date: "無開始日期"
   label_no_parent_page: "無上層頁面"
-  label_notification_center_plural: "Notifications"
+  label_notification_center_plural: "通知"
   label_nothing_display: "沒有可以顯示的"
   label_nobody: "沒有人"
   label_not_configured: "尚未設定"
@@ -3155,7 +3156,7 @@ zh-TW:
   label_user_mail_option_only_my_events: "只針對我關注的或者與我有關的事情"
   label_user_mail_option_only_owner: "針對我是擁有者的事情"
   label_user_mail_option_selected: "只有在已選取的專案的任何事件"
-  label_user_menu: "User menu"
+  label_user_menu: "使用者選單"
   label_user_new: "新增使用者"
   label_user_plural: "使用者"
   label_user_search: "搜尋使用者"
