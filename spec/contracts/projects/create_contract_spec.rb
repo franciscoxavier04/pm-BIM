@@ -53,9 +53,7 @@ RSpec.describe Projects::CreateContract do
     context "if the identifier is nil" do
       let(:project_identifier) { nil }
 
-      it "is replaced for new project" do
-        expect_valid(true)
-      end
+      it_behaves_like "contract is valid"
     end
 
     describe "permissions" do
