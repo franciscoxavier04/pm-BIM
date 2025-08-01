@@ -295,10 +295,10 @@ pt-PT:
           learn_about: "Saiba mais sobre todas as novas funcionalidades"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. Chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_2":
+          "16_3":
             standard:
               new_features_html: >
-                A versão contém várias novas funcionalidades e melhorias, tais como <br> <ul class="%{list_styling_class}"> <li>Novo cabeçalho e barra lateral com navegação e design melhorados.</li> <li>Experiência mais fácil com campos personalizados, relações, lembretes, reuniões e controlo do meu tempo.</li> <li>Línguas não latinas e emojis suportados nas exportações de PDF.</li> <li>Opção para desativar os atalhos de teclado para melhor acessibilidade.</li> <li>Servidor SCIM através de API (complemento Enterprise).</li> <li>Suporte da API para comentários internos.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>UX/UI improvements for a more modern look.</li> <li>Meetings: Option to mute email notifications and ICS.</li> <li>Ongoing timers shown in the My time tracking module.</li> <li>Progress reporting: % Complete sum also shown in Status-based mode.</li> <li>Nextcloud Health check: Indicate missing token exchange capability (Enterprise add-on).</li> </ul>
     ical_sharing_modal:
       title: "Subscrever o calendário"
       inital_setup_error_message: "Ocorreu um erro ao recuperar os dados."
