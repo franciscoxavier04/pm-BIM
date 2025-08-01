@@ -32,7 +32,9 @@ module WorkPackageTypes
   class PatternInput < Primer::Forms::BaseComponent
     prepend Primer::OpenProject::Forms::WrappedInput
 
-    delegate :name, to: :@input
+    attr_reader :input
+
+    delegate :name, to: :input
 
     def initialize(input:, value:, suggestions:)
       super()
