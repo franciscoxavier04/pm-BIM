@@ -159,7 +159,36 @@ RSpec.describe "Meeting notifications", :js do
 
       wait_for_network_idle
 
-      # check that no mails are sent on edit/delete
+      # enable updates and check that an email is sent out immediately
+      page.within("[data-test-selector='notifications-button']") do
+        click_on "Enable"
+      end
+
+      show_page.expect_modal "Enable email calendar updates?"
+      show_page.within_modal "Enable email calendar updates?" do
+        click_on "Enable email updates"
+      end
+
+      wait_for_network_idle
+
+      expect_flash(message: "Email calendar update sent to all participants")
+
+      perform_enqueued_jobs
+      expect(ActionMailer::Base.deliveries.size).to eq 1
+      ActionMailer::Base.deliveries.clear
+
+      # check that no mails are sent on edit/delete when disabled
+      page.within("[data-test-selector='notifications-button']") do
+        click_on "Disable"
+      end
+
+      show_page.expect_modal "Disable email calendar updates?"
+      show_page.within_modal "Disable email calendar updates?" do
+        click_on "Disable email updates"
+      end
+
+      wait_for_network_idle
+
       perform_enqueued_jobs
       expect(ActionMailer::Base.deliveries.size).to eq 0
 
