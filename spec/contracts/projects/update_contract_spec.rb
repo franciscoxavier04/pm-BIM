@@ -46,7 +46,8 @@ RSpec.describe Projects::UpdateContract do
                     active: project_active,
                     public: project_public,
                     status_code: project_status_code,
-                    status_explanation: project_status_explanation).tap do |p|
+                    status_explanation: project_status_explanation,
+                    workspace_type: project_workspace_type).tap do |p|
         allow(p).to receive_messages(available_custom_fields: [custom_field],
                                      all_available_custom_fields: [custom_field])
         next unless project_changed
@@ -67,6 +68,14 @@ RSpec.describe Projects::UpdateContract do
       let(:project_identifier) { nil }
 
       it_behaves_like "contract is invalid", identifier: %i(blank)
+    end
+
+    context "if workspace_type is changed" do
+      before do
+        project.workspace_type = "portfolio"
+      end
+
+      it_behaves_like "contract is invalid", workspace_type: :error_readonly
     end
 
     describe "permissions" do

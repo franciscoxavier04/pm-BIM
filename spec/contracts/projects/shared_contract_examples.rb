@@ -52,6 +52,7 @@ RSpec.shared_examples_for "project contract" do
   let(:project_public) { true }
   let(:project_status_code) { "on_track" }
   let(:project_status_explanation) { "some explanation" }
+  let(:project_workspace_type) { "project" }
   let(:project_parent) do
     build_stubbed(:project)
   end

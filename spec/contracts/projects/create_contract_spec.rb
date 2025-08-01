@@ -41,7 +41,8 @@ RSpec.describe Projects::CreateContract do
                   public: project_public,
                   parent: project_parent,
                   status_code: project_status_code,
-                  status_explanation: project_status_explanation)
+                  status_explanation: project_status_explanation,
+                  workspace_type: project_workspace_type)
     end
     let(:global_permissions) { [:add_project] }
     let(:validated_contract) do
@@ -52,6 +53,30 @@ RSpec.describe Projects::CreateContract do
 
     context "if the identifier is nil" do
       let(:project_identifier) { nil }
+
+      it_behaves_like "contract is valid"
+    end
+
+    context "if workspace_type is nil" do
+      let(:project_workspace_type) { nil }
+
+      it_behaves_like "contract is invalid", workspace_type: %i(blank)
+    end
+
+    context "if workspace type is 'project'" do
+      let(:project_workspace_type) { "project" }
+
+      it_behaves_like "contract is valid"
+    end
+
+    context "if workspace type is 'program'" do
+      let(:project_workspace_type) { "program" }
+
+      it_behaves_like "contract is valid"
+    end
+
+    context "if workspace type is 'portfolio'" do
+      let(:project_workspace_type) { "portfolio" }
 
       it_behaves_like "contract is valid"
     end
