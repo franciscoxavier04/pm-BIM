@@ -389,7 +389,7 @@ ru:
     label_last_updated_on: "Последний раз обновлено"
     label_learn_more_link: "Узнать больше"
     label_less_or_equal: "<="
-    label_less_than_ago: "менее нескольких дней назад"
+    label_less_than_ago: "меньше чем дней назад"
     label_loading: "Загрузка..."
     label_mail_notification: "Уведомления по email"
     label_manage_columns: "Управляйте колонками и изменяйте их порядок"

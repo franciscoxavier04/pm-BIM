@@ -272,19 +272,19 @@ ru:
       sidepanel:
         title: "Email calendar updates"
         state:
-          disabled: "Disabled."
-          enabled: "Enabled."
+          disabled: "Отключено."
+          enabled: "Включено."
         description:
           disabled: "Participants will not receive an email informing them of changes."
           enabled: "All participants will receive updated calendar invites via email informing them of changes."
           change_via_template: "To change this, edit the series template."
         button:
-          disable: "Disable"
-          enable: "Enable"
+          disable: "Отключить"
+          enable: "Включить"
       dialog:
         title:
-          enable: "Enable email calendar updates?"
-          disable: "Disable email calendar updates?"
+          enable: "Включить обновления календаря по электронной почте?"
+          disable: "Отключить обновления календаря по электронной почте?"
         message:
           enable: >
             All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants.

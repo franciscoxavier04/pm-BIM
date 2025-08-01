@@ -128,8 +128,8 @@ pt-BR:
       form:
         auth_provider_description: "Este é o serviço que os usuários adicionados pelo provedor SCIM usarão para autenticar-se no OpenProject."
         authentication_method_description_html: "This is how the SCIM-client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM-clients</a> for more information on these configuration options.'
-        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM-client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
+        description: "Please refer to our [documentation on configuring SCIM-clients](docs_url) for more information on these configuration options."
+        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM-client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
         name_description: "Escolha um nome que ajude outros administradores a entender melhor o motivo pelo qual este cliente foi configurado."
       index:
         description: "SCIM-clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
@@ -716,9 +716,8 @@ pt-BR:
             project: "Projeto"
         pattern:
           label: "Padrão de assunto"
-          caption_with_supported_attributes_link: Crie padrões adicionando texto, ou digite "/" para pesquisar por %{link}.
+          caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
           insert_as_text: "Nenhum atributo encontrado. Adicione como texto: “%{word}”"
-          supported_attributes_link: "atributos compatíveis"
       export_configuration:
         tab: "Gerar PDF"
         intro: "Selecione quais modelos disponíveis você deseja ativar para este tipo. O modelo define o design e os atributos visíveis no PDF exportado de um pacote de trabalho desse tipo. O primeiro modelo da lista é selecionado por padrão."
