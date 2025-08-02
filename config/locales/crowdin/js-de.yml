@@ -297,7 +297,7 @@ de:
           "16_3":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>UX/UI improvements for a more modern look.</li> <li>Meetings: Option to mute email notifications and ICS.</li> <li>Ongoing timers shown in the My time tracking module.</li> <li>Progress reporting: % Complete sum also shown in Status-based mode.</li> <li>Nextcloud Health check: Indicate missing token exchange capability (Enterprise add-on).</li> </ul>
+                Die Version enthält verschiedene neue Funktionen und Verbesserungen, wie z.B. <br> <ul class="%{list_styling_class}"> <li>UX/UI-Verbesserungen für ein moderneres Aussehen.</li> <li>Besprechungen: Option zum Stummschalten von E-Mail-Benachrichtigungen und ICS.</li> <li>Laufende Timer werden im Modul Meine Zeiterfassung angezeigt.</li> <li>Fortschrittsberichte: Summe in % abgeschlossen wird auch im statusbasierten Modus angezeigt.</li> <li>Nextcloud Gesundheitscheck: Anzeige der fehlenden Fähigkeit zum Austausch von Token (Enterprise Add-on).</li> </ul>
     ical_sharing_modal:
       title: "Kalender abonnieren"
       inital_setup_error_message: "Beim Abrufen der Daten ist ein Fehler aufgetreten."
