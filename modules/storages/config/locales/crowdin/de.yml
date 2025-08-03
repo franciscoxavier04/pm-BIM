@@ -264,7 +264,7 @@ de:
           header: Authentifizierung
           non_provisioned_user: Durch IDP bereitgestellter Benutzer
           offline_access: Konfigurierter OIDC-Scope offline_access
-          provider_capabilities: Provider capabilities
+          provider_capabilities: Anbieterfähigkeiten
           provisioned_user_provider: Durch OIDC bereitgestellter Benutzer
           token_negotiable: Benutzer-Token-Fähigkeiten
           user_bound_request: Benutzerbasierte Anfrageauthentifizierung
@@ -389,7 +389,7 @@ de:
       setting_up_storages: Zum Einrichten von Dateispeichern besuchen Sie bitte
       setting_up_storages_non_admin: Administratoren können Dateispeicher in Administration / Dateien einrichten.
       share_point:
-        application_link_text: SharePoint site
+        application_link_text: SharePoint-Seite
         integration: SharePoint Administration / OpenProject
         oauth_configuration: Copy these values from the desired application in the %{application_link_text}.
         provider_configuration: Please make sure you have administration privileges in your SharePoint instance and the OpenProject integration app is installed before doing the setup.
