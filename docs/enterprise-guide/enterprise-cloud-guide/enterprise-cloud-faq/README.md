@@ -141,7 +141,7 @@ This hosting infrastructure all sub-processors are located in the EU. There is n
 
 **Old OpenProject.eu Shard (Germany)**
 
-Prior to July 2025, our services were hosted across both Netways and Scaleway data center environments. Starting July 2025, Scaleway will become our sole data center provider.
+Prior to March 2026, our services were hosted across both Netways and Scaleway data center environments. Starting with March 2026, Scaleway will become our sole data center provider for the EU shard.
 
 All existing customers will be migrated to Scaleway in September 2025. Customers who choose not to transition to Scaleway can opt out. In that case:
 -   Contracts will be automatically terminated by February 2026, or
