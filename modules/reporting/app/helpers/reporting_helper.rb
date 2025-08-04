@@ -56,7 +56,7 @@ module ReportingHelper
 
     name = name.camelcase
     if CostQuery::Filter.const_defined?(name, false)
-      CostQuery::Filter.const_get(name, galse).label
+      CostQuery::Filter.const_get(name, false).label
     elsif CostQuery::GroupBy.const_defined?(name, false)
       CostQuery::GroupBy.const_get(name, false).label
     elsif field.to_sym.in?(%i[entity entity_id entity_type entity_gid])

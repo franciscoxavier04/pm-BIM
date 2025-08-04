@@ -136,7 +136,7 @@ de:
     description_available_columns: "Verfügbare Spalten"
     description_current_position: "Sie sind hier: "
     description_select_work_package: "Arbeitspaket #%{id} auswählen"
-    description_subwork_package: "Unteraufgabe von Arbeitspaket #%{id}"
+    description_subwork_package: "Kind von Arbeitspaket #%{id}"
     editor:
       revisions: "Lokale Änderungen anzeigen"
       no_revisions: "Keine lokalen Änderungen gefunden"
@@ -294,10 +294,10 @@ de:
           learn_about: "Erfahren Sie mehr über die neuen Funktionen"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. Chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_2":
+          "16_3":
             standard:
               new_features_html: >
-                Die Version enthält verschiedene neue Funktionen und Verbesserungen, wie z.B. <br> <ul class="%{list_styling_class}"> <li>Neue Kopfzeile und Seitenleiste mit verbesserter Navigation und Design.</li> <li>Benutzerdefinierte Felder, Beziehungen, Erinnerungen, Besprechungen und Meine Zeiterfassung wurden verbessert.</li> <li>Unterstützung von nicht-lateinischen Sprachen und Emojis beim PDF-Export.</li> <li>Option zur Deaktivierung von Tastaturkürzeln für eine verbesserte Accessibility.</li> <li>SCIM-Server über API (Enterprise Add-on).</li> <li>API-Unterstützung für interne Kommentare.</li> </ul>
+                Die Version enthält verschiedene neue Funktionen und Verbesserungen, wie z.B. <br> <ul class="%{list_styling_class}"> <li>UX/UI-Verbesserungen für ein moderneres Aussehen.</li> <li>Besprechungen: Option zum Stummschalten von E-Mail-Benachrichtigungen und ICS.</li> <li>Laufende Timer werden im Modul Meine Zeiterfassung angezeigt.</li> <li>Fortschrittsberichte: Summe in % abgeschlossen wird auch im statusbasierten Modus angezeigt.</li> <li>Nextcloud Gesundheitscheck: Anzeige der fehlenden Fähigkeit zum Austausch von Token (Enterprise Add-on).</li> </ul>
     ical_sharing_modal:
       title: "Kalender abonnieren"
       inital_setup_error_message: "Beim Abrufen der Daten ist ein Fehler aufgetreten."
@@ -460,7 +460,7 @@ de:
     label_total_progress: "%{percent}% Gesamtfortschritt"
     label_total_amount: "Gesamt: %{amount}"
     label_updated_on: "aktualisiert am"
-    label_value_derived_from_children: "(aggregierter Wert von Unteraufgaben)"
+    label_value_derived_from_children: "(aggregierter Wert von Kindelementen)"
     label_children_derived_duration: "Aggregierte Dauer der Unteraufgaben"
     label_warning: "Warnung"
     label_work_package: "Arbeitspaket"
@@ -872,7 +872,7 @@ de:
         title: "Neues Arbeitspaket"
         header: "Neu: %{type}"
         header_no_type: "Neues Arbeitspaket (Typ noch nicht gesetzt)"
-        header_with_parent: "Neu: %{type} (Unteraufgabe von %{parent_type} #%{id})"
+        header_with_parent: "Neu: %{type} (Kind von %{parent_type} #%{id})"
         button: "Erstellen"
       duplicate:
         title: "Arbeitspaket duplizieren"
@@ -1069,7 +1069,7 @@ de:
         single_text: "Sind Sie sicher, dass Sie das Arbeitspaket löschen möchten?"
         bulk_text: "Sind Sie sicher, dass Sie die folgenden %{label} löschen möchten?"
         has_children: "Dieses Arbeitspaket hat %{childUnits}:"
-        confirm_deletion_children: "Ich bestätige, dass alle Unteraufgaben der hier aufgeführten Arbeitspakete rekursiv entfernt werden."
+        confirm_deletion_children: "Ich bestätige, dass alle untergordneten Elemente der hier aufgeführten Arbeitspakete rekursiv entfernt werden."
         deletes_children: "Alle Unteraufgaben und deren Nachkommen werden auch rekursiv gelöscht."
       destroy_time_entry:
         title: "Löschen der Zeitbuchung bestätigen"
