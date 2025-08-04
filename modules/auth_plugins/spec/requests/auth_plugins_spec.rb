@@ -100,7 +100,9 @@ RSpec.describe OpenProject::Plugins::AuthPlugin, with_ee: %i[sso_auth_providers]
       expect(strategies.keys.to_a).to eq %i[strategy_a strategy_b]
     end
 
-    it "persists all strategies in the database" do
+    it "marks all strategies for persisting in the database" do
+      expect(PluginAuthProvider.pluck(:slug)).to eq([])
+      PluginAuthProvider.create_all_registered
       expect(PluginAuthProvider.pluck(:slug)).to contain_exactly("a1", "a2", "b1", "c1")
     end
 
