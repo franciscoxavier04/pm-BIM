@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Widget::Filters::Project < Widget::Filters::Base
+class Widget::Filters::WorkPackage < Widget::Filters::Base
   include AngularHelper
 
   def render
@@ -35,13 +37,15 @@ class Widget::Filters::Project < Widget::Filters::Base
 
       selected_values = map_filter_values
 
-      box = angular_component_tag "opce-project-autocompleter",
+      box = angular_component_tag "opce-autocompleter",
                                   inputs: {
                                     filters: [],
                                     InputName: "values[#{filter_class.underscore_name}]",
                                     hiddenFieldAction: "change->reporting--page#selectValueChanged",
                                     multiple: true,
-                                    model: selected_values.compact
+                                    model: selected_values.compact,
+                                    resource: "work_packages",
+                                    searchKey: "subjectOrId"
                                   },
                                   id: "#{filter_class.underscore_name}_select_1",
                                   class: "filter-value"
@@ -60,22 +64,19 @@ class Widget::Filters::Project < Widget::Filters::Base
               class: "sr-only"
   end
 
-  def map_filter_values
+  def map_filter_values # rubocop:disable Metrics/AbcSize
     # In case the filter values are all written in a single string (e.g. ["12, 33"])
     if filter.values.length === 1 && filter.values[0].instance_of?(String)
       filter.values = filter.values[0].split(",")
     end
 
     filter.values.each.map do |id|
-      # When live testing, these IDs came out as integers.
-      # However, when running the specs, they came out as strings.
+      work_package = WorkPackage.visible.find_by(id: id)
 
-      project = Project.visible.find_by(id: id)
-
-      if project.nil?
+      if work_package.nil?
         nil
       else
-        { id: id, name: project.name }
+        { id: id, name: work_package.subject }
       end
     end
   end

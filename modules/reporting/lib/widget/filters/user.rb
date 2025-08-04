@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,22 +28,30 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Widget::Filters::Project < Widget::Filters::Base
+class Widget::Filters::User < Widget::Filters::Base
   include AngularHelper
 
-  def render
+  def render # rubocop:disable Metrics/AbcSize
     write(content_tag(:div, id: "#{filter_class.underscore_name}_arg_1", class: "advanced-filters--filter-value") do
       label = html_label
 
       selected_values = map_filter_values
 
-      box = angular_component_tag "opce-project-autocompleter",
+      box = angular_component_tag "opce-user-autocompleter",
                                   inputs: {
-                                    filters: [],
                                     InputName: "values[#{filter_class.underscore_name}]",
                                     hiddenFieldAction: "change->reporting--page#selectValueChanged",
                                     multiple: true,
-                                    model: selected_values.compact
+                                    model: selected_values.compact,
+                                    resource: "principals",
+                                    url: ::API::V3::Utilities::PathHelper::ApiV3Path.principals,
+                                    filters: [
+                                      { name: "type", operator: "=", values: ["User"] },
+                                      { name: "status", operator: "!", values: [Principal.statuses["locked"].to_s] }
+                                    ],
+                                    additionalOptions: [
+                                      { id: CostQuery::Filter::UserId.me_value, name: I18n.t(:label_me) }
+                                    ]
                                   },
                                   id: "#{filter_class.underscore_name}_select_1",
                                   class: "filter-value"
@@ -60,22 +70,23 @@ class Widget::Filters::Project < Widget::Filters::Base
               class: "sr-only"
   end
 
-  def map_filter_values
+  def map_filter_values # rubocop:disable Metrics/AbcSize
     # In case the filter values are all written in a single string (e.g. ["12, 33"])
     if filter.values.length === 1 && filter.values[0].instance_of?(String)
       filter.values = filter.values[0].split(",")
     end
 
-    filter.values.each.map do |id|
-      # When live testing, these IDs came out as integers.
-      # However, when running the specs, they came out as strings.
-
-      project = Project.visible.find_by(id: id)
-
-      if project.nil?
-        nil
+    filter.values.map do |id|
+      if id == CostQuery::Filter::UserId.me_value
+        { id: CostQuery::Filter::UserId.me_value, name: I18n.t(:label_me) }
       else
-        { id: id, name: project.name }
+        user = User.visible.find_by(id: id)
+
+        if user.nil?
+          nil
+        else
+          { id: id, name: user.name }
+        end
       end
     end
   end
