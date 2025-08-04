@@ -99,12 +99,12 @@ class Widget::Filters < Widget::Base
 
     # Handling for custom widgets first
     if f_cls == CostQuery::Filter::ProjectId
-      render_widget Project, f, to: html, lazy: true
+      render_widget Project, f, to: html
     elsif f_cls.in?([CostQuery::Filter::UserId, CostQuery::Filter::LoggedById, CostQuery::Filter::AssignedToId,
                      CostQuery::Filter::ResponsibleId, CostQuery::Filter::AuthorId])
-      render_widget User, f, to: html, lazy: true
+      render_widget User, f, to: html
     elsif f_cls == CostQuery::Filter::WorkPackageId
-      render_widget WorkPackage, f, to: html, lazy: true
+      render_widget WorkPackage, f, to: html
     # Handling of generic widgets
     elsif f_cls.heavy?
       render_widget Heavy, f, to: html

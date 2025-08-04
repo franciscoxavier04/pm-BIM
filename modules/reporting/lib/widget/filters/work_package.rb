@@ -44,6 +44,7 @@ class Widget::Filters::WorkPackage < Widget::Filters::Base
                                     hiddenFieldAction: "change->reporting--page#selectValueChanged",
                                     multiple: true,
                                     model: selected_values.compact,
+                                    url: ::API::V3::Utilities::PathHelper::ApiV3Path.work_packages,
                                     resource: "work_packages",
                                     searchKey: "subjectOrId"
                                   },
