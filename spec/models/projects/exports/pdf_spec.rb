@@ -34,9 +34,10 @@ require_relative "../exporter/exportable_project_context"
 
 RSpec.describe Projects::Exports::PDF do
   include Redmine::I18n
+  include PDFExportSpecUtils
+
   include_context "with a project with an arrangement of custom fields"
   include_context "with an instance of the described exporter"
-  include PDFExportSpecUtils
 
   shared_let(:export_time) { DateTime.new(2025, 6, 3, 13, 37) }
   shared_let(:export_time_formatted) { format_date(export_time) }
