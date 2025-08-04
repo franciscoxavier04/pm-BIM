@@ -177,35 +177,36 @@ See COPYRIGHT and LICENSE files for more details.
 </div>
 <%# Properly decides main menu expanded state and width before its drawn. Fixes flickering side menu
         where menu is first expanded, then being collapsed in angular. %>
-<%= nonced_javascript_tag defer: true do %>
+<%= nonced_javascript_tag type: "module" do %>
   // execute these lines to prevent flickering when page loads:
+  const wrapper = document.getElementById('wrapper');
+  const mainMenuCollapsed = window.OpenProject.guardedLocalStorage('openProject-mainMenuCollapsed');
 
-  window.addEventListener('turbo:load', () => {
-    (function($) {
-      var wrapper = $('#wrapper');
-      var savedMainMenuWidth = window.OpenProject.guardedLocalStorage("openProject-mainMenuWidth");
-      var mainMenuCollapsed =  window.OpenProject.guardedLocalStorage("openProject-mainMenuCollapsed");
+  let savedMainMenuWidth;
+  if (mainMenuCollapsed === 'true') {
+    savedMainMenuWidth = 0;
+  } else {
+    savedMainMenuWidth = parseInt(window.OpenProject.guardedLocalStorage('openProject-mainMenuWidth'), 10);
+  }
 
-      if (window.innerWidth < 1012) {
-        // force hide on load for small desktops
-        $('.can-hide-navigation').addClass('hidden-navigation');
-      }
+  if (window.innerWidth < 1012) {
+    // force hide on load for small desktops
+    document.querySelector('.can-hide-navigation')?.classList.add('hidden-navigation');
+  }
 
-      if (mainMenuCollapsed === 'true') {
-        savedMainMenuWidth = 0;
-      }
+  if (savedMainMenuWidth >= 0) {
+    document.documentElement.style.setProperty('--main-menu-width', savedMainMenuWidth + 'px');
+  }
 
-      if (savedMainMenuWidth || savedMainMenuWidth === 0) {
-        document.documentElement.style.setProperty("--main-menu-width", savedMainMenuWidth + 'px');
-      }
+  wrapper.style.display = '';
+<% end %>
 
-      wrapper.show();
-
-      // Wrapper for page-specific JS from deprecated inline functions
-      // no longer available with CSP.
-      <%= content_for :additional_js_dom_ready %>
-    }(jQuery));
-  });
+<%= nonced_javascript_tag do %>
+  (function($) {
+    // Wrapper for page-specific JS from deprecated inline functions
+    // no longer available with CSP.
+    <%= content_for :additional_js_dom_ready %>
+  }(jQuery));
 <% end %>
 <div class="op-wide-autocomplete-wrapper"></div>
 <%= call_hook :view_layouts_base_body_bottom %>

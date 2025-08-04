@@ -128,8 +128,8 @@ zh-CN:
       form:
         auth_provider_description: "这是 SCIM 提供商添加的用户在 OpenProject 中进行身份验证时将使用的服务。"
         authentication_method_description_html: "This is how the SCIM-client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM-clients</a> for more information on these configuration options.'
-        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM-client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
+        description: "Please refer to our [documentation on configuring SCIM-clients](docs_url) for more information on these configuration options."
+        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM-client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
         name_description: "选择一个名称，帮助其他管理员更好地理解配置此客户端的原因。"
       index:
         description: "SCIM-clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
@@ -708,9 +708,8 @@ zh-CN:
             project: "项目"
         pattern:
           label: "主题模式"
-          caption_with_supported_attributes_link: 通过添加文本创建模式，或键入 “/” 搜索 %{link}。
+          caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
           insert_as_text: "未找到属性。以文本形式添加：“%{word}”"
-          supported_attributes_link: "支持的属性"
       export_configuration:
         tab: "生成 PDF"
         intro: "为此类型选择模板。模板决定此类型工作包导出的PDF的设计和可见属性。默认选择列表上的第一个模板。"

@@ -264,7 +264,7 @@ ru:
           header: Аутентификация
           non_provisioned_user: Пользователь зарегистрирован через IDC
           offline_access: Конфигурация OIDC для автономного доступа
-          provider_capabilities: Provider capabilities
+          provider_capabilities: Возможности поставщика
           provisioned_user_provider: Пользователь зарегистрирован через OIDC
           token_negotiable: Права пользовательского токена
           user_bound_request: Пользовательский запрос аутентификации

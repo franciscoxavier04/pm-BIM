@@ -81,8 +81,8 @@ module Projects
     def main_static_filters
       static_filters [
         ProjectQueries::Static::ACTIVE,
-        ProjectQueries::Static::MY,
-        ProjectQueries::Static::FAVORED,
+        current_user.logged? ? ProjectQueries::Static::MY : nil,
+        current_user.logged? ? ProjectQueries::Static::FAVORED : nil,
         current_user.admin? ? ProjectQueries::Static::ARCHIVED : nil
       ].compact
     end
