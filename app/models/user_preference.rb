@@ -131,7 +131,7 @@ class UserPreference < ApplicationRecord
   end
 
   def sync_with_system_theme?
-    theme == "sync_with_system"
+    theme == "sync_with_os"
   end
 
   def high_contrast_theme?

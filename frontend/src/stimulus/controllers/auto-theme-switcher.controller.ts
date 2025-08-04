@@ -41,7 +41,7 @@ export default class AutoThemeSwitcher extends Controller {
   declare readonly modeValue:string;
 
   connect() {
-    if (this.modeValue !== 'sync_with_system') return;
+    if (this.modeValue !== 'sync_with_os') return;
 
     useMatchMedia(this, {
       mediaQueries: {
