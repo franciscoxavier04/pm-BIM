@@ -1,0 +1,41 @@
+The Email Updates Mode selector is used to let users enable or disable automatic email updates when significant events take place. It serves as both a mode indicator and, if the user has the necessary permissions, control to change the mode.
+
+## Overview
+
+[Code example here]
+
+## Anatomy
+
+The component is simple: it consists of a static header, a text that indicates mode (and what that status means) and, in some cases, a button to change the mode.
+
+The current mode is always indicated in bold. 
+
+The action to change the mode (often 'Enable' or 'Disable') is a button with scheme `link`, with a leading icon. If a suitable leading icon is not available, it can also be used without an icon. This action is not present in some views; for example, if the user does not have the necessary permissions to change the mode, then the action is simply not displayed (or replaced by text telling users where they can go to change the mode).
+
+## Best practices
+
+**Do**
+
+- Only use the component on the right side panel.
+- Use simple, non-jargon language when describing what the current mode is doing.
+
+
+**Don't**
+
+- Do not use this component when a checkbox or a toggle is more relevant. However, because toggle switches are activated immediately and the request sent asynchronously before a form submit (regardless of whether the request is successful or not), they might not always be the right component to use. This is the case for email updates.
+
+## Used in
+
+The component is used in:
+
+* Meetings to indicate (and, when the user has the necessary permissions, control) the automatic sending of updated calendar invites by email to all participants when there are significant changes to meeting details, such as date, time or location.
+* File storage health check email updates to admins
+
+
+## Technical notes
+
+[Add info if necessary, else remove section]
+
+### Code structure
+
+[Add info if necessary, else remove section]
