@@ -37,6 +37,7 @@ module Standard
         ::BasicData::TimeEntryActivitySeeder,
         ::BasicData::ColorSeeder,
         ::BasicData::ColorSchemeSeeder,
+        ::BasicData::PluginAuthProviderSeeder,
         ::BasicData::ProjectPhaseColorSeeder,
         ::BasicData::ProjectPhaseDefinitionSeeder,
         ::BasicData::StatusSeeder,

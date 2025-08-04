@@ -559,7 +559,7 @@ eo:
         prioritized: "Prioritized"
         dateAlert: "Date alert"
         shared: "Shared"
-        reminder: "Reminder"
+        reminder: "Memorigilo"
       date_alerts:
         milestone_date: "Milestone date"
         overdue: "Overdue"
@@ -977,9 +977,9 @@ eo:
         subtitle: "You will receive a notification for this work package at the chosen time."
         presets:
           tomorrow: "Tomorrow"
-          three_days: "In 3 days"
-          week: "In a week"
-          month: "In a month"
+          three_days: "En 3 tagoj"
+          week: "En unu semajno"
+          month: "En unu monato"
           custom: "At a particular date/time"
       scheduling:
         is_parent: "The dates of this work package are automatically deduced from its children. Activate 'Manual scheduling' to set the dates."

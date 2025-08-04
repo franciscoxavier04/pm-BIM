@@ -13,7 +13,7 @@ To access the **Global modules** side menu, simply click on the logo in the head
 
 ![Navigating to global modules menu in OpenProject](open_project_user_guide_global_modules_menu.png)
 
-You can also use the grid icon in the left right corner to access the **Global modules** side menu.
+You can also use the grid icon in the left corner to access the **Global modules** side menu.
 
 ![Navigating to global modules menu in OpenProject via grid icon](open_project_user_guide_global_modules_menu_grid_icon.png)
 
@@ -38,7 +38,7 @@ You can create a new project here directly by using the  **+ Project** button.
 Read more on [Project lists filters](../../../user-guide/projects/project-lists/#project-lists-filters).
 
 > [!NOTE]
-> You can also access the **Projects** global module by opening the [All projects dropdown menu](../../../user-guide/projects/project-lists/) and by clicking the **Project lists** button, or by clicking on the **Modules** grid icon in the top left corner of the header navigation and the selecting **Projects** in the menu that appears.
+> You can also access the **Projects** global module by opening the [All projects dropdown menu](../../../user-guide/projects/project-lists/) and by clicking the **Project lists** button, or by clicking on the **Modules** grid icon in the top left corner of the header navigation and selecting **Projects** in the menu that appears.
 
 ## Activity
 

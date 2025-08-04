@@ -643,7 +643,7 @@ es:
       title: "Confirma tu contraseña para continuar"
     pagination:
       no_other_page: "Usted está en la única página."
-      pages_skipped: "Pages skipped."
+      pages_skipped: "Páginas omitidas."
       page_navigation: "Navegación de paginación"
       per_page_navigation: 'Selección de elementos por página'
       pages:

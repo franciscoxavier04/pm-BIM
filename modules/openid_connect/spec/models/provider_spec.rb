@@ -54,4 +54,71 @@ RSpec.describe OpenIDConnect::Provider do
       it { is_expected.to be_falsey }
     end
   end
+
+  describe "#to_h" do
+    subject { provider.to_h }
+
+    let(:options) { raise "define me!" }
+
+    before do
+      options.stringify_keys.each do |opt, value|
+        provider.options[opt] = value
+      end
+    end
+
+    describe "with claims" do
+      let(:options) { { claims: "login" } }
+
+      it "includes the claims" do
+        expect(subject[:claims]).to eq "login"
+      end
+    end
+
+    describe "with acr_values" do
+      let(:options) { { acr_values: "phr" } }
+
+      it "includes the acr values" do
+        expect(subject[:acr_values]).to eq "phr"
+      end
+    end
+
+    describe "with mapped attributes" do
+      let(:options) do
+        {
+          mapping_email: :address,
+          mapping_login: :logout,
+          mapping_first_name: :given_name,
+          mapping_last_name: :surname
+        }
+      end
+
+      let(:expected_value) do
+        {
+          email: :address,
+          login: :logout,
+          first_name: :given_name,
+          last_name: :surname
+        }
+      end
+
+      it "contains the resulting attribute map being passed to omniauth-openid-connect" do
+        expect(subject[:attribute_map]).to eq expected_value
+      end
+
+      it "does not turn them into superfluous attributes" do
+        expect(subject).not_to include :email
+        expect(subject).not_to include :login
+        expect(subject).not_to include :first_name
+        expect(subject).not_to include :last_name
+      end
+    end
+
+    describe "with post_logout_redirect_uri" do
+      let(:options) { { post_logout_redirect_uri: "https://www.openproject.org" } }
+
+      it "contains the option" do
+        expect(subject[:post_logout_redirect_uri]).to eq options[:post_logout_redirect_uri]
+      end
+    end
+  end
 end

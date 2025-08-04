@@ -226,8 +226,6 @@ services:
     image: browserless/chrome:latest
     networks:
       - testing
-    ports:
-      - "3333:3333"
     environment:
       # By default, it uses 3000, which is typically used by Rails.
       PORT: 3333

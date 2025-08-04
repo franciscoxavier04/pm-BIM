@@ -3,7 +3,7 @@ ro:
     attributes:
       oauth_client:
         client_id: ID Client
-        client_secret: Client Secret
+        client_secret: Secret Client
       project:
         project_folder_type: Project folder type
       storages/file_link:
@@ -226,7 +226,7 @@ ro:
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: Project folders
-      redirect_uri: URI redirecționare
+      redirect_uri: Redirecționați URI
       storage_audience_blank: No audience has been configured.
       storage_audience_description: Exchanging tokens for audience "%{audience}".
       storage_audience_idp: Using access token obtained by identity provider during login, regardless of audience.

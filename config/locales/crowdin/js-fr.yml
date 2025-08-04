@@ -643,7 +643,7 @@ fr:
       title: "Confirmez votre mot de passe pour continuer"
     pagination:
       no_other_page: "Vous êtes sur la seule page."
-      pages_skipped: "Pages skipped."
+      pages_skipped: "Pages ignorées."
       page_navigation: "Navigation par pagination"
       per_page_navigation: 'Sélection des éléments par page'
       pages:
