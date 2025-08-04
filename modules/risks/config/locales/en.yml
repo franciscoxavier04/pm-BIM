@@ -5,27 +5,35 @@ en:
 
   activerecord:
     models:
-      risk: "Risk"
-      risks: "Risks"
+      risk:
+        one: "Risk"
+        other: "Risks"
     attributes:
       work_package:
         risk_impact: "Impact"
         risk_likelihood: "Likelihood"
-        risk_level: "Level"
-    risk:
-      impact:
-        very_low: "Very Low"
-        low: "Low"
-        medium: "Medium"
-        high: "High"
-        very_high: "Very High"
-      likelihood:
-        very_low: "Very Low"
-        low: "Low"
-        medium: "Medium"
-        high: "High"
-        very_high: "Very High"
-      level:
-        low: "Low"
-        medium: "Medium"
-        high: "High"
+        risk_level: "Risk level"
+  risks:
+    matrix_legend: >
+      The risk matrix shows the impact and likelihood of risks.
+      The cells in the matrix are color-coded to indicate the risk level.
+      Click on a cell to filter risks by those impact and likelihood values.
+    reset_filter: "Reset filter"
+    filter_all_project: "This project and all subprojects"
+    filter_this_project: "Only this project"
+    impact:
+      very_low: "Very Low"
+      low: "Low"
+      medium: "Medium"
+      high: "High"
+      very_high: "Very High"
+    likelihood:
+      very_low: "Very Low"
+      low: "Low"
+      medium: "Medium"
+      high: "High"
+      very_high: "Very High"
+    level:
+      low: "Low"
+      medium: "Medium"
+      high: "High"

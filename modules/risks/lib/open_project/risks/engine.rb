@@ -53,11 +53,30 @@ module OpenProject
         # Menu extensions
         menu :project_menu,
              :risks,
-             { controller: "/risks", action: "index" },
-             if: ->(project) { project.module_enabled?(:risks) },
+             { controller: "/risks/risks", action: "index" },
+             if: ->(project) {
+               OpenProject::FeatureDecisions.risk_management_active? &&
+                 project.module_enabled?("risks") &&
+                 User.current.allowed_in_project?(:view_work_packages, project)
+             },
              after: :work_packages,
              caption: :label_risks,
-             icon: "op-risk"
+             icon: :alert
+      end
+
+      initializer "risks.permissions" do
+        Rails.application.reloader.to_prepare do
+          OpenProject::AccessControl.map do |ac_map|
+            ac_map.project_module(
+              :risks,
+              if: ->(*) { OpenProject::FeatureDecisions.risk_management_active? }
+            )
+          end
+
+          OpenProject::AccessControl
+            .permission(:view_work_packages)
+            .controller_actions << "risks/risks/index"
+        end
       end
 
       config.to_prepare do

@@ -1,0 +1,64 @@
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { "Risiken" }
+    header.with_breadcrumbs(
+      [
+        ({ href: project_overview_path(@project.id), text: @project.name } if @project),
+        "Risiken",
+      ].compact
+    )
+  end
+%>
+
+<%=
+  render(Primer::OpenProject::SubHeader.new) do |subheader|
+    all_label = t("risks.filter_all_project")
+    current_label = t("risks.filter_this_project")
+
+    subheader.with_segmented_control("aria-label": I18n.t(:label_filter_plural)) do |control|
+      control.with_item(
+        tag: :a,
+        icon: :"op-hierarchy",
+        href: project_risks_path(@project, project_filter: nil),
+        label: all_label,
+        title: all_label,
+        selected: params[:project_filter] != "current"
+      )
+      control.with_item(
+        tag: :a,
+        icon: :goal,
+        href:project_risks_path(@project, project_filter: "current"),
+        label: current_label,
+        title: current_label,
+        selected: params[:project_filter] == "current"
+      )
+    end
+
+    subheader.with_action_button(
+      scheme: :primary,
+      leading_icon: :plus,
+      label: Risk.model_name.human,
+      tag: :a,
+      data: { turbo_stream: true },
+      href: new_project_work_packages_dialog_path(@project) # TODO risk type
+    ) do
+      Risk.model_name.human
+    end
+  end
+%>
+
+<%= render(Risks::MatrixComponent.new(
+  project: @project,
+  params:,
+  risk_counts: @risk_counts,
+  risk_work_packages: @risk_work_packages,
+  selected_likelihood: @selected_likelihood,
+  selected_impact: @selected_impact,
+  risk_filter: @risk_filter,
+  groups: @groups
+)) %>
+
+<%= render Risks::TableComponent.new(
+  rows: @risk_work_packages,
+  current_project: @project
+) %>

@@ -28,42 +28,43 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Queries
-  module WorkPackages
-    module Filter
-      class RiskLevelFilter < RiskFilter
-        def self.key
-          :risk_level
-        end
+module Risks
+  class TableComponent < ::OpPrimer::BorderBoxTableComponent
+    options :current_project
 
-        def human_name
-          I18n.t("work_packages.attributes.risk_level")
-        end
+    columns :risk, :likelihood, :impact, :level
 
-        def allowed_values
-          # Map risk level ranges to their display names
-          [
-            [I18n.t("work_packages.risk.level.low"), "low"],
-            [I18n.t("work_packages.risk.level.medium"), "medium"],
-            [I18n.t("work_packages.risk.level.high"), "high"]
-          ]
-        end
+    mobile_labels :risk
 
-        def where
-          return super unless values.any?
+    main_column :risk
 
-          conditions = values.filter_map do |category|
-            range = RISK_LEVEL_RANGES.find { |_, cat| cat == category }&.first
-            next unless range
+    def sortable?
+      false
+    end
 
-            "#{WorkPackage.table_name}.risk_level BETWEEN #{range.begin} AND #{range.end}"
-          end
+    def paginated?
+      false
+    end
 
-          return "1=0" if conditions.empty?
+    def has_actions?
+      false
+    end
 
-          conditions.join(" OR ")
-        end
-      end
+    def mobile_title
+      "Risiken"
+    end
+
+    def headers
+      @headers ||= [
+        [:risk, { caption: Risk.model_name.human }],
+        [:likelihood, { caption: Risk.human_attribute_name(:risk_likelihood) }],
+        [:impact, { caption: Risk.human_attribute_name(:risk_impact) }],
+        [:level, { caption: Risk.human_attribute_name(:risk_level) }]
+      ].compact
+    end
+
+    def columns
+      @columns ||= headers.map(&:first)
     end
   end
 end

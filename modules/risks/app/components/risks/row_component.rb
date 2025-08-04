@@ -28,41 +28,47 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Queries
-  module WorkPackages
-    module Filter
-      class RiskLevelFilter < RiskFilter
-        def self.key
-          :risk_level
-        end
+module Risks
+  class RowComponent < ::OpPrimer::BorderBoxRowComponent
+    delegate :current_project, to: :table
 
-        def human_name
-          I18n.t("work_packages.attributes.risk_level")
-        end
+    def work_package
+      model
+    end
 
-        def allowed_values
-          # Map risk level ranges to their display names
-          [
-            [I18n.t("work_packages.risk.level.low"), "low"],
-            [I18n.t("work_packages.risk.level.medium"), "medium"],
-            [I18n.t("work_packages.risk.level.high"), "high"]
-          ]
-        end
-
-        def where
-          return super unless values.any?
-
-          conditions = values.filter_map do |category|
-            range = RISK_LEVEL_RANGES.find { |_, cat| cat == category }&.first
-            next unless range
-
-            "#{WorkPackage.table_name}.risk_level BETWEEN #{range.begin} AND #{range.end}"
+    def risk
+      render(Primer::OpenProject::FlexLayout.new(justify_content: :space_between, align_items: :center)) do |flex|
+        flex.with_column(flex_layout: true) do |wp_flex|
+          wp_flex.with_row do
+            render(WorkPackages::InfoLineComponent.new(work_package:))
           end
-
-          return "1=0" if conditions.empty?
-
-          conditions.join(" OR ")
+          wp_flex.with_row do
+            render(Primer::Beta::Text.new(font_weight: :bold)) { work_package.subject }
+          end
         end
+      end
+    end
+
+    def likelihood
+      work_package.risk_likelihood
+    end
+
+    def impact
+      work_package.risk_impact
+    end
+
+    def level
+      level = work_package.risk_level
+      render(Primer::Beta::Text.new(classes: derive_color(level.to_i))) { level }
+    end
+
+    def derive_color(level)
+      if level.between?(1, 6)
+        "green"
+      elsif level.between?(7, 15)
+        "yellow"
+      else
+        "red"
       end
     end
   end
