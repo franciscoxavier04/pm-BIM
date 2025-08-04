@@ -9,8 +9,9 @@ page:
 
 page_header:
   offset: 30
-  width: 200
-  size: 12
+  width: 150
+  size: 10.2
+  color: "484848"
   styles: [ "bold" ]
 
 page_footer:
