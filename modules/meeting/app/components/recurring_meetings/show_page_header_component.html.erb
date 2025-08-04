@@ -39,12 +39,14 @@
             item.with_leading_visual_icon(icon: :calendar)
           end
 
-          menu.with_item(
-            label: t("meeting.label_mail_all_participants"),
-            href: notify_project_recurring_meeting_path(@project, @meeting),
-            form_arguments: { method: :post }
-          ) do |item|
-            item.with_leading_visual_icon(icon: :mail)
+          if send_emails?
+            menu.with_item(
+              label: t("meeting.label_mail_all_participants"),
+              href: notify_project_recurring_meeting_path(@project, @meeting),
+              form_arguments: { method: :post }
+            ) do |item|
+              item.with_leading_visual_icon(icon: :mail)
+            end
           end
 
           if !@meeting.has_ended? && @meeting.start_time.to_date < Time.zone.today

@@ -75,7 +75,7 @@ module Meetings
 
     def send_emails?
       !@meeting.closed? &&
-        @meeting.notify &&
+        @meeting.notify? &&
         User.current.allowed_in_project?(:send_meeting_invites_and_outcomes, @meeting.project)
     end
 
