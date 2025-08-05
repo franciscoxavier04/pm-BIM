@@ -28,34 +28,48 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Storages
-  module Admin
-    class SidePanel::EmailUpdatesSwitchComponent < ApplicationComponent
-      include OpTurbo::Streamable
-      include OpPrimer::ComponentHelpers
+module OpPrimer
+  class EmailUpdatesModeSelectorComponent < Primer::Component # rubocop:disable OpenProject/AddPreviewForViewComponent
+    include OpTurbo::Streamable
+    include OpPrimer::ComponentHelpers
 
-      def initialize(storage:)
-        super
+    def initialize(toggle:, path:, title:, enabled_description:, disabled_description:, alt_text: nil, show_button: true,
+                   method: :get)
+      super
 
-        @storage = storage
+      if !show_button && alt_text.blank?
+        raise NotImplementedError, "alt_text must be provided when the button is shown conditionally"
+
       end
 
-      def render?
-        @storage.automatic_management_enabled?
-      end
+      @toggle = toggle
+      @path = path
+      @title = title
+      @enabled_description = enabled_description
+      @disabled_description = disabled_description
+      @alt_text = alt_text
+      @show_button = show_button
+      @method = method
+    end
 
-      def call
-        component_wrapper do
-          render OpPrimer::EmailUpdatesSwitchComponent.new(
-            toggle: @storage.health_notifications_should_be_sent?,
-            path: change_health_notifications_enabled_admin_settings_storage_path(@storage),
-            title: I18n.t("storages.health_email_notifications.title"),
-            enabled_description: I18n.t("storages.health_email_notifications.description_enabled"),
-            disabled_description: I18n.t("storages.health_email_notifications.description_disabled"),
-            method: :patch
-          )
-        end
-      end
+    private
+
+    def button_icon
+      @toggle ? :"bell-slash" : :bell
+    end
+
+    def button_label
+      label_key = @toggle ? "disable" : "enable"
+      I18n.t("meeting.notifications.sidepanel.button.#{label_key}")
+    end
+
+    def state
+      key = @toggle ? "enabled" : "disabled"
+      I18n.t("meeting.notifications.sidepanel.state.#{key}")
+    end
+
+    def description
+      @toggle ? @enabled_description : @disabled_description
     end
   end
 end

@@ -31,7 +31,7 @@
 require "spec_helper"
 require_module_spec_helper
 
-RSpec.describe Storages::Admin::SidePanel::EmailUpdatesSwitchComponent, type: :component do
+RSpec.describe Storages::Admin::SidePanel::EmailUpdatesModeSelectorComponent, type: :component do
   describe "storage without automatically managed project folders" do
     let(:storage) { build_stubbed(:nextcloud_storage, :as_not_automatically_managed) }
 
@@ -52,7 +52,7 @@ RSpec.describe Storages::Admin::SidePanel::EmailUpdatesSwitchComponent, type: :c
 
         it "renders a 'Disable' option with info" do
           text = "Admins will receive updates by email when there are important updates."
-          expect(page).to have_test_selector("email-updates-switch", text: text)
+          expect(page).to have_test_selector("email-updates-mode-selector", text: text)
           expect(page).to have_selector(:link_or_button, "Disable")
         end
       end
@@ -62,7 +62,7 @@ RSpec.describe Storages::Admin::SidePanel::EmailUpdatesSwitchComponent, type: :c
 
         it "renders an 'Enable' option with info" do
           text = "Admins will not receive updates by email when there are important updates."
-          expect(page).to have_test_selector("email-updates-switch", text:)
+          expect(page).to have_test_selector("email-updates-mode-selector", text:)
           expect(page).to have_selector(:link_or_button, "Enable")
         end
       end

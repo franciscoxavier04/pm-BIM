@@ -229,14 +229,14 @@ RSpec.describe "Admin Edit File storage",
 
       aggregate_failures "Health notifications" do
         expect(page).to have_test_selector("storage-health-status", text: "Pending")
-        expect(page).to have_test_selector("email-updates-switch-button", text: "Disable")
-        expect(page).to have_test_selector("email-updates-switch",
+        expect(page).to have_test_selector("email-updates-mode-selector-button", text: "Disable")
+        expect(page).to have_test_selector("email-updates-mode-selector",
                                            text: "Admins will receive updates by email when there are important updates.")
 
         click_on "Disable"
 
-        expect(page).to have_test_selector("email-updates-switch-button", text: "Enable")
-        expect(page).to have_test_selector("email-updates-switch",
+        expect(page).to have_test_selector("email-updates-mode-selector-button", text: "Enable")
+        expect(page).to have_test_selector("email-updates-mode-selector",
                                            text: "Admins will not receive updates by email when there are important updates.")
       end
     end
@@ -358,14 +358,14 @@ RSpec.describe "Admin Edit File storage",
       aggregate_failures "Health notifications" do
         expect(page).to have_test_selector("storage-health-status", text: "Pending")
 
-        expect(page).to have_test_selector("email-updates-switch-button", text: "Disable")
-        expect(page).to have_test_selector("email-updates-switch",
+        expect(page).to have_test_selector("email-updates-mode-selector-button", text: "Disable")
+        expect(page).to have_test_selector("email-updates-mode-selector",
                                            text: "Admins will receive updates by email when there are important updates.")
 
         click_on "Disable"
 
-        expect(page).to have_test_selector("email-updates-switch-button", text: "Enable")
-        expect(page).to have_test_selector("email-updates-switch",
+        expect(page).to have_test_selector("email-updates-mode-selector-button", text: "Enable")
+        expect(page).to have_test_selector("email-updates-mode-selector",
                                            text: "Admins will not receive updates by email when there are important updates.")
       end
     end
@@ -492,14 +492,14 @@ RSpec.describe "Admin Edit File storage",
       aggregate_failures "Health notifications" do
         expect(page).to have_test_selector("storage-health-status", text: "Pending")
 
-        expect(page).to have_test_selector("email-updates-switch-button", text: "Disable")
-        expect(page).to have_test_selector("email-updates-switch",
+        expect(page).to have_test_selector("email-updates-mode-selector-button", text: "Disable")
+        expect(page).to have_test_selector("email-updates-mode-selector",
                                            text: "Admins will receive updates by email when there are important updates.")
 
         click_on "Disable"
 
-        expect(page).to have_test_selector("email-updates-switch-button", text: "Enable")
-        expect(page).to have_test_selector("email-updates-switch",
+        expect(page).to have_test_selector("email-updates-mode-selector-button", text: "Enable")
+        expect(page).to have_test_selector("email-updates-mode-selector",
                                            text: "Admins will not receive updates by email when there are important updates.")
       end
     end

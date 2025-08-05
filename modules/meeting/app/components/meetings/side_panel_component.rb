@@ -41,8 +41,8 @@ module Meetings
 
     private
 
-    def email_updates_switch
-      OpPrimer::EmailUpdatesSwitchComponent.new(
+    def email_updates_mode_selector
+      OpPrimer::EmailUpdatesModeSelectorComponent.new(
         toggle: @meeting.notify?,
         path: toggle_notifications_dialog_project_meeting_path(@meeting.project, @meeting),
         title: I18n.t("meeting.notifications.sidepanel.title"),
