@@ -39,34 +39,6 @@ class MoveUsersIdentityUrlToUserAuthProviderLinks < ActiveRecord::Migration[8.0]
       t.index %i[auth_provider_id external_id], unique: true
     end
 
-    reversible do |direction|
-      direction.up do
-        users_data = execute(<<-SQL.squish).values
-          SELECT id, identity_url FROM users WHERE type = 'User' AND NOT (identity_url = '' OR identity_url IS NULL);
-        SQL
-        auth_providers_data = execute(<<-SQL.squish).values
-          SELECT id, slug FROM auth_providers
-        SQL
-
-        insert_data = users_data.filter_map do |user_id, identity_url|
-          slug, external_id = identity_url.split(":", 2)
-          next if slug.blank? || external_id.blank?
-
-          auth_provider_id = auth_providers_data.find { |_, auth_provider_slug| auth_provider_slug == slug }&.first
-          next if auth_provider_id.blank?
-
-          "(#{user_id}, #{auth_provider_id}, '#{external_id}', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"
-        end.join(",\n")
-
-        if insert_data.present?
-          execute(<<-SQL.squish).values
-            INSERT INTO user_auth_provider_links (user_id, auth_provider_id, external_id, created_at, updated_at)
-              VALUES #{insert_data}
-              ON CONFLICT DO NOTHING
-              RETURNING id
-          SQL
-        end
-      end
-    end
+    # Code to migrate data into the new table was moved into 20250804133700 after adding a fix
   end
 end

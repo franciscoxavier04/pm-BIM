@@ -30,13 +30,13 @@
 
 require "spec_helper"
 
-RSpec.describe "Creating a SCIM-client", :js, :selenium, driver: :firefox_de do
+RSpec.describe "Creating a SCIM client", :js, :selenium, driver: :firefox_de do
   shared_let(:admin) { create(:admin, preferences: { time_zone: "Etc/UTC" }) }
   shared_let(:oidc_provider) { create(:oidc_provider) }
 
   current_user { admin }
 
-  it "can create a SCIM-client authenticating through JWT", :aggregate_failures, with_ee: [:scim_api] do
+  it "can create a SCIM client authenticating through JWT", :aggregate_failures, with_ee: [:scim_api] do
     visit new_admin_scim_client_path
 
     expect(page).to be_axe_clean.within("#content")
@@ -51,29 +51,29 @@ RSpec.describe "Creating a SCIM-client", :js, :selenium, driver: :firefox_de do
     expect(page).to have_text("Name can't be blank")
     expect(page).to have_text("Subject claim can't be blank")
 
-    fill_in "Name", with: "My SCIM-Client"
+    fill_in "Name", with: "My SCIM Client"
     fill_in "Subject claim", with: "123-abc-456-def"
     click_on("Create")
-    wait_for { ScimClient.find_by(name: "My SCIM-Client") }.not_to be_nil
+    wait_for { ScimClient.find_by(name: "My SCIM Client") }.not_to be_nil
 
-    created_client = ScimClient.find_by(name: "My SCIM-Client")
+    created_client = ScimClient.find_by(name: "My SCIM Client")
     expect(page).to have_current_path(edit_admin_scim_client_path(created_client, first_time_setup: true))
     expect(created_client.auth_provider_id).to eq(oidc_provider.id)
     expect(created_client.authentication_method).to eq("sso")
     expect(created_client.auth_provider_link&.external_id).to eq("123-abc-456-def")
   end
 
-  it "can create a SCIM-client authenticating through client credentials", with_ee: [:scim_api] do
+  it "can create a SCIM client authenticating through client credentials", with_ee: [:scim_api] do
     visit new_admin_scim_client_path
 
-    fill_in "Name", with: "My SCIM-client"
+    fill_in "Name", with: "My SCIM Client"
     select oidc_provider.display_name, from: "Authentication provider"
     select "OAuth 2.0 client credentials", from: "Authentication method"
 
     click_on("Create")
-    wait_for { ScimClient.find_by(name: "My SCIM-client") }.not_to be_nil
+    wait_for { ScimClient.find_by(name: "My SCIM Client") }.not_to be_nil
 
-    created_client = ScimClient.find_by(name: "My SCIM-client")
+    created_client = ScimClient.find_by(name: "My SCIM Client")
     expect(page).to have_current_path(edit_admin_scim_client_path(created_client, first_time_setup: true))
 
     page.within_modal("Client credentials created") do
@@ -84,17 +84,17 @@ RSpec.describe "Creating a SCIM-client", :js, :selenium, driver: :firefox_de do
     end
   end
 
-  it "can create a SCIM-client authenticating through a static access token", with_ee: [:scim_api] do
+  it "can create a SCIM client authenticating through a static access token", with_ee: [:scim_api] do
     visit new_admin_scim_client_path
 
-    fill_in "Name", with: "My SCIM-client"
+    fill_in "Name", with: "My SCIM Client"
     select oidc_provider.display_name, from: "Authentication provider"
     select "Static access token", from: "Authentication method"
 
     click_on("Create")
-    wait_for { ScimClient.find_by(name: "My SCIM-client") }.not_to be_nil
+    wait_for { ScimClient.find_by(name: "My SCIM Client") }.not_to be_nil
 
-    created_client = ScimClient.find_by(name: "My SCIM-client")
+    created_client = ScimClient.find_by(name: "My SCIM Client")
     expect(page).to have_current_path(edit_admin_scim_client_path(created_client, first_time_setup: true))
 
     page.within_modal("Token created") do
