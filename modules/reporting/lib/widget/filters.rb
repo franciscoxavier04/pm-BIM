@@ -100,8 +100,7 @@ class Widget::Filters < Widget::Base
     # Handling for custom widgets first
     if f_cls == CostQuery::Filter::ProjectId
       render_widget Project, f, to: html
-    elsif f_cls.in?([CostQuery::Filter::UserId, CostQuery::Filter::LoggedById, CostQuery::Filter::AssignedToId,
-                     CostQuery::Filter::ResponsibleId, CostQuery::Filter::AuthorId])
+    elsif user_filter?(f_cls)
       render_widget User, f, to: html
     elsif f_cls == CostQuery::Filter::WorkPackageId
       render_widget WorkPackage, f, to: html
@@ -126,6 +125,16 @@ class Widget::Filters < Widget::Base
     render_widget RemoveButton, f, to: html
   end
   # rubocop:enable Metrics/PerceivedComplexity
+
+  def user_filter?(f_cls)
+    f_cls.in?([
+                CostQuery::Filter::UserId,
+                CostQuery::Filter::LoggedById,
+                CostQuery::Filter::AssignedToId,
+                CostQuery::Filter::ResponsibleId,
+                CostQuery::Filter::AuthorId
+              ])
+  end
 end
 
 # rubocop:enable Metrics/AbcSize
