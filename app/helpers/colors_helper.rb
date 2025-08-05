@@ -207,11 +207,23 @@ module ColorsHelper
   end
 
   def highlighted_background_dark
-    <<~CSS.squish
+    style = <<~CSS.squish
       color: hsl(var(--color-h), calc(var(--color-s) * 1%), calc((var(--color-l) + var(--lighten-by)) * 1%)) !important;
       background: rgba(var(--color-r), var(--color-g), var(--color-b), var(--background-alpha)) !important;
-      border: 1px solid hsl(var(--color-h), calc(var(--color-s) * 1%), calc((var(--color-l) + var(--lighten-by)) * 1%)) !important;
     CSS
+    mode = User.current.pref.theme
+
+    style += if mode == "dark_high_contrast"
+               <<~CSS.squish
+                 border: 1px solid hsl(var(--color-h), calc(var(--color-s) * 1%), calc((var(--color-l) + 10 + var(--lighten-by)) * 1%)) !important;
+               CSS
+             else
+               <<~CSS.squish
+                 border: 1px solid hsl(var(--color-h), calc(var(--color-s) * 1%), calc((var(--color-l) + var(--lighten-by)) * 1%)) !important;
+               CSS
+             end
+
+    style
   end
 
   def highlighted_background_light
@@ -235,9 +247,17 @@ module ColorsHelper
   end
 
   def highlighted_foreground_dark
-    <<~CSS.squish
-      color: hsla(var(--color-h), calc(var(--color-s) * 1%), calc((var(--color-l) + var(--lighten-by)) * 1%), 1) !important;
-    CSS
+    mode = User.current.pref.theme
+
+    if mode == "dark_high_contrast"
+      <<~CSS.squish
+        color: hsla(var(--color-h), calc(var(--color-s) * 1%), calc((var(--color-l) + 10 + var(--lighten-by)) * 1%), 1) !important;
+      CSS
+    else
+      <<~CSS.squish
+        color: hsla(var(--color-h), calc(var(--color-s) * 1%), calc((var(--color-l) + var(--lighten-by)) * 1%), 1) !important;
+      CSS
+    end
   end
 
   def highlighted_foreground_light
