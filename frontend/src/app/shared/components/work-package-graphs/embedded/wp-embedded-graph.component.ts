@@ -90,7 +90,7 @@ export class WorkPackageEmbeddedGraphComponent {
       return {
         label: dataset.label,
         data: uniqLabels.map((label) => countMap[label] || 0),
-        borderColor: borderColor,
+        borderColor,
         backgroundColor: this.chartType === 'bar' || this.chartType === 'horizontalBar'
           ? uniqLabels.map((_, i) => this.getHexColor(i))
           : undefined,
