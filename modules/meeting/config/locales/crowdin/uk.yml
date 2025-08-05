@@ -101,6 +101,7 @@ uk:
     meeting_agenda_opened: Порядок зустрічей був відкритий
     meeting_minutes: Відредаговані хвилини наради
     meeting_minutes_created: Створено протокол зустрічей
+  error_notification: "Failed to send notification."
   error_notification_with_errors: "Не вдалося надіслати сповіщення. Неможливо отримати сповіщення про таких одержувачів: %{recipients}"
   label_meeting: "Зустріч"
   label_meeting_plural: "Зустрічі"
@@ -223,7 +224,7 @@ uk:
         body: "Запланований час наради «%{title}» змінив(-ла) %{actor}."
         old_date_time: "Стара дата/час"
         new_date_time: "Нова дата/час"
-    label_mail_all_participants: "Надіслати лист усім учасникам"
+    label_mail_all_participants: "Email calendar invite to all participants"
     types:
       one_time: "Одноразова"
       recurring: "Повторювана"
@@ -287,7 +288,7 @@ uk:
           disable: "Disable email calendar updates?"
         message:
           enable: >
-            All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants.
+            All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants. Once enabled, an email will be sent out immediately to all participants.
           disable: >
             Participants will no longer receive updated calendar invites via email when there are changes to the meeting date, time, location or participants. If they already had an invite for this meeting, it might no longer be accurate.
         confirm_label:
@@ -400,7 +401,7 @@ uk:
       confirm_button: "Скасувати нараду"
     end_series_dialog:
       title: "Завершити серію нарад"
-  notice_successful_notification: "Повідомлення успішно надіслано"
+  notice_successful_notification: "Email calendar update sent to all participants"
   notice_timezone_missing: Часовий пояс не встановлено і %{zone} передбачається. Щоб вибрати часовий пояс, натисніть тут.
   notice_meeting_updated: "Цю сторінку оновив інший користувач. Перезавантажте її, щоб побачити зміни."
   permission_create_meetings: "Створюйте зустрічі"

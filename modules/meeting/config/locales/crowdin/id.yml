@@ -98,6 +98,7 @@ id:
     meeting_agenda_opened: Agenda rapat dibuka
     meeting_minutes: Laporan rapat diedit
     meeting_minutes_created: Laporan rapat dibuat
+  error_notification: "Failed to send notification."
   error_notification_with_errors: "Gagal mengirim notifikasi. Berikut penerima yang tidak terkirim: %{recipients}"
   label_meeting: "Rapat"
   label_meeting_plural: "Rapat"
@@ -211,7 +212,7 @@ id:
         body: "The meeting '%{title}' has been rescheduled by %{actor}."
         old_date_time: "Tanggal/waktu lama"
         new_date_time: "Tanggal/waktu baru"
-    label_mail_all_participants: "Kirim email ke semua peserta"
+    label_mail_all_participants: "Email calendar invite to all participants"
     types:
       one_time: "One-time"
       recurring: "Recurring"
@@ -275,7 +276,7 @@ id:
           disable: "Disable email calendar updates?"
         message:
           enable: >
-            All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants.
+            All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants. Once enabled, an email will be sent out immediately to all participants.
           disable: >
             Participants will no longer receive updated calendar invites via email when there are changes to the meeting date, time, location or participants. If they already had an invite for this meeting, it might no longer be accurate.
         confirm_label:
@@ -382,7 +383,7 @@ id:
       confirm_button: "Cancel occurrence"
     end_series_dialog:
       title: "End meeting series"
-  notice_successful_notification: "Berhasil mengirim notifikasi"
+  notice_successful_notification: "Email calendar update sent to all participants"
   notice_timezone_missing: Tidak ada zona waktu yang ditetapkan sehingga diasumsikan %{zone}. Untuk memilih zona waktu, silakan mengeklik di sini.
   notice_meeting_updated: "This page has been updated by someone else. Reload to view changes."
   permission_create_meetings: "Membuat rapat"
