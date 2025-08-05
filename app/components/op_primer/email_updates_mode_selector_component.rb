@@ -29,7 +29,7 @@
 #++
 
 module OpPrimer
-  class EmailUpdatesModeSelectorComponent < Primer::Component # rubocop:disable OpenProject/AddPreviewForViewComponent
+  class EmailUpdatesModeSelectorComponent < Primer::Component
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
