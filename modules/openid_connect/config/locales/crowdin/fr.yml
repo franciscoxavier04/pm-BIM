@@ -15,6 +15,7 @@ fr:
         client_id: ID du client
         client_secret: Clé secrète du client
         groups_claim: Groups claim
+        group_regexes: Patterns (regular expressions)
         secret: Secret
         scope: Périmètre
         sync_groups: Synchronize groups
@@ -61,7 +62,7 @@ fr:
       redirect_url: C'est l'URL de redirection que le fournisseur OpenID Connect doit utiliser pour rediriger le client vers OpenProject après une connexion réussie.
       endpoint_url: L'URL du point de terminaison qui vous a été communiquée par le fournisseur OpenID Connect
       group_regexes: One regular expression pattern per line. Please read [the documentation](docs_url) for more information on how to do this.
-      group_regexes_detail: Define patterns using regular expressions to match group names from the groups claim. For example, entering a pattern like <code>^Level1/Level2/([\w/]+)$</code> will extract the group “Groupname/SubGroup” from a response including “Level1/Level2/GroupName/SubGroup”.
+      group_regexes_detail: Optionally define patterns using regular expressions to match group names from the groups claim. For example, entering a pattern like <code>^Level1/Level2/([\w/]+)$</code> will extract the group “Groupname/SubGroup” from a response including “Level1/Level2/GroupName/SubGroup”. If no pattern matches, the group is ignored. Leave empty to synchronize all groups using their full group name.
       group_sync: Automatically extract and synchronise group membership information from the identity provider.
       groups_claim: Specify the name of the claim that's expected to indicate the group names that the user is a member of.
       metadata_none: Je ne dispose pas de cette information
@@ -108,7 +109,6 @@ fr:
       label_empty_title: Aucun fournisseur OpenID n'a encore été configuré.
       label_empty_description: Ajoutez un fournisseur pour le voir ici.
       label_group_mapping: Group mapping
-      label_group_regexes: Pattern (regular expression)
       label_metadata: Point de terminaison de découverte OpenID Connect
       label_automatic_configuration: Configuration automatique
       label_optional_configuration: Configuration facultative

@@ -373,7 +373,7 @@ hu:
       description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
+        description: You can define groups of users with specific names.
         title: No groups set up yet
       user_count: User count
     users:
@@ -1288,6 +1288,7 @@ hu:
         odd: "páratlan kell legyen."
         regex_match_failed: "does not match the regular expression %{expression}."
         regex_invalid: "nem lehet a hozzárendelt reguláris kifejezéssel ellenőrizni."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "a maximális hossznak kisebbnek vagy egyenlőnek kell lennie."
         taken: "már foglalt."
         too_long: "túl hosszú (nem lehet több %{count} karakternél)."

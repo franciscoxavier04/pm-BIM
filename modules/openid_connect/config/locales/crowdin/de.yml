@@ -15,6 +15,7 @@ de:
         client_id: Client-ID
         client_secret: Client-Secret
         groups_claim: Gruppen-Claim
+        group_regexes: Patterns (regular expressions)
         secret: Secret
         scope: Scope
         sync_groups: Gruppen synchronisieren
@@ -61,7 +62,7 @@ de:
       redirect_url: Dies ist die URL, die der OpenID Connect-Anbieter verwenden sollte, um nach einer erfolgreichen Anmeldung zurück zu OpenProject zu leiten.
       endpoint_url: Die Endpunkt-URL, die Sie vom OpenID Connect-Anbieter erhalten haben
       group_regexes: Ein regulärer Ausdruck pro Zeile. Bitte lesen Sie [die Dokumentation](docs_url) für weitere Informationen hierzu.
-      group_regexes_detail: Sie können reguläre Ausdrücke benutzen, um Gruppennamen aus dem Gruppen-Claim zu extrahieren. Zum Beispiel wird ein Ausdruck wie <code>^Level1/Level2/([\w/]+)$</code> den Namen "Gruppe/Untergruppe" aus "Level1/Level2/Gruppe/Untergruppe" extrahieren.
+      group_regexes_detail: Optionally define patterns using regular expressions to match group names from the groups claim. For example, entering a pattern like <code>^Level1/Level2/([\w/]+)$</code> will extract the group “Groupname/SubGroup” from a response including “Level1/Level2/GroupName/SubGroup”. If no pattern matches, the group is ignored. Leave empty to synchronize all groups using their full group name.
       group_sync: Gruppenzugehörigkeit von Benutzern automatisch vom Identitätsanbieter übertragen.
       groups_claim: Geben Sie den Namen des Claims an, der die Namen von Gruppen enthält, bei denen der Nutzer Mitglied ist.
       metadata_none: Ich habe diese Informationen nicht
@@ -108,7 +109,6 @@ de:
       label_empty_title: Noch keine OpenID Connect-Anbieter konfiguriert.
       label_empty_description: Fügen Sie einen Anbieter hinzu, um sie hier zu sehen.
       label_group_mapping: Gruppenzuordnung
-      label_group_regexes: Muster (regulärer Ausdruck)
       label_metadata: OpenID Connect Discovery Endpunkt
       label_automatic_configuration: Automatische Konfiguration
       label_optional_configuration: Optionale Konfiguration

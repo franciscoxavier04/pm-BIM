@@ -280,7 +280,7 @@ de:
           disable: "E-Mail-Kalender-Aktualisierungen deaktivieren?"
         message:
           enable: >
-            All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants. Once enabled, an email will be sent out immediately to all participants.
+            Alle Teilnehmer erhalten per E-Mail aktualisierte Kalendereinladungen, sobald sich Datum, Uhrzeit, Ort oder Teilnehmer der Besprechung ändern.
           disable: >
             Die Teilnehmer erhalten keine aktualisierten Kalendereinladungen mehr per E-Mail, wenn sich das Datum, die Uhrzeit, der Ort oder die Teilnehmer der Besprechung geändert haben. Wenn sie bereits eine Einladung für diese Besprechung hatten, wird diese nicht mehr aktualisiert und könnte veraltete Informationen anzeigen.
         confirm_label:

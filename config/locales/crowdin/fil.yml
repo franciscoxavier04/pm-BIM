@@ -374,7 +374,7 @@ fil:
       description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
+        description: You can define groups of users with specific names.
         title: No groups set up yet
       user_count: User count
     users:
@@ -1289,6 +1289,7 @@ fil:
         odd: "dapat ay kakaiba."
         regex_match_failed: "does not match the regular expression %{expression}."
         regex_invalid: "hindi pwedeng mapatunayan sa nauugnay na mga regular na ekspresyon."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "dapat ay mas maliit kaysa o katumbas sa pinakamataas na haba."
         taken: "ay nakuha na."
         too_long: "ay masyadong mahaba (pinakamataas ay ang mga %{count} karakter)."
