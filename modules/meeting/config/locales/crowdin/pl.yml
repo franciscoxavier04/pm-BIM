@@ -101,6 +101,7 @@ pl:
     meeting_agenda_opened: Otwarto plan spotkania
     meeting_minutes: Protokół ze spotkania edytowany
     meeting_minutes_created: Protokół ze spotkania utworzony
+  error_notification: "Failed to send notification."
   error_notification_with_errors: "Nie udało się wysłać powiadomienie do adresatów: %{recipients}"
   label_meeting: "Spotkanie"
   label_meeting_plural: "Spotkania"
@@ -223,7 +224,7 @@ pl:
         body: "Spotkanie „%{title}” zostało przełożone przez użytkownika %{actor}."
         old_date_time: "Stara data/godzina"
         new_date_time: "Nowa data/godzina"
-    label_mail_all_participants: "Wyślij wiadomość e-mail do wszystkich uczestników"
+    label_mail_all_participants: "Email calendar invite to all participants"
     types:
       one_time: "Jednorazowe"
       recurring: "Cykliczne"
@@ -287,7 +288,7 @@ pl:
           disable: "Disable email calendar updates?"
         message:
           enable: >
-            All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants.
+            All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants. Once enabled, an email will be sent out immediately to all participants.
           disable: >
             Participants will no longer receive updated calendar invites via email when there are changes to the meeting date, time, location or participants. If they already had an invite for this meeting, it might no longer be accurate.
         confirm_label:
@@ -400,7 +401,7 @@ pl:
       confirm_button: "Anuluj wystąpienie"
     end_series_dialog:
       title: "Zakończ serię spotkań"
-  notice_successful_notification: "Powiadomienia wysłane pomyślnie"
+  notice_successful_notification: "Email calendar update sent to all participants"
   notice_timezone_missing: 'Została ustawiona domyślna strefa czasowa: %{zone}. Aby zmienić strefę czasową, kliknij tutaj.'
   notice_meeting_updated: "Ta strona została zaktualizowana przez kogoś innego. Załaduj ją ponownie, aby wyświetlić zmiany."
   permission_create_meetings: "Utwórz spotkanie"

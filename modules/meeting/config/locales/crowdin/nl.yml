@@ -99,6 +99,7 @@ nl:
     meeting_agenda_opened: Vergaderagenda geopend
     meeting_minutes: Notulen van de vergadering bewerkt
     meeting_minutes_created: Notulen gemaakt
+  error_notification: "Failed to send notification."
   error_notification_with_errors: "Notificatie verzenden mislukt. De volgende geadresseerden konden niet worden gemeld: %{recipients}"
   label_meeting: "Vergadering"
   label_meeting_plural: "Vergaderingen"
@@ -215,7 +216,7 @@ nl:
         body: "The meeting '%{title}' has been rescheduled by %{actor}."
         old_date_time: "Oude datum/tijd"
         new_date_time: "Nieuwe datum/tijd"
-    label_mail_all_participants: "E-mail verzenden naar alle deelnemers"
+    label_mail_all_participants: "Email calendar invite to all participants"
     types:
       one_time: "Eenmalig"
       recurring: "Terugkerend"
@@ -279,7 +280,7 @@ nl:
           disable: "Disable email calendar updates?"
         message:
           enable: >
-            All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants.
+            All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants. Once enabled, an email will be sent out immediately to all participants.
           disable: >
             Participants will no longer receive updated calendar invites via email when there are changes to the meeting date, time, location or participants. If they already had an invite for this meeting, it might no longer be accurate.
         confirm_label:
@@ -388,7 +389,7 @@ nl:
       confirm_button: "Cancel occurrence"
     end_series_dialog:
       title: "Vergaderreeks beëindigen"
-  notice_successful_notification: "Notificatie succesvol verzonden"
+  notice_successful_notification: "Email calendar update sent to all participants"
   notice_timezone_missing: Geen tijdzone is ingesteld en %{zone} is aangenomen. Om uw tijdzone te kiezen, klik dan hier.
   notice_meeting_updated: "Deze pagina is door iemand anders bijgewerkt. Herlaad om wijzigingen te bekijken."
   permission_create_meetings: "Creëer vergaderingen"

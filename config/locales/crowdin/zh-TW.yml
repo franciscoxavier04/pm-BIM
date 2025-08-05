@@ -128,8 +128,8 @@ zh-TW:
       form:
         auth_provider_description: "這是由 SCIM 提供者新增的使用者用來在 OpenProject 中進行驗證的服務。"
         authentication_method_description_html: "這是 SCIM 客戶端在 OpenProject 進行驗證的方式。請確保 OAuth 令牌包含<code>scim_v2</code>範圍。"
-        description: "Please refer to our [documentation on configuring SCIM-clients](docs_url) for more information on these configuration options."
-        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM-client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
+        description: "有關這些設定選項的詳細資訊，請參閱我們的 [設定 SCIM-client 的說明文件](docs_url)。"
+        jwt_sub_description: "例如，在 Keycloak 中，這是與 SCIM 客戶端相關聯的服務帳戶 UUID。請參閱我們的文件以了解如何根據您的使用情境尋找 subject 聲明。"
         name_description: "請選擇一個能幫助其他管理員理解此用戶端設定目的的名稱。"
       index:
         description: "在此設定的 SCIM clients 能夠與 OpenProject SCIM 伺服器 API 互動，以提供、更新及取消提供使用者帳號與群組。"
@@ -709,7 +709,7 @@ zh-TW:
             project: "專案"
         pattern:
           label: "主題模板"
-          caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
+          caption: 透過新增文字建立模式，或輸入「/」來搜尋 [支援的屬性](attributes_url)。
           insert_as_text: "未找到屬性。以文字新增：\"%{word}"
       export_configuration:
         tab: "產生PDF檔案"
