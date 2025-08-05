@@ -99,6 +99,7 @@ es:
     meeting_agenda_opened: Agenda de reuniones abierta
     meeting_minutes: Minuta de reunión editada
     meeting_minutes_created: Minuta de reuniones creada
+  error_notification: "Failed to send notification."
   error_notification_with_errors: "Error al enviar la notificación. Los siguientes destinatarios no han sido notificados: %{recipients}"
   label_meeting: "Reunión"
   label_meeting_plural: "Reuniones"
@@ -215,7 +216,7 @@ es:
         body: "%{actor} ha reprogramado la reunión «%{title}»."
         old_date_time: "Fecha y hora anteriores"
         new_date_time: "Fecha y hora nuevas"
-    label_mail_all_participants: "Enviar email a todos los participantes"
+    label_mail_all_participants: "Email calendar invite to all participants"
     types:
       one_time: "Única"
       recurring: "Periódico"
@@ -279,7 +280,7 @@ es:
           disable: "Disable email calendar updates?"
         message:
           enable: >
-            All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants.
+            All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants. Once enabled, an email will be sent out immediately to all participants.
           disable: >
             Participants will no longer receive updated calendar invites via email when there are changes to the meeting date, time, location or participants. If they already had an invite for this meeting, it might no longer be accurate.
         confirm_label:
@@ -388,7 +389,7 @@ es:
       confirm_button: "Cancelar repetición"
     end_series_dialog:
       title: "Finalizar serie de reuniones"
-  notice_successful_notification: "Notificación enviada correctamente"
+  notice_successful_notification: "Email calendar update sent to all participants"
   notice_timezone_missing: No se ha establecido zona horaria y se asume %{zone}. Para elegir su zona horaria, por favor, haga clic aquí.
   notice_meeting_updated: "Esta página ha sido actualizada por otra persona. Recárguela para ver los cambios."
   permission_create_meetings: "Crear reuniones"

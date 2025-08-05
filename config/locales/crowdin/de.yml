@@ -371,7 +371,7 @@ de:
       description: Durch die Gruppierung von Benutzern können Sie diese den gleichen globalen Rollen oder den gleichen Projekten als Mitglieder zuweisen.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names.
+        description: Sie können Gruppen von Benutzern mit eigenen Namen erstellen
         title: Noch keine Gruppen eingerichtet
       user_count: Benutzeranzahl
     users:

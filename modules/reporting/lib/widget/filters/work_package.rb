@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Widget::Filters::Project < Widget::Filters::Base
+class Widget::Filters::WorkPackage < Widget::Filters::Base
   include AngularHelper
 
   def render
@@ -35,13 +37,17 @@ class Widget::Filters::Project < Widget::Filters::Base
 
       selected_values = map_filter_values
 
-      box = angular_component_tag "opce-project-autocompleter",
+      box = angular_component_tag "opce-autocompleter",
                                   inputs: {
                                     filters: [],
                                     InputName: "values[#{filter_class.underscore_name}]",
                                     hiddenFieldAction: "change->reporting--page#selectValueChanged",
                                     multiple: true,
-                                    model: selected_values.compact
+                                    defaultData: true,
+                                    model: selected_values.compact,
+                                    url: ::API::V3::Utilities::PathHelper::ApiV3Path.work_packages,
+                                    resource: "work_packages",
+                                    searchKey: "subjectOrId"
                                   },
                                   id: "#{filter_class.underscore_name}_select_1",
                                   class: "filter-value"
@@ -63,7 +69,7 @@ class Widget::Filters::Project < Widget::Filters::Base
   def map_filter_values
     expand_comma_separated_values!
 
-    projects = Project.visible.where(id: filter.values)
-    projects.map { |project| { id: project.id, name: project.name } }
+    work_packages = WorkPackage.visible.where(id: filter.values)
+    work_packages.map { |wp| { id: wp.id, name: wp.subject } }
   end
 end

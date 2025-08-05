@@ -549,6 +549,19 @@ module Pages::Meetings
       end
     end
 
+    def check_add_section_path(meeting)
+      retry_block do
+        page.within("#meeting-agenda-items-new-button-component") do
+          click_on I18n.t(:button_add)
+
+          add_section_link = find_link("Section")
+          url = add_section_link[:href]
+
+          expect(URI.parse(url).path).to eq(meeting_sections_path(meeting))
+        end
+      end
+    end
+
     def expect_backlog_actions(item, series: false)
       open_menu(item) do
         expect(page).to have_css(".ActionListItem-label", text: "Edit")
