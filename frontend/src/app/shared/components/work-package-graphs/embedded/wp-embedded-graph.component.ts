@@ -75,6 +75,7 @@ export class WorkPackageEmbeddedGraphComponent {
   }
 
   private updateChartData() {
+    const borderColor= getComputedStyle(document.body).getPropertyValue('--borderColor-muted');
     let uniqLabels = _.uniq(this.datasets.reduce((array, dataset) => {
       const groups = (dataset.groups || []).map((group) => group.value) as any;
       return array.concat(groups);
@@ -89,6 +90,7 @@ export class WorkPackageEmbeddedGraphComponent {
       return {
         label: dataset.label,
         data: uniqLabels.map((label) => countMap[label] || 0),
+        borderColor: borderColor,
         backgroundColor: this.chartType === 'bar' || this.chartType === 'horizontalBar'
           ? uniqLabels.map((_, i) => this.getHexColor(i))
           : undefined,
