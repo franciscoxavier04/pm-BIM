@@ -46,10 +46,10 @@ See COPYRIGHT and LICENSE files for more details.
       // Apply system theme before body renders to prevent flickering
       // This duplicates logic from AutoThemeSwitcher controller for immediate execution
       (function() {
-        const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        const colorModePreference = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
         const body = document.body;
 
-        switch (theme) {
+        switch (colorModePreference) {
           case 'dark':
             body.setAttribute('data-color-mode', 'dark');
             body.setAttribute('data-dark-theme', 'dark');
@@ -57,8 +57,10 @@ See COPYRIGHT and LICENSE files for more details.
             break;
           case 'light':
             body.setAttribute('data-color-mode', 'light');
-            body.setAttribute('data-light-theme', 'light');
+            body.setAttribute('data-light-theme', window.matchMedia('(prefers-contrast: more)').matches ? 'light_high_contrast' : 'light');
             body.removeAttribute('data-dark-theme');
+            break;
+          default: // Do nothing
             break;
         }
       })();

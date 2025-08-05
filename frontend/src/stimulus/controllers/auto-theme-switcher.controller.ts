@@ -31,7 +31,7 @@
 import { Controller } from '@hotwired/stimulus';
 import { useMatchMedia } from 'stimulus-use';
 
-export type OpTheme = 'light' | 'dark';
+export type OpTheme = 'light' | 'light_high_contrast' | 'dark';
 
 export default class AutoThemeSwitcher extends Controller {
   static values = {
@@ -69,11 +69,15 @@ export default class AutoThemeSwitcher extends Controller {
         break;
       case 'light':
         body.setAttribute('data-color-mode', 'light');
-        body.setAttribute('data-light-theme', 'light');
+        body.setAttribute('data-light-theme', this.increaseContrast ? 'light_high_contrast' : 'light');
         body.removeAttribute('data-dark-theme');
         break;
       default: // Do nothing
         break;
     }
+  }
+
+  private get increaseContrast():boolean {
+    return window.matchMedia('(prefers-contrast: more)').matches;
   }
 }

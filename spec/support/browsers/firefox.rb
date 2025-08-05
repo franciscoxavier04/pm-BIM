@@ -60,3 +60,8 @@ end
 register_firefox "en"
 # Register german locale for custom field decimal test
 register_firefox "de"
+
+register_firefox "en", name: :firefox_light_high_contrast do |profile, _options|
+  # 2 = more, 1 = less, 0 = no-preference, 3 = forced-colors only
+  profile["layout.css.prefers-contrast.content-override"] = 2
+end
