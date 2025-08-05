@@ -32,6 +32,8 @@ body:has(.custom-fields-hierarchy-page)
   #content-body
     display: flex
     flex-direction: column
+    @media screen and (min-width: $breakpoint-md)
+      overflow-y: hidden
 
 .custom-fields-hierarchy-page
   flex-grow: 1
@@ -39,3 +41,9 @@ body:has(.custom-fields-hierarchy-page)
   &--sidebar
     border-top-left-radius: var(--borderRadius-medium)
     border-top-right-radius: var(--borderRadius-medium)
+
+  @media screen and (min-width: $breakpoint-md)
+    &--sidebar, &--main
+      height: calc(100dvh - 200px) // 200px is page header height + space around it
+      overflow-y: scroll
+

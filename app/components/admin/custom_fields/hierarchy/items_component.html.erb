@@ -30,9 +30,9 @@ See COPYRIGHT and LICENSE files for more details.
 <% helpers.content_controller "admin--hierarchy-item" %>
 
 <%=
-  component_wrapper(tag: "turbo-frame", refresh: :morph, class: "op-custom-fields--hierarchy-items", data: { turbo_action: :advance }) do
+  component_wrapper(tag: "turbo-frame", refresh: :morph, data: { turbo_action: :advance }) do
     render(Primer::Alpha::Layout.new(stacking_breakpoint: :md, classes: "custom-fields-hierarchy-page")) do |content|
-      content.with_main do
+      content.with_main(classes: "custom-fields-hierarchy-page--main") do
         flex_layout do |container|
           container.with_row do
             render(Primer::OpenProject::SubHeader.new) do |subheader|
