@@ -78,17 +78,11 @@ class Widget::Filters::User < Widget::Filters::Base
 
     users = User.visible.where(id: filter.values).index_by(&:id)
 
-    filter.values.map do |id|
+    filter.values.filter_map do |id|
       if id == CostQuery::Filter::UserId.me_value
         { id: CostQuery::Filter::UserId.me_value, name: I18n.t(:label_me) }
-      else
-        user = users[id.to_i]
-
-        if user.nil?
-          nil
-        else
-          { id: id, name: user.name }
-        end
+      elsif (user = users[id.to_i])
+        { id: id, name: user.name }
       end
     end
   end
