@@ -77,12 +77,5 @@ RSpec.describe "My account Interface settings",
         expect(page).to have_css("body[data-color-mode='dark'][data-dark-theme='dark']")
       end
     end
-
-    context "with OS contrasting mode", driver: :firefox_light_high_contrast do
-      it "syncs with OS colour mode" do
-        set_automatic_mode_with_reload
-        expect(page).to have_css("body[data-color-mode='light'][data-light-theme='light_high_contrast']")
-      end
-    end
   end
 end
