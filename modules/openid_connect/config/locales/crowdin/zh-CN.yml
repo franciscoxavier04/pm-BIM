@@ -15,6 +15,7 @@ zh-CN:
         client_id: 客户端ID
         client_secret: 客户端密钥
         groups_claim: Groups claim
+        group_regexes: Patterns (regular expressions)
         secret: 密钥
         scope: 范围
         sync_groups: Synchronize groups
@@ -61,7 +62,7 @@ zh-CN:
       redirect_url: 这是 OpenID Connect 提供程序在成功登录后应当用于重定向回 OpenProject 的重定向 URL。
       endpoint_url: OpenID Connect 提供商给您的端点 URL
       group_regexes: One regular expression pattern per line. Please read [the documentation](docs_url) for more information on how to do this.
-      group_regexes_detail: Define patterns using regular expressions to match group names from the groups claim. For example, entering a pattern like <code>^Level1/Level2/([\w/]+)$</code> will extract the group “Groupname/SubGroup” from a response including “Level1/Level2/GroupName/SubGroup”.
+      group_regexes_detail: Optionally define patterns using regular expressions to match group names from the groups claim. For example, entering a pattern like <code>^Level1/Level2/([\w/]+)$</code> will extract the group “Groupname/SubGroup” from a response including “Level1/Level2/GroupName/SubGroup”. If no pattern matches, the group is ignored. Leave empty to synchronize all groups using their full group name.
       group_sync: Automatically extract and synchronise group membership information from the identity provider.
       groups_claim: Specify the name of the claim that's expected to indicate the group names that the user is a member of.
       metadata_none: 我没有这个信息
@@ -108,7 +109,6 @@ zh-CN:
       label_empty_title: 尚未配置 OpenID 提供商。
       label_empty_description: 在这里添加一个提供商以查看它们。
       label_group_mapping: Group mapping
-      label_group_regexes: Pattern (regular expression)
       label_metadata: OpenID Connect 发现端点
       label_automatic_configuration: 自动配置
       label_optional_configuration: 可选配置

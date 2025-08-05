@@ -121,18 +121,18 @@ de:
         one_time_hint: "Dies ist das einzige Mal, dass dieses Token angezeigt wird. Stellen Sie sicher, dass Sie es jetzt kopieren."
       delete_scim_client_dialog_component:
         title: "SCIM-Client löschen"
-        heading: "Are you sure you want to delete this SCIM-client?"
-        description: "Users managed by this SCIM-client can no longer be updated by it."
+        heading: "Sind Sie sicher, dass Sie diesen SCIM-Client löschen möchten?"
+        description: "Benutzer, die von diesem SCIM-Client verwaltet werden, können nicht mehr von ihm aktualisiert werden."
       edit:
         label_delete_scim_client: "SCIM-Client löschen"
       form:
         auth_provider_description: "Dies ist der Dienst, den die vom SCIM-Anbieter hinzugefügten Benutzer für die Authentifizierung in OpenProject verwenden werden."
-        authentication_method_description_html: "This is how the SCIM-client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description: "Please refer to our [documentation on configuring SCIM-clients](docs_url) for more information on these configuration options."
-        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM-client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
+        authentication_method_description_html: "Auf diese Weise authentifiziert sich der SCIM-Client bei OpenProject. Bitte stellen Sie sicher, dass OAuth Tokens den <code>scim_v2</code> Scope enthalten."
+        description: "Mehr Informationen zu den folgenden Einstellungen können in [unserer Dokumentation](docs_url) gefunden werden."
+        jwt_sub_description: "Beispielsweise für Keycloak ist dies die UUID des Service-Accounts der zum SCIM-Client gehört. Weitere Informationen finden Sie in [unserer Dokumentation](docs_url)."
         name_description: "Wählen Sie einen Namen, der anderen Administratoren hilft, besser zu verstehen, warum dieser Client konfiguriert wurde."
       index:
-        description: "SCIM-clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
+        description: "SCIM-Clients, die hier konfiguriert werden, sind in der Lage mit der SCIM-Server-API von OpenProject zu interagieren, um Benutzeraccounts und Gruppen anzulegen, zu aktualisieren und zu entfernen."
         label_create_button: "SCIM-Client hinzufügen"
       new:
         title: "Neuer SCIM-Client"
@@ -140,14 +140,14 @@ de:
         confirm_button: "Widerrufen"
         title: "Statisches Token widerrufen"
         heading: "Sind Sie sicher, dass Sie dieses Token widerrufen möchten?"
-        description: "The SCIM-client that uses this token will no longer be able to access OpenProject's SCIM server API."
+        description: "Ein SCIM-Client, der dieses Token benutzt, wird nicht mehr in der Lage sein OpenProjects SCIM-Server-API zu benutzen."
       table_component:
         blank_slate:
           title: "Noch keine SCIM-Clients konfiguriert"
           description: "Clients hinzufügen, um sie hier zu sehen"
         user_count: "Benutzer"
       token_list_component:
-        description: "The tokens you generate here can be passed by a SCIM-client to access the OpenProject SCIM API."
+        description: "Die hier erzeugten Token können von einem SCIM-Client genutzt werden, um auf die OpenProject-SCIM-API zuzugreifen."
         heading: "Token"
         label_add_token: "Token"
         label_aria_add_token: "Token hinzufügen"
@@ -368,10 +368,10 @@ de:
     edit:
       synchronized_groups: "Synchronisierte Gruppen"
     index:
-      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+      description: Durch die Gruppierung von Benutzern können Sie diese den gleichen globalen Rollen oder den gleichen Projekten als Mitglieder zuweisen.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
+        description: You can define groups of users with specific names.
         title: Noch keine Gruppen eingerichtet
       user_count: Benutzeranzahl
     users:
@@ -381,7 +381,7 @@ de:
     synchronized_groups:
       blankslate:
         action: Authentifizierungseinstellungen
-        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        description: Wenn diese Gruppe automatisch mit Gruppen in einem Identitätsanbieter wie beispielsweise OpenID Connect synchronisiert wird, dann taucht diese Verknüpfung hier auf. Dies können Sie in den Authentifizierungseinstellungen verwalten.
         title: Noch keine synchronisierten Gruppen
   incoming_mails:
     ignore_filenames: >
@@ -712,7 +712,7 @@ de:
             project: "Projekt"
         pattern:
           label: "Titel-Schema"
-          caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
+          caption: Das Schema kann durch Hinzufügen von Text erzeugt werden. Geben Sie "/" ein, um nach [unterstützten Attributen](attributes_url) zu suchen.
           insert_as_text: "Keine Attribute gefunden. Als Text hinzufügen: \"%{word}\""
       export_configuration:
         tab: "PDF generieren"
@@ -1261,7 +1261,7 @@ de:
         inclusion_nested: "ist nicht auf einen der erlaubten Werte im Pfad '%{path} ' gesetzt."
         invalid: "ist ungültig."
         invalid_characters: "enthält ungültige Zeichen."
-        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
+        not_allowed_custom_fields_referenced: "enthält benutzerdefinierte Felder, die nicht erlaubt sind: %{custom_fields}."
         invalid_url: "ist keine gültige URL."
         invalid_url_scheme: "ist kein unterstütztes Protokoll (erlaubt: %{allowed_schemes})."
         less_than_or_equal_to: "muss kleiner oder gleich %{count} sein."
@@ -1281,6 +1281,7 @@ de:
         odd: "muss ungerade sein."
         regex_match_failed: "stimmt nicht mit dem regulären Ausdruck %{expression} überein."
         regex_invalid: "konnte nicht mit dem zugehörigen regulären Ausdruck überprüft werden."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "muss kleiner als oder gleich der maximalen Länge sein."
         taken: "ist bereits vergeben."
         too_long: "ist zu lang (nicht mehr als %{count} Zeichen)."
@@ -1609,7 +1610,7 @@ de:
       attribute_help_text: "Hilfe-Text für Attribute"
       auth_provider:
         one: "Authentifizierungsanbieter"
-        other: "Authentication providers"
+        other: "Authentifizierungsanbieter"
       category: "Kategorie"
       comment: "Kommentar"
       custom_action: "Benutzerdefinierte Aktion"
