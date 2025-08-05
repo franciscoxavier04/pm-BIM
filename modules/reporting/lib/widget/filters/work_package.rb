@@ -72,14 +72,7 @@ class Widget::Filters::WorkPackage < Widget::Filters::Base
       filter.values = filter.values[0].split(",")
     end
 
-    filter.values.each.map do |id|
-      work_package = WorkPackage.visible.find_by(id: id)
-
-      if work_package.nil?
-        nil
-      else
-        { id: id, name: work_package.subject }
-      end
-    end
+    work_packages = WorkPackage.visible.where(id: filter.values)
+    work_packages.map { |wp| { id: wp.id, name: wp.subject } }
   end
 end
