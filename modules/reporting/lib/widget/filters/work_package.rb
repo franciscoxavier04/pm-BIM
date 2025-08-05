@@ -43,6 +43,7 @@ class Widget::Filters::WorkPackage < Widget::Filters::Base
                                     InputName: "values[#{filter_class.underscore_name}]",
                                     hiddenFieldAction: "change->reporting--page#selectValueChanged",
                                     multiple: true,
+                                    defaultData: true,
                                     model: selected_values.compact,
                                     url: ::API::V3::Utilities::PathHelper::ApiV3Path.work_packages,
                                     resource: "work_packages",
