@@ -44,7 +44,7 @@ module OpenProject::Plugins
         if persist
           builder.provider_callbacks.each do |callback|
             callback.call.each do |config|
-              PluginAuthProvider.create_for_plugin(config)
+              PluginAuthProvider.register_for_plugin(config)
             end
           end
         end

@@ -30,15 +30,27 @@
 
 class PluginAuthProvider < AuthProvider
   class << self
-    def create_for_plugin(config)
+    def register_for_plugin(config)
       slug = config[:name]
-      display_name = config[:display_name] || slug
+      display_name = (config[:display_name] || slug).to_s
 
-      find_or_create_by!(slug:) do |provider|
-        provider.available = false
-        provider.display_name = display_name.to_s
-        provider.creator = User.system
+      registry[slug] = display_name
+    end
+
+    def create_all_registered
+      registry.each do |slug, display_name|
+        find_or_create_by!(slug:) do |provider|
+          provider.available = false
+          provider.display_name = display_name
+          provider.creator = User.system
+        end
       end
+    end
+
+    private
+
+    def registry
+      @registry ||= {}
     end
   end
 

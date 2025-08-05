@@ -28,56 +28,37 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module OpenIDConnect
-  module Provider::HashBuilder
-    def attribute_map
-      OpenIDConnect::Provider::MAPPABLE_ATTRIBUTES
-        .index_with { |attr| public_send(:"mapping_#{attr}") }
-        .compact_blank
-    end
+class MigrateAuthProviderUrlsAgain < ActiveRecord::Migration[8.0]
+  def change
+    reversible do |direction|
+      direction.up do
+        PluginAuthProvider.create_all_registered
 
-    def to_h # rubocop:disable Metrics/AbcSize
-      {
-        name: slug,
-        oidc_provider:,
-        icon:,
-        host:,
-        scheme:,
-        port:,
-        display_name:,
-        userinfo_endpoint:,
-        authorization_endpoint:,
-        jwks_uri:,
-        issuer:,
-        scope:,
-        identifier: client_id,
-        secret: client_secret,
-        token_endpoint:,
-        limit_self_registration:,
-        end_session_endpoint:,
-        attribute_map:,
-        post_logout_redirect_uri:,
-        claims:,
-        acr_values:
-      }
-       .merge(provider_specific_to_h)
-       .compact_blank
-    end
+        users_data = execute(<<-SQL.squish).values
+          SELECT id, identity_url FROM users WHERE type = 'User' AND NOT (identity_url = '' OR identity_url IS NULL);
+        SQL
+        auth_providers_data = execute(<<-SQL.squish).values
+          SELECT id, slug FROM auth_providers
+        SQL
 
-    def provider_specific_to_h
-      case oidc_provider
-      when "google"
-        {
-          client_auth_method: :not_basic,
-          send_nonce: false
-        }
-      when "microsoft_entra"
-        {
-          use_graph_api:,
-          tenant:
-        }
-      else
-        {}
+        insert_data = users_data.filter_map do |user_id, identity_url|
+          slug, external_id = identity_url.split(":", 2)
+          next if slug.blank? || external_id.blank?
+
+          auth_provider_id, = auth_providers_data.find { |_, auth_provider_slug| auth_provider_slug == slug }
+          next if auth_provider_id.blank?
+
+          "(#{user_id}, #{auth_provider_id}, '#{external_id}', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"
+        end.join(",\n")
+
+        if insert_data.present?
+          execute(<<-SQL.squish).values
+            INSERT INTO user_auth_provider_links (user_id, auth_provider_id, external_id, created_at, updated_at)
+              VALUES #{insert_data}
+              ON CONFLICT DO NOTHING
+              RETURNING id
+          SQL
+        end
       end
     end
   end
