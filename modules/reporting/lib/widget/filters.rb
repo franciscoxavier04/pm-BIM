@@ -136,5 +136,4 @@ class Widget::Filters < Widget::Base
               ])
   end
 end
-
 # rubocop:enable Metrics/AbcSize

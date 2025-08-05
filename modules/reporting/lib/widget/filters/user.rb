@@ -70,11 +70,8 @@ class Widget::Filters::User < Widget::Filters::Base
               class: "sr-only"
   end
 
-  def map_filter_values # rubocop:disable Metrics/AbcSize
-    # In case the filter values are all written in a single string (e.g. ["12, 33"])
-    if filter.values.length === 1 && filter.values[0].instance_of?(String)
-      filter.values = filter.values[0].split(",")
-    end
+  def map_filter_values
+    expand_comma_separated_values!
 
     users = User.visible.where(id: filter.values).index_by(&:id)
 
