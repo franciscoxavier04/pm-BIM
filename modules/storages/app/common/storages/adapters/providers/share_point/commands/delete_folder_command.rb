@@ -32,25 +32,37 @@ module Storages
   module Adapters
     module Providers
       module SharePoint
-        module Queries
-          class FilesQuery < Base
+        module Commands
+          class DeleteFolderCommand < Base
             def call(auth_strategy:, input_data:)
               with_tagged_logger do
                 Authentication[auth_strategy].call(storage: @storage) do |http|
-                  files_request(input_data.folder, http)
+                  info "Deleting folder of identifier #{split_identifier(input_data.location).inspect}"
+                  handle_response http.delete(request_uri(**split_identifier(input_data.location)))
                 end
               end
             end
 
             private
 
-            def files_request(folder, http)
-              if folder.root?
-                info "Requesting all libraries for the SharePoint site #{site_name}"
-                Internal::ListsQuery.call(storage: @storage, http:)
+            def request_uri(drive_id:, location:)
+              UrlBuilder.url(base_uri, "/v1.0/drives", drive_id, "/items", location.path)
+            end
+
+            def handle_response(response)
+              error = Results::Error.new(source: self.class, payload: response)
+
+              case response
+              in { status: 200..299 }
+                Success()
+              in { status: 401 }
+                Failure(error.with(code: :unauthorized))
+              in { status: 404 }
+                Failure(error.with(code: :not_found))
+              in { status: 409 }
+                Failure(error.with(code: :conflict))
               else
-                info "Requesting all files under composite identifier #{folder}"
-                Internal::ChildrenQuery.call(storage: @storage, http:, **split_identifier(folder))
+                Failure(error.with(code: :error))
               end
             end
           end
