@@ -73,7 +73,7 @@ module Meetings
         @meeting.author&.name || User.current.name
       end
 
-      def default_page_header_left_text
+      def default_first_page_header_left_text
         @meeting.project&.name || Setting.software_name
       end
     end

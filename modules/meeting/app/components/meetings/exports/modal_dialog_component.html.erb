@@ -127,12 +127,12 @@
           ) do
             render Primer::Alpha::TextField.new(
               id: "pdf_header_left",
-              name: :page_header_left,
-              label: I18n.t("meeting.export_pdf_dialog.page_header_left.label"),
-              caption: I18n.t("meeting.export_pdf_dialog.page_header_left.caption"),
+              name: :first_page_header_left,
+              label: I18n.t("meeting.export_pdf_dialog.first_page_header_left.label"),
+              caption: I18n.t("meeting.export_pdf_dialog.first_page_header_left.caption"),
               input_width: :large,
               visually_hide_label: false,
-              value: default_page_header_left_text
+              value: default_first_page_header_left_text
             )
           end
           modal_body.with_row(

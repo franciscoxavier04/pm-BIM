@@ -256,6 +256,9 @@ de:
         minutes:
           label: Protokoll
           caption: Die Protokollvorlage eignet sich für Besprechungen, die abgeschlossen sind und archiviert werden.
+      first_page_header_left:
+        label: Kopfzeile links für erste Seite
+        caption: Dieser Text wird auf der ersten Seite links in der Kopfzeile angezeigt.
       author:
         label: Verfasser:in
         caption: Verfasser:in des Protokolls wird in der Unterüberschrift angezeigt.
