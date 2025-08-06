@@ -391,9 +391,17 @@ en:
       setting_up_storages_non_admin: Administrators can set up file storages in Administration / File storages.
       share_point:
         application_link_text: SharePoint site
+        copy_redirect_uri: Copy redirect URI
+        documentation_link_text: SharePoint file storages documentation
+        drive_id: Please copy the ID from the desired drive by following the steps in the %{drive_id_link_text}.
         integration: SharePoint Administration / OpenProject
+        missing_client_id_for_redirect_uri: Please fill the OAuth values to generate a URI
+        oauth_client_redirect_uri: Please copy this value to a new Web redirect URI under Redirect URIs.
+        oauth_client_secret: In case there is no application client secret under Client credentials, please create a new one.
         oauth_configuration: Copy these values from the desired application in the %{application_link_text}.
         provider_configuration: Please make sure you have administration privileges in your SharePoint instance and the OpenProject integration app is installed before doing the setup.
+        tenant_id: Please copy the Directory (tenant) ID from the desired application and App registrations in the %{application_link_text}.
+        tenant_id_placeholder: Name or UUID
       type: 'Please make sure you have administration privileges in your Nextcloud instance and have the following application installed before doing the setup:'
       type_link_text: "“Integration OpenProject”"
     label_active: Active
