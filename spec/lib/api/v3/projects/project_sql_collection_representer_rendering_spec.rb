@@ -154,6 +154,13 @@ RSpec.describe API::V3::Projects::ProjectSqlCollectionRepresenter, "rendering" d
       let(:expected) { { total: 0 }.to_json }
 
       it_behaves_like "successful rendering"
+
+      context "if total is selected together with another property" do
+        let(:select) { { "total" => {}, "count" => {} } }
+        let(:expected) { { total: 0, count: 0 }.to_json }
+
+        it_behaves_like "successful rendering"
+      end
     end
   end
 
