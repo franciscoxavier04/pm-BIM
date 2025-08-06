@@ -36,6 +36,8 @@ class CustomStylesController < ApplicationController
 
   UNGUARDED_ACTIONS = %i[logo_download
                          export_logo_download
+                         export_cover_download
+                         export_footer_download
                          favicon_download
                          touch_icon_download].freeze
 

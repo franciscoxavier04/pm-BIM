@@ -107,18 +107,18 @@ module Exports::PDF::Components::Page
 
   def draw_footer_image
     footer_image = custom_footer_image
-    return if footer_image.nil?
-
     height = styles.page_footer[:size] || 0
-    return if height <= 0
+    return if footer_image.nil? || height <= 0
 
     image_obj, image_info = pdf.build_image_object(footer_image)
+    pdf.embed_image(image_obj, image_info, footer_image_embed_options(image_info, height))
+  end
+
+  def footer_image_embed_options(image_info, height)
     scale = height / image_info.height.to_f
     width = image_info.width.to_f * scale
-    left = pdf.bounds.left - width - height
-    top = styles.page_footer_offset + height - 1
-    pdf.embed_image image_obj, image_info, {
-      at: [left, top],
+    {
+      at: [pdf.bounds.left - width - height, styles.page_footer_offset + height - 1],
       height:,
       scale:,
       position: :right,
