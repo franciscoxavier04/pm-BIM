@@ -184,6 +184,11 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
       });
   }
 
+  public editorFocused():void {
+    window.OpenProject.pageState = 'edited';
+    this.editorFocus.emit();
+  }
+
   public async saveForm(evt?:SubmitEvent):Promise<void> {
     if (CkeditorAugmentedTextareaComponent.inFlight.has(this.formElement)) {
       return;
@@ -232,9 +237,11 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
     return editor;
   }
 
-  public syncToTextarea() {
-    window.OpenProject.pageState = 'edited';
+  public updateContent(value:string) {
+    this.wrappedTextArea.value = value;
+  }
 
+  public syncToTextarea() {
     try {
       this.wrappedTextArea.value = this.ckEditorInstance.getTransformedContent(true);
     } catch (e) {
