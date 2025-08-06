@@ -41,14 +41,31 @@ RSpec.describe Projects::UpdateContract do
       end
     end
 
+    let(:admin_only_custom_field) do
+      build_stubbed(:integer_project_custom_field, admin_only: true).tap do |cf|
+        cf.id = "1002"
+        allow_any_instance_of(CustomValue) # rubocop:disable RSpec/AnyInstance
+          .to receive(:custom_field).and_return(cf)
+      end
+    end
+
+    let(:not_enabled_custom_field) do
+      build_stubbed(:integer_project_custom_field).tap do |cf|
+        cf.id = "1003"
+        allow_any_instance_of(CustomValue) # rubocop:disable RSpec/AnyInstance
+          .to receive(:custom_field).and_return(cf)
+      end
+    end
+
     let(:project) do
       build_stubbed(:project,
                     active: project_active,
                     public: project_public,
                     status_code: project_status_code,
                     status_explanation: project_status_explanation).tap do |p|
-        allow(p).to receive_messages(available_custom_fields: [custom_field],
-                                     all_available_custom_fields: [custom_field])
+        allow(p).to receive_messages(available_custom_fields: [custom_field, admin_only_custom_field],
+                                     all_available_custom_fields: [custom_field, admin_only_custom_field,
+                                                                   not_enabled_custom_field])
         next unless project_changed
 
         # in order to actually have something changed
@@ -294,6 +311,92 @@ RSpec.describe Projects::UpdateContract do
 
           it_behaves_like "can not write", :custom_field_1001
           it_behaves_like "can not write", :name
+        end
+      end
+
+      context "with admin-only custom fields" do
+        shared_examples "admin-only custom field behavior" do
+          context "when user is admin" do
+            let(:current_user) { build_stubbed(:admin) }
+            let(:project_permissions) { %i(edit_project_attributes) }
+
+            it_behaves_like "can write", :custom_field_1002
+          end
+
+          context "when user is not admin" do
+            let(:current_user) { build_stubbed(:user) }
+            let(:project_permissions) { %i(edit_project_attributes) }
+
+            it_behaves_like "can not write", :custom_field_1002
+
+            context "with all permissions" do
+              let(:project_permissions) { %i(edit_project edit_project_attributes) }
+
+              it_behaves_like "can not write", :custom_field_1002
+            end
+          end
+        end
+
+        context "when project_attributes_only is true" do
+          let(:options) { { project_attributes_only: true } }
+
+          it_behaves_like "admin-only custom field behavior"
+        end
+
+        context "when project_attributes_only is false" do
+          let(:options) { { project_attributes_only: false } }
+
+          it_behaves_like "admin-only custom field behavior"
+        end
+      end
+
+      context "with not enabled custom fields" do
+        context "when project_attributes_only is true" do
+          let(:options) { { project_attributes_only: true } }
+
+          context "when user is admin" do
+            let(:current_user) { build_stubbed(:admin) }
+            let(:project_permissions) { %i(edit_project_attributes) }
+
+            it_behaves_like "can not write", :custom_field_1003
+          end
+
+          context "when user is not admin" do
+            let(:current_user) { build_stubbed(:user) }
+            let(:project_permissions) { %i(edit_project_attributes) }
+
+            it_behaves_like "can not write", :custom_field_1003
+
+            context "with all permissions" do
+              let(:project_permissions) { %i(edit_project edit_project_attributes) }
+
+              it_behaves_like "can not write", :custom_field_1003
+            end
+          end
+        end
+
+        context "when project_attributes_only is false (for API backward compatibility)" do
+          let(:options) { { project_attributes_only: false } }
+
+          context "when user is admin" do
+            let(:current_user) { build_stubbed(:admin) }
+            let(:project_permissions) { %i(edit_project edit_project_attributes) }
+
+            it_behaves_like "can write", :custom_field_1003
+          end
+
+          context "when user is not admin" do
+            let(:current_user) { build_stubbed(:user) }
+            let(:project_permissions) { %i(edit_project_attributes) }
+
+            it_behaves_like "can not write", :custom_field_1003
+
+            context "with all permissions" do
+              let(:project_permissions) { %i(edit_project edit_project_attributes) }
+
+              it_behaves_like "can write", :custom_field_1003
+            end
+          end
         end
       end
     end
