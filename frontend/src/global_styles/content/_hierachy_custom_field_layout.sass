@@ -32,18 +32,17 @@ body:has(.custom-fields-hierarchy-page)
   #content-body
     display: flex
     flex-direction: column
-    @media screen and (min-width: $breakpoint-md)
-      overflow-y: hidden
 
-.custom-fields-hierarchy-page
-  flex-grow: 1
+.custom-fields-hierarchy-page,
+.custom-fields-hierarchy-page--wrapper
+  overflow: hidden
+  height: 100%
 
   &--sidebar
     border-top-left-radius: var(--borderRadius-medium)
     border-top-right-radius: var(--borderRadius-medium)
+    overflow: auto
 
-  @media screen and (min-width: $breakpoint-md)
-    &--sidebar, &--main
-      height: calc(100dvh - 200px) // 200px is page header height + space around it
-      overflow-y: scroll
+  &--main
+    overflow: auto
 
