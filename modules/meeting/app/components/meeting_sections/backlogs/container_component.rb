@@ -45,7 +45,7 @@ module MeetingSections
     private
 
     def show?
-      !@meeting.closed? && !@meeting.template?
+      !@meeting.closed? && !@meeting.template? && @backlog
     end
 
     def wrapper_data_attributes
