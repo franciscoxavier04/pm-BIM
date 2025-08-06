@@ -31,8 +31,8 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%=
   component_wrapper(tag: "turbo-frame", class: "custom-fields-hierarchy-page--wrapper", refresh: :morph, data: { turbo_action: :advance }) do
-    render(Primer::Alpha::Layout.new(stacking_breakpoint: :md, classes: "custom-fields-hierarchy-page")) do |content|
-      content.with_main(classes: "custom-fields-hierarchy-page--main") do
+    render(Primer::Alpha::Layout.new(stacking_breakpoint: :md, overflow: :hidden, h: :full, classes: "custom-fields-hierarchy-page")) do |content|
+      content.with_main(overflow: :auto) do
         flex_layout do |container|
           container.with_row do
             render(Primer::OpenProject::SubHeader.new) do |subheader|
@@ -95,7 +95,7 @@ See COPYRIGHT and LICENSE files for more details.
         end
       end
 
-      content.with_sidebar(row_placement: :start, col_placement: :start, border: true, border_bottom: 0, p: 3, classes: "custom-fields-hierarchy-page--sidebar") do
+      content.with_sidebar(row_placement: :start, col_placement: :start, border: true, border_bottom: 0, p: 3, overflow: :auto, classes: "custom-fields-hierarchy-page--sidebar") do
         render Admin::CustomFields::Hierarchy::TreeViewComponent.new(custom_field: root.custom_field, active_item: model)
       end
     end

@@ -33,16 +33,11 @@ body:has(.custom-fields-hierarchy-page)
     display: flex
     flex-direction: column
 
-.custom-fields-hierarchy-page,
-.custom-fields-hierarchy-page--wrapper
-  overflow: hidden
-  height: 100%
-
+.custom-fields-hierarchy-page
   &--sidebar
     border-top-left-radius: var(--borderRadius-medium)
     border-top-right-radius: var(--borderRadius-medium)
-    overflow: auto
 
-  &--main
-    overflow: auto
-
+  &--wrapper
+    height: 100%
+    overflow: hidden
