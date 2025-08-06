@@ -28,35 +28,35 @@
  * ++
  */
 
-import { Controller } from '@hotwired/stimulus';
-import { useMatchMedia } from 'stimulus-use';
-import { ThemeUtils } from 'core-app/core/setup/globals/theme-utils';
+export type OpTheme = 'light' | 'light_high_contrast' | 'dark';
 
-export default class AutoThemeSwitcher extends Controller {
-  static values = {
-    mode: String,
-  };
-
-  declare readonly modeValue:string;
-  private themeUtils:ThemeUtils;
-
-  connect() {
-    if (this.modeValue !== 'sync_with_os') return;
-
-    this.themeUtils = new ThemeUtils();
-
-    useMatchMedia(this, {
-      mediaQueries: {
-        lightMode: '(prefers-color-scheme: light)',
-      },
-    });
+export class ThemeUtils {
+  public applySystemThemeImmediately():void {
+    const theme = this.detectSystemTheme();
+    this.applyThemeToBody(theme);
   }
 
-  isLightMode():void {
-    this.themeUtils.applyThemeToBody('light');
+  public detectSystemTheme():OpTheme {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
 
-  notLightMode():void {
-    this.themeUtils.applyThemeToBody('dark');
+  public applyThemeToBody(theme:OpTheme):void {
+    const increaseContrast = window.matchMedia('(prefers-contrast: more)').matches;
+    const body = document.body;
+
+    switch (theme) {
+      case 'dark':
+        body.setAttribute('data-color-mode', 'dark');
+        body.setAttribute('data-dark-theme', 'dark');
+        body.removeAttribute('data-light-theme');
+        break;
+      case 'light':
+        body.setAttribute('data-color-mode', 'light');
+        body.setAttribute('data-light-theme', increaseContrast ? 'light_high_contrast' : 'light');
+        body.removeAttribute('data-dark-theme');
+        break;
+      default: // Do nothing
+        break;
+    }
   }
 }

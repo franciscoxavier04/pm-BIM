@@ -33,7 +33,7 @@ import { BlockNoteView } from "@blocknote/mantine";
 import { getDefaultReactSlashMenuItems, SuggestionMenuController, useCreateBlockNote } from "@blocknote/react";
 import { dummyBlockSpec, getDefaultOpenProjectSlashMenuItems, openProjectWorkPackageBlockSpec } from "op-blocknote-extensions";
 import { useEffect, useState } from "react";
-import { OpTheme } from "../stimulus/controllers/auto-theme-switcher.controller";
+import { OpTheme } from "core-app/core/setup/globals/theme-utils";
 
 export interface OpBlockNoteContainerProps {
   inputField: HTMLInputElement;
