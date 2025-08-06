@@ -192,13 +192,13 @@ class CustomStylesController < ApplicationController
   end
 
   def custom_style_params
-    params.require(:custom_style).permit(:logo, :remove_logo,
-                                         :export_logo, :remove_export_logo,
-                                         :export_cover, :remove_export_cover,
-                                         :export_cover_text_color,
-                                         :export_footer, :remove_export_footer,
-                                         :favicon, :remove_favicon,
-                                         :touch_icon, :remove_touch_icon)
+    params.expect(custom_style: %i[logo remove_logo
+                                   export_logo remove_export_logo
+                                   export_cover remove_export_cover
+                                   export_cover_text_color
+                                   export_footer remove_export_footer
+                                   favicon remove_favicon
+                                   touch_icon remove_touch_icon])
   end
 
   def file_download(path_method)
