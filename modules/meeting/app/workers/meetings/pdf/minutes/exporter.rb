@@ -89,7 +89,6 @@ module Meetings::PDF::Minutes
       write_agenda
       write_minutes_headers
       write_minutes_footers
-      write_footer_logo
     end
 
     def write_heading(text)
@@ -157,14 +156,7 @@ module Meetings::PDF::Minutes
     def write_minutes_footers
       pdf.repeat lambda { |pg| header_footer_filter_pages.exclude?(pg) }, dynamic: true do
         draw_minutes_footer_on_page
-      end
-    end
-
-    def write_footer_logo
-      footer_image = File.join(File.dirname(File.expand_path(__FILE__)), "footer.png")
-      image_obj, image_info = pdf.build_image_object(footer_image)
-      pdf.repeat lambda { |pg| header_footer_filter_pages.exclude?(pg) } do
-        pdf.embed_image image_obj, image_info, { at: [-styles.page_margin_left, -23], height: 8 }
+        draw_footer_image
       end
     end
 

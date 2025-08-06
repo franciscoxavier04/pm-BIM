@@ -36,7 +36,6 @@ class CustomStylesController < ApplicationController
 
   UNGUARDED_ACTIONS = %i[logo_download
                          export_logo_download
-                         export_cover_download
                          favicon_download
                          touch_icon_download].freeze
 
@@ -108,6 +107,10 @@ class CustomStylesController < ApplicationController
     file_download(:export_cover_path)
   end
 
+  def export_footer_download
+    file_download(:export_footer_path)
+  end
+
   def favicon_download
     file_download(:favicon_path)
   end
@@ -126,6 +129,10 @@ class CustomStylesController < ApplicationController
 
   def export_cover_delete
     file_delete(:remove_export_cover)
+  end
+
+  def export_footer_delete
+    file_delete(:remove_export_footer)
   end
 
   def favicon_delete
@@ -187,6 +194,7 @@ class CustomStylesController < ApplicationController
                                          :export_logo, :remove_export_logo,
                                          :export_cover, :remove_export_cover,
                                          :export_cover_text_color,
+                                         :export_footer, :remove_export_footer,
                                          :favicon, :remove_favicon,
                                          :touch_icon, :remove_touch_icon)
   end

@@ -90,7 +90,40 @@ module Exports::PDF::Components::Page
   def write_footers!
     pdf.repeat lambda { |pg| header_footer_filter_pages.exclude?(pg) }, dynamic: true do
       draw_footer_on_page
+      draw_footer_image
     end
+  end
+
+  def custom_footer_image
+    return unless CustomStyle.current.present? &&
+                  CustomStyle.current.export_footer.present? && CustomStyle.current.export_footer.local_file.present?
+
+    image_file = CustomStyle.current.export_footer.local_file.path
+    content_type = OpenProject::ContentTypeDetector.new(image_file).detect
+    return unless pdf_embeddable?(content_type)
+
+    image_file
+  end
+
+  def draw_footer_image
+    footer_image = custom_footer_image
+    return if footer_image.nil?
+
+    height = styles.page_footer[:size] || 0
+    return if height <= 0
+
+    image_obj, image_info = pdf.build_image_object(footer_image)
+    scale = height / image_info.height.to_f
+    width = image_info.width.to_f * scale
+    left = pdf.bounds.left - width - height
+    top = styles.page_footer_offset + height - 1
+    pdf.embed_image image_obj, image_info, {
+      at: [left, top],
+      height:,
+      scale:,
+      position: :right,
+      vposition: :bottom
+    }
   end
 
   def draw_footer_on_page
