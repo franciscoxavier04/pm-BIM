@@ -122,6 +122,8 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
     attachments: this.I18n.t('js.label_attachments'),
   };
 
+  private focused = false;
+
   // Reference to the actual ckeditor instance component
   @ViewChild(OpCkeditorComponent, { static: true }) private ckEditorInstance:OpCkeditorComponent;
 
@@ -185,8 +187,13 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
   }
 
   public editorFocused():void {
-    window.OpenProject.pageState = 'edited';
+    this.focused = true;
     this.editorFocus.emit();
+  }
+
+  public editorBlurred():void {
+    this.focused = false;
+    this.editorBlur.emit();
   }
 
   public async saveForm(evt?:SubmitEvent):Promise<void> {
@@ -238,6 +245,12 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
   }
 
   public updateContent(value:string) {
+    // Update the page state to edited
+    // but only if we're focused in the editor
+    if (this.focused) {
+      window.OpenProject.pageState = 'edited';
+    }
+
     this.wrappedTextArea.value = value;
   }
 
