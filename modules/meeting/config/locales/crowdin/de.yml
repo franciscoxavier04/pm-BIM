@@ -99,7 +99,7 @@ de:
     meeting_agenda_opened: Agenda geöffnet
     meeting_minutes: Protokoll bearbeitet
     meeting_minutes_created: Protokoll erstellt
-  error_notification: "Failed to send notification."
+  error_notification: "Die Benachrichtigung konnte nicht gesendet werden."
   error_notification_with_errors: "Benachrichtigungversenden fehlgeschlagen. Folgende Empfänger konnten nicht benachrichtigt werden: %{recipients}"
   label_meeting: "Besprechung"
   label_meeting_plural: "Besprechungen"
@@ -216,7 +216,7 @@ de:
         body: "Die Besprechung '%{title}' wurde durch %{actor} verschoben."
         old_date_time: "Alte(s) Datum/Zeit"
         new_date_time: "Neue(s) Datum/Zeit"
-    label_mail_all_participants: "Email calendar invite to all participants"
+    label_mail_all_participants: "E-Mail-Kalendereinladung an alle Teilnehmer"
     types:
       one_time: "Einmalig"
       recurring: "Terminserie"
@@ -280,7 +280,7 @@ de:
           disable: "E-Mail-Kalender-Aktualisierungen deaktivieren?"
         message:
           enable: >
-            All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants. Once enabled, an email will be sent out immediately to all participants.
+            Alle Teilnehmer erhalten aktualisierte Kalendereinladungen per E-Mail, wenn sich das Datum, die Uhrzeit, der Ort oder die Teilnehmer der Besprechung geändert haben. Sobald die Funktion aktiviert ist, wird sofort eine E-Mail an alle Teilnehmer gesendet.
           disable: >
             Die Teilnehmer erhalten keine aktualisierten Kalendereinladungen mehr per E-Mail, wenn sich das Datum, die Uhrzeit, der Ort oder die Teilnehmer der Besprechung geändert haben. Wenn sie bereits eine Einladung für diese Besprechung hatten, wird diese nicht mehr aktualisiert und könnte veraltete Informationen anzeigen.
         confirm_label:
@@ -389,7 +389,7 @@ de:
       confirm_button: "Besprechung absagen"
     end_series_dialog:
       title: "Terminserie beenden"
-  notice_successful_notification: "Email calendar update sent to all participants"
+  notice_successful_notification: "E-Mail-Kalendereinladung an alle Teilnehmer gesendet"
   notice_timezone_missing: Keine Zeitzone eingestellt und daher %{zone} angenommen. Um Ihre Zeitzone einzustellen, klicken Sie bitte hier.
   notice_meeting_updated: "Diese Seite wurde von einem anderen Benutzer verändert. Laden Sie neu, um die Änderungen zu sehen."
   permission_create_meetings: "Besprechungen erstellen"

@@ -428,7 +428,7 @@ ja:
     member_connection_status:
       connected: Connected
       connected_no_permissions: User role has no storages permissions
-      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
+      not_connectable: 接続できない。ストレージはSSOプロバイダを介してログインする必要がありますが、ユーザーはSSOを介してログインしていません。
       not_connected: Not connected. The user should login to the storage via the following %{link}.
       not_connected_sso: Not yet connected, SSO should automatically connect them, once looking at files.
     members_no_results: No members to display.

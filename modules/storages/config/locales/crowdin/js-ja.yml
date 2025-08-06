@@ -75,7 +75,7 @@ ja:
           413: >
             Your file (%{fileName}) is bigger than what OpenProject can upload to %{storageType}. You can upload it directly to %{storageType} first and then link the file.
           507: >
-            Your file (%{fileName}) is bigger than the storage quota allows. Contact your administrator to modify this quota.
+            ファイル (%{fileName}) の容量がストレージ・クォータの許容量を超えています。管理者に連絡して、このクォータを変更してください。
           detail:
             nextcloud: >
               Please check that the latest version of the Nextcloud App "OpenProject Integration" is installed and contact your administrator for more information.
@@ -86,4 +86,4 @@ ja:
           view_not_allowed: "このファイルを閲覧する権限がありません。"
           not_found: "This file cannot be found."
         already_linked_file: "This file is already linked to this work package."
-        already_linked_directory: "This directory is already linked to this work package."
+        already_linked_directory: "このディレクトリはすでにこのワークパッケージにリンクされている。"
