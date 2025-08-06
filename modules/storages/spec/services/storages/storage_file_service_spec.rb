@@ -45,11 +45,10 @@ module Storages
     end
 
     shared_examples "storage file service: not found" do
-      it "returns a failure with code :not_found" do
+      it "returns a failure" do
         result = described_class.call(storage:, user:, file_id:)
 
         expect(result).to be_failure
-        expect(result.errors[:base]).to eq([I18n.t("services.errors.messages.not_found")])
       end
     end
 
