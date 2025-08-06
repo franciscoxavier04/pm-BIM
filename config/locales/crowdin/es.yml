@@ -120,34 +120,34 @@ es:
         label_token: "Token"
         one_time_hint: "Esta es la única vez que verá este token. Asegúrese de copiarlo ahora."
       delete_scim_client_dialog_component:
-        title: "Delete SCIM-client"
-        heading: "Are you sure you want to delete this SCIM-client?"
-        description: "Users managed by this SCIM-client can no longer be updated by it."
+        title: "Delete SCIM client"
+        heading: "Are you sure you want to delete this SCIM client?"
+        description: "Users managed by this SCIM client can no longer be updated by it."
       edit:
-        label_delete_scim_client: "Delete SCIM-client"
+        label_delete_scim_client: "Delete SCIM client"
       form:
         auth_provider_description: "Este es el servicio que los usuarios añadidos por el proveedor SCIM utilizarán para autenticarse en OpenProject."
-        authentication_method_description_html: "This is how the SCIM-client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description: "Please refer to our [documentation on configuring SCIM-clients](docs_url) for more information on these configuration options."
-        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM-client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
+        authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
+        description: "Please refer to our [documentation on configuring SCIM clients](docs_url) for more information on these configuration options."
+        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
         name_description: "Elija un nombre que ayude a otros administradores a entender mejor por qué se configuró este cliente."
       index:
-        description: "SCIM-clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
-        label_create_button: "Add SCIM-client"
+        description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
+        label_create_button: "Add SCIM client"
       new:
-        title: "New SCIM-client"
+        title: "New SCIM client"
       revoke_static_token_dialog_component:
         confirm_button: "Revocar"
         title: "Revocar token estático"
         heading: "¿Seguro que desea revocar este token?"
-        description: "The SCIM-client that uses this token will no longer be able to access OpenProject's SCIM server API."
+        description: "The SCIM client that uses this token will no longer be able to access OpenProject's SCIM server API."
       table_component:
         blank_slate:
-          title: "No SCIM-clients configured yet"
+          title: "No SCIM clients configured yet"
           description: "Añada clientes para verlos aquí"
         user_count: "Usuarios"
       token_list_component:
-        description: "The tokens you generate here can be passed by a SCIM-client to access the OpenProject SCIM API."
+        description: "The tokens you generate here can be passed by a SCIM client to access the OpenProject SCIM API."
         heading: "Tokens"
         label_add_token: "Token"
         label_aria_add_token: "Añadir token"
@@ -950,7 +950,7 @@ es:
         attribute_name: "Atributo"
         help_text: "Texto de ayuda"
       auth_provider:
-        scim_clients: "SCIM-clients"
+        scim_clients: "SCIM clients"
       capability:
         context: "Contexto"
       changeset:
@@ -1648,8 +1648,8 @@ es:
         one: "Rol"
         other: "Roles"
       scim_client:
-        one: "SCIM-client"
-        other: "SCIM-clients"
+        one: "SCIM client"
+        other: "SCIM clients"
       status: "Estado del paquete de trabajo"
       token/api:
         one: Token de acceso
@@ -2209,7 +2209,7 @@ es:
         title: "Inicio de sesión único para almacenamiento en la nube"
         description: "Habilite una autenticación fluida y segura para su almacenamiento Nextcloud con el inicio de sesión único. Simplifique la gestión del acceso y mejore la comodidad de los usuarios."
       scim_api:
-        title: "SCIM-clients"
+        title: "SCIM clients"
         description: "Automatice la gestión de usuarios en OpenProject integrando a la perfección servicios de identidad externos como Microsoft Entra o Keycloak a través de nuestra API del servidor SCIM. Disponible a partir del plan corporativo Enterprise."
       virus_scanning:
         description: "Asegúrese de que los archivos cargados en OpenProject se analizan en busca de virus antes de que otros usuarios puedan acceder a ellos."
