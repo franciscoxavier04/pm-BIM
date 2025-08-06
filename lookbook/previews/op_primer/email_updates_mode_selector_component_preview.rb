@@ -32,7 +32,7 @@ module OpPrimer
   # @logical_path OpenProject/Primer
   class EmailUpdatesModeSelectorComponentPreview < Lookbook::Preview
     # See the [component documentation](/lookbook/pages/components/email_updates_mode_selector) for more details.
-    # @param toggle [Boolean]
+    # @param enabled [Boolean]
     # @param path [String]
     # @param title [String]
     # @param enabled_description [String]
@@ -41,7 +41,7 @@ module OpPrimer
     # @param show_button [Boolean]
     # @param method [Symbol] select [get, post, patch]
     def playground(
-      toggle: true,
+      enabled: true,
       path: "/projects/demo-project/meetings/113/toggle_notifications",
       title: "Sidebar component title",
       enabled_description: "Email updates are enabled for all users.",
@@ -51,7 +51,7 @@ module OpPrimer
       method: :patch
     )
       render OpPrimer::EmailUpdatesModeSelectorComponent.new(
-        toggle:,
+        enabled:,
         path:,
         title:,
         enabled_description:,
@@ -62,55 +62,46 @@ module OpPrimer
       )
     end
 
-    def enabled(toggle: true, path: "", title: "Sidebar component title",
-                enabled_description: "Email updates are enabled for all users.",
-                disabled_description: "Email updates are disabled for all users.")
+    def enabled
       render OpPrimer::EmailUpdatesModeSelectorComponent.new(
-        toggle:,
-        path:,
-        title:,
-        enabled_description:,
-        disabled_description:
+        enabled: true,
+        path: "/projects/demo-project/meetings/113/toggle_notifications",
+        title: "Sidebar component title",
+        enabled_description: "Email updates are enabled for all users.",
+        disabled_description: "Email updates are disabled for all users."
       )
     end
 
-    def disabled(toggle: false, path: "", title: "Sidebar component title",
-                 enabled_description: "Email updates are enabled for all users.",
-                 disabled_description: "Email updates are disabled for all users.")
+    def disabled
       render OpPrimer::EmailUpdatesModeSelectorComponent.new(
-        toggle:,
-        path:,
-        title:,
-        enabled_description:,
-        disabled_description:
+        enabled: false,
+        path: "/projects/demo-project/meetings/113/toggle_notifications",
+        title: "Sidebar component title",
+        enabled_description: "Email updates are enabled for all users.",
+        disabled_description: "Email updates are disabled for all users."
       )
     end
 
-    def with_conditional_alt_text(toggle: true, path: "", title: "Sidebar component title",
-                                  enabled_description: "Email updates are enabled for all users.",
-                                  disabled_description: "Email updates are disabled for all users.",
-                                  alt_text: "To change this, edit the series template.", show_button: false)
+    def with_conditional_alt_text
       render OpPrimer::EmailUpdatesModeSelectorComponent.new(
-        toggle:,
-        path:,
-        title:,
-        enabled_description:,
-        disabled_description:,
-        alt_text:,
-        show_button:
+        enabled: true,
+        path: "/projects/demo-project/meetings/113/toggle_notifications",
+        title: "Sidebar component title",
+        enabled_description: "Email updates are enabled for all users.",
+        disabled_description: "Email updates are disabled for all users.",
+        alt_text: "To change this, edit the series template.",
+        show_button: false
       )
     end
 
-    def with_different_button_method(toggle: true, path: "", title: "Sidebar component title",
-                                     enabled_description: "Email updates are enabled for all users.",
-                                     disabled_description: "Email updates are disabled for all users.", method: :patch)
+    def with_different_button_method
       render OpPrimer::EmailUpdatesModeSelectorComponent.new(
-        toggle:,
-        path:,
-        title:,
-        enabled_description:,
-        disabled_description:,
-        method:
+        enabled: true,
+        path: "/projects/demo-project/meetings/113/toggle_notifications",
+        title: "Sidebar component title",
+        enabled_description: "Email updates are enabled for all users.",
+        disabled_description: "Email updates are disabled for all users.",
+        method: :patch
       )
     end
   end

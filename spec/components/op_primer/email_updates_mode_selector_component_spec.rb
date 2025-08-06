@@ -31,7 +31,7 @@
 require "rails_helper"
 
 RSpec.describe OpPrimer::EmailUpdatesModeSelectorComponent, type: :component do
-  let(:toggle) { true }
+  let(:enabled) { true }
   let(:path) { "example.com" }
   let(:title) { "Title" }
   let(:enabled_description) { "Enabled description" }
@@ -41,7 +41,7 @@ RSpec.describe OpPrimer::EmailUpdatesModeSelectorComponent, type: :component do
 
   subject(:component) do
     described_class.new(
-      toggle:,
+      enabled:,
       path:,
       title:,
       enabled_description:,
@@ -51,7 +51,7 @@ RSpec.describe OpPrimer::EmailUpdatesModeSelectorComponent, type: :component do
     )
   end
 
-  context "when toggle is true" do
+  context "when enabled is true" do
     it "renders the enabled variant" do
       render_inline(component)
 
@@ -64,8 +64,8 @@ RSpec.describe OpPrimer::EmailUpdatesModeSelectorComponent, type: :component do
     end
   end
 
-  context "when toggle is false" do
-    let(:toggle) { false }
+  context "when enabled is false" do
+    let(:enabled) { false }
 
     it "renders the disabled variant" do
       render_inline(component)

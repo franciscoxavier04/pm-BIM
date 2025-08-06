@@ -47,7 +47,7 @@ module Storages
       def call
         component_wrapper do
           render OpPrimer::EmailUpdatesModeSelectorComponent.new(
-            toggle: @storage.health_notifications_should_be_sent?,
+            enabled: @storage.health_notifications_should_be_sent?,
             path: change_health_notifications_enabled_admin_settings_storage_path(@storage),
             title: I18n.t("storages.health_email_notifications.title"),
             enabled_description: I18n.t("storages.health_email_notifications.description_enabled"),

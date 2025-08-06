@@ -33,7 +33,7 @@ module OpPrimer
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
-    def initialize(toggle:, path:, title:, enabled_description:, disabled_description:, alt_text: nil, show_button: true,
+    def initialize(enabled:, path:, title:, enabled_description:, disabled_description:, alt_text: nil, show_button: true,
                    method: :get)
       super
 
@@ -42,7 +42,7 @@ module OpPrimer
 
       end
 
-      @toggle = toggle
+      @enabled = enabled
       @path = path
       @title = title
       @enabled_description = enabled_description
@@ -54,22 +54,24 @@ module OpPrimer
 
     private
 
+    def key
+      @key ||= @enabled ? "enabled" : "disabled"
+    end
+
     def button_icon
-      @toggle ? :"bell-slash" : :bell
+      @enabled ? :"bell-slash" : :bell
     end
 
     def button_label
-      label_key = @toggle ? "disable" : "enable"
-      I18n.t("meeting.notifications.sidepanel.button.#{label_key}")
+      I18n.t("email_calendar_updates.button.#{key}")
     end
 
     def state
-      key = @toggle ? "enabled" : "disabled"
-      I18n.t("meeting.notifications.sidepanel.state.#{key}")
+      I18n.t("email_calendar_updates.state.#{key}")
     end
 
     def description
-      @toggle ? @enabled_description : @disabled_description
+      @enabled ? @enabled_description : @disabled_description
     end
   end
 end

@@ -43,7 +43,7 @@ module Meetings
 
     def email_updates_mode_selector
       OpPrimer::EmailUpdatesModeSelectorComponent.new(
-        toggle: @meeting.notify?,
+        enabled: @meeting.notify?,
         path: toggle_notifications_dialog_project_meeting_path(@meeting.project, @meeting),
         title: I18n.t("meeting.notifications.sidepanel.title"),
         enabled_description: I18n.t("meeting.notifications.sidepanel.description.enabled"),
