@@ -317,6 +317,10 @@ module Exports::PDF::Common::Common
     pdf.page_number + @page_count - (with_cover? ? 1 : 0)
   end
 
+  def total_page_nr
+    @total_page_nr - (with_cover? ? 1 : 0) if @total_page_nr
+  end
+
   def write_horizontal_line(y_position, height, color, left_padding: 0)
     draw_horizontal_line(
       y_position,

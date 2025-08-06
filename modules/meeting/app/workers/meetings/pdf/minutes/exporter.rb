@@ -143,7 +143,7 @@ module Meetings::PDF::Minutes
     end
 
     def write_minutes_headers_text
-      pdf.repeat lambda { |pg| pg == 1 } do
+      pdf.repeat lambda { |pg| pg == 1 }, dynamic: true do
         draw_header_text_multiline_left(
           text: page_header_text,
           text_style: styles.page_header,
@@ -191,14 +191,10 @@ module Meetings::PDF::Minutes
     end
 
     def footer_page_nr
-      "S. #{current_page_nr}#{total_page_nr_text}"
-    end
-
-    def total_page_nr_text
       if @total_page_nr
-        " von #{@total_page_nr - (with_cover? ? 1 : 0)}"
+        I18n.t("meeting.export.minutes.footer_page_numbers", current_page: current_page_nr, total_pages: total_page_nr)
       else
-        ""
+        current_page_nr.to_s
       end
     end
 
@@ -208,18 +204,6 @@ module Meetings::PDF::Minutes
 
     def title
       build_pdf_filename(meeting.title)
-    end
-
-    def with_participants?
-      ActiveModel::Type::Boolean.new.cast(options[:participants])
-    end
-
-    def with_attachments_list?
-      ActiveModel::Type::Boolean.new.cast(options[:attachments])
-    end
-
-    def with_backlog?
-      ActiveModel::Type::Boolean.new.cast(options[:backlog])
     end
 
     def with_outcomes?

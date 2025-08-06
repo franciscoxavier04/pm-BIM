@@ -46,7 +46,7 @@ module Meetings::PDF::Minutes
     def write_page_subheading
       style = styles.page_subheading
       with_vertical_margin(styles.page_subheading_margins) do
-        pdf.formatted_text([style.merge({ text: "Protokoll" })], style)
+        pdf.formatted_text([style.merge({ text: I18n.t("meeting.export.minutes.title") })], style)
       end
     end
 

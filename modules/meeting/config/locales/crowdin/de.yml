@@ -241,6 +241,7 @@ de:
     export:
       your_meeting_export: "Besprechung wird exportiert"
       minutes:
+        footer_page_numbers: "S. %{current_page} von %{total_pages}"
         author: "Verfasser:in"
         date: "Datum"
         time: "Zeit"

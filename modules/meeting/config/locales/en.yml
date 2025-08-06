@@ -262,6 +262,7 @@ en:
     export:
       your_meeting_export: "Meeting is being exported"
       minutes:
+        footer_page_numbers: "P. %{current_page} of %{total_pages}"
         author: "Author"
         date: "Date"
         time: "Time"
