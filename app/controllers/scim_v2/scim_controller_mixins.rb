@@ -30,29 +30,65 @@
 
 module ScimV2
   module ScimControllerMixins
-    def self.included(base)
-      base.prepend(Overwrites)
-    end
-
-    module Overwrites
-      # Completely overwriting authenticate method of Scimitar
-      def authenticate
-        if !EnterpriseToken.allows_to?(:scim_api) || !OpenProject::FeatureDecisions.scim_api_active?
-          return handle_scim_error(Scimitar::AuthenticationError.new)
-        end
-
-        User.current = warden.authenticate!(scope: :scim_v2)
-
-        # Only a ServiceAccount associated with a ScimClient can use SCIM Server API
-        unless User.current.respond_to?(:service) && User.current.service.is_a?(ScimClient)
-          handle_scim_error(Scimitar::AuthenticationError.new)
-        end
+    module ApplicationControllerMixin
+      def self.included(base)
+        base.prepend(Overwrites)
       end
 
-      private
+      module Overwrites
+        # Completely overwriting authenticate method of Scimitar
+        def authenticate
+          if !EnterpriseToken.allows_to?(:scim_api) || !OpenProject::FeatureDecisions.scim_api_active?
+            return handle_scim_error(Scimitar::AuthenticationError.new)
+          end
 
-      def warden
-        request.env["warden"]
+          user = warden.authenticate(scope: :scim_v2)
+          if user == nil
+            throw(:warden) unless available_publically?
+          else
+            User.current = user
+            # Only a ServiceAccount associated with a ScimClient can use SCIM Server API
+            unless User.current.respond_to?(:service) && User.current.service.is_a?(ScimClient)
+              handle_scim_error(Scimitar::AuthenticationError.new)
+            end
+          end
+        end
+
+        def available_publically?
+          false
+        end
+
+        private
+
+        def warden
+          request.env["warden"]
+        end
+      end
+    end
+
+    module ServiceProviderConfigurationControllerMixin
+      def self.included(base)
+        base.prepend(Overwrites)
+      end
+
+      module Overwrites
+        def show
+          if User.current == User.anonymous
+            if warden.winning_strategy.blank? # it means authorization header was absent. So, there is no appropriate strategy
+              render json: ScimitarSchemaExtension::LimitedServiceProviderConfiguration.new
+            else
+              throw(:warden)
+            end
+          else
+            super
+          end
+        end
+
+        private
+
+        def available_publically?
+          true
+        end
       end
     end
   end

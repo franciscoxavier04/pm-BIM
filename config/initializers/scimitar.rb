@@ -31,10 +31,14 @@
 Rails.application.config.to_prepare do
   Scimitar.service_provider_configuration = Scimitar::ServiceProviderConfiguration.new(
     patch: Scimitar::Supportable.supported,
-    authenticationSchemes: [Scimitar::AuthenticationScheme.bearer]
+    authenticationSchemes: ScimitarSchemaExtension::AUTHENTICATION_SCHEMES
   )
   Scimitar.engine_configuration = Scimitar::EngineConfiguration.new(
-    application_controller_mixin: ScimV2::ScimControllerMixins
+    application_controller_mixin: ScimV2::ScimControllerMixins::ApplicationControllerMixin
+  )
+
+  Scimitar::ServiceProviderConfigurationsController.include(
+    ScimV2::ScimControllerMixins::ServiceProviderConfigurationControllerMixin
   )
 
   Scimitar::Schema::User.singleton_class.class_eval do
