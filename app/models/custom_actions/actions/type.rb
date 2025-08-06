@@ -49,7 +49,7 @@ class CustomActions::Actions::Type < CustomActions::Actions::Base
 
   def associated
     ::Type
-      .select(:id, :name)
+      .select(:id, :name, :builtin)
       .order(:position)
       .map { |u| [u.id, u.name] }
   end

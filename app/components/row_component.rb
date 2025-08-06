@@ -60,11 +60,23 @@ class RowComponent < ApplicationComponent
     []
   end
 
+  def row_html_attributes
+    {
+      id: row_css_id,
+      class: row_css_class,
+      data: row_data_attributes
+    }.compact
+  end
+
   def row_css_id
     nil
   end
 
   def row_css_class
+    nil
+  end
+
+  def row_data_attributes
     nil
   end
 

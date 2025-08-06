@@ -258,6 +258,26 @@ RSpec.describe WorkPackageTypes::TypesController do
         end
       end
 
+      describe "destroy builtin type should fail" do
+        let(:builtin_type) { create(:type, name: "Risk", builtin: "risk") }
+        let(:params) { { "id" => builtin_type.id } }
+
+        before do
+          delete :destroy, params:
+        end
+
+        it { expect(response).to be_redirect }
+        it { expect(response).to redirect_to(types_path) }
+
+        it "shows builtin error message" do
+          expect(flash[:error]).to eq(I18n.t(:error_can_not_delete_builtin_type))
+        end
+
+        it "is still present in the database" do
+          expect(Type.find_by(builtin: "risk")).to be_present
+        end
+      end
+
       describe "destroy type in use should fail" do
         let(:archived_project) do
           create(:project,

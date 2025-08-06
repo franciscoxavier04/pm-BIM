@@ -34,6 +34,10 @@ module WorkPackageTypes
       include ApplicationHelper
       include TypesHelper
 
+      def row_data_attributes
+        { test_selector: "work-package-type-row-#{model.id}" }
+      end
+
       def column_css_classes
         super.merge(
           name: "timelines-pet-name",
@@ -82,6 +86,7 @@ module WorkPackageTypes
 
       def delete_link
         return if model.is_standard?
+        return if model.builtin?
 
         link_to(
           "",

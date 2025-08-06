@@ -106,11 +106,8 @@ module Redmine::MenuManager::TopMenu::QuickAddMenu
   def work_package_quick_add_items
     return unless any_types?
 
-    visible_types
-      .pluck(:id, :name)
-      .uniq
-      .map do |id, name|
-      work_package_create_link(id, name)
+    visible_types.map do |type|
+      work_package_create_link(type)
     end
   end
 
@@ -124,15 +121,15 @@ module Redmine::MenuManager::TopMenu::QuickAddMenu
     end.to_a
   end
 
-  def work_package_create_link(type_id, type_name)
+  def work_package_create_link(type)
     if in_project_context?
-      { caption: type_name,
-        href: new_project_work_packages_path(project_id: @project.identifier, type: type_id),
-        classes: "__hl_inline_type_#{type_id}" }
+      { caption: type.name,
+        href: new_project_work_packages_path(project_id: @project.identifier, type:),
+        classes: "__hl_inline_type_#{type.id}" }
     else
-      { caption: type_name,
-        href: new_work_packages_path(type: type_id),
-        classes: "__hl_inline_type_#{type_id}" }
+      { caption: type.name,
+        href: new_work_packages_path(type:),
+        classes: "__hl_inline_type_#{type.id}" }
     end
   end
 
