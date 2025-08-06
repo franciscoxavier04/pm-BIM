@@ -30,7 +30,6 @@
 
 import { Controller } from '@hotwired/stimulus';
 import { useMatchMedia } from 'stimulus-use';
-import { ThemeUtils } from 'core-app/core/setup/globals/theme-utils';
 
 export default class AutoThemeSwitcher extends Controller {
   static values = {
@@ -38,12 +37,9 @@ export default class AutoThemeSwitcher extends Controller {
   };
 
   declare readonly modeValue:string;
-  private themeUtils:ThemeUtils;
 
   connect() {
     if (this.modeValue !== 'sync_with_os') return;
-
-    this.themeUtils = new ThemeUtils();
 
     useMatchMedia(this, {
       mediaQueries: {
@@ -53,10 +49,10 @@ export default class AutoThemeSwitcher extends Controller {
   }
 
   isLightMode():void {
-    this.themeUtils.applyThemeToBody('light');
+    window.OpenProject.theme.applyThemeToBody('light');
   }
 
   notLightMode():void {
-    this.themeUtils.applyThemeToBody('dark');
+    window.OpenProject.theme.applyThemeToBody('dark');
   }
 }
