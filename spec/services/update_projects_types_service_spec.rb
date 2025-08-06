@@ -128,7 +128,7 @@ RSpec.describe UpdateProjectsTypesService do
         allow(project).to receive(:errors).and_return(errors)
 
         expect(subject).to be_falsey
-        expect(errors).to have_received(:add).with(:types, :in_use_by_work_packages, types: type.name)
+        expect(errors).to have_received(:add).with(:types, :in_use_by_work_packages, types: type.human_name)
         expect(project).not_to have_received(:type_ids=)
         expect(project).not_to have_received(:work_package_custom_field_ids=)
       end

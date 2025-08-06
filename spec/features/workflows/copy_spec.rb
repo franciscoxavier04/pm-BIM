@@ -57,7 +57,7 @@ RSpec.describe "Workflow copy" do
       expect(page).to have_content("--- #{I18n.t(:actionview_instancetag_blank_option)} ---")
     end
     within("#source_type_id") do
-      expect(page).to have_content(type.name)
+      expect(page).to have_content(type.human_name)
       expect(page).to have_content("--- #{I18n.t(:actionview_instancetag_blank_option)} ---")
     end
   end

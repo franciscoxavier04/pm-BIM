@@ -56,22 +56,22 @@ RSpec.describe "types", :js do
     project_type_settings_page.visit!
 
     expect(page)
-      .to have_unchecked_field(type.name)
+      .to have_unchecked_field(type.human_name)
     expect(page)
-      .to have_checked_field(active_type.name)
+      .to have_checked_field(active_type.human_name)
 
     # switch enabled types
-    check(type.name)
-    uncheck(active_type.name)
+    check(type.human_name)
+    uncheck(active_type.human_name)
 
     project_type_settings_page.save!
 
     project_type_settings_page.expect_and_dismiss_flash(message: "Successful update.")
 
     expect(page)
-      .to have_checked_field(type.name)
+      .to have_checked_field(type.human_name)
     expect(page)
-      .to have_unchecked_field(active_type.name)
+      .to have_unchecked_field(active_type.human_name)
 
     # the newly activated types are available for work package creation
     # disabled ones are not

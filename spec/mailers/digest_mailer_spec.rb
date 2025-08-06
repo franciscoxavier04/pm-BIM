@@ -86,7 +86,7 @@ RSpec.describe DigestMailer do
       time_stamp = format_time(journal.created_at)
       expect(mail_body).to have_text("Hello #{recipient.firstname}")
 
-      expected_notification_subject = "#{work_package.type.name.upcase} #{work_package.subject}"
+      expected_notification_subject = "#{work_package.type.human_name.upcase} #{work_package.subject}"
       expect(mail_body).to have_text(expected_notification_subject, normalize_ws: true)
 
       expected_notification_header = "#{work_package.status.name} ##{work_package.id} - #{work_package.project}"

@@ -646,14 +646,14 @@ RSpec.describe IncomingEmails::MailHandler do # rubocop:disable RSpec/SpecFilePa
         end
 
         include_context "for wp_on_given_project" do
-          let(:submit_options) { { issue: { type: default_type.name } } }
+          let(:submit_options) { { issue: { type: default_type.human_name } } }
         end
 
         it_behaves_like "work package created"
 
         it "sets the default type" do
-          expect(subject.type.name)
-            .to eql(default_type.name)
+          expect(subject.type.human_name)
+            .to eql(default_type.human_name)
         end
       end
 

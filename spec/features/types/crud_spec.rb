@@ -49,15 +49,15 @@ RSpec.describe "Types", :js do
     index_page.click_new
 
     # Error messages if something was wrong
-    fill_in "Name", with: existing_type.name
-    select existing_type.name, from: "Copy workflow from"
+    fill_in "Name", with: existing_type.human_name
+    select existing_type.human_name, from: "Copy workflow from"
 
     click_on "Save"
 
     expect(page).to have_css(".FormControl-inlineValidation", text: "Name has already been taken.", wait: 12)
 
     # Values are retained
-    expect(page).to have_field("Name", with: existing_type.name)
+    expect(page).to have_field("Name", with: existing_type.human_name)
     expect(page).to have_field("Copy workflow from", with: existing_type.id)
 
     # Successful creation
@@ -116,7 +116,7 @@ RSpec.describe "Types", :js do
     context "and I attempt to delete the type" do
       before do
         index_page.visit!
-        index_page.delete existing_type.name
+        index_page.delete existing_type.human_name
         wait_for_network_idle
       end
 

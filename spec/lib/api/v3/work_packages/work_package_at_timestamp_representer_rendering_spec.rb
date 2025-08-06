@@ -153,7 +153,7 @@ RSpec.describe API::V3::WorkPackages::WorkPackageAtTimestampRepresenter, "render
           },
           "type" => {
             "href" => api_v3_paths.type(type.id),
-            "title" => type.name
+            "title" => type.human_name
           },
           "priority" => {
             "href" => api_v3_paths.priority(priority.id),
@@ -414,7 +414,7 @@ RSpec.describe API::V3::WorkPackages::WorkPackageAtTimestampRepresenter, "render
           },
           "type" => {
             "href" => api_v3_paths.type(type.id),
-            "title" => type.name
+            "title" => type.human_name
           },
           "priority" => {
             "href" => api_v3_paths.priority(priority.id),

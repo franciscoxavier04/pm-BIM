@@ -304,7 +304,7 @@ module Pages
     def click_create_wp_button(type)
       find(".add-work-package:not([disabled])", text: "Create").click
 
-      find("#types-context-menu .menu-item", text: type.name.upcase, wait: 10).click
+      find("#types-context-menu .menu-item", text: type.human_name.upcase, wait: 10).click
     end
 
     def subject_field

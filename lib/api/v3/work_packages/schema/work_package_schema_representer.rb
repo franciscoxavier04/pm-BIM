@@ -267,7 +267,7 @@ module API
                                          link_factory: ->(type) {
                                            {
                                              href: api_v3_paths.type(type.id),
-                                             title: type.name
+                                             title: type.human_name
                                            }
                                          },
                                          has_default: false

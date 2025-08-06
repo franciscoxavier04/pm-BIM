@@ -82,7 +82,7 @@ module Pages
       end
 
       def canonical_name(type)
-        type.respond_to?(:name) ? type.name : type
+        type.respond_to?(:name) ? type.human_name : type
       end
     end
   end

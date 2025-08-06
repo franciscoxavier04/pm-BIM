@@ -319,7 +319,7 @@ RSpec.describe "form configuration", :js, :selenium do
           # Enable in project, should then be visible
           project_cf_settings_page.visit!
           expect(page).to have_css(".custom-field-#{custom_field.id} td", text: "MyNumber")
-          expect(page).to have_css(".custom-field-#{custom_field.id} td", text: type.name)
+          expect(page).to have_css(".custom-field-#{custom_field.id} td", text: type.human_name)
 
           id_checkbox = find("#project_work_package_custom_field_ids_#{custom_field.id}")
           expect(id_checkbox).not_to be_checked
@@ -360,7 +360,7 @@ RSpec.describe "form configuration", :js, :selenium do
           # Ensure CF is checked
           project_cf_settings_page.visit!
           expect(page).to have_css(".custom-field-#{custom_field.id} td", text: "MyNumber")
-          expect(page).to have_css(".custom-field-#{custom_field.id} td", text: type.name)
+          expect(page).to have_css(".custom-field-#{custom_field.id} td", text: type.human_name)
           expect(page).to have_css("#project_work_package_custom_field_ids_#{custom_field.id}[checked]")
         end
       end

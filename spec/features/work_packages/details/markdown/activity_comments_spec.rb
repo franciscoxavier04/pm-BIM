@@ -160,9 +160,9 @@ RSpec.describe "activity comments", :js, :selenium do
         # Insert a new reference using the autocompleter
         activity_tab.get_editor_form_field_element.input_element.send_keys "Single ##{work_package2.id}"
         expect(page)
-          .to have_css(".mention-list-item", text: "#{work_package2.type.name} ##{work_package2.id}:")
+          .to have_css(".mention-list-item", text: "#{work_package2.type.human_name} ##{work_package2.id}:")
 
-        find(".mention-list-item", text: "#{work_package2.type.name} ##{work_package2.id}:").click
+        find(".mention-list-item", text: "#{work_package2.type.human_name} ##{work_package2.id}:").click
 
         # Insert new text, need to do this separately.
         # No autocompleter used this time.

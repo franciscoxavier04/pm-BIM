@@ -322,7 +322,7 @@ RSpec.describe "Primerized work package relations tab",
         within "##{WorkPackageRelationsTab::WorkPackageRelationDialogComponent::DIALOG_ID}" do
           expect(page).to have_field("Work package",
                                      readonly: true,
-                                     with: "#{another_wp.type.name.upcase} ##{another_wp.id} - #{another_wp.subject}")
+                                     with: "#{another_wp.type.human_name.upcase} ##{another_wp.id} - #{another_wp.subject}")
         end
       end
     end

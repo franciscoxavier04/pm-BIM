@@ -128,8 +128,8 @@ RSpec.describe "Quick-add menu", :js do
       quick_add.expect_add_project present: false
       quick_add.expect_user_invite present: false
       quick_add.expect_work_package_type type_bug.name
-      quick_add.expect_work_package_type other_type.name, present: false
-      quick_add.expect_work_package_type other_project_type.name, present: false
+      quick_add.expect_work_package_type other_type.human_name, present: false
+      quick_add.expect_work_package_type other_project_type.human_name, present: false
       quick_add.click_link type_bug.name
 
       expect(page)
@@ -144,10 +144,10 @@ RSpec.describe "Quick-add menu", :js do
       quick_add.expect_visible
       quick_add.toggle
       quick_add.expect_work_package_type type_bug.name
-      quick_add.expect_work_package_type other_type.name, present: false
-      quick_add.expect_work_package_type other_project_type.name
+      quick_add.expect_work_package_type other_type.human_name, present: false
+      quick_add.expect_work_package_type other_project_type.human_name
 
-      quick_add.click_link other_project_type.name
+      quick_add.click_link other_project_type.human_name
       expect(page).to have_current_path new_work_packages_path(type: other_project_type.id)
     end
   end

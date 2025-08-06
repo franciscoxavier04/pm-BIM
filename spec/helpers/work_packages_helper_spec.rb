@@ -45,7 +45,7 @@ RSpec.describe WorkPackagesHelper do
 
     describe "without parameters" do
       it "returns a link to the work package with type and id as the text if type is set" do
-        link_text = Regexp.new("^#{stub_type.name} ##{stub_work_package.id}$")
+        link_text = Regexp.new("^#{stub_type.human_name} ##{stub_work_package.id}$")
         expect(helper.link_to_work_package(stub_work_package)).to have_css(
           "a[href='#{work_package_path(stub_work_package)}']", text: link_text
         )
@@ -152,7 +152,7 @@ RSpec.describe WorkPackagesHelper do
 
     describe "with the status displayed" do
       it "returns a link with the status name contained in the text" do
-        link_text = Regexp.new("^#{stub_type.name} ##{stub_work_package.id} #{stub_work_package.status}$")
+        link_text = Regexp.new("^#{stub_type.human_name} ##{stub_work_package.id} #{stub_work_package.status}$")
         expect(helper.link_to_work_package(stub_work_package,
                                            status: true)).to have_css("a[href='#{work_package_path(stub_work_package)}']",
                                                                       text: link_text)

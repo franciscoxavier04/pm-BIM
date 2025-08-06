@@ -37,7 +37,7 @@ RSpec.describe "Work package navigation", :js, :selenium do
   let(:global_html_title) { Components::HtmlTitle.new }
   let(:project_html_title) { Components::HtmlTitle.new project }
   let(:wp_title_segment) do
-    "#{work_package.type.name}: #{work_package.subject} (##{work_package.id})"
+    "#{work_package.type.human_name}: #{work_package.subject} (##{work_package.id})"
   end
 
   let!(:query) do

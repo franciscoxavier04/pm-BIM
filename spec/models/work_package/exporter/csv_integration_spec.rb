@@ -89,7 +89,7 @@ RSpec.describe WorkPackage::Exports::CSV, "integration" do
     context "when description is included" do
       it "performs a successful export with description column" do
         expect(header_value_pairs).to eq [
-          ["#{byte_order_mark}Type", work_package.type.name],
+          ["#{byte_order_mark}Type", work_package.type.human_name],
           ["Subject", work_package.subject],
           ["Assignee", user.name],
           ["Updated on", work_package.updated_at.in_time_zone(user.time_zone).strftime("%m/%d/%Y %I:%M %p")],
@@ -105,7 +105,7 @@ RSpec.describe WorkPackage::Exports::CSV, "integration" do
 
       it "performs a successful export without description column" do
         expect(header_value_pairs).to eq [
-          ["#{byte_order_mark}Type", work_package.type.name],
+          ["#{byte_order_mark}Type", work_package.type.human_name],
           ["Subject", work_package.subject],
           ["Assignee", user.name],
           ["Updated on", work_package.updated_at.in_time_zone(user.time_zone).strftime("%m/%d/%Y %I:%M %p")],

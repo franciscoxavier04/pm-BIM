@@ -209,10 +209,10 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageListToPdf do
       it "contains correct data" do
         expect(pdf_strings).to eq [
           query.name,
-          work_package_parent.type.name,
+          work_package_parent.type.human_name,
           *column_titles,
           *work_package_columns(work_package_parent),
-          work_package_child.type.name,
+          work_package_child.type.human_name,
           *column_titles,
           *work_package_columns(work_package_child),
           "1/1", export_date_formatted, query.name
@@ -226,11 +226,11 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageListToPdf do
       it "contains correct data" do
         expect(pdf_strings).to eq [
           query.name,
-          work_package_parent.type.name,
+          work_package_parent.type.human_name,
           *column_titles,
           *work_package_columns(work_package_parent),
           I18n.t("js.label_sum"), work_package_parent.story_points.to_s, "25%",
-          work_package_child.type.name,
+          work_package_child.type.human_name,
           *column_titles,
           *work_package_columns(work_package_child),
           I18n.t("js.label_sum"), work_package_child.story_points.to_s, "50%",
@@ -370,8 +370,8 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageListToPdf do
             "1/2", export_date_formatted, query.name,
             I18n.t("js.work_packages.tabs.overview"),
             column_title(:type), column_title(:story_points), column_title(:done_ratio),
-            work_package_parent.type.name, work_package_parent.story_points.to_s, "25%",
-            work_package_child.type.name, work_package_child.story_points.to_s, "50%",
+            work_package_parent.type.human_name, work_package_parent.story_points.to_s, "25%",
+            work_package_child.type.human_name, work_package_child.story_points.to_s, "50%",
             I18n.t("js.label_sum"), work_packages_sum.to_s, "38%",
             *work_package_details(work_package_parent, "1", long_text_fields),
             *work_package_details(work_package_child, "2", long_text_fields),

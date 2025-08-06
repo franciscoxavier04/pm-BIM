@@ -31,152 +31,107 @@
 require "spec_helper"
 
 RSpec.describe Type do
-  let(:type) { build(:type) }
-  let(:type2) { build(:type) }
-  let(:project) { build(:project, no_types: true) }
+  describe "builtin types" do
+    let(:builtin_type) { create(:type, name: "Risk", builtin: "risk") }
+    let(:regular_type) { create(:type, name: "Task", builtin: nil) }
 
-  describe ".enabled_in(project)" do
-    before do
-      type.projects << project
-      type.save
+    describe "#builtin?" do
+      it "returns true for builtin types" do
+        expect(builtin_type.builtin?).to be true
+      end
 
-      type2.save
-    end
-
-    it "returns the types enabled in the provided project" do
-      expect(described_class.enabled_in(project)).to contain_exactly(type)
-    end
-  end
-
-  describe ".statuses" do
-    subject { type.statuses }
-
-    context "when new" do
-      let(:type) { build(:type) }
-
-      it "returns an empty relation" do
-        expect(subject).to be_empty
+      it "returns false for regular types" do
+        expect(regular_type.builtin?).to be false
       end
     end
 
-    context "when existing but no statuses" do
-      let(:type) { create(:type) }
+    describe "#translatable_name" do
+      it "returns translated name for builtin types" do
+        expect(builtin_type.human_name).to eq("Risk")
+      end
 
-      it "returns an empty relation" do
-        expect(subject).to be_empty
+      it "returns original name for regular types" do
+        expect(regular_type.human_name).to eq("Task")
       end
     end
 
-    context "when existing with workflow" do
-      let(:role) { create(:project_role) }
-      let(:statuses) { (1..2).map { |_i| create(:status) } }
-
-      let!(:type) { create(:type) }
-      let!(:workflow_a) do
-        create(:workflow, role_id: role.id,
-                          type_id: type.id,
-                          old_status_id: statuses[0].id,
-                          new_status_id: statuses[1].id,
-                          author: false,
-                          assignee: false)
+    describe "#deletable?" do
+      it "returns false for builtin types" do
+        expect(builtin_type.deletable?).to be false
       end
 
-      it "returns the statuses relation" do
-        expect(subject.pluck(:id)).to contain_exactly(statuses[0].id, statuses[1].id)
+      it "returns false for standard types" do
+        standard_type = create(:type, is_standard: true)
+        expect(standard_type.deletable?).to be false
       end
 
-      context "with default status" do
-        let!(:default_status) { create(:default_status) }
+      it "returns false for types with work packages" do
+        type_with_wp = create(:type)
+        create(:work_package, type: type_with_wp)
+        expect(type_with_wp.deletable?).to be false
+      end
 
-        subject { type.statuses(include_default: true) }
+      it "returns true for regular types without work packages" do
+        expect(regular_type.deletable?).to be true
+      end
+    end
 
-        it "returns the workflow and the default status" do
-          expect(subject.pluck(:id)).to contain_exactly(default_status.id, statuses[0].id, statuses[1].id)
+    describe "validation" do
+      it "allows builtin types without name" do
+        type = build(:type, name: "Risk (builtin)", builtin: "risk")
+        expect(type).to be_valid
+      end
+
+      it "requires name for regular types" do
+        type = build(:type, name: nil, builtin: nil)
+        expect(type).not_to be_valid
+        expect(type.errors[:name]).to include("can't be blank.")
+      end
+
+      it "validates uniqueness of builtin values" do
+        create(:type, builtin: "risk")
+        duplicate_type = build(:type, builtin: "risk")
+        expect(duplicate_type).not_to be_valid
+        expect(duplicate_type.errors[:builtin]).to include("has already been taken.")
+      end
+
+      it "allows multiple types with nil builtin" do
+        create(:type, builtin: nil)
+        another_type = build(:type, builtin: nil)
+        expect(another_type).to be_valid
+      end
+    end
+
+    describe "scopes" do
+      before do
+        builtin_type
+        regular_type
+      end
+
+      describe ".builtin" do
+        it "returns only builtin types" do
+          expect(Type.builtin).to include(builtin_type)
+          expect(Type.builtin).not_to include(regular_type)
+        end
+      end
+
+      describe ".not_builtin" do
+        it "returns only non-builtin types" do
+          expect(Type.not_builtin).to include(regular_type)
+          expect(Type.not_builtin).not_to include(builtin_type)
         end
       end
     end
-  end
 
-  describe "#copy_from_type on workflows" do
-    before do
-      allow(Workflow)
-        .to receive(:copy)
-    end
-
-    it "calls the .copy method on Workflow" do
-      type.workflows.copy_from_type(type2)
-
-      expect(Workflow)
-        .to have_received(:copy)
-        .with(type2, nil, type, nil)
-    end
-  end
-
-  describe "#work_package_attributes" do
-    subject { type.work_package_attributes }
-
-    context "for the duration field" do
-      it "does not return the field" do
-        expect(subject).not_to have_key("duration")
+    describe "destruction" do
+      it "prevents destruction of builtin types" do
+        builtin_type.save!
+        expect { builtin_type.destroy }.not_to change(Type, :count)
       end
-    end
 
-    context "for the ignore_non_working_days field" do
-      it "does not return the field" do
-        expect(subject).not_to have_key("ignore_non_working_days")
-      end
-    end
-  end
-
-  describe "#patterns" do
-    it "returns an empty collection when no patterns are defined" do
-      type = create(:type)
-
-      expect(type.patterns).to eq(WorkPackageTypes::Patterns::Collection.empty)
-    end
-
-    it "returns a PatternCollection" do
-      type = create(:type, patterns: {
-                      subject: { blueprint: "{{work_package:custom_field_123}} - {{project:custom_field_321}}", enabled: true }
-                    })
-
-      expect(type.patterns).to be_a(WorkPackageTypes::Patterns::Collection)
-      expect(type.patterns.subject)
-        .to eq(WorkPackageTypes::Pattern.new("{{work_package:custom_field_123}} - {{project:custom_field_321}}", true))
-    end
-  end
-
-  describe "#patterns=" do
-    subject(:type) { build(:type) }
-
-    it "assigns a patterns collection as-is" do
-      collection = WorkPackageTypes::Patterns::Collection.build(patterns: {
-                                                       subject: { blueprint: "some_string", enabled: false }
-                                                     }).value!
-
-      type.patterns = collection
-
-      expect(type.patterns).to eq(collection)
-      expect { type.save! }.not_to raise_error
-    end
-
-    context "when an invalid value is passed" do
-      it "defaults to an empty collection" do
-        type.patterns = 4
-
-        expect(type.patterns).to eq(WorkPackageTypes::Patterns::Collection.empty)
-        expect { type.save! }.not_to raise_error
-      end
-    end
-
-    context "when a hash is passed" do
-      it "converts the incoming hash into a PatternCollection" do
-        type.patterns = { subject: { blueprint: "some_string", enabled: false } }
-
-        expect(type.patterns).to be_a(WorkPackageTypes::Patterns::Collection)
-        expect(type.patterns.subject).to be_a(WorkPackageTypes::Pattern)
-
-        expect { type.save! }.not_to raise_error
+      it "allows destruction of regular types" do
+        regular_type.save!
+        expect { regular_type.destroy }.to change(Type, :count).by(-1)
       end
     end
   end

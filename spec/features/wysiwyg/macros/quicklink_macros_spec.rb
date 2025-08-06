@@ -76,9 +76,9 @@ RSpec.describe "Wysiwyg work package quicklink macros", :js do
 
     # Expect output widget
     within("#content") do
-      expected_macro_text = "#{work_package.type.name.upcase} ##{work_package.id}: My subject"
+      expected_macro_text = "#{work_package.type.human_name.upcase} ##{work_package.id}: My subject"
       expect(page).to have_css("opce-macro-wp-quickinfo", text: expected_macro_text)
-      expect(page).to have_css("span", text: work_package.type.name.upcase)
+      expect(page).to have_css("span", text: work_package.type.human_name.upcase)
       expect(page).to have_css("opce-macro-wp-quickinfo > a", text: "##{work_package.id}")
       expect(page).to have_css("span", text: "My subject")
     end
@@ -99,11 +99,11 @@ RSpec.describe "Wysiwyg work package quicklink macros", :js do
 
     # Expect output widget
     within("#content") do
-      expected_macro_text = "#{work_package.status.name}#{work_package.type.name.upcase} " \
+      expected_macro_text = "#{work_package.status.name}#{work_package.type.human_name.upcase} " \
                             "##{work_package.id}: My subject (01/01/2020 - 02/01/2020)"
       expect(page).to have_css("opce-macro-wp-quickinfo", text: expected_macro_text)
       expect(page).to have_css("span", text: work_package.status.name)
-      expect(page).to have_css("span", text: work_package.type.name.upcase)
+      expect(page).to have_css("span", text: work_package.type.human_name.upcase)
       expect(page).to have_css("opce-macro-wp-quickinfo > a", text: "##{work_package.id}")
       expect(page).to have_css("span", text: "My subject")
       # Dates are being rendered in two nested spans

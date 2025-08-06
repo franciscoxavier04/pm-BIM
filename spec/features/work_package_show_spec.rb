@@ -50,7 +50,7 @@ RSpec.describe "Work package show page", :selenium do
 
     wp_page.visit!
 
-    wp_page.expect_attributes type: work_package.type.name.upcase,
+    wp_page.expect_attributes type: work_package.type.human_name.upcase,
                               status: work_package.status.name,
                               priority: work_package.priority.name,
                               assignee: work_package.assigned_to.name,

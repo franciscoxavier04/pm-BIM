@@ -70,7 +70,7 @@ class WorkPackageMailer < ApplicationMailer
   private
 
   def subject_for_work_package(work_package)
-    "#{work_package.project.name} - #{work_package.status.name} #{work_package.type.name} " +
+    "#{work_package.project.name} - #{work_package.status.name} #{work_package.type.human_name} " +
       "##{work_package.id}: #{work_package.subject}"
   end
 

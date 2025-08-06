@@ -43,7 +43,7 @@ RSpec.describe API::V3::Types::TypeRepresenter do
       it_behaves_like "has a titled link" do
         let(:link) { "self" }
         let(:href) { api_v3_paths.type(type.id) }
-        let(:title) { type.name }
+        let(:title) { type.human_name }
       end
     end
 
@@ -52,7 +52,7 @@ RSpec.describe API::V3::Types::TypeRepresenter do
     end
 
     it "indicates its name" do
-      expect(subject).to be_json_eql(type.name.to_json).at_path("name")
+      expect(subject).to be_json_eql(type.human_name.to_json).at_path("name")
     end
 
     it "indicates its color" do

@@ -84,11 +84,7 @@ module WorkPackageTypes
     end
 
     def destroy
-      # types cannot be deleted when they have work packages
-      # or they are standard types
-      # put that into the model and do a `if @type.destroy`
-      if @type.work_packages.empty? && !@type.is_standard?
-        @type.destroy
+      if @type.destroy
         flash[:notice] = I18n.t(:notice_successful_delete)
       else
         flash[:error] = destroy_error_message
@@ -116,6 +112,8 @@ module WorkPackageTypes
     def destroy_error_message
       if @type.is_standard?
         t(:error_can_not_delete_standard_type)
+      elsif @type.builtin?
+        t(:error_can_not_delete_builtin_type)
       else
         error_message = [
           ApplicationController.helpers.sanitize(

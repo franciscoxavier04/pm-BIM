@@ -785,6 +785,8 @@ en:
           actions:
             label_enable_all: "Enable all"
             label_disable_all: "Disable all"
+    builtin:
+      risk: "Risk"
 
   versions:
     overview:
@@ -1064,7 +1066,6 @@ en:
         uid: "Client ID"
         secret: "Client secret"
         owner: "Owner"
-        builtin: "Builtin"
         enabled: "Active"
         redirect_uri: "Redirect URI"
         client_credentials_user_id: "Client Credentials User ID"
@@ -1650,6 +1651,10 @@ en:
               group_without_name: "Unnamed groups are not allowed."
             patterns:
               invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
+            name:
+              cannot_be_changed_for_builtin_type: "cannot be changed for builtin types."
+          errors:
+            cannot_delete_builtin_type: "Builtin types cannot be deleted."
         user:
           attributes:
             base:
@@ -1815,6 +1820,7 @@ en:
     base: "General Error:"
     body: "Body"
     blocks_ids: "IDs of blocked work packages"
+    builtin: "Builtin"
     category: "Category"
     comment: "Comment"
     comments: "Comment"
@@ -2363,6 +2369,7 @@ en:
   error_can_not_delete_type:
     explanation: 'This type contains work packages and cannot be deleted. You can see all affected work packages in <a target="_blank" href="%{url}">this view</a>.'
   error_can_not_delete_standard_type: "Standard types cannot be deleted."
+  error_can_not_delete_builtin_type: "Builtin types cannot be deleted."
   error_can_not_invite_user: "Failed to send invitation to user."
   error_can_not_remove_role: "This role is in use and cannot be deleted."
   error_can_not_reopen_work_package_on_closed_version: "A work package assigned to a closed version cannot be reopened"

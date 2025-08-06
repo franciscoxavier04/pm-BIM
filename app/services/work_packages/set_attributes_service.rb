@@ -50,7 +50,7 @@ class WorkPackages::SetAttributesService < BaseServices::SetAttributes
 
   def mark_templated_subject
     if work_package.type&.replacement_pattern_defined_for?(:subject)
-      work_package.subject = I18n.t("work_packages.templated_subject_hint", type: work_package.type.name)
+      work_package.subject = I18n.t("work_packages.templated_subject_hint", type: work_package.type.human_name)
     end
   end
 

@@ -29,6 +29,8 @@
 #++
 
 class Type < ApplicationRecord
+  BUILTIN_NAME_PREFIX = "built-in:"
+
   # Work Package attributes for this type
   # and constraints to specific attributes (by plugins).
   include ::Type::Attributes
@@ -41,6 +43,7 @@ class Type < ApplicationRecord
   store_attribute :pdf_export_templates_config, :export_templates_disabled, :json
   store_attribute :pdf_export_templates_config, :export_templates_order, :json
 
+  after_initialize :prepend_builtin_prefix, if: -> { builtin? }
   before_destroy :check_integrity
 
   belongs_to :color, optional: true, class_name: "Color"
@@ -62,6 +65,8 @@ class Type < ApplicationRecord
   acts_as_list
 
   validates :name, uniqueness: { case_sensitive: false }
+  validates :name, presence: true, length: { maximum: 255 }
+  validates :builtin, uniqueness: true, allow_nil: true
 
   scopes :milestone
 
@@ -69,6 +74,8 @@ class Type < ApplicationRecord
 
   scope :without_standard, -> { where(is_standard: false).order(:position) }
   scope :default, -> { where(is_default: true) }
+  scope :builtin, -> { where.not(builtin: nil) }
+  scope :not_builtin, -> { where(builtin: nil) }
 
   delegate :to_s, to: :name
 
@@ -118,10 +125,36 @@ class Type < ApplicationRecord
     @pdf_export_templates ||= ::Type::PdfExportTemplates.new(self)
   end
 
+  def builtin?
+    builtin.present?
+  end
+
+  def human_name
+    if builtin?
+      I18n.t("types.builtin.#{builtin}")
+    else
+      name
+    end
+  end
+
+  def deletable?
+    !builtin? && !is_standard? && work_packages.empty?
+  end
+
   private
+
+  def prepend_builtin_prefix
+    value = self[:name]
+    return if value.start_with?(BUILTIN_NAME_PREFIX)
+
+    # Ensure we always have the prefix for builtin types
+    # by calling the setter
+    self.name = value
+  end
 
   def check_integrity
     throw :abort if is_standard?
+    throw :abort if builtin?
     throw :abort if WorkPackage.exists?(type_id: id)
 
     true

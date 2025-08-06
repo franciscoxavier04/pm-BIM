@@ -109,7 +109,7 @@ RSpec.describe "Role creation", :js do
     visit(url_for(controller: :workflows, action: :edit, only_path: true))
 
     select "New role name", from: "Role"
-    select type.name, from: "Type"
+    select type.human_name, from: "Type"
     click_button "Edit"
 
     from_id = existing_workflow.old_status_id

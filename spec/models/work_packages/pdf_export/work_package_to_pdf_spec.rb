@@ -224,7 +224,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
   end
   let(:expected_details) do
     result = [
-      "#{type.name} ##{work_package.id} - #{work_package.subject}",
+      "#{type.human_name} ##{work_package.id} - #{work_package.subject}",
       " ", exporter.prawn_badge_text_stuffing(work_package.status.name.downcase), # badge & padding
       "People",
       "Assignee", user.name,
@@ -328,12 +328,12 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
           ["dueDate", "03/13/2025"],
           ["spentTime", "0h"],
           ["startDate", "05/30/2024"],
-          ["parent", "#{type.name} ##{parent_work_package.id}: #{parent_work_package.name}"],
+          ["parent", "#{type.human_name} ##{parent_work_package.id}: #{parent_work_package.name}"],
           ["priority", priority.name],
           ["project", project.name],
           ["status", status.name],
           ["subject", "Work package 1"],
-          ["type", type.name],
+          ["type", type.human_name],
           ["description", "[#{I18n.t('export.macro.rich_text_unsupported')}]"]
         ]
       end

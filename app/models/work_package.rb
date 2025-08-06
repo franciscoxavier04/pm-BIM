@@ -274,7 +274,7 @@ class WorkPackage < ApplicationRecord
   end
 
   def to_s
-    "#{type.name unless type.is_standard} ##{id}: #{subject}"
+    "#{type.human_name unless type.is_standard} ##{id}: #{subject}"
   end
 
   # Return true if the work_package is closed, otherwise false

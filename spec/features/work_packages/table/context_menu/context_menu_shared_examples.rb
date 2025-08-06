@@ -43,7 +43,7 @@ RSpec.shared_examples_for "provides a single WP context menu" do
     # Split view open in duplicate state
     expect(page)
       .to have_css(".wp-new-top-row",
-                   text: "#{work_package.status.name.capitalize}\n#{work_package.type.name.upcase}")
+                   text: "#{work_package.status.name.capitalize}\n#{work_package.type.human_name.upcase}")
     expect(page).to have_field("wp-new-inline-edit--field-subject", with: work_package.subject)
 
     # Open Delete

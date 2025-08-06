@@ -39,7 +39,7 @@ xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
   journals.each do |change|
     work_package = change.journable
     xml.entry do
-      xml.title   "#{work_package.project.name} - #{work_package.type.name} ##{work_package.id}: #{work_package.subject}"
+      xml.title   "#{work_package.project.name} - #{work_package.type.human_name} ##{work_package.id}: #{work_package.subject}"
       xml.link    "rel" => "alternate", "href" => work_package_url(work_package)
       xml.id      url_for(controller: "/work_packages", action: "show", id: work_package, journal_id: change,
                           only_path: false)

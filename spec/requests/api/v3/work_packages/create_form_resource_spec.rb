@@ -101,7 +101,7 @@ RSpec.describe API::V3::WorkPackages::CreateProjectFormAPI do
     it "has the default type active in the project set" do
       type_link = {
         href: "/api/v3/types/#{type.id}",
-        title: type.name
+        title: type.human_name
       }
 
       expect(subject.body)

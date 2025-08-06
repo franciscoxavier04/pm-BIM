@@ -36,7 +36,8 @@ module API
         self_link
 
         property :id
-        property :name
+        property :human_name,
+                 as: :name
         property :color,
                  getter: ->(*) { color.hexcode if color },
                  render_nil: true

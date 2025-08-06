@@ -53,7 +53,7 @@ RSpec.describe "index users", :js do
     visit user_path(user)
 
     expect(page).to have_text("Project: #{project.name}")
-    expected_work_package_title = "#{work_package.type.name} ##{work_package.id}: #{work_package.subject} " \
+    expected_work_package_title = "#{work_package.type.human_name} ##{work_package.id}: #{work_package.subject} " \
                                   "(Project: #{work_package.project.name})"
     expect(page).to have_text(expected_work_package_title)
 

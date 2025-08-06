@@ -361,7 +361,7 @@ RSpec.describe "API v3 Work package resource",
           it { expect(response).to have_http_status(:ok) }
 
           it "responds with updated work package type" do
-            expect(subject.body).to be_json_eql(target_type.name.to_json)
+            expect(subject.body).to be_json_eql(target_type.human_name.to_json)
                                       .at_path("_embedded/type/name")
           end
 

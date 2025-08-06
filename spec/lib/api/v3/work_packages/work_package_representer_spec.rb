@@ -505,7 +505,7 @@ RSpec.describe API::V3::WorkPackages::WorkPackageRepresenter do
         it_behaves_like "has a titled link" do
           let(:link) { "type" }
           let(:href) { "/api/v3/types/#{work_package.type_id}" }
-          let(:title) { work_package.type.name }
+          let(:title) { work_package.type.human_name }
         end
       end
 

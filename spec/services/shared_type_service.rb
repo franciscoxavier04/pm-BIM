@@ -89,7 +89,7 @@ RSpec.shared_examples_for "type service" do
       it "set the values provided on the call" do
         service_call
 
-        expect(type.name).to eql params[:name]
+        expect(type.human_name).to eql params[:name]
       end
     end
 

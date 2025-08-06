@@ -302,7 +302,7 @@ RSpec.describe "date inplace editor", :js, :selenium, with_settings: { date_form
 
       type_field = create_page.edit_field(:type)
       type_field.activate!
-      type_field.set_value type.name
+      type_field.set_value type.human_name
 
       cf_field.expect_active!
 

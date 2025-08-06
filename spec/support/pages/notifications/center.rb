@@ -110,7 +110,7 @@ module Pages
           raise(ArgumentError, "Expected work package") unless work_package.is_a?(WorkPackage)
 
           expect_item notification,
-                      "#{work_package.type.name.upcase} #{work_package.subject}"
+                      "#{work_package.type.human_name.upcase} #{work_package.subject}"
         end
       end
 

@@ -65,9 +65,9 @@ RSpec.describe "Configuring the workflow for work package sharing",
     end
 
     # On the copy workflow form, select the already existing workflow for copying
-    select type.name, from: "source_type_id"
+    select type.human_name, from: "source_type_id"
     select role.name, from: "source_role_id"
-    select type.name, from: "target_type_ids"
+    select type.human_name, from: "target_type_ids"
     select work_package_role.name, from: "target_role_ids"
 
     page.find_test_selector("op-admin-workflows--button-copy").click

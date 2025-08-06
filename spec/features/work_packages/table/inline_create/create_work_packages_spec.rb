@@ -116,7 +116,7 @@ RSpec.describe "inline create work package", :js, :selenium do
 
         type_field = wp_table.edit_field(nil, :type)
         type_field.activate!
-        type_field.set_select_field_value cf_type.name
+        type_field.set_select_field_value cf_type.human_name
 
         wp_table.expect_toast(
           type: :error,

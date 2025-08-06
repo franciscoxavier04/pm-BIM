@@ -57,7 +57,7 @@ RSpec.describe CopyProjectJob, type: :model, with_good_job_batches: [CopyProject
 
     let(:params) { { name: "Copy", identifier: "copy", type_ids: [type.id], work_package_custom_field_ids: [custom_field.id] } }
     let(:expected_error_message) do
-      "#{WorkPackage.model_name.human} '#{work_package.type.name} ##{work_package.id}: #{work_package.subject}': #{custom_field.name} #{I18n.t('errors.messages.blank')}."
+      "#{WorkPackage.model_name.human} '#{work_package.type.human_name} ##{work_package.id}: #{work_package.subject}': #{custom_field.name} #{I18n.t('errors.messages.blank')}."
     end
 
     before do

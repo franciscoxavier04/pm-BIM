@@ -286,7 +286,7 @@ RSpec.describe "Custom actions", :js, with_ee: %i[custom_actions] do
       datepicker = Components::Datepicker.new "body"
       datepicker.set_date date
 
-      new_ca_page.add_action("Type", other_type.name)
+      new_ca_page.add_action("Type", other_type.human_name)
       new_ca_page.expect_action("type", other_type.id)
 
       new_ca_page.add_action("Project", other_project.name)
@@ -429,7 +429,7 @@ RSpec.describe "Custom actions", :js, with_ee: %i[custom_actions] do
 
     wp_page.expect_attributes assignee: "-",
                               status: rejected_status.name,
-                              type: other_type.name.upcase,
+                              type: other_type.human_name.upcase,
                               "customField#{date_custom_field.id}" => (Date.today + 5.days).strftime("%m/%d/%Y")
     expect(page)
       .to have_content(I18n.t("js.project.click_to_switch_to_project", projectname: other_project.name))

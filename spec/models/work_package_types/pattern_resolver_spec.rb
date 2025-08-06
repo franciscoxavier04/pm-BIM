@@ -55,7 +55,7 @@ RSpec.describe WorkPackageTypes::PatternResolver do
 
     it "resolves the pattern" do
       expect(subject.resolve(work_package))
-        .to eq("#{work_package.id} | #{work_package.author.name} | #{work_package.type.name}")
+        .to eq("#{work_package.id} | #{work_package.author.name} | #{work_package.type.human_name}")
     end
   end
 

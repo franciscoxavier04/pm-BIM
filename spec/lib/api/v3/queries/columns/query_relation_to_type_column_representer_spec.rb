@@ -44,13 +44,13 @@ RSpec.describe API::V3::Queries::Columns::QueryRelationToTypeColumnRepresenter d
       it_behaves_like "has a titled link" do
         let(:link) { "self" }
         let(:href) { api_v3_paths.query_column "relationsToType#{type.id}" }
-        let(:title) { "Relations to #{type.name}" }
+        let(:title) { "Relations to #{type.human_name}" }
       end
 
       it_behaves_like "has a titled link" do
         let(:link) { "type" }
         let(:href) { api_v3_paths.type type.id }
-        let(:title) { type.name }
+        let(:title) { type.human_name }
       end
     end
 
@@ -68,7 +68,7 @@ RSpec.describe API::V3::Queries::Columns::QueryRelationToTypeColumnRepresenter d
 
     it "has name attribute" do
       expect(subject)
-        .to be_json_eql("Relations to #{type.name}".to_json)
+        .to be_json_eql("Relations to #{type.human_name}".to_json)
         .at_path("name")
     end
   end
