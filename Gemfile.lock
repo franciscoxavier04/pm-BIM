@@ -87,6 +87,11 @@ PATH
       acts_as_list (~> 1.2.0)
 
 PATH
+  remote: modules/beyond_documents
+  specs:
+    openproject-beyond_documents (0.0.1)
+
+PATH
   remote: modules/bim
   specs:
     openproject-bim (1.0.0)
@@ -1430,6 +1435,7 @@ DEPENDENCIES
   openproject-auth_saml!
   openproject-avatars!
   openproject-backlogs!
+  openproject-beyond_documents!
   openproject-bim!
   openproject-boards!
   openproject-calendar!
@@ -1800,6 +1806,7 @@ CHECKSUMS
   openproject-auth_saml (1.0.0)
   openproject-avatars (1.0.0)
   openproject-backlogs (1.0.0)
+  openproject-beyond_documents (0.0.1)
   openproject-bim (1.0.0)
   openproject-boards (1.0.0)
   openproject-calendar (1.0.0)

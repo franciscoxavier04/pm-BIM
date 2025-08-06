@@ -41,6 +41,8 @@ group :opf_plugins do
   gem 'openproject-gantt',                     path: 'modules/gantt'
   gem 'openproject-calendar',                  path: 'modules/calendar'
   gem 'openproject-storages',                  path: 'modules/storages'
+
+  gem 'openproject-beyond_documents',          path: 'modules/beyond_documents'
   gem 'openproject-documents',                 path: 'modules/documents'
 
   gem 'openproject-bim',                       path: 'modules/bim'
