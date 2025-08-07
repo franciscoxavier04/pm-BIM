@@ -27,7 +27,17 @@ There have been several design and user experience updates with OpenProject 16.3
 
 ### Meetings: Option to mute email notifications and ICS
 
+With OpenProject 16.3, you can now **disable email calendar updates when creating or copying meetings**. This helps avoid sending invitations too early or accidentally sharing drafts. 
+
+The setting is available as a checkbox in the meeting form and lets you decide whether participants should be notified by email. The current status is always visible in the meeting sidebar and can be toggled for one-time and recurring meetings — giving you full control over how and when participants are informed of changes.
+
 ### Ongoing timers shown in the My time tracking module
+
+Ongoing timers are now clearly displayed in the My time tracking module. Whether you’re working in list view or calendar view, a small **timer icon will appear on the work package that’s currently being tracked**. 
+
+This makes it easier to spot if a timer is running and avoid duplicate or overlapping entries and is especially useful if you return to your time tracking later in the day. It’s a small but effective improvement that helps you stay organized and focused.
+
+![Screenshot showing OpenProject's My time tracking module with a highlighted time entry on 'today' that is running for 5 minutes, displayed with a timer icon](openproject-16-3-my-time-tracking-timer-calendar-view-highlighted.png)
 
 ### Progress reporting: % Complete sum also shown in Status-based mode
 
