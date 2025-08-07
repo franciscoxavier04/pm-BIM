@@ -42,7 +42,6 @@ module Projects::Exports::PDFExport
       with_margin(styles.project_margins) do
         write_project_title(project, info_map_entry[:level_path])
         write_project_detail_content(project)
-        write_project_work_packages(project)
       end
     end
 
@@ -251,59 +250,6 @@ module Projects::Exports::PDFExport
                end
       ratio = pdf.bounds.width / widths.sum
       widths.map { |w| w * ratio }
-    end
-
-    def write_project_work_packages(project)
-      return if work_package_tables.empty?
-
-      with_margin(styles.wp_tables_margins) do
-        write_project_work_packages_tables(project)
-      end
-    end
-
-    def write_project_work_packages_tables(project)
-      work_package_tables.each do |table|
-        type_id = table[:type_id]
-        column_names = table[:column_names]
-        sort_criteria = table[:sort_criteria] || []
-        caption = table[:caption]
-
-        query = build_work_packages_query(project, type_id, column_names, sort_criteria)
-        write_project_work_packages_table(query, caption) if query
-      end
-    end
-
-    def work_package_tables
-      []
-    end
-
-    def build_work_packages_query(project, type_id, column_names, sort_criteria = [])
-      return nil unless type_id
-
-      query = Query.new(project:)
-      query.filters.clear
-      query.include_subprojects = false
-      query.column_names = column_names
-      query.sort_criteria = sort_criteria
-      query.add_filter("type_id", "=", [type_id])
-      query
-    end
-
-    def get_column_value_cell(work_package, column_name)
-      value = get_value_cell_by_column(work_package, column_name, false)
-      value = make_link_href(url_helpers.work_package_url(work_package), value) if column_name == :subject
-      value
-    end
-
-    def write_project_work_packages_table(query, caption)
-      return unless query
-
-      work_packages = query.results.work_packages
-      return unless work_packages.any?
-
-      write_optional_page_break
-      write_markdown_label(caption)
-      write_work_packages_table!(work_packages, query)
     end
   end
 end
