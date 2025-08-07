@@ -67,6 +67,9 @@ export default class IndexController extends Controller<HTMLElement> {
   setFilterToOnlyChanges() { this.filterValue = 'only_changes'; }
   unsetFilter() { this.filterValue = ''; }
 
+  get sortingAscending():boolean { return this.sortingValue === 'asc'; }
+  get sortingDescending():boolean { return this.sortingValue === 'desc'; }
+
   adjustJournalContainerMarginWith(marginBottomPx:string) {
     // don't do this on mobile screens
     if (this.viewPortService.isMobile()) { return; }
