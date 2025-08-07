@@ -62,13 +62,20 @@ Enter your meeting's title, location, start and end date and time, duration, fre
 - **After a specific date** – lets you specify an **end date** (the meeting might end before or on this date, depending on the original start date and frequency)
 - **After a number of occurrences** – lets you specify the number of individual **occurrences** after which the series will end
 
+**Send email calendar updates** checkbox determines whether email calendar updates are enabled for the meeting series.  If activated, all participants will receive updated calendar invites informing them of the changes to this template or to individual occurrences of the meeting series. If deactivated, no notifications will be sent per email.
+
+> [!TIP] 
+> This checkbox is enabled by default.
+>
+> You can activate or deactivate it at any point in the future by editing the template for the recurring meetings series.
+
 Click the **Create meeting series** button to save your changes. This will create the recurring meeting series and redirect you to the meeting template page. 
 
 ## Edit recurring meetings template
 
 After creating a meeting series, you are redirected to the recurring meeting template. At this point, no meeting within the recurring meeting series has yet been set up. You need to first define a template that will be the basis of all upcoming meetings. In other words, all new iterations of meetings in the series will be a copy of this template.
 
-![Template meeting for recurring meetings in OpenProject](openproject_userguide_meetings_recurring_meeting_initial_template.png)
+![Template meeting for recurring meetings in OpenProject](openproject_userGuide_meetings_recurring_meeting_initial_template.png)
 
 You can define the template the same way that you would a [one-time meeting](../one-time-meetings): you can add sections, agenda items, work packages and even a set of participants. Keep in mind that every new occurrence of a meeting in the series will use this template. After you are done editing the meeting template, you can create the first meeting by clicking **Open first meeting** button, which will direct you to the first open meeting occurrence in the new series.
 
