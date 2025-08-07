@@ -28,48 +28,50 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings
-  class SidePanel::NotificationsButtonComponent < ApplicationComponent
-    include ApplicationHelper
+module OpPrimer
+  class EmailUpdatesModeSelectorComponent < Primer::Component
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
-    def initialize(meeting:)
+    def initialize(enabled:, path:, title:, enabled_description:, disabled_description:, alt_text: nil, show_button: true,
+                   method: :get)
       super
 
-      @meeting = meeting
-      @project = meeting.project
+      if !show_button && alt_text.blank?
+        raise NotImplementedError, "alt_text must be provided when the button is shown conditionally"
+
+      end
+
+      @enabled = enabled
+      @path = path
+      @title = title
+      @enabled_description = enabled_description
+      @disabled_description = disabled_description
+      @alt_text = alt_text
+      @show_button = show_button
+      @method = method
     end
 
     private
 
     def key
-      @key ||= @meeting.notify? ? "enabled" : "disabled"
-    end
-
-    def state
-      I18n.t("meeting.notifications.sidepanel.state.#{key}")
-    end
-
-    def description
-      I18n.t("meeting.notifications.sidepanel.description.#{key}")
-    end
-
-    def additional_text
-      I18n.t("meeting.notifications.sidepanel.description.change_via_template")
-    end
-
-    def button_label
-      label_key = @meeting.notify? ? "disable" : "enable"
-      I18n.t("meeting.notifications.sidepanel.button.#{label_key}")
+      @key ||= @enabled ? "enabled" : "disabled"
     end
 
     def button_icon
-      @meeting.notify? ? :"bell-slash" : :bell
+      @enabled ? :"bell-slash" : :bell
     end
 
-    def show_button?
-      !@meeting.recurring? || @meeting.templated?
+    def button_label
+      I18n.t("email_calendar_updates.button.#{key}")
+    end
+
+    def state
+      I18n.t("email_calendar_updates.state.#{key}")
+    end
+
+    def description
+      @enabled ? @enabled_description : @disabled_description
     end
   end
 end

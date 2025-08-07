@@ -345,7 +345,7 @@ class MeetingsController < ApplicationController
   end
 
   def toggle_notifications
-    @meeting.update!(notify: !@meeting.notify)
+    @meeting.toggle!(:notify)
 
     if @meeting.notify?
       handle_notification(type: :toggle_notifications)
