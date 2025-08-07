@@ -222,6 +222,13 @@ class MeetingAgendaItemsController < ApplicationController
     respond_with_turbo_streams
   end
 
+  def move_to_next_meeting_dialog
+    respond_with_dialog MeetingAgendaItems::MoveToNextMeetingDialogComponent.new(
+      agenda_item: @meeting_agenda_item,
+      datetime: params[:datetime]
+    )
+  end
+
   def move_to_next_meeting # rubocop:disable Metrics/AbcSize
     next_occurrence = init_next_meeting_occurrence
     return if next_occurrence.nil?
