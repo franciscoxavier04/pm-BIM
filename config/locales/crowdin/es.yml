@@ -372,7 +372,7 @@ es:
       description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
+        description: You can define groups of users with specific names.
         title: No groups set up yet
       user_count: User count
     users:
@@ -686,6 +686,7 @@ es:
     dark: "Oscuro"
     light: "Claro"
     light_high_contrast: "Contraste alto claro"
+    sync_with_os: "Automatic (match OS colour mode)"
   types:
     index:
       no_results_title_text: Actualmente no existen tipos.
@@ -755,7 +756,7 @@ es:
           automatic_with_children: "Fechas determinadas por paquetes de trabajo secundarios."
           automatic_with_predecessor: "La fecha de inicio la fija un predecesor."
           manual_mobile: "Programado manualmente."
-          manually_scheduled: "Programado manualmente. No afectadas por relaciones."
+          manually_scheduled: "Programado manualmente. Fechas no afectadas por relaciones."
       blankslate:
         title: "Sin predecesores"
         description: "Para activar la programación automática, este paquete de trabajo debe tener al menos un predecesor. Entonces se programará automáticamente para que comience después del predecesor más cercano."
@@ -1286,6 +1287,7 @@ es:
         odd: "debe ser impar."
         regex_match_failed: "no coincide con la expresión regular %{expression}."
         regex_invalid: "no se pudo validar con la expresión regular asociada."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "Debe ser menor o igual que el tamaño maximo."
         taken: "Ya se ha tomado."
         too_long: "es demasiado largo (el máximo de caracteres es %{count})."

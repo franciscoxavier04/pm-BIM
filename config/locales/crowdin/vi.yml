@@ -374,7 +374,7 @@ vi:
       description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
+        description: You can define groups of users with specific names.
         title: No groups set up yet
       user_count: User count
     users:
@@ -681,6 +681,7 @@ vi:
     dark: "Dark"
     light: "Sáng"
     light_high_contrast: "Sáng, độ tương phản cao"
+    sync_with_os: "Automatic (match OS colour mode)"
   types:
     index:
       no_results_title_text: Hiện tại không có loại nào.
@@ -1281,6 +1282,7 @@ vi:
         odd: "phải là số lẻ"
         regex_match_failed: "không khớp với biểu thức chính quy %{expression}."
         regex_invalid: "có thể không được xác nhận với các biểu hiện thường xuyên liên kết."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "phải nhỏ hơn hoặc bằng với chiều dài tối đa"
         taken: "đã bị dùng rồi."
         too_long: "quá dài (tối đa %{count} ký tự)."
@@ -2794,7 +2796,7 @@ vi:
   label_filter_add: "Thêm bộ lọc"
   label_filter_by: "Filter by"
   label_filter_any_name_attribute: "Name attributes"
-  label_filter_plural: "Các bộ lọc"
+  label_filter_plural: "Bộ lọc"
   label_filters_toggle: "Hiển thị/ẩn bộ lọc"
   label_float: "Số thực"
   label_folder: "Thư mục"

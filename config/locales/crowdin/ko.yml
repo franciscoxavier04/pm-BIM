@@ -374,7 +374,7 @@ ko:
       description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
+        description: You can define groups of users with specific names.
         title: No groups set up yet
       user_count: User count
     users:
@@ -681,6 +681,7 @@ ko:
     dark: "다크"
     light: "라이트"
     light_high_contrast: "라이트 하이 콘트라스트"
+    sync_with_os: "Automatic (match OS colour mode)"
   types:
     index:
       no_results_title_text: 타입이 없습니다.
@@ -1281,6 +1282,7 @@ ko:
         odd: "에 홀수를 입력해 주세요"
         regex_match_failed: "%{expression} 정규식과 일치하지 않습니다."
         regex_invalid: "관련 정규식으로 유효성을 확인할 수 없습니다."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "은(는) 최대 길이보다 같거나 작아야 합니다."
         taken: "은(는) 이미 존재합니다."
         too_long: "은(는) 너무 깁니다 (최대 %{count}자까지 가능합니다)"

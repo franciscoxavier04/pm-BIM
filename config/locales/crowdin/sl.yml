@@ -373,7 +373,7 @@ sl:
       description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
+        description: You can define groups of users with specific names.
         title: No groups set up yet
       user_count: User count
     users:
@@ -701,6 +701,7 @@ sl:
     dark: "Dark"
     light: "Light"
     light_high_contrast: "Light high contrast"
+    sync_with_os: "Automatic (match OS colour mode)"
   types:
     index:
       no_results_title_text: Trenutno ni vrst.
@@ -1304,6 +1305,7 @@ sl:
         odd: "mora biti liho. "
         regex_match_failed: "does not match the regular expression %{expression}."
         regex_invalid: "ni bilo mogoče potrditi s pripadajočim stalnim izrazom."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "mora biti manjše ali enako največji dolžini."
         taken: "je že zasedeno."
         too_long: "je predolgo (največ %{count} znakov)."
@@ -2068,8 +2070,8 @@ sl:
       - "avgust"
       - "september"
       - "oktober"
-      - "november"
-      - "december"
+      - "November"
+      - "December"
     order:
       - :leto
       - :mesec

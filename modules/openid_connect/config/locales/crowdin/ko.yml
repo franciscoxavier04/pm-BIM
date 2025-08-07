@@ -15,6 +15,7 @@ ko:
         client_id: 클라이언트 ID
         client_secret: 클라이언트 비밀번호
         groups_claim: Groups claim
+        group_regexes: Patterns (regular expressions)
         secret: 비밀번호
         scope: 범위
         sync_groups: Synchronize groups
@@ -61,7 +62,7 @@ ko:
       redirect_url: 로그인 성공 후 OpenID Connect 공급자가 OpenProject로 다시 리디렉션할 때 사용해야 하는 리디렉션 URL입니다.
       endpoint_url: OpenID Connect 공급자가 귀하에게 제공한 엔드포인트 URL
       group_regexes: One regular expression pattern per line. Please read [the documentation](docs_url) for more information on how to do this.
-      group_regexes_detail: Define patterns using regular expressions to match group names from the groups claim. For example, entering a pattern like <code>^Level1/Level2/([\w/]+)$</code> will extract the group “Groupname/SubGroup” from a response including “Level1/Level2/GroupName/SubGroup”.
+      group_regexes_detail: Optionally define patterns using regular expressions to match group names from the groups claim. For example, entering a pattern like <code>^Level1/Level2/([\w/]+)$</code> will extract the group “Groupname/SubGroup” from a response including “Level1/Level2/GroupName/SubGroup”. If no pattern matches, the group is ignored. Leave empty to synchronize all groups using their full group name.
       group_sync: Automatically extract and synchronise group membership information from the identity provider.
       groups_claim: Specify the name of the claim that's expected to indicate the group names that the user is a member of.
       metadata_none: 이 정보가 없습니다
@@ -108,7 +109,6 @@ ko:
       label_empty_title: 아직 구성된 OpenID 공급자가 없습니다.
       label_empty_description: 여기에서 보려면 공급자를 추가합니다.
       label_group_mapping: Group mapping
-      label_group_regexes: Pattern (regular expression)
       label_metadata: OpenID Connect 검색 엔드포인트
       label_automatic_configuration: 자동 구성
       label_optional_configuration: 옵션 구성

@@ -35,8 +35,10 @@ module Storages
         module Queries
           class FilesQuery < Base
             def call(auth_strategy:, input_data:)
-              Authentication[auth_strategy].call(storage: @storage) do |http|
-                files_request(input_data.folder, http)
+              with_tagged_logger do
+                Authentication[auth_strategy].call(storage: @storage) do |http|
+                  files_request(input_data.folder, http)
+                end
               end
             end
 
@@ -44,8 +46,10 @@ module Storages
 
             def files_request(folder, http)
               if folder.root?
+                info "Requesting all libraries for the SharePoint site #{site_name}"
                 Internal::ListsQuery.call(storage: @storage, http:)
               else
+                info "Requesting all files under composite identifier #{folder}"
                 Internal::ChildrenQuery.call(storage: @storage, http:, **split_identifier(folder))
               end
             end

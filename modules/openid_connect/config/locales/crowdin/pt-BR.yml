@@ -15,6 +15,7 @@ pt-BR:
         client_id: ID do cliente
         client_secret: Segredo do cliente
         groups_claim: Groups claim
+        group_regexes: Patterns (regular expressions)
         secret: Segredo
         scope: Escopo
         sync_groups: Synchronize groups
@@ -61,7 +62,7 @@ pt-BR:
       redirect_url: Este é o URL de redirecionamento que o provedor OpenID Connect deve usar para retornar ao OpenProject após um login bem-sucedido.
       endpoint_url: O URL de endpoint fornecido pelo seu provedor OpenID Connect
       group_regexes: One regular expression pattern per line. Please read [the documentation](docs_url) for more information on how to do this.
-      group_regexes_detail: Define patterns using regular expressions to match group names from the groups claim. For example, entering a pattern like <code>^Level1/Level2/([\w/]+)$</code> will extract the group “Groupname/SubGroup” from a response including “Level1/Level2/GroupName/SubGroup”.
+      group_regexes_detail: Optionally define patterns using regular expressions to match group names from the groups claim. For example, entering a pattern like <code>^Level1/Level2/([\w/]+)$</code> will extract the group “Groupname/SubGroup” from a response including “Level1/Level2/GroupName/SubGroup”. If no pattern matches, the group is ignored. Leave empty to synchronize all groups using their full group name.
       group_sync: Automatically extract and synchronise group membership information from the identity provider.
       groups_claim: Specify the name of the claim that's expected to indicate the group names that the user is a member of.
       metadata_none: Não tenho esta informação
@@ -108,7 +109,6 @@ pt-BR:
       label_empty_title: Ainda não há provedores OpenID configurados.
       label_empty_description: Adicione um provedor para visualizá-los aqui.
       label_group_mapping: Group mapping
-      label_group_regexes: Pattern (regular expression)
       label_metadata: Endpoint de descoberta do OpenID Connect
       label_automatic_configuration: Configuração automática
       label_optional_configuration: Configuração opcional

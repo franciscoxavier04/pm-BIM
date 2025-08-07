@@ -374,7 +374,7 @@ ro:
       description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
+        description: You can define groups of users with specific names.
         title: No groups set up yet
       user_count: User count
     users:
@@ -695,6 +695,7 @@ ro:
     dark: "Dark"
     light: "Light"
     light_high_contrast: "Light high contrast"
+    sync_with_os: "Automatic (match OS colour mode)"
   types:
     index:
       no_results_title_text: În acest moment nu există tipuri.
@@ -1297,6 +1298,7 @@ ro:
         odd: "trebuie să fie impar."
         regex_match_failed: "does not match the regular expression %{expression}."
         regex_invalid: "nu a putut fi validată cu expresia regulată asociată."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "trebuie să fie mai mic sau egal cu lungimea maximă."
         taken: "este deja utilizat"
         too_long: "este prea lung (maximul admis este de %{count} caractere)."
@@ -2841,7 +2843,7 @@ ro:
   label_duplicated_by: "dublat de"
   label_duplicate: "duplicat"
   label_duplicates: "dublează"
-  label_edit: "Editează"
+  label_edit: "Editare"
   label_edit_x: "Editare: %{x}"
   label_enable_multi_select: "Comutare selecție multiplă"
   label_enabled_project_custom_fields: "Câmpuri personalizate activate"
@@ -2898,7 +2900,7 @@ ro:
   label_global_roles: "Global roles"
   label_git_path: "Calea catre directorul .git"
   label_greater_or_equal: ">="
-  label_group_by: "Grupează după"
+  label_group_by: "Grupare după"
   label_group_new: "Grupare nouă"
   label_group: "Grup"
   label_group_named: "Grup %{name}"

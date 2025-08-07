@@ -370,7 +370,7 @@ uk:
       description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
+        description: You can define groups of users with specific names.
         title: No groups set up yet
       user_count: User count
     users:
@@ -696,6 +696,7 @@ uk:
     dark: "Темна"
     light: "Світла"
     light_high_contrast: "Світла, високий контраст"
+    sync_with_os: "Automatic (match OS colour mode)"
   types:
     index:
       no_results_title_text: Наразі немає типів.
@@ -1298,6 +1299,7 @@ uk:
         odd: "має бути непарним."
         regex_match_failed: "не збігається з регулярним виразом %{expression}."
         regex_invalid: "неможливо перевірити з відповідним регулярним виразом."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "має бути меншою або дорівнює максимальній довжині."
         taken: "вже прийнято."
         too_long: "занадто довгий (максимум - %{count} characters).\n"
@@ -2962,7 +2964,7 @@ uk:
   label_index_by_title: "Індекс за назвою"
   label_information: "Інформація"
   label_information_plural: "Інформація"
-  label_installation_guides: "Інструкції із встановлення"
+  label_installation_guides: "Інструкції зі встановлення"
   label_integer: "Ціле число"
   label_interface: "Інтерфейс"
   label_internal: "Власне"

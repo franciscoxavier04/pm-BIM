@@ -405,7 +405,7 @@ en:
       description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
+        description: You can define groups of users with specific names.
         title: No groups set up yet
       user_count: User count
     users:
@@ -742,6 +742,7 @@ en:
     dark: "Dark"
     light: "Light"
     light_high_contrast: "Light high contrast"
+    sync_with_os: "Automatic (match OS colour mode)"
 
   types:
     index:
@@ -1368,6 +1369,7 @@ en:
         odd: "must be odd."
         regex_match_failed: "does not match the regular expression %{expression}."
         regex_invalid: "could not be validated with the associated regular expression."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "must be smaller than or equal to maximum length."
         taken: "has already been taken."
         too_long: "is too long (maximum is %{count} characters)."

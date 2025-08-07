@@ -374,7 +374,7 @@ tr:
       description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
+        description: You can define groups of users with specific names.
         title: No groups set up yet
       user_count: User count
     users:
@@ -687,6 +687,7 @@ tr:
     dark: "Koyu"
     light: "Açık"
     light_high_contrast: "Yüksek kontrastlı açık"
+    sync_with_os: "Automatic (match OS colour mode)"
   types:
     index:
       no_results_title_text: Şu anda hiç tip yok.
@@ -1288,6 +1289,7 @@ tr:
         odd: "tek sayı olmalı."
         regex_match_failed: "%{expression} düzenli ifadesiyle eşleşmiyor."
         regex_invalid: "atanmış düzenli ifadeler ile doğrulanamadı."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "en fazla uzunluğa eşit veya daha küçük olmalıdır."
         taken: "zaten alınmıştır."
         too_long: "çok uzun (en fazla %{count} karakterdir)."

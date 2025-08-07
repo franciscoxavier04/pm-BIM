@@ -371,7 +371,7 @@ pl:
       description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
+        description: You can define groups of users with specific names.
         title: No groups set up yet
       user_count: User count
     users:
@@ -699,6 +699,7 @@ pl:
     dark: "Ciemny"
     light: "Jasny"
     light_high_contrast: "Jasny, wysoki kontrast"
+    sync_with_os: "Automatic (match OS colour mode)"
   types:
     index:
       no_results_title_text: Nie ma jeszcze żadnych typów.
@@ -1301,6 +1302,7 @@ pl:
         odd: "musi być nieparzyste."
         regex_match_failed: "nie pasuje do wyrażenia regularnego %{expression}."
         regex_invalid: "nie może być zastosowany z zastosowanym wyrażeniem regularnym."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "musi być mniejsze niż lub równe z maksymalnej długości."
         taken: "zostały już podjęte."
         too_long: "jest zbyt długi (maksymalnie %{count} znaków)."

@@ -15,6 +15,7 @@ it:
         client_id: ID Client
         client_secret: Chiave segreta del client
         groups_claim: Groups claim
+        group_regexes: Patterns (regular expressions)
         secret: Segreto
         scope: Ambito
         sync_groups: Synchronize groups
@@ -61,7 +62,7 @@ it:
       redirect_url: Questo è l'URL di reindirizzamento che il fornitore OpenID Connect deve utilizzare per reindirizzare a OpenProject dopo un accesso riuscito.
       endpoint_url: L'URL dell'endpoint fornito dal fornitore OpenID Connect
       group_regexes: One regular expression pattern per line. Please read [the documentation](docs_url) for more information on how to do this.
-      group_regexes_detail: Define patterns using regular expressions to match group names from the groups claim. For example, entering a pattern like <code>^Level1/Level2/([\w/]+)$</code> will extract the group “Groupname/SubGroup” from a response including “Level1/Level2/GroupName/SubGroup”.
+      group_regexes_detail: Optionally define patterns using regular expressions to match group names from the groups claim. For example, entering a pattern like <code>^Level1/Level2/([\w/]+)$</code> will extract the group “Groupname/SubGroup” from a response including “Level1/Level2/GroupName/SubGroup”. If no pattern matches, the group is ignored. Leave empty to synchronize all groups using their full group name.
       group_sync: Automatically extract and synchronise group membership information from the identity provider.
       groups_claim: Specify the name of the claim that's expected to indicate the group names that the user is a member of.
       metadata_none: Non ho queste informazioni
@@ -108,7 +109,6 @@ it:
       label_empty_title: Nessun fornitore OpenID configurato.
       label_empty_description: Aggiungi fornitori per vederli qui.
       label_group_mapping: Group mapping
-      label_group_regexes: Pattern (regular expression)
       label_metadata: Endpoint di ricerca di OpenID Connect
       label_automatic_configuration: Configurazione automatica
       label_optional_configuration: Configurazione opzionale
