@@ -118,7 +118,7 @@ RSpec.describe Projects::Exports::PDF do
       when "int"
         "5"
       when "version"
-        "Version 1"
+        system_version
       when "bool"
         "Yes"
       when "user"
