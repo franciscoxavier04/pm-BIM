@@ -43,4 +43,37 @@ RSpec.describe CustomFields::Inputs::SingleSelectList, type: :forms do
       expect(autocompleter["data-model"]).to be_json_eql(%{{"name": "eins"}})
     end
   end
+
+  context "with a default value" do
+    before do
+      custom_field.possible_values[1].update default_value: true
+    end
+
+    it_behaves_like "rendering autocompleter", "List field" do
+      let(:value) { custom_field.possible_values.last.id }
+
+      ##
+      # We specifically test that it doesn't just render the selected option by accident.
+      # So we make the last option the selected value with the default being a value
+      # before that.
+      # This is to rule out the bug (#66433) we had before where both the list items [1] for the
+      # default value and the selected value had `selected: true` with the first one
+      # 'winning'.
+      #
+      # [1] CustomFields::Inputs::SingleSelectList#list_items
+      describe "with an option selected" do
+        it "pre-selects the selected value" do
+          expect(autocompleter["data-model"]).to be_json_eql(%{{"name": "drei"}})
+        end
+      end
+
+      describe "with no option selected" do
+        let(:value) { nil }
+
+        it "pre-selects the default value" do
+          expect(autocompleter["data-model"]).to be_json_eql(%{{"name": "zwei"}})
+        end
+      end
+    end
+  end
 end
