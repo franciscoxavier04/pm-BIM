@@ -44,6 +44,7 @@ export default class AutoThemeSwitcher extends Controller {
     useMatchMedia(this, {
       mediaQueries: {
         lightMode: '(prefers-color-scheme: light)',
+        highContrastMode: '(prefers-contrast: more)',
       },
     });
   }
@@ -54,5 +55,9 @@ export default class AutoThemeSwitcher extends Controller {
 
   notLightMode():void {
     window.OpenProject.theme.applyThemeToBody('dark');
+  }
+
+  highContrastModeChanged():void {
+    window.OpenProject.theme.applySystemThemeImmediately();
   }
 }
