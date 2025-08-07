@@ -41,12 +41,15 @@ This makes it easier to spot if a timer is running and avoid duplicate or overla
 
 ### Progress reporting: % Complete sum also shown in Status-based mode
 
+n OpenProject 15.5, we introduced the ability to display a sum for the % Complete column in work package tables. In 16.3, this feature has been improved to ensure **accurate sums across different progress calculation modes**. This applies especially when some work packages do not contain values for Work or Remaining work.
+
 ### Nextcloud Health check: Indicate missing token exchange capability (Enterprise add-on)
 
+Administrators using the Nextcloud integration can now benefit from a more specific health check. If **token exchange is configured but not supported by the linked identity provider** (e.g. due to older OIDC settings), the new check will now clearly identify this issue. This helps diagnose connection problems more reliably and avoids misleading error messages about token refresh failures.
 
-## Important technical changes
+### Autocomplete for cost reporting user and work package fields
 
-<!-- Remove this section if empty, add to it in pull requests linking to tickets and provide information -->
+Creating **cost reports** is now easier and faster. OpenProject 16.3 introduces **autocomplete for key filter fields** like User and Work package, helping you find the right person or task with just a few keystrokes.
 
 <!--more-->
 
