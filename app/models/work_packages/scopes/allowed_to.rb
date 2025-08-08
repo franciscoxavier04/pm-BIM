@@ -47,11 +47,30 @@ module WorkPackages::Scopes
         elsif user.anonymous?
           where(project_id: Project.allowed_to(user, permissions))
         else
-          allowed_via_wp_membership = allowed_to_member_relation(user, permissions)
-          allowed_via_project_membership = Project.unscoped.allowed_to(user, permissions)
+          # allowed_via_wp_membership = allowed_to_member_relation(user, permissions)
+          allowed_via_project_or_work_package_membership = Project.unscoped.allowed_to_member_union(user,
+                                                                                                    permissions,
+                                                                                                    entity_types: ["WorkPackage"])
 
-          where(project_id: allowed_via_project_membership.select(:id))
-            .or(where(id: allowed_via_wp_membership.select(arel_table[:id])))
+          allowed_by_projects_and_work_packages = Arel.sql(<<~SQL.squish)
+            SELECT * from work_packages
+            WHERE project_id in (SELECT id FROM allowed_projects)
+            /* Take all work packages allowed by either project wide or entity specific membership
+               But now remove all those that are in a project for which an entity specific membership exists (but is not for that entity)
+               unless there is also a project specific membership in that same project. */
+            AND NOT EXISTS (
+              SELECT 1 FROM allowed_projects
+              WHERE allowed_projects.id = project_id AND allowed_projects.entity_id IS NOT NULL AND allowed_projects.entity_id != work_packages.id
+              AND NOT EXISTS (
+                SELECT 1 FROM allowed_projects
+                WHERE allowed_projects.id = project_id AND allowed_projects.entity_id IS NULL
+              )
+            )
+          SQL
+
+          with(allowed_projects: Arel.sql(allowed_via_project_or_work_package_membership.to_sql),
+               allowed_by_projects_and_work_packages:)
+            .from("allowed_by_projects_and_work_packages work_packages")
         end
       end
 

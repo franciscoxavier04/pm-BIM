@@ -35,7 +35,7 @@ module Projects::Scopes
     class_methods do
       # Returns an ActiveRecord::Relation to find all entries for which
       # +user+ has the given +permission+.
-      def allowed_to(user, permission)
+      def allowed_to(user, permission, entity_types: [])
         permissions = allowed_to_permissions(permission)
 
         return none if user.locked?
@@ -46,7 +46,7 @@ module Projects::Scopes
         elsif user.anonymous?
           allowed_to_anonymous(user, permissions)
         else
-          allowed_to_member(user, permissions)
+          allowed_to_member(user, permissions, entity_types)
         end
       end
 
@@ -104,21 +104,30 @@ module Projects::Scopes
         where(id: allowed_to_non_member_relation(user, permissions))
       end
 
-      def allowed_to_member(user, permissions)
-        allowed_via_membership = allowed_to_member_relation(user, permissions).select(arel_table[:id]).arel
+      def allowed_to_member(user, permissions, entity_types)
+        allowed_via_membership = allowed_to_member_relation(user, permissions, entity_types).select(arel_table[:id]).arel
         allowed_via_non_member = allowed_to_non_member_relation(user, permissions).select(:id).arel
 
         where(arel_table[:id].in(Arel::Nodes::UnionAll.new(allowed_via_membership, allowed_via_non_member)))
       end
+
+      def allowed_to_member_union(user, permissions, entity_types: [])
+        allowed_via_membership = allowed_to_member_relation(user, permissions, entity_types).select(arel_table[:id],
+                                                                                                    "members.entity_id").arel
+        allowed_via_non_member = allowed_to_non_member_relation(user, permissions).select(:id, "null AS entity_id").arel
+
+        Arel::Nodes::UnionAll.new(allowed_via_membership, allowed_via_non_member)
+      end
+      public :allowed_to_member_union
 
       def allowed_to_admin_relation(permissions)
         joins(allowed_to_enabled_module_join(permissions))
           .where(Project.arel_table[:active].eq(true))
       end
 
-      def allowed_to_member_relation(user, permissions)
+      def allowed_to_member_relation(user, permissions, entity_types)
         Member
-          .where(member_conditions(user))
+          .where(member_conditions(user, entity_types))
           .joins(allowed_to_member_in_active_project_join)
           .joins(allowed_to_enabled_module_join(permissions))
           .joins(:roles)
@@ -171,10 +180,13 @@ module Projects::Scopes
                .join_sources
       end
 
-      def member_conditions(user)
+      def member_conditions(user, entity_types = [])
+        entity_condition = entity_types.reduce(Member.arel_table[:entity_type].eq(nil)) do |acc, entity_type|
+          acc.or(Member.arel_table[:entity_type].eq(entity_type))
+        end
+
         Member.arel_table[:user_id].eq(user.id)
-        .and(Member.arel_table[:entity_id].eq(nil))
-        .and(Member.arel_table[:entity_type].eq(nil))
+          .and(entity_condition)
       end
 
       def allowed_to_permissions(permission)
