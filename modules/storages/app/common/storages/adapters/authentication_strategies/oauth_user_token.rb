@@ -75,8 +75,8 @@ module Storages
           config = storage.oauth_configuration.to_httpx_oauth_config.to_h
           refreshed_session = refresh_token(config, options, token).value_or { return Failure(it) }
           update_token(token, refreshed_session)
-
-          yield refreshed_session
+          options = options.deep_merge(headers: { "Authorization" => "Bearer #{token.access_token}" })
+          yield OpenProject.httpx.with(options)
         end
 
         def update_token(token, http_session)
