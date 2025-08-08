@@ -49,9 +49,38 @@ module Storages
                 info "Requesting all libraries for the SharePoint site #{site_name}"
                 Internal::ListsQuery.call(storage: @storage, http:)
               else
-                info "Requesting all files under composite identifier #{folder}"
-                Internal::ChildrenQuery.call(storage: @storage, http:, **split_identifier(folder))
+                drive_name, location = split_drive_and_folder(folder)
+
+                get_drive_id(http, drive_name).bind do |drive_id|
+                  info "Requesting all files path #{folder.path}"
+                  Internal::ChildrenQuery.call(storage: @storage, http:, drive_id:, location:)
+                end
               end
+            end
+
+            def get_drive_id(http, drive_name)
+              Internal::ListsQuery.call(storage: @storage, http:).bind do |drives|
+                drive = drives.files.detect { it.name == drive_name }
+
+                if drive.present?
+                  info "Drive ID found for list #{drive_name}"
+                  Success(drive.id)
+                else
+                  info "Drive #{drive_name} not found"
+                  Failure(error.with(code: :not_found, payload: drives))
+                end
+              end
+            end
+
+            def error
+              Results::Error.new(source: self.class)
+            end
+
+            def split_drive_and_folder(folder)
+              drive_name, *fragments = folder.path.split("/")[1..]
+              location = Peripherals::ParentFolder.new(fragments.empty? ? "/" : fragments.join("/"))
+
+              [drive_name, location]
             end
           end
         end
