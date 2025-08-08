@@ -12,7 +12,7 @@ ja:
         metadata_url: ID プロバイダのメタデータ URL
         name_identifier_format: 名前識別子の形式
         idp_sso_service_url: アイデンティティ・プロバイダのログイン・エンドポイント
-        idp_slo_service_url: Identity provider logout endpoint
+        idp_slo_service_url: アイデンティティプロバイダのログアウトエンドポイント
         idp_cert: Public certificate of identity provider
         authn_requests_signed: Sign SAML AuthnRequests
         want_assertions_signed: Require signed responses

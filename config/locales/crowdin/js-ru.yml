@@ -908,7 +908,7 @@ ru:
         dueDate: "Дата окончания"
         duration: "Продолжительность"
         spentTime: "Затраченное время"
-        category: "Категория"
+        category: "Категории документов"
         percentageDone: "Сделано в процентах"
         priority: "Приоритет"
         projectName: "Проект"

@@ -120,22 +120,22 @@ zh-CN:
         label_token: "令牌"
         one_time_hint: "这将是您看到此令牌的唯一机会。请务必立即复制。"
       delete_scim_client_dialog_component:
-        title: "Delete SCIM client"
-        heading: "Are you sure you want to delete this SCIM client?"
-        description: "Users managed by this SCIM client can no longer be updated by it."
+        title: "删除 SCIM 客户端"
+        heading: "您确定要删除此 SCIM 客户端吗？"
+        description: "此 SCIM 客户端管理的用户无法再由其更新。"
       edit:
-        label_delete_scim_client: "Delete SCIM client"
+        label_delete_scim_client: "删除 SCIM 客户端"
       form:
         auth_provider_description: "这是 SCIM 提供商添加的用户在 OpenProject 中进行身份验证时将使用的服务。"
-        authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description: "Please refer to our [documentation on configuring SCIM clients](docs_url) for more information on these configuration options."
-        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
+        authentication_method_description_html: "这是 SCIM 客户端在 OpenProject 上进行身份验证的方式。请确保 OAuth 令牌包括 <code>scim_v2</code> 作用域。"
+        description: "关于这些配置选项的更多信息，请参阅我们的[SCIM 客户端配置文档](docs_url)。"
+        jwt_sub_description: "例如，对于 Keycloak，这是与 SCIM 客户端相关联的服务账户的 UUID。要了解如何找到您的用例的主体声明，请查阅[我们的文档](docs_url)。"
         name_description: "选择一个名称，帮助其他管理员更好地理解配置此客户端的原因。"
       index:
-        description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
-        label_create_button: "Add SCIM client"
+        description: "此处配置的 SCIM 客户端能够与 OpenProject SCIM 服务器 API 交互，以提供、更新和取消提供用户帐户和组。"
+        label_create_button: "添加 SCIM 客户端"
       new:
-        title: "New SCIM client"
+        title: "新增 SCIM 客户端"
       revoke_static_token_dialog_component:
         confirm_button: "撤销"
         title: "撤销静态令牌"
