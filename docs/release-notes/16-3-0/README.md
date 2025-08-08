@@ -29,7 +29,9 @@ There have been several design and user experience updates with OpenProject 16.3
 
 With OpenProject 16.3, you can now **disable email calendar updates when creating or copying meetings**. This helps avoid sending invitations too early or accidentally sharing drafts. 
 
-The setting is available as a checkbox in the meeting form and lets you decide whether participants should be notified by email. The current status is always visible in the meeting sidebar and can be toggled for one-time and recurring meetings — giving you full control over how and when participants are informed of changes.
+The setting is available as a checkbox in the meeting template form and lets you decide whether participants should be notified by email. The current status is always visible in the meeting sidebar and can be toggled for one-time and recurring meetings — giving you full control over how and when participants are informed of changes.
+
+![Screenshot showing OpenProject meeting template with overlay to disable email notifications](openproject-16-3-meeting-notifications-highlighted.png)
 
 ### Ongoing timers shown in the My time tracking module
 
