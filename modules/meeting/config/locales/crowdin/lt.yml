@@ -101,6 +101,7 @@ lt:
     meeting_agenda_opened: Susitikimo darbotvarkė atidaryta
     meeting_minutes: Pasitarimo minutės redaguotos
     meeting_minutes_created: Pasitarimo minutės sukurtos
+  error_notification: "Failed to send notification."
   error_notification_with_errors: "Nepavyko išsiųsti pranešimo. Toliau išvardinti adresatai nebuvo įspėti: %{recipients}"
   label_meeting: "Pasitarimas"
   label_meeting_plural: "Pasitarimai"
@@ -120,6 +121,7 @@ lt:
   label_meeting_date_time: "Data/Laikas"
   label_meeting_date_and_time: "Data ir laikas"
   label_meeting_diff: "skirt."
+  label_meeting_send_updates: "Send email calendar updates"
   label_recurring_meeting: "Recurring meeting"
   label_recurring_meeting_part_of: "Part of a meeting series"
   label_recurring_meeting_new: "New recurring meeting"
@@ -222,7 +224,7 @@ lt:
         body: "The meeting '%{title}' has been rescheduled by %{actor}."
         old_date_time: "Sena data/laikas"
         new_date_time: "Nauja data/laikas"
-    label_mail_all_participants: "Siųsti e-laišką visiems dalyviams"
+    label_mail_all_participants: "Email calendar invite to all participants"
     types:
       one_time: "One-time"
       recurring: "Recurring"
@@ -265,8 +267,43 @@ lt:
         caption: If your agenda outcomes contain confidential information, you can choose to not include them in the export.
       footer_text:
         label: Footer text
-        caption: This text will appear on every page on the right of the footer.
+        caption: This text will appear on every page at the center of the footer.
       submit_button: Download
+    notifications:
+      sidepanel:
+        title: "Email calendar updates"
+        description:
+          disabled: "Participants will not receive an email informing them of changes."
+          enabled: "All participants will receive updated calendar invites via email informing them of changes."
+          change_via_template: "To change this, edit the series template."
+      dialog:
+        title:
+          enable: "Enable email calendar updates?"
+          disable: "Disable email calendar updates?"
+        message:
+          enable: >
+            All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants. Once enabled, an email will be sent out immediately to all participants.
+          disable: >
+            Participants will no longer receive updated calendar invites via email when there are changes to the meeting date, time, location or participants. If they already had an invite for this meeting, it might no longer be accurate.
+        confirm_label:
+          enable: "Enable email updates"
+          disable: "Disable email updates"
+      banner:
+        onetime:
+          enabled: >
+            All participants will receive updated calendar invites via email informing them of your changes.
+          disabled: >
+            Email calendar updates are disabled. Participants will not receive an email informing them of your changes.
+        occurrence:
+          enabled: >
+            Email calendar updates are enabled for the meeting series. All participants will receive updated calendar invites informing them of your changes to this occurrence.
+          disabled: >
+            Email calendar updates are disabled for the meeting series. Participants will not receive an email informing them of your changes to this occurrence.
+        template:
+          enabled: >
+            Email calendar updates are enabled for the meeting series. All participants will receive updated calendar invites informing them of your changes to this template or to individual occurrences.
+          disabled: >
+            Email calendar updates are disabled for the meeting series. Participants will not receive an email informing them of your changes to this template or to individual occurrences.
   meeting_section:
     untitled_title: "Bevardė skiltis"
     delete_confirmation: "Ištrynus skiltį taipogi bus ištrinti ir visi jos plano elementai. Ar tikrai norite tai padaryti?"
@@ -358,7 +395,7 @@ lt:
       confirm_button: "Cancel occurrence"
     end_series_dialog:
       title: "End meeting series"
-  notice_successful_notification: "Pranešimas sėkmingai išsiųstas"
+  notice_successful_notification: "Email calendar update sent to all participants"
   notice_timezone_missing: Laiko zona nenustatyta ir %{zone} zona yra rekomenduojama. Kad pasirinktumėte laiko zoną, paspauskite čia.
   notice_meeting_updated: "This page has been updated by someone else. Reload to view changes."
   permission_create_meetings: "Sukurti pasitarimus"
@@ -477,3 +514,6 @@ lt:
   text_agenda_item_move_next_meeting_cancelled: "Unable to move to the next meeting since it has been cancelled."
   text_work_package_add_to_meeting_hint: 'Naudokite mygtuką „Pridėti į susitikimą“, kad pridėtumėte šį darbo paketą į ateinantį susitikimą.'
   text_work_package_has_no_past_meeting_agenda_items: "Šis darbo paketas nebuvo paminėtas ankstesniame susitikime."
+  text_email_updates_muted: "Email calendar updates are muted. Participants will not receive updated invites via email when you make changes."
+  text_email_updates_enabled: "Email calendar updates are enabled. All participants will receive updated invites via email when you make changes."
+

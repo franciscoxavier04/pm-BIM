@@ -53,9 +53,10 @@ module CustomFields
           end
         end
 
-        details_form.text_field(
+        details_form.pattern_input(
           name: :formula,
           value: model.formula_string,
+          suggestions: formula_suggestions,
           label: I18n.t(:label_formula),
           required: true,
           caption: I18n.t("custom_fields.instructions.formula")
@@ -74,6 +75,28 @@ module CustomFields
         )
 
         details_form.submit(name: :submit, label: I18n.t(:button_save), scheme: :primary)
+      end
+
+      private
+
+      def formula_suggestions
+        operators = CustomField::CalculatedValue::MATH_OPERATORS_FOR_FORMULA
+                      # Hide % from the suggestions as it can be used as either modulo or percentage.
+                      .reject { it == "%" }
+                      .map do |op|
+          # Insert operators as plain text nodes instead of tokens, since displaying them as tokens would result
+          # in too much visual clutter. We still want to offer autocompletion for them.
+          { key: op, label: op, insert_as_text: true }
+        end
+
+        custom_fields = model.usable_custom_field_references_for_formula.map do |cf|
+          { key: "cf_#{cf.id}", label: cf.name }
+        end
+
+        {
+          custom_fields: { title: I18n.t("label_custom_field_plural"), tokens: custom_fields },
+          operators: { title: I18n.t("label_mathematical_operators"), tokens: operators }
+        }
       end
     end
   end

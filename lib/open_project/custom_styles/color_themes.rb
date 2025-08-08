@@ -48,7 +48,6 @@ module OpenProject::CustomStyles
           "primary-button-color" => PRIMER_PRIMARY_BUTTON_COLOR,
           "accent-color" => ACCENT_COLOR,
           "header-bg-color" => "#1A67A3",
-          "header-item-bg-hover-color" => "#175A8E",
           "main-menu-bg-color" => "#FFFFFF",
           "main-menu-bg-selected-background" => "#175A8E",
         }
@@ -59,7 +58,6 @@ module OpenProject::CustomStyles
           "primary-button-color" => PRIMER_PRIMARY_BUTTON_COLOR,
           "accent-color" => ACCENT_COLOR,
           "header-bg-color" => "#FAFAFA",
-          "header-item-bg-hover-color" => "#E1E1E1",
           "main-menu-bg-color" => "#ECECEC",
           "main-menu-bg-selected-background" => "#A9A9A9",
         },
@@ -71,7 +69,6 @@ module OpenProject::CustomStyles
           "primary-button-color" => PRIMER_PRIMARY_BUTTON_COLOR,
           "accent-color" => ACCENT_COLOR,
           "header-bg-color" => "#05002C",
-          "header-item-bg-hover-color" => "#163473",
           "main-menu-bg-color" => "#0E2045",
           "main-menu-bg-selected-background" => "#3270DB",
         }

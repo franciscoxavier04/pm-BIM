@@ -101,7 +101,7 @@ tr:
   button_log_time: "Kayıt"
   button_add_activity: "Etkinlik"
   button_add_time_entry: "Zaman kaydet"
-  button_stop_timer: "Stop timer"
+  button_stop_timer: "Zamanlayıcıyı durdur"
   caption_booked_on_project: "Proje rezervasyonu yaptırdı"
   caption_default: "Varsayılan"
   caption_default_rate_history_for: "%{user} için varsayılan değerleme geçmişi"
@@ -180,7 +180,7 @@ tr:
   label_day: "Gün"
   label_today_capitalized: "Bugün"
   label_view_mode_switcher: "Görünümü değiştir"
-  label_timer_since: "Started at %{time}"
+  label_timer_since: "%{time} zamanında başladı"
   placeholder_activity_select_work_package_first: Öncelikle iş paketi seçimi gereklidir
   notice_something_wrong: "Bir şeyler yanlış gitti. Lütfen tekrar deneyin."
   notice_successful_restore: "Başarılı bir geri yükleme."

@@ -63,7 +63,6 @@ uk:
         primary-button-color: "Основна кнопка"
         accent-color: "Акцент"
         header-bg-color: "Фон заголовка"
-        header-item-bg-hover-color: "Фон заголовка в разі наведення курсора"
         main-menu-bg-color: "Фон головного меню"
         main-menu-bg-selected-background: "Головне меню в разі вибору"
       custom_colors: "Кольори за власними вподобаннями"
@@ -71,10 +70,6 @@ uk:
       instructions:
         primary-button-color: "Насичений акцентний колір використовується для більшості важливих кнопок на екрані."
         accent-color: "Колір для посилань та інших елементів, які має бути виділено."
-        header-item-bg-hover-color: "Колір фону в заголовках інтерактивних елементів під курсором миші."
-        header-item-font-color: "Колір шрифту в заголовках інтерактивних елементів."
-        header-item-font-hover-color: "Колір шрифту в заголовках інтерактивних елементів під курсором миші."
-        header-border-bottom-color: "Тонка лінія під заголовком. Залиште це поле порожнім, якщо ви не хочете будь-якої лінії."
         main-menu-bg-color: "Колір фону меню зліва."
       theme_warning: Змінення теми перезапише ваш власний стиль. У такому разі дизайн буде втрачено. Справді продовжити?
     enterprise:
@@ -125,34 +120,34 @@ uk:
         label_token: "Токен"
         one_time_hint: "Це єдиний раз, коли ви побачите цей токен. Обов’язково скопіюйте його зараз."
       delete_scim_client_dialog_component:
-        title: "Видалити клієнт SCIM"
-        heading: "Ви дійсно хочете видалити цей клієнт SCIM?"
-        description: "Цей клієнт SCIM більше не може оновлювати користувачів, якими керує."
+        title: "Delete SCIM client"
+        heading: "Are you sure you want to delete this SCIM client?"
+        description: "Users managed by this SCIM client can no longer be updated by it."
       edit:
-        label_delete_scim_client: "Видалити клієнт SCIM"
+        label_delete_scim_client: "Delete SCIM client"
       form:
         auth_provider_description: "Це сервіс, який користувачі, додані SCIM-провайдером, будуть використовувати для автентифікації в OpenProject."
-        authentication_method_description_html: "Ось так клієнт SCIM автентифікується в OpenProject. Переконайтеся, що токени OAuth включають область <code>scim_v2</code>."
-        description_html: 'Щоб отримати додаткову інформацію про налаштування клієнтів SCIM, перегляньте <a href="%{docs_url}">документацію</a>.'
-        jwt_sub_description_html: 'Наприклад, для Keycloak це UUID пов’язаного з клієнтом SCIM облікового запису сервісу. Інформацію про те, як знайти тему для свого варіанту використання, наведено в <a href="%{docs_url}">документації</a>.'
+        authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
+        description: "Please refer to our [documentation on configuring SCIM clients](docs_url) for more information on these configuration options."
+        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
         name_description: "Виберіть ім’я, яке допоможе іншим адміністраторам чітко зрозуміти, навіщо налаштовано цей клієнт."
       index:
-        description: "Клієнти SCIM, налаштовані тут, можуть взаємодіяти з API сервера SCIM в OpenProject, щоб надавати, оновлювати й видаляти облікові записи й групи."
-        label_create_button: "Додати клієнт SCIM"
+        description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
+        label_create_button: "Add SCIM client"
       new:
-        title: "Новий клієнт SCIM"
+        title: "New SCIM client"
       revoke_static_token_dialog_component:
         confirm_button: "Анулювати"
         title: "Анулювати статичний токен"
         heading: "Ви дійсно хочете анулювати цей токен?"
-        description: "Клієнт SCIM, який використовує цей токен, більше не зможе отримати доступ до API сервера SCIM в OpenProject."
+        description: "The SCIM client that uses this token will no longer be able to access OpenProject's SCIM server API."
       table_component:
         blank_slate:
-          title: "Немає налаштованих клієнтів SCIM"
+          title: "No SCIM clients configured yet"
           description: "Додайте клієнтів, щоб побачити їх тут"
         user_count: "Користувачі"
       token_list_component:
-        description: "Клієнт SCIM може передавати токени, які ви генеруєте тут, для доступу до API сервера SCIM в OpenProject."
+        description: "The tokens you generate here can be passed by a SCIM client to access the OpenProject SCIM API."
         heading: "Токени"
         label_add_token: "Токен"
         label_aria_add_token: "Додати токен"
@@ -359,19 +354,34 @@ uk:
       parent: "Батьківський елемент"
       blueprint: "Шаблон плану"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Пошук у додатку %{app_title}"
     overwritten_tabs:
       all: "Усі"
       messages: "Форум"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Наразі немає груп.
-      no_results_content_text: Створити нову групу
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names.
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Наразі в цій групі немає користувачів.
     memberships:
       no_results_title_text: Наразі жодних проектів цієї групи немає.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Вкажіть список імен, які ігноруватимуться під час обробки вкладень для вхідних повідомлень (наприклад, підписів або значків). Введіть одне ім'я файлу у рядок.
@@ -686,6 +696,7 @@ uk:
     dark: "Темна"
     light: "Світла"
     light_high_contrast: "Світла, високий контраст"
+    sync_with_os: "Automatic (match OS colour mode)"
   types:
     index:
       no_results_title_text: Наразі немає типів.
@@ -717,9 +728,8 @@ uk:
             project: "Проєкт"
         pattern:
           label: "Шаблон теми"
-          caption_with_supported_attributes_link: Створюйте шаблони, додаючи текст, або введіть «/», щоб знайти %{link}.
+          caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
           insert_as_text: "Атрибутів не знайдено. Додайте як текст: «%{word}»"
-          supported_attributes_link: "підтримувані атрибути"
       export_configuration:
         tab: "Згенерувати PDF"
         intro: "Виберіть, які шаблони з доступних вам ви хочете ввімкнути для цього типу. Шаблон визначає дизайн і атрибути, що відображаються в експортованому PDF-файлі пакета робіт за допомогою цього типу. Перший шаблон у списку вибирається за замовчуванням."
@@ -953,7 +963,7 @@ uk:
         attribute_name: "Атрибут"
         help_text: "Довідковий текст"
       auth_provider:
-        scim_clients: "Клієнти SCIM"
+        scim_clients: "SCIM clients"
       capability:
         context: "Контекст"
       changeset:
@@ -1119,7 +1129,6 @@ uk:
       role:
         permissions: "Дозволи"
       scim_client:
-        auth_provider: "Постачальник послуг автентифікації"
         authentication_method: "Метод автентифікації"
         jwt_sub: "Потрібна тема"
       status:
@@ -1270,6 +1279,7 @@ uk:
         inclusion_nested: "– не призначено одне з дозволених значень за шляхом «%{path}»."
         invalid: "зазначено невірно"
         invalid_characters: "містить недопустимі символи."
+        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
         invalid_url: "не є дійсною URL-адресою."
         invalid_url_scheme: "не є підтримуваним протоколом (дозволено: %{allowed_schemes})."
         less_than_or_equal_to: "має бути меншим або рівним %{count}"
@@ -1289,6 +1299,7 @@ uk:
         odd: "має бути непарним."
         regex_match_failed: "не збігається з регулярним виразом %{expression}."
         regex_invalid: "неможливо перевірити з відповідним регулярним виразом."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "має бути меншою або дорівнює максимальній довжині."
         taken: "вже прийнято."
         too_long: "занадто довгий (максимум - %{count} characters).\n"
@@ -1619,6 +1630,11 @@ uk:
     models:
       attachment: "Файл"
       attribute_help_text: "Текст довідки атрибута"
+      auth_provider:
+        one: "Authentication provider"
+        few: "Authentication providers"
+        many: "Authentication providers"
+        other: "Authentication providers"
       category: "Категорія"
       comment: "Коментар"
       custom_action: "Спеціальні дії"
@@ -1663,10 +1679,10 @@ uk:
         many: "Роль"
         other: "Роль"
       scim_client:
-        one: "Клієнт SCIM"
-        few: "Клієнти SCIM"
-        many: "Клієнти SCIM"
-        other: "Клієнти SCIM"
+        one: "SCIM client"
+        few: "SCIM clients"
+        many: "SCIM clients"
+        other: "SCIM clients"
       status: "Стан робочого пакета"
       token/api:
         one: Маркер доступу
@@ -2276,7 +2292,7 @@ uk:
         title: "Єдиний вхід для сховища Nextcloud"
         description: "Увімкніть швидку й безпечну автентифікацію для свого сховища Nextcloud завдяки технології єдиного входу. Спростіть керування доступом і покращте взаємодію користувачів зі своїм продуктом."
       scim_api:
-        title: "Клієнти SCIM"
+        title: "SCIM clients"
         description: "Автоматизуйте управління користувачами в OpenProject, інтегрувавши зовнішні сервіси для керування ідентичностями, такі як Microsoft Entra або Keycloak, через API сервера SCIM. Ця можливість доступна, починаючи з корпоративного плану Enterprise."
       virus_scanning:
         description: "Переконайтеся, що вивантажені в OpenProject файли перевіряються на віруси перед тим, як стають доступними для інших користувачів."
@@ -2317,6 +2333,13 @@ uk:
         Я хочу отримувати <a target="_blank" href="https://www.openproject.org/newsletter/">інформаційний бюлетень</a> OpenProject.
       consent_html: >
         Я погоджуюся з <a target="_blank" href="https://www.openproject.org/terms-of-service/">умовами надання послуг</a> і <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">політикою конфіденційності</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
   enumeration_activities: "Дії щодо відстеження часу"
   enumeration_work_package_priorities: "Пріоритети робочого пакету"
   enumeration_reported_project_statuses: "Повідомлення про статус проекту"
@@ -2617,7 +2640,7 @@ uk:
       aggregation: "Агрегація"
       api_and_webhooks: "API та вебгуки"
     quick_add:
-      label: "Відкрити меню швидкого додавання"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2917,6 +2940,7 @@ uk:
   label_gantt_chart_plural: "Діаграми Ґанта"
   label_general: "Загальні"
   label_generate_key: "Згенерувати ключ"
+  label_global_modules: "Global modules"
   label_global_roles: "Глобальні ролі"
   label_git_path: "Шлях до каталогу .git"
   label_greater_or_equal: ">="
@@ -3001,6 +3025,7 @@ uk:
   label_manage: "Керувати"
   label_manage_groups: "Керувати групами"
   label_managed_repositories_vendor: "Керований %{vendor} repositories"
+  label_mathematical_operators: "Mathematical operators"
   label_max_size: "Максимальний розмір"
   label_me: "мені"
   label_member_new: "Новий учасник"
@@ -3060,6 +3085,7 @@ uk:
   label_no_due_date: "немає дати завершення"
   label_no_start_date: "немає дати початку"
   label_no_parent_page: "Немає початкової сторінки"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Нічого не відображається"
   label_nobody: "жодні"
   label_not_configured: "Не налаштовано"
@@ -3268,6 +3294,7 @@ uk:
   label_user_mail_option_only_my_events: "Тільки для речей які я дивлюся чи я займаюся"
   label_user_mail_option_only_owner: "Тільки для речей, за якими я спостерігаю або є власником"
   label_user_mail_option_selected: "Для будь-якої події на вибраних проектах"
+  label_user_menu: "User menu"
   label_user_new: "Новий користувач"
   label_user_plural: "Користувачі"
   label_user_search: "Знайти користувача:"

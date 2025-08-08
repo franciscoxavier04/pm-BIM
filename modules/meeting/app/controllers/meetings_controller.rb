@@ -313,15 +313,7 @@ class MeetingsController < ApplicationController
   end
 
   def notify
-    service = MeetingNotificationService.new(@meeting)
-    result = service.call(:invited)
-
-    if result.success?
-      flash[:notice] = I18n.t(:notice_successful_notification)
-    else
-      flash[:error] = I18n.t(:error_notification_with_errors,
-                             recipients: result.errors.map(&:name).join("; "))
-    end
+    handle_notification(type: :notify)
 
     redirect_to action: :show, id: @meeting
   end
@@ -346,6 +338,23 @@ class MeetingsController < ApplicationController
       meeting: @meeting,
       project: @project
     )
+  end
+
+  def toggle_notifications_dialog
+    respond_with_dialog Meetings::SidePanel::ToggleNotificationsDialogComponent.new(@meeting)
+  end
+
+  def toggle_notifications
+    @meeting.toggle!(:notify)
+
+    if @meeting.notify?
+      handle_notification(type: :toggle_notifications)
+    end
+
+    update_sidebar_component_via_turbo_stream
+    update_header_component_via_turbo_stream
+
+    respond_with_turbo_streams
   end
 
   private
@@ -456,7 +465,7 @@ class MeetingsController < ApplicationController
 
     @converted_params[:project] = @project if @project.present?
     @converted_params[:duration] = @converted_params[:duration].to_hours if @converted_params[:duration].present?
-    @converted_params[:send_notifications] = params[:send_notifications] == "1"
+    @converted_params[:send_notifications] = meeting_params[:notify] == "1" && params[:meeting][:copied_from_meeting_id].present?
 
     # Handle participants separately for each meeting type
     @converted_params[:participants_attributes] ||= {}
@@ -473,9 +482,9 @@ class MeetingsController < ApplicationController
   def meeting_params
     if params[:meeting].present?
       params
-        .require(:meeting)
+        .require(:meeting) # rubocop:disable Rails/StrongParametersExpect
         .permit(:title, :location, :start_time, :project_id,
-                :duration, :start_date, :start_time_hour,
+                :duration, :start_date, :start_time_hour, :notify,
                 participants_attributes: %i[email name invited attended user user_id meeting id])
     end
   end
@@ -528,7 +537,7 @@ class MeetingsController < ApplicationController
     {
       copy_agenda: copy_param(:copy_agenda),
       copy_attachments: copy_param(:copy_attachments),
-      send_notifications: copy_param(:send_notifications)
+      send_notifications: @converted_params[:send_notifications]
     }
   end
 
@@ -543,7 +552,7 @@ class MeetingsController < ApplicationController
   end
 
   def timezone_params
-    @timezone_params ||= params.require(:meeting).permit(:start_date, :start_time_hour).compact_blank
+    @timezone_params ||= params.expect(meeting: %i[start_date start_time_hour]).compact_blank
   end
 
   def export_pdf
@@ -558,6 +567,26 @@ class MeetingsController < ApplicationController
       render json: { job_id: job.job_id }
     else
       redirect_to job_status_path(job.job_id)
+    end
+  end
+
+  def handle_notification(type:)
+    service = MeetingNotificationService.new(@meeting)
+    result = service.call(:invited)
+
+    message = if result.success?
+                I18n.t(:notice_successful_notification)
+              else
+                I18n.t(:error_notification_with_errors,
+                       recipients: result.errors.map(&:name).join("; "))
+              end
+
+    if type == :notify
+      flash[result.success? ? :notice : :error] = message
+    elsif result.success?
+      render_success_flash_message_via_turbo_stream(message:)
+    else
+      render_error_flash_message_via_turbo_stream(message:)
     end
   end
 end

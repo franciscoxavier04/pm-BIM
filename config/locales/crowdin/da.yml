@@ -63,7 +63,6 @@ da:
         primary-button-color: "Primary button"
         accent-color: "Accent"
         header-bg-color: "Overskriftsbaggrund"
-        header-item-bg-hover-color: "Overskriftsbaggrund ved mus over"
         main-menu-bg-color: "Hovedmenu baggrund"
         main-menu-bg-selected-background: "Hovedmenu når valgt"
       custom_colors: "Brugerdefinerede farver"
@@ -71,10 +70,6 @@ da:
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
         accent-color: "Color for links and other decently highlighted elements."
-        header-item-bg-hover-color: "Baggrundsfarve på knapper i headeren, når musen føres over."
-        header-item-font-color: "Tekst-farve på knapper i headeren."
-        header-item-font-hover-color: "Tekst-farve på knapper i headeren, når musen føres over."
-        header-border-bottom-color: "Tynd linje under headeren. Efterlad dette felt tomt hvis du ikke ønsker en linje."
         main-menu-bg-color: "Baggrundsfarve på venstre sidemenu."
       theme_warning: Ændring af temaet vil overskrive din brugerdefinerede stil. Designet vil derefter gå tabt. Er du sikker på du vil fortsætte?
     enterprise:
@@ -133,8 +128,8 @@ da:
       form:
         auth_provider_description: "This is the service that users added by the SCIM provider will use to authenticate in OpenProject."
         authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM clients</a> for more information on these configuration options.'
-        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
+        description: "Please refer to our [documentation on configuring SCIM clients](docs_url) for more information on these configuration options."
+        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
         name_description: "Choose a name that will help other admins better understand why this client was configured."
       index:
         description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
@@ -361,19 +356,34 @@ da:
       parent: "Overordnet"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
       all: "Alle"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Der er i øjeblikket ingen grupper.
-      no_results_content_text: Opret en ny gruppe
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names.
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Der er i øjeblikket ingen brugere i denne gruppe.
     memberships:
       no_results_title_text: Der er i øjeblikket ingen projekter i denne gruppe.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Angiv en liste over navne der skal ignoreres ved behandling af vedhæftede filer for indgående breve (f.eks. signaturer eller ikoner). Indtast et filnavn pr. linje.
@@ -676,6 +686,7 @@ da:
     dark: "Dark"
     light: "Light"
     light_high_contrast: "Light high contrast"
+    sync_with_os: "Automatic (match OS colour mode)"
   types:
     index:
       no_results_title_text: There are currently no types.
@@ -707,9 +718,8 @@ da:
             project: "Prjoekt"
         pattern:
           label: "Subject pattern"
-          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
+          caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
-          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1108,7 +1118,6 @@ da:
       role:
         permissions: "Tilladelser"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1259,6 +1268,7 @@ da:
         inclusion_nested: "is not set to one of the allowed values at path '%{path}'."
         invalid: "er ugyldig."
         invalid_characters: "contains invalid characters."
+        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
         invalid_url: "is not a valid URL."
         invalid_url_scheme: "is not a supported protocol (allowed: %{allowed_schemes})."
         less_than_or_equal_to: "skal være mindre end eller lig med %{count}."
@@ -1278,6 +1288,7 @@ da:
         odd: "skal være ulige."
         regex_match_failed: "does not match the regular expression %{expression}."
         regex_invalid: "could not be validated with the associated regular expression."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "skal være mindre end eller lig den maksimale længde."
         taken: "er allerede taget."
         too_long: "er for lang (maks.: %{count} tegn)."
@@ -1604,6 +1615,9 @@ da:
     models:
       attachment: "Fil"
       attribute_help_text: "Attribute help text"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "Kategori"
       comment: "Kommentér"
       custom_action: "Custom action"
@@ -2236,6 +2250,13 @@ da:
         I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
       consent_html: >
         I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Prioritering af arbejdspakker"
   enumeration_reported_project_statuses: "Rapporteret projektstatus"
@@ -2536,7 +2557,7 @@ da:
       aggregation: "Aggregation"
       api_and_webhooks: "API and webhooks"
     quick_add:
-      label: "Åbn hurtig-tilføj menu"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2836,6 +2857,7 @@ da:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Generelle"
   label_generate_key: "Skab nøgle"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: "Sti til .git-mappe"
   label_greater_or_equal: ">="
@@ -2920,6 +2942,7 @@ da:
   label_manage: "Manage"
   label_manage_groups: "Administrér grupper"
   label_managed_repositories_vendor: "Administrerede %{vendor} repositorier"
+  label_mathematical_operators: "Mathematical operators"
   label_max_size: "Maksimal størrelse"
   label_me: "mig"
   label_member_new: "Nyt medlem"
@@ -2979,6 +3002,7 @@ da:
   label_no_due_date: "ingen slutdato"
   label_no_start_date: "ingen startdato"
   label_no_parent_page: "No parent page"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Intet at vise"
   label_nobody: "ingen"
   label_not_configured: "Not configured"
@@ -3187,6 +3211,7 @@ da:
   label_user_mail_option_only_my_events: "Kun for det jeg fører tilsyn med eller er involveret i"
   label_user_mail_option_only_owner: "Kun for det jeg er ejer af"
   label_user_mail_option_selected: "Kun for hændelser i de valgte projekter"
+  label_user_menu: "User menu"
   label_user_new: "Ny bruger"
   label_user_plural: "Brugere"
   label_user_search: "Søg efter bruger"

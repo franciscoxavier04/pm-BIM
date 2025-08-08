@@ -21,6 +21,11 @@ cs:
         project_folder_mode: Project folder mode
         storage: Úložiště
         storage_url: Storage URL
+      storages/share_point_storage:
+        host: Sharepoint Site URL
+        library: Library ID
+        name: Name
+        site: Site ID
       storages/storage:
         authentication_method: Authentication Method
         creator: Autor
@@ -32,6 +37,7 @@ cs:
     errors:
       messages:
         invalid_host_url: není platná adresa URL.
+        invalid_sharepoint_url: is not a valid SharePoint site, library, or document URL.
         not_linked_to_project: není propojen s projektem.
       models:
         storages/file_link:
@@ -189,8 +195,10 @@ cs:
       oauth_client_incomplete:
         nextcloud: Povolit OpenProject přístup k Nextcloud datům pomocí OAuth.
         one_drive: Allow OpenProject to access Azure data using OAuth to connect OneDrive.
+        share_point: Allow OpenProject to access SharePoint data using OAuth.
       redirect_uri_incomplete:
         one_drive: Dokončete nastavení správným přesměrováním URI.
+        share_point: Complete the setup with the correct URI redirection.
     confirm_replace_oauth_application: Tato akce obnoví aktuální OAuth přihlašovací údaje. Po potvrzení budete muset znovu zadat přihlašovací údaje u poskytovatele úložiště a všichni vzdálení uživatelé budou muset znovu autorizovat proti OpenProject Jste si jisti, že chcete pokračovat?
     confirm_replace_oauth_client: This action will reset the current OAuth credentials. After confirming you will have to enter new credentials from the storage provider and all users will have to authorize against %{provider_type} again. Are you sure you want to proceed?
     delete_warning:
@@ -256,6 +264,7 @@ cs:
           header: Ověření
           non_provisioned_user: User provisioned by IDP
           offline_access: Configured OIDC offline_access scope
+          provider_capabilities: Provider capabilities
           provisioned_user_provider: User provisioned by OIDC
           token_negotiable: User token capabilities
           user_bound_request: User-based request authentication
@@ -310,6 +319,7 @@ cs:
         oidc_cant_refresh_token: There was an error while trying to check your access to the storage. Please check the server logs for further information.
         oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
         oidc_non_provisioned_user: The current user isn't provided by an OpenID Connect Identity Provider. Please re-run the check with a provided user.
+        oidc_provider_cant_exchange: The OpenID Connect provider does not seem to support token exchange, but token exchange was configured for the storage.
         oidc_token_acquisition_failed: Your OpenID Connect setup doesn't provide the necessary audience, nor does it provide token exchange capabilities. Please check out our documentation for more information.
         oidc_token_exchange_failed: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
         oidc_token_refresh_failed: There was an error while trying to check your access to the storage. Please check the server logs for further information.
@@ -333,12 +343,10 @@ cs:
         warning: Some checks returned a warning. This can lead to unexpected behaviour.
       title: Health status report
     health_email_notifications:
-      description_subscribed: Všichni administrátoři dostávají e-mailová oznámení o zdravotním stavu pro toto úložiště.
-      description_unsubscribed: Health status email notifications for this storage have been turned off for all administrators.
+      description_disabled: Admins will not receive updates by email when there are important updates.
+      description_enabled: Admins will receive updates by email when there are important updates.
       error_could_not_be_saved: Nastavení e-mailových oznámení nelze uložit. Zkuste to prosím znovu.
-      subscribe: Přihlásit k odběru
-      title: E-mailová upozornění
-      unsubscribe: Odhlásit se z odběru
+      title: Email updates to admins
     help_texts:
       project_folder: Složka projektu je výchozí složka pro nahrávání souborů pro tento projekt. Uživatelé přesto mohou nahrávat soubory do jiných umístění.
       project_folder_bulk: The project folder is the default folder for file uploads for all the projects selected. You can modify this individually in each project settings. Users can nevertheless still upload files to other locations.
@@ -382,6 +390,11 @@ cs:
       setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File storages.
       setting_up_storages: Pro nastavení úložišť souborů navštivte prosím
       setting_up_storages_non_admin: Administrators can set up file storages in Administration / File storages.
+      share_point:
+        application_link_text: SharePoint site
+        integration: SharePoint Administration / OpenProject
+        oauth_configuration: Copy these values from the desired application in the %{application_link_text}.
+        provider_configuration: Před instalací se ujistěte, že máte oprávnění k administraci v %{application_link_text} nebo se obraťte na správce Microsoftu. Na portálu musíte také zaregistrovat Azure aplikaci nebo použít existující aplikaci pro autentizaci.
       type: 'Ujistěte se prosím, že máte oprávnění administrace v Nextcloud instanci a máte nainstalovanou následující aplikaci:'
       type_link_text: "„Integration OpenProject“"
     label_active: Aktivní

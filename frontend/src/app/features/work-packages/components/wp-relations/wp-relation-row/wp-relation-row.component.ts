@@ -16,6 +16,7 @@ import { Highlighting } from 'core-app/features/work-packages/components/wp-fast
 @Component({
   selector: 'wp-relation-row',
   templateUrl: './wp-relation-row.template.html',
+  standalone: false,
 })
 export class WorkPackageRelationRowComponent extends UntilDestroyedMixin implements OnInit {
   @Input() public workPackage:WorkPackageResource;

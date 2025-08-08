@@ -182,7 +182,7 @@ module Pages
       visit root_path
 
       within ".op-app-header" do
-        click_on "Modules"
+        page.find_test_selector("op-app-header--modules-menu-button").click
       end
 
       within "#op-app-header--modules-menu-list", visible: :all do

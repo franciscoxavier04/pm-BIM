@@ -112,6 +112,7 @@ import {
   templateUrl: './storage.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: OpUploadService, useClass: StorageUploadService }],
+  standalone: false,
 })
 export class StorageComponent extends UntilDestroyedMixin implements OnInit, OnDestroy {
   @Input() public resource:HalResource;

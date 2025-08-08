@@ -101,6 +101,7 @@ sl:
     meeting_agenda_opened: Dnevni red odprt
     meeting_minutes: Zapisnik sestanka je bil spremenjen
     meeting_minutes_created: Zapisnik sestanka je ustvarjen
+  error_notification: "Failed to send notification."
   error_notification_with_errors: "Pošiljanje obvestil je bilo neuspešno. Naslednji naslovniki nisi bili obveščeni: %{recipients}"
   label_meeting: "Sestanek"
   label_meeting_plural: "Sestanki"
@@ -120,6 +121,7 @@ sl:
   label_meeting_date_time: "Datum/čas"
   label_meeting_date_and_time: "Datum in ura"
   label_meeting_diff: "Razlikovanje"
+  label_meeting_send_updates: "Send email calendar updates"
   label_recurring_meeting: "Recurring meeting"
   label_recurring_meeting_part_of: "Part of a meeting series"
   label_recurring_meeting_new: "New recurring meeting"
@@ -222,7 +224,7 @@ sl:
         body: "The meeting '%{title}' has been rescheduled by %{actor}."
         old_date_time: "Old date/time"
         new_date_time: "New date/time"
-    label_mail_all_participants: "Send email to all participants"
+    label_mail_all_participants: "Email calendar invite to all participants"
     types:
       one_time: "One-time"
       recurring: "Recurring"
@@ -265,8 +267,43 @@ sl:
         caption: If your agenda outcomes contain confidential information, you can choose to not include them in the export.
       footer_text:
         label: Footer text
-        caption: This text will appear on every page on the right of the footer.
+        caption: This text will appear on every page at the center of the footer.
       submit_button: Download
+    notifications:
+      sidepanel:
+        title: "Email calendar updates"
+        description:
+          disabled: "Participants will not receive an email informing them of changes."
+          enabled: "All participants will receive updated calendar invites via email informing them of changes."
+          change_via_template: "To change this, edit the series template."
+      dialog:
+        title:
+          enable: "Enable email calendar updates?"
+          disable: "Disable email calendar updates?"
+        message:
+          enable: >
+            All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants. Once enabled, an email will be sent out immediately to all participants.
+          disable: >
+            Participants will no longer receive updated calendar invites via email when there are changes to the meeting date, time, location or participants. If they already had an invite for this meeting, it might no longer be accurate.
+        confirm_label:
+          enable: "Enable email updates"
+          disable: "Disable email updates"
+      banner:
+        onetime:
+          enabled: >
+            All participants will receive updated calendar invites via email informing them of your changes.
+          disabled: >
+            Email calendar updates are disabled. Participants will not receive an email informing them of your changes.
+        occurrence:
+          enabled: >
+            Email calendar updates are enabled for the meeting series. All participants will receive updated calendar invites informing them of your changes to this occurrence.
+          disabled: >
+            Email calendar updates are disabled for the meeting series. Participants will not receive an email informing them of your changes to this occurrence.
+        template:
+          enabled: >
+            Email calendar updates are enabled for the meeting series. All participants will receive updated calendar invites informing them of your changes to this template or to individual occurrences.
+          disabled: >
+            Email calendar updates are disabled for the meeting series. Participants will not receive an email informing them of your changes to this template or to individual occurrences.
   meeting_section:
     untitled_title: "Untitled section"
     delete_confirmation: "Deleting the section will also delete all of its agenda items. Are you sure you want to do this?"
@@ -358,7 +395,7 @@ sl:
       confirm_button: "Cancel occurrence"
     end_series_dialog:
       title: "End meeting series"
-  notice_successful_notification: "Obvestila uspešno poslana"
+  notice_successful_notification: "Email calendar update sent to all participants"
   notice_timezone_missing: Časovni pas ni določen, %{zone} je izbran avtomatsko. Za določitev časovnega pasu kliknite tukaj.
   notice_meeting_updated: "This page has been updated by someone else. Reload to view changes."
   permission_create_meetings: "Ustvarite sestanke"
@@ -477,3 +514,6 @@ sl:
   text_agenda_item_move_next_meeting_cancelled: "Unable to move to the next meeting since it has been cancelled."
   text_work_package_add_to_meeting_hint: 'Use the "Add to meeting" button to add this work package to an upcoming meeting.'
   text_work_package_has_no_past_meeting_agenda_items: "This work package was not mentioned in a past meeting."
+  text_email_updates_muted: "Email calendar updates are muted. Participants will not receive updated invites via email when you make changes."
+  text_email_updates_enabled: "Email calendar updates are enabled. All participants will receive updated invites via email when you make changes."
+

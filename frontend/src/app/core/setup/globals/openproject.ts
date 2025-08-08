@@ -30,6 +30,9 @@ import { OpenProjectPluginContext } from 'core-app/features/plugins/plugin-conte
 import { input, InputState } from '@openproject/reactivestates';
 import { getMetaElement, GlobalHelpers } from 'core-app/core/setup/globals/global-helpers';
 import { firstValueFrom } from 'rxjs';
+import { ThemeUtils } from './theme-utils';
+
+export type OpenProjectPageState = 'pristine'|'edited'|'submitted';
 
 /**
  * OpenProject instance methods
@@ -39,12 +42,21 @@ export class OpenProject {
 
   public helpers = new GlobalHelpers();
 
-  /** Globally setable variable whether the page was edited */
-  public pageWasEdited = false;
+  /**
+   * Theme utilities for system theme detection and application
+   */
+  public theme = new ThemeUtils();
 
-  /** Globally setable variable whether the page form is submitted.
-   * Necessary to avoid a data loss warning on beforeunload */
-  public pageIsSubmitted = false;
+  /** Globally setable variable whether the page was edited or submitted */
+  pageState:OpenProjectPageState = 'pristine';
+
+  public get pageWasEdited():boolean {
+    return this.pageState === 'edited';
+  }
+
+  public get pageWasSubmitted():boolean {
+    return this.pageState === 'submitted';
+  }
 
   /** Globally setable variable whether any of the EditFormComponent
    * contain changes.

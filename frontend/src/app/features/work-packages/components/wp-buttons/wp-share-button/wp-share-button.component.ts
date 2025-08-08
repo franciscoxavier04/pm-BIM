@@ -48,6 +48,7 @@ import { CollectionResource } from 'core-app/features/hal/resources/collection-r
   selector: 'wp-share-button',
   templateUrl: './wp-share-button.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class WorkPackageShareButtonComponent extends UntilDestroyedMixin implements OnInit {
   @Input() public workPackage:WorkPackageResource;

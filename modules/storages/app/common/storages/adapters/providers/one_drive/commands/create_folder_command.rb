@@ -38,7 +38,7 @@ module Storages
               with_tagged_logger do
                 info "Creating folder with args: #{input_data.to_h} | #{auth_strategy.value_or({}).to_h}"
                 Authentication[auth_strategy].call(storage: @storage) do |http|
-                  handle_response http.post(url_for(input_data.parent_location), body: payload(input_data.folder_name))
+                  handle_response http.post(url_for(input_data.parent_location), json: payload(input_data.folder_name))
                 end
               end
             end

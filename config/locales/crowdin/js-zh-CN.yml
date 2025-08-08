@@ -295,10 +295,10 @@ zh-CN:
           learn_about: "详细了解所有新功能"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. Chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_2":
+          "16_3":
             standard:
               new_features_html: >
-                该版本包含多种新功能和改进，例如<br> <ul class="%{list_styling_class}"> <li>改进了导航和设计的新标题栏和边栏。</li> <li>“自定义字段”、“关系”、“提醒”、“会议”和“我的时间跟踪”的体验更加丝滑。</li> <li>PDF 导出支持非拉丁语系语言和表情符号。</li> <li>可以选择禁用键盘快捷键，以提高可访问性。</li> <li>通过 API 访问 SCIM 服务器（Enterprise 附加组件）。</li> <li>针对内部注释的 API 支持。</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>UX/UI improvements for a more modern look.</li> <li>Meetings: Option to mute email notifications and ICS.</li> <li>Ongoing timers shown in the My time tracking module.</li> <li>Progress reporting: % Complete sum also shown in Status-based mode.</li> <li>Nextcloud Health check: Indicate missing token exchange capability (Enterprise add-on).</li> </ul>
     ical_sharing_modal:
       title: "订阅日历"
       inital_setup_error_message: "获取数据时发生错误。"
@@ -695,6 +695,7 @@ zh-CN:
           first_day: "第一天"
           last_day: "最后一天"
     text_are_you_sure: "是否确定？"
+    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
     breadcrumb: "面包屑导航"
     text_data_lost: "输入的所有数据将全部丢失。"
     text_user_wrote: "%{value} 写道："

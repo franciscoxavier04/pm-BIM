@@ -31,9 +31,9 @@ de:
         spent: "Verbraucht"
         spent_on: "Datum"
         logged_by: "Gebucht von"
-        entity: Logged for
-        entity_id: Logged for
-        entity_gid: Logged for
+        entity: Eintrag für
+        entity_id: Eintrag für
+        entity_gid: Eintrag für
       cost_type:
         unit: "Einheit"
         unit_plural: "Einheit plural"
@@ -61,9 +61,9 @@ de:
         start_time: Startzeit
         end_time: Endzeit
         time: Zeit
-        entity: Logged for
-        entity_id: Logged for
-        entity_gid: Logged for
+        entity: Gebucht für
+        entity_id: Gebucht für
+        entity_gid: Gebucht für
     models:
       time_entry:
         one: "Zeitbuchung"
@@ -101,7 +101,7 @@ de:
   button_log_time: "Buchen"
   button_add_activity: "Aktivität"
   button_add_time_entry: "Zeit buchen"
-  button_stop_timer: "Stop timer"
+  button_stop_timer: "Timer anhalten"
   caption_booked_on_project: "Auf das Projekt gebucht"
   caption_default: "Standard"
   caption_default_rate_history_for: "Standardsatz-Historie für %{user}"
@@ -180,7 +180,7 @@ de:
   label_day: "Tag"
   label_today_capitalized: "Heute"
   label_view_mode_switcher: "Ansicht ändern"
-  label_timer_since: "Started at %{time}"
+  label_timer_since: "Begonnen um %{time}"
   placeholder_activity_select_work_package_first: Zunächst muss ein Arbeitspaket ausgewählt werden
   notice_something_wrong: "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
   notice_successful_restore: "Erfolgreich wiederhergestellt."
@@ -188,7 +188,7 @@ de:
   notice_cost_logged_successfully: "Stückkosten erfolgreich gebucht."
   notice_different_time_zones: "Dieser Benutzer hat eine andere Zeitzone (%{tz}). Die Zeit wird unter Verwendung seiner Zeitzone protokolliert."
   notice_time_entry_update_failed: "Fehler beim Aktualisieren des Zeiteintrags. Fehler: %{errors}"
-  notice_time_entry_delete_failed: "Failed to delete time entry. Errors: %{errors}"
+  notice_time_entry_delete_failed: "Fehler beim Löschen des Zeiteintrags. Fehler: %{errors}"
   permission_edit_cost_entries: "Bearbeiten gebuchter Stückkosten"
   permission_edit_own_cost_entries: "Bearbeiten eigener gebuchter Stückkosten"
   permission_edit_hourly_rates: "Stundensätze bearbeiten"

@@ -15,6 +15,7 @@ import { ConfigurationService } from 'core-app/core/config/configuration.service
   templateUrl: './notification-settings-table.component.html',
   styleUrls: ['./notification-settings-table.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class NotificationSettingsTableComponent implements OnInit {
   @Input() userId:string;

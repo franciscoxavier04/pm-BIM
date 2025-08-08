@@ -99,6 +99,7 @@ es:
     meeting_agenda_opened: Agenda de reuniones abierta
     meeting_minutes: Minuta de reunión editada
     meeting_minutes_created: Minuta de reuniones creada
+  error_notification: "Failed to send notification."
   error_notification_with_errors: "Error al enviar la notificación. Los siguientes destinatarios no han sido notificados: %{recipients}"
   label_meeting: "Reunión"
   label_meeting_plural: "Reuniones"
@@ -118,6 +119,7 @@ es:
   label_meeting_date_time: "Fecha/hora"
   label_meeting_date_and_time: "Fecha y hora"
   label_meeting_diff: "Diferencia"
+  label_meeting_send_updates: "Send email calendar updates"
   label_recurring_meeting: "Reunión periódica"
   label_recurring_meeting_part_of: "Parte de una serie de reuniones"
   label_recurring_meeting_new: "Nueva reunión periódica"
@@ -214,7 +216,7 @@ es:
         body: "%{actor} ha reprogramado la reunión «%{title}»."
         old_date_time: "Fecha y hora anteriores"
         new_date_time: "Fecha y hora nuevas"
-    label_mail_all_participants: "Enviar email a todos los participantes"
+    label_mail_all_participants: "Email calendar invite to all participants"
     types:
       one_time: "Única"
       recurring: "Periódico"
@@ -257,8 +259,43 @@ es:
         caption: Si los resultados de su agenda contienen información confidencial, puede optar por no incluirlos en la exportación.
       footer_text:
         label: Texto a pie de página
-        caption: Este texto aparecerá en cada página a la derecha del pie de página.
+        caption: This text will appear on every page at the center of the footer.
       submit_button: Descargar
+    notifications:
+      sidepanel:
+        title: "Email calendar updates"
+        description:
+          disabled: "Participants will not receive an email informing them of changes."
+          enabled: "All participants will receive updated calendar invites via email informing them of changes."
+          change_via_template: "To change this, edit the series template."
+      dialog:
+        title:
+          enable: "Enable email calendar updates?"
+          disable: "Disable email calendar updates?"
+        message:
+          enable: >
+            All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants. Once enabled, an email will be sent out immediately to all participants.
+          disable: >
+            Participants will no longer receive updated calendar invites via email when there are changes to the meeting date, time, location or participants. If they already had an invite for this meeting, it might no longer be accurate.
+        confirm_label:
+          enable: "Enable email updates"
+          disable: "Disable email updates"
+      banner:
+        onetime:
+          enabled: >
+            All participants will receive updated calendar invites via email informing them of your changes.
+          disabled: >
+            Email calendar updates are disabled. Participants will not receive an email informing them of your changes.
+        occurrence:
+          enabled: >
+            Email calendar updates are enabled for the meeting series. All participants will receive updated calendar invites informing them of your changes to this occurrence.
+          disabled: >
+            Email calendar updates are disabled for the meeting series. Participants will not receive an email informing them of your changes to this occurrence.
+        template:
+          enabled: >
+            Email calendar updates are enabled for the meeting series. All participants will receive updated calendar invites informing them of your changes to this template or to individual occurrences.
+          disabled: >
+            Email calendar updates are disabled for the meeting series. Participants will not receive an email informing them of your changes to this template or to individual occurrences.
   meeting_section:
     untitled_title: "Sección sin título"
     delete_confirmation: "Al eliminar esta sección también se eliminarán todos sus puntos de agenda. ¿Seguro que desea hacerlo?"
@@ -346,7 +383,7 @@ es:
       confirm_button: "Cancelar repetición"
     end_series_dialog:
       title: "Finalizar serie de reuniones"
-  notice_successful_notification: "Notificación enviada correctamente"
+  notice_successful_notification: "Email calendar update sent to all participants"
   notice_timezone_missing: No se ha establecido zona horaria y se asume %{zone}. Para elegir su zona horaria, por favor, haga clic aquí.
   notice_meeting_updated: "Esta página ha sido actualizada por otra persona. Recárguela para ver los cambios."
   permission_create_meetings: "Crear reuniones"
@@ -465,3 +502,6 @@ es:
   text_agenda_item_move_next_meeting_cancelled: "No se puede mover a la próxima reunión, ya que ha sido cancelada."
   text_work_package_add_to_meeting_hint: 'Utilice el botón "Añadir a la reunión" para añadir este paquete de trabajo a una próxima reunión.'
   text_work_package_has_no_past_meeting_agenda_items: "Este paquete de trabajo no se mencionó en ninguna reunión anterior."
+  text_email_updates_muted: "Email calendar updates are muted. Participants will not receive updated invites via email when you make changes."
+  text_email_updates_enabled: "Email calendar updates are enabled. All participants will receive updated invites via email when you make changes."
+

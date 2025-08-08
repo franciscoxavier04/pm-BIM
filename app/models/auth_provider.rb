@@ -44,10 +44,6 @@ class AuthProvider < ApplicationRecord
 
   after_destroy :unset_direct_provider
 
-  def self.slug_fragment
-    raise NotImplementedError
-  end
-
   def user_count
     @user_count ||= user_auth_provider_links.count
   end

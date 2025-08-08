@@ -31,6 +31,7 @@ import { IAPIFilter } from 'core-app/shared/components/autocompleter/op-autocomp
   selector: 'op-ium-project-selection',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './project-selection.component.html',
+  standalone: false,
 })
 export class ProjectSelectionComponent implements OnInit {
   @Input() type:PrincipalType;

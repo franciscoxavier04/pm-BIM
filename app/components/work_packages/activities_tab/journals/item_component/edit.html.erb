@@ -9,7 +9,7 @@
           turbo: true,
           turbo_stream: true,
           test_selector: "op-work-package-journal-form-element",
-          "work-packages--activities-tab--index-target": "editForm",
+          "#{polling_stimulus_controller}-target": "editForm",
           journal_id: journal.id
         },
         url: work_package_activity_path(work_package_id: work_package.id, id: journal.id, filter:)

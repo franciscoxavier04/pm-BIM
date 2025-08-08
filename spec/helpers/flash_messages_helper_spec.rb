@@ -82,6 +82,22 @@ RSpec.describe FlashMessagesHelper do
       it_behaves_like "rendering a banner", "flash-success", :"check-circle", "zu deiner Information"
     end
 
+    context "with an empty flash message" do
+      before do
+        flash[:info] = "" # rubocop:disable Rails/I18nLocaleTexts
+      end
+
+      it_behaves_like "rendering nothing"
+    end
+
+    context "with a nil flash message" do
+      before do
+        flash[:info] = nil
+      end
+
+      it_behaves_like "rendering nothing"
+    end
+
     context "with an :info flash message" do
       before do
         flash[:info] = "zu deiner Information" # rubocop:disable Rails/I18nLocaleTexts
@@ -127,6 +143,22 @@ RSpec.describe FlashMessagesHelper do
     subject { helper.render_flash_messages_as_turbo_streams }
 
     context "with no flash messages" do
+      it_behaves_like "rendering nothing"
+    end
+
+    context "with an empty flash message" do
+      before do
+        flash[:info] = "" # rubocop:disable Rails/I18nLocaleTexts
+      end
+
+      it_behaves_like "rendering nothing"
+    end
+
+    context "with a nil flash message" do
+      before do
+        flash[:info] = nil
+      end
+
       it_behaves_like "rendering nothing"
     end
 

@@ -101,6 +101,7 @@ pl:
     meeting_agenda_opened: Otwarto plan spotkania
     meeting_minutes: Protokół ze spotkania edytowany
     meeting_minutes_created: Protokół ze spotkania utworzony
+  error_notification: "Nie udało się wysłać powiadomienia."
   error_notification_with_errors: "Nie udało się wysłać powiadomienie do adresatów: %{recipients}"
   label_meeting: "Spotkanie"
   label_meeting_plural: "Spotkania"
@@ -120,6 +121,7 @@ pl:
   label_meeting_date_time: "Data/Czas"
   label_meeting_date_and_time: "Data i godzina"
   label_meeting_diff: "Różnice"
+  label_meeting_send_updates: "Wysyłaj aktualizacje kalendarza pocztą elektroniczną"
   label_recurring_meeting: "Spotkanie cykliczne"
   label_recurring_meeting_part_of: "Część serii spotkań"
   label_recurring_meeting_new: "Nowe spotkanie cykliczne"
@@ -222,7 +224,7 @@ pl:
         body: "Spotkanie „%{title}” zostało przełożone przez użytkownika %{actor}."
         old_date_time: "Stara data/godzina"
         new_date_time: "Nowa data/godzina"
-    label_mail_all_participants: "Wyślij wiadomość e-mail do wszystkich uczestników"
+    label_mail_all_participants: "Wyślij zaproszenie do kalendarza pocztą elektroniczną do wszystkich uczestników"
     types:
       one_time: "Jednorazowe"
       recurring: "Cykliczne"
@@ -265,8 +267,43 @@ pl:
         caption: Jeśli wyniki planu spotkania zawierają informacje poufne, możesz nie uwzględniać ich w eksporcie.
       footer_text:
         label: Tekst stopki
-        caption: Ten tekst będzie wyświetlany na każdej stronie po prawej stronie stopki.
+        caption: Ten tekst będzie wyświetlany na każdej stronie pośrodku stopki.
       submit_button: Pobierz
+    notifications:
+      sidepanel:
+        title: "Wysyłaj aktualizacje kalendarza pocztą elektroniczną"
+        description:
+          disabled: "Uczestnicy nie będą otrzymywać wiadomości e-mail z informacjami o zmianach."
+          enabled: "Wszyscy uczestnicy będą otrzymywać aktualizowane zaproszenia do kalendarza pocztą elektroniczną z informacjami o zmianach."
+          change_via_template: "Aby to zmienić, edytuj szablon serii."
+      dialog:
+        title:
+          enable: "Włączyć wysyłanie aktualizacji kalendarza pocztą elektroniczną?"
+          disable: "Wyłączyć wysyłanie aktualizacji kalendarza pocztą elektroniczną?"
+        message:
+          enable: >
+            Wszyscy uczestnicy będą otrzymywać zaktualizowane zaproszenia do kalendarza pocztą elektroniczną za każdym razem, gdy nastąpi zmiana daty, godziny, lokalizacji lub uczestników spotkania. Po włączeniu wiadomości e-mail zostaną natychmiast wysłane do wszystkich uczestników.
+          disable: >
+            Uczestnicy nie będą już otrzymywać zaktualizowanych zaproszeń do kalendarza w wiadomościach e-mail, gdy nastąpi zmiana daty, godziny, lokalizacji lub uczestników spotkania. Jeśli mieli już zaproszenie na to spotkanie, może ono być już nieaktualne.
+        confirm_label:
+          enable: "Włącz wysyłanie aktualizacji pocztą elektroniczną"
+          disable: "Wyłącz wysyłanie aktualizacji pocztą elektroniczną"
+      banner:
+        onetime:
+          enabled: >
+            Wszyscy uczestnicy będą otrzymywać aktualizowane zaproszenia do kalendarza pocztą elektroniczną z informacjami o zmianach.
+          disabled: >
+            Wysyłanie aktualizacji kalendarza pocztą elektroniczną jest wyłączone. Uczestnicy nie będą otrzymywać wiadomości e-mail z informacjami o zmianach.
+        occurrence:
+          enabled: >
+            Wysyłanie aktualizacji kalendarza pocztą elektroniczną jest włączone dla serii spotkań. Wszyscy uczestnicy będą otrzymywać zaktualizowane zaproszenia do kalendarza z informacjami o zmianach tego wystąpienia.
+          disabled: >
+            Wysyłanie aktualizacji kalendarza pocztą elektroniczną jest wyłączone dla serii spotkań. Uczestnicy nie będą otrzymywać wiadomości e-mail z informacjami o zmianach tego wystąpienia.
+        template:
+          enabled: >
+            Wysyłanie aktualizacji kalendarza pocztą elektroniczną jest włączone dla serii spotkań. Wszyscy uczestnicy będą otrzymywać zaktualizowane zaproszenia do kalendarza z informacjami o zmianach tego szablonu lub poszczególnych wystąpień.
+          disabled: >
+            Wysyłanie aktualizacji kalendarza pocztą elektroniczną jest wyłączone dla serii spotkań. Uczestnicy nie będą otrzymywać wiadomości e-mail z informacjami o zmianach tego szablonu lub poszczególnych wystąpień.
   meeting_section:
     untitled_title: "Sekcja bez nazwy"
     delete_confirmation: "Usunięcie sekcji spowoduje również usunięcie wszystkich jej elementów punktów planu spotkania. Czy na pewno chcesz to zrobić?"
@@ -358,7 +395,7 @@ pl:
       confirm_button: "Anuluj wystąpienie"
     end_series_dialog:
       title: "Zakończ serię spotkań"
-  notice_successful_notification: "Powiadomienia wysłane pomyślnie"
+  notice_successful_notification: "Aktualizacja zaproszenia do kalendarza jest wysyłana pocztą elektroniczną do wszystkich uczestników"
   notice_timezone_missing: 'Została ustawiona domyślna strefa czasowa: %{zone}. Aby zmienić strefę czasową, kliknij tutaj.'
   notice_meeting_updated: "Ta strona została zaktualizowana przez kogoś innego. Załaduj ją ponownie, aby wyświetlić zmiany."
   permission_create_meetings: "Utwórz spotkanie"
@@ -477,3 +514,6 @@ pl:
   text_agenda_item_move_next_meeting_cancelled: "Nie można przenieść na następne spotkanie, ponieważ zostało ono anulowane."
   text_work_package_add_to_meeting_hint: 'Użyj przycisku „Dodaj do spotkania”, aby dodać ten pakiet roboczy do nadchodzącego spotkania.'
   text_work_package_has_no_past_meeting_agenda_items: "Ten pakiet roboczy nie został wspomniany na poprzednim spotkaniu."
+  text_email_updates_muted: "Wysyłanie aktualizacji kalendarza pocztą elektroniczną jest wyciszone. Po wprowadzeniu zmian uczestnicy nie będą otrzymywać zaktualizowanych zaproszeń pocztą elektroniczną."
+  text_email_updates_enabled: "Wysyłanie aktualizacji kalendarza pocztą elektroniczną jest włączone. Po wprowadzeniu zmian wszyscy uczestnicy będą otrzymywać zaktualizowane zaproszenia pocztą elektroniczną."
+

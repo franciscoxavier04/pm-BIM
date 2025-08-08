@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -126,6 +128,10 @@ class UserPreference < ApplicationRecord
 
   def theme
     super.presence || Setting.user_default_theme
+  end
+
+  def sync_with_system_theme?
+    theme == "sync_with_os"
   end
 
   def high_contrast_theme?

@@ -19,10 +19,17 @@ import PatternInputController from './controllers/pattern-input.controller';
 import HoverCardTriggerController from './controllers/hover-card-trigger.controller';
 import ScrollIntoViewController from './controllers/scroll-into-view.controller';
 import CkeditorFocusController from './controllers/ckeditor-focus.controller';
+import IndexController from './controllers/dynamic/work-packages/activities-tab/index.controller';
+import AutoScrollingController from './controllers/dynamic/work-packages/activities-tab/auto-scrolling.controller';
+import PollingController from './controllers/dynamic/work-packages/activities-tab/polling.controller';
+import StemsController from './controllers/dynamic/work-packages/activities-tab/stems.controller';
+import EditorController from './controllers/dynamic/work-packages/activities-tab/editor.controller';
 
 import AutoSubmit from '@stimulus-components/auto-submit';
+import AutoThemeSwitcher from './controllers/auto-theme-switcher.controller';
 import { OpenProjectStimulusApplication } from 'core-stimulus/openproject-stimulus-application';
 import { Application } from '@hotwired/stimulus';
+import { BeforeunloadController } from './controllers/beforeunload.controller';
 
 declare global {
   interface Window {
@@ -51,6 +58,13 @@ OpenProjectStimulusApplication.preregister('pattern-input', PatternInputControll
 OpenProjectStimulusApplication.preregister('scroll-into-view', ScrollIntoViewController);
 OpenProjectStimulusApplication.preregister('ckeditor-focus', CkeditorFocusController);
 OpenProjectStimulusApplication.preregister('auto-submit', AutoSubmit);
+OpenProjectStimulusApplication.preregister('work-packages--activities-tab--index', IndexController);
+OpenProjectStimulusApplication.preregister('work-packages--activities-tab--auto-scrolling', AutoScrollingController);
+OpenProjectStimulusApplication.preregister('work-packages--activities-tab--polling', PollingController);
+OpenProjectStimulusApplication.preregister('work-packages--activities-tab--stems', StemsController);
+OpenProjectStimulusApplication.preregister('work-packages--activities-tab--editor', EditorController);
+OpenProjectStimulusApplication.preregister('beforeunload', BeforeunloadController);
+OpenProjectStimulusApplication.preregister('auto-theme-switcher', AutoThemeSwitcher);
 
 const instance = OpenProjectStimulusApplication.start();
 window.Stimulus = instance;

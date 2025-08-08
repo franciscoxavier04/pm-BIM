@@ -30,7 +30,7 @@
 
 import { ApplicationController } from 'stimulus-use';
 import { renderStreamMessage } from '@hotwired/turbo';
-import { TurboHelpers } from '../../turbo/helpers';
+import { TurboHelpers } from 'core-turbo/helpers';
 
 export default class AsyncDialogController extends ApplicationController {
   connect() {

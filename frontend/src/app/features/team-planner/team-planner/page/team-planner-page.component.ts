@@ -42,6 +42,7 @@ import { OpCalendarService } from 'core-app/features/calendar/op-calendar.servic
     OpCalendarService,
     CalendarDragDropService,
   ],
+  standalone: false,
 })
 export class TeamPlannerPageComponent extends PartitionedQuerySpacePageComponent implements OnInit {
   @InjectField() actions$:ActionsService;
