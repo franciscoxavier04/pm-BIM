@@ -1701,6 +1701,7 @@ en:
         one: "Authentication provider"
         other: "Authentication providers"
       category: "Category"
+      color: "Color"
       comment: "Comment"
       custom_action: "Custom action"
       custom_field: "Custom field"
