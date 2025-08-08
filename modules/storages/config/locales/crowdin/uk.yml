@@ -343,12 +343,10 @@ uk:
         warning: Деякі перевірки завершилися з попередженням. Це може призвести до неочікуваної поведінки.
       title: Звіт про стан справності
     health_email_notifications:
-      description_subscribed: Усі адміністратори отримують сповіщення електронною поштою про стан справності цього сховища.
-      description_unsubscribed: Сповіщення про стан справності цього сховища вимкнено для всіх адміністраторів.
+      description_disabled: Admins will not receive updates by email when there are important updates.
+      description_enabled: Admins will receive updates by email when there are important updates.
       error_could_not_be_saved: Не вдалося зберегти налаштування сповіщень електронною поштою. Повторіть спробу.
-      subscribe: Підписатися
-      title: Сповіщення електронною поштою
-      unsubscribe: Відписатися
+      title: Email updates to admins
     help_texts:
       project_folder: Папка проєкту – це папка за замовчуванням для файлів, які передаються в цей проєкт. Однак користувачі можуть передавати файли в інші розташування.
       project_folder_bulk: Папка проєкту – це папка за замовчуванням, у якій зберігаються додані файли для всіх вибраних проєктів. Ви можете змінити її окремо в налаштуваннях кожного проєкту. Однак користувачі все одно можуть додавати файли в інші папки.

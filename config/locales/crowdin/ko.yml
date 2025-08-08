@@ -2208,6 +2208,13 @@ ko:
         OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">뉴스레터</a>를 받아보고 싶습니다.
       consent_html: >
         <a target="_blank" href="https://www.openproject.org/terms-of-service/">서비스 약관</a> 및 <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">개인정보 취급방침</a>에 동의합니다.
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
   enumeration_activities: "시간 추적 활동"
   enumeration_work_package_priorities: "작업 패키지 우선 순위"
   enumeration_reported_project_statuses: "보고된 프로젝트 상태"

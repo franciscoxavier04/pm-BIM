@@ -339,12 +339,10 @@ fr:
         warning: Certaines vérifications ont renvoyé un avertissement. Cela peut entraîner un comportement inattendu.
       title: Rapport sur l'état de santé
     health_email_notifications:
-      description_subscribed: Tous les administrateurs reçoivent des notifications par e-mail concernant le statut de cet espace de stockage.
-      description_unsubscribed: Les notifications par e-mail du statut de santé de cet espace de stockage ont été désactivées pour tous les administrateurs.
+      description_disabled: Admins will not receive updates by email when there are important updates.
+      description_enabled: Admins will receive updates by email when there are important updates.
       error_could_not_be_saved: Les paramètres de notification par e-mail n'ont pas pu être enregistrés. Veuillez réessayer.
-      subscribe: S'abonner
-      title: Notifications par email
-      unsubscribe: Se désabonner
+      title: Email updates to admins
     help_texts:
       project_folder: Le dossier de projet est le dossier par défaut pour les téléversements de fichiers pour ce projet. Les utilisateurs peuvent néanmoins encore téléverser des fichiers vers d'autres emplacements.
       project_folder_bulk: Le dossier du projet est le dossier par défaut pour les téléchargements de fichiers pour tous les projets sélectionnés. Vous pouvez le modifier individuellement dans les paramètres de chaque projet. Les utilisateurs peuvent néanmoins télécharger des fichiers vers d'autres emplacements.

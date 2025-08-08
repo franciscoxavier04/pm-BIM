@@ -339,12 +339,10 @@ de:
         warning: Einige Überprüfungen ergaben eine Warnung. Dies kann zu unerwartetem Verhalten führen.
       title: Gesundheitsstatusbericht
     health_email_notifications:
-      description_subscribed: Alle Administratoren erhalten E-Mail-Benachrichtigungen über den Zustand dieses Dateispeichers.
-      description_unsubscribed: Die E-Mail-Benachrichtigungen über den Zustand dieses Speichers wurden für alle Administratoren deaktiviert.
+      description_disabled: Admins will not receive updates by email when there are important updates.
+      description_enabled: Admins will receive updates by email when there are important updates.
       error_could_not_be_saved: E-Mail-Benachrichtigungseinstellungen konnten nicht gespeichert werden. Bitte versuchen Sie es erneut.
-      subscribe: Abonnieren
-      title: E-Mail-Benachrichtigungen
-      unsubscribe: Abonnement beenden
+      title: Email updates to admins
     help_texts:
       project_folder: Der Projektordner ist der Standardordner für Datei-Uploads für dieses Projekt. Benutzer können trotzdem Dateien an andere Orte hochladen.
       project_folder_bulk: Der Projektordner ist der Standardordner für Datei-Uploads für alle ausgewählten Projekte. Sie können dies in jeder Projekteinstellung individuell ändern. Benutzer können trotzdem Dateien an andere Orte hochladen.

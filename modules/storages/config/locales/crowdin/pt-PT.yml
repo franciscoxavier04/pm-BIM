@@ -339,12 +339,10 @@ pt-PT:
         warning: Algumas verificações foram devolvidas com um aviso. Isso pode resultar num comportamento inesperado.
       title: Relatório de estado de saúde
     health_email_notifications:
-      description_subscribed: Todos os administradores recebem notificações por e-mail sobre o estado de funcionamento deste armazenamento.
-      description_unsubscribed: As notificações por e-mail sobre o estado de funcionamento deste armazenamento foram desativadas para todos os administradores.
+      description_disabled: Admins will not receive updates by email when there are important updates.
+      description_enabled: Admins will receive updates by email when there are important updates.
       error_could_not_be_saved: Não foi possível guardar as definições de notificação por e-mail. Tente novamente.
-      subscribe: Subscrever
-      title: Notificações por e-mail
-      unsubscribe: Anular subscrição
+      title: Email updates to admins
     help_texts:
       project_folder: A pasta do projeto é a pasta predefinida para o carregamento de ficheiros para este projeto. Os utilizadores podem, no entanto, carregar ficheiros para outras localizações.
       project_folder_bulk: A pasta do projeto é a pasta predefinida para o carregamento de ficheiros para todos os projetos selecionados. Pode modificar esta opção individualmente nas definições de cada projeto. No entanto, os utilizadores podem carregar ficheiros para outras localizações.

@@ -339,12 +339,10 @@
         warning: Some checks returned a warning. This can lead to unexpected behaviour.
       title: Health status report
     health_email_notifications:
-      description_subscribed: Alle administratorer mottar e-postmeldinger med helsestatus for denne lagringen.
-      description_unsubscribed: E-postvarsler for helsestatus for denne lagringen er slått av for alle administratorer.
+      description_disabled: Admins will not receive updates by email when there are important updates.
+      description_enabled: Admins will receive updates by email when there are important updates.
       error_could_not_be_saved: Kunne ikke lagre e-postvarslingsinnstillingene. Prøv på nytt.
-      subscribe: Abonner
-      title: E-postvarsler
-      unsubscribe: Avslutt abonnement
+      title: Email updates to admins
     help_texts:
       project_folder: Prosjektmappen er standardmappen for filopplasting for dette prosjektet. Brukere kan likevel laste opp filer til andre steder.
       project_folder_bulk: The project folder is the default folder for file uploads for all the projects selected. You can modify this individually in each project settings. Users can nevertheless still upload files to other locations.

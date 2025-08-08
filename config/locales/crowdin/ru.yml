@@ -2338,6 +2338,13 @@ ru:
         Я хочу получить <a target="_blank" href="https://www.openproject.org/newsletter/">информационный бюллетень OpenProject</a>.
       consent_html: >
         Я подтверждаю <a target="_blank" href="https://www.openproject.org/terms-of-service/">правила</a> и <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">условия пользования</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
   enumeration_activities: "Отслеживание времени"
   enumeration_work_package_priorities: "Приоритеты пакета работ"
   enumeration_reported_project_statuses: "Перечень отчетов о статусах проекта"

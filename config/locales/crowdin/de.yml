@@ -2244,6 +2244,13 @@ de:
         Ich möchte den OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">Newsletter</a> erhalten.
       consent_html: >
         Ich stimme den <a target="_blank" href="https://www.openproject.org/de/rechtliches/nutzungsbedingungen"></a> und den <a target="_blank" href="https://www.openproject.org/de/rechtliches/datenschutz/">Datenschutzrichtlinien</a> zu.
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
   enumeration_activities: "Aktivitäten für Zeiterfassung"
   enumeration_work_package_priorities: "Arbeitspaket-Prioritäten"
   enumeration_reported_project_statuses: "Gemeldeter Projektstatus"

@@ -2252,6 +2252,13 @@ si:
         I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
       consent_html: >
         I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
   enumeration_activities: "කාලය සොයා ගැනීමේ ක්රියාකාරකම්"
   enumeration_work_package_priorities: "වැඩ පැකේජ ප්රමුඛතා"
   enumeration_reported_project_statuses: "වාර්තා කරන ලද ව්යාපෘති තත්ත්වය"

@@ -118,7 +118,7 @@ zh-CN:
   label_meeting_date_time: "日期/时间"
   label_meeting_date_and_time: "日期和时间"
   label_meeting_diff: "比较"
-  label_meeting_send_updates: "Send email calendar updates"
+  label_meeting_send_updates: "发送电子邮件日历更新"
   label_recurring_meeting: "定期会议"
   label_recurring_meeting_part_of: "会议系列的一部分"
   label_recurring_meeting_new: "新的定期会议"
@@ -255,49 +255,43 @@ zh-CN:
         caption: 如果您的议程结果包含机密信息，您可以选择不在导出内容中包括它们。
       footer_text:
         label: 页脚文本
-        caption: This text will appear on every page at the center of the footer.
+        caption: 此文本将出现在每一页的页脚中心。
       submit_button: 下载
     notifications:
       sidepanel:
-        title: "Email calendar updates"
-        state:
-          disabled: "Disabled."
-          enabled: "Enabled."
+        title: "电子邮件日历更新"
         description:
-          disabled: "Participants will not receive an email informing them of changes."
-          enabled: "All participants will receive updated calendar invites via email informing them of changes."
-          change_via_template: "To change this, edit the series template."
-        button:
-          disable: "Disable"
-          enable: "Enable"
+          disabled: "与会者不会收到通知其更改的电子邮件。"
+          enabled: "所有与会者都将通过电子邮件收到更新的日历邀请，通知其相关更改。"
+          change_via_template: "要更改此设置，请编辑系列模板。"
       dialog:
         title:
-          enable: "Enable email calendar updates?"
-          disable: "Disable email calendar updates?"
+          enable: "启用电子邮件日历更新？"
+          disable: "禁用电子邮件日历更新？"
         message:
           enable: >
             All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants. Once enabled, an email will be sent out immediately to all participants.
           disable: >
-            Participants will no longer receive updated calendar invites via email when there are changes to the meeting date, time, location or participants. If they already had an invite for this meeting, it might no longer be accurate.
+            当会议日期、时间、地点或与会者发生更改时，与会者将不再通过电子邮件收到更新的日历邀请。如果他们已经收到过此次会议的邀请，则该邀请可能不再准确。
         confirm_label:
-          enable: "Enable email updates"
-          disable: "Disable email updates"
+          enable: "启用电子邮件更新"
+          disable: "禁用电子邮件更新"
       banner:
         onetime:
           enabled: >
-            All participants will receive updated calendar invites via email informing them of your changes.
+            所有与会者都将通过电子邮件收到更新的日历邀请，通知其您所做的更改。
           disabled: >
-            Email calendar updates are disabled. Participants will not receive an email informing them of your changes.
+            电子邮件日历更新已禁用。与会者不会收到通知其您所做更改的电子邮件。
         occurrence:
           enabled: >
-            Email calendar updates are enabled for the meeting series. All participants will receive updated calendar invites informing them of your changes to this occurrence.
+            已为会议系列启用电子邮件日历更新。所有与会者都会收到更新的日历邀请，通知其您对此次事件所做的更改。
           disabled: >
-            Email calendar updates are disabled for the meeting series. Participants will not receive an email informing them of your changes to this occurrence.
+            已为会议系列禁用电子邮件日历更新。与会者将不会收到通知其您对此次事件所做更改的电子邮件。
         template:
           enabled: >
-            Email calendar updates are enabled for the meeting series. All participants will receive updated calendar invites informing them of your changes to this template or to individual occurrences.
+            已为会议系列启用电子邮件日历更新。所有与会者都会收到更新的日历邀请，通知其您对此模板或各个事件所做的更改。
           disabled: >
-            Email calendar updates are disabled for the meeting series. Participants will not receive an email informing them of your changes to this template or to individual occurrences.
+            已为会议系列禁用电子邮件日历更新。与会者将不会收到通知其您对此模板或各个事件所做更改的电子邮件。
   meeting_section:
     untitled_title: "无标题章节"
     delete_confirmation: "删除该属性也会删除其在所有项目中的值。您确定要这样做吗？"
@@ -383,7 +377,7 @@ zh-CN:
       confirm_button: "取消事件"
     end_series_dialog:
       title: "结束会议系列"
-  notice_successful_notification: "Email calendar update sent to all participants"
+  notice_successful_notification: "已向所有与会者发送电子邮件日历更新"
   notice_timezone_missing: 没有设定时区，预设时区为 %{zone}。要选择您的时区，请单击此处。
   notice_meeting_updated: "此页面已被其他人更新。重新加载以查看更改。"
   permission_create_meetings: "创建会议"
@@ -502,6 +496,6 @@ zh-CN:
   text_agenda_item_move_next_meeting_cancelled: "无法移动到下次会议，因为它已被取消。"
   text_work_package_add_to_meeting_hint: '使用"添加到会议"按钮将此工作包添加到即将举行的会议。'
   text_work_package_has_no_past_meeting_agenda_items: "在过往会议中没有提及过该工作包。"
-  text_email_updates_muted: "Email calendar updates are muted. Participants will not receive updated invites via email when you make changes."
-  text_email_updates_enabled: "Email calendar updates are enabled. All participants will receive updated invites via email when you make changes."
+  text_email_updates_muted: "电子邮件日历更新已静音。当您进行更改时，与会者将不会通过电子邮件收到更新的邀请。"
+  text_email_updates_enabled: "电子邮件日历更新已启用。当您进行更改时，所有与会者都会通过电子邮件收到更新的邀请。"
 

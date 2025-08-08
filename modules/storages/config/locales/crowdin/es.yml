@@ -339,12 +339,10 @@ es:
         warning: Algunas comprobaciones devolvieron una advertencia. Esto puede dar lugar a un comportamiento inesperado.
       title: Informe de estado de salud
     health_email_notifications:
-      description_subscribed: Todos los administradores reciben notificaciones por correo electrónico sobre el estado de salud de este almacenamiento.
-      description_unsubscribed: Las notificaciones por correo electrónico del estado de salud de este almacenamiento se han desactivado para todos los administradores.
+      description_disabled: Admins will not receive updates by email when there are important updates.
+      description_enabled: Admins will receive updates by email when there are important updates.
       error_could_not_be_saved: No se han podido guardar los ajustes de notificación por correo electrónico. Inténtelo de nuevo.
-      subscribe: Suscribirse
-      title: Notificaciones de correo electrónico
-      unsubscribe: Darse de baja
+      title: Email updates to admins
     help_texts:
       project_folder: La carpeta del proyecto es la carpeta predeterminada para la carga de archivos de este proyecto. No obstante, los usuarios pueden subir archivos a otras ubicaciones.
       project_folder_bulk: La carpeta del proyecto es la carpeta predeterminada para la carga de archivos de todos los proyectos seleccionados. Puede modificar esto individualmente en los ajustes de cada proyecto. No obstante, los usuarios pueden subir archivos a otras ubicaciones.

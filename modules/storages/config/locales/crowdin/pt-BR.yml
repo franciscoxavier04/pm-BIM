@@ -339,12 +339,10 @@ pt-BR:
         warning: Alguns testes retornaram um alerta. Isso pode causar comportamentos inesperados.
       title: Relatório de status de integridade
     health_email_notifications:
-      description_subscribed: Todos os administradores recebem notificações por e-mail sobre o estado de saúde deste armazenamento.
-      description_unsubscribed: As notificações por e-mail sobre o estado de saúde deste armazenamento foram desativadas para todos os administradores.
+      description_disabled: Admins will not receive updates by email when there are important updates.
+      description_enabled: Admins will receive updates by email when there are important updates.
       error_could_not_be_saved: Não foi possível salvar as configurações de notificação por e-mail. Tente novamente.
-      subscribe: Assinar
-      title: Notificações por e-mail
-      unsubscribe: Cancelar assinatura
+      title: Email updates to admins
     help_texts:
       project_folder: A pasta do projeto é a pasta padrão para carregar arquivos deste projeto. No entanto, os usuários ainda podem carregar arquivos para outras pastas.
       project_folder_bulk: A pasta do projeto é o local padrão para o envio de arquivos em todos os projetos selecionados. Você pode alterar essa configuração individualmente em cada projeto. No entanto, os usuários ainda poderão enviar arquivos para outros locais.

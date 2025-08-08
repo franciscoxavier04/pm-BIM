@@ -678,7 +678,7 @@ zh-TW:
     dark: "深色主題"
     light: "白色主題"
     light_high_contrast: "高對比白色主題"
-    sync_with_os: "Automatic (match OS colour mode)"
+    sync_with_os: "自動（匹配 OS 顏色模式）"
   types:
     index:
       no_results_title_text: 目前沒有類型
@@ -2204,6 +2204,13 @@ zh-TW:
         我想訂閱 OpenProject 的<a target="_blank" href="https://www.openproject.org/newsletter/">電子報</a>。
       consent_html: >
         我同意<a target="_blank" href="https://www.openproject.org/terms-of-service/">服務條款</a>及<a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">隱私政策</a>。
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
   enumeration_activities: "工時紀錄活動"
   enumeration_work_package_priorities: "工作套件優先等級"
   enumeration_reported_project_statuses: "報告的專案狀態"
