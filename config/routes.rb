@@ -311,7 +311,11 @@ Rails.application.routes.draw do
       resource :templated, only: %i[create destroy], controller: "templated"
       resource :archive, only: %i[create destroy], controller: "archive"
       resource :identifier, only: %i[show update], controller: "identifier"
-      resource :status, only: %i[update destroy], controller: "status"
+      resource :status, only: %i[update destroy], controller: "status" do
+        member do
+          get :show_widget
+        end
+      end
     end
 
     member do

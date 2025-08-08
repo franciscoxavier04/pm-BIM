@@ -28,30 +28,11 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
+class Projects::WidgetsController < ApplicationController
+  before_action :find_project_by_project_id
+  before_action :authorize
 
-RSpec.describe Projects::StatusController do
-  describe "show_widget" do
-    it do
-      expect(get("/projects/123/status/show_widget")).to route_to(
-        controller: "projects/status", action: "show_widget", project_id: "123"
-      )
-    end
-  end
+  def show
 
-  describe "update" do
-    it do
-      expect(put("/projects/123/status")).to route_to(
-        controller: "projects/status", action: "update", project_id: "123"
-      )
-    end
-  end
-
-  describe "destroy" do
-    it do
-      expect(delete("/projects/123/status")).to route_to(
-        controller: "projects/status", action: "destroy", project_id: "123"
-      )
-    end
   end
 end

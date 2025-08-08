@@ -26,7 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { Injector, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Injector, NgModule } from '@angular/core';
 import { DynamicModule } from 'ng-dynamic-component';
 import { HookService } from 'core-app/features/plugins/hook-service';
 import { OpSharedModule } from 'core-app/shared/shared.module';
@@ -146,6 +146,7 @@ import { OpenprojectEnterpriseModule } from 'core-app/features/enterprise/openpr
   exports: [
     GridComponent,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class OpenprojectGridsModule {
   constructor(injector:Injector) {
