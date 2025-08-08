@@ -69,7 +69,7 @@ There are several ways to create a new project in OpenProject.
 
    ![+ Button in the top right corner of the OpenProject head navigation, opened, showing an option to add a new project](openproject_getting_started_project_plust_button_add_project.png)
 
-4. In addition, can also create a new project on the [project lists](../../user-guide/projects/project-lists/) overview page. 
+4. In addition, you can also create a new project on the [project lists](../../user-guide/projects/project-lists/) overview page. 
 
 - You can either create a completely new project, a subproject of an existing project or a (sub)project from a template. For the latter option, choose a [template](../../user-guide/projects/project-templates/#create-a-project-template) using the drop-down menu.
 - Enter a **name** for your project and click the **Create** button.
