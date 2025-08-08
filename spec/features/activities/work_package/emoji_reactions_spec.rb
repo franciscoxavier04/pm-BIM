@@ -173,31 +173,51 @@ RSpec.describe "Emoji reactions on work package activity", :js, :with_cuprite do
     let!(:anonymous_role) do
       create(:anonymous_role, permissions: %i[view_project view_work_packages])
     end
-    let(:comment) { Comments::CreateService.new(user: admin).call(comment_params).result }
-    let(:comment_params) { { comments: "Comment on the Comment model", commented: work_package, author: admin } }
 
-    context "when visited by an anonymous visitor" do
-      before do
-        first_notes_comment
-        create(:emoji_reaction, user: admin, reactable: first_notes_comment, reaction: :party_popper)
-        create(:emoji_reaction, user: admin, reactable: comment, reaction: :party_popper)
+    context "when on journal notes" do
+      context "when visited by an anonymous visitor" do
+        before do
+          first_notes_comment
+          create(:emoji_reaction, user: admin, reactable: first_notes_comment, reaction: :party_popper)
 
-        login_as User.anonymous
+          login_as User.anonymous
 
-        wp_page.visit!
-        wp_page.wait_for_activity_tab
+          wp_page.visit!
+          wp_page.wait_for_activity_tab
+        end
+
+        it "cannot add an emoji reactions but can view emoji reactions by other users" do
+          activity_tab.expect_no_add_reactions_button
+
+          activity_tab.expect_emoji_reactions_for_journal(first_notes_comment, "🎉" => { count: 1, disabled: true })
+        end
       end
+    end
 
-      it "cannot add an emoji reactions but can view emoji reactions by other users" do
-        activity_tab.expect_no_add_reactions_button
+    context "when on comments" do
+      context "when visited by an anonymous visitor" do
+        let(:comment) { Comments::CreateService.new(user: admin).call(comment_params).result }
+        let(:comment_params) { { comments: "Comment on the Comment model", commented: work_package, author: admin } }
 
-        activity_tab.expect_emoji_reactions_for_journal(first_notes_comment, "🎉" => { count: 1, disabled: true })
-      end
+        before do
+          # necessary to ensure the journals behave
+          first_notes_comment
+          work_package.reload
 
-      it "cannot add an emoji reactions but can view emoji reactions by other users on new comments" do
-        activity_tab.expect_no_add_reactions_button
+          comment
+          create(:emoji_reaction, user: admin, reactable: comment, reaction: :party_popper)
 
-        activity_tab.expect_emoji_reactions_for_comment(comment, "🎉" => { count: 1, disabled: true })
+          login_as User.anonymous
+
+          wp_page.visit!
+          wp_page.wait_for_activity_tab
+        end
+
+        it "cannot add an emoji reactions but can view emoji reactions by other users on new comments" do
+          activity_tab.expect_no_add_reactions_button
+
+          activity_tab.expect_emoji_reactions_for_comment(comment, "🎉" => { count: 1, disabled: true })
+        end
       end
     end
   end
