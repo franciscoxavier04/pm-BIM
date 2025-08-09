@@ -1682,10 +1682,10 @@ ru:
         many: "Роль"
         other: "Роль"
       scim_client:
-        one: "SCIM client"
-        few: "SCIM clients"
-        many: "SCIM clients"
-        other: "SCIM clients"
+        one: "Клиент SCIM"
+        few: "Клиенты SCIM"
+        many: "Клиенты SCIM"
+        other: "Клиенты SCIM"
       status: "Статус пакета работ"
       token/api:
         one: Токен доступа
@@ -2295,7 +2295,7 @@ ru:
         title: "Единый вход для Nextcloud хранения"
         description: "Включите бесшовную и безопасную аутентификацию для вашего Nextcloud хранилища с помощью Single Sign-On. Упростите управление доступом и сделайте удобным для пользователя."
       scim_api:
-        title: "SCIM clients"
+        title: "Клиенты SCIM"
         description: "Автоматизируйте управление пользователями в OpenProject, легко интегрируя внешние службы идентификации, такие как Microsoft Entra или Keycloak, через наш сервер API SCIM."
       virus_scanning:
         description: "Будьте уверены в том, что загруженные в OpenProject файлы проверены на наличие вирусов, прежде чем они станут доступны другим пользователям."
