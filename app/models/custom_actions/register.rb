@@ -31,60 +31,50 @@
 module CustomActions
   module Register
     class << self
-      @@registered = { actions: [], conditions: [] }
-
       def add(type, klass)
-        raise "A #{type} '#{klass}' is already registered!" if find_type(klass).present?
+        raise "A #{type} '#{klass}' is already registered!" if [actions, conditions].flatten.include? klass
 
-        @@registered[pluralize(type)] << klass
-        klass
+        case type
+        when :condition
+          conditions << klass
+        when :action
+          actions << klass
+        else
+          raise "Wrong type specified"
+        end
       end
 
       def remove(klass)
-        kind = find_type(klass)
-        raise "A '#{klass}' wasn't registered!" if kind.blank?
-
-        @@registered[pluralize(kind)].delete klass
+        deletetion_result = [actions.delete(klass), conditions.delete(klass)].flatten.compact
+        raise "A '#{klass}' wasn't registered!" if deletetion_result.blank?
       end
 
       def actions
-        @@registered[:actions].dup
+        @actions ||= [
+          CustomActions::Actions::AssignedTo,
+          CustomActions::Actions::CustomField,
+          CustomActions::Actions::Date,
+          CustomActions::Actions::DoneRatio,
+          CustomActions::Actions::DueDate,
+          CustomActions::Actions::EstimatedHours,
+          CustomActions::Actions::Notify,
+          CustomActions::Actions::Project,
+          CustomActions::Actions::Priority,
+          CustomActions::Actions::Responsible,
+          CustomActions::Actions::StartDate,
+          CustomActions::Actions::Status,
+          CustomActions::Actions::Type
+        ]
       end
 
       def conditions
-        @@registered[:conditions].dup
-      end
-
-      def pluralize(kind)
-        kind.to_s.pluralize.to_sym
-      end
-
-      def find_type(klass)
-        @@registered.find { |_, v| Array.wrap(v).include? klass }&.first
+        @conditions ||= [
+          CustomActions::Conditions::Project,
+          CustomActions::Conditions::Role,
+          CustomActions::Conditions::Status,
+          CustomActions::Conditions::Type
+        ]
       end
     end
   end
 end
-
-[
-  CustomActions::Actions::AssignedTo,
-  CustomActions::Actions::CustomField,
-  CustomActions::Actions::Date,
-  CustomActions::Actions::DoneRatio,
-  CustomActions::Actions::DueDate,
-  CustomActions::Actions::EstimatedHours,
-  CustomActions::Actions::Notify,
-  CustomActions::Actions::Project,
-  CustomActions::Actions::Priority,
-  CustomActions::Actions::Responsible,
-  CustomActions::Actions::StartDate,
-  CustomActions::Actions::Status,
-  CustomActions::Actions::Type
-].each { CustomActions::Register.add(:action, it) }
-
-[
-  CustomActions::Conditions::Project,
-  CustomActions::Conditions::Role,
-  CustomActions::Conditions::Status,
-  CustomActions::Conditions::Type
-].each { CustomActions::Register.add(:condition, it) }
