@@ -1608,6 +1608,7 @@ ms:
       auth_provider:
         other: "Authentication providers"
       category: "Kategori"
+      color: "Color"
       comment: "Komen"
       custom_action: "Tindakan tersuai"
       custom_field: "Ruang tersuai"

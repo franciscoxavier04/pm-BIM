@@ -101,7 +101,7 @@ ru:
     meeting_agenda_opened: Повестка совещания открыта
     meeting_minutes: Править  протокол заседания
     meeting_minutes_created: Создан протокол заседания
-  error_notification: "Failed to send notification."
+  error_notification: "Не удалось отправить уведомление."
   error_notification_with_errors: "Не удалось отправить уведомление. Следующие получатели не могут быть уведомлены: %{recipients}"
   label_meeting: "Совещание"
   label_meeting_plural: "Совещания"
@@ -224,7 +224,7 @@ ru:
         body: "Совещание '%{title}' было перенесено %{actor}."
         old_date_time: "Старые дата/время"
         new_date_time: "Новые дата/время"
-    label_mail_all_participants: "Email calendar invite to all participants"
+    label_mail_all_participants: "Отправьте приглашение в календарь всем участникам по электронной почте"
     types:
       one_time: "Однократная"
       recurring: "Периодичность"

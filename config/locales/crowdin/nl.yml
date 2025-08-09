@@ -1617,6 +1617,7 @@ nl:
         one: "Authentication provider"
         other: "Authentication providers"
       category: "Categorie"
+      color: "Color"
       comment: "Commentaar"
       custom_action: "Aangepaste actie"
       custom_field: "Aangepast veld"

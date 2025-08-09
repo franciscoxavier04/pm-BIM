@@ -1642,6 +1642,7 @@ sl:
         few: "Authentication providers"
         other: "Authentication providers"
       category: "Kategorija"
+      color: "Color"
       comment: "Komentar"
       custom_action: "Dejanja po meri"
       custom_field: "Polje po meri"

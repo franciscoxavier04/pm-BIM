@@ -1632,6 +1632,7 @@ hr:
         few: "Authentication providers"
         other: "Authentication providers"
       category: "Kategorija"
+      color: "Color"
       comment: "Komentar"
       custom_action: "Custom action"
       custom_field: "Prilagođeno polje"

@@ -1618,6 +1618,7 @@ pt-PT:
         one: "Authentication provider"
         other: "Authentication providers"
       category: "Categoria"
+      color: "Color"
       comment: "Comentario"
       custom_action: "Ação personalizada"
       custom_field: "Campo personalizado"

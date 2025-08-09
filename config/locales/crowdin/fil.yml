@@ -1621,6 +1621,7 @@ fil:
         one: "Authentication provider"
         other: "Authentication providers"
       category: "Kategorya"
+      color: "Color"
       comment: "Komento"
       custom_action: "Custom aksyon"
       custom_field: "Pasadyang patlang"

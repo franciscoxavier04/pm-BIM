@@ -1621,6 +1621,7 @@ et:
         one: "Authentication provider"
         other: "Authentication providers"
       category: "Kategooria"
+      color: "Color"
       comment: "Kommentaar"
       custom_action: "Custom action"
       custom_field: "Lisaväli"

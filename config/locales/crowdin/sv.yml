@@ -1621,6 +1621,7 @@ sv:
         one: "Authentication provider"
         other: "Authentication providers"
       category: "Kategori"
+      color: "Color"
       comment: "Kommentar"
       custom_action: "Anpassad åtgärd"
       custom_field: "Anpassat fält"

@@ -1621,6 +1621,7 @@ fa:
         one: "Authentication provider"
         other: "Authentication providers"
       category: "Category"
+      color: "Color"
       comment: "نظر"
       custom_action: "اقدام سفارشی"
       custom_field: "فیلدهای سفارشی"

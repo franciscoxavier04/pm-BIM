@@ -1620,6 +1620,7 @@
         one: "Authentication provider"
         other: "Authentication providers"
       category: "Kategori"
+      color: "Color"
       comment: "Kommentar"
       custom_action: "Tilpasset handling"
       custom_field: "Egendefinert felt"

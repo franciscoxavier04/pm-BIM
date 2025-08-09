@@ -1606,6 +1606,7 @@ id:
       auth_provider:
         other: "Authentication providers"
       category: "Kategori"
+      color: "Color"
       comment: "Komentar"
       custom_action: "Custom action"
       custom_field: "Isian kustom"

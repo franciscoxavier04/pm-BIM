@@ -1610,6 +1610,7 @@ vi:
       auth_provider:
         other: "Authentication providers"
       category: "Thể loại"
+      color: "Color"
       comment: "Nhận xét"
       custom_action: "Tác vụ tùy chỉnh"
       custom_field: "Tùy chỉnh mục"

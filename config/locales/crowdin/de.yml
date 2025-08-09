@@ -1613,6 +1613,7 @@ de:
         one: "Authentifizierungsanbieter"
         other: "Authentifizierungsanbieter"
       category: "Kategorie"
+      color: "Color"
       comment: "Kommentar"
       custom_action: "Benutzerdefinierte Aktion"
       custom_field: "Benutzerdefiniertes Feld"

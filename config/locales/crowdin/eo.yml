@@ -1621,6 +1621,7 @@ eo:
         one: "Authentication provider"
         other: "Authentication providers"
       category: "Kategorio"
+      color: "Color"
       comment: "Komento"
       custom_action: "Adaptita ago"
       custom_field: "Propra kampo"

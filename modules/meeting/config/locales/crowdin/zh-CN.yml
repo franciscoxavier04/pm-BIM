@@ -98,7 +98,7 @@ zh-CN:
     meeting_agenda_opened: 会议议程已开启
     meeting_minutes: 会议记录已编辑
     meeting_minutes_created: 会议记录已建立
-  error_notification: "Failed to send notification."
+  error_notification: "发送通知失败"
   error_notification_with_errors: "发送通知失败。无法通知下列收件人：%{recipients}"
   label_meeting: "会议"
   label_meeting_plural: "会议"
@@ -212,7 +212,7 @@ zh-CN:
         body: "会议 '%{title}' 已经由 %{actor} 重新安排。"
         old_date_time: "旧日期/时间"
         new_date_time: "新日期/时间"
-    label_mail_all_participants: "Email calendar invite to all participants"
+    label_mail_all_participants: "使用电子邮件向所有与会者发送日历邀请"
     types:
       one_time: "动态"
       recurring: "定期"
@@ -261,8 +261,8 @@ zh-CN:
       sidepanel:
         title: "电子邮件日历更新"
         description:
-          disabled: "与会者不会收到通知其更改的电子邮件。"
-          enabled: "所有与会者都将通过电子邮件收到更新的日历邀请，通知其相关更改。"
+          disabled: "与会者不会收到向其通知更改的电子邮件。"
+          enabled: "所有与会者都将通过电子邮件收到更新的日历邀请，向其通知相关更改。"
           change_via_template: "要更改此设置，请编辑系列模板。"
       dialog:
         title:
@@ -270,7 +270,7 @@ zh-CN:
           disable: "禁用电子邮件日历更新？"
         message:
           enable: >
-            All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants. Once enabled, an email will be sent out immediately to all participants.
+            每次会议日期、时间、地点或与会者更改时，所有与会者都将通过电子邮件收到更新日历的邀请。 一旦启用，将立即向所有参与者发送一封电子邮件。
           disable: >
             当会议日期、时间、地点或与会者发生更改时，与会者将不再通过电子邮件收到更新的日历邀请。如果他们已经收到过此次会议的邀请，则该邀请可能不再准确。
         confirm_label:
@@ -279,19 +279,19 @@ zh-CN:
       banner:
         onetime:
           enabled: >
-            所有与会者都将通过电子邮件收到更新的日历邀请，通知其您所做的更改。
+            所有与会者都将通过电子邮件收到更新的日历邀请，向其通知您所做的更改。
           disabled: >
-            电子邮件日历更新已禁用。与会者不会收到通知其您所做更改的电子邮件。
+            电子邮件日历更新已禁用。与会者不会收到向其通知您所做更改的电子邮件。
         occurrence:
           enabled: >
-            已为会议系列启用电子邮件日历更新。所有与会者都会收到更新的日历邀请，通知其您对此次事件所做的更改。
+            已对会议系列启用电子邮件日历更新。所有与会者都会收到更新的日历邀请，向其通知您对此次事件所做的更改。
           disabled: >
-            已为会议系列禁用电子邮件日历更新。与会者将不会收到通知其您对此次事件所做更改的电子邮件。
+            已对会议系列禁用电子邮件日历更新。与会者将不会收到向其通知您对此次事件所做更改的电子邮件。
         template:
           enabled: >
-            已为会议系列启用电子邮件日历更新。所有与会者都会收到更新的日历邀请，通知其您对此模板或各个事件所做的更改。
+            已对会议系列启用电子邮件日历更新。所有与会者都会收到更新的日历邀请，向其通知您对此模板或各个事件所做的更改。
           disabled: >
-            已为会议系列禁用电子邮件日历更新。与会者将不会收到通知其您对此模板或各个事件所做更改的电子邮件。
+            已对会议系列禁用电子邮件日历更新。与会者将不会收到向其通知您对此模板或各个事件所做更改的电子邮件。
   meeting_section:
     untitled_title: "无标题章节"
     delete_confirmation: "删除该属性也会删除其在所有项目中的值。您确定要这样做吗？"
@@ -299,9 +299,9 @@ zh-CN:
     empty_text: "拖动项目到此处或创建一个新项目"
   recurring_meeting:
     time_zone_difference_banner:
-      title: "Time zone difference"
+      title: "时差"
       description: >
-        The dates below are referencing the time zone of the meeting series (%{actual_zone}), not your local time zone (%{user_zone}).
+        以下日期参考的是系列会议的时区 (%{actual_zone})，而不是您当地的时区 (%{user_zone})。
     ended_blankslate:
       title: "结束"
       message: "本系列会议已经结束，没有即将举行的会议。 "

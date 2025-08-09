@@ -1621,6 +1621,7 @@ si:
         one: "Authentication provider"
         other: "Authentication providers"
       category: "ප්රවර්ගය"
+      color: "Color"
       comment: "අදහස් දක්වන්න"
       custom_action: "අභිරුචි පියවර"
       custom_field: "අභිරුචි ක්ෂේත්රය"

@@ -1632,6 +1632,7 @@ lv:
         one: "Authentication provider"
         other: "Authentication providers"
       category: "Sadaļa"
+      color: "Color"
       comment: "Komentârs"
       custom_action: "Custom action"
       custom_field: "Custom field"

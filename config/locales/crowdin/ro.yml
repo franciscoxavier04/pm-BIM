@@ -817,7 +817,7 @@ ro:
         title: "Lipsește fluxul pentru partajarea pachetului de lucru"
         message: "Niciun flux de lucru nu este configurat pentru rolul 'Editor pachete de lucru'. Fără un flux de lucru, utilizatorul nu poate modifica statusul pachetului de lucru. Fluxurile de lucru pot fi copiate. Selectează un tip sursă (de ex. 'Task') şi rolul sursă (de ex. 'Membru'). Apoi selectează tipurile țintă. Pentru a începe, ai putea selecta toate tipurile ca ținte. După aceea, selectează rolul de „editor pachete de lucru” ca țintă și apăsă „Copiază”. După ce ai creat cele implicite, reglează fluxurile de lucru așa cum faci pentru orice alt rol."
         link_message: "Configurează fluxurile de lucru din administrare."
-    templated_subject_hint: Automatically generated through type %{type}
+    templated_subject_hint: Generat automat prin tipul %{type}
     summary:
       reports:
         category:
@@ -1632,6 +1632,7 @@ ro:
         few: "Authentication providers"
         other: "Authentication providers"
       category: "Categorie"
+      color: "Color"
       comment: "Comentariu"
       custom_action: "Adaugă acțiune personalizată"
       custom_field: "Câmp personalizat"

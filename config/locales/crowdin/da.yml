@@ -1619,6 +1619,7 @@ da:
         one: "Authentication provider"
         other: "Authentication providers"
       category: "Kategori"
+      color: "Color"
       comment: "Kommentér"
       custom_action: "Custom action"
       custom_field: "Selvvalgt felt"

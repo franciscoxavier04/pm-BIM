@@ -1639,6 +1639,7 @@ pl:
         many: "Dostawcy uwierzytelniania"
         other: "Dostawcy uwierzytelniania"
       category: "Kategoria"
+      color: "Color"
       comment: "Komentarz"
       custom_action: "Działanie niestandardowe"
       custom_field: "Pola niestandardowe"

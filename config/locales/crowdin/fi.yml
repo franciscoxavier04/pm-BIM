@@ -1621,6 +1621,7 @@ fi:
         one: "Authentication provider"
         other: "Authentication providers"
       category: "Kategoria"
+      color: "Color"
       comment: "Kommentti"
       custom_action: "Custom action"
       custom_field: "Mukautettu kenttä"

@@ -1620,6 +1620,7 @@ tr:
         one: "Authentication provider"
         other: "Authentication providers"
       category: "Kategori"
+      color: "Color"
       comment: "Yorum"
       custom_action: "Özel eylem"
       custom_field: "Özel alan"

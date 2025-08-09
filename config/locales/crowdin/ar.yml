@@ -1665,6 +1665,7 @@ ar:
         many: "Authentication providers"
         other: "Authentication providers"
       category: "الفئة"
+      color: "Color"
       comment: "تعليق"
       custom_action: "Custom action"
       custom_field: "حقل مخصص"

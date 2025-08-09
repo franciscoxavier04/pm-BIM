@@ -120,34 +120,34 @@ es:
         label_token: "Token"
         one_time_hint: "Esta es la única vez que verá este token. Asegúrese de copiarlo ahora."
       delete_scim_client_dialog_component:
-        title: "Delete SCIM client"
-        heading: "Are you sure you want to delete this SCIM client?"
-        description: "Users managed by this SCIM client can no longer be updated by it."
+        title: "Eliminar cliente SCIM"
+        heading: "¿Seguro que desea eliminar este cliente SCIM?"
+        description: "Los usuarios gestionados por este cliente SCIM ya no pueden ser actualizados por él."
       edit:
-        label_delete_scim_client: "Delete SCIM client"
+        label_delete_scim_client: "Eliminar cliente SCIM"
       form:
         auth_provider_description: "Este es el servicio que los usuarios añadidos por el proveedor SCIM utilizarán para autenticarse en OpenProject."
-        authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description: "Please refer to our [documentation on configuring SCIM clients](docs_url) for more information on these configuration options."
-        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
+        authentication_method_description_html: "Así es como el cliente SCIM se autentica en OpenProject. Asegúrese de que los tokens OAuth incluyen el ámbito <code>scim_v2</code>."
+        description: "Consulte nuestra [documentación sobre la configuración de clientes SCIM](docs_url) para obtener más información sobre estas opciones de configuración."
+        jwt_sub_description: "Por ejemplo, para Keycloak, se trata del UUID de la cuenta de servicio asociada al cliente SCIM. Consulte [nuestra documentación](docs_url) para saber cómo encontrar la reclamación del asunto para su caso de uso."
         name_description: "Elija un nombre que ayude a otros administradores a entender mejor por qué se configuró este cliente."
       index:
-        description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
-        label_create_button: "Add SCIM client"
+        description: "Los clientes SCIM configurados aquí pueden interactuar con la API del servidor SCIM de OpenProject para aprovisionar, actualizar y desaprovisionar cuentas y grupos de usuarios."
+        label_create_button: "Añadir cliente SCIM"
       new:
-        title: "New SCIM client"
+        title: "Nuevo cliente SCIM"
       revoke_static_token_dialog_component:
         confirm_button: "Revocar"
         title: "Revocar token estático"
         heading: "¿Seguro que desea revocar este token?"
-        description: "The SCIM client that uses this token will no longer be able to access OpenProject's SCIM server API."
+        description: "El cliente SCIM que utilice este token ya no podrá acceder a la API del servidor SCIM de OpenProject."
       table_component:
         blank_slate:
-          title: "No SCIM clients configured yet"
+          title: "Aún no se ha configurado ningún cliente SCIM"
           description: "Añada clientes para verlos aquí"
         user_count: "Usuarios"
       token_list_component:
-        description: "The tokens you generate here can be passed by a SCIM client to access the OpenProject SCIM API."
+        description: "Los tokens que genere aquí pueden ser pasados por un cliente SCIM para acceder a la API SCIM de OpenProject."
         heading: "Tokens"
         label_add_token: "Token"
         label_aria_add_token: "Añadir token"
@@ -357,9 +357,9 @@ es:
       blueprint: "Plano de patrón"
   global_search:
     title:
-      all_projects: 'Search for "%{search_term}" in all projects'
-      current_project: 'Search for "%{search_term}" in %{project_name}'
-      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
+      all_projects: 'Buscar «%{search_term}» en todos los proyectos'
+      current_project: 'Buscar «%{search_term}» en %{project_name}'
+      project_and_subprojects: 'Buscar «%{search_term}» en %{project_name} y en todos los subproyectos'
     placeholder: "Buscar en %{app_title}"
     overwritten_tabs:
       all: "Todos"
@@ -367,23 +367,23 @@ es:
       wiki_pages: "Wiki"
   groups:
     edit:
-      synchronized_groups: "Synchronized groups"
+      synchronized_groups: "Grupos sincronizados"
     index:
-      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+      description: Al agrupar a los usuarios, puede añadirlos como miembros a los mismos proyectos o asignarles los mismos roles globales.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names.
-        title: No groups set up yet
-      user_count: User count
+        description: Puede definir grupos de usuarios con nombres específicos.
+        title: Aún no hay grupos configurados
+      user_count: Número de usuarios
     users:
       no_results_title_text: Actualmente no hay usuarios que formen parte de este grupo.
     memberships:
       no_results_title_text: Actualmente no hay proyectos que formen parte de este grupo.
     synchronized_groups:
       blankslate:
-        action: Authentication settings
-        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
-        title: No synchronized groups yet
+        action: Ajustes de autenticación
+        description: Cuando este grupo se sincronice automáticamente con grupos de proveedores de identidad externos como OpenID, aparecerán aquí. Puede configurar esto en sus ajustes de autenticación.
+        title: Aún no hay grupos sincronizados
   incoming_mails:
     ignore_filenames: >
       Especifica una lista de nombres a ignorar al procesar archivos adjuntos de emails entrantes (por ejemplo, firmas o iconos). Introduce un nombre de archivo por línea.
@@ -686,7 +686,7 @@ es:
     dark: "Oscuro"
     light: "Claro"
     light_high_contrast: "Contraste alto claro"
-    sync_with_os: "Automatic (match OS colour mode)"
+    sync_with_os: "Automático (coincide con el modo de color del SO)"
   types:
     index:
       no_results_title_text: Actualmente no existen tipos.
@@ -718,7 +718,7 @@ es:
             project: "Proyecto"
         pattern:
           label: "Patrón del asunto"
-          caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
+          caption: Cree patrones añadiendo texto o escriba «/» para buscar [atributos admitidos](attributes_url).
           insert_as_text: "No se encontraron atributos. Añadir como texto: «%{word}»"
       export_configuration:
         tab: "Generar PDF"
@@ -951,7 +951,7 @@ es:
         attribute_name: "Atributo"
         help_text: "Texto de ayuda"
       auth_provider:
-        scim_clients: "SCIM clients"
+        scim_clients: "Clientes SCIM"
       capability:
         context: "Contexto"
       changeset:
@@ -1267,7 +1267,7 @@ es:
         inclusion_nested: "no está establecido en uno de los valores permitidos en la ruta '%{path}'."
         invalid: "no es válido."
         invalid_characters: "contiene caracteres no válidos."
-        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
+        not_allowed_custom_fields_referenced: "contiene campos personalizados que no están permitidos: %{custom_fields}."
         invalid_url: "no es una URL válida."
         invalid_url_scheme: "no es un protocolo admitido (permitidos: %{allowed_schemes})."
         less_than_or_equal_to: "debe ser menor o igual a %{count}."
@@ -1287,7 +1287,7 @@ es:
         odd: "debe ser impar."
         regex_match_failed: "no coincide con la expresión regular %{expression}."
         regex_invalid: "no se pudo validar con la expresión regular asociada."
-        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
+        regex_list_invalid: "no pudo analizarse como expresión regular en las líneas %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "Debe ser menor o igual que el tamaño maximo."
         taken: "Ya se ha tomado."
         too_long: "es demasiado largo (el máximo de caracteres es %{count})."
@@ -1615,9 +1615,10 @@ es:
       attachment: "Archivo"
       attribute_help_text: "Texto de ayuda para atributo"
       auth_provider:
-        one: "Authentication provider"
-        other: "Authentication providers"
+        one: "Proveedor de autenticación"
+        other: "Proveedores de autenticación"
       category: "Categoría"
+      color: "Color"
       comment: "Comentario"
       custom_action: "Acción personalizada"
       custom_field: "Campo personalizado"
@@ -1649,8 +1650,8 @@ es:
         one: "Rol"
         other: "Roles"
       scim_client:
-        one: "SCIM client"
-        other: "SCIM clients"
+        one: "Cliente SCIM"
+        other: "Clientes SCIM"
       status: "Estado del paquete de trabajo"
       token/api:
         one: Token de acceso
@@ -2210,7 +2211,7 @@ es:
         title: "Inicio de sesión único para almacenamiento en la nube"
         description: "Habilite una autenticación fluida y segura para su almacenamiento Nextcloud con el inicio de sesión único. Simplifique la gestión del acceso y mejore la comodidad de los usuarios."
       scim_api:
-        title: "SCIM clients"
+        title: "Clientes SCIM"
         description: "Automatice la gestión de usuarios en OpenProject integrando a la perfección servicios de identidad externos como Microsoft Entra o Keycloak a través de nuestra API del servidor SCIM. Disponible a partir del plan corporativo Enterprise."
       virus_scanning:
         description: "Asegúrese de que los archivos cargados en OpenProject se analizan en busca de virus antes de que otros usuarios puedan acceder a ellos."
@@ -2251,11 +2252,11 @@ es:
         Acepto los <a target="_blank" href="https://www.openproject.org/terms-of-service/">términos del servicio</a> y la <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">política de privacidad</a>.
   email_calendar_updates:
     state:
-      disabled: "Disabled."
-      enabled: "Enabled."
+      disabled: "Deshabilitado."
+      enabled: "Habilitado."
     button:
-      disabled: "Enable"
-      enabled: "Disable"
+      disabled: "Habilitar"
+      enabled: "Deshabilitar"
   enumeration_activities: "Actividades de seguimiento del tiempo"
   enumeration_work_package_priorities: "Prioridades del paquete de trabajo"
   enumeration_reported_project_statuses: "Estatus del proyecto reportado"
@@ -2556,7 +2557,7 @@ es:
       aggregation: "Agregación"
       api_and_webhooks: "API y webhooks"
     quick_add:
-      label: "Add…"
+      label: "Añadir…"
   my_account:
     access_tokens:
       no_results:
@@ -2856,7 +2857,7 @@ es:
   label_gantt_chart_plural: "Diagramas de Gantt"
   label_general: "General"
   label_generate_key: "Generar una contraseña"
-  label_global_modules: "Global modules"
+  label_global_modules: "Módulos globales"
   label_global_roles: "Roles globales"
   label_git_path: "Ruta al directorio .git"
   label_greater_or_equal: ">="
@@ -2941,7 +2942,7 @@ es:
   label_manage: "Administrar"
   label_manage_groups: "Administrar grupos"
   label_managed_repositories_vendor: "Repositorios de %{vendor} administrados"
-  label_mathematical_operators: "Mathematical operators"
+  label_mathematical_operators: "Operadores aritméticos"
   label_max_size: "Tamaño máximo"
   label_me: "mi"
   label_member_new: "Nuevo miembro"
@@ -3001,7 +3002,7 @@ es:
   label_no_due_date: "sin fecha de finalización"
   label_no_start_date: "sin fecha de inicio"
   label_no_parent_page: "Sin página principal"
-  label_notification_center_plural: "Notifications"
+  label_notification_center_plural: "Notificaciones"
   label_nothing_display: "Nada que mostrar"
   label_nobody: "nadie"
   label_not_configured: "Sin configurar"
@@ -3210,7 +3211,7 @@ es:
   label_user_mail_option_only_my_events: "Sólo para cosas que controlo o en las que participo"
   label_user_mail_option_only_owner: "Sólo para cosas de las que soy el dueño"
   label_user_mail_option_selected: "Únicamente para cualquier evento de los proyectos seleccionados"
-  label_user_menu: "User menu"
+  label_user_menu: "Menú de usuario"
   label_user_new: "Nuevo usuario"
   label_user_plural: "Usuarios"
   label_user_search: "Búsqueda de usuario"

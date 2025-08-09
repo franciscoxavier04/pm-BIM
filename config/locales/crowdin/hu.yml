@@ -1620,6 +1620,7 @@ hu:
         one: "Authentication provider"
         other: "Authentication providers"
       category: "Kategória"
+      color: "Color"
       comment: "Vélemény"
       custom_action: "Egyéni művelet"
       custom_field: "Választható mező"

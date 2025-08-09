@@ -1621,6 +1621,7 @@ ka:
         one: "Authentication provider"
         other: "Authentication providers"
       category: "კატეგორია"
+      color: "Color"
       comment: "კომენტარი"
       custom_action: "მორგებული ქმედება"
       custom_field: "მორგებადი ველი"

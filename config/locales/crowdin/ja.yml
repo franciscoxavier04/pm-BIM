@@ -1608,6 +1608,7 @@ ja:
       auth_provider:
         other: "Authentication providers"
       category: "カテゴリ"
+      color: "Color"
       comment: "コメント"
       custom_action: "カスタムアクション"
       custom_field: "カスタムフィールド"

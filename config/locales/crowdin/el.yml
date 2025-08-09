@@ -1617,6 +1617,7 @@ el:
         one: "Authentication provider"
         other: "Authentication providers"
       category: "Κατηγορία"
+      color: "Color"
       comment: "Σχόλιο"
       custom_action: "Προσαρμοσμένη ενέργεια"
       custom_field: "Προσαρμοσμένο πεδίο"

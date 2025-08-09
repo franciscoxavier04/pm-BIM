@@ -175,7 +175,7 @@ zh-CN:
               not_found: "%{current_path} 没有找到。"
             set_folders_permissions:
               permission_not_set: 无法设置 %{path} 上的权限。
-          error: 发生了意外错误。请确保 OneDrive 可以访问，并检查 OpenProject 工作日志以获取更多信息
+          error: 发生意外错误。请确保 OneDrive 可以访问，并检查 OpenProject 工作日志以获取更多信息
           not_allowed: OpenProject 未被允许访问您的 OneDrive 驱动器。请检查 Azure 应用程序上设置的权限。
           unauthorized: OpenProject 无法与 Nextcloud 同步。请检查您的存储设备和 Nextcloud 配置。
           user_does_not_exist: "在 Nextcloud 中不存在 %{user}  。"
@@ -337,10 +337,10 @@ zh-CN:
         warning: 某些检查返回了警告。这可能导致异常行为。
       title: 健康状况报告
     health_email_notifications:
-      description_disabled: Admins will not receive updates by email when there are important updates.
-      description_enabled: Admins will receive updates by email when there are important updates.
+      description_disabled: 当有重要更新时，管理员将不会通过电子邮件收到更新提醒。
+      description_enabled: 当有重要更新时，管理员将会通过电子邮件收到更新提醒。
       error_could_not_be_saved: 无法保存电子邮件通知设置。请重试。
-      title: Email updates to admins
+      title: 通过电子邮件向管理员发送更新
     help_texts:
       project_folder: 项目文件夹是此项目上传文件的默认文件夹。用户仍然可以上传文件到其他位置。
       project_folder_bulk: 项目文件夹是所选项目上传文件的默认文件夹。 您可以在每个项目设置中单独修改此操作。用户仍然可以将文件上传到其他位置。

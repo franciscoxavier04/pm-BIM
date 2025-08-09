@@ -1621,6 +1621,7 @@ af:
         one: "Authentication provider"
         other: "Authentication providers"
       category: "Kategorie"
+      color: "Color"
       comment: "Opmerking"
       custom_action: "Custom action"
       custom_field: "Pasgemaakte veld"

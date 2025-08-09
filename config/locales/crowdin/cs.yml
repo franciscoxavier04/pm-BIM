@@ -1643,6 +1643,7 @@ cs:
         many: "Authentication providers"
         other: "Authentication providers"
       category: "Kategorie"
+      color: "Color"
       comment: "Komentář"
       custom_action: "Vlastní akce"
       custom_field: "Vlastní pole"

@@ -1643,6 +1643,7 @@ he:
         many: "Authentication providers"
         other: "Authentication providers"
       category: "קטגוריה"
+      color: "Color"
       comment: "תגובה"
       custom_action: "Custom action"
       custom_field: "שדה מותאם אישית"

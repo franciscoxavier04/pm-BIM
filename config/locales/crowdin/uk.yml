@@ -1636,6 +1636,7 @@ uk:
         many: "Authentication providers"
         other: "Authentication providers"
       category: "Категорія"
+      color: "Color"
       comment: "Коментар"
       custom_action: "Спеціальні дії"
       custom_field: "Користувацьке поле"

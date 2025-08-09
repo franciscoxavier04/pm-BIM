@@ -1643,6 +1643,7 @@ sk:
         many: "Authentication providers"
         other: "Authentication providers"
       category: "Kategória"
+      color: "Color"
       comment: "Komentár"
       custom_action: "Vlastná akcia"
       custom_field: "Vlastné pole"
