@@ -99,7 +99,7 @@ pt-PT:
     meeting_agenda_opened: Agenda de reunião aberta
     meeting_minutes: Minutos de reunião editados
     meeting_minutes_created: Minutos de reunião criados
-  error_notification: "Failed to send notification."
+  error_notification: "Falha no envio da notificação."
   error_notification_with_errors: "Falha ao enviar a notificação. Os seguintes destinatários não podem ser notificados: %{recipients}"
   label_meeting: "Reunião"
   label_meeting_plural: "Reuniões"
@@ -259,13 +259,13 @@ pt-PT:
         caption: Se os resultados da ordem de trabalhos tiverem informações confidenciais, pode optar por não os incluir na exportação.
       footer_text:
         label: Texto do rodapé
-        caption: This text will appear on every page at the center of the footer.
+        caption: Este texto vai aparecer em todas as páginas ao centro do rodapé.
       submit_button: Transferir
     notifications:
       sidepanel:
-        title: "Email calendar updates"
+        title: "Atualizações do calendário por e-mail"
         description:
-          disabled: "Participants will not receive an email informing them of changes."
+          disabled: "Os participantes não receberão um e-mail a informá-los das alterações."
           enabled: "All participants will receive updated calendar invites via email informing them of changes."
           change_via_template: "To change this, edit the series template."
       dialog:
