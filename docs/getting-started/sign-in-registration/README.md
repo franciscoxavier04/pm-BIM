@@ -81,7 +81,7 @@ Make sure to remember your password in order to sign in again at a later point.
 
 ## Choose your language
 
-After the creation of your account you are logged into the system and see your personal account settings.  Here you can adjust your notification preferences, define email reminders frequency and interface settings, etc. You can also change  be asked to set your language in the system. Please choose your preferred language from the drop-down list.
+After the creation of your account you are logged into the system and see your personal account settings.  Here you can adjust your notification preferences, define email reminders frequency and interface settings, etc. You can also set your language preferences.
 
 > [!TIP]
 > OpenProject is available in more than 30 languages. If you do not find your preferred language, it first needs to be activated in the system's administration. Please talk to your system administrator to set up the language.
