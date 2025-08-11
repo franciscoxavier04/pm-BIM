@@ -34,11 +34,21 @@ module My
       form do |new_access_token_form|
         new_access_token_form.text_field(
           name: :token_name,
-          label: I18n.t("my.access_token.new_access_token_dialog_text_field_label"),
-          placeholder: I18n.t("my.access_token.new_access_token_dialog_text_field_placeholder_text"),
+          label: I18n.t(:name_label, scope: i18n_scope),
+          placeholder: I18n.t(:name_placeholder, scope: i18n_scope),
           visually_hide_label: false,
           required: true
         )
+      end
+
+      private
+
+      def i18n_scope
+        case model
+        when Token::API then "my.access_token.api"
+        when Token::ICalMeeting then "my.access_token.ical_meeting"
+        else raise ArgumentError, "Unknown token type: #{token_type}"
+        end
       end
     end
   end

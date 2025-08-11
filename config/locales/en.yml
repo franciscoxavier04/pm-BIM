@@ -615,6 +615,20 @@ en:
 
   my:
     access_token:
+      api:
+        dialog_title: "Create new API token"
+        attention_text: "Treat API tokens like passwords. Anyone with this token will have access to information from this instance, share it only with trusted users."
+        dialog_body: "This token will allow third-party applications to communicate with your instance. To differentiate the new API token, please give it a name."
+        create_button: "Create"
+        name_label: "Name"
+        name_placeholder: "My API token"
+      ical_meeting:
+        dialog_title: "Create new iCalendar subscription token for meetings"
+        attention_text: "Treat the URL to the calendar scubscription like a password. Anyone with this link will have access to information from all meetings you are a participant of."
+        dialog_body: "This link will allow you to subscribe to all of your meetings in your calendar application. To differentiate the new iCalendar subscription, please tell us on what device you want to use this subscription."
+        create_button: "Create subscription"
+        name_label: "Where will you be using this?"
+        name_placeholder: 'Type a name, e.g. "Phone", "Work computer"'
       create_dialog:
         title: Token generated
         header: The %{type} token has been generated
@@ -622,13 +636,6 @@ en:
       errors:
         token_name_blank: "Please provide an API token name"
         token_name_in_use: "This API token name is already in use, please select a different one"
-      new_access_token_dialog_title: "Create new API token"
-      new_access_token_dialog_show_button_text: "API token"
-      new_access_token_dialog_text_field_placeholder_text: "My API token"
-      new_access_token_dialog_text_field_label: "Name"
-      new_access_token_dialog_submit_button_text: "Create"
-      new_access_token_dialog_text: "This token will allow third-party applications to communicate with your instance. To differentiate the new API token, please give it a name."
-      new_access_token_dialog_attention_text: "Treat API tokens like passwords. Anyone with this link will have access to information from this instance, share it only with trusted users."
       failed_to_reset_token: "Failed to reset access token: %{error}"
       failed_to_create_token: "Failed to create access token: %{error}"
       failed_to_revoke_token: "Failed to revoke access token: %{error}"

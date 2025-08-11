@@ -50,6 +50,14 @@ module My
         when "ical-meeting" then Token::ICalMeeting.new
         end
       end
+
+      def i18n_scope
+        case token_type
+        when "api" then "my.access_token.api"
+        when "ical-meeting" then "my.access_token.ical_meeting"
+        else raise ArgumentError, "Unknown token type: #{token_type}"
+        end
+      end
     end
   end
 end
