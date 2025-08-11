@@ -59,14 +59,14 @@ module Storages
 
               def request_uri(drive_id, location)
                 if location.root?
-                  UrlBuilder.url(base_uri, "/v1.0/drives/#{drive_id}/root/children")
+                  UrlBuilder.url(base_uri, "/v1.0/drives", drive_id, "/root/children")
                 else
-                  UrlBuilder.url(base_uri, "/v1.0/drives/#{drive_id}/root:#{UrlBuilder.path(location.path)}:/children")
+                  UrlBuilder.url(base_uri, "/v1.0/drives", drive_id, "/root:#{UrlBuilder.path(location.path)}:/children")
                 end
               end
 
               def folder_uri(drive_id, folder)
-                base_url = UrlBuilder.url(base_uri, "/v1.0/drives/#{drive_id}/root")
+                base_url = UrlBuilder.url(base_uri, "/v1.0/drives", drive_id, "/root")
                 return base_url if folder.root?
 
                 "#{base_url}:#{UrlBuilder.path(folder.path)}"
