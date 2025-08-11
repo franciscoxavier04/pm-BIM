@@ -20,18 +20,23 @@ Take a look at our release video showing the most important features introduced 
 
 There have been several design and user experience updates with OpenProject 16.3:
 - The **header has been redesigned with Primer**, including a new icon for notifications.
-- The waffle icon in the header menu is now an overlapping lateral menu, including **Home**, **My Page** and **My time tracking**.
-- The Sign-in modal and the running time-tracking section have been moved to the new right sidesheet.
+- The grid (waffle) icon in the header menu is now an overlapping lateral menu, including **Home**, **My Page** and **My time tracking**.
 
-![Screenshot showing the home page of OpenProject Community, with highlighted waffle menu dropdown and redesigned icons on the right side of the header](openproject-16-3-header-menu-highlighted.png)
+![Screenshot showing the home page of OpenProject Community, with highlighted grid menu dropdown and redesigned icons on the right side of the header](openproject-16-3-header-menu-highlighted.png)
+
+- The Sign-in modal and the running time-tracking section have been **moved to the new right sidesheet**.
+
+![Screenshot showing OpenProject with a modal on the right side with user name, running timer and other information](openproject_user_guide_log_time_right_hand_overlay_menu.png)
 
 ### Meetings: Option to mute email notifications and ICS
 
 With OpenProject 16.3, you can now **disable email calendar updates when creating or copying meetings**. This helps avoid sending invitations too early or accidentally sharing drafts. 
 
-The setting is available as a checkbox in the meeting template form and lets you decide whether participants should be notified by email. The current status is always visible in the meeting sidebar and can be toggled for one-time and recurring meetings — giving you full control over how and when participants are informed of changes.
+The setting is available as a checkbox in the meeting template form and lets you decide whether participants should be notified by email. The current status is always visible in the meeting sidebar and can be changed for one-time and recurring meetings — giving you full control over how and when participants are informed of changes.
 
 ![Screenshot showing OpenProject meeting template with overlay to disable email notifications](openproject-16-3-meeting-notifications-highlighted.png)
+
+[Learn more about meeting management with OpenProject](../../user-guide/meetings/).
 
 ### Ongoing timers shown in the My time tracking module
 
@@ -41,17 +46,25 @@ This makes it easier to spot if a timer is running and avoid duplicate or overla
 
 ![Screenshot showing OpenProject's My time tracking module with a highlighted time entry on 'today' that is running for 5 minutes, displayed with a timer icon](openproject-16-3-my-time-tracking-timer-calendar-view-highlighted.png)
 
+Not familiar with the My time tracking module yet? [Learn more about it in our blog](https://www.openproject.org/blog/time-tracking-module/).
+
 ### Progress reporting: % Complete sum also shown in Status-based mode
 
 In OpenProject 15.5, we introduced the ability to display a sum for the % Complete column in work package tables. In 16.3, this feature has been improved to ensure **accurate sums across different progress calculation modes**. This applies especially when some work packages do not contain values for Work or Remaining work.
+
+[Learn more about progress tracking and reporting with OpenProject](../../user-guide/time-and-costs/progress-tracking/).
 
 ### Nextcloud Health check: Indicate missing token exchange capability (Enterprise add-on)
 
 Administrators using the Nextcloud integration in the Corporate plan can now benefit from a more specific health check. If **token exchange is configured but not supported by the linked identity provider** (e.g. due to older OIDC settings), the new check will now clearly identify this issue. This helps diagnose connection problems more reliably and avoids misleading error messages about token refresh failures.
 
+[Learn more about monitoring your OpenProject installation](../../installation-and-operations/operation/monitoring/).
+
 ### Autocomplete for cost reporting user and work package fields
 
-Creating **cost reports** is now easier and faster. OpenProject 16.3 introduces **autocomplete for key filter fields** like User and Work package, helping you find the right person or task with just a few keystrokes.
+Creating **cost reports** is now easier and faster. OpenProject 16.3 introduces **autocomplete for key filter fields** like User, Project and Work package, helping you find the right person or task with just a few keystrokes.
+
+[Learn more about cost reporting with OpenProject](../../user-guide/time-and-costs/reporting/).
 
 <!--more-->
 
