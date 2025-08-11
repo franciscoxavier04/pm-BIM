@@ -38,7 +38,7 @@ module Storages
         module Queries
           RSpec.describe DownloadLinkQuery, :vcr, :webmock do
             let(:user) { create(:user) }
-            let(:storage) { create(:share_point_dev_storage, oauth_client_token_user: user) }
+            let(:storage) { create(:share_point_storage, :sandbox, oauth_client_token_user: user) }
             let(:auth_strategy) { Registry["one_drive.authentication.user_bound"].call(user, storage) }
 
             let(:drive_id) { "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY87vnZ6fgfvQanZHX-XCAyw" }
