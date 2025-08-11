@@ -75,14 +75,6 @@ module Projects
       end
     end
 
-    def all_available_custom_fields
-      if user.admin?
-        model.all_available_custom_fields
-      else
-        model.all_available_custom_fields.reject(&:admin_only?)
-      end
-    end
-
     delegate :assignable_versions, to: :model
 
     def assignable_status_codes
@@ -155,6 +147,14 @@ module Projects
       contract = contract_klass.new(model, user)
 
       validate_and_merge_errors(contract)
+    end
+
+    def all_available_custom_fields
+      if user.admin?
+        model.all_available_custom_fields
+      else
+        model.all_available_custom_fields.where(admin_only: false)
+      end
     end
   end
 end
