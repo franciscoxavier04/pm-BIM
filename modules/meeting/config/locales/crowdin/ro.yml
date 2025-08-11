@@ -100,6 +100,7 @@ ro:
     meeting_agenda_opened: Agenda întâlnirii e deschisă
     meeting_minutes: Procesele-verbale ale reuniunii au fost editate
     meeting_minutes_created: Procese-verbale de ședință create
+  error_notification: "Failed to send notification."
   error_notification_with_errors: "Nu s-a reușit trimiterea notificării. Următorii destinatari nu au putut fi notificați: %{recipients}"
   label_meeting: "ID Întâlnire"
   label_meeting_plural: "Întâlniri"
@@ -219,18 +220,18 @@ ro:
         body: "The meeting '%{title}' has been rescheduled by %{actor}."
         old_date_time: "Old date/time"
         new_date_time: "New date/time"
-    label_mail_all_participants: "Send email to all participants"
+    label_mail_all_participants: "Email calendar invite to all participants"
     types:
-      one_time: "One-time"
-      recurring: "Recurring"
+      one_time: "O dată"
+      recurring: "Recurentă"
       recurring_text: "Create meeting series with dynamic template for each occurrence."
       structured_text: "Organize your meeting as a dynamic list of agenda items, optionally linking them to a work package."
       structured_text_copy: "Copying a meeting will currently not copy the associated meeting agenda items, just the details"
     copied: "Copiat de la Întâlnire #%{id}"
     delete_dialog:
       one_time:
-        title: "Delete meeting"
-        heading: "Delete this meeting?"
+        title: "Șterge întâlnire"
+        heading: "Ștergi această întâlnire?"
         confirmation_message_html: >
           This action is not reversible. Please proceed with caution.
       occurrence:
@@ -240,11 +241,11 @@ ro:
           Any meeting information not in the template will be lost. Do you want to continue?
         confirm_button: "Cancel occurrence"
     blankslate:
-      title: "No meetings to display"
+      title: "Nicio întâlnire de afișat"
       desc: "There are no meetings that meet the active filter criteria."
     label_export_pdf: "Exportă PDF"
     export:
-      your_meeting_export: "Meeting is being exported"
+      your_meeting_export: "Se exportă întâlnirea"
     export_pdf_dialog:
       title: Exportă PDF
       description: Generează un fișier PDF printabil pentru aceasta întâlnire in starea curenta.
@@ -267,23 +268,17 @@ ro:
     notifications:
       sidepanel:
         title: "Email calendar updates"
-        state:
-          disabled: "Disabled."
-          enabled: "Enabled."
         description:
           disabled: "Participants will not receive an email informing them of changes."
           enabled: "All participants will receive updated calendar invites via email informing them of changes."
           change_via_template: "To change this, edit the series template."
-        button:
-          disable: "Disable"
-          enable: "Enable"
       dialog:
         title:
           enable: "Enable email calendar updates?"
           disable: "Disable email calendar updates?"
         message:
           enable: >
-            All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants.
+            All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants. Once enabled, an email will be sent out immediately to all participants.
           disable: >
             Participants will no longer receive updated calendar invites via email when there are changes to the meeting date, time, location or participants. If they already had an invite for this meeting, it might no longer be accurate.
         confirm_label:
@@ -394,7 +389,7 @@ ro:
       confirm_button: "Cancel occurrence"
     end_series_dialog:
       title: "End meeting series"
-  notice_successful_notification: "Notificare trimisă cu succes"
+  notice_successful_notification: "Email calendar update sent to all participants"
   notice_timezone_missing: Nu este setat niciun fus orar și se presupune %{zone}. Pentru a vă alege fusul orar, vă rugăm să faceți clic aici.
   notice_meeting_updated: "This page has been updated by someone else. Reload to view changes."
   permission_create_meetings: "Creați întâlniri"

@@ -28,31 +28,18 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
+module OpenProject::Patches::PrawnBadgePatch
+  def fragment_measurements=(fragment)
+    super
 
-RSpec.describe Types::BaseContract do
-  let(:current_user) { build_stubbed(:user) }
-  let(:work_package_type) { Type.new }
-
-  subject(:contract) { described_class.new(work_package_type, current_user) }
-
-  describe "#validation" do
-    context "if subject generation patterns contains invalid tokens" do
-      let(:valid_tokens) { [WorkPackageTypes::Patterns::AttributeToken.new(:assignee, nil, nil)] }
-      let(:work_package_type) do
-        Type.new(patterns: { subject: { blueprint: "Vacation {{vaders_toy}}", enabled: true } })
-      end
-
-      before do
-        token_mapper_double = instance_double(WorkPackageTypes::Patterns::TokenPropertyMapper)
-        allow(token_mapper_double).to receive(:tokens_for_type).and_return(valid_tokens)
-        allow(WorkPackageTypes::Patterns::TokenPropertyMapper).to receive(:new).and_return(token_mapper_double)
-      end
-
-      it "is invalid" do
-        contract.validate
-        expect(subject.errors.symbols_for(:patterns)).to contain_exactly(:invalid_tokens)
+    # If the fragment is a badge, we need to adjust the line height
+    callbacks = fragment.callback_objects
+    callbacks.each do |obj|
+      if obj.respond_to?(:badge_line_height)
+        fragment.line_height = obj.badge_line_height
       end
     end
   end
 end
+
+Prawn::Text::Formatted::Arranger.prepend(OpenProject::Patches::PrawnBadgePatch)

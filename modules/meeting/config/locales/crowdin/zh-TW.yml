@@ -98,6 +98,7 @@ zh-TW:
     meeting_agenda_opened: 會議大綱開啟
     meeting_minutes: 會議記錄已編輯
     meeting_minutes_created: 會議記錄已建立
+  error_notification: "傳送通知失敗。"
   error_notification_with_errors: "傳送通知失敗。以下的收件者將不會被通知到: %{recipients}"
   label_meeting: "會議"
   label_meeting_plural: "會議"
@@ -211,7 +212,7 @@ zh-TW:
         body: "會議 %{title} 已經被 %{actor} 重新安排。"
         old_date_time: "舊日期/時間"
         new_date_time: "新日期/時間"
-    label_mail_all_participants: "發送電子郵件給所有參與者"
+    label_mail_all_participants: "將行事曆邀請電郵給所有參與者"
     types:
       one_time: "一次性"
       recurring: "重覆"
@@ -259,23 +260,17 @@ zh-TW:
     notifications:
       sidepanel:
         title: "電子郵件行事曆更新"
-        state:
-          disabled: "已停用。"
-          enabled: "已啟用。"
         description:
           disabled: "參與者不會收到通知變更的電子郵件。"
           enabled: "所有與會者都會透過電子郵件收到更新的行事曆邀請，通知他們相關變更。"
           change_via_template: "若要變更，請編輯系列範本。"
-        button:
-          disable: "停用"
-          enable: "啟用"
       dialog:
         title:
           enable: "啟用電子郵件行事曆更新？"
           disable: "停用電子郵件行事曆更新？"
         message:
           enable: >
-            每次會議日期、時間、地點或與會者有變更時，所有與會者都會透過電子郵件收到更新的行事曆邀請。
+            每次會議日期、時間、地點或與會者有變更時，所有與會者都會透過電子郵件收到更新的行事曆邀請。啟用後，電子郵件會立即傳送給所有與會者。
           disable: >
             當會議日期、時間、地點或與會者有變更時，與會者將不會再透過電子郵件收到更新的行事曆邀請。如果他們已經有這個會議的邀請，則可能不再準確。
         confirm_label:
@@ -382,7 +377,7 @@ zh-TW:
       confirm_button: "取消事件"
     end_series_dialog:
       title: "結束系列會議"
-  notice_successful_notification: "通知傳送成功"
+  notice_successful_notification: "透過電子郵件更新行事曆，並發送給所有參與者"
   notice_timezone_missing: 沒有設定時區，預設時區為 %{zone} 。請按這裡選擇您的時區。
   notice_meeting_updated: "本頁已由他人更新。重新載入以查看變更。"
   permission_create_meetings: "建立會議"

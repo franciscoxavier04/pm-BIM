@@ -28,35 +28,24 @@ See COPYRIGHT and LICENSE files for more details.
 ++#%>
 
 <%=
-  component_wrapper(data: { "test-selector": "notifications-button" }) do
-    render(Primer::OpenProject::SidePanel::Section.new) do |section|
-      section.with_title { I18n.t("meeting.notifications.sidepanel.title") }
-
-      if show_button?
-        section.with_footer_button(
-          color: :accent,
-          tag: :a,
-          href: toggle_notifications_dialog_project_meeting_path(@project, @meeting),
-          classes: "hide-when-print",
-          data: { "turbo-stream": true }
-        ) do |button|
-          button.with_leading_visual_icon(icon: button_icon)
-          button_label
-        end
-      end
-
-      flex_layout do |flex|
-        flex.with_row do
-          concat(render(Primer::Beta::Text.new(font_weight: :semibold)) { "#{state} " })
-          concat(render(Primer::Beta::Text.new) { description })
-        end
-
-        unless show_button?
-          flex.with_row(mt: 2) do
-            render(Primer::Beta::Text.new) { additional_text }
-          end
-        end
-      end
+  render(
+    Primer::OpenProject::DangerDialog.new(
+      id: "agenda-item-move-to-next-meeting-dialog",
+      confirm_button_text: I18n.t(:label_agenda_item_move),
+      title:,
+      form_arguments: {
+        action: move_to_next_meeting_agenda_item_path(
+          @agenda_item.meeting,
+          @agenda_item,
+          datetime: @datetime
+        ),
+        method: :post
+      }
+    )
+  ) do |dialog|
+    dialog.with_confirmation_message do |message|
+      message.with_heading(tag: :h2) { title }
+      message.with_description_content(confirmation_message)
     end
   end
 %>

@@ -222,8 +222,12 @@ class RecurringMeetingsController < ApplicationController
   end
 
   def notify
-    deliver_invitation_mails
-    flash[:notice] = I18n.t(:notice_successful_notification)
+    if deliver_invitation_mails == false
+      flash[:error] = I18n.t(:error_notification)
+    else
+      flash[:notice] = I18n.t(:notice_successful_notification)
+    end
+
     redirect_to action: :show
   end
 
@@ -246,7 +250,7 @@ class RecurringMeetingsController < ApplicationController
   end
 
   def deliver_invitation_mails
-    return unless @recurring_meeting.template.notify?
+    return false unless @recurring_meeting.template.notify?
 
     @recurring_meeting
       .template

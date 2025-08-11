@@ -55,7 +55,7 @@ module Storages
             def admin_query(file_id)
               Authentication[userless_strategy].call(storage: @storage) do |http|
                 drive_item_query.call(http:, drive_item_id: file_id, fields: FIELDS)
-                                .bind { |json| storage_file_info(json, status: "forbidden", status_code: 403) }
+                                .fmap { |json| storage_file_info(json, status: "forbidden", status_code: 403) }
               end
             end
 

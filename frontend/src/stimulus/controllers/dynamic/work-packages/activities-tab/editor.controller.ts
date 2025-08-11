@@ -91,7 +91,7 @@ export default class EditorController extends BaseController {
 
     if (this.isMobile()) {
       this.focusEditor(0);
-    } else if (this.indexOutlet.sortingValue === 'asc' && journalsContainerAtBottom) {
+    } else if (this.indexOutlet.sortingAscending && journalsContainerAtBottom) {
       // scroll to (new) bottom if sorting is ascending and journals container was already at bottom before showing the form
       this.autoScrollingOutlet.scrollJournalContainer(true);
       this.focusEditor();

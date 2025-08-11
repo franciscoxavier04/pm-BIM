@@ -7,17 +7,18 @@ fr:
   activerecord:
     attributes:
       openid_connect/group_link:
-        oidc_group_name: OpenID group identifier
+        oidc_group_name: Identifiant de groupe OpenID
       openid_connect/provider:
         name: Nom
         slug: Identifiant unique
         display_name: Nom d'affichage
         client_id: ID du client
         client_secret: Clé secrète du client
-        groups_claim: Groups claim
+        groups_claim: Revendication des groupes
+        group_regexes: Motifs (expressions régulières)
         secret: Secret
         scope: Périmètre
-        sync_groups: Synchronize groups
+        sync_groups: Synchroniser les groupes
         grant_types_supported: Types d'autorisations pris en charge
         limit_self_registration: Limiter l'inscription automatique
         authorization_endpoint: Point de terminaison d'autorisation
@@ -56,14 +57,14 @@ fr:
   openid_connect:
     menu_title: Fournisseurs OpenID
     delete_title: "Supprimer le fournisseur OpenID Connect"
-    group_links_heading: OpenID Connect group links
+    group_links_heading: Liens du groupe OpenID Connect
     instructions:
       redirect_url: C'est l'URL de redirection que le fournisseur OpenID Connect doit utiliser pour rediriger le client vers OpenProject après une connexion réussie.
       endpoint_url: L'URL du point de terminaison qui vous a été communiquée par le fournisseur OpenID Connect
-      group_regexes: One regular expression pattern per line. Please read [the documentation](docs_url) for more information on how to do this.
-      group_regexes_detail: Define patterns using regular expressions to match group names from the groups claim. For example, entering a pattern like <code>^Level1/Level2/([\w/]+)$</code> will extract the group “Groupname/SubGroup” from a response including “Level1/Level2/GroupName/SubGroup”.
-      group_sync: Automatically extract and synchronise group membership information from the identity provider.
-      groups_claim: Specify the name of the claim that's expected to indicate the group names that the user is a member of.
+      group_regexes: Un motif d'expression régulière par ligne. Veuillez lire [la documentation](docs_url) pour en savoir plus sur la manière de procéder.
+      group_regexes_detail: Vous pouvez également définir des motifs à l'aide d'expressions régulières pour faire correspondre les noms de groupes aux revendications de groupes. Par exemple, si vous saisissez un motif tel que <code>^Niveau1/Niveau2/([\w/]+)$</code>, le groupe « Nom du groupe/Sous-groupe » sera extrait d'une réponse comprenant « Niveau1/Niveau2/Nom du groupe/Sous-groupe ». Si aucun motif ne correspond, le groupe est ignoré. Laissez le champ vide pour synchroniser tous les groupes en utilisant leur nom complet.
+      group_sync: Extraire et synchroniser automatiquement les informations relatives à l'appartenance à un groupe à partir du fournisseur d'identité.
+      groups_claim: Indiquez le nom de la revendication censée indiquer les noms des groupes dont l'utilisateur est membre.
       metadata_none: Je ne dispose pas de cette information
       metadata_url: J'ai une URL de point de terminaison de découverte
       client_id: Il s'agit de l'ID de client qui vous a été attribué par votre fournisseur OpenID Connect
@@ -107,8 +108,7 @@ fr:
       label_edit: Modifier le fournisseur OpenID %{name}
       label_empty_title: Aucun fournisseur OpenID n'a encore été configuré.
       label_empty_description: Ajoutez un fournisseur pour le voir ici.
-      label_group_mapping: Group mapping
-      label_group_regexes: Pattern (regular expression)
+      label_group_mapping: Mappage des groupes
       label_metadata: Point de terminaison de découverte OpenID Connect
       label_automatic_configuration: Configuration automatique
       label_optional_configuration: Configuration facultative
@@ -121,7 +121,7 @@ fr:
       plural: Fournisseurs OpenID
       singular: Fournisseur OpenID
       section_texts:
-        group_mapping: Map group names provided by the identity provider to groups in OpenProject.
+        group_mapping: Mettez en correspondance les noms de groupes fournis par le fournisseur d'identité avec les groupes d'OpenProject.
         metadata: Préremplir la configuration à l'aide d'une URL de point de découverte OpenID Connect
         metadata_form_banner: La modification du point de terminaison de découverte peut remplacer les valeurs de métadonnées préremplies existantes.
         metadata_form_title: Point de terminaison de découverte OpenID Connect
@@ -133,7 +133,7 @@ fr:
         claims: Demander des réclamations supplémentaires pour le jeton d'identification ou la réponse userinfo.
       side_panel:
         information_component:
-          backchannel_logout_url: Backchannel logout URL
+          backchannel_logout_url: URL de déconnexion du canal de retour
     setting_instructions:
       limit_self_registration: >
         Si cette option est activée, les utilisateurs ne peuvent s'inscrire en utilisant ce fournisseur que si le paramètre d'inscription automatique le permet.

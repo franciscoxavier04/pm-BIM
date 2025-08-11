@@ -98,8 +98,7 @@ module ReportingHelper
     end
   end
 
-  # rubocop:disable Metrics/AbcSize
-  def field_representation_map(key, value)
+  def field_representation_map(key, value) # rubocop:disable Metrics/AbcSize, Metrics/PerceivedComplexity
     return I18n.t(:"placeholders.default") if value.blank?
 
     case key.to_sym
@@ -123,7 +122,11 @@ module ReportingHelper
       link_to_work_package(WorkPackage.find(value.to_i))
     when :entity_gid
       allowed_types = (TimeEntry::ALLOWED_ENTITY_TYPES | CostEntry::ALLOWED_ENTITY_TYPES).map(&:safe_constantize)
-      entity = GlobalID::Locator.locate(value, only: allowed_types)
+      entity = begin
+        GlobalID::Locator.locate(value, only: allowed_types)
+      rescue URI::InvalidComponentError
+        nil
+      end
 
       if entity.is_a?(::WorkPackage)
         link_to_work_package(entity)
@@ -154,7 +157,6 @@ module ReportingHelper
       value.to_s
     end
   end
-  # rubocop:enable Metrics/AbcSize
 
   def spent_on_time_representation(start_timestamp, hours)
     return "" if start_timestamp.nil?

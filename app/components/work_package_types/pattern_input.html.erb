@@ -30,7 +30,7 @@ See COPYRIGHT and LICENSE files for more details.
 <%=
   render(
     FormControl.new(
-      input: @input,
+      input:,
       classes: "op-pattern-input",
       "data-controller": "pattern-input",
       "data-pattern-input-pattern-initial-value": @value,
@@ -40,7 +40,7 @@ See COPYRIGHT and LICENSE files for more details.
   ) do
 %>
   <%= content_tag(:div, **@field_wrap_arguments) do %>
-    <%= @input.builder.hidden_field(name, value: @value, data: { "pattern-input-target": "formInput" }) %>
+    <%= input.builder.hidden_field(name, value: @value, data: { "pattern-input-target": "formInput" }) %>
 
     <template data-pattern-input-target="tokenTemplate">
       <%= render(Primer::Beta::Label.new(tag: :span, scheme: :accent, data: { role: :token, prop: "__placeholder" })) %>
@@ -93,15 +93,17 @@ See COPYRIGHT and LICENSE files for more details.
       render(
         Primer::BaseComponent.new(
           tag: :div,
-          contenteditable: true,
-          border: true, border_radius: 2, p: 1, classes: "op-pattern-input--text-field",
-          "data-pattern-input-target": "content",
+          contenteditable: !disabled,
+          disabled:,
+          border: true, border_radius: 2, p: 1,
+          classes: "op-pattern-input--text-field FormControl-input",
           data: {
             action: "keydown->pattern-input#input_keydown
                    input->pattern-input#input_change
                    mouseup->pattern-input#input_mouseup
                    focus->pattern-input#input_focus
-                   blur->pattern-input#input_blur"
+                   blur->pattern-input#input_blur",
+            "pattern-input-target": "content",
           }
         )
       )

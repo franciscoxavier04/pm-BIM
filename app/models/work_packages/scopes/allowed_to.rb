@@ -47,13 +47,11 @@ module WorkPackages::Scopes
         elsif user.anonymous?
           where(project_id: Project.allowed_to(user, permissions))
         else
-          allowed_via_wp_membership = allowed_to_member_relation(user, permissions).select(arel_table[:id]).arel
-          allowed_via_project_membership = Project.unscoped.allowed_to(user, permissions).select(:id)
+          allowed_via_wp_membership = allowed_to_member_relation(user, permissions)
+          allowed_via_project_membership = Project.unscoped.allowed_to(user, permissions)
 
-          with(
-            allowed_work_packages: allowed_via_wp_membership,
-            allowed_projects: allowed_via_project_membership
-          ).where("work_packages.project_id IN (SELECT id FROM allowed_projects) OR work_packages.id IN (SELECT id FROM allowed_work_packages)")
+          where(project_id: allowed_via_project_membership.select(:id))
+            .or(where(id: allowed_via_wp_membership.select(arel_table[:id])))
         end
       end
 
@@ -74,7 +72,6 @@ module WorkPackages::Scopes
           .joins(member_roles: :role)
           .joins(allowed_to_role_permission_join(permissions))
           .where(member_conditions(user))
-          .select(arel_table[:id])
       end
 
       def allowed_to_enabled_module_join(permissions) # rubocop:disable Metrics/AbcSize

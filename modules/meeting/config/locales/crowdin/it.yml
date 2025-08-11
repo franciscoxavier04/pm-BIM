@@ -99,6 +99,7 @@ it:
     meeting_agenda_opened: Agenda riunione aperta
     meeting_minutes: Verbali riunione modificati
     meeting_minutes_created: Verbale riunione creato
+  error_notification: "Impossibile inviare la notifica."
   error_notification_with_errors: "Impossibile inviare notifica. Non è possibile notificare i seguenti destinatari: %{recipients}"
   label_meeting: "Riunione"
   label_meeting_plural: "Riunioni"
@@ -118,7 +119,7 @@ it:
   label_meeting_date_time: "Data/ora"
   label_meeting_date_and_time: "Data e ora"
   label_meeting_diff: "Differenza"
-  label_meeting_send_updates: "Send email calendar updates"
+  label_meeting_send_updates: "Invia aggiornamenti del calendario via email"
   label_recurring_meeting: "Riunione ricorrente"
   label_recurring_meeting_part_of: "Parte di una serie di riunioni"
   label_recurring_meeting_new: "Nuova riunione ricorrente"
@@ -215,7 +216,7 @@ it:
         body: "La riunione \"%{title}\" è stata riprogrammata da %{actor}."
         old_date_time: "Data/ora precedente"
         new_date_time: "Nuova data/ora"
-    label_mail_all_participants: "Invia e-mail a tutti i partecipanti"
+    label_mail_all_participants: "Invia un invito tramite email al calendario a tutti i partecipanti"
     types:
       one_time: "Una tantum"
       recurring: "Ricorrente"
@@ -258,49 +259,43 @@ it:
         caption: Se i risultati dell'agenda contengono informazioni riservate, puoi scegliere di non includerli nell'esportazione.
       footer_text:
         label: Testo del piè di pagina
-        caption: This text will appear on every page at the center of the footer.
+        caption: Questo testo apparirà in ogni pagina al centro del piè di pagina.
       submit_button: Scarica
     notifications:
       sidepanel:
-        title: "Email calendar updates"
-        state:
-          disabled: "Disabled."
-          enabled: "Enabled."
+        title: "Aggiornamenti del calendario via email"
         description:
-          disabled: "Participants will not receive an email informing them of changes."
-          enabled: "All participants will receive updated calendar invites via email informing them of changes."
-          change_via_template: "To change this, edit the series template."
-        button:
-          disable: "Disable"
-          enable: "Enable"
+          disabled: "I partecipanti non riceveranno un'email che li informerà delle modifiche."
+          enabled: "Tutti i partecipanti riceveranno via email inviti aggiornati al calendario per informarli delle modifiche."
+          change_via_template: "Per cambiare l'impostazione, modifica il modello della serie."
       dialog:
         title:
-          enable: "Enable email calendar updates?"
-          disable: "Disable email calendar updates?"
+          enable: "Abilitare gli aggiornamenti del calendario via email?"
+          disable: "Disabilitare gli aggiornamenti del calendario via email?"
         message:
           enable: >
-            All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants.
+            Tutti i partecipanti riceveranno inviti aggiornati tramite email ogni volta che si verificherà una modifica alla data, all'ora, al luogo o ai partecipanti della riunione. Una volta attivata, un'email verrà inviata immediatamente a tutti i partecipanti.
           disable: >
-            Participants will no longer receive updated calendar invites via email when there are changes to the meeting date, time, location or participants. If they already had an invite for this meeting, it might no longer be accurate.
+            I partecipanti non riceveranno più inviti aggiornati al calendario via email in caso di modifiche alla data, all'ora, al luogo o ai partecipanti della riunione. Se avevano già un invito per questa riunione, potrebbe non essere più corretto.
         confirm_label:
-          enable: "Enable email updates"
-          disable: "Disable email updates"
+          enable: "Abilita gli aggiornamenti via email"
+          disable: "Disabilita gli aggiornamenti via email"
       banner:
         onetime:
           enabled: >
-            All participants will receive updated calendar invites via email informing them of your changes.
+            Tutti i partecipanti riceveranno via email inviti aggiornati al calendario per informarli delle tue modifiche.
           disabled: >
-            Email calendar updates are disabled. Participants will not receive an email informing them of your changes.
+            Gli aggiornamenti del calendario via email sono disabilitati. I partecipanti non riceveranno un'email che li informa delle modifiche.
         occurrence:
           enabled: >
-            Email calendar updates are enabled for the meeting series. All participants will receive updated calendar invites informing them of your changes to this occurrence.
+            Gli aggiornamenti del calendario via email sono abilitati per la serie di riunioni. Tutti i partecipanti riceveranno inviti aggiornati al calendario, che li informeranno delle modifiche apportate a questo evento.
           disabled: >
-            Email calendar updates are disabled for the meeting series. Participants will not receive an email informing them of your changes to this occurrence.
+            Gli aggiornamenti del calendario via email sono disabilitati per la serie di riunioni. I partecipanti non riceveranno un'email che li informerà delle modifiche apportate a questo evento.
         template:
           enabled: >
-            Email calendar updates are enabled for the meeting series. All participants will receive updated calendar invites informing them of your changes to this template or to individual occurrences.
+            Gli aggiornamenti del calendario via e-mail sono abilitati per la serie di riunioni. Tutti i partecipanti riceveranno inviti al calendario aggiornati che li informeranno delle modifiche apportate a questo modello o ai singoli eventi.
           disabled: >
-            Email calendar updates are disabled for the meeting series. Participants will not receive an email informing them of your changes to this template or to individual occurrences.
+            Gli aggiornamenti del calendario via email sono disabilitati per la serie di riunioni. I partecipanti non riceveranno un'email che li informerà delle modifiche apportate a questo modello o ai singoli eventi.
   meeting_section:
     untitled_title: "Sezione senza titolo"
     delete_confirmation: "L'eliminazione della sezione eliminerà anche tutti i suoi elementi dell'ordine del giorno. Continuare?"
@@ -388,7 +383,7 @@ it:
       confirm_button: "Cancella l'occorrenza"
     end_series_dialog:
       title: "Termina serie di riunioni"
-  notice_successful_notification: "Notifica inviata con successo"
+  notice_successful_notification: "Aggiornamento del calendario via e-mail inviato a tutti i partecipanti"
   notice_timezone_missing: Nessun fuso orario è impostato e la %{zone} è un requisito necessario. Per scegliere il tuo fuso orario, fare clic qui.
   notice_meeting_updated: "Questa pagina è stata aggiornata da qualcun altro. Ricarica per visualizzare le modifiche."
   permission_create_meetings: "Creare riunioni"
@@ -507,6 +502,6 @@ it:
   text_agenda_item_move_next_meeting_cancelled: "Impossibile passare alla riunione successiva perché è stata annullata."
   text_work_package_add_to_meeting_hint: 'Utilizzare il pulsante "Aggiungi alla riunione" per aggiungere questa macro-attività a una riunione imminente.'
   text_work_package_has_no_past_meeting_agenda_items: "Questa macro-attività non è stato menzionata in una riunione precedente."
-  text_email_updates_muted: "Email calendar updates are muted. Participants will not receive updated invites via email when you make changes."
-  text_email_updates_enabled: "Email calendar updates are enabled. All participants will receive updated invites via email when you make changes."
+  text_email_updates_muted: "Gli aggiornamenti del calendario via email sono disattivati. I partecipanti non riceveranno inviti aggiornati via email quando apporti modifiche."
+  text_email_updates_enabled: "Gli aggiornamenti del calendario via email sono abilitati. Tutti i partecipanti riceveranno gli inviti aggiornati via email quando apporti modifiche."
 

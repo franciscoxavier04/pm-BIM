@@ -98,6 +98,7 @@ vi:
     meeting_agenda_opened: Chương trình nghị sự cuộc họp đã được mở
     meeting_minutes: Biên bản cuộc họp đã được chỉnh sửa
     meeting_minutes_created: Biên bản cuộc họp đã được tạo
+  error_notification: "Failed to send notification."
   error_notification_with_errors: "Không thể gửi thông báo. Những người không thể nhận được thông báo: %{recipients}"
   label_meeting: "Cuộc họp"
   label_meeting_plural: "Những cuộc họp"
@@ -211,7 +212,7 @@ vi:
         body: "The meeting '%{title}' has been rescheduled by %{actor}."
         old_date_time: "Ngày/giờ cũ"
         new_date_time: "Ngày/giờ mới"
-    label_mail_all_participants: "Gửi email đến tất cả người tham gia"
+    label_mail_all_participants: "Email calendar invite to all participants"
     types:
       one_time: "Một lần"
       recurring: "Định kỳ"
@@ -259,23 +260,17 @@ vi:
     notifications:
       sidepanel:
         title: "Email calendar updates"
-        state:
-          disabled: "Disabled."
-          enabled: "Enabled."
         description:
           disabled: "Participants will not receive an email informing them of changes."
           enabled: "All participants will receive updated calendar invites via email informing them of changes."
           change_via_template: "To change this, edit the series template."
-        button:
-          disable: "Disable"
-          enable: "Enable"
       dialog:
         title:
           enable: "Enable email calendar updates?"
           disable: "Disable email calendar updates?"
         message:
           enable: >
-            All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants.
+            All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants. Once enabled, an email will be sent out immediately to all participants.
           disable: >
             Participants will no longer receive updated calendar invites via email when there are changes to the meeting date, time, location or participants. If they already had an invite for this meeting, it might no longer be accurate.
         confirm_label:
@@ -382,7 +377,7 @@ vi:
       confirm_button: "Cancel occurrence"
     end_series_dialog:
       title: "End meeting series"
-  notice_successful_notification: "Đã gửi thông báo thành công"
+  notice_successful_notification: "Email calendar update sent to all participants"
   notice_timezone_missing: Chưa đặt múi giờ và %{zone} đã được chọn. Để chọn múi giowf của bạn, nhấn vào đây.
   notice_meeting_updated: "Trang này đã được người khác cập nhật. Tải lại để xem thay đổi."
   permission_create_meetings: "Tạo cuộc họp"

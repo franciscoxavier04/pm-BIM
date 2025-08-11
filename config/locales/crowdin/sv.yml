@@ -120,34 +120,34 @@ sv:
         label_token: "Token"
         one_time_hint: "This is the only time you will see this token. Make sure to copy it now."
       delete_scim_client_dialog_component:
-        title: "Delete SCIM-client"
-        heading: "Are you sure you want to delete this SCIM-client?"
-        description: "Users managed by this SCIM-client can no longer be updated by it."
+        title: "Delete SCIM client"
+        heading: "Are you sure you want to delete this SCIM client?"
+        description: "Users managed by this SCIM client can no longer be updated by it."
       edit:
-        label_delete_scim_client: "Delete SCIM-client"
+        label_delete_scim_client: "Delete SCIM client"
       form:
         auth_provider_description: "This is the service that users added by the SCIM provider will use to authenticate in OpenProject."
-        authentication_method_description_html: "This is how the SCIM-client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description: "Please refer to our [documentation on configuring SCIM-clients](docs_url) for more information on these configuration options."
-        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM-client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
+        authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
+        description: "Please refer to our [documentation on configuring SCIM clients](docs_url) for more information on these configuration options."
+        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
         name_description: "Choose a name that will help other admins better understand why this client was configured."
       index:
-        description: "SCIM-clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
-        label_create_button: "Add SCIM-client"
+        description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
+        label_create_button: "Add SCIM client"
       new:
-        title: "New SCIM-client"
+        title: "New SCIM client"
       revoke_static_token_dialog_component:
         confirm_button: "Revoke"
         title: "Revoke static token"
         heading: "Are you sure you want to revoke this token?"
-        description: "The SCIM-client that uses this token will no longer be able to access OpenProject's SCIM server API."
+        description: "The SCIM client that uses this token will no longer be able to access OpenProject's SCIM server API."
       table_component:
         blank_slate:
-          title: "No SCIM-clients configured yet"
+          title: "No SCIM clients configured yet"
           description: "Add clients to see them here"
         user_count: "Users"
       token_list_component:
-        description: "The tokens you generate here can be passed by a SCIM-client to access the OpenProject SCIM API."
+        description: "The tokens you generate here can be passed by a SCIM client to access the OpenProject SCIM API."
         heading: "Tokens"
         label_add_token: "Token"
         label_aria_add_token: "Add token"
@@ -374,7 +374,7 @@ sv:
       description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
+        description: You can define groups of users with specific names.
         title: No groups set up yet
       user_count: User count
     users:
@@ -688,6 +688,7 @@ sv:
     dark: "Dark"
     light: "Ljust"
     light_high_contrast: "Light high contrast"
+    sync_with_os: "Automatic (match OS colour mode)"
   types:
     index:
       no_results_title_text: Det finns för närvarande inga typer.
@@ -953,7 +954,7 @@ sv:
         attribute_name: "Attributet"
         help_text: "Hjälptext"
       auth_provider:
-        scim_clients: "SCIM-clients"
+        scim_clients: "SCIM clients"
       capability:
         context: "Context"
       changeset:
@@ -1289,6 +1290,7 @@ sv:
         odd: "måste vara udda."
         regex_match_failed: "does not match the regular expression %{expression}."
         regex_invalid: "kunde inte valideras med det associerade reguljära uttrycket."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "måste vara mindre än eller lika med maximal längd."
         taken: "har redan använts."
         too_long: "är för långt (maximalt är %{count} tecken)."
@@ -1619,6 +1621,7 @@ sv:
         one: "Authentication provider"
         other: "Authentication providers"
       category: "Kategori"
+      color: "Color"
       comment: "Kommentar"
       custom_action: "Anpassad åtgärd"
       custom_field: "Anpassat fält"
@@ -1650,8 +1653,8 @@ sv:
         one: "Roll"
         other: "Roller"
       scim_client:
-        one: "SCIM-client"
-        other: "SCIM-clients"
+        one: "SCIM client"
+        other: "SCIM clients"
       status: "Arbetspaketstatus"
       token/api:
         one: Åtkomstnyckel
@@ -2211,7 +2214,7 @@ sv:
         title: "Single Sign-On for Nextcloud Storage"
         description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       scim_api:
-        title: "SCIM-clients"
+        title: "SCIM clients"
         description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
@@ -2250,6 +2253,13 @@ sv:
         I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
       consent_html: >
         I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Arbetspaketsprioritering"
   enumeration_reported_project_statuses: "Rapporterad projektstatus"

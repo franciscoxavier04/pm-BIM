@@ -120,34 +120,34 @@ fr:
         label_token: "Jeton"
         one_time_hint: "C'est la seule fois que vous verrez ce jeton. Pensez à le copier maintenant."
       delete_scim_client_dialog_component:
-        title: "Delete SCIM-client"
-        heading: "Are you sure you want to delete this SCIM-client?"
-        description: "Users managed by this SCIM-client can no longer be updated by it."
+        title: "Supprimer le client SCIM"
+        heading: "Voulez-vous vraiment supprimer ce client SCIM ?"
+        description: "Les utilisateurs gérés par ce client SCIM ne peuvent plus être mis à jour par celui-ci."
       edit:
-        label_delete_scim_client: "Delete SCIM-client"
+        label_delete_scim_client: "Supprimer le client SCIM"
       form:
         auth_provider_description: "Il s'agit du service que les utilisateurs ajoutés par le fournisseur SCIM utiliseront pour s'authentifier dans OpenProject."
-        authentication_method_description_html: "This is how the SCIM-client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description: "Please refer to our [documentation on configuring SCIM-clients](docs_url) for more information on these configuration options."
-        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM-client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
+        authentication_method_description_html: "Voici comment le client SCIM s'authentifie dans OpenProject. Veuillez vous assurer que les jetons OAuth incluent la portée <code>scim_v2</code>."
+        description: "Veuillez consulter notre [documentation sur la configuration des clients SCIM](docs_url) pour obtenir plus d'informations sur ces options de configuration."
+        jwt_sub_description: "Par exemple, pour Keycloak, il s'agit de l'UUID du compte de service associé au client SCIM. Consultez [notre documentation](docs_url) pour savoir comment trouver la revendication de sujet selon votre cas d'utilisation."
         name_description: "Choisissez un nom qui aidera les autres administrateurs à mieux comprendre pourquoi ce client a été configuré."
       index:
-        description: "SCIM-clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
-        label_create_button: "Add SCIM-client"
+        description: "Les clients SCIM configurés ici peuvent interagir avec l'API SCIM du serveur OpenProject pour créer, mettre à jour et désactiver des comptes utilisateurs et des groupes."
+        label_create_button: "Ajouter un client SCIM"
       new:
-        title: "New SCIM-client"
+        title: "Nouveau client SCIM"
       revoke_static_token_dialog_component:
         confirm_button: "Révoquer"
         title: "Révoquer le jeton statique"
         heading: "Voulez-vous vraiment révoquer ce jeton ?"
-        description: "The SCIM-client that uses this token will no longer be able to access OpenProject's SCIM server API."
+        description: "Le client SCIM qui utilise ce jeton ne pourra plus accéder à l'API SCIM du serveur OpenProject."
       table_component:
         blank_slate:
-          title: "No SCIM-clients configured yet"
+          title: "Aucun client SCIM configuré pour le moment"
           description: "Ajoutez des clients pour les voir ici"
         user_count: "Utilisateurs"
       token_list_component:
-        description: "The tokens you generate here can be passed by a SCIM-client to access the OpenProject SCIM API."
+        description: "Les jetons que vous générez ici peuvent être transmis par un client SCIM pour accéder à l'API SCIM d'OpenProject."
         heading: "Jetons"
         label_add_token: "Jeton"
         label_aria_add_token: "Ajouter un jeton"
@@ -369,23 +369,23 @@ fr:
       wiki_pages: "Wiki"
   groups:
     edit:
-      synchronized_groups: "Synchronized groups"
+      synchronized_groups: "Groupes synchronisés"
     index:
-      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+      description: En regroupant les utilisateurs, vous pouvez les ajouter en tant que membres aux mêmes projets ou leur attribuer les mêmes rôles globaux.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
-        title: No groups set up yet
-      user_count: User count
+        description: Vous pouvez définir des groupes d'utilisateurs avec des noms spécifiques.
+        title: Aucun groupe n'a encore été configuré
+      user_count: Nombre d'utilisateurs
     users:
       no_results_title_text: Aucun utilisateur dans ce groupe pour le moment.
     memberships:
       no_results_title_text: Aucun projet dans ce groupe pour le moment.
     synchronized_groups:
       blankslate:
-        action: Authentication settings
-        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
-        title: No synchronized groups yet
+        action: Paramètres d'authentification
+        description: Lorsque ce groupe est automatiquement synchronisé avec des groupes de fournisseurs d'identité externes comme OpenID, ils apparaissent ici. Vous pouvez configurer cela dans vos paramètres d'authentification.
+        title: Vous n'avez encore aucun groupe synchronisé
   incoming_mails:
     ignore_filenames: >
       Spécifiez une liste de noms à ignorer lors du traitement des pièces jointes aux messages entrants (par exemple, signatures ou icônes). Entrez un nom de fichier par ligne.
@@ -686,6 +686,7 @@ fr:
     dark: "Sombre"
     light: "Clair"
     light_high_contrast: "Clair avec contraste élevé"
+    sync_with_os: "Automatique (correspond au mode couleur du système d'exploitation)"
   types:
     index:
       no_results_title_text: Il n'y a actuellement aucun type.
@@ -717,7 +718,7 @@ fr:
             project: "Projet"
         pattern:
           label: "Modèle de sujet"
-          caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
+          caption: Créez des modèles en ajoutant du texte ou saisissez « / » pour rechercher les [attributs pris en charge](attributes_url).
           insert_as_text: "Aucun attribut n'a été trouvé. Ajouter en tant que texte : « %{word} »"
       export_configuration:
         tab: "Générer un fichier PDF"
@@ -951,7 +952,7 @@ fr:
         attribute_name: "Attribut"
         help_text: "Texte d’aide"
       auth_provider:
-        scim_clients: "SCIM-clients"
+        scim_clients: "Clients SCIM"
       capability:
         context: "Contexte"
       changeset:
@@ -1267,7 +1268,7 @@ fr:
         inclusion_nested: "ne correspond à aucune des valeurs autorisées dans le chemin « %{path} »."
         invalid: "est invalide."
         invalid_characters: "contient des caractères invalides."
-        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
+        not_allowed_custom_fields_referenced: "contient des champs personnalisés qui ne sont pas autorisés : %{custom_fields}."
         invalid_url: "n’est pas une URL valide."
         invalid_url_scheme: "n’est pas un protocole pris en charge (autorisés : %{allowed_schemes})."
         less_than_or_equal_to: "doit être inférieur ou égal à %{count}."
@@ -1287,6 +1288,7 @@ fr:
         odd: "doit être impair."
         regex_match_failed: "ne correspond pas à l'expression régulière %{expression}."
         regex_invalid: "n’a pas pu être validé avec l’expression régulière associée."
+        regex_list_invalid: "n'a pas pu être analysé comme une expression régulière dans les lignes %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "doit être inférieur ou égal à la longueur maximale."
         taken: "a déjà été pris."
         too_long: "est trop long (le maximum est de %{count} caractères)."
@@ -1614,9 +1616,10 @@ fr:
       attachment: "Fichier"
       attribute_help_text: "Attribut d’aide de texte"
       auth_provider:
-        one: "Authentication provider"
-        other: "Authentication providers"
+        one: "Fournisseur d'authentification"
+        other: "Fournisseurs d'authentification"
       category: "Catégorie"
+      color: "Color"
       comment: "Commentaire"
       custom_action: "Action personnalisée"
       custom_field: "Champ personnalisé"
@@ -1648,8 +1651,8 @@ fr:
         one: "Rôle"
         other: "Rôles"
       scim_client:
-        one: "SCIM-client"
-        other: "SCIM-clients"
+        one: "Client SCIM"
+        other: "Clients SCIM"
       status: "Statut du lot de travaux"
       token/api:
         one: Jeton d'accès
@@ -2209,7 +2212,7 @@ fr:
         title: "Authentification unique pour le stockage Nextcloud"
         description: "Activez l'authentification transparente et sécurisée pour votre stockage Nextcloud avec l'authentification unique. Simplifiez la gestion des accès et augmentez la commodité des utilisateurs."
       scim_api:
-        title: "SCIM-clients"
+        title: "Clients SCIM"
         description: "Automatisez la gestion des utilisateurs dans OpenProject en intégrant de manière transparente des services d'identité externes tels que Microsoft Entra ou Keycloak via notre API de serveur SCIM. Disponible à partir de l'abonnement Enterprise."
       virus_scanning:
         description: "Assurez-vous que les fichiers téléversés dans OpenProject sont analysés pour détecter les virus avant d'être accessibles aux autres utilisateurs."
@@ -2248,6 +2251,13 @@ fr:
         Je souhaite recevoir la <a target="_blank" href="https://www.openproject.org/newsletter/">lettre d'information d'</a>OpenProject.
       consent_html: >
         J'accepte les <a target="_blank" href="https://www.openproject.org/terms-of-service/">conditions d'utilisation</a> et la <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">politique de confidentialité</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Désactivé."
+      enabled: "Activé."
+    button:
+      disabled: "Activer"
+      enabled: "Désactiver"
   enumeration_activities: "Activités de suivi du temps"
   enumeration_work_package_priorities: "Priorités du Lot de Travaux"
   enumeration_reported_project_statuses: "Statuts de projet signalés"
@@ -2548,7 +2558,7 @@ fr:
       aggregation: "Agrégation"
       api_and_webhooks: "API et webhooks"
     quick_add:
-      label: "Add…"
+      label: "Ajouter…"
   my_account:
     access_tokens:
       no_results:
@@ -2848,7 +2858,7 @@ fr:
   label_gantt_chart_plural: "Diagrammes de Gantt"
   label_general: "Général"
   label_generate_key: "Générer une clé"
-  label_global_modules: "Global modules"
+  label_global_modules: "Modules globaux"
   label_global_roles: "Rôles globaux"
   label_git_path: "Chemin d'accès au répertoire .git"
   label_greater_or_equal: ">="
@@ -2933,7 +2943,7 @@ fr:
   label_manage: "Gérer"
   label_manage_groups: "Gérer les groupes"
   label_managed_repositories_vendor: "Référentiels %{vendor} gérés"
-  label_mathematical_operators: "Mathematical operators"
+  label_mathematical_operators: "Opérateurs mathématiques"
   label_max_size: "Taille maximale"
   label_me: "moi"
   label_member_new: "Nouveau membre"
@@ -3202,7 +3212,7 @@ fr:
   label_user_mail_option_only_my_events: "Uniquement pour les éléments que je suis ou auxquels je participe"
   label_user_mail_option_only_owner: "Les éléments dont je suis le propriétaire"
   label_user_mail_option_selected: "Pour chaque événement sur le projet selectionné seulement"
-  label_user_menu: "User menu"
+  label_user_menu: "Menu utilisateur"
   label_user_new: "Nouvel utilisateur"
   label_user_plural: "Utilisateurs"
   label_user_search: "Recherche d'Utilisateurs"
