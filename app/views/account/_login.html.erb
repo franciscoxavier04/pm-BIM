@@ -34,8 +34,8 @@ See COPYRIGHT and LICENSE files for more details.
       ) do %>
     <%= back_url_to_current_page_hidden_field_tag %>
 
-    <div class="grid-block grid-block_double-column login-form__credentials-wrapper">
-      <div class="form--field login-form__username -required">
+    <div class="grid-block">
+      <div class="form--field -required">
         <%= styled_label_tag "username-pulldown", User.human_attribute_name(:login) %>
         <div class="form--field-container">
           <%= styled_text_field_tag "username", nil, id: "username-pulldown", tabindex: 1, autocapitalize: "none" %>
