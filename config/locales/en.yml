@@ -68,6 +68,7 @@ en:
       tab_interface: "Interface"
       tab_branding: "Branding"
       tab_pdf_export_styles: "PDF export styles"
+      tab_pdf_export_font: "PDF export font"
       colors:
         primary-button-color: "Primary button"
         accent-color: "Accent"
@@ -3039,6 +3040,10 @@ en:
   label_custom_logo: "Custom logo"
   label_custom_export_logo: "Custom export logo"
   label_custom_export_cover: "Custom export cover background"
+  label_custom_export_font_regular: "Regular"
+  label_custom_export_font_bold: "Bold"
+  label_custom_export_font_italic: "Italic"
+  label_custom_export_font_bold_italic: "Bold Italic"
   label_custom_export_cover_overlay: "Custom export cover background overlay"
   label_custom_export_cover_text_color: "Text color"
   label_custom_pdf_export_settings: "Custom PDF export settings"
@@ -4394,6 +4399,18 @@ en:
   text_custom_export_cover_instructions: >
     This is the image that appears in the background of a cover page in your PDF exports.
     It needs to be an about 800px width by 500px height sized PNG or JPEG image file.
+  label_custom_export_font_instructions: >
+    The following font files are used in your PDF exports.
+    Upload and manage custom TrueType (.ttf) fonts for PDF exports. Ensure your license permits PDF embedding.
+    For best results, use matching files from the same font family. If no font is provided, the default NotoSans font will be used.
+  text_custom_export_font_regular_instructions: >
+    This is the font file for regular text. It needs to be in TTF format and is required.
+  text_custom_export_font_bold_instructions: >
+    This is the font file for bold text. It needs to be in TTF format.
+  text_custom_export_font_italic_instructions: >
+    This is the font file for italic text. It needs to be in TTF format.
+  text_custom_export_font_bold_italic_instructions: >
+    This is the font file for bold and italic text. It needs to be in TTF format.
   text_custom_favicon_instructions: >
     This is the tiny icon that appears in your browser window/tab next to the
     page's title.

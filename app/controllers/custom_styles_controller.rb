@@ -35,8 +35,6 @@ class CustomStylesController < ApplicationController
   menu_item :custom_style
 
   UNGUARDED_ACTIONS = %i[logo_download
-                         export_logo_download
-                         export_cover_download
                          favicon_download
                          touch_icon_download].freeze
 
@@ -132,6 +130,22 @@ class CustomStylesController < ApplicationController
     file_delete(:remove_favicon)
   end
 
+  def export_font_regular_delete
+    file_delete(:remove_export_font_regular)
+  end
+
+  def export_font_bold_delete
+    file_delete(:remove_export_font_bold)
+  end
+
+  def export_font_italic_delete
+    file_delete(:remove_export_font_italic)
+  end
+
+  def export_font_bold_italic_delete
+    file_delete(:remove_export_font_bold_italic)
+  end
+
   def touch_icon_delete
     file_delete(:remove_touch_icon)
   end
@@ -148,8 +162,8 @@ class CustomStylesController < ApplicationController
 
   def update_themes
     call = ::Design::UpdateDesignService
-       .new(theme_from_params)
-       .call
+             .new(theme_from_params)
+             .call
 
     call.on_success do
       flash[:notice] = I18n.t(:notice_successful_update)
@@ -183,12 +197,18 @@ class CustomStylesController < ApplicationController
   end
 
   def custom_style_params
-    params.require(:custom_style).permit(:logo, :remove_logo,
-                                         :export_logo, :remove_export_logo,
-                                         :export_cover, :remove_export_cover,
-                                         :export_cover_text_color,
-                                         :favicon, :remove_favicon,
-                                         :touch_icon, :remove_touch_icon)
+    params.expect(custom_style: %i[
+                    logo remove_logo
+                    export_logo remove_export_logo
+                    export_cover remove_export_cover
+                    favicon remove_favicon
+                    touch_icon remove_touch_icon
+                    export_font_regular remove_export_font_regular
+                    export_font_bold remove_export_font_bold
+                    export_font_italic remove_export_font_italic
+                    export_font_bold_italic remove_export_font_bold_italic
+                    export_cover_text_color
+                  ])
   end
 
   def file_download(path_method)

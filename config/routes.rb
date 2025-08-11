@@ -503,6 +503,12 @@ Rails.application.routes.draw do
     delete "design/logo" => "custom_styles#logo_delete", as: "custom_style_logo_delete"
     delete "design/export_logo" => "custom_styles#export_logo_delete", as: "custom_style_export_logo_delete"
     delete "design/export_cover" => "custom_styles#export_cover_delete", as: "custom_style_export_cover_delete"
+    delete "design/export_font_regular" => "custom_styles#export_font_regular_delete",
+           as: "custom_style_export_font_regular_delete"
+    delete "design/export_font_bold" => "custom_styles#export_font_bold_delete", as: "custom_style_export_font_bold_delete"
+    delete "design/export_font_italic" => "custom_styles#export_font_italic_delete", as: "custom_style_export_font_italic_delete"
+    delete "design/export_font_bold_italic" => "custom_styles#export_font_bold_italic_delete",
+           as: "custom_style_export_font_bold_italic_delete"
     delete "design/favicon" => "custom_styles#favicon_delete", as: "custom_style_favicon_delete"
     delete "design/touch_icon" => "custom_styles#touch_icon_delete", as: "custom_style_touch_icon_delete"
     post "design/colors" => "custom_styles#update_colors", as: "update_design_colors"

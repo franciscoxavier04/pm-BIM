@@ -233,7 +233,7 @@ RSpec.describe CustomStylesController do
       end
     end
 
-    describe "#export_logo_download" do
+    describe "#export_logo_download", with_ee: %i[define_custom_style] do
       before do
         allow(CustomStyle).to receive(:current).and_return(custom_style)
         allow(controller).to receive(:send_file) { controller.head 200 }
@@ -294,7 +294,7 @@ RSpec.describe CustomStylesController do
       end
     end
 
-    describe "#export_cover_download" do
+    describe "#export_cover_download", with_ee: %i[define_custom_style] do
       before do
         allow(CustomStyle).to receive(:current).and_return(custom_style)
         allow(controller).to receive(:send_file) { controller.head 200 }
