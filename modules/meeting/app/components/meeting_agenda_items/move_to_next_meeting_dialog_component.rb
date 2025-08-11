@@ -28,30 +28,28 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module RecurringMeetings
-  class DeleteService < ::BaseServices::Delete
-    protected
+module MeetingAgendaItems
+  class MoveToNextMeetingDialogComponent < ApplicationComponent
+    include ApplicationHelper
+    include OpTurbo::Streamable
 
-    def default_contract_class
-      Meetings::DeleteContract
+    def initialize(agenda_item:, datetime:)
+      super
+
+      @agenda_item = agenda_item
+      @datetime = datetime
     end
 
-    def after_validate(call)
-      send_cancellation_mail(model) if model.notify?
+    private
 
-      call
-    end
+    def title = I18n.t(:label_agenda_item_move_to_next_title)
 
-    def send_cancellation_mail(meeting)
-      meeting.template.participants.where(invited: true).find_each do |participant|
-        MeetingMailer
-          .cancelled_series(meeting, participant.user, User.current)
-          .deliver_now
-      rescue StandardError => e
-        Rails.logger.error do
-          "Failed to deliver recurring meeting cancellation for series #{meeting.id} to #{participant.user.mail}: #{e.message}"
-        end
-      end
+    def confirmation_message
+      I18n.t(
+        :text_agenda_item_move_next_meeting,
+        date: format_date(@datetime),
+        time: format_time(@datetime, include_date: false)
+      )
     end
   end
 end

@@ -24,8 +24,8 @@ pt-PT:
       storages/share_point_storage:
         host: Sharepoint Site URL
         library: Library ID
-        name: Name
-        site: Site ID
+        name: Nome
+        site: ID do site
       storages/storage:
         authentication_method: Método de autenticação
         creator: Criador
@@ -264,7 +264,7 @@ pt-PT:
           header: Autenticação
           non_provisioned_user: Utilizador fornecido por IDP
           offline_access: Âmbito OIDC offline_access configurado
-          provider_capabilities: Provider capabilities
+          provider_capabilities: Capacidades do fornecedor
           provisioned_user_provider: Utilizador fornecido por OIDC
           token_negotiable: Capacidades da ficha do utilizador
           user_bound_request: Autenticação da solicitação com base no utilizador
@@ -494,10 +494,10 @@ pt-PT:
         name: OneDrive
         name_placeholder: p. ex., OneDrive
       share_point:
-        label_oauth_client_id: Azure OAuth Application (client) ID
-        label_oauth_client_secret: Azure OAuth Client Secret Value
+        label_oauth_client_id: ID da aplicação Azure OAuth (cliente)
+        label_oauth_client_secret: Valor Secreto do Cliente Azure OAuth
         name: SharePoint
-        name_placeholder: e.g. SharePoint
+        name_placeholder: 'ex: SharePoint'
     show_attachments_toggle:
       description: Se desativar esta opção, irá ocultar a lista de anexos no separador de ficheiros dos pacotes de trabalho. Os ficheiros anexados na descrição de um pacote de trabalho irão continuar a ser carregados no armazenamento interno de anexos.
       label: Mostrar anexos no separador dos ficheiros dos pacotes de trabalho

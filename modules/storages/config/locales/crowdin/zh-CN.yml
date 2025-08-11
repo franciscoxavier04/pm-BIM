@@ -175,7 +175,7 @@ zh-CN:
               not_found: "%{current_path} 没有找到。"
             set_folders_permissions:
               permission_not_set: 无法设置 %{path} 上的权限。
-          error: 发生了意外错误。请确保 OneDrive 可以访问，并检查 OpenProject 工作日志以获取更多信息
+          error: 发生意外错误。请确保 OneDrive 可以访问，并检查 OpenProject 工作日志以获取更多信息
           not_allowed: OpenProject 未被允许访问您的 OneDrive 驱动器。请检查 Azure 应用程序上设置的权限。
           unauthorized: OpenProject 无法与 Nextcloud 同步。请检查您的存储设备和 Nextcloud 配置。
           user_does_not_exist: "在 Nextcloud 中不存在 %{user}  。"
@@ -390,7 +390,7 @@ zh-CN:
         application_link_text: SharePoint 站点
         integration: SharePoint 管理 / OpenProject
         oauth_configuration: 从 %{application_link_text} 中的所需应用程序复制这些值。
-        provider_configuration: 请确保您在 SharePoint 实例中具有管理权限，并已安装 OpenProject 集成应用程序，之后才能进行设置。
+        provider_configuration: 请确保您在 SharePoint 实例中具有管理权限，并已安装 OpenProject 集成应用，之后才能进行设置。
       type: '请确保您在 Nextcloud 实例中具有管理权限，并在进行设置之前安装了以下应用程序：'
       type_link_text: "“集成 OpenProject”"
     label_active: 有效

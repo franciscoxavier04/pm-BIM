@@ -645,7 +645,7 @@ uk:
       title: "Підтвердіть ваш пароль щоб продовжити"
     pagination:
       no_other_page: "Ви знаходитесь на єдиній сторінці."
-      pages_skipped: "Pages skipped."
+      pages_skipped: "Сторінки пропущено."
       page_navigation: "Навігація сторінками"
       per_page_navigation: 'Кількість елементів на сторінку'
       pages:
@@ -698,7 +698,7 @@ uk:
           first_day: "Перший день"
           last_day: "Останній день"
     text_are_you_sure: "Ви впевненені?"
-    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
+    text_are_you_sure_to_cancel: "На цій сторінці є незбережені зміни. Ви дійсно хочете їх скасувати?"
     breadcrumb: "Ланцюжок навігації"
     text_data_lost: "Усі введені дані буде втрачено."
     text_user_wrote: "%{value} написав(-ла):"

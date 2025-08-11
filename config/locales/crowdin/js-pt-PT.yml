@@ -643,7 +643,7 @@ pt-PT:
       title: "Confirme a sua palavra-passe para continuar"
     pagination:
       no_other_page: "Mais nenhuma página a apresentar."
-      pages_skipped: "Pages skipped."
+      pages_skipped: "Páginas saltadas."
       page_navigation: "Navegação por página"
       per_page_navigation: 'Seleção de elementos por página'
       pages:
@@ -696,7 +696,7 @@ pt-PT:
           first_day: "Primeiro dia"
           last_day: "Último dia"
     text_are_you_sure: "Tem a certeza?"
-    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
+    text_are_you_sure_to_cancel: "Tem alterações não guardadas nesta página. Tem a certeza de que as quer eliminar?"
     breadcrumb: "Estrutural"
     text_data_lost: "Todos os dados inseridos serão perdidos."
     text_user_wrote: "%{value} escreveu:"
