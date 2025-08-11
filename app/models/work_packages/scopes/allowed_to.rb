@@ -36,45 +36,66 @@ module WorkPackages::Scopes
       # Returns an ActiveRecord::Relation to find all work packages for which
       # +user+ has the given +permission+ either directly on the work package
       # or by the linked project
-      def allowed_to(user, permission) # rubocop:disable Metrics/AbcSize
+      def allowed_to(user, permission) # rubocop:disable Metrics/PerceivedComplexity
         permissions = Authorization.contextual_permissions(permission, :work_package, raise_on_unknown: true)
 
         return none if user.locked?
         return none if permissions.empty?
 
         if user.admin? && permissions.all?(&:grant_to_admin?)
-          where(id: allowed_to_admin_relation(permissions))
+          admin_allowed_to(permissions)
         elsif user.anonymous?
-          where(project_id: Project.allowed_to(user, permissions))
+          anonymous_allowed_to(user, permissions)
+        elsif Setting.large_instance_wp_allowed_to_sql?
+          logged_in_non_admin_allowed_to_large_instances(user, permissions)
         else
-          # allowed_via_wp_membership = allowed_to_member_relation(user, permissions)
-          allowed_via_project_or_work_package_membership = Project.unscoped.allowed_to_member_union(user,
-                                                                                                    permissions,
-                                                                                                    entity_types: ["WorkPackage"])
-
-          allowed_by_projects_and_work_packages = Arel.sql(<<~SQL.squish)
-            SELECT * from work_packages
-            WHERE project_id in (SELECT id FROM allowed_projects)
-            /* Take all work packages allowed by either project wide or entity specific membership
-               But now remove all those that are in a project for which an entity specific membership exists (but is not for that entity)
-               unless there is also a project specific membership in that same project. */
-            AND NOT EXISTS (
-              SELECT 1 FROM allowed_projects
-              WHERE allowed_projects.id = project_id AND allowed_projects.entity_id IS NOT NULL AND allowed_projects.entity_id != work_packages.id
-              AND NOT EXISTS (
-                SELECT 1 FROM allowed_projects
-                WHERE allowed_projects.id = project_id AND allowed_projects.entity_id IS NULL
-              )
-            )
-          SQL
-
-          with(allowed_projects: Arel.sql(allowed_via_project_or_work_package_membership.to_sql),
-               allowed_by_projects_and_work_packages:)
-            .from("allowed_by_projects_and_work_packages work_packages")
+          logged_in_non_admin_allowed_to_small_instances(user, permissions)
         end
       end
 
       private
+
+      def admin_allowed_to(permissions)
+        where(id: allowed_to_admin_relation(permissions))
+      end
+
+      def anonymous_allowed_to(user, permissions)
+        where(project_id: Project.allowed_to(user, permissions))
+      end
+
+      def logged_in_non_admin_allowed_to_small_instances(user, permissions)
+        allowed_via_wp_membership = allowed_to_member_relation(user, permissions)
+        allowed_via_project_membership = Project.unscoped.allowed_to(user, permissions)
+
+        where(project_id: allowed_via_project_membership.select(:id))
+          .or(where(id: allowed_via_wp_membership.select(arel_table[:id])))
+      end
+
+      def logged_in_non_admin_allowed_to_large_instances(user, permissions)
+        allowed_via_project_or_work_package_membership = Project.unscoped.allowed_to_member_union(user,
+                                                                                                  permissions,
+                                                                                                  entity_types: ["WorkPackage"])
+
+        allowed_by_projects_and_work_packages = Arel.sql(<<~SQL.squish)
+          SELECT * from work_packages
+          WHERE project_id in (SELECT id FROM allowed_projects)
+          /* Take all work packages allowed by either project wide or entity specific membership
+             But now remove all those that are in a project for which an entity specific membership exists (but is not for that entity)
+             unless there is also a project specific membership in that same project. */
+          AND NOT EXISTS (
+            SELECT 1 FROM allowed_projects
+            WHERE allowed_projects.id = project_id AND allowed_projects.entity_id IS NOT NULL AND allowed_projects.entity_id != work_packages.id
+            AND NOT EXISTS (
+              SELECT 1 FROM allowed_projects
+              WHERE allowed_projects.id = project_id AND allowed_projects.entity_id IS NULL
+            )
+          )
+        SQL
+
+        with(allowed_projects: Arel.sql(allowed_via_project_or_work_package_membership.to_sql),
+             allowed_by_projects_and_work_packages:)
+          .from("allowed_by_projects_and_work_packages work_packages")
+      end
 
       def allowed_to_admin_relation(permissions)
         unscoped
