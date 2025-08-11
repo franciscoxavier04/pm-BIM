@@ -34,10 +34,22 @@ module My
       include OpTurbo::Streamable
       include OpPrimer::ComponentHelpers
 
+      attr_reader :token
+
       def initialize(token:)
         super
 
         @token = token
+      end
+
+      private
+
+      def i18n_scope
+        case token
+        when Token::API then "my.access_token.api"
+        when Token::ICalMeeting then "my.access_token.ical_meeting"
+        else raise ArgumentError, "Unknown token type: #{token_type}"
+        end
       end
     end
   end
