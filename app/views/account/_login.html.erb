@@ -34,7 +34,7 @@ See COPYRIGHT and LICENSE files for more details.
       ) do %>
     <%= back_url_to_current_page_hidden_field_tag %>
 
-    <div class="grid-block grid-block_double-column">
+    <div class="grid-block">
       <div class="form--field -required">
         <%= styled_label_tag "username-pulldown", User.human_attribute_name(:login) %>
         <div class="form--field-container">
@@ -54,7 +54,6 @@ See COPYRIGHT and LICENSE files for more details.
           <% end %>
         </div>
       </div>
-      <div class="grid-block">
       <div class="form--field -required">
         <%= styled_label_tag "password-pulldown", User.human_attribute_name(:password) %>
         <div class="form--field-container">
@@ -73,9 +72,8 @@ See COPYRIGHT and LICENSE files for more details.
           <% end %>
         </div>
       </div>
-      </div>
-
-      <div class="grid-block">
+    </div>
+    <div class="grid-block">
       <div class="form--field">
         <label class="form--label" for="login-pulldown">
           &nbsp;
@@ -83,9 +81,7 @@ See COPYRIGHT and LICENSE files for more details.
         <input type="submit" name="login" id="login-pulldown"
                value="<%= t(:button_login) %>" class="button -primary button_no-margin" tabindex="1">
       </div>
-      </div>
     </div>
-
     <%= render partial: "account/auth_providers" %>
   <% end %>
 </div>
