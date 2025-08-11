@@ -3,25 +3,55 @@ title: OpenProject 16.3.0
 sidebar_navigation:
     title: 16.3.0
 release_version: 16.3.0
-release_date: 2025-07-31
+release_date: 2025-08-13
 ---
 
 # OpenProject 16.3.0
 
-Release date: 2025-07-31
+Release date: 2025-08-13
 
-We released OpenProject [OpenProject 16.3.0](https://community.openproject.org/versions/2204).
-The release contains several bug fixes and we recommend updating to the newest version.
-In these Release Notes, we will give an overview of important feature changes.
-At the end, you will find a complete list of all changes and bug fixes.
+We released OpenProject [OpenProject 16.3.0](https://community.openproject.org/versions/2204). The release contains several bug fixes and we recommend updating to the newest version. In these Release Notes, we will give an overview of important feature changes and important technical changes. At the end, you will find a complete list of all changes and bug fixes. 
 
 ## Important feature changes
 
-<!-- Inform about the major features in this section -->
+Take a look at our release video showing the most important features introduced in OpenProject 16.3.0:
 
-## Important updates and breaking changes
+### UX/UI improvements for a more modern look
 
-<!-- Remove this section if empty, add to it in pull requests linking to tickets and provide information -->
+There have been several design and user experience updates with OpenProject 16.3:
+- The **header has been redesigned with Primer**, including a new icon for notifications.
+- The waffle icon in the header menu is now an overlapping lateral menu, including **Home**, **My Page** and **My time tracking**.
+- The Sign-in modal and the running time-tracking section have been moved to the new right sidesheet.
+
+![Screenshot showing the home page of OpenProject Community, with highlighted waffle menu dropdown and redesigned icons on the right side of the header](openproject-16-3-header-menu-highlighted.png)
+
+### Meetings: Option to mute email notifications and ICS
+
+With OpenProject 16.3, you can now **disable email calendar updates when creating or copying meetings**. This helps avoid sending invitations too early or accidentally sharing drafts. 
+
+The setting is available as a checkbox in the meeting template form and lets you decide whether participants should be notified by email. The current status is always visible in the meeting sidebar and can be toggled for one-time and recurring meetings — giving you full control over how and when participants are informed of changes.
+
+![Screenshot showing OpenProject meeting template with overlay to disable email notifications](openproject-16-3-meeting-notifications-highlighted.png)
+
+### Ongoing timers shown in the My time tracking module
+
+Ongoing timers are now clearly displayed in the My time tracking module. Whether you’re working in list view or calendar view, a small **timer icon will appear on the work package that’s currently being tracked**. 
+
+This makes it easier to spot if a timer is running and avoid duplicate or overlapping entries and is especially useful if you return to your time tracking later in the day. It’s a small but effective improvement that helps you stay organized and focused.
+
+![Screenshot showing OpenProject's My time tracking module with a highlighted time entry on 'today' that is running for 5 minutes, displayed with a timer icon](openproject-16-3-my-time-tracking-timer-calendar-view-highlighted.png)
+
+### Progress reporting: % Complete sum also shown in Status-based mode
+
+In OpenProject 15.5, we introduced the ability to display a sum for the % Complete column in work package tables. In 16.3, this feature has been improved to ensure **accurate sums across different progress calculation modes**. This applies especially when some work packages do not contain values for Work or Remaining work.
+
+### Nextcloud Health check: Indicate missing token exchange capability (Enterprise add-on)
+
+Administrators using the Nextcloud integration in the Corporate plan can now benefit from a more specific health check. If **token exchange is configured but not supported by the linked identity provider** (e.g. due to older OIDC settings), the new check will now clearly identify this issue. This helps diagnose connection problems more reliably and avoids misleading error messages about token refresh failures.
+
+### Autocomplete for cost reporting user and work package fields
+
+Creating **cost reports** is now easier and faster. OpenProject 16.3 introduces **autocomplete for key filter fields** like User and Work package, helping you find the right person or task with just a few keystrokes.
 
 <!--more-->
 
@@ -94,12 +124,14 @@ At the end, you will find a complete list of all changes and bug fixes.
 <!-- Warning: Anything above this line will be automatically removed by the release script -->
 
 ## Contributions
-A very special thank you goes to our sponsors for this release.
-Also a big thanks to our Community members for reporting bugs and helping us identify and provide fixes.
-Special thanks for reporting and finding bugs go to Sven Kunze, Michael Lathion, Gábor Alexovics, Tom Gugel.
 
-Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings!
-Would you like to help out with translations yourself?
-Then take a look at our translation guide and find out exactly how you can contribute.
-It is very much appreciated!
+A very special thank you goes to City of Cologne, Deutsche Bahn and ZenDiS for sponsoring released or upcoming features. Your support, alongside the efforts of our amazing Community, helps drive these innovations. Also a big thanks to our Community members for reporting bugs and helping us identify and provide fixes. Special thanks for reporting and finding bugs go to Sven Kunze, Michael Lathion, Gábor Alexovics, and Tom Gugel.
+
+Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings! This release we would like to particularly thank the following users:
+
+- [Alin Marcu](https://crowdin.com/profile/deconfcom), for a great number of translations into Romanian.
+- [William](https://crowdin.com/profile/williamfromtw), for a great number of translations into Chinese Traditional.
+- [OlhaTrotska](https://crowdin.com/profile/OlhaTrotska), for a great number of translations into Ukrainian.
+
+Would you like to help out with translations yourself? Then take a look at our [translation guide](../../contributions-guide/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!
 
