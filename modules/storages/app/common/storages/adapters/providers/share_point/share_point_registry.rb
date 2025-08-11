@@ -69,6 +69,8 @@ module Storages
           end
 
           namespace("queries") do
+            register(:download_link, Queries::DownloadLinkQuery)
+            register(:file_info, Queries::FileInfoQuery)
             register(:files, Queries::FilesQuery)
             register(:user, OneDrive::Queries::UserQuery)
           end
