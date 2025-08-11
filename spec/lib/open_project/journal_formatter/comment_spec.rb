@@ -63,7 +63,7 @@ RSpec.describe OpenProject::JournalFormatter::Comment do
     describe "when rendering html" do
       context "with nil to value" do
         let(:changes) { [nil, "a commentary by a user"] }
-        let(:result) { "<strong>Comment</strong> set to <i>a commentary by a user</i>" }
+        let(:result) { "<strong>Comment</strong> added \"<i>a commentary by a user</i>\"" }
 
         it "renders the changeset as html" do
           expect(instance.render(key, changes, html: true)).to eq(result)
@@ -72,7 +72,7 @@ RSpec.describe OpenProject::JournalFormatter::Comment do
 
       context "with value to nil" do
         let(:changes) { ["a commentary by a user", nil] }
-        let(:result) { "<strong>Comment</strong> deleted (<strike><i>a commentary by a user</i></strike>)" }
+        let(:result) { "<strong>Comment</strong> deleted \"<strike><i>a commentary by a user</i></strike>\"" }
 
         it "renders the changeset as html" do
           expect(instance.render(key, changes, html: true)).to eq(result)

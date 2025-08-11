@@ -47,7 +47,7 @@ module WorkPackages
                    test_selector: "activity-anchor-link",
                    turbo: false,
                    action: "click->#{auto_scrolling_controller}#setAnchor:prevent",
-                   "#{auto_scrolling_controller}-id-param": journal_activity_id(journal),
+                   "#{auto_scrolling_controller}-id-param": model_activity_id(journal),
                    "#{auto_scrolling_controller}-anchor-name-param": activity_anchor_name
                  }
                )) do
@@ -65,20 +65,24 @@ module WorkPackages
         User.current.preference&.comments_sorting || OpenProject::Configuration.default_comment_sort_order
       end
 
-      def activity_url(journal)
-        "#{project_work_package_url(journal.journable.project, journal.journable)}/activity#{activity_anchor(journal)}"
+      def activity_url(model)
+        if model.is_a?(Comment)
+          "#{project_work_package_url(model.commented.project, model.commented)}/activity#{activity_anchor(model)}"
+        else
+          "#{project_work_package_url(journal.journable.project, journal.journable)}/activity#{activity_anchor(journal)}"
+        end
       end
 
-      def activity_anchor(journal)
-        "##{activity_anchor_name}-#{journal_activity_id(journal)}"
+      def activity_anchor(model)
+        "##{activity_anchor_name}-#{model_activity_id(model)}"
       end
 
       def activity_anchor_name
         "comment"
       end
 
-      def journal_activity_id(journal)
-        journal.id
+      def model_activity_id(comment)
+        comment.id
       end
     end
   end

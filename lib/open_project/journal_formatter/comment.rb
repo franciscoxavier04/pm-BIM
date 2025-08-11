@@ -36,7 +36,7 @@ class OpenProject::JournalFormatter::Comment < JournalFormatter::Base
 
     if options[:html]
       label, old_value, value = format_html_details(label("comment"), old_value, value)
-      render_ternary_detail_text(label, value, old_value, options)
+      render_comment_detail_text(label, value, old_value)
     else
       render_comment_detail_json(value, old_value, comment)
     end
@@ -51,6 +51,12 @@ class OpenProject::JournalFormatter::Comment < JournalFormatter::Base
       current_value,
       find_comment(id)
     ]
+  end
+
+  def render_comment_detail_text(label, value, old_value)
+    return I18n.t(:text_journal_comment_deleted, label:, old: old_value) if value.empty?
+
+    I18n.t(:text_journal_comment_added, label:, value:)
   end
 
   def render_comment_detail_json(value, old_value, comment)

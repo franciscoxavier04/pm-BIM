@@ -38,19 +38,28 @@ module WorkPackages
         include WorkPackages::ActivitiesTab::SharedHelpers
         include WorkPackages::ActivitiesTab::StimulusControllers
 
-        def initialize(comment:, filter:, state: :show)
+        def initialize(comment:, has_unread_notifications:, filter:, state: :show)
           super
 
           @comment = comment
+          @has_unread_notifications = has_unread_notifications
           @filter = filter
           @state = state
         end
 
         private
 
-        attr_reader :comment, :state, :filter
+        attr_reader :comment, :has_unread_notifications, :state, :filter
 
         def wrapper_uniq_by = comment.id
+        def has_unread_notifications? = @has_unread_notifications
+
+        def wrapper_data_attributes
+          {
+            controller: "work-packages--activities-tab--anchor",
+            "work-packages--activities-tab--anchor-activity-url-value": activity_url(comment)
+          }
+        end
 
         def grouped_emoji_reactions
           EmojiReactions::GroupedQueries.grouped_emoji_reactions_by_reactable(
@@ -83,10 +92,6 @@ module WorkPackages
           end
         end
 
-        # def has_unread_notifications?
-        #   parent_journal.has_unread_notifications_for_user?(User.current)
-        # end
-
         # def allowed_to_edit?
         #   journal.editable_by?(User.current)
         # end
@@ -100,7 +105,7 @@ module WorkPackages
                          tag: :button,
                          content_arguments: {
                            data: {
-                             action: "click->work-packages--activities-tab--item#copyActivityUrlToClipboard"
+                             action: "click->work-packages--activities-tab--anchor#copyActivityUrlToClipboard"
                            }
                          }) do |item|
             item.with_leading_visual_icon(icon: :copy)

@@ -1,5 +1,5 @@
 <%=
-  component_wrapper(data: wrapper_data_attributes, class: "work-packages-activities-tab-journals-item-component") do
+  component_wrapper(class: "work-packages-activities-tab-journals-item-component") do
     flex_layout(
       data: {
         test_selector: "op-wp-journal-entry-#{journal.id}"
@@ -22,6 +22,7 @@
           render(
             WorkPackages::ActivitiesTab::Journals::ItemComponent::CommentView.new(
               comment: comment_for(detail),
+              has_unread_notifications: has_unread_notifications?,
               filter:,
               state:
             )

@@ -6,7 +6,7 @@
       data: {
         "anchor-activity-id": journal.sequence_version,
         "anchor-comment-id": journal.id
-      },
+      }.merge(wrapper_data_attributes),
       classes: container_classes
     )
   ) do |border_box_component|

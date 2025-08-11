@@ -51,6 +51,13 @@ module WorkPackages
 
         attr_reader :journal, :state, :filter, :grouped_emoji_reactions
 
+        def wrapper_data_attributes
+          {
+            controller: "work-packages--activities-tab--anchor",
+            "work-packages--activities-tab--anchor-activity-url-value": activity_url(journal)
+          }
+        end
+
         def container_classes
           [].tap do |classes|
             if journal.internal?
@@ -92,7 +99,7 @@ module WorkPackages
                          tag: :button,
                          content_arguments: {
                            data: {
-                             action: "click->work-packages--activities-tab--item#copyActivityUrlToClipboard"
+                             action: "click->work-packages--activities-tab--anchor#copyActivityUrlToClipboard"
                            }
                          }) do |item|
             item.with_leading_visual_icon(icon: :copy)

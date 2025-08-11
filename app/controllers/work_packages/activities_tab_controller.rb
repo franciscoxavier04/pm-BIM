@@ -160,6 +160,7 @@ class WorkPackages::ActivitiesTabController < ApplicationController
         update_via_turbo_stream(
           component: WorkPackages::ActivitiesTab::Journals::ItemComponent::CommentView.new(
             comment: reactable,
+            has_unread_notifications: false,
             filter: params[:filter]&.to_sym || :all
           )
         )

@@ -56,13 +56,6 @@ module WorkPackages
           journal.id
         end
 
-        def wrapper_data_attributes
-          {
-            controller: "work-packages--activities-tab--item",
-            "work-packages--activities-tab--item-activity-url-value": activity_url(journal)
-          }
-        end
-
         def comment_details
           journal.details.filter_map do |detail|
             if detail.first.start_with?("comment")
