@@ -57,6 +57,11 @@ See COPYRIGHT and LICENSE files for more details.
           end
         end
 
+        form.check_box(
+          name: :oauth_allow_remapping_of_existing_users,
+          caption: I18n.t("settings.authentication.remapping_existing_users_hint")
+        )
+
         form.submit
       end
     end

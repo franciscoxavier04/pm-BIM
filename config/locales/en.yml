@@ -4044,6 +4044,7 @@ en:
   setting_attachment_whitelist: "Attachment upload whitelist"
   setting_email_delivery_method: "Email delivery method"
   setting_emails_salutation: "Address user in emails with"
+  setting_oauth_allow_remapping_of_existing_users: "Allow remapping of existing users"
   setting_sendmail_location: "Location of the sendmail executable"
   setting_smtp_enable_starttls_auto: "Automatically use STARTTLS if available"
   setting_smtp_ssl: "Use SSL connection"
@@ -4227,6 +4228,10 @@ en:
         <br/>
         <strong>Note:</strong> Unless you also disable password logins, with this option enabled,
         users can still log in internally by visiting the <code>%{internal_path}</code> login page.
+      remapping_existing_users_hint: >
+        If enabled, allows any configured identity provider to login existing users based on their email address,
+        even if the user never signed in through that provider before. This can be useful when migrating the OpenProject instance
+        to a new SSO provider, but is not recommended when using a provider that is not trusted by all users of your instance.
     attachments:
       whitelist_text_html: >
         Define a list of valid file extensions and/or mime types for uploaded files.
