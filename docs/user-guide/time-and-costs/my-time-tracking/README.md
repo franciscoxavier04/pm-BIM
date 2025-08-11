@@ -53,7 +53,7 @@ At the bottom of each day a sum of hours per day is displayed. If week or month 
 
 ![Sums of hours displayed at the bottom of the Calendar tab under My time tracking module in OpenProject](openproject_user_guide_my_time_tracking_module_calendar_tab_total_sums.png)
 
-If you are currently tracking time for a specific work package, you will also see the ongoing time tracking timer for the respective work package. The work package in question also has a different background color for easier differentiation. 
+If you are currently tracking time with a timer for a specific work package, you will also see the ongoing time tracking timer for the respective work package. The work package in question also has a different background color for easier differentiation. 
 
 ![Active time tracking for a work package displayed on my time tracking page in OpenProject](openproject_user_guide_my_time_tracking_module_active_time_tracking_icon.png)
 
