@@ -125,4 +125,46 @@ RSpec.describe "Types", :js do
       end
     end
   end
+
+  describe "builtin types" do
+    let!(:builtin_type) { create(:type, builtin: "risk") }
+    let!(:regular_type) { create(:type, name: "Custom Task", builtin: nil) }
+
+    before do
+      allow(I18n).to receive(:t).and_call_original
+      allow(I18n).to receive(:t).with("types.builtin.risk").and_return("Risk")
+    end
+
+    it "displays translated names in type list" do
+      index_page.visit!
+
+      expect(page).to have_content("Risk")
+      expect(page).to have_content("Custom Task")
+    end
+
+    it "prevents deletion from admin interface" do
+      index_page.visit!
+
+      within_test_selector("work-package-type-row-#{builtin_type.id}") do
+        expect(page).to have_no_link("Delete")
+      end
+
+      within_test_selector("work-package-type-row-#{regular_type.id}") do
+        expect(page).to have_link("Delete")
+      end
+    end
+
+    it "shows readonly name in edit form" do
+      visit edit_type_settings_path(builtin_type)
+
+      expect(page).to have_content("Risk")
+      expect(page).to have_no_field("type[name]")
+    end
+
+    it "shows editable name for regular types" do
+      visit edit_type_settings_path(regular_type)
+
+      expect(page).to have_field("type[name]", with: "Custom Task")
+    end
+  end
 end

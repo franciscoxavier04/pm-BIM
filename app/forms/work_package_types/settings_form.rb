@@ -31,13 +31,15 @@
 module WorkPackageTypes
   class SettingsForm < ApplicationForm
     form do |settings_form|
-      settings_form.text_field(
-        name: :name,
-        label: label(:name),
-        placeholder: I18n.t(:label_name),
-        required: true,
-        disabled: model.is_standard?
-      )
+      unless model.builtin?
+        settings_form.text_field(
+          name: :name,
+          label: label(:name),
+          placeholder: I18n.t(:label_name),
+          required: true,
+          disabled: model.is_standard?
+        )
+      end
 
       settings_form.color_select_list(
         name: :color_id,

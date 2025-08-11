@@ -27,6 +27,7 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+
 module BasicData
   class TypeSeeder < ModelSeeder
     self.model_class = Type
@@ -45,7 +46,8 @@ module BasicData
         color_id: color_id(type_data["color_name"]),
         is_in_roadmap: true?(type_data["is_in_roadmap"]),
         is_milestone: true?(type_data["is_milestone"]),
-        position: type_data["position"]
+        position: type_data["position"],
+        builtin: type_data["builtin"]
       }
     end
   end

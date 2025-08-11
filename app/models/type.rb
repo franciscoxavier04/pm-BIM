@@ -62,6 +62,8 @@ class Type < ApplicationRecord
   acts_as_list
 
   validates :name, uniqueness: { case_sensitive: false }
+  validates :name, presence: true, length: { maximum: 255 }
+  validates :builtin, uniqueness: true, allow_nil: true
 
   scopes :milestone
 
@@ -69,6 +71,8 @@ class Type < ApplicationRecord
 
   scope :without_standard, -> { where(is_standard: false).order(:position) }
   scope :default, -> { where(is_default: true) }
+  scope :builtin, -> { where.not(builtin: nil) }
+  scope :not_builtin, -> { where(builtin: nil) }
 
   delegate :to_s, to: :name
 
@@ -118,10 +122,27 @@ class Type < ApplicationRecord
     @pdf_export_templates ||= ::Type::PdfExportTemplates.new(self)
   end
 
+  def builtin?
+    builtin.present?
+  end
+
+  def name
+    if builtin?
+      I18n.t("types.builtin.#{builtin}")
+    else
+      super
+    end
+  end
+
+  def deletable?
+    !builtin? && !is_standard? && work_packages.empty?
+  end
+
   private
 
   def check_integrity
     throw :abort if is_standard?
+    throw :abort if builtin?
     throw :abort if WorkPackage.exists?(type_id: id)
 
     true
