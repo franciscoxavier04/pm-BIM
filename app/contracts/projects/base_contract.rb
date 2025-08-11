@@ -67,14 +67,6 @@ module Projects
         .where.not(id: model.self_and_descendants)
     end
 
-    def available_custom_fields
-      if user.admin?
-        model.available_custom_fields
-      else
-        model.available_custom_fields.reject(&:admin_only?)
-      end
-    end
-
     delegate :assignable_versions, to: :model
 
     def assignable_status_codes
