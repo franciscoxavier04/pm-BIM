@@ -109,6 +109,7 @@ uk:
       label_empty_title: Поки не налаштовано жодного постачальника послуг OpenID.
       label_empty_description: Додайте постачальника послуг, і він з’явиться тут.
       label_group_mapping: Зіставлення груп
+      label_group_regexes: Шаблон (регулярний вираз)
       label_metadata: Кінцева точка виявлення OpenID Connect
       label_automatic_configuration: Автоматична конфігурація
       label_optional_configuration: Додаткова конфігурація

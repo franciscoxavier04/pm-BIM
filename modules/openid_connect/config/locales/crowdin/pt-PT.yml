@@ -109,6 +109,7 @@ pt-PT:
       label_empty_title: Ainda não existem fornecedores OpenID configurados.
       label_empty_description: Adicione um fornecedor para vê-lo aqui.
       label_group_mapping: Mapeamento de grupos
+      label_group_regexes: Padrão (expressão regular)
       label_metadata: Endpoint de descoberta do OpenID Connect
       label_automatic_configuration: Configuração automática
       label_optional_configuration: Configuração opcional

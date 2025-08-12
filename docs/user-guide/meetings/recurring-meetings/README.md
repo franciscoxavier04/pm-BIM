@@ -62,6 +62,13 @@ Enter your meeting's title, location, start and end date and time, duration, fre
 - **After a specific date** – lets you specify an **end date** (the meeting might end before or on this date, depending on the original start date and frequency)
 - **After a number of occurrences** – lets you specify the number of individual **occurrences** after which the series will end
 
+**Send email calendar updates** checkbox determines whether email calendar updates are enabled for the meeting series.  If activated, all participants will receive updated calendar invites informing them of the changes to this template or to individual occurrences of the meeting series. If deactivated, no notifications will be sent per email.
+
+> [!TIP] 
+> This checkbox is enabled by default.
+>
+> You can activate or deactivate it at any point in the future by editing the template for the recurring meetings series.
+
 Click the **Create meeting series** button to save your changes. This will create the recurring meeting series and redirect you to the meeting template page. 
 
 ## Edit recurring meetings template

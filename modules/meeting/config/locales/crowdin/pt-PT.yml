@@ -268,6 +268,9 @@ pt-PT:
           disabled: "Os participantes não receberão um e-mail a informá-los das alterações."
           enabled: "Todos os participantes receberão convites de calendário atualizados por e-mail, com informações sobre as alterações."
           change_via_template: "Para alterar, edite o modelo de série."
+        button:
+          disable: "Desativar"
+          enable: "Ativar"
       dialog:
         title:
           enable: "Ativar atualizações do calendário por e-mail?"
