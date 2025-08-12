@@ -72,27 +72,75 @@ module WorkPackages::Scopes
       end
 
       def logged_in_non_admin_allowed_to_large_instances(user, permissions)
-        allowed_via_project_or_work_package_membership = Project.unscoped.allowed_to_member_union(user,
-                                                                                                  permissions,
-                                                                                                  entity_types: ["WorkPackage"])
+        # Get all projects a user has the permissions in.
+        # Permissions can come from project memberships as well as entity/work_package memberships, in addition
+        # to (UNION) potentially the non-member permissions.
+        # This comes back with the columns
+        # * id (of the project) - this column will always be set regardless of whether the membership is entity-specific or not.
+        # * entity_id (of the work package) - this column can be null in case it is a project-wide membership.
+        allowed_via_project_or_work_package_membership = Project
+                                                           .unscoped
+                                                           .allowed_to_member_union(user,
+                                                                                    permissions,
+                                                                                    entity_types: [WorkPackage.name])
 
-        allowed_by_projects_and_work_packages = Arel.sql(<<~SQL.squish)
-          SELECT * from work_packages
-          WHERE project_id in (SELECT id FROM allowed_projects)
-          /* Take all work packages allowed by either project wide or entity specific membership
-             But now remove all those that are in a project for which an entity specific membership exists (but is not for that entity)
-             unless there is also a project specific membership in that same project. */
-          AND NOT EXISTS (
-            SELECT 1 FROM allowed_projects
-            WHERE allowed_projects.id = project_id AND allowed_projects.entity_id IS NOT NULL AND allowed_projects.entity_id != work_packages.id
-            AND NOT EXISTS (
-              SELECT 1 FROM allowed_projects
-              WHERE allowed_projects.id = project_id AND allowed_projects.entity_id IS NULL
-            )
+        # Split the member projects into two distinct sets
+        # for easier reference.
+        entity_member_projects = Arel.sql(<<~SQL.squish)
+          SELECT *
+          FROM member_projects
+          WHERE entity_id IS NOT NULL
+        SQL
+
+        project_member_projects = Arel.sql(<<~SQL.squish)
+          SELECT *
+          FROM member_projects
+          WHERE entity_id IS NULL
+        SQL
+
+        # Remove those entries from before that are
+        # * entity (WorkPackage) specific AND
+        # * have the same project as a non-entity specific entry.
+        # That is the case if a work package is shared with a user
+        # while the user is already a member in the project.
+        # Since the allowed_to filtering is already specific to the permissions, that removal is safe.
+        entity_member_projects_without_duplicates = Arel.sql(<<~SQL.squish)
+          SELECT * FROM entity_member_projects
+          WHERE NOT EXISTS (
+            SELECT 1 FROM project_member_projects
+            WHERE project_member_projects.id = entity_member_projects.id
           )
         SQL
 
-        with(allowed_projects: Arel.sql(allowed_via_project_or_work_package_membership.to_sql),
+        # Take all work packages allowed by either project-wide or entity-specific membership.
+        # But now remove all those that are in a project for which an entity-specific membership exists that is not
+        # for that entity (work package).
+        # An alternative way of formulating this would be by comparing
+        # * That the project_id matches AND
+        # * the entity_id matches OR the entity_id is null
+        #  ```
+        #   SELECT * from work_packages
+        # 	WHERE EXISTS (
+        # 	  SELECT 1 FROM allowed_projects projects
+        #     WHERE projects.id = work_packages.project_id
+        #     AND (projects.entity_id = work_packages.id OR projects.entity_id IS NULL)
+        # 	)
+        # ```
+        # Postgresql however sometimes turns to a sequential scan with the query above.
+        allowed_by_projects_and_work_packages = Arel.sql(<<~SQL.squish)
+          SELECT * from work_packages
+          WHERE project_id in (SELECT id FROM member_projects)
+          AND NOT EXISTS (
+            SELECT 1 FROM entity_member_projects_without_duplicates
+            WHERE entity_member_projects_without_duplicates.id = work_packages.project_id
+            AND entity_member_projects_without_duplicates.entity_id != work_packages.id
+          )
+        SQL
+
+        with(member_projects: Arel.sql(allowed_via_project_or_work_package_membership.to_sql),
+             entity_member_projects:,
+             project_member_projects:,
+             entity_member_projects_without_duplicates:,
              allowed_by_projects_and_work_packages:)
           .from("allowed_by_projects_and_work_packages work_packages")
       end
