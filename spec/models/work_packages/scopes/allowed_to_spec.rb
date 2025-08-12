@@ -146,6 +146,17 @@ RSpec.describe WorkPackage, ".allowed_to" do
           end
         end
 
+        context "when the module is inactive in the project" do
+          before do
+            public_project.enabled_modules = []
+            private_project.enabled_modules = []
+          end
+
+          it "returns no work packages" do
+            expect(subject).to be_empty
+          end
+        end
+
         context "when the user is locked" do
           before do
             user.locked!
@@ -177,6 +188,17 @@ RSpec.describe WorkPackage, ".allowed_to" do
           before do
             public_project.update!(active: false)
             private_project.update!(active: false)
+          end
+
+          it "returns no work packages" do
+            expect(subject).to be_empty
+          end
+        end
+
+        context "when the module is inactive in the project" do
+          before do
+            public_project.enabled_modules = []
+            private_project.enabled_modules = []
           end
 
           it "returns no work packages" do
