@@ -59,7 +59,8 @@ module OpenIDConnect
             "openid_connect.instructions.scope",
             links: {
               docs_url: "https://openid.net/specs/openid-connect-basic-1_0.html#Scopes"
-            }
+            },
+            external: true
           ),
           disabled: provider.seeded_from_env?,
           required: false,

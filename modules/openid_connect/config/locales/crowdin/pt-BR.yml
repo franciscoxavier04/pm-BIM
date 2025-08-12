@@ -7,17 +7,18 @@ pt-BR:
   activerecord:
     attributes:
       openid_connect/group_link:
-        oidc_group_name: OpenID group identifier
+        oidc_group_name: Identificador de grupo OpenID
       openid_connect/provider:
         name: Nome
         slug: Identificador exclusivo
         display_name: Nome de exibição
         client_id: ID do cliente
         client_secret: Segredo do cliente
-        groups_claim: Groups claim
+        groups_claim: Reivindicação de grupos
+        group_regexes: Padrões (expressões regulares)
         secret: Segredo
         scope: Escopo
-        sync_groups: Synchronize groups
+        sync_groups: Sincronizar grupos
         grant_types_supported: Tipos de concessão compatíveis
         limit_self_registration: Limitar auto registro
         authorization_endpoint: Endpoint de autorização
@@ -56,16 +57,16 @@ pt-BR:
   openid_connect:
     menu_title: Provedores OpenID
     delete_title: "Excluir o provedor OpenID Connect"
-    group_links_heading: OpenID Connect group links
+    group_links_heading: Links de grupos OpenID Connect
     instructions:
-      redirect_url: Este é o URL de redirecionamento que o provedor OpenID Connect deve usar para retornar ao OpenProject após um login bem-sucedido.
       endpoint_url: O URL de endpoint fornecido pelo seu provedor OpenID Connect
-      group_regexes: One regular expression pattern per line. Please read [the documentation](docs_url) for more information on how to do this.
-      group_regexes_detail: Define patterns using regular expressions to match group names from the groups claim. For example, entering a pattern like <code>^Level1/Level2/([\w/]+)$</code> will extract the group “Groupname/SubGroup” from a response including “Level1/Level2/GroupName/SubGroup”.
-      group_sync: Automatically extract and synchronise group membership information from the identity provider.
-      groups_claim: Specify the name of the claim that's expected to indicate the group names that the user is a member of.
+      group_regexes: Um padrão de expressão regular por linha. Leia [a documentação](docs_url) para obter mais informações sobre como fazer isso.
+      group_regexes_detail: Opcionalmente, defina padrões usando expressões regulares para corresponder aos nomes de grupos da reivindicação de grupos. Por exemplo, o padrão <code>^Level1/Level2/([\w/]+)$</code> extrairá o grupo “GroupName/SubGroup” de uma resposta que inclua “Level1/Level2/GroupName/SubGroup”. Se nenhum padrão corresponder, o grupo será ignorado. Deixe o campo vazio para sincronizar todos os grupos usando seus nomes completos.
+      group_sync: Extraia e sincronize automaticamente as informações de associação a grupos fornecidas pelo provedor de identidade.
+      groups_claim: Informe o nome da declaração que indica os grupos dos quais o usuário é membro.
       metadata_none: Não tenho esta informação
       metadata_url: Tenho um URL de endpoint de descoberta
+      oidc_information: These values are needed to configure the OpenID Connect provider.
       client_id: Este é o ID do cliente fornecido pelo seu provedor OpenID Connect
       client_secret: Este é o segredo do cliente fornecido pelo seu provedor OpenID Connect
       limit_self_registration: Se ativado, os usuários só poderão se registrar usando este provedor se a configuração no lado do provedor permitir.
@@ -107,8 +108,7 @@ pt-BR:
       label_edit: Editar provedor OpenID %{name}
       label_empty_title: Ainda não há provedores OpenID configurados.
       label_empty_description: Adicione um provedor para visualizá-los aqui.
-      label_group_mapping: Group mapping
-      label_group_regexes: Pattern (regular expression)
+      label_group_mapping: Mapeamento de grupos
       label_metadata: Endpoint de descoberta do OpenID Connect
       label_automatic_configuration: Configuração automática
       label_optional_configuration: Configuração opcional
@@ -121,7 +121,7 @@ pt-BR:
       plural: Provedores OpenID
       singular: Provedor OpenID
       section_texts:
-        group_mapping: Map group names provided by the identity provider to groups in OpenProject.
+        group_mapping: Mapear nomes de grupos fornecidos pelo provedor de identidade para grupos no OpenProject.
         metadata: Pré-preencher a configuração utilizando um URL de endpoint de descoberta do OpenID Connect
         metadata_form_banner: Editar o endpoint de descoberta pode substituir os valores de metadados pré-preenchidos automaticamente.
         metadata_form_title: Endpoint de descoberta do OpenID Connect
@@ -133,7 +133,7 @@ pt-BR:
         claims: Solicite reivindicações adicionais para a resposta de token de ID ou userinfo.
       side_panel:
         information_component:
-          backchannel_logout_url: Backchannel logout URL
+          backchannel_logout_url: URL de logout backchannel
     setting_instructions:
       limit_self_registration: >
         Se ativado, os usuários poderão se registrar apenas por meio deste provedor, desde que a configuração de auto-registro permita.

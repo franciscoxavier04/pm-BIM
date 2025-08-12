@@ -128,8 +128,8 @@ fr:
       form:
         auth_provider_description: "Il s'agit du service que les utilisateurs ajoutés par le fournisseur SCIM utiliseront pour s'authentifier dans OpenProject."
         authentication_method_description_html: "Voici comment le client SCIM s'authentifie dans OpenProject. Veuillez vous assurer que les jetons OAuth incluent la portée <code>scim_v2</code>."
-        description_html: 'Veuillez consulter la <a href="%{docs_url}">documentation sur la configuration des clients SCIM</a> pour obtenir plus d''informations sur ces options de configuration.'
-        jwt_sub_description_html: 'Par exemple, pour Keycloak, il s''agit de l''UUID du compte de service associé au client SCIM. Consultez notre <a href="%{docs_url}">documentation</a> pour savoir comment trouver la revendication de sujet selon votre cas d''utilisation.'
+        description: "Veuillez consulter notre [documentation sur la configuration des clients SCIM](docs_url) pour obtenir plus d'informations sur ces options de configuration."
+        jwt_sub_description: "Par exemple, pour Keycloak, il s'agit de l'UUID du compte de service associé au client SCIM. Consultez [notre documentation](docs_url) pour savoir comment trouver la revendication de sujet selon votre cas d'utilisation."
         name_description: "Choisissez un nom qui aidera les autres administrateurs à mieux comprendre pourquoi ce client a été configuré."
       index:
         description: "Les clients SCIM configurés ici peuvent interagir avec l'API SCIM du serveur OpenProject pour créer, mettre à jour et désactiver des comptes utilisateurs et des groupes."
@@ -369,23 +369,23 @@ fr:
       wiki_pages: "Wiki"
   groups:
     edit:
-      synchronized_groups: "Synchronized groups"
+      synchronized_groups: "Groupes synchronisés"
     index:
-      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+      description: En regroupant les utilisateurs, vous pouvez les ajouter en tant que membres aux mêmes projets ou leur attribuer les mêmes rôles globaux.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
-        title: No groups set up yet
-      user_count: User count
+        description: You can define named groups of users with specific permissions.
+        title: Aucun groupe n'a encore été configuré
+      user_count: Nombre d'utilisateurs
     users:
       no_results_title_text: Aucun utilisateur dans ce groupe pour le moment.
     memberships:
       no_results_title_text: Aucun projet dans ce groupe pour le moment.
     synchronized_groups:
       blankslate:
-        action: Authentication settings
-        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
-        title: No synchronized groups yet
+        action: Paramètres d'authentification
+        description: Lorsque ce groupe est automatiquement synchronisé avec des groupes de fournisseurs d'identité externes comme OpenID, ils apparaissent ici. Vous pouvez configurer cela dans vos paramètres d'authentification.
+        title: Vous n'avez encore aucun groupe synchronisé
   incoming_mails:
     ignore_filenames: >
       Spécifiez une liste de noms à ignorer lors du traitement des pièces jointes aux messages entrants (par exemple, signatures ou icônes). Entrez un nom de fichier par ligne.
@@ -686,6 +686,7 @@ fr:
     dark: "Sombre"
     light: "Clair"
     light_high_contrast: "Clair avec contraste élevé"
+    sync_with_os: "Automatique (correspond au mode couleur du système d'exploitation)"
   types:
     index:
       no_results_title_text: Il n'y a actuellement aucun type.
@@ -717,9 +718,8 @@ fr:
             project: "Projet"
         pattern:
           label: "Modèle de sujet"
-          caption_with_supported_attributes_link: Créez des modèles en ajoutant du texte, ou saisissez « / » pour rechercher %{link}.
+          caption: Créez des modèles en ajoutant du texte ou saisissez « / » pour rechercher les [attributs pris en charge](attributes_url).
           insert_as_text: "Aucun attribut n'a été trouvé. Ajouter en tant que texte : « %{word} »"
-          supported_attributes_link: "attributs pris en charge"
       export_configuration:
         tab: "Générer un fichier PDF"
         intro: "Sélectionnez les modèles disponibles que vous souhaitez activer pour ce type. Le modèle détermine la conception et les attributs visibles dans le fichier PDF exporté d'un lot de travaux utilisant ce type. Le premier modèle de la liste est sélectionné par défaut."
@@ -1268,6 +1268,7 @@ fr:
         inclusion_nested: "ne correspond à aucune des valeurs autorisées dans le chemin « %{path} »."
         invalid: "est invalide."
         invalid_characters: "contient des caractères invalides."
+        not_allowed_custom_fields_referenced: "contient des champs personnalisés qui ne sont pas autorisés : %{custom_fields}."
         invalid_url: "n’est pas une URL valide."
         invalid_url_scheme: "n’est pas un protocole pris en charge (autorisés : %{allowed_schemes})."
         less_than_or_equal_to: "doit être inférieur ou égal à %{count}."
@@ -1287,6 +1288,7 @@ fr:
         odd: "doit être impair."
         regex_match_failed: "ne correspond pas à l'expression régulière %{expression}."
         regex_invalid: "n’a pas pu être validé avec l’expression régulière associée."
+        regex_list_invalid: "n'a pas pu être analysé comme une expression régulière dans les lignes %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "doit être inférieur ou égal à la longueur maximale."
         taken: "a déjà été pris."
         too_long: "est trop long (le maximum est de %{count} caractères)."
@@ -1614,9 +1616,10 @@ fr:
       attachment: "Fichier"
       attribute_help_text: "Attribut d’aide de texte"
       auth_provider:
-        one: "Authentication provider"
-        other: "Authentication providers"
+        one: "Fournisseur d'authentification"
+        other: "Fournisseurs d'authentification"
       category: "Catégorie"
+      color: "Couleur"
       comment: "Commentaire"
       custom_action: "Action personnalisée"
       custom_field: "Champ personnalisé"
@@ -2248,6 +2251,13 @@ fr:
         Je souhaite recevoir la <a target="_blank" href="https://www.openproject.org/newsletter/">lettre d'information d'</a>OpenProject.
       consent_html: >
         J'accepte les <a target="_blank" href="https://www.openproject.org/terms-of-service/">conditions d'utilisation</a> et la <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">politique de confidentialité</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Désactivé."
+      enabled: "Activé."
+    button:
+      disabled: "Activer"
+      enabled: "Désactiver"
   enumeration_activities: "Activités de suivi du temps"
   enumeration_work_package_priorities: "Priorités du Lot de Travaux"
   enumeration_reported_project_statuses: "Statuts de projet signalés"
@@ -2548,7 +2558,7 @@ fr:
       aggregation: "Agrégation"
       api_and_webhooks: "API et webhooks"
     quick_add:
-      label: "Add…"
+      label: "Ajouter…"
   my_account:
     access_tokens:
       no_results:
@@ -2848,7 +2858,7 @@ fr:
   label_gantt_chart_plural: "Diagrammes de Gantt"
   label_general: "Général"
   label_generate_key: "Générer une clé"
-  label_global_modules: "Global modules"
+  label_global_modules: "Modules globaux"
   label_global_roles: "Rôles globaux"
   label_git_path: "Chemin d'accès au répertoire .git"
   label_greater_or_equal: ">="
@@ -2933,6 +2943,7 @@ fr:
   label_manage: "Gérer"
   label_manage_groups: "Gérer les groupes"
   label_managed_repositories_vendor: "Référentiels %{vendor} gérés"
+  label_mathematical_operators: "Opérateurs mathématiques"
   label_max_size: "Taille maximale"
   label_me: "moi"
   label_member_new: "Nouveau membre"
@@ -3201,7 +3212,7 @@ fr:
   label_user_mail_option_only_my_events: "Uniquement pour les éléments que je suis ou auxquels je participe"
   label_user_mail_option_only_owner: "Les éléments dont je suis le propriétaire"
   label_user_mail_option_selected: "Pour chaque événement sur le projet selectionné seulement"
-  label_user_menu: "User menu"
+  label_user_menu: "Menu utilisateur"
   label_user_new: "Nouvel utilisateur"
   label_user_plural: "Utilisateurs"
   label_user_search: "Recherche d'Utilisateurs"

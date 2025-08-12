@@ -99,6 +99,7 @@ tr:
     meeting_agenda_opened: Toplantı gündemi açıldı
     meeting_minutes: Toplantı dakikaları düzenlendi
     meeting_minutes_created: Toplantı tutanakları oluşturuldu
+  error_notification: "Failed to send notification."
   error_notification_with_errors: "Bildirim hatalı. Aşağıdaki alıcılar bilgilendirilemedi: %{recipients}"
   label_meeting: "Toplantı"
   label_meeting_plural: "Toplantılar"
@@ -215,7 +216,7 @@ tr:
         body: "%{title} toplantısı %{actor} tarafından yeniden planlanmıştır."
         old_date_time: "Eski tarih/saat"
         new_date_time: "Yeni tarih/saat"
-    label_mail_all_participants: "Tüm katılımcılara e-posta gönder"
+    label_mail_all_participants: "Email calendar invite to all participants"
     types:
       one_time: "Tek seferlik"
       recurring: "Yinelenen"
@@ -263,23 +264,17 @@ tr:
     notifications:
       sidepanel:
         title: "Email calendar updates"
-        state:
-          disabled: "Disabled."
-          enabled: "Enabled."
         description:
           disabled: "Participants will not receive an email informing them of changes."
           enabled: "All participants will receive updated calendar invites via email informing them of changes."
           change_via_template: "To change this, edit the series template."
-        button:
-          disable: "Disable"
-          enable: "Enable"
       dialog:
         title:
           enable: "Enable email calendar updates?"
           disable: "Disable email calendar updates?"
         message:
           enable: >
-            All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants.
+            All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants. Once enabled, an email will be sent out immediately to all participants.
           disable: >
             Participants will no longer receive updated calendar invites via email when there are changes to the meeting date, time, location or participants. If they already had an invite for this meeting, it might no longer be accurate.
         confirm_label:
@@ -388,7 +383,7 @@ tr:
       confirm_button: "Bu etklinliği iptal et"
     end_series_dialog:
       title: "Toplantı serisinin bitir"
-  notice_successful_notification: "Bildirim başarıyla gönderildi"
+  notice_successful_notification: "Email calendar update sent to all participants"
   notice_timezone_missing: Saat dilimi ayarlanmadı ve %{zone} kabul edildi. Saat dilimini seçmek için lütfen buraya tıklayın.
   notice_meeting_updated: "Bu sayfa başka biri tarafından güncellendi. Değişiklikleri görmek için yeniden yükleyin."
   permission_create_meetings: "Toplantı oluşturma"
@@ -431,6 +426,8 @@ tr:
   label_agenda_item_undisclosed_wp: "#%{id} numaralı iş parçası görünmez"
   label_agenda_item_deleted_wp: "Silinmiş iş parçsına referans"
   label_agenda_item_actions: "Gündem maddeleri için eylemler"
+  label_agenda_item_move_to_next_title: "Move to next meeting?"
+  label_agenda_item_move: "Move"
   label_agenda_item_move_to_next: "Sonraki toplantıya taşı"
   label_agenda_item_move_to_backlog: "Birikmiş iş listesine taşı"
   label_agenda_item_move_to_current_meeting: "Şuanki toplantıya taşı"
@@ -501,7 +498,7 @@ tr:
   text_add_work_package_to_meeting_description: "Bir iş paketi tartışılmak üzere bir veya birden fazla toplantıya eklenebilir. Bununla ilgili tüm notlar da burada görülebilir."
   text_agenda_item_no_notes: "Not verilmemiştir"
   text_agenda_item_not_editable_anymore: "Bu takvim maddesi artık düzenlenemez."
-  text_agenda_item_move_next_meeting: "Bunu %{date} tarihli ve %{time} saatinde yapılacak sonraki toplantıya taşımak istediğinize emin misiniz?"
+  text_agenda_item_move_next_meeting: "This item will be moved to the next meeting on %{date} at %{time}."
   text_agenda_item_moved_to_next_meeting: "Gündem maddesi %{date} tarihli sonraki toplantıya taşındı"
   text_work_package_has_no_upcoming_meeting_agenda_items: "Bu iş paketi henüz yaklaşan bir toplantı gündemine alınmamıştır."
   text_agenda_item_move_next_meeting_cancelled: "Toplantı iptal edildiği için sonraki toplantıya taşınamadı."

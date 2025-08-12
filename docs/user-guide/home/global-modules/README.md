@@ -13,7 +13,7 @@ To access the **Global modules** side menu, simply click on the logo in the head
 
 ![Navigating to global modules menu in OpenProject](open_project_user_guide_global_modules_menu.png)
 
-You can also use the grid icon in the left corner to access the **Global modules** side menu.
+You can also use the grid icon in the top left corner to access the **Global modules** side menu.
 
 ![Navigating to global modules menu in OpenProject via grid icon](open_project_user_guide_global_modules_menu_grid_icon.png)
 

@@ -38,9 +38,9 @@ module Storages
             register(:user_bound, ->(user, storage = nil) { Input::Strategy.build(key: :oauth_user_token, user:, storage:) })
           end
 
-          namespace("contracts") do
-            register(:storage, SharePointContract)
-            register(:general_information, SharePointContract)
+          namespace("commands") do
+            register(:create_folder, Commands::CreateFolderCommand)
+            register(:delete_folder, Commands::DeleteFolderCommand)
           end
 
           namespace("components") do
@@ -57,6 +57,11 @@ module Storages
             register(:general_information, Admin::GeneralInfoComponent)
             register(:oauth_client, Admin::OAuthClientInfoComponent)
             register(:redirect_uri, Admin::RedirectUriComponent)
+          end
+
+          namespace("contracts") do
+            register(:storage, SharePointContract)
+            register(:general_information, SharePointContract)
           end
 
           namespace("validators") do

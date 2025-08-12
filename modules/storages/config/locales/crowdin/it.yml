@@ -22,10 +22,10 @@ it:
         storage: Archivio
         storage_url: URL di archiviazione
       storages/share_point_storage:
-        host: Sharepoint Site URL
-        library: Library ID
-        name: Name
-        site: Site ID
+        host: URL sito di Sharepoint
+        library: ID Raccolta
+        name: Nome
+        site: ID Sito
       storages/storage:
         authentication_method: Metodo di autenticazione
         creator: Autore
@@ -37,7 +37,7 @@ it:
     errors:
       messages:
         invalid_host_url: non è un URL valido.
-        invalid_sharepoint_url: is not a valid SharePoint site, library, or document URL.
+        invalid_sharepoint_url: non è un URL di sito, raccolta o documento SharePoint valido.
         not_linked_to_project: non è collegato al progetto.
       models:
         storages/file_link:
@@ -87,7 +87,7 @@ it:
     edit_project_folder:
       label: Modifica la cartella del progetto
     open:
-      contact_admin: Please contact your administrator to resolve this error.
+      contact_admin: Contatta l'amministratore per risolvere questo errore.
       remote_identity_error: Si è verificato un errore durante la connessione all'archivio.
     project_folder_mode:
       automatic: Gestione automatica
@@ -135,7 +135,7 @@ it:
               conflict: 'Impossibile aggiungere l''utente %{user} al gruppo %{group} per il seguente motivo: %{reason}'
               failed_to_add: 'Impossibile aggiungere l''utente %{user} al gruppo %{group} per il seguente motivo: %{reason}'
             create_folder:
-              conflict: The folder %{folder_name} already exists on %{parent_location}.
+              conflict: La cartella %{folder_name} esiste già su %{parent_location}.
               not_found: "Impossibile trovare %{parent_location}."
             ensure_root_folder_permissions:
               not_found: "Impossibile trovare %{group_folder}. Verifica le impostazioni della cartella di gruppo Nextcloud."
@@ -149,7 +149,7 @@ it:
               conflict: 'Impossibile rimuovere l''utente %{user} dal gruppo %{group} per il seguente motivo: %{reason}'
               failed_to_remove: 'Impossibile rimuovere l''utente %{user} dal gruppo %{group} per il seguente motivo: %{reason}'
             rename_project_folder:
-              conflict: OpenProject could not rename the project folder to %{current_path} as a folder with the same name already exists
+              conflict: OpenProject non è riuscito a rinominare la cartella del progetto in %{current_path} poiché esiste già una cartella con lo stesso nome
               forbidden: L'utente OpenProject non ha accesso alla cartella %{current_path}.
               not_found: "Impossibile trovare %{current_path}."
             set_folders_permissions:
@@ -175,7 +175,7 @@ it:
               not_found: "Impossibile trovare %{current_path}."
             set_folders_permissions:
               permission_not_set: impossibile impostare i permessi su %{path}.
-          error: An unexpected error occurred. Please ensure that OneDrive is reachable and check OpenProject worker logs for more information
+          error: Si è verificato un errore imprevisto. Assicurati che OneDrive sia raggiungibile e controlla i log dei worker di OpenProject per ulteriori informazioni
           not_allowed: OpenProject non è stato autorizzato ad accedere al tuo drive OneDrive. Verifica le autorizzazioni impostate sull'applicazione Azure.
           unauthorized: OpenProject non è riuscito a sincronizzarsi con OneDrive. Verifica la configurazione dell'archiviazione e dell'applicazione Azure.
           user_does_not_exist: "%{user} non esiste in Nextcloud."
@@ -194,9 +194,11 @@ it:
     configuration_checks:
       oauth_client_incomplete:
         nextcloud: Consenti a OpenProject di accedere ai dati Nextcloud utilizzando OAuth.
-        one_drive: Allow OpenProject to access Azure data using OAuth to connect OneDrive.
+        one_drive: Consenti a OpenProject di accedere ai dati Azure utilizzando OAuth per collegare OneDrive.
+        share_point: Consenti a OpenProject di accedere ai dati SharePoint utilizzando OAuth.
       redirect_uri_incomplete:
         one_drive: Completa la configurazione con il corretto reindirizzamento URI.
+        share_point: Completa la configurazione con il corretto reindirizzamento URI.
     confirm_replace_oauth_application: Questa azione reimposterà le credenziali OAuth correnti. Dopo la conferma sarà necessario reinserire le credenziali presso il provider di archiviazione e tutti gli utenti remoti dovranno autorizzarsi nuovamente nei confronti di OpenProject. Vuoi davvero procedere?
     confirm_replace_oauth_client: Questa azione reimposterà le credenziali OAuth correnti. Dopo la conferma dovrai inserire nuove credenziali dal provider di archiviazione e tutti gli utenti dovranno autorizzare nuovamente %{provider_type}. Vuoi davvero procedere?
     delete_warning:
@@ -262,7 +264,7 @@ it:
           header: Autenticazione
           non_provisioned_user: Utente fornito da IDP
           offline_access: Ambito OIDC offline_access configurato
-          provider_capabilities: Provider capabilities
+          provider_capabilities: Funzionalità del fornitore
           provisioned_user_provider: Utente fornito da OIDC
           token_negotiable: Funzionalità del token utente
           user_bound_request: Autenticazione richiesta basata sull'utente
@@ -305,7 +307,7 @@ it:
         od_drive_id_not_found: Impossibile trovare l'ID dell'archivio configurato. Controlla la configurazione.
         od_oauth_request_not_found: L'endpoint per recuperare l'utente attualmente connesso non è stato trovato. Per ulteriori informazioni, consulta i log del server.
         od_oauth_request_unauthorized: L'utente attuale non è autorizzato ad accedere all'archivio file remoto. Per ulteriori informazioni, consulta i log del server.
-        od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive as the user did not yet link their Microsoft account.
+        od_oauth_token_missing: OpenProject non può testare la comunicazione a livello utente con OneDrive poiché l'utente non ha ancora collegato il proprio account Microsoft.
         od_tenant_id_wrong: L'ID della directory non è valido. Verifica la configurazione. 
         od_test_folder_exists: La cartella %{folder_name} necessaria per il test esiste già. Eliminala e riprova.
         od_unexpected_content: Contenuto inatteso nello spazio di archiviazione.
@@ -313,7 +315,7 @@ it:
         oidc_cant_refresh_token: Si è verificato un errore durante il tentativo di verificare il tuo accesso all'archiviazione. Controlla i log del server per ulteriori informazioni.
         oidc_non_oidc_user: L'utente attuale, pur essendo stato registrato, non è stato fornito da un provider di identità OpenID Connect (OIDC). Esegui nuovamente il controllo con un utente fornito da OIDC.
         oidc_non_provisioned_user: L'utente attuale non è fornito da un provider di identità OpenID Connect. Esegui nuovamente il controllo con un utente fornito.
-        oidc_provider_cant_exchange: The OpenID Connect provider does not seem to support token exchange, but token exchange was configured for the storage.
+        oidc_provider_cant_exchange: Il fornitore OpenID Connect non sembra supportare lo scambio di token, ma lo scambio di token è stato configurato per l'archiviazione.
         oidc_token_acquisition_failed: La configurazione di OpenID Connect non fornisce il pubblico necessario, né fornisce capacità di scambio di token. Consulta la nostra documentazione per maggiori informazioni.
         oidc_token_exchange_failed: Sembra esserci un problema con la configurazione di Token Exchange sul tuo OpenID Connect Provider. Controlla la sua configurazione e riprova.
         oidc_token_refresh_failed: Si è verificato un errore durante il tentativo di verificare il tuo accesso all'archiviazione. Controlla i log del server per ulteriori informazioni.
@@ -337,12 +339,10 @@ it:
         warning: Alcuni controlli hanno restituito un avviso. Questo può causare comportamenti imprevisti.
       title: Report sullo stato di salute
     health_email_notifications:
-      description_subscribed: Tutti gli amministratori ricevono notifiche e-mail sullo stato di salute di questo archivio.
-      description_unsubscribed: Le notifiche via e-mail sullo stato di salute di questo archivio sono state disattivate per tutti gli amministratori.
+      description_disabled: Gli amministratori non riceveranno aggiornamenti via email quando ci sono aggiornamenti importanti.
+      description_enabled: Gli amministratori riceveranno aggiornamenti via email quando ci sono aggiornamenti importanti.
       error_could_not_be_saved: Impossibile salvare le impostazioni di notifica via e-mail. Riprova.
-      subscribe: Iscriviti
-      title: Notifiche e-mail
-      unsubscribe: Disiscriviti
+      title: Aggiornamenti via email agli amministratori
     help_texts:
       project_folder: La cartella del progetto è la cartella predefinita per il caricamento dei file per questo progetto. Gli utenti possono, comunque, caricare i file in altre posizioni.
       project_folder_bulk: La cartella del progetto è la cartella predefinita per il caricamento dei file per tutti i progetti selezionati. Puoi modificarla individualmente nelle impostazioni di ciascun progetto. Gli utenti possono comunque caricare i file in altre posizioni.
@@ -372,7 +372,7 @@ it:
       one_drive:
         application_link_text: portale Azure
         copy_redirect_uri: Copia URI di reindirizzamento
-        documentation_link_text: OneDrive file storages documentation
+        documentation_link_text: documentazione sull'archiviazione di file OneDrive
         drive_id: Copia l'ID dall'archivio desiderato seguendo i passaggi nella %{drive_id_link_text}.
         integration: OneDrive
         missing_client_id_for_redirect_uri: Compila i valori OAuth per generare un URI
@@ -386,6 +386,11 @@ it:
       setting_up_additional_storages_non_admin: Gli amministratori possono impostare ulteriori archivi file in Amministrazione / Archivi file.
       setting_up_storages: Per impostare archivi file, visita
       setting_up_storages_non_admin: Gli amministratori possono impostare archivi file in Amministrazione / Archivi file.
+      share_point:
+        application_link_text: Sito SharePoint
+        integration: SharePoint Administration / OpenProject
+        oauth_configuration: Copia questi valori dall'applicazione desiderata nel %{application_link_text}.
+        provider_configuration: Assicurati di disporre dei privilegi di amministratore in %{application_link_text} o contatta il tuo amministratore Microsoft prima di eseguire la configurazione. Nel portale è inoltre necessario registrare un'applicazione Azure o utilizzarne una esistente per l'autenticazione.
       type: 'Assicurati di disporre dei privilegi di amministrazione nella tua istanza Nextcloud e di aver installato la seguente applicazione prima di eseguire l''installazione:'
       type_link_text: "“Integrazione OpenProject”"
     label_active: Attivo
@@ -488,10 +493,10 @@ it:
         name: OneDrive
         name_placeholder: es. OneDrive
       share_point:
-        label_oauth_client_id: Azure OAuth Application (client) ID
-        label_oauth_client_secret: Azure OAuth Client Secret Value
-        name: SharePoint
-        name_placeholder: e.g. SharePoint
+        label_oauth_client_id: ID dell'applicazione Azure OAuth (client)
+        label_oauth_client_secret: Valore segreto client Azure OAuth
+        name: Microsoft SharePoint Online
+        name_placeholder: es. SharePoint
     show_attachments_toggle:
       description: La disattivazione di questa opzione nasconderà l'elenco degli allegati nella scheda dei file delle macro-attività. I file allegati nella descrizione di una macro-attività verranno comunque caricati nell'archivio interno degli allegati.
       label: Mostra gli allegati nella scheda File delle macro-attività
@@ -509,6 +514,6 @@ it:
     successful_storage_connection: Spazio di archiviazione connesso correttamente! Ricordati di attivare l'archivio nella scheda Progetto di ciascun progetto in cui vuoi utilizzarlo.
     upsell:
       description: |-
-        Integrate your OneDrive as a file storage with OpenProject. Upload files and link them directly to
-        work packages in a project.
-      title: OneDrive integration
+        Integra il tuo OneDrive come archivio file con OpenProject. Carica i file e collegali direttamente
+        a macro-attività in un progetto.
+      title: Integrazione di OneDrive

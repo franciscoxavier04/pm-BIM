@@ -150,17 +150,11 @@ module MeetingAgendaItems
 
       menu.with_item(
         label: t(:label_agenda_item_move_to_next),
-        href: move_to_next_meeting_agenda_item_path(@meeting_agenda_item.meeting,
+        href: move_to_next_dialog_meeting_agenda_item_path(@meeting_agenda_item.meeting,
                                                     @meeting_agenda_item,
                                                     datetime: next_date.iso8601),
-        form_arguments: {
-          method: :post,
-          data: {
-            confirm: t(:text_agenda_item_move_next_meeting,
-                       date: format_date(next_date),
-                       time: format_time(next_date, include_date: false)),
-            "turbo-stream": true
-          }
+        content_arguments: {
+          data: { controller: "async-dialog" }
         }
       ) do |item|
         item.with_leading_visual_icon(icon: "arrow-right")
@@ -228,14 +222,6 @@ module MeetingAgendaItems
                        href: drop_meeting_agenda_item_path(@meeting_agenda_item.meeting, @meeting_agenda_item, type: :to_current)
                      } }) do |item|
         item.with_leading_visual_icon(icon: "cross-reference")
-      end
-    end
-
-    def duration_color_scheme
-      if @meeting.end_time < @meeting_agenda_item.end_time
-        :danger
-      else
-        :subtle
       end
     end
 

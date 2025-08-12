@@ -122,17 +122,17 @@ de:
       delete_scim_client_dialog_component:
         title: "SCIM-Client löschen"
         heading: "Sind Sie sicher, dass Sie diesen SCIM-Client löschen möchten?"
-        description: "Von diesem SCIM-Client verwaltete Benutzer können nicht mehr von ihm aktualisiert werden."
+        description: "Von diesem SCIM-Client verwaltete Nutzer:innen können nicht mehr von ihm aktualisiert werden."
       edit:
         label_delete_scim_client: "SCIM-Client löschen"
       form:
         auth_provider_description: "Dies ist der Dienst, den die vom SCIM-Anbieter hinzugefügten Benutzer für die Authentifizierung in OpenProject verwenden werden."
         authentication_method_description_html: "So authentifiziert sich der SCIM-Client bei OpenProject. Bitte stellen Sie sicher, dass OAuth Tokens den <code>scim_v2</code> Scope enthalten."
-        description_html: 'Weitere Informationen zu diesen Konfigurationsoptionen finden Sie in unserer <a href="%{docs_url}">Dokumentation zur Konfiguration von SCIM-Clients</a>.'
-        jwt_sub_description_html: 'Bei Keycloak ist dies beispielsweise die UUID des mit dem SCIM-Client verbundenen Servicekontos. Lesen Sie <a href="%{docs_url}">unsere Dokumentation</a>, um zu erfahren, wie Sie den Subject Claim für Ihren Anwendungsfall finden.'
+        description: "Mehr Informationen zu den folgenden Einstellungen können in [unserer Dokumentation](docs_url) gefunden werden."
+        jwt_sub_description: "Beispielsweise für Keycloak ist dies die UUID des Service-Accounts der zum SCIM-Client gehört. Weitere Informationen finden Sie in [unserer Dokumentation](docs_url)."
         name_description: "Wählen Sie einen Namen, der anderen Administratoren hilft, besser zu verstehen, warum dieser Client konfiguriert wurde."
       index:
-        description: "SCIM-Clients, die hier konfiguriert werden, können mit der OpenProject SCIM-Server-API interagieren, um Benutzerkonten und Gruppen zu erstellen, zu aktualisieren und zu entfernen."
+        description: "SCIM-Clients, die hier konfiguriert werden, können mit der OpenProject SCIM-Server-API interagieren, um Nutzerkonten und Gruppen zu erstellen, zu aktualisieren und zu entfernen."
         label_create_button: "SCIM-Client hinzufügen"
       new:
         title: "Neuer SCIM-Client"
@@ -366,23 +366,23 @@ de:
       wiki_pages: "Wiki"
   groups:
     edit:
-      synchronized_groups: "Synchronized groups"
+      synchronized_groups: "Synchronisierte Gruppen"
     index:
-      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+      description: Durch die Gruppierung von Benutzern können Sie diese den gleichen globalen Rollen oder den gleichen Projekten als Mitglieder zuweisen.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
-        title: No groups set up yet
-      user_count: User count
+        description: You can define named groups of users with specific permissions.
+        title: Noch keine Gruppen eingerichtet
+      user_count: Benutzeranzahl
     users:
       no_results_title_text: Diese Gruppe hat zur Zeit keine Mitglieder.
     memberships:
       no_results_title_text: Diese Gruppe ist zur Zeit keinem Projekt zugewiesen.
     synchronized_groups:
       blankslate:
-        action: Authentication settings
-        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
-        title: No synchronized groups yet
+        action: Authentifizierungseinstellungen
+        description: Wenn diese Gruppe automatisch mit Gruppen in einem Identitätsanbieter wie beispielsweise OpenID Connect synchronisiert wird, dann taucht diese Verknüpfung hier auf. Dies können Sie in den Authentifizierungseinstellungen verwalten.
+        title: Noch keine synchronisierten Gruppen
   incoming_mails:
     ignore_filenames: >
       Geben Sie eine Liste von Dateinamen an, die beim Verarbeiten von Anhängen für eingehende Mails (z.B. Signaturen oder Symbole) ignoriert werden sollen. Geben Sie einen Dateinamen pro Zeile ein.
@@ -681,6 +681,7 @@ de:
     dark: "Dunkel"
     light: "Hell"
     light_high_contrast: "Hell (hoher Kontrast)"
+    sync_with_os: "Automatic (match OS colour mode)"
   types:
     index:
       no_results_title_text: Derzeit gibt es keine Typen.
@@ -712,9 +713,8 @@ de:
             project: "Projekt"
         pattern:
           label: "Titel-Schema"
-          caption_with_supported_attributes_link: Erstellen Sie Muster, indem Sie Text hinzufügen, oder geben Sie "/" ein, um nach %{link} zu suchen.
+          caption: Das Schema kann durch Hinzufügen von Text erzeugt werden. Geben Sie "/" ein, um nach [unterstützten Attributen](attributes_url) zu suchen.
           insert_as_text: "Keine Attribute gefunden. Als Text hinzufügen: \"%{word}\""
-          supported_attributes_link: "unterstützte Attribute"
       export_configuration:
         tab: "PDF generieren"
         intro: "Wählen Sie aus den verfügbaren Vorlagen diejenige aus, die Sie für diesen Typ aktivieren möchten. Die Vorlage bestimmt das Design und die Attribute, die in der exportierten PDF-Datei eines Arbeitspakets mit diesem Typ sichtbar sind. Die erste Vorlage in der Liste ist standardmäßig ausgewählt."
@@ -1262,6 +1262,7 @@ de:
         inclusion_nested: "ist nicht auf einen der erlaubten Werte im Pfad '%{path} ' gesetzt."
         invalid: "ist ungültig."
         invalid_characters: "enthält ungültige Zeichen."
+        not_allowed_custom_fields_referenced: "enthält benutzerdefinierte Felder, die nicht erlaubt sind: %{custom_fields}."
         invalid_url: "ist keine gültige URL."
         invalid_url_scheme: "ist kein unterstütztes Protokoll (erlaubt: %{allowed_schemes})."
         less_than_or_equal_to: "muss kleiner oder gleich %{count} sein."
@@ -1281,6 +1282,7 @@ de:
         odd: "muss ungerade sein."
         regex_match_failed: "stimmt nicht mit dem regulären Ausdruck %{expression} überein."
         regex_invalid: "konnte nicht mit dem zugehörigen regulären Ausdruck überprüft werden."
+        regex_list_invalid: "konnte nicht als regulärer Ausdruck in den Zeilen %{invalid_lines} geparst werden."
         smaller_than_or_equal_to_max_length: "muss kleiner als oder gleich der maximalen Länge sein."
         taken: "ist bereits vergeben."
         too_long: "ist zu lang (nicht mehr als %{count} Zeichen)."
@@ -1608,9 +1610,10 @@ de:
       attachment: "Datei"
       attribute_help_text: "Hilfe-Text für Attribute"
       auth_provider:
-        one: "Authentication provider"
-        other: "Authentication providers"
+        one: "Authentifizierungsanbieter"
+        other: "Authentifizierungsanbieter"
       category: "Kategorie"
+      color: "Color"
       comment: "Kommentar"
       custom_action: "Benutzerdefinierte Aktion"
       custom_field: "Benutzerdefiniertes Feld"
@@ -1642,7 +1645,7 @@ de:
         one: "Rolle"
         other: "Rollen"
       scim_client:
-        one: "SCIM-client"
+        one: "SCIM-Client"
         other: "SCIM-clients"
       status: "Arbeitspaket-Status"
       token/api:
@@ -2203,7 +2206,7 @@ de:
         title: "Single Sign-On für Nextcloud-Speicher"
         description: "Aktivieren Sie nahtlose und sichere Authentifizierung für Ihren Nextcloud-Speicher mit Single Sign-On. Vereinfachen Sie das Zugriffsmanagement und erhöhen Sie den Benutzerkomfort."
       scim_api:
-        title: "SCIM-Clients"
+        title: "SCIM clients"
         description: "Automatisieren Sie die Benutzerverwaltung in OpenProject durch nahtlose Integration externer Identitätsdienste wie Microsoft Entra oder Keycloak über unsere SCIM Server API. Verfügbar ab dem Enterprise Corporate Plan."
       virus_scanning:
         description: "Stellen Sie sicher, dass hochgeladene Dateien in OpenProject auf Viren gescannt werden, bevor sie für andere Benutzer zugänglich sind."
@@ -2242,6 +2245,13 @@ de:
         Ich möchte den OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">Newsletter</a> erhalten.
       consent_html: >
         Ich stimme den <a target="_blank" href="https://www.openproject.org/de/rechtliches/nutzungsbedingungen"></a> und den <a target="_blank" href="https://www.openproject.org/de/rechtliches/datenschutz/">Datenschutzrichtlinien</a> zu.
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
   enumeration_activities: "Aktivitäten für Zeiterfassung"
   enumeration_work_package_priorities: "Arbeitspaket-Prioritäten"
   enumeration_reported_project_statuses: "Gemeldeter Projektstatus"
@@ -2542,7 +2552,7 @@ de:
       aggregation: "Zusammenfassungen"
       api_and_webhooks: "API und Webhooks"
     quick_add:
-      label: "Add…"
+      label: "Hinzufügen…"
   my_account:
     access_tokens:
       no_results:
@@ -2761,7 +2771,7 @@ de:
   label_default: "Standard"
   label_delete_user: "Benutzer löschen"
   label_delete_project: "Projekt löschen"
-  label_delete: "Lösche"
+  label_delete: "Löschen"
   label_deleted: "gelöscht"
   label_deleted_custom_field: "(gelöschtes benutzerdefiniertes Feld)"
   label_deleted_custom_item: "(gelöschter Eintrag)"
@@ -2842,7 +2852,7 @@ de:
   label_gantt_chart_plural: "Gantt Diagramme"
   label_general: "Allgemein"
   label_generate_key: "Schlüssel generieren"
-  label_global_modules: "Global modules"
+  label_global_modules: "Globale Module"
   label_global_roles: "Globale Rollen"
   label_git_path: "Pfad zum .git-Verzeichnis"
   label_greater_or_equal: ">="
@@ -2927,6 +2937,7 @@ de:
   label_manage: "Verwalten"
   label_manage_groups: "Gruppen verwalten"
   label_managed_repositories_vendor: "Verwaltete %{vendor} Projektarchive"
+  label_mathematical_operators: "Mathematische Operatoren"
   label_max_size: "Maximale Größe"
   label_me: "ich"
   label_member_new: "Neues Mitglied"
@@ -2986,7 +2997,7 @@ de:
   label_no_due_date: "kein Endtermin"
   label_no_start_date: "kein Startdatum"
   label_no_parent_page: "Keine übergeordnete Seite"
-  label_notification_center_plural: "Notifications"
+  label_notification_center_plural: "Benachrichtigungen"
   label_nothing_display: "Nichts anzuzeigen"
   label_nobody: "Niemand"
   label_not_configured: "Nicht konfiguriert"
@@ -3195,7 +3206,7 @@ de:
   label_user_mail_option_only_my_events: "Nur für Aufgaben, die ich beobachte oder an welchen ich mitarbeite"
   label_user_mail_option_only_owner: "Nur für Aufgaben, die ich angelegt habe"
   label_user_mail_option_selected: "Für alle Ereignisse in den ausgewählten Projekten"
-  label_user_menu: "User menu"
+  label_user_menu: "Benutzermenü"
   label_user_new: "Neuer Benutzer"
   label_user_plural: "Benutzer"
   label_user_search: "Nach Benutzer suchen"

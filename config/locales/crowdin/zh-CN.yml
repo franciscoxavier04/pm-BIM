@@ -116,7 +116,7 @@ zh-CN:
         one_time_hint: "这将是您看到客户端密钥的唯一机会。请务必立即复制。"
       created_token_dialog_component:
         title: "令牌已创建"
-        heading: "A token has been generated"
+        heading: "已生成一个令牌"
         label_token: "令牌"
         one_time_hint: "这将是您看到此令牌的唯一机会。请务必立即复制。"
       delete_scim_client_dialog_component:
@@ -128,14 +128,14 @@ zh-CN:
       form:
         auth_provider_description: "这是 SCIM 提供商添加的用户在 OpenProject 中进行身份验证时将使用的服务。"
         authentication_method_description_html: "这是 SCIM 客户端在 OpenProject 上进行身份验证的方式。请确保 OAuth 令牌包括 <code>scim_v2</code> 作用域。"
-        description_html: '关于这些配置选项的更多信息，请参阅我们的 <a href="%{docs_url}">SCIM 客户端配置文档</a> 。'
-        jwt_sub_description_html: '例如，对于 Keycloak，这是与 SCIM 客户端相关联的服务账户的 UUID。请查阅<a href="%{docs_url}">我们的文档</a>，了解如何找到您的用例的主体声明。'
+        description: "关于这些配置选项的更多信息，请参阅我们的[SCIM 客户端配置文档](docs_url)。"
+        jwt_sub_description: "例如，对于 Keycloak，这是与 SCIM 客户端相关联的服务账户的 UUID。要了解如何找到您的用例的主体声明，请查阅[我们的文档](docs_url)。"
         name_description: "选择一个名称，帮助其他管理员更好地理解配置此客户端的原因。"
       index:
-        description: "在此处配置的 SCIM 客户端能够与 OpenProject SCIM 服务器 API 交互，以添加、更新和删除用户帐户和群组。"
+        description: "此处配置的 SCIM 客户端能够与 OpenProject SCIM 服务器 API 交互，以提供、更新和取消提供用户帐户和群组。"
         label_create_button: "添加 SCIM 客户端"
       new:
-        title: "新建 SCIM 客户端"
+        title: "新增 SCIM 客户端"
       revoke_static_token_dialog_component:
         confirm_button: "撤销"
         title: "撤销静态令牌"
@@ -356,9 +356,9 @@ zh-CN:
       blueprint: "图案蓝图"
   global_search:
     title:
-      all_projects: 'Search for "%{search_term}" in all projects'
-      current_project: 'Search for "%{search_term}" in %{project_name}'
-      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
+      all_projects: '在所有项目中搜索“%{search_term}”'
+      current_project: '在 %{project_name} 中搜索“%{search_term}”'
+      project_and_subprojects: '在 %{project_name} 和所有子项目中搜索“%{search_term}”'
     placeholder: "在%{app_title}中搜索"
     overwritten_tabs:
       all: "全部"
@@ -366,23 +366,23 @@ zh-CN:
       wiki_pages: "维基"
   groups:
     edit:
-      synchronized_groups: "Synchronized groups"
+      synchronized_groups: "同步的群组"
     index:
-      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+      description: 通过将用户分组到一起，您可以将他们添加为同一项目的成员，也可以将相同的全局角色分配给他们。
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
-        title: No groups set up yet
-      user_count: User count
+        description: You can define named groups of users with specific permissions.
+        title: 尚未设置群组
+      user_count: 用户数
     users:
       no_results_title_text: 这个组目前没有用户。
     memberships:
       no_results_title_text: 这个组目前没有项目。
     synchronized_groups:
       blankslate:
-        action: Authentication settings
-        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
-        title: No synchronized groups yet
+        action: 身份验证设置
+        description: 当此群组与 OpenID 等外部身份提供商中的群组自动同步时，它们会显示在此处。您可以在身份验证设置中进行这项设置。
+        title: 尚无同步群组
   incoming_mails:
     ignore_filenames: >
       指定在处理收到的邮件的附件（例如，签名或图标）时要忽略的名称列表。每行输入一个文件名。
@@ -677,6 +677,7 @@ zh-CN:
     dark: "暗黑"
     light: "浅色模式"
     light_high_contrast: "高对比度模式"
+    sync_with_os: "自动（匹配操作系统颜色模式）"
   types:
     index:
       no_results_title_text: 目前没有类型。
@@ -708,9 +709,8 @@ zh-CN:
             project: "项目"
         pattern:
           label: "主题模式"
-          caption_with_supported_attributes_link: 通过添加文本创建模式，或键入 “/” 搜索 %{link}。
+          caption: 通过添加文本创建模式，或输入“/”搜索[支持的属性](attributes_url)。
           insert_as_text: "未找到属性。以文本形式添加：“%{word}”"
-          supported_attributes_link: "支持的属性"
       export_configuration:
         tab: "生成 PDF"
         intro: "为此类型选择模板。模板决定此类型工作包导出的PDF的设计和可见属性。默认选择列表上的第一个模板。"
@@ -1162,7 +1162,7 @@ zh-CN:
         comments_sorting: "显示工作包活动排序方式"
         disable_keyboard_shortcuts: "禁用键盘快捷键"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
+          如果您使用屏幕阅读器或希望避免意外触发快捷键，您可以选择禁用默认<a href="%{href}">键盘快捷键</a>。
         dismissed_enterprise_banners: "隐藏企业横幅"
         impaired: "辅助功能模式"
         auto_hide_popups: "自动隐藏成功横幅"
@@ -1258,6 +1258,7 @@ zh-CN:
         inclusion_nested: "未设置为路径“%{path}”中允许的值之一。"
         invalid: "是无效的。"
         invalid_characters: "包含无效字符。"
+        not_allowed_custom_fields_referenced: "包含不允许使用的自定义字段： %{custom_fields}。"
         invalid_url: "不是有效的 URL。"
         invalid_url_scheme: "不是受支持的协议（允许：%{allowed_schemes}）。"
         less_than_or_equal_to: "必须小于或等于 %{count}。"
@@ -1277,6 +1278,7 @@ zh-CN:
         odd: "必须是奇数。"
         regex_match_failed: "与正则表达式 %{expression}不匹配。"
         regex_invalid: "无法与关联的正则表达式进行验证。"
+        regex_list_invalid: "%{invalid_lines}行中的正则表达式无法被解析。"
         smaller_than_or_equal_to_max_length: "必须小于或等于最大长度。"
         taken: "已经采取。"
         too_long: "太长 (最多 %{count} 个字符)。"
@@ -1602,8 +1604,9 @@ zh-CN:
       attachment: "文件"
       attribute_help_text: "属性帮助文本"
       auth_provider:
-        other: "Authentication providers"
+        other: "身份验证提供方"
       category: "类别"
+      color: "Color"
       comment: "评论"
       custom_action: "自定义操作"
       custom_field: "自定义字段"
@@ -1727,7 +1730,7 @@ zh-CN:
     estimated_time: "工时"
     email: "Email"
     entity_type: "实体"
-    expires_at: "Expires on"
+    expires_at: "到期时间"
     firstname: "名字"
     filter: "筛选器"
     group: "组"
@@ -1851,7 +1854,7 @@ zh-CN:
   button_delete_watcher: "删除关注者 %{name}"
   button_download: "下载"
   button_duplicate: "复制"
-  button_duplicate_and_follow: "Duplicate and follow"
+  button_duplicate_and_follow: "复制并跟踪"
   button_edit: "编辑"
   button_edit_associated_wikipage: "编辑关联的维基页面： %{page_title}"
   button_expand_all: "全部展开"
@@ -2202,6 +2205,13 @@ zh-CN:
         我希望接收 OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">简报</a>。
       consent_html: >
         我同意<a target="_blank" href="https://www.openproject.org/terms-of-service/">服务条款</a>和<a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">隐私政策</a>。
+  email_calendar_updates:
+    state:
+      disabled: "已禁用。"
+      enabled: "已启用。"
+    button:
+      disabled: "启用"
+      enabled: "禁用"
   enumeration_activities: "时间跟踪活动"
   enumeration_work_package_priorities: "工作包优先级"
   enumeration_reported_project_statuses: "报告的项目状态"
@@ -2502,7 +2512,7 @@ zh-CN:
       aggregation: "聚合"
       api_and_webhooks: "API 和 Webhook"
     quick_add:
-      label: "Add…"
+      label: "添加..."
   my_account:
     access_tokens:
       no_results:
@@ -2802,7 +2812,7 @@ zh-CN:
   label_gantt_chart_plural: "甘特图"
   label_general: "通用"
   label_generate_key: "生成密钥"
-  label_global_modules: "Global modules"
+  label_global_modules: "全局模块"
   label_global_roles: "全局角色"
   label_git_path: ".git 目录的路径"
   label_greater_or_equal: ">="
@@ -2887,6 +2897,7 @@ zh-CN:
   label_manage: "管理"
   label_manage_groups: "组管理"
   label_managed_repositories_vendor: "托管的 %{vendor} 存储库"
+  label_mathematical_operators: "数学运算符"
   label_max_size: "最大"
   label_me: "我"
   label_member_new: "新成员"
@@ -2946,7 +2957,7 @@ zh-CN:
   label_no_due_date: "没有完成日期"
   label_no_start_date: "没有开始日期"
   label_no_parent_page: "无父级页面"
-  label_notification_center_plural: "Notifications"
+  label_notification_center_plural: "通知"
   label_nothing_display: "不显示"
   label_nobody: "没人"
   label_not_configured: "未配置"
@@ -2979,7 +2990,7 @@ zh-CN:
   label_password_rule_special: "特殊字符"
   label_password_rule_uppercase: "大写字母"
   label_path_encoding: "路径编码"
-  label_per_page: "Per page:"
+  label_per_page: "每页："
   label_people: "人员"
   label_permissions: "权限"
   label_permissions_report: "权限报告"
@@ -3155,7 +3166,7 @@ zh-CN:
   label_user_mail_option_only_my_events: "仅为我关注或参与的内容"
   label_user_mail_option_only_owner: "仅为我是所有者的内容"
   label_user_mail_option_selected: "只对于所选项目的任何事件......"
-  label_user_menu: "User menu"
+  label_user_menu: "用户菜单"
   label_user_new: "新用户"
   label_user_plural: "用户"
   label_user_search: "搜索用户"
@@ -3535,7 +3546,7 @@ zh-CN:
   permission_comment_news: "评论新闻"
   permission_commit_access: "读/写访问存储库 (提交)"
   permission_copy_projects: "复制项目"
-  permission_copy_work_packages: "Duplicate work packages"
+  permission_copy_work_packages: "复制工作包"
   permission_create_backup: "创建备份"
   permission_delete_work_package_watchers: "删除关注者"
   permission_delete_work_packages: "删除工作包"

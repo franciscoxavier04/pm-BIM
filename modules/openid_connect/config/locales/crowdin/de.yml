@@ -7,17 +7,18 @@ de:
   activerecord:
     attributes:
       openid_connect/group_link:
-        oidc_group_name: OpenID group identifier
+        oidc_group_name: OpenID Gruppenbezeichner
       openid_connect/provider:
         name: Name
         slug: Eindeutige Kennung
         display_name: Anzeigename
         client_id: Client-ID
         client_secret: Client-Secret
-        groups_claim: Groups claim
+        groups_claim: Gruppen-Claim
+        group_regexes: Patterns (reguläre Ausdrücke)
         secret: Secret
         scope: Scope
-        sync_groups: Synchronize groups
+        sync_groups: Gruppen synchronisieren
         grant_types_supported: Unterstützte Grant-Typen
         limit_self_registration: Selbstregistrierung begrenzen
         authorization_endpoint: Autorisierungsendpunkt
@@ -56,16 +57,16 @@ de:
   openid_connect:
     menu_title: OpenID-Anbieter
     delete_title: "OpenID Connect Anbieter löschen"
-    group_links_heading: OpenID Connect group links
+    group_links_heading: OpenID Connect Gruppenverknüpfungen
     instructions:
-      redirect_url: Dies ist die URL, die der OpenID Connect-Anbieter verwenden sollte, um nach einer erfolgreichen Anmeldung zurück zu OpenProject zu leiten.
       endpoint_url: Die Endpunkt-URL, die Sie vom OpenID Connect-Anbieter erhalten haben
-      group_regexes: One regular expression pattern per line. Please read [the documentation](docs_url) for more information on how to do this.
-      group_regexes_detail: Define patterns using regular expressions to match group names from the groups claim. For example, entering a pattern like <code>^Level1/Level2/([\w/]+)$</code> will extract the group “Groupname/SubGroup” from a response including “Level1/Level2/GroupName/SubGroup”.
-      group_sync: Automatically extract and synchronise group membership information from the identity provider.
-      groups_claim: Specify the name of the claim that's expected to indicate the group names that the user is a member of.
+      group_regexes: Ein regulärer Ausdruck pro Zeile. Bitte lesen Sie [die Dokumentation](docs_url) für weitere Informationen hierzu.
+      group_regexes_detail: Definieren Sie optional Pattern mit regulären Ausdrücken, um Gruppennamen aus dem Gruppenanspruch abzugleichen. Wenn Sie beispielsweise ein Pattern wie ^Level1/Level2/ <code>([\w/]+)$</code> eingeben, wird die Gruppe "Gruppenname/Untergruppe" aus einer Antwort mit "Level1/Level2/Gruppenname/Untergruppe" extrahiert. Wenn kein Pattern übereinstimmt, wird die Gruppe ignoriert. Lassen Sie das Feld leer, um alle Gruppen mit ihrem vollständigen Gruppennamen zu synchronisieren.
+      group_sync: Gruppenzugehörigkeit von Benutzern automatisch vom Identitätsanbieter übertragen.
+      groups_claim: Geben Sie den Namen des Claims an, der die Namen von Gruppen enthält, bei denen der Nutzer Mitglied ist.
       metadata_none: Ich habe diese Informationen nicht
       metadata_url: Ich habe eine Discovery-Endpunkt-URL
+      oidc_information: These values are needed to configure the OpenID Connect provider.
       client_id: Dies ist die Client-ID, die Sie von Ihrem OpenID Connect-Anbieter erhalten haben
       client_secret: Dies ist das Client-Secret, die Sie von Ihrem OpenID Connect-Anbieter erhalten haben
       limit_self_registration: Wenn diese Option aktiviert ist, können sich Benutzer nur dann über diesen Anbieter registrieren, wenn die Konfiguration aufseiten des Anbieters dies zulässt.
@@ -107,8 +108,7 @@ de:
       label_edit: OpenID-Provider %{name} bearbeiten
       label_empty_title: Noch keine OpenID Connect-Anbieter konfiguriert.
       label_empty_description: Fügen Sie einen Anbieter hinzu, um sie hier zu sehen.
-      label_group_mapping: Group mapping
-      label_group_regexes: Pattern (regular expression)
+      label_group_mapping: Gruppenzuordnung
       label_metadata: OpenID Connect Discovery Endpunkt
       label_automatic_configuration: Automatische Konfiguration
       label_optional_configuration: Optionale Konfiguration
@@ -121,7 +121,7 @@ de:
       plural: OpenID-Anbieter
       singular: OpenID-Anbieter
       section_texts:
-        group_mapping: Map group names provided by the identity provider to groups in OpenProject.
+        group_mapping: Weisen Sie Gruppennamen des Identitätsanbieters Gruppen in OpenProject zu.
         metadata: Konfiguration unter Verwendung einer OpenID Connect Discovery Endpunkt-URL vorausfüllen
         metadata_form_banner: Durch die Bearbeitung des Discovery-Endpunkts werden möglicherweise vorhandene Konfigurationswerte überschrieben.
         metadata_form_title: OpenID Connect Discovery Endpunkt
@@ -133,7 +133,7 @@ de:
         claims: Fordern Sie zusätzliche Ansprüche (Claims) für das ID-Token oder die Userinfo-Antwort an.
       side_panel:
         information_component:
-          backchannel_logout_url: Backchannel logout URL
+          backchannel_logout_url: Backchannel Logout URL
     setting_instructions:
       limit_self_registration: >
         Wenn aktiviert, können sich Benutzer nur dann mit diesem Anbieter registrieren, wenn die Einstellung zur Selbstregistrierung dies zulässt.

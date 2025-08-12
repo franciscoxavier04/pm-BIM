@@ -295,10 +295,10 @@ pl:
           learn_about: "Dowiedz się więcej o wszystkich nowych funkcjach"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. Chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_2":
+          "16_3":
             standard:
               new_features_html: >
-                Wersja zawiera różne nowe funkcje i ulepszenia, takie jak <br> <ul class="%{list_styling_class}"> <li>Nowy nagłówek i pasek boczny z ulepszoną nawigacją i wyglądem.</li> <li>Płynniejsza praca z polami niestandardowymi, relacjami, przypomnieniami, spotkaniami i funkcją Moje śledzenie czasu.</li> <li>Obsługa języków niełacińskich i emotikonów w eksportach w formacie PDF.</li> <li>Opcja wyłączenia skrótów klawiaturowych dla lepszej dostępności.</li> <li>Serwer SCIM przez interfejs API (dodatek wersji Enterprise).</li> <li>Obsługa interfejsu API dla komentarzy wewnętrznych.</li> </ul>
+                Wersja zawiera różne nowe funkcje i ulepszenia, takie jak <br> <ul class="%{list_styling_class}"> <li>Ulepszenia UX/UI zapewniające nowocześniejszy wygląd.</li> <li>Spotkania: opcja wyciszenia powiadomień e-mail i ICS.</li> <li>Liczniki upływu czasu wyświetlane w module Moje śledzenie czasu.</li> <li>Raportowanie postępów: suma % ukończenia wyświetlana jest również w trybie opartym na statusie.</li> <li>Kontrola kondycji Nextcloud: wskazanie braku funkcji wymiany tokenów (dodatek Enterprise).</li> </ul>
     ical_sharing_modal:
       title: "Subskrybuj kalendarz"
       inital_setup_error_message: "Podczas pobierania danych wystąpił błąd."

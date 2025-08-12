@@ -30,7 +30,7 @@ ar:
         overridden_costs: "تكاليف متجاوزة"
         spent: "أنفق"
         spent_on: "التاريخ"
-        logged_by: "Logged by"
+        logged_by: "\"تم تسجيل الدخول بواسطة \""
         entity: Logged for
         entity_id: Logged for
         entity_gid: Logged for

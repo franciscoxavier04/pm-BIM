@@ -295,10 +295,10 @@ uk:
           learn_about: "Докладніше про всі нові функції"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. Chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_2":
+          "16_3":
             standard:
               new_features_html: >
-                Реліз містить різні нові функції і покращення, як-от: <br> <ul class="%{list_styling_class}"> <li>нова шапка й бічна панель із покращеною навігацією та дизайном;</li> <li>поліпшена робота з користувацькими полями, зв’язками, нагадуваннями, нарадами й функцією «Мій облік часу».</li> <li>підтримка мов, що використовують нелатинські літери, і смайликів при експорті PDF-файлів;</li> <li>можливість відключити комбінації клавіш для кращої доступності;</li> <li>сервер SCIM через API (надбудова Enterprise);</li> <li>підтримка API для внутрішніх коментарів.</li> </ul>
+                Випуск містить різні нові функції і покращення, зокрема: <br> <ul class="%{list_styling_class}"> <li>вдосконалення UX/UI для сучаснішого вигляду;</li> <li>можливість тимчасово вимкнути надсилання електронних листів зі сповіщеннями й ICS для нарад;</li> <li>поточні таймери, що відображаються в модулі «Мій облік часу»;</li> <li>відображення «% завершення» в підсумках звітів про перебіг виконання також у режимі «На основі статусу»;</li> <li>виявлення відсутньої можливості обміну маркерами при перевірці стану Nextcloud (у доповненні версії Enterprise).</li> </ul>
     ical_sharing_modal:
       title: "Підписатися на календар"
       inital_setup_error_message: "Під час отримання даних сталася помилка."
@@ -645,7 +645,7 @@ uk:
       title: "Підтвердіть ваш пароль щоб продовжити"
     pagination:
       no_other_page: "Ви знаходитесь на єдиній сторінці."
-      pages_skipped: "Pages skipped."
+      pages_skipped: "Сторінки пропущено."
       page_navigation: "Навігація сторінками"
       per_page_navigation: 'Кількість елементів на сторінку'
       pages:
@@ -698,7 +698,7 @@ uk:
           first_day: "Перший день"
           last_day: "Останній день"
     text_are_you_sure: "Ви впевненені?"
-    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
+    text_are_you_sure_to_cancel: "На цій сторінці є незбережені зміни. Ви дійсно хочете їх скасувати?"
     breadcrumb: "Ланцюжок навігації"
     text_data_lost: "Усі введені дані буде втрачено."
     text_user_wrote: "%{value} написав(-ла):"

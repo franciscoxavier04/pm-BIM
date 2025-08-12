@@ -116,7 +116,7 @@ it:
         one_time_hint: "Questa è l'unica volta in cui vedrai il segreto del client. Assicurati di copiarlo adesso."
       created_token_dialog_component:
         title: "Token creato"
-        heading: "A token has been generated"
+        heading: "È stato generato un token"
         label_token: "Token"
         one_time_hint: "Questa è l'unica volta in cui vedrai questo token. Assicurati di copiarlo adesso."
       delete_scim_client_dialog_component:
@@ -128,8 +128,8 @@ it:
       form:
         auth_provider_description: "Questo è il servizio che gli utenti aggiunti dal provider SCIM utilizzeranno per autenticarsi in OpenProject."
         authentication_method_description_html: "Questo è il modo in cui il cliente SCIM si autentica presso OpenProject. Assicurati che i token OAuth includano l'ambito <code>scim_v2</code>."
-        description_html: 'Per maggiori informazioni su queste opzioni di configurazione, fai riferimento alla nostra <a href="%{docs_url}">documentazione sulla configurazione dei client SCIM</a>.'
-        jwt_sub_description_html: 'Ad esempio, per Keycloak, si tratta dell''UUID dell''account di servizio associato al client SCIM. Consulta la <a href="%{docs_url}">nostra documentazione</a> per sapere come trovare la richiesta di accesso all''oggetto per il tuo caso d''uso.'
+        description: "Per maggiori informazioni su queste opzioni di configurazione, fai riferimento alla nostra [documentazione sulla configurazione dei client SCIM](docs_url)."
+        jwt_sub_description: "Ad esempio, per Keycloak, si tratta dell'UUID dell'account di servizio associato al client SCIM. Consulta [la nostra documentazione](docs_url) per sapere come trovare la richiesta di accesso all'oggetto per il tuo caso d'uso."
         name_description: "Scegli un nome che aiuterà gli altri amministratori a capire meglio perché questo client è stato configurato."
       index:
         description: "I client SCIM configurati qui sono in grado di interagire con l'API del server SCIM di OpenProject per fornire, aggiornare e annullare il provisioning di account utente e gruppi."
@@ -357,9 +357,9 @@ it:
       blueprint: "Schema del modello"
   global_search:
     title:
-      all_projects: 'Search for "%{search_term}" in all projects'
-      current_project: 'Search for "%{search_term}" in %{project_name}'
-      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
+      all_projects: 'Cerca "%{search_term}" in tutti i progetti'
+      current_project: 'Cerca "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Cerca "%{search_term}" in %{project_name} e tutti i sottoprogetti'
     placeholder: "Cerca in %{app_title}"
     overwritten_tabs:
       all: "Tutti"
@@ -367,23 +367,23 @@ it:
       wiki_pages: "Wiki"
   groups:
     edit:
-      synchronized_groups: "Synchronized groups"
+      synchronized_groups: "Gruppi sincronizzati"
     index:
-      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+      description: Raggruppando gli utenti, puoi aggiungerli come membri agli stessi progetti o assegnare loro gli stessi ruoli globali.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
-        title: No groups set up yet
-      user_count: User count
+        description: You can define named groups of users with specific permissions.
+        title: Non sono ancora stati creati gruppi
+      user_count: Numero di utenti
     users:
       no_results_title_text: Al momento nessun utente fa parte di questo gruppo.
     memberships:
       no_results_title_text: Al momento nessun progetto fa parte di questo gruppo.
     synchronized_groups:
       blankslate:
-        action: Authentication settings
-        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
-        title: No synchronized groups yet
+        action: Impostazioni di autenticazione
+        description: Quando questo gruppo viene sincronizzato automaticamente con gruppi in provider di identità esterni come OpenID, verranno visualizzati qui. Puoi configurarlo nelle impostazioni di autenticazione.
+        title: Non ci sono ancora gruppi sincronizzati
   incoming_mails:
     ignore_filenames: >
       Specifica un elenco di nomi da ignorare durante l'elaborazione di allegati per posta in arrivo (ad esempio firme o icone). Immettere un nome file per riga.
@@ -685,6 +685,7 @@ it:
     dark: "Scuro"
     light: "Chiaro"
     light_high_contrast: "Chiaro ad alto contrasto"
+    sync_with_os: "Automatico (abbina modalità colore del sistema operativo)"
   types:
     index:
       no_results_title_text: Al momento non esistono tipi.
@@ -716,9 +717,8 @@ it:
             project: "Progetto"
         pattern:
           label: "Schema dell'oggetto"
-          caption_with_supported_attributes_link: Crea modelli aggiungendo testo oppure digita "/" per cercare %{link}.
+          caption: Crea modelli aggiungendo testo oppure digita "/" per cercare [attributi supportati](attributes_url).
           insert_as_text: "Nessun attributo trovato. Aggiungi come testo: \"%{word}\""
-          supported_attributes_link: "attributi supportati"
       export_configuration:
         tab: "Genera PDF"
         intro: "Seleziona quali modelli tra quelli disponibili desideri abilitare per questo tipo. Il modello determina il design e gli attributi visibili nel PDF esportato di una macro-attività che utilizza questo tipo. Il primo modello nell'elenco è selezionato per impostazione predefinita."
@@ -1171,7 +1171,7 @@ it:
         comments_sorting: "Visualizza le attività della macro-attività ordinate per"
         disable_keyboard_shortcuts: "Disabilita le scorciatoie da tastiera"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
+          Puoi scegliere di disabilitare le <a href="%{href}">scorciatoie da tastiera predefinite</a> se usi un lettore di schermo o vuoi evitare accidentalmente di innescare un'azione con una scorciatoia.
         dismissed_enterprise_banners: "Banner aziendali nascosti"
         impaired: "Modalità di accesso facilitato"
         auto_hide_popups: "Nascondi automaticamente i banner di successo"
@@ -1267,6 +1267,7 @@ it:
         inclusion_nested: "non è impostato su uno dei valori consentiti al percorso '%{path}'."
         invalid: "non è valido."
         invalid_characters: "contiene caratteri non validi."
+        not_allowed_custom_fields_referenced: "contiene campi personalizzati che non sono consentiti: %{custom_fields}."
         invalid_url: "non è un URL valido."
         invalid_url_scheme: "non è un protocollo supportato (ammessi: %{allowed_schemes})."
         less_than_or_equal_to: "deve essere inferiore o uguale a %{count}."
@@ -1286,6 +1287,7 @@ it:
         odd: "deve essere dispari."
         regex_match_failed: "non corrisponde all'espressione regolare %{expression}."
         regex_invalid: "non può essere convalidato con l'espressione regolare associata."
+        regex_list_invalid: "non può essere analizzato come espressione regolare nelle righe %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "deve essere minore o uguale alla lunghezza massima."
         taken: "è già stato usato."
         too_long: "è troppo lungo (il massimo è %{count} caratteri)."
@@ -1613,9 +1615,10 @@ it:
       attachment: "File"
       attribute_help_text: "Testo guida dell'attributo"
       auth_provider:
-        one: "Authentication provider"
-        other: "Authentication providers"
+        one: "Servizio di autenticazione"
+        other: "Servizi di autenticazione"
       category: "Categoria"
+      color: "Color"
       comment: "Commento"
       custom_action: "Azione personalizzata"
       custom_field: "Campo personalizzato"
@@ -2247,6 +2250,13 @@ it:
         Voglio ricevere la newsletter di <a target="_blank" href="https://www.openproject.org/newsletter/">OpenProject</a>.
       consent_html: >
         Accetto i <a target="_blank" href="https://www.openproject.org/terms-of-service/">termini di servizio</a> e l'<a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">informativa sulla privacy</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Disabilitati."
+      enabled: "Abilitati."
+    button:
+      disabled: "Abilita"
+      enabled: "Disabilita"
   enumeration_activities: "Attività di monitoraggio dei tempi"
   enumeration_work_package_priorities: "Priorità della macro-attività"
   enumeration_reported_project_statuses: "Stato di progetto segnalato"
@@ -2547,7 +2557,7 @@ it:
       aggregation: "Aggregazione"
       api_and_webhooks: "API e webhooks"
     quick_add:
-      label: "Add…"
+      label: "Aggiungi…"
   my_account:
     access_tokens:
       no_results:
@@ -2847,7 +2857,7 @@ it:
   label_gantt_chart_plural: "Diagrammi di Gantt"
   label_general: "Generale"
   label_generate_key: "Genera chiave"
-  label_global_modules: "Global modules"
+  label_global_modules: "Moduli globali"
   label_global_roles: "Ruoli globali"
   label_git_path: "Percorso per la cartella .git"
   label_greater_or_equal: ">="
@@ -2932,6 +2942,7 @@ it:
   label_manage: "Gestisci"
   label_manage_groups: "Gestisci i gruppi"
   label_managed_repositories_vendor: "Archivio gestito %{vendor}"
+  label_mathematical_operators: "Operatori matematici"
   label_max_size: "Dimensione massima"
   label_me: "io"
   label_member_new: "Nuovo membro"
@@ -2991,7 +3002,7 @@ it:
   label_no_due_date: "nessuna data di fine"
   label_no_start_date: "nessuna data di inizio"
   label_no_parent_page: "Nessuna pagina genitore"
-  label_notification_center_plural: "Notifications"
+  label_notification_center_plural: "Notifiche"
   label_nothing_display: "Niente da visualizzare"
   label_nobody: "nessuno"
   label_not_configured: "Non configurato"
@@ -3024,7 +3035,7 @@ it:
   label_password_rule_special: "Caratteri Speciali"
   label_password_rule_uppercase: "Maiuscolo"
   label_path_encoding: "Codifica del percorso"
-  label_per_page: "Per page:"
+  label_per_page: "Per pagina:"
   label_people: "Persone"
   label_permissions: "Permessi"
   label_permissions_report: "Report permessi"
@@ -3200,7 +3211,7 @@ it:
   label_user_mail_option_only_my_events: "Solo per le cose che osservo o nelle quali sono coinvolto"
   label_user_mail_option_only_owner: "Solo per le cose di cui sono proprietario"
   label_user_mail_option_selected: "Per qualsiasi evento solo nei progetti selezionati"
-  label_user_menu: "User menu"
+  label_user_menu: "Menu utente"
   label_user_new: "Nuovo utente"
   label_user_plural: "Utenti"
   label_user_search: "Cerca per utente"

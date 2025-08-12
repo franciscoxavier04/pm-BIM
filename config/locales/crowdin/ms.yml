@@ -128,8 +128,8 @@ ms:
       form:
         auth_provider_description: "This is the service that users added by the SCIM provider will use to authenticate in OpenProject."
         authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM clients</a> for more information on these configuration options.'
-        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
+        description: "Please refer to our [documentation on configuring SCIM clients](docs_url) for more information on these configuration options."
+        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
         name_description: "Choose a name that will help other admins better understand why this client was configured."
       index:
         description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
@@ -373,7 +373,7 @@ ms:
       description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
+        description: You can define named groups of users with specific permissions.
         title: No groups set up yet
       user_count: User count
     users:
@@ -679,6 +679,7 @@ ms:
     dark: "Gelap"
     light: "Terang"
     light_high_contrast: "Kontras tinggi yang terang"
+    sync_with_os: "Automatic (match OS colour mode)"
   types:
     index:
       no_results_title_text: Tiada jenis buat masa ini.
@@ -710,9 +711,8 @@ ms:
             project: "Projek"
         pattern:
           label: "Corak subjek"
-          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
+          caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
-          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "Hasilkan PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1260,6 +1260,7 @@ ms:
         inclusion_nested: "tidak ditetapkan pada salah satu nilai yang dibenarkan pada laluan '%{path}'."
         invalid: "tidak sah."
         invalid_characters: "contains invalid characters."
+        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
         invalid_url: "bukan URL yang sah."
         invalid_url_scheme: "adalah bukan protokol yang disokong (dibenarkan: %{allowed_schemes})."
         less_than_or_equal_to: "perlu kurang daripada atau sama dengan %{count}."
@@ -1279,6 +1280,7 @@ ms:
         odd: "mesti ganjil."
         regex_match_failed: "tidak padan dengan ungkapan biasa %{expression}."
         regex_invalid: "tidak dapat disahkan dengan ungkapan biasa yang berkaitan."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "perlu kurang daripada atau sama dengan panjang maksima."
         taken: "sudah diguna pakai."
         too_long: "adalah terlalu panjang (maksimum adalah %{count} karakter)."
@@ -1606,6 +1608,7 @@ ms:
       auth_provider:
         other: "Authentication providers"
       category: "Kategori"
+      color: "Color"
       comment: "Komen"
       custom_action: "Tindakan tersuai"
       custom_field: "Ruang tersuai"
@@ -2204,6 +2207,13 @@ ms:
         I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
       consent_html: >
         I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
   enumeration_activities: "Aktiviti penjejakan masa"
   enumeration_work_package_priorities: "Keutamaan pakej kerja"
   enumeration_reported_project_statuses: "Status projek yang dilaporkan"
@@ -2889,6 +2899,7 @@ ms:
   label_manage: "Uruskan"
   label_manage_groups: "Urus kumpulan"
   label_managed_repositories_vendor: "Repositori %{vendor} yang diuruskan"
+  label_mathematical_operators: "Mathematical operators"
   label_max_size: "Saiz maksimum"
   label_me: "saya"
   label_member_new: "Ahli baru"

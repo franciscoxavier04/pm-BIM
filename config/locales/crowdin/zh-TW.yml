@@ -122,32 +122,32 @@ zh-TW:
       delete_scim_client_dialog_component:
         title: "刪除 SCIM 用戶端"
         heading: "您確定要刪除此 SCIM 用戶端嗎？"
-        description: "由此 SCIM 用戶端管理的使用者將無法再由其更新。"
+        description: "此 SCIM 用戶端管理的使用者無法再由它更新。"
       edit:
         label_delete_scim_client: "刪除 SCIM 用戶端"
       form:
         auth_provider_description: "這是由 SCIM 提供者新增的使用者用來在 OpenProject 中進行驗證的服務。"
-        authentication_method_description_html: "這是 SCIM 客戶端在 OpenProject 進行驗證的方式。請確保 OAuth 令牌包含<code>scim_v2</code>範圍。"
-        description_html: '如需這些設定選項的詳細資訊，請參閱我們的 <a href="%{docs_url}">SCIM 用戶端設定文件</a>。'
-        jwt_sub_description_html: '例如，在 Keycloak 中，這是與 SCIM 用戶端相關聯的服務帳號 UUID。請參閱 <a href="%{docs_url}">我們的文件</a>，了解如何依您的使用情境尋找 subject claim（主體宣告）。'
+        authentication_method_description_html: "這是 SCIM 用戶端在 OpenProject 進行認證的方式。請確保 OAuth 令牌包含<code>scim_v2</code>範圍。"
+        description: "有關這些組態選項的詳細資訊，請參閱我們的 [設定 SCIM 用戶端的說明文件](docs_url)。"
+        jwt_sub_description: "例如，對於 Keycloak，這是與 SCIM 用戶端關聯的服務帳戶的 UUID。請參閱 [我們的說明文件](docs_url) 來學習如何針對您的使用個案尋找主題聲稱。"
         name_description: "請選擇一個能幫助其他管理員理解此用戶端設定目的的名稱。"
       index:
-        description: "在此設定的 SCIM 用戶端能與 OpenProject SCIM 伺服器 API 互動，以配置、新增、更新及停用使用者帳號與群組。"
-        label_create_button: "新增 SCIM 用戶端"
+        description: "在此設定的 SCIM 用戶端能夠與 OpenProject SCIM 伺服器 API 互動，以提供、更新和取消提供使用者帳戶和群組。"
+        label_create_button: "新的 SCIM 用戶端"
       new:
-        title: "新的 SCIM 用戶端"
+        title: "新增 SCIM-client"
       revoke_static_token_dialog_component:
         confirm_button: "撤銷"
         title: "撤銷靜態令牌"
         heading: "你確定要撤銷此令牌(Token)？"
-        description: "使用此令牌的 SCIM 用戶端將不能再存取 OpenProject 的 SCIM 伺服器 API。"
+        description: "使用此標記的 SCIM 用戶端將不能再存取 OpenProject 的 SCIM 伺服器 API。"
       table_component:
         blank_slate:
           title: "尚未設定 SCIM 用戶端"
           description: "新增用戶端後，將會在此顯示"
         user_count: "使用者"
       token_list_component:
-        description: "您在此產生的權杖可由 SCIM 用戶端用來存取 OpenProject SCIM API。"
+        description: "您在此產生的令牌可由 SCIM 用戶端用來存取 OpenProject SCIM API。"
         heading: "令牌"
         label_add_token: "令牌"
         label_aria_add_token: "新增令牌"
@@ -373,7 +373,7 @@ zh-TW:
       description: 透過將使用者分組，您可以將他們新增為相同專案的成員，或指派相同的全局角色給他們。
     table_component:
       blank_slate:
-        description: 您可以定義具有特定名稱的使用者群組
+        description: 您可以定義具備特定權限的已命名使用者群組。
         title: 尚未建立群組
       user_count: 用户數
     users:
@@ -678,6 +678,7 @@ zh-TW:
     dark: "深色主題"
     light: "白色主題"
     light_high_contrast: "高對比白色主題"
+    sync_with_os: "自動（匹配 OS 顏色模式）"
   types:
     index:
       no_results_title_text: 目前沒有類型
@@ -709,9 +710,8 @@ zh-TW:
             project: "專案"
         pattern:
           label: "主題模板"
-          caption_with_supported_attributes_link: 輸入文字以建立樣式，或輸入「/」搜尋 %{link}。
+          caption: 透過新增文字建立模式，或輸入「/」來搜尋 [支援的屬性](attributes_url)。
           insert_as_text: "未找到屬性。以文字新增：\"%{word}"
-          supported_attributes_link: "支援的屬性"
       export_configuration:
         tab: "產生PDF檔案"
         intro: "從可用的範本中選擇您想要為此類型啟用的範本。範本決定了使用此類工作套件匯出的 PDF 中顯示的設計和屬性。預設為選定清單中的第一個模板。"
@@ -1258,6 +1258,7 @@ zh-TW:
         inclusion_nested: "未設置為路徑“%{path}”中允許的值之一"
         invalid: "不正確。"
         invalid_characters: "包含無效的字元。"
+        not_allowed_custom_fields_referenced: "包含不允許使用的自訂欄位： %{custom_fields}。"
         invalid_url: "不是有效的 URL。"
         invalid_url_scheme: "不是受支援的協定 (允許的協定: %{allowed_schemes})。"
         less_than_or_equal_to: "必須少於或者等於 %{count}。"
@@ -1277,6 +1278,7 @@ zh-TW:
         odd: "必須是奇數"
         regex_match_failed: "與正則表達式 %{expression} 不匹配。"
         regex_invalid: "不能被相關聯的正則運算式驗證。"
+        regex_list_invalid: "在 %{invalid_lines}行中，無法以正則表 達式進行解析。"
         smaller_than_or_equal_to_max_length: "必須小於或等於最大長度。"
         taken: "已經被使用"
         too_long: "太長 (最長是 %{count} 個字元)"
@@ -1604,6 +1606,7 @@ zh-TW:
       auth_provider:
         other: "驗證提供者"
       category: "類別"
+      color: "顏色"
       comment: "留言"
       custom_action: "自訂動作"
       custom_field: "客製欄位"
@@ -2202,6 +2205,13 @@ zh-TW:
         我想訂閱 OpenProject 的<a target="_blank" href="https://www.openproject.org/newsletter/">電子報</a>。
       consent_html: >
         我同意<a target="_blank" href="https://www.openproject.org/terms-of-service/">服務條款</a>及<a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">隱私政策</a>。
+  email_calendar_updates:
+    state:
+      disabled: "已停用。"
+      enabled: "已啟用。"
+    button:
+      disabled: "啟用"
+      enabled: "停用"
   enumeration_activities: "工時紀錄活動"
   enumeration_work_package_priorities: "工作套件優先等級"
   enumeration_reported_project_statuses: "報告的專案狀態"
@@ -2887,6 +2897,7 @@ zh-TW:
   label_manage: "管理"
   label_manage_groups: "管理群組"
   label_managed_repositories_vendor: "已管理的 %{vendor} 版本庫"
+  label_mathematical_operators: "數學運算元"
   label_max_size: "最大容量"
   label_me: "我"
   label_member_new: "新成員"
