@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 module RecurringMeetings
   class ScheduleController < ApplicationController
-    authorize_with_permission :create_meetings, global: true
-
     around_action :with_user_time_zone
-    before_action :build_meeting
+    before_action :require_login, :build_meeting
+    no_authorization_required! :humanize_schedule
 
     def humanize_schedule
       text = @recurring_meeting.human_frequency_schedule

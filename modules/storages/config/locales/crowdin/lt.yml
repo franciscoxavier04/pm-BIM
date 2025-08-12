@@ -343,12 +343,10 @@ lt:
         warning: Some checks returned a warning. This can lead to unexpected behaviour.
       title: Health status report
     health_email_notifications:
-      description_subscribed: Visi administratoriai gauna šios saugyklos sveikatos būsenos pranešimus e-paštu.
-      description_unsubscribed: Šios saugyklos sveikatos būsenos e-pašto pranešimai buvo išjungti visiems administratoriams.
+      description_disabled: Admins will not receive updates by email when there are important updates.
+      description_enabled: Admins will receive updates by email when there are important updates.
       error_could_not_be_saved: Nepavyko įrašyti e-pašto pranešimų nustatymų. Prašome bandyti dar kartą.
-      subscribe: Prenumeruoti
-      title: El. pašto priminimai
-      unsubscribe: Atšaukti prenumeratą
+      title: Email updates to admins
     help_texts:
       project_folder: Projekto aplankas yra numatytasis aplankas failų įkėlimui šiame projekte. Naudotojai gali įkelti failus ir į kitas vietas.
       project_folder_bulk: The project folder is the default folder for file uploads for all the projects selected. You can modify this individually in each project settings. Users can nevertheless still upload files to other locations.

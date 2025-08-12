@@ -224,6 +224,17 @@ module Pages::Meetings
       end
     end
 
+    def move_item_to_next_meeting(item)
+      select_action(item, "Move to next meeting")
+      expect_modal("Move to next meeting?")
+
+      retry_block do
+        page.within_modal "Move to next meeting?" do
+          click_on "Move"
+        end
+      end
+    end
+
     def open_menu(item, &)
       retry_block do
         page.within("#meeting-agenda-items-item-component-#{item.id}") do

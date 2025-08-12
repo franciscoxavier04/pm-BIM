@@ -343,12 +343,10 @@ cs:
         warning: Some checks returned a warning. This can lead to unexpected behaviour.
       title: Health status report
     health_email_notifications:
-      description_subscribed: Všichni administrátoři dostávají e-mailová oznámení o zdravotním stavu pro toto úložiště.
-      description_unsubscribed: Health status email notifications for this storage have been turned off for all administrators.
+      description_disabled: Admins will not receive updates by email when there are important updates.
+      description_enabled: Admins will receive updates by email when there are important updates.
       error_could_not_be_saved: Nastavení e-mailových oznámení nelze uložit. Zkuste to prosím znovu.
-      subscribe: Přihlásit k odběru
-      title: E-mailová upozornění
-      unsubscribe: Odhlásit se z odběru
+      title: Email updates to admins
     help_texts:
       project_folder: Složka projektu je výchozí složka pro nahrávání souborů pro tento projekt. Uživatelé přesto mohou nahrávat soubory do jiných umístění.
       project_folder_bulk: The project folder is the default folder for file uploads for all the projects selected. You can modify this individually in each project settings. Users can nevertheless still upload files to other locations.

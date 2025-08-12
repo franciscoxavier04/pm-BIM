@@ -337,12 +337,10 @@ zh-TW:
         warning: 某些檢查返回警告，可能會引發預期外的行為。
       title: 健康狀況報告
     health_email_notifications:
-      description_subscribed: 所有管理員都會收到此儲存空間的運作狀況電子郵件通知。
-      description_unsubscribed: 已向所有管理員關閉此儲存的運作狀況電子郵件通知。
+      description_disabled: 當有重要更新時，管理員將不會透過電子郵件收到更新。
+      description_enabled: 當有重要更新時，管理員將透過電子郵件收到更新。
       error_could_not_be_saved: 無法儲存電子郵件通知設定。 請再試一次。
-      subscribe: 訂閱
-      title: 電子郵件通知
-      unsubscribe: 取消訂閱
+      title: 以電子郵件更新管理員
     help_texts:
       project_folder: 項目資料夾是該項目文件上傳的預設資料夾。 儘管如此，用戶仍然可以將文件上傳到其他位置。
       project_folder_bulk: 專案資料夾是所有選取專案的預設檔案上傳資料夾。您可以在每個專案設定中個別修改。使用者仍可上傳檔案到其他位置。

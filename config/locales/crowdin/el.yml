@@ -370,7 +370,7 @@ el:
       description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names.
+        description: You can define named groups of users with specific permissions.
         title: No groups set up yet
       user_count: User count
     users:
@@ -1617,6 +1617,7 @@ el:
         one: "Authentication provider"
         other: "Authentication providers"
       category: "Κατηγορία"
+      color: "Color"
       comment: "Σχόλιο"
       custom_action: "Προσαρμοσμένη ενέργεια"
       custom_field: "Προσαρμοσμένο πεδίο"
@@ -2248,6 +2249,13 @@ el:
         I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
       consent_html: >
         I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
   enumeration_activities: "Δραστηριότητες καταγραφής χρόνου"
   enumeration_work_package_priorities: "Προτεραιότητες πακέτου εργασίας"
   enumeration_reported_project_statuses: "Αναφερόμενη κατάσταση έργου"

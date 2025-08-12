@@ -109,55 +109,55 @@ uk:
       authentication_methods:
         sso: "JWT від постачальника ідентифікаційних даних"
         oauth2_client: "Облікові дані клієнта OAuth 2.0"
-        oauth2_token: "Постійний токен доступу"
+        oauth2_token: "Постійний маркер доступу"
       created_client_credentials_dialog_component:
         title: "Облікові дані клієнта створено"
         heading: "Облікові дані клієнта згенеровано"
         one_time_hint: "Це єдиний раз, коли ви побачите секретний ключ клієнта. Обов’язково скопіюйте його зараз."
       created_token_dialog_component:
-        title: "Токен створено"
-        heading: "A token has been generated"
-        label_token: "Токен"
-        one_time_hint: "Це єдиний раз, коли ви побачите цей токен. Обов’язково скопіюйте його зараз."
+        title: "Маркер створено"
+        heading: "Маркер згенеровано"
+        label_token: "Маркер"
+        one_time_hint: "Це єдиний раз, коли ви побачите цей маркер. Обов’язково скопіюйте його зараз."
       delete_scim_client_dialog_component:
-        title: "Delete SCIM client"
-        heading: "Are you sure you want to delete this SCIM client?"
-        description: "Users managed by this SCIM client can no longer be updated by it."
+        title: "Видалити клієнт SCIM"
+        heading: "Ви дійсно хочете видалити цей клієнт SCIM?"
+        description: "Цей клієнт SCIM більше не може оновлювати користувачів, якими керує."
       edit:
-        label_delete_scim_client: "Delete SCIM client"
+        label_delete_scim_client: "Видалити клієнт SCIM"
       form:
         auth_provider_description: "Це сервіс, який користувачі, додані SCIM-провайдером, будуть використовувати для автентифікації в OpenProject."
-        authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description: "Please refer to our [documentation on configuring SCIM clients](docs_url) for more information on these configuration options."
-        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
+        authentication_method_description_html: "Ось так клієнт SCIM автентифікується в OpenProject. Переконайтеся, що маркери OAuth включають область <code>scim_v2</code>."
+        description: "Щоб отримати додаткову інформацію про ці варіанти конфігурації, перегляньте [документацію щодо налаштування клієнтів SCIM](docs_url)."
+        jwt_sub_description: "Наприклад, для Keycloak це UUID пов’язаного з клієнтом SCIM облікового запису сервісу. Інформацію про те, як знайти тему для свого варіанту використання, наведено в [документації](docs_url)."
         name_description: "Виберіть ім’я, яке допоможе іншим адміністраторам чітко зрозуміти, навіщо налаштовано цей клієнт."
       index:
-        description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
-        label_create_button: "Add SCIM client"
+        description: "Клієнти SCIM, налаштовані тут, можуть взаємодіяти з API сервера SCIM в OpenProject, щоб надавати, оновлювати й видаляти облікові записи й групи."
+        label_create_button: "Додати клієнт SCIM"
       new:
-        title: "New SCIM client"
+        title: "Новий клієнт SCIM"
       revoke_static_token_dialog_component:
         confirm_button: "Анулювати"
-        title: "Анулювати статичний токен"
-        heading: "Ви дійсно хочете анулювати цей токен?"
-        description: "The SCIM client that uses this token will no longer be able to access OpenProject's SCIM server API."
+        title: "Анулювати статичний маркер"
+        heading: "Ви дійсно хочете анулювати цей маркер?"
+        description: "Клієнт SCIM, який використовує цей маркер, більше не зможе отримати доступ до API сервера SCIM в OpenProject."
       table_component:
         blank_slate:
-          title: "No SCIM clients configured yet"
+          title: "Ще немає налаштованих клієнтів SCIM"
           description: "Додайте клієнтів, щоб побачити їх тут"
         user_count: "Користувачі"
       token_list_component:
-        description: "The tokens you generate here can be passed by a SCIM client to access the OpenProject SCIM API."
-        heading: "Токени"
-        label_add_token: "Токен"
-        label_aria_add_token: "Додати токен"
+        description: "Клієнт SCIM може передавати маркери, які ви генеруєте тут, для доступу до API сервера SCIM в OpenProject."
+        heading: "Маркери"
+        label_add_token: "Маркер"
+        label_aria_add_token: "Додати маркер"
       token_table_component:
         blank_slate:
-          title: "Ще не створено жодного токена"
+          title: "Ще не створено жодного маркера"
           description: "Його можна створити прямо зараз"
         expired: "Термін дії минув %{date}"
         revoked: "Анульовано %{date}"
-        title: "Таблиця токенів доступу"
+        title: "Таблиця маркерів доступу"
   authentication:
     login_and_registration: "Вхід і реєстрація"
   announcements:
@@ -355,9 +355,9 @@ uk:
       blueprint: "Шаблон плану"
   global_search:
     title:
-      all_projects: 'Search for "%{search_term}" in all projects'
-      current_project: 'Search for "%{search_term}" in %{project_name}'
-      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
+      all_projects: 'Пошук за терміном «%{search_term}» у всіх проєктах'
+      current_project: 'Пошук за терміном «%{search_term}» у проєкті «%{project_name}»'
+      project_and_subprojects: 'Пошук за терміном «%{search_term}» у проєкті «%{project_name}» і всіх підпроєктах'
     placeholder: "Пошук у додатку %{app_title}"
     overwritten_tabs:
       all: "Усі"
@@ -365,23 +365,23 @@ uk:
       wiki_pages: "Wiki"
   groups:
     edit:
-      synchronized_groups: "Synchronized groups"
+      synchronized_groups: "Синхронізовані групи"
     index:
-      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+      description: Згрупувавши користувачів, можна додавати їх як членів в одні й ті самі проєкти або призначати їм однакові глобальні ролі.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names.
-        title: No groups set up yet
-      user_count: User count
+        description: You can define named groups of users with specific permissions.
+        title: Ще немає налаштованих груп
+      user_count: Кількість користувачів
     users:
       no_results_title_text: Наразі в цій групі немає користувачів.
     memberships:
       no_results_title_text: Наразі жодних проектів цієї групи немає.
     synchronized_groups:
       blankslate:
-        action: Authentication settings
-        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
-        title: No synchronized groups yet
+        action: Налаштування автентифікації
+        description: Коли цю групу буде автоматично синхронізовано з групами від зовнішніх постачальників ідентифікаційних даних, таких як OpenID, вони з’являться тут. Це можна налаштувати в параметрах автентифікації.
+        title: Ще немає синхронізованих груп
   incoming_mails:
     ignore_filenames: >
       Вкажіть список імен, які ігноруватимуться під час обробки вкладень для вхідних повідомлень (наприклад, підписів або значків). Введіть одне ім'я файлу у рядок.
@@ -696,7 +696,7 @@ uk:
     dark: "Темна"
     light: "Світла"
     light_high_contrast: "Світла, високий контраст"
-    sync_with_os: "Automatic (match OS colour mode)"
+    sync_with_os: "Автоматично (колірний режим ОС)"
   types:
     index:
       no_results_title_text: Наразі немає типів.
@@ -728,7 +728,7 @@ uk:
             project: "Проєкт"
         pattern:
           label: "Шаблон теми"
-          caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
+          caption: Створіть шаблони, додаючи текст, або введіть «/», щоб знайти [підтримувані атрибути](attributes_url).
           insert_as_text: "Атрибутів не знайдено. Додайте як текст: «%{word}»"
       export_configuration:
         tab: "Згенерувати PDF"
@@ -963,7 +963,7 @@ uk:
         attribute_name: "Атрибут"
         help_text: "Довідковий текст"
       auth_provider:
-        scim_clients: "SCIM clients"
+        scim_clients: "Клієнти SCIM"
       capability:
         context: "Контекст"
       changeset:
@@ -1183,7 +1183,7 @@ uk:
         comments_sorting: "Відображати дії з пакетів робіт, відсортовані за"
         disable_keyboard_shortcuts: "Вимкнути комбінації клавіш"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
+          Ви можете вимкнути стандартні <a href="%{href}">комбінації клавіш</a>, якщо використовуєте невізуальний екран або хочете, щоб відповідні дії не запускалися, коли ви натискаєте ці комбінації клавіш випадково.
         dismissed_enterprise_banners: "Приховані банери Enterprise"
         impaired: "Режим спеціальних можливостей"
         auto_hide_popups: "Автоматично приховувати банери про успішне виконання"
@@ -1279,7 +1279,7 @@ uk:
         inclusion_nested: "– не призначено одне з дозволених значень за шляхом «%{path}»."
         invalid: "зазначено невірно"
         invalid_characters: "містить недопустимі символи."
-        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
+        not_allowed_custom_fields_referenced: "містить користувацькі поля, які не дозволено: %{custom_fields}."
         invalid_url: "не є дійсною URL-адресою."
         invalid_url_scheme: "не є підтримуваним протоколом (дозволено: %{allowed_schemes})."
         less_than_or_equal_to: "має бути меншим або рівним %{count}"
@@ -1299,7 +1299,7 @@ uk:
         odd: "має бути непарним."
         regex_match_failed: "не збігається з регулярним виразом %{expression}."
         regex_invalid: "неможливо перевірити з відповідним регулярним виразом."
-        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
+        regex_list_invalid: "не вдалося проаналізувати як регулярний вираз у рядках %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "має бути меншою або дорівнює максимальній довжині."
         taken: "вже прийнято."
         too_long: "занадто довгий (максимум - %{count} characters).\n"
@@ -1361,9 +1361,9 @@ uk:
           failed_to_create: "Не вдалося створити пробну версію (%{status})"
           general_consent: "Будь ласка, прийміть правила й умови використання."
         enterprise_token:
-          only_one_trial: "Активним може бути лише один пробний токен. Видаліть попередній, перш ніж додавати новий."
+          only_one_trial: "Активним може бути лише один пробний маркер. Видаліть попередній, перш ніж додавати новий."
           unreadable: "неможливо прочитати. Ви впевнені, що це маркер підтримки?"
-          already_added: "Цей токен уже додано."
+          already_added: "Цей маркер уже додано."
         grids/grid:
           overlaps: "перекриваються."
           outside: "знаходиться за межами сітки."
@@ -1631,11 +1631,12 @@ uk:
       attachment: "Файл"
       attribute_help_text: "Текст довідки атрибута"
       auth_provider:
-        one: "Authentication provider"
-        few: "Authentication providers"
-        many: "Authentication providers"
-        other: "Authentication providers"
+        one: "Постачальник послуг автентифікації"
+        few: "Постачальники послуг автентифікації"
+        many: "Постачальники послуг автентифікації"
+        other: "Постачальники послуг автентифікації"
       category: "Категорія"
+      color: "Колір"
       comment: "Коментар"
       custom_action: "Спеціальні дії"
       custom_field: "Користувацьке поле"
@@ -1679,10 +1680,10 @@ uk:
         many: "Роль"
         other: "Роль"
       scim_client:
-        one: "SCIM client"
-        few: "SCIM clients"
-        many: "SCIM clients"
-        other: "SCIM clients"
+        one: "Клієнт SCIM"
+        few: "Клієнти SCIM"
+        many: "Клієнти SCIM"
+        other: "Клієнти SCIM"
       status: "Стан робочого пакета"
       token/api:
         one: Маркер доступу
@@ -2240,7 +2241,7 @@ uk:
       plan_text_html: "Доступно, починаючи з версії %{plan_name}."
       unlimited: "Без обмежень"
       already_have_token: >
-        Уже маєте токен? Додайте його за допомогою кнопки нижче, щоб перейти на вже замовлений план Enterprise.
+        Уже маєте маркер? Додайте його за допомогою кнопки нижче, щоб перейти на вже замовлений план Enterprise.
       hide_banner: "Приховати цей банер"
       homescreen_description: >
         Плани Enterprise розширюють можливості вашого випуску OpenProject Community. Вони включають доповнення, додаткові функції та професійну підтримку, що дає організаціям усіх розмірів досягати кращих результатів разом.
@@ -2292,7 +2293,7 @@ uk:
         title: "Єдиний вхід для сховища Nextcloud"
         description: "Увімкніть швидку й безпечну автентифікацію для свого сховища Nextcloud завдяки технології єдиного входу. Спростіть керування доступом і покращте взаємодію користувачів зі своїм продуктом."
       scim_api:
-        title: "SCIM clients"
+        title: "Клієнти SCIM"
         description: "Автоматизуйте управління користувачами в OpenProject, інтегрувавши зовнішні сервіси для керування ідентичностями, такі як Microsoft Entra або Keycloak, через API сервера SCIM. Ця можливість доступна, починаючи з корпоративного плану Enterprise."
       virus_scanning:
         description: "Переконайтеся, що вивантажені в OpenProject файли перевіряються на віруси перед тим, як стають доступними для інших користувачів."
@@ -2308,18 +2309,18 @@ uk:
         description: " "
     teaser:
       title:
-        one: "Один день до завершення строку дії пробного токена %{trial_plan}"
-        few: "%{count} дні до завершення строку дії пробного токена %{trial_plan}"
-        many: "%{count} днів до завершення строку дії пробного токена %{trial_plan}"
-        other: "%{count} дня до завершення строку дії пробного токена %{trial_plan}"
+        one: "Один день до завершення строку дії пробного маркера %{trial_plan}"
+        few: "%{count} дні до завершення строку дії пробного маркера %{trial_plan}"
+        many: "%{count} днів до завершення строку дії пробного маркера %{trial_plan}"
+        other: "%{count} дня до завершення строку дії пробного маркера %{trial_plan}"
       description: "У вас є доступ до всіх функцій %{trial_plan}."
     trial:
-      not_found: "Ви запитали пробний токен, але цей запит більше не доступний. Спробуйте ще раз."
-      wait_for_confirmation: "Ми надіслали вам електронного листа, щоб ви підтвердили свою адресу й могли отримати пробний токен."
+      not_found: "Ви запитали пробний маркер, але цей запит більше не доступний. Спробуйте ще раз."
+      wait_for_confirmation: "Ми надіслали вам електронного листа, щоб ви підтвердили свою адресу й могли отримати пробний маркер."
       already_retrieved: >
-        Токен пробної версії Enterprise уже отримано. На вашу електронну пошту мав надійти лист із вкладеним токеном. Якщо вам потрібен новий токен, зверніться до нашої служби підтримки.
-      successfully_saved: "Токен пробної версії Enterprise успішно отримано."
-      token_sent: "Запитано пробний токен"
+        Маркер пробної версії Enterprise уже отримано. На вашу електронну пошту мав надійти лист із вкладеним маркером. Якщо вам потрібен новий маркер, зверніться до нашої служби підтримки.
+      successfully_saved: "Маркер пробної версії Enterprise успішно отримано."
+      token_sent: "Запитано пробний маркер"
       request_again: "Надіслати запит ще раз"
       resend_action: "Ще раз надіслати електронного листа для підтвердження"
       welcome_title: "Стислий огляд функцій"
@@ -2328,11 +2329,18 @@ uk:
         Ми надіслали вам листа %{date} на адресу %{email} з усією інформацією, потрібною, щоб почати користуватися безкоштовною пробною версією OpenProject Enterprise. Знайдіть його у своїй пошті й перейдіть за посиланням для підтвердження, щоб розпочати безплатний 14-денний пробний період.
       confirmation_subline: >
         Перевірте свою пошту й виконайте вказівки, щоб розпочати безплатний 14-денний пробний період.
-      domain_caption: Токен буде дійсним для вашого поточного імені хосту.
+      domain_caption: Маркер буде дійсним для вашого поточного імені хосту.
       receive_newsletter_html: >
         Я хочу отримувати <a target="_blank" href="https://www.openproject.org/newsletter/">інформаційний бюлетень</a> OpenProject.
       consent_html: >
         Я погоджуюся з <a target="_blank" href="https://www.openproject.org/terms-of-service/">умовами надання послуг</a> і <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">політикою конфіденційності</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Вимкнено."
+      enabled: "Увімкнено."
+    button:
+      disabled: "Увімкнути"
+      enabled: "Вимкнути"
   enumeration_activities: "Дії щодо відстеження часу"
   enumeration_work_package_priorities: "Пріоритети робочого пакету"
   enumeration_reported_project_statuses: "Повідомлення про статус проекту"
@@ -2633,7 +2641,7 @@ uk:
       aggregation: "Агрегація"
       api_and_webhooks: "API та вебгуки"
     quick_add:
-      label: "Add…"
+      label: "Додати…"
   my_account:
     access_tokens:
       no_results:
@@ -2933,7 +2941,7 @@ uk:
   label_gantt_chart_plural: "Діаграми Ґанта"
   label_general: "Загальні"
   label_generate_key: "Згенерувати ключ"
-  label_global_modules: "Global modules"
+  label_global_modules: "Глобальні модулі"
   label_global_roles: "Глобальні ролі"
   label_git_path: "Шлях до каталогу .git"
   label_greater_or_equal: ">="
@@ -3018,7 +3026,7 @@ uk:
   label_manage: "Керувати"
   label_manage_groups: "Керувати групами"
   label_managed_repositories_vendor: "Керований %{vendor} repositories"
-  label_mathematical_operators: "Mathematical operators"
+  label_mathematical_operators: "Математичні оператори"
   label_max_size: "Максимальний розмір"
   label_me: "мені"
   label_member_new: "Новий учасник"
@@ -3078,7 +3086,7 @@ uk:
   label_no_due_date: "немає дати завершення"
   label_no_start_date: "немає дати початку"
   label_no_parent_page: "Немає початкової сторінки"
-  label_notification_center_plural: "Notifications"
+  label_notification_center_plural: "Сповіщення"
   label_nothing_display: "Нічого не відображається"
   label_nobody: "жодні"
   label_not_configured: "Не налаштовано"
@@ -3111,7 +3119,7 @@ uk:
   label_password_rule_special: "Спеціальні символи"
   label_password_rule_uppercase: "Верхній регістр"
   label_path_encoding: "Кодування шляху"
-  label_per_page: "Per page:"
+  label_per_page: "К-сть на сторінку:"
   label_people: "Люди"
   label_permissions: "Дозволи"
   label_permissions_report: "Звіт про права доступу"
@@ -3287,7 +3295,7 @@ uk:
   label_user_mail_option_only_my_events: "Тільки для речей які я дивлюся чи я займаюся"
   label_user_mail_option_only_owner: "Тільки для речей, за якими я спостерігаю або є власником"
   label_user_mail_option_selected: "Для будь-якої події на вибраних проектах"
-  label_user_menu: "User menu"
+  label_user_menu: "Меню користувача"
   label_user_new: "Новий користувач"
   label_user_plural: "Користувачі"
   label_user_search: "Знайти користувача:"

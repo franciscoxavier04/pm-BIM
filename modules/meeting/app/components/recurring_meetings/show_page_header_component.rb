@@ -41,12 +41,20 @@ module RecurringMeetings
       @project = meeting.project
     end
 
-    def render_create_button?
+    def edit_meeting?
       if @project
-        User.current.allowed_in_project?(:create_meetings, @project)
+        User.current.allowed_in_project?(:edit_meetings, @project)
       else
-        User.current.allowed_in_any_project?(:create_meetings)
+        User.current.allowed_in_any_project?(:edit_meetings)
       end
+    end
+
+    def end_meeting?
+      !@meeting.has_ended? && @meeting.start_time.to_date < Time.zone.today && edit_meeting?
+    end
+
+    def delete_meeting?
+      User.current.allowed_in_project?(:delete_meetings, @project)
     end
 
     def send_emails?

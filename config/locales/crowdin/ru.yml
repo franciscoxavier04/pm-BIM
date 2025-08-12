@@ -373,7 +373,7 @@ ru:
       description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names.
+        description: You can define named groups of users with specific permissions.
         title: Группы еще не созданы
       user_count: Количество пользователей
     users:
@@ -1641,6 +1641,7 @@ ru:
         many: "Authentication providers"
         other: "Authentication providers"
       category: "Категория"
+      color: "Color"
       comment: "Комментарий"
       custom_action: "Пользовательское действие"
       custom_field: "Настраиваемое поле"
@@ -1684,10 +1685,10 @@ ru:
         many: "Роль"
         other: "Роль"
       scim_client:
-        one: "SCIM client"
-        few: "SCIM clients"
-        many: "SCIM clients"
-        other: "SCIM clients"
+        one: "Клиент SCIM"
+        few: "Клиенты SCIM"
+        many: "Клиенты SCIM"
+        other: "Клиенты SCIM"
       status: "Статус пакета работ"
       token/api:
         one: Токен доступа
@@ -2297,7 +2298,7 @@ ru:
         title: "Единый вход для Nextcloud хранения"
         description: "Включите бесшовную и безопасную аутентификацию для вашего Nextcloud хранилища с помощью Single Sign-On. Упростите управление доступом и сделайте удобным для пользователя."
       scim_api:
-        title: "SCIM clients"
+        title: "Клиенты SCIM"
         description: "Автоматизируйте управление пользователями в OpenProject, легко интегрируя внешние службы идентификации, такие как Microsoft Entra или Keycloak, через наш сервер API SCIM."
       virus_scanning:
         description: "Будьте уверены в том, что загруженные в OpenProject файлы проверены на наличие вирусов, прежде чем они станут доступны другим пользователям."
@@ -2338,6 +2339,13 @@ ru:
         Я хочу получить <a target="_blank" href="https://www.openproject.org/newsletter/">информационный бюллетень OpenProject</a>.
       consent_html: >
         Я подтверждаю <a target="_blank" href="https://www.openproject.org/terms-of-service/">правила</a> и <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">условия пользования</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Отключено."
+      enabled: "Включено."
+    button:
+      disabled: "Включить"
+      enabled: "Отключить"
   enumeration_activities: "Отслеживание времени"
   enumeration_work_package_priorities: "Приоритеты пакета работ"
   enumeration_reported_project_statuses: "Перечень отчетов о статусах проекта"

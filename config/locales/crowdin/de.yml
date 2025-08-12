@@ -371,7 +371,7 @@ de:
       description: Durch die Gruppierung von Benutzern können Sie diese den gleichen globalen Rollen oder den gleichen Projekten als Mitglieder zuweisen.
     table_component:
       blank_slate:
-        description: Sie können Gruppen von Benutzern mit eigenen Namen erstellen.
+        description: You can define named groups of users with specific permissions.
         title: Noch keine Gruppen eingerichtet
       user_count: Benutzeranzahl
     users:
@@ -1613,6 +1613,7 @@ de:
         one: "Authentifizierungsanbieter"
         other: "Authentifizierungsanbieter"
       category: "Kategorie"
+      color: "Color"
       comment: "Kommentar"
       custom_action: "Benutzerdefinierte Aktion"
       custom_field: "Benutzerdefiniertes Feld"
@@ -2244,6 +2245,13 @@ de:
         Ich möchte den OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">Newsletter</a> erhalten.
       consent_html: >
         Ich stimme den <a target="_blank" href="https://www.openproject.org/de/rechtliches/nutzungsbedingungen"></a> und den <a target="_blank" href="https://www.openproject.org/de/rechtliches/datenschutz/">Datenschutzrichtlinien</a> zu.
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
   enumeration_activities: "Aktivitäten für Zeiterfassung"
   enumeration_work_package_priorities: "Arbeitspaket-Prioritäten"
   enumeration_reported_project_statuses: "Gemeldeter Projektstatus"
@@ -2763,7 +2771,7 @@ de:
   label_default: "Standard"
   label_delete_user: "Benutzer löschen"
   label_delete_project: "Projekt löschen"
-  label_delete: "Lösche"
+  label_delete: "Löschen"
   label_deleted: "gelöscht"
   label_deleted_custom_field: "(gelöschtes benutzerdefiniertes Feld)"
   label_deleted_custom_item: "(gelöschter Eintrag)"

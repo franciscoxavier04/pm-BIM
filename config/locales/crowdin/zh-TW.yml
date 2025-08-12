@@ -373,7 +373,7 @@ zh-TW:
       description: 透過將使用者分組，您可以將他們新增為相同專案的成員，或指派相同的全局角色給他們。
     table_component:
       blank_slate:
-        description: 您可以定義具有特定名稱的使用者群組。
+        description: You can define named groups of users with specific permissions.
         title: 尚未建立群組
       user_count: 用户數
     users:
@@ -678,7 +678,7 @@ zh-TW:
     dark: "深色主題"
     light: "白色主題"
     light_high_contrast: "高對比白色主題"
-    sync_with_os: "Automatic (match OS colour mode)"
+    sync_with_os: "自動（匹配 OS 顏色模式）"
   types:
     index:
       no_results_title_text: 目前沒有類型
@@ -1606,6 +1606,7 @@ zh-TW:
       auth_provider:
         other: "驗證提供者"
       category: "類別"
+      color: "顏色"
       comment: "留言"
       custom_action: "自訂動作"
       custom_field: "客製欄位"
@@ -2204,6 +2205,13 @@ zh-TW:
         我想訂閱 OpenProject 的<a target="_blank" href="https://www.openproject.org/newsletter/">電子報</a>。
       consent_html: >
         我同意<a target="_blank" href="https://www.openproject.org/terms-of-service/">服務條款</a>及<a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">隱私政策</a>。
+  email_calendar_updates:
+    state:
+      disabled: "已停用。"
+      enabled: "已啟用。"
+    button:
+      disabled: "啟用"
+      enabled: "停用"
   enumeration_activities: "工時紀錄活動"
   enumeration_work_package_priorities: "工作套件優先等級"
   enumeration_reported_project_statuses: "報告的專案狀態"

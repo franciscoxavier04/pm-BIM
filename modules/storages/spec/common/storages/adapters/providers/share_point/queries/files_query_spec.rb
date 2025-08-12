@@ -52,56 +52,56 @@ module Storages
                 Results::StorageFileCollection.new(
                   files: [
                     Results::StorageFile.new(
-                      id: "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY8Qconfm2i6SKEoCmuGYqQK||",
+                      id: "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY8Qconfm2i6SKEoCmuGYqQK",
                       name: "OpenProject",
                       mime_type: "application/x-op-drive",
                       location: "/OpenProject",
                       permissions: %i[readable writeable]
                     ),
                     Results::StorageFile.new(
-                      id: "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY87vnZ6fgfvQanZHX-XCAyw||",
+                      id: "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY87vnZ6fgfvQanZHX-XCAyw",
                       name: "Shared Documents",
                       mime_type: "application/x-op-drive",
                       location: "/Shared%20Documents",
                       permissions: %i[readable writeable]
                     ),
                     Results::StorageFile.new(
-                      id: "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY8Pmdpc8mQ1QJkyIbbWQJol||",
+                      id: "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY8Pmdpc8mQ1QJkyIbbWQJol",
                       name: "Selected Permissions",
                       mime_type: "application/x-op-drive",
                       location: "/Selected%20Permissions",
                       permissions: %i[readable writeable]
                     ),
                     Results::StorageFile.new(
-                      id: "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY_YoKf1JPvYSJeFRsyx4zF_||",
+                      id: "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY_YoKf1JPvYSJeFRsyx4zF_",
                       name: "Chris document library",
                       mime_type: "application/x-op-drive",
                       location: "/Chris%20document%20library",
                       permissions: %i[readable writeable]
                     ),
                     Results::StorageFile.new(
-                      id: "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY8CfNaHr_0ERYs5kgmEWFrX||",
+                      id: "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY8CfNaHr_0ERYs5kgmEWFrX",
                       name: "Marcello AMPF",
                       mime_type: "application/x-op-drive",
                       location: "/Marcello%20AMPF",
                       permissions: %i[readable writeable]
                     ),
                     Results::StorageFile.new(
-                      id: "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY8opHtYeMANTahXlS54FgHn||",
+                      id: "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY8opHtYeMANTahXlS54FgHn",
                       name: "Dominic",
                       mime_type: "application/x-op-drive",
                       location: "/Dominic",
                       permissions: %i[readable writeable]
                     ),
                     Results::StorageFile.new(
-                      id: "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY93AQ5rgPKoR7tMwpspgj95||",
+                      id: "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY93AQ5rgPKoR7tMwpspgj95",
                       name: "Markus",
                       mime_type: "application/x-op-drive",
                       location: "/Markus",
                       permissions: %i[readable writeable]
                     ),
                     Results::StorageFile.new(
-                      id: "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY9jo6leJDqrT7muzvmiWjFW||",
+                      id: "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY9jo6leJDqrT7muzvmiWjFW",
                       name: "Marcello VCR",
                       mime_type: "application/x-op-drive",
                       location: "/Marcello%20VCR",
@@ -120,7 +120,7 @@ module Storages
             end
 
             context "when requesting a drive", vcr: "share_point/files_query_drive" do
-              let(:folder) { "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY9jo6leJDqrT7muzvmiWjFW||/" }
+              let(:folder) { "/Marcello VCR" }
               let(:files_result) do
                 Results::StorageFileCollection.new(
                   files: [
@@ -146,6 +146,18 @@ module Storages
                       created_by_name: "Eric Schubert",
                       last_modified_by_name: "Eric Schubert",
                       location: "/Marcello%20VCR/empty",
+                      permissions: %i[readable writeable]
+                    ),
+                    Results::StorageFile.new(
+                      id: "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY9jo6leJDqrT7muzvmiWjFW||01ANJ53W7TITEF4WCHRBDKR7VMNUWZ33WD",
+                      name: "Folder with spaces",
+                      size: 0,
+                      mime_type: "application/x-op-directory",
+                      created_at: Time.zone.parse("2025-08-05 15:20:12Z"),
+                      last_modified_at: Time.zone.parse("2025-08-05 15:20:13Z"),
+                      created_by_name: "OP Owner",
+                      last_modified_by_name: "OP Owner",
+                      location: "/Marcello%20VCR/Folder%20with%20spaces",
                       permissions: %i[readable writeable]
                     ),
                     Results::StorageFile.new(
@@ -177,9 +189,7 @@ module Storages
             end
 
             context "when requesting an folder", vcr: "share_point/files_query_folder" do
-              let(:folder) do
-                "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY9jo6leJDqrT7muzvmiWjFW||data"
-              end
+              let(:folder) { "/Marcello VCR/data" }
 
               let(:files_result) do
                 Results::StorageFileCollection.new(
@@ -226,9 +236,7 @@ module Storages
             end
 
             context "when requesting a sub folder", vcr: "share_point/files_query_sub_folder" do
-              let(:folder) do
-                "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY9jo6leJDqrT7muzvmiWjFW||data/subfolder"
-              end
+              let(:folder) { "/Marcello VCR/data/subfolder" }
               let(:files_result) do
                 Results::StorageFileCollection.new(
                   files: [
@@ -263,9 +271,7 @@ module Storages
             end
 
             context "when requesting an empty folder", vcr: "share_point/files_query_empty_folder" do
-              let(:folder) do
-                "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY9jo6leJDqrT7muzvmiWjFW||empty"
-              end
+              let(:folder) { "/Marcello VCR/empty" }
 
               let(:files_result) do
                 Results::StorageFileCollection.new(
@@ -286,16 +292,37 @@ module Storages
               it_behaves_like "adapter files_query: successful files response"
             end
 
+            context "when requesting an empty library", vcr: "share_point/files_query_empty_drive" do
+              let(:folder) { "/Selected Permissions" }
+
+              let(:files_result) do
+                Results::StorageFileCollection.new(
+                  files: [],
+                  parent: Results::StorageFile.new(
+                    id: "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY8Pmdpc8mQ1QJkyIbbWQJol",
+                    name: "Selected Permissions",
+                    location: "/Selected%20Permissions",
+                    permissions: %i[readable writeable]
+                  ),
+                  ancestors: [
+                    Results::StorageFileAncestor.new(name: "OPTest", location: "/")
+                  ]
+                )
+              end
+
+              it_behaves_like "adapter files_query: successful files response"
+            end
+
             context "when requesting an unknown file", vcr: "share_point/files_query_file_not_found" do
-              let(:folder) { "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY9jo6leJDqrT7muzvmiWjFW||POTATO" }
+              let(:folder) { "/Marcello VCR/POTATO" }
 
               it_behaves_like "adapter files_query: not found", Internal::ChildrenQuery
             end
 
             context "when requestion an unknown drive", vcr: "share_point/files_query_drive_not_found" do
-              let(:folder) { "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY9jo6leJDqrT7muzvPoTaTO" }
+              let(:folder) { "/That is no moon" }
 
-              it_behaves_like "adapter files_query: not found", Internal::ChildrenQuery
+              it_behaves_like "adapter files_query: not found"
             end
             # rubocop:enable Layout/LineLength
           end

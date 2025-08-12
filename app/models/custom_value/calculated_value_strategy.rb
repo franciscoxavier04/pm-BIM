@@ -28,31 +28,29 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
+class CustomValue::CalculatedValueStrategy < CustomValue::FormatStrategy
+  include ActionView::Helpers::NumberHelper
 
-RSpec.describe Types::BaseContract do
-  let(:current_user) { build_stubbed(:user) }
-  let(:work_package_type) { Type.new }
-
-  subject(:contract) { described_class.new(work_package_type, current_user) }
-
-  describe "#validation" do
-    context "if subject generation patterns contains invalid tokens" do
-      let(:valid_tokens) { [WorkPackageTypes::Patterns::AttributeToken.new(:assignee, nil, nil)] }
-      let(:work_package_type) do
-        Type.new(patterns: { subject: { blueprint: "Vacation {{vaders_toy}}", enabled: true } })
-      end
-
-      before do
-        token_mapper_double = instance_double(WorkPackageTypes::Patterns::TokenPropertyMapper)
-        allow(token_mapper_double).to receive(:tokens_for_type).and_return(valid_tokens)
-        allow(WorkPackageTypes::Patterns::TokenPropertyMapper).to receive(:new).and_return(token_mapper_double)
-      end
-
-      it "is invalid" do
-        contract.validate
-        expect(subject.errors.symbols_for(:patterns)).to contain_exactly(:invalid_tokens)
-      end
+  def typed_value
+    if value.present?
+      integer_value? ? value.to_i : value.to_f
     end
+  end
+
+  def formatted_value
+    integer_value? ? value.to_s : number_with_delimiter(value.to_s)
+  end
+
+  def validate_type_of_value
+    Kernel.Float(value)
+    nil
+  rescue StandardError
+    :not_a_number
+  end
+
+  private
+
+  def integer_value?
+    value && value =~ /\A\d+\z/
   end
 end
