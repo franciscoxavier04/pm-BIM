@@ -79,21 +79,17 @@ module CustomStylesHelper
     apply_custom_styles?(skip_ee_check: false) && CustomStyle.current.touch_icon.present?
   end
 
-  def export_font_file(custom_style, font)
-    custom_style.id && font.present? ? File.basename(font.file.path) : nil
-  end
-
-  def export_fonts(custom_style)
+  def export_fonts_fields(custom_style)
     %i[regular bold italic bold_italic].map do |variant|
       field = :"export_font_#{variant}"
       font = custom_style.public_send(field)
       {
         field: field,
-        label: I18n.t(:"label_custom_export_font_#{variant}"),
+        label: I18n.t("label_custom_export_font_#{variant}"),
         present: font.present?,
-        filename: export_font_file(custom_style, font),
+        filename: custom_style.id && font.present? ? File.basename(font.file.path) : nil,
         delete_path: public_send(:"custom_style_export_font_#{variant}_delete_path"),
-        instructions: I18n.t(:"text_custom_export_font_#{variant}_instructions")
+        instructions: I18n.t("text_custom_export_font_#{variant}_instructions")
       }
     end
   end

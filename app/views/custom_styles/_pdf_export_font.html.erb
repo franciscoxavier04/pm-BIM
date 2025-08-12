@@ -29,7 +29,7 @@ See COPYRIGHT and LICENSE files for more details.
 
 <p><%= I18n.t(:label_custom_export_font_instructions) %></p>
 
-<% export_fonts(@custom_style).each do |font| %>
+<% export_fonts_fields(@custom_style).each do |font| %>
   <%= form_for @custom_style, url: custom_style_path, html: { multipart: true, class: "form -vertical" } do |f| %>
     <section class="form--section">
       <fieldset class="form--fieldset">
