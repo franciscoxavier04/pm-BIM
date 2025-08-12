@@ -1,17 +1,5 @@
 import { AbstractWidgetComponent } from 'core-app/shared/components/grids/widgets/abstract-widget.component';
-import {
-  ApplicationRef,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  Injector,
-  OnChanges,
-  OnDestroy,
-  OnInit,
-  SimpleChanges,
-  ViewChild,
-} from '@angular/core';
+import { ApplicationRef, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Injector, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild, inject } from '@angular/core';
 import {
   CustomTextEditFieldService,
 } from 'core-app/shared/components/grids/widgets/custom-text/custom-text-edit-field.service';
@@ -30,27 +18,21 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
   standalone: false,
 })
 export class WidgetCustomTextComponent extends AbstractWidgetComponent implements OnInit, OnChanges, OnDestroy {
+  handler = inject(CustomTextEditFieldService);
+  protected cdr = inject(ChangeDetectorRef);
+  protected sanitization = inject(DomSanitizer);
+  protected appRef = inject(ApplicationRef);
+  protected layout = inject(GridAreaService);
+
   protected currentRawText:string;
 
   public customText:SafeHtml;
 
   public text = {
-    attachments: this.I18n.t('js.label_attachments'),
+    attachments: this.i18n.t('js.label_attachments'),
   };
 
   @ViewChild('displayContainer') readonly displayContainer:ElementRef;
-
-  constructor(
-    protected I18n:I18nService,
-    protected injector:Injector,
-    public handler:CustomTextEditFieldService,
-    protected cdr:ChangeDetectorRef,
-    protected sanitization:DomSanitizer,
-    protected appRef:ApplicationRef,
-    protected layout:GridAreaService,
-  ) {
-    super(I18n, injector);
-  }
 
   ngOnInit():void {
     this.setupVariables(true);
@@ -90,7 +72,7 @@ export class WidgetCustomTextComponent extends AbstractWidgetComponent implement
   }
 
   public get placeholderText() {
-    return this.I18n.t('js.grid.widgets.work_packages_overview.placeholder');
+    return this.i18n.t('js.grid.widgets.work_packages_overview.placeholder');
   }
 
   public get inplaceEditClasses() {

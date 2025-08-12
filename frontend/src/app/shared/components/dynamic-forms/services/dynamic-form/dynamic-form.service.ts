@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { FormlyForm } from '@ngx-formly/core';
 import { Observable } from 'rxjs';
@@ -10,15 +10,13 @@ import { IOPDynamicFormSettings } from '../../typings';
 
 @Injectable()
 export class DynamicFormService {
+  private _httpClient = inject(HttpClient);
+  private _dynamicFieldsService = inject(DynamicFieldsService);
+  private _formsService = inject(FormsService);
+
   dynamicForm:FormlyForm;
 
   formSchema:IOPFormSchema;
-
-  constructor(
-    private _httpClient:HttpClient,
-    private _dynamicFieldsService:DynamicFieldsService,
-    private _formsService:FormsService,
-  ) {}
 
   registerForm(dynamicForm:FormlyForm) {
     this.dynamicForm = dynamicForm;

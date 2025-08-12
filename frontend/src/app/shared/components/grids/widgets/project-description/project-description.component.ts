@@ -26,9 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  ChangeDetectionStrategy, ChangeDetectorRef, Component, Injector, OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Injector, OnInit, inject } from '@angular/core';
 import { AbstractWidgetComponent } from 'core-app/shared/components/grids/widgets/abstract-widget.component';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { CurrentProjectService } from 'core-app/core/current-project/current-project.service';
@@ -46,15 +44,11 @@ import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
   standalone: false,
 })
 export class WidgetProjectDescriptionComponent extends AbstractWidgetComponent implements OnInit {
-  public project$:Observable<ProjectResource>;
+  protected readonly apiV3Service = inject(ApiV3Service);
+  protected readonly currentProject = inject(CurrentProjectService);
+  protected readonly cdRef = inject(ChangeDetectorRef);
 
-  constructor(protected readonly i18n:I18nService,
-    protected readonly injector:Injector,
-    protected readonly apiV3Service:ApiV3Service,
-    protected readonly currentProject:CurrentProjectService,
-    protected readonly cdRef:ChangeDetectorRef) {
-    super(i18n, injector);
-  }
+  public project$:Observable<ProjectResource>;
 
   ngOnInit():void {
     if (this.currentProject.id) {

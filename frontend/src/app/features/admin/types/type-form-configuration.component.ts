@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, inject } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import {
   ExternalRelationQueryConfigurationService,
@@ -39,6 +39,13 @@ export const emptyTypeGroup = '__empty';
   standalone: false,
 })
 export class TypeFormConfigurationComponent extends UntilDestroyedMixin implements OnInit, AfterViewInit, OnDestroy {
+  private elementRef = inject(ElementRef);
+  private I18n = inject(I18nService);
+  private dragula = inject(DragulaService);
+  private confirmDialog = inject(ConfirmDialogService);
+  private externalRelationQuery = inject(ExternalRelationQueryConfigurationService);
+  readonly typeBanner = inject(TypeBannerService);
+
   public text = {
     drag_to_activate: this.I18n.t('js.admin.type_form.drag_to_activate'),
     reset: this.I18n.t('js.admin.type_form.reset_to_defaults'),
@@ -67,17 +74,6 @@ export class TypeFormConfigurationComponent extends UntilDestroyedMixin implemen
   private groupsDrake:DrakeWithModels;
 
   private no_filter_query:string;
-
-  constructor(
-    private elementRef:ElementRef,
-    private I18n:I18nService,
-    private dragula:DragulaService,
-    private confirmDialog:ConfirmDialogService,
-    private externalRelationQuery:ExternalRelationQueryConfigurationService,
-    readonly typeBanner:TypeBannerService,
-  ) {
-    super();
-  }
 
   ngOnInit():void {
     // For unclear reasons, this component is initialized twice if used in conjunction with

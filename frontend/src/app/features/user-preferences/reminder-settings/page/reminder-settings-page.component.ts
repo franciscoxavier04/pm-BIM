@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnInit, inject } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { CurrentUserService } from 'core-app/core/current-user/current-user.service';
 import { take } from 'rxjs/internal/operators/take';
@@ -35,6 +35,13 @@ interface IReminderSettingsFormValue {
   standalone: false,
 })
 export class ReminderSettingsPageComponent extends UntilDestroyedMixin implements OnInit {
+  readonly elementRef = inject(ElementRef);
+  readonly I18n = inject(I18nService);
+  readonly storeService = inject(UserPreferencesService);
+  readonly currentUserService = inject(CurrentUserService);
+  readonly fb = inject(UntypedFormBuilder);
+  readonly cdRef = inject(ChangeDetectorRef);
+
   @Input() userId:string;
 
   public form = this.fb.group({
@@ -79,14 +86,7 @@ export class ReminderSettingsPageComponent extends UntilDestroyedMixin implement
 
   formInitialized = false;
 
-  constructor(
-    readonly elementRef:ElementRef,
-    readonly I18n:I18nService,
-    readonly storeService:UserPreferencesService,
-    readonly currentUserService:CurrentUserService,
-    readonly fb:UntypedFormBuilder,
-    readonly cdRef:ChangeDetectorRef,
-  ) {
+  constructor() {
     super();
     populateInputsFromDataset(this);
   }

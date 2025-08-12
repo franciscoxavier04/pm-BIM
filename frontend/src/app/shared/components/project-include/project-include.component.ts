@@ -26,12 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  ChangeDetectionStrategy,
-  Component,
-  HostBinding,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, OnInit, inject } from '@angular/core';
 import { BehaviorSubject, combineLatest } from 'rxjs';
 import {
   debounceTime,
@@ -76,6 +71,13 @@ import { calculatePositions } from 'core-app/shared/components/project-include/c
   standalone: false,
 })
 export class OpProjectIncludeComponent extends UntilDestroyedMixin implements OnInit {
+  readonly I18n = inject(I18nService);
+  readonly wpTableFilters = inject(WorkPackageViewFiltersService);
+  readonly wpIncludeSubprojects = inject(WorkPackageViewIncludeSubprojectsService);
+  readonly halResourceService = inject(HalResourceService);
+  readonly currentProjectService = inject(CurrentProjectService);
+  readonly searchableProjectListService = inject(SearchableProjectListService);
+
   @HostBinding('class.op-project-include') className = true;
 
   public text = {
@@ -270,14 +272,7 @@ export class OpProjectIncludeComponent extends UntilDestroyedMixin implements On
     mergeMap(() => this.searchableProjectListService.fetchingProjects$),
   );
 
-  constructor(
-    readonly I18n:I18nService,
-    readonly wpTableFilters:WorkPackageViewFiltersService,
-    readonly wpIncludeSubprojects:WorkPackageViewIncludeSubprojectsService,
-    readonly halResourceService:HalResourceService,
-    readonly currentProjectService:CurrentProjectService,
-    readonly searchableProjectListService:SearchableProjectListService,
-  ) {
+  constructor() {
     super();
 
     this.projects$

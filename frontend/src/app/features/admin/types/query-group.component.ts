@@ -1,6 +1,4 @@
-import {
-  ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { TypeGroup } from 'core-app/features/admin/types/type-form-configuration.component';
 
@@ -11,6 +9,9 @@ import { TypeGroup } from 'core-app/features/admin/types/type-form-configuration
   standalone: false,
 })
 export class TypeFormQueryGroupComponent {
+  private I18n = inject(I18nService);
+  private cdRef = inject(ChangeDetectorRef);
+
   text = {
     edit_query: this.I18n.t('js.admin.type_form.edit_query'),
   };
@@ -20,10 +21,6 @@ export class TypeFormQueryGroupComponent {
   @Output() public editQuery = new EventEmitter<void>();
 
   @Output() public deleteGroup = new EventEmitter<void>();
-
-  constructor(private I18n:I18nService,
-    private cdRef:ChangeDetectorRef) {
-  }
 
   rename(newValue:string):void {
     this.group.name = newValue;

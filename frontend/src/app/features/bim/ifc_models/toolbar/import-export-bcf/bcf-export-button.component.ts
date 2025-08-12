@@ -26,9 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  Component, Injector, OnDestroy, OnInit,
-} from '@angular/core';
+import { Component, Injector, OnDestroy, OnInit, inject } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { CurrentProjectService } from 'core-app/core/current-project/current-project.service';
 import { BcfPathHelperService } from 'core-app/features/bim/bcf/helper/bcf-path-helper.service';
@@ -55,6 +53,17 @@ import { JobStatusModalService } from 'core-app/features/job-status/job-status-m
   standalone: false,
 })
 export class BcfExportButtonComponent extends UntilDestroyedMixin implements OnInit, OnDestroy {
+  readonly I18n = inject(I18nService);
+  readonly currentProject = inject(CurrentProjectService);
+  readonly bcfPathHelper = inject(BcfPathHelperService);
+  readonly querySpace = inject(IsolatedQuerySpace);
+  readonly queryUrlParamsHelper = inject(UrlParamsHelperService);
+  readonly jobStatusModalService = inject(JobStatusModalService);
+  readonly httpClient = inject(HttpClient);
+  readonly injector = inject(Injector);
+  readonly toastService = inject(ToastService);
+  readonly state = inject(StateService);
+
   public text = {
     export: this.I18n.t('js.bcf.export'),
     export_hover: this.I18n.t('js.bcf.export_bcf_xml_file'),
@@ -63,19 +72,6 @@ export class BcfExportButtonComponent extends UntilDestroyedMixin implements OnI
   public query:QueryResource;
 
   public exportLink:string;
-
-  constructor(readonly I18n:I18nService,
-    readonly currentProject:CurrentProjectService,
-    readonly bcfPathHelper:BcfPathHelperService,
-    readonly querySpace:IsolatedQuerySpace,
-    readonly queryUrlParamsHelper:UrlParamsHelperService,
-    readonly jobStatusModalService:JobStatusModalService,
-    readonly httpClient:HttpClient,
-    readonly injector:Injector,
-    readonly toastService:ToastService,
-    readonly state:StateService) {
-    super();
-  }
 
   ngOnInit() {
     this.querySpace.query

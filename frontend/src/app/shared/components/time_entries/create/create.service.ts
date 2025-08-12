@@ -1,7 +1,4 @@
-import {
-  Injectable,
-  Injector,
-} from '@angular/core';
+import { Injectable, Injector, inject } from '@angular/core';
 import { OpModalService } from 'core-app/shared/components/modal/modal.service';
 import { HalResourceService } from 'core-app/features/hal/services/hal-resource.service';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
@@ -18,16 +15,14 @@ import { Observable, of } from 'rxjs';
 
 @Injectable()
 export class TimeEntryCreateService {
-  constructor(
-    readonly opModalService:OpModalService,
-    readonly injector:Injector,
-    readonly halResource:HalResourceService,
-    readonly apiV3Service:ApiV3Service,
-    readonly schemaCache:SchemaCacheService,
-    protected halEditing:HalResourceEditingService,
-    readonly i18n:I18nService,
-  ) {
-  }
+  readonly opModalService = inject(OpModalService);
+  readonly injector = inject(Injector);
+  readonly halResource = inject(HalResourceService);
+  readonly apiV3Service = inject(ApiV3Service);
+  readonly schemaCache = inject(SchemaCacheService);
+  protected halEditing = inject(HalResourceEditingService);
+  readonly i18n = inject(I18nService);
+
 
   public createNewTimeEntry(date:Moment, wp:WorkPackageResource, ongoing:boolean):Observable<ResourceChangeset> {
     const resource:FormResource = this.halResource.createHalResourceOfType(

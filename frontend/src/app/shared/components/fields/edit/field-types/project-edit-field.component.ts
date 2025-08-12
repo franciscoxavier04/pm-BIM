@@ -26,16 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  Inject,
-  Injector,
-  OnInit,
-  ViewEncapsulation,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Injector, OnInit, ViewEncapsulation, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { from } from 'rxjs';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
@@ -66,32 +57,13 @@ import { FilterOperator } from 'core-app/shared/helpers/api-v3/api-v3-filter-bui
   standalone: false,
 })
 export class ProjectEditFieldComponent extends EditFieldComponent implements OnInit {
+  readonly apiV3Service = inject(ApiV3Service);
+  readonly http = inject(HttpClient);
+  readonly halResourceService = inject(HalResourceService);
+
   isNew = isNewResource(this.resource);
 
   url:string;
-
-  constructor(
-    readonly I18n:I18nService,
-    readonly elementRef:ElementRef,
-    @Inject(OpEditingPortalChangesetToken) protected change:ResourceChangeset<HalResource>,
-    @Inject(OpEditingPortalSchemaToken) public schema:IFieldSchema,
-    @Inject(OpEditingPortalHandlerToken) readonly handler:EditFieldHandler,
-    readonly cdRef:ChangeDetectorRef,
-    readonly injector:Injector,
-    readonly apiV3Service:ApiV3Service,
-    readonly http:HttpClient,
-    readonly halResourceService:HalResourceService,
-  ) {
-    super(
-      I18n,
-      elementRef,
-      change,
-      schema,
-      handler,
-      cdRef,
-      injector,
-    );
-  }
 
   initialize():void {
     if (this.schema.allowedValues) {

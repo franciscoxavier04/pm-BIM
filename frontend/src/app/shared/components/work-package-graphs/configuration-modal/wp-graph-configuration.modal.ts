@@ -1,18 +1,4 @@
-import {
-  ApplicationRef,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ComponentFactoryResolver,
-  ElementRef,
-  Inject,
-  InjectionToken,
-  Injector,
-  OnDestroy,
-  OnInit,
-  Optional,
-  ViewChild,
-} from '@angular/core';
+import { ApplicationRef, ChangeDetectionStrategy, ChangeDetectorRef, Component, ComponentFactoryResolver, ElementRef, InjectionToken, Injector, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 import { OpModalLocalsMap } from 'core-app/shared/components/modal/modal.types';
 import { OpModalComponent } from 'core-app/shared/components/modal/modal.component';
 import { OpModalLocalsToken } from 'core-app/shared/components/modal/modal.service';
@@ -38,6 +24,16 @@ export const WpTableConfigurationModalPrependToken = new InjectionToken<Componen
   standalone: false,
 })
 export class WpGraphConfigurationModalComponent extends OpModalComponent implements OnInit, OnDestroy {
+  prependModalComponent = inject<ComponentType<any> | null>(WpTableConfigurationModalPrependToken, { optional: true });
+  readonly I18n = inject(I18nService);
+  readonly injector = inject(Injector);
+  readonly appRef = inject(ApplicationRef);
+  readonly componentFactoryResolver = inject(ComponentFactoryResolver);
+  readonly loadingIndicator = inject(LoadingIndicatorService);
+  readonly notificationService = inject(WorkPackageNotificationService);
+  readonly configurationService = inject(ConfigurationService);
+  readonly graphConfiguration = inject(WpGraphConfigurationService);
+
   public $element:HTMLElement;
 
   public text = {
@@ -55,23 +51,6 @@ export class WpGraphConfigurationModalComponent extends OpModalComponent impleme
 
   // And a reference to the actual portal host interface
   public tabPortalHost:TabPortalOutlet;
-
-  constructor(
-    @Inject(OpModalLocalsToken) public locals:OpModalLocalsMap,
-    @Optional() @Inject(WpTableConfigurationModalPrependToken) public prependModalComponent:ComponentType<any>|null,
-    readonly I18n:I18nService,
-    readonly injector:Injector,
-    readonly appRef:ApplicationRef,
-    readonly componentFactoryResolver:ComponentFactoryResolver,
-    readonly loadingIndicator:LoadingIndicatorService,
-    readonly notificationService:WorkPackageNotificationService,
-    readonly cdRef:ChangeDetectorRef,
-    readonly configurationService:ConfigurationService,
-    readonly elementRef:ElementRef,
-    readonly graphConfiguration:WpGraphConfigurationService,
-  ) {
-    super(locals, cdRef, elementRef);
-  }
 
   ngOnInit():void {
     this.$element = this.elementRef.nativeElement as HTMLElement;

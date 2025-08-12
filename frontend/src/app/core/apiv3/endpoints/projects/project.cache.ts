@@ -27,7 +27,7 @@
 //++
 
 import { MultiInputState } from '@openproject/reactivestates';
-import { Injectable, Injector } from '@angular/core';
+import { Injectable, Injector, inject } from '@angular/core';
 import { StateCacheService } from 'core-app/core/apiv3/cache/state-cache.service';
 import { InjectField } from 'core-app/shared/helpers/angular/inject-field.decorator';
 import { SchemaCacheService } from 'core-app/core/schemas/schema-cache.service';
@@ -37,8 +37,10 @@ import { ProjectResource } from 'core-app/features/hal/resources/project-resourc
 export class ProjectCache extends StateCacheService<ProjectResource> {
   @InjectField() private schemaCacheService:SchemaCacheService;
 
-  constructor(readonly injector:Injector,
-    state:MultiInputState<ProjectResource>) {
+  constructor(
+    readonly injector:Injector = inject(Injector),
+    state:MultiInputState<ProjectResource> = inject(MultiInputState)
+  ) {
     super(state);
   }
 

@@ -1,6 +1,4 @@
-import {
-  ChangeDetectionStrategy, ChangeDetectorRef, Component, Injector,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Injector, inject } from '@angular/core';
 import { TimeEntryResource } from 'core-app/features/hal/resources/time-entry-resource';
 import { CollectionResource } from 'core-app/features/hal/resources/collection-resource';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
@@ -15,17 +13,13 @@ import { TimezoneService } from 'core-app/core/datetime/timezone.service';
   standalone: false,
 })
 export class WidgetTimeEntriesCurrentUserComponent extends AbstractWidgetComponent {
+  readonly timezone = inject(TimezoneService);
+  readonly pathHelper = inject(PathHelperService);
+  protected readonly cdr = inject(ChangeDetectorRef);
+
   public entries:TimeEntryResource[] = [];
 
   public displayedDays:DisplayedDays;
-
-  constructor(protected readonly injector:Injector,
-    readonly timezone:TimezoneService,
-    readonly i18n:I18nService,
-    readonly pathHelper:PathHelperService,
-    protected readonly cdr:ChangeDetectorRef) {
-    super(i18n, injector);
-  }
 
   public ngOnInit() {
     this.displayedDays = this.resource.options.days as DisplayedDays;

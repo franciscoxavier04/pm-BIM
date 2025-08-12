@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { UntypedFormArray } from '@angular/forms';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { HalSourceLink } from 'core-app/features/hal/resources/hal-resource';
@@ -20,6 +20,8 @@ export interface NotificationSettingProjectOption {
   standalone: false,
 })
 export class NotificationSettingInlineCreateComponent {
+  private I18n = inject(I18nService);
+
   @Input() userId:string;
 
   @Input() settings:UntypedFormArray;
@@ -38,10 +40,6 @@ export class NotificationSettingInlineCreateComponent {
   public get APIFilters():IAPIFilter[] {
     return [{ name: 'visible', operator: '=', values: [this.userId] }];
   }
-
-  constructor(
-    private I18n:I18nService,
-  ) { }
 
   selectProject($event:NotificationSettingProjectOption):void {
     this.selected.emit({ title: $event.name, href: $event.href });

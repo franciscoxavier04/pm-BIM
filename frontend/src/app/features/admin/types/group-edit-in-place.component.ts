@@ -26,15 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { TypeBannerService } from 'core-app/features/admin/types/type-banner.service';
 
 @Component({
@@ -44,6 +36,9 @@ import { TypeBannerService } from 'core-app/features/admin/types/type-banner.ser
   standalone: false,
 })
 export class GroupEditInPlaceComponent implements OnInit {
+  private bannerService = inject(TypeBannerService);
+  protected readonly cdRef = inject(ChangeDetectorRef);
+
   @Input() public placeholder = '';
 
   @Input() public name:string;
@@ -53,10 +48,6 @@ export class GroupEditInPlaceComponent implements OnInit {
   public editing = false;
 
   public editedName:string;
-
-  constructor(private bannerService:TypeBannerService,
-    protected readonly cdRef:ChangeDetectorRef) {
-  }
 
   ngOnInit():void {
     this.editedName = this.name;

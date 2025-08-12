@@ -28,7 +28,7 @@
 
 import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
-import { ChangeDetectionStrategy, Component, HostBinding, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, OnInit, ViewEncapsulation, inject } from '@angular/core';
 import { CurrentProjectService } from 'core-app/core/current-project/current-project.service';
 import { combineLatest, Observable, ReplaySubject } from 'rxjs';
 import { debounceTime, defaultIfEmpty, filter, map, mergeMap, shareReplay, take } from 'rxjs/operators';
@@ -58,6 +58,14 @@ import { ConfigurationService } from 'core-app/core/config/configuration.service
   standalone: false,
 })
 export class OpHeaderProjectSelectComponent extends UntilDestroyedMixin implements OnInit {
+  readonly pathHelper = inject(PathHelperService);
+  readonly configuration = inject(ConfigurationService);
+  readonly I18n = inject(I18nService);
+  readonly currentProject = inject(CurrentProjectService);
+  readonly searchableProjectListService = inject(SearchableProjectListService);
+  readonly currentUserService = inject(CurrentUserService);
+  readonly apiV3Service = inject(ApiV3Service);
+
   @HostBinding('class.op-project-select') className = true;
 
   public dropModalOpen = false;
@@ -167,15 +175,7 @@ export class OpHeaderProjectSelectComponent extends UntilDestroyedMixin implemen
 
   private displayModeLocalStorageKey = 'openProject-project-select-display-mode';
 
-  constructor(
-    readonly pathHelper:PathHelperService,
-    readonly configuration:ConfigurationService,
-    readonly I18n:I18nService,
-    readonly currentProject:CurrentProjectService,
-    readonly searchableProjectListService:SearchableProjectListService,
-    readonly currentUserService:CurrentUserService,
-    readonly apiV3Service:ApiV3Service,
-  ) {
+  constructor() {
     super();
 
     this.projects$

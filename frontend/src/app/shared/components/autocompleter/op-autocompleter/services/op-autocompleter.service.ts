@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { ApiV3FilterBuilder } from 'core-app/shared/helpers/api-v3/api-v3-filter-builder';
 import { map } from 'rxjs/operators';
 import { ApiV3ResourceCollection } from 'core-app/core/apiv3/paths/apiv3-resource';
@@ -23,12 +23,9 @@ import { CollectionResource } from 'core-app/features/hal/resources/collection-r
 @Injectable()
 
 export class OpAutocompleterService extends UntilDestroyedMixin {
-  constructor(
-    private apiV3Service:ApiV3Service,
-    private halResourceService:HalResourceService,
-  ) {
-    super();
-  }
+  private apiV3Service = inject(ApiV3Service);
+  private halResourceService = inject(HalResourceService);
+
 
   // A method for fetching data with different resource type and different filter
   public loadAvailable(matching:string, resource:TOpAutocompleterResource, filters?:IAPIFilter[], searchKey?:string):Observable<HalResource[]> {

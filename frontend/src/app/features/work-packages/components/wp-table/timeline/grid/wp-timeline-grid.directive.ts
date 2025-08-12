@@ -25,11 +25,7 @@
 //
 // See COPYRIGHT and LICENSE files for more details.
 //++
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject } from '@angular/core';
 import moment, { Moment } from 'moment';
 import { TimelineZoomLevel } from 'core-app/features/hal/resources/query-resource';
 import { WorkPackageTimelineTableController } from '../container/wp-timeline-container.directive';
@@ -48,15 +44,13 @@ import { WeekdayService } from 'core-app/core/days/weekday.service';
   standalone: false,
 })
 export class WorkPackageTableTimelineGrid implements AfterViewInit {
+  private elementRef = inject(ElementRef);
+  wpTimeline = inject(WorkPackageTimelineTableController);
+  private weekdaysService = inject(WeekdayService);
+
   private activeZoomLevel:TimelineZoomLevel;
 
   private gridContainer:JQuery;
-
-  constructor(
-    private elementRef:ElementRef,
-    public wpTimeline:WorkPackageTimelineTableController,
-    private weekdaysService:WeekdayService,
-  ) {}
 
   ngAfterViewInit():void {
     const $element = jQuery(this.elementRef.nativeElement);

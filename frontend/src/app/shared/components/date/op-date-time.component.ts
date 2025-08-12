@@ -26,7 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { TimezoneService } from 'core-app/core/datetime/timezone.service';
 
 @Component({
@@ -41,14 +41,13 @@ import { TimezoneService } from 'core-app/core/datetime/timezone.service';
   standalone: false,
 })
 export class OpDateTimeComponent {
+  readonly timezoneService = inject(TimezoneService);
+
   @Input('dateTimeValue') dateTimeValue:any;
 
   public date:any;
 
   public time:any;
-
-  constructor(readonly timezoneService:TimezoneService) {
-  }
 
   ngOnInit() {
     const c = this.timezoneService.formattedDatetimeComponents(this.dateTimeValue);

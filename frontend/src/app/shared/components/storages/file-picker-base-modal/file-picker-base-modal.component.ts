@@ -26,14 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  ChangeDetectorRef,
-  Directive,
-  ElementRef,
-  Inject,
-  OnDestroy,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectorRef, Directive, ElementRef, OnDestroy, OnInit, inject } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import {
   BehaviorSubject,
@@ -69,6 +62,9 @@ type Alert = 'none'|'noAccess'|'managedFolderNoAccess'|'managedFolderNotFound'|'
 
 @Directive()
 export abstract class FilePickerBaseModalComponent extends OpModalComponent implements OnInit, OnDestroy {
+  protected readonly sortFilesPipe = inject(SortFilesPipe);
+  protected readonly storageFilesResourceService = inject(StorageFilesResourceService);
+
   private loadingSubscription:Subscription;
 
   protected readonly storageFiles$ = new BehaviorSubject<IStorageFile[]>([]);
@@ -95,16 +91,6 @@ export abstract class FilePickerBaseModalComponent extends OpModalComponent impl
     );
 
   public readonly loading$ = new BehaviorSubject<'loading'|'success'|'error'>('loading');
-
-  protected constructor(
-    @Inject(OpModalLocalsToken) public locals:OpModalLocalsMap,
-    readonly elementRef:ElementRef,
-    readonly cdRef:ChangeDetectorRef,
-    protected readonly sortFilesPipe:SortFilesPipe,
-    protected readonly storageFilesResourceService:StorageFilesResourceService,
-  ) {
-    super(locals, cdRef, elementRef);
-  }
 
   ngOnInit():void {
     super.ngOnInit();

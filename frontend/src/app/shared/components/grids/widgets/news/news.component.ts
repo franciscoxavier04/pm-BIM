@@ -1,7 +1,5 @@
 import { AbstractWidgetComponent } from 'core-app/shared/components/grids/widgets/abstract-widget.component';
-import {
-  ChangeDetectionStrategy, ChangeDetectorRef, Component, Injector, OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Injector, OnInit, inject } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
 import { NewsResource } from 'core-app/features/hal/resources/news-resource';
@@ -17,6 +15,12 @@ import idFromLink from 'core-app/features/hal/helpers/id-from-link';
   standalone: false,
 })
 export class WidgetNewsComponent extends AbstractWidgetComponent implements OnInit {
+  readonly pathHelper = inject(PathHelperService);
+  readonly timezone = inject(TimezoneService);
+  readonly currentProject = inject(CurrentProjectService);
+  readonly apiV3Service = inject(ApiV3Service);
+  readonly cdr = inject(ChangeDetectorRef);
+
   public text = {
     at: this.i18n.t('js.grid.widgets.news.at'),
     noResults: this.i18n.t('js.grid.widgets.news.no_results'),
@@ -27,19 +31,6 @@ export class WidgetNewsComponent extends AbstractWidgetComponent implements OnIn
   public entries:NewsResource[] = [];
 
   private entriesLoaded = false;
-
-  constructor(
-
-    readonly pathHelper:PathHelperService,
-    readonly i18n:I18nService,
-    protected readonly injector:Injector,
-    readonly timezone:TimezoneService,
-    readonly currentProject:CurrentProjectService,
-    readonly apiV3Service:ApiV3Service,
-    readonly cdr:ChangeDetectorRef,
-  ) {
-    super(i18n, injector);
-  }
 
   ngOnInit() {
     this

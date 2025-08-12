@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Optional } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FieldWrapper } from '@ngx-formly/core';
 import { DynamicFormComponent } from 'core-app/shared/components/dynamic-forms/components/dynamic-form/dynamic-form.component';
 
@@ -10,9 +10,5 @@ import { DynamicFormComponent } from 'core-app/shared/components/dynamic-forms/c
   standalone: false,
 })
 export class DynamicFieldWrapperComponent extends FieldWrapper {
-  constructor(
-    @Optional() public dynamicFormComponent:DynamicFormComponent,
-  ) {
-    super();
-  }
+  dynamicFormComponent = inject(DynamicFormComponent, { optional: true });
 }

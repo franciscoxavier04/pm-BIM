@@ -1,28 +1,6 @@
 /* We just forward the ng-select outputs without renaming */
 /* eslint-disable @angular-eslint/no-output-native */
-import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ContentChild,
-  ElementRef,
-  EventEmitter,
-  forwardRef,
-  HostBinding,
-  Injector,
-  Input,
-  NgZone,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges,
-  TemplateRef,
-  Type,
-  ViewChild,
-  ViewContainerRef,
-  ViewEncapsulation,
-} from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, ElementRef, EventEmitter, forwardRef, HostBinding, Injector, Input, NgZone, OnChanges, OnInit, Output, SimpleChanges, TemplateRef, Type, ViewChild, ViewContainerRef, ViewEncapsulation, inject } from '@angular/core';
 import { DropdownPosition, NgSelectComponent } from '@ng-select/ng-select';
 import { BehaviorSubject, merge, NEVER, Observable, of, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, switchMap, tap } from 'rxjs/operators';
@@ -93,6 +71,18 @@ export interface IAutocompleterTemplateComponent {
 export class OpAutocompleterComponent<T extends IAutocompleteItem = IAutocompleteItem>
   extends UntilDestroyedMixin
   implements OnInit, AfterViewInit, OnChanges, ControlValueAccessor {
+  readonly injector = inject(Injector);
+  readonly elementRef = inject(ElementRef);
+  readonly http = inject(HttpClient);
+  readonly apiV3Service = inject(ApiV3Service);
+  readonly cdRef = inject(ChangeDetectorRef);
+  readonly ngZone = inject(NgZone);
+  readonly vcRef = inject(ViewContainerRef);
+  readonly I18n = inject(I18nService);
+  readonly halResourceService = inject(HalResourceService);
+  readonly pathHelperService = inject(PathHelperService);
+  readonly opAutocompleterService = inject(OpAutocompleterService);
+
   @HostBinding('class.op-autocompleter') className = true;
 
   @Input() public filters?:IAPIFilter[] = [];
@@ -293,23 +283,6 @@ export class OpAutocompleterComponent<T extends IAutocompleteItem = IAutocomplet
   projectedFooterTemplate:TemplateRef<Element>;
 
   footerTemplate:TemplateRef<Element>;
-
-  readonly opAutocompleterService = new OpAutocompleterService(this.apiV3Service, this.halResourceService);
-
-  constructor(
-    readonly injector:Injector,
-    readonly elementRef:ElementRef,
-    readonly http:HttpClient,
-    readonly apiV3Service:ApiV3Service,
-    readonly cdRef:ChangeDetectorRef,
-    readonly ngZone:NgZone,
-    readonly vcRef:ViewContainerRef,
-    readonly I18n:I18nService,
-    readonly halResourceService:HalResourceService,
-    readonly pathHelperService:PathHelperService,
-  ) {
-    super();
-  }
 
   ngOnInit() {
     populateInputsFromDataset(this);

@@ -26,9 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  ChangeDetectorRef, Component, ElementRef, Inject, OnInit, ViewChild,
-} from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { OpModalLocalsMap } from 'core-app/shared/components/modal/modal.types';
 import { OpModalComponent } from 'core-app/shared/components/modal/modal.component';
 import { OpModalLocalsToken } from 'core-app/shared/components/modal/modal.service';
@@ -55,6 +53,14 @@ import { HalResource } from 'core-app/features/hal/resources/hal-resource';
   standalone: false,
 })
 export class AddListModalComponent extends OpModalComponent implements OnInit {
+  readonly boardActions = inject(BoardActionsRegistryService);
+  readonly halNotification = inject(HalResourceNotificationService);
+  readonly state = inject(StateService);
+  readonly boardService = inject(BoardService);
+  readonly I18n = inject(I18nService);
+  readonly apiV3Service = inject(ApiV3Service);
+  readonly currentProject = inject(CurrentProjectService);
+
   @ViewChild(OpAutocompleterComponent, { static: true }) public ngSelectComponent:OpAutocompleterComponent;
 
   getAutocompleterData = (searchTerm:string):Observable<HalResource[]> => {
@@ -110,19 +116,6 @@ export class AddListModalComponent extends OpModalComponent implements OnInit {
 
   /** Whether the no results warning is displayed */
   showWarning = false;
-
-  constructor(readonly elementRef:ElementRef,
-    @Inject(OpModalLocalsToken) public locals:OpModalLocalsMap,
-    readonly cdRef:ChangeDetectorRef,
-    readonly boardActions:BoardActionsRegistryService,
-    readonly halNotification:HalResourceNotificationService,
-    readonly state:StateService,
-    readonly boardService:BoardService,
-    readonly I18n:I18nService,
-    readonly apiV3Service:ApiV3Service,
-    readonly currentProject:CurrentProjectService) {
-    super(locals, cdRef, elementRef);
-  }
 
   ngOnInit() {
     super.ngOnInit();

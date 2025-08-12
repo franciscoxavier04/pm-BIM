@@ -1,16 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  EventEmitter,
-  Injector,
-  Input,
-  OnDestroy,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Injector, Input, OnDestroy, OnInit, Output, ViewChild, inject } from '@angular/core';
 import {
   LoadingIndicatorService,
   withLoadingIndicator,
@@ -98,6 +86,30 @@ export interface DisabledButtonPlaceholder {
   standalone: false,
 })
 export class BoardListComponent extends AbstractWidgetComponent implements OnInit, OnDestroy {
+  readonly apiv3Service = inject(ApiV3Service);
+  readonly state = inject(StateService);
+  readonly cdRef = inject(ChangeDetectorRef);
+  readonly transitions = inject(TransitionService);
+  readonly boardFilters = inject(BoardFiltersService);
+  readonly toastService = inject(ToastService);
+  readonly querySpace = inject(IsolatedQuerySpace);
+  readonly halNotification = inject(HalResourceNotificationService);
+  readonly halEvents = inject(HalEventsService);
+  readonly wpStatesInitialization = inject(WorkPackageStatesInitializationService);
+  readonly wpViewFocusService = inject(WorkPackageViewFocusService);
+  readonly wpViewSelectionService = inject(WorkPackageViewSelectionService);
+  readonly boardListCrossSelectionService = inject(BoardListCrossSelectionService);
+  readonly authorisationService = inject(AuthorisationService);
+  readonly wpInlineCreate = inject(WorkPackageInlineCreateService);
+  readonly halEditing = inject(HalResourceEditingService);
+  readonly loadingIndicator = inject(LoadingIndicatorService);
+  readonly schemaCache = inject(SchemaCacheService);
+  readonly boardService = inject(BoardService);
+  readonly boardActionRegistry = inject(BoardActionsRegistryService);
+  readonly causedUpdates = inject(CausedUpdatesService);
+  readonly keepTab = inject(KeepTabService);
+  readonly $state = inject(StateService);
+
   /** Output fired upon query removal */
   @Output() onRemove = new EventEmitter<void>();
 
@@ -137,11 +149,11 @@ export class BoardListComponent extends AbstractWidgetComponent implements OnIni
   public columnsQueryProps:any;
 
   public text = {
-    addCard: this.I18n.t('js.boards.add_card'),
-    updateSuccessful: this.I18n.t('js.notice_successful_update'),
-    areYouSure: this.I18n.t('js.text_are_you_sure'),
-    unnamed_list: this.I18n.t('js.boards.label_unnamed_list'),
-    click_to_remove: this.I18n.t('js.boards.click_to_remove_list'),
+    addCard: this.i18n.t('js.boards.add_card'),
+    updateSuccessful: this.i18n.t('js.notice_successful_update'),
+    areYouSure: this.i18n.t('js.text_are_you_sure'),
+    unnamed_list: this.i18n.t('js.boards.label_unnamed_list'),
+    click_to_remove: this.i18n.t('js.boards.click_to_remove_list'),
   };
 
   /** Are we allowed to remove and drag & drop elements ? */
@@ -159,34 +171,6 @@ export class BoardListComponent extends AbstractWidgetComponent implements OnIni
   public canDragOutOfHandler = (workPackage:WorkPackageResource) => this.canMove(workPackage);
 
   public buttonPlaceholder:DisabledButtonPlaceholder|undefined;
-
-  constructor(readonly apiv3Service:ApiV3Service,
-    readonly I18n:I18nService,
-    readonly state:StateService,
-    readonly cdRef:ChangeDetectorRef,
-    readonly transitions:TransitionService,
-    readonly boardFilters:BoardFiltersService,
-    readonly toastService:ToastService,
-    readonly querySpace:IsolatedQuerySpace,
-    readonly halNotification:HalResourceNotificationService,
-    readonly halEvents:HalEventsService,
-    readonly wpStatesInitialization:WorkPackageStatesInitializationService,
-    readonly wpViewFocusService:WorkPackageViewFocusService,
-    readonly wpViewSelectionService:WorkPackageViewSelectionService,
-    readonly boardListCrossSelectionService:BoardListCrossSelectionService,
-    readonly authorisationService:AuthorisationService,
-    readonly wpInlineCreate:WorkPackageInlineCreateService,
-    readonly injector:Injector,
-    readonly halEditing:HalResourceEditingService,
-    readonly loadingIndicator:LoadingIndicatorService,
-    readonly schemaCache:SchemaCacheService,
-    readonly boardService:BoardService,
-    readonly boardActionRegistry:BoardActionsRegistryService,
-    readonly causedUpdates:CausedUpdatesService,
-    readonly keepTab:KeepTabService,
-    readonly $state:StateService) {
-    super(I18n, injector);
-  }
 
   ngOnInit():void {
     // Unset the isNew flag
@@ -261,7 +245,7 @@ export class BoardListComponent extends AbstractWidgetComponent implements OnIni
   }
 
   public get errorMessage() {
-    return this.I18n.t('js.boards.error_loading_the_list', { error_message: this.loadingError });
+    return this.i18n.t('js.boards.error_loading_the_list', { error_message: this.loadingError });
   }
 
   public canMove(workPackage:WorkPackageResource) {

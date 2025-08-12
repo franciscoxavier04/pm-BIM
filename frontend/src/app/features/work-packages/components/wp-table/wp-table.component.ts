@@ -26,19 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  EventEmitter,
-  Injector,
-  Input,
-  NgZone,
-  OnInit,
-  Output,
-  ViewEncapsulation,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Injector, Input, NgZone, OnInit, Output, ViewEncapsulation, inject } from '@angular/core';
 import { QueryResource } from 'core-app/features/hal/resources/query-resource';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import {
@@ -84,6 +72,20 @@ export interface WorkPackageFocusContext {
   standalone: false,
 })
 export class WorkPackagesTableComponent extends UntilDestroyedMixin implements OnInit, TableEventComponent {
+  readonly elementRef = inject(ElementRef);
+  readonly injector = inject(Injector);
+  readonly states = inject(States);
+  readonly querySpace = inject(IsolatedQuerySpace);
+  readonly I18n = inject(I18nService);
+  readonly cdRef = inject(ChangeDetectorRef);
+  readonly zone = inject(NgZone);
+  readonly wpTableGroupBy = inject(WorkPackageViewGroupByService);
+  readonly wpTableTimeline = inject(WorkPackageViewTimelineService);
+  readonly wpTableColumns = inject(WorkPackageViewColumnsService);
+  readonly wpTableSortBy = inject(WorkPackageViewSortByService);
+  readonly wpTableSums = inject(WorkPackageViewSumService);
+  readonly wpTableBaseline = inject(WorkPackageViewBaselineService);
+
   @Input() projectIdentifier:string;
 
   @Input('configuration') configurationObject:WorkPackageTableConfigurationObject;
@@ -139,24 +141,6 @@ export class WorkPackagesTableComponent extends UntilDestroyedMixin implements O
   public inlineCreateVisible = false;
 
   public sumVisible = false;
-
-  constructor(
-    readonly elementRef:ElementRef,
-    readonly injector:Injector,
-    readonly states:States,
-    readonly querySpace:IsolatedQuerySpace,
-    readonly I18n:I18nService,
-    readonly cdRef:ChangeDetectorRef,
-    readonly zone:NgZone,
-    readonly wpTableGroupBy:WorkPackageViewGroupByService,
-    readonly wpTableTimeline:WorkPackageViewTimelineService,
-    readonly wpTableColumns:WorkPackageViewColumnsService,
-    readonly wpTableSortBy:WorkPackageViewSortByService,
-    readonly wpTableSums:WorkPackageViewSumService,
-    readonly wpTableBaseline:WorkPackageViewBaselineService,
-  ) {
-    super();
-  }
 
   ngOnInit():void {
     this.configuration = new WorkPackageTableConfiguration(this.configurationObject);

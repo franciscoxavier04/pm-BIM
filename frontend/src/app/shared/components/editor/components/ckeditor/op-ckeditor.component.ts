@@ -26,7 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild, inject } from '@angular/core';
 import { ToastService } from 'core-app/shared/components/toaster/toast.service';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { ConfigurationService } from 'core-app/core/config/configuration.service';
@@ -50,6 +50,12 @@ declare module 'codemirror';
   standalone: false,
 })
 export class OpCkeditorComponent extends UntilDestroyedMixin implements OnInit, OnDestroy {
+  private readonly elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
+  private readonly Notifications = inject(ToastService);
+  private readonly I18n = inject(I18nService);
+  private readonly configurationService = inject(ConfigurationService);
+  private readonly ckEditorSetup = inject(CKEditorSetupService);
+
   @Input() context:ICKEditorContext;
 
   @Input()
@@ -119,16 +125,6 @@ export class OpCkeditorComponent extends UntilDestroyedMixin implements OnInit, 
     1000,
     { leading: true },
   );
-
-  constructor(
-    private readonly elementRef:ElementRef<HTMLElement>,
-    private readonly Notifications:ToastService,
-    private readonly I18n:I18nService,
-    private readonly configurationService:ConfigurationService,
-    private readonly ckEditorSetup:CKEditorSetupService,
-  ) {
-    super();
-  }
 
   /**
    * Get the current live data from CKEditor. This may raise in cases

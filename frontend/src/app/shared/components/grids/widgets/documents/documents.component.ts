@@ -1,12 +1,5 @@
 import { AbstractWidgetComponent } from 'core-app/shared/components/grids/widgets/abstract-widget.component';
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  Injector,
-  OnInit,
-  SecurityContext,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Injector, OnInit, SecurityContext, inject } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { CollectionResource } from 'core-app/features/hal/resources/collection-resource';
 import { HalResourceService } from 'core-app/features/hal/services/hal-resource.service';
@@ -23,6 +16,14 @@ import { DocumentResource } from '../../../../../../../../modules/documents/fron
   standalone: false,
 })
 export class WidgetDocumentsComponent extends AbstractWidgetComponent implements OnInit {
+  readonly halResource = inject(HalResourceService);
+  readonly pathHelper = inject(PathHelperService);
+  readonly apiV3Service = inject(ApiV3Service);
+  readonly timezone = inject(TimezoneService);
+  readonly domSanitizer = inject(DomSanitizer);
+  readonly currentProject = inject(CurrentProjectService);
+  readonly cdr = inject(ChangeDetectorRef);
+
   public text = {
     noResults: this.i18n.t('js.grid.widgets.documents.no_results'),
     project: this.i18n.t('js.label_project'),
@@ -31,18 +32,6 @@ export class WidgetDocumentsComponent extends AbstractWidgetComponent implements
   public entries:DocumentResource[] = [];
 
   private entriesLoaded = false;
-
-  constructor(readonly halResource:HalResourceService,
-    readonly pathHelper:PathHelperService,
-    readonly apiV3Service:ApiV3Service,
-    readonly i18n:I18nService,
-    readonly timezone:TimezoneService,
-    readonly domSanitizer:DomSanitizer,
-    protected readonly injector:Injector,
-    readonly currentProject:CurrentProjectService,
-    readonly cdr:ChangeDetectorRef) {
-    super(i18n, injector);
-  }
 
   ngOnInit() {
     this.halResource

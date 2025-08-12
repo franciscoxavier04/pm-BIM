@@ -1,12 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import {
   uiStateLinkClass,
 } from 'core-app/features/work-packages/components/wp-fast-table/builders/ui-state-link-builder';
@@ -52,6 +44,17 @@ import {
   standalone: false,
 })
 export class WorkPackageSingleCardComponent extends UntilDestroyedMixin implements OnInit {
+  readonly pathHelper = inject(PathHelperService);
+  readonly I18n = inject(I18nService);
+  readonly $state = inject(StateService);
+  readonly uiRouterGlobals = inject(UIRouterGlobals);
+  readonly wpTableSelection = inject(WorkPackageViewSelectionService);
+  readonly wpTableFocus = inject(WorkPackageViewFocusService);
+  readonly cardView = inject(WorkPackageCardViewService);
+  readonly cdRef = inject(ChangeDetectorRef);
+  readonly timezoneService = inject(TimezoneService);
+  readonly schemaCache = inject(SchemaCacheService);
+
   @Input() public workPackage:WorkPackageResource;
 
   @Input() public selectedWhenOpen = false;
@@ -111,21 +114,6 @@ export class WorkPackageSingleCardComponent extends UntilDestroyedMixin implemen
   public tooltipPosition = SpotDropAlignmentOption.BottomLeft;
 
   combinedDateDisplayField = CombinedDateDisplayField;
-
-  constructor(
-    readonly pathHelper:PathHelperService,
-    readonly I18n:I18nService,
-    readonly $state:StateService,
-    readonly uiRouterGlobals:UIRouterGlobals,
-    readonly wpTableSelection:WorkPackageViewSelectionService,
-    readonly wpTableFocus:WorkPackageViewFocusService,
-    readonly cardView:WorkPackageCardViewService,
-    readonly cdRef:ChangeDetectorRef,
-    readonly timezoneService:TimezoneService,
-    readonly schemaCache:SchemaCacheService,
-  ) {
-    super();
-  }
 
   ngOnInit():void {
     // Update selection state

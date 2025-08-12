@@ -26,18 +26,15 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  Inject,
-  Injectable,
-} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 export const ANIMATION_RATE_MS = 100;
 
 @Injectable({ providedIn: 'root' })
 export class TopMenuService {
-  constructor(@Inject(DOCUMENT) private document:Document) {
-  }
+  private document = inject<Document>(DOCUMENT);
+
 
   register():void {
     this.skipContentClickListener();

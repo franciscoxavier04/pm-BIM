@@ -26,7 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { ChangeDetectionStrategy, Component, HostListener, Injector, Input, OnInit, Type } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, Injector, Input, OnInit, Type, inject } from '@angular/core';
 import { StateService } from '@uirouter/core';
 import {
   WorkPackageViewFocusService,
@@ -66,9 +66,20 @@ import { TabComponent } from 'core-app/features/work-packages/components/wp-tabs
   standalone: false,
 })
 export class WorkPackageSplitViewComponent extends WorkPackageSingleViewBase implements OnInit {
-  hasState:boolean = !!this.$state.current;
+  states = inject(States);
+  firstRoute = inject(FirstRouteService);
+  keepTab = inject(KeepTabService);
+  wpTableSelection = inject(WorkPackageViewSelectionService);
+  wpTableFocus = inject(WorkPackageViewFocusService);
+  recentItemsService = inject(RecentItemsService);
+  readonly $state:StateService;
+  readonly urlParams = inject(UrlParamsService);
+  readonly backRouting = inject(BackRoutingService);
+  readonly wpTabs = inject(WorkPackageTabsService);
+
+  hasState:boolean;
   /** Reference to the base route e.g., work-packages.partitioned.list or bim.partitioned.split */
-  private baseRoute:string = this.$state.current?.data?.baseRoute as string;
+  private baseRoute:string;
 
   @Input() workPackageId:string;
   @Input() showTabs = true;
@@ -76,20 +87,14 @@ export class WorkPackageSplitViewComponent extends WorkPackageSingleViewBase imp
 
   @Input() resizerClass = 'work-packages-partitioned-page--content-right';
 
-  constructor(
-    public injector:Injector,
-    public states:States,
-    public firstRoute:FirstRouteService,
-    public keepTab:KeepTabService,
-    public wpTableSelection:WorkPackageViewSelectionService,
-    public wpTableFocus:WorkPackageViewFocusService,
-    public recentItemsService:RecentItemsService,
-    readonly $state:StateService,
-    readonly urlParams:UrlParamsService,
-    readonly backRouting:BackRoutingService,
-    readonly wpTabs:WorkPackageTabsService,
-  ) {
-    super(injector, $state.params.workPackageId);
+  constructor() {
+    const $state = inject(StateService);
+
+    super($state.params.workPackageId);
+
+    this.$state = $state;
+    this.hasState = !!this.$state.current;
+    this.baseRoute = this.$state.current?.data?.baseRoute as string;
   }
 
     // enable other parts of the application to trigger an immediate update

@@ -1,18 +1,7 @@
 import { HalResourceEditingService } from 'core-app/shared/components/fields/edit/services/hal-resource-editing.service';
 import { TimeEntryResource } from 'core-app/features/hal/resources/time-entry-resource';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  OnInit,
-  Output,
-  ViewChild,
-  ViewEncapsulation,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild, ViewEncapsulation, inject } from '@angular/core';
 import { HalResource } from 'core-app/features/hal/resources/hal-resource';
 import { EditFormComponent } from 'core-app/shared/components/fields/edit/edit-form/edit-form.component';
 import { UntilDestroyedMixin } from 'core-app/shared/helpers/angular/until-destroyed.mixin';
@@ -27,6 +16,10 @@ import { SchemaResource } from 'core-app/features/hal/resources/schema-resource'
   standalone: false,
 })
 export class TimeEntryFormComponent extends UntilDestroyedMixin implements OnInit, OnDestroy {
+  readonly halEditing = inject(HalResourceEditingService);
+  readonly cdRef = inject(ChangeDetectorRef);
+  readonly i18n = inject(I18nService);
+
   @Input() changeset:ResourceChangeset<TimeEntryResource>;
 
   @Input() showWorkPackageField = true;
@@ -46,12 +39,6 @@ export class TimeEntryFormComponent extends UntilDestroyedMixin implements OnIni
   public schema:SchemaResource;
 
   public customFields:{ key:string, label:string, type:string }[] = [];
-
-  constructor(readonly halEditing:HalResourceEditingService,
-    readonly cdRef:ChangeDetectorRef,
-    readonly i18n:I18nService) {
-    super();
-  }
 
   ngOnInit() {
     this.halEditing

@@ -26,9 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  ChangeDetectorRef, Component, ElementRef, Inject, ViewChild,
-} from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, ViewChild, inject } from '@angular/core';
 import { HalResourceNotificationService } from 'core-app/features/hal/services/hal-resource-notification.service';
 import { QueryResource } from 'core-app/features/hal/resources/query-resource';
 import { ToastService } from 'core-app/shared/components/toaster/toast.service';
@@ -46,6 +44,13 @@ import { States } from 'core-app/core/states/states.service';
   standalone: false,
 })
 export class SaveQueryModalComponent extends OpModalComponent {
+  readonly I18n = inject(I18nService);
+  readonly states = inject(States);
+  readonly querySpace = inject(IsolatedQuerySpace);
+  readonly wpListService = inject(WorkPackagesListService);
+  readonly halNotification = inject(HalResourceNotificationService);
+  readonly toastService = inject(ToastService);
+
   public queryName = '';
 
   public isStarred = false;
@@ -66,20 +71,6 @@ export class SaveQueryModalComponent extends OpModalComponent {
     button_cancel: this.I18n.t('js.button_cancel'),
     close_popup: this.I18n.t('js.close_popup_title'),
   };
-
-  constructor(
-    readonly elementRef:ElementRef,
-    @Inject(OpModalLocalsToken) public locals:OpModalLocalsMap,
-    readonly I18n:I18nService,
-    readonly states:States,
-    readonly querySpace:IsolatedQuerySpace,
-    readonly wpListService:WorkPackagesListService,
-    readonly halNotification:HalResourceNotificationService,
-    readonly cdRef:ChangeDetectorRef,
-    readonly toastService:ToastService,
-  ) {
-    super(locals, cdRef, elementRef);
-  }
 
   public setValues(change:QuerySharingChange):void {
     this.isStarred = change.isStarred;

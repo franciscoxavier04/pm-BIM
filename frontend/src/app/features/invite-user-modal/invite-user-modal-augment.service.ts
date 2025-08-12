@@ -26,7 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { Inject, Injectable, DOCUMENT } from '@angular/core';
+import { Injectable, DOCUMENT, inject } from '@angular/core';
 import { OpModalService } from 'core-app/shared/components/modal/modal.service';
 import { CurrentProjectService } from 'core-app/core/current-project/current-project.service';
 import { InviteUserModalComponent } from './invite-user.component';
@@ -39,11 +39,10 @@ const attributeName = 'invite-user-modal-augment';
  */
 @Injectable({ providedIn: 'root' })
 export class OpInviteUserModalAugmentService {
-  constructor(
-    @Inject(DOCUMENT) protected documentElement:Document,
-    protected opModalService:OpModalService,
-    protected currentProjectService:CurrentProjectService,
-  ) { }
+  protected documentElement = inject<Document>(DOCUMENT);
+  protected opModalService = inject(OpModalService);
+  protected currentProjectService = inject(CurrentProjectService);
+
 
   /**
    * Create initial listeners for Rails-rendered modals

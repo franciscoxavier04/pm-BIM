@@ -1,8 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { UserPreferencesService } from 'core-app/features/user-preferences/state/user-preferences.service';
 import {
@@ -17,6 +13,10 @@ import {
   standalone: false,
 })
 export class ImmediateReminderSettingsComponent implements OnInit {
+  private I18n = inject(I18nService);
+  private storeService = inject(UserPreferencesService);
+  private rootFormGroup = inject(FormGroupDirective);
+
   form:UntypedFormGroup;
 
   text = {
@@ -25,13 +25,6 @@ export class ImmediateReminderSettingsComponent implements OnInit {
     mentioned: this.I18n.t('js.reminders.settings.immediate.mentioned'),
     personalReminder: this.I18n.t('js.reminders.settings.immediate.personal_reminder'),
   };
-
-  constructor(
-    private I18n:I18nService,
-    private storeService:UserPreferencesService,
-    private rootFormGroup:FormGroupDirective,
-  ) {
-  }
 
   ngOnInit():void {
     this.form = this.rootFormGroup.control.get('immediateReminders') as UntypedFormGroup;

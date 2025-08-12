@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Injector, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Injector, Input, OnInit, inject } from '@angular/core';
 import {
   KeepTabService,
 } from 'core-app/features/work-packages/components/wp-single-view-tabs/keep-tab/keep-tab.service';
@@ -18,6 +18,13 @@ import { WorkPackageResource } from 'core-app/features/hal/resources/work-packag
   standalone: false,
 })
 export class WpTabsComponent implements OnInit {
+  readonly wpTabsService = inject(WorkPackageTabsService);
+  readonly I18n = inject(I18nService);
+  readonly injector = inject(Injector);
+  readonly $state = inject(StateService);
+  readonly uiRouterGlobals = inject(UIRouterGlobals);
+  readonly keepTab = inject(KeepTabService);
+
   @Input() workPackage:WorkPackageResource;
 
   @Input() view:'full'|'split';
@@ -34,16 +41,6 @@ export class WpTabsComponent implements OnInit {
       goToFullScreen: this.I18n.t('js.button_show_fullscreen'),
     },
   };
-
-  constructor(
-    readonly wpTabsService:WorkPackageTabsService,
-    readonly I18n:I18nService,
-    readonly injector:Injector,
-    readonly $state:StateService,
-    readonly uiRouterGlobals:UIRouterGlobals,
-    readonly keepTab:KeepTabService,
-  ) {
-  }
 
   ngOnInit():void {
     this.uiSrefBase = this.view === 'split' ? '' : 'work-packages.show';

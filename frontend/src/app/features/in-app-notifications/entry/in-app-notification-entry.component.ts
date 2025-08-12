@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit, ViewEncapsulation, inject } from '@angular/core';
 import { WorkPackageResource } from 'core-app/features/hal/resources/work-package-resource';
 import { Observable } from 'rxjs';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
@@ -21,6 +21,14 @@ import { UrlParamsService } from 'core-app/core/navigation/url-params.service';
   standalone: false,
 })
 export class InAppNotificationEntryComponent implements OnInit {
+  readonly apiV3Service = inject(ApiV3Service);
+  readonly I18n = inject(I18nService);
+  readonly storeService = inject(IanCenterService);
+  readonly timezoneService = inject(TimezoneService);
+  readonly pathHelper = inject(PathHelperService);
+  readonly deviceService = inject(DeviceService);
+  readonly urlParams = inject(UrlParamsService);
+
   @HostBinding('class.op-ian-item') className = true;
 
   @Input() notification:INotification;
@@ -48,17 +56,6 @@ export class InAppNotificationEntryComponent implements OnInit {
   private clickTimer:ReturnType<typeof setTimeout>;
 
   private workPackageId:string|null;
-
-  constructor(
-    readonly apiV3Service:ApiV3Service,
-    readonly I18n:I18nService,
-    readonly storeService:IanCenterService,
-    readonly timezoneService:TimezoneService,
-    readonly pathHelper:PathHelperService,
-    readonly deviceService:DeviceService,
-    readonly urlParams:UrlParamsService,
-  ) {
-  }
 
   ngOnInit():void {
     const href = this.notification._links.resource?.href;

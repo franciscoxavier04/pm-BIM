@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -11,6 +11,10 @@ import { addParamToHref } from 'core-app/shared/helpers/url-helpers';
 
 @Injectable()
 export class DynamicFieldsService {
+  private httpClient = inject(HttpClient);
+  private I18n = inject(I18nService);
+  private formsService = inject(FormsService);
+
   readonly selectDefaultValue = { name: '-', _links: { self: { href: null } } };
 
   readonly inputsCatalogue:IOPDynamicInputTypeSettings[] = [
@@ -142,13 +146,6 @@ export class DynamicFieldsService {
       ],
     },
   ];
-
-  constructor(
-    private httpClient:HttpClient,
-    private I18n:I18nService,
-    private formsService:FormsService,
-  ) {
-  }
 
   getConfig(formSchema:IOPFormSchema, formPayload:IOPFormModel):IOPFormlyFieldSettings[] {
     const formFieldGroups = formSchema._attributeGroups?.map((fieldGroup) => ({

@@ -1,6 +1,4 @@
-import {
-  ApplicationRef, ChangeDetectorRef, Component, ElementRef, Inject, Injector, OnInit,
-} from '@angular/core';
+import { ApplicationRef, ChangeDetectorRef, Component, ElementRef, Injector, OnInit, inject } from '@angular/core';
 import { OpModalLocalsMap } from 'core-app/shared/components/modal/modal.types';
 import { OpModalComponent } from 'core-app/shared/components/modal/modal.component';
 import { OpModalLocalsToken } from 'core-app/shared/components/modal/modal.service';
@@ -16,6 +14,14 @@ import { TimeEntriesCurrentUserConfigurationModalService } from 'core-app/shared
   standalone: false,
 })
 export class TimeEntriesCurrentUserConfigurationModalComponent extends OpModalComponent implements OnInit {
+  readonly I18n = inject(I18nService);
+  readonly injector = inject(Injector);
+  readonly appRef = inject(ApplicationRef);
+  readonly loadingIndicator = inject(LoadingIndicatorService);
+  readonly notificationService = inject(WorkPackageNotificationService);
+  readonly configuration = inject(ConfigurationService);
+  readonly timeEntriesCurrentUserConfigurationModalService = inject(TimeEntriesCurrentUserConfigurationModalService);
+
   public text = {
     displayedDays: this.I18n.t('js.grid.widgets.time_entries_current_user.displayed_days'),
     closePopup: this.I18n.t('js.close_popup_title'),
@@ -31,19 +37,6 @@ export class TimeEntriesCurrentUserConfigurationModalComponent extends OpModalCo
   public daysOriginalCheckedValues:boolean[];
 
   public days:IDayData[];
-
-  constructor(@Inject(OpModalLocalsToken) public locals:OpModalLocalsMap,
-    readonly I18n:I18nService,
-    readonly injector:Injector,
-    readonly appRef:ApplicationRef,
-    readonly loadingIndicator:LoadingIndicatorService,
-    readonly notificationService:WorkPackageNotificationService,
-    readonly cdRef:ChangeDetectorRef,
-    readonly configuration:ConfigurationService,
-    readonly elementRef:ElementRef,
-    readonly timeEntriesCurrentUserConfigurationModalService:TimeEntriesCurrentUserConfigurationModalService) {
-    super(locals, cdRef, elementRef);
-  }
 
   ngOnInit() {
     const localDayOptions = this.locals.options.days;

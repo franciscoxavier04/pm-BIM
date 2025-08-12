@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FieldType } from '@ngx-formly/core';
 import { HalResource } from 'core-app/features/hal/resources/hal-resource';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
@@ -11,11 +11,8 @@ import { I18nService } from 'core-app/core/i18n/i18n.service';
   standalone: false,
 })
 export class SelectInputComponent extends FieldType {
-  constructor(
-    readonly I18n:I18nService,
-  ) {
-    super();
-  }
+  readonly I18n = inject(I18nService);
+
 
   groupByFn = (item:HalResource):string|null => {
     if (!this.isVersionResource(item)) return null;

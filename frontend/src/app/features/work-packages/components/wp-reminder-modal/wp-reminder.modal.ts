@@ -1,12 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  Inject,
-  OnInit,
-  ViewChild, AfterViewInit, OnDestroy,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild, AfterViewInit, OnDestroy, inject } from '@angular/core';
 import { OpModalLocalsMap } from 'core-app/shared/components/modal/modal.types';
 import { OpModalComponent } from 'core-app/shared/components/modal/modal.component';
 import { OpModalLocalsToken } from 'core-app/shared/components/modal/modal.service';
@@ -28,6 +20,11 @@ import { CollectionResource } from 'core-app/features/hal/resources/collection-r
   standalone: false,
 })
 export class WorkPackageReminderModalComponent extends OpModalComponent implements OnInit, AfterViewInit, OnDestroy {
+  readonly I18n = inject(I18nService);
+  readonly pathHelper = inject(PathHelperService);
+  readonly actions$ = inject(ActionsService);
+  readonly apiV3Service = inject(ApiV3Service);
+
   @ViewChild('frameElement') frameElement:ElementRef<HTMLIFrameElement>;
 
   // Hide close button so it's not duplicated in primer (WP#51699)
@@ -48,17 +45,8 @@ export class WorkPackageReminderModalComponent extends OpModalComponent implemen
 
   private boundListener = this.turboSubmitEndListener.bind(this);
 
-  constructor(
-    @Inject(OpModalLocalsToken) public locals:OpModalLocalsMap,
-    readonly cdRef:ChangeDetectorRef,
-    readonly I18n:I18nService,
-    readonly elementRef:ElementRef<HTMLElement>,
-    readonly pathHelper:PathHelperService,
-    readonly actions$:ActionsService,
-    readonly apiV3Service:ApiV3Service,
-  ) {
-    super(locals, cdRef, elementRef);
-
+  constructor() {
+    super();
     this.workPackage = this.locals.workPackage as WorkPackageResource;
     this.preset = this.locals.preset as ReminderPreset | undefined;
     this.title$ = this

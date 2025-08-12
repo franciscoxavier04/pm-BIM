@@ -26,13 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  Inject,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, inject } from '@angular/core';
 
 import { OpModalComponent } from 'core-app/shared/components/modal/modal.component';
 import { OpModalLocalsToken } from 'core-app/shared/components/modal/modal.service';
@@ -69,6 +63,8 @@ export interface ConfirmDialogOptions {
   standalone: false,
 })
 export class ConfirmDialogModalComponent extends OpModalComponent {
+  readonly I18n = inject(I18nService);
+
   public showClose:boolean;
 
   public showListData:boolean;
@@ -102,14 +98,10 @@ export class ConfirmDialogModalComponent extends OpModalComponent {
 
   public dangerHighlighting:boolean;
 
-  constructor(
-    readonly elementRef:ElementRef,
-    @Inject(OpModalLocalsToken) public locals:OpModalLocalsMap,
-    readonly cdRef:ChangeDetectorRef,
-    readonly I18n:I18nService,
-  ) {
-    super(locals, cdRef, elementRef);
-    this.options = (locals.options || {}) as ConfirmDialogOptions;
+  constructor() {
+    super();
+
+    this.options = (this.locals.options || {}) as ConfirmDialogOptions;
 
     this.dangerHighlighting = _.defaultTo(this.options.dangerHighlighting, false);
     this.showListData = _.defaultTo(this.options.showListData, false);

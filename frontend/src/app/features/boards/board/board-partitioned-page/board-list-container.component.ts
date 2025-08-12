@@ -1,13 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  Injector,
-  OnInit,
-  QueryList,
-  ViewChild,
-  ViewChildren,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Injector, OnInit, QueryList, ViewChild, ViewChildren, inject } from '@angular/core';
 import { EMPTY, Observable, Subscription } from 'rxjs';
 import { QueryResource } from 'core-app/features/hal/resources/query-resource';
 import { BoardListComponent } from 'core-app/features/boards/board/board-list/board-list.component';
@@ -52,6 +43,24 @@ import { enterpriseDocsUrl } from 'core-app/core/setup/globals/constants.const';
   standalone: false,
 })
 export class BoardListContainerComponent extends UntilDestroyedMixin implements OnInit {
+  readonly I18n = inject(I18nService);
+  readonly state = inject(StateService);
+  readonly toastService = inject(ToastService);
+  readonly halNotification = inject(HalResourceNotificationService);
+  readonly boardComponent = inject(BoardPartitionedPageComponent);
+  readonly BoardList = inject(BoardListsService);
+  readonly boardActionRegistry = inject(BoardActionsRegistryService);
+  readonly opModalService = inject(OpModalService);
+  readonly injector = inject(Injector);
+  readonly apiV3Service = inject(ApiV3Service);
+  readonly Boards = inject(BoardService);
+  readonly Banner = inject(BannersService);
+  readonly boardListCrossSelectionService = inject(BoardListCrossSelectionService);
+  readonly wpStatesInitialization = inject(WorkPackageStatesInitializationService);
+  readonly Drag = inject(DragAndDropService);
+  readonly apiv3Service = inject(ApiV3Service);
+  readonly QueryUpdated = inject(QueryUpdatedService);
+
   text = {
     delete: this.I18n.t('js.button_delete'),
     areYouSure: this.I18n.t('js.text_are_you_sure'),
@@ -92,28 +101,6 @@ export class BoardListContainerComponent extends UntilDestroyedMixin implements 
   available = this.Banner.allowsTo('board_view');
 
   private currentQueryUpdatedMonitoring:Subscription;
-
-  constructor(
-readonly I18n:I18nService,
-    readonly state:StateService,
-    readonly toastService:ToastService,
-    readonly halNotification:HalResourceNotificationService,
-    readonly boardComponent:BoardPartitionedPageComponent,
-    readonly BoardList:BoardListsService,
-    readonly boardActionRegistry:BoardActionsRegistryService,
-    readonly opModalService:OpModalService,
-    readonly injector:Injector,
-    readonly apiV3Service:ApiV3Service,
-    readonly Boards:BoardService,
-    readonly Banner:BannersService,
-    readonly boardListCrossSelectionService:BoardListCrossSelectionService,
-    readonly wpStatesInitialization:WorkPackageStatesInitializationService,
-    readonly Drag:DragAndDropService,
-    readonly apiv3Service:ApiV3Service,
-    readonly QueryUpdated:QueryUpdatedService,
-) {
-    super();
-  }
 
   ngOnInit():void {
     const id:string = this.state.params.board_id.toString();

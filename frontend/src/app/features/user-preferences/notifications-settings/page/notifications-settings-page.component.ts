@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnInit, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { take } from 'rxjs/internal/operators/take';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
@@ -49,6 +49,14 @@ interface IFullNotificationSettingsValue extends IToastSettingsValue {
   standalone: false,
 })
 export class NotificationsSettingsPageComponent extends UntilDestroyedMixin implements OnInit {
+  readonly elementRef = inject(ElementRef);
+  readonly changeDetectorRef = inject(ChangeDetectorRef);
+  readonly I18n = inject(I18nService);
+  readonly storeService = inject(UserPreferencesService);
+  readonly currentUserService = inject(CurrentUserService);
+  readonly bannersService = inject(BannersService);
+  readonly configurationService = inject(ConfigurationService);
+
   @Input() userId:string;
 
   public availableTimes = reminderAvailableTimeframes();
@@ -123,15 +131,7 @@ export class NotificationsSettingsPageComponent extends UntilDestroyedMixin impl
     overdue: false,
   };
 
-  constructor(
-    readonly elementRef:ElementRef,
-    readonly changeDetectorRef:ChangeDetectorRef,
-    readonly I18n:I18nService,
-    readonly storeService:UserPreferencesService,
-    readonly currentUserService:CurrentUserService,
-    readonly bannersService:BannersService,
-    readonly configurationService:ConfigurationService,
-  ) {
+  constructor() {
     super();
     populateInputsFromDataset(this);
   }

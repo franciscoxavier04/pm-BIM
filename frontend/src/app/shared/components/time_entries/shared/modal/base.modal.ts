@@ -1,12 +1,4 @@
-import {
-  ChangeDetectorRef,
-  Directive,
-  ElementRef,
-  Inject,
-  Injector,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { ChangeDetectorRef, Directive, ElementRef, Injector, OnInit, ViewChild, inject } from '@angular/core';
 import { OpModalComponent } from 'core-app/shared/components/modal/modal.component';
 import { OpModalLocalsToken } from 'core-app/shared/components/modal/modal.service';
 import { OpModalLocalsMap } from 'core-app/shared/components/modal/modal.types';
@@ -20,6 +12,9 @@ import { ResourceChangeset } from 'core-app/shared/components/fields/changeset/r
 
 @Directive()
 export abstract class TimeEntryBaseModal extends OpModalComponent implements OnInit {
+  readonly i18n = inject(I18nService);
+  readonly injector = inject(Injector);
+
   @ViewChild('editForm', { static: true }) editForm:TimeEntryFormComponent;
 
   public text:{ [key:string]:string } = {
@@ -36,14 +31,6 @@ export abstract class TimeEntryBaseModal extends OpModalComponent implements OnI
   public changeset:ResourceChangeset<TimeEntryResource>;
 
   @InjectField() apiV3Service:ApiV3Service;
-
-  constructor(readonly elementRef:ElementRef,
-    @Inject(OpModalLocalsToken) readonly locals:OpModalLocalsMap,
-    readonly cdRef:ChangeDetectorRef,
-    readonly i18n:I18nService,
-    readonly injector:Injector) {
-    super(locals, cdRef, elementRef);
-  }
 
   ngOnInit() {
     super.ngOnInit();

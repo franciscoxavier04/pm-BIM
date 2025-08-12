@@ -1,8 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import {
   UntypedFormGroup,
   FormGroupDirective,
@@ -22,6 +18,9 @@ import { Observable } from 'rxjs';
   standalone: false,
 })
 export class PauseRemindersComponent implements OnInit {
+  private I18n = inject(I18nService);
+  private rootFormGroup = inject(FormGroupDirective);
+
   form:UntypedFormGroup;
 
   selectedDates$:Observable<[string, string]>;
@@ -34,12 +33,6 @@ export class PauseRemindersComponent implements OnInit {
     first_day: this.I18n.t('js.reminders.settings.pause.first_day'),
     last_day: this.I18n.t('js.reminders.settings.pause.first_day'),
   };
-
-  constructor(
-    private I18n:I18nService,
-    private rootFormGroup:FormGroupDirective,
-  ) {
-  }
 
   ngOnInit():void {
     this.form = this.rootFormGroup.control.get('pauseReminders') as UntypedFormGroup;

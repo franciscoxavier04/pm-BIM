@@ -26,14 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++    Ng1FieldControlsWrapper,
 
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  HostBinding,
-  Injector,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, Injector, inject } from '@angular/core';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -59,6 +52,15 @@ import { PathHelperService } from 'core-app/core/path-helper/path-helper.service
   standalone: false,
 })
 export class WorkPackageQuickinfoMacroComponent {
+  readonly elementRef = inject(ElementRef);
+  readonly injector = inject(Injector);
+  readonly apiV3Service = inject(ApiV3Service);
+  readonly schemaCache = inject(SchemaCacheService);
+  readonly displayField = inject(DisplayFieldService);
+  readonly pathHelper = inject(PathHelperService);
+  readonly I18n = inject(I18nService);
+  readonly cdRef = inject(ChangeDetectorRef);
+
   // Whether the value could not be loaded
   error:string|null = null;
 
@@ -79,17 +81,6 @@ export class WorkPackageQuickinfoMacroComponent {
   workPackageHoverCardUrl:string;
 
   detailed = false;
-
-  constructor(readonly elementRef:ElementRef,
-    readonly injector:Injector,
-    readonly apiV3Service:ApiV3Service,
-    readonly schemaCache:SchemaCacheService,
-    readonly displayField:DisplayFieldService,
-    readonly pathHelper:PathHelperService,
-    readonly I18n:I18nService,
-    readonly cdRef:ChangeDetectorRef,
-  ) {
-  }
 
   ngOnInit() {
     const element = this.elementRef.nativeElement as HTMLElement;

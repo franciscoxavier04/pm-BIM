@@ -26,7 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { ChangeDetectorRef, Component, ElementRef, Injector, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, Injector, Input, inject } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import {
   OpContextMenuTrigger,
@@ -42,16 +42,10 @@ import { OpContextMenuItem } from 'core-app/shared/components/op-context-menu/op
   standalone: false,
 })
 export class IconTriggeredContextMenuComponent extends OpContextMenuTrigger {
-  constructor(
-    readonly elementRef:ElementRef,
-    readonly opContextMenu:OPContextMenuService,
-    readonly opModalService:OpModalService,
-    readonly injector:Injector,
-    readonly cdRef:ChangeDetectorRef,
-    readonly I18n:I18nService,
-  ) {
-    super(elementRef, opContextMenu);
-  }
+  readonly opModalService = inject(OpModalService);
+  readonly injector = inject(Injector);
+  readonly cdRef = inject(ChangeDetectorRef);
+  readonly I18n = inject(I18nService);
 
   @Input() menuItemsFactory:() => Promise<OpContextMenuItem[]>;
 

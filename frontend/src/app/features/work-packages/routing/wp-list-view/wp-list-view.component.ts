@@ -26,15 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  Injector,
-  OnInit,
-  ElementRef,
-  NgZone,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Injector, OnInit, ElementRef, NgZone, inject } from '@angular/core';
 import { take } from 'rxjs/operators';
 import { CausedUpdatesService } from 'core-app/features/boards/board/caused-updates/caused-updates.service';
 import { DragAndDropService } from 'core-app/shared/helpers/drag-and-drop/drag-and-drop.service';
@@ -71,6 +63,20 @@ import { combineLatest } from 'rxjs';
   standalone: false,
 })
 export class WorkPackageListViewComponent extends UntilDestroyedMixin implements OnInit {
+  readonly I18n = inject(I18nService);
+  readonly injector = inject(Injector);
+  readonly $state = inject(StateService);
+  readonly keepTab = inject(KeepTabService);
+  readonly querySpace = inject(IsolatedQuerySpace);
+  readonly wpViewFilters = inject(WorkPackageViewFiltersService);
+  readonly deviceService = inject(DeviceService);
+  readonly CurrentProject = inject(CurrentProjectService);
+  readonly wpDisplayRepresentation = inject(WorkPackageViewDisplayRepresentationService);
+  readonly cdRef = inject(ChangeDetectorRef);
+  readonly elementRef = inject(ElementRef);
+  private ngZone = inject(NgZone);
+  readonly wpTableBaseline = inject(WorkPackageViewBaselineService);
+
   text = {
     jump_to_pagination: this.I18n.t('js.work_packages.jump_marks.pagination'),
     text_jump_to_pagination: this.I18n.t('js.work_packages.jump_marks.label_pagination'),
@@ -95,24 +101,6 @@ export class WorkPackageListViewComponent extends UntilDestroyedMixin implements
   readonly wpTableConfiguration:WorkPackageTableConfigurationObject = {
     dragAndDropEnabled: true,
   };
-
-  constructor(
-    readonly I18n:I18nService,
-    readonly injector:Injector,
-    readonly $state:StateService,
-    readonly keepTab:KeepTabService,
-    readonly querySpace:IsolatedQuerySpace,
-    readonly wpViewFilters:WorkPackageViewFiltersService,
-    readonly deviceService:DeviceService,
-    readonly CurrentProject:CurrentProjectService,
-    readonly wpDisplayRepresentation:WorkPackageViewDisplayRepresentationService,
-    readonly cdRef:ChangeDetectorRef,
-    readonly elementRef:ElementRef,
-    private ngZone:NgZone,
-    readonly wpTableBaseline:WorkPackageViewBaselineService,
-  ) {
-    super();
-  }
 
   ngOnInit() {
     // Mark tableInformationLoaded when initially loading done

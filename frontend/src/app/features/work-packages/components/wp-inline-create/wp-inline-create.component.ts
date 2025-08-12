@@ -26,18 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  AfterViewInit,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  EventEmitter,
-  HostListener,
-  Injector,
-  Input,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener, Injector, Input, OnInit, Output, inject } from '@angular/core';
 import { AuthorisationService } from 'core-app/core/model-auth/model-auth.service';
 import {
   WorkPackageViewFocusService,
@@ -75,6 +64,19 @@ import {
   standalone: false,
 })
 export class WorkPackageInlineCreateComponent extends UntilDestroyedMixin implements OnInit, AfterViewInit {
+  readonly injector = inject(Injector);
+  protected readonly elementRef = inject(ElementRef);
+  protected readonly schemaCache = inject(SchemaCacheService);
+  protected readonly I18n = inject(I18nService);
+  protected readonly querySpace = inject(IsolatedQuerySpace);
+  protected readonly cdRef = inject(ChangeDetectorRef);
+  protected readonly wpCreate = inject(WorkPackageCreateService);
+  protected readonly wpInlineCreate = inject(WorkPackageInlineCreateService);
+  protected readonly wpTableColumns = inject(WorkPackageViewColumnsService);
+  protected readonly wpTableFocus = inject(WorkPackageViewFocusService);
+  protected readonly halEditing = inject(HalResourceEditingService);
+  protected readonly authorisationService = inject(AuthorisationService);
+
   @Input() colspan:number;
 
   @Input() table:WorkPackageTable;
@@ -105,21 +107,6 @@ export class WorkPackageInlineCreateComponent extends UntilDestroyedMixin implem
 
   get isActive():boolean {
     return this.mode !== 'inactive';
-  }
-
-  constructor(public readonly injector:Injector,
-    protected readonly elementRef:ElementRef,
-    protected readonly schemaCache:SchemaCacheService,
-    protected readonly I18n:I18nService,
-    protected readonly querySpace:IsolatedQuerySpace,
-    protected readonly cdRef:ChangeDetectorRef,
-    protected readonly wpCreate:WorkPackageCreateService,
-    protected readonly wpInlineCreate:WorkPackageInlineCreateService,
-    protected readonly wpTableColumns:WorkPackageViewColumnsService,
-    protected readonly wpTableFocus:WorkPackageViewFocusService,
-    protected readonly halEditing:HalResourceEditingService,
-    protected readonly authorisationService:AuthorisationService) {
-    super();
   }
 
   ngOnInit() {

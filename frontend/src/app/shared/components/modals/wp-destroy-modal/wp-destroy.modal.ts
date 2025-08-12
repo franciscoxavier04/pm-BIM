@@ -28,9 +28,7 @@
 
 import { WorkPackagesListService } from 'core-app/features/work-packages/components/wp-list/wp-list.service';
 import { States } from 'core-app/core/states/states.service';
-import {
-  ChangeDetectorRef, Component, ElementRef, Inject, OnInit,
-} from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, inject } from '@angular/core';
 import { OpModalComponent } from 'core-app/shared/components/modal/modal.component';
 import { OpModalLocalsToken } from 'core-app/shared/components/modal/modal.service';
 import { OpModalLocalsMap } from 'core-app/shared/components/modal/modal.types';
@@ -52,6 +50,15 @@ import isNotNull from 'core-app/core/state/is-not-null';
   standalone: false,
 })
 export class WpDestroyModalComponent extends OpModalComponent implements OnInit {
+  readonly workPackageService = inject(WorkPackageService);
+  readonly I18n = inject(I18nService);
+  readonly $state = inject(StateService);
+  readonly states = inject(States);
+  readonly wpTableFocus = inject(WorkPackageViewFocusService);
+  readonly wpListService = inject(WorkPackagesListService);
+  readonly notificationService = inject(WorkPackageNotificationService);
+  readonly backRoutingService = inject(BackRoutingService);
+
   // When deleting multiple
   public workPackages:WorkPackageResource[];
 
@@ -82,20 +89,6 @@ export class WpDestroyModalComponent extends OpModalComponent implements OnInit 
     hasChildren: (_wp:WorkPackageResource):string => '',
     deletesChildren: '',
   };
-
-  constructor(readonly elementRef:ElementRef,
-    readonly workPackageService:WorkPackageService,
-    @Inject(OpModalLocalsToken) public locals:OpModalLocalsMap,
-    readonly I18n:I18nService,
-    readonly cdRef:ChangeDetectorRef,
-    readonly $state:StateService,
-    readonly states:States,
-    readonly wpTableFocus:WorkPackageViewFocusService,
-    readonly wpListService:WorkPackagesListService,
-    readonly notificationService:WorkPackageNotificationService,
-    readonly backRoutingService:BackRoutingService) {
-    super(locals, cdRef, elementRef);
-  }
 
   ngOnInit():void {
     super.ngOnInit();

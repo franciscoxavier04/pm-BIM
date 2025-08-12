@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { WidgetRegistration } from 'core-app/shared/components/grids/grid/grid.component';
 import { HookService } from 'core-app/features/plugins/hook-service';
 
 @Injectable()
 export class GridWidgetsService {
-  constructor(private Hook:HookService) {}
+  private Hook = inject(HookService);
+
 
   public get registered() {
     let registeredWidgets:WidgetRegistration[] = [];

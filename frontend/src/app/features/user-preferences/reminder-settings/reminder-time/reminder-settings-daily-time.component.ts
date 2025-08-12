@@ -1,8 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import {
   map,
@@ -32,6 +28,11 @@ import moment from 'moment';
   standalone: false,
 })
 export class ReminderSettingsDailyTimeComponent implements OnInit {
+  private I18n = inject(I18nService);
+  private storeService = inject(UserPreferencesService);
+  private rootFormGroup = inject(FormGroupDirective);
+  private configurationService = inject(ConfigurationService);
+
   // All times that are available in a day with a 1 hour gap between each.
   // ['00:00', '01:00', ..., '24:00']
   public availableTimes:string[] = ReminderSettingsDailyTimeComponent.setupAvailableTimes();
@@ -74,14 +75,6 @@ export class ReminderSettingsDailyTimeComponent implements OnInit {
     addTime: this.I18n.t('js.reminders.settings.daily.add_time'),
     enable: this.I18n.t('js.reminders.settings.daily.enable'),
   };
-
-  constructor(
-    private I18n:I18nService,
-    private storeService:UserPreferencesService,
-    private rootFormGroup:FormGroupDirective,
-    private configurationService:ConfigurationService,
-  ) {
-  }
 
   ngOnInit():void {
     this.form = this.rootFormGroup.control.get('dailyReminders') as UntypedFormGroup;

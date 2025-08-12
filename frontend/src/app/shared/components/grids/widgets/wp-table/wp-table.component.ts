@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Injector,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Injector, OnInit, inject } from '@angular/core';
 import { AbstractWidgetComponent } from 'core-app/shared/components/grids/widgets/abstract-widget.component';
 import { QueryFormResource } from 'core-app/features/hal/resources/query-form-resource';
 import { QueryResource } from 'core-app/features/hal/resources/query-resource';
@@ -34,6 +29,11 @@ import {
   standalone: false,
 })
 export class WidgetWpTableComponent extends AbstractWidgetComponent implements OnInit {
+  protected urlParamsHelper = inject(UrlParamsHelperService);
+  protected readonly state = inject(StateService);
+  protected readonly querySpace = inject(IsolatedQuerySpace);
+  protected readonly apiV3Service = inject(ApiV3Service);
+
   public queryId:string|null;
 
   private queryForm:QueryFormResource;
@@ -48,15 +48,6 @@ export class WidgetWpTableComponent extends AbstractWidgetComponent implements O
     hierarchyToggleEnabled: true,
     contextMenuEnabled: false,
   };
-
-  constructor(protected i18n:I18nService,
-    protected readonly injector:Injector,
-    protected urlParamsHelper:UrlParamsHelperService,
-    protected readonly state:StateService,
-    protected readonly querySpace:IsolatedQuerySpace,
-    protected readonly apiV3Service:ApiV3Service) {
-    super(i18n, injector);
-  }
 
   ngOnInit():void {
     if (!this.resource.options.queryId) {

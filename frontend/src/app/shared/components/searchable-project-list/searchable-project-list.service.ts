@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
   ApiV3ListFilter,
   ApiV3ListParameters,
@@ -17,6 +17,10 @@ import { CurrentProjectService } from 'core-app/core/current-project/current-pro
 
 @Injectable()
 export class SearchableProjectListService {
+  readonly http = inject(HttpClient);
+  readonly apiV3Service = inject(ApiV3Service);
+  readonly currentProjectService = inject(CurrentProjectService);
+
   private _searchText = '';
 
   get searchText():string {
@@ -35,12 +39,6 @@ export class SearchableProjectListService {
   allProjects$ = new BehaviorSubject<IProject[]>([]);
 
   fetchingProjects$ = new BehaviorSubject(false);
-
-  constructor(
-    readonly http:HttpClient,
-    readonly apiV3Service:ApiV3Service,
-    readonly currentProjectService:CurrentProjectService,
-  ) { }
 
   public loadAllProjects():void {
     this.fetchingProjects$.next(true);

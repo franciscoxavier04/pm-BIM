@@ -1,16 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { NgSelectConfig } from '@ng-select/ng-select';
 import { I18n } from 'i18n-js';
 import { FormatNumberOptions, TranslateOptions } from 'i18n-js/src/typing';
 
 @Injectable({ providedIn: 'root' })
 export class I18nService {
+  private config = inject(NgSelectConfig);
+
   private i18n:I18n = window.I18n;
   private instanceLocale:string;
 
-  constructor(
-    private config:NgSelectConfig,
-  ) {
+  constructor() {
     const meta = document.querySelector<HTMLMetaElement>('meta[name=openproject_initializer]');
     this.instanceLocale = meta?.dataset.instancelocale || 'en';
 

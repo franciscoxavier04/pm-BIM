@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { BoardActionService } from 'core-app/features/boards/board/board-actions/board-action.service';
 import { BannersService } from 'core-app/core/enterprise/banners.service';
 
@@ -13,9 +13,8 @@ export interface ITileViewEntry {
 
 @Injectable({ providedIn: 'root' })
 export class BoardActionsRegistryService {
-  constructor(
-    private bannersService:BannersService,
-  ) {}
+  private bannersService = inject(BannersService);
+
 
   private mapping:{ [attribute:string]:BoardActionService } = {};
 

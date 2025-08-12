@@ -26,9 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  Component, ElementRef, Input, OnInit,
-} from '@angular/core';
+import { Component, ElementRef, Input, OnInit, inject } from '@angular/core';
 import { EditFormComponent } from 'core-app/shared/components/fields/edit/edit-form/edit-form.component';
 
 @Component({
@@ -37,13 +35,12 @@ import { EditFormComponent } from 'core-app/shared/components/fields/edit/edit-f
   standalone: false,
 })
 export class WorkPackageReplacementLabelComponent implements OnInit {
+  protected wpeditForm = inject(EditFormComponent);
+  protected elementRef = inject(ElementRef);
+
   @Input('fieldName') public fieldName:string;
 
   private $element:JQuery;
-
-  constructor(protected wpeditForm:EditFormComponent,
-    protected elementRef:ElementRef) {
-  }
 
   ngOnInit() {
     this.$element = jQuery(this.elementRef.nativeElement);

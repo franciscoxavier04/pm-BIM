@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit, inject } from '@angular/core';
 import { OPContextMenuService } from 'core-app/shared/components/op-context-menu/op-context-menu.service';
 import { OpContextMenuTrigger } from 'core-app/shared/components/op-context-menu/handlers/op-context-menu-trigger.directive';
 import { OpContextMenuItem } from 'core-app/shared/components/op-context-menu/op-context-menu.types';
@@ -14,19 +14,13 @@ import { ReminderPreset, REMINDER_PRESET_OPTIONS } from 'core-app/features/work-
   standalone: false,
 })
 export class WorkPackageReminderContextMenuDirective extends OpContextMenuTrigger implements OnInit {
+  readonly I18n = inject(I18nService);
+  readonly opModalService = inject(OpModalService);
+
   // eslint-disable-next-line @angular-eslint/no-input-rename
   @Input('wpReminderContextMenu-workPackage') workPackage:WorkPackageResource;
 
   protected items:OpContextMenuItem[] = [];
-
-  constructor(
-    readonly elementRef:ElementRef,
-    readonly opContextMenu:OPContextMenuService,
-    readonly I18n:I18nService,
-    readonly opModalService:OpModalService,
-  ) {
-    super(elementRef, opContextMenu);
-  }
 
   ngOnInit() {
     this.buildItems();

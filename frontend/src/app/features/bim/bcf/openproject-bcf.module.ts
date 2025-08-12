@@ -26,10 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  Injector,
-  NgModule,
-} from '@angular/core';
+import { Injector, NgModule, inject } from '@angular/core';
 import { OpSharedModule } from 'core-app/shared/shared.module';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { DisplayFieldService } from 'core-app/shared/components/fields/display/display-field.service';
@@ -93,7 +90,9 @@ export const viewerBridgeServiceFactory = (injector:Injector) => {
 export class OpenprojectBcfModule {
   static bootstrapCalled = false;
 
-  constructor(injector:Injector) {
+  constructor() {
+    const injector = inject(Injector);
+
     OpenprojectBcfModule.bootstrap(injector);
   }
 

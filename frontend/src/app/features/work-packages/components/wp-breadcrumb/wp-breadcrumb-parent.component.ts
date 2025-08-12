@@ -26,9 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  Component, Input, EventEmitter, Output,
-} from '@angular/core';
+import { Component, Input, EventEmitter, Output, inject } from '@angular/core';
 import { WorkPackageResource } from 'core-app/features/hal/resources/work-package-resource';
 import { WorkPackageRelationsHierarchyService } from 'core-app/features/work-packages/components/wp-relations/wp-relations-hierarchy/wp-relations-hierarchy.service';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
@@ -40,6 +38,10 @@ import { WorkPackageNotificationService } from 'core-app/features/work-packages/
   standalone: false,
 })
 export class WorkPackageBreadcrumbParentComponent {
+  protected readonly I18n = inject(I18nService);
+  protected readonly wpRelationsHierarchy = inject(WorkPackageRelationsHierarchyService);
+  protected readonly notificationService = inject(WorkPackageNotificationService);
+
   @Input('workPackage') workPackage:WorkPackageResource;
 
   @Output('onSwitch') onSwitch = new EventEmitter<boolean>();
@@ -54,13 +56,6 @@ export class WorkPackageBreadcrumbParentComponent {
   };
 
   private editing:boolean;
-
-  public constructor(
-    protected readonly I18n:I18nService,
-    protected readonly wpRelationsHierarchy:WorkPackageRelationsHierarchyService,
-    protected readonly notificationService:WorkPackageNotificationService,
-  ) {
-  }
 
   public canModifyParent():boolean {
     return !!this.workPackage.changeParent;

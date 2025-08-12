@@ -25,15 +25,15 @@
 //
 // See COPYRIGHT and LICENSE files for more details.
 //++
-import { Directive, ElementRef, OnInit } from '@angular/core';
+import { Directive, ElementRef, OnInit, inject } from '@angular/core';
 
 @Directive({
   selector: 'op-drag-scroll',
   standalone: false,
 })
 export class OpDragScrollDirective implements OnInit {
-  constructor(readonly elementRef:ElementRef) {
-  }
+  readonly elementRef = inject(ElementRef);
+
 
   ngOnInit() {
     const element = jQuery(this.elementRef.nativeElement);

@@ -26,7 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, inject } from '@angular/core';
 
 
 @Component({
@@ -35,6 +35,8 @@ import { Component, ElementRef, OnInit } from '@angular/core';
   standalone: false,
 })
 export class PersistentToggleComponent implements OnInit {
+  private elementRef = inject(ElementRef);
+
   /** Unique identifier of the toggle */
   private identifier:string;
 
@@ -45,9 +47,6 @@ export class PersistentToggleComponent implements OnInit {
   private $element:JQuery;
 
   private $targetNotification:JQuery;
-
-  constructor(private elementRef:ElementRef) {
-  }
 
   ngOnInit():void {
     this.$element = jQuery(this.elementRef.nativeElement);

@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, ElementRef, Injector, Input, OnDestroy } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, Injector, Input, OnDestroy, inject } from '@angular/core';
 import { StateService } from '@uirouter/core';
 import { isClickedWithModifier } from 'core-app/shared/helpers/link-handling/link-handling';
 import { AuthorisationService } from 'core-app/core/model-auth/model-auth.service';
@@ -22,23 +22,17 @@ import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
   standalone: false,
 })
 export class WorkPackageSingleContextMenuDirective extends OpContextMenuTrigger implements AfterViewInit, OnDestroy {
-  @Input('wpSingleContextMenu-workPackage') public workPackage:WorkPackageResource;
+  readonly HookService = inject(HookService);
+  readonly $state = inject(StateService);
+  readonly injector = inject(Injector);
+  readonly PathHelper = inject(PathHelperService);
+  readonly opModalService = inject(OpModalService);
+  readonly turboRequests = inject(TurboRequestsService);
+  readonly apiV3Service = inject(ApiV3Service);
+  readonly authorisationService = inject(AuthorisationService);
+  protected copyToClipboardService = inject(CopyToClipboardService);
 
-  constructor(
-    readonly HookService:HookService,
-    readonly $state:StateService,
-    readonly injector:Injector,
-    readonly PathHelper:PathHelperService,
-    readonly elementRef:ElementRef,
-    readonly opModalService:OpModalService,
-    readonly turboRequests:TurboRequestsService,
-    readonly apiV3Service:ApiV3Service,
-    readonly opContextMenuService:OPContextMenuService,
-    readonly authorisationService:AuthorisationService,
-    protected copyToClipboardService:CopyToClipboardService,
-  ) {
-    super(elementRef, opContextMenuService);
-  }
+  @Input('wpSingleContextMenu-workPackage') public workPackage:WorkPackageResource;
 
   private closeDialogHandler:EventListener = this.handleTimeEntryDialogClose.bind(this);
 

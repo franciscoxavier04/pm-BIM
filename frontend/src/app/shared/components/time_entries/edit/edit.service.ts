@@ -1,7 +1,4 @@
-import {
-  Injectable,
-  Injector,
-} from '@angular/core';
+import { Injectable, Injector, inject } from '@angular/core';
 import { OpModalService } from 'core-app/shared/components/modal/modal.service';
 import { HalResourceService } from 'core-app/features/hal/services/hal-resource.service';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
@@ -28,18 +25,16 @@ export interface TimeEntryUpdate {
 
 @Injectable()
 export class TimeEntryEditService {
-  constructor(
-    readonly opModalService:OpModalService,
-    readonly injector:Injector,
-    readonly apiV3Service:ApiV3Service,
-    readonly halResource:HalResourceService,
-    readonly schemaCache:SchemaCacheService,
-    readonly timezoneService:TimezoneService,
-    readonly timeEntryService:TimeEntryTimerService,
-    protected halEditing:HalResourceEditingService,
-    readonly i18n:I18nService,
-  ) {
-  }
+  readonly opModalService = inject(OpModalService);
+  readonly injector = inject(Injector);
+  readonly apiV3Service = inject(ApiV3Service);
+  readonly halResource = inject(HalResourceService);
+  readonly schemaCache = inject(SchemaCacheService);
+  readonly timezoneService = inject(TimezoneService);
+  readonly timeEntryService = inject(TimeEntryTimerService);
+  protected halEditing = inject(HalResourceEditingService);
+  readonly i18n = inject(I18nService);
+
 
   public edit(
     entry:TimeEntryResource,

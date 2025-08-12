@@ -26,7 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { Injector, NgModule } from '@angular/core';
+import { Injector, NgModule, inject } from '@angular/core';
 import { DynamicModule } from 'ng-dynamic-component';
 import { HookService } from 'core-app/features/plugins/hook-service';
 import { OpSharedModule } from 'core-app/shared/shared.module';
@@ -148,7 +148,9 @@ import { OpenprojectEnterpriseModule } from 'core-app/features/enterprise/openpr
   ],
 })
 export class OpenprojectGridsModule {
-  constructor(injector:Injector) {
+  constructor() {
+    const injector = inject(Injector);
+
     registerWidgets(injector);
   }
 }

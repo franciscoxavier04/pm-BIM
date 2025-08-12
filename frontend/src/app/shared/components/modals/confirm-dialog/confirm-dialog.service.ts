@@ -31,17 +31,14 @@ import {
   ConfirmDialogOptions,
 } from 'core-app/shared/components/modals/confirm-dialog/confirm-dialog.modal';
 import { OpModalService } from 'core-app/shared/components/modal/modal.service';
-import {
-  Injectable,
-  Injector,
-} from '@angular/core';
+import { Injectable, Injector, inject } from '@angular/core';
 
 @Injectable()
 export class ConfirmDialogService {
-  constructor(
-    readonly opModalService:OpModalService,
-    readonly injector:Injector,
-  ) {
+  readonly opModalService = inject(OpModalService);
+  readonly injector = inject(Injector);
+
+  constructor() {
     document.addEventListener('submit', (evt:Event) => {
       const target = evt.target as HTMLFormElement;
       const options = target.dataset.augmentedConfirmDialog;

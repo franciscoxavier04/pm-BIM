@@ -26,12 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  Component,
-  Inject,
-  Input,
-  OnInit,
-} from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
 import { WorkPackageResource } from 'core-app/features/hal/resources/work-package-resource';
@@ -48,6 +43,7 @@ import { HalEventsService } from 'core-app/features/hal/services/hal-events.serv
 import idFromLink from 'core-app/features/hal/helpers/id-from-link';
 import { WorkPackageNotificationService } from 'core-app/features/work-packages/services/notifications/work-package-notification.service';
 import { GroupDescriptor } from 'core-app/features/work-packages/components/wp-single-view/wp-single-view.component';
+import { WpRelationInlineCreateServiceInterface } from '../wp-relation-inline-create.service.interface';
 
 @Component({
   selector: 'wp-relation-query',
@@ -58,6 +54,13 @@ import { GroupDescriptor } from 'core-app/features/work-packages/components/wp-s
   standalone: false,
 })
 export class WorkPackageRelationQueryComponent extends WorkPackageRelationQueryBase implements OnInit {
+  protected readonly PathHelper = inject(PathHelperService);
+  protected readonly wpInlineCreate = inject<WpRelationInlineCreateServiceInterface>(WpRelationInlineCreateService);
+  protected readonly wpRelations = inject(WorkPackageRelationsService);
+  protected readonly halEvents = inject(HalEventsService);
+  protected readonly notificationService = inject(WorkPackageNotificationService);
+  protected readonly I18n = inject(I18nService);
+
   @Input() public workPackage:WorkPackageResource;
 
   @Input() public query:QueryResource;
@@ -83,16 +86,6 @@ export class WorkPackageRelationQueryComponent extends WorkPackageRelationQueryB
   ];
 
   public idFromLink = idFromLink;
-
-  constructor(protected readonly PathHelper:PathHelperService,
-              @Inject(WorkPackageInlineCreateService) protected readonly wpInlineCreate:WpRelationInlineCreateService,
-              protected readonly wpRelations:WorkPackageRelationsService,
-              protected readonly halEvents:HalEventsService,
-              protected readonly queryUrlParamsHelper:UrlParamsHelperService,
-              protected readonly notificationService:WorkPackageNotificationService,
-              protected readonly I18n:I18nService) {
-    super(queryUrlParamsHelper);
-  }
 
   ngOnInit() {
     const relationType = this.getRelationTypeFromQuery();

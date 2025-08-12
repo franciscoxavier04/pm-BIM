@@ -1,4 +1,4 @@
-import { Component, Injector } from '@angular/core';
+import { Component, Injector, inject } from '@angular/core';
 import { BoardConfigurationService } from 'core-app/features/boards/board/configuration-modal/board-configuration.service';
 import { BoardActionsRegistryService } from 'core-app/features/boards/board/board-actions/board-actions-registry.service';
 import { BoardStatusActionService } from 'core-app/features/boards/board/board-actions/status/status-action.service';
@@ -27,7 +27,11 @@ import {
   standalone: false,
 })
 export class BoardsRootComponent {
-  constructor(readonly injector:Injector) {
+  readonly injector = inject(Injector);
+
+  constructor() {
+    const injector = this.injector;
+
     // Register action services
     const registry = injector.get(BoardActionsRegistryService);
 

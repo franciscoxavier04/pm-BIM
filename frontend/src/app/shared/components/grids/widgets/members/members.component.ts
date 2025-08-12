@@ -1,11 +1,5 @@
 import { AbstractWidgetComponent } from 'core-app/shared/components/grids/widgets/abstract-widget.component';
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  Injector,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Injector, OnInit, inject } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
 import { CurrentProjectService } from 'core-app/core/current-project/current-project.service';
@@ -26,6 +20,11 @@ const DISPLAYED_MEMBERS_LIMIT = 100;
   standalone: false,
 })
 export class WidgetMembersComponent extends AbstractWidgetComponent implements OnInit {
+  readonly pathHelper = inject(PathHelperService);
+  readonly apiV3Service = inject(ApiV3Service);
+  readonly currentProject = inject(CurrentProjectService);
+  readonly cdr = inject(ChangeDetectorRef);
+
   public text = {
     add: this.i18n.t('js.grid.widgets.members.add'),
     noResults: this.i18n.t('js.grid.widgets.members.no_results'),
@@ -39,17 +38,6 @@ export class WidgetMembersComponent extends AbstractWidgetComponent implements O
   private entriesLoaded = false;
 
   public membersAddable$:Observable<boolean>;
-
-  constructor(
-    readonly pathHelper:PathHelperService,
-    readonly apiV3Service:ApiV3Service,
-    readonly i18n:I18nService,
-    protected readonly injector:Injector,
-    readonly currentProject:CurrentProjectService,
-    readonly cdr:ChangeDetectorRef,
-  ) {
-    super(i18n, injector);
-  }
 
   ngOnInit() {
     this

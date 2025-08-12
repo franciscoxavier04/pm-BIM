@@ -26,7 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
 import { WorkPackageResource } from 'core-app/features/hal/resources/work-package-resource';
@@ -54,6 +54,14 @@ import { WorkPackageRelationsService } from 'core-app/features/work-packages/com
   standalone: false,
 })
 export class WorkPackageChildrenQueryComponent extends WorkPackageRelationQueryBase implements OnInit {
+  protected wpRelationsHierarchyService = inject(WorkPackageRelationsHierarchyService);
+  protected PathHelper = inject(PathHelperService);
+  protected wpInlineCreate = inject(WorkPackageInlineCreateService);
+  protected halEvents = inject(HalEventsService);
+  protected apiV3Service = inject(ApiV3Service);
+  readonly I18n = inject(I18nService);
+  readonly wpRelations = inject(WorkPackageRelationsService);
+
   @Input() public workPackage:WorkPackageResource;
 
   @Input() public query:QueryResource;
@@ -77,19 +85,6 @@ export class WorkPackageChildrenQueryComponent extends WorkPackageRelationQueryB
       (child:WorkPackageResource) => !!child.changeParent,
     ),
   ];
-
-  constructor(
-    protected wpRelationsHierarchyService:WorkPackageRelationsHierarchyService,
-    protected PathHelper:PathHelperService,
-    protected wpInlineCreate:WorkPackageInlineCreateService,
-    protected halEvents:HalEventsService,
-    protected apiV3Service:ApiV3Service,
-    protected queryUrlParamsHelper:UrlParamsHelperService,
-    readonly I18n:I18nService,
-    readonly wpRelations:WorkPackageRelationsService,
-    ) {
-    super(queryUrlParamsHelper);
-  }
 
   ngOnInit() {
     // Set reference target and reference class

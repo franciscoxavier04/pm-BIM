@@ -26,9 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  ChangeDetectionStrategy, Component, EventEmitter, Input, Output,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { GridAreaService } from 'core-app/shared/components/grids/grid/area.service';
 
 @Component({
@@ -39,15 +37,13 @@ import { GridAreaService } from 'core-app/shared/components/grids/grid/area.serv
   standalone: false,
 })
 export class WidgetHeaderComponent {
+  readonly layout = inject(GridAreaService);
+
   @Input() name:string;
 
   @Input() editable = true;
 
   @Output() onRenamed = new EventEmitter<string>();
-
-  constructor(readonly layout:GridAreaService) {
-
-  }
 
   public renamed(name:string) {
     this.onRenamed.emit(name);

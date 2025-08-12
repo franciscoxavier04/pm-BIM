@@ -1,6 +1,4 @@
-import {
-  Directive, EventEmitter, HostBinding, Injector, Input, Output,
-} from '@angular/core';
+import { Directive, EventEmitter, HostBinding, Injector, Input, Output, inject } from '@angular/core';
 import { GridWidgetResource } from 'core-app/features/hal/resources/grid-widget-resource';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { WidgetChangeset } from 'core-app/shared/components/grids/widgets/widget-changeset';
@@ -8,6 +6,9 @@ import { UntilDestroyedMixin } from 'core-app/shared/helpers/angular/until-destr
 
 @Directive()
 export abstract class AbstractWidgetComponent extends UntilDestroyedMixin {
+  protected i18n = inject(I18nService);
+  injector = inject(Injector);
+
   @HostBinding('style.grid-column-start') gridColumnStart:number;
 
   @HostBinding('style.grid-column-end') gridColumnEnd:number;
@@ -46,11 +47,6 @@ export abstract class AbstractWidgetComponent extends UntilDestroyedMixin {
    */
   public get isEditable() {
     return true;
-  }
-
-  constructor(protected i18n:I18nService,
-    protected injector:Injector) {
-    super();
   }
 
   protected setChangesetOptions(values:{ [key:string]:unknown; }) {

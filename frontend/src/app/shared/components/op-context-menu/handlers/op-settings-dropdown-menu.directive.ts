@@ -26,7 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { Directive, ElementRef, Injector, Input } from '@angular/core';
+import { Directive, ElementRef, Injector, Input, inject } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { AuthorisationService } from 'core-app/core/model-auth/model-auth.service';
 import {
@@ -67,6 +67,18 @@ import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service
   standalone: false,
 })
 export class OpSettingsMenuDirective extends OpContextMenuTrigger {
+  readonly opModalService = inject(OpModalService);
+  readonly wpListService = inject(WorkPackagesListService);
+  readonly authorisationService = inject(AuthorisationService);
+  readonly states = inject(States);
+  readonly injector = inject(Injector);
+  readonly querySpace = inject(IsolatedQuerySpace);
+  readonly wpTableColumns = inject(WorkPackageViewColumnsService);
+  readonly urlParamsHelper = inject(UrlParamsHelperService);
+  readonly opStaticQueries = inject(StaticQueriesService);
+  readonly turboRequests = inject(TurboRequestsService);
+  readonly I18n = inject(I18nService);
+
   @Input('opSettingsContextMenu-query') public query:QueryResource;
 
   @Input() public hideTableOptions:boolean;
@@ -76,24 +88,6 @@ export class OpSettingsMenuDirective extends OpContextMenuTrigger {
   private form:QueryFormResource;
 
   private loadingPromise:PromiseLike<any>;
-
-  constructor(
-    readonly elementRef:ElementRef,
-    readonly opContextMenu:OPContextMenuService,
-    readonly opModalService:OpModalService,
-    readonly wpListService:WorkPackagesListService,
-    readonly authorisationService:AuthorisationService,
-    readonly states:States,
-    readonly injector:Injector,
-    readonly querySpace:IsolatedQuerySpace,
-    readonly wpTableColumns:WorkPackageViewColumnsService,
-    readonly urlParamsHelper:UrlParamsHelperService,
-    readonly opStaticQueries:StaticQueriesService,
-    readonly turboRequests:TurboRequestsService,
-    readonly I18n:I18nService,
-  ) {
-    super(elementRef, opContextMenu);
-  }
 
   ngAfterViewInit():void {
     super.ngAfterViewInit();

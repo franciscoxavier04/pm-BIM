@@ -1,15 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  ViewChild,
-  forwardRef,
-  HostBinding,
-  HostListener,
-  Input,
-  Output,
-  EventEmitter,
-  ChangeDetectorRef,
-} from '@angular/core';
+import { Component, ElementRef, ViewChild, forwardRef, HostBinding, HostListener, Input, Output, EventEmitter, ChangeDetectorRef, inject } from '@angular/core';
 import {
   ControlValueAccessor,
   NG_VALUE_ACCESSOR,
@@ -26,6 +15,8 @@ import {
   standalone: false,
 })
 export class SpotTextFieldComponent implements ControlValueAccessor {
+  private cdRef = inject(ChangeDetectorRef);
+
   @HostBinding('class.spot-text-field') public className = true;
 
   @HostBinding('class.spot-text-field_focused') public focused = false;
@@ -93,10 +84,6 @@ export class SpotTextFieldComponent implements ControlValueAccessor {
   @Output() public inputFocus = new EventEmitter<FocusEvent>();
 
   @Output() public inputBlur = new EventEmitter<FocusEvent>();
-
-  constructor(
-    private cdRef:ChangeDetectorRef,
-  ) {}
 
   onInputFocus(event:FocusEvent):void {
     this.focused = true;

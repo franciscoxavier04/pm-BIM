@@ -26,7 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { take } from 'rxjs/operators';
 import { InputState } from '@openproject/reactivestates';
 import { States } from 'core-app/core/states/states.service';
@@ -47,16 +47,12 @@ import { firstValueFrom } from 'rxjs';
 
 @Injectable()
 export class WorkPackageViewOrderService extends WorkPackageQueryStateService<QueryOrder> {
-  constructor(
-    protected readonly querySpace:IsolatedQuerySpace,
-    protected readonly apiV3Service:ApiV3Service,
-    protected readonly states:States,
-    protected readonly causedUpdates:CausedUpdatesService,
-    protected readonly wpTableSortBy:WorkPackageViewSortByService,
-    protected readonly pathHelper:PathHelperService,
-) {
-    super(querySpace);
-  }
+  protected readonly querySpace = inject(IsolatedQuerySpace);
+  protected readonly apiV3Service = inject(ApiV3Service);
+  protected readonly states = inject(States);
+  protected readonly causedUpdates = inject(CausedUpdatesService);
+  protected readonly wpTableSortBy = inject(WorkPackageViewSortByService);
+  protected readonly pathHelper = inject(PathHelperService);
 
   public initialize(query:QueryResource, results:WorkPackageCollectionResource, schema?:QuerySchemaResource):Promise<unknown> {
     // Take over our current value if the query is not saved

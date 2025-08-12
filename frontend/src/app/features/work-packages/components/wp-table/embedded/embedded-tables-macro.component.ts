@@ -26,7 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++    Ng1FieldControlsWrapper,
 
-import { Component, ElementRef, Input } from '@angular/core';
+import { Component, ElementRef, Input, inject } from '@angular/core';
 import {
   WorkPackageTableConfigurationObject,
 } from 'core-app/features/work-packages/components/wp-table/wp-table-configuration';
@@ -41,6 +41,8 @@ import { populateInputsFromDataset } from 'core-app/shared/components/dataset-in
   standalone: false,
 })
 export class EmbeddedTablesMacroComponent {
+  readonly elementRef = inject(ElementRef);
+
   @Input() public queryProps:object;
 
   public configuration:WorkPackageTableConfigurationObject = {
@@ -49,9 +51,7 @@ export class EmbeddedTablesMacroComponent {
     contextMenuEnabled: false,
   };
 
-  constructor(
-    readonly elementRef:ElementRef,
-  ) {
+  constructor() {
     populateInputsFromDataset(this);
   }
 }

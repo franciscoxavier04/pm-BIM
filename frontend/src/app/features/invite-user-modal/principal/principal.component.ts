@@ -1,13 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, ViewChild, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {
   AbstractControl,
@@ -51,6 +42,11 @@ function extractCustomFieldsFromSchema(schema:IOPFormSettings['_embedded']['sche
   standalone: false,
 })
 export class PrincipalComponent implements OnInit {
+  readonly I18n = inject(I18nService);
+  readonly httpClient = inject(HttpClient);
+  readonly apiV3Service = inject(ApiV3Service);
+  readonly cdRef = inject(ChangeDetectorRef);
+
   @Input() principalData:PrincipalData;
 
   @Input() project:ProjectResource;
@@ -181,13 +177,6 @@ export class PrincipalComponent implements OnInit {
   get isMemberOfCurrentProject():boolean {
     return !!this.principalControl?.value?.memberships?.elements?.find((mem:any) => mem.project.id === this.project.id);
   }
-
-  constructor(
-    readonly I18n:I18nService,
-    readonly httpClient:HttpClient,
-    readonly apiV3Service:ApiV3Service,
-    readonly cdRef:ChangeDetectorRef,
-  ) {}
 
   ngOnInit():void {
     this.principalControl?.setValue(this.principalData.principal);

@@ -1,8 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import {
   UntypedFormArray,
   UntypedFormControl,
@@ -19,6 +15,9 @@ import { I18nService } from 'core-app/core/i18n/i18n.service';
   standalone: false,
 })
 export class WorkdaysSettingsComponent implements OnInit {
+  private I18n = inject(I18nService);
+  readonly formGroup = inject(FormGroupDirective);
+
   control:UntypedFormArray;
 
   /**
@@ -39,12 +38,6 @@ export class WorkdaysSettingsComponent implements OnInit {
   text = {
     title: this.I18n.t('js.reminders.settings.workdays.title'),
   };
-
-  constructor(
-    private I18n:I18nService,
-    readonly formGroup:FormGroupDirective,
-  ) {
-  }
 
   ngOnInit():void {
     this.control = this.formGroup.control.get('workdays') as UntypedFormArray;

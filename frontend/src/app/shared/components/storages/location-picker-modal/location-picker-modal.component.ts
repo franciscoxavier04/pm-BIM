@@ -26,13 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  Inject,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, inject } from '@angular/core';
 
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { TimezoneService } from 'core-app/core/datetime/timezone.service';
@@ -61,6 +55,9 @@ import { map } from 'rxjs/operators';
   standalone: false,
 })
 export class LocationPickerModalComponent extends FilePickerBaseModalComponent {
+  private readonly i18n = inject(I18nService);
+  private readonly timezoneService = inject(TimezoneService);
+
   public submitted = false;
 
   public readonly text = {
@@ -136,24 +133,6 @@ export class LocationPickerModalComponent extends FilePickerBaseModalComponent {
           }
         }),
       );
-  }
-
-  constructor(
-    @Inject(OpModalLocalsToken) public locals:OpModalLocalsMap,
-    readonly elementRef:ElementRef,
-    readonly cdRef:ChangeDetectorRef,
-    protected sortFilesPipe:SortFilesPipe,
-    protected readonly storageFilesResourceService:StorageFilesResourceService,
-    private readonly i18n:I18nService,
-    private readonly timezoneService:TimezoneService,
-  ) {
-    super(
-      locals,
-      elementRef,
-      cdRef,
-      sortFilesPipe,
-      storageFilesResourceService,
-    );
   }
 
   public chooseLocation():void {

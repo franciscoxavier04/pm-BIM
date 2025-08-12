@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { UntypedFormGroup } from '@angular/forms';
 import { catchError, map } from 'rxjs/operators';
@@ -8,9 +8,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class FormsService {
-  constructor(
-    private _httpClient:HttpClient,
-  ) { }
+  private _httpClient = inject(HttpClient);
+
 
   submit$(form:UntypedFormGroup, resourceEndpoint:string, resourceId?:string, formHttpMethod?:'post' | 'patch', formSchema?:IOPFormSchema):Observable<any> {
     const modelToSubmit = this.formatModelToSubmit(form.getRawValue(), formSchema);

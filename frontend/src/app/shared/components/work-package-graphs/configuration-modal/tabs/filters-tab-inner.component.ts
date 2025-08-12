@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { TabComponent } from 'core-app/features/work-packages/components/wp-table/configuration-modal/tab-portal-outlet';
 import { WorkPackageViewFiltersService } from 'core-app/features/work-packages/routing/wp-view-base/view-services/wp-view-filters.service';
@@ -14,18 +14,28 @@ import { WorkPackageFiltersService } from 'core-app/features/work-packages/compo
   standalone: false,
 })
 export class WpGraphConfigurationFiltersTabInnerComponent extends QuerySpacedTabComponent implements TabComponent {
+  readonly I18n: I18nService;
+  readonly wpTableFilters = inject(WorkPackageViewFiltersService);
+  readonly wpFiltersService = inject(WorkPackageFiltersService);
+  readonly wpStatesInitialization: WorkPackageStatesInitializationService;
+  readonly wpGraphConfiguration: WpGraphConfigurationService;
+
   public filters:QueryFilterInstanceResource[] = [];
 
   public text = {
     multiSelectLabel: this.I18n.t('js.work_packages.label_column_multiselect'),
   };
 
-  constructor(readonly I18n:I18nService,
-    readonly wpTableFilters:WorkPackageViewFiltersService,
-    readonly wpFiltersService:WorkPackageFiltersService,
-    readonly wpStatesInitialization:WorkPackageStatesInitializationService,
-    readonly wpGraphConfiguration:WpGraphConfigurationService) {
+  constructor() {
+    const I18n = inject(I18nService);
+    const wpStatesInitialization = inject(WorkPackageStatesInitializationService);
+    const wpGraphConfiguration = inject(WpGraphConfigurationService);
+
     super(I18n, wpStatesInitialization, wpGraphConfiguration);
+  
+    this.I18n = I18n;
+    this.wpStatesInitialization = wpStatesInitialization;
+    this.wpGraphConfiguration = wpGraphConfiguration;
   }
 
   ngOnInit() {

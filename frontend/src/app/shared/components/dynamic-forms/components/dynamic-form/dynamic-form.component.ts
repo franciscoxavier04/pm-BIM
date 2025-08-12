@@ -1,13 +1,4 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  Output,
-  SimpleChanges,
-  ViewChild,
-} from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild, inject } from '@angular/core';
 import { FormlyForm } from '@ngx-formly/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
@@ -134,6 +125,14 @@ import idFromLink from 'core-app/features/hal/helpers/id-from-link';
   standalone: false,
 })
 export class DynamicFormComponent extends UntilDestroyedMixin implements OnChanges {
+  private dynamicFormService = inject(DynamicFormService);
+  private dynamicFieldsService = inject(DynamicFieldsService);
+  private I18n = inject(I18nService);
+  private pathHelperService = inject(PathHelperService);
+  private toastService = inject(ToastService);
+  private changeDetectorRef = inject(ChangeDetectorRef);
+  private confirmDialogService = inject(ConfirmDialogService);
+
   /** Backend form URL (e.g. https://community.openproject.org/api/v3/projects/dev-large/form) */
   @Input() formUrl?:string;
 
@@ -218,18 +217,6 @@ export class DynamicFormComponent extends UntilDestroyedMixin implements OnChang
   @ViewChild(FormlyForm)
   set dynamicForm(dynamicForm:FormlyForm) {
     this.dynamicFormService.registerForm(dynamicForm);
-  }
-
-  constructor(
-    private dynamicFormService:DynamicFormService,
-    private dynamicFieldsService:DynamicFieldsService,
-    private I18n:I18nService,
-    private pathHelperService:PathHelperService,
-    private toastService:ToastService,
-    private changeDetectorRef:ChangeDetectorRef,
-    private confirmDialogService:ConfirmDialogService,
-  ) {
-    super();
   }
 
   setDisabledState(disabled:boolean):void {

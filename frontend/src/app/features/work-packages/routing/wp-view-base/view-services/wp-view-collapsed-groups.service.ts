@@ -27,7 +27,7 @@
 //++
 
 import { QueryResource } from 'core-app/features/hal/resources/query-resource';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { WorkPackageViewGroupByService } from 'core-app/features/work-packages/routing/wp-view-base/view-services/wp-view-group-by.service';
 import { IsolatedQuerySpace } from 'core-app/features/work-packages/directives/query-space/isolated-query-space';
 import { take } from 'rxjs/operators';
@@ -40,6 +40,9 @@ import { WorkPackageViewBaseService } from './wp-view-base.service';
 
 @Injectable()
 export class WorkPackageViewCollapsedGroupsService extends WorkPackageViewBaseService<IGroupsCollapseEvent> {
+  readonly workPackageViewGroupByService = inject(WorkPackageViewGroupByService);
+  private schemaCacheService = inject(SchemaCacheService);
+
   readonly wpTypesToShowInCollapsedGroupHeaders:((wp:WorkPackageResource) => boolean)[];
 
   readonly groupTypesWithHeaderCellsWhenCollapsed = ['project'];
@@ -64,12 +67,9 @@ export class WorkPackageViewCollapsedGroupsService extends WorkPackageViewBaseSe
     return this.workPackageViewGroupByService.current;
   }
 
-  constructor(
-    protected readonly querySpace:IsolatedQuerySpace,
-    readonly workPackageViewGroupByService:WorkPackageViewGroupByService,
-    private schemaCacheService:SchemaCacheService,
-  ) {
-    super(querySpace);
+  constructor() {
+    super();
+
     this.wpTypesToShowInCollapsedGroupHeaders = [this.isMilestone];
   }
 

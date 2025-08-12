@@ -26,7 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { ChangeDetectorRef, Injector } from '@angular/core';
+import { ChangeDetectorRef, inject, Injector } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
 import {
@@ -64,6 +64,8 @@ import { ToastService } from 'core-app/shared/components/toaster/toast.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 export class WorkPackageSingleViewBase extends UntilDestroyedMixin {
+  injector = inject(Injector);
+
   @InjectField() states:States;
 
   @InjectField() i18n:I18nService;
@@ -114,7 +116,6 @@ export class WorkPackageSingleViewBase extends UntilDestroyedMixin {
   public displayNotificationsButton$:Observable<boolean>;
 
   constructor(
-    public injector:Injector,
     protected workPackageId:string,
   ) {
     super();

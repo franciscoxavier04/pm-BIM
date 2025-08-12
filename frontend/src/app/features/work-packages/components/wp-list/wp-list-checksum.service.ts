@@ -28,15 +28,15 @@
 
 import { StateService, TransitionPromise } from '@uirouter/core';
 import { UrlParamsHelperService } from 'core-app/features/work-packages/components/wp-query/url-params-helper';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { WorkPackageViewPagination } from 'core-app/features/work-packages/routing/wp-view-base/view-services/wp-table-pagination';
 import { QueryResource } from 'core-app/features/hal/resources/query-resource';
 
 @Injectable()
 export class WorkPackagesListChecksumService {
-  constructor(protected UrlParamsHelper:UrlParamsHelperService,
-    protected $state:StateService) {
-  }
+  protected UrlParamsHelper = inject(UrlParamsHelperService);
+  protected $state = inject(StateService);
+
 
   public id:string|null;
 

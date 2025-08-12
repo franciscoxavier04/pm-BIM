@@ -26,7 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, inject } from '@angular/core';
 import { ResizeDelta } from 'core-app/shared/components/resizer/resizer.component';
 import { UntilDestroyedMixin } from 'core-app/shared/helpers/angular/until-destroyed.mixin';
 import { MainMenuToggleService } from 'core-app/core/main-menu/main-menu-toggle.service';
@@ -60,6 +60,10 @@ import {
   standalone: false,
 })
 export class MainMenuResizerComponent extends UntilDestroyedMixin implements OnInit {
+  readonly toggleService = inject(MainMenuToggleService);
+  readonly cdRef = inject(ChangeDetectorRef);
+  readonly elementRef = inject(ElementRef);
+
   public toggleTitle:string;
 
   private resizeEvent:string = 'main-menu-resize';
@@ -71,14 +75,6 @@ export class MainMenuResizerComponent extends UntilDestroyedMixin implements OnI
   public moving = false;
 
   public isOpen:boolean;
-
-  constructor(
-    readonly toggleService:MainMenuToggleService,
-    readonly cdRef:ChangeDetectorRef,
-    readonly elementRef:ElementRef,
-  ) {
-    super();
-  }
 
   ngOnInit() {
     this.isOpen = this.toggleService.showNavigation;

@@ -1,6 +1,6 @@
 // noinspection ES6UnusedImports
 
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit, inject } from '@angular/core';
 import { UntypedFormArray, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
@@ -18,6 +18,11 @@ import { ConfigurationService } from 'core-app/core/config/configuration.service
   standalone: false,
 })
 export class NotificationSettingsTableComponent implements OnInit {
+  private I18n = inject(I18nService);
+  private pathHelper = inject(PathHelperService);
+  readonly bannersService = inject(BannersService);
+  readonly configurationService = inject(ConfigurationService);
+
   @Input() userId:string;
 
   @Input() settings:UntypedFormArray;
@@ -73,13 +78,6 @@ export class NotificationSettingsTableComponent implements OnInit {
     dueDate: this.I18n.t('js.work_packages.properties.dueDate'),
     overdue: this.I18n.t('js.notifications.settings.global.overdue'),
   };
-
-  constructor(
-    private I18n:I18nService,
-    private pathHelper:PathHelperService,
-    readonly bannersService:BannersService,
-    readonly configurationService:ConfigurationService,
-  ) {}
 
   ngOnInit():void {
     this.eeAvailable = this.bannersService.allowsTo('date_alerts');

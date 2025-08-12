@@ -1,10 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  HostBinding,
-  Input,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output, inject } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 
 @Component({
@@ -13,6 +7,8 @@ import { I18nService } from 'core-app/core/i18n/i18n.service';
   standalone: false,
 })
 export class SpotFilterChipComponent {
+  readonly i18n = inject(I18nService);
+
   @HostBinding('class.spot-filter-chip') public className = true;
 
   @Input() @HostBinding('class.spot-filter-chip_disabled') public disabled = false;
@@ -35,6 +31,4 @@ export class SpotFilterChipComponent {
       `spot-icon_${this.icon}`,
     ];
   }
-
-  constructor(readonly i18n:I18nService) {}
 }

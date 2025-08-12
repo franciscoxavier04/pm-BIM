@@ -26,9 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  Directive, ElementRef, Injector, Input,
-} from '@angular/core';
+import { Directive, ElementRef, Injector, Input, inject } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 
 import { OpContextMenuTrigger } from 'core-app/shared/components/op-context-menu/handlers/op-context-menu-trigger.directive';
@@ -49,6 +47,15 @@ import { ConfirmDialogService } from 'core-app/shared/components/modals/confirm-
   standalone: false,
 })
 export class OpColumnsContextMenu extends OpContextMenuTrigger {
+  readonly wpTableColumns = inject(WorkPackageViewColumnsService);
+  readonly wpTableSortBy = inject(WorkPackageViewSortByService);
+  readonly wpTableGroupBy = inject(WorkPackageViewGroupByService);
+  readonly wpTableHierarchies = inject(WorkPackageViewHierarchiesService);
+  readonly opModalService = inject(OpModalService);
+  readonly injector = inject(Injector);
+  readonly I18n = inject(I18nService);
+  readonly confirmDialog = inject(ConfirmDialogService);
+
   @Input('opColumnsContextMenu-column') public column:QueryColumn;
 
   @Input('opColumnsContextMenu-table') public table:WorkPackageTable;
@@ -59,19 +66,6 @@ export class OpColumnsContextMenu extends OpContextMenuTrigger {
       title: this.I18n.t('js.modals.form_submit.title'),
     },
   };
-
-  constructor(readonly elementRef:ElementRef,
-    readonly opContextMenu:OPContextMenuService,
-    readonly wpTableColumns:WorkPackageViewColumnsService,
-    readonly wpTableSortBy:WorkPackageViewSortByService,
-    readonly wpTableGroupBy:WorkPackageViewGroupByService,
-    readonly wpTableHierarchies:WorkPackageViewHierarchiesService,
-    readonly opModalService:OpModalService,
-    readonly injector:Injector,
-    readonly I18n:I18nService,
-    readonly confirmDialog:ConfirmDialogService) {
-    super(elementRef, opContextMenu);
-  }
 
   protected open(evt:JQuery.TriggeredEvent) {
     if (!this.table.configuration.columnMenuEnabled) {

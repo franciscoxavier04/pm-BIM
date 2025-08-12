@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import { BehaviorSubject, combineLatest, forkJoin, Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, share, shareReplay, switchMap } from 'rxjs/operators';
@@ -27,6 +27,13 @@ interface NgSelectPrincipalOption {
   standalone: false,
 })
 export class PrincipalSearchComponent extends UntilDestroyedMixin implements OnInit {
+  I18n = inject(I18nService);
+  readonly elementRef = inject(ElementRef);
+  readonly apiV3Service = inject(ApiV3Service);
+  readonly currentUserService = inject(CurrentUserService);
+  readonly capabilitiesService = inject(CapabilitiesResourceService);
+  readonly pathHelperService = inject(PathHelperService);
+
   @Input() spotFormBinding:UntypedFormControl;
 
   @Input() type:PrincipalType;
@@ -96,14 +103,7 @@ export class PrincipalSearchComponent extends UntilDestroyedMixin implements OnI
     },
   };
 
-  constructor(
-    public I18n:I18nService,
-    readonly elementRef:ElementRef,
-    readonly apiV3Service:ApiV3Service,
-    readonly currentUserService:CurrentUserService,
-    readonly capabilitiesService:CapabilitiesResourceService,
-    readonly pathHelperService:PathHelperService,
-  ) {
+  constructor() {
     super();
 
     this.input$.subscribe((input:string) => {

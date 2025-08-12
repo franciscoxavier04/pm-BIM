@@ -33,9 +33,7 @@ import { ToastService } from 'core-app/shared/components/toaster/toast.service';
 import { OpModalComponent } from 'core-app/shared/components/modal/modal.component';
 import { OpModalLocalsToken } from 'core-app/shared/components/modal/modal.service';
 import { OpModalLocalsMap } from 'core-app/shared/components/modal/modal.types';
-import {
-  ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Inject, OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, inject } from '@angular/core';
 import {
   UntypedFormGroup,
   UntypedFormControl,
@@ -58,6 +56,15 @@ interface TokenNameFormValue {
   standalone: false,
 })
 export class QueryGetIcalUrlModalComponent extends OpModalComponent implements OnInit {
+  readonly I18n = inject(I18nService);
+  readonly states = inject(States);
+  readonly querySpace = inject(IsolatedQuerySpace);
+  readonly wpListService = inject(WorkPackagesListService);
+  readonly halNotification = inject(HalResourceNotificationService);
+  readonly toastService = inject(ToastService);
+  protected apiV3Service = inject(ApiV3Service);
+  protected copyToClipboardService = inject(CopyToClipboardService);
+
   public tokenName = '';
 
   public query:QueryResource;
@@ -84,22 +91,6 @@ export class QueryGetIcalUrlModalComponent extends OpModalComponent implements O
 
   get nameControl():AbstractControl|null {
     return this.tokenNameForm.get('name');
-  }
-
-  constructor(
-    readonly elementRef:ElementRef,
-    @Inject(OpModalLocalsToken) public locals:OpModalLocalsMap,
-    readonly I18n:I18nService,
-    readonly states:States,
-    readonly querySpace:IsolatedQuerySpace,
-    readonly cdRef:ChangeDetectorRef,
-    readonly wpListService:WorkPackagesListService,
-    readonly halNotification:HalResourceNotificationService,
-    readonly toastService:ToastService,
-    protected apiV3Service:ApiV3Service,
-    protected copyToClipboardService:CopyToClipboardService,
-  ) {
-    super(locals, cdRef, elementRef);
   }
 
   ngOnInit():void {

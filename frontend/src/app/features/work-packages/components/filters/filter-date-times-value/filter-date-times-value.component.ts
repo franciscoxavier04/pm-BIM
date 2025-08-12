@@ -27,13 +27,7 @@
 //++
 
 import { Moment } from 'moment';
-import {
-  Component,
-  HostBinding,
-  Input,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, HostBinding, Input, OnInit, Output, inject } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { DebouncedEventEmitter } from 'core-app/shared/helpers/rxjs/debounced-event-emitter';
 import { componentDestroyed } from '@w11k/ngx-componentdestroyed';
@@ -48,6 +42,7 @@ import { validDate } from 'core-app/shared/components/datepicker/helpers/date-mo
   standalone: false,
 })
 export class FilterDateTimesValueComponent extends AbstractDateTimeValueController implements OnInit {
+
   @HostBinding('id') get id() {
     return `div-values-${this.filter.id}`;
   }
@@ -63,13 +58,6 @@ export class FilterDateTimesValueComponent extends AbstractDateTimeValueControll
   readonly text = {
     spacer: this.I18n.t('js.filter.value_spacer'),
   };
-
-  constructor(
-    readonly I18n:I18nService,
-    readonly timezoneService:TimezoneService,
-  ) {
-    super(I18n, timezoneService);
-  }
 
   public get begin():string {
     return (this.filter.values[0] || '') as string;

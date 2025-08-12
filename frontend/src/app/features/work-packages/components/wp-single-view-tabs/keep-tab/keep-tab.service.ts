@@ -30,18 +30,22 @@ import {
   StateService, Transition, TransitionService, UIRouterGlobals,
 } from '@uirouter/core';
 import { ReplaySubject } from 'rxjs';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { splitViewRoute } from 'core-app/features/work-packages/routing/split-view-routes.helper';
 
 @Injectable({ providedIn: 'root' })
 export class KeepTabService {
+  protected $state = inject(StateService);
+  protected uiRouterGlobals = inject(UIRouterGlobals);
+  protected $transitions = inject(TransitionService);
+
   protected currentTab = 'overview';
 
   protected subject = new ReplaySubject<{ [tab:string]:string; }>(1);
 
-  constructor(protected $state:StateService,
-    protected uiRouterGlobals:UIRouterGlobals,
-    protected $transitions:TransitionService) {
+  constructor() {
+    const $transitions = this.$transitions;
+
     this.updateTabs();
     $transitions.onSuccess({}, (transition:Transition) => {
       this.updateTabs(transition.params('to').tabIdentifier);

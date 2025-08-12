@@ -26,13 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  ChangeDetectionStrategy,
-  Component,
-  HostListener,
-  Injector,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, Injector, OnInit, inject } from '@angular/core';
 import { StateService } from '@uirouter/core';
 import { ConfigurationService } from 'core-app/core/config/configuration.service';
 import { CurrentUserService } from 'core-app/core/current-user/current-user.service';
@@ -59,6 +53,12 @@ import { Observable, of } from 'rxjs';
   standalone: false,
 })
 export class WorkPackagesFullViewComponent extends WorkPackageSingleViewBase implements OnInit {
+  wpTableSelection = inject(WorkPackageViewSelectionService);
+  recentItemsService = inject(RecentItemsService);
+  readonly $state:StateService;
+  readonly currentUserService = inject(CurrentUserService);
+  private readonly configurationService = inject(ConfigurationService);
+
   // Watcher properties
   public isWatched:boolean;
 
@@ -80,15 +80,12 @@ export class WorkPackagesFullViewComponent extends WorkPackageSingleViewBase imp
 
   stateName$ = of('work-packages.new');
 
-  constructor(
-    public injector:Injector,
-    public wpTableSelection:WorkPackageViewSelectionService,
-    public recentItemsService:RecentItemsService,
-    readonly $state:StateService,
-    readonly currentUserService:CurrentUserService,
-    private readonly configurationService:ConfigurationService,
-  ) {
-    super(injector, $state.params.workPackageId);
+  constructor() {
+    const $state = inject(StateService);
+
+    super($state.params.workPackageId);
+
+    this.$state = $state;
   }
 
   // enable other parts of the application to trigger an immediate update

@@ -26,20 +26,20 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
 
 @Injectable({ providedIn: 'root' })
 export class CurrentProjectService {
+  private PathHelper = inject(PathHelperService);
+  private apiV3Service = inject(ApiV3Service);
+
   private currentId:string|null = null;
   private currentName:string|null = null;
   private currentIdentifier:string|null = null;
 
-  constructor(
-    private PathHelper:PathHelperService,
-    private apiV3Service:ApiV3Service,
-  ) {
+  constructor() {
     this.detect();
   }
 

@@ -1,7 +1,5 @@
 import { AbstractWidgetComponent } from 'core-app/shared/components/grids/widgets/abstract-widget.component';
-import {
-  ChangeDetectionStrategy, ChangeDetectorRef, Component, Injector, OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Injector, OnInit, inject } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { HalResourceService } from 'core-app/features/hal/services/hal-resource.service';
 import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
@@ -18,24 +16,18 @@ import { MAGIC_PAGE_NUMBER } from 'core-app/core/apiv3/helpers/get-paginated-res
   standalone: false,
 })
 export class WidgetSubprojectsComponent extends AbstractWidgetComponent implements OnInit {
+  readonly halResource = inject(HalResourceService);
+  readonly pathHelper = inject(PathHelperService);
+  readonly timezone = inject(TimezoneService);
+  readonly apiV3Service = inject(ApiV3Service);
+  readonly currentProject = inject(CurrentProjectService);
+  readonly cdr = inject(ChangeDetectorRef);
+
   public text = {
     noResults: this.i18n.t('js.grid.widgets.subprojects.no_results'),
   };
 
   public projects:ProjectResource[];
-
-  constructor(
-    readonly halResource:HalResourceService,
-    readonly pathHelper:PathHelperService,
-    readonly i18n:I18nService,
-    protected readonly injector:Injector,
-    readonly timezone:TimezoneService,
-    readonly apiV3Service:ApiV3Service,
-    readonly currentProject:CurrentProjectService,
-    readonly cdr:ChangeDetectorRef,
-  ) {
-    super(i18n, injector);
-  }
 
   ngOnInit() {
     this

@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  Injector,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Injector, inject } from '@angular/core';
 import {
   DynamicComponentDefinition,
   ToolbarButtonComponentDefinition,
@@ -57,6 +52,21 @@ export function boardCardViewHandlerFactory(injector:Injector) {
   standalone: false,
 })
 export class BoardPartitionedPageComponent extends UntilDestroyedMixin {
+  readonly I18n = inject(I18nService);
+  readonly cdRef = inject(ChangeDetectorRef);
+  readonly $transitions = inject(TransitionService);
+  readonly state = inject(StateService);
+  readonly toastService = inject(ToastService);
+  readonly halNotification = inject(HalResourceNotificationService);
+  readonly injector = inject(Injector);
+  readonly apiV3Service = inject(ApiV3Service);
+  readonly boardFilters = inject(BoardFiltersService);
+  readonly Boards = inject(BoardService);
+  readonly titleService = inject(OpTitleService);
+  readonly submenuService = inject(SubmenuService);
+  readonly pathHelperService = inject(PathHelperService);
+  readonly currentProject = inject(CurrentProjectService);
+
   text = {
     button_more: this.I18n.t('js.button_more'),
     delete: this.I18n.t('js.button_delete'),
@@ -138,25 +148,6 @@ export class BoardPartitionedPageComponent extends UntilDestroyedMixin {
       },
     },
   ];
-
-  constructor(
-    readonly I18n:I18nService,
-    readonly cdRef:ChangeDetectorRef,
-    readonly $transitions:TransitionService,
-    readonly state:StateService,
-    readonly toastService:ToastService,
-    readonly halNotification:HalResourceNotificationService,
-    readonly injector:Injector,
-    readonly apiV3Service:ApiV3Service,
-    readonly boardFilters:BoardFiltersService,
-    readonly Boards:BoardService,
-    readonly titleService:OpTitleService,
-    readonly submenuService:SubmenuService,
-    readonly pathHelperService:PathHelperService,
-    readonly currentProject:CurrentProjectService,
-  ) {
-    super();
-  }
 
   ngOnInit():void {
     // Ensure board is being loaded

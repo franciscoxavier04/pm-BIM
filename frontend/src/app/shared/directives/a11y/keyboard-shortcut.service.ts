@@ -26,7 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { FocusHelperService } from 'core-app/shared/directives/focus/focus-helper';
 import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
 import { CurrentProjectService } from 'core-app/core/current-project/current-project.service';
@@ -51,6 +51,11 @@ const accessibleListSelector = 'table.keyboard-accessible-list';
   providedIn: 'root',
 })
 export class KeyboardShortcutService {
+  private readonly PathHelper = inject(PathHelperService);
+  private readonly FocusHelper = inject(FocusHelperService);
+  private readonly currentProject = inject(CurrentProjectService);
+  private readonly configurationService = inject(ConfigurationService);
+
   // maybe move it to a .constant
   private shortcuts:{ [name:string]:() => void } = {
     /* eslint-disable quote-props */
@@ -74,13 +79,6 @@ export class KeyboardShortcutService {
     'j': () => this.focusNextItem(),
     /* eslint-enable quote-props */
   };
-
-  constructor(
-    private readonly PathHelper:PathHelperService,
-    private readonly FocusHelper:FocusHelperService,
-    private readonly currentProject:CurrentProjectService,
-    private readonly configurationService:ConfigurationService,
-  ) {}
 
   /**
    * Register the keyboard shortcuts.

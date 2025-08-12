@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { TurboElement } from 'core-typings/turbo';
 import { StateService } from '@uirouter/core';
 
 @Injectable({ providedIn: 'root' })
 export class SubmenuService {
-  constructor(protected $state:StateService) {}
+  protected $state = inject(StateService);
+
 
   reloadSubmenu(selectedQueryId:string|null):void {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-assignment

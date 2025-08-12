@@ -26,19 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  HostListener,
-  Input,
-  NgZone,
-  OnDestroy,
-  ViewChild,
-  ViewEncapsulation,
-} from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener, Input, NgZone, OnDestroy, ViewChild, ViewEncapsulation, inject } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { first, map, switchMap, tap } from 'rxjs/operators';
 import { GlobalSearchService } from 'core-app/core/global_search/services/global-search.service';
@@ -99,6 +87,19 @@ interface SearchResultItems {
   standalone: false,
 })
 export class GlobalSearchInputComponent implements AfterViewInit, OnDestroy {
+  readonly elementRef = inject(ElementRef);
+  readonly I18n = inject(I18nService);
+  readonly apiV3Service = inject(ApiV3Service);
+  readonly pathHelperService = inject(PathHelperService);
+  readonly halResourceService = inject(HalResourceService);
+  readonly globalSearchService = inject(GlobalSearchService);
+  readonly currentProjectService = inject(CurrentProjectService);
+  readonly deviceService = inject(DeviceService);
+  readonly cdRef = inject(ChangeDetectorRef);
+  readonly halNotification = inject(HalResourceNotificationService);
+  readonly ngZone = inject(NgZone);
+  readonly recentItemsService = inject(RecentItemsService);
+
   @Input() public placeholder:string;
 
   @ViewChild('btn', { static: true }) btn:ElementRef;
@@ -145,20 +146,7 @@ export class GlobalSearchInputComponent implements AfterViewInit, OnDestroy {
     search: this.I18n.t('js.autocompleter.search'),
   };
 
-  constructor(
-    readonly elementRef:ElementRef,
-    readonly I18n:I18nService,
-    readonly apiV3Service:ApiV3Service,
-    readonly pathHelperService:PathHelperService,
-    readonly halResourceService:HalResourceService,
-    readonly globalSearchService:GlobalSearchService,
-    readonly currentProjectService:CurrentProjectService,
-    readonly deviceService:DeviceService,
-    readonly cdRef:ChangeDetectorRef,
-    readonly halNotification:HalResourceNotificationService,
-    readonly ngZone:NgZone,
-    readonly recentItemsService:RecentItemsService,
-  ) {
+  constructor() {
     populateInputsFromDataset(this);
   }
 

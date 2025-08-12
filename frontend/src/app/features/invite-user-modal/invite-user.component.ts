@@ -1,12 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  Inject,
-  OnInit,
-  ViewEncapsulation,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewEncapsulation, inject } from '@angular/core';
 import { OpModalLocalsMap } from 'core-app/shared/components/modal/modal.types';
 import { OpModalComponent } from 'core-app/shared/components/modal/modal.component';
 import { OpModalLocalsToken } from 'core-app/shared/components/modal/modal.service';
@@ -37,6 +29,8 @@ export enum PrincipalType {
   standalone: false,
 })
 export class InviteUserModalComponent extends OpModalComponent implements OnInit {
+  readonly apiV3Service = inject(ApiV3Service);
+
   public Steps = Steps;
 
   public step = Steps.ProjectSelection;
@@ -61,15 +55,6 @@ export class InviteUserModalComponent extends OpModalComponent implements OnInit
 
   public get loading():boolean {
     return this.locals.projectId && !this.project;
-  }
-
-  constructor(
-    @Inject(OpModalLocalsToken) public locals:OpModalLocalsMap,
-    readonly cdRef:ChangeDetectorRef,
-    readonly elementRef:ElementRef,
-    readonly apiV3Service:ApiV3Service,
-  ) {
-    super(locals, cdRef, elementRef);
   }
 
   ngOnInit():void {

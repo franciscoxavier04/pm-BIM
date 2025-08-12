@@ -1,7 +1,4 @@
-import {
-  Injectable,
-  Injector,
-} from '@angular/core';
+import { Injectable, Injector, inject } from '@angular/core';
 import {
   filter,
   map,
@@ -17,6 +14,9 @@ import {
 
 @Injectable()
 export class TimeEntryTimerService {
+  readonly injector = inject(Injector);
+  readonly apiV3Service = inject(ApiV3Service);
+
   public timer$ = new BehaviorSubject<TimeEntryResource|null|undefined>(undefined);
 
   public activeTimer$ = this.timer$
@@ -25,10 +25,7 @@ export class TimeEntryTimerService {
       filter((item) => item !== undefined),
     ) as Observable<TimeEntryResource|null>;
 
-  constructor(
-    readonly injector:Injector,
-    readonly apiV3Service:ApiV3Service,
-  ) {
+  constructor() {
     // Refresh the timer after some interval to not block other resources
     setTimeout(() => this.refresh().subscribe(), 100);
 

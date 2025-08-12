@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, forwardRef, Input, OnInit, ViewChild, inject } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { OpCkeditorComponent } from 'core-app/shared/components/editor/components/ckeditor/op-ckeditor.component';
@@ -22,6 +22,8 @@ import { IOPFormlyTemplateOptions } from 'core-app/shared/components/dynamic-for
   standalone: false,
 })
 export class FormattableControlComponent implements ControlValueAccessor, OnInit {
+  readonly I18n = inject(I18nService);
+
   @Input() templateOptions:IOPFormlyTemplateOptions;
 
   @ViewChild(OpCkeditorComponent, { static: true }) editor:OpCkeditorComponent;
@@ -51,11 +53,6 @@ export class FormattableControlComponent implements ControlValueAccessor, OnInit
       macros: this.templateOptions.property?.startsWith('customField') ? 'none' : 'resource',
       options: { rtl: this.templateOptions.rtl },
     };
-  }
-
-  constructor(
-    readonly I18n:I18nService,
-  ) {
   }
 
   ngOnInit():void {

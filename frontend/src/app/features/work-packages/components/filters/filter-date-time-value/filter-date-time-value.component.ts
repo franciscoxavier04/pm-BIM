@@ -26,13 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  Component,
-  Input,
-  HostBinding,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, Input, HostBinding, OnInit, Output, inject } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { HalResource } from 'core-app/features/hal/resources/hal-resource';
 import { DebouncedEventEmitter } from 'core-app/shared/helpers/rxjs/debounced-event-emitter';
@@ -59,11 +53,6 @@ export class FilterDateTimeValueComponent extends AbstractDateTimeValueControlle
   @Input() public filter:QueryFilterInstanceResource;
 
   @Output() public filterChanged = new DebouncedEventEmitter<QueryFilterInstanceResource>(componentDestroyed(this));
-
-  constructor(readonly I18n:I18nService,
-    readonly timezoneService:TimezoneService) {
-    super(I18n, timezoneService);
-  }
 
   public get value():HalResource|string {
     return this.filter.values[0];

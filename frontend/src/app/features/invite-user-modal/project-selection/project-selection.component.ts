@@ -1,13 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { AbstractControl, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { BannersService } from 'core-app/core/enterprise/banners.service';
@@ -34,6 +25,13 @@ import { IAPIFilter } from 'core-app/shared/components/autocompleter/op-autocomp
   standalone: false,
 })
 export class ProjectSelectionComponent implements OnInit {
+  readonly I18n = inject(I18nService);
+  readonly elementRef = inject(ElementRef);
+  readonly bannersService = inject(BannersService);
+  readonly apiV3Service = inject(ApiV3Service);
+  readonly currentUserService = inject(CurrentUserService);
+  readonly cdRef = inject(ChangeDetectorRef);
+
   @Input() type:PrincipalType;
 
   @Input() project:ProjectResource|null;
@@ -88,15 +86,6 @@ export class ProjectSelectionComponent implements OnInit {
   }
 
   private projectInviteCapabilities:ICapability[] = [];
-
-  constructor(
-    readonly I18n:I18nService,
-    readonly elementRef:ElementRef,
-    readonly bannersService:BannersService,
-    readonly apiV3Service:ApiV3Service,
-    readonly currentUserService:CurrentUserService,
-    readonly cdRef:ChangeDetectorRef,
-  ) {}
 
   ngOnInit():void {
     this.typeControl.setValue(this.type);

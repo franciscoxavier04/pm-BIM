@@ -1,4 +1,4 @@
-import { Component, Injector } from '@angular/core';
+import { Component, Injector, inject } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { WorkPackageViewSortByService } from 'core-app/features/work-packages/routing/wp-view-base/view-services/wp-view-sort-by.service';
 import { TabComponent } from 'core-app/features/work-packages/components/wp-table/configuration-modal/tab-portal-outlet';
@@ -26,6 +26,10 @@ export type SortingMode = 'automatic'|'manual';
   standalone: false,
 })
 export class WpTableConfigurationSortByTabComponent implements TabComponent {
+  readonly injector = inject(Injector);
+  readonly I18n = inject(I18nService);
+  readonly wpTableSortBy = inject(WorkPackageViewSortByService);
+
   public text = {
     title: this.I18n.t('js.label_sort_by'),
     placeholder: this.I18n.t('js.placeholders.default'),
@@ -56,12 +60,6 @@ export class WpTableConfigurationSortByTabComponent implements TabComponent {
   public sortingMode:SortingMode = 'automatic';
 
   public manualSortColumn:SortColumn;
-
-  constructor(readonly injector:Injector,
-    readonly I18n:I18nService,
-    readonly wpTableSortBy:WorkPackageViewSortByService) {
-
-  }
 
   public onSave() {
     let sortElements;

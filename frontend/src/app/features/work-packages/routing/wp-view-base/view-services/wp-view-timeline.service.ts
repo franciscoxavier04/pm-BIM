@@ -26,7 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { WorkPackageResource } from 'core-app/features/hal/resources/work-package-resource';
 import { IsolatedQuerySpace } from 'core-app/features/work-packages/directives/query-space/isolated-query-space';
 import { input } from '@openproject/reactivestates';
@@ -37,12 +37,10 @@ import { WorkPackageQueryStateService } from './wp-view-base.service';
 
 @Injectable()
 export class WorkPackageViewTimelineService extends WorkPackageQueryStateService<WorkPackageTimelineState> {
+  protected readonly querySpace = inject(IsolatedQuerySpace);
+
   /** Remember the computed zoom level to correct zooming after leaving autozoom */
   public appliedZoomLevel$ = input<TimelineZoomLevel>('auto');
-
-  public constructor(protected readonly querySpace:IsolatedQuerySpace) {
-    super(querySpace);
-  }
 
   public valueFromQuery(query:QueryResource) {
     return {

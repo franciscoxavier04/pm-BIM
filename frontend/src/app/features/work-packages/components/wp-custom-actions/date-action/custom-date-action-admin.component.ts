@@ -26,14 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  ApplicationRef,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  OnInit,
-} from '@angular/core';
+import { ApplicationRef, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, inject } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 
 @Component({
@@ -43,6 +36,11 @@ import { I18nService } from 'core-app/core/i18n/i18n.service';
   standalone: false,
 })
 export class CustomDateActionAdminComponent implements OnInit {
+  private elementRef = inject(ElementRef);
+  private cdRef = inject(ChangeDetectorRef);
+  appRef = inject(ApplicationRef);
+  private I18n = inject(I18nService);
+
   public valueVisible = false;
 
   public fieldName:string = '';
@@ -64,14 +62,6 @@ export class CustomDateActionAdminComponent implements OnInit {
     { key: this.onKey, label: this.I18n.t('js.custom_actions.date.specific') },
     { key: this.currentKey, label: this.I18n.t('js.custom_actions.date.current_date') },
   ];
-
-  constructor(
-    private elementRef:ElementRef,
-    private cdRef:ChangeDetectorRef,
-    public appRef:ApplicationRef,
-    private I18n:I18nService,
-  ) {
-  }
 
   // cannot use $onInit as it would be called before the operators gets filled
   public ngOnInit() {

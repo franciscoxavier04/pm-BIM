@@ -27,15 +27,7 @@
 //++
 
 import { WorkPackageResource } from 'core-app/features/hal/resources/work-package-resource';
-import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  Injector,
-  Input,
-  OnDestroy,
-} from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Injector, Input, OnDestroy, inject } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { UntilDestroyedMixin } from 'core-app/shared/helpers/angular/until-destroyed.mixin';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
@@ -73,6 +65,18 @@ import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service
   standalone: false,
 })
 export class WorkPackageTimerButtonComponent extends UntilDestroyedMixin implements AfterViewInit, OnDestroy {
+  readonly injector = inject(Injector);
+  readonly I18n = inject(I18nService);
+  readonly apiV3Service = inject(ApiV3Service);
+  readonly timeEntryService = inject(TimeEntryTimerService);
+  readonly timeEntryCreateService = inject(TimeEntryCreateService);
+  readonly halEditing = inject(HalResourceEditingService);
+  readonly modalService = inject(OpModalService);
+  readonly schemaCache = inject(SchemaCacheService);
+  readonly timezoneService = inject(TimezoneService);
+  readonly toastService = inject(ToastService);
+  readonly cdRef = inject(ChangeDetectorRef);
+
   @Input() public workPackage:WorkPackageResource;
   @InjectField() PathHelper:PathHelperService;
   @InjectField() TurboRequests:TurboRequestsService;
@@ -95,22 +99,6 @@ export class WorkPackageTimerButtonComponent extends UntilDestroyedMixin impleme
 
   private closeDialogHandler:EventListener = this.handleTimeEntryDialogClose.bind(this);
   private shouldStartNewTimer = false;
-
-  constructor(
-    readonly injector:Injector,
-    readonly I18n:I18nService,
-    readonly apiV3Service:ApiV3Service,
-    readonly timeEntryService:TimeEntryTimerService,
-    readonly timeEntryCreateService:TimeEntryCreateService,
-    readonly halEditing:HalResourceEditingService,
-    readonly modalService:OpModalService,
-    readonly schemaCache:SchemaCacheService,
-    readonly timezoneService:TimezoneService,
-    readonly toastService:ToastService,
-    readonly cdRef:ChangeDetectorRef,
-  ) {
-    super();
-  }
 
   ngAfterViewInit():void {
     document.addEventListener('dialog:close', this.closeDialogHandler);

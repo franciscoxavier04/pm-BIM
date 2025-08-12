@@ -26,9 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  AfterViewInit, ChangeDetectorRef, Component, ElementRef, Inject, ViewChild,
-} from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, ViewChild, inject } from '@angular/core';
 import { OpModalLocalsMap } from 'core-app/shared/components/modal/modal.types';
 import { OpModalComponent } from 'core-app/shared/components/modal/modal.component';
 import { OpModalLocalsToken } from 'core-app/shared/components/modal/modal.service';
@@ -39,6 +37,8 @@ import { I18nService } from 'core-app/core/i18n/i18n.service';
   standalone: false,
 })
 export class CodeBlockMacroModalComponent extends OpModalComponent implements AfterViewInit {
+  readonly I18n = inject(I18nService);
+
   public changed = false;
 
   public showClose = true;
@@ -67,13 +67,11 @@ export class CodeBlockMacroModalComponent extends OpModalComponent implements Af
     close_popup: this.I18n.t('js.close_popup_title'),
   };
 
-  constructor(readonly elementRef:ElementRef,
-    @Inject(OpModalLocalsToken) public locals:OpModalLocalsMap,
-    readonly cdRef:ChangeDetectorRef,
-    readonly I18n:I18nService) {
-    super(locals, cdRef, elementRef);
-    this.languageClass = locals.languageClass || 'language-text';
-    this.content = locals.content;
+  constructor() {
+    super();
+
+    this.languageClass = this.locals.languageClass || 'language-text';
+    this.content = this.locals.content;
 
     const match = /language-(\w+)/.exec(this.languageClass);
     if (match) {

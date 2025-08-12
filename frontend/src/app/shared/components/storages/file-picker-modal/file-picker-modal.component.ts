@@ -26,9 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Inject,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, inject } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
@@ -58,6 +56,12 @@ import {
   standalone: false,
 })
 export class FilePickerModalComponent extends FilePickerBaseModalComponent {
+  private readonly i18n = inject(I18nService);
+  private readonly toastService = inject(ToastService);
+  private readonly timezoneService = inject(TimezoneService);
+  private readonly configuration = inject(ConfigurationService);
+  private readonly fileLinksResourceService = inject(FileLinksResourceService);
+
   public readonly text = {
     header: this.i18n.t('js.storages.file_links.select'),
     alertNoAccess: this.i18n.t('js.storages.files.project_folder_no_access'),
@@ -117,26 +121,9 @@ export class FilePickerModalComponent extends FilePickerBaseModalComponent {
 
   private readonly fileMap:Record<string, IStorageFile> = {};
 
-  constructor(
-    @Inject(OpModalLocalsToken) public locals:OpModalLocalsMap,
-    readonly elementRef:ElementRef,
-    readonly cdRef:ChangeDetectorRef,
-    protected readonly sortFilesPipe:SortFilesPipe,
-    protected readonly storageFilesResourceService:StorageFilesResourceService,
-    private readonly i18n:I18nService,
-    private readonly toastService:ToastService,
-    private readonly timezoneService:TimezoneService,
-    private readonly configuration:ConfigurationService,
-    private readonly fileLinksResourceService:FileLinksResourceService,
-  ) {
-    super(
-      locals,
-      elementRef,
-      cdRef,
-      sortFilesPipe,
-      storageFilesResourceService,
-    );
-
+  constructor() {
+    super();
+    
     this.showSelectAll = this.configuration.activeFeatureFlags.includes('storageFilePickingSelectAll');
   }
 

@@ -1,9 +1,4 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  Injector,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectorRef, Component, Injector, OnInit, inject } from '@angular/core';
 import { WidgetTimeEntriesListComponent } from 'core-app/shared/components/grids/widgets/time-entries/list/time-entries-list.component';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
@@ -23,15 +18,7 @@ import { HalResourceEditingService } from 'core-app/shared/components/fields/edi
   standalone: false,
 })
 export class WidgetTimeEntriesProjectComponent extends WidgetTimeEntriesListComponent implements OnInit {
-  constructor(readonly injector:Injector,
-    readonly timezone:TimezoneService,
-    readonly i18n:I18nService,
-    readonly pathHelper:PathHelperService,
-    readonly confirmDialog:ConfirmDialogService,
-    protected readonly cdr:ChangeDetectorRef,
-    protected readonly currentProject:CurrentProjectService) {
-    super(injector, timezone, i18n, pathHelper, confirmDialog, cdr);
-  }
+  protected readonly currentProject = inject(CurrentProjectService);
 
   protected dmFilters():Array<[string, FilterOperator, [string]]> {
     return [['spentOn', '>t-', ['7']] as [string, FilterOperator, [string]],

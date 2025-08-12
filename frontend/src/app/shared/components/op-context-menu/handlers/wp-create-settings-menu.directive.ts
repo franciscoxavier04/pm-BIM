@@ -27,7 +27,7 @@
 //++
 
 import { OPContextMenuService } from 'core-app/shared/components/op-context-menu/op-context-menu.service';
-import { Directive, ElementRef } from '@angular/core';
+import { Directive, ElementRef, inject } from '@angular/core';
 import { OpContextMenuTrigger } from 'core-app/shared/components/op-context-menu/handlers/op-context-menu-trigger.directive';
 import { HalResourceEditingService } from 'core-app/shared/components/fields/edit/services/hal-resource-editing.service';
 import { States } from 'core-app/core/states/states.service';
@@ -38,12 +38,8 @@ import { FormResource } from 'core-app/features/hal/resources/form-resource';
   standalone: false,
 })
 export class WorkPackageCreateSettingsMenuDirective extends OpContextMenuTrigger {
-  constructor(readonly elementRef:ElementRef,
-    readonly opContextMenu:OPContextMenuService,
-    readonly states:States,
-    readonly halEditing:HalResourceEditingService) {
-    super(elementRef, opContextMenu);
-  }
+  readonly states = inject(States);
+  readonly halEditing = inject(HalResourceEditingService);
 
   protected open(evt:JQuery.TriggeredEvent) {
     const wp = this.states.workPackages.get('new').value;

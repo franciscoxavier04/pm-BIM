@@ -25,7 +25,7 @@
 //
 // See COPYRIGHT and LICENSE files for more details.
 //++
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { VersionResource } from 'core-app/features/hal/resources/version-resource';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
@@ -37,11 +37,10 @@ import { PathHelperService } from 'core-app/core/path-helper/path-helper.service
   standalone: false,
 })
 export class VersionBoardHeaderComponent {
-  @Input('resource') public version:VersionResource;
+  readonly I18n = inject(I18nService);
+  readonly pathHelper = inject(PathHelperService);
 
-  constructor(readonly I18n:I18nService,
-    readonly pathHelper:PathHelperService) {
-  }
+  @Input('resource') public version:VersionResource;
 
   public text = {
     isLocked: this.I18n.t('js.boards.version.is_locked'),

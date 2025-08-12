@@ -1,10 +1,4 @@
-import {
-  Component,
-  ContentChild,
-  HostBinding,
-  Input,
-  Optional,
-} from '@angular/core';
+import { Component, ContentChild, HostBinding, Input, inject } from '@angular/core';
 import {
   AbstractControl,
   FormGroupDirective,
@@ -17,6 +11,8 @@ import {
   standalone: false,
 })
 export class SpotSelectorFieldComponent {
+  private formGroupDirective = inject(FormGroupDirective, { optional: true });
+
   @HostBinding('class.spot-form-field') className = true;
 
   @HostBinding('class.spot-selector-field') classNameCheckbox = true;
@@ -91,7 +87,7 @@ export class SpotSelectorFieldComponent {
     }
 
     if (this.showValidationErrorOn === 'submit') {
-      return this.formControl.invalid && this.formGroupDirective?.submitted;
+      return this.formControl.invalid && !!this.formGroupDirective?.submitted;
     }
     if (this.showValidationErrorOn === 'blur') {
       return this.formControl.invalid && this.formControl.touched;
@@ -102,8 +98,4 @@ export class SpotSelectorFieldComponent {
 
     return false;
   }
-
-  constructor(
-    @Optional() private formGroupDirective:FormGroupDirective,
-  ) {}
 }

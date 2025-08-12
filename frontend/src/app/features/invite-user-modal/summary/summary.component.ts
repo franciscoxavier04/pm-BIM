@@ -1,11 +1,4 @@
-import {
-  Component,
-  Input,
-  EventEmitter,
-  Output,
-  ElementRef,
-  ChangeDetectionStrategy,
-} from '@angular/core';
+import { Component, Input, EventEmitter, Output, ElementRef, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { mapTo, switchMap } from 'rxjs/operators';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
@@ -24,6 +17,10 @@ import { PrincipalType } from '../invite-user.component';
   standalone: false,
 })
 export class SummaryComponent {
+  readonly I18n = inject(I18nService);
+  readonly elementRef = inject(ElementRef);
+  readonly api = inject(ApiV3Service);
+
   @Input() type:PrincipalType;
 
   @Input() project:ProjectResource;
@@ -65,12 +62,6 @@ export class SummaryComponent {
   public get principal():PrincipalLike|null {
     return this.principalData.principal;
   }
-
-  constructor(
-    readonly I18n:I18nService,
-    readonly elementRef:ElementRef,
-    readonly api:ApiV3Service,
-  ) { }
 
   invite():Observable<HalResource> {
     return of(this.principalData)

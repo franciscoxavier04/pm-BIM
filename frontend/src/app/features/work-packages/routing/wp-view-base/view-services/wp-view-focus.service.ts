@@ -26,7 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { IsolatedQuerySpace } from 'core-app/features/work-packages/directives/query-space/isolated-query-space';
 import { Observable } from 'rxjs';
 import { distinctUntilChanged, map } from 'rxjs/operators';
@@ -42,10 +42,7 @@ export interface WPFocusState {
 
 @Injectable()
 export class WorkPackageViewFocusService extends WorkPackageViewBaseService<WPFocusState> {
-  constructor(public querySpace:IsolatedQuerySpace,
-    public wpTableSelection:WorkPackageViewSelectionService) {
-    super(querySpace);
-  }
+  wpTableSelection = inject(WorkPackageViewSelectionService);
 
   public isFocused(workPackageId:string) {
     return this.focusedWorkPackage === workPackageId;

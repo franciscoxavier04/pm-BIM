@@ -1,8 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { UserPreferencesService } from 'core-app/features/user-preferences/state/user-preferences.service';
 import {
@@ -32,6 +28,10 @@ export const emailAlerts:EmailAlertType[] = [
   standalone: false,
 })
 export class EmailAlertsSettingsComponent implements OnInit {
+  private I18n = inject(I18nService);
+  private storeService = inject(UserPreferencesService);
+  private rootFormGroup = inject(FormGroupDirective);
+
   form:UntypedFormGroup;
 
   alerts:EmailAlertType[] = emailAlerts;
@@ -48,13 +48,6 @@ export class EmailAlertsSettingsComponent implements OnInit {
     membershipAdded: this.I18n.t('js.reminders.settings.alerts.membership_added'),
     membershipUpdated: this.I18n.t('js.reminders.settings.alerts.membership_updated'),
   };
-
-  constructor(
-    private I18n:I18nService,
-    private storeService:UserPreferencesService,
-    private rootFormGroup:FormGroupDirective,
-  ) {
-  }
 
   ngOnInit():void {
     this.form = this.rootFormGroup.control.get('emailAlerts') as UntypedFormGroup;

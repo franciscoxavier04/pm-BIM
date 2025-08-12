@@ -26,13 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  OnDestroy,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { combineLatest } from 'rxjs';
 
 import { I18nService } from 'core-app/core/i18n/i18n.service';
@@ -57,16 +51,9 @@ import { PaginationService } from 'core-app/shared/components/table-pagination/p
   standalone: false,
 })
 export class WorkPackageTablePaginationComponent extends TablePaginationComponent implements OnInit, OnDestroy {
-  constructor(
-    protected paginationService:PaginationService,
-    protected cdRef:ChangeDetectorRef,
-    protected wpTablePagination:WorkPackageViewPaginationService,
-    readonly querySpace:IsolatedQuerySpace,
-    readonly wpTableSortBy:WorkPackageViewSortByService,
-    readonly I18n:I18nService,
-  ) {
-    super(paginationService, cdRef, I18n);
-  }
+  protected wpTablePagination = inject(WorkPackageViewPaginationService);
+  readonly querySpace = inject(IsolatedQuerySpace);
+  readonly wpTableSortBy = inject(WorkPackageViewSortByService);
 
   ngOnInit() {
     super.ngOnInit();

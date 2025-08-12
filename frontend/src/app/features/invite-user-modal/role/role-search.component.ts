@@ -1,9 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  Input,
-  OnInit,
-} from '@angular/core';
+import { Component, ElementRef, Input, OnInit, inject } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import {
   combineLatest,
@@ -28,6 +23,10 @@ import { ApiV3FilterBuilder } from 'core-app/shared/helpers/api-v3/api-v3-filter
   standalone: false,
 })
 export class RoleSearchComponent extends UntilDestroyedMixin implements OnInit {
+  readonly I18n = inject(I18nService);
+  readonly elementRef = inject(ElementRef);
+  readonly apiV3Service = inject(ApiV3Service);
+
   @Input() spotFormBinding:UntypedFormControl;
 
   public input$ = new Subject<string|null>();
@@ -40,11 +39,7 @@ export class RoleSearchComponent extends UntilDestroyedMixin implements OnInit {
     noRolesFound: this.I18n.t('js.invite_user_modal.role.no_roles_found'),
   };
 
-  constructor(
-    readonly I18n:I18nService,
-    readonly elementRef:ElementRef,
-    readonly apiV3Service:ApiV3Service,
-  ) {
+  constructor() {
     super();
 
     this.items$ = combineLatest(

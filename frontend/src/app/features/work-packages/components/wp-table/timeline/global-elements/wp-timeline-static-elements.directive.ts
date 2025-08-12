@@ -25,11 +25,7 @@
 //
 // See COPYRIGHT and LICENSE files for more details.
 //++
-import {
-  Component,
-  ElementRef,
-  OnInit,
-} from '@angular/core';
+import { Component, ElementRef, OnInit, inject } from '@angular/core';
 import { States } from 'core-app/core/states/states.service';
 import { WorkPackageTimelineTableController } from '../container/wp-timeline-container.directive';
 import { calculatePositionValueForDayCountingPx, TimelineViewParameters } from '../wp-timeline';
@@ -45,15 +41,18 @@ import { TodayLineElement } from './wp-timeline.today-line';
   standalone: false,
 })
 export class WorkPackageTableTimelineStaticElements implements OnInit {
+  states = inject(States);
+  workPackageTimelineTableController = inject(WorkPackageTimelineTableController);
+
   public $element:HTMLElement;
 
   private container:HTMLElement;
 
   private elements:TimelineStaticElement[];
 
-  constructor(elementRef:ElementRef,
-    public states:States,
-    public workPackageTimelineTableController:WorkPackageTimelineTableController) {
+  constructor() {
+    const elementRef = inject(ElementRef);
+
     this.$element = elementRef.nativeElement;
 
     this.elements = [

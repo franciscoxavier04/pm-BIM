@@ -29,7 +29,7 @@
 import { OpContextMenuItem } from 'core-app/shared/components/op-context-menu/op-context-menu.types';
 import { StateService } from '@uirouter/core';
 import { OPContextMenuService } from 'core-app/shared/components/op-context-menu/op-context-menu.service';
-import { Directive, ElementRef, Input } from '@angular/core';
+import { Directive, ElementRef, Input, inject } from '@angular/core';
 import { isClickedWithModifier } from 'core-app/shared/helpers/link-handling/link-handling';
 import {
   OpContextMenuTrigger,
@@ -46,6 +46,10 @@ import { TypeResource } from 'core-app/features/hal/resources/type-resource';
   standalone: false,
 })
 export class OpTypesContextMenuDirective extends OpContextMenuTrigger {
+  readonly browserDetector = inject(BrowserDetector);
+  readonly wpCreate = inject(WorkPackageCreateService);
+  readonly $state = inject(StateService);
+
   @Input('projectIdentifier') public projectIdentifier:string|null|undefined;
 
   @Input('stateName') public stateName:string;
@@ -53,16 +57,6 @@ export class OpTypesContextMenuDirective extends OpContextMenuTrigger {
   @Input('dropdownActive') active:boolean;
 
   public isOpen = false;
-
-  constructor(
-    readonly elementRef:ElementRef,
-    readonly opContextMenu:OPContextMenuService,
-    readonly browserDetector:BrowserDetector,
-    readonly wpCreate:WorkPackageCreateService,
-    readonly $state:StateService,
-  ) {
-    super(elementRef, opContextMenu);
-  }
 
   ngAfterViewInit():void {
     super.ngAfterViewInit();

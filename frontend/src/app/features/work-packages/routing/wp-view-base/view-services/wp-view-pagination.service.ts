@@ -26,7 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { QueryResource } from 'core-app/features/hal/resources/query-resource';
 import { WorkPackageCollectionResource } from 'core-app/features/hal/resources/wp-collection-resource';
 import { IsolatedQuerySpace } from 'core-app/features/work-packages/directives/query-space/isolated-query-space';
@@ -43,10 +43,7 @@ export interface PaginationUpdateObject {
 
 @Injectable()
 export class WorkPackageViewPaginationService extends WorkPackageViewBaseService<WorkPackageViewPagination> {
-  public constructor(querySpace:IsolatedQuerySpace,
-    readonly paginationService:PaginationService) {
-    super(querySpace);
-  }
+  readonly paginationService = inject(PaginationService);
 
   public get paginationObject():PaginationObject {
     if (this.current) {

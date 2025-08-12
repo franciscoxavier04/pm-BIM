@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges, inject } from '@angular/core';
 import { WorkPackageTableConfiguration } from 'core-app/features/work-packages/components/wp-table/wp-table-configuration';
 import { ChartOptions, Plugin } from 'chart.js';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
@@ -23,6 +23,8 @@ interface ChartDataSet {
   standalone: false,
 })
 export class WorkPackageEmbeddedGraphComponent {
+  readonly i18n = inject(I18nService);
+
   @Input() public datasets:WorkPackageEmbeddedGraphDataset[];
 
   @Input() public chartOptions:ChartOptions;
@@ -48,8 +50,6 @@ export class WorkPackageEmbeddedGraphComponent {
   public text = {
     noResults: this.i18n.t('js.work_packages.no_results.title'),
   };
-
-  constructor(readonly i18n:I18nService) {}
 
   ngOnChanges(changes:SimpleChanges) {
     if (changes.datasets) {

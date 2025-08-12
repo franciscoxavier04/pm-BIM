@@ -1,11 +1,4 @@
-import {
-  Component,
-  Input,
-  EventEmitter,
-  Output,
-  ElementRef,
-  ChangeDetectionStrategy,
-} from '@angular/core';
+import { Component, Input, EventEmitter, Output, ElementRef, ChangeDetectionStrategy, inject } from '@angular/core';
 
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { HalResource } from 'core-app/features/hal/resources/hal-resource';
@@ -21,6 +14,9 @@ import { PrincipalType } from '../invite-user.component';
   standalone: false,
 })
 export class SuccessComponent {
+  readonly I18n = inject(I18nService);
+  readonly elementRef = inject(ElementRef);
+
   @Input() principal:HalResource;
 
   @Input() project:ProjectResource;
@@ -48,9 +44,4 @@ export class SuccessComponent {
     },
     nextButton: this.I18n.t('js.invite_user_modal.success.next_button'),
   };
-
-  constructor(
-    readonly I18n:I18nService,
-    readonly elementRef:ElementRef,
-  ) {}
 }

@@ -1,6 +1,4 @@
-import {
-  ChangeDetectionStrategy, ChangeDetectorRef, Component, Injector, OnDestroy, OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Injector, OnDestroy, OnInit, inject } from '@angular/core';
 import { WorkPackageEmbeddedGraphDataset } from 'core-app/shared/components/work-package-graphs/embedded/wp-embedded-graph.component';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { AbstractWidgetComponent } from 'core-app/shared/components/grids/widgets/abstract-widget.component';
@@ -17,14 +15,10 @@ import { WpGraphConfiguration } from 'core-app/shared/components/work-package-gr
   standalone: false,
 })
 export class WidgetWpGraphComponent extends AbstractWidgetComponent implements OnInit, OnDestroy {
-  public datasets:WorkPackageEmbeddedGraphDataset[] = [];
+  protected cdr = inject(ChangeDetectorRef);
+  protected readonly graphConfiguration = inject(WpGraphConfigurationService);
 
-  constructor(protected i18n:I18nService,
-    protected injector:Injector,
-    protected cdr:ChangeDetectorRef,
-    protected readonly graphConfiguration:WpGraphConfigurationService) {
-    super(i18n, injector);
-  }
+  public datasets:WorkPackageEmbeddedGraphDataset[] = [];
 
   ngOnInit() {
     this.initializeConfiguration();

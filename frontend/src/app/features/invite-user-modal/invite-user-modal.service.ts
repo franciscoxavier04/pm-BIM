@@ -26,7 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable, EventEmitter, inject } from '@angular/core';
 import { HalResource } from 'core-app/features/hal/resources/hal-resource';
 import { CurrentProjectService } from 'core-app/core/current-project/current-project.service';
 import { OpModalService } from 'core-app/shared/components/modal/modal.service';
@@ -38,13 +38,10 @@ import { InviteUserModalComponent } from './invite-user.component';
  */
 @Injectable()
 export class OpInviteUserModalService {
-  public close = new EventEmitter<HalResource|HalResource[]>();
+  protected opModalService = inject(OpModalService);
+  protected currentProjectService = inject(CurrentProjectService);
 
-  constructor(
-    protected opModalService:OpModalService,
-    protected currentProjectService:CurrentProjectService,
-  ) {
-  }
+  public close = new EventEmitter<HalResource|HalResource[]>();
 
   public open(projectId:string|null = this.currentProjectService.id) {
     this.opModalService.show(

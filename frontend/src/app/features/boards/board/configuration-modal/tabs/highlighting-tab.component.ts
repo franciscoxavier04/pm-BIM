@@ -1,4 +1,4 @@
-import { Component, Inject, Injector } from '@angular/core';
+import { Component, Injector, inject } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { TabComponent } from 'core-app/features/work-packages/components/wp-table/configuration-modal/tab-portal-outlet';
 import { OpModalLocalsMap } from 'core-app/shared/components/modal/modal.types';
@@ -11,6 +11,10 @@ import { CardHighlightingMode } from 'core-app/features/work-packages/components
   standalone: false,
 })
 export class BoardHighlightingTabComponent implements TabComponent {
+  readonly injector = inject(Injector);
+  readonly locals = inject<OpModalLocalsMap>(OpModalLocalsToken);
+  readonly I18n = inject(I18nService);
+
   // Highlighting mode
   public highlightingMode:CardHighlightingMode = 'none';
 
@@ -30,11 +34,6 @@ export class BoardHighlightingTabComponent implements TabComponent {
       entire_card_by: this.I18n.t('js.card.highlighting.entire_card_by'),
     },
   };
-
-  constructor(readonly injector:Injector,
-    @Inject(OpModalLocalsToken) public locals:OpModalLocalsMap,
-    readonly I18n:I18nService) {
-  }
 
   public onSave() {
     this.updateMode(this.highlightingMode);

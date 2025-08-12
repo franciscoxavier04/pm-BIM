@@ -1,4 +1,4 @@
-import { Injectable, Injector } from '@angular/core';
+import { Injectable, Injector, inject } from '@angular/core';
 import { OpModalService } from 'core-app/shared/components/modal/modal.service';
 import { AddGridWidgetModalComponent } from 'core-app/shared/components/grids/widgets/add/add.modal';
 import { GridWidgetResource } from 'core-app/features/hal/resources/grid-widget-resource';
@@ -15,19 +15,16 @@ import { GridResource } from 'core-app/features/hal/resources/grid-resource';
 
 @Injectable()
 export class GridAddWidgetService {
-  text = { add: this.i18n.t('js.grid.add_widget') };
+  readonly opModalService = inject(OpModalService);
+  readonly injector = inject(Injector);
+  readonly halResource = inject(HalResourceService);
+  readonly layout = inject(GridAreaService);
+  readonly drag = inject(GridDragAndDropService);
+  readonly move = inject(GridMoveService);
+  readonly resize = inject(GridResizeService);
+  readonly i18n = inject(I18nService);
 
-  constructor(
-    readonly opModalService:OpModalService,
-    readonly injector:Injector,
-    readonly halResource:HalResourceService,
-    readonly layout:GridAreaService,
-    readonly drag:GridDragAndDropService,
-    readonly move:GridMoveService,
-    readonly resize:GridResizeService,
-    readonly i18n:I18nService,
-  ) {
-  }
+  text = { add: this.i18n.t('js.grid.add_widget') };
 
   public isAddable(area:GridArea) {
     return !this.drag.currentlyDragging

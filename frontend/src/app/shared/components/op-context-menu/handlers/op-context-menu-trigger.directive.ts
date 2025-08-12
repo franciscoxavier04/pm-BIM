@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, ElementRef } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, inject } from '@angular/core';
 import { OPContextMenuService } from 'core-app/shared/components/op-context-menu/op-context-menu.service';
 import { OpContextMenuHandler } from 'core-app/shared/components/op-context-menu/op-context-menu-handler';
 import { OpContextMenuItem } from 'core-app/shared/components/op-context-menu/op-context-menu.types';
@@ -9,16 +9,12 @@ import Mousetrap from 'mousetrap';
   standalone: false,
 })
 export class OpContextMenuTrigger extends OpContextMenuHandler implements AfterViewInit {
+  readonly elementRef = inject(ElementRef);
+  readonly opContextMenu = inject(OPContextMenuService);
+
   protected $element:JQuery;
 
   protected items:OpContextMenuItem[] = [];
-
-  constructor(
-    readonly elementRef:ElementRef,
-    readonly opContextMenu:OPContextMenuService,
-  ) {
-    super(opContextMenu);
-  }
 
   ngAfterViewInit():void {
     this.$element = jQuery(this.elementRef.nativeElement);

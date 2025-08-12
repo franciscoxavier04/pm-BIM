@@ -1,12 +1,12 @@
 import { Title } from '@angular/platform-browser';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 const titlePartsSeparator = ' | ';
 
 @Injectable({ providedIn: 'root' })
 export class OpTitleService {
-  constructor(private titleService:Title) {
-  }
+  private titleService = inject(Title);
+
 
   public get current():string {
     return this.titleService.getTitle();

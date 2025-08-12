@@ -26,7 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { UIRouterGlobals } from '@uirouter/core';
 import { WorkPackageResource } from 'core-app/features/hal/resources/work-package-resource';
 import { randomString } from 'core-app/shared/helpers/random-string';
@@ -39,14 +39,12 @@ import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
   standalone: false,
 })
 export class WorkPackageSubjectComponent extends UntilDestroyedMixin implements OnInit {
+  protected uiRouterGlobals = inject(UIRouterGlobals);
+  protected apiV3Service = inject(ApiV3Service);
+
   @Input('workPackage') workPackage:WorkPackageResource;
 
   public readonly uniqueElementIdentifier = `work-packages--subject-type-row-${randomString(16)}`;
-
-  constructor(protected uiRouterGlobals:UIRouterGlobals,
-    protected apiV3Service:ApiV3Service) {
-    super();
-  }
 
   ngOnInit() {
     if (!this.workPackage) {

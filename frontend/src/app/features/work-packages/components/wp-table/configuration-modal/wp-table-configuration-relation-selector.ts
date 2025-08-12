@@ -1,8 +1,4 @@
-import {
-  Component,
-  Injector,
-  OnInit,
-} from '@angular/core';
+import { Component, Injector, OnInit, inject } from '@angular/core';
 import { ConfigurationService } from 'core-app/core/config/configuration.service';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { WorkPackageViewFiltersService } from 'core-app/features/work-packages/routing/wp-view-base/view-services/wp-view-filters.service';
@@ -18,6 +14,12 @@ import { SchemaCacheService } from 'core-app/core/schemas/schema-cache.service';
   standalone: false,
 })
 export class WpTableConfigurationRelationSelectorComponent implements OnInit {
+  readonly injector = inject(Injector);
+  readonly I18n = inject(I18nService);
+  readonly wpTableFilters = inject(WorkPackageViewFiltersService);
+  readonly ConfigurationService = inject(ConfigurationService);
+  readonly schemaCache = inject(SchemaCacheService);
+
   private relationFilterIds:string[] = [
     'parent',
     'precedes',
@@ -55,13 +57,6 @@ export class WpTableConfigurationRelationSelectorComponent implements OnInit {
     partof: this.I18n.t('js.relation_labels.includes'),
     includes: this.I18n.t('js.relation_labels.partof'),
   };
-
-  constructor(readonly injector:Injector,
-    readonly I18n:I18nService,
-    readonly wpTableFilters:WorkPackageViewFiltersService,
-    readonly ConfigurationService:ConfigurationService,
-    readonly schemaCache:SchemaCacheService) {
-  }
 
   ngOnInit() {
     const self:WpTableConfigurationRelationSelectorComponent = this;

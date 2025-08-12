@@ -26,9 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  AfterViewInit, ChangeDetectorRef, Component, ElementRef, Inject, ViewChild,
-} from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, ViewChild, inject } from '@angular/core';
 import { OpModalComponent } from 'core-app/shared/components/modal/modal.component';
 import { OpModalLocalsToken } from 'core-app/shared/components/modal/modal.service';
 import { OpModalLocalsMap } from 'core-app/shared/components/modal/modal.types';
@@ -39,6 +37,8 @@ import { I18nService } from 'core-app/core/i18n/i18n.service';
   standalone: false,
 })
 export class WikiIncludePageMacroModalComponent extends OpModalComponent implements AfterViewInit {
+  readonly I18n = inject(I18nService);
+
   public changed = false;
 
   public showClose = true;
@@ -58,11 +58,9 @@ export class WikiIncludePageMacroModalComponent extends OpModalComponent impleme
     close_popup: this.I18n.t('js.close_popup_title'),
   };
 
-  constructor(readonly elementRef:ElementRef,
-    @Inject(OpModalLocalsToken) public locals:OpModalLocalsMap,
-    readonly cdRef:ChangeDetectorRef,
-    readonly I18n:I18nService) {
-    super(locals, cdRef, elementRef);
+  constructor() {
+    super();
+
     this.selectedPage = this.page = this.locals.page;
 
     // We could provide an autocompleter here to get correct page names
