@@ -14,7 +14,7 @@ We released OpenProject [OpenProject 16.3.0](https://community.openproject.org/v
 
 ## Important feature changes
 
-Take a look at our release video showing the most important features introduced in OpenProject 16.3.0:
+Take a look at our release video showing the most important features introduced in OpenProject 16.3.0: https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject_16_3_release.mp4
 
 ### UX/UI improvements for a more modern look
 
