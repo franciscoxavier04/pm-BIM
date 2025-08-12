@@ -456,8 +456,15 @@ docker compose --project-directory docker/dev/tls up -d
 
 #### Blank page on `openproject.local`
 
-If the setup completes but `openproject.local` displays a blank page, check the browser console for errors.
-A common cause is that the frontend assets were not built correctly.
+A blank page on `openproject.local`  can indicate that compilation is either in progress or has failed. To investigate, check the frontend container output:
+```shell
+docker compose logs frontend`
+```
+Sometimes compilation errors can occur due to broken node_modules state(for example after switching branches or partial installations). It can be resolved by removing node_modules and installing from scratch:
+```shell
+rm -rf frontend/node_modules/
+docker compose run --rm frontend npm install
+```
 
 In this case, reinstall the frontend dependencies:
 
