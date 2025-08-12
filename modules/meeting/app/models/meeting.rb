@@ -193,6 +193,10 @@ class Meeting < ApplicationRecord
     end
   end
 
+  def invited_participants
+    participants.select(&:invited)
+  end
+
   def invited_or_attended_participants
     participants.where(invited: true).or(participants.where(attended: true))
   end
@@ -200,8 +204,6 @@ class Meeting < ApplicationRecord
   def all_changeable_participants
     changeable_participants = participants.select(&:invited).collect(&:user)
     changeable_participants = changeable_participants + participants.select(&:attended).collect(&:user)
-    changeable_participants = changeable_participants +
-      User.allowed_members(:view_meetings, project)
 
     changeable_participants
       .compact

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -27,22 +28,43 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings
-  class SidePanel::ParticipantsDialog < ApplicationComponent
-    include ApplicationHelper
-    include OpenProject::FormTagHelper
-    include OpTurbo::Streamable
-    include OpPrimer::ComponentHelpers
+class Meeting::Participant < ApplicationForm
+  form do |participant_form|
+    participant_form.autocompleter(
+      name: :user_id,
+      label: MeetingAgendaItem.human_attribute_name(:presenter),
+      visually_hide_label: true,
+      autocomplete_options: {
+        defaultData: true,
+        component: "opce-user-autocompleter",
+        url: ::API::V3::Utilities::PathHelper::ApiV3Path.principals,
+        filters:,
+        searchKey: "any_name_attribute",
+        resource: "principals",
+        focusDirectly: false,
+        multiple: false,
+        isOpenedInModal: true,
+        hoverCards: true,
+        placeholder: I18n.t("activerecord.attributes.meeting_agenda_item.presenter")
+      }
+    )
+  end
 
-    def initialize(meeting:)
-      super
+  private
 
-      @meeting = meeting
-      @project = meeting.project
-    end
+  def excluded_ids
+    @excluded_ids ||= @builder.object.meeting.invited_participants.filter_map(&:user_id)
+  end
 
-    def render?
-      User.current.allowed_in_project?(:view_meetings, @project)
-    end
+  def filters
+    list = [
+      { name: "type", operator: "=", values: %w[User Group] },
+      { name: "member", operator: "=", values: [@builder.object.meeting.project_id] },
+      { name: "status", operator: "=", values: [Principal.statuses[:active], Principal.statuses[:invited]] }
+    ]
+
+    list << { name: "id", operator: "!", values: excluded_ids } if excluded_ids.any?
+
+    list
   end
 end

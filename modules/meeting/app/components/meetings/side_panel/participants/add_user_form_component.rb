@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,51 +29,16 @@
 #++
 
 module Meetings
-  class SidePanel::ParticipantsComponent < ApplicationComponent
+  class SidePanel::Participants::AddUserFormComponent < ApplicationComponent
     include ApplicationHelper
+    include OpenProject::FormTagHelper
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
-
-    MAX_SHOWN_PARTICIPANTS = 5
-
-    def wrapper_data_attributes
-      {
-        controller: "expandable-list"
-      }
-    end
 
     def initialize(meeting:)
       super
 
       @meeting = meeting
-      @project = meeting.project
-    end
-
-    def elements
-      @elements ||= @meeting.invited_participants.sort
-    end
-
-    def count
-      @count ||= elements.count
-    end
-
-    def render_participant(participant)
-      flex_layout(align_items: :center) do |flex|
-        flex.with_column(classes: "ellipsis") do
-          render(Users::AvatarComponent.new(user: participant.user,
-                                            size: :medium,
-                                            classes: "op-principal_flex"))
-        end
-        render_participant_state(participant, flex)
-      end
-    end
-
-    def render_participant_state(participant, flex)
-      if participant.attended?
-        flex.with_column(ml: 1) do
-          render(Primer::Beta::Text.new(font_size: :small, color: :subtle)) { t("description_attended").capitalize }
-        end
-      end
     end
   end
 end

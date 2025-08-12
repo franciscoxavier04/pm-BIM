@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,51 +29,42 @@
 #++
 
 module Meetings
-  class SidePanel::ParticipantsComponent < ApplicationComponent
+  class SidePanel::Participants::AttendedToggleButtonComponent < ApplicationComponent
     include ApplicationHelper
+    include OpenProject::FormTagHelper
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
-    MAX_SHOWN_PARTICIPANTS = 5
-
-    def wrapper_data_attributes
-      {
-        controller: "expandable-list"
-      }
-    end
-
-    def initialize(meeting:)
+    def initialize(meeting:, participant:)
       super
 
       @meeting = meeting
-      @project = meeting.project
+      @participant = participant
+      # binding.pry
     end
 
-    def elements
-      @elements ||= @meeting.invited_participants.sort
-    end
-
-    def count
-      @count ||= elements.count
-    end
-
-    def render_participant(participant)
-      flex_layout(align_items: :center) do |flex|
-        flex.with_column(classes: "ellipsis") do
-          render(Users::AvatarComponent.new(user: participant.user,
-                                            size: :medium,
-                                            classes: "op-principal_flex"))
-        end
-        render_participant_state(participant, flex)
+    def call
+      render(
+        Primer::Beta::Button.new(
+          tag: :a,
+          href: toggle_attendance_meeting_participant_path(@meeting, @participant),
+          data: { turbo_method: :post },
+          align_self: :center
+        )
+      ) do |button|
+        button.with_leading_visual_icon(icon:)
+        label
       end
     end
 
-    def render_participant_state(participant, flex)
-      if participant.attended?
-        flex.with_column(ml: 1) do
-          render(Primer::Beta::Text.new(font_size: :small, color: :subtle)) { t("description_attended").capitalize }
-        end
-      end
+    private
+
+    def icon
+      @participant.attended? ? :check : "op-person-assigned"
+    end
+
+    def label
+      @participant.attended? ? "Attended" : "Mark as attended"
     end
   end
 end

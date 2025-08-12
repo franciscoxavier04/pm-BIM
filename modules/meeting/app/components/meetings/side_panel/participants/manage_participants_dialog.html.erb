@@ -1,0 +1,46 @@
+<%=
+  component_wrapper do
+    render(
+      Primer::Alpha::Dialog.new(
+        id: "manage-participants-dialog",
+        size: :large,
+        title: "Manage participants",
+        data: { "keep-open-on-submit": true }
+      )
+    ) do |d|
+      d.with_header(variant: :large)
+
+      d.with_body do
+        flex_layout do |container|
+          container.with_row(mb: 3) do
+            render(Meetings::EmailUpdatesBannerComponent.new(@meeting))
+          end
+
+          container.with_row(mb: 3) do
+            render(Primer::Beta::Text.new) { "Search for and add project members as participants to this meeting." }
+          end
+
+          container.with_row(mb: 3) do
+            render(Meetings::SidePanel::Participants::AddUserFormComponent.new(meeting: @meeting))
+          end
+
+          container.with_row do
+            render(Meetings::SidePanel::Participants::ListComponent.new(meeting: @meeting))
+          end
+        end
+      end
+
+      if @meeting.editable?
+        d.with_footer do
+          flex_layout do |footer|
+            footer.with_row(mt: 3) do
+              render(Primer::Beta::Button.new(data: { "close-dialog-id": "manage-participants-dialog" })) do
+                t("button_cancel")
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+%>
