@@ -236,7 +236,7 @@ class OAuthClientsController < ApplicationController
   end
 
   def one_drive?
-    @oauth_client&.integration&.provider_type == ::Storages::Storage::PROVIDER_TYPE_ONE_DRIVE
+    @oauth_client&.integration&.provider_type == ::Storages::OneDriveStorage.name
   end
 
   def get_redirect_uri
