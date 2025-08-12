@@ -128,26 +128,26 @@ de:
       form:
         auth_provider_description: "Dies ist der Dienst, den die vom SCIM-Anbieter hinzugefügten Benutzer für die Authentifizierung in OpenProject verwenden werden."
         authentication_method_description_html: "So authentifiziert sich der SCIM-Client bei OpenProject. Bitte stellen Sie sicher, dass OAuth Tokens den <code>scim_v2</code> Scope enthalten."
-        description: "Please refer to our [documentation on configuring SCIM clients](docs_url) for more information on these configuration options."
-        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
+        description: "Mehr Informationen zu den folgenden Einstellungen können in [unserer Dokumentation](docs_url) gefunden werden."
+        jwt_sub_description: "Beispielsweise für Keycloak ist dies die UUID des Service-Accounts der zum SCIM-Client gehört. Weitere Informationen finden Sie in [unserer Dokumentation](docs_url)."
         name_description: "Wählen Sie einen Namen, der anderen Administratoren hilft, besser zu verstehen, warum dieser Client konfiguriert wurde."
       index:
-        description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
-        label_create_button: "Add SCIM client"
+        description: "SCIM-Clients, die hier konfiguriert werden, können mit der OpenProject SCIM-Server-API interagieren, um Nutzerkonten und Gruppen zu erstellen, zu aktualisieren und zu entfernen."
+        label_create_button: "SCIM-Client hinzufügen"
       new:
-        title: "New SCIM client"
+        title: "Neuer SCIM-Client"
       revoke_static_token_dialog_component:
         confirm_button: "Widerrufen"
         title: "Statisches Token widerrufen"
         heading: "Sind Sie sicher, dass Sie dieses Token widerrufen möchten?"
-        description: "The SCIM client that uses this token will no longer be able to access OpenProject's SCIM server API."
+        description: "Der SCIM-Client, der dieses Token verwendet, kann nicht mehr auf die SCIM-Server-API von OpenProject zugreifen."
       table_component:
         blank_slate:
-          title: "No SCIM clients configured yet"
+          title: "Noch keine SCIM-Clients konfiguriert"
           description: "Clients hinzufügen, um sie hier zu sehen"
         user_count: "Benutzer"
       token_list_component:
-        description: "The tokens you generate here can be passed by a SCIM client to access the OpenProject SCIM API."
+        description: "Die Token, die Sie hier erzeugen, können von einem SCIM-Client weitergegeben werden, um auf die OpenProject SCIM-API zuzugreifen."
         heading: "Token"
         label_add_token: "Token"
         label_aria_add_token: "Token hinzufügen"
@@ -945,7 +945,7 @@ de:
         attribute_name: "Attribut"
         help_text: "Hilfe-Text"
       auth_provider:
-        scim_clients: "SCIM clients"
+        scim_clients: "SCIM-Clients"
       capability:
         context: "Kontext"
       changeset:
@@ -1642,8 +1642,8 @@ de:
         one: "Rolle"
         other: "Rollen"
       scim_client:
-        one: "SCIM client"
-        other: "SCIM clients"
+        one: "SCIM-Client"
+        other: "SCIM-clients"
       status: "Arbeitspaket-Status"
       token/api:
         one: Zugangs-Token
