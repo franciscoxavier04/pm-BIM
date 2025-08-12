@@ -94,6 +94,13 @@ FactoryBot.define do
     authentication_method { "two_way_oauth2" }
     storage_audience { nil }
 
+    trait :with_oauth_configured do
+      after(:create) do |storage, _evaluator|
+        create(:oauth_client, integration: storage)
+        create(:oauth_application, integration: storage)
+      end
+    end
+
     trait :oidc_sso_enabled do
       storage_audience { "nextcloud" }
       authentication_method { "oauth2_sso" }
