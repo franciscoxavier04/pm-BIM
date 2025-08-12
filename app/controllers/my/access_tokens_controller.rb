@@ -103,15 +103,13 @@ module My
       redirect_to action: :index
     end
 
-    def generate_api_key # rubocop:disable Metrics/AbcSize
-      result = APITokens::CreateService.new(user: current_user).call(token_name: params[:token_api][:token_name])
+    def generate_api_key
+      result = call_generate_token_service
 
       result.on_success do |r|
-        update_via_turbo_stream(
-          component: My::AccessToken::APITokensSectionComponent.new(api_tokens: @user.api_tokens)
-        )
+        update_via_turbo_stream(component: section_to_render(r.result))
 
-        dialog = My::AccessToken::AccessTokenCreatedDialogComponent.new(token_value: r.result.plain_value)
+        dialog = My::AccessToken::AccessTokenCreatedDialogComponent.new(token: r.result)
         modify_via_turbo_stream(component: dialog, action: :dialog, status: :ok)
       end
 
@@ -188,6 +186,31 @@ module My
         calendar_name: @ical_token.query.name,
         project_name: @ical_token.query.project.name
       )
+    end
+
+    def section_to_render(token)
+      case token
+      when Token::API
+        My::AccessToken::APITokensSectionComponent.new(tokens: current_user.api_tokens, token_type: Token::API)
+      when Token::ICalMeeting
+        My::AccessToken::APITokensSectionComponent.new(tokens: current_user.ical_meeting_tokens, token_type: Token::ICalMeeting)
+      else
+        raise ArgumentError, "Unknown token type: #{token.class}"
+      end
+    end
+
+    def call_generate_token_service # rubocop:disable Metrics/AbcSize
+      if params[:token_api]
+        APITokens::CreateService
+        .new(user: current_user, model: Token::API.new)
+        .call(token_name: params[:token_api][:token_name])
+      elsif params[:token_ical_meeting]
+        APITokens::CreateService
+        .new(user: current_user, model: Token::ICalMeeting.new)
+        .call(token_name: params[:token_ical_meeting][:token_name])
+      else
+        raise ArgumentError, "Unknown token type"
+      end
     end
   end
 end
