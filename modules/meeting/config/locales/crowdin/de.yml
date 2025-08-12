@@ -291,17 +291,17 @@ de:
           enabled: >
             Alle Teilnehmer erhalten aktualisierte Kalendereinladungen per E-Mail durch Ihre Änderungen an der Besprechung.
           disabled: >
-            E-Mail-Kalenderaktualisierungen sind deaktiviert. Die Teilnehmer erhalten keine E-Mail, die sie über Ihre Änderungen informiert.
+            E-Mail-Kalenderaktualisierungen sind deaktiviert. Die Teilnehmenden erhalten keine E-Mail, die sie über Ihre Änderungen informiert.
         occurrence:
           enabled: >
             E-Mail-Kalenderaktualisierungen sind für die Terminserie aktiviert. Alle Teilnehmer erhalten aktualisierte Kalendereinladungen, die sie über Ihre Änderungen an dieser Besprechung informieren.
           disabled: >
-            E-Mail-Kalenderaktualisierungen sind für die Terminserie deaktiviert. Die Teilnehmer erhalten keine E-Mail, die sie über Ihre Änderungen informiert.
+            E-Mail-Kalenderaktualisierungen sind für die Terminserie deaktiviert. Die Teilnehmenden erhalten keine E-Mail, die sie über Ihre Änderungen informiert.
         template:
           enabled: >
             E-Mail-Kalenderaktualisierungen sind für die Terminserie aktiviert. Alle Teilnehmer erhalten aktualisierte Kalendereinladungen, die sie über Ihre Änderungen an dieser Vorlage oder an einzelnen Ereignissen vornehmen.
           disabled: >
-            E-Mail-Kalenderaktualisierungen sind für die Terminserie deaktiviert. Die Teilnehmer erhalten keine E-Mail, die sie über Ihre Änderungen an dieser Vorlage oder Ereignisse der Serie informiert.
+            E-Mail-Kalenderaktualisierungen sind für die Terminserie deaktiviert. Die Teilnehmenden erhalten keine E-Mail, die sie über Ihre Änderungen an dieser Vorlage oder Ereignisse der Serie informiert.
   meeting_section:
     untitled_title: "Unbenannter Abschnitt"
     delete_confirmation: "Wenn Sie den Abschnitt löschen, werden auch alle zugehörigen Tagesordnungspunkte gelöscht. Möchten Sie fortfahren?"
