@@ -371,7 +371,7 @@ ca:
       description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
+        description: You can define named groups of users with specific permissions.
         title: No groups set up yet
       user_count: User count
     users:
@@ -685,6 +685,7 @@ ca:
     dark: "Dark"
     light: "Clar"
     light_high_contrast: "Clar alt contrast"
+    sync_with_os: "Automatic (match OS colour mode)"
   types:
     index:
       no_results_title_text: Actualment no hi ha cap tipus.
@@ -1286,6 +1287,7 @@ ca:
         odd: "ha de ser senar."
         regex_match_failed: "no coincideix amb l'expressió regular %{expression}."
         regex_invalid: "no s'ha pogut validar amb l'expressió regular associada."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "ha de ser inferior o igual a la longitud màxima."
         taken: "ja s'està utilitzant."
         too_long: "és massa llarg (el màxim són %{count} caràcters)."
@@ -1616,6 +1618,7 @@ ca:
         one: "Authentication provider"
         other: "Authentication providers"
       category: "Categoria"
+      color: "Color"
       comment: "Comentari"
       custom_action: "Accions personalitzades"
       custom_field: "Camp personalitzat"
@@ -2247,6 +2250,13 @@ ca:
         I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
       consent_html: >
         I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
   enumeration_activities: "Activitats de rastrejament del temps"
   enumeration_work_package_priorities: "Prioritats dels paquets de treball"
   enumeration_reported_project_statuses: "Estats de projecte notificats"

@@ -260,16 +260,10 @@ zh-CN:
     notifications:
       sidepanel:
         title: "电子邮件日历更新"
-        state:
-          disabled: "已禁用。"
-          enabled: "已启用。"
         description:
           disabled: "与会者不会收到向其通知更改的电子邮件。"
           enabled: "所有与会者都将通过电子邮件收到更新的日历邀请，向其通知相关更改。"
           change_via_template: "要更改此设置，请编辑系列模板。"
-        button:
-          disable: "禁用"
-          enable: "启用"
       dialog:
         title:
           enable: "启用电子邮件日历更新？"

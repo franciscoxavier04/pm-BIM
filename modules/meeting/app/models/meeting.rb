@@ -246,25 +246,6 @@ class Meeting < ApplicationRecord
       .where(user_id: available_members)
   end
 
-  # triggered by MeetingAgendaItem#after_create/after_destroy/after_save
-  def calculate_agenda_item_time_slots
-    current_time = start_time
-    MeetingAgendaItem.transaction do
-      changed_items = agenda_items.includes(:meeting_section).order("meeting_sections.position", :position).map do |top|
-        start_time = current_time
-        current_time += top.duration_in_minutes&.minutes || 0.minutes
-        end_time = current_time
-        top.assign_attributes(start_time:, end_time:)
-        top
-      end
-
-      MeetingAgendaItem.upsert_all(
-        changed_items.map(&:attributes),
-        unique_by: :id
-      )
-    end
-  end
-
   def agenda_items_sum_duration_in_minutes
     agenda_items.sum(:duration_in_minutes)
   end

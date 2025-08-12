@@ -28,48 +28,29 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings
-  class SidePanel::NotificationsButtonComponent < ApplicationComponent
-    include ApplicationHelper
-    include OpTurbo::Streamable
-    include OpPrimer::ComponentHelpers
+class CustomValue::CalculatedValueStrategy < CustomValue::FormatStrategy
+  include ActionView::Helpers::NumberHelper
 
-    def initialize(meeting:)
-      super
-
-      @meeting = meeting
-      @project = meeting.project
+  def typed_value
+    if value.present?
+      integer_value? ? value.to_i : value.to_f
     end
+  end
 
-    private
+  def formatted_value
+    integer_value? ? value.to_s : number_with_delimiter(value.to_s)
+  end
 
-    def key
-      @key ||= @meeting.notify? ? "enabled" : "disabled"
-    end
+  def validate_type_of_value
+    Kernel.Float(value)
+    nil
+  rescue StandardError
+    :not_a_number
+  end
 
-    def state
-      I18n.t("meeting.notifications.sidepanel.state.#{key}")
-    end
+  private
 
-    def description
-      I18n.t("meeting.notifications.sidepanel.description.#{key}")
-    end
-
-    def additional_text
-      I18n.t("meeting.notifications.sidepanel.description.change_via_template")
-    end
-
-    def button_label
-      label_key = @meeting.notify? ? "disable" : "enable"
-      I18n.t("meeting.notifications.sidepanel.button.#{label_key}")
-    end
-
-    def button_icon
-      @meeting.notify? ? :"bell-slash" : :bell
-    end
-
-    def show_button?
-      !@meeting.recurring? || @meeting.templated?
-    end
+  def integer_value?
+    value && value =~ /\A\d+\z/
   end
 end

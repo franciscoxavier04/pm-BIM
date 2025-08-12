@@ -374,7 +374,7 @@
       description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
+        description: You can define named groups of users with specific permissions.
         title: No groups set up yet
       user_count: User count
     users:
@@ -687,6 +687,7 @@
     dark: "Mørk"
     light: "Lyst"
     light_high_contrast: "Lys høy kontrast"
+    sync_with_os: "Automatic (match OS colour mode)"
   types:
     index:
       no_results_title_text: Det finnes for øyeblikket ingen typer.
@@ -1288,6 +1289,7 @@
         odd: "må være oddetall."
         regex_match_failed: "samsvarer ikke med det regulære uttrykket %{expression}."
         regex_invalid: "kunne ikke valideres med det tilhørende regulære uttrykket."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "må være mindre enn eller lik maksimumslengden."
         taken: "er allerede tatt."
         too_long: "er for lang (maks antall tegn er %{count})."
@@ -1618,6 +1620,7 @@
         one: "Authentication provider"
         other: "Authentication providers"
       category: "Kategori"
+      color: "Color"
       comment: "Kommentar"
       custom_action: "Tilpasset handling"
       custom_field: "Egendefinert felt"
@@ -2249,6 +2252,13 @@
         I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
       consent_html: >
         I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
   enumeration_activities: "Tidregistrering aktiviteter"
   enumeration_work_package_priorities: "Prioritering av arbeidspakker"
   enumeration_reported_project_statuses: "Rapportert prosjektstatus"

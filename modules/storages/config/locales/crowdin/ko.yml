@@ -337,12 +337,10 @@ ko:
         warning: 일부 검사에서 경고가 반환되었습니다. 이로 인해 예상치 못한 동작이 발생할 수 있습니다.
       title: 상태 보고서
     health_email_notifications:
-      description_subscribed: 모든 관리자는 이 저장소의 상태 이메일 알림을 받습니다.
-      description_unsubscribed: 이 저장소에 대한 상태 이메일 알림이 모든 관리자에 대해 꺼져 있습니다.
+      description_disabled: 중요 업데이트가 있을 때 관리자에게 이메일로 업데이트가 전송되지 않습니다.
+      description_enabled: 중요 업데이트가 있을 때 관리자에게 이메일로 업데이트가 전송됩니다.
       error_could_not_be_saved: 이메일 알림 설정을 저장하지 못했습니다. 다시 시도해 주세요.
-      subscribe: 구독
-      title: 이메일 알림
-      unsubscribe: 구독 취소
+      title: 관리자에게 보내는 이메일 업데이트
     help_texts:
       project_folder: 프로젝트 폴더는 이 프로젝트에 대한 파일 업로드의 기본 폴더입니다. 사용자는 다른 위치에 파일을 계속 업로드할 수 있습니다.
       project_folder_bulk: 프로젝트 폴더는 선택된 모든 프로젝트의 파일 업로드를 위한 기본 폴더입니다. 각 프로젝트 설정에서 이 폴더를 개별적으로 수정할 수 있습니다. 그렇지만 사용자는 다른 위치에 파일을 계속 업로드할 수 있습니다.
@@ -390,7 +388,7 @@ ko:
         application_link_text: SharePoint 사이트
         integration: SharePoint 관리/OpenProject
         oauth_configuration: '%{application_link_text}에서 원하는 애플리케이션의 해당 값을 복사합니다.'
-        provider_configuration: 설정을 수행하기 전에 SharePoint 인스턴스에서 관리 권한이 있고 OpenProject 통합 앱이 설치되어 있는지 확인하세요.
+        provider_configuration: 설정을 수행하기 전에 %{application_link_text}에서 관리 권한이 있는지 확인하거나 Microsoft 관리자에게 문의하세요. 또한 포털에서 Azure 애플리케이션을 등록하거나 기존 애플리케이션을 사용하여 인증해야 합니다.
       type: '설정을 수행하기 전에 Nextcloud 인스턴스에서 관리 권한이 있고 다음 애플리케이션이 설치되어 있는지 확인하세요.'
       type_link_text: "“Integration OpenProject”"
     label_active: 활성

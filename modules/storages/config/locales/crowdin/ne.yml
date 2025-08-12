@@ -339,12 +339,10 @@ ne:
         warning: Some checks returned a warning. This can lead to unexpected behaviour.
       title: Health status report
     health_email_notifications:
-      description_subscribed: All administrators receive health status email notifications for this storage.
-      description_unsubscribed: Health status email notifications for this storage have been turned off for all administrators.
+      description_disabled: Admins will not receive updates by email when there are important updates.
+      description_enabled: Admins will receive updates by email when there are important updates.
       error_could_not_be_saved: Email notification settings could not be saved. Please try again.
-      subscribe: Subscribe
-      title: Email notifications
-      unsubscribe: Unsubscribe
+      title: Email updates to admins
     help_texts:
       project_folder: The project folder is the default folder for file uploads for this project. Users can nevertheless still upload files to other locations.
       project_folder_bulk: The project folder is the default folder for file uploads for all the projects selected. You can modify this individually in each project settings. Users can nevertheless still upload files to other locations.
@@ -392,7 +390,7 @@ ne:
         application_link_text: SharePoint site
         integration: SharePoint Administration / OpenProject
         oauth_configuration: Copy these values from the desired application in the %{application_link_text}.
-        provider_configuration: Please make sure you have administration privileges in your SharePoint instance and the OpenProject integration app is installed before doing the setup.
+        provider_configuration: Please make sure you have administration privileges in the %{application_link_text} or contact your Microsoft administrator before doing the setup. In the portal, you also need to register an Azure application or use an existing one for authentication.
       type: 'Please make sure you have administration privileges in your Nextcloud instance and have the following application installed before doing the setup:'
       type_link_text: "“Integration OpenProject”"
     label_active: Active

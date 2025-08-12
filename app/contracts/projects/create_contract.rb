@@ -30,7 +30,12 @@
 
 module Projects
   class CreateContract < BaseContract
+    attribute :workspace_type do
+      validate_workspace_type_included
+    end
+
     include AdminWritableTimestamps
+
     # Projects update their updated_at timestamp due to awesome_nested_set
     # so allowing writing here would be useless.
     allow_writable_timestamps :created_at
@@ -44,6 +49,12 @@ module Projects
     end
 
     protected
+
+    def validate_workspace_type_included
+      # TODO: differentiate on allowed types based on permissions.
+      # Permissions will need to be added: project, program, portfolio.
+      errors.add(:workspace_type, :blank) if model.workspace_type.nil?
+    end
 
     def collect_available_custom_field_attributes
       model.all_visible_custom_fields.map(&:attribute_name)

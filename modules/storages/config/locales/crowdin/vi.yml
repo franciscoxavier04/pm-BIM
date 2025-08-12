@@ -337,12 +337,10 @@ vi:
         warning: Some checks returned a warning. This can lead to unexpected behaviour.
       title: Health status report
     health_email_notifications:
-      description_subscribed: Tất cả các quản trị viên nhận thông báo email về tình trạng sức khỏe cho lưu trữ này.
-      description_unsubscribed: Thông báo email về tình trạng sức khỏe cho lưu trữ này đã bị tắt cho tất cả các quản trị viên.
+      description_disabled: Admins will not receive updates by email when there are important updates.
+      description_enabled: Admins will receive updates by email when there are important updates.
       error_could_not_be_saved: Cài đặt thông báo qua email không thể được lưu. Vui lòng thử lại.
-      subscribe: Đăng ký
-      title: Thông báo qua email
-      unsubscribe: Hủy đăng ký
+      title: Email updates to admins
     help_texts:
       project_folder: Thư mục dự án là thư mục mặc định để tải lên tệp cho dự án này. Người dùng vẫn có thể tải lên tệp đến các vị trí khác.
       project_folder_bulk: Thư mục dự án là thư mục mặc định để tải tệp lên cho tất cả các dự án đã chọn. Bạn có thể sửa đổi thư mục này riêng lẻ trong từng cài đặt dự án. Tuy nhiên, người dùng vẫn có thể tải tệp lên các vị trí khác.
@@ -390,7 +388,7 @@ vi:
         application_link_text: SharePoint site
         integration: SharePoint Administration / OpenProject
         oauth_configuration: Copy these values from the desired application in the %{application_link_text}.
-        provider_configuration: Please make sure you have administration privileges in your SharePoint instance and the OpenProject integration app is installed before doing the setup.
+        provider_configuration: Please make sure you have administration privileges in the %{application_link_text} or contact your Microsoft administrator before doing the setup. In the portal, you also need to register an Azure application or use an existing one for authentication.
       type: 'Vui lòng đảm bảo bạn có quyền quản trị trong phiên bản Nextcloud của bạn và đã cài đặt ứng dụng sau đây trước khi thực hiện cấu hình:'
       type_link_text: "“Tích hợp OpenProject”"
     label_active: Đang hoạt động

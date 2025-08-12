@@ -374,7 +374,7 @@ fr:
       description: En regroupant les utilisateurs, vous pouvez les ajouter en tant que membres aux mêmes projets ou leur attribuer les mêmes rôles globaux.
     table_component:
       blank_slate:
-        description: Vous pouvez définir des groupes d'utilisateurs avec des noms spécifiques
+        description: You can define named groups of users with specific permissions.
         title: Aucun groupe n'a encore été configuré
       user_count: Nombre d'utilisateurs
     users:
@@ -686,6 +686,7 @@ fr:
     dark: "Sombre"
     light: "Clair"
     light_high_contrast: "Clair avec contraste élevé"
+    sync_with_os: "Automatique (correspond au mode couleur du système d'exploitation)"
   types:
     index:
       no_results_title_text: Il n'y a actuellement aucun type.
@@ -1287,6 +1288,7 @@ fr:
         odd: "doit être impair."
         regex_match_failed: "ne correspond pas à l'expression régulière %{expression}."
         regex_invalid: "n’a pas pu être validé avec l’expression régulière associée."
+        regex_list_invalid: "n'a pas pu être analysé comme une expression régulière dans les lignes %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "doit être inférieur ou égal à la longueur maximale."
         taken: "a déjà été pris."
         too_long: "est trop long (le maximum est de %{count} caractères)."
@@ -1617,6 +1619,7 @@ fr:
         one: "Fournisseur d'authentification"
         other: "Fournisseurs d'authentification"
       category: "Catégorie"
+      color: "Couleur"
       comment: "Commentaire"
       custom_action: "Action personnalisée"
       custom_field: "Champ personnalisé"
@@ -2248,6 +2251,13 @@ fr:
         Je souhaite recevoir la <a target="_blank" href="https://www.openproject.org/newsletter/">lettre d'information d'</a>OpenProject.
       consent_html: >
         J'accepte les <a target="_blank" href="https://www.openproject.org/terms-of-service/">conditions d'utilisation</a> et la <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">politique de confidentialité</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Désactivé."
+      enabled: "Activé."
+    button:
+      disabled: "Activer"
+      enabled: "Désactiver"
   enumeration_activities: "Activités de suivi du temps"
   enumeration_work_package_priorities: "Priorités du Lot de Travaux"
   enumeration_reported_project_statuses: "Statuts de projet signalés"

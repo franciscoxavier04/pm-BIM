@@ -49,6 +49,7 @@ BIM viewer. As the conversions are done by background jobs you need install
 those tools within the `worker` service:
 
 ```shell
+docker compose up -d worker
 docker compose exec -u root worker setup-bim
 ```
 

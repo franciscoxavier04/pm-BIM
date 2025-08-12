@@ -371,7 +371,7 @@ lt:
       description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
+        description: You can define named groups of users with specific permissions.
         title: No groups set up yet
       user_count: User count
     users:
@@ -699,6 +699,7 @@ lt:
     dark: "Tamsi"
     light: "Šviesi"
     light_high_contrast: "Šviesi kontrastinga"
+    sync_with_os: "Automatic (match OS colour mode)"
   types:
     index:
       no_results_title_text: Nėra jokių rūšių.
@@ -1302,6 +1303,7 @@ lt:
         odd: "turi būti nelyginis."
         regex_match_failed: "neatitinka reguliariosios išraiškos %{expression}."
         regex_invalid: "negalėjo būti patvirtintas su susieta reguliaria išraiška."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "turi būti mažesnis arba lygus didžiausiam ilgiui."
         taken: "jau užimtas."
         too_long: "yra per ilgas (daugiausiai galima %{count} simbolių)."
@@ -1638,6 +1640,7 @@ lt:
         many: "Authentication providers"
         other: "Authentication providers"
       category: "Kategorija"
+      color: "Color"
       comment: "Komentaras"
       custom_action: "Pasirinktinis veiksmas"
       custom_field: "Kliento laukelis"
@@ -2335,6 +2338,13 @@ lt:
         I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
       consent_html: >
         I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
   enumeration_activities: "Laiko sekimo veiklos"
   enumeration_work_package_priorities: "Darbų paketo prioritetai"
   enumeration_reported_project_statuses: "Pranešta projekto būsena"

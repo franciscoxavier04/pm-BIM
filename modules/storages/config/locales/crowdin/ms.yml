@@ -337,12 +337,10 @@ ms:
         warning: Some checks returned a warning. This can lead to unexpected behaviour.
       title: Health status report
     health_email_notifications:
-      description_subscribed: Semua pentadbir menerima pemberitahuan e-mel status kesihatan bagi storan ini.
-      description_unsubscribed: Pemberitahuan e-mel status kesihatan bagi storan ini telah ditutup pada semua pentadbir.
+      description_disabled: Admins will not receive updates by email when there are important updates.
+      description_enabled: Admins will receive updates by email when there are important updates.
       error_could_not_be_saved: Tetapan pemberitahuan e-mel tidak dapat disimpan. Sila cuba lagi.
-      subscribe: Langgan
-      title: Pemberitahuan e-mel
-      unsubscribe: Berhenti langganan
+      title: Email updates to admins
     help_texts:
       project_folder: Folder projek ialah folder asal untuk muat naik fail bagi projek ini. Pengguna masih boleh muat naik fail ke lokasi lain.
       project_folder_bulk: Folder projek ialah folder lalai untuk muat naik fail untuk semua projek yang dipilih. Anda boleh mengubah suai ini secara individu dalam setiap tetapan projek. Pengguna masih boleh memuat naik fail ke lokasi lain.
@@ -390,7 +388,7 @@ ms:
         application_link_text: SharePoint site
         integration: SharePoint Administration / OpenProject
         oauth_configuration: Copy these values from the desired application in the %{application_link_text}.
-        provider_configuration: Please make sure you have administration privileges in your SharePoint instance and the OpenProject integration app is installed before doing the setup.
+        provider_configuration: Please make sure you have administration privileges in the %{application_link_text} or contact your Microsoft administrator before doing the setup. In the portal, you also need to register an Azure application or use an existing one for authentication.
       type: 'Sila pastikan anda mempunyai hak keistimewaan pentadbir di, contohnya, Nextcloud, dan mempunyai aplikasi berikut dipasangkan sebelum membuat penyediaan:'
       type_link_text: "\"Integrasi OpenProject\""
     label_active: Aktif

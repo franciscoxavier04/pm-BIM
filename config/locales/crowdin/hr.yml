@@ -374,7 +374,7 @@ hr:
       description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
+        description: You can define named groups of users with specific permissions.
         title: No groups set up yet
       user_count: User count
     users:
@@ -695,6 +695,7 @@ hr:
     dark: "Dark"
     light: "Light"
     light_high_contrast: "Light high contrast"
+    sync_with_os: "Automatic (match OS colour mode)"
   types:
     index:
       no_results_title_text: Trenutno ne postoji niti jedan tip projekta.
@@ -1297,6 +1298,7 @@ hr:
         odd: "mora biti neparan."
         regex_match_failed: "does not match the regular expression %{expression}."
         regex_invalid: "could not be validated with the associated regular expression."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "mora biti manje od ili jednako maksimalnom trajanju."
         taken: "već je zauzeto."
         too_long: "je predugo (maksimalno %{count} znakova)."
@@ -1630,6 +1632,7 @@ hr:
         few: "Authentication providers"
         other: "Authentication providers"
       category: "Kategorija"
+      color: "Color"
       comment: "Komentar"
       custom_action: "Custom action"
       custom_field: "Prilagođeno polje"
@@ -2294,6 +2297,13 @@ hr:
         I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
       consent_html: >
         I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Prioriteti radnog paketa"
   enumeration_reported_project_statuses: "Priopćeni statusi projekta"

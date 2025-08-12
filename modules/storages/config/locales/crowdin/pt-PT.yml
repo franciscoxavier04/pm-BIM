@@ -339,12 +339,10 @@ pt-PT:
         warning: Algumas verificações foram devolvidas com um aviso. Isso pode resultar num comportamento inesperado.
       title: Relatório de estado de saúde
     health_email_notifications:
-      description_subscribed: Todos os administradores recebem notificações por e-mail sobre o estado de funcionamento deste armazenamento.
-      description_unsubscribed: As notificações por e-mail sobre o estado de funcionamento deste armazenamento foram desativadas para todos os administradores.
+      description_disabled: Os administradores não receberão atualizações por e-mail quando houver atualizações importantes.
+      description_enabled: Os administradores receberão atualizações por e-mail quando houver atualizações importantes.
       error_could_not_be_saved: Não foi possível guardar as definições de notificação por e-mail. Tente novamente.
-      subscribe: Subscrever
-      title: Notificações por e-mail
-      unsubscribe: Anular subscrição
+      title: Atualizações por e-mail aos administradores
     help_texts:
       project_folder: A pasta do projeto é a pasta predefinida para o carregamento de ficheiros para este projeto. Os utilizadores podem, no entanto, carregar ficheiros para outras localizações.
       project_folder_bulk: A pasta do projeto é a pasta predefinida para o carregamento de ficheiros para todos os projetos selecionados. Pode modificar esta opção individualmente nas definições de cada projeto. No entanto, os utilizadores podem carregar ficheiros para outras localizações.
@@ -392,7 +390,7 @@ pt-PT:
         application_link_text: Site do SharePoint
         integration: Administração de SharePoint / OpenProject
         oauth_configuration: Copie estes valores da aplicação pretendida no %{application_link_text}.
-        provider_configuration: Confirme se tem privilégios de administração na sua instância SharePoint e que a aplicação de integração OpenProject está instalada antes de fazer a configuração.
+        provider_configuration: Confirme se tem privilégios de administração em %{application_link_text} ou contacte o seu administrador da Microsoft antes de fazer a configuração. No portal, também é necessário registar uma aplicação do Azure ou utilizar uma aplicação existente para autenticação.
       type: 'Garanta que tem privilégios administrativos na sua instância de Nextcloud e tenha a seguinte aplicação instalada antes de fazer a configuração:'
       type_link_text: "“Integração OpenProject”"
     label_active: Ativo

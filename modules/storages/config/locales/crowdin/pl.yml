@@ -343,12 +343,10 @@ pl:
         warning: Niektóre kontrole zwróciły ostrzeżenie. Może to prowadzić do nieoczekiwanego sposobu działania.
       title: Raport o stanie
     health_email_notifications:
-      description_subscribed: Wszyscy administratorzy otrzymują powiadomienia e-mail o kondycji tego magazynu.
-      description_unsubscribed: Powiadomienia e-mail o statusie kondycji tego magazynu zostały wyłączone dla wszystkich administratorów.
+      description_disabled: Admins will not receive updates by email when there are important updates.
+      description_enabled: Admins will receive updates by email when there are important updates.
       error_could_not_be_saved: Nie można zapisać ustawień powiadomień e-mail. Spróbuj ponownie.
-      subscribe: Subskrybuj
-      title: Powiadomienia e-mail
-      unsubscribe: Anuluj subskrypcję
+      title: Email updates to admins
     help_texts:
       project_folder: Folder projektu jest domyślnym folderem do przesyłania plików tego projektu. Użytkownicy mogą jednak przesyłać pliki do innych lokalizacji.
       project_folder_bulk: Folder projektu jest domyślnym folderem do przesyłania plików dla wszystkich wybranych projektów. Możesz to zmienić indywidualnie w ustawieniach poszczególnych projektów. Użytkownicy mogą jednak przesyłać pliki do innych lokalizacji.
@@ -396,7 +394,7 @@ pl:
         application_link_text: Witryna SharePoint
         integration: Administracja SharePoint/OpenProject
         oauth_configuration: Skopiuj te wartości z żądanej aplikacji w %{application_link_text}.
-        provider_configuration: Przed wykonaniem konfiguracji upewnij się, że masz uprawnienia administracyjne w swoim wystąpieniu SharePoint oraz zainstalowaną aplikację integracji OpenProject.
+        provider_configuration: Przed przystąpieniem do konfiguracji upewnij się, że masz uprawnienia administracyjne w %{application_link_text} lub skontaktuj się z administratorem z firmy Microsoft. W portalu musisz również zarejestrować aplikację Azure lub użyć istniejącej do uwierzytelniania.
       type: 'Upewnij się, że masz uprawnienia administracyjne w swojej instancji Nextcloud oraz zainstalowaną następującą aplikację, przed wykonaniem konfiguracji:'
       type_link_text: "“Integration OpenProject”"
     label_active: Aktywny

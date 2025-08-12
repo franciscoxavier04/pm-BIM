@@ -685,6 +685,7 @@ pt-PT:
     dark: "Escuro"
     light: "Claro"
     light_high_contrast: "Contraste alto claro"
+    sync_with_os: "Automático (corresponder ao modo de cor do SO)"
   types:
     index:
       no_results_title_text: Atualmente, não existem tipos.
@@ -1286,6 +1287,7 @@ pt-PT:
         odd: "deve ser ímpar."
         regex_match_failed: "não corresponde à expressão regular %{expression}."
         regex_invalid: "não pode ser validado com a expressão regular associada."
+        regex_list_invalid: "não foi possível analisar como expressão regular nas linhas %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "deve ser menor ou igual ao comprimento máximo."
         taken: "já está a ser utilizado."
         too_long: "é muito longo (o máximo é %{count} caracteres)."
@@ -1616,6 +1618,7 @@ pt-PT:
         one: "Fornecedor de autenticação"
         other: "Fornecedores de autenticação"
       category: "Categoria"
+      color: "Cor"
       comment: "Comentario"
       custom_action: "Ação personalizada"
       custom_field: "Campo personalizado"
@@ -2247,6 +2250,13 @@ pt-PT:
         Quero receber a <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a> do OpenProject.
       consent_html: >
         Concordo com os <a target="_blank" href="https://www.openproject.org/terms-of-service/">termos de serviço</a> e a <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">política de privacidade</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Desativado."
+      enabled: "Ativado."
+    button:
+      disabled: "Ativar"
+      enabled: "Desativar"
   enumeration_activities: "Atividades de controlo de tempo"
   enumeration_work_package_priorities: "Prioridades do pacote de trabalho"
   enumeration_reported_project_statuses: "Estado do projeto reportado"
