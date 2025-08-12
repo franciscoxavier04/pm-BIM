@@ -2761,7 +2761,7 @@ de:
   label_default: "Standard"
   label_delete_user: "Benutzer löschen"
   label_delete_project: "Projekt löschen"
-  label_delete: "Lösche"
+  label_delete: "Löschen"
   label_deleted: "gelöscht"
   label_deleted_custom_field: "(gelöschtes benutzerdefiniertes Feld)"
   label_deleted_custom_item: "(gelöschter Eintrag)"
