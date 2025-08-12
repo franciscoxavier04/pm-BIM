@@ -47,7 +47,7 @@
        [ngClass] = "{'-drop-target': drag.currentlyDragging,
                      '-drop-only': drag.isDropOnlyArea(area),
                      '-resize-target': resize.isTarget(area),
-                     '-addable': add.isAddable(area),
+                     '-addable': true,
                      '-help-mode': layout.inHelpMode}"
        [style.grid-row-start]="area.gridStartRow"
        [style.grid-row-end]="area.gridEndRow"
@@ -62,6 +62,12 @@
          *ngIf="add.isAllowed"
          [title]="add.addText"
          (click)="addWidget(area)">
+
+    <svg plus-icon size="small"></svg>
+    <span
+      class="grid--widget-add-help-text"
+      [textContent]="add.addText">
+    </span>
     </div>
   </div>
 
@@ -76,14 +82,13 @@
        [style.grid-column-start]="gap.gridStartColumn"
        [style.grid-column-end]="gap.gridEndColumn"
        [id]="gap.guid"
+       (mouseover)="layout.setMousedOverArea(gap)"
        >
     <div class="grid--widget-add -gap"
          *ngIf="add.isAllowed"
          [title]="add.addText"
          (click)="addWidget(gap)">
-      <span
-      [textContent]="add.addText"></span>
-      {{ add.addText }}
+      <svg plus-icon size="small"></svg>
     </div>
   </div>
 
