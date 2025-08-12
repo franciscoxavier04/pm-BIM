@@ -32,6 +32,10 @@ module WorkPackages
   class BaseContract < ::ModelContract
     include ::Attachments::ValidateReplacements
     include AssignableValuesContract
+    include Concerns::AssociatedContracts
+
+    # Register associated contracts
+    register_associated_contract RiskContract
 
     attribute :subject
     attribute :description
