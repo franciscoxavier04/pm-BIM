@@ -223,8 +223,14 @@ class OAuthClientsController < ApplicationController
     @oauth_client&.integration
   end
 
+  def supports_oauth_redirect?
+    return false unless oauth_integration
+
+    oauth_integration.respond_to?(:supports_oauth_redirect?) && oauth_integration.supports_oauth_redirect?
+  end
+
   def redirect_user_or_admin(redirect_uri = nil)
-    if User.current.admin && redirect_uri && oauth_integration&.supports_oauth_redirect?
+    if User.current.admin && redirect_uri && supports_oauth_redirect?
       yield
     elsif redirect_uri
       flash[:error] = [t(:"oauth_client.errors.oauth_issue_contact_admin")]
