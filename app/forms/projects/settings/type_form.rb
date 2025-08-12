@@ -1,4 +1,6 @@
-#-- copyright
+# frozen_string_literal: true
+
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -24,26 +26,13 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
-
-module API
-  module V3
-    module Projects
-      class CreateFormAPI < ::API::OpenProjectAPI
-        resource :form do
-          after_validation do
-            authorize_globally(:add_project) do
-              authorize_in_any_project(:add_subprojects)
-            end
-          end
-
-          post &::API::V3::Utilities::Endpoints::CreateForm.new(model: Project,
-                                                                params_modifier: ->(attributes) {
-                                                                  attributes[:workspace_type] = Project.workspace_types[:project]
-                                                                  attributes
-                                                                })
-                                                           .mount
-        end
+# ++
+module Projects
+  module Settings
+    class TypeForm < ApplicationForm
+      form do |f|
+        f.hidden name: :workspace_type,
+                 value: Project.workspace_types[:project]
       end
     end
   end
