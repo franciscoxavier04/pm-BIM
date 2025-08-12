@@ -424,7 +424,8 @@ OPENPROJECT_DEV_URL=https://${OPENPROJECT_DEV_HOST}
 After amending the override file and the `.env`, ensure that you restart the stack.
 
 ```shell
-docker compose restart backend frontend
+docker compose up -d frontend
+docker compose up -d backend
 ```
 
 ### Adding a new service
@@ -466,8 +467,11 @@ docker compose run --rm frontend npm install
 
 Then restart both the frontend and backend services:
 ```shell
-docker compose restart backend frontend
+docker compose restart frontend
 ```
+
+If the issue persists, clear your browser cache and reload the page.
+Cached assets from a previous build may prevent the updated frontend from loading correctly.
 
 ## GitLab CE Service
 
