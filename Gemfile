@@ -254,6 +254,10 @@ group :test do
   gem "test-prof", "~> 1.4.0"
   gem "turbo_tests", github: "opf/turbo_tests", ref: "with-patches"
 
+  # Run specs with guard
+  gem "guard"
+  gem "guard-rspec"
+
   gem "rack_session_access"
   gem "rspec", "~> 3.13.0"
   # also add to development group, so 'spec' rake task gets loaded
