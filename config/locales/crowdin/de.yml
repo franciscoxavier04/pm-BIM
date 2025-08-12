@@ -120,14 +120,14 @@ de:
         label_token: "Token"
         one_time_hint: "Dies ist das einzige Mal, dass dieses Token angezeigt wird. Stellen Sie sicher, dass Sie es jetzt kopieren."
       delete_scim_client_dialog_component:
-        title: "Delete SCIM client"
-        heading: "Are you sure you want to delete this SCIM client?"
-        description: "Users managed by this SCIM client can no longer be updated by it."
+        title: "SCIM-Client löschen"
+        heading: "Sind Sie sicher, dass Sie diesen SCIM-Client löschen möchten?"
+        description: "Von diesem SCIM-Client verwaltete Nutzer:innen können nicht mehr von ihm aktualisiert werden."
       edit:
-        label_delete_scim_client: "Delete SCIM client"
+        label_delete_scim_client: "SCIM-Client löschen"
       form:
         auth_provider_description: "Dies ist der Dienst, den die vom SCIM-Anbieter hinzugefügten Benutzer für die Authentifizierung in OpenProject verwenden werden."
-        authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
+        authentication_method_description_html: "So authentifiziert sich der SCIM-Client bei OpenProject. Bitte stellen Sie sicher, dass OAuth Tokens den <code>scim_v2</code> Scope enthalten."
         description: "Please refer to our [documentation on configuring SCIM clients](docs_url) for more information on these configuration options."
         jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
         name_description: "Wählen Sie einen Namen, der anderen Administratoren hilft, besser zu verstehen, warum dieser Client konfiguriert wurde."
