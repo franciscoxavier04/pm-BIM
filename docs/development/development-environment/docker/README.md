@@ -388,7 +388,7 @@ An example configuration is provided in `docker/dev/tls/docker-compose.core-over
 Copy its contents into your own `docker-compose.override.yml` in the repository root, and adjust hostnames if necessary.
 
 Ensure that both the `backend` and `frontend` services:
-- are attached to the same `networks`
+- are attached to the same `networks` as `traefik`
 - have the appropriate `traefik` labels
 
 Example:
