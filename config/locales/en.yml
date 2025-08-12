@@ -615,20 +615,21 @@ en:
 
   my:
     access_token:
-      api:
-        dialog_title: "Create new API token"
-        attention_text: "Treat API tokens like passwords. Anyone with this token will have access to information from this instance, share it only with trusted users."
-        dialog_body: "This token will allow third-party applications to communicate with your instance. To differentiate the new API token, please give it a name."
-        create_button: "Create"
-        name_label: "Name"
-        name_placeholder: "My API token"
-      ical_meeting:
-        dialog_title: "Create new iCalendar subscription token for meetings"
-        attention_text: "Treat the URL to the calendar scubscription like a password. Anyone with this link will have access to information from all meetings you are a participant of."
-        dialog_body: "This link will allow you to subscribe to all of your meetings in your calendar application. To differentiate the new iCalendar subscription, please tell us on what device you want to use this subscription."
-        create_button: "Create subscription"
-        name_label: "Where will you be using this?"
-        name_placeholder: 'Type a name, e.g. "Phone", "Work computer"'
+      dialog:
+        api:
+          dialog_title: "Create new API token"
+          attention_text: "Treat API tokens like passwords. Anyone with this token will have access to information from this instance, share it only with trusted users."
+          dialog_body: "This token will allow third-party applications to communicate with your instance. To differentiate the new API token, please give it a name."
+          create_button: "Create"
+          name_label: "Name"
+          name_placeholder: "My API token"
+        ical_meeting:
+          dialog_title: "Create new iCalendar subscription token for meetings"
+          attention_text: "Treat the URL to the calendar scubscription like a password. Anyone with this link will have access to information from all meetings you are a participant of."
+          dialog_body: "This link will allow you to subscribe to all of your meetings in your calendar application. To differentiate the new iCalendar subscription, please tell us on what device you want to use this subscription."
+          create_button: "Create subscription"
+          name_label: "Where will you be using this?"
+          name_placeholder: 'Type a name, e.g. "Phone", "Work computer"'
       create_dialog:
         title: Token generated
         header: The %{type} token has been generated
@@ -1749,6 +1750,9 @@ en:
       token/api:
         one: Access token
         other: Access tokens
+      token/ical_meeting:
+        one: "iCal Meeting subscription"
+        other: "iCal Meeting subscription"
       type: "Type"
       user: "User"
       version: "Version"
@@ -2723,6 +2727,7 @@ en:
         text_hint: "API tokens allow third-party applications to communicate with this OpenProject instance via REST APIs."
         static_token_name: "API token"
         disabled_text: "API tokens are not enabled by the administrator. Please contact your administrator to use this feature."
+        add_button: "API Token"
       ical:
         title: "iCalendar"
         text_hint: 'iCalendar tokens allow users to <a href="%{path}" target="_blank">subscribe to OpenProject calendars</a> and view up-to-date work package information from external clients.'
@@ -2733,6 +2738,7 @@ en:
         text_hint: "iCalendar meeting tokens allow users to subscribe to all their meetings and view up-to-date meeting information in external clients."
         disabled_text: "iCalendar meeting subscriptions are not enabled by the administrator. Please contact your administrator to use this feature."
         empty_text_hint: 'To add an iCalendar meeting token, go to the <a href="%{path}">meetings section</a> and subscribe from there.'
+        add_button: "Subscribe to calendar"
       oauth:
         title: "OAuth"
         text_hint: "OAuth tokens allow third-party applications to connect with this OpenProject instance."

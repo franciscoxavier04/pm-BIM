@@ -45,16 +45,16 @@ module My
       private
 
       def new_token
-        case token_type
-        when "api" then Token::API.new
-        when "ical-meeting" then Token::ICalMeeting.new
-        end
+        @new_token ||= case token_type
+                       when "api" then Token::API.new
+                       when "ical_meeting" then Token::ICalMeeting.new
+                       end
       end
 
       def i18n_scope
-        case token_type
-        when "api" then "my.access_token.api"
-        when "ical-meeting" then "my.access_token.ical_meeting"
+        case new_token
+        when Token::API then "my.access_token.dialog.api"
+        when Token::ICalMeeting then "my.access_token.dialog.ical_meeting"
         else raise ArgumentError, "Unknown token type: #{token_type}"
         end
       end

@@ -35,14 +35,27 @@ module My
       include OpTurbo::Streamable
       include OpPrimer::ComponentHelpers
 
-      def initialize(token_value:)
+      attr_reader :token
+
+      def initialize(token:)
         super
 
-        @token_value = token_value
+        @token = token
       end
 
       def id
-        "access-token-created-dialog"
+        "#{token.model_name.element}-created-dialog"
+      end
+
+      def private_token_value
+        case token
+        when Token::API
+          token.plain_value
+        when Token::ICalMeeting
+          ical_feed_meetings_url(token: token.plain_value, format: :ics)
+        else
+          raise ArgumentError, "Unknown token type: #{token.class}"
+        end
       end
     end
   end

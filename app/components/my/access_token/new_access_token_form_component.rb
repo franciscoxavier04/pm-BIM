@@ -46,8 +46,8 @@ module My
 
       def i18n_scope
         case token
-        when Token::API then "my.access_token.api"
-        when Token::ICalMeeting then "my.access_token.ical_meeting"
+        when Token::API then "my.access_token.dialog.api"
+        when Token::ICalMeeting then "my.access_token.dialog.ical_meeting"
         else raise ArgumentError, "Unknown token type: #{token_type}"
         end
       end

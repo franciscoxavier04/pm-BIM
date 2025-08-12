@@ -36,7 +36,7 @@ See COPYRIGHT and LICENSE files for more details.
     )
   ) do |dialog|
     dialog.with_feedback_message do |message|
-      message.with_heading(tag: :h2) { I18n.t("my.access_token.create_dialog.header", type: "API") }
+      message.with_heading(tag: :h2) { I18n.t("my.access_token.create_dialog.header", type: token.model_name.human) }
     end
 
     dialog.with_additional_details do
@@ -45,12 +45,12 @@ See COPYRIGHT and LICENSE files for more details.
           render(Primer::OpenProject::InputGroup.new) do |input_group|
             input_group.with_text_input(
               name: :openproject_api_access_token,
-              label: Token::API.model_name.human,
+              label: token.model_name.human,
               visually_hide_label: false,
-              value: @token_value
+              value: private_token_value
             )
             input_group.with_trailing_action_clipboard_copy_button(
-              value: @token_value,
+              value: private_token_value,
               aria: {
                 label: I18n.t("button_copy_to_clipboard")
               }
