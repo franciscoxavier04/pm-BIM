@@ -90,7 +90,6 @@ import {
 } from 'core-app/shared/components/storages/upload-conflict-modal/upload-conflict-modal.component';
 import { LocationData, UploadData } from 'core-app/shared/components/storages/storage/interfaces';
 import isNotNull from 'core-app/core/state/is-not-null';
-import compareId from 'core-app/core/state/compare-id';
 import isHttpResponse from 'core-app/core/upload/is-http-response';
 import isNewResource from 'core-app/features/hal/helpers/is-new-resource';
 import { StoragesResourceService } from 'core-app/core/state/storages/storages.service';
@@ -498,7 +497,7 @@ export class StorageComponent extends UntilDestroyedMixin implements OnInit, OnD
       .pipe(
         take(1),
         map((fileLinks) => {
-          const existingFileLink = fileLinks.find((l) => compareId(l.originData.id, response.id));
+          const existingFileLink = fileLinks.find((l) => String(l.originData.id) === String(response.id));
           if (existingFileLink) {
             return null;
           }
