@@ -2561,6 +2561,14 @@ en:
       catppt: "Catppt available (optional)"
       tesseract: "Tesseract available (optional)"
 
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
+
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","
