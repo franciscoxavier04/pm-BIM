@@ -56,7 +56,7 @@ module Redmine::MenuManager::TopMenuHelper
 
   def render_logo
     content_tag :div, class: "op-logo" do
-      mode_class = User.current.pref.high_contrast_theme? ? "op-logo--link_high_contrast" : ""
+      mode_class = User.current.pref.light_high_contrast_theme? ? "op-logo--link_high_contrast" : ""
       link_to(I18n.t("label_home"),
               configurable_home_url,
               class: "op-logo--link #{mode_class}")
@@ -64,7 +64,7 @@ module Redmine::MenuManager::TopMenuHelper
   end
 
   def render_logo_icon
-    mode_class = "op-logo--icon_white" unless User.current.pref.high_contrast_theme?
+    mode_class = "op-logo--icon_white" unless User.current.pref.light_high_contrast_theme?
     link_to(I18n.t("label_home"), configurable_home_url, class: ["op-logo", "op-logo--icon", "op-logo--link", mode_class])
   end
 
