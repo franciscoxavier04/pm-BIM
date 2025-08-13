@@ -26,6 +26,8 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
+import { FetchRequest, FetchResponse } from '@rails/request.js';
+
 /***************************************
   MODEL
   Common methods for sprint, work_package,
@@ -42,11 +44,11 @@ RB.Model = (function ($) {
       this.el = el;
     },
 
-    afterCreate(data:any, textStatus:any, xhr:any) {
+    afterCreate(data:string, response:FetchResponse) {
       // Do nothing. Child objects may optionally override this
     },
 
-    afterSave(data:any, textStatus:any, xhr:any) {
+    afterSave(data:string, response:FetchResponse) {
       let isNew;
       let result;
 
@@ -59,13 +61,13 @@ RB.Model = (function ($) {
 
       if (isNew) {
         this.$.attr('id', result.$.attr('id'));
-        this.afterCreate(data, textStatus, xhr);
+        this.afterCreate(data, response);
       } else {
-        this.afterUpdate(data, textStatus, xhr);
+        this.afterUpdate(data, response);
       }
     },
 
-    afterUpdate(data:any, textStatus:any, xhr:any) {
+    afterUpdate(data:string, response:FetchResponse) {
       // Do nothing. Child objects may optionally override this
     },
 
@@ -285,11 +287,11 @@ RB.Model = (function ($) {
       this.$.removeClass('editing');
     },
 
-    error(xhr:any, textStatus:any, error:any) {
+    error(responseHtml:string, error:unknown) {
       this.markError();
       // @ts-expect-error TS(2304): Cannot find name 'RB'.
-      RB.Dialog.msg($(xhr.responseText).find('.errors').html());
-      this.processError(xhr, textStatus, error);
+      RB.Dialog.msg($(responseHtml).find('.errors').html());
+      this.processError(responseHtml, error);
     },
 
     getEditor() {
@@ -375,7 +377,7 @@ RB.Model = (function ($) {
       this.$.removeClass('closed');
     },
 
-    processError(x:any, t:any, e:any) {
+    processError(responseHtml:string, error:unknown) {
       // Override as needed
     },
 
@@ -411,9 +413,8 @@ RB.Model = (function ($) {
 
     saveEdits() {
       const j = this.$;
-          const self = this;
-          const editors = j.find('.editor');
-          let saveDir;
+      const self = this;
+      const editors = j.find('.editor');
 
       // Copy the values from the fields to the proper html elements
       editors.each(function (this:any, index:any) {
@@ -440,25 +441,32 @@ RB.Model = (function ($) {
       self.markIfClosed();
 
       // Get the save directives.
-      saveDir = self.saveDirectives();
+      const { method, url, data } = self.saveDirectives();
 
       self.beforeSave();
-
       self.unmarkError();
       self.markSaving();
-      // @ts-expect-error TS(2304): Cannot find name 'RB'.
-      RB.ajax({
-        type: 'POST',
-        url: saveDir.url,
-        data: saveDir.data,
-        success(d:any, t:any, x:any) {
-          self.afterSave(d, t, x);
-        },
-        error(x:any, t:any, e:any) {
-          self.error(x, t, e);
-        },
-      });
-      self.endEdit();
+
+      (async () => {
+        try {
+          const request = new FetchRequest(method, url, {
+            body: data,
+            contentType: 'multipart/form-data',
+            responseKind: 'html',
+          });
+          const response = await request.perform();
+          const html = await response.html;
+          if (!response.ok) {
+            self.error(html, null);
+          } else {
+            self.afterSave(html, response);
+          }
+        } catch (error) {
+          self.error('Network error', error);
+        } finally {
+          self.endEdit();
+        }
+      })();
     },
 
     unmarkError() {

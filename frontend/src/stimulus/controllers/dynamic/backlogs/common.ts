@@ -39,7 +39,6 @@ if (window.RB === null || window.RB === undefined) {
   let Factory;
   let Dialog;
   let UserPreferences;
-  let ajax;
 
   object = {
     // Douglas Crockford's technique for object extension
@@ -118,38 +117,6 @@ if (window.RB === null || window.RB === undefined) {
     },
   });
 
-  ajax = (function () {
-    let ajaxQueue:any;
-    let ajaxOngoing:any;
-    let processAjaxQueue:any;
-
-    ajaxQueue = [];
-    ajaxOngoing = false;
-
-    processAjaxQueue = function () {
-      const options = ajaxQueue.shift();
-
-      if (options !== null && options !== undefined) {
-        ajaxOngoing = true;
-        $.ajax(options);
-      }
-    };
-
-    // Process outstanding entries in the ajax queue whenever a ajax request
-    // finishes.
-    $(document).ajaxComplete((event, xhr, settings) => {
-      ajaxOngoing = false;
-      processAjaxQueue();
-    });
-
-    return function (options:any) {
-      ajaxQueue.push(options);
-      if (!ajaxOngoing) {
-        processAjaxQueue();
-      }
-    };
-  }());
-
   // Abstract the user preference from the rest of the RB objects
   // so that we can change the underlying implementation as needed
   UserPreferences = object.create({
@@ -170,6 +137,4 @@ if (window.RB === null || window.RB === undefined) {
   RB.Dialog = Dialog;
   // @ts-expect-error TS(2304): Cannot find name 'RB'.
   RB.UserPreferences = UserPreferences;
-  // @ts-expect-error TS(2304): Cannot find name 'RB'.
-  RB.ajax = ajax;
 }(jQuery));

@@ -26,6 +26,8 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
+import { FetchResponse } from '@rails/request.js';
+
 /**************************************
   STORY
 ***************************************/
@@ -49,11 +51,11 @@ RB.Story = (function ($) {
       this.refreshStory();
     },
 
-    afterCreate(data:any, textStatus:any, xhr:any) {
+    afterCreate(data:string, response:FetchResponse) {
       this.refreshStory();
     },
 
-    afterUpdate(data:any, textStatus:any, xhr:any) {
+    afterUpdate(data:string, response:FetchResponse) {
       this.refreshStory();
     },
 
@@ -97,7 +99,9 @@ RB.Story = (function ($) {
       let url;
       let prev;
       let sprintId;
+
       let data;
+      let method;
 
       prev = this.$.prev();
       sprintId = this.$.parents('.backlog').data('this').isSprintBacklog()
@@ -120,14 +124,16 @@ RB.Story = (function ($) {
       if (this.isNew()) {
         // @ts-expect-error TS(2304): Cannot find name 'RB'.
         url = RB.urlFor('create_story', { sprint_id: sprintId });
+        method = 'post';
       } else {
         // @ts-expect-error TS(2304): Cannot find name 'RB'.
         url = RB.urlFor('update_story', { id: this.getID(), sprint_id: sprintId });
-        data += '&_method=put';
+        method = 'put';
       }
 
       return {
         url,
+        method,
         data,
       };
     },

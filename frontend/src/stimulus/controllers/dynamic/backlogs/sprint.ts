@@ -63,12 +63,13 @@ RB.Sprint = (function ($) {
     saveDirectives() {
       const wrapper = this.$;
       const editor = wrapper.find('.editor');
-      const data = `${editor.serialize()}&_method=put`;
+      const data = editor.serialize();
       // @ts-expect-error TS(2304): Cannot find name 'RB'.
       const url = RB.urlFor('update_sprint', { id: this.getID() });
 
       return {
         url,
+        method: 'put',
         data,
       };
     },

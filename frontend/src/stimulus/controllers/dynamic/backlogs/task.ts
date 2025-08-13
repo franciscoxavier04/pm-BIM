@@ -77,8 +77,10 @@ RB.Task = (function ($) {
     saveDirectives() {
       let prev;
       let cellId;
-      let data;
+
       let url;
+      let method;
+      let data;
 
       prev = this.$.prev();
       cellId = this.$.parent('td').first().attr('id').split('_');
@@ -92,14 +94,16 @@ RB.Task = (function ($) {
       if (this.isNew()) {
         // @ts-expect-error TS(2304): Cannot find name 'RB'.
         url = RB.urlFor('create_task', { sprint_id: RB.constants.sprint_id });
+        method = 'post';
       } else {
         // @ts-expect-error TS(2304): Cannot find name 'RB'.
         url = RB.urlFor('update_task', { id: this.getID(), sprint_id: RB.constants.sprint_id });
-        data += '&_method=put';
+        method = 'put';
       }
 
       return {
         url,
+        method,
         data,
       };
     },

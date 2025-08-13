@@ -54,8 +54,10 @@ RB.Impediment = (function ($) {
       let j;
       let prev;
       let statusID;
-      let data;
+
+      let method;
       let url;
+      let data;
 
       j = this.$;
       prev = this.$.prev();
@@ -72,14 +74,16 @@ RB.Impediment = (function ($) {
       if (this.isNew()) {
         // @ts-expect-error TS(2304): Cannot find name 'RB'.
         url = RB.urlFor('create_impediment', { sprint_id: RB.constants.sprint_id });
+        method = 'post';
       } else {
         // @ts-expect-error TS(2304): Cannot find name 'RB'.
         url = RB.urlFor('update_impediment', { id: this.getID(), sprint_id: RB.constants.sprint_id });
-        data += '&_method=put';
+        method = 'put';
       }
 
       return {
         url,
+        method,
         data,
       };
     },
