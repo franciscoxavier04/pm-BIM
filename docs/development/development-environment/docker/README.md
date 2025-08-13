@@ -399,16 +399,14 @@ frontend:
     - external
   labels:
     - "traefik.enable=true"
-    - "traefik.http.routers.openproject-assets.rule=Host(`openproject-assets.local`)"
-    - "traefik.http.routers.openproject-assets.entrypoints=websecure"
+  ...
 
 backend:
   networks:
     - external
   labels:
     - "traefik.enable=true"
-    - "traefik.http.routers.openproject.rule=Host(`openproject.local`)"
-    - "traefik.http.routers.openproject.entrypoints=websecure"
+  ...
 ```
 This ensures that traefik will route HTTPS requests for `openproject.local` and `openproject-assets.local` to the
 correct containers in your local setup.
