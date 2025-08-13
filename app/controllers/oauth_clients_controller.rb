@@ -224,6 +224,7 @@ class OAuthClientsController < ApplicationController
   end
 
   def redirect_user_or_admin(redirect_uri = nil)
+    # This needs to be modified as soon as we support more integration types.
     if User.current.admin && redirect_uri && oauth_integration.try(:supports_oauth_redirect?)
       yield
     elsif redirect_uri
