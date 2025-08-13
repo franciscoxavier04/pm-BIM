@@ -59,12 +59,21 @@ module My
         def delete_link
           link_to "",
                   {
-                    action: :revoke_api_key,
+                    action: delete_action,
                     access_token_id: api_token.id
                   },
                   method: :delete,
                   data: { confirm: t("my_account.access_tokens.simple_revoke_confirmation"), test_selector: "api-token-revoke" },
                   class: "icon icon-delete"
+        end
+
+        private
+
+        def delete_action
+          case model
+          when Token::API then :revoke_api_key
+          when Token::ICalMeeting then :revoke_ical_meeting_token
+          end
         end
       end
     end

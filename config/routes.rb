@@ -872,6 +872,7 @@ Rails.application.routes.draw do
       delete :revoke_api_key
       delete :revoke_ical_token
       delete :revoke_storage_token
+      delete :revoke_ical_meeting_token
     end
   end
 

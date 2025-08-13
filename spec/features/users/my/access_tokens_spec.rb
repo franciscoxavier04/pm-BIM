@@ -76,6 +76,7 @@ RSpec.describe "my access tokens", :js do
 
         within("dialog#api-created-dialog") do
           expect(page).to have_content "The Access token token has been generated"
+          expect(page).to have_field("openproject_api_access_token", with: %r{[a-f0-9]{64}}, readonly: true)
           click_on "Close"
         end
         expect(page).to have_content("Testing Token")
@@ -100,8 +101,11 @@ RSpec.describe "my access tokens", :js do
         User.current.reload
         visit my_access_tokens_path
 
-        # API token can be created again
         within "#api-token-component" do
+          # make sure the token is not there anymore
+          expect(page).to have_no_content("Testing Token")
+
+          # API token can be created again
           expect(page).to have_test_selector("api-token-add", text: "API Token")
         end
       end
@@ -230,6 +234,75 @@ RSpec.describe "my access tokens", :js do
           within "#icalendar-token-section" do
             expect(page).not_to have_test_selector("ical-token-row-#{ical_token_for_query.id}-revoke")
           end
+        end
+      end
+    end
+  end
+
+  describe "iCal Meeting tokens" do
+    context "when iCal access is disabled via global settings", with_settings: { ical_enabled: false } do
+      it "shows notice about disabled token" do
+        visit my_access_tokens_path
+
+        within "#ical_meeting-token-component" do
+          expect(page).to have_content("iCalendar meeting subscriptions are not enabled by the administrator. Please contact your administrator to use this feature.")
+          expect(page).not_to have_test_selector("ical_meeting-token-add", text: "Subscribe to calendar")
+        end
+      end
+    end
+
+    context "when iCal access is enabled via global settings", with_settings: { ical_enabled: true } do
+      it "iCal tokens can be generated and revoked" do
+        visit my_access_tokens_path
+
+        expect(page).to have_no_content("iCalendar meeting subscriptions are not enabled by the administrator. Please contact your administrator to use this feature.")
+
+        within "#ical_meeting-token-component" do
+          expect(page).to have_test_selector("ical_meeting-token-add", text: "Subscribe to calendar")
+          find_test_selector("ical_meeting-token-add").click
+        end
+
+        expect(page).to have_test_selector("new-access-token-dialog")
+
+        # create iCal meeting token
+        fill_in "token_ical_meeting[token_name]", with: "Testing Token"
+        find_test_selector("create-api-token-button").click
+
+        within("dialog#ical_meeting-created-dialog") do
+          expect(page).to have_content "The iCal Meeting subscription token has been generated"
+          expect(page).to have_field("openproject_api_access_token",
+                                     with: %r{http://localhost:\d+/meetings/ical/[a-f0-9]{64}.ics},
+                                     readonly: true)
+          click_on "Close"
+        end
+        expect(page).to have_content("Testing Token")
+
+        User.current.reload
+        visit my_access_tokens_path
+
+        # multiple iCal meeting tokens can be created
+        within "#ical_meeting-token-component" do
+          expect(page).to have_test_selector("ical_meeting-token-add", text: "Subscribe to calendar")
+        end
+
+        # revoke iCal meeting token
+        within "#ical_meeting-token-component" do
+          accept_confirm do
+            find_test_selector("api-token-revoke").click
+          end
+        end
+
+        expect(page).to have_content I18n.t("my.access_token.revocation.ical_meeting.notice_success")
+
+        User.current.reload
+        visit my_access_tokens_path
+
+        within "#ical_meeting-token-component" do
+          # make sure the token is not there anymore
+          expect(page).to have_no_content("Testing Token")
+
+          # API token can be created again
+          expect(page).to have_test_selector("ical_meeting-token-add", text: "Subscribe to calendar")
         end
       end
     end
