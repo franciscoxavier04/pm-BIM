@@ -89,7 +89,6 @@ import {
   UploadConflictModalComponent,
 } from 'core-app/shared/components/storages/upload-conflict-modal/upload-conflict-modal.component';
 import { LocationData, UploadData } from 'core-app/shared/components/storages/storage/interfaces';
-import isNotNull from 'core-app/core/state/is-not-null';
 import isHttpResponse from 'core-app/core/upload/is-http-response';
 import isNewResource from 'core-app/features/hal/helpers/is-new-resource';
 import { StoragesResourceService } from 'core-app/core/state/storages/storages.service';
@@ -408,7 +407,7 @@ export class StorageComponent extends UntilDestroyedMixin implements OnInit, OnD
               .subscribe();
           }
         }),
-        filter(isNotNull),
+        filter((fileLinkCreationData) => fileLinkCreationData !== null),
         switchMap((file) =>
           combineLatest([
             this.storage.pipe(first()),
