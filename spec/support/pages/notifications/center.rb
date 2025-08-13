@@ -147,7 +147,7 @@ module Pages
       end
 
       def bell_element
-        page.find('opce-in-app-notification-bell [data-test-selector="op-ian-bell"]')
+        page.find_test_selector("op-ian-bell")
       end
 
       def expect_no_toaster

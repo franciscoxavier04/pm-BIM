@@ -63,7 +63,6 @@ fr:
         primary-button-color: "Bouton principal"
         accent-color: "Couleur d'accentuation"
         header-bg-color: "Fond de l'en-tête"
-        header-item-bg-hover-color: "Fond d’en-tête au survol"
         main-menu-bg-color: "Arrière-plan du menu principal"
         main-menu-bg-selected-background: "Menu principal quand sélectionné"
       custom_colors: "Couleurs personnalisées"
@@ -71,10 +70,6 @@ fr:
       instructions:
         primary-button-color: "Couleur d'accentuation, utilisée pour le bouton le plus important à l'écran."
         accent-color: "Couleur pour les liens et autres éléments correctement mis en évidence."
-        header-item-bg-hover-color: "Couleur d’arrière-plan des éléments de l’en-tête survolées par la souris."
-        header-item-font-color: "Couleur de la police des éléments de l’en-tête cliquables."
-        header-item-font-hover-color: "Couleur de la police des éléments de l’en-tête survolées par la souris."
-        header-border-bottom-color: "Ligne mince sous l’en-tête. Laissez ce champ vide si vous ne voulez pas de ligne."
         main-menu-bg-color: "Couleur d’arrière-plan du menu de gauche."
       theme_warning: Le changement de thème écrasera votre style personnalisé. Le design sera alors perdu. Êtes-vous sûr de vouloir continuer ?
     enterprise:
@@ -133,8 +128,8 @@ fr:
       form:
         auth_provider_description: "Il s'agit du service que les utilisateurs ajoutés par le fournisseur SCIM utiliseront pour s'authentifier dans OpenProject."
         authentication_method_description_html: "Voici comment le client SCIM s'authentifie dans OpenProject. Veuillez vous assurer que les jetons OAuth incluent la portée <code>scim_v2</code>."
-        description_html: 'Veuillez consulter la <a href="%{docs_url}">documentation sur la configuration des clients SCIM</a> pour obtenir plus d''informations sur ces options de configuration.'
-        jwt_sub_description_html: 'Par exemple, pour Keycloak, il s''agit de l''UUID du compte de service associé au client SCIM. Consultez notre <a href="%{docs_url}">documentation</a> pour savoir comment trouver la revendication de sujet selon votre cas d''utilisation.'
+        description: "Veuillez consulter notre [documentation sur la configuration des clients SCIM](docs_url) pour obtenir plus d'informations sur ces options de configuration."
+        jwt_sub_description: "Par exemple, pour Keycloak, il s'agit de l'UUID du compte de service associé au client SCIM. Consultez [notre documentation](docs_url) pour savoir comment trouver la revendication de sujet selon votre cas d'utilisation."
         name_description: "Choisissez un nom qui aidera les autres administrateurs à mieux comprendre pourquoi ce client a été configuré."
       index:
         description: "Les clients SCIM configurés ici peuvent interagir avec l'API SCIM du serveur OpenProject pour créer, mettre à jour et désactiver des comptes utilisateurs et des groupes."
@@ -363,19 +358,34 @@ fr:
       parent: "Parent"
       blueprint: "Modèle de plan"
   global_search:
+    title:
+      all_projects: 'Recherche de "%{search_term}" dans tous les projets'
+      current_project: 'Recherche de "%{search_term}" dans %{project_name}'
+      project_and_subprojects: 'Recherche de "%{search_term}" dans %{project_name} et tous les sous-projets'
     placeholder: "Rechercher dans %{app_title}"
     overwritten_tabs:
       all: "Tous"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Groupes synchronisés"
     index:
-      no_results_title_text: Il n'y a actuellement aucun groupe.
-      no_results_content_text: Créer un nouveau groupe
+      description: En regroupant les utilisateurs, vous pouvez les ajouter en tant que membres aux mêmes projets ou leur attribuer les mêmes rôles globaux.
+    table_component:
+      blank_slate:
+        description: Vous pouvez définir des groupes d'utilisateurs avec des noms spécifiques
+        title: Aucun groupe n'a encore été configuré
+      user_count: Nombre d'utilisateurs
     users:
       no_results_title_text: Aucun utilisateur dans ce groupe pour le moment.
     memberships:
       no_results_title_text: Aucun projet dans ce groupe pour le moment.
+    synchronized_groups:
+      blankslate:
+        action: Paramètres d'authentification
+        description: Lorsque ce groupe est automatiquement synchronisé avec des groupes de fournisseurs d'identité externes comme OpenID, ils apparaissent ici. Vous pouvez configurer cela dans vos paramètres d'authentification.
+        title: Vous n'avez encore aucun groupe synchronisé
   incoming_mails:
     ignore_filenames: >
       Spécifiez une liste de noms à ignorer lors du traitement des pièces jointes aux messages entrants (par exemple, signatures ou icônes). Entrez un nom de fichier par ligne.
@@ -707,9 +717,8 @@ fr:
             project: "Projet"
         pattern:
           label: "Modèle de sujet"
-          caption_with_supported_attributes_link: Créez des modèles en ajoutant du texte, ou saisissez « / » pour rechercher %{link}.
+          caption: Créez des modèles en ajoutant du texte ou saisissez « / » pour rechercher les [attributs pris en charge](attributes_url).
           insert_as_text: "Aucun attribut n'a été trouvé. Ajouter en tant que texte : « %{word} »"
-          supported_attributes_link: "attributs pris en charge"
       export_configuration:
         tab: "Générer un fichier PDF"
         intro: "Sélectionnez les modèles disponibles que vous souhaitez activer pour ce type. Le modèle détermine la conception et les attributs visibles dans le fichier PDF exporté d'un lot de travaux utilisant ce type. Le premier modèle de la liste est sélectionné par défaut."
@@ -1108,7 +1117,6 @@ fr:
       role:
         permissions: "Autorisations"
       scim_client:
-        auth_provider: "Fournisseur d'authentification"
         authentication_method: "Méthode d'authentification"
         jwt_sub: "Revendication de sujet"
       status:
@@ -1240,6 +1248,7 @@ fr:
         error_unauthorized: "est interdit d'accès."
         error_readonly: "a tenté d'être écrit mais n'est pas accessible en écriture."
         error_conflict: "Cette information a été mise a jour par au moin un autre utilisateur pendant la même session"
+        error_not_found: "introuvable."
         email: "n'est pas une adresse e-mail valide."
         empty: "ne peut pas être vide."
         enterprise_plan_required: "nécessite au minimum l'abonnement %{plan_name}."
@@ -1258,6 +1267,7 @@ fr:
         inclusion_nested: "ne correspond à aucune des valeurs autorisées dans le chemin « %{path} »."
         invalid: "est invalide."
         invalid_characters: "contient des caractères invalides."
+        not_allowed_custom_fields_referenced: "contient des champs personnalisés qui ne sont pas autorisés : %{custom_fields}."
         invalid_url: "n’est pas une URL valide."
         invalid_url_scheme: "n’est pas un protocole pris en charge (autorisés : %{allowed_schemes})."
         less_than_or_equal_to: "doit être inférieur ou égal à %{count}."
@@ -1399,8 +1409,6 @@ fr:
           cannot_be_a_non_working_day: "ne peut pas être un jour non travaillé."
         query:
           attributes:
-            project:
-              error_not_found: "non trouvé"
             public:
               error_unauthorized: "- L’utilisateur n'est pas autorisé à créer des vues publiques."
             group_by:
@@ -1440,10 +1448,8 @@ fr:
             circular_dependency: "La relation créée un cercle de relations."
           attributes:
             to_id:
-              error_not_found: "introuvable ou non visible."
               error_readonly: "ne peut pas être modifié pour les relations existantes."
             from_id:
-              error_not_found: "introuvable ou non visible."
               error_readonly: "ne peut pas être modifié pour les relations existantes."
         repository:
           not_available: "Le fournisseur de gestion de contrôle de sources n'est pas disponible"
@@ -1583,10 +1589,6 @@ fr:
                 description: "La confirmation du mot de passe doit correspondre à celui saisi dans le champ “Nouveau mot de passe”."
             status:
               invalid_on_create: "n’est pas un statut valide pour les nouveaux utilisateurs."
-            ldap_auth_source:
-              error_not_found: "introuvable"
-            auth_source:
-              error_not_found: "introuvable"
         member:
           principal_blank: "Veuillez choisir au moins un utilisateur ou un groupe."
           role_blank: "doit être assigné."
@@ -1611,6 +1613,9 @@ fr:
     models:
       attachment: "Fichier"
       attribute_help_text: "Attribut d’aide de texte"
+      auth_provider:
+        one: "Fournisseur d'authentification"
+        other: "Fournisseurs d'authentification"
       category: "Catégorie"
       comment: "Commentaire"
       custom_action: "Action personnalisée"
@@ -1796,6 +1801,7 @@ fr:
     title: "Titre"
     type: "Type"
     typeahead: "Saisie semi-automatique"
+    uid: "Identifiant unique"
     updated_at: "Mis à jour le"
     updated_on: "Mis à jour le"
     uploader: "Téléversé par"
@@ -2542,7 +2548,7 @@ fr:
       aggregation: "Agrégation"
       api_and_webhooks: "API et webhooks"
     quick_add:
-      label: "Ouvrir le menu d'ajout rapide"
+      label: "Ajouter…"
   my_account:
     access_tokens:
       no_results:
@@ -2842,6 +2848,7 @@ fr:
   label_gantt_chart_plural: "Diagrammes de Gantt"
   label_general: "Général"
   label_generate_key: "Générer une clé"
+  label_global_modules: "Modules globaux"
   label_global_roles: "Rôles globaux"
   label_git_path: "Chemin d'accès au répertoire .git"
   label_greater_or_equal: ">="
@@ -2926,6 +2933,7 @@ fr:
   label_manage: "Gérer"
   label_manage_groups: "Gérer les groupes"
   label_managed_repositories_vendor: "Référentiels %{vendor} gérés"
+  label_mathematical_operators: "Opérateurs mathématiques"
   label_max_size: "Taille maximale"
   label_me: "moi"
   label_member_new: "Nouveau membre"
@@ -2985,6 +2993,7 @@ fr:
   label_no_due_date: "pas de date de fin"
   label_no_start_date: "pas de date de début"
   label_no_parent_page: "Aucune page parente"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Rien à afficher"
   label_nobody: "personne"
   label_not_configured: "Non configuré"
@@ -3193,6 +3202,7 @@ fr:
   label_user_mail_option_only_my_events: "Uniquement pour les éléments que je suis ou auxquels je participe"
   label_user_mail_option_only_owner: "Les éléments dont je suis le propriétaire"
   label_user_mail_option_selected: "Pour chaque événement sur le projet selectionné seulement"
+  label_user_menu: "Menu utilisateur"
   label_user_new: "Nouvel utilisateur"
   label_user_plural: "Utilisateurs"
   label_user_search: "Recherche d'Utilisateurs"

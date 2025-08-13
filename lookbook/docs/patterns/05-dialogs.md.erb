@@ -216,18 +216,9 @@ This can come in the form of a positive confirmation where a user is asked to e.
 
 Or it can be to ascertain the user actually wants to destroy a model.
 
-<%= embed OpenProject::Common::DialogPreview, :confirm_deletion %>
+<%= embed Patterns::DangerDialogPreview %>
 
-**Note:** Currently, confirmation dialog require a lot of manual work to be implemented.
-Prefer using a native browser confirmation dialog when possible using the `data-confirm` attribute and UJS for the time
-being.
-
-Primerized confirmation dialogs are still a work in progress.
-
-
-#### Where it's used
-
-- Project list &rarr; Delete the project list
+**Note:** Please have a look at the [documentation of the DangerDialog](../components/danger_dialog) component
 
 ### Form dialogs
 

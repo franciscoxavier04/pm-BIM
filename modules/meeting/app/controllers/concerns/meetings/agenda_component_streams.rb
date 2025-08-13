@@ -150,7 +150,7 @@ module Meetings
           render_agenda_item_form_in_section_via_turbo_stream(meeting:, meeting_section:, type:, collapsed:)
         end
 
-        update_new_button_via_turbo_stream(disabled: true)
+        update_new_button_via_turbo_stream(disabled: true) unless meeting_section == meeting.backlog
       end
 
       def render_agenda_item_form_for_empty_meeting_via_turbo_stream(type: :simple)
@@ -198,7 +198,7 @@ module Meetings
         )
         # as the list is updated without displaying the form, the new button needs to be enabled again
         # the new button might be in a disabled state
-        update_new_button_via_turbo_stream(disabled: false) if form_hidden == true
+        update_new_button_via_turbo_stream(disabled: false, meeting:) if form_hidden == true
       end
 
       def update_item_via_turbo_stream(state: :show, meeting_agenda_item: @meeting_agenda_item, display_notes_input: nil)

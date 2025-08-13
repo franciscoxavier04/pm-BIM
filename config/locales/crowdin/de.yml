@@ -63,7 +63,6 @@ de:
         primary-button-color: "Primäre Schaltfläche"
         accent-color: "Akzent"
         header-bg-color: "Hintergrund der Kopfzeile"
-        header-item-bg-hover-color: "Hintergrund der Kopfzeile bei Hover"
         main-menu-bg-color: "Hintergrundfarbe des Hauptmenüs"
         main-menu-bg-selected-background: "Hintergrundfarbe des Hauptmenüs bei Auswahl"
       custom_colors: "Benutzerdefinierte Farben"
@@ -71,10 +70,6 @@ de:
       instructions:
         primary-button-color: "Starke Akzentfarbe, die für die wichtigste Schaltfläche auf einem Bildschirm verwendet wird."
         accent-color: "Farbe für Links und andere dezent hervorgehobene Elemente."
-        header-item-bg-hover-color: "Hintergrundfarbe von Header-Elementen während Mouse-hover."
-        header-item-font-color: "Schriftfarbe von anklickbaren Header-Elementen."
-        header-item-font-hover-color: "Schriftfarbe von anklickbaren Header-Elementen während Mouse-hover."
-        header-border-bottom-color: "Rahmenlinie unterhalb des Headers. Freilassen, um keine Linie darzustellen."
         main-menu-bg-color: "Hintergrundfarbe des Menüs in der linken Seitenleiste."
       theme_warning: Das Ändern des Themes wird Ihr benutzerdefiniertes Design überschreiben. Alle Änderungen werden dann verloren gehen. Sind Sie sicher, dass Sie fortfahren möchten?
     enterprise:
@@ -127,17 +122,17 @@ de:
       delete_scim_client_dialog_component:
         title: "SCIM-Client löschen"
         heading: "Sind Sie sicher, dass Sie diesen SCIM-Client löschen möchten?"
-        description: "Von diesem SCIM-Client verwaltete Benutzer können nicht mehr von ihm aktualisiert werden."
+        description: "Von diesem SCIM-Client verwaltete Nutzer:innen können nicht mehr von ihm aktualisiert werden."
       edit:
         label_delete_scim_client: "SCIM-Client löschen"
       form:
         auth_provider_description: "Dies ist der Dienst, den die vom SCIM-Anbieter hinzugefügten Benutzer für die Authentifizierung in OpenProject verwenden werden."
         authentication_method_description_html: "So authentifiziert sich der SCIM-Client bei OpenProject. Bitte stellen Sie sicher, dass OAuth Tokens den <code>scim_v2</code> Scope enthalten."
-        description_html: 'Weitere Informationen zu diesen Konfigurationsoptionen finden Sie in unserer <a href="%{docs_url}">Dokumentation zur Konfiguration von SCIM-Clients</a>.'
-        jwt_sub_description_html: 'Bei Keycloak ist dies beispielsweise die UUID des mit dem SCIM-Client verbundenen Servicekontos. Lesen Sie <a href="%{docs_url}">unsere Dokumentation</a>, um zu erfahren, wie Sie den Subject Claim für Ihren Anwendungsfall finden.'
+        description: "Mehr Informationen zu den folgenden Einstellungen können in [unserer Dokumentation](docs_url) gefunden werden."
+        jwt_sub_description: "Beispielsweise für Keycloak ist dies die UUID des Service-Accounts der zum SCIM-Client gehört. Weitere Informationen finden Sie in [unserer Dokumentation](docs_url)."
         name_description: "Wählen Sie einen Namen, der anderen Administratoren hilft, besser zu verstehen, warum dieser Client konfiguriert wurde."
       index:
-        description: "SCIM-Clients, die hier konfiguriert werden, können mit der OpenProject SCIM-Server-API interagieren, um Benutzerkonten und Gruppen zu erstellen, zu aktualisieren und zu entfernen."
+        description: "SCIM-Clients, die hier konfiguriert werden, können mit der OpenProject SCIM-Server-API interagieren, um Nutzerkonten und Gruppen zu erstellen, zu aktualisieren und zu entfernen."
         label_create_button: "SCIM-Client hinzufügen"
       new:
         title: "Neuer SCIM-Client"
@@ -360,19 +355,34 @@ de:
       parent: "Übergeordnetes Arbeitspaket"
       blueprint: "Blaupause für Muster"
   global_search:
+    title:
+      all_projects: 'Suche nach "%{search_term}" in allen Projekten'
+      current_project: 'Suche nach "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Suche nach "%{search_term}" in %{project_name} und allen Unterprojekten'
     placeholder: "Suche in %{app_title}"
     overwritten_tabs:
       all: "Alle"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronisierte Gruppen"
     index:
-      no_results_title_text: Derzeit gibt es keine Gruppen.
-      no_results_content_text: Neue Gruppe erstellen
+      description: Durch die Gruppierung von Benutzern können Sie diese den gleichen globalen Rollen oder den gleichen Projekten als Mitglieder zuweisen.
+    table_component:
+      blank_slate:
+        description: Sie können Gruppen von Benutzern mit eigenen Namen erstellen
+        title: Noch keine Gruppen eingerichtet
+      user_count: Benutzeranzahl
     users:
       no_results_title_text: Diese Gruppe hat zur Zeit keine Mitglieder.
     memberships:
       no_results_title_text: Diese Gruppe ist zur Zeit keinem Projekt zugewiesen.
+    synchronized_groups:
+      blankslate:
+        action: Authentifizierungseinstellungen
+        description: Wenn diese Gruppe automatisch mit Gruppen in einem Identitätsanbieter wie beispielsweise OpenID Connect synchronisiert wird, dann taucht diese Verknüpfung hier auf. Dies können Sie in den Authentifizierungseinstellungen verwalten.
+        title: Noch keine synchronisierten Gruppen
   incoming_mails:
     ignore_filenames: >
       Geben Sie eine Liste von Dateinamen an, die beim Verarbeiten von Anhängen für eingehende Mails (z.B. Signaturen oder Symbole) ignoriert werden sollen. Geben Sie einen Dateinamen pro Zeile ein.
@@ -702,9 +712,8 @@ de:
             project: "Projekt"
         pattern:
           label: "Titel-Schema"
-          caption_with_supported_attributes_link: Erstellen Sie Muster, indem Sie Text hinzufügen, oder geben Sie "/" ein, um nach %{link} zu suchen.
+          caption: Das Schema kann durch Hinzufügen von Text erzeugt werden. Geben Sie "/" ein, um nach [unterstützten Attributen](attributes_url) zu suchen.
           insert_as_text: "Keine Attribute gefunden. Als Text hinzufügen: \"%{word}\""
-          supported_attributes_link: "unterstützte Attribute"
       export_configuration:
         tab: "PDF generieren"
         intro: "Wählen Sie aus den verfügbaren Vorlagen diejenige aus, die Sie für diesen Typ aktivieren möchten. Die Vorlage bestimmt das Design und die Attribute, die in der exportierten PDF-Datei eines Arbeitspakets mit diesem Typ sichtbar sind. Die erste Vorlage in der Liste ist standardmäßig ausgewählt."
@@ -1102,7 +1111,6 @@ de:
       role:
         permissions: "Berechtigungen"
       scim_client:
-        auth_provider: "Authentifizierungsanbieter"
         authentication_method: "Authentifizierungsmethode"
         jwt_sub: "Subject claim"
       status:
@@ -1234,6 +1242,7 @@ de:
         error_unauthorized: "kann nicht zugegriffen werden."
         error_readonly: "wurde versucht zu beschreiben, ist aber nicht beschreibbar."
         error_conflict: "Die Informationen wurde zwischenzeitlich durch andere Benutzer geändert."
+        error_not_found: "nicht gefunden."
         email: "ist keine gültige E-Mail-Adresse."
         empty: "muss ausgefüllt werden."
         enterprise_plan_required: "benötigt mindestens %{plan_name}."
@@ -1252,6 +1261,7 @@ de:
         inclusion_nested: "ist nicht auf einen der erlaubten Werte im Pfad '%{path} ' gesetzt."
         invalid: "ist ungültig."
         invalid_characters: "enthält ungültige Zeichen."
+        not_allowed_custom_fields_referenced: "enthält benutzerdefinierte Felder, die nicht erlaubt sind: %{custom_fields}."
         invalid_url: "ist keine gültige URL."
         invalid_url_scheme: "ist kein unterstütztes Protokoll (erlaubt: %{allowed_schemes})."
         less_than_or_equal_to: "muss kleiner oder gleich %{count} sein."
@@ -1393,8 +1403,6 @@ de:
           cannot_be_a_non_working_day: "kann kein arbeitsfreier Tag sein."
         query:
           attributes:
-            project:
-              error_not_found: "nicht gefunden"
             public:
               error_unauthorized: "- Der Nutzer hat nicht die Berechtigung öffentliche Ansichten zu erstellen."
             group_by:
@@ -1434,10 +1442,8 @@ de:
             circular_dependency: "Die Beziehung erzeugt eine zirkuläre Abhängigkeit."
           attributes:
             to_id:
-              error_not_found: "nicht gefunden oder nicht sichtbar."
               error_readonly: "kann für bestehende Beziehungen nicht geändert werden."
             from_id:
-              error_not_found: "nicht gefunden oder nicht sichtbar."
               error_readonly: "kann für bestehende Beziehungen nicht geändert werden."
         repository:
           not_available: "SCM-Anbieter ist nicht verfügbar"
@@ -1577,10 +1583,6 @@ de:
                 description: "\"Kennwortbestätigung\" sollte mit \"Neues Kennwort\" übereinstimmen."
             status:
               invalid_on_create: "ist kein gültiger Status für neue Benutzer."
-            ldap_auth_source:
-              error_not_found: "nicht gefunden"
-            auth_source:
-              error_not_found: "nicht gefunden"
         member:
           principal_blank: "Bitte wählen Sie mindestens einen Benutzer oder eine Gruppe."
           role_blank: "muss zugeordnet werden."
@@ -1605,6 +1607,9 @@ de:
     models:
       attachment: "Datei"
       attribute_help_text: "Hilfe-Text für Attribute"
+      auth_provider:
+        one: "Authentifizierungsanbieter"
+        other: "Authentifizierungsanbieter"
       category: "Kategorie"
       comment: "Kommentar"
       custom_action: "Benutzerdefinierte Aktion"
@@ -1790,6 +1795,7 @@ de:
     title: "Titel"
     type: "Typ"
     typeahead: "Autovervollständigung"
+    uid: "Eindeutige Kennung"
     updated_at: "Aktualisiert am"
     updated_on: "Aktualisiert am"
     uploader: "Bereitgestellt von"
@@ -2197,7 +2203,7 @@ de:
         title: "Single Sign-On für Nextcloud-Speicher"
         description: "Aktivieren Sie nahtlose und sichere Authentifizierung für Ihren Nextcloud-Speicher mit Single Sign-On. Vereinfachen Sie das Zugriffsmanagement und erhöhen Sie den Benutzerkomfort."
       scim_api:
-        title: "SCIM-Clients"
+        title: "SCIM clients"
         description: "Automatisieren Sie die Benutzerverwaltung in OpenProject durch nahtlose Integration externer Identitätsdienste wie Microsoft Entra oder Keycloak über unsere SCIM Server API. Verfügbar ab dem Enterprise Corporate Plan."
       virus_scanning:
         description: "Stellen Sie sicher, dass hochgeladene Dateien in OpenProject auf Viren gescannt werden, bevor sie für andere Benutzer zugänglich sind."
@@ -2536,7 +2542,7 @@ de:
       aggregation: "Zusammenfassungen"
       api_and_webhooks: "API und Webhooks"
     quick_add:
-      label: "Schnellmenue öffnen"
+      label: "Hinzufügen…"
   my_account:
     access_tokens:
       no_results:
@@ -2755,7 +2761,7 @@ de:
   label_default: "Standard"
   label_delete_user: "Benutzer löschen"
   label_delete_project: "Projekt löschen"
-  label_delete: "Lösche"
+  label_delete: "Löschen"
   label_deleted: "gelöscht"
   label_deleted_custom_field: "(gelöschtes benutzerdefiniertes Feld)"
   label_deleted_custom_item: "(gelöschter Eintrag)"
@@ -2836,6 +2842,7 @@ de:
   label_gantt_chart_plural: "Gantt Diagramme"
   label_general: "Allgemein"
   label_generate_key: "Schlüssel generieren"
+  label_global_modules: "Globale Module"
   label_global_roles: "Globale Rollen"
   label_git_path: "Pfad zum .git-Verzeichnis"
   label_greater_or_equal: ">="
@@ -2920,6 +2927,7 @@ de:
   label_manage: "Verwalten"
   label_manage_groups: "Gruppen verwalten"
   label_managed_repositories_vendor: "Verwaltete %{vendor} Projektarchive"
+  label_mathematical_operators: "Mathematische Operatoren"
   label_max_size: "Maximale Größe"
   label_me: "ich"
   label_member_new: "Neues Mitglied"
@@ -2979,6 +2987,7 @@ de:
   label_no_due_date: "kein Endtermin"
   label_no_start_date: "kein Startdatum"
   label_no_parent_page: "Keine übergeordnete Seite"
+  label_notification_center_plural: "Benachrichtigungen"
   label_nothing_display: "Nichts anzuzeigen"
   label_nobody: "Niemand"
   label_not_configured: "Nicht konfiguriert"
@@ -3187,6 +3196,7 @@ de:
   label_user_mail_option_only_my_events: "Nur für Aufgaben, die ich beobachte oder an welchen ich mitarbeite"
   label_user_mail_option_only_owner: "Nur für Aufgaben, die ich angelegt habe"
   label_user_mail_option_selected: "Für alle Ereignisse in den ausgewählten Projekten"
+  label_user_menu: "Benutzermenü"
   label_user_new: "Neuer Benutzer"
   label_user_plural: "Benutzer"
   label_user_search: "Nach Benutzer suchen"

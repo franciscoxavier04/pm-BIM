@@ -29,7 +29,7 @@
 #++
 
 class MigrateAuthProviderUrlsAgain < ActiveRecord::Migration[8.0]
-  def change
+  def change # rubocop:disable Metrics/AbcSize
     reversible do |direction|
       direction.up do
         PluginAuthProvider.create_all_registered

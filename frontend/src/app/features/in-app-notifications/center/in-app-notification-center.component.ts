@@ -49,6 +49,7 @@ import {
   templateUrl: './in-app-notification-center.component.html',
   styleUrls: ['./in-app-notification-center.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class InAppNotificationCenterComponent implements OnInit {
   maxSize = NOTIFICATIONS_MAX_SIZE;

@@ -295,10 +295,10 @@ es:
           learn_about: "Más información sobre todas las nuevas funciones"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. Chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_2":
+          "16_3":
             standard:
               new_features_html: >
-                El lanzamiento contiene varias funciones y mejoras nuevas, como <br>. <ul class="%{list_styling_class}"> <li>Nuevo encabezado y barra lateral con navegación y diseño mejorados.</li> <li>Experiencia mejorada con Campos personalizados, Relaciones, Recordatorios, Reuniones y Seguimiento de mi tiempo.</li> <li>Idiomas no latinos y emojis compatibles en las exportaciones a PDF.</li> <li>Opción de desactivar los atajos de teclado para mejorar la accesibilidad.</li> <li>Servidor SCIM mediante API (extensión Enterprise).</li> <li>Soporte de API para comentarios internos.</li> </ul>
+                La versión contiene varias funciones nuevas y mejoras, como <br>. <ul class="%{list_styling_class}"> <li>mejoras de UX/UI para tener un aspecto más moderno.</li> <li>Reuniones: Opción para silenciar las notificaciones por correo electrónico y de ICS.</li> <li>Temporizadores en curso mostrados en el módulo Mi seguimiento del tiempo.</li> <li>Informes de progreso: La suma de % completado también se muestra en el modo basado en el estado.</li> <li>Comprobación de salud de Nextcloud: Indica la ausencia de la función de intercambio de tokens (complemento de Enterprise).</li> </ul>
     ical_sharing_modal:
       title: "Suscribirse al calendario"
       inital_setup_error_message: "Se ha producido un error al obtener los datos."
@@ -696,6 +696,7 @@ es:
           first_day: "Primer día"
           last_day: "Último día"
     text_are_you_sure: "¿Estás seguro?"
+    text_are_you_sure_to_cancel: "Tiene cambios sin guardar en esta página. ¿Seguro que quiere descartarlos?"
     breadcrumb: "Ruta de navegación"
     text_data_lost: "Todos los datos introducidos se perderán."
     text_user_wrote: "%{value} escribió:"

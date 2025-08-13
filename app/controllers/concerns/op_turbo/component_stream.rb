@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -118,6 +120,10 @@ module OpTurbo
       turbo_streams << OpTurbo::StreamComponent
         .new(action: :closeDialog, target:, additional: additional.to_json)
         .render_in(view_context)
+    end
+
+    def reload_page_via_turbo_stream
+      turbo_streams << OpTurbo::StreamComponent.new(action: :reloadPage, target: nil).render_in(view_context)
     end
 
     def turbo_streams

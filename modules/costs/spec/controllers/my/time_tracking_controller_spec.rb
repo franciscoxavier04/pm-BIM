@@ -97,16 +97,6 @@ RSpec.describe My::TimeTrackingController do
         end
       end
     end
-
-    context "with an ongoing timer" do
-      let!(:time_entry) { create(:time_entry, user: user, spent_on: Date.current, hours: 1.5) }
-      let!(:time_entry_ongoing) { create(:time_entry, user: user, spent_on: Date.current, ongoing: true) }
-
-      it "does not include the ongoing timer in the my time tracking page (Regression: #64173)" do
-        get :index
-        expect(assigns(:time_entries)).to contain_exactly(time_entry)
-      end
-    end
   end
 
   describe "GET /my/time-tracking/day" do

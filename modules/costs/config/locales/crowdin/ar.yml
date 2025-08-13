@@ -31,6 +31,9 @@ ar:
         spent: "أنفق"
         spent_on: "التاريخ"
         logged_by: "\"تم تسجيل الدخول بواسطة \""
+        entity: Logged for
+        entity_id: Logged for
+        entity_gid: Logged for
       cost_type:
         unit: "اسم الوحدة"
         unit_plural: "اسم الوحدة متعددة الأقطاب"
@@ -58,6 +61,9 @@ ar:
         start_time: Start time
         end_time: Finish time
         time: الوقت
+        entity: Logged for
+        entity_id: Logged for
+        entity_gid: Logged for
     models:
       time_entry:
         zero: "Time entries"
@@ -111,6 +117,7 @@ ar:
   button_log_time: "Log"
   button_add_activity: "النشاط"
   button_add_time_entry: "وقت السجل"
+  button_stop_timer: "Stop timer"
   caption_booked_on_project: "حُجِِز على المشروع"
   caption_default: "الافتراضي"
   caption_default_rate_history_for: "تاريخ المعدل الافتراضي ل %{user}"
@@ -189,6 +196,7 @@ ar:
   label_day: "اليوم"
   label_today_capitalized: "اليوم"
   label_view_mode_switcher: "Change view"
+  label_timer_since: "Started at %{time}"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "حصل خطأ ما. من فضلك حاول مرة أخرى."
   notice_successful_restore: "استعادة ناجحة."
@@ -196,6 +204,7 @@ ar:
   notice_cost_logged_successfully: "تمّ تسجيل تكلفة الوحدة بنجاح."
   notice_different_time_zones: "This user has a different time zone (%{tz}). Time will be logged using their time zone."
   notice_time_entry_update_failed: "Failed to update time entry. Errors: %{errors}"
+  notice_time_entry_delete_failed: "Failed to delete time entry. Errors: %{errors}"
   permission_edit_cost_entries: "تحرير تكاليف الوحدة المحجوزة"
   permission_edit_own_cost_entries: "تحرير تكاليف الوحدة المحجوزة الخاصة"
   permission_edit_hourly_rates: "تحرير الأجور الساعيّة"

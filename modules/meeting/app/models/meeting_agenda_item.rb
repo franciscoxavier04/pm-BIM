@@ -67,7 +67,6 @@ class MeetingAgendaItem < ApplicationRecord
             allow_nil: true
 
   before_validation :add_to_latest_meeting_section
-  after_create :trigger_meeting_agenda_item_time_slots_calculation
   after_save :trigger_meeting_agenda_item_time_slots_calculation, if: Proc.new { |item|
     item.duration_in_minutes_previously_changed? || item.position_previously_changed?
   }

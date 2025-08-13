@@ -57,6 +57,7 @@ import { IFileIcon } from 'core-app/shared/components/storages/icons.mapping';
   selector: '[op-attachment-list-item]',
   templateUrl: './attachment-list-item.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class OpAttachmentListItemComponent extends UntilDestroyedMixin implements OnInit, AfterViewInit {
   @Input() public attachment:IAttachment;

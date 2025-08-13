@@ -99,6 +99,7 @@ nl:
     meeting_agenda_opened: Vergaderagenda geopend
     meeting_minutes: Notulen van de vergadering bewerkt
     meeting_minutes_created: Notulen gemaakt
+  error_notification: "Failed to send notification."
   error_notification_with_errors: "Notificatie verzenden mislukt. De volgende geadresseerden konden niet worden gemeld: %{recipients}"
   label_meeting: "Vergadering"
   label_meeting_plural: "Vergaderingen"
@@ -118,6 +119,7 @@ nl:
   label_meeting_date_time: "Datum/Tijd"
   label_meeting_date_and_time: "Datum en tijd"
   label_meeting_diff: "Diff"
+  label_meeting_send_updates: "Send email calendar updates"
   label_recurring_meeting: "Terugkerende vergadering"
   label_recurring_meeting_part_of: "Deel van een vergaderreeks"
   label_recurring_meeting_new: "Nieuwe terugkerende vergadering"
@@ -214,7 +216,7 @@ nl:
         body: "The meeting '%{title}' has been rescheduled by %{actor}."
         old_date_time: "Oude datum/tijd"
         new_date_time: "Nieuwe datum/tijd"
-    label_mail_all_participants: "E-mail verzenden naar alle deelnemers"
+    label_mail_all_participants: "Email calendar invite to all participants"
     types:
       one_time: "Eenmalig"
       recurring: "Terugkerend"
@@ -257,8 +259,49 @@ nl:
         caption: If your agenda outcomes contain confidential information, you can choose to not include them in the export.
       footer_text:
         label: Footer text
-        caption: This text will appear on every page on the right of the footer.
+        caption: This text will appear on every page at the center of the footer.
       submit_button: Download
+    notifications:
+      sidepanel:
+        title: "Email calendar updates"
+        state:
+          disabled: "Disabled."
+          enabled: "Enabled."
+        description:
+          disabled: "Participants will not receive an email informing them of changes."
+          enabled: "All participants will receive updated calendar invites via email informing them of changes."
+          change_via_template: "To change this, edit the series template."
+        button:
+          disable: "Disable"
+          enable: "Enable"
+      dialog:
+        title:
+          enable: "Enable email calendar updates?"
+          disable: "Disable email calendar updates?"
+        message:
+          enable: >
+            All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants. Once enabled, an email will be sent out immediately to all participants.
+          disable: >
+            Participants will no longer receive updated calendar invites via email when there are changes to the meeting date, time, location or participants. If they already had an invite for this meeting, it might no longer be accurate.
+        confirm_label:
+          enable: "Enable email updates"
+          disable: "Disable email updates"
+      banner:
+        onetime:
+          enabled: >
+            All participants will receive updated calendar invites via email informing them of your changes.
+          disabled: >
+            Email calendar updates are disabled. Participants will not receive an email informing them of your changes.
+        occurrence:
+          enabled: >
+            Email calendar updates are enabled for the meeting series. All participants will receive updated calendar invites informing them of your changes to this occurrence.
+          disabled: >
+            Email calendar updates are disabled for the meeting series. Participants will not receive an email informing them of your changes to this occurrence.
+        template:
+          enabled: >
+            Email calendar updates are enabled for the meeting series. All participants will receive updated calendar invites informing them of your changes to this template or to individual occurrences.
+          disabled: >
+            Email calendar updates are disabled for the meeting series. Participants will not receive an email informing them of your changes to this template or to individual occurrences.
   meeting_section:
     untitled_title: "Naamloze sectie"
     delete_confirmation: "Deleting the section will also delete all of its agenda items. Are you sure you want to do this?"
@@ -346,7 +389,7 @@ nl:
       confirm_button: "Cancel occurrence"
     end_series_dialog:
       title: "Vergaderreeks beëindigen"
-  notice_successful_notification: "Notificatie succesvol verzonden"
+  notice_successful_notification: "Email calendar update sent to all participants"
   notice_timezone_missing: Geen tijdzone is ingesteld en %{zone} is aangenomen. Om uw tijdzone te kiezen, klik dan hier.
   notice_meeting_updated: "Deze pagina is door iemand anders bijgewerkt. Herlaad om wijzigingen te bekijken."
   permission_create_meetings: "Creëer vergaderingen"
@@ -389,6 +432,8 @@ nl:
   label_agenda_item_undisclosed_wp: "Werkpakket #%{id} niet zichtbaar"
   label_agenda_item_deleted_wp: "Verwijderde verwijzing naar het werkpakket"
   label_agenda_item_actions: "Agenda items acties"
+  label_agenda_item_move_to_next_title: "Move to next meeting?"
+  label_agenda_item_move: "Move"
   label_agenda_item_move_to_next: "Move to next meeting"
   label_agenda_item_move_to_backlog: "Move to backlog"
   label_agenda_item_move_to_current_meeting: "Move to current meeting"
@@ -459,9 +504,12 @@ nl:
   text_add_work_package_to_meeting_description: "Een werkpakket kan worden toegevoegd aan één of meerdere vergaderingen voor bespreking. Eventuele notities zijn hier ook zichtbaar."
   text_agenda_item_no_notes: "Geen aantekeningen voorzien"
   text_agenda_item_not_editable_anymore: "Dit agendapunt kan niet meer bewerkt worden."
-  text_agenda_item_move_next_meeting: "Are you sure you want to move this to the next meeting on %{date} at %{time}?"
+  text_agenda_item_move_next_meeting: "This item will be moved to the next meeting on %{date} at %{time}."
   text_agenda_item_moved_to_next_meeting: "Agenda item moved to the next meeting, on %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "Dit werkpakket staat nog niet op de agenda van een komende vergadering."
   text_agenda_item_move_next_meeting_cancelled: "Unable to move to the next meeting since it has been cancelled."
   text_work_package_add_to_meeting_hint: 'Gebruik de knop "Aan vergadering toevoegen" om dit werkpakket aan een komende vergadering toe te voegen.'
   text_work_package_has_no_past_meeting_agenda_items: "Dit werkpakket werd tijdens een vorige vergadering niet genoemd."
+  text_email_updates_muted: "Email calendar updates are muted. Participants will not receive updated invites via email when you make changes."
+  text_email_updates_enabled: "Email calendar updates are enabled. All participants will receive updated invites via email when you make changes."
+

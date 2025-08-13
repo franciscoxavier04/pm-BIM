@@ -207,7 +207,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
   end
   let(:options) do
     {
-      footer_text_right: project.name
+      footer_text: project.name
     }
   end
   let(:exporter) do
@@ -291,7 +291,8 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
           "amet", ", consetetur sadipscing elitr.", " ", "@OpenProject Admin",
           "Image Caption",
           "Foo",
-          "1", export_date_formatted, project.name
+          "1", export_date_formatted, project.name,
+          "2", export_date_formatted, project.name
         ].flatten.join(" ")
         expect(result).to eq(expected_result)
         expect(result).not_to include("DisabledCustomField")
@@ -471,6 +472,8 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
         [
           *expected_details,
           label_title(:description),
+          "1", export_date_formatted, project.name,
+
           "Project attributes and labels",
           supported_project_embeds.map do |embed|
             [Project.human_attribute_name(
@@ -478,9 +481,6 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
             ), embed[1]]
           end,
           "Custom field boolean", I18n.t(:general_text_Yes),
-
-          "1", export_date_formatted, project.name,
-
           "Custom field rich text", "[#{I18n.t('export.macro.rich_text_unsupported')}]",
           "Custom field hidden",
           "No replacement of:",

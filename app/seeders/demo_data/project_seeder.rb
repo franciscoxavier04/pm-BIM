@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 
 # OpenProject is an open source project management software.
@@ -33,7 +35,8 @@ module DemoData
 
     self.needs = WorkPackageSeeder.needs + [
       BasicData::ProjectRoleSeeder,
-      BasicData::GlobalRoleSeeder
+      BasicData::GlobalRoleSeeder,
+      BasicData::ProjectPhaseDefinitionSeeder
     ]
 
     def seed_data!
@@ -52,6 +55,7 @@ module DemoData
     # override to add additional seeders
     def project_content_seeder_classes
       [
+        DemoData::ProjectPhaseSeeder,
         DemoData::WikiSeeder,
         DemoData::WorkPackageSeeder,
         DemoData::WorkPackageBoardSeeder,

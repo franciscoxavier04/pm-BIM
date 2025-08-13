@@ -43,6 +43,17 @@ module Components
       SeleniumHubWaiter.wait
     end
 
+    def open_tab(tab_id)
+      page.within_test_selector("search-tabs") do
+        name = tab_id.is_a?(Symbol) ? OpenProject::GlobalSearch.tab_name(tab_id.to_s) : tab_id
+        click_on(name)
+      end
+    end
+
+    def expect_active_tab(id)
+      expect(page).to have_css("#{page.test_selector("search-tab-#{id}")}[aria-current]")
+    end
+
     def expect_open
       expect(page).to have_selector(selector)
     end

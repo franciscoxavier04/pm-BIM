@@ -63,7 +63,6 @@ es:
         primary-button-color: "Botón primario"
         accent-color: "Acento"
         header-bg-color: "Fondo de encabezado"
-        header-item-bg-hover-color: "Fondo de encabezado al mantener el cursor"
         main-menu-bg-color: "Fondo del menú principal"
         main-menu-bg-selected-background: "Menú principal seleccionado"
       custom_colors: "Colores personalizados"
@@ -71,10 +70,6 @@ es:
       instructions:
         primary-button-color: "Color de acento fuerte, utilizado para el botón más importante de una pantalla."
         accent-color: "Color para los enlaces y otros elementos resaltados decentemente."
-        header-item-bg-hover-color: "Color de fondo de los elementos interactivos del encabezado cuando se mantiene el ratón sobre estos."
-        header-item-font-color: "Color de fuente de los elementos interactivos del encabezado."
-        header-item-font-hover-color: "Color de fuente de los elementos interactivos del encabezado cuando se mantiene el ratón sobre estos."
-        header-border-bottom-color: "Línea fina debajo del encabezado. Deje este campo vacío si no quiere que se muestre ninguna línea."
         main-menu-bg-color: "Color de fondo del menú lateral izquierdo."
       theme_warning: Al cambiar el tema, se sobrescribirá su estilo personalizado y, como consecuencia, se perderá el diseño. ¿Seguro que quiere continuar?
     enterprise:
@@ -133,8 +128,8 @@ es:
       form:
         auth_provider_description: "Este es el servicio que los usuarios añadidos por el proveedor SCIM utilizarán para autenticarse en OpenProject."
         authentication_method_description_html: "Así es como el cliente SCIM se autentica en OpenProject. Asegúrese de que los tokens OAuth incluyen el ámbito <code>scim_v2</code>."
-        description_html: 'Consulte nuestra <a href="%{docs_url}">documentación sobre la configuración de clientes SCIM</a> para obtener más información sobre estas opciones de configuración.'
-        jwt_sub_description_html: 'Por ejemplo, para Keycloak, se trata del UUID de la cuenta de servicio asociada al cliente SCIM. Consulte <a href="%{docs_url}">nuestra documentación</a> para saber cómo encontrar la reclamación del asunto para su caso de uso.'
+        description: "Consulte nuestra [documentación sobre la configuración de clientes SCIM](docs_url) para obtener más información sobre estas opciones de configuración."
+        jwt_sub_description: "Por ejemplo, para Keycloak, se trata del UUID de la cuenta de servicio asociada al cliente SCIM. Consulte [nuestra documentación](docs_url) para saber cómo encontrar la reclamación del asunto para su caso de uso."
         name_description: "Elija un nombre que ayude a otros administradores a entender mejor por qué se configuró este cliente."
       index:
         description: "Los clientes SCIM configurados aquí pueden interactuar con la API del servidor SCIM de OpenProject para aprovisionar, actualizar y desaprovisionar cuentas y grupos de usuarios."
@@ -361,19 +356,34 @@ es:
       parent: "Principal"
       blueprint: "Plano de patrón"
   global_search:
+    title:
+      all_projects: 'Buscar «%{search_term}» en todos los proyectos'
+      current_project: 'Buscar «%{search_term}» en %{project_name}'
+      project_and_subprojects: 'Buscar «%{search_term}» en %{project_name} y en todos los subproyectos'
     placeholder: "Buscar en %{app_title}"
     overwritten_tabs:
       all: "Todos"
       messages: "Foro"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Grupos sincronizados"
     index:
-      no_results_title_text: No hay grupos.
-      no_results_content_text: Crear un nuevo grupo
+      description: Al agrupar a los usuarios, puede añadirlos como miembros a los mismos proyectos o asignarles los mismos roles globales.
+    table_component:
+      blank_slate:
+        description: Puede definir grupos de usuarios con nombres específicos
+        title: Aún no hay grupos configurados
+      user_count: Número de usuarios
     users:
       no_results_title_text: Actualmente no hay usuarios que formen parte de este grupo.
     memberships:
       no_results_title_text: Actualmente no hay proyectos que formen parte de este grupo.
+    synchronized_groups:
+      blankslate:
+        action: Ajustes de autenticación
+        description: Cuando este grupo se sincronice automáticamente con grupos de proveedores de identidad externos como OpenID, aparecerán aquí. Puede configurar esto en sus ajustes de autenticación.
+        title: Aún no hay grupos sincronizados
   incoming_mails:
     ignore_filenames: >
       Especifica una lista de nombres a ignorar al procesar archivos adjuntos de emails entrantes (por ejemplo, firmas o iconos). Introduce un nombre de archivo por línea.
@@ -707,9 +717,8 @@ es:
             project: "Proyecto"
         pattern:
           label: "Patrón del asunto"
-          caption_with_supported_attributes_link: Cree patrones añadiendo texto o escriba «/» para buscar %{link}.
+          caption: Cree patrones añadiendo texto o escriba «/» para buscar [atributos admitidos](attributes_url).
           insert_as_text: "No se encontraron atributos. Añadir como texto: «%{word}»"
-          supported_attributes_link: "atributos admitidos"
       export_configuration:
         tab: "Generar PDF"
         intro: "Seleccione qué plantillas de las disponibles desea habilitar para este tipo. La plantilla determina el diseño y los atributos visibles en el PDF exportado de un paquete de trabajo que utilice este tipo. La primera plantilla de la lista se selecciona por defecto."
@@ -1107,7 +1116,6 @@ es:
       role:
         permissions: "Permisos"
       scim_client:
-        auth_provider: "Proveedor de autenticación"
         authentication_method: "Método de autenticación"
         jwt_sub: "Reclamación de asunto"
       status:
@@ -1239,6 +1247,7 @@ es:
         error_unauthorized: "no se puede acceder."
         error_readonly: "se intentó escribir pero no se puede escribir."
         error_conflict: "La información ha sido actualizada por al menos otro usuario mientras tanto."
+        error_not_found: "no encontrado."
         email: "no es una dirección de correo válida."
         empty: "No puede estar vacío."
         enterprise_plan_required: "requiere al menos el plan %{plan_name}."
@@ -1257,6 +1266,7 @@ es:
         inclusion_nested: "no está establecido en uno de los valores permitidos en la ruta '%{path}'."
         invalid: "no es válido."
         invalid_characters: "contiene caracteres no válidos."
+        not_allowed_custom_fields_referenced: "contiene campos personalizados que no están permitidos: %{custom_fields}."
         invalid_url: "no es una URL válida."
         invalid_url_scheme: "no es un protocolo admitido (permitidos: %{allowed_schemes})."
         less_than_or_equal_to: "debe ser menor o igual a %{count}."
@@ -1398,8 +1408,6 @@ es:
           cannot_be_a_non_working_day: "no puede ser un día no laborable."
         query:
           attributes:
-            project:
-              error_not_found: "no encontrado"
             public:
               error_unauthorized: "- El usuario no tiene permiso para crear vistas públicas."
             group_by:
@@ -1439,10 +1447,8 @@ es:
             circular_dependency: "La relación crea un bucle de relaciones."
           attributes:
             to_id:
-              error_not_found: "no se encuentra o no es visible."
               error_readonly: "no se puede cambiar para las relaciones existentes."
             from_id:
-              error_not_found: "no se encuentra o no es visible."
               error_readonly: "no se puede cambiar para las relaciones existentes."
         repository:
           not_available: "El proveedor SMC no está disponible"
@@ -1582,10 +1588,6 @@ es:
                 description: "'La confirmación de la contraseña' debe coincidir con la ingresada en el campo 'Nueva contraseña'."
             status:
               invalid_on_create: "no es un estado válido para nuevos usuarios."
-            ldap_auth_source:
-              error_not_found: "no encontrado"
-            auth_source:
-              error_not_found: "no encontrado"
         member:
           principal_blank: "Por favor seleccione al menos un usuario o grupo."
           role_blank: "necesita ser asignado."
@@ -1610,6 +1612,9 @@ es:
     models:
       attachment: "Archivo"
       attribute_help_text: "Texto de ayuda para atributo"
+      auth_provider:
+        one: "Proveedor de autenticación"
+        other: "Proveedores de autenticación"
       category: "Categoría"
       comment: "Comentario"
       custom_action: "Acción personalizada"
@@ -1795,6 +1800,7 @@ es:
     title: "Título"
     type: "Tipo"
     typeahead: "Autocompletar"
+    uid: "Identificador único"
     updated_at: "Actualizada el"
     updated_on: "Actualizada el"
     uploader: "Cargador"
@@ -2541,7 +2547,7 @@ es:
       aggregation: "Agregación"
       api_and_webhooks: "API y webhooks"
     quick_add:
-      label: "Abrir menú de adición rápida"
+      label: "Añadir…"
   my_account:
     access_tokens:
       no_results:
@@ -2841,6 +2847,7 @@ es:
   label_gantt_chart_plural: "Diagramas de Gantt"
   label_general: "General"
   label_generate_key: "Generar una contraseña"
+  label_global_modules: "Módulos globales"
   label_global_roles: "Roles globales"
   label_git_path: "Ruta al directorio .git"
   label_greater_or_equal: ">="
@@ -2925,6 +2932,7 @@ es:
   label_manage: "Administrar"
   label_manage_groups: "Administrar grupos"
   label_managed_repositories_vendor: "Repositorios de %{vendor} administrados"
+  label_mathematical_operators: "Operadores aritméticos"
   label_max_size: "Tamaño máximo"
   label_me: "mi"
   label_member_new: "Nuevo miembro"
@@ -2984,6 +2992,7 @@ es:
   label_no_due_date: "sin fecha de finalización"
   label_no_start_date: "sin fecha de inicio"
   label_no_parent_page: "Sin página principal"
+  label_notification_center_plural: "Notificaciones"
   label_nothing_display: "Nada que mostrar"
   label_nobody: "nadie"
   label_not_configured: "Sin configurar"
@@ -3192,6 +3201,7 @@ es:
   label_user_mail_option_only_my_events: "Sólo para cosas que controlo o en las que participo"
   label_user_mail_option_only_owner: "Sólo para cosas de las que soy el dueño"
   label_user_mail_option_selected: "Únicamente para cualquier evento de los proyectos seleccionados"
+  label_user_menu: "Menú de usuario"
   label_user_new: "Nuevo usuario"
   label_user_plural: "Usuarios"
   label_user_search: "Búsqueda de usuario"

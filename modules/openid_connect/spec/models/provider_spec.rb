@@ -31,11 +31,14 @@ require "spec_helper"
 
 RSpec.describe OpenIDConnect::Provider do
   let(:provider) do
-    create(:oidc_provider, options: {
-             "grant_types_supported" => supported_grant_types
-           })
+    create(:oidc_provider, options: { "grant_types_supported" => supported_grant_types },
+                           claims:,
+                           sync_groups:,
+                           groups_claim: "the-groups")
   end
   let(:supported_grant_types) { %w[authorization_code implicit] }
+  let(:claims) { "" }
+  let(:sync_groups) { false }
 
   describe "#token_exchange_capable?" do
     subject { provider.token_exchange_capable? }
@@ -55,10 +58,59 @@ RSpec.describe OpenIDConnect::Provider do
     end
   end
 
+  describe "#group_matchers" do
+    subject { provider.group_matchers }
+
+    let(:provider) { create(:oidc_provider, group_prefixes:, group_regexes:) }
+
+    context "when prefixes and regular expressions were never defined" do
+      let(:group_prefixes) { nil }
+      let(:group_regexes) { nil }
+
+      it { is_expected.to eq([/(.+)/]) }
+    end
+
+    context "when prefixes and regular expressions are empty" do
+      let(:group_prefixes) { [] }
+      let(:group_regexes) { [] }
+
+      it { is_expected.to eq([/(.+)/]) }
+    end
+
+    context "when prefixes were defined" do
+      let(:group_prefixes) { ["a_", "b_"] }
+      let(:group_regexes) { [] }
+
+      it { is_expected.to eq([/^a_(.+)$/, /^b_(.+)$/]) }
+
+      context "and when prefix contains regular expression special characters" do
+        let(:group_prefixes) { ["pre.fix", "(prefix)"] }
+
+        it { is_expected.to eq([/^pre\.fix(.+)$/, /^\(prefix\)(.+)$/]) }
+      end
+    end
+
+    context "when regular expressions were defined" do
+      let(:group_prefixes) { [] }
+      let(:group_regexes) { ["[a-z_]+", "^specific_group_name$"] }
+
+      it { is_expected.to eq([/[a-z_]+/, /^specific_group_name$/]) }
+    end
+
+    context "when prefixes and regular expressions were defined" do
+      let(:group_prefixes) { ["a"] }
+      let(:group_regexes) { [/[b]/] }
+
+      it "prefers prefixes over regular expressions" do
+        expect(subject).to eq([/^a(.+)$/])
+      end
+    end
+  end
+
   describe "#to_h" do
     subject { provider.to_h }
 
-    let(:options) { raise "define me!" }
+    let(:options) { {} }
 
     before do
       options.stringify_keys.each do |opt, value|
@@ -66,11 +118,39 @@ RSpec.describe OpenIDConnect::Provider do
       end
     end
 
-    describe "with claims" do
-      let(:options) { { claims: "login" } }
+    it "includes empty claims by default" do
+      expect(subject[:claims]).to eq("{}")
+    end
 
-      it "includes the claims" do
-        expect(subject[:claims]).to eq "login"
+    context "when claims were defined" do
+      let(:claims) { '{"id_token":{"taste":null}}' }
+
+      it "includes the defined claims" do
+        expect(subject[:claims]).to eq(claims)
+      end
+    end
+
+    context "when group sync is enabled" do
+      let(:sync_groups) { true }
+
+      it "requests the groups claim as voluntary" do
+        expect(subject[:claims]).to eq('{"id_token":{"the-groups":null}}')
+      end
+
+      context "and when other claims were defined manually" do
+        let(:claims) { '{"id_token":{"taste":null}}' }
+
+        it "merges the manual claims and the groups claim" do
+          expect(subject[:claims]).to eq('{"id_token":{"the-groups":null,"taste":null}}')
+        end
+      end
+
+      context "and when the groups claim was defined manually" do
+        let(:claims) { '{"id_token":{"the-groups":{"essential":true}}}' }
+
+        it "takes the manual definition of the groups claim with precedence" do
+          expect(subject[:claims]).to eq(claims)
+        end
       end
     end
 

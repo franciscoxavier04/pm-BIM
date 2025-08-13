@@ -75,6 +75,7 @@ export type ViewPartitionState = '-split'|'-left-only'|'-right-only';
     { provide: HalResourceNotificationService, useClass: WorkPackageNotificationService },
     QueryParamListenerService,
   ],
+  standalone: false,
 })
 export class PartitionedQuerySpacePageComponent extends WorkPackagesViewBase implements OnInit, OnDestroy {
   @InjectField() I18n!:I18nService;

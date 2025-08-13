@@ -55,10 +55,10 @@ import { HalResourceService } from 'core-app/features/hal/services/hal-resource.
 @Component({
   selector: 'board-inline-add-autocompleter',
   templateUrl: './board-inline-add-autocompleter.html',
-
   // Allow styling the embedded ng-select
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./board-inline-add-autocompleter.sass'],
+  standalone: false,
 })
 export class BoardInlineAddAutocompleterComponent implements AfterViewInit {
   readonly text = {

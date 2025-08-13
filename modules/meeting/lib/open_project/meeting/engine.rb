@@ -62,8 +62,8 @@ module OpenProject::Meeting
                    contract_actions: { meetings: %i[create] }
         permission :edit_meetings,
                    {
-                     meetings: %i[edit cancel_edit update update_title change_state
-                                  details_dialog update_details update_participants],
+                     meetings: %i[edit cancel_edit update update_title change_state toggle_notifications_dialog
+                                  details_dialog update_details update_participants toggle_notifications],
                      recurring_meetings: %i[edit cancel_edit update update_title details_dialog update_details
                                             notify end_series end_series_dialog],
                      work_package_meetings_tab: %i[add_work_package_to_meeting_dialog add_work_package_to_meeting]
@@ -85,7 +85,7 @@ module OpenProject::Meeting
                    {
                      meetings: %i[change_state],
                      meeting_agenda_items: %i[new cancel_new create edit cancel_edit update destroy drop move
-                                              move_to_next_meeting],
+                                              move_to_next_meeting move_to_next_meeting_dialog],
                      meeting_sections: %i[new cancel_new create edit cancel_edit update destroy drop move
                                           clear_backlog clear_backlog_dialog]
                    },
@@ -183,7 +183,7 @@ module OpenProject::Meeting
       PermittedParams.permit(:search, :meetings)
 
       ::Exports::Register.register do
-        single(::Meeting, Meetings::Exporter)
+        single(::Meeting, Meetings::PDF::Exporter)
       end
     end
 

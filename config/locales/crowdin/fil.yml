@@ -63,7 +63,6 @@ fil:
         primary-button-color: "Primary button"
         accent-color: "Accent"
         header-bg-color: "Header background"
-        header-item-bg-hover-color: "Header background on hover"
         main-menu-bg-color: "Main menu background"
         main-menu-bg-selected-background: "Main menu when selected"
       custom_colors: "Naka-kustom ng mga kukay"
@@ -71,10 +70,6 @@ fil:
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
         accent-color: "Color for links and other decently highlighted elements."
-        header-item-bg-hover-color: "Ang nakapalibot na kulay ng madaling pindutin aytem ng header kung naka-hover gamit ang mouse."
-        header-item-font-color: "Ang kulay ng font sa madaling pinduting header ng mga aytem."
-        header-item-font-hover-color: "Ang kulay ng font ng madaling pinduting mga aytem kung naka-hover gamit ang mouse."
-        header-border-bottom-color: "Manipis na kinya sa ibaba ng header. Iwanan itong patlang walang laman kung ayaw mo sa kahit anong linya."
         main-menu-bg-color: "Kabilang kaliwa ang kulay ng pagpipiliang nakapalibot na kulay."
       theme_warning: Changing the theme will overwrite you custom style. The design will then be lost. Are you sure you want to continue?
     enterprise:
@@ -133,8 +128,8 @@ fil:
       form:
         auth_provider_description: "This is the service that users added by the SCIM provider will use to authenticate in OpenProject."
         authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM clients</a> for more information on these configuration options.'
-        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
+        description: "Please refer to our [documentation on configuring SCIM clients](docs_url) for more information on these configuration options."
+        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
         name_description: "Choose a name that will help other admins better understand why this client was configured."
       index:
         description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
@@ -363,19 +358,34 @@ fil:
       parent: "Magulang"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
       all: "All"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Sa kasalukuyan ay walang mga grupo.
-      no_results_content_text: Gumawa ng bagong grupo
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Sa kasalukuyan ay walang parte ng mga users sa grupong ito.
     memberships:
       no_results_title_text: Sa kasalukuyan ay walang parte ng mga proyekto sa grupong ito.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Specify a list of names to ignore when processing attachments for incoming mails (e.g., signatures or icons). Enter one filename per line.
@@ -709,9 +719,8 @@ fil:
             project: "Proyekto"
         pattern:
           label: "Subject pattern"
-          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
+          caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
-          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1110,7 +1119,6 @@ fil:
       role:
         permissions: "Mga pahintulot"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1242,6 +1250,7 @@ fil:
         error_unauthorized: "may not be accessed."
         error_readonly: "was attempted to be written but is not writable."
         error_conflict: "Ang impormasyon ay naka-update sa kahit hindi baba isa o."
+        error_not_found: "not found."
         email: "is not a valid email address."
         empty: "hindi pwedeng blanko."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1260,6 +1269,7 @@ fil:
         inclusion_nested: "is not set to one of the allowed values at path '%{path}'."
         invalid: "ay hindi balido."
         invalid_characters: "contains invalid characters."
+        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
         invalid_url: "ay hindi balidong URL."
         invalid_url_scheme: "ay hindi suportado ng protocol (pinahintulutan: %{allowed_schemes})."
         less_than_or_equal_to: "dapat ay hindi baba o katumbas sa %{count}."
@@ -1401,8 +1411,6 @@ fil:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "hindi nakita"
             public:
               error_unauthorized: "- The user has no permission to create public views."
             group_by:
@@ -1442,10 +1450,8 @@ fil:
             circular_dependency: "Ang relasyon ay lumilikha ng mga bilog na relasyon."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "Ang SCM vendor ay hindi available"
@@ -1585,10 +1591,6 @@ fil:
                 description: "'Kompirmasyon ng password' ay dapat tugma sa input ng 'Bagong password' na patlang."
             status:
               invalid_on_create: "ay hindi isang balidong estado para sa mga bagong gumagamit."
-            ldap_auth_source:
-              error_not_found: "hindi nakita"
-            auth_source:
-              error_not_found: "hindi nakita"
         member:
           principal_blank: "Mangayring pumili na kahit isang gumagamit o grupo."
           role_blank: "need to be assigned."
@@ -1613,6 +1615,9 @@ fil:
     models:
       attachment: "File"
       attribute_help_text: "Tekstong tulong na katangian"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "Kategorya"
       comment: "Komento"
       custom_action: "Custom aksyon"
@@ -1798,6 +1803,7 @@ fil:
     title: "Pamagat"
     type: "Uri"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Naka-update sa"
     updated_on: "Naka-update sa"
     uploader: "Uploader"
@@ -2544,7 +2550,7 @@ fil:
       aggregation: "Aggregation"
       api_and_webhooks: "API and webhooks"
     quick_add:
-      label: "Open quick add menu"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2844,6 +2850,7 @@ fil:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Pangkalahatan"
   label_generate_key: "Bumuo ng susi"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: "Landas sa .git direktoryo"
   label_greater_or_equal: ">=="
@@ -2928,6 +2935,7 @@ fil:
   label_manage: "Manage"
   label_manage_groups: "Pamahalain ang mga grupo"
   label_managed_repositories_vendor: "Pamahalain ang mga %{vendor} respository"
+  label_mathematical_operators: "Mathematical operators"
   label_max_size: "Pinakamataas na laki"
   label_me: "ako"
   label_member_new: "Bagong miyembro"
@@ -2987,6 +2995,7 @@ fil:
   label_no_due_date: "no finish date"
   label_no_start_date: "walang simulang petsa"
   label_no_parent_page: "No parent page"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Walang maipakita"
   label_nobody: "walang sinuman"
   label_not_configured: "Not configured"
@@ -3195,6 +3204,7 @@ fil:
   label_user_mail_option_only_my_events: "Sa mga bagay ako tumingin o kasama ako sa"
   label_user_mail_option_only_owner: "Sa mga bagay lamg ako na ako ang may-ari ng"
   label_user_mail_option_selected: "Sa kahit anong kaganapan sa mga napiling proyekto lamang"
+  label_user_menu: "User menu"
   label_user_new: "Bagong gumagamit"
   label_user_plural: "Mga gumagamit"
   label_user_search: "Maghanap para sa gumagamit"

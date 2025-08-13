@@ -63,7 +63,6 @@ tr:
         primary-button-color: "Birincil düğme"
         accent-color: "Vurgu rengi"
         header-bg-color: "Üstbilgi arka planı"
-        header-item-bg-hover-color: "Fareyle üzerine gelindiğinde başlık arka planı"
         main-menu-bg-color: "Ana menü arka planı"
         main-menu-bg-selected-background: "Seçildiğinde ana menü"
       custom_colors: "Özel renkler"
@@ -71,10 +70,6 @@ tr:
       instructions:
         primary-button-color: "Güçlü vurgu rengi, genellikle ekrandaki en önemli düğme için kullanılır."
         accent-color: "Bağlantılar ve diğer uygun biçimde vurgulanmış öğeler için renk."
-        header-item-bg-hover-color: "Tıklanabilir başlık bileşenleri nin üzerine gelindiğinde kullanılacak arka plan rengi."
-        header-item-font-color: "Tıklanabilir başlık bileşenleri için yazı rengi."
-        header-item-font-hover-color: "Tıklanabilir başlık bileşenleri nin üzerine gelindiğinde kullanılacak yazı rengi."
-        header-border-bottom-color: "Başlığının altında ince bir çizgi. Bu alanda herhangi bir hat istemiyorsanız boş bırakın."
         main-menu-bg-color: "Sol taraftaki menünün arka plan rengi."
       theme_warning: Temayı değiştirmek size özel stilin üzerine yazacaktır. Tasarım daha sonra kaybolacak. Devam etmek istediğine emin misin?
     enterprise:
@@ -133,8 +128,8 @@ tr:
       form:
         auth_provider_description: "This is the service that users added by the SCIM provider will use to authenticate in OpenProject."
         authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM clients</a> for more information on these configuration options.'
-        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
+        description: "Please refer to our [documentation on configuring SCIM clients](docs_url) for more information on these configuration options."
+        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
         name_description: "Choose a name that will help other admins better understand why this client was configured."
       index:
         description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
@@ -363,19 +358,34 @@ tr:
       parent: "Üst"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "%{app_title} içinde ara"
     overwritten_tabs:
       all: "Hepsi"
       messages: "Forum"
       wiki_pages: "Viki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Şu anda hiç grup bulunmamakta.
-      no_results_content_text: Yeni bir grup oluştur
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Şu anda bu gruba kayıtlı kullanıcı bulunmamakta.
     memberships:
       no_results_title_text: Şu anda bu grubun bir parçası olan, bir proje bulunmamakta.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Gelen postalar için ekleri işlerken yok sayılacak adların bir listesini belirtin (örneğin, imzalar veya simgeler). Her satıra bir dosya adı girin.
@@ -708,9 +718,8 @@ tr:
             project: "Proje"
         pattern:
           label: "Konu deseni"
-          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
+          caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
-          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "PDF oluşturma"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1109,7 +1118,6 @@ tr:
       role:
         permissions: "İzinler"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1159,9 +1167,9 @@ tr:
       user_preference:
         header_look_and_feel: "Görünüm ve his"
         header_alerts: "Uyarılar"
-        button_update_look_and_feel: "Görünümü ve hissi güncelleyin"
+        button_update_look_and_feel: "Görünümü ve hissi güncelle"
         button_update_alerts: "Uyarıları güncelle"
-        comments_sorting: "İş paketi faaliyetini aşağıdakilere göre sıralanmış olarak görüntüleyin"
+        comments_sorting: "İş paketi faaliyetini aşağıdakilere göre sıralanmış olarak görüntüle"
         disable_keyboard_shortcuts: "Klavye kısayollarını devre dışı bırak"
         disable_keyboard_shortcuts_caption_html: |-
           Ekran okuyucu kullanıyorsanız veya bir eylemi yanlışlıkla bir kısayolla tetiklemekten kaçınmak istiyorsanız varsayılan <a href="%{href}">klavye kısayollarını</a> devre dışı bırakmayı seçebilirsiniz.
@@ -1241,6 +1249,7 @@ tr:
         error_unauthorized: "erişilemez."
         error_readonly: "yazılmaya çalışıldı fakat yazılabilir değil."
         error_conflict: "Bu arada, bilgi en az bir başka kullanıcı tarafından güncellendi."
+        error_not_found: "not found."
         email: "Geçerli bir e-posta adresi değil.\n"
         empty: "boş olamaz."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1259,6 +1268,7 @@ tr:
         inclusion_nested: "'%{path}' yolunda izin verilen değerlerden birine ayarlanmamış."
         invalid: "geçersizdir."
         invalid_characters: "contains invalid characters."
+        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
         invalid_url: "geçerli bir adres değil."
         invalid_url_scheme: "bu protokol desteklenmiyor (izin: %{allowed_schemes})."
         less_than_or_equal_to: "%{count} 'ten küçük veya bu değere eşit olmalıdır."
@@ -1400,8 +1410,6 @@ tr:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "bulunamadı"
             public:
               error_unauthorized: "- Kullanıcı herkese açık görünüm oluşturma yetkisine sahip değil."
             group_by:
@@ -1441,10 +1449,8 @@ tr:
             circular_dependency: "İlişki, bir ilişki çemberi oluşturur."
           attributes:
             to_id:
-              error_not_found: "bulunamadı veya görünmüyor."
               error_readonly: "mevcut ilişkiler için değiştirilemez."
             from_id:
-              error_not_found: "bulunamadı veya görünmüyor."
               error_readonly: "mevcut ilişkiler için değiştirilemez."
         repository:
           not_available: "SCM satıcısı yok"
@@ -1584,10 +1590,6 @@ tr:
                 description: "\"Parola onayı\" 'yeni parola' alanı girişi aynı olmalıdır."
             status:
               invalid_on_create: "yeni kullanıcılar için geçerli bir durum değil."
-            ldap_auth_source:
-              error_not_found: "bulunamadı"
-            auth_source:
-              error_not_found: "bulunamadı"
         member:
           principal_blank: "Lütfen en az bir kullanıcı veya grup seçin."
           role_blank: "atanması gerek."
@@ -1612,6 +1614,9 @@ tr:
     models:
       attachment: "Dosya"
       attribute_help_text: "Öznitelik yardım metni"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "Kategori"
       comment: "Yorum"
       custom_action: "Özel eylem"
@@ -1797,6 +1802,7 @@ tr:
     title: "Başlık"
     type: "Tür"
     typeahead: "Otomatik tamamla"
+    uid: "Unique identifier"
     updated_at: "Güncelleme tarihi"
     updated_on: "Güncelleme tarihi"
     uploader: "Yükleyici"
@@ -2543,7 +2549,7 @@ tr:
       aggregation: "Birleştirme"
       api_and_webhooks: "API ve web kancaları"
     quick_add:
-      label: "Hızlı ekle menüsünü aç"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2843,6 +2849,7 @@ tr:
   label_gantt_chart_plural: "Gantt grafikleri"
   label_general: "Genel"
   label_generate_key: "Anahtar oluştur"
+  label_global_modules: "Global modules"
   label_global_roles: "Genel roller"
   label_git_path: ".git dizininin yolu"
   label_greater_or_equal: ">="
@@ -2927,6 +2934,7 @@ tr:
   label_manage: "Yönet"
   label_manage_groups: "Grupları yönet"
   label_managed_repositories_vendor: "Yönetilen% {satıcı} depoları %{vendor}"
+  label_mathematical_operators: "Mathematical operators"
   label_max_size: "Maksimum boyut"
   label_me: "ben"
   label_member_new: "Yeni Üye"
@@ -2986,6 +2994,7 @@ tr:
   label_no_due_date: "bitiş tarihi yok"
   label_no_start_date: "başlangıç tarihi yok"
   label_no_parent_page: "Üst sayfa yok"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Görüntülenecek bir şey yok"
   label_nobody: "hiçkimse"
   label_not_configured: "Yapılandırılmamış"
@@ -3194,6 +3203,7 @@ tr:
   label_user_mail_option_only_my_events: "Sadece takip ettiğim ya da dahil olduklarım için"
   label_user_mail_option_only_owner: "Sadece sahibi olduğum şeyler için"
   label_user_mail_option_selected: "Yalnızca seçilen projelerdeki herhangi bir etkinlik için"
+  label_user_menu: "User menu"
   label_user_new: "Yeni kullanıcı"
   label_user_plural: "Kullanıcılar"
   label_user_search: "Kullanıcı ara"

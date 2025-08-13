@@ -63,7 +63,6 @@ ja:
         primary-button-color: "プライマリボタン"
         accent-color: "アクセント"
         header-bg-color: "ヘッダの背景"
-        header-item-bg-hover-color: "ホバー時のヘッダの背景"
         main-menu-bg-color: "メインメニューの背景"
         main-menu-bg-selected-background: "選択時のメインメニュー"
       custom_colors: "カスタム色"
@@ -71,10 +70,6 @@ ja:
       instructions:
         primary-button-color: "画面上で最も重要なボタンに使用される強いアクセントカラー。"
         accent-color: "リンクや強調表示された要素の色。"
-        header-item-bg-hover-color: "クリック可能なヘッダー項目にマウスを置いたときの背景色。"
-        header-item-font-color: "クリック可能なヘッダー項目のフォント色。"
-        header-item-font-hover-color: "クリック可能なヘッダー項目にマウスを置いたときのフォント色。"
-        header-border-bottom-color: "ヘッダーの下の細い線。線を引きたくない場合は、このフィールドを空にしてください。"
         main-menu-bg-color: "左サイドメニューの背景色。"
       theme_warning: テーマを変更した場合、カスタムスタイルが上書きされ、失われます。本当に続けますか？
     enterprise:
@@ -133,8 +128,8 @@ ja:
       form:
         auth_provider_description: "This is the service that users added by the SCIM provider will use to authenticate in OpenProject."
         authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM clients</a> for more information on these configuration options.'
-        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
+        description: "Please refer to our [documentation on configuring SCIM clients](docs_url) for more information on these configuration options."
+        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
         name_description: "Choose a name that will help other admins better understand why this client was configured."
       index:
         description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
@@ -361,19 +356,34 @@ ja:
       parent: "親項目"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "%{app_title}で検索"
     overwritten_tabs:
       all: "全て"
       messages: "フォーラム"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: 現在、グループはありません。
-      no_results_content_text: グループを新規作成
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: 現在、このグループのメンバーはいません。
     memberships:
       no_results_title_text: 現在、このグループのプロジェクトはありません。
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       受信メールの添付ファイルを処理するとき、無視する名前の一覧を指定します (例えば、署名またはアイコン)。1 行につき 1 つのファイル名を入力してください。
@@ -700,9 +710,8 @@ ja:
             project: "プロジェクト"
         pattern:
           label: "Subject pattern"
-          caption_with_supported_attributes_link: テキストを追加してパターンを作成するか、 %{link} を検索するために "/" と入力します。
+          caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
-          supported_attributes_link: "サポートされている属性"
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1100,7 +1109,6 @@ ja:
       role:
         permissions: "権限"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1232,6 +1240,7 @@ ja:
         error_unauthorized: "アクセスできません。"
         error_readonly: "書けませんでした。"
         error_conflict: "別のユーザーが同時にデータを更新しています。"
+        error_not_found: "not found."
         email: "is not a valid email address."
         empty: "は空にすることができません。"
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1250,6 +1259,7 @@ ja:
         inclusion_nested: "is not set to one of the allowed values at path '%{path}'."
         invalid: "は不正な値です。"
         invalid_characters: "contains invalid characters."
+        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
         invalid_url: "は有効な URL ではありません。"
         invalid_url_scheme: "はサポートされたプロトコルではありません (可能: %{allowed_schemes})。"
         less_than_or_equal_to: "は%{count}以下の値にしてください。"
@@ -1391,8 +1401,6 @@ ja:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "存在しません"
             public:
               error_unauthorized: "- ユーザーにはパブリックビューを作成する権限がありません。"
             group_by:
@@ -1432,10 +1440,8 @@ ja:
             circular_dependency: "関係が、関係のループを作ります。"
           attributes:
             to_id:
-              error_not_found: "見つからないか、非表示になっています。"
               error_readonly: "既存のリレーションを変更することはできません。"
             from_id:
-              error_not_found: "見つからないか、非表示になっています。"
               error_readonly: "既存のリレーションを変更することはできません。"
         repository:
           not_available: "SCMベンダーは使用できません。"
@@ -1574,10 +1580,6 @@ ja:
                 description: "「パスワードの確認」は、「新しいパスワード」フィールドの入力と一致する必要があります。"
             status:
               invalid_on_create: "新規ユーザーの有効なステータスではありません。"
-            ldap_auth_source:
-              error_not_found: "存在しません"
-            auth_source:
-              error_not_found: "存在しません"
         member:
           principal_blank: "一つ以上のユーザまたはグループを選択してください。"
           role_blank: "を割り当てる必要があります。"
@@ -1601,6 +1603,8 @@ ja:
     models:
       attachment: "ファイル"
       attribute_help_text: "属性のヘルプ テキスト"
+      auth_provider:
+        other: "Authentication providers"
       category: "カテゴリ"
       comment: "コメント"
       custom_action: "カスタムアクション"
@@ -1774,6 +1778,7 @@ ja:
     title: "タイトル"
     type: "タイプ"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "更新日時"
     updated_on: "更新日時"
     uploader: "アップロード"
@@ -2499,7 +2504,7 @@ ja:
       aggregation: "集計"
       api_and_webhooks: "API and webhooks"
     quick_add:
-      label: "クイック追加メニューを開く"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2799,6 +2804,7 @@ ja:
   label_gantt_chart_plural: "ガントチャート"
   label_general: "概要"
   label_generate_key: "キーを生成する"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: ".gitディレクトリへのパス"
   label_greater_or_equal: ">="
@@ -2883,6 +2889,7 @@ ja:
   label_manage: "管理"
   label_manage_groups: "グループを管理"
   label_managed_repositories_vendor: "管理された %{vendor} リポジトリ"
+  label_mathematical_operators: "Mathematical operators"
   label_max_size: "最大サイズ"
   label_me: "自分"
   label_member_new: "新規メンバー"
@@ -2942,6 +2949,7 @@ ja:
   label_no_due_date: "終了日なし"
   label_no_start_date: "開始日なし"
   label_no_parent_page: "親ページはありません"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "表示するものはありません"
   label_nobody: "無記名"
   label_not_configured: "Not configured"
@@ -3150,6 +3158,7 @@ ja:
   label_user_mail_option_only_my_events: "ウォッチまたは関係している事柄のみ"
   label_user_mail_option_only_owner: "自分が作成した事柄のみ"
   label_user_mail_option_selected: "選択したプロジェクトのみのイベントに対して"
+  label_user_menu: "User menu"
   label_user_new: "新規ユーザ"
   label_user_plural: "ユーザ"
   label_user_search: "ユーザーを検索:"

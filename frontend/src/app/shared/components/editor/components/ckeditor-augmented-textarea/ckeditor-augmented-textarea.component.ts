@@ -63,6 +63,7 @@ import { uniqueId } from 'lodash';
 @Component({
   templateUrl: './ckeditor-augmented-textarea.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin implements OnInit {
   // Track form submission "in-flight" state per form, to prevent multiple
@@ -121,6 +122,8 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
     attachments: this.I18n.t('js.label_attachments'),
   };
 
+  private focused = false;
+
   // Reference to the actual ckeditor instance component
   @ViewChild(OpCkeditorComponent, { static: true }) private ckEditorInstance:OpCkeditorComponent;
 
@@ -146,7 +149,7 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
     // Parse the resource if any exists
     this.halResource = this.resource ? this.halResourceService.createHalResource(this.resource, true) : undefined;
 
-    this.formElement = this.element.closest<HTMLFormElement>('form') as HTMLFormElement;
+    this.formElement = this.element.closest('form')!;
 
     this.wrappedTextArea = document.getElementById(this.textAreaId) as HTMLTextAreaElement;
 
@@ -183,6 +186,16 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
       });
   }
 
+  public editorFocused():void {
+    this.focused = true;
+    this.editorFocus.emit();
+  }
+
+  public editorBlurred():void {
+    this.focused = false;
+    this.editorBlur.emit();
+  }
+
   public async saveForm(evt?:SubmitEvent):Promise<void> {
     if (CkeditorAugmentedTextareaComponent.inFlight.has(this.formElement)) {
       return;
@@ -191,7 +204,7 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
     CkeditorAugmentedTextareaComponent.inFlight.set(this.formElement, true);
 
     this.syncToTextarea();
-    window.OpenProject.pageIsSubmitted = true;
+    window.OpenProject.pageState = 'submitted';
 
     setTimeout(() => {
       if (evt?.submitter) {
@@ -212,10 +225,6 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
   }
 
   public setup(editor:ICKEditorInstance) {
-    // Have a hacky way to access the editor from outside of angular.
-    // This is e.g. employed to set the text from outside to reuse the same editor for different languages.
-    jQuery(this.element).data('editor', editor);
-
     this.setupMarkingReadonlyWhenTextareaIsDisabled(editor);
 
     if (this.halResource?.attachments) {
@@ -235,9 +244,17 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
     return editor;
   }
 
-  public syncToTextarea() {
-    window.OpenProject.pageWasEdited = true;
+  public updateContent(value:string) {
+    // Update the page state to edited
+    // but only if we're focused in the editor
+    if (this.focused) {
+      window.OpenProject.pageState = 'edited';
+    }
 
+    this.wrappedTextArea.value = value;
+  }
+
+  public syncToTextarea() {
     try {
       this.wrappedTextArea.value = this.ckEditorInstance.getTransformedContent(true);
     } catch (e) {

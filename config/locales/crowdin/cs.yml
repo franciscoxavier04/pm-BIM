@@ -63,7 +63,6 @@ cs:
         primary-button-color: "Primární tlačítko"
         accent-color: "Odstín"
         header-bg-color: "Pozadí záhlaví"
-        header-item-bg-hover-color: "Pozadí záhlaví při přejetí myší"
         main-menu-bg-color: "Pozadí hlavního menu"
         main-menu-bg-selected-background: "Hlavní menu při výběru"
       custom_colors: "Vlastní barvy"
@@ -71,10 +70,6 @@ cs:
       instructions:
         primary-button-color: "Výrazná akcentní barva, která se používá pro nejdůležitější tlačítko na obrazovce."
         accent-color: "Barva pro odkazy a další decentně zvýrazněné prvky."
-        header-item-bg-hover-color: "Barva pozadí klikacích položek záhlaví při najetí myší."
-        header-item-font-color: "Barva pozadí klikacích položek záhlaví."
-        header-item-font-hover-color: "Barva pozadí klikacích položek záhlaví při najetí myší."
-        header-border-bottom-color: "Tenký řádek pod záhlavím. Ponechte toto pole prázdné, pokud nechcete žádný řádek."
         main-menu-bg-color: "Barva pozadí levého menu."
       theme_warning: Změna motivu přepíše váš vlastní styl. Vzhled pak bude ztracen. Jste si jisti, že chcete pokračovat?
     enterprise:
@@ -133,8 +128,8 @@ cs:
       form:
         auth_provider_description: "This is the service that users added by the SCIM provider will use to authenticate in OpenProject."
         authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM clients</a> for more information on these configuration options.'
-        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
+        description: "Please refer to our [documentation on configuring SCIM clients](docs_url) for more information on these configuration options."
+        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
         name_description: "Choose a name that will help other admins better understand why this client was configured."
       index:
         description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
@@ -363,19 +358,34 @@ cs:
       parent: "Nadřazený"
       blueprint: "Vzhled plánu"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Hledat v %{app_title}"
     overwritten_tabs:
       all: "Vše"
       messages: "Fórum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: V současné době neexistují žádné skupiny.
-      no_results_content_text: Vytvořit novou skupinu
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Momentálně nejsou žádní uživatelé součástí této skupiny.
     memberships:
       no_results_title_text: V současné době nejsou žádné projekty součástí této skupiny.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Zadejte seznam názvů, které budou ignorovány při zpracování příloh pro příchozí poštu (např. podpisy nebo ikony). Zadejte jeden název souboru na řádek.
@@ -723,9 +733,8 @@ cs:
             project: "Projekt"
         pattern:
           label: "Vzor předmětu"
-          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
+          caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
-          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "Vytvořit PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1126,7 +1135,6 @@ cs:
       role:
         permissions: "Práva"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1258,6 +1266,7 @@ cs:
         error_unauthorized: "není přístupný."
         error_readonly: "se pokusil být napsán, ale není zapisovatelný."
         error_conflict: "Informace mezitím aktualizoval alespoň jeden další uživatel."
+        error_not_found: "not found."
         email: "není platná e-mailová adresa"
         empty: "nemůže být prázdné."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1276,6 +1285,7 @@ cs:
         inclusion_nested: "není nastavena na jednu z povolených hodnot na cestě '%{path}'."
         invalid: "je neplatné."
         invalid_characters: "contains invalid characters."
+        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
         invalid_url: "není platná adresa URL."
         invalid_url_scheme: "není podporovaný protokol (povoleny: %{allowed_schemes})."
         less_than_or_equal_to: "musí být menší než nebo rovno %{count}."
@@ -1417,8 +1427,6 @@ cs:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "nenalezeno"
             public:
               error_unauthorized: "- Uživatel nemá oprávnění k vytváření veřejných zobrazení."
             group_by:
@@ -1458,10 +1466,8 @@ cs:
             circular_dependency: "Vztah vytvoří cyklický vztah."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "Prodejce SCM není k dispozici"
@@ -1603,10 +1609,6 @@ cs:
                 description: "\"Potvrzení hesla\" musí odpovídat vstupu v poli \"Nové heslo\"."
             status:
               invalid_on_create: "není platný stav pro nové uživatele."
-            ldap_auth_source:
-              error_not_found: "nenalezeno"
-            auth_source:
-              error_not_found: "nenalezeno"
         member:
           principal_blank: "Zvolte alespoň jednoho uživatele nebo skupinu."
           role_blank: "musí být přiřazen."
@@ -1633,6 +1635,11 @@ cs:
     models:
       attachment: "Soubor"
       attribute_help_text: "Text nápovědy pro atribut"
+      auth_provider:
+        one: "Authentication provider"
+        few: "Authentication providers"
+        many: "Authentication providers"
+        other: "Authentication providers"
       category: "Kategorie"
       comment: "Komentář"
       custom_action: "Vlastní akce"
@@ -1842,6 +1849,7 @@ cs:
     title: "Název"
     type: "Typ"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Aktualizováno"
     updated_on: "Aktualizováno"
     uploader: "Uploader"
@@ -2630,7 +2638,7 @@ cs:
       aggregation: "Agregace"
       api_and_webhooks: "API & Webhooky"
     quick_add:
-      label: "Otevřít nabídku rychlého přidání"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2930,6 +2938,7 @@ cs:
   label_gantt_chart_plural: "Gantt diagramy"
   label_general: "Obecné"
   label_generate_key: "Generovat klíč"
+  label_global_modules: "Global modules"
   label_global_roles: "Globální role"
   label_git_path: "Cesta ke složce .git"
   label_greater_or_equal: ">="
@@ -3014,6 +3023,7 @@ cs:
   label_manage: "Spravovat"
   label_manage_groups: "Spravovat skupiny"
   label_managed_repositories_vendor: "Spravováno %{vendor} repozitářů"
+  label_mathematical_operators: "Mathematical operators"
   label_max_size: "Maximální velikost"
   label_me: "já"
   label_member_new: "Nový člen"
@@ -3073,6 +3083,7 @@ cs:
   label_no_due_date: "žádné datum dokončení"
   label_no_start_date: "žádné datum začátku"
   label_no_parent_page: "Žádná nadřazená stránka"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Nic k zobrazení"
   label_nobody: "nikdo"
   label_not_configured: "Není konfigurováno"
@@ -3281,6 +3292,7 @@ cs:
   label_user_mail_option_only_my_events: "Pouze pro věci, které sleduji nebo jsem v nich zapojen"
   label_user_mail_option_only_owner: "Pouze pro věci, kde jsem majitelem"
   label_user_mail_option_selected: "Pouze pro každou událost na vybraných projektech"
+  label_user_menu: "User menu"
   label_user_new: "Nový uživatel"
   label_user_plural: "Uživatelé"
   label_user_search: "Vyhledat uživatele"

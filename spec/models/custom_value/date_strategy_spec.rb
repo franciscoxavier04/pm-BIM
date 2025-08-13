@@ -32,9 +32,7 @@ require "spec_helper"
 
 RSpec.describe CustomValue::DateStrategy do
   let(:instance) { described_class.new(custom_value) }
-  let(:custom_value) do
-    instance_double(CustomValue, value:)
-  end
+  let(:custom_value) { instance_double(CustomValue, value:) }
 
   describe "#typed_value" do
     subject { instance.typed_value }

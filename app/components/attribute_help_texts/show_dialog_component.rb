@@ -31,8 +31,6 @@
 class AttributeHelpTexts::ShowDialogComponent < ApplicationComponent
   include OpTurbo::Streamable
 
-  DIALOG_ID = "attribute-help-text-show-modal"
-
   def initialize(attribute_help_text:, current_user: User.current)
     super
     @attribute_help_text = attribute_help_text
@@ -41,7 +39,7 @@ class AttributeHelpTexts::ShowDialogComponent < ApplicationComponent
 
   private
 
-  def dialog_id = DIALOG_ID
+  def dialog_id = dom_id(@attribute_help_text, :dialog)
 
   def title = @attribute_help_text.attribute_caption
 

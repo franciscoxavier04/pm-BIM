@@ -54,6 +54,7 @@ export function boardCardViewHandlerFactory(injector:Injector) {
     DragAndDropService,
     BoardFiltersService,
   ],
+  standalone: false,
 })
 export class BoardPartitionedPageComponent extends UntilDestroyedMixin {
   text = {

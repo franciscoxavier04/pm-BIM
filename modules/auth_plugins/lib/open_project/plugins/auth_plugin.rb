@@ -28,7 +28,7 @@
 
 module OpenProject::Plugins
   module AuthPlugin
-    def register_auth_providers(persist: true, &)
+    def register_auth_providers(persist: true, &) # rubocop:disable Metrics/AbcSize
       builder = ProviderBuilder.new
       initializer "#{engine_name}.middleware" do |app|
         builder.instance_eval(&)

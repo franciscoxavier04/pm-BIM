@@ -21,6 +21,11 @@ fr:
         project_folder_mode: Mode de dossier de projet
         storage: Stockage
         storage_url: URL de stockage
+      storages/share_point_storage:
+        host: URL du site SharePoint
+        library: ID de la bibliothèque
+        name: Nom
+        site: Identifiant du site
       storages/storage:
         authentication_method: Méthode d’authentification
         creator: Créateur
@@ -32,6 +37,7 @@ fr:
     errors:
       messages:
         invalid_host_url: n’est pas une URL valide.
+        invalid_sharepoint_url: n'est pas une URL valide de site, de bibliothèque ou de document SharePoint.
         not_linked_to_project: n'est pas lié au projet.
       models:
         storages/file_link:
@@ -143,6 +149,7 @@ fr:
               conflict: 'L''utilisateur %{user} n''a pas pu être retiré du groupe %{group} pour la raison suivante : %{reason}'
               failed_to_remove: 'L''utilisateur %{user} n''a pas pu être retiré du groupe %{group} pour la raison suivante : %{reason}'
             rename_project_folder:
+              conflict: OpenProject n'a pas pu renommer le dossier du projet en %{current_path} car un dossier portant le même nom existe déjà.
               forbidden: L'utilisateur d'OpenProject n'a pas accès au dossier %{current_path}.
               not_found: "%{current_path} n'a pas été trouvé."
             set_folders_permissions:
@@ -188,8 +195,10 @@ fr:
       oauth_client_incomplete:
         nextcloud: Autoriser OpenProject à accéder aux données Nextcloud en utilisant OAuth.
         one_drive: Autoriser OpenProject à accéder aux données Azure en utilisant OAuth pour connecter OneDrive/Sharepoint.
+        share_point: Autoriser OpenProject à accéder aux données SharePoint en utilisant OAuth.
       redirect_uri_incomplete:
         one_drive: Complétez la configuration avec la redirection de l'URI correcte.
+        share_point: Complétez la configuration avec la redirection de l'URI correcte.
     confirm_replace_oauth_application: Cette action réinitialisera les informations d'identification OAuth actuelles. Après confirmation, vous devrez saisir de nouvelles informations d'identification auprès du fournisseur de stockage et tous les utilisateurs devront à nouveau s'authentifier sur OpenProject. Êtes-vous sûr de vouloir continuer ?
     confirm_replace_oauth_client: Cette action réinitialisera les informations d'identification OAuth actuelles. Après confirmation, vous devrez saisir de nouvelles informations d'identification auprès du fournisseur de stockage et tous les utilisateurs devront à nouveau s'authentifier auprès de %{provider_type} . Êtes-vous sûr de vouloir continuer ?
     delete_warning:
@@ -255,6 +264,7 @@ fr:
           header: Authentification
           non_provisioned_user: Utilisateur fourni par IDP
           offline_access: Portée OIDC offline_access configurée
+          provider_capabilities: Capacités du fournisseur
           provisioned_user_provider: Utilisateur fourni par OIDC
           token_negotiable: Capacités du jeton d'utilisateur
           user_bound_request: Authentification de demande basée sur l'utilisateur
@@ -305,6 +315,7 @@ fr:
         oidc_cant_refresh_token: Une erreur s'est produite lors de la vérification de votre accès à l'espace de stockage. Veuillez consulter les journaux du serveur pour obtenir plus d'informations.
         oidc_non_oidc_user: L'utilisateur actuel, même s'il est provisionné, n'a pas été provisionné par un fournisseur d'identité OpenID Connect (OIDC). Veuillez refaire la vérification avec un utilisateur OIDC provisionné.
         oidc_non_provisioned_user: L'utilisateur actuel n'est pas fourni par un fournisseur d'identité OpenID Connect. Veuillez réexécuter la vérification avec un utilisateur fourni.
+        oidc_provider_cant_exchange: Le fournisseur OpenID Connect ne semble pas prendre en charge l'échange de jetons, mais l'échange de jetons a été configuré pour le stockage.
         oidc_token_acquisition_failed: Votre configuration OpenID Connect ne fournit pas l'audience nécessaire, ni les capacités d'échange de jetons. Veuillez consulter notre documentation pour obtenir plus d'informations.
         oidc_token_exchange_failed: Il semble y avoir un problème avec la configuration de l'échange de jetons sur votre fournisseur OpenID Connect. Veuillez vérifier sa configuration et réessayer.
         oidc_token_refresh_failed: Une erreur s'est produite lors de la vérification de votre accès à l'espace de stockage. Veuillez consulter les journaux du serveur pour obtenir plus d'informations.
@@ -365,7 +376,7 @@ fr:
         copy_redirect_uri: Copier l'URI de redirection
         documentation_link_text: Documentation de stockage de fichiers OneDrive/SharePoint
         drive_id: Veuillez copier l'ID du lecteur souhaité en suivant les étapes de %{drive_id_link_text}.
-        integration: OneDrive/SharePoint
+        integration: OneDrive
         missing_client_id_for_redirect_uri: Veuillez remplir les valeurs OAuth pour générer un URI
         oauth_client_redirect_uri: Veuillez copier cette valeur vers un nouvel URI de redirection web sous les URI de redirection.
         oauth_client_secret: S'il n'y a pas de clé secrète du client pour l'application sous « Informations d'identification du client », veuillez en créer une nouvelle.
@@ -377,6 +388,11 @@ fr:
       setting_up_additional_storages_non_admin: Les administrateurs peuvent configurer des espaces de stockage de fichiers supplémentaires dans Administration - Espaces de stockage de fichiers.
       setting_up_storages: Pour configurer des espaces de stockage de fichiers, veuillez visiter
       setting_up_storages_non_admin: Les administrateurs peuvent configurer des espaces de stockage de fichiers dans Administration - Espaces de stockage de fichiers.
+      share_point:
+        application_link_text: Site SharePoint
+        integration: Administration SharePoint/OpenProject
+        oauth_configuration: Copiez ces valeurs de l'application souhaitée dans %{application_link_text}.
+        provider_configuration: Veuillez vous assurer que vous disposez des droits d'administration dans votre instance SharePoint et que l'application d'intégration OpenProject est installée avant de procéder à l'installation.
       type: 'Veuillez vous assurer que vous avez les privilèges d''administration dans votre instance Nextcloud et que l''application suivante est installée avant de procéder à l''installation :'
       type_link_text: "« Intégration OpenProject »"
     label_active: Actif
@@ -475,8 +491,13 @@ fr:
       one_drive:
         label_oauth_client_id: ID de l'application OAuth Azure (client)
         label_oauth_client_secret: Clé secrète du client OAuth Azure
-        name: OneDrive/SharePoint
+        name: OneDrive
         name_placeholder: par exemple OneDrive
+      share_point:
+        label_oauth_client_id: ID de l'application Azure OAuth (client)
+        label_oauth_client_secret: Clé secrète du client OAuth Azure
+        name: Microsoft Office SharePoint Online
+        name_placeholder: par exemple SharePoint
     show_attachments_toggle:
       description: Si vous désactivez cette option, la liste des pièces jointes dans l'onglet des fichiers des lots de travaux sera masquée. Les fichiers joints dans la description d'un lot de travaux seront toujours téléversés dans l'espace de stockage interne des pièces jointes.
       label: Afficher les pièces jointes dans l'onglet des fichiers des lots de travaux
@@ -495,4 +516,4 @@ fr:
     upsell:
       description: |-
         Intégrez votre OneDrive/SharePoint en tant que espace de stockage de fichiers avec OpenProject. Téléchargez des fichiers et liez-les directement aux lots de travaux d'un projet.
-      title: L'intégration avec OneDrive/SharePoint
+      title: Intégration de OneDrive

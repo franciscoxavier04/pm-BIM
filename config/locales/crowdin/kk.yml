@@ -63,7 +63,6 @@ kk:
         primary-button-color: "Primary button"
         accent-color: "Accent"
         header-bg-color: "Header background"
-        header-item-bg-hover-color: "Header background on hover"
         main-menu-bg-color: "Main menu background"
         main-menu-bg-selected-background: "Main menu when selected"
       custom_colors: "Custom colors"
@@ -71,10 +70,6 @@ kk:
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
         accent-color: "Color for links and other decently highlighted elements."
-        header-item-bg-hover-color: "Background color of clickable header items when hovered with the mouse."
-        header-item-font-color: "Font color of clickable header items."
-        header-item-font-hover-color: "Font color of clickable header items when hovered with the mouse."
-        header-border-bottom-color: "Thin line under the header. Leave this field empty if you don't want any line."
         main-menu-bg-color: "Left side menu's background color."
       theme_warning: Changing the theme will overwrite you custom style. The design will then be lost. Are you sure you want to continue?
     enterprise:
@@ -133,8 +128,8 @@ kk:
       form:
         auth_provider_description: "This is the service that users added by the SCIM provider will use to authenticate in OpenProject."
         authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM clients</a> for more information on these configuration options.'
-        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
+        description: "Please refer to our [documentation on configuring SCIM clients](docs_url) for more information on these configuration options."
+        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
         name_description: "Choose a name that will help other admins better understand why this client was configured."
       index:
         description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
@@ -363,19 +358,34 @@ kk:
       parent: "Parent"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
       all: "All"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: There are currently no groups.
-      no_results_content_text: Create a new group
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: There are currently no users part of this group.
     memberships:
       no_results_title_text: There are currently no projects part of this group.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Specify a list of names to ignore when processing attachments for incoming mails (e.g., signatures or icons). Enter one filename per line.
@@ -709,9 +719,8 @@ kk:
             project: "Project"
         pattern:
           label: "Subject pattern"
-          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
+          caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
-          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1110,7 +1119,6 @@ kk:
       role:
         permissions: "Permissions"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1242,6 +1250,7 @@ kk:
         error_unauthorized: "may not be accessed."
         error_readonly: "was attempted to be written but is not writable."
         error_conflict: "Information has been updated by at least one other user in the meantime."
+        error_not_found: "not found."
         email: "is not a valid email address."
         empty: "can't be empty."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1260,6 +1269,7 @@ kk:
         inclusion_nested: "is not set to one of the allowed values at path '%{path}'."
         invalid: "is invalid."
         invalid_characters: "contains invalid characters."
+        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
         invalid_url: "is not a valid URL."
         invalid_url_scheme: "is not a supported protocol (allowed: %{allowed_schemes})."
         less_than_or_equal_to: "must be less than or equal to %{count}."
@@ -1401,8 +1411,6 @@ kk:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "not found"
             public:
               error_unauthorized: "- The user has no permission to create public views."
             group_by:
@@ -1442,10 +1450,8 @@ kk:
             circular_dependency: "The relationship creates a circle of relationships."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "SCM vendor is not available"
@@ -1585,10 +1591,6 @@ kk:
                 description: "'Password confirmation' should match the input in the 'New password' field."
             status:
               invalid_on_create: "is not a valid status for new users."
-            ldap_auth_source:
-              error_not_found: "not found"
-            auth_source:
-              error_not_found: "not found"
         member:
           principal_blank: "Please choose at least one user or group."
           role_blank: "need to be assigned."
@@ -1613,6 +1615,9 @@ kk:
     models:
       attachment: "File"
       attribute_help_text: "Attribute help text"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "Category"
       comment: "Comment"
       custom_action: "Custom action"
@@ -1798,6 +1803,7 @@ kk:
     title: "Title"
     type: "Type"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "Updated on"
     updated_on: "Updated on"
     uploader: "Uploader"
@@ -2544,7 +2550,7 @@ kk:
       aggregation: "Aggregation"
       api_and_webhooks: "API and webhooks"
     quick_add:
-      label: "Open quick add menu"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2844,6 +2850,7 @@ kk:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "General"
   label_generate_key: "Generate a key"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: "Path to .git directory"
   label_greater_or_equal: ">="
@@ -2928,6 +2935,7 @@ kk:
   label_manage: "Manage"
   label_manage_groups: "Manage groups"
   label_managed_repositories_vendor: "Managed %{vendor} repositories"
+  label_mathematical_operators: "Mathematical operators"
   label_max_size: "Maximum size"
   label_me: "me"
   label_member_new: "New member"
@@ -2987,6 +2995,7 @@ kk:
   label_no_due_date: "no finish date"
   label_no_start_date: "no start date"
   label_no_parent_page: "No parent page"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Nothing to display"
   label_nobody: "nobody"
   label_not_configured: "Not configured"
@@ -3195,6 +3204,7 @@ kk:
   label_user_mail_option_only_my_events: "Only for things I watch or I'm involved in"
   label_user_mail_option_only_owner: "Only for things I am the owner of"
   label_user_mail_option_selected: "For any event on the selected projects only"
+  label_user_menu: "User menu"
   label_user_new: "New user"
   label_user_plural: "Users"
   label_user_search: "Search for user"

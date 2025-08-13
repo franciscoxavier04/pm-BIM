@@ -63,7 +63,6 @@ ar:
         primary-button-color: "Primary button"
         accent-color: "Accent"
         header-bg-color: "خلفية الترويسة"
-        header-item-bg-hover-color: "خلفية الترويسة على الحافة"
         main-menu-bg-color: "خلفية القائمة الرئيسية"
         main-menu-bg-selected-background: "القائمة الرئيسية عند تحديد"
       custom_colors: "تخصيص الألوان"
@@ -71,10 +70,6 @@ ar:
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
         accent-color: "Color for links and other decently highlighted elements."
-        header-item-bg-hover-color: "لون الخلفية لعناصر الترويسة القابلة للنقر عند ربطها بالفأرة."
-        header-item-font-color: "لون الخط لعناصر الترويسة النقر عليها."
-        header-item-font-hover-color: "لون الخط لعناصر الترويسة القابلة للنقر عند ربطها بالفأرة."
-        header-border-bottom-color: "خط تحت الرأس. اترك هذا الحقل فارغاً إذا كنت لا تريد أي سطر."
         main-menu-bg-color: "لون خلفية القائمة اليسرى "
       theme_warning: Changing the theme will overwrite you custom style. The design will then be lost. Are you sure you want to continue?
     enterprise:
@@ -133,8 +128,8 @@ ar:
       form:
         auth_provider_description: "This is the service that users added by the SCIM provider will use to authenticate in OpenProject."
         authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM clients</a> for more information on these configuration options.'
-        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
+        description: "Please refer to our [documentation on configuring SCIM clients](docs_url) for more information on these configuration options."
+        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
         name_description: "Choose a name that will help other admins better understand why this client was configured."
       index:
         description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
@@ -363,19 +358,34 @@ ar:
       parent: "الجذر"
       blueprint: "Pattern blueprint"
   global_search:
+    title:
+      all_projects: 'Search for "%{search_term}" in all projects'
+      current_project: 'Search for "%{search_term}" in %{project_name}'
+      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
       all: "الجميع"
       messages: "المنتدى"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: لا يوجد حالياً مجموعات.
-      no_results_content_text: إنشاء مجموعة جديدة
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define groups of users with specific names
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: لا يوجد حالياً قسم للمستخدمين في هذه المجموعة.
     memberships:
       no_results_title_text: لا يوجد حالياً قسم للمشاريع في هذه المجموعة.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Specify a list of names to ignore when processing attachments for incoming mails (e.g., signatures or icons). Enter one filename per line.
@@ -737,9 +747,8 @@ ar:
             project: "مشروع"
         pattern:
           label: "Subject pattern"
-          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
+          caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
-          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1142,7 +1151,6 @@ ar:
       role:
         permissions: "السماحيات"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1274,6 +1282,7 @@ ar:
         error_unauthorized: "may not be accessed."
         error_readonly: "was attempted to be written but is not writable."
         error_conflict: "تم تحديث المعلومات من قبل مستخدم واحد آخر على الأقل في الوقت نفسه."
+        error_not_found: "not found."
         email: "is not a valid email address."
         empty: "لا يمكن أن تكون فارغة."
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1292,6 +1301,7 @@ ar:
         inclusion_nested: "is not set to one of the allowed values at path '%{path}'."
         invalid: "غير صالح."
         invalid_characters: "contains invalid characters."
+        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
         invalid_url: "is not a valid URL."
         invalid_url_scheme: "is not a supported protocol (allowed: %{allowed_schemes})."
         less_than_or_equal_to: "يجب أن يكون أقل من أو يساوي %{count}."
@@ -1433,8 +1443,6 @@ ar:
           cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
-            project:
-              error_not_found: "لم يتم العثور"
             public:
               error_unauthorized: "- ليس للمستخدم إذن بإنشاء طرق عرض عامة."
             group_by:
@@ -1474,10 +1482,8 @@ ar:
             circular_dependency: "The relationship creates a circle of relationships."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
         repository:
           not_available: "بائع SCM غير متاح"
@@ -1621,10 +1627,6 @@ ar:
                 description: "'تأكيد كلمة المرور' يجب أن يطابق الإدخال في حقل 'كلمة المرور الجديدة'."
             status:
               invalid_on_create: "ليس حالة صحيحة للمستخدمين الجدد."
-            ldap_auth_source:
-              error_not_found: "لم يتم العثور"
-            auth_source:
-              error_not_found: "لم يتم العثور"
         member:
           principal_blank: "يرجى اختيار مستخدم واحد على الأقل أو مجموعة."
           role_blank: "need to be assigned."
@@ -1653,6 +1655,13 @@ ar:
     models:
       attachment: "ملف"
       attribute_help_text: "Attribute help text"
+      auth_provider:
+        zero: "Authentication providers"
+        one: "Authentication provider"
+        two: "Authentication providers"
+        few: "Authentication providers"
+        many: "Authentication providers"
+        other: "Authentication providers"
       category: "الفئة"
       comment: "تعليق"
       custom_action: "Custom action"
@@ -1886,6 +1895,7 @@ ar:
     title: "العنوان"
     type: "النّوع"
     typeahead: "Autocomplete"
+    uid: "Unique identifier"
     updated_at: "تم التحديث بتاريخ"
     updated_on: "تم التحديث بتاريخ"
     uploader: "Uploader"
@@ -2716,7 +2726,7 @@ ar:
       aggregation: "Aggregation"
       api_and_webhooks: "API and webhooks"
     quick_add:
-      label: "Open quick add menu"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -3016,6 +3026,7 @@ ar:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "عام"
   label_generate_key: "توليد مفتاح"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: "المسار إلى .دليل البوابة"
   label_greater_or_equal: "=<"
@@ -3100,6 +3111,7 @@ ar:
   label_manage: "Manage"
   label_manage_groups: "إدارة المجموعات"
   label_managed_repositories_vendor: "إدارة %{vendor} مستودعات البيانات"
+  label_mathematical_operators: "Mathematical operators"
   label_max_size: "الحجم الأقصى"
   label_me: "لي"
   label_member_new: "عضو جديد"
@@ -3159,6 +3171,7 @@ ar:
   label_no_due_date: "no finish date"
   label_no_start_date: "لا يوجد تاريخ بدء"
   label_no_parent_page: "No parent page"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "لا يوجد شيء لعرضه"
   label_nobody: "لا أحد"
   label_not_configured: "Not configured"
@@ -3367,6 +3380,7 @@ ar:
   label_user_mail_option_only_my_events: "فقط لأشياء أشاهدها أو أشارك فيها"
   label_user_mail_option_only_owner: "فقط لأشياء أملكها"
   label_user_mail_option_selected: "من أجل أي حدث في المشاريع المحددة فقط"
+  label_user_menu: "User menu"
   label_user_new: "مستخدم جديد"
   label_user_plural: "المستخدمين"
   label_user_search: "البحث عن مستخدم"

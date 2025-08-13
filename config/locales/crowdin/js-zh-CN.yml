@@ -295,10 +295,10 @@ zh-CN:
           learn_about: "详细了解所有新功能"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. Chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_2":
+          "16_3":
             standard:
               new_features_html: >
-                该版本包含多种新功能和改进，例如<br> <ul class="%{list_styling_class}"> <li>改进了导航和设计的新标题栏和边栏。</li> <li>“自定义字段”、“关系”、“提醒”、“会议”和“我的时间跟踪”的体验更加丝滑。</li> <li>PDF 导出支持非拉丁语系语言和表情符号。</li> <li>可以选择禁用键盘快捷键，以提高可访问性。</li> <li>通过 API 访问 SCIM 服务器（Enterprise 附加组件）。</li> <li>针对内部注释的 API 支持。</li> </ul>
+                该版本包含多种新功能和改进，例如<br> <ul class="%{list_styling_class}"> <li>UX/UI 改进，外观更加现代。</li> <li>会议：可选择静音电子邮件通知和 ICS。</li> <li>“我的工时记录”模块中显示正在进行的计时器。</li> <li>进度报告：基于状态的模式中还会显示完成百分比总和。</li> <li>Nextcloud 健康检查：指示缺少令牌交换功能（企业附加组件）。</li> </ul>
     ical_sharing_modal:
       title: "订阅日历"
       inital_setup_error_message: "获取数据时发生错误。"
@@ -642,9 +642,9 @@ zh-CN:
       title: "输入密码以继续"
     pagination:
       no_other_page: "您位于唯一页面上。"
-      pages_skipped: "Pages skipped."
-      page_navigation: "Pagination navigation"
-      per_page_navigation: 'Items per page selection'
+      pages_skipped: "跳过的页面。"
+      page_navigation: "分页导航"
+      per_page_navigation: '每页选择的条目'
       pages:
         page_number: 第 %{number} 页
         show_per_page: 每页显示 %{number} 个
@@ -695,6 +695,7 @@ zh-CN:
           first_day: "第一天"
           last_day: "最后一天"
     text_are_you_sure: "是否确定？"
+    text_are_you_sure_to_cancel: "您在此页面上有未保存的更改。您确定要放弃这些更改吗？"
     breadcrumb: "面包屑导航"
     text_data_lost: "输入的所有数据将全部丢失。"
     text_user_wrote: "%{value} 写道："
@@ -828,7 +829,7 @@ zh-CN:
       bulk_actions:
         edit: "批量编辑"
         delete: "批量删除"
-        duplicate: "Bulk duplicate"
+        duplicate: "批量复制"
         move: "批量更改项目"
       button_clear: "清除"
       comment_added: "注释已成功添加。"
@@ -874,7 +875,7 @@ zh-CN:
         header_with_parent: "新的 %{type} （%{parent_type} #%{id} 子）"
         button: "创建"
       duplicate:
-        title: "Duplicate work package"
+        title: "复制工作包"
       hierarchy:
         show: "显示层次结构模式"
         hide: "隐藏层次结构模式"
