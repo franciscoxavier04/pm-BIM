@@ -132,6 +132,10 @@ class UserPreference < ApplicationRecord
     super.presence || Setting.user_default_theme
   end
 
+  %w[dark light].each do |base_theme_name|
+    define_method("base_theme_#{base_theme_name}?") { theme.split("_", 2)[0] == base_theme_name.to_s }
+  end
+
   THEMES.each do |theme_name|
     define_method("#{theme_name}_theme?") { theme == theme_name.to_s }
   end

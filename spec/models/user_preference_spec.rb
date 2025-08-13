@@ -253,6 +253,7 @@ RSpec.describe UserPreference do
       it "defaults to light" do
         expect(subject.theme).to eq("light")
         expect(subject).to be_a_light_theme
+        expect(subject).to be_a_base_theme_light
       end
     end
 
@@ -262,6 +263,7 @@ RSpec.describe UserPreference do
       it "returns the dark theme" do
         expect(subject.theme).to eq("dark")
         expect(subject).to be_a_dark_theme
+        expect(subject).to be_a_base_theme_dark
       end
     end
 
@@ -271,6 +273,7 @@ RSpec.describe UserPreference do
       it "returns the light high contrast theme" do
         expect(subject.theme).to eq("light_high_contrast")
         expect(subject).to be_a_light_high_contrast_theme
+        expect(subject).to be_a_base_theme_light
       end
     end
 
@@ -280,6 +283,7 @@ RSpec.describe UserPreference do
       it "returns the dark high contrast theme" do
         expect(subject.theme).to eq("dark_high_contrast")
         expect(subject).to be_a_dark_high_contrast_theme
+        expect(subject).to be_a_base_theme_dark
       end
     end
 
