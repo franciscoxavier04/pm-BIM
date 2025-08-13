@@ -38,7 +38,7 @@ module Storages
         module Queries
           RSpec.describe FileInfoQuery, :webmock do
             let(:user) { create(:user) }
-            let(:storage) { create(:share_point_dev_storage, oauth_client_token_user: user) }
+            let(:storage) { create(:share_point_storage, :sandbox, oauth_client_token_user: user) }
             let(:drive_id) { "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY87vnZ6fgfvQanZHX-XCAyw" }
 
             let(:auth_strategy) { Registry["share_point.authentication.user_bound"].call(user, storage) }
