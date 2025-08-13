@@ -50,7 +50,8 @@ module My
                                :generate_api_key,
                                :revoke_api_key,
                                :revoke_ical_token,
-                               :revoke_storage_token
+                               :revoke_storage_token,
+                               :revoke_ical_meeting_token
 
     def dialog
       @token_type = params[:token_type] || "api"
@@ -135,6 +136,25 @@ module My
         error = r.errors.map(&:message).join("; ")
         Rails.logger.error("Failed to revoke api token ##{current_user.id}: #{error}")
         flash[:error] = t("my.access_token.failed_to_revoke_token", error:)
+      end
+      # rubocop:enable Rails/ActionControllerFlashBeforeRender
+
+      redirect_to action: :index
+    end
+
+    def revoke_ical_meeting_token # rubocop:disable Metrics/AbcSize
+      ical_meeting_token = current_user.ical_meeting_tokens.find(params[:access_token_id])
+      result = APITokens::DeleteService.new(user: current_user, model: ical_meeting_token).call
+
+      # rubocop:disable Rails/ActionControllerFlashBeforeRender
+      result.on_success do
+        flash[:notice] = t("my.access_token.revocation.ical_meeting.notice_success")
+      end
+
+      result.on_failure do |r|
+        error = r.errors.map(&:message).join("; ")
+        Rails.logger.error("Failed to revoke ical meeting token ##{current_user.id}: #{error}")
+        flash[:error] = t("my.access_token.ical_meeting.notice_failure", error:)
       end
       # rubocop:enable Rails/ActionControllerFlashBeforeRender
 
