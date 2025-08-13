@@ -134,8 +134,8 @@ class UserPreference < ApplicationRecord
     theme == "sync_with_os"
   end
 
-  def high_contrast_theme?
-    theme.end_with?("high_contrast")
+  def light_high_contrast_theme?
+    theme == "light_high_contrast"
   end
 
   def time_zone
