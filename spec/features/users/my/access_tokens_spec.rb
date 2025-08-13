@@ -271,7 +271,7 @@ RSpec.describe "my access tokens", :js do
         within("dialog#ical_meeting-created-dialog") do
           expect(page).to have_content "The iCal Meeting subscription token has been generated"
           expect(page).to have_field("openproject_api_access_token",
-                                     with: %r{http://localhost:\d+/meetings/ical/[a-f0-9]{64}.ics},
+                                     with: %r{http(s?)://[^/]+/meetings/ical/[a-f0-9]{64}.ics},
                                      readonly: true)
           click_on "Close"
         end
