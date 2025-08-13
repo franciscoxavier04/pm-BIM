@@ -264,16 +264,10 @@ es:
     notifications:
       sidepanel:
         title: "Enviar actualizaciones de calendario por correo electrónico"
-        state:
-          disabled: "Deshabilitado."
-          enabled: "Habilitado."
         description:
           disabled: "Los participantes no recibirán un correo electrónico informándoles de los cambios."
           enabled: "Todos los participantes recibirán por correo electrónico invitaciones de calendario actualizadas en las que se les informará de los cambios."
           change_via_template: "Para cambiar esto, edite la plantilla de la serie."
-        button:
-          disable: "Deshabilitar"
-          enable: "Habilitar"
       dialog:
         title:
           enable: "¿Habilitar actualizaciones de calendario por correo electrónico?"

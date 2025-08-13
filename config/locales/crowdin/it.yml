@@ -372,7 +372,7 @@ it:
       description: Raggruppando gli utenti, puoi aggiungerli come membri agli stessi progetti o assegnare loro gli stessi ruoli globali.
     table_component:
       blank_slate:
-        description: È possibile definire gruppi di utenti con nomi specifici
+        description: You can define named groups of users with specific permissions.
         title: Non sono ancora stati creati gruppi
       user_count: Numero di utenti
     users:
@@ -685,6 +685,7 @@ it:
     dark: "Scuro"
     light: "Chiaro"
     light_high_contrast: "Chiaro ad alto contrasto"
+    sync_with_os: "Automatico (abbina modalità colore del sistema operativo)"
   types:
     index:
       no_results_title_text: Al momento non esistono tipi.
@@ -1286,6 +1287,7 @@ it:
         odd: "deve essere dispari."
         regex_match_failed: "non corrisponde all'espressione regolare %{expression}."
         regex_invalid: "non può essere convalidato con l'espressione regolare associata."
+        regex_list_invalid: "non può essere analizzato come espressione regolare nelle righe %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "deve essere minore o uguale alla lunghezza massima."
         taken: "è già stato usato."
         too_long: "è troppo lungo (il massimo è %{count} caratteri)."
@@ -1616,6 +1618,7 @@ it:
         one: "Servizio di autenticazione"
         other: "Servizi di autenticazione"
       category: "Categoria"
+      color: "Color"
       comment: "Commento"
       custom_action: "Azione personalizzata"
       custom_field: "Campo personalizzato"
@@ -2247,6 +2250,13 @@ it:
         Voglio ricevere la newsletter di <a target="_blank" href="https://www.openproject.org/newsletter/">OpenProject</a>.
       consent_html: >
         Accetto i <a target="_blank" href="https://www.openproject.org/terms-of-service/">termini di servizio</a> e l'<a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">informativa sulla privacy</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Disabilitati."
+      enabled: "Abilitati."
+    button:
+      disabled: "Abilita"
+      enabled: "Disabilita"
   enumeration_activities: "Attività di monitoraggio dei tempi"
   enumeration_work_package_priorities: "Priorità della macro-attività"
   enumeration_reported_project_statuses: "Stato di progetto segnalato"

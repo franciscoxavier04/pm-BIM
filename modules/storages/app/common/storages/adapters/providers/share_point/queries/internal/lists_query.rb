@@ -72,7 +72,7 @@ module Storages
 
                   Results::StorageFile.build(
                     name: entry[:name],
-                    id: "#{entry.dig(:drive, :id)}#{SharePointStorage::IDENTIFIER_SEPARATOR}",
+                    id: entry.dig(:drive, :id).to_s,
                     mime_type: "application/x-op-drive",
                     location: UrlBuilder.path("/", entry[:name]),
                     permissions: %i[readable writeable]

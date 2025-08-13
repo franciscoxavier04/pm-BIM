@@ -48,6 +48,12 @@ class Project < ApplicationRecord
   # reserved identifiers
   RESERVED_IDENTIFIERS = %w[new menu queries export_list_modal].freeze
 
+  enum :workspace_type, {
+    project: "project",
+    program: "program",
+    portfolio: "portfolio"
+  }
+
   has_many :members, -> {
     # TODO: check whether this should
     # remain to be limited to User only

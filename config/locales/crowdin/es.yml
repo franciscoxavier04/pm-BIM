@@ -372,7 +372,7 @@ es:
       description: Al agrupar a los usuarios, puede añadirlos como miembros a los mismos proyectos o asignarles los mismos roles globales.
     table_component:
       blank_slate:
-        description: Puede definir grupos de usuarios con nombres específicos
+        description: You can define named groups of users with specific permissions.
         title: Aún no hay grupos configurados
       user_count: Número de usuarios
     users:
@@ -686,6 +686,7 @@ es:
     dark: "Oscuro"
     light: "Claro"
     light_high_contrast: "Contraste alto claro"
+    sync_with_os: "Automático (coincide con el modo de color del SO)"
   types:
     index:
       no_results_title_text: Actualmente no existen tipos.
@@ -755,7 +756,7 @@ es:
           automatic_with_children: "Fechas determinadas por paquetes de trabajo secundarios."
           automatic_with_predecessor: "La fecha de inicio la fija un predecesor."
           manual_mobile: "Programado manualmente."
-          manually_scheduled: "Programado manualmente. No afectadas por relaciones."
+          manually_scheduled: "Programado manualmente. Fechas no afectadas por relaciones."
       blankslate:
         title: "Sin predecesores"
         description: "Para activar la programación automática, este paquete de trabajo debe tener al menos un predecesor. Entonces se programará automáticamente para que comience después del predecesor más cercano."
@@ -1286,6 +1287,7 @@ es:
         odd: "debe ser impar."
         regex_match_failed: "no coincide con la expresión regular %{expression}."
         regex_invalid: "no se pudo validar con la expresión regular asociada."
+        regex_list_invalid: "no pudo analizarse como expresión regular en las líneas %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "Debe ser menor o igual que el tamaño maximo."
         taken: "Ya se ha tomado."
         too_long: "es demasiado largo (el máximo de caracteres es %{count})."
@@ -1616,6 +1618,7 @@ es:
         one: "Proveedor de autenticación"
         other: "Proveedores de autenticación"
       category: "Categoría"
+      color: "Color"
       comment: "Comentario"
       custom_action: "Acción personalizada"
       custom_field: "Campo personalizado"
@@ -2247,6 +2250,13 @@ es:
         Quiero recibir el <a target="_blank" href="https://www.openproject.org/newsletter/">boletín</a> de OpenProject.
       consent_html: >
         Acepto los <a target="_blank" href="https://www.openproject.org/terms-of-service/">términos del servicio</a> y la <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">política de privacidad</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Deshabilitado."
+      enabled: "Habilitado."
+    button:
+      disabled: "Habilitar"
+      enabled: "Deshabilitar"
   enumeration_activities: "Actividades de seguimiento del tiempo"
   enumeration_work_package_priorities: "Prioridades del paquete de trabajo"
   enumeration_reported_project_statuses: "Estatus del proyecto reportado"

@@ -371,7 +371,7 @@ pl:
       description: Grupując użytkowników, można dodawać ich jako członków do tych samych projektów lub przypisywać im te same role globalne.
     table_component:
       blank_slate:
-        description: Można zdefiniować grupy użytkowników o określonych nazwach
+        description: You can define named groups of users with specific permissions.
         title: Nie skonfigurowano jeszcze żadnych grup
       user_count: Liczba użytkowników
     users:
@@ -699,6 +699,7 @@ pl:
     dark: "Ciemny"
     light: "Jasny"
     light_high_contrast: "Jasny, wysoki kontrast"
+    sync_with_os: "Automatycznie (dopasuj do trybu koloru systemu)"
   types:
     index:
       no_results_title_text: Nie ma jeszcze żadnych typów.
@@ -1301,6 +1302,7 @@ pl:
         odd: "musi być nieparzyste."
         regex_match_failed: "nie pasuje do wyrażenia regularnego %{expression}."
         regex_invalid: "nie może być zastosowany z zastosowanym wyrażeniem regularnym."
+        regex_list_invalid: "nie można przeanalizować jako wyrażenia regularnego w wierszach %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "musi być mniejsze niż lub równe z maksymalnej długości."
         taken: "zostały już podjęte."
         too_long: "jest zbyt długi (maksymalnie %{count} znaków)."
@@ -1637,6 +1639,7 @@ pl:
         many: "Dostawcy uwierzytelniania"
         other: "Dostawcy uwierzytelniania"
       category: "Kategoria"
+      color: "Color"
       comment: "Komentarz"
       custom_action: "Działanie niestandardowe"
       custom_field: "Pola niestandardowe"
@@ -2334,6 +2337,13 @@ pl:
         Chcę otrzymywać <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a> OpenProject.
       consent_html: >
         Akceptuję <a target="_blank" href="https://www.openproject.org/terms-of-service/">warunki umowy</a> i <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">politykę prywatności</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
   enumeration_activities: "Działania śledzenia czasu"
   enumeration_work_package_priorities: "Priorytety pakietów roboczych"
   enumeration_reported_project_statuses: "Status zgłoszonego projektu"

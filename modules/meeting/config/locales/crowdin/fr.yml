@@ -264,16 +264,10 @@ fr:
     notifications:
       sidepanel:
         title: "Mises à jour du calendrier par e-mail"
-        state:
-          disabled: "Désactivé."
-          enabled: "Activé."
         description:
           disabled: "Les participants ne recevront aucun e-mail pour les informer des modifications."
           enabled: "Tous les participants recevront des invitations de calendrier mises à jour par e-mail les informant des modifications."
           change_via_template: "Pour modifier cela, éditez le modèle de la série."
-        button:
-          disable: "Désactiver"
-          enable: "Activer"
       dialog:
         title:
           enable: "Activer les mises à jour du calendrier par e-mail ?"

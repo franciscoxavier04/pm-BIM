@@ -264,16 +264,10 @@ de:
     notifications:
       sidepanel:
         title: "E-Mail-Kalender-Aktualisierungen"
-        state:
-          disabled: "Deaktiviert."
-          enabled: "Aktiviert."
         description:
           disabled: "Die Teilnehmer erhalten keine E-Mail bei Änderungen an der Besprechung."
           enabled: "Alle Teilnehmenden erhalten aktualisierte Kalendereinladungen per E-Mail bei wesentlichen Änderungen der Besprechung."
           change_via_template: "Bearbeiten Sie die Vorlage der Terminserie, um diese Einstellung zu ändern."
-        button:
-          disable: "Deaktivieren"
-          enable: "Aktivieren"
       dialog:
         title:
           enable: "E-Mail-Kalender-Aktualisierungen aktivieren?"
