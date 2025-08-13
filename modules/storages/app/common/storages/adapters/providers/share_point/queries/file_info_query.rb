@@ -37,20 +37,18 @@ module Storages
             FIELDS = %w[id name fileSystemInfo file folder size createdBy lastModifiedBy parentReference webUrl].freeze
 
             def call(auth_strategy:, input_data:)
-              identifier_hash = split_identifier(input_data.file_id)
-              drive_id = identifier_hash[:drive_id]
-              item_id = identifier_hash[:location]
+              split_identifier(input_data.file_id) => { drive_id:, location: item_id }
 
-              make_base_query(auth_strategy:, drive_id:, item_id:).or do |error|
+              fetch_file_info(auth_strategy:, drive_id:, item_id:).or do |error|
                 return Failure(error) unless error.code == :not_found && auth_strategy.value!.user.present?
 
-                admin_query(drive_id, item_id)
+                fetch_file_info_without_user(drive_id, item_id)
               end
             end
 
             private
 
-            def make_base_query(auth_strategy:, drive_id:, item_id:)
+            def fetch_file_info(auth_strategy:, drive_id:, item_id:)
               Authentication[auth_strategy].call(storage: @storage) do |http|
                 drive_item_query.call(http:, drive_id:, item_id:, fields: FIELDS)
                                 .fmap { |json| storage_file_info(json) }
@@ -61,7 +59,7 @@ module Storages
               @drive_item_query ||= Internal::DriveItemQuery.new(@storage)
             end
 
-            def admin_query(drive_id, item_id)
+            def fetch_file_info_without_user(drive_id, item_id)
               Authentication[userless_strategy].call(storage: @storage) do |http|
                 drive_item_query.call(http:, drive_id:, item_id:, fields: FIELDS)
                                 .fmap { |json| storage_file_info(json, status: "forbidden", status_code: 403) }
