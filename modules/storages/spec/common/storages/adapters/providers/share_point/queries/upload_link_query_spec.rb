@@ -90,8 +90,6 @@ module Storages
                   "6-a2c3-ce8053d3a381%27&overwrite=False&rename=True&dc=0&tempauth=#{token}"
               end
 
-              "https://ymt6d.sharepoint.com/sites/OPTest/_api/v2.0/drives/b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY9jo6leJDqrT7muzvmiWjFW/items/01ANJ53W2OGTVJLOZ5R5F2NFJWGJOLV56J/uploadSession?guid=''ca9855a1-245f-40b6-a2c3-ce8053d3a381''&overwrite=False&rename=True&dc=0&tempauth=v1.eyJzaXRlaWQiOiIxMDk5ZTMxNS1kMGM3LTQ3YzctODY0MC1hYTk1MDRiNzBmZmYiLCJhcHBfZGlzcGxheW5hbWUiOiJPUCBTZWxlY3RlZCIsIm5hbWVpZCI6IjQwNGUwNTY3LTE5YTEtNGE2NC1iMmQxLWQzYjBjOTlmMmVkOUBlMzZmMWRiYy1mZGFlLTQyN2UtYjYxYi0wZDk2ZGRmYjgxYTQiLCJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAveW10NmQuc2hhcmVwb2ludC5jb21AZTM2ZjFkYmMtZmRhZS00MjdlLWI2MWItMGQ5NmRkZmI4MWE0IiwiZXhwIjoiMTc1NTA5MDQ5OSJ9.CkAKDGVudHJhX2NsYWltcxIwQ0piMzdNUUdFQUFhRmpKMU16bElUalJHTFZVeVJWQm9OblpPTmpSUlFVRXFBQT09CjIKCmFjdG9yYXBwaWQSJDAwMDAwMDAzLTAwMDAtMDAwMC1jMDAwLTAwMDAwMDAwMDAwMAoKCgRzbmlkEgI2NhILCI7l0_Dq6qw-EAUaDjIwLjE5MC4xOTAuMTAyKixZYldpRDFScDM5SGNsREo0dXQrck5xUjJjelRwbmgya3lSZlhWVnVaZnVBPTCBAjgBQhChuwki92AAAHU0wDr4k3yFShBoYXNoZWRwcm9vZnRva2VuegExugENc2VsZWN0ZWRzaXRlc8gBAQ.oFWNiNRCsbAVkadc7B2tMRqH4uqjR0oINcqsdEP8DOg"
-
               it_behaves_like "adapter upload_link_query: successful upload link response"
             end
 

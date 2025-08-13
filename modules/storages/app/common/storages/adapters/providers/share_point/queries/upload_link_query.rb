@@ -89,7 +89,7 @@ module Storages
             end
 
             def item_url(drive_id, location)
-              UrlBuilder.url(base_uri, "/v1.0/drives", drive_id, "/items", location.path)
+              UrlBuilder.url(base_uri, "/v1.0/drives", drive_id, "/items", location)
             end
           end
         end
