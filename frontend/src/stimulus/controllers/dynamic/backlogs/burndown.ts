@@ -26,42 +26,41 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-// @ts-expect-error TS(2304): Cannot find name 'RB'.
-RB.Burndown = (function ($) {
-  // @ts-expect-error TS(2304): Cannot find name 'RB'.
-  return RB.Object.create({
+class Burndown {
+  $:JQuery<HTMLElement>;
+  el:HTMLElement;
+  sprintId:number;
 
-    initialize(el:any) {
-      this.$ = $(el);
-      this.el = el;
+  constructor(el:HTMLElement) {
+    this.$ = $(el);
+    this.el = el;
 
-      // Associate this object with the element for later retrieval
-      this.$.data('this', this);
+    // Associate this object with the element for later retrieval
+    this.$.data('this', this);
 
-      // Observe menu items
-      this.$.click(this.show);
-    },
+    // Observe menu items
+    this.$.click(this.show);
+  }
 
-    setSprintId(sprintId:any) {
-      this.sprintId = sprintId;
-    },
+  setSprintId(sprintId:number) {
+    this.sprintId = sprintId;
+  }
 
-    getSprintId() {
-      return this.sprintId;
-    },
+  getSprintId() {
+    return this.sprintId;
+  }
 
-    show(e:any) {
-      e.preventDefault();
+  show(e:JQuery.Event) {
+    e.preventDefault();
 
-      if ($('#charts').length === 0) {
-        $('<div id="charts"></div>').appendTo('body');
-      }
-      // @ts-expect-error TS(2304): Cannot find name 'RB'.
-      $('#charts').html(`<div class='loading'>${RB.i18n.generating_graph}</div>`);
+    if ($('#charts').length === 0) {
+      $('<div id="charts"></div>').appendTo('body');
+    }
+    // @ts-expect-error TS(2304): Cannot find name 'RB'.
+    $('#charts').html(`<div class='loading'>${RB.i18n.generating_graph}</div>`);
 
-      // @ts-expect-error TS(2304): Cannot find name 'RB'.
-      const url = RB.urlFor('show_burndown_chart', { sprint_id: $(this).data('this').sprintId, project_id: RB.constants.project_id });
-      window.open(url);
-    },
-  });
-}(jQuery));
+    // @ts-expect-error TS(2304): Cannot find name 'RB'.
+    const url = RB.urlFor('show_burndown_chart', { sprint_id: $(this).data('this').sprintId, project_id: RB.constants.project_id });
+    window.open(url);
+  }
+}

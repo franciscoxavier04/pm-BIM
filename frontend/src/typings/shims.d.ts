@@ -74,11 +74,13 @@ declare global {
     topShelf:any;
     mark:any;
     tablesorter:any;
+    colorcontrast:any;
   }
 
   interface JQueryStatic {
     metadata:any;
     tablesorter:any;
+    colorcontrast:any;
   }
 }
 
