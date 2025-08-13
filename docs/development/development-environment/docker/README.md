@@ -422,7 +422,6 @@ OPENPROJECT_DEV_URL=https://${OPENPROJECT_DEV_HOST}
 After amending the override file and the `.env`, ensure that you restart the stack.
 
 ```shell
-docker compose up -d frontend
 docker compose up -d backend
 ```
 
@@ -464,13 +463,7 @@ rm -rf frontend/node_modules/
 docker compose run --rm frontend npm install
 ```
 
-In this case, reinstall the frontend dependencies:
-
-```shell
-docker compose run --rm frontend npm install
-```
-
-Then restart both the frontend and backend services:
+Then restart both the frontend service:
 ```shell
 docker compose restart frontend
 ```
