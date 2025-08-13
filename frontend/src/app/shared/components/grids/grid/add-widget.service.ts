@@ -1,4 +1,8 @@
-import { Injectable, Injector } from '@angular/core';
+import {
+  Injectable,
+  Injector,
+  OnDestroy,
+} from '@angular/core';
 import { OpModalService } from 'core-app/shared/components/modal/modal.service';
 import { AddGridWidgetModalComponent } from 'core-app/shared/components/grids/widgets/add/add.modal';
 import { GridWidgetResource } from 'core-app/features/hal/resources/grid-widget-resource';
@@ -14,8 +18,10 @@ import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { GridResource } from 'core-app/features/hal/resources/grid-resource';
 
 @Injectable()
-export class GridAddWidgetService {
+export class GridAddWidgetService implements OnDestroy {
   text = { add: this.i18n.t('js.grid.add_widget') };
+
+  private boundListener = this.createNewWidget.bind(this);
 
   constructor(
     readonly opModalService:OpModalService,
@@ -27,6 +33,11 @@ export class GridAddWidgetService {
     readonly resize:GridResizeService,
     readonly i18n:I18nService,
   ) {
+    document.addEventListener('overview:addWidget', this.boundListener);
+  }
+
+  ngOnDestroy():void {
+    document.removeEventListener('overiew:addWidget', this.boundListener);
   }
 
   public isAddable(area:GridArea) {
@@ -125,5 +136,10 @@ export class GridAddWidgetService {
 
   public get isAllowed() {
     return this.layout.gridResource && this.layout.gridResource.updateImmediately;
+  }
+
+  private createNewWidget():void {
+    const newGap = new GridGap(1, 2, 1, 2, 'row');
+    void this.widget(newGap);
   }
 }
