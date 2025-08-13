@@ -59,7 +59,7 @@ There are several ways to create a new project in OpenProject.
 
 1. Click the green button **+ Project** directly on the system's home screen in the **Project** section.
 
-   ![Button to create a new project on the OpenProjec homepage](openproject_getting_started_project_new_project_button.png)
+   ![Button to create a new project on the OpenProject homepage](openproject_getting_started_project_new_project_button.png)
 
 2. You can use the **+ Project** button at the bottom of *All projects* dropdown menu in the header navigation to create a new project.
 

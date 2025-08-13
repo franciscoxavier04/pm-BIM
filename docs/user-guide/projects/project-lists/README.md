@@ -27,7 +27,7 @@ Your projects can be available publicly or internally. OpenProject does not limi
 
 There are several ways to get an overview of all your projects. You can press the **Project lists** button at the bottom of the **Select a project** menu in the top left header navigation. You can search through the projects or use the **Favorites** button to find your projects quicker.
 
-!["Project lists" button at the bottom of the All projects dropdown menu in the header navigation of Openproject](openproject_userguide_projects_project_lists_button.png)
+!["Project lists" button at the bottom of the All projects dropdown menu in the header navigation of OpenProject](openproject_userguide_projects_project_lists_button.png)
 
 > [!TIP]
 > If you have already selected a project, the **x** icon next to that project will navigate you away from that selected project. 
