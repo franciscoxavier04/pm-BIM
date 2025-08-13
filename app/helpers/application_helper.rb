@@ -317,7 +317,7 @@ module ApplicationHelper
   end
 
   def user_theme_data_attributes
-    if User.current.pref.sync_with_system_theme?
+    if User.current.pref.sync_with_os_theme?
       # Theme will be set by inline script before body renders to prevent flickering
       { auto_theme_switcher_mode_value: User.current.pref.theme }
     else

@@ -38,6 +38,8 @@ class UserPreference < ApplicationRecord
 
   WORKDAYS_FROM_MONDAY_TO_FRIDAY = [1, 2, 3, 4, 5].freeze
 
+  THEMES = %w[light light_high_contrast dark dark_high_contrast sync_with_os].freeze
+
   ##
   # Retrieve keys from settings, and allow accessing
   # as boolean with ? suffix
@@ -130,12 +132,8 @@ class UserPreference < ApplicationRecord
     super.presence || Setting.user_default_theme
   end
 
-  def sync_with_system_theme?
-    theme == "sync_with_os"
-  end
-
-  def light_high_contrast_theme?
-    theme == "light_high_contrast"
+  THEMES.each do |theme_name|
+    define_method("#{theme_name}_theme?") { theme == theme_name.to_s }
   end
 
   def time_zone
