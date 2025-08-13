@@ -50,7 +50,7 @@ module My
                                :generate_api_key,
                                :revoke_api_key,
                                :revoke_ical_token,
-                               :delete_storage_token
+                               :revoke_storage_token
 
     def dialog
       @token_type = params[:token_type] || "api"
