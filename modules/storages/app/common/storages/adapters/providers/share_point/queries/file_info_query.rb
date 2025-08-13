@@ -37,12 +37,16 @@ module Storages
             FIELDS = %w[id name fileSystemInfo file folder size createdBy lastModifiedBy parentReference webUrl].freeze
 
             def call(auth_strategy:, input_data:)
-              split_identifier(input_data.file_id) => { drive_id:, location: item_id }
+              with_tagged_logger do
+                split_identifier(input_data.file_id) => { drive_id:, location: item_id }
 
-              fetch_file_info(auth_strategy:, drive_id:, item_id:).or do |error|
-                return Failure(error) unless error.code == :not_found && auth_strategy.value!.user.present?
+                info "Fetch file info for drive item #{item_id} on drive #{drive_id}."
+                fetch_file_info(auth_strategy:, drive_id:, item_id:).or do |error|
+                  return Failure(error) unless error.code == :not_found && auth_strategy.value!.user.present?
 
-                fetch_file_info_without_user(drive_id, item_id)
+                  info "Drive item #{item_id} return 'NotFound'. Sending request as application to verify existence."
+                  fetch_file_info_without_user(drive_id, item_id)
+                end
               end
             end
 
