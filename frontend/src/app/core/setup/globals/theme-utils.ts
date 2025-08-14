@@ -47,7 +47,7 @@ export class ThemeUtils {
     switch (theme) {
       case 'dark':
         body.setAttribute('data-color-mode', 'dark');
-        body.setAttribute('data-dark-theme', 'dark');
+        body.setAttribute('data-dark-theme', increaseContrast ? 'dark_high_contrast' : 'dark');
         body.removeAttribute('data-light-theme');
         break;
       case 'light':
