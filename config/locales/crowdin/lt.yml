@@ -697,6 +697,7 @@ lt:
         excluded_from_totals: "Excluded from totals"
   themes:
     dark: "Tamsi"
+    dark_high_contrast: "Dark high contrast"
     light: "Šviesi"
     light_high_contrast: "Šviesi kontrastinga"
     sync_with_os: "Automatic (match OS colour mode)"
@@ -1926,7 +1927,7 @@ lt:
   button_duplicate: "Dublikuoti"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Redaguoti"
-  button_edit_associated_wikipage: "Redaguoti susijusį Wiki puslapį: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Išskleisti visus"
   button_favorite: "Pridėti prie mėgstamų"
   button_filter: "Filtras"
@@ -2552,6 +2553,13 @@ lt:
       xls2csv: "Xls2csv pasiekiamas (pasirinktinai)"
       catppt: "Catppt pasiekiamas (pasirinktinai)"
       tesseract: "Tesseract pasiekiamas (pasirinktinai)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","

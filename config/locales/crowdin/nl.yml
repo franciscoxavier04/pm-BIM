@@ -682,6 +682,7 @@ nl:
         excluded_from_totals: "Uitgesloten van totalen"
   themes:
     dark: "Donker"
+    dark_high_contrast: "Dark high contrast"
     light: "Licht"
     light_high_contrast: "Licht hoog contrast"
     sync_with_os: "Automatic (match OS colour mode)"
@@ -1879,7 +1880,7 @@ nl:
   button_duplicate: "Dupliceren"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Wijzig"
-  button_edit_associated_wikipage: "Bewerk gekoppelde wikipagina: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Alles uitklappen"
   button_favorite: "Aan favorieten toevoegen"
   button_filter: "Filter"
@@ -2463,6 +2464,13 @@ nl:
       xls2csv: "Xls2csv beschikbaar (optioneel)"
       catppt: "Catppt beschikbaar (optioneel)"
       tesseract: "Tesseract beschikbaar (optioneel)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","

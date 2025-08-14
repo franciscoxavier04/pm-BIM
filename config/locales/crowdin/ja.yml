@@ -677,6 +677,7 @@ ja:
         excluded_from_totals: "Excluded from totals"
   themes:
     dark: "Dark"
+    dark_high_contrast: "Dark high contrast"
     light: "Light"
     light_high_contrast: "Light high contrast"
     sync_with_os: "Automatic (match OS colour mode)"
@@ -1858,7 +1859,7 @@ ja:
   button_duplicate: "複製"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "編集"
-  button_edit_associated_wikipage: "関係するWiki ページを編集: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "全てを展開"
   button_favorite: "Add to favorites"
   button_filter: "フィルタ"
@@ -2421,6 +2422,13 @@ ja:
       xls2csv: "Xls2csvが利用可能 (オプション)"
       catppt: "Catpptが利用可能 (オプション)"
       tesseract: "Tesseractが利用可能 (オプション)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","

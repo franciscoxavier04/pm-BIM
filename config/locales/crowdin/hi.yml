@@ -685,6 +685,7 @@ hi:
         excluded_from_totals: "Excluded from totals"
   themes:
     dark: "Dark"
+    dark_high_contrast: "Dark high contrast"
     light: "Light"
     light_high_contrast: "Light high contrast"
     sync_with_os: "Automatic (match OS colour mode)"
@@ -1882,7 +1883,7 @@ hi:
   button_duplicate: "प्रतिलिपि"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "संपादित करें"
-  button_edit_associated_wikipage: "संबद्ध विकी पृष्ठ संपादित करें: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "सभी विस्तृत करें"
   button_favorite: "Add to favorites"
   button_filter: "Filter"
@@ -2466,6 +2467,13 @@ hi:
       xls2csv: "Xls2csv उपलब्ध (वैकल्पिक)"
       catppt: "Catppt उपलब्ध (वैकल्पिक)"
       tesseract: "Tesseract उपलब्ध (वैकल्पिक)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","

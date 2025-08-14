@@ -685,6 +685,7 @@ tr:
         excluded_from_totals: "Toplamlardan hariç tutulanlar"
   themes:
     dark: "Koyu"
+    dark_high_contrast: "Dark high contrast"
     light: "Açık"
     light_high_contrast: "Yüksek kontrastlı açık"
     sync_with_os: "Automatic (match OS colour mode)"
@@ -1882,7 +1883,7 @@ tr:
   button_duplicate: "Çoğalt"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Düzenle"
-  button_edit_associated_wikipage: "İlişkili Wiki sayfasını düzenle: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Tümünü genişlet"
   button_favorite: "Favorilere Ekle"
   button_filter: "Filtre"
@@ -2466,6 +2467,13 @@ tr:
       xls2csv: "Xls2csv kullanılabilir (isteğe bağlı)"
       catppt: "Catppt kullanılabilir (isteğe bağlı)"
       tesseract: "Tesseract kullanılabilir (isteğe bağlı)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","

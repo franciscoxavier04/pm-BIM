@@ -700,6 +700,7 @@ cs:
         excluded_from_totals: "Vyloučeno z celkových hodnot"
   themes:
     dark: "Tmavé"
+    dark_high_contrast: "Dark high contrast"
     light: "Světlý"
     light_high_contrast: "Světlý kontrast"
     sync_with_os: "Automatic (match OS colour mode)"
@@ -1929,7 +1930,7 @@ cs:
   button_duplicate: "Kopie"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Upravit"
-  button_edit_associated_wikipage: "Upravit přidruženou Wiki stránku: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Rozbalit vše"
   button_favorite: "Přidat k oblíbeným"
   button_filter: "Filtr"
@@ -2555,6 +2556,13 @@ cs:
       xls2csv: "XLS2CSV k dispozici (volitelné)"
       catppt: "Catppt k dispozici (volitelné)"
       tesseract: "Tesseract k dispozici (volitelné)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: ","
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","

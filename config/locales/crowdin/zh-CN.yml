@@ -675,6 +675,7 @@ zh-CN:
         excluded_from_totals: "不包括在总计中"
   themes:
     dark: "暗黑"
+    dark_high_contrast: "Dark high contrast"
     light: "浅色模式"
     light_high_contrast: "高对比度模式"
     sync_with_os: "自动（匹配操作系统颜色模式）"
@@ -1856,7 +1857,7 @@ zh-CN:
   button_duplicate: "复制"
   button_duplicate_and_follow: "复制并跟踪"
   button_edit: "编辑"
-  button_edit_associated_wikipage: "编辑关联的维基页面： %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "全部展开"
   button_favorite: "添加至收藏夹"
   button_filter: "筛选器"
@@ -2419,6 +2420,13 @@ zh-CN:
       xls2csv: "Xls2csv 可用 (可选)"
       catppt: "Catppt 可用 (可选)"
       tesseract: "Tesseract 可用 (可选)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","

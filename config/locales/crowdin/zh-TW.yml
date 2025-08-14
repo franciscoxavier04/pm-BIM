@@ -676,6 +676,7 @@ zh-TW:
         excluded_from_totals: "不包括在總計中"
   themes:
     dark: "深色主題"
+    dark_high_contrast: "Dark high contrast"
     light: "白色主題"
     light_high_contrast: "高對比白色主題"
     sync_with_os: "自動（匹配 OS 顏色模式）"
@@ -1856,7 +1857,7 @@ zh-TW:
   button_duplicate: "複本"
   button_duplicate_and_follow: "複製並追蹤"
   button_edit: "編輯"
-  button_edit_associated_wikipage: "編輯關聯的維基頁面：%{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "全部展開"
   button_favorite: "收藏"
   button_filter: "篩選條件"
@@ -2419,6 +2420,13 @@ zh-TW:
       xls2csv: "Xls2csv 可用 (非必要)"
       catppt: "Catppt 可用 (非必要)"
       tesseract: "Tesseract 可用 (非必要)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","
