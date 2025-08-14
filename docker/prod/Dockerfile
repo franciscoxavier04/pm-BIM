@@ -1,5 +1,5 @@
 ARG RUBY_VERSION="3.4.5"
-FROM ruby:${RUBY_VERSION}-bookworm AS base
+FROM ruby:${RUBY_VERSION}-trixie AS base
 LABEL maintainer="operations@openproject.com"
 
 ARG NODE_VERSION="22.15.0"

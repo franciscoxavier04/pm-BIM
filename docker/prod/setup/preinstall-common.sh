@@ -28,15 +28,16 @@ apt-get update -qq
 apt-get upgrade -y
 
 apt-get install -yq --no-install-recommends \
-	file \
 	curl \
+	file \
 	gnupg2 \
+	lsb-release
 
 # install node + npm
 curl -s https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-${ARCHITECTURE}.tar.gz | tar xzf - -C /usr/local --strip-components=1
 
-curl -sSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
-echo 'deb http://apt.postgresql.org/pub/repos/apt/ bookworm-pgdg main' > /etc/apt/sources.list.d/pgdg.list
+wget --quiet -O- https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor -o /usr/share/keyrings/postgrsql.gpg -
+echo "deb [signed-by=/usr/share/keyrings/postgrsql.gpg] http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list
 
 apt-get update -qq
 apt-get install -yq --no-install-recommends \
@@ -66,7 +67,7 @@ if [ ! "$BIM_SUPPORT" = "false" ]; then
 	rm /tmp/packages-microsoft-prod.deb
 
 	apt-get update -qq
-	apt-get install -y dotnet-runtime-6.0 # required for BIM edition
+	apt-get install -y dotnet-runtime-9.0 # required for BIM edition
 
 	tmpdir=$(mktemp -d)
 	cd $tmpdir
@@ -80,8 +81,8 @@ if [ ! "$BIM_SUPPORT" = "false" ]; then
 	mv COLLADA2GLTF-bin "/usr/local/bin/COLLADA2GLTF"
 
 	# IFCconvert
-	wget --quiet https://s3.amazonaws.com/ifcopenshell-builds/IfcConvert-v0.7.11-fea8e3a-linux64.zip
-	unzip -q IfcConvert-v0.7.11-fea8e3a-linux64.zip
+	wget --quiet https://s3.amazonaws.com/ifcopenshell-builds/IfcConvert-v0.8.0-0d3c73d-linux64.zip
+	unzip -q IfcConvert-v0.8.0-0d3c73d-linux64.zip
 	mv IfcConvert "/usr/local/bin/IfcConvert"
 
 	wget --quiet https://github.com/bimspot/xeokit-metadata/releases/download/1.0.1/xeokit-metadata-linux-x64.tar.gz
