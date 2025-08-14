@@ -312,7 +312,6 @@ RSpec.describe Projects::UpdateContract do
         shared_examples "admin-only custom field behavior" do
           context "when user is admin" do
             let(:current_user) { build_stubbed(:admin) }
-            let(:project_permissions) { %i(edit_project_attributes) }
 
             it_behaves_like "can write", :admin_only_custom_field
           end
