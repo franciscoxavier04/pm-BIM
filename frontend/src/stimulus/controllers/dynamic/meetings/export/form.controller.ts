@@ -1,6 +1,6 @@
-import { Controller } from '@hotwired/stimulus';
+import {Controller} from '@hotwired/stimulus';
 import * as Turbo from '@hotwired/turbo';
-import { HttpErrorResponse } from '@angular/common/http';
+import {HttpErrorResponse} from '@angular/common/http';
 
 export default class FormController extends Controller<HTMLFormElement> {
     static values = {
@@ -10,7 +10,7 @@ export default class FormController extends Controller<HTMLFormElement> {
     static targets = ['inputGroups'];
 
     declare jobStatusDialogUrlValue:string;
-    declare inputGroupsTargets:Array<HTMLElement>;
+    declare inputGroupsTargets:HTMLElement[];
 
     jobModalUrl(job_id:string):string {
         return this.jobStatusDialogUrlValue.replace('_job_uuid_', job_id);
@@ -19,19 +19,19 @@ export default class FormController extends Controller<HTMLFormElement> {
     async showJobModal(job_id:string) {
         const response = await fetch(this.jobModalUrl(job_id), {
             method: 'GET',
-            headers: { Accept: 'text/vnd.turbo-stream.html' },
+            headers: {Accept: 'text/vnd.turbo-stream.html'},
         });
         if (response.ok) {
             Turbo.renderStreamMessage(await response.text());
         } else {
-            throw new Error(response.statusText || 'Invalid response from server');
+            throw new Error(response.statusText);
         }
     }
 
     async requestExport(exportURL:string):Promise<string> {
         const response = await fetch(exportURL, {
             method: 'GET',
-            headers: { Accept: 'application/json' },
+            headers: {Accept: 'application/json'},
             credentials: 'same-origin',
         });
         if (!response.ok) {
@@ -39,16 +39,16 @@ export default class FormController extends Controller<HTMLFormElement> {
         }
         const result = await response.json() as { job_id:string };
         if (!result.job_id) {
-            throw new Error('Invalid response from server');
+            throw new Error(I18n.t('js.invalid_job_response'));
         }
         return result.job_id;
     }
 
     generateExportURL(formData:FormData):string {
-        const actionURL = this.element.getAttribute('action') as string;
+        const actionURL = this.element.getAttribute('action') ?? '';
         const searchParams = this.getExportParams(formData);
         const append = actionURL.includes('?') ? '&' : '?';
-        return `${actionURL}${append}${searchParams.toString()}`;
+        return `${actionURL}${append}${searchParams}`;
     }
 
     submitForm(evt:CustomEvent) {
@@ -56,13 +56,15 @@ export default class FormController extends Controller<HTMLFormElement> {
         const formData = new FormData(this.element);
         this.requestExport(this.generateExportURL(formData))
             .then((job_id) => this.showJobModal(job_id))
-            .catch((error:HttpErrorResponse) => this.handleError(error));
+            .catch((error:unknown) => {
+                this.handleError(error);
+            });
         return true;
     }
 
-    private handleError(error:HttpErrorResponse) {
+    private handleError(error:unknown) {
         void window.OpenProject.getPluginContext().then((pluginContext) => {
-            pluginContext.services.notifications.addError(error);
+            pluginContext.services.notifications.addError(error as HttpErrorResponse);
         });
     }
 
@@ -77,7 +79,7 @@ export default class FormController extends Controller<HTMLFormElement> {
         return query.toString();
     }
 
-    templatesChanged({ params: { name } }:{ params:{ name:string } }) {
+    templatesChanged({params: {name}}:{ params:{ name:string } }) {
         this.inputGroupsTargets.forEach((inputGroup:HTMLElement) => {
             inputGroup.classList.toggle('d-none', inputGroup.dataset.template !== name);
         });
