@@ -76,11 +76,13 @@ module Colors
     end
 
     ##
-    # Splits the hexcode into rbg color array
+    # Splits the hexcode into rgb color array
     def rgb_colors
       hexcode
-        .delete("#") # Remove trailing #
+        .delete_prefix("#") # Remove leading #
+        .ljust(6, "0") # Pad to at least 6 chars
         .scan(/../) # Pair hex chars
+        .first(3)
         .map(&:hex) # to int
     end
 
