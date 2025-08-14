@@ -28,18 +28,46 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Comments
-  class DeleteService < ::BaseServices::Delete
-    private
+class OpenProject::JournalFormatter::Comment < JournalFormatter::Base
+  def render(key, values, options = {})
+    id = key.to_s.sub("comments_", "").to_i
 
-    def after_perform(service_result)
-      commented = service_result.result.commented
+    old_value, value, comment = format_details(id, values)
 
-      return service_result unless commented&.class&.journaled?
-
-      commented.save_journals
-
-      service_result
+    if options[:html]
+      label, old_value, value = format_html_details(label("comment"), old_value, value)
+      render_comment_detail_text(label, value, old_value)
+    else
+      render_comment_detail_json(value, old_value, comment)
     end
+  end
+
+  private
+
+  def format_details(id, values)
+    old_value, current_value = values
+    [
+      old_value,
+      current_value,
+      find_comment(id)
+    ]
+  end
+
+  def render_comment_detail_text(label, value, old_value)
+    return I18n.t(:text_journal_comment_deleted, label:, old: old_value) if value.empty?
+
+    I18n.t(:text_journal_comment_added, label:, value:)
+  end
+
+  def render_comment_detail_json(value, old_value, comment)
+    {
+      comment_id: comment.id,
+      value: value,
+      old_value: old_value
+    }.to_json
+  end
+
+  def find_comment(id)
+    Comment.find_by(id: id)
   end
 end

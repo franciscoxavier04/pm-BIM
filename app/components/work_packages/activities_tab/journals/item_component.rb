@@ -38,9 +38,10 @@ module WorkPackages
         include WorkPackages::ActivitiesTab::SharedHelpers
         include WorkPackages::ActivitiesTab::StimulusControllers
 
-        def initialize(journal:, filter:, grouped_emoji_reactions:, state: :show)
+        def initialize(work_package:, journal:, filter:, grouped_emoji_reactions:, state: :show)
           super
 
+          @work_package = work_package
           @journal = journal
           @filter = filter
           @grouped_emoji_reactions = grouped_emoji_reactions
@@ -49,49 +50,33 @@ module WorkPackages
 
         private
 
-        attr_reader :journal, :state, :filter, :grouped_emoji_reactions
+        attr_reader :work_package, :journal, :state, :filter, :grouped_emoji_reactions
 
         def wrapper_uniq_by
           journal.id
         end
 
-        def wrapper_data_attributes
-          {
-            controller: "work-packages--activities-tab--item",
-            "work-packages--activities-tab--item-activity-url-value": activity_url(journal)
-          }
-        end
-
-        def container_classes
-          [].tap do |classes|
-            if journal.internal?
-              classes << "work-packages-activities-tab-journals-item-component--container__internal-comment"
+        def comment_details
+          journal.details.filter_map do |detail|
+            if detail.first.start_with?("comment")
+              journal.render_detail(detail, { html: false })
             end
           end
         end
 
-        def comment_header_classes
-          [].tap do |classes|
-            if journal.internal?
-              classes << "work-packages-activities-tab-journals-item-component--header__internal-comment"
-            end
-          end
-        end
+        def comment_for(detail)
+          detail = JSON.parse(detail)
+          comment = work_package.comments.find_by(id: detail["comment_id"]) # comments are preloaded on the controller
 
-        def comment_body_classes
-          ["work-packages-activities-tab-journals-item-component--journal-notes-body"].tap do |classes|
-            if journal.internal?
-              classes << "work-packages-activities-tab-journals-item-component--journal-notes-body__internal-comment"
-            end
+          if comment.nil?
+            I18n.t("activities.work_packages.activity_tab.comment_not_found")
+          else
+            comment
           end
         end
 
         def show_comment_container?
-          (journal.notes.present? || noop?) && filter != :only_changes
-        end
-
-        def noop?
-          journal.noop?
+          (journal.notes.present? || journal.noop?) && filter != :only_changes
         end
 
         def updated?
@@ -106,69 +91,6 @@ module WorkPackages
 
         def notification_on_details?
           has_unread_notifications? && journal.notes.blank?
-        end
-
-        def allowed_to_edit?
-          journal.editable_by?(User.current)
-        end
-
-        def allowed_to_quote?
-          User.current.allowed_in_project?(:add_work_package_comments, journal.journable.project)
-        end
-
-        def copy_url_action_item(menu)
-          menu.with_item(label: t("button_copy_link_to_clipboard"),
-                         tag: :button,
-                         content_arguments: {
-                           data: {
-                             action: "click->work-packages--activities-tab--item#copyActivityUrlToClipboard"
-                           }
-                         }) do |item|
-            item.with_leading_visual_icon(icon: :copy)
-          end
-        end
-
-        def edit_action_item(menu)
-          menu.with_item(label: edit_action_label,
-                         href: edit_work_package_activity_path(journal.journable, journal, filter:),
-                         content_arguments: {
-                           data: { turbo_stream: true, test_selector: "op-wp-journal-#{journal.id}-edit" }
-                         }) do |item|
-            item.with_leading_visual_icon(icon: :pencil)
-          end
-        end
-
-        def edit_action_label
-          if journal.user == User.current
-            t("js.label_edit_comment")
-          else
-            t("js.label_moderate_comment")
-          end
-        end
-
-        def quote_action_item(menu)
-          menu.with_item(label: t("js.label_quote_comment"),
-                         tag: :button,
-                         content_arguments: {
-                           data: quote_action_data_attributes
-                         }) do |item|
-            item.with_leading_visual_icon(icon: :quote)
-          end
-        end
-
-        def quote_action_data_attributes # rubocop:disable Metrics/AbcSize
-          {
-            test_selector: "op-wp-journal-#{journal.id}-quote",
-            controller: quote_comments_stimulus_controller,
-            action: "click->#{quote_comments_stimulus_controller}#quote:prevent",
-            quote_comments_stimulus_controller("-content-param") => journal.notes,
-            quote_comments_stimulus_controller("-user-id-param") => journal.user_id,
-            quote_comments_stimulus_controller("-user-name-param") => journal.user.name,
-            quote_comments_stimulus_controller("-is-internal-param") => journal.internal?,
-            quote_comments_stimulus_controller("-text-wrote-param") => I18n.t(:text_wrote),
-            quote_comments_stimulus_controller("-#{internal_comment_stimulus_controller}-outlet") => add_comment_component_dom_selector, # rubocop:disable Layout/LineLength
-            quote_comments_stimulus_controller("-#{editor_stimulus_controller}-outlet") => index_component_dom_selector
-          }
         end
       end
     end

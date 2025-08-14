@@ -30,7 +30,7 @@
 
 import { Controller } from '@hotwired/stimulus';
 
-export default class ItemController extends Controller {
+export default class AnchorController extends Controller {
   static values = {
     activityUrl: String,
   };
