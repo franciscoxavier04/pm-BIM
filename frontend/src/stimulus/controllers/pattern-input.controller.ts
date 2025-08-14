@@ -39,7 +39,14 @@ type FilteredSuggestions = Array<{
 
 type TokenElement = HTMLElement&{ dataset:{ role:'token', prop:string } };
 type ListElement = HTMLElement&{ dataset:{ role:'list_item', prop:string } };
-type AttributeToken = { key:string, label:string, label_with_context?:string, insert_as_text?:boolean };
+
+interface AttributeToken {
+  key:string;
+  label:string;
+  label_with_context?:string;
+  insert_as_text?:boolean;
+  enabled:boolean;
+};
 
 const COMPLETION_CHARACTER = '/';
 const TOKEN_REGEX = /{{([0-9A-Za-z_]+)}}/g;
@@ -84,11 +91,13 @@ export default class PatternInputController extends Controller {
   declare readonly insertAsTextTemplateValue:string;
 
   validTokenMap:Record<string, AttributeToken> = {};
+  validSuggestions:Record<string, { title:string, tokens:AttributeToken[] }> = {};
   currentRange:Range|undefined = undefined;
 
   connect() {
     this.validTokenMap = this.flatTokensKeyToLabelWithContext();
     this.contentTarget.innerHTML = this.toHtml(this.patternInitialValue) || ' ';
+    this.populateValidSuggestions();
     this.tagInvalidTokens();
     this.clearSuggestionsFilter();
   }
@@ -433,8 +442,8 @@ export default class PatternInputController extends Controller {
   }
 
   private getFilteredSuggestionsData(word:string):FilteredSuggestions {
-    return Object.keys(this.suggestionsInitialValue).map((key) => {
-      const group = this.suggestionsInitialValue[key];
+    return Object.keys(this.validSuggestions).map((key) => {
+      const group = this.validSuggestions[key];
       return {
         key,
         label: group.title,
@@ -445,9 +454,19 @@ export default class PatternInputController extends Controller {
     }).filter((group) => group.values.length > 0);
   }
 
+  private populateValidSuggestions():void {
+    for (const key of Object.keys(this.suggestionsInitialValue)) {
+      const group = this.suggestionsInitialValue[key];
+      this.validSuggestions[key] = {
+        title: group.title,
+        tokens: group.tokens.filter((token) => token.enabled)
+      };
+    }
+  }
+
   private tagInvalidTokens():void {
     this.contentTarget.querySelectorAll('[data-role="token"]').forEach((element:TokenElement) => {
-      const exists = Object.keys(this.validTokenMap).some((key) => key === element.dataset.prop);
+      const exists = Object.keys(this.validTokenMap).some((key) => this.validTokenMap[key].enabled && key === element.dataset.prop);
 
       if (exists) {
         this.setStyle(element, 'accent');

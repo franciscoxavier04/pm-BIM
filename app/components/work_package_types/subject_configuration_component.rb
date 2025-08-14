@@ -75,7 +75,9 @@ module WorkPackageTypes
     end
 
     def supported_attributes
-      attribute_tokens = Patterns::TokenPropertyMapper.new.tokens_for_type(model)
+      token_mapper = Patterns::TokenPropertyMapper.new
+      valid_tokens = token_mapper.all_tokens
+      suggestable_tokens = token_mapper.tokens_for_type(model).to_set
 
       result = {
         work_package: {
@@ -92,10 +94,20 @@ module WorkPackageTypes
         }
       }
 
-      attribute_tokens.each_with_object(result) do |token, obj|
-        token_hash = { key: token.key, label: token.label, label_with_context: token.label_with_context }
-        obj[token.context][:tokens] << token_hash
+      valid_tokens.each do |token|
+        result.dig(token.context, :tokens) << token_to_hash(token, enabled: suggestable_tokens.include?(token))
       end
+
+      result
+    end
+
+    def token_to_hash(token, enabled:)
+      {
+        key: token.key,
+        label: token.label,
+        label_with_context: token.label_with_context,
+        enabled:
+      }
     end
 
     def sort_attributes(attributes)

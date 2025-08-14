@@ -78,6 +78,15 @@ module WorkPackageTypes
         ]
       end
 
+      def all_tokens
+        [
+          *BASE_ATTRIBUTE_TOKENS,
+          *tokenize(all_work_package_cfs),
+          *tokenize(project_cfs, "project_"),
+          *tokenize(all_work_package_cfs, "parent_")
+        ]
+      end
+
       private
 
       def default_tokens
