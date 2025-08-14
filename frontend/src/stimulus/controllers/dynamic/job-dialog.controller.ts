@@ -50,9 +50,12 @@ export default class AsyncJobDialogController extends ApplicationController {
                     if (job_id) {
                         return this.showJobModal(job_id);
                     }
-                    return this.handleError(I18n.t('js.no_job_id'));
+                    this.handleError(I18n.t('js.no_job_id'));
+                    return null;
                 })
-                .catch((error:HttpErrorResponse) => this.handleError(error))
+                .catch((error:unknown) => {
+                    this.handleError(error);
+                })
                 .finally(() => {
                     TurboHelpers.hideProgressBar();
                 });
@@ -63,7 +66,7 @@ export default class AsyncJobDialogController extends ApplicationController {
         if (!this.closeDialogIdValue) {
             return; // No dialog ID specified, nothing to close
         }
-        const dialog = document.getElementById(this.closeDialogIdValue) as HTMLDialogElement;
+        const dialog = document.getElementById(this.closeDialogIdValue) as HTMLDialogElement | undefined;
         dialog?.close();
     }
 
@@ -91,13 +94,13 @@ export default class AsyncJobDialogController extends ApplicationController {
         if (response.ok) {
             renderStreamMessage(await response.text());
         } else {
-            throw new Error(response.statusText ?? I18n.t('js.invalid_job_response'));
+            throw new Error(response.statusText);
         }
     }
 
-    handleError(error:HttpErrorResponse | string):void {
+    handleError(error:unknown):void {
         void window.OpenProject.getPluginContext().then((pluginContext) => {
-            pluginContext.services.notifications.addError(error);
+            pluginContext.services.notifications.addError(error as string | HttpErrorResponse);
         });
     }
 
