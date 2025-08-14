@@ -277,7 +277,7 @@ en:
           caption: The default template is suitable for most meetings and represent the current state.
         minutes:
           label: Minutes
-          caption: The minutes template is suitable for meetings that have been closed and are archived.
+          caption: The minutes template is suitable for closed and archived meetings.
       first_page_header_left:
         label: First page header left
         caption: This text will appear on the first page at the left of the header.
