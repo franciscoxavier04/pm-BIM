@@ -38,9 +38,8 @@ class Color < ApplicationRecord
            dependent: :nullify
 
   validates :name, :hexcode, presence: true
-
-  validates :name, length: { maximum: 255, unless: lambda { |e| e.name.blank? } }
-  validates :hexcode, format: { with: /\A#[0-9A-F]{6}\z/, unless: lambda { |e| e.hexcode.blank? } }
+  validates :name, length: { maximum: 255 }
+  validates :hexcode, format: { with: RGB_HEX_FORMAT, allow_blank: true }
 
   normalizes :hexcode, with: ::Colors::HexColor::Normalizer
 end

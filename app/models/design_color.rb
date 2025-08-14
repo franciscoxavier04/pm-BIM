@@ -43,9 +43,9 @@ class DesignColor < ApplicationRecord
     end
   end
 
+  validates :variable, :hexcode, presence: true
   validates :variable, uniqueness: true
-  validates :hexcode, :variable, presence: true
-  validates :hexcode, format: { with: /\A#[0-9A-F]{6}\z/, unless: lambda { |e| e.hexcode.blank? } }
+  validates :hexcode, format: { with: RGB_HEX_FORMAT, allow_blank: true }
 
   normalizes :hexcode, with: ::Colors::HexColor::Normalizer
 

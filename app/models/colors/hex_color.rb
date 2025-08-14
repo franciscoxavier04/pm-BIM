@@ -30,6 +30,9 @@
 
 module Colors
   module HexColor
+    RGB_HEX_FORMAT = /\A#[0-9A-F]{6}\z/
+    private_constant :RGB_HEX_FORMAT
+
     ##
     # Get the fill style for this color.
     # If the color is light, use a dark font.
