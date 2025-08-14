@@ -466,14 +466,16 @@ export default class PatternInputController extends Controller {
 
   private tagInvalidTokens():void {
     this.contentTarget.querySelectorAll('[data-role="token"]').forEach((element:TokenElement) => {
-      const exists = Object.keys(this.validTokenMap).some((key) => this.validTokenMap[key].enabled && key === element.dataset.prop);
-
-      if (exists) {
+      if (this.isSuggestable(element.dataset.prop)) {
         this.setStyle(element, 'accent');
       } else {
         this.setStyle(element, 'danger');
       }
     });
+  }
+
+  private isSuggestable(token:string):boolean {
+    return Object.keys(this.validTokenMap).some((key) => this.validTokenMap[key].enabled && token === key);
   }
 
   private setStyle(token:TokenElement, style:'accent'|'danger'|'secondary'):void {
@@ -506,9 +508,13 @@ export default class PatternInputController extends Controller {
   private sanitizeContent():void {
     this.contentTarget.childNodes.forEach((node) => {
       if (this.isToken(node)) {
-        this.setStyle(node, 'accent');
-
         const key = node.dataset.prop;
+        if(this.isSuggestable(key)) {
+          this.setStyle(node, 'accent');
+        } else {
+          this.setStyle(node, 'danger');
+        }
+
         if (node.textContent !== this.tokenText(key)) {
           if (this.containsCursor(node)) {
             this.setStyle(node, 'secondary');
