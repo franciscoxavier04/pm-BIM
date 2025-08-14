@@ -38,7 +38,7 @@ RSpec.describe DesignColor do
   describe "validations" do
     context "a color_variable already exists" do
       let(:design_color) do
-        DesignColor.new variable: "foo", hexcode: "#AB1234"
+        described_class.new variable: "foo", hexcode: "#AB1234"
       end
 
       before do
@@ -46,32 +46,32 @@ RSpec.describe DesignColor do
       end
 
       it "fails validation for another design_color with same name" do
-        second_color_variable = DesignColor.new variable: "foo", hexcode: "#888888"
-        expect(second_color_variable.valid?).to be_falsey
+        second_color_variable = described_class.new variable: "foo", hexcode: "#888888"
+        expect(second_color_variable).not_to be_valid
       end
     end
 
     context "the hexcode's validation" do
       it "fails validations" do
-        expect(DesignColor.new(variable: "foo", hexcode: "1").valid?).to be_falsey
-        expect(DesignColor.new(variable: "foo", hexcode: "#1").valid?).to be_falsey
-        expect(DesignColor.new(variable: "foo", hexcode: "#1111111").valid?).to be_falsey
-        expect(DesignColor.new(variable: "foo", hexcode: "#HHHHHH").valid?).to be_falsey
+        expect(described_class.new(variable: "foo", hexcode: "1")).not_to be_valid
+        expect(described_class.new(variable: "foo", hexcode: "#1")).not_to be_valid
+        expect(described_class.new(variable: "foo", hexcode: "#1111111")).not_to be_valid
+        expect(described_class.new(variable: "foo", hexcode: "#HHHHHH")).not_to be_valid
       end
 
       it "passes validations" do
-        expect(DesignColor.new(variable: "foo", hexcode: "111111").valid?).to be_truthy
-        expect(DesignColor.new(variable: "foo", hexcode: "#111111").valid?).to be_truthy
-        expect(DesignColor.new(variable: "foo", hexcode: "#ABC123").valid?).to be_truthy
-        expect(DesignColor.new(variable: "foo", hexcode: "#111").valid?).to be_truthy
-        expect(DesignColor.new(variable: "foo", hexcode: "111").valid?).to be_truthy
+        expect(described_class.new(variable: "foo", hexcode: "111111")).to be_valid
+        expect(described_class.new(variable: "foo", hexcode: "#111111")).to be_valid
+        expect(described_class.new(variable: "foo", hexcode: "#ABC123")).to be_valid
+        expect(described_class.new(variable: "foo", hexcode: "#111")).to be_valid
+        expect(described_class.new(variable: "foo", hexcode: "111")).to be_valid
       end
     end
   end
 
   describe "#create" do
     context "no CustomStyle.current exists yet" do
-      subject { DesignColor.new variable: "foo", hexcode: "#111111" }
+      subject { described_class.new variable: "foo", hexcode: "#111111" }
 
       it "creates a CustomStyle.current" do
         expect(CustomStyle.current).to be_nil
