@@ -6,6 +6,28 @@ RSpec.describe DesignColor do
   let(:default_primary) { OpenProject::CustomStyles::Design.variables["primary-button-color"] }
   let(:primary_color) { create(:"design_color_primary-button-color") }
 
+  describe "normalization" do
+    it "does not normalize non-hexcodes, except to strip whitespace", :aggregate_failures do
+      expect(subject).to normalize(:hexcode).from("").to("")
+      expect(subject).to normalize(:hexcode).from(" ").to("")
+      expect(subject).to normalize(:hexcode).from("11").to("11")
+      expect(subject).to normalize(:hexcode).from("purple").to("purple")
+      expect(subject).to normalize(:hexcode).from("green ").to("green")
+    end
+
+    it "normalizes short hexcodes", :aggregate_failures do
+      expect(subject).to normalize(:hexcode).from(" ccc").to("#CCCCCC")
+      expect(subject).to normalize(:hexcode).from("333 ").to("#333333")
+      expect(subject).to normalize(:hexcode).from("#ddd").to("#DDDDDD")
+    end
+
+    it "normalizes full hexcodes", :aggregate_failures do
+      expect(subject).to normalize(:hexcode).from(" 800080").to("#800080")
+      expect(subject).to normalize(:hexcode).from("228b22 ").to("#228B22")
+      expect(subject).to normalize(:hexcode).from("#00CED1").to("#00CED1")
+    end
+  end
+
   describe "#setables" do
     it "returns an Array of instances" do
       expect(described_class.setables).to be_a(Array)

@@ -58,6 +58,28 @@ RSpec.describe Color do
     end
   end
 
+  describe "normalization" do
+    it "does not normalize non-hexcodes, except to strip whitespace", :aggregate_failures do
+      expect(subject).to normalize(:hexcode).from("").to("")
+      expect(subject).to normalize(:hexcode).from(" ").to("")
+      expect(subject).to normalize(:hexcode).from("11").to("11")
+      expect(subject).to normalize(:hexcode).from("purple").to("purple")
+      expect(subject).to normalize(:hexcode).from("green ").to("green")
+    end
+
+    it "normalizes short hexcodes", :aggregate_failures do
+      expect(subject).to normalize(:hexcode).from(" fc3").to("#FFCC33")
+      expect(subject).to normalize(:hexcode).from("333 ").to("#333333")
+      expect(subject).to normalize(:hexcode).from("#fc3").to("#FFCC33")
+    end
+
+    it "normalizes full hexcodes", :aggregate_failures do
+      expect(subject).to normalize(:hexcode).from(" FFCC33").to("#FFCC33")
+      expect(subject).to normalize(:hexcode).from("#ffcc33 ").to("#FFCC33")
+      expect(subject).to normalize(:hexcode).from("#00CED1").to("#00CED1")
+    end
+  end
+
   describe "- Validations" do
     let(:attributes) do
       { name: "Color No. 1",
@@ -101,24 +123,6 @@ RSpec.describe Color do
         expect(described_class.new(attributes.merge(hexcode: "0#FFFFFF"))).not_to be_valid
         expect(described_class.new(attributes.merge(hexcode: "#FFFFFF0"))).not_to be_valid
         expect(described_class.new(attributes.merge(hexcode: "white"))).not_to be_valid
-      end
-
-      it "fixes some wrong formats of hexcode automatically" do
-        color = described_class.new(attributes.merge(hexcode: "FFCC33"))
-        expect(color).to be_valid
-        expect(color.hexcode).to eq("#FFCC33")
-
-        color = described_class.new(attributes.merge(hexcode: "#ffcc33"))
-        expect(color).to be_valid
-        expect(color.hexcode).to eq("#FFCC33")
-
-        color = described_class.new(attributes.merge(hexcode: "fc3"))
-        expect(color).to be_valid
-        expect(color.hexcode).to eq("#FFCC33")
-
-        color = described_class.new(attributes.merge(hexcode: "#fc3"))
-        expect(color).to be_valid
-        expect(color.hexcode).to eq("#FFCC33")
       end
 
       it "is valid w/ proper hexcodes" do
