@@ -45,7 +45,37 @@ RSpec.describe DesignColor do
     end
   end
 
-  describe "#get_hexcode" do
+  describe "validations" do
+    it "validates variable is present and unique" do
+      expect(subject).to validate_presence_of(:variable)
+      expect(subject).to validate_uniqueness_of(:variable)
+    end
+
+    it "validates hexcode is present" do
+      expect(subject).to validate_presence_of(:hexcode)
+    end
+
+    it "does not allow malformed hexcodes" do
+      expect(subject).not_to allow_values(
+        "1",
+        "#1",
+        "#1111111",
+        "#HHHHHH"
+      ).for(:hexcode)
+    end
+
+    it "allows valid hexcodes" do
+      expect(subject).to allow_values(
+        "111111",
+        "#111111",
+        "#ABC123",
+        "#111",
+        "111"
+      ).for(:hexcode)
+    end
+  end
+
+  describe "#hexcode" do
     it "returns hexcode if present" do
       primary_color
       expect(primary_color.hexcode).to eq("#3493B3")
@@ -54,40 +84,6 @@ RSpec.describe DesignColor do
     it "returns nil hexcode if hexcode not present" do
       expect(described_class.new(variable: "primary-button-color").hexcode)
         .to be_nil
-    end
-  end
-
-  describe "validations" do
-    context "a color_variable already exists" do
-      let(:design_color) do
-        described_class.new variable: "foo", hexcode: "#AB1234"
-      end
-
-      before do
-        design_color.save
-      end
-
-      it "fails validation for another design_color with same name" do
-        second_color_variable = described_class.new variable: "foo", hexcode: "#888888"
-        expect(second_color_variable).not_to be_valid
-      end
-    end
-
-    context "the hexcode's validation" do
-      it "fails validations" do
-        expect(described_class.new(variable: "foo", hexcode: "1")).not_to be_valid
-        expect(described_class.new(variable: "foo", hexcode: "#1")).not_to be_valid
-        expect(described_class.new(variable: "foo", hexcode: "#1111111")).not_to be_valid
-        expect(described_class.new(variable: "foo", hexcode: "#HHHHHH")).not_to be_valid
-      end
-
-      it "passes validations" do
-        expect(described_class.new(variable: "foo", hexcode: "111111")).to be_valid
-        expect(described_class.new(variable: "foo", hexcode: "#111111")).to be_valid
-        expect(described_class.new(variable: "foo", hexcode: "#ABC123")).to be_valid
-        expect(described_class.new(variable: "foo", hexcode: "#111")).to be_valid
-        expect(described_class.new(variable: "foo", hexcode: "111")).to be_valid
-      end
     end
   end
 

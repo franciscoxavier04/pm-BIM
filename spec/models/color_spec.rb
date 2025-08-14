@@ -80,55 +80,22 @@ RSpec.describe Color do
     end
   end
 
-  describe "- Validations" do
-    let(:attributes) do
-      { name: "Color No. 1",
-        hexcode: "#FFFFFF" }
+  describe "validations" do
+    it "validates name is present and at most 255 chars" do
+      expect(subject).to validate_presence_of(:name)
+      expect(subject).to validate_length_of(:name).is_at_most(255)
     end
 
-    describe "name" do
-      it "is invalid w/o a name" do
-        attributes[:name] = nil
-        color = described_class.new(attributes)
-
-        expect(color).not_to be_valid
-
-        expect(color.errors[:name]).to be_present
-        expect(color.errors[:name]).to eq(["can't be blank."])
-      end
-
-      it "is invalid w/ a name longer than 255 characters" do
-        attributes[:name] = "A" * 500
-        color = described_class.new(attributes)
-
-        expect(color).not_to be_valid
-
-        expect(color.errors[:name]).to be_present
-        expect(color.errors[:name]).to eq(["is too long (maximum is 255 characters)."])
-      end
+    it "validates hexcode is present" do
+      expect(subject).to validate_presence_of(:hexcode)
     end
 
-    describe "hexcode" do
-      it "is invalid w/o a hexcode" do
-        attributes[:hexcode] = nil
-        color = described_class.new(attributes)
+    it "does not allow malformed hexcodes" do
+      expect(subject).not_to allow_values("0#FFFFFF", "#FFFFFF0", "white").for(:hexcode)
+    end
 
-        expect(color).not_to be_valid
-
-        expect(color.errors[:hexcode]).to be_present
-        expect(color.errors[:hexcode]).to eq(["can't be blank."])
-      end
-
-      it "is invalid w/ malformed hexcodes" do
-        expect(described_class.new(attributes.merge(hexcode: "0#FFFFFF"))).not_to be_valid
-        expect(described_class.new(attributes.merge(hexcode: "#FFFFFF0"))).not_to be_valid
-        expect(described_class.new(attributes.merge(hexcode: "white"))).not_to be_valid
-      end
-
-      it "is valid w/ proper hexcodes" do
-        expect(described_class.new(attributes.merge(hexcode: "#FFFFFF"))).to be_valid
-        expect(described_class.new(attributes.merge(hexcode: "#FF00FF"))).to be_valid
-      end
+    it "allows valid hexcodes" do
+      expect(subject).to allow_values("#FFFFFF", "#FF00FF").for(:hexcode)
     end
   end
 end

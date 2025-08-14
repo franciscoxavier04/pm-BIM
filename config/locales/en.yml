@@ -1059,6 +1059,8 @@ en:
         admin_only: "Admin-only"
       custom_value:
         value: "Value"
+      design_color:
+        variable: "Variable"
       doorkeeper/application:
         uid: "Client ID"
         secret: "Client secret"
