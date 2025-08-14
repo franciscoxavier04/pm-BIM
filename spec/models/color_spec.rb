@@ -67,7 +67,7 @@ RSpec.describe Color do
     describe "name" do
       it "is invalid w/o a name" do
         attributes[:name] = nil
-        color = Color.new(attributes)
+        color = described_class.new(attributes)
 
         expect(color).not_to be_valid
 
@@ -77,7 +77,7 @@ RSpec.describe Color do
 
       it "is invalid w/ a name longer than 255 characters" do
         attributes[:name] = "A" * 500
-        color = Color.new(attributes)
+        color = described_class.new(attributes)
 
         expect(color).not_to be_valid
 
@@ -89,7 +89,7 @@ RSpec.describe Color do
     describe "hexcode" do
       it "is invalid w/o a hexcode" do
         attributes[:hexcode] = nil
-        color = Color.new(attributes)
+        color = described_class.new(attributes)
 
         expect(color).not_to be_valid
 
@@ -98,32 +98,32 @@ RSpec.describe Color do
       end
 
       it "is invalid w/ malformed hexcodes" do
-        expect(Color.new(attributes.merge(hexcode: "0#FFFFFF"))).not_to be_valid
-        expect(Color.new(attributes.merge(hexcode: "#FFFFFF0"))).not_to be_valid
-        expect(Color.new(attributes.merge(hexcode: "white"))).not_to be_valid
+        expect(described_class.new(attributes.merge(hexcode: "0#FFFFFF"))).not_to be_valid
+        expect(described_class.new(attributes.merge(hexcode: "#FFFFFF0"))).not_to be_valid
+        expect(described_class.new(attributes.merge(hexcode: "white"))).not_to be_valid
       end
 
       it "fixes some wrong formats of hexcode automatically" do
-        color = Color.new(attributes.merge(hexcode: "FFCC33"))
+        color = described_class.new(attributes.merge(hexcode: "FFCC33"))
         expect(color).to be_valid
         expect(color.hexcode).to eq("#FFCC33")
 
-        color = Color.new(attributes.merge(hexcode: "#ffcc33"))
+        color = described_class.new(attributes.merge(hexcode: "#ffcc33"))
         expect(color).to be_valid
         expect(color.hexcode).to eq("#FFCC33")
 
-        color = Color.new(attributes.merge(hexcode: "fc3"))
+        color = described_class.new(attributes.merge(hexcode: "fc3"))
         expect(color).to be_valid
         expect(color.hexcode).to eq("#FFCC33")
 
-        color = Color.new(attributes.merge(hexcode: "#fc3"))
+        color = described_class.new(attributes.merge(hexcode: "#fc3"))
         expect(color).to be_valid
         expect(color.hexcode).to eq("#FFCC33")
       end
 
       it "is valid w/ proper hexcodes" do
-        expect(Color.new(attributes.merge(hexcode: "#FFFFFF"))).to be_valid
-        expect(Color.new(attributes.merge(hexcode: "#FF00FF"))).to be_valid
+        expect(described_class.new(attributes.merge(hexcode: "#FFFFFF"))).to be_valid
+        expect(described_class.new(attributes.merge(hexcode: "#FF00FF"))).to be_valid
       end
     end
   end
