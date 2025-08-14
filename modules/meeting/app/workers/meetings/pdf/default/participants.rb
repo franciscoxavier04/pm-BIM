@@ -28,83 +28,81 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings::PDF::Default
-  module Participants
-    def write_participants
-      return if participants.empty?
+module Meetings::PDF::Default::Participants
+  def write_participants
+    return if participants.empty?
 
-      write_heading(participants_title)
-      write_participants_table
+    write_heading(participants_title)
+    write_participants_table
+  end
+
+  def write_participants_table
+    columns_count = [participants.size, 3].min
+
+    rows = participants_table_rows(columns_count)
+    with_vertical_margin(styles.participants_margins) do
+      pdf.table(
+        rows,
+        column_widths: participants_table_column_widths(columns_count),
+        cell_style: { inline_format: true }.merge(styles.participants_table_cell)
+      )
     end
+  end
 
-    def write_participants_table
-      columns_count = [participants.size, 3].min
+  def participants_table_column_widths(columns_count)
+    width = pdf.bounds.width / columns_count
+    [width] * columns_count
+  end
 
-      rows = participants_table_rows(columns_count)
-      with_vertical_margin(styles.participants_margins) do
-        pdf.table(
-          rows,
-          column_widths: participants_table_column_widths(columns_count),
-          cell_style: { inline_format: true }.merge(styles.participants_table_cell)
-        )
+  def participants
+    meeting.invited_or_attended_participants.sort_by(&:name)
+  end
+
+  def participants_groups(columns_count)
+    # note participants.in_groups does not work with the alphabetically sorted requirement
+    # should be left to right and then the next row
+    array = Array.new(columns_count) { [] }
+    chunks = participants.in_groups_of(columns_count)
+    chunks.each do |chunk|
+      chunk.each_with_index do |participant, participant_index|
+        array[participant_index] << participant
       end
     end
+    array
+  end
 
-    def participants_table_column_widths(columns_count)
-      width = pdf.bounds.width / columns_count
-      [width] * columns_count
-    end
+  def participants_table_rows(columns_count)
+    groups = participants_groups(columns_count)
+    return [] if groups.empty?
 
-    def participants
-      meeting.invited_or_attended_participants.sort_by(&:name)
-    end
-
-    def participants_groups(columns_count)
-      # note participants.in_groups does not work with the alphabetically sorted requirement
-      # should be left to right and then the next row
-      array = Array.new(columns_count) { [] }
-      chunks = participants.in_groups_of(columns_count)
-      chunks.each do |chunk|
-        chunk.each_with_index do |participant, participant_index|
-          array[participant_index] << participant
-        end
-      end
-      array
-    end
-
-    def participants_table_rows(columns_count)
-      groups = participants_groups(columns_count)
-      return [] if groups.empty?
-
-      Array.new(groups[0].size) do |row_index|
-        (0..(columns_count - 1)).map do |group_nr|
-          participant = groups.dig(group_nr, row_index)
-          { content: "#{participant_name(participant)}   #{participants_status(participant)}".strip }
-        end
+    Array.new(groups[0].size) do |row_index|
+      (0..(columns_count - 1)).map do |group_nr|
+        participant = groups.dig(group_nr, row_index)
+        { content: "#{participant_name(participant)}   #{participants_status(participant)}".strip }
       end
     end
+  end
 
-    def participants_status(participant)
-      return "" if participant.nil?
+  def participants_status(participant)
+    return "" if participant.nil?
 
-      content = if participant.attended?
-                  I18n.t("description_attended")
-                elsif participant.invited?
-                  I18n.t("description_invite")
-                else
-                  ""
-                end
-      prawn_table_cell_inline_formatting_data(content.capitalize, styles.participants_status)
-    end
+    content = if participant.attended?
+                I18n.t("description_attended")
+              elsif participant.invited?
+                I18n.t("description_invite")
+              else
+                ""
+              end
+    prawn_table_cell_inline_formatting_data(content.capitalize, styles.participants_status)
+  end
 
-    def participant_name(participant)
-      return "" if participant.nil?
+  def participant_name(participant)
+    return "" if participant.nil?
 
-      participant.name
-    end
+    participant.name
+  end
 
-    def participants_title
-      "#{Meeting.human_attribute_name(:participants)} (#{meeting.invited_or_attended_participants.count})"
-    end
+  def participants_title
+    "#{Meeting.human_attribute_name(:participants)} (#{meeting.invited_or_attended_participants.count})"
   end
 end

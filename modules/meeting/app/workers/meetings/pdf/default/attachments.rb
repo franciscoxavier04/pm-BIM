@@ -28,60 +28,58 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings::PDF::Default
-  module Attachments
-    def write_attachments_list
-      return if meeting.attachments.empty?
+module Meetings::PDF::Default::Attachments
+  def write_attachments_list
+    return if meeting.attachments.empty?
 
-      columns_count = [meeting.attachments.size, 3].min
-      rows = meeting_attachments_table_rows(columns_count)
-      return if rows.empty?
+    columns_count = [meeting.attachments.size, 3].min
+    rows = meeting_attachments_table_rows(columns_count)
+    return if rows.empty?
 
-      write_hr
-      write_heading(attachments_list_title)
-      write_attachments_list_table(rows, columns_count)
+    write_hr
+    write_heading(attachments_list_title)
+    write_attachments_list_table(rows, columns_count)
+  end
+
+  def write_attachments_list_table(rows, columns_count)
+    with_vertical_margin(styles.attachments_margins) do
+      pdf.table(
+        rows,
+        column_widths: attachments_list_table_column_widths(columns_count),
+        cell_style: styles.attachments_table_cell
+      )
     end
+  end
 
-    def write_attachments_list_table(rows, columns_count)
-      with_vertical_margin(styles.attachments_margins) do
-        pdf.table(
-          rows,
-          column_widths: attachments_list_table_column_widths(columns_count),
-          cell_style: styles.attachments_table_cell
-        )
+  def attachments_list_table_column_widths(columns_count)
+    width = pdf.bounds.width / columns_count
+    [width] * columns_count
+  end
+
+  def meeting_attachments_table_rows(columns_count)
+    groups = meeting.attachments.in_groups(columns_count)
+    return [] if groups.empty?
+
+    Array.new(groups[0].size) do |row_index|
+      (0..(columns_count - 1)).map do |group_nr|
+        { content: attachment_name(groups.dig(group_nr, row_index)), inline_format: true }
       end
     end
+  end
 
-    def attachments_list_table_column_widths(columns_count)
-      width = pdf.bounds.width / columns_count
-      [width] * columns_count
-    end
+  def attachment_name(attachment)
+    return "" if attachment.nil?
 
-    def meeting_attachments_table_rows(columns_count)
-      groups = meeting.attachments.in_groups(columns_count)
-      return [] if groups.empty?
+    make_link_href(attachment_link_href(attachment), "<u>#{attachment.filename}</u>")
+  end
 
-      Array.new(groups[0].size) do |row_index|
-        (0..(columns_count - 1)).map do |group_nr|
-          { content: attachment_name(groups.dig(group_nr, row_index)), inline_format: true }
-        end
-      end
-    end
+  def attachment_link_href(attachment)
+    "#{Setting.protocol}://#{Setting.host_name}#{
+      API::V3::Utilities::PathHelper::ApiV3Path.attachment_content(attachment.id)
+    }"
+  end
 
-    def attachment_name(attachment)
-      return "" if attachment.nil?
-
-      make_link_href(attachment_link_href(attachment), "<u>#{attachment.filename}</u>")
-    end
-
-    def attachment_link_href(attachment)
-      "#{Setting.protocol}://#{Setting.host_name}#{
-        API::V3::Utilities::PathHelper::ApiV3Path.attachment_content(attachment.id)
-      }"
-    end
-
-    def attachments_list_title
-      I18n.t(:label_attachment_plural)
-    end
+  def attachments_list_title
+    I18n.t(:label_attachment_plural)
   end
 end

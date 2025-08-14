@@ -28,194 +28,111 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings::PDF::Minutes
-  module Agenda
-    def write_agenda
-      return if meeting.sections.empty?
+module Meetings::PDF::Minutes::Agenda
+  include Meetings::PDF::Common::Agenda
 
+  def write_backlog
+    return if meeting.backlog.blank? || meeting.backlog.agenda_items.empty?
+
+    write_heading(meeting.recurring? ? I18n.t("label_series_backlog") : I18n.t("label_agenda_backlog"))
+    write_agenda_items(meeting.backlog)
+  end
+
+  def write_section(section, index)
+    write_optional_page_break
+    write_section_title(section, index)
+    write_agenda_items(section, index)
+  end
+
+  def write_section_title(section, index)
+    margins = styles.agenda_section_title_table_margins
+    with_vertical_margin(margins) do
+      write_section_title_table(section, index)
+    end
+  end
+
+  def write_section_title_table(section, index)
+    pdf.table(
+      [[
+         { content: "#{index + 1}." },
+         { content: format_agenda_section_title_cell(section) }
+       ]],
+      width: pdf.bounds.width,
+      column_widths: [40, pdf.bounds.width - 40],
+      cell_style: { inline_format: true }.merge(styles.agenda_section_title_cell)
+    )
+  end
+
+  def format_agenda_section_title_cell(section)
+    content = [prawn_table_cell_inline_formatting_data(section_title(section), styles.agenda_section_title)]
+    if section.agenda_items_sum_duration_in_minutes > 0
+      content.push(
+        prawn_table_cell_inline_formatting_data(
+          format_duration(section.agenda_items_sum_duration_in_minutes),
+          styles.agenda_section_subtitle
+        )
+      )
+    end
+    content.join("  ")
+  end
+
+  def write_agenda_items(section, section_index)
+    section.agenda_items.each_with_index do |item, index|
       write_optional_page_break
-      write_agenda_sections
-    end
-
-    def write_backlog
-      return if meeting.backlog.blank? || meeting.backlog.agenda_items.empty?
-
-      write_heading(meeting.recurring? ? I18n.t("label_series_backlog") : I18n.t("label_agenda_backlog"))
-      write_agenda_items(meeting.backlog)
-    end
-
-    def write_agenda_sections
-      meeting.sections.each_with_index { |section, index| write_section(section, index) }
-    end
-
-    def write_section(section, index)
-      write_optional_page_break
-      write_section_title(section, index)
-      write_agenda_items(section, index)
-    end
-
-    def write_section_title(section, index)
-      margins = styles.agenda_section_title_table_margins
-      with_vertical_margin(margins) do
-        write_section_title_table(section, index)
+      with_vertical_margin(styles.agenda_item_margins) do
+        write_agenda_item(item, section_index, index)
       end
     end
+  end
 
-    def write_section_title_table(section, index)
+  def write_agenda_item(agenda_item, section_index, index)
+    case agenda_item.item_type.to_sym
+    when :simple
+      write_agenda_title_item_simple(agenda_item, section_index, index)
+    when :work_package
+      write_agenda_title_item_wp(agenda_item, section_index, index)
+    end
+    write_notes(agenda_item)
+    write_outcome(agenda_item) if with_outcomes?
+  end
+
+  def write_agenda_item_title(title, section_index, index)
+    with_vertical_margin(styles.agenda_item_title_margins) do
       pdf.table(
         [[
-          { content: "#{index + 1}." },
-          { content: format_agenda_section_title_cell(section) }
-        ]],
+           { content: "#{section_index + 1}.#{index + 1}." },
+           { content: title }
+         ]],
         width: pdf.bounds.width,
         column_widths: [40, pdf.bounds.width - 40],
-        cell_style: { inline_format: true }.merge(styles.agenda_section_title_cell)
+        cell_style: { inline_format: true }.merge(styles.agenda_item_title_cell)
       )
     end
+  end
 
-    def format_agenda_section_title_cell(section)
-      content = [prawn_table_cell_inline_formatting_data(section_title(section), styles.agenda_section_title)]
-      if section.agenda_items_sum_duration_in_minutes > 0
-        content.push(
-          prawn_table_cell_inline_formatting_data(
-            format_duration(section.agenda_items_sum_duration_in_minutes),
-            styles.agenda_section_subtitle
-          )
-        )
-      end
-      content.join("  ")
-    end
+  def format_agenda_item_cell(text, duration, user)
+    content = [format_agenda_item_title(text)]
+    content.push(format_agenda_item_subtitle(format_duration(duration))) if duration > 0
+    content.push(format_agenda_item_subtitle(user.name)) unless user.nil?
+    content.join("  ")
+  end
 
-    def format_duration(duration)
-      OpenProject::Common::DurationComponent.new(duration, :minutes, abbreviated: true).text
-    end
+  def write_agenda_title_item_wp(agenda_item, section_index, index)
+    write_agenda_item_title(agenda_wp_title_row(agenda_item), section_index, index)
+  end
 
-    def section_title(section)
-      section.title.presence || I18n.t("meeting_section.untitled_title")
-    end
+  def write_agenda_title_item_simple(agenda_item, section_index, index)
+    write_agenda_item_title(agenda_item.title, section_index, index)
+  end
 
-    def write_agenda_items(section, section_index)
-      section.agenda_items.each_with_index do |item, index|
-        write_optional_page_break
-        with_vertical_margin(styles.agenda_item_margins) do
-          write_agenda_item(item, section_index, index)
-        end
-      end
-    end
+  def write_notes(agenda_item)
+    return if agenda_item.notes.blank?
 
-    def write_agenda_item(agenda_item, section_index, index)
-      case agenda_item.item_type.to_sym
-      when :simple
-        write_agenda_title_item_simple(agenda_item, section_index, index)
-      when :work_package
-        write_agenda_title_item_wp(agenda_item, section_index, index)
-      end
-      write_notes(agenda_item)
-      write_outcome(agenda_item) if with_outcomes?
-    end
-
-    def write_agenda_item_title(title, section_index, index)
-      with_vertical_margin(styles.agenda_item_title_margins) do
-        pdf.table(
-          [[
-            { content: "#{section_index + 1}.#{index + 1}." },
-            { content: title }
-          ]],
-          width: pdf.bounds.width,
-          column_widths: [40, pdf.bounds.width - 40],
-          cell_style: { inline_format: true }.merge(styles.agenda_item_title_cell)
-        )
-      end
-    end
-
-    def format_agenda_item_cell(text, duration, user)
-      content = [format_agenda_item_title(text)]
-      content.push(format_agenda_item_subtitle(format_duration(duration))) if duration > 0
-      content.push(format_agenda_item_subtitle(user.name)) unless user.nil?
-      content.join("  ")
-    end
-
-    def format_agenda_item_subtitle(text)
-      prawn_table_cell_inline_formatting_data(text, styles.agenda_item_subtitle)
-    end
-
-    def format_agenda_item_title(title)
-      prawn_table_cell_inline_formatting_data(title, styles.agenda_item_title)
-    end
-
-    def agenda_title_wp(work_package)
-      href = url_helpers.work_package_url(work_package)
-      make_link_href(
-        href,
-        prawn_table_cell_inline_formatting_data(
-          "#{work_package.type.name} ##{work_package.id} #{work_package.subject}",
-          { styles: [:underline] }
-        )
+    with_vertical_margin(styles.notes_markdown_margins) do
+      write_markdown!(
+        apply_markdown_field_macros(agenda_item.notes, { project: meeting.project, user: User.current }),
+        styles.notes_markdown_styling_yml
       )
-    end
-
-    def write_agenda_title_item_wp(agenda_item, section_index, index)
-      write_agenda_item_title(agenda_wp_title_row(agenda_item), section_index, index)
-    end
-
-    def agenda_wp_title_row(agenda_item)
-      if agenda_item.visible_work_package?
-        work_package = agenda_item.work_package
-        [agenda_title_wp(work_package), "(#{work_package.status.name})"].join(" ")
-      elsif agenda_item.linked_work_package?
-        I18n.t(:label_agenda_item_undisclosed_wp, id: agenda_item.work_package_id)
-      elsif agenda_item.deleted_work_package?
-        I18n.t(:label_agenda_item_deleted_wp)
-      else
-        agenda_item.title
-      end
-    end
-
-    def write_agenda_title_item_simple(agenda_item, section_index, index)
-      write_agenda_item_title(agenda_item.title, section_index, index)
-    end
-
-    def write_notes(agenda_item)
-      return if agenda_item.notes.blank?
-
-      with_vertical_margin(styles.notes_markdown_margins) do
-        write_markdown!(
-          apply_markdown_field_macros(agenda_item.notes, { project: meeting.project, user: User.current }),
-          styles.notes_markdown_styling_yml
-        )
-      end
-    end
-
-    def write_outcome(agenda_item)
-      return unless agenda_item.outcomes.exists?
-
-      outcome = agenda_item.outcomes.information_kind.last
-      return if outcome.notes.blank?
-
-      pdf.indent(styles.outcome_indent) do
-        write_optional_page_break
-        write_outcome_title
-        write_outcome_notes(outcome.notes)
-      end
-    end
-
-    def write_outcome_title
-      with_vertical_margin(styles.outcome_title_margins) do
-        style = styles.outcome_title
-        pdf.formatted_text([
-                             styles.outcome_symbol.merge({ text: "✓ " }),
-                             style.merge({ text: I18n.t("label_agenda_outcome") })
-                           ], style)
-      end
-    end
-
-    def write_outcome_notes(notes)
-      with_vertical_margin(styles.outcome_markdown_margins) do
-        write_markdown!(
-          apply_markdown_field_macros(notes, { project: meeting.project, user: User.current }),
-          styles.outcome_markdown_styling_yml
-        )
-      end
     end
   end
 end

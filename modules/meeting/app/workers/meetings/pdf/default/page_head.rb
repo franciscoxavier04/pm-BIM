@@ -28,38 +28,36 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings::PDF::Default
-  module PageHead
-    def write_page_head
-      with_vertical_margin(styles.page_heading_margins) do
-        write_page_title
-      end
-      with_vertical_margin(styles.page_subtitle_margins) do
-        write_meeting_subtitle
-      end
-      write_hr
+module Meetings::PDF::Default::PageHead
+  def write_page_head
+    with_vertical_margin(styles.page_heading_margins) do
+      write_page_title
     end
+    with_vertical_margin(styles.page_subtitle_margins) do
+      write_meeting_subtitle
+    end
+    write_hr
+  end
 
-    def write_page_title
-      style = styles.page_heading
-      pdf.formatted_text([style.merge(
-        { text: meeting.title, link: url_helpers.meeting_url(meeting) }
-      )], style)
-    end
+  def write_page_title
+    style = styles.page_heading
+    pdf.formatted_text([style.merge(
+      { text: meeting.title, link: url_helpers.meeting_url(meeting) }
+    )], style)
+  end
 
-    def write_meeting_subtitle
-      style = styles.page_subtitle
-      pdf.formatted_text([style.merge({ text: meeting_subtitle })], style)
-    end
+  def write_meeting_subtitle
+    style = styles.page_subtitle
+    pdf.formatted_text([style.merge({ text: meeting_subtitle })], style)
+  end
 
-    def meeting_subtitle
-      [
-        "#{meeting_mode} (#{I18n.t("label_meeting_state_#{meeting.state}")}),",
-        "#{format_date(meeting.start_time)},",
-        format_time(meeting.start_time, include_date: false),
-        "–",
-        format_time(meeting.end_time, include_date: false)
-      ].join(" ")
-    end
+  def meeting_subtitle
+    [
+      "#{meeting_mode} (#{I18n.t("label_meeting_state_#{meeting.state}")}),",
+      "#{format_date(meeting.start_time)},",
+      format_time(meeting.start_time, include_date: false),
+      "–",
+      format_time(meeting.end_time, include_date: false)
+    ].join(" ")
   end
 end

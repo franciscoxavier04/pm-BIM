@@ -29,52 +29,14 @@
 #++
 
 module Meetings::PDF::Default
-  class Exporter < ::Exports::Exporter
-    include Exports::PDF::Common::Common
-    include Exports::PDF::Common::Logo
-    include Exports::PDF::Common::Markdown
-    include Exports::PDF::Common::Attachments
+  class Exporter < ::Meetings::PDF::Common::Exporter
     include Exports::PDF::Common::Badge
-    include Exports::PDF::Common::Macro
-    include Exports::PDF::Components::Page
     include Exports::PDF::Components::Cover
     include Meetings::PDF::Default::Styles
     include Meetings::PDF::Default::PageHead
     include Meetings::PDF::Default::Participants
     include Meetings::PDF::Default::Agenda
     include Meetings::PDF::Default::Attachments
-
-    attr_accessor :pdf
-
-    self.model = Meeting
-
-    alias :meeting :object
-
-    def self.key
-      :pdf
-    end
-
-    def initialize(meeting, options)
-      super(meeting, options[:options] || options)
-      @total_page_nr = nil
-      @page_count = 0
-
-      setup_page!
-    end
-
-    def setup_page!
-      self.pdf = get_pdf
-      pdf.title = heading
-      configure_page_size!(:portrait)
-    end
-
-    def export!
-      render_doc
-      success(pdf.render)
-    rescue StandardError => e
-      Rails.logger.error "Failed to generate PDF export:  #{e.message}:\n#{e.backtrace.join("\n")}"
-      error(I18n.t(:error_pdf_failed_to_export, error: e.message))
-    end
 
     def render_doc
       write_cover_page! if with_cover?
@@ -91,13 +53,6 @@ module Meetings::PDF::Default
       write_footers!
     end
 
-    def write_heading(text)
-      style = styles.heading
-      with_vertical_margin(styles.heading_margins) do
-        pdf.formatted_text([style.merge({ text: })], style)
-      end
-    end
-
     def write_hr
       hr_style = styles.heading_hr
       with_vertical_margin(styles.heading_hr_margins) do
@@ -105,50 +60,8 @@ module Meetings::PDF::Default
       end
     end
 
-    def cover_page_title
-      project_title
-    end
-
-    def cover_page_heading
-      meeting.title
-    end
-
-    def cover_page_dates
-      [
-        "#{meeting_mode},",
-        "#{format_date(meeting.start_time)},",
-        format_time(meeting.start_time, include_date: false),
-        "–",
-        format_time(meeting.end_time, include_date: false)
-      ].join(" ")
-    end
-
-    def meeting_mode
-      meeting.state == "open" ? I18n.t("label_meeting_agenda") : I18n.t("label_meeting_minutes")
-    end
-
-    def cover_page_subheading
-      meeting.location
-    end
-
-    def heading
-      meeting.title
-    end
-
-    def project_title
-      meeting.project&.name || ""
-    end
-
     def footer_title
       options[:footer_text] || project_title
-    end
-
-    def title_datetime
-      meeting.start_time.strftime("%Y-%m-%d")
-    end
-
-    def title
-      build_pdf_filename(meeting.title)
     end
 
     def with_participants?
@@ -163,15 +76,7 @@ module Meetings::PDF::Default
       ActiveModel::Type::Boolean.new.cast(options[:backlog])
     end
 
-    def with_outcomes?
-      ActiveModel::Type::Boolean.new.cast(options[:outcomes])
-    end
-
     def with_cover?
-      true
-    end
-
-    def with_images?
       true
     end
   end

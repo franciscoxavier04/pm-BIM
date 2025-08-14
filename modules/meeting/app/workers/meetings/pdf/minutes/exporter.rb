@@ -29,63 +29,25 @@
 #++
 
 module Meetings::PDF::Minutes
-  class Exporter < ::Exports::Exporter
-    include Exports::PDF::Common::Common
-    include Exports::PDF::Common::Logo
-    include Exports::PDF::Common::Markdown
-    include Exports::PDF::Common::Attachments
-    include Exports::PDF::Common::Macro
-    include Exports::PDF::Components::Page
+  class Exporter < ::Meetings::PDF::Common::Exporter
     include Meetings::PDF::Minutes::Styles
     include Meetings::PDF::Minutes::PageHead
     include Meetings::PDF::Minutes::Agenda
-
-    attr_accessor :pdf
-
-    self.model = Meeting
-
-    alias :meeting :object
-
-    def self.key
-      :pdf
-    end
 
     def self.active?(template)
       (template == "minutes") && OpenProject::FeatureDecisions.minutes_styling_meeting_pdf_active?
     end
 
-    def initialize(meeting, options)
-      super(meeting, options[:options] || options)
-      @total_page_nr = nil
-      @page_count = 0
-
-      setup_page!
-    end
-
-    def setup_page!
-      self.pdf = get_pdf
-      pdf.title = heading
-      configure_page_size!(:portrait)
-    end
-
-    def export!
-      render_doc
-      render_doc_again_with_total_page_nrs if wants_total_page_nrs?
-      success(pdf.render)
-    rescue StandardError => e
-      Rails.logger.error "Failed to generate PDF export:  #{e.message}:\n#{e.backtrace.join("\n")}"
-      error(I18n.t(:error_pdf_failed_to_export, error: e.message))
-    end
-
     def render_doc
       render_meeting
+      render_again_with_total_page_nrs if wants_total_page_nrs?
     end
 
-    def render_doc_again_with_total_page_nrs
+    def render_again_with_total_page_nrs
       @total_page_nr = pdf.page_count + @page_count
       @page_count = 0
       setup_page! # clear current pdf
-      render_doc
+      render_meeting
     end
 
     def render_meeting
@@ -93,47 +55,6 @@ module Meetings::PDF::Minutes
       write_agenda
       write_minutes_headers
       write_minutes_footers
-    end
-
-    def write_heading(text)
-      style = styles.heading
-      with_vertical_margin(styles.heading_margins) do
-        pdf.formatted_text([style.merge({ text: })], style)
-      end
-    end
-
-    def cover_page_title
-      project_title
-    end
-
-    def cover_page_heading
-      meeting.title
-    end
-
-    def cover_page_dates
-      [
-        "#{meeting_mode},",
-        "#{format_date(meeting.start_time)},",
-        format_time(meeting.start_time, include_date: false),
-        "–",
-        format_time(meeting.end_time, include_date: false)
-      ].join(" ")
-    end
-
-    def meeting_mode
-      meeting.state == "open" ? I18n.t("label_meeting_agenda") : I18n.t("label_meeting_minutes")
-    end
-
-    def cover_page_subheading
-      meeting.location
-    end
-
-    def heading
-      meeting.title
-    end
-
-    def project_title
-      meeting.project&.name || ""
     end
 
     def page_header_text
@@ -194,27 +115,11 @@ module Meetings::PDF::Minutes
       end
     end
 
-    def title_datetime
-      meeting.start_time.strftime("%Y-%m-%d")
-    end
-
-    def title
-      build_pdf_filename(meeting.title)
-    end
-
-    def with_outcomes?
-      ActiveModel::Type::Boolean.new.cast(options[:outcomes])
-    end
-
     def with_cover?
       false
     end
 
     def wants_total_page_nrs?
-      true
-    end
-
-    def with_images?
       true
     end
   end
