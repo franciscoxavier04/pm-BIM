@@ -46,7 +46,7 @@ module Meetings
         if Meetings::PDF::Minutes::Exporter.active?(opts[:template])
           Meetings::PDF::Minutes::Exporter.new(meeting, opts)
         else
-          Meetings::PDF::Export::Exporter.new(meeting, opts)
+          Meetings::PDF::Default::Exporter.new(meeting, opts)
         end
     end
 
