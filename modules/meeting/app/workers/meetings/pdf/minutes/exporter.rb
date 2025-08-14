@@ -50,6 +50,10 @@ module Meetings::PDF::Minutes
       :pdf
     end
 
+    def self.active?(template)
+      (template == "minutes") && OpenProject::FeatureDecisions.minutes_styling_meeting_pdf_active?
+    end
+
     def initialize(meeting, options)
       super(meeting, options[:options] || options)
       @total_page_nr = nil

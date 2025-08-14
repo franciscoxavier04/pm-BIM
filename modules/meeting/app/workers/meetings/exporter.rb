@@ -43,7 +43,7 @@ module Meetings
       super(meeting, opts)
 
       self.template =
-        if (opts[:template] == "minutes") && OpenProject::FeatureDecisions.minutes_styling_meeting_pdf_active?
+        if Meetings::PDF::Minutes::Exporter.active?(opts[:template])
           Meetings::PDF::Minutes::Exporter.new(meeting, opts)
         else
           Meetings::PDF::Export::Exporter.new(meeting, opts)
