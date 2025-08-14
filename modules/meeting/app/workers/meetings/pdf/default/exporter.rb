@@ -28,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings::PDF::Export
+module Meetings::PDF::Default
   class Exporter < ::Exports::Exporter
     include Exports::PDF::Common::Common
     include Exports::PDF::Common::Logo
@@ -38,11 +38,11 @@ module Meetings::PDF::Export
     include Exports::PDF::Common::Macro
     include Exports::PDF::Components::Page
     include Exports::PDF::Components::Cover
-    include Meetings::PDF::Export::Styles
-    include Meetings::PDF::Export::PageHead
-    include Meetings::PDF::Export::Participants
-    include Meetings::PDF::Export::Agenda
-    include Meetings::PDF::Export::Attachments
+    include Meetings::PDF::Default::Styles
+    include Meetings::PDF::Default::PageHead
+    include Meetings::PDF::Default::Participants
+    include Meetings::PDF::Default::Agenda
+    include Meetings::PDF::Default::Attachments
 
     attr_accessor :pdf
 

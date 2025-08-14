@@ -28,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings::PDF::Export::Styles
+module Meetings::PDF::Default::Styles
   class PDFStyles
     include MarkdownToPDF::Common
     include MarkdownToPDF::StyleHelper

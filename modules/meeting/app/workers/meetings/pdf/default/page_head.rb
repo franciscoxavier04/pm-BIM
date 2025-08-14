@@ -28,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings::PDF::Export
+module Meetings::PDF::Default
   module PageHead
     def write_page_head
       with_vertical_margin(styles.page_heading_margins) do
