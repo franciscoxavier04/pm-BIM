@@ -92,9 +92,7 @@ RSpec.describe "Recurring meetings move to next meeting", :js do
       it "shows the move to next meeting option" do
         meeting_page.expect_agenda_item(title: "Test notes")
 
-        accept_confirm do
-          meeting_page.select_action(agenda_item, "Move to next meeting")
-        end
+        meeting_page.move_item_to_next_meeting(agenda_item)
 
         expect_and_dismiss_flash(message: "Agenda item moved to the next meeting")
 
@@ -114,9 +112,7 @@ RSpec.describe "Recurring meetings move to next meeting", :js do
       it "shows the move to next meeting option" do
         meeting_page.expect_agenda_item(title: "Test notes")
 
-        accept_confirm do
-          meeting_page.select_action(agenda_item, "Move to next meeting")
-        end
+        meeting_page.move_item_to_next_meeting(agenda_item)
 
         expect(page).to have_text "Unable to move to the next meeting since it has been cancelled."
         meeting_page.expect_agenda_item(title: "Test notes")

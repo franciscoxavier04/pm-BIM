@@ -66,6 +66,11 @@ module CustomStylesHelper
       (EnterpriseToken.allows_to?(:define_custom_style) || skip_ee_check)
   end
 
+  def custom_logo?
+    CustomStyle.current.present? &&
+      (CustomStyle.current.logo.present? || CustomStyle.current.theme_logo.present?)
+  end
+
   # The default favicon and touch icons are both the same for normal OP and BIM.
   def apply_custom_favicon?
     apply_custom_styles?(skip_ee_check: false) && CustomStyle.current.favicon.present?

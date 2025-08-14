@@ -295,10 +295,10 @@ ko:
           learn_about: "새로운 모든 기능에 대해 자세히 알아보기"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. Chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_2":
+          "16_3":
             standard:
               new_features_html: >
-                이 릴리스에는 다음과 같은 다양한 새로운 기능과 개선 사항이 포함되어 있습니다. <br> <ul class="%{list_styling_class}"> <li>탐색과 디자인이 개선된 새로운 헤더와 사이드바.</li> <li>사용자 지정 필드, 관계, 미리 알림, 미팅, 내 시간 추적이 포함된 더욱 원활한 환경.</li> <li>PDF 내보내기에서 라틴어 이외 언어 및 이모티콘 지원.</li> <li>개선된 접근성을 위해 키보드 바로 가기를 비활성화하는 옵션.</li> <li>API를 통한 SCIM 서버(Enterprise 추가 기능).</li> <li>내부 코멘트에 대한 API 지원.</li> </ul>
+                이 릴리스에는 다음과 같은 다양한 새로운 기능과 개선 사항이 포함되어 있습니다. <br> <ul class="%{list_styling_class}"> <li>더욱 현대적인 디자인의 UX/UI 개선.</li> <li>미팅: ICS 및 이메일 알림 음소거 옵션.</li> <li>내 시간 추적 모듈에 표시되는 진행 중인 타이머.</li> <li>진행률 보고: 상태 기반 모드에서도 표시되는 완료 %.</li> <li>Nextcloud 상태 확인: 누락된 토큰 교환 기능 표시(Enterprise 추가 기능).</li> </ul>
     ical_sharing_modal:
       title: "캘린더 구독"
       inital_setup_error_message: "데이터를 가져오는 중에 오류가 발생했습니다."
@@ -642,7 +642,7 @@ ko:
       title: "계속하려면 암호 확인"
     pagination:
       no_other_page: "유일한 페이지에 있습니다."
-      pages_skipped: "Pages skipped."
+      pages_skipped: "페이지를 건너뛰었습니다."
       page_navigation: "페이지 매김 탐색"
       per_page_navigation: '페이지별 항목 선택'
       pages:
@@ -695,7 +695,7 @@ ko:
           first_day: "첫날"
           last_day: "마지막 날"
     text_are_you_sure: "계속하시겠습니까?"
-    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
+    text_are_you_sure_to_cancel: "이 페이지에 저장되지 않은 변경 사항이 있습니다. 변경 사항을 취소하시겠습니까?"
     breadcrumb: "이동 경로"
     text_data_lost: "입력한 모든 데이터가 손실됩니다."
     text_user_wrote: "%{value}이(가) 작성함:"

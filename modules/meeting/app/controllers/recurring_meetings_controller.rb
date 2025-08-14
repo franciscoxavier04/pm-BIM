@@ -222,8 +222,12 @@ class RecurringMeetingsController < ApplicationController
   end
 
   def notify
-    deliver_invitation_mails
-    flash[:notice] = I18n.t(:notice_successful_notification)
+    if deliver_invitation_mails == false
+      flash[:error] = I18n.t(:error_notification)
+    else
+      flash[:notice] = I18n.t(:notice_successful_notification)
+    end
+
     redirect_to action: :show
   end
 
@@ -246,6 +250,8 @@ class RecurringMeetingsController < ApplicationController
   end
 
   def deliver_invitation_mails
+    return false unless @recurring_meeting.template.notify?
+
     @recurring_meeting
       .template
       .participants
@@ -326,9 +332,8 @@ class RecurringMeetingsController < ApplicationController
 
   def recurring_meeting_params
     params
-      .require(:meeting)
-      .permit(:project_id, :title, :location, :start_time_hour, :duration, :start_date,
-              :interval, :frequency, :end_after, :end_date, :iterations)
+      .expect(meeting: %i[project_id title location start_time_hour duration start_date
+                          interval frequency end_after end_date iterations notify])
   end
 
   def find_copy_from_meeting

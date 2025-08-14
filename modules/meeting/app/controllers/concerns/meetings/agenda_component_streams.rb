@@ -198,7 +198,7 @@ module Meetings
         )
         # as the list is updated without displaying the form, the new button needs to be enabled again
         # the new button might be in a disabled state
-        update_new_button_via_turbo_stream(disabled: false) if form_hidden == true
+        update_new_button_via_turbo_stream(disabled: false, meeting:) if form_hidden == true
       end
 
       def update_item_via_turbo_stream(state: :show, meeting_agenda_item: @meeting_agenda_item, display_notes_input: nil)

@@ -98,6 +98,7 @@ zh-TW:
     meeting_agenda_opened: 會議大綱開啟
     meeting_minutes: 會議記錄已編輯
     meeting_minutes_created: 會議記錄已建立
+  error_notification: "傳送通知失敗。"
   error_notification_with_errors: "傳送通知失敗。以下的收件者將不會被通知到: %{recipients}"
   label_meeting: "會議"
   label_meeting_plural: "會議"
@@ -117,6 +118,7 @@ zh-TW:
   label_meeting_date_time: "日期 / 時間"
   label_meeting_date_and_time: "日期和時間"
   label_meeting_diff: "比較"
+  label_meeting_send_updates: "透過電子郵件發送行事曆更新"
   label_recurring_meeting: "重複性會議"
   label_recurring_meeting_part_of: "系列會議的一部分"
   label_recurring_meeting_new: "新的重複性會議"
@@ -210,7 +212,7 @@ zh-TW:
         body: "會議 %{title} 已經被 %{actor} 重新安排。"
         old_date_time: "舊日期/時間"
         new_date_time: "新日期/時間"
-    label_mail_all_participants: "發送電子郵件給所有參與者"
+    label_mail_all_participants: "將行事曆邀請電郵給所有參與者"
     types:
       one_time: "一次性"
       recurring: "重覆"
@@ -255,6 +257,41 @@ zh-TW:
         label: 頁尾文字
         caption: 此文字將出現在每頁的頁尾中央。
       submit_button: 下載
+    notifications:
+      sidepanel:
+        title: "電子郵件行事曆更新"
+        description:
+          disabled: "參與者不會收到通知變更的電子郵件。"
+          enabled: "所有與會者都會透過電子郵件收到更新的行事曆邀請，通知他們相關變更。"
+          change_via_template: "若要變更，請編輯系列範本。"
+      dialog:
+        title:
+          enable: "啟用電子郵件行事曆更新？"
+          disable: "停用電子郵件行事曆更新？"
+        message:
+          enable: >
+            每次會議日期、時間、地點或與會者有變更時，所有與會者都會透過電子郵件收到更新的行事曆邀請。啟用後，電子郵件會立即傳送給所有與會者。
+          disable: >
+            當會議日期、時間、地點或與會者有變更時，與會者將不會再透過電子郵件收到更新的行事曆邀請。如果他們已經有這個會議的邀請，則可能不再準確。
+        confirm_label:
+          enable: "啟用電子郵件更新"
+          disable: "停用電子郵件更新"
+      banner:
+        onetime:
+          enabled: >
+            所有參與者都會透過電子郵件收到更新的行事曆邀請，通知他們您的變更。
+          disabled: >
+            電子郵件行事曆更新已停用。參與者將不會收到通知您變更的電子郵件。
+        occurrence:
+          enabled: >
+            已啟用系列會議的電子郵件行事曆更新。所有與會者都會收到更新的行事曆邀請，通知他們您對此事件所做的變更。
+          disabled: >
+            系列會議的電子郵件行事曆更新已停用。與會者將不會收到電子郵件，通知他們您對此發生的變更。
+        template:
+          enabled: >
+            已為會議系列啟用電子郵件行事曆更新。所有與會者都會收到更新的行事曆邀請，通知他們您對此範本或個別事件所做的變更。
+          disabled: >
+            會議系列的電子郵件行事曆更新已停用。與會者將不會收到電子郵件，通知他們您對此範本或個別事件所做的變更。
   meeting_section:
     untitled_title: "無標題章節"
     delete_confirmation: "刪除該章節也會刪除其所有的議程項目。您確定要這麼做？"
@@ -340,7 +377,7 @@ zh-TW:
       confirm_button: "取消事件"
     end_series_dialog:
       title: "結束系列會議"
-  notice_successful_notification: "通知傳送成功"
+  notice_successful_notification: "透過電子郵件更新行事曆，並發送給所有參與者"
   notice_timezone_missing: 沒有設定時區，預設時區為 %{zone} 。請按這裡選擇您的時區。
   notice_meeting_updated: "本頁已由他人更新。重新載入以查看變更。"
   permission_create_meetings: "建立會議"
@@ -383,6 +420,8 @@ zh-TW:
   label_agenda_item_undisclosed_wp: "工作套件 #%{id} 不可見"
   label_agenda_item_deleted_wp: "已將引用的工作套件刪除"
   label_agenda_item_actions: "議程項目行動"
+  label_agenda_item_move_to_next_title: "移至下次會議？"
+  label_agenda_item_move: "移動"
   label_agenda_item_move_to_next: "移至下次會議"
   label_agenda_item_move_to_backlog: "移至待辦清單"
   label_agenda_item_move_to_current_meeting: "移至目前會議"
@@ -453,9 +492,12 @@ zh-TW:
   text_add_work_package_to_meeting_description: "工作套件可以新增到一或多個會議供討論。相關的說明也可在這裡看到。"
   text_agenda_item_no_notes: "沒註記"
   text_agenda_item_not_editable_anymore: "本次會議已不可編輯。"
-  text_agenda_item_move_next_meeting: "您確定要移至 %{date} %{time}的下次會議嗎？"
+  text_agenda_item_move_next_meeting: "本項目將移至 %{date} %{time}的下次會議上討論。"
   text_agenda_item_moved_to_next_meeting: "議程項目移至下次會議討論： %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "該工作套件尚未被安排到即將舉行的會議議程中。"
   text_agenda_item_move_next_meeting_cancelled: "由於下次會議已被取消，因此無法轉到下次會議。"
   text_work_package_add_to_meeting_hint: '使用"增加到會議"按鈕將此工作套件新增到即將舉行的會議。'
   text_work_package_has_no_past_meeting_agenda_items: "在過往會議中沒有提及本工作套件。"
+  text_email_updates_muted: "電子郵件行事曆更新已靜音。當您變更時，參與者將不會透過電子郵件收到更新的邀請。"
+  text_email_updates_enabled: "已啟用電子郵件行事曆更新。當您作出變更時，所有參與者都會透過電子郵件收到更新的邀請。"
+

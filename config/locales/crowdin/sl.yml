@@ -63,7 +63,6 @@ sl:
         primary-button-color: "Primary button"
         accent-color: "Accent"
         header-bg-color: "Ozadje glave"
-        header-item-bg-hover-color: "Ozadje glave, ko smo z miško na vsebini"
         main-menu-bg-color: "Ozadje glavnega menija"
         main-menu-bg-selected-background: "Glavni meni, ko je izbran"
       custom_colors: "Barve po meri"
@@ -71,10 +70,6 @@ sl:
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
         accent-color: "Color for links and other decently highlighted elements."
-        header-item-bg-hover-color: "Barva ozadja enot v glavi katere je mogoče klikniti, ko se z miško premaknete na njih."
-        header-item-font-color: "Barva pisave enot v glavi, na katere lahko kliknemo."
-        header-item-font-hover-color: "Barva pisave elementov v glavi, na katere lahko kliknemo, ko se z miško premaknemo na njih."
-        header-border-bottom-color: "Tanka črta pod glavo. Pustite to polje prazno, če ne želite črte."
         main-menu-bg-color: "Barva ozadja levega menija."
       theme_warning: "Sprememba teme bo nadomestilo vaš slog po meri. Oblikovanje bo tako izgubljeno. Ali ste prepričani, da bi radi nadaljevali?\n"
     enterprise:
@@ -133,8 +128,8 @@ sl:
       form:
         auth_provider_description: "This is the service that users added by the SCIM provider will use to authenticate in OpenProject."
         authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM clients</a> for more information on these configuration options.'
-        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
+        description: "Please refer to our [documentation on configuring SCIM clients](docs_url) for more information on these configuration options."
+        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
         name_description: "Choose a name that will help other admins better understand why this client was configured."
       index:
         description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
@@ -372,13 +367,24 @@ sl:
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Trenutno ni nobene skupine.
-      no_results_content_text: Ustvarite novo skupino
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define named groups of users with specific permissions.
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: V tej skupini trenutno ni uporabnikov.
     memberships:
       no_results_title_text: Trenutno ni projektov, ki so del te skupine.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Določite seznam imen, ki jih ne upoštevate pri obdelavi prilog za dohodne pošte (npr. podpise ali ikone). Vnesite eno ime datoteke v vrstico.
@@ -693,8 +699,10 @@ sl:
         excluded_from_totals: "Excluded from totals"
   themes:
     dark: "Dark"
+    dark_high_contrast: "Dark high contrast"
     light: "Light"
     light_high_contrast: "Light high contrast"
+    sync_with_os: "Automatic (match OS colour mode)"
   types:
     index:
       no_results_title_text: Trenutno ni vrst.
@@ -726,9 +734,8 @@ sl:
             project: "Projekt"
         pattern:
           label: "Subject pattern"
-          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
+          caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
-          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1129,7 +1136,6 @@ sl:
       role:
         permissions: "Dovoljenja"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1280,6 +1286,7 @@ sl:
         inclusion_nested: "ni nastavljena na eno od dovoljenih vrednosti na poti '%{path}'."
         invalid: "ni pravo."
         invalid_characters: "contains invalid characters."
+        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
         invalid_url: "ni veljaven URL. "
         invalid_url_scheme: "ni podprt protokol (dovoljeno:%{allowed_schemes})."
         less_than_or_equal_to: "mora biti manjše ali enako %{count}. "
@@ -1299,6 +1306,7 @@ sl:
         odd: "mora biti liho. "
         regex_match_failed: "does not match the regular expression %{expression}."
         regex_invalid: "ni bilo mogoče potrditi s pripadajočim stalnim izrazom."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "mora biti manjše ali enako največji dolžini."
         taken: "je že zasedeno."
         too_long: "je predolgo (največ %{count} znakov)."
@@ -1629,7 +1637,13 @@ sl:
     models:
       attachment: "Datoteka"
       attribute_help_text: "Tekst pomoči atributa"
+      auth_provider:
+        one: "Authentication provider"
+        two: "Authentication providers"
+        few: "Authentication providers"
+        other: "Authentication providers"
       category: "Kategorija"
+      color: "Color"
       comment: "Komentar"
       custom_action: "Dejanja po meri"
       custom_field: "Polje po meri"
@@ -1915,7 +1929,7 @@ sl:
   button_duplicate: "Podvoji"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Uredi"
-  button_edit_associated_wikipage: "Uredi povezano Wiki stran: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Razširi vse"
   button_favorite: "Add to favorites"
   button_filter: "Filtriraj"
@@ -2327,6 +2341,13 @@ sl:
         I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
       consent_html: >
         I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
   enumeration_activities: "Dejavnosti spremljanja časa"
   enumeration_work_package_priorities: "Prednostne naloge delovnega paketa"
   enumeration_reported_project_statuses: "Poročano stanje projekta"
@@ -2534,6 +2555,13 @@ sl:
       xls2csv: "Na voljo Xls2csv (neobvezno)"
       catppt: "Na voljo je Catppt (neobvezno)"
       tesseract: "Tesseract na voljo (neobvezno)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","
@@ -2627,7 +2655,7 @@ sl:
       aggregation: "Aggregation"
       api_and_webhooks: "API and webhooks"
     quick_add:
-      label: "Odpri meni za hitro dodajanje"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2927,6 +2955,7 @@ sl:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Splošno"
   label_generate_key: "Ustvari ključ"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: "Pot do datoteke ali mape"
   label_greater_or_equal: ">="
@@ -3011,6 +3040,7 @@ sl:
   label_manage: "Manage"
   label_manage_groups: "Upravljanje skupin"
   label_managed_repositories_vendor: "Upravljana %{vendor} skladišča"
+  label_mathematical_operators: "Mathematical operators"
   label_max_size: "Največja velikost"
   label_me: "jaz"
   label_member_new: "Nov član"
@@ -3070,6 +3100,7 @@ sl:
   label_no_due_date: "brez končnega datuma"
   label_no_start_date: "Brez začetnega datuma"
   label_no_parent_page: "Brez matične strani"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Ni podatkov za prikaz"
   label_nobody: "nihče"
   label_not_configured: "Not configured"
@@ -3278,6 +3309,7 @@ sl:
   label_user_mail_option_only_my_events: "Samo za stvari, ki jih opazujem ali v katere sem vpleten"
   label_user_mail_option_only_owner: "Samo za stvari katerih lastnik sem"
   label_user_mail_option_selected: "Za vsak dogodek samo na izbranih projektih..."
+  label_user_menu: "User menu"
   label_user_new: "Nov uporabnik"
   label_user_plural: "Uporabniki"
   label_user_search: "Išči uporabnika"

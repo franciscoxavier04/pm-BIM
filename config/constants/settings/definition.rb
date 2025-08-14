@@ -622,6 +622,11 @@ module Settings
       journal_aggregation_time_minutes: {
         default: 5
       },
+      large_instance_wp_allowed_to_sql: {
+        description: "When querying for allowed work packages, use SQL better suited for instances " \
+                     "with a larger set of work packages, projects, members and users",
+        default: false
+      },
       ldap_force_no_page: {
         description: "Force LDAP to respond as a single page, in case paged responses do not work with your server.",
         format: :string,
@@ -1166,7 +1171,8 @@ module Settings
           "timeout" => Rails.env.production? ? 120 : 0,
           "wait_timeout" => 30,
           "min_threads" => 4,
-          "max_threads" => 16
+          "max_threads" => 16,
+          "term_on_timeout" => 1
         },
         writable: false
       },

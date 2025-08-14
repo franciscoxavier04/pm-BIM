@@ -56,7 +56,11 @@ FactoryBot.define do
 
     after(:create) do
       # As the request store keeps track of the created custom fields
-      RequestStore.clear!
+      RequestStore.store.delete_if { |key, _| key.to_s.include?("_custom_fields") }
+    end
+
+    trait :admin_only do
+      admin_only { true }
     end
 
     trait :multi_value do
@@ -83,6 +87,7 @@ FactoryBot.define do
 
     trait :calculated_value do
       field_format { "calculated_value" }
+      formula { "2 + 2" }
     end
 
     trait :float do

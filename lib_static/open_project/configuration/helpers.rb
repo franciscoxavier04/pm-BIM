@@ -182,6 +182,10 @@ module OpenProject
         Integer(ENV["RACK_TIMEOUT_WAIT_TIMEOUT"].presence || web["wait_timeout"].presence)
       end
 
+      def term_on_timeout
+        Integer(ENV["RACK_TIMEOUT_TERM_ON_TIMEOUT"].presence || web["term_on_timeout"].presence)
+      end
+
       def web_min_threads
         Integer(ENV["RAILS_MIN_THREADS"].presence || web["min_threads"].presence)
       end

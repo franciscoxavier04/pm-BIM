@@ -294,10 +294,10 @@ pt-BR:
           learn_about: "Saiba mais sobre todos os novos recursos"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. Chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_2":
+          "16_3":
             standard:
               new_features_html: >
-                A versão inclui vários novos recursos e melhorias, tais como <br> <ul class="%{list_styling_class}"> <li>Novo cabeçalho e barra lateral com navegação e design aprimorados.</li> <li>Experiência mais fluida com Campos personalizados, Relações, Lembretes, Reuniões e Meu acompanhamento de tempo.</li> <li>Suporte a idiomas não latinos e emojis em exportações PDF.</li> <li>Opção para desativar atalhos de teclado para melhor acessibilidade.</li> <li>Servidor SCIM via API (add-on Enterprise).</li> <li>Suporte à API para comentários internos.</li> </ul>
+                A versão traz várias novidades e melhorias, como <br> <ul class="%{list_styling_class}"> <li>Interface UX/UI renovada para um visual mais moderno.</li> <li>Reuniões: opção para silenciar notificações por e-mail e arquivos ICS.</li> <li>Temporizadores ativos exibidos no módulo Meu controle de tempo.</li> <li>Relatórios de progresso: soma da % concluída também exibida no modo com base em status.</li> <li>Verificação de integridade do Nextcloud: alerta sobre falta da capacidade de troca de token (complementos Enterprise).</li> </ul>
     ical_sharing_modal:
       title: "Assinar calendário"
       inital_setup_error_message: "Ocorreu um erro ao buscar dados."
@@ -642,7 +642,7 @@ pt-BR:
       title: "Confirme sua senha para continuar"
     pagination:
       no_other_page: "Você está na página única."
-      pages_skipped: "Pages skipped."
+      pages_skipped: "Páginas puladas."
       page_navigation: "Navegação de página"
       per_page_navigation: 'Itens por seleção de página'
       pages:
@@ -695,7 +695,7 @@ pt-BR:
           first_day: "Primeiro dia"
           last_day: "Último dia"
     text_are_you_sure: "Você tem certeza?"
-    text_are_you_sure_to_cancel: "You have unsaved changes on this page. Are you sure you want to discard them?"
+    text_are_you_sure_to_cancel: "Você tem alterações não salvas nesta página. Tem certeza de que deseja descartá-las?"
     breadcrumb: "Trilha de navegação"
     text_data_lost: "Todos os dados inseridos serão perdidos."
     text_user_wrote: "%{value} escreveu:"

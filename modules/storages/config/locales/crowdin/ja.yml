@@ -109,12 +109,12 @@ ja:
         create_folder: 'プロジェクトフォルダの作成を管理：'
         ensure_root_folder_permissions: 'ベースフォルダの権限を設定：'
         hide_inactive_folders: '非アクティブフォルダを隠す：'
-        remote_folders: 'Read contents of the group folder:'
+        remote_folders: 'グループフォルダの内容を読む：'
         remove_user_from_group: 'Remove User from Group:'
         rename_project_folder: 'Rename managed project Folder:'
       one_drive_sync_service:
         create_folder: 'Managed Project Folder Creation:'
-        ensure_root_folder_permissions: 'Set Base Folder Permissions:'
+        ensure_root_folder_permissions: 'ベースフォルダの権限を設定：'
         hide_inactive_folders: 'Hide Inactive Folders Step:'
         remote_folders: 'Read contents of the group folder:'
         rename_project_folder: 'Rename managed project Folder:'
@@ -133,7 +133,7 @@ ja:
           attributes:
             add_user_to_group:
               conflict: 'The user %{user} could not be added to the %{group} group for the following reason: %{reason}'
-              failed_to_add: 'The user %{user} could not be added to the %{group} group for the following reason: %{reason}'
+              failed_to_add: '以下の理由により、ユーザー %{user} を %{group} グループに追加できませんでした: %{reason}'
             create_folder:
               conflict: The folder %{folder_name} already exists on %{parent_location}.
               not_found: "%{parent_location} wasn't found."
@@ -195,8 +195,10 @@ ja:
       oauth_client_incomplete:
         nextcloud: Allow OpenProject to access Nextcloud data using OAuth.
         one_drive: Allow OpenProject to access Azure data using OAuth to connect OneDrive.
+        share_point: OAuthを使用してSharePointデータにOpenProjectがアクセスできるようにします。
       redirect_uri_incomplete:
         one_drive: Complete the setup with the correct URI redirection.
+        share_point: Complete the setup with the correct URI redirection.
     confirm_replace_oauth_application: This action will reset the current OAuth credentials. After confirming you will have to reenter the credentials at the storage provider and all remote users will have to authorize against OpenProject again. Are you sure you want to proceed?
     confirm_replace_oauth_client: This action will reset the current OAuth credentials. After confirming you will have to enter new credentials from the storage provider and all users will have to authorize against %{provider_type} again. Are you sure you want to proceed?
     delete_warning:
@@ -258,10 +260,11 @@ ja:
           header: Automatically managed project folders
           userless_access: Server-side request authentication
         authentication:
-          existing_token: User token
+          existing_token: ユーザー・トークン
           header: 認証
           non_provisioned_user: User provisioned by IDP
           offline_access: Configured OIDC offline_access scope
+          provider_capabilities: Provider capabilities
           provisioned_user_provider: User provisioned by OIDC
           token_negotiable: User token capabilities
           user_bound_request: User-based request authentication
@@ -310,9 +313,19 @@ ja:
         oidc_cant_refresh_token: There was an error while trying to check your access to the storage. Please check the server logs for further information.
         oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
         oidc_non_provisioned_user: The current user isn't provided by an OpenID Connect Identity Provider. Please re-run the check with a provided user.
+        oidc_provider_cant_exchange: The OpenID Connect provider does not seem to support token exchange, but token exchange was configured for the storage.
         oidc_token_acquisition_failed: Your OpenID Connect setup doesn't provide the necessary audience, nor does it provide token exchange capabilities. Please check out our documentation for more information.
         oidc_token_exchange_failed: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
         oidc_token_refresh_failed: There was an error while trying to check your access to the storage. Please check the server logs for further information.
+        sp_client_cant_delete_folder: The client is having trouble deleting folders in SharePoint. Please check the setup documentation for your storage.
+        sp_client_id_missing: The configured OAuth 2 client id is missing for SharePoint. Please check the configuration.
+        sp_client_secret_missing: The configured OAuth 2 client secret is missing for SharePoint. Please check the configuration.
+        sp_client_write_permission_missing: The client seems to have write permissions missing in SharePoint. Please check the setup documentation for your storage.
+        sp_existing_test_folder: The folder %{folder_name} needed for testing already exists in SharePoint. Please delete it and try again.
+        sp_oauth_request_error: The user-bound request to SharePoint failed. Please check the server logs for further information.
+        sp_oauth_token_missing: OpenProject cannot test the user level communication with SharePoint as the user did not yet link their SharePoint account.
+        sp_tenant_id_missing: The configured directory (tenant) id is missing for SharePoint. Please check the configuration.
+        sp_unexpected_content: Unexpected content found in the SharePoint drive.
         unknown_error: The connection could not be validated. An unknown error occurred. Please check the server logs for further information.
       label_error: エラー
       label_failed: Failed
@@ -323,7 +336,7 @@ ja:
       label_warning: 注意
       no_report: No report available
       no_report_description: Run the checks now for a full health status report for this file storage.
-      open_report: Open full health report
+      open_report: 完全な健康報告を開く
       project_folders:
         subtitle: Automatically managed project folders
       since: since %{datetime}
@@ -333,12 +346,10 @@ ja:
         warning: Some checks returned a warning. This can lead to unexpected behaviour.
       title: Health status report
     health_email_notifications:
-      description_subscribed: All administrators receive health status email notifications for this storage.
-      description_unsubscribed: Health status email notifications for this storage have been turned off for all administrators.
+      description_disabled: Admins will not receive updates by email when there are important updates.
+      description_enabled: Admins will receive updates by email when there are important updates.
       error_could_not_be_saved: Email notification settings could not be saved. Please try again.
-      subscribe: Subscribe
-      title: 電子メールの通知
-      unsubscribe: Unsubscribe
+      title: Email updates to admins
     help_texts:
       project_folder: The project folder is the default folder for file uploads for this project. Users can nevertheless still upload files to other locations.
       project_folder_bulk: The project folder is the default folder for file uploads for all the projects selected. You can modify this individually in each project settings. Users can nevertheless still upload files to other locations.
@@ -382,10 +393,15 @@ ja:
       setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File storages.
       setting_up_storages: For setting up file storages, please visit
       setting_up_storages_non_admin: Administrators can set up file storages in Administration / File storages.
+      share_point:
+        application_link_text: SharePoint site
+        integration: SharePoint Administration / OpenProject
+        oauth_configuration: Copy these values from the desired application in the %{application_link_text}.
+        provider_configuration: Please make sure you have administration privileges in the %{application_link_text} or contact your Microsoft administrator before doing the setup. In the portal, you also need to register an Azure application or use an existing one for authentication.
       type: 'Please make sure you have administration privileges in your Nextcloud instance and have the following application installed before doing the setup:'
       type_link_text: "“Integration OpenProject”"
     label_active: アクティブ
-    label_add_new_storage: Add new storage
+    label_add_new_storage: 新しいストレージを追加
     label_automatic_folder: New folder with automatically managed permissions
     label_creation_time: Creation time
     label_creator: 作成者
@@ -419,7 +435,7 @@ ja:
     member_connection_status:
       connected: Connected
       connected_no_permissions: User role has no storages permissions
-      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
+      not_connectable: 接続できない。ストレージはSSOプロバイダを介してログインする必要がありますが、ユーザーはSSOを介してログインしていません。
       not_connected: Not connected. The user should login to the storage via the following %{link}.
       not_connected_sso: Not yet connected, SSO should automatically connect them, once looking at files.
     members_no_results: No members to display.
@@ -460,7 +476,7 @@ ja:
         subtitle: |-
           Let OpenProject create folders per project automatically. This is recommended as it ensures that every team
           member always has the correct access permissions.
-        subtitle_short: Let OpenProject create folders per project automatically.
+        subtitle_short: OpenProjectにプロジェクトごとにフォルダを自動的に作成させます。
         title: Automatically managed project folders
       project_settings:
         delete: Delete file storage
@@ -507,4 +523,4 @@ ja:
       description: |-
         Integrate your OneDrive as a file storage with OpenProject. Upload files and link them directly to
         work packages in a project.
-      title: OneDrive integration
+      title: OneDriveの統合

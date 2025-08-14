@@ -111,13 +111,24 @@ module Redmine
     #
     # @param i18n_key [String] The I18n key to translate.
     # @param links [Hash] Link names mapped to URLs.
-    # @param target [String] optional HTML target attribute for the links.
-    def link_translate(i18n_key, links: {}, locale: ::I18n.locale, target: nil)
+    # @param external [Boolean] Whether the links should be opened as external links, i.e. in a new tab (default: false)
+    # @param underline [Boolean] Whether to underline links inserted into the text (default: true)
+    def link_translate(i18n_key, links: {}, locale: ::I18n.locale, external: false, underline: true)
       translation = ::I18n.t(i18n_key.to_s, locale:)
       result = translation.scan(link_regex).inject(translation) do |t, matches|
         link, text, key = matches
-        href = String(links[key.to_sym])
-        link_tag = content_tag(:a, text, href:, target:)
+        link_reference = links[key.to_sym]
+        href = case link_reference
+               when Array
+                 OpenProject::Static::Links.url_for(*link_reference)
+               else
+                 String(link_reference)
+               end
+        target = external ? "_blank" : nil
+        link_tag = render(Primer::Beta::Link.new(href:, target:, underline:)) do |l|
+          l.with_trailing_visual_icon(icon: :"link-external") if external
+          text
+        end
 
         t.sub(link, link_tag)
       end

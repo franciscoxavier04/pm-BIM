@@ -63,7 +63,6 @@ ja:
         primary-button-color: "プライマリボタン"
         accent-color: "アクセント"
         header-bg-color: "ヘッダの背景"
-        header-item-bg-hover-color: "ホバー時のヘッダの背景"
         main-menu-bg-color: "メインメニューの背景"
         main-menu-bg-selected-background: "選択時のメインメニュー"
       custom_colors: "カスタム色"
@@ -71,10 +70,6 @@ ja:
       instructions:
         primary-button-color: "画面上で最も重要なボタンに使用される強いアクセントカラー。"
         accent-color: "リンクや強調表示された要素の色。"
-        header-item-bg-hover-color: "クリック可能なヘッダー項目にマウスを置いたときの背景色。"
-        header-item-font-color: "クリック可能なヘッダー項目のフォント色。"
-        header-item-font-hover-color: "クリック可能なヘッダー項目にマウスを置いたときのフォント色。"
-        header-border-bottom-color: "ヘッダーの下の細い線。線を引きたくない場合は、このフィールドを空にしてください。"
         main-menu-bg-color: "左サイドメニューの背景色。"
       theme_warning: テーマを変更した場合、カスタムスタイルが上書きされ、失われます。本当に続けますか？
     enterprise:
@@ -133,8 +128,8 @@ ja:
       form:
         auth_provider_description: "This is the service that users added by the SCIM provider will use to authenticate in OpenProject."
         authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM clients</a> for more information on these configuration options.'
-        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
+        description: "Please refer to our [documentation on configuring SCIM clients](docs_url) for more information on these configuration options."
+        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
         name_description: "Choose a name that will help other admins better understand why this client was configured."
       index:
         description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
@@ -371,13 +366,24 @@ ja:
       messages: "フォーラム"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: 現在、グループはありません。
-      no_results_content_text: グループを新規作成
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define named groups of users with specific permissions.
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: 現在、このグループのメンバーはいません。
     memberships:
       no_results_title_text: 現在、このグループのプロジェクトはありません。
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       受信メールの添付ファイルを処理するとき、無視する名前の一覧を指定します (例えば、署名またはアイコン)。1 行につき 1 つのファイル名を入力してください。
@@ -671,8 +677,10 @@ ja:
         excluded_from_totals: "Excluded from totals"
   themes:
     dark: "Dark"
+    dark_high_contrast: "Dark high contrast"
     light: "Light"
     light_high_contrast: "Light high contrast"
+    sync_with_os: "Automatic (match OS colour mode)"
   types:
     index:
       no_results_title_text: 現在、種類はありません。
@@ -704,9 +712,8 @@ ja:
             project: "プロジェクト"
         pattern:
           label: "Subject pattern"
-          caption_with_supported_attributes_link: テキストを追加してパターンを作成するか、 %{link} を検索するために "/" と入力します。
+          caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
-          supported_attributes_link: "サポートされている属性"
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1104,7 +1111,6 @@ ja:
       role:
         permissions: "権限"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1255,6 +1261,7 @@ ja:
         inclusion_nested: "is not set to one of the allowed values at path '%{path}'."
         invalid: "は不正な値です。"
         invalid_characters: "contains invalid characters."
+        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
         invalid_url: "は有効な URL ではありません。"
         invalid_url_scheme: "はサポートされたプロトコルではありません (可能: %{allowed_schemes})。"
         less_than_or_equal_to: "は%{count}以下の値にしてください。"
@@ -1274,6 +1281,7 @@ ja:
         odd: "は奇数にしてください。"
         regex_match_failed: "does not match the regular expression %{expression}."
         regex_invalid: "関連付けられた正規表現を検証できませんでした。"
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "は最大長さより以下でなければなりません。"
         taken: "は既に使用されています。"
         too_long: "は%{count}文字以内を入力してください。"
@@ -1598,7 +1606,10 @@ ja:
     models:
       attachment: "ファイル"
       attribute_help_text: "属性のヘルプ テキスト"
+      auth_provider:
+        other: "Authentication providers"
       category: "カテゴリ"
+      color: "Color"
       comment: "コメント"
       custom_action: "カスタムアクション"
       custom_field: "カスタムフィールド"
@@ -1848,7 +1859,7 @@ ja:
   button_duplicate: "複製"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "編集"
-  button_edit_associated_wikipage: "関係するWiki ページを編集: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "全てを展開"
   button_favorite: "Add to favorites"
   button_filter: "フィルタ"
@@ -2197,6 +2208,13 @@ ja:
         I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
       consent_html: >
         I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
   enumeration_activities: "タイムトラッキングアクティビティ"
   enumeration_work_package_priorities: "ワークパッケージの優先度"
   enumeration_reported_project_statuses: "報告されるプロジェクト進捗状況"
@@ -2404,6 +2422,13 @@ ja:
       xls2csv: "Xls2csvが利用可能 (オプション)"
       catppt: "Catpptが利用可能 (オプション)"
       tesseract: "Tesseractが利用可能 (オプション)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","
@@ -2497,7 +2522,7 @@ ja:
       aggregation: "集計"
       api_and_webhooks: "API and webhooks"
     quick_add:
-      label: "クイック追加メニューを開く"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2797,6 +2822,7 @@ ja:
   label_gantt_chart_plural: "ガントチャート"
   label_general: "概要"
   label_generate_key: "キーを生成する"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: ".gitディレクトリへのパス"
   label_greater_or_equal: ">="
@@ -2881,6 +2907,7 @@ ja:
   label_manage: "管理"
   label_manage_groups: "グループを管理"
   label_managed_repositories_vendor: "管理された %{vendor} リポジトリ"
+  label_mathematical_operators: "Mathematical operators"
   label_max_size: "最大サイズ"
   label_me: "自分"
   label_member_new: "新規メンバー"
@@ -2940,6 +2967,7 @@ ja:
   label_no_due_date: "終了日なし"
   label_no_start_date: "開始日なし"
   label_no_parent_page: "親ページはありません"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "表示するものはありません"
   label_nobody: "無記名"
   label_not_configured: "Not configured"
@@ -3148,6 +3176,7 @@ ja:
   label_user_mail_option_only_my_events: "ウォッチまたは関係している事柄のみ"
   label_user_mail_option_only_owner: "自分が作成した事柄のみ"
   label_user_mail_option_selected: "選択したプロジェクトのみのイベントに対して"
+  label_user_menu: "User menu"
   label_user_new: "新規ユーザ"
   label_user_plural: "ユーザ"
   label_user_search: "ユーザーを検索:"

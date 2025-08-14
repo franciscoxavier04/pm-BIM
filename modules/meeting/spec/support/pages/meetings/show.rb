@@ -224,6 +224,17 @@ module Pages::Meetings
       end
     end
 
+    def move_item_to_next_meeting(item)
+      select_action(item, "Move to next meeting")
+      expect_modal("Move to next meeting?")
+
+      retry_block do
+        page.within_modal "Move to next meeting?" do
+          click_on "Move"
+        end
+      end
+    end
+
     def open_menu(item, &)
       retry_block do
         page.within("#meeting-agenda-items-item-component-#{item.id}") do
@@ -549,6 +560,19 @@ module Pages::Meetings
       end
     end
 
+    def check_add_section_path(meeting)
+      retry_block do
+        page.within("#meeting-agenda-items-new-button-component") do
+          click_on I18n.t(:button_add)
+
+          add_section_link = find_link("Section")
+          url = add_section_link[:href]
+
+          expect(URI.parse(url).path).to eq(meeting_sections_path(meeting))
+        end
+      end
+    end
+
     def expect_backlog_actions(item, series: false)
       open_menu(item) do
         expect(page).to have_css(".ActionListItem-label", text: "Edit")
@@ -607,6 +631,12 @@ module Pages::Meetings
 
     def expect_notes(text)
       expect(page).to have_css(".op-meeting-agenda-item--notes", text:)
+    end
+
+    def set_start_time(time)
+      input = page.find_by_id("meeting_start_time_hour")
+      page.execute_script("arguments[0].value = arguments[1]", input.native, time)
+      page.execute_script("arguments[0].dispatchEvent(new Event('input'))", input.native)
     end
   end
 end

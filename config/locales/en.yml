@@ -137,8 +137,8 @@ en:
       form:
         auth_provider_description: "This is the service that users added by the SCIM provider will use to authenticate in OpenProject."
         authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM clients</a> for more information on these configuration options.'
-        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
+        description: "Please refer to our [documentation on configuring SCIM clients](docs_url) for more information on these configuration options."
+        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
         name_description: "Choose a name that will help other admins better understand why this client was configured."
       index:
         description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
@@ -405,7 +405,7 @@ en:
       description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
+        description: You can define named groups of users with specific permissions.
         title: No groups set up yet
       user_count: User count
     users:
@@ -740,8 +740,10 @@ en:
 
   themes:
     dark: "Dark"
+    dark_high_contrast: "Dark high contrast"
     light: "Light"
     light_high_contrast: "Light high contrast"
+    sync_with_os: "Automatic (match OS colour mode)"
 
   types:
     index:
@@ -774,9 +776,8 @@ en:
             project: "Project"
         pattern:
           label: "Subject pattern"
-          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
+          caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
-          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1349,6 +1350,7 @@ en:
         inclusion_nested: "is not set to one of the allowed values at path '%{path}'."
         invalid: "is invalid."
         invalid_characters: "contains invalid characters."
+        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
         invalid_url: "is not a valid URL."
         invalid_url_scheme: "is not a supported protocol (allowed: %{allowed_schemes})."
         less_than_or_equal_to: "must be less than or equal to %{count}."
@@ -1368,6 +1370,7 @@ en:
         odd: "must be odd."
         regex_match_failed: "does not match the regular expression %{expression}."
         regex_invalid: "could not be validated with the associated regular expression."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "must be smaller than or equal to maximum length."
         taken: "has already been taken."
         too_long: "is too long (maximum is %{count} characters)."
@@ -1699,6 +1702,7 @@ en:
         one: "Authentication provider"
         other: "Authentication providers"
       category: "Category"
+      color: "Color"
       comment: "Comment"
       custom_action: "Custom action"
       custom_field: "Custom field"
@@ -1970,7 +1974,7 @@ en:
   button_duplicate: "Duplicate"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Edit"
-  button_edit_associated_wikipage: "Edit associated Wiki page: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Expand all"
   button_favorite: "Add to favorites"
   button_filter: "Filter"
@@ -2336,6 +2340,15 @@ en:
       consent_html: >
         I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a>
         and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
+
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
+
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Work package priorities"
   enumeration_reported_project_statuses: "Reported project status"
@@ -2486,6 +2499,7 @@ en:
           label: "Include descriptions"
           caption: "This option will add a description column in raw format."
     your_work_packages_export: "Work packages are being exported"
+    your_projects_export: "Projects are being exported"
     succeeded: "Export completed"
     failed: "An error has occurred while trying to export the work packages: %{message}"
     errors:
@@ -2548,6 +2562,14 @@ en:
       xls2csv: "Xls2csv available (optional)"
       catppt: "Catppt available (optional)"
       tesseract: "Tesseract available (optional)"
+
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
 
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
@@ -3040,6 +3062,7 @@ en:
   label_manage: "Manage"
   label_manage_groups: "Manage groups"
   label_managed_repositories_vendor: "Managed %{vendor} repositories"
+  label_mathematical_operators: "Mathematical operators"
   label_max_size: "Maximum size"
   label_me: "me"
   label_member_new: "New member"

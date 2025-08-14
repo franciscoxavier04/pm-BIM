@@ -63,7 +63,6 @@ pl:
         primary-button-color: "Przycisk główny"
         accent-color: "Akcent"
         header-bg-color: "Tło nagłówka"
-        header-item-bg-hover-color: "Tło nagłowka po najechaniu myszą"
         main-menu-bg-color: "Tło menu głównego"
         main-menu-bg-selected-background: "Menu główne po wybraniu"
       custom_colors: "Kolory użytkownika"
@@ -71,10 +70,6 @@ pl:
       instructions:
         primary-button-color: "Silnie zaakcentowany kolor, stosowany do najważniejszego przycisku na ekranie."
         accent-color: "Kolor linków i innych ostatnio wyróżnionych elementów."
-        header-item-bg-hover-color: "Kolor tła nagłówkowych elementów po najechaniu myszą."
-        header-item-font-color: "Kolor czcionki elementów nagłówkowych."
-        header-item-font-hover-color: "Kolor czcionki elementów nagłówkowych po najechaniu myszą."
-        header-border-bottom-color: "Linia pod nagłówkiem. Zostaw puste, jeśli nie chcesz wyświetlać linii."
         main-menu-bg-color: "Kolor tła lewego menu."
       theme_warning: Zmiana motywu poskutkuje zastąpieniem stylu niestandardowego. Projekt zostanie wówczas utracony. Czy na pewno chcesz kontynuować?
     enterprise:
@@ -133,8 +128,8 @@ pl:
       form:
         auth_provider_description: "Jest to usługa, której użytkownicy dodani przez dostawcę SCIM będą używać do uwierzytelniania w OpenProject."
         authentication_method_description_html: "W ten sposób klient SCIM uwierzytelnia się w OpenProject. Upewnij się, że tokeny OAuth zawierają zakres <code>scim_v2</code>."
-        description_html: 'Aby uzyskać więcej informacji na temat tych opcji konfiguracji, zapoznaj się z naszą <a href="%{docs_url}">dokumentacją dotyczącą konfigurowania klientów SCIM</a>.'
-        jwt_sub_description_html: 'Na przykład w przypadku Keycloak jest to identyfikator UUID konta usługi powiązanego z klientem SCIM. Aby dowiedzieć się, jak znaleźć oświadczenie podmiotu dla danego przypadku użycia, zapoznaj się z <a href="%{docs_url}">naszą dokumentacją</a>.'
+        description: "Aby uzyskać więcej informacji na temat tych opcji konfiguracji, zapoznaj się z naszą [dokumentacją dotyczącą konfiguracji klientów SCIM](docs_url)."
+        jwt_sub_description: "Na przykład w przypadku Keycloak jest to identyfikator UUID konta usługi powiązanego z klientem SCIM. Aby dowiedzieć się, jak znaleźć oświadczenie podmiotu dla danego przypadku użycia, zapoznaj się z [naszą dokumentacją](docs_url)."
         name_description: "Wybierz nazwę, która pomoże innym administratorom lepiej zrozumieć, dlaczego ten klient został skonfigurowany."
       index:
         description: "Skonfigurowani tutaj klienci SCIM mogą wchodzić w interakcje z interfejsem API serwera SCIM OpenProject w celu dostarczania, aktualizowania i usuwania kont i grup użytkowników."
@@ -361,22 +356,33 @@ pl:
       blueprint: "Plan wzorca"
   global_search:
     title:
-      all_projects: 'Search for "%{search_term}" in all projects'
-      current_project: 'Search for "%{search_term}" in %{project_name}'
-      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
+      all_projects: 'Wyszukaj „%{search_term}” we wszystkich projektach'
+      current_project: 'Wyszukaj „%{search_term}” w projekcie %{project_name}'
+      project_and_subprojects: 'Wyszukaj „%{search_term}” w projekcie %{project_name} i wszystkich podprojektach'
     placeholder: "Wyszukaj w %{app_title}"
     overwritten_tabs:
       all: "Wszystkie"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronizowane grupy"
     index:
-      no_results_title_text: Nie ma żadnych grup.
-      no_results_content_text: Utwórz nową grupę
+      description: Grupując użytkowników, można dodawać ich jako członków do tych samych projektów lub przypisywać im te same role globalne.
+    table_component:
+      blank_slate:
+        description: You can define named groups of users with specific permissions.
+        title: Nie skonfigurowano jeszcze żadnych grup
+      user_count: Liczba użytkowników
     users:
       no_results_title_text: Nie ma jeszcze użytkowników w tej grupie.
     memberships:
       no_results_title_text: Nie ma jeszcze żadnego projektu dla tej grupy.
+    synchronized_groups:
+      blankslate:
+        action: Ustawienia uwierzytelniania
+        description: Gdy ta grupa zostanie automatycznie zsynchronizowana z grupami w zewnętrznych dostawcach tożsamości, takich jak OpenID, pojawią się one tutaj. Można to skonfigurować w ustawieniach uwierzytelniania.
+        title: Nie ma jeszcze zsynchronizowanych grup
   incoming_mails:
     ignore_filenames: >
       Określ listę nazw, które mają być ignorowane podczas przetwarzania załączników do poczty przychodzącej (np. sygnatur lub ikon). W każdym wierszu prowadź jedną nazwę pliku.
@@ -691,8 +697,10 @@ pl:
         excluded_from_totals: "Wyłączono z sum"
   themes:
     dark: "Ciemny"
+    dark_high_contrast: "Dark high contrast"
     light: "Jasny"
     light_high_contrast: "Jasny, wysoki kontrast"
+    sync_with_os: "Automatycznie (dopasuj do trybu koloru systemu)"
   types:
     index:
       no_results_title_text: Nie ma jeszcze żadnych typów.
@@ -724,9 +732,8 @@ pl:
             project: "Projekt"
         pattern:
           label: "Wzorzec tematu"
-          caption_with_supported_attributes_link: Twórz wzorce, dodając tekst lub wpisz „/”, aby wyszukać %{link}.
+          caption: Utwórz wzorce, dodając tekst lub wpisz znak „/”, aby wyszukać [obsługiwane atrybuty](attributes_url).
           insert_as_text: "Nie znaleziono atrybutów. Dodaj jako tekst: „%{word}”"
-          supported_attributes_link: "obsługiwane atrybuty"
       export_configuration:
         tab: "Wygeneruj PDF"
         intro: "Wybierz spośród dostępnych szablony, które chcesz włączyć dla tego typu. Szablon określa wygląd i atrybuty widoczne w wyeksportowanym pliku PDF pakietu roboczego używającego tego typu. Domyślnie wybrany jest pierwszy szablon z listy."
@@ -1126,7 +1133,6 @@ pl:
       role:
         permissions: "Uprawnienia"
       scim_client:
-        auth_provider: "Dostawca uwierzytelniania"
         authentication_method: "Metody uwierzytelniania"
         jwt_sub: "Oświadczenie podmiotu"
       status:
@@ -1277,6 +1283,7 @@ pl:
         inclusion_nested: "nie jest ustawione na jedną z dozwolonych wartości na ścieżce '%{path}'."
         invalid: "jest nieprawidłowe."
         invalid_characters: "zawiera niedozwolone znaki."
+        not_allowed_custom_fields_referenced: "zawiera niedozwolone pola niestandardowe: %{custom_fields}."
         invalid_url: "nie jest poprawnym adresem URL."
         invalid_url_scheme: "nie jest obsługiwanym protokołem (dozwolone: %{allowed_schemes})."
         less_than_or_equal_to: "musi być mniejsze niż lub równe %{count}."
@@ -1296,6 +1303,7 @@ pl:
         odd: "musi być nieparzyste."
         regex_match_failed: "nie pasuje do wyrażenia regularnego %{expression}."
         regex_invalid: "nie może być zastosowany z zastosowanym wyrażeniem regularnym."
+        regex_list_invalid: "nie można przeanalizować jako wyrażenia regularnego w wierszach %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "musi być mniejsze niż lub równe z maksymalnej długości."
         taken: "zostały już podjęte."
         too_long: "jest zbyt długi (maksymalnie %{count} znaków)."
@@ -1626,7 +1634,13 @@ pl:
     models:
       attachment: "Plik"
       attribute_help_text: "Tekst pomocy atrybutu"
+      auth_provider:
+        one: "Dostawcy uwierzytelniania"
+        few: "Dostawcy uwierzytelniania"
+        many: "Dostawcy uwierzytelniania"
+        other: "Dostawcy uwierzytelniania"
       category: "Kategoria"
+      color: "Color"
       comment: "Komentarz"
       custom_action: "Działanie niestandardowe"
       custom_field: "Pola niestandardowe"
@@ -1912,7 +1926,7 @@ pl:
   button_duplicate: "Duplikat"
   button_duplicate_and_follow: "Zduplikuj i śledź"
   button_edit: "Edycja"
-  button_edit_associated_wikipage: "Edytuj powiązaną stronę Wiki: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Rozwiń wszystkie"
   button_favorite: "Dodaj do ulubionych"
   button_filter: "Filtr"
@@ -2324,6 +2338,13 @@ pl:
         Chcę otrzymywać <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a> OpenProject.
       consent_html: >
         Akceptuję <a target="_blank" href="https://www.openproject.org/terms-of-service/">warunki umowy</a> i <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">politykę prywatności</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
   enumeration_activities: "Działania śledzenia czasu"
   enumeration_work_package_priorities: "Priorytety pakietów roboczych"
   enumeration_reported_project_statuses: "Status zgłoszonego projektu"
@@ -2531,6 +2552,13 @@ pl:
       xls2csv: "Dostępny konwerter Xls2csv (opcjonalny)"
       catppt: "Dostępny konwerter Catppt (opcjonalny)"
       tesseract: "Dostępne narzędzie Tesseract (opcjonalne)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: ","
   general_csv_encoding: "UTF-8"
   general_csv_separator: "."
@@ -2624,7 +2652,7 @@ pl:
       aggregation: "Agregacja"
       api_and_webhooks: "Interfejs API i webhooki"
     quick_add:
-      label: "Otwórz menu szybkiego dodawania"
+      label: "Dodaj…"
   my_account:
     access_tokens:
       no_results:
@@ -2924,6 +2952,7 @@ pl:
   label_gantt_chart_plural: "Wykresy Gantta"
   label_general: "Ogólne"
   label_generate_key: "Generuj klucz"
+  label_global_modules: "Moduły globalne"
   label_global_roles: "Role globalne"
   label_git_path: "Ścieżka do katalogu .git"
   label_greater_or_equal: "≥"
@@ -3008,6 +3037,7 @@ pl:
   label_manage: "Zarządzaj"
   label_manage_groups: "Zarządzaj grupami"
   label_managed_repositories_vendor: "Zarządzane %{vendor} repozytoria"
+  label_mathematical_operators: "Operatory matematyczne"
   label_max_size: "Maksymalny rozmiar"
   label_me: "ja"
   label_member_new: "Nowy członek"
@@ -3067,6 +3097,7 @@ pl:
   label_no_due_date: "brak daty zakończenia"
   label_no_start_date: "brak daty rozpoczęcia"
   label_no_parent_page: "Bez strony nadrzędnej"
+  label_notification_center_plural: "Powiadomienia"
   label_nothing_display: "Brak danych do pokazania"
   label_nobody: "nikt"
   label_not_configured: "Nie skonfigurowano"
@@ -3275,6 +3306,7 @@ pl:
   label_user_mail_option_only_my_events: "Tylko to co obserwuję lub jestem zaangażowany"
   label_user_mail_option_only_owner: "Tylko do rzeczy, których jestem właścicielem"
   label_user_mail_option_selected: "Dla każdego zdarzenia w wybranych projektach"
+  label_user_menu: "Menu użytkownika"
   label_user_new: "Nowy użytkownik"
   label_user_plural: "Użytkownicy"
   label_user_search: "Szukaj użytkownika"

@@ -49,6 +49,8 @@ For steps on setting up recurring meetings please consult [this page](../recurri
 
 If you choose the **one-time** option, enter your meeting's title, location, start date and time, and duration. 
 
+The **send email calendar updates** checkbox is activated per default (you will only see this checkbox when creating a meeting). When activated, all meeting participants will receive updated calendar invites via email changes are made to a meeting. If you do not wish for such notifications to be sent to meeting participants, uncheck this checkbox. 
+
 If you are creating a meeting from a global module you will first need to select a project to which the meeting is attributed. 
 
 ![Create a new one-time meeting in OpenProject](openproject_userguide_meetings_new_onetime_meeting_form.png)
@@ -247,7 +249,21 @@ Click on the **Save** button to confirm the changes.
 
 ### Send email to all participants
 
-You can send an email reminder to all the meeting participants. Select the dropdown by clicking on the **More** (three dots) icon in the top right corner and select **Send email to all participants**. An email reminder with the meeting details (including a link to the meeting) is immediately sent to all invitees and attendees.
+You can send an email reminder to all the meeting participants. Select the dropdown by clicking on the **More** (three dots) icon in the top right corner and select **Email calendar invite to all participants**. An email reminder with the meeting details (including a link to the meeting) is immediately sent to all invitees and attendees.
+
+### Email calendar updates
+
+**Email calendar updates** section on the right side shows whether the setting to notify participants of any meeting changes via email is activated. To disable it click the **Disable** icon. 
+
+![Icon to disable email calendar updates for one-time meetings in OpenProject](openproject_userguide_meetings_disable_calendar_updates.png)
+
+You will then see a warning message informing you of the consequences. You can either cancel or confirm disabling the email updates at this point. 
+
+![A warning banner to cancel or confirm disabling meeting email calendar updates](openproject_userguide_meetings_disable_calendar_updates_warning.png)
+
+You can always re-activate it by clicking the **Enable** icon. 
+
+![Icon to enable calendar updates for meeting changes in OpenProject one-time meetings](openproject_userguide_meetings_enable_calendar_updates.png)
 
 ## Meeting attachments
 
@@ -316,6 +332,10 @@ Once all outcomes are documented, you can close the meeting. To do that use the 
 Closing a meeting locks the current state and makes it read-only.
 
 ![Close a meeting in OpenProject](openproject_userguide_meetings_close_meeting.png)
+
+When a meeting is closed, you can still copy a link to a specific agenda item or outcome. Click the More (three dots) icon on the right and select *Copy to clipboard*.
+
+![Copy a link to a meeting agenda item in OpenProject meeting](openproject_userguide_meetings_copy_link.png)
 
 ### Re-open a meeting
 

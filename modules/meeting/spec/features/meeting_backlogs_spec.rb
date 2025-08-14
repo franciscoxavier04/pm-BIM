@@ -409,6 +409,29 @@ RSpec.describe "Meeting Backlogs", :js do
         # delete moved item to check if component is updated properly
         next_occurrence_page.remove_agenda_item(item)
       end
+
+      it "do not change the new button component to the one from the template (Bug #64106)" do
+        next_occurrence_page.visit!
+
+        template_item = next_occurrence.agenda_items.first
+        next_occurrence_page.remove_agenda_item(template_item)
+
+        next_occurrence_page.add_agenda_item_to_backlog do
+          fill_in "Title", with: "Backlog agenda item"
+        end
+        next_occurrence_page.expect_backlog_count(1)
+        next_occurrence_page.within_backlog do
+          next_occurrence_page.expect_agenda_item(title: "Backlog agenda item")
+        end
+
+        next_occurrence_page.check_add_section_path(next_occurrence)
+
+        item = MeetingAgendaItem.find_by(title: "Backlog agenda item")
+        next_occurrence_page.select_action(item, I18n.t(:label_agenda_item_move_to_current_meeting))
+        next_occurrence_page.expect_empty_backlog
+
+        next_occurrence_page.check_add_section_path(next_occurrence)
+      end
     end
   end
 

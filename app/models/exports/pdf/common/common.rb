@@ -144,7 +144,7 @@ module Exports::PDF::Common::Common
     previous_color = pdf.stroke_color
     previous_line_width = pdf.line_width
     @pdf.stroke do
-      pdf.stroke_color = color
+      pdf.stroke_color = color if color
       pdf.line_width = height
       pdf.horizontal_line left, right, at: top
     end
