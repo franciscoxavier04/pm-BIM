@@ -354,7 +354,7 @@ RSpec.describe CustomStylesController do
       end
     end
 
-    describe "#export_footer_download" do
+    describe "#export_footer_download", with_ee: %i[define_custom_style] do
       before do
         allow(CustomStyle).to receive(:current).and_return(custom_style)
         allow(controller).to receive(:send_file) { controller.head 200 }
