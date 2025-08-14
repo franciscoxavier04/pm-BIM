@@ -28,7 +28,6 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-
 module Meetings::PDF::Common::Agenda
   def write_agenda
     return if meeting.sections.empty?

@@ -54,9 +54,9 @@ module Meetings::PDF::Minutes::Agenda
   def write_section_title_table(section, index)
     pdf.table(
       [[
-         { content: "#{index + 1}." },
-         { content: format_agenda_section_title_cell(section) }
-       ]],
+        { content: "#{index + 1}." },
+        { content: format_agenda_section_title_cell(section) }
+      ]],
       width: pdf.bounds.width,
       column_widths: [40, pdf.bounds.width - 40],
       cell_style: { inline_format: true }.merge(styles.agenda_section_title_cell)
@@ -100,9 +100,9 @@ module Meetings::PDF::Minutes::Agenda
     with_vertical_margin(styles.agenda_item_title_margins) do
       pdf.table(
         [[
-           { content: "#{section_index + 1}.#{index + 1}." },
-           { content: title }
-         ]],
+          { content: "#{section_index + 1}.#{index + 1}." },
+          { content: title }
+        ]],
         width: pdf.bounds.width,
         column_widths: [40, pdf.bounds.width - 40],
         cell_style: { inline_format: true }.merge(styles.agenda_item_title_cell)
