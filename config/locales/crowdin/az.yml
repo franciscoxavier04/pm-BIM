@@ -1880,7 +1880,7 @@ az:
   button_duplicate: "Çoxalt"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Düzəliş et"
-  button_edit_associated_wikipage: "Edit associated Wiki page: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Hamısını genişləndir"
   button_favorite: "Add to favorites"
   button_filter: "Filtr"

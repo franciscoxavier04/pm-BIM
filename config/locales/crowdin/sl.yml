@@ -1925,7 +1925,7 @@ sl:
   button_duplicate: "Podvoji"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Uredi"
-  button_edit_associated_wikipage: "Uredi povezano Wiki stran: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Razširi vse"
   button_favorite: "Add to favorites"
   button_filter: "Filtriraj"

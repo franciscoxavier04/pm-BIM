@@ -1903,7 +1903,7 @@ ro:
   button_duplicate: "Duplicare"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Editare"
-  button_edit_associated_wikipage: "Editare pagină wiki asociată: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Extindere totală"
   button_favorite: "Adaugă la favorite"
   button_filter: "Filtrează"

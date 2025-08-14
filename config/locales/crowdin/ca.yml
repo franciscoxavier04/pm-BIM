@@ -1877,7 +1877,7 @@ ca:
   button_duplicate: "Duplicar"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Editar"
-  button_edit_associated_wikipage: "Editar pàgines Wiki associades: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Expandeix tot"
   button_favorite: "Add to favorites"
   button_filter: "Filtre"

@@ -1878,7 +1878,7 @@ da:
   button_duplicate: "Lav dublet"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Rediger"
-  button_edit_associated_wikipage: "Rediger tilknyttet wiki-side: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Fold alle ud"
   button_favorite: "Add to favorites"
   button_filter: "Filter"

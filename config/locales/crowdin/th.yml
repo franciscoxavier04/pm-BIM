@@ -1857,7 +1857,7 @@ th:
   button_duplicate: "ทำซ้ำ"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "แก้ไข"
-  button_edit_associated_wikipage: "แก้ไขหน้าวิกิที่เกี่ยวข้อง: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "ขยายทั้งหมด"
   button_favorite: "Add to favorites"
   button_filter: "ตัวกรอง"

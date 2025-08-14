@@ -1880,7 +1880,7 @@ si:
   button_duplicate: "අනුපිටපත්"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "සංස්කරණය කරන්න"
-  button_edit_associated_wikipage: "ආශ්රිත විකි පිටුව සංස්කරණය කරන්න: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "සියල්ල පුළුල්"
   button_favorite: "Add to favorites"
   button_filter: "පෙරහන්"

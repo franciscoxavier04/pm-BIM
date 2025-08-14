@@ -1924,7 +1924,7 @@ ru:
   button_duplicate: "Дублировать"
   button_duplicate_and_follow: "Дублировать и следить"
   button_edit: "Правка"
-  button_edit_associated_wikipage: "Редактирование связанной wiki-страницы: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Развернуть все"
   button_favorite: "Добавить в избранное"
   button_filter: "Фильтр"

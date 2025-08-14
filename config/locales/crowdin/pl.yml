@@ -1922,7 +1922,7 @@ pl:
   button_duplicate: "Duplikat"
   button_duplicate_and_follow: "Zduplikuj i śledź"
   button_edit: "Edycja"
-  button_edit_associated_wikipage: "Edytuj powiązaną stronę Wiki: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Rozwiń wszystkie"
   button_favorite: "Dodaj do ulubionych"
   button_filter: "Filtr"

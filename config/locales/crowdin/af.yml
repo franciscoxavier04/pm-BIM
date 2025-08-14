@@ -1880,7 +1880,7 @@ af:
   button_duplicate: "Dupliseer"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Redigeer"
-  button_edit_associated_wikipage: "Redigeer geassosieerde Wiki bladsy: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Vou almal uit"
   button_favorite: "Add to favorites"
   button_filter: "Filtreer"

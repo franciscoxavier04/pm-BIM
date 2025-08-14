@@ -1879,7 +1879,7 @@ hu:
   button_duplicate: "Másolás ide"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Szerkesztés"
-  button_edit_associated_wikipage: "A hozzárendelt Wiki oldal: %{page_title} szerkesztése"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Az összes kibontása"
   button_favorite: "Add to favorites"
   button_filter: "Szűrő"

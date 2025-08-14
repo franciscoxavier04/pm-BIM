@@ -1923,7 +1923,7 @@ lt:
   button_duplicate: "Dublikuoti"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Redaguoti"
-  button_edit_associated_wikipage: "Redaguoti susijusį Wiki puslapį: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Išskleisti visus"
   button_favorite: "Pridėti prie mėgstamų"
   button_filter: "Filtras"

@@ -1903,7 +1903,7 @@ hr:
   button_duplicate: "Dupliciraj"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Uredi"
-  button_edit_associated_wikipage: "Uredi pripadajuće Wiki stranice: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Proširi sve"
   button_favorite: "Add to favorites"
   button_filter: "Filter"

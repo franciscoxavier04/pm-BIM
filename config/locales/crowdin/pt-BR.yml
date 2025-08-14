@@ -1877,7 +1877,7 @@ pt-BR:
   button_duplicate: "Duplicar"
   button_duplicate_and_follow: "Duplicar e seguir"
   button_edit: "Editar"
-  button_edit_associated_wikipage: "Editar página wiki associada: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Expandir todos"
   button_favorite: "Adicionar aos favoritos"
   button_filter: "Filtro"

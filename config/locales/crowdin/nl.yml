@@ -1876,7 +1876,7 @@ nl:
   button_duplicate: "Dupliceren"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Wijzig"
-  button_edit_associated_wikipage: "Bewerk gekoppelde wikipagina: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Alles uitklappen"
   button_favorite: "Aan favorieten toevoegen"
   button_filter: "Filter"

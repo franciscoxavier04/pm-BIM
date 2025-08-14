@@ -1855,7 +1855,7 @@ ja:
   button_duplicate: "複製"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "編集"
-  button_edit_associated_wikipage: "関係するWiki ページを編集: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "全てを展開"
   button_favorite: "Add to favorites"
   button_filter: "フィルタ"

@@ -1926,7 +1926,7 @@ sk:
   button_duplicate: "Duplikovať"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Upraviť"
-  button_edit_associated_wikipage: "Upraviť naviazanú Wiki stránku: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Rozbaliť všetko"
   button_favorite: "Add to favorites"
   button_filter: "Filtrovať"
