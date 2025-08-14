@@ -35,7 +35,6 @@ module Projects::Exports
     include Exports::PDF::Common::Attachments
     include Exports::PDF::Common::Markdown
     include Exports::PDF::Components::Page
-    include Exports::PDF::Components::WpTable
     include Exports::PDF::Components::Cover
     include Projects::Exports::PDFExport::TableOfContent
     include Projects::Exports::PDFExport::Report
@@ -64,7 +63,7 @@ module Projects::Exports
     end
 
     def title
-      build_pdf_filename([heading].join("_"))
+      build_pdf_filename(heading)
     end
 
     def heading

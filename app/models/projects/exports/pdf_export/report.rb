@@ -66,16 +66,15 @@ module Projects::Exports::PDFExport
     end
 
     def selects
-      @selects = query
-                   .selects
-                   .reject { |s| s.is_a?(Queries::Selects::NotExistingSelect) }
+      query.selects.reject { |s| s.is_a?(Queries::Selects::NotExistingSelect) }
     end
 
     def write_project_detail_content(project)
-      return if selects.empty?
+      export_selects = selects
+      return if export_selects.empty?
 
       entries = []
-      selects.each do |select|
+      export_selects.each do |select|
         entries = process_select(project, select, entries)
       end
       write_table_entries(entries) unless entries.empty?
@@ -167,9 +166,7 @@ module Projects::Exports::PDFExport
     end
 
     def can_view_attribute?(_project, attribute)
-      return false if attribute.nil? || %i[name favored].include?(attribute)
-
-      true
+      attribute.nil? || %i[name favored].include?(attribute)
     end
 
     def user_can_view_project_phases?(project)

@@ -31,19 +31,16 @@
 module Projects::Exports::PDFExport
   module InfoMap
     def build_flat_meta_infos_map(projects)
-      infos_map = {}
-      projects.each_with_index do |project, index|
-        infos_map[project.id] = { level_path: [index + 1], level: 0, children: [], project: }
-      end
+      infos_map = projects.map.with_index do |project, index|
+        [project.id, { level_path: [index + 1], level: 0, children: [], project: }]
+      end.to_h
       [infos_map, projects.to_a]
     end
 
     def init_meta_infos_map_nodes(projects)
-      infos_map = {}
-      projects.each do |project|
-        infos_map[project.id] = { level_path: [], level: 0, children: [], project: }
+      projects.to_h do |project|
+        [project.id, { level_path: [], level: 0, children: [], project: }]
       end
-      infos_map
     end
 
     def link_meta_infos_map_nodes(infos_map, projects)
