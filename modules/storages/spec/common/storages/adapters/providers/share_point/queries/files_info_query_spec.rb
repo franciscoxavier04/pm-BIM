@@ -42,124 +42,106 @@ module Storages
             let(:auth_strategy) { Registry["share_point.authentication.user_bound"].call(user, storage) }
             let(:input_data) { Input::FilesInfo.build(file_ids:).value! }
 
-            subject(:query) { described_class.new(storage) }
+            it_behaves_like "adapter files_info_query: basic query setup"
 
-            describe "#call" do
-              it "responds with correct parameters" do
-                expect(described_class).to respond_to(:call)
+            context "with an empty array of file ids" do
+              let(:file_ids) { [] }
+              let(:file_infos) { [] }
 
-                method = described_class.method(:call)
-                expect(method.parameters).to contain_exactly(%i[keyreq storage], %i[keyreq auth_strategy], %i[keyreq input_data])
+              it_behaves_like "adapter files_info_query: successful list response"
+            end
+
+            context "with all outbound requests successful", vcr: "share_point/files_info_query_success" do
+              let(:drive_id) { "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY87vnZ6fgfvQanZHX-XCAyw" }
+              let(:file_ids) do
+                %W[
+                  #{drive_id}||01ANJ53WYLXAJW5PXSCJB2CFCD42UPDKMI
+                  #{drive_id}||01ANJ53W4ELLSQL3JZHNA2MHKKHKAUQWNS
+                  #{drive_id}||01ANJ53W5UJK2CQO6IY5HLBVYBVNJ4TKHZ
+                ]
+              end
+              let(:file_infos) do
+                [
+                  Results::StorageFileInfo.new(
+                    status: "ok",
+                    status_code: 200,
+                    id: "01ANJ53WYLXAJW5PXSCJB2CFCD42UPDKMI",
+                    name: "Folder",
+                    size: 232311,
+                    mime_type: "application/x-op-directory",
+                    created_at: Time.parse("2023-12-14T14:53:00Z"),
+                    last_modified_at: Time.parse("2023-12-14T14:53:00Z"),
+                    owner_name: "Eric Schubert",
+                    owner_id: "5b5a7dc4-4539-41ba-9fa9-100f0a26acb7",
+                    last_modified_by_name: "Eric Schubert",
+                    last_modified_by_id: "5b5a7dc4-4539-41ba-9fa9-100f0a26acb7",
+                    location: "/Shared%20Documents/Folder"
+                  ),
+                  Results::StorageFileInfo.new(
+                    status: "ok",
+                    status_code: 200,
+                    id: "01ANJ53W4ELLSQL3JZHNA2MHKKHKAUQWNS",
+                    name: "authurl.txt",
+                    size: 144,
+                    mime_type: "text/plain",
+                    created_at: Time.parse("2024-09-24T13:06:53Z"),
+                    last_modified_at: Time.parse("2024-09-24T13:06:55Z"),
+                    owner_name: "Eric Schubert",
+                    owner_id: "5b5a7dc4-4539-41ba-9fa9-100f0a26acb7",
+                    last_modified_by_name: "Eric Schubert",
+                    last_modified_by_id: "5b5a7dc4-4539-41ba-9fa9-100f0a26acb7",
+                    location: "/Shared%20Documents/Folder/authurl.txt"
+                  ),
+                  Results::StorageFileInfo.new(
+                    status: "ok",
+                    status_code: 200,
+                    id: "01ANJ53W5UJK2CQO6IY5HLBVYBVNJ4TKHZ",
+                    name: "release_meme.jpg",
+                    size: 46264,
+                    mime_type: "image/jpeg",
+                    created_at: Time.parse("2024-02-20T14:26:07Z"),
+                    last_modified_at: Time.parse("2024-02-20T14:26:07Z"),
+                    owner_name: "Eric Schubert",
+                    owner_id: "5b5a7dc4-4539-41ba-9fa9-100f0a26acb7",
+                    last_modified_by_name: "Eric Schubert",
+                    last_modified_by_id: "5b5a7dc4-4539-41ba-9fa9-100f0a26acb7",
+                    location: "/Shared%20Documents/Folder/Nested%20Folder/release_meme.jpg"
+                  )
+                ]
               end
 
-              context "without outbound request involved" do
-                context "with an empty array of file ids" do
-                  let(:file_ids) { [] }
+              it_behaves_like "adapter files_info_query: successful list response"
+            end
 
-                  it "returns an empty array" do
-                    result = query.call(auth_strategy:, input_data:)
-
-                    expect(result).to be_success
-                    expect(result.value!).to eq([])
-                  end
-                end
+            context "with one outbound request returning not found", vcr: "share_point/files_info_query_one_not_found" do
+              let(:drive_id) { "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY87vnZ6fgfvQanZHX-XCAyw" }
+              let(:file_ids) { %W[#{drive_id}||01ANJ53W4ELLSQL3JZHNA2MHKKHKAUQWNS #{drive_id}||not_existent] }
+              let(:file_infos) do
+                [
+                  Results::StorageFileInfo.new(
+                    status: "ok",
+                    status_code: 200,
+                    id: "01ANJ53W4ELLSQL3JZHNA2MHKKHKAUQWNS",
+                    name: "authurl.txt",
+                    size: 144,
+                    mime_type: "text/plain",
+                    created_at: Time.parse("2024-09-24T13:06:53Z"),
+                    last_modified_at: Time.parse("2024-09-24T13:06:55Z"),
+                    owner_name: "Eric Schubert",
+                    owner_id: "5b5a7dc4-4539-41ba-9fa9-100f0a26acb7",
+                    last_modified_by_name: "Eric Schubert",
+                    last_modified_by_id: "5b5a7dc4-4539-41ba-9fa9-100f0a26acb7",
+                    location: "/Shared%20Documents/Folder/authurl.txt"
+                  ),
+                  Results::StorageFileInfo.new(
+                    status: :not_found,
+                    status_code: 404,
+                    id: "not_existent"
+                  )
+                ]
               end
 
-              context "with outbound requests successful", vcr: "share_point/files_info_query_success" do
-                let(:drive_id) { "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY87vnZ6fgfvQanZHX-XCAyw" }
-
-                context "with an array of file ids" do
-                  let(:file_ids) do
-                    %W[
-                      #{drive_id}||01ANJ53WYLXAJW5PXSCJB2CFCD42UPDKMI
-                      #{drive_id}||01ANJ53W4ELLSQL3JZHNA2MHKKHKAUQWNS
-                      #{drive_id}||01ANJ53W5UJK2CQO6IY5HLBVYBVNJ4TKHZ
-                    ]
-                  end
-
-                  # rubocop:disable RSpec/ExampleLength
-                  it "must return an array of file information when called" do
-                    result = query.call(auth_strategy:, input_data:)
-                    expect(result).to be_success
-
-                    file_infos = result.value!
-                    expect(file_infos.size).to eq(3)
-                    expect(file_infos).to all(be_a(Results::StorageFileInfo))
-                    expect(file_infos.map(&:to_h))
-                      .to eq([
-                               {
-                                 status: "ok",
-                                 status_code: 200,
-                                 id: "01ANJ53WYLXAJW5PXSCJB2CFCD42UPDKMI",
-                                 name: "Folder",
-                                 size: 232311,
-                                 mime_type: "application/x-op-directory",
-                                 created_at: Time.parse("2023-12-14T14:53:00Z"),
-                                 last_modified_at: Time.parse("2023-12-14T14:53:00Z"),
-                                 owner_name: "Eric Schubert",
-                                 owner_id: "5b5a7dc4-4539-41ba-9fa9-100f0a26acb7",
-                                 last_modified_by_name: "Eric Schubert",
-                                 last_modified_by_id: "5b5a7dc4-4539-41ba-9fa9-100f0a26acb7",
-                                 permissions: nil,
-                                 location: "/Shared%20Documents/Folder"
-                               },
-                               {
-                                 status: "ok",
-                                 status_code: 200,
-                                 id: "01ANJ53W4ELLSQL3JZHNA2MHKKHKAUQWNS",
-                                 name: "authurl.txt",
-                                 size: 144,
-                                 mime_type: "text/plain",
-                                 created_at: Time.parse("2024-09-24T13:06:53Z"),
-                                 last_modified_at: Time.parse("2024-09-24T13:06:55Z"),
-                                 owner_name: "Eric Schubert",
-                                 owner_id: "5b5a7dc4-4539-41ba-9fa9-100f0a26acb7",
-                                 last_modified_by_name: "Eric Schubert",
-                                 last_modified_by_id: "5b5a7dc4-4539-41ba-9fa9-100f0a26acb7",
-                                 permissions: nil,
-                                 location: "/Shared%20Documents/Folder/authurl.txt"
-                               },
-                               {
-                                 status: "ok",
-                                 status_code: 200,
-                                 id: "01ANJ53W5UJK2CQO6IY5HLBVYBVNJ4TKHZ",
-                                 name: "release_meme.jpg",
-                                 size: 46264,
-                                 mime_type: "image/jpeg",
-                                 created_at: Time.parse("2024-02-20T14:26:07Z"),
-                                 last_modified_at: Time.parse("2024-02-20T14:26:07Z"),
-                                 owner_name: "Eric Schubert",
-                                 owner_id: "5b5a7dc4-4539-41ba-9fa9-100f0a26acb7",
-                                 last_modified_by_name: "Eric Schubert",
-                                 last_modified_by_id: "5b5a7dc4-4539-41ba-9fa9-100f0a26acb7",
-                                 permissions: nil,
-                                 location: "/Shared%20Documents/Folder/Nested%20Folder/release_meme.jpg"
-                               }
-                             ])
-                  end
-                  # rubocop:enable RSpec/ExampleLength
-                end
-              end
-
-              context "with one outbound request returning not found", vcr: "share_point/files_info_query_one_not_found" do
-                let(:drive_id) { "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY87vnZ6fgfvQanZHX-XCAyw" }
-
-                context "with an array of file ids" do
-                  let(:file_ids) { %W[#{drive_id}||01ANJ53W4ELLSQL3JZHNA2MHKKHKAUQWNS #{drive_id}||not_existent] }
-
-                  it "must return an array of file information when called" do
-                    result = query.call(auth_strategy:, input_data:)
-                    expect(result).to be_success
-                    file_infos = result.value!
-
-                    expect(file_infos.size).to eq(2)
-                    expect(file_infos).to all(be_a(Results::StorageFileInfo))
-                    expect(file_infos[1].id).to eq("not_existent")
-                    expect(file_infos[1].status).to eq(:not_found)
-                    expect(file_infos[1].status_code).to eq(404)
-                  end
-                end
-              end
+              it_behaves_like "adapter files_info_query: successful list response"
             end
           end
         end
