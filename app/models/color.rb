@@ -39,7 +39,7 @@ class Color < ApplicationRecord
 
   validates :name, :hexcode, presence: true
   validates :name, length: { maximum: 255 }
-  validates :hexcode, format: { with: RGB_HEX_FORMAT, allow_blank: true }
+  validates :hexcode, format: { with: RGB_HEX_FORMAT, message: :hexcode_invalid, allow_blank: true }
 
   normalizes :hexcode, with: ::Colors::HexColor::Normalizer
 end

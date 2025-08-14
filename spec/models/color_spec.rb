@@ -91,7 +91,9 @@ RSpec.describe Color do
     end
 
     it "does not allow malformed hexcodes" do
-      expect(subject).not_to allow_values("0#FFFFFF", "#FFFFFF0", "white").for(:hexcode)
+      expect(subject).not_to allow_values("0#FFFFFF", "#FFFFFF0", "white")
+        .for(:hexcode)
+        .with_message("is not a valid 6-digit hexadecimal color code.")
     end
 
     it "allows valid hexcodes" do

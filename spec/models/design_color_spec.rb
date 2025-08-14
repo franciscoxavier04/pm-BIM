@@ -61,7 +61,9 @@ RSpec.describe DesignColor do
         "#1",
         "#1111111",
         "#HHHHHH"
-      ).for(:hexcode)
+      )
+      .for(:hexcode)
+      .with_message("is not a valid 6-digit hexadecimal color code.")
     end
 
     it "allows valid hexcodes" do

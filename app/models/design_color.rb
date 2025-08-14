@@ -45,7 +45,7 @@ class DesignColor < ApplicationRecord
 
   validates :variable, :hexcode, presence: true
   validates :variable, uniqueness: true
-  validates :hexcode, format: { with: RGB_HEX_FORMAT, allow_blank: true }
+  validates :hexcode, format: { with: RGB_HEX_FORMAT, message: :hexcode_invalid, allow_blank: true }
 
   normalizes :hexcode, with: ::Colors::HexColor::Normalizer
 
