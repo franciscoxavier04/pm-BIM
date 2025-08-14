@@ -155,5 +155,17 @@ module OpenIDConnect
         [/(.+)/]
       end
     end
+
+    def to_h
+      claims = self.claims.presence || "{}"
+      claims = add_groups_claim(JSON.parse(claims)).to_json
+      super.merge(claims:, acr_values:)
+    end
+
+    def add_groups_claim(claims)
+      claims = { "id_token" => { groups_claim => nil } }.deep_merge(claims) if sync_groups
+
+      claims
+    end
   end
 end

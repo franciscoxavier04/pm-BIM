@@ -159,6 +159,10 @@ module Components::Autocompleter
       target_dropdown.first(".ng-option", text:, wait: 15).click
     end
 
+    def expect_current_autocompleter_value(element, value)
+      expect(element).to have_css(".ng-value .ng-value-label", text: value, wait: 10)
+    end
+
     # Finds the currently visible, expanded user auto completer and returns its dropdown menu options.
     # A user always has a name, but their email is only visible in certain circumstances, so that value
     # might be nil.

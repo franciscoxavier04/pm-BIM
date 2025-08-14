@@ -63,7 +63,6 @@ pt-PT:
         primary-button-color: "Botão principal"
         accent-color: "Destaque"
         header-bg-color: "Fundo do cabeçalho"
-        header-item-bg-hover-color: "Fundo do cabeçalho ao passar o rato"
         main-menu-bg-color: "Fundo do menu principal"
         main-menu-bg-selected-background: "Menu principal quando selecionado"
       custom_colors: "Cores personalizadas"
@@ -71,10 +70,6 @@ pt-PT:
       instructions:
         primary-button-color: "Cor de contraste forte, utilizada no botão mais importante de um ecrã."
         accent-color: "Cor para as ligações e outros elementos bem realçados."
-        header-item-bg-hover-color: "Cor de fundo de itens do cabeçalho clicáveis quando se passa com o rato por cima."
-        header-item-font-color: "Cor da fonte dos itens clicáveis do cabeçalho."
-        header-item-font-hover-color: "Cor da fonte de itens clicáveis do cabeçalho quando se passa com o mouse por cima."
-        header-border-bottom-color: "Linha fina sob o cabeçalho. Deixe este campo vazio se não deseja qualquer linha."
         main-menu-bg-color: "Cor de fundo do menu do lado esquerdo."
       theme_warning: Alterar o tema irá sobrescrever seu estilo personalizado. O design será perdido. Tem certeza que deseja continuar?
     enterprise:
@@ -121,7 +116,7 @@ pt-PT:
         one_time_hint: "Esta é a única vez que verá o segredo do cliente. Não se esqueça de o copiar agora."
       created_token_dialog_component:
         title: "Token criado"
-        heading: "A token has been generated"
+        heading: "Foi gerado um token"
         label_token: "Token"
         one_time_hint: "Esta é a única vez que verá este token. Não se esqueça de o copiar agora."
       delete_scim_client_dialog_component:
@@ -133,8 +128,8 @@ pt-PT:
       form:
         auth_provider_description: "Este é o serviço que os utilizadores adicionados pelo fornecedor SCIM utilizarão para se autenticarem no OpenProject."
         authentication_method_description_html: "É assim que o cliente SCIM se autentica no OpenProject. Garanta que os tokens OAuth incluem o âmbito <code>scim_v2</code>."
-        description_html: 'Consulte a nossa <a href="%{docs_url}">documentação sobre a configuração de clientes SCIM</a> para mais informações sobre estas opções de configuração.'
-        jwt_sub_description_html: 'Por exemplo, para o Keycloak, este é o UUID da conta de serviço associada ao cliente SCIM. Consulte <a href="%{docs_url}">a nossa documentação</a> para saber como encontrar a declaração de assunto para o seu caso de utilização.'
+        description: "Consulte a nossa [documentação sobre a configuração de clientes SCIM] (docs_url) para obter mais informações sobre estas opções de configuração."
+        jwt_sub_description: "Por exemplo, para o Keycloak, este é o UUID da conta de serviço associada ao cliente SCIM. Consulte [a nossa documentação](docs_url) para saber como encontrar a declaração de assunto para o seu caso."
         name_description: "Escolha um nome que ajude os outros administradores a perceber melhor porque é que este cliente foi configurado."
       index:
         description: "Os clientes SCIM aqui configurados conseguem interagir com a API do servidor OpenProject SCIM para prover, atualizar e desprover contas e grupos de utilizadores."
@@ -362,22 +357,33 @@ pt-PT:
       blueprint: "Modelo do plano"
   global_search:
     title:
-      all_projects: 'Search for "%{search_term}" in all projects'
-      current_project: 'Search for "%{search_term}" in %{project_name}'
-      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
+      all_projects: 'Pesquisar por "%{search_term}" em todos os projetos'
+      current_project: 'Pesquisar por "%{search_term}" em %{project_name}'
+      project_and_subprojects: 'Pesquisar por “%{search_term}” em %{project_name} e em todos os sub-projetos'
     placeholder: "Pesquisar em %{app_title}"
     overwritten_tabs:
       all: "Todas"
       messages: "Fórum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Grupos sincronizados"
     index:
-      no_results_title_text: Atualmente, não existem grupos.
-      no_results_content_text: Criar um novo grupo
+      description: Ao agrupar utilizadores, pode adicioná-los como membros aos mesmos projetos ou atribuir-lhes as mesmas funções globais.
+    table_component:
+      blank_slate:
+        description: You can define named groups of users with specific permissions.
+        title: Ainda não foram configurados grupos
+      user_count: Número de utilizadores
     users:
       no_results_title_text: Atualmente, não existem utilizadores pertencentes a este grupo.
     memberships:
       no_results_title_text: Atualmente, não existem projetos pertencentes a este grupo.
+    synchronized_groups:
+      blankslate:
+        action: Definições da autenticação
+        description: Quando este grupo é automaticamente sincronizado com grupos em fornecedores de identidade externos, como OpenID, aparecem aqui. Pode definir isto nas suas definições de autenticação.
+        title: Ainda não existem grupos sincronizados
   incoming_mails:
     ignore_filenames: >
       Especifique uma lista de nomes a ignorar ao processar anexos para emails recebidos (por exemplo, assinaturas ou ícones). Digite um nome de ficheiro por linha.
@@ -677,8 +683,10 @@ pt-PT:
         excluded_from_totals: "Excluído dos totais"
   themes:
     dark: "Escuro"
+    dark_high_contrast: "Dark high contrast"
     light: "Claro"
     light_high_contrast: "Contraste alto claro"
+    sync_with_os: "Automático (corresponder ao modo de cor do SO)"
   types:
     index:
       no_results_title_text: Atualmente, não existem tipos.
@@ -710,9 +718,8 @@ pt-PT:
             project: "Projecto"
         pattern:
           label: "Padrão do tema"
-          caption_with_supported_attributes_link: Crie padrões ao adicionar texto, ou introduza "/" para pesquisar por %{link}.
+          caption: Crie padrões adicionando texto ou escreva "/" para procurar [atributos suportados](attributes_url).
           insert_as_text: "Não foram encontrados atributos. Adicionar como texto: \"%{word}\""
-          supported_attributes_link: "atributos suportados"
       export_configuration:
         tab: "Gerar PDF"
         intro: "Selecione os modelos disponíveis que pretende ativar para este tipo. O modelo determina o design e os atributos visíveis no PDF exportado de um pacote de trabalho que utiliza este tipo. O primeiro modelo da lista é selecionado por predefinição."
@@ -1111,7 +1118,6 @@ pt-PT:
       role:
         permissions: "Permissões"
       scim_client:
-        auth_provider: "Fornecedor de autenticação"
         authentication_method: "Método de autenticação"
         jwt_sub: "Reivindicação do sujeito"
       status:
@@ -1166,7 +1172,7 @@ pt-PT:
         comments_sorting: "Exibir a atividade do pacote de trabalho ordenada por"
         disable_keyboard_shortcuts: "Desativar atalhos de teclado"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
+          Pode optar por desativar <a href="%{href}">atalhos de teclado</a> predefinidos se utilizar um leitor de ecrã, ou se quiser evitar desencadear acidentalmente uma ação com um atalho.
         dismissed_enterprise_banners: "Faixas de empresas ocultas"
         impaired: "Modo de acessibilidade"
         auto_hide_popups: "Ocultar automaticamente os banners de sucesso"
@@ -1262,6 +1268,7 @@ pt-PT:
         inclusion_nested: "não está definido como um dos valores permitidos no caminho '%{path}'."
         invalid: "é inválido."
         invalid_characters: "contém caracteres inválidos."
+        not_allowed_custom_fields_referenced: "contém campos personalizados que não são permitidos: %{custom_fields}."
         invalid_url: "não é um URL válido."
         invalid_url_scheme: "não é um protocolo suportado (permitido: %{allowed_schemes})."
         less_than_or_equal_to: "deve ser menor ou igual a %{count}."
@@ -1281,6 +1288,7 @@ pt-PT:
         odd: "deve ser ímpar."
         regex_match_failed: "não corresponde à expressão regular %{expression}."
         regex_invalid: "não pode ser validado com a expressão regular associada."
+        regex_list_invalid: "não foi possível analisar como expressão regular nas linhas %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "deve ser menor ou igual ao comprimento máximo."
         taken: "já está a ser utilizado."
         too_long: "é muito longo (o máximo é %{count} caracteres)."
@@ -1607,7 +1615,11 @@ pt-PT:
     models:
       attachment: "Ficheiro"
       attribute_help_text: "Texto de ajuda do atributo"
+      auth_provider:
+        one: "Fornecedor de autenticação"
+        other: "Fornecedores de autenticação"
       category: "Categoria"
+      color: "Cor"
       comment: "Comentario"
       custom_action: "Ação personalizada"
       custom_field: "Campo personalizado"
@@ -1869,7 +1881,7 @@ pt-PT:
   button_duplicate: "Duplicar"
   button_duplicate_and_follow: "Duplicar e seguir"
   button_edit: "Editar"
-  button_edit_associated_wikipage: "Editar página Wiki associada: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Expandir Tudo"
   button_favorite: "Adicionar aos favoritos"
   button_filter: "Filtro"
@@ -2239,6 +2251,13 @@ pt-PT:
         Quero receber a <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a> do OpenProject.
       consent_html: >
         Concordo com os <a target="_blank" href="https://www.openproject.org/terms-of-service/">termos de serviço</a> e a <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">política de privacidade</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Desativado."
+      enabled: "Ativado."
+    button:
+      disabled: "Ativar"
+      enabled: "Desativar"
   enumeration_activities: "Atividades de controlo de tempo"
   enumeration_work_package_priorities: "Prioridades do pacote de trabalho"
   enumeration_reported_project_statuses: "Estado do projeto reportado"
@@ -2446,6 +2465,13 @@ pt-PT:
       xls2csv: "Xls2csv disponível (opcional)"
       catppt: "Catppt disponível (opcional)"
       tesseract: "Tesseract disponível (opcional)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","
@@ -2539,7 +2565,7 @@ pt-PT:
       aggregation: "Agregação"
       api_and_webhooks: "API e webhooks"
     quick_add:
-      label: "Abrir menu de adição rápida"
+      label: "Adicionar…"
   my_account:
     access_tokens:
       no_results:
@@ -2839,6 +2865,7 @@ pt-PT:
   label_gantt_chart_plural: "Gráficos de Gantt"
   label_general: "Geral"
   label_generate_key: "Gerar uma chave"
+  label_global_modules: "Módulos globais"
   label_global_roles: "Funções globais"
   label_git_path: "Caminho para o diretório .git"
   label_greater_or_equal: ">="
@@ -2923,6 +2950,7 @@ pt-PT:
   label_manage: "Gerir"
   label_manage_groups: "Gerir grupos"
   label_managed_repositories_vendor: "Repositórios sob gestão %{vendor}"
+  label_mathematical_operators: "Operadores matemáticos"
   label_max_size: "Tamanho máximo"
   label_me: "eu"
   label_member_new: "Novo Membro"
@@ -2982,6 +3010,7 @@ pt-PT:
   label_no_due_date: "sem data de término"
   label_no_start_date: "sem data de início"
   label_no_parent_page: "Sem página pai"
+  label_notification_center_plural: "Notificações"
   label_nothing_display: "Nada para exibir"
   label_nobody: "ninguém"
   label_not_configured: "Não configurado"
@@ -3014,7 +3043,7 @@ pt-PT:
   label_password_rule_special: "Carateres Especiais"
   label_password_rule_uppercase: "Maiúsculas"
   label_path_encoding: "Codificação do caminho"
-  label_per_page: "Per page:"
+  label_per_page: "Por página:"
   label_people: "Pessoas"
   label_permissions: "Permissões"
   label_permissions_report: "Relatório de Permissões"
@@ -3190,6 +3219,7 @@ pt-PT:
   label_user_mail_option_only_my_events: "Apenas para coisas que observo ou em que estou envolvido"
   label_user_mail_option_only_owner: "Apenas para coisas das quais sou proprietário"
   label_user_mail_option_selected: "Para qualquer evento apenas nos projetos selecionados"
+  label_user_menu: "Menu do utilizador"
   label_user_new: "Novo Utilizador"
   label_user_plural: "Utilizadores"
   label_user_search: "Procurar utilizadores"

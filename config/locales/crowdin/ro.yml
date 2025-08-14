@@ -63,7 +63,6 @@ ro:
         primary-button-color: "Butonul principal"
         accent-color: "Accent"
         header-bg-color: "Fundal antet"
-        header-item-bg-hover-color: "Fundal antet la plutire"
         main-menu-bg-color: "Fundal meniu principal"
         main-menu-bg-selected-background: "Meniul principal când este selectat"
       custom_colors: "Culori personalizate"
@@ -71,10 +70,6 @@ ro:
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
         accent-color: "Color for links and other decently highlighted elements."
-        header-item-bg-hover-color: "Culoarea de fundal a obiectelor care pot fi selectate când cursorului se află deasupra lor."
-        header-item-font-color: "Culoare fontului pentru elementele selectabile din antet."
-        header-item-font-hover-color: "Culoarea fontului pentru elementele selectabile din antet când cursorul se află deasupra lor."
-        header-border-bottom-color: "Linia de sub antet. Lăsați acest câmp gol dacă nu doriți această linie."
         main-menu-bg-color: "Culoarea de fundal pentru meniul din partea stângă."
       theme_warning: Schimbarea temei va suprascrie stilul personalizat. În acest caz, designul va fi pierdut. Sunteți sigur că doriți să continuați?
     enterprise:
@@ -133,8 +128,8 @@ ro:
       form:
         auth_provider_description: "This is the service that users added by the SCIM provider will use to authenticate in OpenProject."
         authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM clients</a> for more information on these configuration options.'
-        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
+        description: "Please refer to our [documentation on configuring SCIM clients](docs_url) for more information on these configuration options."
+        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
         name_description: "Choose a name that will help other admins better understand why this client was configured."
       index:
         description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
@@ -373,13 +368,24 @@ ro:
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: În acest moment nu există grupuri.
-      no_results_content_text: Creează grup nou
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define named groups of users with specific permissions.
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: În acest moment nu există utilizatori care să facă parte din acest grup.
     memberships:
       no_results_title_text: În acest moment nu există proiecte care să facă parte din acest grup.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Specifică o listă de nume care trebuie ignorate la procesarea atașamentelor pentru mesajele primite (de exemplu, semnături sau pictograme). Introdu un nume de fișier pe linie.
@@ -687,8 +693,10 @@ ro:
         excluded_from_totals: "Excluded from totals"
   themes:
     dark: "Dark"
+    dark_high_contrast: "Dark high contrast"
     light: "Light"
     light_high_contrast: "Light high contrast"
+    sync_with_os: "Automatic (match OS colour mode)"
   types:
     index:
       no_results_title_text: În acest moment nu există tipuri.
@@ -720,9 +728,8 @@ ro:
             project: "Proiect"
         pattern:
           label: "Subject pattern"
-          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
+          caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
-          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "Generează PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -811,7 +818,7 @@ ro:
         title: "Lipsește fluxul pentru partajarea pachetului de lucru"
         message: "Niciun flux de lucru nu este configurat pentru rolul 'Editor pachete de lucru'. Fără un flux de lucru, utilizatorul nu poate modifica statusul pachetului de lucru. Fluxurile de lucru pot fi copiate. Selectează un tip sursă (de ex. 'Task') şi rolul sursă (de ex. 'Membru'). Apoi selectează tipurile țintă. Pentru a începe, ai putea selecta toate tipurile ca ținte. După aceea, selectează rolul de „editor pachete de lucru” ca țintă și apăsă „Copiază”. După ce ai creat cele implicite, reglează fluxurile de lucru așa cum faci pentru orice alt rol."
         link_message: "Configurează fluxurile de lucru din administrare."
-    templated_subject_hint: Automatically generated through type %{type}
+    templated_subject_hint: Generat automat prin tipul %{type}
     summary:
       reports:
         category:
@@ -1122,7 +1129,6 @@ ro:
       role:
         permissions: "Drepturi"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1273,6 +1279,7 @@ ro:
         inclusion_nested: "nu este setată la una dintre valorile permise la calea '%{path}'."
         invalid: "este invalid."
         invalid_characters: "contains invalid characters."
+        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
         invalid_url: "nu este o adresa URL validă."
         invalid_url_scheme: "nu este un protocol permis (allowed: %{allowed_schemes})."
         less_than_or_equal_to: "trebuie să fie mai mic sau egal cu %{count}."
@@ -1292,6 +1299,7 @@ ro:
         odd: "trebuie să fie impar."
         regex_match_failed: "does not match the regular expression %{expression}."
         regex_invalid: "nu a putut fi validată cu expresia regulată asociată."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "trebuie să fie mai mic sau egal cu lungimea maximă."
         taken: "este deja utilizat"
         too_long: "este prea lung (maximul admis este de %{count} caractere)."
@@ -1620,7 +1628,12 @@ ro:
     models:
       attachment: "Fișier"
       attribute_help_text: "Text de ajutor pentru atribute"
+      auth_provider:
+        one: "Authentication provider"
+        few: "Authentication providers"
+        other: "Authentication providers"
       category: "Categorie"
+      color: "Color"
       comment: "Comentariu"
       custom_action: "Adaugă acțiune personalizată"
       custom_field: "Câmp personalizat"
@@ -1894,7 +1907,7 @@ ro:
   button_duplicate: "Duplicare"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Editare"
-  button_edit_associated_wikipage: "Editare pagină wiki asociată: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Extindere totală"
   button_favorite: "Adaugă la favorite"
   button_filter: "Filtrează"
@@ -2285,6 +2298,13 @@ ro:
         I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
       consent_html: >
         I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
   enumeration_activities: "Activități de urmărire timp activate"
   enumeration_work_package_priorities: "Priorități pentru pachetele de lucru"
   enumeration_reported_project_statuses: "Stările proiectului raportat"
@@ -2492,6 +2512,13 @@ ro:
       xls2csv: "Xls2csv disponibil (opțional)"
       catppt: "Catppt disponibil (opțional)"
       tesseract: "Tesseract disponibil (opțional)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: ","
   general_csv_encoding: "UTF-8"
   general_csv_separator: ";"
@@ -2585,7 +2612,7 @@ ro:
       aggregation: "Agregare"
       api_and_webhooks: "API și webhook-uri"
     quick_add:
-      label: "Deschide meniul adăugare rapidă"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2885,6 +2912,7 @@ ro:
   label_gantt_chart_plural: "Diagrame Gantt"
   label_general: "General"
   label_generate_key: "Generare cheie"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: "Calea catre directorul .git"
   label_greater_or_equal: ">="
@@ -2969,6 +2997,7 @@ ro:
   label_manage: "Gestionează"
   label_manage_groups: "Gestionare grupuri"
   label_managed_repositories_vendor: "Gestionare arhive %{vendor}"
+  label_mathematical_operators: "Mathematical operators"
   label_max_size: "Dimensiunea maximă"
   label_me: "eu"
   label_member_new: "Membru nou"
@@ -3028,6 +3057,7 @@ ro:
   label_no_due_date: "fără dată finalizare"
   label_no_start_date: "fără dată început"
   label_no_parent_page: "Pagină părinte:"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Nimic de afișat"
   label_nobody: "nimeni"
   label_not_configured: "Not configured"
@@ -3236,6 +3266,7 @@ ro:
   label_user_mail_option_only_my_events: "Doar pentru tichete pentru care sunt observator sau în care sunt implicat"
   label_user_mail_option_only_owner: "Doar pentru tichete pentru care sunt responsabil"
   label_user_mail_option_selected: "Pentru orice eveniment doar în proiectele selectate"
+  label_user_menu: "User menu"
   label_user_new: "Utilizator nou"
   label_user_plural: "Utilizatori"
   label_user_search: "Căutare utilizator"

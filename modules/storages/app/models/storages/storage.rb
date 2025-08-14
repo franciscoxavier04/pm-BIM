@@ -178,6 +178,10 @@ module Storages
       is_a?(OneDriveStorage)
     end
 
+    def provider_type_share_point?
+      is_a?(SharePointStorage)
+    end
+
     def health_reason_identifier
       @health_reason_identifier ||= self.class.extract_part_from_piped_string(health_reason, 0)
     end

@@ -55,9 +55,9 @@ module Saml
               caption: link_translate(
                 "saml.instructions.documentation_link",
                 links: {
-                  docs_url: ::OpenProject::Static::Links[:sysadmin_docs][:saml][:href]
+                  docs_url: %i[sysadmin_docs saml]
                 },
-                target: "_blank"
+                external: true
               )
             ) do |list|
               Saml::Defaults::ATTRIBUTE_FORMATS.each do |format|

@@ -35,6 +35,6 @@ class CostQuery::Filter::AuthorId < CostQuery::Filter::UserId
   end
 
   def self.available_values(*)
-    CostQuery::Filter::UserId.available_values
+    []
   end
 end

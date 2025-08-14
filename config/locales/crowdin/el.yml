@@ -63,7 +63,6 @@ el:
         primary-button-color: "Primary button"
         accent-color: "Accent"
         header-bg-color: "Φόντο κεφαλίδας"
-        header-item-bg-hover-color: "Φόντο κεφαλίδας κατά το πέρασμα του ποντικιού"
         main-menu-bg-color: "Φόντο κύριου μενού"
         main-menu-bg-selected-background: "Κύριο μενού όταν είναι επιλεγμένο"
       custom_colors: "Προσαρμοσμένα χρώματα"
@@ -71,10 +70,6 @@ el:
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
         accent-color: "Color for links and other decently highlighted elements."
-        header-item-bg-hover-color: "Χρώμα φόντου στοιχείων κεφαλίδας με δυνατότητα κλικ, όταν ο δείκτης βρίσκεται πάνω."
-        header-item-font-color: "Χρώμα γραμματοσειράς στοιχείων κεφαλίδας με δυνατότητα κλικ."
-        header-item-font-hover-color: "Χρώμα γραμματοσειράς στοιχείων κεφαλίδας με δυνατότητα κλικ, όταν ο δείκτης βρίσκεται πάνω."
-        header-border-bottom-color: "Λεπτή γραμμή κάτω από την κεφαλίδα. Αφήστε αυτό το πεδίο κενό αν δεν θέλετε καμία γραμμή."
         main-menu-bg-color: "Χρώμα φόντου του μενού της αριστερής πλευράς."
       theme_warning: Η αλλαγή του θέματος θα αντικαταστήσει το προσαρμοσμένο στυλ. Ο σχεδιασμός θα χαθεί. Είστε βέβαιοι ότι θέλετε να συνεχίσετε;
     enterprise:
@@ -133,8 +128,8 @@ el:
       form:
         auth_provider_description: "This is the service that users added by the SCIM provider will use to authenticate in OpenProject."
         authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM clients</a> for more information on these configuration options.'
-        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
+        description: "Please refer to our [documentation on configuring SCIM clients](docs_url) for more information on these configuration options."
+        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
         name_description: "Choose a name that will help other admins better understand why this client was configured."
       index:
         description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
@@ -369,13 +364,24 @@ el:
       messages: "Φόρουμ"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: Προς το παρόν δεν υπάρχουν ομάδες.
-      no_results_content_text: Δημιουργία νέας ομάδας
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define named groups of users with specific permissions.
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Αυτή τη στιγμή δεν υπάρχουν χρήστες που να αποτελούν μέρος αυτής της ομάδας.
     memberships:
       no_results_title_text: Αυτή τη στιγμή δεν υπάρχουν έργα που να αποτελούν μέρος αυτής της ομάδας.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Καθορίστε μια λίστα με τα ονόματα που πρέπει να αγνοήσετε όταν επεξεργάζεστε συνημμένα για εισερχόμενα email (π.χ. υπογραφές ή εικονίδια). Εισάγετε ένα όνομα αρχείου ανά γραμμή.
@@ -676,8 +682,10 @@ el:
         excluded_from_totals: "Excluded from totals"
   themes:
     dark: "Dark"
+    dark_high_contrast: "Dark high contrast"
     light: "Light"
     light_high_contrast: "Light high contrast"
+    sync_with_os: "Automatic (match OS colour mode)"
   types:
     index:
       no_results_title_text: Αυτή τη στιγμή δεν υπάρχουν τύποι.
@@ -709,9 +717,8 @@ el:
             project: "Έργο"
         pattern:
           label: "Subject pattern"
-          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
+          caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
-          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1110,7 +1117,6 @@ el:
       role:
         permissions: "Δικαιώματα"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1261,6 +1267,7 @@ el:
         inclusion_nested: "is not set to one of the allowed values at path '%{path}'."
         invalid: "δεν είναι έγκυρο."
         invalid_characters: "contains invalid characters."
+        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
         invalid_url: "δεν είναι μια έγκυρη διεύθυνση URL."
         invalid_url_scheme: "δεν είναι υποστηριζόμενο πρωτόκολλο (επιτρεπόμενα: %{allowed_schemes})."
         less_than_or_equal_to: "πρέπει να είναι μικρότερο ή ίσο με %{count}."
@@ -1280,6 +1287,7 @@ el:
         odd: "πρέπει να είναι μονός."
         regex_match_failed: "does not match the regular expression %{expression}."
         regex_invalid: "δεν ήταν δυνατή η επικύρωση με τη συσχετιζόμενη κανονική έκφραση."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "πρέπει να είναι μικρότερο ή ίσο με το μέγιστο μήκος."
         taken: "έχει ήδη κατοχυρωθεί."
         too_long: "είναι πολύ μεγάλο (το μέγιστο είναι %{count} χαρακτήρες)."
@@ -1606,7 +1614,11 @@ el:
     models:
       attachment: "Aρχείο"
       attribute_help_text: "Κείμενο βοήθειας χαρακτηριστικών"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "Κατηγορία"
+      color: "Color"
       comment: "Σχόλιο"
       custom_action: "Προσαρμοσμένη ενέργεια"
       custom_field: "Προσαρμοσμένο πεδίο"
@@ -1868,7 +1880,7 @@ el:
   button_duplicate: "Δημιουργία αντιγράφου"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Επεξεργασία"
-  button_edit_associated_wikipage: "Επεξεργασία της συσχετιζόμενης σελίδας Wiki: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Ανάπτυξη όλων"
   button_favorite: "Add to favorites"
   button_filter: "Φίλτρο"
@@ -2238,6 +2250,13 @@ el:
         I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
       consent_html: >
         I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
   enumeration_activities: "Δραστηριότητες καταγραφής χρόνου"
   enumeration_work_package_priorities: "Προτεραιότητες πακέτου εργασίας"
   enumeration_reported_project_statuses: "Αναφερόμενη κατάσταση έργου"
@@ -2445,6 +2464,13 @@ el:
       xls2csv: "Το Xls2csv είναι διαθέσιμο (προαιρετικό)"
       catppt: "Το Catppt είναι διαθέσιμο (προαιρετικό)"
       tesseract: "Το Tesseract είναι διαθέσιμο (προαιρετικό)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","
@@ -2538,7 +2564,7 @@ el:
       aggregation: "Aggregation"
       api_and_webhooks: "API and webhooks"
     quick_add:
-      label: "Άνοιγμα μενού γρήγορης προσθήκης"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2838,6 +2864,7 @@ el:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Γενικά"
   label_generate_key: "Δημιουργία κλειδιού"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: "Μονοπάτι προς το ευρετήριο .git"
   label_greater_or_equal: ">="
@@ -2922,6 +2949,7 @@ el:
   label_manage: "Διαχείριση"
   label_manage_groups: "Διαχείριση Ομάδων"
   label_managed_repositories_vendor: "Αποθετήρια που διαχειρίζονται από %{vendor}"
+  label_mathematical_operators: "Mathematical operators"
   label_max_size: "Μέγιστο μέγεθος"
   label_me: "εγώ"
   label_member_new: "Νέο μέλος"
@@ -2981,6 +3009,7 @@ el:
   label_no_due_date: "καμία ημερομηνία λήξης"
   label_no_start_date: "δεν υπάρχει ημερομηνία έναρξης"
   label_no_parent_page: "Δεν υπάρχει σελίδα γονέα"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Δεν υπάρχει κάτι για εμφάνιση"
   label_nobody: "κανένας"
   label_not_configured: "Not configured"
@@ -3189,6 +3218,7 @@ el:
   label_user_mail_option_only_my_events: "Μόνο για αντικείμενα που παρακολουθώ ή συμμετέχω"
   label_user_mail_option_only_owner: "Μόνο για αντικείμενα που μου ανήκουν"
   label_user_mail_option_selected: "Για όλες τις εξελίξεις μόνο στα επιλεγμένα έργα"
+  label_user_menu: "User menu"
   label_user_new: "Νέος χρήστης"
   label_user_plural: "Χρήστες"
   label_user_search: "Αναζήτηση για χρήστη"

@@ -73,6 +73,12 @@ module Meetings
         @series.scheduled_meetings.none?
     end
 
+    def send_emails?
+      !@meeting.closed? &&
+        @meeting.notify? &&
+        User.current.allowed_in_project?(:send_meeting_invites_and_outcomes, @meeting.project)
+    end
+
     def breadcrumb_items
       [
         ({ href: project_overview_path(@project.id), text: @project.name } if @project.present?),

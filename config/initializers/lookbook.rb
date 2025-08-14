@@ -22,4 +22,8 @@ Rails.application.configure do
   # Show notes first, all other panels next
   config.lookbook.preview_inspector.drawer_panels = [:notes, "*"]
   config.lookbook.ui_theme = "blue"
+
+  # Add custom inputs
+  Lookbook.add_input_type(:octicon, "lookbook/previews/inputs/octicon")
+  Lookbook.add_input_type(:medium_octicon, "lookbook/previews/inputs/medium_octicon")
 end

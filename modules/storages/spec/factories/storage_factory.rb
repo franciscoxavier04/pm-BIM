@@ -208,7 +208,8 @@ FactoryBot.define do
 
     after(:create) do |storage, evaluator|
       create(:oauth_client,
-             client_id: ENV.fetch("ONE_DRIVE_TEST_OAUTH_CLIENT_ID", "MISSING_ONE_DRIVE_TEST_OAUTH_CLIENT_ID"),
+             client_id: ENV.fetch("ONE_DRIVE_TEST_OAUTH_CLIENT_ID",
+                                  "MISSING_ONE_DRIVE_TEST_OAUTH_CLIENT_ID"),
              client_secret: ENV.fetch("ONE_DRIVE_TEST_OAUTH_CLIENT_SECRET",
                                       "MISSING_ONE_DRIVE_TEST_OAUTH_CLIENT_SECRET"),
              integration: storage)
@@ -230,12 +231,39 @@ FactoryBot.define do
     host { "https://openproject.sharepoint.com/sites/ProjectX" }
     automatically_managed { false }
 
+    trait :with_tenant_id do
+      tenant_id { SecureRandom.uuid }
+    end
+
     trait :as_automatically_managed do
       automatically_managed { true }
     end
 
-    trait :with_tenant_id do
-      tenant_id { SecureRandom.uuid }
+    trait :sandbox do
+      tenant_id { ENV.fetch("SHARE_POINT_TEST_TENANT_ID", "e36f1dbc-fdae-427e-b61b-0d96ddfb81a4") }
+      host { ENV.fetch("SHARE_POINT_TEST_HOST", "https://ymt6d.sharepoint.com/sites/OPTest") }
+
+      transient do
+        oauth_client_token_user { association :user }
+      end
+
+      after(:create) do |storage, evaluator|
+        create(:oauth_client,
+               client_id: ENV.fetch("SHARE_POINT_TEST_OAUTH_CLIENT_ID",
+                                    "MISSING_SHARE_POINT_TEST_OAUTH_CLIENT_ID"),
+               client_secret: ENV.fetch("SHARE_POINT_TEST_OAUTH_CLIENT_SECRET",
+                                        "MISSING_SHARE_POINT_TEST_OAUTH_CLIENT_SECRET"),
+               integration: storage)
+
+        create(:oauth_client_token,
+               oauth_client: storage.oauth_client,
+               user: evaluator.oauth_client_token_user,
+               access_token: ENV.fetch("SHARE_POINT_TEST_OAUTH_CLIENT_ACCESS_TOKEN",
+                                       "MISSING_SHARE_POINT_TEST_OAUTH_CLIENT_ACCESS_TOKEN"),
+               refresh_token: ENV.fetch("SHARE_POINT_TEST_OAUTH_CLIENT_REFRESH_TOKEN",
+                                        "MISSING_SHARE_POINT_TEST_OAUTH_CLIENT_REFRESH_TOKEN"),
+               token_type: "bearer")
+      end
     end
   end
 end

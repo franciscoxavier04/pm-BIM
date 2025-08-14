@@ -99,6 +99,11 @@ module API::V3::Storages
              getter: ->(represented:, **) { represented.provider_type_nextcloud? && represented.storage_audience },
              setter: ->(fragment:, represented:, **) { represented.storage_audience = fragment }
 
+    property :tokenExchangeScope,
+             skip_render: ->(represented:, **) { !represented.provider_type_nextcloud? },
+             getter: ->(represented:, **) { represented.provider_type_nextcloud? && represented.token_exchange_scope },
+             setter: ->(fragment:, represented:, **) { represented.token_exchange_scope = fragment }
+
     property :applicationPassword,
              skip_render: ->(*) { true },
              getter: ->(*) {},

@@ -31,11 +31,14 @@ require "spec_helper"
 
 RSpec.describe OpenIDConnect::Provider do
   let(:provider) do
-    create(:oidc_provider, options: {
-             "grant_types_supported" => supported_grant_types
-           })
+    create(:oidc_provider, options: { "grant_types_supported" => supported_grant_types },
+                           claims:,
+                           sync_groups:,
+                           groups_claim: "the-groups")
   end
   let(:supported_grant_types) { %w[authorization_code implicit] }
+  let(:claims) { "" }
+  let(:sync_groups) { false }
 
   describe "#token_exchange_capable?" do
     subject { provider.token_exchange_capable? }
@@ -100,6 +103,101 @@ RSpec.describe OpenIDConnect::Provider do
 
       it "prefers prefixes over regular expressions" do
         expect(subject).to eq([/^a(.+)$/])
+      end
+    end
+  end
+
+  describe "#to_h" do
+    subject { provider.to_h }
+
+    let(:options) { {} }
+
+    before do
+      options.stringify_keys.each do |opt, value|
+        provider.options[opt] = value
+      end
+    end
+
+    it "includes empty claims by default" do
+      expect(subject[:claims]).to eq("{}")
+    end
+
+    context "when claims were defined" do
+      let(:claims) { '{"id_token":{"taste":null}}' }
+
+      it "includes the defined claims" do
+        expect(subject[:claims]).to eq(claims)
+      end
+    end
+
+    context "when group sync is enabled" do
+      let(:sync_groups) { true }
+
+      it "requests the groups claim as voluntary" do
+        expect(subject[:claims]).to eq('{"id_token":{"the-groups":null}}')
+      end
+
+      context "and when other claims were defined manually" do
+        let(:claims) { '{"id_token":{"taste":null}}' }
+
+        it "merges the manual claims and the groups claim" do
+          expect(subject[:claims]).to eq('{"id_token":{"the-groups":null,"taste":null}}')
+        end
+      end
+
+      context "and when the groups claim was defined manually" do
+        let(:claims) { '{"id_token":{"the-groups":{"essential":true}}}' }
+
+        it "takes the manual definition of the groups claim with precedence" do
+          expect(subject[:claims]).to eq(claims)
+        end
+      end
+    end
+
+    describe "with acr_values" do
+      let(:options) { { acr_values: "phr" } }
+
+      it "includes the acr values" do
+        expect(subject[:acr_values]).to eq "phr"
+      end
+    end
+
+    describe "with mapped attributes" do
+      let(:options) do
+        {
+          mapping_email: :address,
+          mapping_login: :logout,
+          mapping_first_name: :given_name,
+          mapping_last_name: :surname
+        }
+      end
+
+      let(:expected_value) do
+        {
+          email: :address,
+          login: :logout,
+          first_name: :given_name,
+          last_name: :surname
+        }
+      end
+
+      it "contains the resulting attribute map being passed to omniauth-openid-connect" do
+        expect(subject[:attribute_map]).to eq expected_value
+      end
+
+      it "does not turn them into superfluous attributes" do
+        expect(subject).not_to include :email
+        expect(subject).not_to include :login
+        expect(subject).not_to include :first_name
+        expect(subject).not_to include :last_name
+      end
+    end
+
+    describe "with post_logout_redirect_uri" do
+      let(:options) { { post_logout_redirect_uri: "https://www.openproject.org" } }
+
+      it "contains the option" do
+        expect(subject[:post_logout_redirect_uri]).to eq options[:post_logout_redirect_uri]
       end
     end
   end

@@ -63,7 +63,6 @@ bg:
         primary-button-color: "Основен бутон"
         accent-color: "Акцент"
         header-bg-color: "Фон на заглавната част"
-        header-item-bg-hover-color: "Фон на заглавието при поставяне на мишката"
         main-menu-bg-color: "Фон на главното меню"
         main-menu-bg-selected-background: "Основно меню, когато е избрано"
       custom_colors: "Персонализирани цветове"
@@ -71,10 +70,6 @@ bg:
       instructions:
         primary-button-color: "Силен акцентен цвят, използван за най-важния бутон на екрана."
         accent-color: "Цвят за връзки и други добре подчертани елементи."
-        header-item-bg-hover-color: "Цвят на фона на елементите на заглавието, върху които може да се кликне, когато се премине с мишката."
-        header-item-font-color: "Цвят на шрифта на елементите на заглавието, върху които може да се кликне."
-        header-item-font-hover-color: "Цвят на шрифта на елементите на заглавието, върху които може да се кликне, когато се премине с мишката."
-        header-border-bottom-color: "Тънка линия под заглавието. Оставете това поле празно, ако не искате да има никаква линия."
         main-menu-bg-color: "Цвят на фона на менюто от лявата страна."
       theme_warning: Промяната на темата ще презапише потребителския ви стил. Тогава дизайнът ще бъде загубен. Сигурни ли сте, че искате да продължите?
     enterprise:
@@ -133,8 +128,8 @@ bg:
       form:
         auth_provider_description: "This is the service that users added by the SCIM provider will use to authenticate in OpenProject."
         authentication_method_description_html: "This is how the SCIM client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description_html: 'Please refer to our <a href="%{docs_url}">documentation on configuring SCIM clients</a> for more information on these configuration options.'
-        jwt_sub_description_html: 'For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult <a href="%{docs_url}">our documentation</a> to learn how to find  the subject claim for your use case.'
+        description: "Please refer to our [documentation on configuring SCIM clients](docs_url) for more information on these configuration options."
+        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
         name_description: "Choose a name that will help other admins better understand why this client was configured."
       index:
         description: "SCIM clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
@@ -373,13 +368,24 @@ bg:
       messages: "Форум"
       wiki_pages: "Wiki"
   groups:
+    edit:
+      synchronized_groups: "Synchronized groups"
     index:
-      no_results_title_text: В момента няма групи.
-      no_results_content_text: Създаване на нова група
+      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+    table_component:
+      blank_slate:
+        description: You can define named groups of users with specific permissions.
+        title: No groups set up yet
+      user_count: User count
     users:
       no_results_title_text: Има в момента няма потребители част от тази група.
     memberships:
       no_results_title_text: В момента има няма проекти част от тази група.
+    synchronized_groups:
+      blankslate:
+        action: Authentication settings
+        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
+        title: No synchronized groups yet
   incoming_mails:
     ignore_filenames: >
       Посочете списък с имена, които да се игнорират при обработката на прикачени файлове за входящи писма (напр. подписи или икони). Въведете по едно име на файл на ред.
@@ -680,8 +686,10 @@ bg:
         excluded_from_totals: "Изключени от тоталите"
   themes:
     dark: "Dark"
+    dark_high_contrast: "Dark high contrast"
     light: "Светъл"
     light_high_contrast: "Светъл с висок контраст"
+    sync_with_os: "Automatic (match OS colour mode)"
   types:
     index:
       no_results_title_text: В момента няма типове.
@@ -713,9 +721,8 @@ bg:
             project: "Проект"
         pattern:
           label: "Subject pattern"
-          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
+          caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
-          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1114,7 +1121,6 @@ bg:
       role:
         permissions: "Права"
       scim_client:
-        auth_provider: "Authentication provider"
         authentication_method: "Authentication method"
         jwt_sub: "Subject claim"
       status:
@@ -1265,6 +1271,7 @@ bg:
         inclusion_nested: "не е зададена на една от разрешените стойности в пътя '%{path}'."
         invalid: "е невалиден."
         invalid_characters: "contains invalid characters."
+        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
         invalid_url: "невалиден URL адрес."
         invalid_url_scheme: "не е поддържан протокол (разрешен: %{allowed_schemes})."
         less_than_or_equal_to: "трябва да бъде по-малка или равна на %{count}."
@@ -1284,6 +1291,7 @@ bg:
         odd: "трябва да бъде нечетен."
         regex_match_failed: "не съответства на регулярния израз %{expression}."
         regex_invalid: "не може да бъде валидиран със съответния регулярен израз."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "трябва да бъде по-малка от или равна на максималната дължина."
         taken: "вече съществува."
         too_long: "е твърде дълго (максимума е %{count} знаци)."
@@ -1610,7 +1618,11 @@ bg:
     models:
       attachment: "Файл"
       attribute_help_text: "Attribute help text"
+      auth_provider:
+        one: "Authentication provider"
+        other: "Authentication providers"
       category: "Категория"
+      color: "Color"
       comment: "Коментар"
       custom_action: "Custom action"
       custom_field: "Потребителски полета"
@@ -1872,7 +1884,7 @@ bg:
   button_duplicate: "Дублиране"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Редактиране"
-  button_edit_associated_wikipage: "Редактиране на свързани Wiki страница: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Разгъване на всички"
   button_favorite: "Добавяне към любими"
   button_filter: "Филтър"
@@ -2242,6 +2254,13 @@ bg:
         I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
       consent_html: >
         I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
   enumeration_activities: "Дейности за проследяване на времето"
   enumeration_work_package_priorities: "Приоритети на работни пакети"
   enumeration_reported_project_statuses: "Докладвани статуси на проект"
@@ -2449,6 +2468,13 @@ bg:
       xls2csv: "Xls2csv available (optional)"
       catppt: "Catppt available (optional)"
       tesseract: "Tesseract available (optional)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","
@@ -2542,7 +2568,7 @@ bg:
       aggregation: "Aggregation"
       api_and_webhooks: "API и уеб куки"
     quick_add:
-      label: "Отворете менюто за бързо добавяне"
+      label: "Add…"
   my_account:
     access_tokens:
       no_results:
@@ -2842,6 +2868,7 @@ bg:
   label_gantt_chart_plural: "Диаграми на Гант"
   label_general: "Общ"
   label_generate_key: "Генериране на ключ"
+  label_global_modules: "Global modules"
   label_global_roles: "Global roles"
   label_git_path: "Път до .git директория"
   label_greater_or_equal: ">="
@@ -2926,6 +2953,7 @@ bg:
   label_manage: "Управление"
   label_manage_groups: "Управление на групи"
   label_managed_repositories_vendor: "Управлявани %{vendor} хранилища"
+  label_mathematical_operators: "Mathematical operators"
   label_max_size: "Максимален размер"
   label_me: "мен"
   label_member_new: "Нов потребител"
@@ -2985,6 +3013,7 @@ bg:
   label_no_due_date: "без крайна дата"
   label_no_start_date: "няма начална дата"
   label_no_parent_page: "Няма родителска страница"
+  label_notification_center_plural: "Notifications"
   label_nothing_display: "Нищо за показване"
   label_nobody: "nobody"
   label_not_configured: "Not configured"
@@ -3193,6 +3222,7 @@ bg:
   label_user_mail_option_only_my_events: "Само за неща, които наблюдавам или съм включен в тях"
   label_user_mail_option_only_owner: "Само за неща, на които аз съм собственик"
   label_user_mail_option_selected: "За всяко събитие само в избраните проекти"
+  label_user_menu: "User menu"
   label_user_new: "Нов потребител"
   label_user_plural: "Потребители"
   label_user_search: "Търсене на потребител"

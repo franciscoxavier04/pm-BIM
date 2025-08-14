@@ -294,11 +294,10 @@ zh-TW:
           learn_about: "瞭解更多新功能的資訊"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. Chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_2":
+          "16_3":
             standard:
               new_features_html: >
-                <br>
-                <ul class="%{list_styling_class}"> <li>全新標頭與側邊欄，提供更佳的導航與設計體驗。</li> <li>自訂欄位、關聯、提醒、會議與我的時間追蹤功能更順暢。</li> <li>PDF 匯出支援非拉丁文字與表情符號。</li> <li>可選擇關閉快捷鍵以提升無障礙使用體驗。</li> <li>透過 API 提供 SCIM 伺服器功能（企業加值模組）。</li> <li>API 支援內部評論。</li> </ul>
+                該版本包含各種新功能和改進，例如<br> <ul class="%{list_styling_class}"> <li>UX/UI 的改進，讓外觀更現代。</li> <li>會議：可將電子郵件通知和 ICS 設為靜音。</li> <li>在「我的時間追蹤」模組中顯示正在進行的計時器。</li> <li>進度報告：以狀態為基礎的模式也會顯示完成總和的百分比。</li> <li>Nextcloud 健康檢查：顯示遺失的代幣交換功能 (企業附加元件)。</li> </ul>
     ical_sharing_modal:
       title: "訂閱日曆"
       inital_setup_error_message: "更新資料時發生錯誤"

@@ -37,7 +37,7 @@ module RecurringMeetings
     end
 
     def after_validate(call)
-      send_cancellation_mail(model)
+      send_cancellation_mail(model) if model.notify?
 
       call
     end
@@ -47,6 +47,10 @@ module RecurringMeetings
         MeetingMailer
           .cancelled_series(meeting, participant.user, User.current)
           .deliver_now
+      rescue StandardError => e
+        Rails.logger.error do
+          "Failed to deliver recurring meeting cancellation for series #{meeting.id} to #{participant.user.mail}: #{e.message}"
+        end
       end
     end
   end

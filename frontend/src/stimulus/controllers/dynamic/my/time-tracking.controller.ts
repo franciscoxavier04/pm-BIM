@@ -64,6 +64,10 @@ export default class MyTimeTrackingController extends Controller {
 
     if (this.hasCalendarTarget && this.viewModeValue === 'calendar') {
       this.initializeCalendar();
+
+      // The stimulus controller gets initialized before the content wrapper is fully shown
+      // so its height might not be set correctly yet.
+      setTimeout(() => this.calendar.updateSize(), 25);
     }
 
     // handle dialog close event

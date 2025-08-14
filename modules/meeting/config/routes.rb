@@ -51,6 +51,8 @@ Rails.application.routes.draw do
         get :history
         get :delete_dialog
         get :generate_pdf_dialog
+        get :toggle_notifications_dialog
+        post :toggle_notifications
       end
     end
 
@@ -108,6 +110,7 @@ Rails.application.routes.draw do
         get :cancel_edit
         put :drop
         put :move
+        get :move_to_next_dialog, action: :move_to_next_meeting_dialog
         post :move_to_next, action: :move_to_next_meeting
       end
     end

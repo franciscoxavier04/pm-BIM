@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -50,7 +52,7 @@ module CustomFields::Inputs::Base::Utils
   end
 
   def value
-    @custom_value
+    custom_value
   end
 
   def required?

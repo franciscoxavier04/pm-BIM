@@ -89,10 +89,6 @@ RSpec.describe "Meetings CRUD",
   it "can create a meeting and add agenda items" do
     expect_and_dismiss_flash(type: :success, message: "Successful creation")
 
-    # Does not send invitation mails by default
-    perform_enqueued_jobs
-    expect(ActionMailer::Base.deliveries.size).to eq 0
-
     # Can add and edit a single item
     show_page.add_agenda_item do
       fill_in "Title", with: "My agenda item"
@@ -309,6 +305,12 @@ RSpec.describe "Meetings CRUD",
     end
 
     wait_for_network_idle
+
+    # check for email notification for the added participant
+    perform_enqueued_jobs
+    expect(ActionMailer::Base.deliveries.size).to eq 1
+    ActionMailer::Base.deliveries.clear
+
     retry_block do
       click_on("op-meetings-header-action-trigger")
       click_on "Copy"
@@ -316,7 +318,6 @@ RSpec.describe "Meetings CRUD",
       expect(page).to have_text("Copy meeting")
     end
 
-    check "Email participants"
     fill_in "Title", with: ""
     click_on "Create meeting"
 
@@ -337,9 +338,9 @@ RSpec.describe "Meetings CRUD",
     expect(page).to have_field(id: "checkbox_invited_#{other_user.id}", checked: true)
     expect(page).to have_field(id: "checkbox_attended_#{other_user.id}", checked: false)
 
-    # check for email notifications
+    # check for email notifications for both participants
     perform_enqueued_jobs
-    expect(ActionMailer::Base.deliveries.size).to eq 1
+    expect(ActionMailer::Base.deliveries.size).to eq 2
   end
 
   context "with a work package reference to another" do
