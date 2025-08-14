@@ -28,7 +28,7 @@
 
 module OpenProject::Plugins
   module AuthPlugin
-    def register_auth_providers(persist: true, &)
+    def register_auth_providers(persist: true, &) # rubocop:disable Metrics/AbcSize
       builder = ProviderBuilder.new
       initializer "#{engine_name}.middleware" do |app|
         builder.instance_eval(&)
@@ -44,7 +44,7 @@ module OpenProject::Plugins
         if persist
           builder.provider_callbacks.each do |callback|
             callback.call.each do |config|
-              PluginAuthProvider.create_for_plugin(config)
+              PluginAuthProvider.register_for_plugin(config)
             end
           end
         end

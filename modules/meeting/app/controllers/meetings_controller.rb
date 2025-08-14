@@ -313,15 +313,7 @@ class MeetingsController < ApplicationController
   end
 
   def notify
-    service = MeetingNotificationService.new(@meeting)
-    result = service.call(:invited)
-
-    if result.success?
-      flash[:notice] = I18n.t(:notice_successful_notification)
-    else
-      flash[:error] = I18n.t(:error_notification_with_errors,
-                             recipients: result.errors.map(&:name).join("; "))
-    end
+    handle_notification(type: :notify)
 
     redirect_to action: :show, id: @meeting
   end
@@ -353,7 +345,11 @@ class MeetingsController < ApplicationController
   end
 
   def toggle_notifications
-    @meeting.update!(notify: !@meeting.notify)
+    @meeting.toggle!(:notify)
+
+    if @meeting.notify?
+      handle_notification(type: :toggle_notifications)
+    end
 
     update_sidebar_component_via_turbo_stream
     update_header_component_via_turbo_stream
@@ -571,6 +567,26 @@ class MeetingsController < ApplicationController
       render json: { job_id: job.job_id }
     else
       redirect_to job_status_path(job.job_id)
+    end
+  end
+
+  def handle_notification(type:)
+    service = MeetingNotificationService.new(@meeting)
+    result = service.call(:invited)
+
+    message = if result.success?
+                I18n.t(:notice_successful_notification)
+              else
+                I18n.t(:error_notification_with_errors,
+                       recipients: result.errors.map(&:name).join("; "))
+              end
+
+    if type == :notify
+      flash[result.success? ? :notice : :error] = message
+    elsif result.success?
+      render_success_flash_message_via_turbo_stream(message:)
+    else
+      render_error_flash_message_via_turbo_stream(message:)
     end
   end
 end

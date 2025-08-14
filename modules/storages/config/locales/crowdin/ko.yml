@@ -22,10 +22,10 @@ ko:
         storage: 저장소
         storage_url: 저장소 URL
       storages/share_point_storage:
-        host: Sharepoint Site URL
-        library: Library ID
-        name: Name
-        site: Site ID
+        host: SharePoint 사이트 URL
+        library: 라이브러리 ID
+        name: 이름
+        site: 사이트 ID
       storages/storage:
         authentication_method: 인증 방법
         creator: 생성자
@@ -37,7 +37,7 @@ ko:
     errors:
       messages:
         invalid_host_url: '- 올바른 URL이 아닙니다.'
-        invalid_sharepoint_url: is not a valid SharePoint site, library, or document URL.
+        invalid_sharepoint_url: '- 유효한 SharePoint 사이트, 라이브러리 또는 문서 URL이 아닙니다.'
         not_linked_to_project: '- 프로젝트에 연결되지 않았습니다.'
       models:
         storages/file_link:
@@ -87,7 +87,7 @@ ko:
     edit_project_folder:
       label: 프로젝트 폴더 편집
     open:
-      contact_admin: Please contact your administrator to resolve this error.
+      contact_admin: 이 오류를 해결하려면 관리자에게 문의하세요.
       remote_identity_error: 저장소에 연결하는 동안 예기치 않은 오류가 발생했습니다.
     project_folder_mode:
       automatic: 자동으로 관리됨
@@ -135,7 +135,7 @@ ko:
               conflict: '다음과 같은 이유로 %{user} 사용자를 %{group} 그룹에 추가할 수 없습니다: %{reason}'
               failed_to_add: '다음과 같은 이유로 %{user} 사용자를 %{group} 그룹에 추가할 수 없습니다: %{reason}'
             create_folder:
-              conflict: The folder %{folder_name} already exists on %{parent_location}.
+              conflict: '%{folder_name} 폴더가 이미 %{parent_location}에 있습니다.'
               not_found: "%{parent_location}을(를) 찾을 수 없습니다."
             ensure_root_folder_permissions:
               not_found: "%{group_folder}을(를) 찾을 수 없습니다. Nextcloud 그룹 폴더 설정을 확인하세요."
@@ -175,7 +175,7 @@ ko:
               not_found: "%{current_path}을(를) 찾을 수 없습니다."
             set_folders_permissions:
               permission_not_set: '- %{path}에 대한 권한을 설정할 수 없습니다.'
-          error: An unexpected error occurred. Please ensure that OneDrive is reachable and check OpenProject worker logs for more information
+          error: 예기치 않은 오류가 발생했습니다. OneDrive에 연결할 수 있는지 확인하고 OpenProject 작업자 로그에서 자세한 내용을 확인하세요
           not_allowed: OpenProject가 OneDrive 드라이브에 액세스하도록 허용되지 않았습니다. Azure 애플리케이션에 설정된 권한을 확인하세요.
           unauthorized: OpenProject가 OneDrive와 동기화할 수 없습니다. 저장소 및 Azure 애플리케이션 구성을 확인하세요.
           user_does_not_exist: "%{user}이(가) Nextcloud에 없습니다."
@@ -194,11 +194,11 @@ ko:
     configuration_checks:
       oauth_client_incomplete:
         nextcloud: OpenProject가 OAuth를 사용하여 Nextcloud 데이터에 액세스하도록 허용합니다.
-        one_drive: Allow OpenProject to access Azure data using OAuth to connect OneDrive.
-        share_point: Allow OpenProject to access SharePoint data using OAuth.
+        one_drive: OpenProject가 OAuth를 사용하여 Azure 데이터에 액세스하고 OneDrive에 연결하도록 허용하세요.
+        share_point: OpenProject가 OAuth를 사용하여 SharePoint 데이터에 액세스하도록 허용하세요.
       redirect_uri_incomplete:
         one_drive: 올바른 URI 리디렉션으로 설정을 완료합니다.
-        share_point: Complete the setup with the correct URI redirection.
+        share_point: 올바른 URI 리디렉션으로 설정을 완료하세요.
     confirm_replace_oauth_application: 이 작업은 현재 OAuth 자격 증명을 재설정합니다. 확인 후 저장소 공급자에서 자격 증명을 다시 입력해야 하며 모든 원격 사용자는 OpenProject에 대해 다시 인증해야 합니다. 계속하시겠습니까?
     confirm_replace_oauth_client: 이 작업은 현재 OAuth 자격 증명을 재설정합니다. 확인 후 저장소 공급자의 새로운 자격 증명을 입력해야 하며 모든 사용자는 %{provider_type}에 대해 다시 인증해야 합니다. 계속하시겠습니까?
     delete_warning:
@@ -264,7 +264,7 @@ ko:
           header: 인증
           non_provisioned_user: IDP에 의해 프로비저닝되는 사용자
           offline_access: OIDC offline_access 범위 구성됨
-          provider_capabilities: Provider capabilities
+          provider_capabilities: 공급자 기능
           provisioned_user_provider: OIDC에 의해 프로비저닝되는 사용자
           token_negotiable: 사용자 토큰 기능
           user_bound_request: 사용자 기반 요청 인증
@@ -305,7 +305,7 @@ ko:
         od_drive_id_not_found: 구성된 드라이브 ID를 찾을 수 없습니다. 구성을 확인하세요.
         od_oauth_request_not_found: 현재 연결된 사용자를 가져올 엔드포인트를 찾을 수 없습니다. 자세한 내용은 서버 로그를 확인하세요.
         od_oauth_request_unauthorized: 현재 사용자는 원격 파일 저장소에 액세스할 수 있는 권한이 없습니다. 자세한 내용은 서버 로그를 확인하세요.
-        od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive as the user did not yet link their Microsoft account.
+        od_oauth_token_missing: 사용자가 아직 Microsoft 계정을 링크하지 않았기 때문에 OpenProject가 OneDrive와의 사용자 수준 통신을 테스트할 수 없습니다.
         od_tenant_id_wrong: 구성된 디렉터리(테넌트) ID가 잘못되었습니다. 구성을 확인하세요.
         od_test_folder_exists: 테스트에 필요한 %{folder_name} 폴더가 이미 있습니다. 이 폴더를 삭제한 후에 다시 시도하세요.
         od_unexpected_content: 드라이브에서 예기치 않은 콘텐츠가 발견되었습니다.
@@ -313,10 +313,19 @@ ko:
         oidc_cant_refresh_token: 저장소에 대한 액세스를 확인하는 동안 오류가 발생했습니다. 자세한 내용은 서버 로그를 확인하세요.
         oidc_non_oidc_user: 현재 사용자는 프로비저닝되는 동안, OpenID Connect(OIDC) ID 공급자에 의해 프로비저닝되지 않았습니다. OIDC 프로비저닝 사용자로 확인을 다시 실행하세요.
         oidc_non_provisioned_user: 현재 사용자는 OpenID Connect ID 공급자에 의해 제공되지 않았습니다. 제공된 사용자로 확인을 다시 실행하세요.
-        oidc_provider_cant_exchange: The OpenID Connect provider does not seem to support token exchange, but token exchange was configured for the storage.
+        oidc_provider_cant_exchange: OpenID Connect 공급자가 토큰 교환을 지원하지 않는 것 같지만, 저장소에 대한 토큰 교환이 구성되었습니다.
         oidc_token_acquisition_failed: 해당 OpenID Connect 설정은 필요한 오디언스를 제공하지 않으며, 토큰 교환 기능도 제공하지 않습니다. 자세한 내용은 설명서를 확인하세요.
         oidc_token_exchange_failed: OpenID Connect 공급자의 Token Exchange 설정에 문제가 있는 것 같습니다. 해당 구성을 확인하고 다시 시도하세요.
         oidc_token_refresh_failed: 저장소에 대한 액세스를 확인하는 동안 오류가 발생했습니다. 자세한 내용은 서버 로그를 확인하세요.
+        sp_client_cant_delete_folder: The client is having trouble deleting folders in SharePoint. Please check the setup documentation for your storage.
+        sp_client_id_missing: The configured OAuth 2 client id is missing for SharePoint. Please check the configuration.
+        sp_client_secret_missing: The configured OAuth 2 client secret is missing for SharePoint. Please check the configuration.
+        sp_client_write_permission_missing: The client seems to have write permissions missing in SharePoint. Please check the setup documentation for your storage.
+        sp_existing_test_folder: The folder %{folder_name} needed for testing already exists in SharePoint. Please delete it and try again.
+        sp_oauth_request_error: The user-bound request to SharePoint failed. Please check the server logs for further information.
+        sp_oauth_token_missing: OpenProject cannot test the user level communication with SharePoint as the user did not yet link their SharePoint account.
+        sp_tenant_id_missing: The configured directory (tenant) id is missing for SharePoint. Please check the configuration.
+        sp_unexpected_content: Unexpected content found in the SharePoint drive.
         unknown_error: 연결에 대한 유효성 검사를 할 수 없습니다. 알 수 없는 오류가 발생했습니다. 자세한 내용은 서버 로그를 확인하세요.
       label_error: 오류
       label_failed: 실패함
@@ -337,12 +346,10 @@ ko:
         warning: 일부 검사에서 경고가 반환되었습니다. 이로 인해 예상치 못한 동작이 발생할 수 있습니다.
       title: 상태 보고서
     health_email_notifications:
-      description_subscribed: 모든 관리자는 이 저장소의 상태 이메일 알림을 받습니다.
-      description_unsubscribed: 이 저장소에 대한 상태 이메일 알림이 모든 관리자에 대해 꺼져 있습니다.
+      description_disabled: 중요 업데이트가 있을 때 관리자에게 이메일로 업데이트가 전송되지 않습니다.
+      description_enabled: 중요 업데이트가 있을 때 관리자에게 이메일로 업데이트가 전송됩니다.
       error_could_not_be_saved: 이메일 알림 설정을 저장하지 못했습니다. 다시 시도해 주세요.
-      subscribe: 구독
-      title: 이메일 알림
-      unsubscribe: 구독 취소
+      title: 관리자에게 보내는 이메일 업데이트
     help_texts:
       project_folder: 프로젝트 폴더는 이 프로젝트에 대한 파일 업로드의 기본 폴더입니다. 사용자는 다른 위치에 파일을 계속 업로드할 수 있습니다.
       project_folder_bulk: 프로젝트 폴더는 선택된 모든 프로젝트의 파일 업로드를 위한 기본 폴더입니다. 각 프로젝트 설정에서 이 폴더를 개별적으로 수정할 수 있습니다. 그렇지만 사용자는 다른 위치에 파일을 계속 업로드할 수 있습니다.
@@ -372,14 +379,14 @@ ko:
       one_drive:
         application_link_text: Azure 포털
         copy_redirect_uri: 리디렉션 URI 복사
-        documentation_link_text: OneDrive file storages documentation
+        documentation_link_text: OneDrive 파일 저장소 설명서
         drive_id: '%{drive_id_link_text}의 단계에 따라 원하는 드라이브의 ID를 복사하세요.'
         integration: OneDrive
         missing_client_id_for_redirect_uri: URI를 생성하려면 OAuth 값을 입력하세요
         oauth_client_redirect_uri: 이 값을 리디렉션 URI 아래의 새로운 웹 리디렉션 URI에 복사하세요.
         oauth_client_secret: 클라이언트 자격 증명 아래에 애플리케이션 클라이언트 비밀번호가 없는 경우 새로운 비밀번호를 생성하세요.
         oauth_configuration: '%{application_link_text}에서 원하는 애플리케이션의 해당 값을 복사합니다.'
-        provider_configuration: '%{application_link_text}에서 관리 권한이 있는지 확인하거나 설정을 수행하기 전에 Microsoft 관리자에게 문의하세요. 또한 포털에서 Azure 애플리케이션을 등록하거나 인증을 위해 기존 애플리케이션을 사용해야 합니다.'
+        provider_configuration: 설정을 수행하기 전에 %{application_link_text}에서 관리 권한이 있는지 확인하거나 Microsoft 관리자에게 문의하세요. 또한 포털에서 Azure 애플리케이션을 등록하거나 기존 애플리케이션을 사용하여 인증해야 합니다.
         tenant_id: '%{application_link_text}의 원하는 애플리케이션 및 앱 등록에서 디렉터리(테넌트) ID를 복사하세요.'
         tenant_id_placeholder: 이름 또는 UUID
       setting_up_additional_storages: '추가 파일 저장소를 설정하려면 다음을 방문하세요:'
@@ -387,10 +394,10 @@ ko:
       setting_up_storages: '파일 저장소를 설정하려면 다음을 방문하세요:'
       setting_up_storages_non_admin: 관리자는 관리/파일 저장소에서 파일 저장소를 설정할 수 있습니다.
       share_point:
-        application_link_text: SharePoint site
-        integration: SharePoint Administration / OpenProject
-        oauth_configuration: Copy these values from the desired application in the %{application_link_text}.
-        provider_configuration: Please make sure you have administration privileges in your SharePoint instance and the OpenProject integration app is installed before doing the setup.
+        application_link_text: SharePoint 사이트
+        integration: SharePoint 관리/OpenProject
+        oauth_configuration: '%{application_link_text}에서 원하는 애플리케이션의 해당 값을 복사합니다.'
+        provider_configuration: 설정을 수행하기 전에 %{application_link_text}에서 관리 권한이 있는지 확인하거나 Microsoft 관리자에게 문의하세요. 또한 포털에서 Azure 애플리케이션을 등록하거나 기존 애플리케이션을 사용하여 인증해야 합니다.
       type: '설정을 수행하기 전에 Nextcloud 인스턴스에서 관리 권한이 있고 다음 애플리케이션이 설치되어 있는지 확인하세요.'
       type_link_text: "“Integration OpenProject”"
     label_active: 활성
@@ -492,10 +499,10 @@ ko:
         name: OneDrive
         name_placeholder: '예: OneDrive'
       share_point:
-        label_oauth_client_id: Azure OAuth Application (client) ID
-        label_oauth_client_secret: Azure OAuth Client Secret Value
+        label_oauth_client_id: Azure OAuth 애플리케이션(클라이언트) ID
+        label_oauth_client_secret: Azure OAuth 클라이언트 비밀번호 값
         name: SharePoint
-        name_placeholder: e.g. SharePoint
+        name_placeholder: '예: SharePoint'
     show_attachments_toggle:
       description: 이 옵션을 비활성화하면 작업 패키지 파일 탭에서 첨부 파일 목록이 숨겨집니다. 작업 패키지 설명에 첨부된 파일은 내부 첨부 파일 저장소에 계속 업로드됩니다.
       label: 작업 패키지 파일 탭에 첨부 파일 표시
@@ -513,6 +520,5 @@ ko:
     successful_storage_connection: 저장소가 연결되었습니다! 이 저장소를 사용하려면 원하는 각 프로젝트의 프로젝트 탭에서 저장소를 활성화해야 합니다.
     upsell:
       description: |-
-        Integrate your OneDrive as a file storage with OpenProject. Upload files and link them directly to
-        work packages in a project.
-      title: OneDrive integration
+        OpenProject를 사용하여 OneDrive를 파일 저장소로 통합합니다. 파일을 업로드하고 프로젝트의 작업 패키지에 직접 링크합니다.
+      title: OneDrive 통합

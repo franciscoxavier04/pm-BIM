@@ -116,38 +116,38 @@ zh-CN:
         one_time_hint: "这将是您看到客户端密钥的唯一机会。请务必立即复制。"
       created_token_dialog_component:
         title: "令牌已创建"
-        heading: "A token has been generated"
+        heading: "已生成一个令牌"
         label_token: "令牌"
         one_time_hint: "这将是您看到此令牌的唯一机会。请务必立即复制。"
       delete_scim_client_dialog_component:
-        title: "Delete SCIM-client"
-        heading: "Are you sure you want to delete this SCIM-client?"
-        description: "Users managed by this SCIM-client can no longer be updated by it."
+        title: "删除 SCIM 客户端"
+        heading: "确定要删除此 SCIM 客户端吗？"
+        description: "此 SCIM 客户端管理的用户无法再由其更新。"
       edit:
-        label_delete_scim_client: "Delete SCIM-client"
+        label_delete_scim_client: "删除 SCIM 客户端"
       form:
         auth_provider_description: "这是 SCIM 提供商添加的用户在 OpenProject 中进行身份验证时将使用的服务。"
-        authentication_method_description_html: "This is how the SCIM-client authenticates at OpenProject. Please ensure that OAuth tokens include the <code>scim_v2</code> scope."
-        description: "Please refer to our [documentation on configuring SCIM-clients](docs_url) for more information on these configuration options."
-        jwt_sub_description: "For example, for Keycloak, this is the UUID of the service account  associated with the SCIM-client. Consult [our documentation](docs_url) to learn how to find  the subject claim for your use case."
+        authentication_method_description_html: "这是 SCIM 客户端在 OpenProject 上进行身份验证的方式。请确保 OAuth 令牌包括 <code>scim_v2</code> 作用域。"
+        description: "关于这些配置选项的更多信息，请参阅我们的[SCIM 客户端配置文档](docs_url)。"
+        jwt_sub_description: "例如，对于 Keycloak，这是与 SCIM 客户端相关联的服务账户的 UUID。要了解如何找到您的用例的主体声明，请查阅[我们的文档](docs_url)。"
         name_description: "选择一个名称，帮助其他管理员更好地理解配置此客户端的原因。"
       index:
-        description: "SCIM-clients configured here are able to interact with OpenProject SCIM server API to provision, update, and deprovision user accounts and groups."
-        label_create_button: "Add SCIM-client"
+        description: "此处配置的 SCIM 客户端能够与 OpenProject SCIM 服务器 API 交互，以提供、更新和取消提供用户帐户和群组。"
+        label_create_button: "添加 SCIM 客户端"
       new:
-        title: "New SCIM-client"
+        title: "新增 SCIM 客户端"
       revoke_static_token_dialog_component:
         confirm_button: "撤销"
         title: "撤销静态令牌"
         heading: "确定要撤销此令牌吗？"
-        description: "The SCIM-client that uses this token will no longer be able to access OpenProject's SCIM server API."
+        description: "使用此令牌的 SCIM 客户端将无法再访问 OpenProject 的 SCIM 服务器 API。"
       table_component:
         blank_slate:
-          title: "No SCIM-clients configured yet"
+          title: "尚未配置 SCIM 客户端"
           description: "添加客户端以在此处查看"
         user_count: "用户"
       token_list_component:
-        description: "The tokens you generate here can be passed by a SCIM-client to access the OpenProject SCIM API."
+        description: "您在此处生成的令牌可以通过 SCIM 客户端传递以访问 OpenProject SCIM API。"
         heading: "令牌"
         label_add_token: "令牌"
         label_aria_add_token: "添加令牌"
@@ -356,9 +356,9 @@ zh-CN:
       blueprint: "图案蓝图"
   global_search:
     title:
-      all_projects: 'Search for "%{search_term}" in all projects'
-      current_project: 'Search for "%{search_term}" in %{project_name}'
-      project_and_subprojects: 'Search for "%{search_term}" in %{project_name} and all subprojects'
+      all_projects: '在所有项目中搜索“%{search_term}”'
+      current_project: '在 %{project_name} 中搜索“%{search_term}”'
+      project_and_subprojects: '在 %{project_name} 和所有子项目中搜索“%{search_term}”'
     placeholder: "在%{app_title}中搜索"
     overwritten_tabs:
       all: "全部"
@@ -366,23 +366,23 @@ zh-CN:
       wiki_pages: "维基"
   groups:
     edit:
-      synchronized_groups: "Synchronized groups"
+      synchronized_groups: "同步的群组"
     index:
-      description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
+      description: 通过将用户分组到一起，您可以将他们添加为同一项目的成员，也可以将相同的全局角色分配给他们。
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
-        title: No groups set up yet
-      user_count: User count
+        description: You can define named groups of users with specific permissions.
+        title: 尚未设置群组
+      user_count: 用户数
     users:
       no_results_title_text: 这个组目前没有用户。
     memberships:
       no_results_title_text: 这个组目前没有项目。
     synchronized_groups:
       blankslate:
-        action: Authentication settings
-        description: When this group is automatically synced with groups in external identity providers like OpenID, they will appear here. You can set this up in your Authentication settings.
-        title: No synchronized groups yet
+        action: 身份验证设置
+        description: 当此群组与 OpenID 等外部身份提供商中的群组自动同步时，它们会显示在此处。您可以在身份验证设置中进行这项设置。
+        title: 尚无同步群组
   incoming_mails:
     ignore_filenames: >
       指定在处理收到的邮件的附件（例如，签名或图标）时要忽略的名称列表。每行输入一个文件名。
@@ -675,8 +675,10 @@ zh-CN:
         excluded_from_totals: "不包括在总计中"
   themes:
     dark: "暗黑"
+    dark_high_contrast: "Dark high contrast"
     light: "浅色模式"
     light_high_contrast: "高对比度模式"
+    sync_with_os: "自动（匹配操作系统颜色模式）"
   types:
     index:
       no_results_title_text: 目前没有类型。
@@ -708,7 +710,7 @@ zh-CN:
             project: "项目"
         pattern:
           label: "主题模式"
-          caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
+          caption: 通过添加文本创建模式，或输入“/”搜索[支持的属性](attributes_url)。
           insert_as_text: "未找到属性。以文本形式添加：“%{word}”"
       export_configuration:
         tab: "生成 PDF"
@@ -941,7 +943,7 @@ zh-CN:
         attribute_name: "属性"
         help_text: "帮助文本"
       auth_provider:
-        scim_clients: "SCIM-clients"
+        scim_clients: "SCIM 客户端"
       capability:
         context: "背景"
       changeset:
@@ -1161,7 +1163,7 @@ zh-CN:
         comments_sorting: "显示工作包活动排序方式"
         disable_keyboard_shortcuts: "禁用键盘快捷键"
         disable_keyboard_shortcuts_caption_html: |-
-          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a shortcut.
+          如果您使用屏幕阅读器或希望避免意外触发快捷键，您可以选择禁用默认<a href="%{href}">键盘快捷键</a>。
         dismissed_enterprise_banners: "隐藏企业横幅"
         impaired: "辅助功能模式"
         auto_hide_popups: "自动隐藏成功横幅"
@@ -1257,7 +1259,7 @@ zh-CN:
         inclusion_nested: "未设置为路径“%{path}”中允许的值之一。"
         invalid: "是无效的。"
         invalid_characters: "包含无效字符。"
-        not_allowed_custom_fields_referenced: "contains custom fields that are not allowed: %{custom_fields}."
+        not_allowed_custom_fields_referenced: "包含不允许使用的自定义字段： %{custom_fields}。"
         invalid_url: "不是有效的 URL。"
         invalid_url_scheme: "不是受支持的协议（允许：%{allowed_schemes}）。"
         less_than_or_equal_to: "必须小于或等于 %{count}。"
@@ -1277,6 +1279,7 @@ zh-CN:
         odd: "必须是奇数。"
         regex_match_failed: "与正则表达式 %{expression}不匹配。"
         regex_invalid: "无法与关联的正则表达式进行验证。"
+        regex_list_invalid: "%{invalid_lines}行中的正则表达式无法被解析。"
         smaller_than_or_equal_to_max_length: "必须小于或等于最大长度。"
         taken: "已经采取。"
         too_long: "太长 (最多 %{count} 个字符)。"
@@ -1602,8 +1605,9 @@ zh-CN:
       attachment: "文件"
       attribute_help_text: "属性帮助文本"
       auth_provider:
-        other: "Authentication providers"
+        other: "身份验证提供方"
       category: "类别"
+      color: "Color"
       comment: "评论"
       custom_action: "自定义操作"
       custom_field: "自定义字段"
@@ -1629,7 +1633,7 @@ zh-CN:
       role:
         other: "角色"
       scim_client:
-        other: "SCIM-clients"
+        other: "SCIM 客户端"
       status: "工作包状态"
       token/api:
         other: 访问令牌
@@ -1727,7 +1731,7 @@ zh-CN:
     estimated_time: "工时"
     email: "Email"
     entity_type: "实体"
-    expires_at: "Expires on"
+    expires_at: "到期时间"
     firstname: "名字"
     filter: "筛选器"
     group: "组"
@@ -1851,9 +1855,9 @@ zh-CN:
   button_delete_watcher: "删除关注者 %{name}"
   button_download: "下载"
   button_duplicate: "复制"
-  button_duplicate_and_follow: "Duplicate and follow"
+  button_duplicate_and_follow: "复制并跟踪"
   button_edit: "编辑"
-  button_edit_associated_wikipage: "编辑关联的维基页面： %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "全部展开"
   button_favorite: "添加至收藏夹"
   button_filter: "筛选器"
@@ -2164,7 +2168,7 @@ zh-CN:
         title: "Nextcloud存储的单点登录(SSO)"
         description: "使用单点登录为您的 Nextcloud 存储启用无缝且安全的身份验证。简化访问管理并提升用户便利性。"
       scim_api:
-        title: "SCIM-clients"
+        title: "SCIM 客户端"
         description: "通过我们的 SCIM 服务器 API 无缝集成外部身份服务（例如，Microsoft Entra 或 Keycloak），在 OpenProject 中自动执行用户管理。该功能现已在 Enterprise 公司方案中提供。"
       virus_scanning:
         description: "确保在 OpenProject 中上传的文件在被其他用户访问之前进行病毒扫描。"
@@ -2202,6 +2206,13 @@ zh-CN:
         我希望接收 OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">简报</a>。
       consent_html: >
         我同意<a target="_blank" href="https://www.openproject.org/terms-of-service/">服务条款</a>和<a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">隐私政策</a>。
+  email_calendar_updates:
+    state:
+      disabled: "已禁用。"
+      enabled: "已启用。"
+    button:
+      disabled: "启用"
+      enabled: "禁用"
   enumeration_activities: "时间跟踪活动"
   enumeration_work_package_priorities: "工作包优先级"
   enumeration_reported_project_statuses: "报告的项目状态"
@@ -2409,6 +2420,13 @@ zh-CN:
       xls2csv: "Xls2csv 可用 (可选)"
       catppt: "Catppt 可用 (可选)"
       tesseract: "Tesseract 可用 (可选)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","
@@ -2502,7 +2520,7 @@ zh-CN:
       aggregation: "聚合"
       api_and_webhooks: "API 和 Webhook"
     quick_add:
-      label: "Add…"
+      label: "添加..."
   my_account:
     access_tokens:
       no_results:
@@ -2802,7 +2820,7 @@ zh-CN:
   label_gantt_chart_plural: "甘特图"
   label_general: "通用"
   label_generate_key: "生成密钥"
-  label_global_modules: "Global modules"
+  label_global_modules: "全局模块"
   label_global_roles: "全局角色"
   label_git_path: ".git 目录的路径"
   label_greater_or_equal: ">="
@@ -2887,7 +2905,7 @@ zh-CN:
   label_manage: "管理"
   label_manage_groups: "组管理"
   label_managed_repositories_vendor: "托管的 %{vendor} 存储库"
-  label_mathematical_operators: "Mathematical operators"
+  label_mathematical_operators: "数学运算符"
   label_max_size: "最大"
   label_me: "我"
   label_member_new: "新成员"
@@ -2947,7 +2965,7 @@ zh-CN:
   label_no_due_date: "没有完成日期"
   label_no_start_date: "没有开始日期"
   label_no_parent_page: "无父级页面"
-  label_notification_center_plural: "Notifications"
+  label_notification_center_plural: "通知"
   label_nothing_display: "不显示"
   label_nobody: "没人"
   label_not_configured: "未配置"
@@ -2980,7 +2998,7 @@ zh-CN:
   label_password_rule_special: "特殊字符"
   label_password_rule_uppercase: "大写字母"
   label_path_encoding: "路径编码"
-  label_per_page: "Per page:"
+  label_per_page: "每页："
   label_people: "人员"
   label_permissions: "权限"
   label_permissions_report: "权限报告"
@@ -3156,7 +3174,7 @@ zh-CN:
   label_user_mail_option_only_my_events: "仅为我关注或参与的内容"
   label_user_mail_option_only_owner: "仅为我是所有者的内容"
   label_user_mail_option_selected: "只对于所选项目的任何事件......"
-  label_user_menu: "User menu"
+  label_user_menu: "用户菜单"
   label_user_new: "新用户"
   label_user_plural: "用户"
   label_user_search: "搜索用户"
@@ -3536,7 +3554,7 @@ zh-CN:
   permission_comment_news: "评论新闻"
   permission_commit_access: "读/写访问存储库 (提交)"
   permission_copy_projects: "复制项目"
-  permission_copy_work_packages: "Duplicate work packages"
+  permission_copy_work_packages: "复制工作包"
   permission_create_backup: "创建备份"
   permission_delete_work_package_watchers: "删除关注者"
   permission_delete_work_packages: "删除工作包"

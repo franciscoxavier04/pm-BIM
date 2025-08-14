@@ -84,16 +84,19 @@ ul.SegmentedControl,
       flex-direction: column
       row-gap: 1rem
 
-.Button.op-app-header--primer-button,
-.Button.op-app-header--primer-button svg
-  align-self: center
-  color: var(--header-item-font-color)
-
 .Button.op-app-header--primer-button
+  align-self: center
   min-width: var(--control-medium-size)
 
   &:hover
     color: var(--header-item-font-hover-color)
+
+  &:not(.Button--primary),
+  &:not(.Button--primary) svg
+    color: var(--header-item-font-color)
+
+  svg
+    align-self: center
 
 // Prototypical CKEditor adjustments to better match Primer styles
 .ck-editor-primer-adjusted
