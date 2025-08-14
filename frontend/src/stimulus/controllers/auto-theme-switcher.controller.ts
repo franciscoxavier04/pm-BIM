@@ -40,13 +40,13 @@ export default class AutoThemeSwitcher extends Controller {
   };
 
   static targets = ['desktopLogo', 'mobileLogo'];
-  static classes = ['desktopLightHighContrastLogo', 'mobileLightHighContrastLogo'];
+  static classes = ['desktopLightHighContrastLogo', 'mobileWhiteLogo'];
 
   declare readonly modeValue:OpThemeMode;
   declare readonly desktopLogoTarget:HTMLLinkElement;
   declare readonly mobileLogoTarget:HTMLLinkElement;
   declare readonly desktopLightHighContrastLogoClass:string;
-  declare readonly mobileLightHighContrastLogoClass:string;
+  declare readonly mobileWhiteLogoClass:string;
 
   connect() {
     if (this.modeValue !== 'sync_with_os') return;
@@ -65,16 +65,16 @@ export default class AutoThemeSwitcher extends Controller {
     this.applySystemTheme();
   }
 
+  highContrastModeChanged():void {
+    this.applySystemTheme();
+  }
+
   isLightMode():void {
     window.OpenProject.theme.applyThemeToBody('light');
   }
 
   notLightMode():void {
     window.OpenProject.theme.applyThemeToBody('dark');
-  }
-
-  highContrastModeChanged():void {
-    this.applySystemTheme();
   }
 
   private applySystemTheme():void {
@@ -85,6 +85,6 @@ export default class AutoThemeSwitcher extends Controller {
   private updateOpLogoContrast():void {
     const prefersSystemLightHighContrast = window.OpenProject.theme.prefersSystemLightHighContrast();
     this.desktopLogoTarget.classList.toggle(this.desktopLightHighContrastLogoClass, prefersSystemLightHighContrast);
-    this.mobileLogoTarget.classList.toggle(this.mobileLightHighContrastLogoClass, prefersSystemLightHighContrast);
+    this.mobileLogoTarget.classList.toggle(this.mobileWhiteLogoClass, !prefersSystemLightHighContrast);
   }
 }
