@@ -2500,6 +2500,7 @@ en:
           label: "Include descriptions"
           caption: "This option will add a description column in raw format."
     your_work_packages_export: "Work packages are being exported"
+    your_projects_export: "Projects are being exported"
     succeeded: "Export completed"
     failed: "An error has occurred while trying to export the work packages: %{message}"
     errors:
@@ -3050,6 +3051,7 @@ en:
   label_custom_logo: "Custom logo"
   label_custom_export_logo: "Custom export logo"
   label_custom_export_cover: "Custom export cover background"
+  label_custom_export_footer: "Custom export footer image"
   label_custom_export_font_regular: "Regular"
   label_custom_export_font_bold: "Bold"
   label_custom_export_font_italic: "Italic"
@@ -4409,6 +4411,9 @@ en:
   text_custom_export_cover_instructions: >
     This is the image that appears in the background of a cover page in your PDF exports.
     It needs to be an about 800px width by 500px height sized PNG or JPEG image file.
+  text_custom_export_footer_instructions: >
+    PDF exports will include a graphical element positioned to the left of the footer.
+    This image must be a PNG or JPEG file with approximately 200 pixels in width.
   label_custom_export_font_instructions: >
     The following font files are used in your PDF exports.
     Upload and manage custom TrueType (.ttf) fonts for PDF exports. Ensure your license permits PDF embedding.

@@ -32,6 +32,7 @@ class CustomStyle < ApplicationRecord
   mount_uploader :logo, OpenProject::Configuration.file_uploader
   mount_uploader :export_logo, OpenProject::Configuration.file_uploader
   mount_uploader :export_cover, OpenProject::Configuration.file_uploader
+  mount_uploader :export_footer, OpenProject::Configuration.file_uploader
   mount_uploader :favicon, OpenProject::Configuration.file_uploader
   mount_uploader :touch_icon, OpenProject::Configuration.file_uploader
   mount_uploader :export_font_regular, OpenProject::Configuration.file_uploader
@@ -56,7 +57,7 @@ class CustomStyle < ApplicationRecord
     updated_at.to_i
   end
 
-  %i(favicon touch_icon export_logo export_cover logo
+  %i(favicon touch_icon export_logo export_cover export_footer logo
      export_font_regular export_font_bold export_font_italic export_font_bold_italic).each do |name|
     define_method :"#{name}_path" do
       attachment = send(name)

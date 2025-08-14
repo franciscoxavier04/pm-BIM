@@ -106,6 +106,10 @@ class CustomStylesController < ApplicationController
     file_download(:export_cover_path)
   end
 
+  def export_footer_download
+    file_download(:export_footer_path)
+  end
+
   def favicon_download
     file_download(:favicon_path)
   end
@@ -124,6 +128,10 @@ class CustomStylesController < ApplicationController
 
   def export_cover_delete
     file_delete(:remove_export_cover)
+  end
+
+  def export_footer_delete
+    file_delete(:remove_export_footer)
   end
 
   def favicon_delete
@@ -162,8 +170,8 @@ class CustomStylesController < ApplicationController
 
   def update_themes
     call = ::Design::UpdateDesignService
-             .new(theme_from_params)
-             .call
+       .new(theme_from_params)
+       .call
 
     call.on_success do
       flash[:notice] = I18n.t(:notice_successful_update)
@@ -201,6 +209,7 @@ class CustomStylesController < ApplicationController
                     logo remove_logo
                     export_logo remove_export_logo
                     export_cover remove_export_cover
+                    export_footer remove_export_footer
                     favicon remove_favicon
                     touch_icon remove_touch_icon
                     export_font_regular remove_export_font_regular
