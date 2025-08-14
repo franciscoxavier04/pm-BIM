@@ -12,7 +12,7 @@
         ) do |menu|
           menu.with_item(
             label: t("label_subscribe_icalendar"),
-            href: dialog_my_access_tokens_path(token_type: "ical-meeting"),
+            href: dialog_my_access_tokens_path(token_type: Token::ICalMeeting.model_name.element),
             content_arguments: { data: { turbo_stream: true } }
           ) do |item|
             item.with_leading_visual_icon(icon: :rss)
