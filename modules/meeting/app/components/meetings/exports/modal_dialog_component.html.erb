@@ -22,28 +22,31 @@
         if OpenProject::FeatureDecisions.minutes_styling_meeting_pdf_active?
           modal_body.with_row do
             render(
-              Primer::Alpha::Select.new(
+              Primer::Alpha::RadioButtonGroup.new(
+                full_width: true,
                 name: "template",
-                label: I18n.t("pdf_generator.dialog.templates.label"),
-                caption: templates_default[:caption],
-                input_width: :large,
+                label: I18n.t("pdf_generator.dialog.templates.label")
+              )
+            ) do |component|
+              component.radio_button(
+                label: I18n.t("meeting.export_pdf_dialog.templates.default.label"),
+                caption: I18n.t("meeting.export_pdf_dialog.templates.default.caption"),
+                value: "default",
                 data: {
-                  "meetings--export--form-target": "templates",
+                  "meetings--export--form-name-param": "default",
+                  action: "change->meetings--export--form#templatesChanged"
+                },
+                checked: true
+              )
+              component.radio_button(
+                label: I18n.t("meeting.export_pdf_dialog.templates.minutes.label"),
+                caption: I18n.t("meeting.export_pdf_dialog.templates.minutes.caption"),
+                value: "minutes",
+                data: {
+                  "meetings--export--form-name-param": "minutes",
                   action: "change->meetings--export--form#templatesChanged"
                 }
               )
-            ) do |component|
-              selected = templates_default[:id]
-              templates_options.each do |entry|
-                component.option(
-                  label: entry[:label],
-                  value: entry[:id],
-                  selected: selected == entry[:id],
-                  data: {
-                    caption: entry[:caption]
-                  }
-                )
-              end
             end
           end
         end
