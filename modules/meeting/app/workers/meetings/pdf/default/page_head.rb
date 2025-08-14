@@ -28,49 +28,36 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class CustomStyle < ApplicationRecord
-  mount_uploader :logo, OpenProject::Configuration.file_uploader
-  mount_uploader :export_logo, OpenProject::Configuration.file_uploader
-  mount_uploader :export_cover, OpenProject::Configuration.file_uploader
-  mount_uploader :export_footer, OpenProject::Configuration.file_uploader
-  mount_uploader :favicon, OpenProject::Configuration.file_uploader
-  mount_uploader :touch_icon, OpenProject::Configuration.file_uploader
-
-  class << self
-    def current
-      RequestStore.fetch(:current_custom_style) do
-        custom_style = CustomStyle.order(Arel.sql("created_at DESC")).first
-        if custom_style.nil?
-          return nil
-        else
-          custom_style
-        end
-      end
+module Meetings::PDF::Default::PageHead
+  def write_page_head
+    with_vertical_margin(styles.page_heading_margins) do
+      write_page_title
     end
+    with_vertical_margin(styles.page_subtitle_margins) do
+      write_meeting_subtitle
+    end
+    write_hr
   end
 
-  def digest
-    updated_at.to_i
+  def write_page_title
+    style = styles.page_heading
+    pdf.formatted_text([style.merge(
+      { text: meeting.title, link: url_helpers.meeting_url(meeting) }
+    )], style)
   end
 
-  %i(favicon touch_icon export_logo export_cover export_footer logo).each do |name|
-    define_method :"#{name}_path" do
-      image = send(name)
+  def write_meeting_subtitle
+    style = styles.page_subtitle
+    pdf.formatted_text([style.merge({ text: meeting_subtitle })], style)
+  end
 
-      if image.readable?
-        image.local_file.path
-      end
-    end
-
-    define_method :"remove_#{name}" do
-      image = send(name)
-      image&.remove!
-
-      if new_record?
-        send(:"#{name}=", nil)
-      else
-        update_columns(name => nil, updated_at: Time.zone.now)
-      end
-    end
+  def meeting_subtitle
+    [
+      "#{meeting_mode} (#{I18n.t("label_meeting_state_#{meeting.state}")}),",
+      "#{format_date(meeting.start_time)},",
+      format_time(meeting.start_time, include_date: false),
+      "–",
+      format_time(meeting.end_time, include_date: false)
+    ].join(" ")
   end
 end

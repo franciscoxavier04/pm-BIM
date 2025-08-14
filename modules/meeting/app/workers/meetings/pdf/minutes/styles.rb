@@ -28,49 +28,28 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class CustomStyle < ApplicationRecord
-  mount_uploader :logo, OpenProject::Configuration.file_uploader
-  mount_uploader :export_logo, OpenProject::Configuration.file_uploader
-  mount_uploader :export_cover, OpenProject::Configuration.file_uploader
-  mount_uploader :export_footer, OpenProject::Configuration.file_uploader
-  mount_uploader :favicon, OpenProject::Configuration.file_uploader
-  mount_uploader :touch_icon, OpenProject::Configuration.file_uploader
+module Meetings::PDF::Minutes::Styles
+  class PDFStyles < Meetings::PDF::Common::Styles::Base
+    def page_subheading
+      resolve_font(@styles[:page_subheading])
+    end
 
-  class << self
-    def current
-      RequestStore.fetch(:current_custom_style) do
-        custom_style = CustomStyle.order(Arel.sql("created_at DESC")).first
-        if custom_style.nil?
-          return nil
-        else
-          custom_style
-        end
-      end
+    def page_subheading_margins
+      resolve_margin(@styles[:page_subheading])
+    end
+
+    def agenda_item_margins
+      resolve_margin(@styles.dig(:agenda_item, :margin))
     end
   end
 
-  def digest
-    updated_at.to_i
+  def styles
+    @styles ||= PDFStyles.new(styles_asset_path)
   end
 
-  %i(favicon touch_icon export_logo export_cover export_footer logo).each do |name|
-    define_method :"#{name}_path" do
-      image = send(name)
+  private
 
-      if image.readable?
-        image.local_file.path
-      end
-    end
-
-    define_method :"remove_#{name}" do
-      image = send(name)
-      image&.remove!
-
-      if new_record?
-        send(:"#{name}=", nil)
-      else
-        update_columns(name => nil, updated_at: Time.zone.now)
-      end
-    end
+  def styles_asset_path
+    File.dirname(File.expand_path(__FILE__))
   end
 end
