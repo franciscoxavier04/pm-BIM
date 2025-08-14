@@ -693,6 +693,7 @@ lv:
         excluded_from_totals: "Excluded from totals"
   themes:
     dark: "Dark"
+    dark_high_contrast: "Dark high contrast"
     light: "Light"
     light_high_contrast: "Light high contrast"
     sync_with_os: "Automatic (match OS colour mode)"
@@ -1906,7 +1907,7 @@ lv:
   button_duplicate: "Duplicate"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Labot"
-  button_edit_associated_wikipage: "Edit associated Wiki page: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Expand all"
   button_favorite: "Add to favorites"
   button_filter: "Filtrēt"
@@ -2511,6 +2512,13 @@ lv:
       xls2csv: "Xls2csv available (optional)"
       catppt: "Catppt available (optional)"
       tesseract: "Tesseract available (optional)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","

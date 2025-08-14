@@ -679,6 +679,7 @@ ko:
         excluded_from_totals: "합계에서 제외됨"
   themes:
     dark: "다크"
+    dark_high_contrast: "Dark high contrast"
     light: "라이트"
     light_high_contrast: "라이트 하이 콘트라스트"
     sync_with_os: "자동(OS 색상 모드와 일치)"
@@ -1860,7 +1861,7 @@ ko:
   button_duplicate: "복제"
   button_duplicate_and_follow: "복제하고 팔로우"
   button_edit: "편집"
-  button_edit_associated_wikipage: "연결된 위키 페이지 %{page_title} 편집"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "모두 확장"
   button_favorite: "즐겨찾기에 추가"
   button_filter: "필터"
@@ -2423,6 +2424,13 @@ ko:
       xls2csv: "Xls2csv 사용 가능(선택적)"
       catppt: "Catppt 사용 가능(선택적)"
       tesseract: "Tesseract 사용 가능(선택적)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","

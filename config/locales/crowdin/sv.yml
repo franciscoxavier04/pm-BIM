@@ -686,6 +686,7 @@ sv:
         excluded_from_totals: "Excluded from totals"
   themes:
     dark: "Dark"
+    dark_high_contrast: "Dark high contrast"
     light: "Ljust"
     light_high_contrast: "Light high contrast"
     sync_with_os: "Automatic (match OS colour mode)"
@@ -1883,7 +1884,7 @@ sv:
   button_duplicate: "Duplicera"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Redigera"
-  button_edit_associated_wikipage: "Redigerade associerad wikisida: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Expandera alla"
   button_favorite: "Lägg till i favoriter"
   button_filter: "Filter"
@@ -2467,6 +2468,13 @@ sv:
       xls2csv: "Xls2csv tillgängligt (tillval)"
       catppt: "Catppt tillgängligt (tillval)"
       tesseract: "Tesseract tillgängligt (tillval)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: ","
   general_csv_encoding: "UTF-8"
   general_csv_separator: ";"

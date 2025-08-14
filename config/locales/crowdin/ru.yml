@@ -698,6 +698,7 @@ ru:
         excluded_from_totals: "Исключен из итогов"
   themes:
     dark: "Тёмная"
+    dark_high_contrast: "Dark high contrast"
     light: "Светлая"
     light_high_contrast: "Светлый высокий контраст"
     sync_with_os: "Automatic (match OS colour mode)"
@@ -1927,7 +1928,7 @@ ru:
   button_duplicate: "Дублировать"
   button_duplicate_and_follow: "Дублировать и следить"
   button_edit: "Правка"
-  button_edit_associated_wikipage: "Редактирование связанной wiki-страницы: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Развернуть все"
   button_favorite: "Добавить в избранное"
   button_filter: "Фильтр"
@@ -2553,6 +2554,13 @@ ru:
       xls2csv: "Xls2csv доступно (опционально)"
       catppt: "Catppt доступно (опционально)"
       tesseract: "Tesseract доступно (опционально)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","

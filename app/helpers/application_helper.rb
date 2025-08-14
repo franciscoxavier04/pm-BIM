@@ -295,6 +295,7 @@ module ApplicationHelper
       [I18n.t("themes.light"), "light"],
       [I18n.t("themes.light_high_contrast"), "light_high_contrast"],
       [I18n.t("themes.dark"), "dark"],
+      [I18n.t("themes.dark_high_contrast"), "dark_high_contrast"],
       [I18n.t("themes.sync_with_os"), "sync_with_os"]
     ]
   end
@@ -316,7 +317,7 @@ module ApplicationHelper
   end
 
   def user_theme_data_attributes
-    if User.current.pref.sync_with_system_theme?
+    if User.current.pref.sync_with_os_theme?
       # Theme will be set by inline script before body renders to prevent flickering
       { auto_theme_switcher_mode_value: User.current.pref.theme }
     else

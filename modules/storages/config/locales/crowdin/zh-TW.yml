@@ -317,6 +317,15 @@ zh-TW:
         oidc_token_acquisition_failed: OpenID Connect 配置中缺少所需的 audience 且不支援 Token Exchange，請查看官方文件了解更多。
         oidc_token_exchange_failed: 您的 OpenID Connect 提供者似乎存在令牌交換設定問題。請檢查其設定並重試。
         oidc_token_refresh_failed: 在檢查您存取儲存空間的權限時發生錯誤。請查看伺服器日誌以取得更多資訊。
+        sp_client_cant_delete_folder: 客戶在刪除 SharePoint 資料夾時遇到問題。請檢查您的儲存空間設定文件。
+        sp_client_id_missing: 已設定的 SharePoint OAuth 2 用戶端 ID 遺失。請檢查設定。
+        sp_client_secret_missing: 已設定的 SharePoint OAuth 2 用戶端密鑰遺失。請檢查設定。
+        sp_client_write_permission_missing: 客戶在 SharePoint 中似乎缺少寫入權限。請檢查您的儲存空間設定文件。
+        sp_existing_test_folder: 用於測試的資料夾 %{folder_name} 已存在於 SharePoint 中。請將其刪除後再試一次。
+        sp_oauth_request_error: 綁定至使用者的 SharePoint 請求失敗。請檢查伺服器日誌以取得更多資訊。
+        sp_oauth_token_missing: 由於使用者尚未連結其 SharePoint 帳號，OpenProject 無法測試使用者層級的與 SharePoint 之間的通訊。
+        sp_tenant_id_missing: 已設定的 SharePoint 目錄（租用戶）Id 遺失。請檢查設定。
+        sp_unexpected_content: 在 SharePoint 磁碟機中發現非預期的內容。
         unknown_error: 連線無法驗證。發生未知錯誤。請檢查伺服器日誌以瞭解進一步資訊。
       label_error: 錯誤
       label_failed: 損壞

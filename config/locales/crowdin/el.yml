@@ -682,6 +682,7 @@ el:
         excluded_from_totals: "Excluded from totals"
   themes:
     dark: "Dark"
+    dark_high_contrast: "Dark high contrast"
     light: "Light"
     light_high_contrast: "Light high contrast"
     sync_with_os: "Automatic (match OS colour mode)"
@@ -1879,7 +1880,7 @@ el:
   button_duplicate: "Δημιουργία αντιγράφου"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Επεξεργασία"
-  button_edit_associated_wikipage: "Επεξεργασία της συσχετιζόμενης σελίδας Wiki: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Ανάπτυξη όλων"
   button_favorite: "Add to favorites"
   button_filter: "Φίλτρο"
@@ -2463,6 +2464,13 @@ el:
       xls2csv: "Το Xls2csv είναι διαθέσιμο (προαιρετικό)"
       catppt: "Το Catppt είναι διαθέσιμο (προαιρετικό)"
       tesseract: "Το Tesseract είναι διαθέσιμο (προαιρετικό)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","

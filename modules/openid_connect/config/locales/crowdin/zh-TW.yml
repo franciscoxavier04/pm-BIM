@@ -66,7 +66,7 @@ zh-TW:
       groups_claim: 請指定用來表示使用者所屬群組名稱的 claim 名稱。
       metadata_none: 我沒有這些資訊
       metadata_url: 我有一個發現端點 URL
-      oidc_information: These values are needed to configure the OpenID Connect provider.
+      oidc_information: 這些值需要用來設定 OpenID Connect 提供者。
       client_id: 這是 OpenID Connect 提供者給予您的用戶端 ID
       client_secret: 這是 OpenID Connect 提供者給予您的用戶端密鑰
       limit_self_registration: 如果啟用，只有在提供商端的設定允許的情況下，使用者才能使用此提供商註冊。

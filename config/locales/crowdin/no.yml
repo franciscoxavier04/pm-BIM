@@ -685,6 +685,7 @@
         excluded_from_totals: "Unntatt fra totaler"
   themes:
     dark: "Mørk"
+    dark_high_contrast: "Dark high contrast"
     light: "Lyst"
     light_high_contrast: "Lys høy kontrast"
     sync_with_os: "Automatic (match OS colour mode)"
@@ -1882,7 +1883,7 @@
   button_duplicate: "Kopier"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Rediger"
-  button_edit_associated_wikipage: "Rediger tilknyttet Wiki-side: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Utvid alle"
   button_favorite: "Legg til i favoritter"
   button_filter: "Filter"
@@ -2466,6 +2467,13 @@
       xls2csv: "Xls2csv tilgjengelig (valgfritt)"
       catppt: "Catppt tilgjengelig (valgfritt)"
       tesseract: "Tesseract tilgjengelig (valgfritt)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: ","
   general_csv_encoding: "UTF-8"
   general_csv_separator: ";"

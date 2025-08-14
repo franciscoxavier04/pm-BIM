@@ -41,7 +41,7 @@ See COPYRIGHT and LICENSE files for more details.
   <%# Disable prefetching for now %>
   <meta name="turbo-prefetch" content="false">
   <%# Apply system theme immediately to prevent flickering %>
-  <% if User.current.pref.sync_with_system_theme? %>
+  <% if User.current.pref.sync_with_os_theme? %>
     <%= nonced_javascript_tag do %>
       // Apply system theme before body renders to prevent flickering
       (function() {

@@ -323,6 +323,15 @@ pl:
         oidc_token_acquisition_failed: Twoja konfiguracja OpenID Connect nie zapewnia niezbędnych odbiorców ani możliwości wymiany tokenów. Sprawdź naszą dokumentację, aby uzyskać więcej informacji.
         oidc_token_exchange_failed: Wygląda na to, że wystąpił problem z konfiguracją wymiany tokenów u Twojego dostawcy OpenID Connect. Sprawdź jego konfigurację i spróbuj ponownie.
         oidc_token_refresh_failed: Podczas próby sprawdzenia Twojego dostępu do magazynu wystąpił błąd. Aby uzyskać dalsze informacje, sprawdź dzienniki serwera.
+        sp_client_cant_delete_folder: The client is having trouble deleting folders in SharePoint. Please check the setup documentation for your storage.
+        sp_client_id_missing: The configured OAuth 2 client id is missing for SharePoint. Please check the configuration.
+        sp_client_secret_missing: The configured OAuth 2 client secret is missing for SharePoint. Please check the configuration.
+        sp_client_write_permission_missing: The client seems to have write permissions missing in SharePoint. Please check the setup documentation for your storage.
+        sp_existing_test_folder: The folder %{folder_name} needed for testing already exists in SharePoint. Please delete it and try again.
+        sp_oauth_request_error: The user-bound request to SharePoint failed. Please check the server logs for further information.
+        sp_oauth_token_missing: OpenProject cannot test the user level communication with SharePoint as the user did not yet link their SharePoint account.
+        sp_tenant_id_missing: The configured directory (tenant) id is missing for SharePoint. Please check the configuration.
+        sp_unexpected_content: Unexpected content found in the SharePoint drive.
         unknown_error: Nie można zweryfikować połączenia. Wystąpił nieznany błąd. Aby uzyskać dalsze informacje, sprawdź dzienniki serwera.
       label_error: Błąd
       label_failed: Niepowodzenie

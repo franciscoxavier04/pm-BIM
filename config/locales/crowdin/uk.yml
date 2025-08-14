@@ -694,6 +694,7 @@ uk:
         excluded_from_totals: "Виключено з підсумків"
   themes:
     dark: "Темна"
+    dark_high_contrast: "Dark high contrast"
     light: "Світла"
     light_high_contrast: "Світла, високий контраст"
     sync_with_os: "Автоматично (колірний режим ОС)"
@@ -1922,7 +1923,7 @@ uk:
   button_duplicate: "Дублювати"
   button_duplicate_and_follow: "Дублювати й стежити"
   button_edit: "Редагувати"
-  button_edit_associated_wikipage: "Редагувати пов'язану Wiki сторінку: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Розгорнути все"
   button_favorite: "Додати в обране"
   button_filter: "Фільтр"
@@ -2548,6 +2549,13 @@ uk:
       xls2csv: "Xls 2csv доступно (необов'язково)"
       catppt: "Catppt доступний (необов'язково)"
       tesseract: "Tesseract доступний (необов'язково)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","

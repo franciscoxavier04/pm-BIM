@@ -23,7 +23,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
@@ -70,6 +70,24 @@ module Storages
               location: extract_location(json),
               permissions: %i[readable writeable]
             )
+          end
+
+          def transform_file_info(json)
+            Results::StorageFileInfo.build(
+              status: json[:status],
+              status_code: json[:status_code],
+              id: json[:id],
+              name: json[:name],
+              mime_type: mime_type(json),
+              size: json[:size],
+              owner_name: json.dig(:createdBy, :user, :displayName),
+              owner_id: json.dig(:createdBy, :user, :id),
+              location: extract_location(json),
+              last_modified_at: json.dig(:fileSystemInfo, :lastModifiedDateTime),
+              created_at: json.dig(:fileSystemInfo, :createdDateTime),
+              last_modified_by_name: json.dig(:lastModifiedBy, :user, :displayName),
+              last_modified_by_id: json.dig(:lastModifiedBy, :user, :id)
+            ).value_or(nil)
           end
 
           def build_ancestor(name, location)

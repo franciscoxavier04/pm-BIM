@@ -97,6 +97,8 @@ export default class PatternInputController extends Controller {
   input_keydown(event:KeyboardEvent) {
     if (event.key === 'Enter') {
       event.preventDefault();
+      this.formInputTarget.form?.requestSubmit();
+      return;
     }
 
     if (event.key === 'ArrowDown') {

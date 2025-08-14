@@ -683,6 +683,7 @@ pt-PT:
         excluded_from_totals: "Excluído dos totais"
   themes:
     dark: "Escuro"
+    dark_high_contrast: "Dark high contrast"
     light: "Claro"
     light_high_contrast: "Contraste alto claro"
     sync_with_os: "Automático (corresponder ao modo de cor do SO)"
@@ -1880,7 +1881,7 @@ pt-PT:
   button_duplicate: "Duplicar"
   button_duplicate_and_follow: "Duplicar e seguir"
   button_edit: "Editar"
-  button_edit_associated_wikipage: "Editar página Wiki associada: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Expandir Tudo"
   button_favorite: "Adicionar aos favoritos"
   button_filter: "Filtro"
@@ -2464,6 +2465,13 @@ pt-PT:
       xls2csv: "Xls2csv disponível (opcional)"
       catppt: "Catppt disponível (opcional)"
       tesseract: "Tesseract disponível (opcional)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","
