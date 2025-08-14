@@ -55,7 +55,7 @@ module Redmine::MenuManager::TopMenuHelper
   end
 
   def render_logo
-    mode_class = "op-logo--link_high_contrast" unless User.current.pref.light_high_contrast_theme?
+    mode_class = "op-logo--link_high_contrast" if User.current.pref.light_high_contrast_theme?
     content_tag :div, class: "op-logo" do
       link_to(I18n.t("label_home"),
               configurable_home_url,
