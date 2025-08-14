@@ -243,28 +243,28 @@ de:
     export:
       your_meeting_export: "Besprechung wird exportiert"
       minutes:
-        footer_page_numbers: "S. %{current_page} von %{total_pages}"
-        author: "Verfasser:in"
-        date: "Datum"
-        time: "Zeit"
-        location: "Ort"
-        title: "Protokoll"
+        footer_page_numbers: "P. %{current_page} of %{total_pages}"
+        author: "Author"
+        date: "Date"
+        time: "Time"
+        location: "Location"
+        title: "Minutes"
     export_pdf_dialog:
       title: PDF exportieren
       description: Erstellen Sie eine druckbare PDF-Datei dieser Besprechung im aktuellen Zustand.
       templates:
         default:
-          label: Standard
-          caption: Die Standardvorlage eignet sich für die meisten Besprechungen und repräsentiert den aktuellen Status.
+          label: Default
+          caption: The default template is suitable for most meetings and represent the current state.
         minutes:
-          label: Protokoll
-          caption: Die Protokollvorlage eignet sich für Besprechungen, die abgeschlossen sind und archiviert werden.
+          label: Minutes
+          caption: The minutes template is suitable for closed and archived meetings.
       first_page_header_left:
-        label: Kopfzeile links für erste Seite
-        caption: Dieser Text wird auf der ersten Seite links in der Kopfzeile angezeigt.
+        label: First page header left
+        caption: This text will appear on the first page at the left of the header.
       author:
-        label: Verfasser:in
-        caption: Verfasser:in des Protokolls wird in der Unterüberschrift angezeigt.
+        label: Author
+        caption: The author of the minutes will be displayed in the subtitle.
       include_participants:
         label: Liste der Teilnehmer einfügen
         caption: Eine Liste der Teilnehmer wird oberhalb der Agenda ausgegeben.
