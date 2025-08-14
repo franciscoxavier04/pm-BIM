@@ -45,13 +45,14 @@ export default class AsyncJobDialogController extends ApplicationController {
             e.preventDefault();
             TurboHelpers.showProgressBar();
             this.closePreviousDialog();
-            this.requestJob().then((job_id) => {
-                if (job_id) {
-                    return this.showJobModal(job_id);
-                }
-                return this.handleError('No job ID returned from server.');
-            })
-                .catch((error:HttpErrorResponse|string) => this.handleError(error))
+            this.requestJob()
+                .then((job_id) => {
+                    if (job_id) {
+                        return this.showJobModal(job_id);
+                    }
+                    return this.handleError(I18n.t('js.no_job_id'));
+                })
+                .catch((error:HttpErrorResponse) => this.handleError(error))
                 .finally(() => {
                     TurboHelpers.hideProgressBar();
                 });
@@ -59,13 +60,11 @@ export default class AsyncJobDialogController extends ApplicationController {
     }
 
     closePreviousDialog() {
-      if (!this.closeDialogIdValue) {
-        return; // No dialog ID specified, nothing to close
-      }
-      const dialog = document.getElementById(this.closeDialogIdValue) as HTMLDialogElement;
-      if (dialog) {
-        dialog.close();
-      }
+        if (!this.closeDialogIdValue) {
+            return; // No dialog ID specified, nothing to close
+        }
+        const dialog = document.getElementById(this.closeDialogIdValue) as HTMLDialogElement;
+        dialog?.close();
     }
 
     async requestJob():Promise<string> {
@@ -75,11 +74,11 @@ export default class AsyncJobDialogController extends ApplicationController {
             credentials: 'same-origin',
         });
         if (!response.ok) {
-            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            throw new Error(`HTTP ${response.status.toString()}: ${response.statusText}`);
         }
         const result = await response.json() as { job_id:string };
         if (!result.job_id) {
-            throw new Error('Invalid response from server');
+            throw new Error(I18n.t('js.invalid_job_response'));
         }
         return result.job_id;
     }
@@ -92,11 +91,11 @@ export default class AsyncJobDialogController extends ApplicationController {
         if (response.ok) {
             renderStreamMessage(await response.text());
         } else {
-            throw new Error(response.statusText || 'Invalid response from server');
+            throw new Error(response.statusText ?? I18n.t('js.invalid_job_response'));
         }
     }
 
-    async handleError(error:HttpErrorResponse|string):Promise<void> {
+    handleError(error:HttpErrorResponse | string):void {
         void window.OpenProject.getPluginContext().then((pluginContext) => {
             pluginContext.services.notifications.addError(error);
         });
@@ -107,6 +106,6 @@ export default class AsyncJobDialogController extends ApplicationController {
     }
 
     get method() {
-        return (this.element as HTMLLinkElement).dataset.jobHrefMethod || 'GET';
+        return (this.element as HTMLLinkElement).dataset.jobHrefMethod ?? 'GET';
     }
 }
