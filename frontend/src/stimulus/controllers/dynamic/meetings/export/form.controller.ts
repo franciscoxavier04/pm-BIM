@@ -88,11 +88,7 @@ export default class FormController extends Controller<HTMLFormElement> {
       captionElement.innerText = (data.caption || '');
     }
     this.inputGroupsTargets.forEach((inputGroup:HTMLElement) => {
-      if (inputGroup.dataset.template === template) {
-        inputGroup.classList.remove('d-none');
-      } else {
-        inputGroup.classList.add('d-none');
-      }
+      inputGroup.classList.toggle('d-none', inputGroup.dataset.template === template)
     });
   }
 }
