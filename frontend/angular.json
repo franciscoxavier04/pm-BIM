@@ -26,11 +26,9 @@
               "jquery",
               "contra/emitter",
               "crossvent",
-              "chart.js",
               "create-point-cb",
               "core-vendor/enjoyhint",
-              "tablesorter",
-              "chartjs-plugin-datalabels"
+              "tablesorter"
             ],
             "preserveSymlinks": true,
             "outputPath": {
