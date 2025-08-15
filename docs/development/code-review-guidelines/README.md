@@ -119,7 +119,7 @@ If there are breaking changes (e.g., to permissions, code relevant for developer
 
 - For external contributions: Check whether the author has signed a [Contributor License Agreement](../#openproject-contributor-license-agreement-cla) and kindly ask for it if not.
 
-- Copyright notice: When new files are added, make sure they contain the OpenProject copyright notice (copy from any file in OpenProject).
+- Copyright notice: When new files are added, make sure they contain the OpenProject copyright notice (copy from any file in OpenProject). You can use `script/copyright --fix` to automatically add copyright headers or `script/copyright` to check which files are missing them.
 
 - Adding Gems: When adding gems, make sure not only the Gemfile is updated, but also the Gemfile.lock.
 
