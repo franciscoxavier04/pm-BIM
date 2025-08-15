@@ -52,8 +52,7 @@ RSpec.shared_examples_for "adapter files_info_query: successful list response" d
 
     response = result.value!
     expect(response).to be_an(Array)
-    response.each { expect(it).to be_a(Storages::Adapters::Results::StorageFileInfo) }
-    expect(response.size).to eq(file_infos.size)
-    expect(response).to eq(file_infos)
+    expect(response).to all(be_a(Storages::Adapters::Results::StorageFileInfo))
+    expect(response).to eq(expected_file_infos)
   end
 end

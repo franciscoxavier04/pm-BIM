@@ -46,7 +46,7 @@ module Storages
 
             context "with an empty array of file ids" do
               let(:file_ids) { [] }
-              let(:file_infos) { [] }
+              let(:expected_file_infos) { [] }
 
               it_behaves_like "adapter files_info_query: successful list response"
             end
@@ -60,7 +60,7 @@ module Storages
                   #{drive_id}||01ANJ53W5UJK2CQO6IY5HLBVYBVNJ4TKHZ
                 ]
               end
-              let(:file_infos) do
+              let(:expected_file_infos) do
                 [
                   Results::StorageFileInfo.new(
                     status: "ok",
@@ -116,7 +116,7 @@ module Storages
             context "with one outbound request returning not found", vcr: "share_point/files_info_query_one_not_found" do
               let(:drive_id) { "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY87vnZ6fgfvQanZHX-XCAyw" }
               let(:file_ids) { %W[#{drive_id}||01ANJ53W4ELLSQL3JZHNA2MHKKHKAUQWNS #{drive_id}||not_existent] }
-              let(:file_infos) do
+              let(:expected_file_infos) do
                 [
                   Results::StorageFileInfo.new(
                     status: "ok",

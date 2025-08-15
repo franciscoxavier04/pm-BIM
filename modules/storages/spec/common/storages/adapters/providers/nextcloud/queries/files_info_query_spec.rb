@@ -50,14 +50,14 @@ module Storages
 
             context "with an empty array of file ids" do
               let(:file_ids) { [] }
-              let(:file_infos) { [] }
+              let(:expected_file_infos) { [] }
 
               it_behaves_like "adapter files_info_query: successful list response"
             end
 
-            context "with outbound request successful", vcr: "nextcloud/files_info_query_success" do
+            context "with several file ids", vcr: "nextcloud/files_info_query_success" do
               let(:file_ids) { %w[182 203 222] }
-              let(:file_infos) do
+              let(:expected_file_infos) do
                 [
                   Results::StorageFileInfo.new(
                     status: "Forbidden",
@@ -89,9 +89,9 @@ module Storages
               it_behaves_like "adapter files_info_query: successful list response"
             end
 
-            context "with outbound request not found", vcr: "nextcloud/files_info_query_not_found" do
+            context "with not existent file id requested", vcr: "nextcloud/files_info_query_not_found" do
               let(:file_ids) { %w[1234] }
-              let(:file_infos) { [Results::StorageFileInfo.new(status: "Not Found", status_code: 404, id: "1234")] }
+              let(:expected_file_infos) { [Results::StorageFileInfo.new(status: "Not Found", status_code: 404, id: "1234")] }
 
               it_behaves_like "adapter files_info_query: successful list response"
             end
@@ -99,7 +99,7 @@ module Storages
             context "with multiple file IDs, with different errors",
                     vcr: "nextcloud/files_info_query_only_one_not_authorized" do
               let(:file_ids) { %w[182 1234] }
-              let(:file_infos) do
+              let(:expected_file_infos) do
                 [
                   Results::StorageFileInfo.new(
                     status: "Forbidden",
