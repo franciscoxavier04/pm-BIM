@@ -43,11 +43,22 @@ Rails.application.config.to_prepare do
       user = warden.authenticate(scope: :scim_v2)
       if user == nil
         if controller_path != "scimitar/service_provider_configurations" ||
-           # it means authorization credentials were provided in ways expexcted by OpenProject, but the credentials were wrong. So, no user found.
+           # It means authorization credentials were provided in ways expected by OpenProject, but the credentials were wrong.
+           # So, no user found.
            warden.winning_strategy.present?
           throw(:warden)
         else
-          render json: OpenProjectScimitar::LimitedServiceProviderConfiguration.new
+          limited_service_provider_configuration = {
+            meta: Scimitar::Meta.new(
+              resourceType: "ServiceProviderConfig",
+              created: Time.zone.now,
+              lastModified: Time.zone.now,
+              version: "1"
+            ),
+            schemas: ["urn:ietf:params:scim:schemas:core:2.0:ServiceProviderConfig"],
+            authenticationSchemes: OpenProjectScimitar::AUTHENTICATION_SCHEMES
+          }
+          render json: limited_service_provider_configuration
           return
         end
       else
