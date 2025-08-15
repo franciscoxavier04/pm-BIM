@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -53,6 +55,18 @@ module API
         end
 
         super(copied_hash, *)
+      end
+
+      private
+
+      def parse_link_ids_from_fragment(fragment, path)
+        struct = Struct.new(:id).new
+        link = ::API::Decorators::LinkObject.new(struct, path: path, property_name: :id, setter: "id=")
+
+        fragment.map do |href|
+          link.from_hash(href)
+          struct.id
+        end
       end
 
       module ClassMethods
@@ -238,18 +252,7 @@ module API
 
         def associated_resources_default_setter(name, v3_path)
           ->(fragment:, **) do
-            struct = Struct.new(:id).new
-
-            link = ::API::Decorators::LinkObject.new(struct,
-                                                     path: v3_path,
-                                                     property_name: :id,
-                                                     setter: "id=")
-
-            ids = fragment.map do |href|
-              link.from_hash(href)
-              struct.id
-            end
-
+            ids = parse_link_ids_from_fragment(fragment, v3_path)
             represented.send(:"#{name.to_s.singularize}_ids=", ids)
           end
         end

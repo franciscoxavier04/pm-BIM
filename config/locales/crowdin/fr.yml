@@ -374,7 +374,7 @@ fr:
       description: En regroupant les utilisateurs, vous pouvez les ajouter en tant que membres aux mêmes projets ou leur attribuer les mêmes rôles globaux.
     table_component:
       blank_slate:
-        description: Vous pouvez définir des groupes d'utilisateurs avec des noms spécifiques
+        description: You can define named groups of users with specific permissions.
         title: Aucun groupe n'a encore été configuré
       user_count: Nombre d'utilisateurs
     users:
@@ -684,8 +684,10 @@ fr:
         excluded_from_totals: "Exclus des totaux"
   themes:
     dark: "Sombre"
+    dark_high_contrast: "Dark high contrast"
     light: "Clair"
     light_high_contrast: "Clair avec contraste élevé"
+    sync_with_os: "Automatique (correspond au mode couleur du système d'exploitation)"
   types:
     index:
       no_results_title_text: Il n'y a actuellement aucun type.
@@ -1287,6 +1289,7 @@ fr:
         odd: "doit être impair."
         regex_match_failed: "ne correspond pas à l'expression régulière %{expression}."
         regex_invalid: "n’a pas pu être validé avec l’expression régulière associée."
+        regex_list_invalid: "n'a pas pu être analysé comme une expression régulière dans les lignes %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "doit être inférieur ou égal à la longueur maximale."
         taken: "a déjà été pris."
         too_long: "est trop long (le maximum est de %{count} caractères)."
@@ -1617,6 +1620,7 @@ fr:
         one: "Fournisseur d'authentification"
         other: "Fournisseurs d'authentification"
       category: "Catégorie"
+      color: "Couleur"
       comment: "Commentaire"
       custom_action: "Action personnalisée"
       custom_field: "Champ personnalisé"
@@ -2248,6 +2252,13 @@ fr:
         Je souhaite recevoir la <a target="_blank" href="https://www.openproject.org/newsletter/">lettre d'information d'</a>OpenProject.
       consent_html: >
         J'accepte les <a target="_blank" href="https://www.openproject.org/terms-of-service/">conditions d'utilisation</a> et la <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">politique de confidentialité</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Désactivé."
+      enabled: "Activé."
+    button:
+      disabled: "Activer"
+      enabled: "Désactiver"
   enumeration_activities: "Activités de suivi du temps"
   enumeration_work_package_priorities: "Priorités du Lot de Travaux"
   enumeration_reported_project_statuses: "Statuts de projet signalés"
@@ -2393,6 +2404,7 @@ fr:
           label: "Inclure des descriptions"
           caption: "Cette option permet d'ajouter une colonne de description au format brut."
     your_work_packages_export: "Les lots de travaux sont exportés"
+    your_projects_export: "Projects are being exported"
     succeeded: "Exportation terminée"
     failed: "Une erreur s'est produite lors de l'exportation des lots de travaux : %{message}"
     errors:
@@ -2455,6 +2467,13 @@ fr:
       xls2csv: "Xls2csv disponible (optionel)"
       catppt: "Catppt disponible (optionel)"
       tesseract: "Tesseract disponible (optionnel)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: ","
   general_csv_encoding: "UTF-8"
   general_csv_separator: "."
@@ -2922,6 +2941,7 @@ fr:
   label_custom_logo: "Logo personnalisé"
   label_custom_export_logo: "Logo d'exportation personnalisé"
   label_custom_export_cover: "Arrière-plan de la couverture d'exportation personnalisée"
+  label_custom_export_footer: "Custom export footer image"
   label_custom_export_cover_overlay: "Superposition de l'arrière-plan de la couverture d'exportation personnalisée"
   label_custom_export_cover_text_color: "Couleur du texte"
   label_custom_pdf_export_settings: "Paramètres d'exportation PDF personnalisés"
@@ -4174,6 +4194,8 @@ fr:
     Il s'agit du logo qui apparaît dans vos exportations PDF. Il doit s'agir d'un fichier image PNG ou JPEG. Un logo noir ou coloré sur fond transparent ou blanc est recommandé.
   text_custom_export_cover_instructions: >
     Il s'agit de l'image qui apparaît en arrière-plan de la page de couverture de vos exportations PDF. Elle doit être un fichier image PNG ou JPEG d'environ 800 px de largeur et 500 px de hauteur.
+  text_custom_export_footer_instructions: >
+    PDF exports will include a graphical element positioned to the left of the footer. This image must be a PNG or JPEG file with approximately 200 pixels in width.
   text_custom_favicon_instructions: >
     Il s'agit de la petite icône qui apparaît dans la fenêtre/onglet de votre navigateur à côté du titre de la page. Il doit s'agir d'une image PNG carrée de 32 pixels x 32 pixels avec un fond transparent.
   text_custom_touch_icon_instructions: >

@@ -374,7 +374,7 @@ th:
       description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
+        description: You can define named groups of users with specific permissions.
         title: No groups set up yet
       user_count: User count
     users:
@@ -679,8 +679,10 @@ th:
         excluded_from_totals: "Excluded from totals"
   themes:
     dark: "Dark"
+    dark_high_contrast: "Dark high contrast"
     light: "Light"
     light_high_contrast: "Light high contrast"
+    sync_with_os: "Automatic (match OS colour mode)"
   types:
     index:
       no_results_title_text: There are currently no types.
@@ -1281,6 +1283,7 @@ th:
         odd: "must be odd."
         regex_match_failed: "does not match the regular expression %{expression}."
         regex_invalid: "could not be validated with the associated regular expression."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "must be smaller than or equal to maximum length."
         taken: "has already been taken."
         too_long: "is too long (maximum is %{count} characters)."
@@ -1608,6 +1611,7 @@ th:
       auth_provider:
         other: "Authentication providers"
       category: "ประเภท"
+      color: "Color"
       comment: "ความคิดเห็น"
       custom_action: "Custom action"
       custom_field: "ฟิลด์ที่กำหนดเอง"
@@ -2206,6 +2210,13 @@ th:
         I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
       consent_html: >
         I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "ระดับความสำคัญของชุดภารกิจ"
   enumeration_reported_project_statuses: "สถานะโครงการที่รายงานแล้ว"
@@ -2351,6 +2362,7 @@ th:
           label: "Include descriptions"
           caption: "This option will add a description column in raw format."
     your_work_packages_export: "Work packages are being exported"
+    your_projects_export: "Projects are being exported"
     succeeded: "Export completed"
     failed: "An error has occurred while trying to export the work packages: %{message}"
     errors:
@@ -2413,6 +2425,13 @@ th:
       xls2csv: "Xls2csv available (optional)"
       catppt: "Catppt available (optional)"
       tesseract: "Tesseract available (optional)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","
@@ -2880,6 +2899,7 @@ th:
   label_custom_logo: "Custom logo"
   label_custom_export_logo: "Custom export logo"
   label_custom_export_cover: "Custom export cover background"
+  label_custom_export_footer: "Custom export footer image"
   label_custom_export_cover_overlay: "Custom export cover background overlay"
   label_custom_export_cover_text_color: "Text color"
   label_custom_pdf_export_settings: "Custom PDF export settings"
@@ -4130,6 +4150,8 @@ th:
     This is the logo that appears in your PDF exports. It needs to be a PNG or JPEG image file. A black or colored logo on transparent or white background is recommended.
   text_custom_export_cover_instructions: >
     This is the image that appears in the background of a cover page in your PDF exports. It needs to be an about 800px width by 500px height sized PNG or JPEG image file.
+  text_custom_export_footer_instructions: >
+    PDF exports will include a graphical element positioned to the left of the footer. This image must be a PNG or JPEG file with approximately 200 pixels in width.
   text_custom_favicon_instructions: >
     This is the tiny icon that appears in your browser window/tab next to the page's title. It needs to be a squared 32 by 32 pixels sized PNG image file with a transparent background.
   text_custom_touch_icon_instructions: >

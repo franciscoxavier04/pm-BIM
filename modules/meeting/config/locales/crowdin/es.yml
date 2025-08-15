@@ -242,9 +242,29 @@ es:
     label_export_pdf: "Exportar PDF"
     export:
       your_meeting_export: "Se está exportando la reunión"
+      minutes:
+        footer_page_numbers: "P. %{current_page} of %{total_pages}"
+        author: "Author"
+        date: "Date"
+        time: "Time"
+        location: "Location"
+        title: "Minutes"
     export_pdf_dialog:
       title: Exportar PDF
       description: Genere un archivo PDF imprimible de esta reunión en el estado actual.
+      templates:
+        default:
+          label: Default
+          caption: The default template is suitable for most meetings and represent the current state.
+        minutes:
+          label: Minutes
+          caption: The minutes template is suitable for closed and archived meetings.
+      first_page_header_left:
+        label: First page header left
+        caption: This text will appear on the first page at the left of the header.
+      author:
+        label: Author
+        caption: The author of the minutes will be displayed in the subtitle.
       include_participants:
         label: Incluir lista de participantes
         caption: Se establecerá previamente una lista de participantes encima de la agenda de la reunión.
@@ -264,16 +284,10 @@ es:
     notifications:
       sidepanel:
         title: "Enviar actualizaciones de calendario por correo electrónico"
-        state:
-          disabled: "Deshabilitado."
-          enabled: "Habilitado."
         description:
           disabled: "Los participantes no recibirán un correo electrónico informándoles de los cambios."
           enabled: "Todos los participantes recibirán por correo electrónico invitaciones de calendario actualizadas en las que se les informará de los cambios."
           change_via_template: "Para cambiar esto, edite la plantilla de la serie."
-        button:
-          disable: "Deshabilitar"
-          enable: "Habilitar"
       dialog:
         title:
           enable: "¿Habilitar actualizaciones de calendario por correo electrónico?"

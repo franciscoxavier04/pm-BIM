@@ -372,7 +372,7 @@ pt-PT:
       description: Ao agrupar utilizadores, pode adicioná-los como membros aos mesmos projetos ou atribuir-lhes as mesmas funções globais.
     table_component:
       blank_slate:
-        description: Pode definir grupos de utilizadores com nomes específicos
+        description: You can define named groups of users with specific permissions.
         title: Ainda não foram configurados grupos
       user_count: Número de utilizadores
     users:
@@ -683,8 +683,10 @@ pt-PT:
         excluded_from_totals: "Excluído dos totais"
   themes:
     dark: "Escuro"
+    dark_high_contrast: "Dark high contrast"
     light: "Claro"
     light_high_contrast: "Contraste alto claro"
+    sync_with_os: "Automático (corresponder ao modo de cor do SO)"
   types:
     index:
       no_results_title_text: Atualmente, não existem tipos.
@@ -1286,6 +1288,7 @@ pt-PT:
         odd: "deve ser ímpar."
         regex_match_failed: "não corresponde à expressão regular %{expression}."
         regex_invalid: "não pode ser validado com a expressão regular associada."
+        regex_list_invalid: "não foi possível analisar como expressão regular nas linhas %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "deve ser menor ou igual ao comprimento máximo."
         taken: "já está a ser utilizado."
         too_long: "é muito longo (o máximo é %{count} caracteres)."
@@ -1616,6 +1619,7 @@ pt-PT:
         one: "Fornecedor de autenticação"
         other: "Fornecedores de autenticação"
       category: "Categoria"
+      color: "Cor"
       comment: "Comentario"
       custom_action: "Ação personalizada"
       custom_field: "Campo personalizado"
@@ -2247,6 +2251,13 @@ pt-PT:
         Quero receber a <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a> do OpenProject.
       consent_html: >
         Concordo com os <a target="_blank" href="https://www.openproject.org/terms-of-service/">termos de serviço</a> e a <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">política de privacidade</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Desativado."
+      enabled: "Ativado."
+    button:
+      disabled: "Ativar"
+      enabled: "Desativar"
   enumeration_activities: "Atividades de controlo de tempo"
   enumeration_work_package_priorities: "Prioridades do pacote de trabalho"
   enumeration_reported_project_statuses: "Estado do projeto reportado"
@@ -2392,6 +2403,7 @@ pt-PT:
           label: "Incluir descrições"
           caption: "Esta opção adiciona uma coluna de descrição em formato bruto."
     your_work_packages_export: "Os pacotes de trabalho estão a ser exportados"
+    your_projects_export: "Projects are being exported"
     succeeded: "Exportação concluída"
     failed: "Ocorreu um erro ao tentar exportar os pacotes de trabalho: %{message}"
     errors:
@@ -2454,6 +2466,13 @@ pt-PT:
       xls2csv: "Xls2csv disponível (opcional)"
       catppt: "Catppt disponível (opcional)"
       tesseract: "Tesseract disponível (opcional)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","
@@ -2921,6 +2940,7 @@ pt-PT:
   label_custom_logo: "Logótipo personalizado"
   label_custom_export_logo: "Logótipo de exportação personalizado"
   label_custom_export_cover: "Fundo personalizado da capa de exportação"
+  label_custom_export_footer: "Custom export footer image"
   label_custom_export_cover_overlay: "Sobreposição do fundo personalizado da capa de exportação"
   label_custom_export_cover_text_color: "Cor do texto"
   label_custom_pdf_export_settings: "Configurações de exportação de PDF personalizadas"
@@ -4170,6 +4190,8 @@ pt-PT:
     Este é o logótipo que aparece nas suas exportações de PDF. Tem de ser um ficheiro de imagem PNG ou JPEG. Recomenda-se um logótipo preto ou colorido sobre um fundo transparente ou branco.
   text_custom_export_cover_instructions: >
     Esta é a imagem que aparece no fundo de uma página de capa em suas exportações de PDF. Precisa ter pelo menos 800px de largura por tamanho de 500px de altura PNG ou imagem JPEG.
+  text_custom_export_footer_instructions: >
+    PDF exports will include a graphical element positioned to the left of the footer. This image must be a PNG or JPEG file with approximately 200 pixels in width.
   text_custom_favicon_instructions: >
     Este é o pequeno ícone que aparece na janela/separador do seu navegador ao lado do título da página. Precisa de ser um ficheiro de imagem PNG de 32 por 32 píxeis com fundo transparente.
   text_custom_touch_icon_instructions: >

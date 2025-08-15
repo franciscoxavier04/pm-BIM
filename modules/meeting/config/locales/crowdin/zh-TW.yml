@@ -238,9 +238,29 @@ zh-TW:
     label_export_pdf: "匯出 PDF"
     export:
       your_meeting_export: "正在進行會議匯出作業"
+      minutes:
+        footer_page_numbers: "P. %{current_page} of %{total_pages}"
+        author: "會議發起者"
+        date: "日期"
+        time: "時間"
+        location: "地點"
+        title: "會議名稱"
     export_pdf_dialog:
       title: 匯出 PDF
       description: 產生此目前會議的可列印之 PDF 檔案。
+      templates:
+        default:
+          label: 預設
+          caption: 預設範本適用於大多數會議，並能反映目前的狀態。
+        minutes:
+          label: 會議名稱
+          caption: 會議記錄範本適用於已結束及封存的會議。
+      first_page_header_left:
+        label: 第一頁頁首靠左
+        caption: 此文字將顯示在第一頁頁首的左側。
+      author:
+        label: 會議發起者
+        caption: 會議記錄的作者將顯示在副標題中。
       include_participants:
         label: 包含參與者清單
         caption: 參與者名單將會預先顯示在會議議程上方。
@@ -260,16 +280,10 @@ zh-TW:
     notifications:
       sidepanel:
         title: "電子郵件行事曆更新"
-        state:
-          disabled: "已停用。"
-          enabled: "已啟用。"
         description:
           disabled: "參與者不會收到通知變更的電子郵件。"
           enabled: "所有與會者都會透過電子郵件收到更新的行事曆邀請，通知他們相關變更。"
           change_via_template: "若要變更，請編輯系列範本。"
-        button:
-          disable: "停用"
-          enable: "啟用"
       dialog:
         title:
           enable: "啟用電子郵件行事曆更新？"
