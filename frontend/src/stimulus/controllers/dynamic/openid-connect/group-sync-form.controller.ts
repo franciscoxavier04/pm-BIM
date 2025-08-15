@@ -29,18 +29,34 @@
  */
 
 import { Controller } from '@hotwired/stimulus';
+import { MatchPreviewDialogSubmittedEvent } from './match-preview-dialog.controller';
+import MatchPreviewDialogController from './match-preview-dialog.controller';
 
 export default class GroupSyncFormController extends Controller {
   static targets = [
     'inputsWrapper',
     'enabledCheckbox',
+    'regexpInput',
   ];
+
+  static outlets = ['openid-connect--match-preview-dialog'];
 
   declare readonly inputsWrapperTarget:HTMLDivElement;
   declare readonly enabledCheckboxTarget:HTMLInputElement;
+  declare readonly regexpInputTarget:HTMLInputElement;
+  declare readonly openidConnectMatchPreviewDialogOutlet:MatchPreviewDialogController;
 
   connect() {
     this.updateFormInputs();
+
+    this.regexpInputTarget.addEventListener(
+      'input',
+      () => { this.openidConnectMatchPreviewDialogOutlet.updateRegexpValue(this.regexpInputTarget.value); }
+    );
+  }
+
+  openidConnectMatchPreviewDialogOutletConnected() {
+    this.openidConnectMatchPreviewDialogOutlet.updateRegexpValue(this.regexpInputTarget.value);
   }
 
   updateFormInputs() {
@@ -49,6 +65,10 @@ export default class GroupSyncFormController extends Controller {
     } else {
       this.hideGroupSyncInputs();
     }
+  }
+
+  previewSubmitted({ detail: { regularExpressions } }:MatchPreviewDialogSubmittedEvent) {
+    this.regexpInputTarget.value = regularExpressions;
   }
 
   showGroupSyncInputs() {

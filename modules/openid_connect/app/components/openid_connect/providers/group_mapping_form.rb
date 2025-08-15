@@ -36,7 +36,10 @@ module OpenIDConnect
       class << self
         def form_data
           {
-            controller: "openid-connect--group-sync-form"
+            controller: "openid-connect--group-sync-form",
+            action: "openid-connect--match-preview-dialog:submitted->openid-connect--group-sync-form#previewSubmitted",
+            "openid-connect--group-sync-form-openid-connect--match-preview-dialog-outlet":
+              "#openid-connect--group-match-preview-dialog"
           }
         end
       end
@@ -74,6 +77,9 @@ module OpenIDConnect
             caption: link_translate("openid_connect.instructions.group_regexes",
                                     links: { docs_url: %i[sysadmin_docs oidc_groups] },
                                     external: true),
+            data: {
+              "openid-connect--group-sync-form-target": "regexpInput"
+            },
             disabled: provider.seeded_from_env?,
             required: false,
             input_width: :large,

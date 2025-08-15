@@ -42,7 +42,8 @@ module OpenIDConnect::Providers::Sections
                    banner_scheme: :default,
                    next_edit_state: nil,
                    edit_mode: nil,
-                   fetch_metadata: false)
+                   fetch_metadata: false,
+                   extra_buttons: nil)
       super(provider)
 
       @edit_state = edit_state
@@ -53,6 +54,7 @@ module OpenIDConnect::Providers::Sections
       @banner = banner
       @banner_scheme = banner_scheme
       @fetch_metadata = fetch_metadata
+      @extra_buttons = extra_buttons
     end
 
     def url
