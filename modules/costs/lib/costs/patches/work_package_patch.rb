@@ -1,4 +1,6 @@
-#-- copyright
+# frozen_string_literal: true
+
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -24,30 +26,12 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-module TimeEntries::Scopes
-  module Ongoing
-    extend ActiveSupport::Concern
+module Costs::Patches::WorkPackagePatch
+  extend ActiveSupport::Concern
 
-    class_methods do
-      def ongoing
-        TimeEntry.where(ongoing: true)
-      end
-
-      def visible_ongoing(user = User.current)
-        TimeEntry
-          .where(
-            entity_type: "WorkPackage",
-            entity_id: WorkPackage.allowed_to_log_time(user).select(:id),
-            user:,
-            ongoing: true
-          )
-      end
-
-      def not_ongoing
-        TimeEntry.where(ongoing: false)
-      end
-    end
+  included do
+    scopes :allowed_to_log_time
   end
 end
