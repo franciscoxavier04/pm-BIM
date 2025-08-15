@@ -34,39 +34,44 @@ require_module_spec_helper
 module Storages
   module Adapters
     module Providers
-      module OneDrive
+      module SharePoint
         module Queries
           RSpec.describe OpenFileLinkQuery, :vcr, :webmock do
             let(:user) { create(:user) }
-            let(:storage) { create(:one_drive_sandbox_storage, oauth_client_token_user: user) }
-            let(:auth_strategy) { Registry.resolve("one_drive.authentication.user_bound").call(user, storage) }
+            let(:storage) { create(:share_point_storage, :sandbox, oauth_client_token_user: user) }
+            let(:auth_strategy) { Registry.resolve("share_point.authentication.user_bound").call(user, storage) }
+            let(:drive_id) { "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY87vnZ6fgfvQanZHX-XCAyw" }
+            let(:separator) { SharePointStorage::IDENTIFIER_SEPARATOR }
 
             it_behaves_like "adapter open_file_link_query: basic query setup"
 
             context "with outbound requests successful" do
-              context "with open location flag not set", vcr: "one_drive/open_file_link_query_success" do
-                let(:file_id) { "01AZJL5PJTICED3C5YSVAY6NWTBNA2XERU" }
+              context "with open location flag not set", vcr: "share_point/open_file_link_query_success" do
+                let(:file_id) { "#{drive_id}#{separator}01ANJ53WYLXAJW5PXSCJB2CFCD42UPDKMI" }
                 let(:input_data) { Input::OpenFileLink.build(file_id:).value! }
-                let(:open_file_link) do
-                  "https://finn.sharepoint.com/sites/openprojectfilestoragetests/_layouts/15/Doc.aspx" \
-                    "?sourcedoc=%7B3D884033-B88B-4195-8F36-D30B41AB9234%7D&file=Document.docx" \
-                    "&action=default&mobileredirect=true"
-                end
+                let(:open_file_link) { "https://ymt6d.sharepoint.com/sites/OPTest/Shared%20Documents/Folder" }
 
                 it_behaves_like "adapter open_file_link_query: successful link response"
               end
 
-              context "with open location flag set", vcr: "one_drive/open_file_link_location_query_success" do
-                let(:file_id) { "01AZJL5PJTICED3C5YSVAY6NWTBNA2XERU" }
+              context "with open location flag set", vcr: "share_point/open_file_link_location_query_success" do
+                let(:file_id) { "#{drive_id}#{separator}01ANJ53WYLXAJW5PXSCJB2CFCD42UPDKMI" }
                 let(:input_data) { Input::OpenFileLink.build(file_id:, open_location: true).value! }
-                let(:open_file_link) { "https://finn.sharepoint.com/sites/openprojectfilestoragetests/VCR/Folder" }
+                let(:open_file_link) { "https://ymt6d.sharepoint.com/sites/OPTest/Shared%20Documents" }
 
                 it_behaves_like "adapter open_file_link_query: successful link response"
+
+                context "if file id already points at root element",
+                        vcr: "share_point/open_file_link_location_on_root_query_success" do
+                  let(:file_id) { "#{drive_id}#{separator}01ANJ53W56Y2GOVW7725BZO354PWSELRRZ" }
+
+                  it_behaves_like "adapter open_file_link_query: successful link response"
+                end
               end
             end
 
-            context "with not existent file id", vcr: "one_drive/open_file_link_query_missing_file_id" do
-              let(:file_id) { "iamnotexistent" }
+            context "with not existent file id", vcr: "share_point/open_file_link_query_not_found" do
+              let(:file_id) { "#{drive_id}#{separator}YouShallNotPass" }
               let(:input_data) { Input::OpenFileLink.build(file_id:).value! }
               let(:error_source) { Internal::DriveItemQuery }
 

@@ -73,6 +73,7 @@ module Storages
             register(:file_info, Queries::FileInfoQuery)
             register(:files_info, Queries::FilesInfoQuery)
             register(:files, Queries::FilesQuery)
+            register(:open_file_link, Queries::OpenFileLinkQuery)
             register(:open_storage, Queries::OpenStorageQuery)
             register(:upload_link, Queries::UploadLinkQuery)
             register(:user, OneDrive::Queries::UserQuery)

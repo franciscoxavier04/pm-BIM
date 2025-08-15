@@ -23,43 +23,42 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
-require_module_spec_helper
-
 module Storages
   module Adapters
     module Providers
-      module Nextcloud
+      module SharePoint
         module Queries
-          RSpec.describe OpenFileLinkQuery do
-            let(:storage) { create(:nextcloud_storage, host: "https://example.com") }
-            let(:auth_strategy) { Registry["nextcloud.authentication.userless"].call }
-            let(:file_id) { "1337" }
-            let(:open_location) { false }
-            let(:input_data) { Input::OpenFileLink.build(file_id:, open_location:).value! }
-            let(:open_file_link) { "#{storage.host}/index.php/f/#{file_id}?openfile=#{open_location ? '0' : '1'}" }
+          class OpenFileLinkQuery < Base
+            def call(auth_strategy:, input_data:)
+              Authentication[auth_strategy].call(storage: @storage) do |http|
+                split_identifier(input_data.file_id) => { drive_id:, location: item_id }
 
-            it_behaves_like "adapter open_file_link_query: basic query setup"
-
-            context "with open location flag not set" do
-              it_behaves_like "adapter open_file_link_query: successful link response"
+                if input_data.open_location
+                  request_parent_id(http, drive_id, item_id).bind { request_web_url(http, drive_id, it) }
+                else
+                  request_web_url(http, drive_id, item_id)
+                end
+              end
             end
 
-            context "with open location flag set" do
-              let(:open_location) { true }
+            private
 
-              it_behaves_like "adapter open_file_link_query: successful link response"
+            def drive_item_query
+              @drive_item_query ||= Internal::DriveItemQuery.new(@storage)
             end
 
-            context "with a storage with host url with a sub path" do
-              let(:storage) { create(:nextcloud_storage, host: "https://example.com/html") }
+            def request_web_url(http, drive_id, item_id)
+              drive_item_query.call(http:, drive_id:, item_id:, fields: %w[webUrl]).fmap { it[:webUrl] }
+            end
 
-              it_behaves_like "adapter open_file_link_query: successful link response"
+            def request_parent_id(http, drive_id, item_id)
+              drive_item_query.call(http:, drive_id:, item_id:, fields: %w[parentReference])
+                              .fmap { Peripherals::ParentFolder.new(it.dig(:parentReference, :id) || "/") }
             end
           end
         end
