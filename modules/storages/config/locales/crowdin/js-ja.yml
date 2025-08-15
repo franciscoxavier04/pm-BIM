@@ -82,7 +82,7 @@ ja:
         link_uploaded_file_error: >
           An error occurred linking the recently uploaded file '%{fileName}' to the work package %{workPackageId}.
         tooltip:
-          not_logged_in: "Please log in to the storage to access this file."
+          not_logged_in: "このファイルにアクセスするには、ストレージにログインしてください。"
           view_not_allowed: "このファイルを閲覧する権限がありません。"
           not_found: "This file cannot be found."
         already_linked_file: "This file is already linked to this work package."
