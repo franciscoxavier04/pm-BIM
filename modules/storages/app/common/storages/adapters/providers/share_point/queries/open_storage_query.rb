@@ -33,35 +33,9 @@ module Storages
     module Providers
       module SharePoint
         module Queries
-          class FilesInfoQuery < Base
-            def call(auth_strategy:, input_data:)
-              with_tagged_logger do
-                info "Retrieving file information for #{input_data.file_ids.join(', ')}"
-
-                infos = input_data.file_ids.map do |file_id|
-                  Input::FileInfo.build(file_id:).bind do |file_data|
-                    FileInfoQuery.call(storage: @storage, auth_strategy:, input_data: file_data).value_or do |failure|
-                      return failure if failure.source.module_parent == Authentication
-
-                      wrap_storage_file_error(file_data.file_id, failure)
-                    end
-                  end
-                end
-
-                Success(infos)
-              end
-            end
-
-            private
-
-            def wrap_storage_file_error(file_id, query_result)
-              split_identifier(file_id) => { location: }
-
-              Results::StorageFileInfo.new(
-                id: location.path,
-                status: query_result.code,
-                status_code: Rack::Utils::SYMBOL_TO_STATUS_CODE[query_result.code] || 500
-              )
+          class OpenStorageQuery < Base
+            def call(**)
+              Success(UrlBuilder.url(URI(@storage.host)))
             end
           end
         end
