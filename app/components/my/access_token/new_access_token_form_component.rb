@@ -51,6 +51,15 @@ module My
         else raise ArgumentError, "Unknown token type: #{token_type}"
         end
       end
+
+      def show_warning?
+        case token
+        when Token::API then true
+        when Token::ICalMeeting then false
+        else
+          raise ArgumentError, "Unknown token type: #{token_type}"
+        end
+      end
     end
   end
 end

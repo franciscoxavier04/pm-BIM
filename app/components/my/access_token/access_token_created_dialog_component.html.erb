@@ -31,16 +31,24 @@ See COPYRIGHT and LICENSE files for more details.
   render(
     Primer::OpenProject::FeedbackDialog.new(
       id:,
-      title: I18n.t("my.access_token.create_dialog.title"),
-      size: :large
+      title: I18n.t(:title, scope: i18n_scope),
+      size: :xlarge
     )
   ) do |dialog|
     dialog.with_feedback_message do |message|
-      message.with_heading(tag: :h2) { I18n.t("my.access_token.create_dialog.header", type: token.model_name.human) }
+      message.with_heading(tag: :h2) { I18n.t(:title, scope: i18n_scope) }
     end
 
     dialog.with_additional_details do
       flex_layout do |flex|
+        if I18n.t(:body, scope: i18n_scope, default: "").present?
+          flex.with_row(mb: 3) do
+            render(Primer::Beta::Text.new(tag: :p)) do
+              I18n.t(:body, scope: i18n_scope)
+            end
+          end
+        end
+
         flex.with_row(mb: 2) do
           render(Primer::OpenProject::InputGroup.new) do |input_group|
             input_group.with_text_input(
@@ -59,7 +67,7 @@ See COPYRIGHT and LICENSE files for more details.
         end
         flex.with_row do
           render(Primer::Alpha::Banner.new(scheme: :warning, icon: :alert)) do
-            I18n.t("my.access_token.create_dialog.warning")
+            I18n.t(:warning, scope: i18n_scope)
           end
         end
       end

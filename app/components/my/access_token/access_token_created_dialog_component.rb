@@ -57,6 +57,14 @@ module My
           raise ArgumentError, "Unknown token type: #{token.class}"
         end
       end
+
+      def i18n_scope
+        case token
+        when Token::API then "my.access_token.created_dialog.api"
+        when Token::ICalMeeting then "my.access_token.created_dialog.ical_meeting"
+        else raise ArgumentError, "Unknown token type: #{token_type}"
+        end
+      end
     end
   end
 end
