@@ -26,21 +26,42 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-// Initialize everything after DOM is loaded
-jQuery(function ($) {
-  var defaultDialogColor; // this var is used as cache for some computation in
-                          // the inner function. -> Do not move to where it
-                          // actually belongs!
+// @ts-expect-error TS(2304): Cannot find name 'RB'.
+RB.Burndown = (function ($) {
+  // @ts-expect-error TS(2304): Cannot find name 'RB'.
+  return RB.Object.create({
 
-  RB.Factory.initialize(RB.Taskboard, $('#taskboard'));
+    initialize(el:any) {
+      this.$ = $(el);
+      this.el = el;
 
-  $('#assigned_to_id_options').change(function () {
-    var selected = $(this).children(':selected');
-    if (!defaultDialogColor) {
-      // fetch the color from the task rendered as a prototype/template for new tasks
-      defaultDialogColor = $('#work_package_').css('background-color');
-    }
-    $(this).parents('.ui-dialog').css('background-color', selected.attr('color') || defaultDialogColor);
-    $(this).parents('.ui-dialog').colorcontrast();
+      // Associate this object with the element for later retrieval
+      this.$.data('this', this);
+
+      // Observe menu items
+      this.$.click(this.show);
+    },
+
+    setSprintId(sprintId:any) {
+      this.sprintId = sprintId;
+    },
+
+    getSprintId() {
+      return this.sprintId;
+    },
+
+    show(e:any) {
+      e.preventDefault();
+
+      if ($('#charts').length === 0) {
+        $('<div id="charts"></div>').appendTo('body');
+      }
+      // @ts-expect-error TS(2304): Cannot find name 'RB'.
+      $('#charts').html(`<div class='loading'>${RB.i18n.generating_graph}</div>`);
+
+      // @ts-expect-error TS(2304): Cannot find name 'RB'.
+      const url = RB.urlFor('show_burndown_chart', { sprint_id: $(this).data('this').sprintId, project_id: RB.constants.project_id });
+      window.open(url);
+    },
   });
-});
+}(jQuery));

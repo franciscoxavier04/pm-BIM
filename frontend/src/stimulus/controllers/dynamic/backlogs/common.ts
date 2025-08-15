@@ -26,25 +26,34 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
+import 'jquery.cookie';
+
+// @ts-expect-error TS(2339): Property 'RB' does not exist on type 'Window & typ... Remove this comment to see the full error message
 if (window.RB === null || window.RB === undefined) {
+  // @ts-expect-error TS(2339): Property 'RB' does not exist on type 'Window & typ... Remove this comment to see the full error message
   window.RB = {};
 }
 
-
 (function ($) {
-  var object, Factory, Dialog, UserPreferences,
-      ajax;
+  let object:any;
+  let Factory;
+  let Dialog;
+  let UserPreferences;
 
   object = {
     // Douglas Crockford's technique for object extension
     // http://javascript.crockford.com/prototypal.html
-    create: function () {
-      var obj, i, methods, methodName;
+    create() {
+      let obj;
+      let i;
+      let methods;
+      let methodName;
 
       function F() {
       }
 
       F.prototype = arguments[0];
+      // @ts-expect-error TS(7009): 'new' expression, whose target lacks a construct s... Remove this comment to see the full error message
       obj = new F();
 
       // Add all the other arguments as mixins that
@@ -60,34 +69,33 @@ if (window.RB === null || window.RB === undefined) {
         }
       }
       return obj;
-    }
+    },
   };
-
 
   // Object factory for chiliproject_backlogs
   Factory = object.create({
 
-    initialize: function (objType, el) {
-      var obj;
+    initialize(objType:any, el:any) {
+      let obj;
 
       obj = object.create(objType);
       obj.initialize(el);
       return obj;
-    }
+    },
 
   });
 
   // Utilities
   Dialog = object.create({
-    msg: function (msg) {
-      var dialog, baseClasses;
+    msg(msg:any) {
+      let dialog;
+      let baseClasses;
 
       baseClasses = 'ui-button ui-widget ui-state-default ui-corner-all';
 
       if ($('#msgBox').length === 0) {
         dialog = $('<div id="msgBox"></div>').appendTo('body');
-      }
-      else {
+      } else {
         dialog = $('#msgBox');
       }
 
@@ -98,64 +106,35 @@ if (window.RB === null || window.RB === undefined) {
         {
           text: 'OK',
           class: 'button -primary',
-          click: function () {
-            $(this).dialog("close");
-          }
+          click() {
+            $(this).dialog('close');
+          },
         }],
-        modal: true
+        modal: true,
       });
       $('.button').removeClass(baseClasses);
       $('.ui-icon-closethick').prop('title', 'close');
-    }
+    },
   });
-
-  ajax = (function () {
-    var ajaxQueue, ajaxOngoing,
-        processAjaxQueue;
-
-    ajaxQueue = [];
-    ajaxOngoing = false;
-
-    processAjaxQueue = function () {
-      var options = ajaxQueue.shift();
-
-      if (options !== null && options !== undefined) {
-        ajaxOngoing = true;
-        $.ajax(options);
-      }
-    };
-
-    // Process outstanding entries in the ajax queue whenever a ajax request
-    // finishes.
-    $(document).ajaxComplete(function (event, xhr, settings) {
-      ajaxOngoing = false;
-      processAjaxQueue();
-    });
-
-    return function (options) {
-      ajaxQueue.push(options);
-      if (!ajaxOngoing) {
-        processAjaxQueue();
-      }
-    };
-  }());
 
   // Abstract the user preference from the rest of the RB objects
   // so that we can change the underlying implementation as needed
   UserPreferences = object.create({
-    get: function (key) {
+    get(key:any) {
       return $.cookie(key);
     },
 
-    set: function (key, value) {
+    set(key:any, value:any) {
       $.cookie(key, value, { expires: 365 * 10 });
-    }
+    },
   });
 
+  // @ts-expect-error TS(2304): Cannot find name 'RB'.
   RB.Object = object;
+  // @ts-expect-error TS(2304): Cannot find name 'RB'.
   RB.Factory = Factory;
+  // @ts-expect-error TS(2304): Cannot find name 'RB'.
   RB.Dialog = Dialog;
+  // @ts-expect-error TS(2304): Cannot find name 'RB'.
   RB.UserPreferences = UserPreferences;
-  RB.ajax = ajax;
-
 }(jQuery));

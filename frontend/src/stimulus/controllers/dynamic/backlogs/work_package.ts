@@ -26,52 +26,32 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-/***************************************
-  SPRINT
+/**************************************
+  WORK PACKAGE
 ***************************************/
+// @ts-expect-error TS(2304): Cannot find name 'RB'.
+RB.WorkPackage = (function ($) {
+  // @ts-expect-error TS(2304): Cannot find name 'RB'.
+  return RB.Object.create(RB.Model, {
 
-RB.Sprint = (function ($) {
-  return RB.Object.create(RB.Model, RB.EditableInplace, {
-
-    initialize: function (el) {
+    initialize(el:any) {
       this.$ = $(el);
       this.el = el;
-
-      // Associate this object with the element for later retrieval
-      this.$.data('this', this);
-      this.$.on('mouseup', '.editable', this.handleClick);
     },
 
-    beforeSave: function () {
+    beforeSaveDragResult() {
       // Do nothing
     },
 
-    getType: function () {
-      return "Sprint";
+    getType() {
+      return 'WorkPackage';
     },
 
-    markIfClosed: function () {
-      // Do nothing
+    saveDragResult() {
+      this.beforeSaveDragResult();
+      if (!this.$.hasClass('editing')) {
+        this.saveEdits();
+      }
     },
-
-    refreshed: function () {
-      // Do nothing
-    },
-
-    saveDirectives: function () {
-      const wrapper = this.$;
-      const editor = wrapper.find('.editor');
-      const data = editor.serialize() + "&_method=put";
-      const url = RB.urlFor('update_sprint', { id: this.getID() });
-
-      return {
-        url : url,
-        data: data
-      };
-    },
-
-    beforeSaveDragResult: function () {
-      // Do nothing
-    }
   });
 }(jQuery));

@@ -26,17 +26,23 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-// Initialize the backlogs after DOM is loaded
-jQuery(function ($) {
+// Initialize everything after DOM is loaded
+jQuery(($) => {
+  let defaultDialogColor:any; // this var is used as cache for some computation in
+                          // the inner function. -> Do not move to where it
+                          // actually belongs!
 
-  // Initialize each backlog
-  $('.backlog').each(function (index) {
-    // 'this' refers to an element with class="backlog"
-    RB.Factory.initialize(RB.Backlog, this);
-  });
+  // @ts-expect-error TS(2304): Cannot find name 'RB'.
+  RB.Factory.initialize(RB.Taskboard, $('#taskboard'));
 
-  $('.backlog .toggler').on('click',function(){
-    $(this).toggleClass('closed icon-arrow-up1 icon-arrow-down1');
-    $(this).parents('.backlog').find('ul.stories').toggleClass('closed');
+  $('#assigned_to_id_options').change(function () {
+    const selected = $(this).children(':selected');
+    if (!defaultDialogColor) {
+      // fetch the color from the task rendered as a prototype/template for new tasks
+      defaultDialogColor = $('#work_package_').css('background-color');
+    }
+    $(this).parents('.ui-dialog').css('background-color', selected.attr('color') || defaultDialogColor);
+    // @ts-expect-error TS(2339): Property 'colorcontrast' does not exist on type 'J... Remove this comment to see the full error message
+    $(this).parents('.ui-dialog').colorcontrast();
   });
 });
