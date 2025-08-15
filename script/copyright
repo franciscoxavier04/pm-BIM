@@ -1,0 +1,578 @@
+#!/bin/bash
+
+#-- copyright
+# OpenProject is an open source project management software.
+# Copyright (C) the OpenProject GmbH
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License version 3.
+#
+# OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+# Copyright (C) 2006-2013 Jean-Philippe Lang
+# Copyright (C) 2010-2013 the ChiliProject Team
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
+# See COPYRIGHT and LICENSE files for more details.
+#++
+
+# Copyright checking script - replacement for rake copyright tasks
+# Works like rubocop: either on all fitting files or only on specified files
+# By default shows missing/incorrect copyright, with --fix option to auto-fix
+
+set -euo pipefail
+
+# Script configuration
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+COPYRIGHT_FILE="$ROOT_DIR/COPYRIGHT_short"
+
+# Default options
+FIX_MODE=false
+CHECK_MODE=true
+VERBOSE=false
+EXIT_CODE=0
+
+# Global excluded patterns (converted from rake task)
+EXCLUDED_GLOBS=(
+    "frontend/node_modules/*"
+    "tmp/*"
+    "modules/gitlab_integration/*"
+)
+
+# File type configurations
+declare -A FILE_EXTENSIONS
+declare -A COMMENT_FORMATS
+declare -A COPYRIGHT_REGEXES
+declare -A MISSING_COPYRIGHT_REGEXES
+
+# Initialize file type mappings
+setup_file_types() {
+    # Ruby-like files
+    FILE_EXTENSIONS[ruby]="rb rake yml yml.example rb.example rjs feature"
+    FILE_EXTENSIONS[special_ruby]="Gemfile Rakefile config.ru .gitignore"
+    
+    # JavaScript/TypeScript-like files  
+    FILE_EXTENSIONS[js]="js ts sass scss"
+    
+    # CSS files
+    FILE_EXTENSIONS[css]="css"
+    
+    # ERB files
+    FILE_EXTENSIONS[erb]="html.erb js.erb css.erb json.erb text.erb"
+    
+    # SQL files
+    FILE_EXTENSIONS[sql]="sql"
+    
+    # Other files
+    FILE_EXTENSIONS[rdoc]="rdoc"
+    FILE_EXTENSIONS[md]="md"
+    FILE_EXTENSIONS[atom_builder]="atom.builder"
+    
+    # Comment format patterns
+    COMMENT_FORMATS[ruby]="#"
+    COMMENT_FORMATS[js]="//"
+    COMMENT_FORMATS[css]="/* */"
+    COMMENT_FORMATS[erb]="<%# #%>"
+    COMMENT_FORMATS[sql]="-- "
+    COMMENT_FORMATS[rdoc]=" "
+    COMMENT_FORMATS[md]="<!-- -->"
+}
+
+# Show usage information
+show_usage() {
+    cat << EOF
+Usage: $0 [OPTIONS] [FILES...]
+
+Copyright checking and fixing script for OpenProject files.
+
+OPTIONS:
+    --fix           Fix copyright headers automatically
+    --check         Check for missing/incorrect copyright (default)
+    --verbose, -v   Show verbose output
+    --help, -h      Show this help
+
+EXAMPLES:
+    $0                          # Check all files for copyright issues
+    $0 --fix                    # Fix copyright headers in all files
+    $0 app/models/user.rb       # Check specific file
+    $0 --fix app/models/        # Fix copyright headers in specific directory
+    $0 --verbose                # Show detailed output during checking
+
+SUPPORTED FILE TYPES:
+    Ruby: .rb, .rake, .yml, Gemfile, Rakefile, etc.
+    JavaScript/TypeScript: .js, .ts, .sass, .scss
+    CSS: .css
+    ERB: .html.erb, .js.erb, .css.erb, etc.
+    SQL: .sql
+    Markdown: .md
+    Others: .rdoc, .atom.builder
+
+EOF
+}
+
+# Parse command line arguments
+parse_args() {
+    FILES=()
+    
+    while [[ $# -gt 0 ]]; do
+        case $1 in
+            --fix)
+                FIX_MODE=true
+                CHECK_MODE=false
+                shift
+                ;;
+            --check)
+                CHECK_MODE=true
+                FIX_MODE=false
+                shift
+                ;;
+            --verbose|-v)
+                VERBOSE=true
+                shift
+                ;;
+            --help|-h)
+                show_usage
+                exit 0
+                ;;
+            -*)
+                echo "Unknown option: $1" >&2
+                show_usage >&2
+                exit 1
+                ;;
+            *)
+                FILES+=("$1")
+                shift
+                ;;
+        esac
+    done
+}
+
+# Check if file should be excluded
+is_excluded() {
+    local file="$1"
+    
+    # Remove leading ./
+    file="${file#./}"
+    
+    # Check global excluded patterns
+    for pattern in "${EXCLUDED_GLOBS[@]}"; do
+        case "$file" in
+            $pattern) return 0 ;;
+        esac
+    done
+    
+    # Additional exclusions for specific file types
+    case "$file" in
+        lib_static/plugins/acts_as_tree/*) return 0 ;;
+        lib_static/plugins/rfpdf/*) return 0 ;;
+        lib_static/plugins/verification/*) return 0 ;;
+        lib/chronic_duration.rb) return 0 ;;
+        config/locales/crowdin/*.yml) return 0 ;;
+        config/locales/generated/*.yml) return 0 ;;
+        modules/*/config/locales/crowdin/*.yml) return 0 ;;
+        README.rdoc) return 0 ;;
+        LICENSE) return 0 ;;
+        COPYRIGHT) return 0 ;;
+        COPYRIGHT_short) return 0 ;;
+        COPYRIGHT_short.md) return 0 ;;
+        # Exclude spec files and test fixtures that don't need copyright
+        spec/fixtures/*) return 0 ;;
+        spec/support/fixtures/*) return 0 ;;
+        # Exclude db files that typically don't need copyright
+        db/migrate/*) return 0 ;;
+        db/schema.rb) return 0 ;;
+        db/data_schema.rb) return 0 ;;
+        db/seeds.rb) return 0 ;;
+        # Exclude vendor and third-party code
+        vendor/*) return 0 ;;
+        lib_static/plugins/*) return 0 ;;
+        # Exclude config files that don't need copyright
+        config/database.yml*) return 0 ;;
+        config/configuration.yml*) return 0 ;;
+        config/settings.yml) return 0 ;;
+        # Exclude generated or temporary files
+        public/assets/*) return 0 ;;
+        log/*) return 0 ;;
+        # Only exclude specific production-like files in db/
+        db/production.rb) return 0 ;;
+        db/staging.rb) return 0 ;;
+        db/development.rb) return 0 ;;
+        db/test.rb) return 0 ;;
+    esac
+    
+    return 1
+}
+
+# Determine comment format for file
+get_comment_format() {
+    local file="$1"
+    local ext="${file##*.}"
+    
+    case "$ext" in
+        rb|rake|yml|rjs|feature)
+            echo "ruby"
+            ;;
+        js|ts|sass|scss)
+            echo "js"
+            ;;
+        css)
+            echo "css"
+            ;;
+        erb)
+            echo "erb"
+            ;;
+        sql)
+            echo "sql"
+            ;;
+        rdoc)
+            echo "rdoc"
+            ;;
+        md|html)
+            echo "md"
+            ;;
+        builder)
+            echo "ruby"
+            ;;
+        *)
+            # Check special files by name
+            case "$(basename "$file")" in
+                Gemfile|Rakefile|config.ru|.gitignore)
+                    echo "ruby"
+                    ;;
+                *)
+                    echo "unknown"
+                    ;;
+            esac
+            ;;
+    esac
+}
+
+# Generate copyright header for given format
+generate_copyright() {
+    local format="$1"
+    local copyright_text
+    
+    if [[ ! -f "$COPYRIGHT_FILE" ]]; then
+        echo "Error: Copyright file not found: $COPYRIGHT_FILE" >&2
+        exit 1
+    fi
+    
+    copyright_text=$(cat "$COPYRIGHT_FILE")
+    
+    case "$format" in
+        ruby)
+            echo "#-- copyright"
+            echo "$copyright_text" | sed 's/^/# /' | sed 's/# $/#/'
+            echo "#++"
+            ;;
+        js)
+            echo "//-- copyright"
+            echo "$copyright_text" | sed 's/^/\/\/ /' | sed 's/\/\/ $/\/\//'
+            echo "//++"
+            ;;
+        css)
+            echo "/*-- copyright"
+            echo "$copyright_text"
+            echo "++*/"
+            ;;
+        erb)
+            echo "<%#-- copyright"
+            echo "$copyright_text"
+            echo "++#%>"
+            ;;
+        sql)
+            echo "-- -- copyright"
+            echo "$copyright_text" | sed 's/^/-- /' | sed 's/-- $/--/'
+            echo "-- ++"
+            ;;
+        rdoc)
+            echo "----------"
+            echo "==== copyright"
+            echo
+            echo "$copyright_text"
+            echo "++"
+            echo "----------"
+            ;;
+        md)
+            echo "<!---- copyright"
+            echo "$copyright_text"
+            echo "++-->"
+            ;;
+        *)
+            echo "Error: Unsupported format: $format" >&2
+            return 1
+            ;;
+    esac
+}
+
+# Check if file has correct copyright header
+check_copyright() {
+    local file="$1"
+    local format="$2"
+    local content
+    
+    if [[ ! -f "$file" ]]; then
+        return 1
+    fi
+    
+    content=$(cat "$file")
+    
+    case "$format" in
+        ruby)
+            if echo "$content" | grep -q "^#-- copyright"; then
+                return 0
+            fi
+            ;;
+        js)
+            if echo "$content" | grep -q "^//-- copyright"; then
+                return 0
+            fi
+            ;;
+        css)
+            if echo "$content" | grep -q "/\*-- copyright"; then
+                return 0
+            fi
+            ;;
+        erb)
+            if echo "$content" | grep -q "<%#-- copyright"; then
+                return 0
+            fi
+            ;;
+        sql)
+            if echo "$content" | grep -q "^-- -- copyright"; then
+                return 0
+            fi
+            ;;
+        rdoc)
+            if echo "$content" | grep -q "==== copyright"; then
+                return 0
+            fi
+            ;;
+        md)
+            if echo "$content" | grep -q "<!---- copyright"; then
+                return 0
+            fi
+            ;;
+    esac
+    
+    return 1
+}
+
+# Fix copyright header in file
+fix_copyright() {
+    local file="$1"
+    local format="$2"
+    local copyright_header
+    local content
+    local temp_file
+    
+    copyright_header=$(generate_copyright "$format")
+    content=$(cat "$file")
+    temp_file=$(mktemp)
+    
+    # Check if file already has some form of copyright
+    if echo "$content" | grep -q "OpenProject is a fork of ChiliProject"; then
+        if [[ "$VERBOSE" == true ]]; then
+            echo "$file does not match regexp, but seems to have a copyright header!"
+        fi
+        return 0
+    fi
+    
+    case "$format" in
+        ruby)
+            # Handle shebang and frozen_string_literal
+            if echo "$content" | head -1 | grep -q "^#!/"; then
+                # Has shebang
+                shebang=$(echo "$content" | head -1)
+                rest=$(echo "$content" | tail -n +2)
+                
+                if echo "$rest" | head -1 | grep -q "frozen_string_literal"; then
+                    frozen_line=$(echo "$rest" | head -1)
+                    remaining=$(echo "$rest" | tail -n +2)
+                    
+                    {
+                        echo "$shebang"
+                        echo
+                        echo "$frozen_line"
+                        echo
+                        echo "$copyright_header"
+                        echo
+                        echo "$remaining"
+                    } > "$temp_file"
+                else
+                    {
+                        echo "$shebang"
+                        echo
+                        echo "$copyright_header"
+                        echo
+                        echo "$rest"
+                    } > "$temp_file"
+                fi
+            elif echo "$content" | head -1 | grep -q "frozen_string_literal"; then
+                # Has frozen_string_literal but no shebang
+                frozen_line=$(echo "$content" | head -1)
+                rest=$(echo "$content" | tail -n +2)
+                
+                {
+                    echo "$frozen_line"
+                    echo
+                    echo "$copyright_header"
+                    echo
+                    echo "$rest"
+                } > "$temp_file"
+            else
+                # No shebang or frozen_string_literal
+                {
+                    echo "$copyright_header"
+                    echo
+                    echo "$content"
+                } > "$temp_file"
+            fi
+            ;;
+        *)
+            # For other formats, just prepend copyright
+            {
+                echo "$copyright_header"
+                echo
+                echo "$content"
+            } > "$temp_file"
+            ;;
+    esac
+    
+    # Replace original file
+    mv "$temp_file" "$file"
+}
+
+# Process a single file
+process_file() {
+    local file="$1"
+    local format
+    
+    # Skip if excluded
+    if is_excluded "$file"; then
+        return 0
+    fi
+    
+    # Determine file format
+    format=$(get_comment_format "$file")
+    if [[ "$format" == "unknown" ]]; then
+        if [[ "$VERBOSE" == true ]]; then
+            echo "Skipping $file: unknown format"
+        fi
+        return 0
+    fi
+    
+    # Check copyright
+    if check_copyright "$file" "$format"; then
+        if [[ "$VERBOSE" == true ]]; then
+            echo "OK: $file"
+        fi
+    else
+        if [[ "$FIX_MODE" == true ]]; then
+            if [[ "$VERBOSE" == true ]]; then
+                echo "Fixing: $file"
+            fi
+            fix_copyright "$file" "$format"
+        else
+            echo "$file does not match regexp. Missing copyright notice?"
+            EXIT_CODE=1
+        fi
+    fi
+}
+
+# Find files to process
+find_files() {
+    local search_paths=("${FILES[@]}")
+    
+    # If no files specified, search current directory
+    if [[ ${#FILES[@]} -eq 0 ]]; then
+        search_paths=(".")
+    fi
+    
+    for path in "${search_paths[@]}"; do
+        if [[ -f "$path" ]]; then
+            # Single file
+            echo "$path"
+        elif [[ -d "$path" ]]; then
+            # Directory - find all relevant files
+            find "$path" -type f \( \
+                -name "*.rb" -o \
+                -name "*.rake" -o \
+                -name "*.yml" -o \
+                -name "*.yml.example" -o \
+                -name "*.rb.example" -o \
+                -name "*.rjs" -o \
+                -name "*.feature" -o \
+                -name "*.js" -o \
+                -name "*.ts" -o \
+                -name "*.sass" -o \
+                -name "*.scss" -o \
+                -name "*.css" -o \
+                -name "*.css.erb" -o \
+                -name "*.html.erb" -o \
+                -name "*.js.erb" -o \
+                -name "*.json.erb" -o \
+                -name "*.text.erb" -o \
+                -name "*.sql" -o \
+                -name "*.rdoc" -o \
+                -name "*.md" -o \
+                -name "*.atom.builder" -o \
+                -name "Gemfile" -o \
+                -name "Rakefile" -o \
+                -name "config.ru" -o \
+                -name ".gitignore" \
+            \) | sort
+        else
+            echo "Warning: $path not found" >&2
+        fi
+    done
+}
+
+# Main function
+main() {
+    setup_file_types
+    parse_args "$@"
+    
+    # Change to root directory
+    cd "$ROOT_DIR"
+    
+    if [[ "$VERBOSE" == true ]]; then
+        if [[ "$FIX_MODE" == true ]]; then
+            echo "Running in fix mode..."
+        else
+            echo "Running in check mode..."
+        fi
+        echo "Root directory: $ROOT_DIR"
+        echo "Copyright file: $COPYRIGHT_FILE"
+        echo
+    fi
+    
+    # Process all files
+    while IFS= read -r file; do
+        [[ -n "$file" ]] && process_file "$file"
+    done < <(find_files)
+    
+    if [[ "$CHECK_MODE" == true && "$EXIT_CODE" -eq 0 ]]; then
+        if [[ "$VERBOSE" == true ]]; then
+            echo "All files have correct copyright headers!"
+        fi
+    fi
+    
+    exit $EXIT_CODE
+}
+
+# Run main function
+main "$@"
