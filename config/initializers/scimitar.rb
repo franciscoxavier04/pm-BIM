@@ -31,21 +31,41 @@
 Rails.application.config.to_prepare do
   Scimitar.service_provider_configuration = Scimitar::ServiceProviderConfiguration.new(
     patch: Scimitar::Supportable.supported,
-    authenticationSchemes: ScimitarSchemaExtension::AUTHENTICATION_SCHEMES
+    authenticationSchemes: OpenProjectScimitar::AUTHENTICATION_SCHEMES
   )
   Scimitar.engine_configuration = Scimitar::EngineConfiguration.new(
-    application_controller_mixin: ScimV2::ScimControllerMixins::ApplicationControllerMixin
-  )
+    custom_authenticator: lambda do
+      if !EnterpriseToken.allows_to?(:scim_api) || !OpenProject::FeatureDecisions.scim_api_active?
+        return handle_scim_error(Scimitar::AuthenticationError.new)
+      end
 
-  Scimitar::ServiceProviderConfigurationsController.include(
-    ScimV2::ScimControllerMixins::ServiceProviderConfigurationControllerMixin
+      warden = request.env["warden"]
+      user = warden.authenticate(scope: :scim_v2)
+      if user == nil
+        if controller_path != "scimitar/service_provider_configurations" ||
+           # it means authorization credentials were provided in ways expexcted by OpenProject, but the credentials were wrong. So, no user found.
+           warden.winning_strategy.present?
+          throw(:warden)
+        else
+          render json: OpenProjectScimitar::LimitedServiceProviderConfiguration.new
+          return
+        end
+      else
+        User.current = user
+        # Only a ServiceAccount associated with a ScimClient can use SCIM Server API
+        unless User.current.respond_to?(:service) && User.current.service.is_a?(ScimClient)
+          return handle_scim_error(Scimitar::AuthenticationError.new)
+        end
+      end
+      true
+    end
   )
 
   Scimitar::Schema::User.singleton_class.class_eval do
-    prepend ScimitarSchemaExtension::User
+    prepend OpenProjectScimitar::User
   end
 
   Scimitar::Schema::Group.singleton_class.class_eval do
-    prepend ScimitarSchemaExtension::Group
+    prepend OpenProjectScimitar::Group
   end
 end
