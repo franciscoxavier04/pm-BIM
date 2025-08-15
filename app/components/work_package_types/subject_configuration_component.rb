@@ -75,9 +75,7 @@ module WorkPackageTypes
     end
 
     def supported_attributes
-      token_mapper = Patterns::TokenPropertyMapper.new
-      valid_tokens = token_mapper.all_tokens
-      suggestable_tokens = token_mapper.tokens_for_type(model).to_set
+      enabled, disabled = Patterns::TokenPropertyMapper.new.partitioned_tokens_for_type(model)
 
       result = {
         work_package: {
@@ -94,9 +92,8 @@ module WorkPackageTypes
         }
       }
 
-      valid_tokens.each do |token|
-        result.dig(token.context, :tokens) << token_to_hash(token, enabled: suggestable_tokens.include?(token))
-      end
+      enabled.each { |token| result.dig(token.context, :tokens) << token_to_hash(token, enabled: true) }
+      disabled.each { |token| result.dig(token.context, :tokens) << token_to_hash(token, enabled: false) }
 
       result
     end
