@@ -34,8 +34,10 @@ module My
       form do |new_access_token_form|
         new_access_token_form.text_field(
           name: :token_name,
+          autofocus: true,
+          autocomplete: "off",
           label: I18n.t(:name_label, scope: i18n_scope),
-          placeholder: I18n.t(:name_placeholder, scope: i18n_scope),
+          caption: I18n.t(:name_caption, scope: i18n_scope, default: ""),
           visually_hide_label: false,
           required: true
         )
