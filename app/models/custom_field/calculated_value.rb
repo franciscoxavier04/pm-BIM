@@ -50,6 +50,9 @@ module CustomField::CalculatedValue
     def affected_calculated_fields(changed_cf_ids)
       return [] if changed_cf_ids.empty?
 
+      # exclude ids that are not in the list
+      changed_cf_ids = where(id: changed_cf_ids).pluck(:id)
+
       to_check = field_format_calculated_value
 
       # include calculated value fields themselves
