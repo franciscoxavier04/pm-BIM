@@ -15,7 +15,7 @@ ru:
         client_id: Идентификатор клиента
         client_secret: Закрытый ключ клиента
         groups_claim: Groups claim
-        group_regexes: Patterns (regular expressions)
+        group_regexes: Шаблон (регулярное выражение)
         secret: Закрытый ключ
         scope: Масштаб
         sync_groups: Синхронизировать группы

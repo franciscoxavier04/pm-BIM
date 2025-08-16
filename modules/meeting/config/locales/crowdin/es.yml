@@ -244,26 +244,26 @@ es:
       your_meeting_export: "Se está exportando la reunión"
       minutes:
         footer_page_numbers: "P. %{current_page} of %{total_pages}"
-        author: "Author"
-        date: "Date"
-        time: "Time"
-        location: "Location"
-        title: "Minutes"
+        author: "Autor"
+        date: "Fecha"
+        time: "Hora"
+        location: "Ubicación"
+        title: "Minutos"
     export_pdf_dialog:
       title: Exportar PDF
       description: Genere un archivo PDF imprimible de esta reunión en el estado actual.
       templates:
         default:
-          label: Default
-          caption: The default template is suitable for most meetings and represent the current state.
+          label: Por defecto
+          caption: La plantilla por defecto es adecuada para la mayoría de las reuniones y representa el estado actual.
         minutes:
-          label: Minutes
-          caption: The minutes template is suitable for closed and archived meetings.
+          label: Minutos
+          caption: La plantilla de minutos es adecuada para reuniones cerradas y archivadas.
       first_page_header_left:
-        label: First page header left
-        caption: This text will appear on the first page at the left of the header.
+        label: Primera Página Encabezado izquierdo
+        caption: Este texto aparecerá en la primera página ala izquierda del encabezado.
       author:
-        label: Author
+        label: Autor
         caption: The author of the minutes will be displayed in the subtitle.
       include_participants:
         label: Incluir lista de participantes

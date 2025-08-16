@@ -277,25 +277,25 @@ ro:
         caption: A list containing the filenames of attachments will be appended at the end.
       include_backlog:
         label: Include restanțe
-        caption: Backlog elements are not normally considered part of a meeting occurrence but you can choose to include them.
+        caption: Elementele restante nu sunt considerate în mod normal ca făcând parte dintr-o întâlnire dar poți alege să le incluzi.
       include_outcomes:
         label: Include rezultatele agendei
-        caption: If your agenda outcomes contain confidential information, you can choose to not include them in the export.
+        caption: Dacă rezultatele agendei tale conțin informații confidențiale, poți alege să nu le incluzi în export.
       footer_text:
         label: Text subsol
         caption: Acest text va apărea pe fiecare pagină în centrul subsolului.
       submit_button: Descarcă
     notifications:
       sidepanel:
-        title: "Email calendar updates"
+        title: "Actualizări calendar prin e-mail"
         description:
           disabled: "Participants will not receive an email informing them of changes."
           enabled: "All participants will receive updated calendar invites via email informing them of changes."
-          change_via_template: "To change this, edit the series template."
+          change_via_template: "Pentru a schimba aceasta, editează șablonul seriei."
       dialog:
         title:
-          enable: "Enable email calendar updates?"
-          disable: "Disable email calendar updates?"
+          enable: "Activează actualizările calendarului prin e-mail?"
+          disable: "Dezactivează actualizările calendarului prin e-mail?"
         message:
           enable: >
             All participants will receive updated calendar invites via email every time there is a change to the meeting date, time, location or participants. Once enabled, an email will be sent out immediately to all participants.
