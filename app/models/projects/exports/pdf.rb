@@ -116,9 +116,10 @@ module Projects::Exports
       file = Tempfile.new(filename)
       pdf.render_file(file.path)
       @page_count += pdf.page_count
-      delete_all_resized_images
       file.close
       file
+    ensure
+      delete_all_resized_images
     end
 
     def write_after_pages!

@@ -158,7 +158,11 @@ module Projects::Exports::PDFExport
       value = format_attribute(project, value_name, :pdf)
       return nil if hide_empty_attributes? && value.blank?
 
-      value = make_link_href_cell(url_helpers.project_url(project), value) if value_name == :id
+      if value.is_a?(::Exports::Formatters::LinkFormatter)
+        value = get_cf_link_cell(value)
+      elsif value_name == :id
+        value = make_link_href_cell(url_helpers.project_url(project), value)
+      end
       [
         { content: caption }.merge(styles.project_attributes_table_label_cell),
         value || ""
