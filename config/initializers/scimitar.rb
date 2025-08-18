@@ -41,7 +41,7 @@ Rails.application.config.to_prepare do
 
       warden = request.env["warden"]
       user = warden.authenticate(scope: :scim_v2)
-      if user == nil
+      if user.nil?
         if controller_path != "scimitar/service_provider_configurations" ||
            # It means authorization credentials were provided in ways expected by OpenProject, but the credentials were wrong.
            # So, no user found.
