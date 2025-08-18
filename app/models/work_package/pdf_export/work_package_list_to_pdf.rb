@@ -83,6 +83,7 @@ class WorkPackage::PDFExport::WorkPackageListToPdf < WorkPackage::Exports::Query
   end
 
   def export!
+    puts "FOOBAR query: #{query.inspect}"
     file = render_work_packages query.results.work_packages
     success(file)
   rescue Prawn::Errors::CannotFit
