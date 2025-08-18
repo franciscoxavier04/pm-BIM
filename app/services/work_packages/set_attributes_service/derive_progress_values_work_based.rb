@@ -100,7 +100,7 @@ class WorkPackages::SetAttributesService
         self.work = remaining_work
       else
         set_hint(:estimated_hours, :derived)
-        self.work = work_from_percent_complete_and_remaining_work
+        self.work = calculate_work(remaining_work:, percent_complete:)
         skip_percent_complete_derivation!
       end
     end
@@ -130,7 +130,7 @@ class WorkPackages::SetAttributesService
         self.remaining_work = nil
       else
         set_hint(:remaining_hours, :derived)
-        self.remaining_work = remaining_work_from_percent_complete_and_work
+        self.remaining_work = calculate_remaining_work(work:, percent_complete:)
         skip_percent_complete_derivation!
       end
     end
@@ -147,33 +147,12 @@ class WorkPackages::SetAttributesService
         self.percent_complete = nil
       else
         set_hint(:done_ratio, :derived)
-        self.percent_complete = percent_complete_from_work_and_remaining_work
+        self.percent_complete = calculate_percent_complete(work:, remaining_work:)
       end
     end
 
     def skip_percent_complete_derivation!
       self.skip_percent_complete_derivation = true
-    end
-
-    def percent_complete_from_work_and_remaining_work
-      rounded_work = work.round(2)
-      rounded_remaining_work = remaining_work.round(2)
-      completed_work = rounded_work - rounded_remaining_work
-      completion_ratio = completed_work.to_f / rounded_work
-
-      percentage = (completion_ratio * 100)
-      case percentage
-      in 0 then 0
-      in 0..1 then 1
-      in 99...100 then 99
-      else
-        percentage.round
-      end
-    end
-
-    def work_from_percent_complete_and_remaining_work
-      remaining_percent_complete = 1.0 - (percent_complete / 100.0)
-      remaining_work / remaining_percent_complete
     end
 
     def percent_complete_unparsable?

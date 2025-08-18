@@ -32,6 +32,7 @@ module WorkPackages
   class BaseContract < ::ModelContract
     include ::Attachments::ValidateReplacements
     include AssignableValuesContract
+    include WorkPackages::SetAttributesService::ProgressValuesCalculations
 
     attribute :subject
     attribute :description
@@ -399,7 +400,7 @@ module WorkPackages
     def validate_percent_complete_matches_work_and_remaining_work
       return if percent_complete_derivation_unapplicable?
 
-      if !percent_complete_range_derived_from_work_and_remaining_work.cover?(percent_complete)
+      if !consistent_progress_values?(work:, remaining_work:, percent_complete:)
         errors.add(:done_ratio, :does_not_match_work_and_remaining_work)
       end
     end
@@ -479,15 +480,6 @@ module WorkPackages
       WorkPackage.status_based_mode? || # only applicable in work-based mode
         work_empty? || remaining_work_empty? || percent_complete_empty? || # only applicable if all 3 values are set
         work == 0 || percent_complete == 100 # only applicable if not in special cases leading to divisions by zero
-    end
-
-    def percent_complete_range_derived_from_work_and_remaining_work
-      work_done = work - remaining_work
-      percentage = (100 * work_done.to_f / work)
-
-      lower_bound = percentage.truncate
-      upper_bound = lower_bound + 1
-      lower_bound..upper_bound
     end
 
     def validate_no_reopen_on_closed_version
