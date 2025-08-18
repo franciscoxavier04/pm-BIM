@@ -353,6 +353,8 @@ ro:
       description_disabled: Admins will not receive updates by email when there are important updates.
       description_enabled: Admins will receive updates by email when there are important updates.
       error_could_not_be_saved: Email notification settings could not be saved. Please try again.
+      subscribe: Urmărește
+      unsubscribe: Dezabonează-te
       title: Actualizări prin e-mail pentru administratori
     help_texts:
       project_folder: The project folder is the default folder for file uploads for this project. Users can nevertheless still upload files to other locations.
