@@ -28,40 +28,27 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
+require "spec_helper"
+require_module_spec_helper
+
 module Storages
   module Adapters
     module Providers
       module SharePoint
         module Queries
-          class FilesInfoQuery < Base
-            def call(auth_strategy:, input_data:)
-              with_tagged_logger do
-                info "Retrieving file information for #{input_data.file_ids.join(', ')}"
+          RSpec.describe OpenStorageQuery do
+            let(:storage) { create(:share_point_storage, :sandbox) }
 
-                infos = input_data.file_ids.map do |file_id|
-                  Input::FileInfo.build(file_id:).bind do |file_data|
-                    FileInfoQuery.call(storage: @storage, auth_strategy:, input_data: file_data).value_or do |failure|
-                      return failure if failure.source.module_parent == Authentication
+            it "responds to .call" do
+              expect(described_class).to respond_to(:call)
 
-                      wrap_storage_file_error(file_data.file_id, failure)
-                    end
-                  end
-                end
-
-                Success(infos)
-              end
+              method = described_class.method(:call)
+              expect(method.parameters).to contain_exactly(%i[keyreq storage], %i[keyreq auth_strategy], %i[keyreq input_data])
             end
 
-            private
-
-            def wrap_storage_file_error(file_id, query_result)
-              split_identifier(file_id) => { location: }
-
-              Results::StorageFileInfo.new(
-                id: location.path,
-                status: query_result.code,
-                status_code: Rack::Utils::SYMBOL_TO_STATUS_CODE[query_result.code] || 500
-              )
+            it "returns the url for opening the file on storage" do
+              url = described_class.call(storage:, auth_strategy: nil, input_data: nil).value!
+              expect(url).to eq("https://ymt6d.sharepoint.com/sites/OPTest/")
             end
           end
         end
