@@ -36,7 +36,7 @@ class Storages::FileLinks::CreateContract < ModelContract
   attribute :container_type
 
   attribute :origin_id
-  validates :origin_id, length: 1..100
+  validates :origin_id, presence: true
   attribute :origin_name
   validates :origin_name, presence: true
   attribute :origin_created_by_name

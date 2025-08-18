@@ -36,7 +36,11 @@ import { IFileLinkOriginData } from 'core-app/core/state/file-links/file-link.mo
 import { nextcloud, oneDrive } from 'core-app/shared/components/storages/storages-constants.const';
 
 export function isDirectory(originData:IFileLinkOriginData):boolean {
-  return originData.mimeType === 'application/x-op-directory';
+  return originData.mimeType === 'application/x-op-directory' || isDrive(originData);
+}
+
+function isDrive(originData:IFileLinkOriginData):boolean {
+  return originData.mimeType === 'application/x-op-drive';
 }
 
 export function getIconForMimeType(mimeType?:string):IFileIcon {
