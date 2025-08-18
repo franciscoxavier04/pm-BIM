@@ -26,8 +26,6 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-/* jshint expr: true */
-
 import { UrlParamsHelperService } from 'core-app/features/work-packages/components/wp-query/url-params-helper';
 
 describe('UrlParamsHelper', () => {

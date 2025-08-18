@@ -374,7 +374,7 @@ vi:
       description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
+        description: You can define named groups of users with specific permissions.
         title: No groups set up yet
       user_count: User count
     users:
@@ -679,8 +679,10 @@ vi:
         excluded_from_totals: "Loại trừ khỏi tổng số"
   themes:
     dark: "Dark"
+    dark_high_contrast: "Dark high contrast"
     light: "Sáng"
     light_high_contrast: "Sáng, độ tương phản cao"
+    sync_with_os: "Automatic (match OS colour mode)"
   types:
     index:
       no_results_title_text: Hiện tại không có loại nào.
@@ -1281,6 +1283,7 @@ vi:
         odd: "phải là số lẻ"
         regex_match_failed: "không khớp với biểu thức chính quy %{expression}."
         regex_invalid: "có thể không được xác nhận với các biểu hiện thường xuyên liên kết."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "phải nhỏ hơn hoặc bằng với chiều dài tối đa"
         taken: "đã bị dùng rồi."
         too_long: "quá dài (tối đa %{count} ký tự)."
@@ -1608,6 +1611,7 @@ vi:
       auth_provider:
         other: "Authentication providers"
       category: "Thể loại"
+      color: "Color"
       comment: "Nhận xét"
       custom_action: "Tác vụ tùy chỉnh"
       custom_field: "Tùy chỉnh mục"
@@ -2206,6 +2210,13 @@ vi:
         I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
       consent_html: >
         I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
   enumeration_activities: "Theo dõi hoạt động"
   enumeration_work_package_priorities: "Độ ưu tiên của work package"
   enumeration_reported_project_statuses: "Tình trạng dự án đã báo cáo"
@@ -2351,6 +2362,7 @@ vi:
           label: "Bao gồm mô tả"
           caption: "Tùy chọn này sẽ thêm cột mô tả ở định dạng thô."
     your_work_packages_export: "Các gói công việc đang được xuất khẩu"
+    your_projects_export: "Projects are being exported"
     succeeded: "Xuất hoàn tất"
     failed: "Đã xảy ra lỗi khi cố gắng xuất các gói công việc: %{message}"
     errors:
@@ -2413,6 +2425,13 @@ vi:
       xls2csv: "Xls2csv có sẵn (không bắt buộc)"
       catppt: "Catppt có sẵn (không bắt buộc)"
       tesseract: "Tesseract có (không bắt buộc)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","
@@ -2794,7 +2813,7 @@ vi:
   label_filter_add: "Thêm bộ lọc"
   label_filter_by: "Filter by"
   label_filter_any_name_attribute: "Name attributes"
-  label_filter_plural: "Các bộ lọc"
+  label_filter_plural: "Bộ lọc"
   label_filters_toggle: "Hiển thị/ẩn bộ lọc"
   label_float: "Số thực"
   label_folder: "Thư mục"
@@ -2880,6 +2899,7 @@ vi:
   label_custom_logo: "Logo tùy chỉnh"
   label_custom_export_logo: "Logo xuất khẩu tùy chỉnh"
   label_custom_export_cover: "Nền bìa xuất khẩu tùy chỉnh"
+  label_custom_export_footer: "Custom export footer image"
   label_custom_export_cover_overlay: "Lớp phủ nền bìa xuất khẩu tùy chỉnh"
   label_custom_export_cover_text_color: "Màu chữ"
   label_custom_pdf_export_settings: "Cài đặt xuất khẩu PDF tùy chỉnh"
@@ -4130,6 +4150,8 @@ vi:
     Đây là logo xuất hiện trong các bản xuất PDF của bạn. Nó cần phải là tệp hình ảnh PNG hoặc JPEG. Logo màu đen hoặc có màu trên nền trong suốt hoặc trắng được khuyến nghị.
   text_custom_export_cover_instructions: >
     Đây là hình ảnh xuất hiện trên nền của trang bìa trong các bản xuất PDF của bạn. Nó cần phải là tệp hình ảnh PNG hoặc JPEG có kích thước khoảng 800px chiều rộng x 500px chiều cao.
+  text_custom_export_footer_instructions: >
+    PDF exports will include a graphical element positioned to the left of the footer. This image must be a PNG or JPEG file with approximately 200 pixels in width.
   text_custom_favicon_instructions: >
     Đây là biểu tượng nhỏ xuất hiện trên cửa sổ/tab trình duyệt của bạn bên cạnh tiêu đề trang. Nó cần phải là tệp hình ảnh PNG có kích thước vuông 32 x 32 pixels với nền trong suốt.
   text_custom_touch_icon_instructions: >

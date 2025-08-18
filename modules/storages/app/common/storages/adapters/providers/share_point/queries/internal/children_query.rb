@@ -59,14 +59,14 @@ module Storages
 
               def request_uri(drive_id, location)
                 if location.root?
-                  UrlBuilder.url(base_uri, "/v1.0/drives/#{drive_id}/root/children")
+                  UrlBuilder.url(base_uri, "/v1.0/drives", drive_id, "/root/children")
                 else
-                  UrlBuilder.url(base_uri, "/v1.0/drives/#{drive_id}/root:#{UrlBuilder.path(location.path)}:/children")
+                  UrlBuilder.url(base_uri, "/v1.0/drives", drive_id, "/root:#{UrlBuilder.path(location.path)}:/children")
                 end
               end
 
               def folder_uri(drive_id, folder)
-                base_url = UrlBuilder.url(base_uri, "/v1.0/drives/#{drive_id}/root")
+                base_url = UrlBuilder.url(base_uri, "/v1.0/drives", drive_id, "/root")
                 return base_url if folder.root?
 
                 "#{base_url}:#{UrlBuilder.path(folder.path)}"
@@ -104,12 +104,29 @@ module Storages
 
               def empty_response(http, drive_id, folder)
                 handle_response(http.get(folder_uri(drive_id, folder) + FIELDS)).bind do |json|
-                  Results::StorageFileCollection.build(
-                    files: [],
-                    parent: @transformer.bare_transform(json),
-                    ancestors: build_empty_ancestors(json)
-                  )
+                  if folder.root?
+                    build_empty_root_folder(json)
+                  else
+                    Results::StorageFileCollection.build(
+                      files: [],
+                      parent: @transformer.bare_transform(json),
+                      ancestors: build_empty_ancestors(json)
+                    )
+                  end
                 end
+              end
+
+              def build_empty_root_folder(json)
+                Results::StorageFileCollection.build(
+                  files: [],
+                  parent: Results::StorageFile.new(
+                    name: CGI.unescape(json[:webUrl].gsub(/.*#{site_name}\//, "")),
+                    id: json[:parentReference][:driveId],
+                    location: json[:webUrl].gsub(/.*#{site_name}/, ""),
+                    permissions: %i[readable writeable]
+                  ),
+                  ancestors: [site_root]
+                )
               end
 
               def build_ancestors(parent_reference, web_url)
@@ -123,7 +140,7 @@ module Storages
 
                 drive_name = CGI.unescape(json[:webUrl].gsub(/.*#{site_name}\//, "").split("/").first)
                 list = parent_reference[:path].gsub(/.*root:/, "").split("/")
-                return [site_root, drive_root(drive_name)] if list.empty?
+                return [site_root, drive_root(drive_name)] if list.blank?
 
                 forge_ancestors(list, drive_name)
               end
@@ -140,13 +157,9 @@ module Storages
                 end
               end
 
-              def drive_root(name)
-                @transformer.build_ancestor(name, "/#{name}")
-              end
+              def drive_root(name) = @transformer.build_ancestor(name, "/#{name}")
 
-              def site_root
-                @transformer.build_ancestor(site_name, "/")
-              end
+              def site_root = @transformer.build_ancestor(site_name, "/")
             end
           end
         end

@@ -102,7 +102,7 @@ ca:
     button_save: "Desa"
     button_settings: "Configuració"
     button_uncheck_all: "Desmarca-ho tot"
-    button_update: "Actualitzar"
+    button_update: "Actualitza"
     button_export-atom: "Descarregar Atom"
     button_generate_pdf: "Generate PDF"
     button_create: "Crear"
@@ -1080,6 +1080,8 @@ ca:
     notice_successful_delete: "Eliminat correctament."
     notice_successful_update: "Actualitzat correctament."
     notice_job_started: "feina començada."
+    no_job_id: "No job ID returned from server."
+    invalid_job_response: "Invalid response from server."
     notice_bad_request: "Sol·licitud incorrecta."
     relations:
       empty: No existeix cap relació

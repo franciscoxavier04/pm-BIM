@@ -242,9 +242,29 @@ de:
     label_export_pdf: "PDF exportieren"
     export:
       your_meeting_export: "Besprechung wird exportiert"
+      minutes:
+        footer_page_numbers: "S. %{current_page} von %{total_pages}"
+        author: "Verfasser:in"
+        date: "Datum"
+        time: "Zeit"
+        location: "Ort"
+        title: "Protokoll"
     export_pdf_dialog:
       title: PDF exportieren
       description: Erstellen Sie eine druckbare PDF-Datei dieser Besprechung im aktuellen Zustand.
+      templates:
+        default:
+          label: Standard
+          caption: Die Standardvorlage ist für die meisten Besprechungen geeignet und repräsentiert den aktuellen Zustand.
+        minutes:
+          label: Protokoll
+          caption: Die Protokollvorlage eignet sich für geschlossene und archivierte Besprechungen.
+      first_page_header_left:
+        label: Erste Kopfzeile links
+        caption: Dieser Text erscheint auf der ersten Seite links im Seitenkopf.
+      author:
+        label: Verfasser:in
+        caption: Der/die Verfasser:in des Protokolls wird im Untertitel angezeigt.
       include_participants:
         label: Liste der Teilnehmer einfügen
         caption: Eine Liste der Teilnehmer wird oberhalb der Agenda ausgegeben.
@@ -264,16 +284,10 @@ de:
     notifications:
       sidepanel:
         title: "E-Mail-Kalender-Aktualisierungen"
-        state:
-          disabled: "Deaktiviert."
-          enabled: "Aktiviert."
         description:
           disabled: "Die Teilnehmer erhalten keine E-Mail bei Änderungen an der Besprechung."
           enabled: "Alle Teilnehmenden erhalten aktualisierte Kalendereinladungen per E-Mail bei wesentlichen Änderungen der Besprechung."
           change_via_template: "Bearbeiten Sie die Vorlage der Terminserie, um diese Einstellung zu ändern."
-        button:
-          disable: "Deaktivieren"
-          enable: "Aktivieren"
       dialog:
         title:
           enable: "E-Mail-Kalender-Aktualisierungen aktivieren?"

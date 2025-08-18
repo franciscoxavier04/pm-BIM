@@ -45,9 +45,12 @@ module Storages
       Rails.env.local?
     end
 
-    store_attribute :provider_fields, :tenant_id, :string
-
     def self.short_provider_name = :share_point
+
+    def self.non_confidential_provider_fields
+      super + %i[tenant_id]
+    end
+
     def audience = nil
 
     def authenticate_via_idp? = false
@@ -60,10 +63,6 @@ module Storages
       else
         %w[inactive manual]
       end
-    end
-
-    def configuration_checks
-      { all: true }
     end
 
     def uri
