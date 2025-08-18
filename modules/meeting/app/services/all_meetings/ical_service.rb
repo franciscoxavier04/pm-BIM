@@ -27,8 +27,7 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-require "icalendar"
-require "icalendar/tzinfo"
+
 module AllMeetings
   class ICalService
     attr_reader :user, :include_historic
