@@ -40,7 +40,6 @@ module Meetings
 
       @meeting = meeting
       @participant = participant
-      # binding.pry
     end
 
     def call
@@ -48,7 +47,10 @@ module Meetings
         Primer::Beta::Button.new(
           tag: :a,
           href: toggle_attendance_meeting_participant_path(@meeting, @participant),
-          data: { turbo_method: :post },
+          data: {
+            turbo_method: :post,
+            test_selector: "attendance_button_#{@participant.user_id}"
+          },
           align_self: :center
         )
       ) do |button|

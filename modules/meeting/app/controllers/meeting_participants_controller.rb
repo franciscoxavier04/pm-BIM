@@ -30,6 +30,7 @@
 
 class MeetingParticipantsController < ApplicationController
   include OpTurbo::ComponentStream
+  include OpTurbo::FlashStreamHelper
   include Meetings::AgendaComponentStreams
 
   before_action :authorize
@@ -47,20 +48,10 @@ class MeetingParticipantsController < ApplicationController
       return
     end
 
-    if MeetingParticipant.create(
-      meeting: @meeting,
-      user_id:,
-      invited: true,
-      attended: false
-    )
-      update_add_user_form_component_via_turbo_stream
-      update_list_component_via_turbo_stream
-      update_sidebar_participants_component_via_turbo_stream(meeting: @meeting)
+    create_new_participant(user_id)
 
-      respond_with_turbo_streams
-    else
-      respond_with_flash_error(message: "Error!")
-    end
+    update_list_component_via_turbo_stream
+    respond_with_turbo_streams
   end
 
   def mark_all_attended
@@ -86,13 +77,12 @@ class MeetingParticipantsController < ApplicationController
   end
 
   def destroy
-    if @participant.destroy
+    if @participant.destroy!
       update_add_user_form_component_via_turbo_stream
       update_list_component_via_turbo_stream
       update_sidebar_participants_component_via_turbo_stream(meeting: @meeting)
+
       respond_with_turbo_streams
-    else
-      respond_with_flash_error(message: "Error!")
     end
   end
 
@@ -108,5 +98,31 @@ class MeetingParticipantsController < ApplicationController
 
   def set_participant
     @participant = MeetingParticipant.find(params[:id])
+  end
+
+  def send_notification(user)
+    if Journal::NotificationConfiguration.active? && !@meeting.templated? && @meeting.notify?
+      MeetingMailer.invited(@meeting, user, User.current).deliver_later
+    end
+  end
+
+  def create_new_participant(user_id)
+    participant = MeetingParticipant.create(
+      meeting: @meeting,
+      user_id:,
+      invited: true,
+      attended: false
+    )
+
+    if participant.persisted?
+      send_notification(User.find(user_id))
+
+      update_add_user_form_component_via_turbo_stream
+      update_sidebar_participants_component_via_turbo_stream(meeting: @meeting)
+    else
+      participant.errors.full_messages.each do |msg|
+        @meeting.errors.add(:base, msg)
+      end
+    end
   end
 end

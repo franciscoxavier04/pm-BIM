@@ -39,7 +39,6 @@ module Meetings
       super
 
       @meeting = meeting
-      # binding.pry
     end
 
     private

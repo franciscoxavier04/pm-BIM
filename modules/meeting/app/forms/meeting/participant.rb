@@ -45,7 +45,10 @@ class Meeting::Participant < ApplicationForm
         multiple: false,
         isOpenedInModal: true,
         hoverCards: true,
-        placeholder: I18n.t("activerecord.attributes.meeting_agenda_item.presenter")
+        placeholder: I18n.t("activerecord.attributes.meeting_agenda_item.presenter"),
+        data: {
+          "test-selector": "participants-dialog-autocomplete"
+        }
       }
     )
   end
