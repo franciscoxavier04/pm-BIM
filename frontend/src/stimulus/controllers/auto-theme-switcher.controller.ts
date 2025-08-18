@@ -69,14 +69,6 @@ export default class AutoThemeSwitcher extends Controller {
     this.applySystemTheme();
   }
 
-  isLightMode():void {
-    window.OpenProject.theme.applyThemeToBody('light');
-  }
-
-  notLightMode():void {
-    window.OpenProject.theme.applyThemeToBody('dark');
-  }
-
   private applySystemTheme():void {
     window.OpenProject.theme.applySystemThemeImmediately();
     this.updateOpLogoContrast();
