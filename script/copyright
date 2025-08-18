@@ -209,6 +209,14 @@ class CopyrightScript
     # Check special files first
     return :ruby if SPECIAL_FILES.include?(basename)
     
+    # Check if it's an executable Ruby script by reading the shebang
+    if File.file?(file) && File.executable?(file)
+      first_line = File.open(file, 'r') { |f| f.readline rescue '' }
+      if first_line.include?('ruby')
+        return :ruby
+      end
+    end
+    
     # Check by extension
     if basename.include?('.')
       # Handle compound extensions like .html.erb
@@ -409,6 +417,16 @@ class CopyrightScript
     SPECIAL_FILES.each do |special|
       special_path = File.join(dir, special)
       files << special_path if File.exist?(special_path)
+    end
+    
+    # Add executable Ruby scripts (like script/copyright)
+    Dir.glob(File.join(dir, '**', '*')).each do |file_path|
+      next unless File.file?(file_path) && File.executable?(file_path)
+      next if files.include?(file_path) # avoid duplicates
+      
+      # Check if it's a Ruby script by reading the shebang
+      first_line = File.open(file_path, 'r') { |f| f.readline rescue '' }
+      files << file_path if first_line.include?('ruby')
     end
     
     files
