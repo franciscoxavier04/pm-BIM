@@ -111,6 +111,10 @@ module Projects::Exports
       true
     end
 
+    def with_images?
+      true
+    end
+
     def render_projects_report_pdf(flat_list, filename)
       render_projects_report(flat_list)
       file = Tempfile.new(filename)
