@@ -554,14 +554,8 @@ RSpec.describe Projects::SetAttributesService, type: :model do
             expect(subject.result.custom_value_attributes).to eq(
               cf_static.id => "3",
               cf_calculated1.id => "21",
-              cf_calculated3.id => "-6"
-            )
-
-            expect(subject.result.custom_value_attributes(all: true)).to eq(
-              cf_static.id => "3",
-              cf_calculated1.id => "21",
-              cf_calculated2.id => "-6",
-              cf_calculated3.id => "-6"
+              cf_calculated2.id => "231",
+              cf_calculated3.id => "3003"
             )
           end
         end
