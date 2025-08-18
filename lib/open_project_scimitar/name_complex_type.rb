@@ -28,32 +28,8 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module ScimV2
-  module ScimControllerMixins
-    def self.included(base)
-      base.prepend(Overwrites)
-    end
-
-    module Overwrites
-      # Completely overwriting authenticate method of Scimitar
-      def authenticate
-        if !EnterpriseToken.allows_to?(:scim_api) || !OpenProject::FeatureDecisions.scim_api_active?
-          return handle_scim_error(Scimitar::AuthenticationError.new)
-        end
-
-        User.current = warden.authenticate!(scope: :scim_v2)
-
-        # Only a ServiceAccount associated with a ScimClient can use SCIM Server API
-        unless User.current.respond_to?(:service) && User.current.service.is_a?(ScimClient)
-          handle_scim_error(Scimitar::AuthenticationError.new)
-        end
-      end
-
-      private
-
-      def warden
-        request.env["warden"]
-      end
-    end
+module OpenProjectScimitar
+  class NameComplexType < Scimitar::ComplexTypes::Base
+    set_schema NameSchema
   end
 end
