@@ -1,0 +1,421 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+#-- copyright
+# OpenProject is an open source project management software.
+# Copyright (C) the OpenProject GmbH
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License version 3.
+#
+# OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+# Copyright (C) 2006-2013 Jean-Philippe Lang
+# Copyright (C) 2010-2013 the ChiliProject Team
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
+# See COPYRIGHT and LICENSE files for more details.
+#++
+
+# Copyright checking script - Ruby replacement for shell script
+# Works like rubocop: either on all fitting files or only on specified files
+# By default shows missing/incorrect copyright, with --fix option to auto-fix
+
+require 'pathname'
+require 'optparse'
+require 'fileutils'
+require 'tempfile'
+
+class CopyrightScript
+  # Script configuration
+  SCRIPT_DIR = Pathname.new(__FILE__).dirname
+  ROOT_DIR = SCRIPT_DIR.parent
+  COPYRIGHT_FILE = ROOT_DIR / 'COPYRIGHT_short'
+
+  # Global excluded patterns (converted from rake task)
+  EXCLUDED_GLOBS = %w[
+    frontend/node_modules/**/*
+    tmp/**/*
+    modules/gitlab_integration/**/*
+  ].freeze
+
+  # Additional exclusion patterns
+  EXCLUDED_PATTERNS = %w[
+    lib_static/plugins/acts_as_tree/**/*
+    lib_static/plugins/rfpdf/**/*
+    lib_static/plugins/verification/**/*
+    lib/chronic_duration.rb
+    config/locales/crowdin/*.yml
+    config/locales/generated/*.yml
+    modules/*/config/locales/crowdin/*.yml
+    README.rdoc
+    LICENSE
+    COPYRIGHT
+    COPYRIGHT_short
+    COPYRIGHT_short.md
+    spec/fixtures/**/*
+    spec/support/fixtures/**/*
+    db/migrate/**/*
+    db/schema.rb
+    db/data_schema.rb
+    db/seeds.rb
+    vendor/**/*
+    lib_static/plugins/**/*
+    config/database.yml*
+    config/configuration.yml*
+    config/settings.yml
+    public/assets/**/*
+    log/**/*
+    db/production.rb
+    db/staging.rb
+    db/development.rb
+    db/test.rb
+  ].freeze
+
+  # File type configurations
+  FILE_TYPE_MAP = {
+    'rb' => :ruby, 'rake' => :ruby, 'yml' => :ruby, 'rjs' => :ruby, 'feature' => :ruby,
+    'yml.example' => :ruby, 'rb.example' => :ruby, 'builder' => :ruby,
+    'js' => :js, 'ts' => :js, 'sass' => :js, 'scss' => :js,
+    'css' => :css, 'css.erb' => :css,
+    'html.erb' => :erb, 'js.erb' => :erb, 'json.erb' => :erb, 'text.erb' => :erb,
+    'sql' => :sql,
+    'rdoc' => :rdoc,
+    'md' => :md, 'html' => :md
+  }.freeze
+
+  SPECIAL_FILES = %w[Gemfile Rakefile config.ru .gitignore].freeze
+
+  attr_reader :fix_mode, :check_mode, :verbose, :exit_code
+
+  def initialize
+    @fix_mode = false
+    @check_mode = true
+    @verbose = false
+    @exit_code = 0
+    @files = []
+  end
+
+  def run(args)
+    parse_args(args)
+    
+    # Change to root directory
+    Dir.chdir(ROOT_DIR)
+    
+    show_verbose_header if verbose
+    
+    # Process all files
+    files_to_process = find_files
+    files_to_process.each { |file| process_file(file) }
+    
+    show_success_message if check_mode && exit_code == 0
+    
+    exit(exit_code)
+  end
+
+  private
+
+  def show_usage
+    puts <<~EOF
+      Usage: #{$0} [OPTIONS] [FILES...]
+
+      Copyright checking and fixing script for OpenProject files.
+
+      OPTIONS:
+          --fix           Fix copyright headers automatically
+          --check         Check for missing/incorrect copyright (default)
+          --verbose, -v   Show verbose output
+          --help, -h      Show this help
+
+      EXAMPLES:
+          #{$0}                          # Check all files for copyright issues
+          #{$0} --fix                    # Fix copyright headers in all files
+          #{$0} app/models/user.rb       # Check specific file
+          #{$0} --fix app/models/        # Fix copyright headers in specific directory
+          #{$0} --verbose                # Show detailed output during checking
+
+      SUPPORTED FILE TYPES:
+          Ruby: .rb, .rake, .yml, Gemfile, Rakefile, etc.
+          JavaScript/TypeScript: .js, .ts, .sass, .scss
+          CSS: .css
+          ERB: .html.erb, .js.erb, .css.erb, etc.
+          SQL: .sql
+          Markdown: .md
+          Others: .rdoc, .atom.builder
+
+    EOF
+  end
+
+  def parse_args(args)
+    OptionParser.new do |opts|
+      opts.on('--fix', 'Fix copyright headers automatically') do
+        @fix_mode = true
+        @check_mode = false
+      end
+      
+      opts.on('--check', 'Check for missing/incorrect copyright (default)') do
+        @check_mode = true
+        @fix_mode = false
+      end
+      
+      opts.on('--verbose', '-v', 'Show verbose output') do
+        @verbose = true
+      end
+      
+      opts.on('--help', '-h', 'Show this help') do
+        show_usage
+        exit(0)
+      end
+    end.parse!(args)
+    
+    @files = args
+  end
+
+  def show_verbose_header
+    mode = fix_mode ? "fix mode" : "check mode"
+    puts "Running in #{mode}..."
+    puts "Root directory: #{ROOT_DIR}"
+    puts "Copyright file: #{COPYRIGHT_FILE}"
+    puts
+  end
+
+  def show_success_message
+    puts "All files have correct copyright headers!" if verbose
+  end
+
+  def excluded?(file)
+    file_path = file.to_s.sub(/\A\.\//, '')
+    
+    # Check global excluded patterns
+    EXCLUDED_GLOBS.any? { |pattern| File.fnmatch(pattern, file_path, File::FNM_PATHNAME | File::FNM_EXTGLOB) } ||
+    EXCLUDED_PATTERNS.any? { |pattern| File.fnmatch(pattern, file_path, File::FNM_PATHNAME | File::FNM_EXTGLOB) }
+  end
+
+  def get_file_type(file)
+    basename = File.basename(file)
+    
+    # Check special files first
+    return :ruby if SPECIAL_FILES.include?(basename)
+    
+    # Check by extension
+    if basename.include?('.')
+      # Handle compound extensions like .html.erb
+      if basename.end_with?('.erb')
+        erb_type = basename.gsub(/\.erb$/, '').split('.').last
+        case erb_type
+        when 'css' then :css
+        else :erb
+        end
+      elsif basename.end_with?('.builder')
+        :ruby
+      else
+        extension = basename.split('.').last
+        FILE_TYPE_MAP[extension] || :unknown
+      end
+    else
+      :unknown
+    end
+  end
+
+  def generate_copyright(file_type, path_context: nil)
+    copyright_text = read_copyright_file(path_context)
+    
+    case file_type
+    when :ruby
+      lines = ["#-- copyright"]
+      lines += copyright_text.lines.map { |line| "# #{line}".rstrip }
+      lines << "#++"
+      lines.join("\n")
+    when :js
+      lines = ["//-- copyright"]
+      lines += copyright_text.lines.map { |line| "// #{line}".rstrip }
+      lines << "//++"
+      lines.join("\n")
+    when :css
+      "/*-- copyright\n#{copyright_text}\n++*/"
+    when :erb
+      "<%#-- copyright\n#{copyright_text}\n++#%>"
+    when :sql
+      lines = ["-- -- copyright"]
+      lines += copyright_text.lines.map { |line| "-- #{line}".rstrip }
+      lines << "-- ++"
+      lines.join("\n")
+    when :rdoc
+      "----------\n==== copyright\n\n#{copyright_text}\n++\n----------"
+    when :md
+      "<!---- copyright\n#{copyright_text}\n++-->"
+    else
+      raise "Unsupported file type: #{file_type}"
+    end
+  end
+
+  def read_copyright_file(path_context)
+    copyright_path = COPYRIGHT_FILE
+    
+    if path_context
+      # Check for local COPYRIGHT_short files
+      local_copyright = File.join(path_context, 'COPYRIGHT_short')
+      local_copyright_md = File.join(path_context, 'COPYRIGHT_short.md')
+      
+      copyright_path = local_copyright if File.exist?(local_copyright)
+      copyright_path = local_copyright_md if File.exist?(local_copyright_md)
+    end
+    
+    unless File.exist?(copyright_path)
+      raise "Copyright file not found: #{copyright_path}"
+    end
+    
+    File.read(copyright_path)
+  end
+
+  def check_copyright?(file, file_type)
+    return false unless File.exist?(file)
+    
+    content = File.read(file)
+    
+    case file_type
+    when :ruby
+      content.include?('#-- copyright')
+    when :js
+      content.include?('//-- copyright')
+    when :css
+      content.include?('/*-- copyright')
+    when :erb
+      content.include?('<%#-- copyright')
+    when :sql
+      content.include?('-- -- copyright')
+    when :rdoc
+      content.include?('==== copyright')
+    when :md
+      content.include?('<!---- copyright')
+    else
+      false
+    end
+  end
+
+  def fix_copyright(file, file_type)
+    content = File.read(file)
+    copyright_header = generate_copyright(file_type, path_context: File.dirname(file))
+    
+    # Check if file already has some form of copyright
+    if content.include?("OpenProject is a fork of ChiliProject")
+      puts "#{file} does not match regexp, but seems to have a copyright header!" if verbose
+      return
+    end
+    
+    case file_type
+    when :ruby
+      fix_ruby_file(file, content, copyright_header)
+    else
+      fix_generic_file(file, content, copyright_header)
+    end
+  end
+
+  def fix_ruby_file(file, content, copyright_header)
+    lines = content.lines
+    result = []
+    
+    # Handle shebang
+    if lines.first&.start_with?('#!')
+      result << lines.shift.chomp
+      result << ''
+    end
+    
+    # Handle frozen_string_literal
+    if lines.first&.include?('frozen_string_literal')
+      result << lines.shift.chomp
+      result << ''
+    end
+    
+    # Add copyright
+    result << copyright_header
+    result << ''
+    
+    # Add remaining content
+    result.concat(lines.map(&:chomp))
+    
+    File.write(file, result.join("\n") + "\n")
+  end
+
+  def fix_generic_file(file, content, copyright_header)
+    result = [copyright_header, '', content]
+    File.write(file, result.join("\n"))
+  end
+
+  def process_file(file)
+    return if excluded?(file)
+    
+    file_type = get_file_type(file)
+    if file_type == :unknown
+      puts "Skipping #{file}: unknown format" if verbose
+      return
+    end
+    
+    if check_copyright?(file, file_type)
+      puts "OK: #{file}" if verbose
+    else
+      if fix_mode
+        puts "Fixing: #{file}" if verbose
+        fix_copyright(file, file_type)
+      else
+        puts "#{file} does not match regexp. Missing copyright notice?"
+        @exit_code = 1
+      end
+    end
+  end
+
+  def find_files
+    search_paths = @files.empty? ? ['.'] : @files
+    
+    files = []
+    search_paths.each do |path|
+      if File.file?(path)
+        files << path
+      elsif File.directory?(path)
+        files.concat(find_files_in_directory(path))
+      else
+        warn "Warning: #{path} not found"
+      end
+    end
+    
+    files.sort
+  end
+
+  def find_files_in_directory(dir)
+    extensions = %w[
+      *.rb *.rake *.yml *.yml.example *.rb.example *.rjs *.feature
+      *.js *.ts *.sass *.scss *.css *.css.erb *.html.erb *.js.erb
+      *.json.erb *.text.erb *.sql *.rdoc *.md *.atom.builder
+    ]
+    
+    files = []
+    extensions.each do |ext|
+      files.concat(Dir.glob(File.join(dir, '**', ext)))
+    end
+    
+    # Add special files
+    SPECIAL_FILES.each do |special|
+      special_path = File.join(dir, special)
+      files << special_path if File.exist?(special_path)
+    end
+    
+    files
+  end
+end
+
+# Run the script
+if __FILE__ == $0
+  CopyrightScript.new.run(ARGV)
+end
