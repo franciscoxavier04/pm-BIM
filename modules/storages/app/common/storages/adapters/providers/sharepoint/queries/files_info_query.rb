@@ -28,41 +28,44 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "dry/container"
-
 module Storages
   module Adapters
-    class Registry
-      extend Dry::Container::Mixin
+    module Providers
+      module Sharepoint
+        module Queries
+          class FilesInfoQuery < Base
+            def call(auth_strategy:, input_data:)
+              with_tagged_logger do
+                info "Retrieving file information for #{input_data.file_ids.join(', ')}"
 
-      # Extracts the known_providers from the registered keys
-      # @return [Array<String>]
-      def self.known_providers
-        keys.map { it.split(".").first }.uniq
-      end
+                infos = input_data.file_ids.map do |file_id|
+                  Input::FileInfo.build(file_id:).bind do |file_data|
+                    FileInfoQuery.call(storage: @storage, auth_strategy:, input_data: file_data).value_or do |failure|
+                      return failure if failure.source.module_parent == Authentication
 
-      class Resolver < Dry::Container::Resolver
-        include TaggedLogging
+                      wrap_storage_file_error(file_data.file_id, failure)
+                    end
+                  end
+                end
 
-        def call(container, key)
-          with_tagged_logger("Adapters::Registry") do
-            info "Resolving #{key}"
-            super
+                Success(infos)
+              end
+            end
+
+            private
+
+            def wrap_storage_file_error(file_id, query_result)
+              split_identifier(file_id) => { location: }
+
+              Results::StorageFileInfo.new(
+                id: location.path,
+                status: query_result.code,
+                status_code: Rack::Utils::SYMBOL_TO_STATUS_CODE[query_result.code] || 500
+              )
+            end
           end
-        rescue Dry::Container::KeyError
-          error = Errors.registry_error_for(key)
-
-          with_tagged_logger("Adapters::Registry") { error error.message }
-          raise error
         end
       end
-
-      config.resolver = Resolver.new
-
-      # Need to make this dynamic to ease new providers to be registered
-      import Providers::Nextcloud::NextcloudRegistry
-      import Providers::OneDrive::OneDriveRegistry
-      import Providers::Sharepoint::SharepointRegistry
     end
   end
 end

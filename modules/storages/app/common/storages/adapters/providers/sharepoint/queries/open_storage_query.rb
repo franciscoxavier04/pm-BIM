@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,34 +28,18 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-# Nextcloud VCR credentials
-
-NEXTCLOUD_LOCAL_OAUTH_CLIENT_ID=
-NEXTCLOUD_LOCAL_OAUTH_CLIENT_SECRET=
-
-NEXTCLOUD_LOCAL_OPENPROJECT_UID=
-NEXTCLOUD_LOCAL_OPENPROJECT_SECRET=
-NEXTCLOUD_LOCAL_OPENPROJECT_REDIRECT_URI=https://nextcloud.local/index.php/apps/integration_openproject/oauth-redirect
-
-NEXTCLOUD_LOCAL_OAUTH_CLIENT_ACCESS_TOKEN=
-NEXTCLOUD_LOCAL_OAUTH_CLIENT_REFRESH_TOKEN=
-
-# Sharepoint/OneDrive VCR credentials
-
-ONE_DRIVE_TEST_TENANT_ID=
-ONE_DRIVE_TEST_DRIVE_ID=
-
-ONE_DRIVE_TEST_OAUTH_CLIENT_ID=
-ONE_DRIVE_TEST_OAUTH_CLIENT_SECRET=
-
-ONE_DRIVE_TEST_OAUTH_CLIENT_ACCESS_TOKEN=
-ONE_DRIVE_TEST_OAUTH_CLIENT_REFRESH_TOKEN=
-
-SHAREPOINT_TEST_HOST=
-SHAREPOINT_TEST_TENANT_ID=
-
-SHAREPOINT_TEST_OAUTH_CLIENT_ID=
-SHAREPOINT_TEST_OAUTH_CLIENT_SECRET=
-
-SHAREPOINT_TEST_OAUTH_CLIENT_ACCESS_TOKEN=
-SHAREPOINT_TEST_OAUTH_CLIENT_REFRESH_TOKEN=
+module Storages
+  module Adapters
+    module Providers
+      module Sharepoint
+        module Queries
+          class OpenStorageQuery < Base
+            def call(**)
+              Success(UrlBuilder.url(URI(@storage.host)))
+            end
+          end
+        end
+      end
+    end
+  end
+end

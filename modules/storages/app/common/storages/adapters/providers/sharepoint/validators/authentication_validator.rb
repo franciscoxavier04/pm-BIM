@@ -28,41 +28,46 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "dry/container"
-
 module Storages
   module Adapters
-    class Registry
-      extend Dry::Container::Mixin
+    module Providers
+      module Sharepoint
+        module Validators
+          class AuthenticationValidator < ConnectionValidators::BaseValidatorGroup
+            def self.key = :authentication
 
-      # Extracts the known_providers from the registered keys
-      # @return [Array<String>]
-      def self.known_providers
-        keys.map { it.split(".").first }.uniq
-      end
+            def initialize(storage)
+              super
+              @user = User.current
+            end
 
-      class Resolver < Dry::Container::Resolver
-        include TaggedLogging
+            private
 
-        def call(container, key)
-          with_tagged_logger("Adapters::Registry") do
-            info "Resolving #{key}"
-            super
+            def validate
+              register_checks(:existing_token, :user_bound_request)
+              oauth_token
+              user_bound_request
+            end
+
+            def oauth_token
+              if OAuthClientToken.for_user_and_client(@user, @storage.oauth_client).exists?
+                pass_check(:existing_token)
+              else
+                warn_check(:existing_token, :sp_oauth_token_missing, halt_validation: true)
+              end
+            end
+
+            def user_bound_request
+              Registry["sharepoint.queries.user"].call(storage: @storage, auth_strategy:).either(
+                ->(_) { pass_check(:user_bound_request) },
+                -> { fail_check(:user_bound_request, :"sp_oauth_request_#{it.code}") }
+              )
+            end
+
+            def auth_strategy = Registry["sharepoint.authentication.user_bound"].call(@user, @storage)
           end
-        rescue Dry::Container::KeyError
-          error = Errors.registry_error_for(key)
-
-          with_tagged_logger("Adapters::Registry") { error error.message }
-          raise error
         end
       end
-
-      config.resolver = Resolver.new
-
-      # Need to make this dynamic to ease new providers to be registered
-      import Providers::Nextcloud::NextcloudRegistry
-      import Providers::OneDrive::OneDriveRegistry
-      import Providers::Sharepoint::SharepointRegistry
     end
   end
 end
