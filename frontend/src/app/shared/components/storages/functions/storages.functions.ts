@@ -33,7 +33,7 @@ import {
 } from 'core-app/shared/components/storages/icons.mapping';
 import { IHalResourceLink } from 'core-app/core/state/hal-resource';
 import { IFileLinkOriginData } from 'core-app/core/state/file-links/file-link.model';
-import { nextcloud, oneDrive } from 'core-app/shared/components/storages/storages-constants.const';
+import { nextcloud, oneDrive, sharepoint } from 'core-app/shared/components/storages/storages-constants.const';
 
 export function isDirectory(originData:IFileLinkOriginData):boolean {
   return originData.mimeType === 'application/x-op-directory' || isDrive(originData);
@@ -71,6 +71,7 @@ export function makeFilesCollectionLink(storageLink:IHalResourceLink, location:s
 const storageTypeMap:Record<string, string> = {
   [nextcloud]: 'js.storages.types.nextcloud',
   [oneDrive]: 'js.storages.types.one_drive',
+  [sharepoint]: 'js.storages.types.sharepoint',
   default: 'js.storages.types.default',
 };
 

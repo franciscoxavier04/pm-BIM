@@ -69,6 +69,11 @@ module Storages
       @uri ||= URI("https://graph.microsoft.com").normalize
     end
 
+    def connect_src
+      host_uri = URI(host)
+      ["#{host_uri.scheme}://#{host_uri.host}"]
+    end
+
     def oauth_configuration = Adapters::Providers::Sharepoint::OAuthConfiguration.new(self)
 
     def provider_fields_defaults

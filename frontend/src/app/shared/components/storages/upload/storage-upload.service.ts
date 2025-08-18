@@ -34,7 +34,7 @@ import { HttpClient, HttpEvent } from '@angular/common/http';
 import { IUploadFile, OpUploadService } from 'core-app/core/upload/upload.service';
 import { IUploadStrategy } from 'core-app/shared/components/storages/upload/upload-strategy';
 import { NextcloudUploadStrategy } from 'core-app/shared/components/storages/upload/nextcloud-upload.strategy';
-import { nextcloud, oneDrive } from 'core-app/shared/components/storages/storages-constants.const';
+import { nextcloud, oneDrive, sharepoint } from 'core-app/shared/components/storages/storages-constants.const';
 import { OneDriveUploadStrategy } from 'core-app/shared/components/storages/upload/one-drive-upload.strategy';
 
 export interface IStorageFileUploadResponse {
@@ -72,6 +72,9 @@ export class StorageUploadService extends OpUploadService {
         break;
       case oneDrive:
         this.uploadStrategy = new OneDriveUploadStrategy(this.http);
+        break;
+      case sharepoint:
+        this.uploadStrategy = new OneDriveUploadStrategy((this.http));
         break;
       default:
         throw new Error('unknown storage type');
