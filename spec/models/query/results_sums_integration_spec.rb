@@ -43,9 +43,11 @@ RSpec.describe Query::Results, "sums" do
       t.custom_fields << float_cf
     end
   end
+  shared_let(:phases) { [] }
   shared_let(:project) do
     create(:project) do |p|
       p.types << type
+      p.phases << phases
       p.work_package_custom_fields << int_cf
       p.work_package_custom_fields << float_cf
     end
@@ -57,9 +59,10 @@ RSpec.describe Query::Results, "sums" do
       p.work_package_custom_fields << float_cf
     end
   end
+  shared_let(:user_permissions) { %i[view_work_packages view_cost_entries view_time_entries view_cost_rates view_hourly_rates] }
   shared_let(:current_user) do
     create(:user, member_with_permissions: {
-             project => %i[view_work_packages view_cost_entries view_time_entries view_cost_rates view_hourly_rates]
+             project => user_permissions
            })
   end
   shared_let(:priority) { create(:priority, name: "Normal") }
@@ -327,6 +330,78 @@ RSpec.describe Query::Results, "sums" do
   end
 
   describe "#all_sums_for_group" do
+    context "when grouped by project phase" do
+      shared_let(:project_phase) { create(:project_phase, definition: create(:project_phase_definition)) }
+      shared_let(:other_project_phase) { create(:project_phase, definition: create(:project_phase_definition)) }
+      shared_let(:phases) { [project_phase, other_project_phase] }
+      shared_let(:current_user) { create(:admin) }
+
+      let(:group_by) { :project_phase }
+      let!(:wp_with_phase) do
+        create(:work_package,
+               project:,
+               type:,
+               project_phase_definition: project_phase.definition,
+               subject: "Work package with phase",
+               estimated_hours: 10,
+               remaining_hours: 5,
+               done_ratio: 50,
+               story_points: 2,
+               description: "Work package with a phase")
+      end
+      let!(:other_wp_with_phase) do
+        create(:work_package,
+               project:,
+               type:,
+               project_phase_definition: project_phase.definition,
+               subject: "Work package 2 with phase",
+               estimated_hours: 20,
+               remaining_hours: 10,
+               done_ratio: 50,
+               story_points: 6,
+               description: "Work package 2 with a phase")
+      end
+      let!(:wp_with_other_phase) do
+        create(:work_package,
+               project:,
+               type:,
+               project_phase_definition: other_project_phase.definition,
+               subject: "Work package with other phase",
+               estimated_hours: 10,
+               remaining_hours: 2,
+               done_ratio: 80,
+               story_points: 2,
+               description: "Work package with another phase")
+      end
+
+      it "is a hash of sums grouped by project phases (REGRESSION #65740)" do
+        expect(query_results.all_group_sums.keys).to contain_exactly(project_phase.definition,
+                                                                     other_project_phase.definition,
+                                                                     nil)
+
+        expect(stringify_column_keys(query_results.all_group_sums[project_phase.definition]))
+          .to eq("estimated_hours" => 30.0,
+                 "remaining_hours" => 15.0,
+                 "done_ratio" => 50,
+                 int_cf.column_name => nil,
+                 float_cf.column_name => nil,
+                 "material_costs" => 0.0,
+                 "labor_costs" => 0.0,
+                 "overall_costs" => 0.0,
+                 "story_points" => 8)
+        expect(stringify_column_keys(query_results.all_group_sums[other_project_phase.definition]))
+          .to eq("estimated_hours" => 10.0,
+                 "remaining_hours" => 2.0,
+                 "done_ratio" => 80,
+                 int_cf.column_name => nil,
+                 float_cf.column_name => nil,
+                 "material_costs" => 0.0,
+                 "labor_costs" => 0.0,
+                 "overall_costs" => 0.0,
+                 "story_points" => 2)
+      end
+    end
+
     context "when grouped by assigned_to" do
       let(:group_by) { :assigned_to }
 
