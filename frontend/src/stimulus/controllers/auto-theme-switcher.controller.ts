@@ -30,9 +30,7 @@
 
 import { Controller } from '@hotwired/stimulus';
 import { useMatchMedia } from 'stimulus-use';
-import { type OpTheme } from 'core-app/core/setup/globals/theme-utils';
-
-type OpThemeMode = OpTheme | 'sync_with_os';
+import { OpTheme } from 'core-app/core/setup/globals/theme-utils';
 
 export default class AutoThemeSwitcher extends Controller {
   static values = {
@@ -42,7 +40,7 @@ export default class AutoThemeSwitcher extends Controller {
   static targets = ['desktopLogo', 'mobileLogo'];
   static classes = ['desktopLightHighContrastLogo', 'mobileWhiteLogo'];
 
-  declare readonly modeValue:OpThemeMode;
+  declare readonly modeValue:OpTheme;
   declare readonly desktopLogoTarget:HTMLLinkElement;
   declare readonly mobileLogoTarget:HTMLLinkElement;
   declare readonly desktopLightHighContrastLogoClass:string;

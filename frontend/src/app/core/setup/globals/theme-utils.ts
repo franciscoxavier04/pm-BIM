@@ -30,7 +30,7 @@
 
 export type OpColorMode = 'light' | 'dark';
 
-export type OpTheme = OpColorMode | `${OpColorMode}_high_contrast`;
+export type OpTheme = OpColorMode | `${OpColorMode}_high_contrast` | 'sync_with_os';
 
 export class ThemeUtils {
   public applySystemThemeImmediately():void {
