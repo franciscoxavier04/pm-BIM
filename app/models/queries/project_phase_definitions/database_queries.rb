@@ -44,17 +44,20 @@ module Queries::ProjectPhaseDefinitions
       <<~SQL.squish
         LEFT OUTER JOIN "projects" ON "projects"."id" = "work_packages"."project_id"
         LEFT OUTER JOIN (
-          SELECT
-            ph.id,
-            ph.project_id,
-            ph.definition_id AS active_phase_definition_id
-          FROM project_phases ph
-          WHERE ph.project_id IN (#{projects_with_view_phases_permissions.to_sql})
-          AND ph.active = true
+          #{active_project_phases.to_sql}
         ) AS active_phases
         ON active_phases.active_phase_definition_id = work_packages.project_phase_definition_id
           AND active_phases.project_id = work_packages.project_id
       SQL
+    end
+
+    private
+
+    def active_project_phases
+      Project::Phase
+        .active
+        .where(project_id: projects_with_view_phases_permissions)
+        .select(:id, :project_id, "definition_id AS active_phase_definition_id")
     end
 
     def projects_with_view_phases_permissions

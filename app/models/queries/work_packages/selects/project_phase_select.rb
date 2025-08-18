@@ -86,10 +86,6 @@ class Queries::WorkPackages::Selects::ProjectPhaseSelect < Queries::WorkPackages
 
   private
 
-  def project_with_view_phases_permissions
-    Project.allowed_to(User.current, :view_project_phases).select(:id)
-  end
-
   def active_phase_null_case(true_case:, false_case:)
     "(CASE WHEN ACTIVE_PHASES.ID IS NULL THEN #{true_case} ELSE #{false_case} END)"
   end
