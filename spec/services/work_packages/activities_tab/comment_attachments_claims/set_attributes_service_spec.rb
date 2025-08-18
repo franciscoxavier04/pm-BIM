@@ -58,6 +58,16 @@ RSpec.describe WorkPackages::ActivitiesTab::CommentAttachmentsClaims::SetAttribu
       end
 
       before do
+        relation = double("ActiveRecord::Relation")
+
+        # SQL-level filtering chain used by the service
+        allow(Attachment).to receive(:where).with(container: nil).and_return(relation)
+        allow(Attachment).to receive(:where).with(container: journal).and_return(relation)
+        allow(relation).to receive(:or).with(anything).and_return(relation)
+        allow(relation).to receive(:where).with(id: [attachment1.id.to_s, attachment2.id.to_s]).and_return(relation)
+        allow(relation).to receive(:pluck).with(:id).and_return([attachment1.id, attachment2.id])
+
+        # Final lookup for replacements inside Attachments::SetReplacements
         allow(Attachment).to receive(:where)
           .with(id: [attachment1.id.to_s, attachment2.id.to_s])
           .and_return([attachment1, attachment2])
@@ -81,10 +91,18 @@ RSpec.describe WorkPackages::ActivitiesTab::CommentAttachmentsClaims::SetAttribu
       end
 
       before do
-        allow(Attachment).to receive(:where)
-          .with(id: [assigned_attachment.id.to_s, unattached_attachment.id.to_s])
-          .and_return([assigned_attachment, unattached_attachment])
-        # A second call happens when setting the filtered replacements
+        relation = double("ActiveRecord::Relation")
+
+        # SQL-level filtering chain used by the service
+        allow(Attachment).to receive(:where).with(container: nil).and_return(relation)
+        allow(Attachment).to receive(:where).with(container: journal).and_return(relation)
+        allow(relation).to receive(:or).with(anything).and_return(relation)
+        allow(relation).to receive(:where).with(id: [assigned_attachment.id.to_s,
+                                                     unattached_attachment.id.to_s]).and_return(relation)
+        # Only the unattached one should be returned by the filter
+        allow(relation).to receive(:pluck).with(:id).and_return([unattached_attachment.id])
+
+        # Final lookup for replacements inside Attachments::SetReplacements
         allow(Attachment).to receive(:where)
           .with(id: [unattached_attachment.id.to_s])
           .and_return([unattached_attachment])
