@@ -35,9 +35,12 @@ module Storages
         module Queries
           class DownloadLinkQuery < Base
             def call(auth_strategy:, input_data:)
-              Authentication[auth_strategy].call(storage: @storage) do |http|
-                uri = request_uri(**split_identifier(input_data.file_link.origin_id))
-                handle_errors http.get(uri)
+              with_tagged_logger do
+                Authentication[auth_strategy].call(storage: @storage) do |http|
+                  split_identifier(input_data.file_link.origin_id) => { drive_id:, location: }
+                  info "Fetching download link for drive item #{location} on drive #{drive_id}."
+                  handle_errors http.get(request_uri(drive_id:, location:))
+                end
               end
             end
 

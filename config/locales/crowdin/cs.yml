@@ -700,6 +700,7 @@ cs:
         excluded_from_totals: "Vyloučeno z celkových hodnot"
   themes:
     dark: "Tmavé"
+    dark_high_contrast: "Dark high contrast"
     light: "Světlý"
     light_high_contrast: "Světlý kontrast"
     sync_with_os: "Automatic (match OS colour mode)"
@@ -1929,7 +1930,7 @@ cs:
   button_duplicate: "Kopie"
   button_duplicate_and_follow: "Duplicate and follow"
   button_edit: "Upravit"
-  button_edit_associated_wikipage: "Upravit přidruženou Wiki stránku: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Rozbalit vše"
   button_favorite: "Přidat k oblíbeným"
   button_filter: "Filtr"
@@ -2493,6 +2494,7 @@ cs:
           label: "Zahrnout popisy"
           caption: "Tato volba přidá sloupec popisu v syrovém formátu."
     your_work_packages_export: "Pracovní balíčky jsou exportovány"
+    your_projects_export: "Projects are being exported"
     succeeded: "Export dokončen"
     failed: "Při pokusu o export pracovních balíčků došlo k chybě: %{message}"
     errors:
@@ -2555,6 +2557,13 @@ cs:
       xls2csv: "XLS2CSV k dispozici (volitelné)"
       catppt: "Catppt k dispozici (volitelné)"
       tesseract: "Tesseract k dispozici (volitelné)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: ","
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","
@@ -3022,6 +3031,7 @@ cs:
   label_custom_logo: "Vlastní logo"
   label_custom_export_logo: "Vlastní logo exportu"
   label_custom_export_cover: "Vlastní exportní obal pozadí"
+  label_custom_export_footer: "Custom export footer image"
   label_custom_export_cover_overlay: "Překrytí obalu vlastního exportu"
   label_custom_export_cover_text_color: "Barva textu"
   label_custom_pdf_export_settings: "Vlastní nastavení exportu PDF"
@@ -4277,6 +4287,8 @@ cs:
     Toto je logo, které se zobrazí ve vašem PDF exportu. Musí se jednat o PNG nebo JPEG obrázek. Doporučuje se černé nebo barevné logo na průhledném nebo bílém pozadí.
   text_custom_export_cover_instructions: >
     Toto je obrázek, který se zobrazí na pozadí titulní stránky ve vašem PDF exportu. Musí být asi 800px šířka o 500px výška obrazového souboru PNG nebo JPEG.
+  text_custom_export_footer_instructions: >
+    PDF exports will include a graphical element positioned to the left of the footer. This image must be a PNG or JPEG file with approximately 200 pixels in width.
   text_custom_favicon_instructions: >
     Toto je malá ikona zobrazená v okně/záložce prohlížeče vedle názvu stránky. Musí být čtvercový obrázek velikosti PNG 32 až 32 pixelů s průhledným pozadím.
   text_custom_touch_icon_instructions: >

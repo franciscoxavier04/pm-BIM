@@ -679,6 +679,7 @@ de:
         excluded_from_totals: "Von Gesamtsumme auschließen"
   themes:
     dark: "Dunkel"
+    dark_high_contrast: "Dark high contrast"
     light: "Hell"
     light_high_contrast: "Hell (hoher Kontrast)"
     sync_with_os: "Automatic (match OS colour mode)"
@@ -1875,7 +1876,7 @@ de:
   button_duplicate: "Duplizieren"
   button_duplicate_and_follow: "Duplizieren und folgen"
   button_edit: "Bearbeiten"
-  button_edit_associated_wikipage: "Zugehörige Wikiseite bearbeiten: %{page_title}"
+  button_edit_associated_wikipage: "Edit associated wiki page: %{page_title}"
   button_expand_all: "Alle ausklappen"
   button_favorite: "Zu Favoriten hinzufügen"
   button_filter: "Filter"
@@ -2397,6 +2398,7 @@ de:
           label: "Beschreibungen inkludieren"
           caption: "Mit dieser Option wird die Beschreibungs-Spalte im Rohformat hinzugefügt."
     your_work_packages_export: "Arbeitspakete werden exportiert"
+    your_projects_export: "Projekte werden exportiert"
     succeeded: "Export abgeschlossen"
     failed: "Beim Versuch, die Arbeitspakete zu exportieren, ist ein Fehler aufgetreten: %{message}"
     errors:
@@ -2459,6 +2461,13 @@ de:
       xls2csv: "Xls2csv verfügbar (optional)"
       catppt: "Catppt verfügbar (optional)"
       tesseract: "Tesseract verfügbar (optional)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: ","
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","
@@ -2926,6 +2935,7 @@ de:
   label_custom_logo: "Benutzerdefiniertes Logo"
   label_custom_export_logo: "Selbstdefiniertes Logo für PDF-Export"
   label_custom_export_cover: "Hintergrund für Export Cover"
+  label_custom_export_footer: "Selbstdefiniertes Fußzeilen-Bild für PDF-Export"
   label_custom_export_cover_overlay: "Eigenes Deckblatt für Export"
   label_custom_export_cover_text_color: "Textfarbe"
   label_custom_pdf_export_settings: "Benutzerdefinierte PDF-Export-Einstellungen"
@@ -4178,6 +4188,8 @@ de:
     Dies ist das Logo, das in Ihren PDF-Exporten erscheint. Es muss eine PNG- oder JPEG-Bilddatei sein. Ein schwarzes oder farbiges Logo auf transparentem oder weißem Hintergrund wird empfohlen.
   text_custom_export_cover_instructions: >
     Dies ist das Bild, das im Hintergrund einer Cover-Seite in Ihren PDF-Exporten erscheint. Es muss eine etwa 800px breite und 500px hohe PNG- oder JPEG-Bilddatei sein.
+  text_custom_export_footer_instructions: >
+    Ein grafisches Element für PDF-Exporte, das links neben der Fußzeile positioniert wird. Dieses Bild muss eine PNG- oder JPEG-Datei mit etwa 200 Pixeln Breite sein.
   text_custom_favicon_instructions: >
     Dies ist das kleine Symbol, das in Ihrem Browser-Fenster/Tab neben dem Seitentitel angezeigt wird. Es muss ein quadratisches 32 x 32 Pixel großes PNG mit transparentem Hintergrund sein.
   text_custom_touch_icon_instructions: >
