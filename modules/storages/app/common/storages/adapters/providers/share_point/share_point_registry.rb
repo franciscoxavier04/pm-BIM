@@ -72,6 +72,7 @@ module Storages
             register(:download_link, Queries::DownloadLinkQuery)
             register(:file_info, Queries::FileInfoQuery)
             register(:files, Queries::FilesQuery)
+            register(:upload_link, Queries::UploadLinkQuery)
             register(:user, OneDrive::Queries::UserQuery)
           end
         end

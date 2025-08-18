@@ -26,38 +26,56 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-RB.Burndown = (function ($) {
-  return RB.Object.create({
+/***************************************
+  SPRINT
+***************************************/
 
-    initialize: function (el) {
+// @ts-expect-error TS(2304): Cannot find name 'RB'.
+RB.Sprint = (function ($) {
+  // @ts-expect-error TS(2304): Cannot find name 'RB'.
+  return RB.Object.create(RB.Model, RB.EditableInplace, {
+
+    initialize(el:any) {
       this.$ = $(el);
       this.el = el;
 
       // Associate this object with the element for later retrieval
       this.$.data('this', this);
-
-      // Observe menu items
-      this.$.click(this.show);
+      this.$.on('mouseup', '.editable', this.handleClick);
     },
 
-    setSprintId : function (sprintId) {
-      this.sprintId = sprintId;
+    beforeSave() {
+      // Do nothing
     },
 
-    getSprintId : function (){
-      return this.sprintId;
+    getType() {
+      return 'Sprint';
     },
 
-    show: function (e) {
-      e.preventDefault();
+    markIfClosed() {
+      // Do nothing
+    },
 
-      if ($("#charts").length === 0) {
-        $('<div id="charts"></div>').appendTo("body");
-      }
-      $('#charts').html("<div class='loading'>" + RB.i18n.generating_graph + "</div>");
+    refreshed() {
+      // Do nothing
+    },
 
-      var url = RB.urlFor('show_burndown_chart', { sprint_id: $(this).data('this').sprintId, project_id: RB.constants.project_id});
-      window.open(url);
-    }
+    saveDirectives() {
+      const wrapper = this.$;
+      const editor = wrapper.find('.editor');
+      const data = editor.serialize();
+      // @ts-expect-error TS(2304): Cannot find name 'RB'.
+      const url = RB.urlFor('update_sprint', { id: this.getID() });
+
+      return {
+        url,
+        method: 'put',
+        data,
+      };
+    },
+
+    beforeSaveDragResult() {
+      // Do nothing
+    },
   });
 }(jQuery));

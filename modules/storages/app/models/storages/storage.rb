@@ -104,6 +104,10 @@ module Storages
         split_reason = text.split(/[|:]/)
         split_reason[index].strip if split_reason.length > index
       end
+
+      def non_confidential_provider_fields
+        %i[automatically_managed health_notifications_enabled]
+      end
     end
 
     delegate :short_provider_name, :allowed_by_enterprise_token?, :disallowed_by_enterprise_token?, to: :class
@@ -175,6 +179,16 @@ module Storages
     def automatic_management_new_record? = raise Errors::SubclassResponsibility
 
     def provider_fields_defaults = raise Errors::SubclassResponsibility
+
+    def non_confidential_configuration
+      provider_fields.symbolize_keys
+                     .slice(*self.class.non_confidential_provider_fields)
+                     .merge(
+                       host:,
+                       oauth_client_id: oauth_client&.client_id,
+                       oauth_application_client_id: oauth_application&.uid
+                     )
+    end
 
     def provider_type_nextcloud?
       is_a?(NextcloudStorage)

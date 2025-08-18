@@ -30,11 +30,13 @@
   TASKBOARD
 ***************************************/
 
+// @ts-expect-error TS(2304): Cannot find name 'RB'.
 RB.Taskboard = (function ($) {
+  // @ts-expect-error TS(2304): Cannot find name 'RB'.
   return RB.Object.create(RB.Model, {
 
-    initialize: function (el) {
-      var self = this; // So we can bind the event handlers to this object
+    initialize(el:any) {
+      const self = this; // So we can bind the event handlers to this object
 
       this.$ = $(el);
       this.el = el;
@@ -49,7 +51,7 @@ RB.Taskboard = (function ($) {
       this.updateColWidths();
 
       $('#col_width_input')
-        .on('keyup', function (evt) {
+        .on('keyup', (evt) => {
           if (evt.which === 13) {
             self.updateColWidths();
           }
@@ -64,32 +66,34 @@ RB.Taskboard = (function ($) {
       this.initializeTaskboardMenus();
     },
 
-    initializeNewButtons : function () {
+    initializeNewButtons() {
       this.$.find('#tasks .add_new.clickable').click(this.handleAddNewTaskClick);
       this.$.find('#impediments .add_new.clickable').click(this.handleAddNewImpedimentClick);
     },
 
-    initializeSortables : function () {
+    initializeSortables() {
       this.$.find('#impediments .list').sortable({
         placeholder: 'placeholder',
-        start:  this.dragStart,
-        stop:   this.dragStop,
+        start: this.dragStart,
+        stop: this.dragStop,
         update: this.dragComplete,
-        cancel: '.prevent_edit'
+        cancel: '.prevent_edit',
       }).sortable('option', 'connectWith', '#impediments .list');
       $('#impediments .list').disableSelection();
 
-      var list, augmentList, self = this;
+      let list:any;
+      let augmentList:any;
+      const self = this;
 
       list = this.$.find('#tasks .list');
 
       augmentList = function () {
         $(list.splice(0, 50)).sortable({
           placeholder: 'placeholder',
-          start:  self.dragStart,
-          stop:   self.dragStop,
+          start: self.dragStart,
+          stop: self.dragStop,
           update: self.dragComplete,
-          cancel: '.prevent_edit'
+          cancel: '.prevent_edit',
         }).sortable('option', 'connectWith', '#tasks .list');
         $('#tasks .list').disableSelection();
 
@@ -101,95 +105,105 @@ RB.Taskboard = (function ($) {
       augmentList();
     },
 
-    initializeTasks : function () {
-      this.$.find('.task').each(function (index) {
+    initializeTasks() {
+      this.$.find('.task').each(function (this:any, index:any) {
+        // @ts-expect-error TS(2304): Cannot find name 'RB'.
         RB.Factory.initialize(RB.Task, this);
       });
     },
 
-    initializeImpediments : function () {
-      this.$.find('.impediment').each(function (index) {
+    initializeImpediments() {
+      this.$.find('.impediment').each(function (this:any, index:any) {
+        // @ts-expect-error TS(2304): Cannot find name 'RB'.
         RB.Factory.initialize(RB.Impediment, this);
       });
     },
 
-    initializeTaskboardMenus : function () {
-      var toggleOpen = "open icon-pulldown-up icon-pulldown";
+    initializeTaskboardMenus() {
+      const toggleOpen = 'open icon-pulldown-up icon-pulldown';
 
-      $(".backlog .backlog-menu > div.menu-trigger").on("click", function() {
+      $('.backlog .backlog-menu > div.menu-trigger').on('click', function () {
         $(this).toggleClass(toggleOpen);
       });
 
-      $(".backlog .backlog-menu > ul.items li.item").on("click", function() {
-        $(this).closest(".backlog-menu").find("div.menu-trigger").toggleClass(toggleOpen);
+      $('.backlog .backlog-menu > ul.items li.item').on('click', function () {
+        $(this).closest('.backlog-menu').find('div.menu-trigger').toggleClass(toggleOpen);
       });
     },
 
-    dragComplete: function (e, ui) {
+    dragComplete(e:any, ui:any) {
       // Handler is triggered for source and target. Thus the need to check.
-      var isDropTarget = (ui.sender === null);
+      const isDropTarget = (ui.sender === null);
 
       if (isDropTarget) {
         ui.item.data('this').saveDragResult();
       }
     },
 
-    dragStart: function (e, ui) {
-      ui.item.addClass("dragging");
+    dragStart(e:any, ui:any) {
+      ui.item.addClass('dragging');
     },
 
-    dragStop: function (e, ui) {
-      ui.item.removeClass("dragging");
+    dragStop(e:any, ui:any) {
+      ui.item.removeClass('dragging');
     },
 
-    handleAddNewImpedimentClick: function (e) {
-      var row = $(this).parents("tr").first();
+    handleAddNewImpedimentClick(e:any) {
+      const row = $(this).parents('tr').first();
       $('#taskboard').data('this').newImpediment(row);
     },
 
-    handleAddNewTaskClick: function (e) {
-      var row = $(this).parents("tr").first();
+    handleAddNewTaskClick(e:any) {
+      const row = $(this).parents('tr').first();
       $('#taskboard').data('this').newTask(row);
     },
 
-    loadColWidthPreference: function () {
-      var w = RB.UserPreferences.get('taskboardColWidth');
+    loadColWidthPreference() {
+      // @ts-expect-error TS(2304): Cannot find name 'RB'.
+      let w = RB.UserPreferences.get('taskboardColWidth');
       if (w === null || w === undefined) {
         w = this.defaultColWidth;
+        // @ts-expect-error TS(2304): Cannot find name 'RB'.
         RB.UserPreferences.set('taskboardColWidth', w);
       }
-      $("#col_width input").val(w);
+      $('#col_width input').val(w);
     },
 
-    newImpediment: function (row) {
-      var impediment, o;
+    newImpediment(row:any) {
+      let impediment;
+      let o;
 
       impediment = $('#impediment_template').children().first().clone();
-      row.find(".list").first().prepend(impediment);
+      row.find('.list').first().prepend(impediment);
 
+      // @ts-expect-error TS(2304): Cannot find name 'RB'.
       o = RB.Factory.initialize(RB.Impediment, impediment);
       o.edit();
     },
 
-    newTask: function (row) {
-      var task, o;
+    newTask(row:any) {
+      let task;
+      let o;
 
       task = $('#task_template').children().first().clone();
-      row.find(".list").first().prepend(task);
+      row.find('.list').first().prepend(task);
 
+      // @ts-expect-error TS(2304): Cannot find name 'RB'.
       o = RB.Factory.initialize(RB.Task, task);
       o.edit();
     },
 
-    updateColWidths: function () {
-      var w = parseInt($("#col_width_input").val(), 10);
+    updateColWidths() {
+      // @ts-expect-error TS(2345): Argument of type 'string | number | string[] | und... Remove this comment to see the full error message
+      let w = parseInt($('#col_width_input').val(), 10);
 
       if (isNaN(w) || w <= 0) {
         w = this.defaultColWidth;
       }
-      $("#col_width_input").val(w);
+      $('#col_width_input').val(w);
+      // @ts-expect-error TS(2304): Cannot find name 'RB'.
       RB.UserPreferences.set('taskboardColWidth', w);
-      $(".swimlane").width(this.colWidthUnit * w).css('min-width', this.colWidthUnit * w);
-    }
+      $('.swimlane').width(this.colWidthUnit * w).css('min-width', this.colWidthUnit * w);
+    },
   });
 }(jQuery));

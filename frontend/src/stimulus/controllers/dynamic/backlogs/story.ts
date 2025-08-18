@@ -26,12 +26,16 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
+import { FetchResponse } from '@rails/request.js';
+
 /**************************************
   STORY
 ***************************************/
+// @ts-expect-error TS(2304): Cannot find name 'RB'.
 RB.Story = (function ($) {
+  // @ts-expect-error TS(2304): Cannot find name 'RB'.
   return RB.Object.create(RB.WorkPackage, RB.EditableInplace, {
-    initialize: function (el) {
+    initialize(el:any) {
       this.$ = $(el);
       this.el = el;
 
@@ -43,68 +47,74 @@ RB.Story = (function ($) {
     /**
      * Callbacks from model.js
      **/
-    beforeSave: function () {
+    beforeSave() {
       this.refreshStory();
     },
 
-    afterCreate: function (data, textStatus, xhr) {
+    afterCreate(data:string, response:FetchResponse) {
       this.refreshStory();
     },
 
-    afterUpdate : function (data, textStatus, xhr) {
+    afterUpdate(data:string, response:FetchResponse) {
       this.refreshStory();
     },
 
-    refreshed: function () {
+    refreshed() {
       this.refreshStory();
     },
     /**/
 
-    editDialogTitle: function () {
-      return "Story #" + this.getID();
+    editDialogTitle() {
+      return `Story #${this.getID()}`;
     },
 
-    editorDisplayed: function (editor) { },
+    editorDisplayed(editor:any) { },
 
-    getPoints: function () {
-      var points = parseInt(this.$.find('.story_points').first().text(), 10);
+    getPoints() {
+      const points = parseInt(this.$.find('.story_points').first().text(), 10);
       return isNaN(points) ? 0 : points;
     },
 
-    getType: function () {
-      return "Story";
+    getType() {
+      return 'Story';
     },
 
-    markIfClosed: function () {
+    markIfClosed() {
       // Do nothing
     },
 
-    newDialogTitle: function () {
-      return "New Story";
+    newDialogTitle() {
+      return 'New Story';
     },
 
-    refreshStory : function () {
+    refreshStory() {
       this.recalcVelocity();
     },
 
-    recalcVelocity: function () {
-      this.$.parents(".backlog").first().data('this').refresh();
+    recalcVelocity() {
+      this.$.parents('.backlog').first().data('this').refresh();
     },
 
-    saveDirectives: function () {
-      var url, prev, sprintId, data;
+    saveDirectives() {
+      let url;
+      let prev;
+      let sprintId;
+
+      let data;
+      let method;
 
       prev = this.$.prev();
-      sprintId = this.$.parents('.backlog').data('this').isSprintBacklog() ?
-                   this.$.parents('.backlog').data('this').getSprint().data('this').getID() :
-                   '';
+      sprintId = this.$.parents('.backlog').data('this').isSprintBacklog()
+                   ? this.$.parents('.backlog').data('this').getSprint().data('this')
+.getID()
+                   : '';
 
-      data = "prev=" +
-             (prev.length === 1 ?  prev.data('this').getID() : '') +
-             "&version_id=" + sprintId;
+      data = `prev=${
+             prev.length === 1 ? prev.data('this').getID() : ''
+              }&version_id=${sprintId}`;
 
       if (this.$.find('.editor').length > 0) {
-        data += "&" + this.$.find('.editor').serialize();
+        data += `&${this.$.find('.editor').serialize()}`;
       }
 
       //TODO: this might be unsave in case the parent of this story is not the
@@ -112,20 +122,24 @@ RB.Story = (function ($) {
       //      valid url - one option might be to take RB.constants.sprint_id
       //      hoping it exists
       if (this.isNew()) {
-        url = RB.urlFor('create_story', {sprint_id: sprintId});
+        // @ts-expect-error TS(2304): Cannot find name 'RB'.
+        url = RB.urlFor('create_story', { sprint_id: sprintId });
+        method = 'post';
       } else {
-        url = RB.urlFor('update_story', {id: this.getID(), sprint_id: sprintId});
-        data += "&_method=put";
+        // @ts-expect-error TS(2304): Cannot find name 'RB'.
+        url = RB.urlFor('update_story', { id: this.getID(), sprint_id: sprintId });
+        method = 'put';
       }
 
       return {
-        url: url,
-        data: data
+        url,
+        method,
+        data,
       };
     },
 
-    beforeSaveDragResult: function () {
+    beforeSaveDragResult() {
       // Do nothing
-    }
+    },
   });
 }(jQuery));

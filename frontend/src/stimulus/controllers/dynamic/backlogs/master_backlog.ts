@@ -26,30 +26,17 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-/**************************************
-  WORK PACKAGE
-***************************************/
-RB.WorkPackage = (function ($) {
-  return RB.Object.create(RB.Model, {
-
-    initialize: function (el) {
-      this.$ = $(el);
-      this.el = el;
-    },
-
-    beforeSaveDragResult: function () {
-      // Do nothing
-    },
-
-    getType: function () {
-      return "WorkPackage";
-    },
-
-    saveDragResult: function () {
-      this.beforeSaveDragResult();
-      if (!this.$.hasClass('editing')) {
-        this.saveEdits();
-      }
-    }
+// Initialize the backlogs after DOM is loaded
+jQuery(($) => {
+  // Initialize each backlog
+  $('.backlog').each(function (index) {
+    // 'this' refers to an element with class="backlog"
+    // @ts-expect-error TS(2304): Cannot find name 'RB'.
+    RB.Factory.initialize(RB.Backlog, this);
   });
-}(jQuery));
+
+  $('.backlog .toggler').on('click', function () {
+    $(this).toggleClass('closed icon-arrow-up1 icon-arrow-down1');
+    $(this).parents('.backlog').find('ul.stories').toggleClass('closed');
+  });
+});

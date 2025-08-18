@@ -255,16 +255,16 @@ de:
       templates:
         default:
           label: Standard
-          caption: Die Standardvorlage eignet sich für die meisten Besprechungen und repräsentiert den aktuellen Status.
+          caption: Die Standardvorlage ist für die meisten Besprechungen geeignet und repräsentiert den aktuellen Zustand.
         minutes:
           label: Protokoll
-          caption: Die Protokollvorlage eignet sich für Besprechungen, die abgeschlossen sind und archiviert werden.
+          caption: Die Protokollvorlage eignet sich für geschlossene und archivierte Besprechungen.
       first_page_header_left:
-        label: Kopfzeile links für erste Seite
-        caption: Dieser Text wird auf der ersten Seite links in der Kopfzeile angezeigt.
+        label: Erste Kopfzeile links
+        caption: Dieser Text erscheint auf der ersten Seite links im Seitenkopf.
       author:
         label: Verfasser:in
-        caption: Verfasser:in des Protokolls wird in der Unterüberschrift angezeigt.
+        caption: Der/die Verfasser:in des Protokolls wird im Untertitel angezeigt.
       include_participants:
         label: Liste der Teilnehmer einfügen
         caption: Eine Liste der Teilnehmer wird oberhalb der Agenda ausgegeben.
@@ -446,8 +446,8 @@ de:
   label_agenda_item_undisclosed_wp: "Arbeitspaket #%{id} ist nicht sichtbar"
   label_agenda_item_deleted_wp: "Referenz auf ein gelöschtes Arbeitspaket"
   label_agenda_item_actions: "Aktionen zu Tagesordnungspunkten"
-  label_agenda_item_move_to_next_title: "Move to next meeting?"
-  label_agenda_item_move: "Move"
+  label_agenda_item_move_to_next_title: "Zur nächsten Besprechung verschieben?"
+  label_agenda_item_move: "Verschieben"
   label_agenda_item_move_to_next: "Zur nächsten Besprechung verschieben"
   label_agenda_item_move_to_backlog: "In Backlog verschieben"
   label_agenda_item_move_to_current_meeting: "Zur aktuellen Besprechung verschieben"

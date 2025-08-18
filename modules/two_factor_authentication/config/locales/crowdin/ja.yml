@@ -145,7 +145,7 @@ ja:
         redacted_identifier: "モバイルデバイス (%{redacted_number})"
         request_2fa_identifier: "%{redacted_identifier}、%{delivery_channel} 経由で認証コードを送信しました。"
         description: |
-          Receive 2FA code via a text message on your phone each time you log in.
+          ログインするたびに、携帯電話のテキストメッセージを介して2FAコードを受信します。
     sns:
       delivery_failed: "SNSの配信に失敗しました:"
     message_bird:
