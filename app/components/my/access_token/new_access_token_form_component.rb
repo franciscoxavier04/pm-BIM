@@ -45,20 +45,7 @@ module My
       private
 
       def i18n_scope
-        case token
-        when Token::API then "my.access_token.dialog.api"
-        when Token::ICalMeeting then "my.access_token.dialog.ical_meeting"
-        else raise ArgumentError, "Unknown token type: #{token_type}"
-        end
-      end
-
-      def show_warning?
-        case token
-        when Token::API then true
-        when Token::ICalMeeting then false
-        else
-          raise ArgumentError, "Unknown token type: #{token_type}"
-        end
+        [:my, :access_token, :dialog, token.model_name.i18n_key]
       end
     end
   end

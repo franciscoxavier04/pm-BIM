@@ -42,7 +42,7 @@ See COPYRIGHT and LICENSE files for more details.
           )
         ) do
           flex_layout(mb: 3) do |body|
-            if show_warning?
+            if I18n.t(:attention_text, scope: i18n_scope, default: nil).present?
               body.with_row(mb: 3) do
                 render(Primer::Alpha::Banner.new(scheme: :warning)) do
                   I18n.t(:attention_text, scope: i18n_scope)

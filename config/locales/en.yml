@@ -616,30 +616,16 @@ en:
   my:
     access_token:
       dialog:
-        api:
+        token/api:
           dialog_title: "Create new API token"
           attention_text: "Treat API tokens like passwords. Anyone with this token will have access to information from this instance, share it only with trusted users."
           dialog_body: "This token will allow third-party applications to communicate with your instance. To differentiate the new API token, please give it a name."
           create_button: "Create"
           name_label: "Token name"
-        ical_meeting:
-          dialog_title: "New iCal subscription token for meetings"
-          dialog_body: "This token will generate an iCal subscription URL that lets you view all your meetings in an external calendar application."
-          create_button: "Create subscription"
-          name_label: "Token name"
-          name_caption: 'You can name it after where you will use it, such as"My phone" or "Work computer.'
       created_dialog:
-        api:
+        token/api:
           title: "The API token has been generated"
           warning: "This is the only time you will see this token. Make sure to copy it now."
-        ical_meeting:
-          title: "An iCal meeting subscription token has been generated"
-          body: "Treat the following URL as you would a password. Anyone who has access to it can view all your meetings."
-          warning: "This is the only time you will see this token. Make sure to copy it now."
-      revocation:
-        ical_meeting:
-          notice_success: "The iCalendar meeting subscription has been revoked successfully."
-          notice_failure: "Failed to revoke iCalendar meeting subscription: %{error}"
       errors:
         token_name_blank: "Please provide an API token name"
         token_name_in_use: "This API token name is already in use, please select a different one"
@@ -648,11 +634,10 @@ en:
       failed_to_revoke_token: "Failed to revoke access token: %{error}"
       notice_reset_token: "A new %{type} token has been generated. Your access token is:"
       token_value_warning: "Note: This is the only time you will see this token, make sure to copy it now."
-      no_results_title_text: There are currently no access tokens available.
+      no_results_title_text: "There are currently no access tokens available."
       notice_api_token_revoked: "The API token has been deleted. To create a new token please use the button in the API section."
       notice_rss_token_revoked: "The RSS token has been deleted. To create a new token please use the link in the RSS section."
       notice_ical_token_revoked: 'iCalendar token "%{token_name}" for calendar "%{calendar_name}" of project "%{project_name}" has been revoked. The iCalendar URL with this token is now invalid.'
-      new_ical_meeting_token_dialog_show_button_text: "iCalendar subscription"
 
   news:
     index:
@@ -1756,9 +1741,6 @@ en:
       token/api:
         one: Access token
         other: Access tokens
-      token/ical_meeting:
-        one: "iCal Meeting subscription"
-        other: "iCal Meeting subscription"
       type: "Type"
       user: "User"
       version: "Version"
@@ -2728,7 +2710,7 @@ en:
         expiration: "Expires"
       indefinite_expiration: "Never"
       simple_revoke_confirmation: "Are you sure you want to revoke this token?"
-      api:
+      token/api:
         title: "API"
         text_hint: "API tokens allow third-party applications to communicate with this OpenProject instance via REST APIs."
         static_token_name: "API token"
@@ -2739,12 +2721,6 @@ en:
         text_hint: 'iCalendar tokens allow users to <a href="%{path}" target="_blank">subscribe to OpenProject calendars</a> and view up-to-date work package information from external clients.'
         disabled_text: "iCalendar subscriptions are not enabled by the administrator. Please contact your administrator to use this feature."
         empty_text_hint: "To add an iCalendar token, subscribe to a new or existing calendar from within the Calendar module of a project. You must have the necessary permissions."
-      ical_meeting:
-        title: "iCalendar for meetings"
-        text_hint: "iCalendar meeting tokens allow users to subscribe to all their meetings and view up-to-date meeting information in external clients."
-        disabled_text: "iCalendar meeting subscriptions are not enabled by the administrator. Please contact your administrator to use this feature."
-        empty_text_hint: 'To add an iCalendar meeting token, go to the <a href="%{path}">meetings section</a> and subscribe from there.'
-        add_button: "Subscribe to calendar"
       oauth:
         title: "OAuth"
         text_hint: "OAuth tokens allow third-party applications to connect with this OpenProject instance."
@@ -5074,3 +5050,7 @@ en:
 
   enterprise_plans:
     legacy_enterprise: "Enterprise Plan"
+
+  token:
+    hashed_token:
+      display_value_placeholder: "***"

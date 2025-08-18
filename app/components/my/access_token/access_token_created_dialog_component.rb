@@ -47,23 +47,8 @@ module My
         "#{token.model_name.element}-created-dialog"
       end
 
-      def private_token_value
-        case token
-        when Token::API
-          token.plain_value
-        when Token::ICalMeeting
-          ical_feed_meetings_url(token: token.plain_value, format: :ics)
-        else
-          raise ArgumentError, "Unknown token type: #{token.class}"
-        end
-      end
-
       def i18n_scope
-        case token
-        when Token::API then "my.access_token.created_dialog.api"
-        when Token::ICalMeeting then "my.access_token.created_dialog.ical_meeting"
-        else raise ArgumentError, "Unknown token type: #{token_type}"
-        end
+        [:my, :access_token, :created_dialog, token.model_name.i18n_key]
       end
     end
   end

@@ -28,46 +28,29 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-# This components renders a dialog to confirm the deletion of a project from a storage.
-module My
-  module AccessToken
-    class APITokensSectionComponent < ::ApplicationComponent
-      include OpTurbo::Streamable
-      include Redmine::I18n
+module Token
+  class ICalMeeting < HashedToken
+    include OpenProject::StaticRouting::UrlHelpers
+    include ActionView::Helpers::UrlHelper
 
-      attr_reader :tokens, :token_type
+    store_attribute :data, :token_name, :string
 
-      def initialize(tokens:, token_type:)
-        super
-
-        @tokens = tokens
-        @token_type = token_type
+    def display_value
+      if plain_value.present?
+        url_helpers.ical_feed_meetings_url(token: plain_value, format: :ics)
+      else
+        I18n.t("token.hashed_token.display_value_placeholder")
       end
+    end
 
-      private
+    private
 
-      def wrapper_key
-        "#{token_type.model_name.element}-token-component"
-      end
+    def single_value?
+      false
+    end
 
-      def i18n_scope
-        [:my_account, :access_tokens, token_type.model_name.i18n_key]
-      end
-
-      def token_available?
-        case token_type.to_s
-        when "Token::API" then Setting.rest_api_enabled?
-        when "Token::ICalMeeting" then Setting.ical_enabled?
-        else raise ArgumentError, "Unknown token type: #{token_type}"
-        end
-      end
-
-      def add_button_icon
-        case token_type.to_s
-        when "Token::ICalMeeting" then :rss
-        else :plus
-        end
-      end
+    def url_helpers
+      @url_helpers ||= OpenProject::StaticRouting::StaticUrlHelpers.new
     end
   end
 end

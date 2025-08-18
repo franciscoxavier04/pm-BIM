@@ -28,14 +28,11 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Token
-  class ICalMeeting < HashedToken
-    store_attribute :data, :token_name, :string
+require "securerandom"
 
-    private
-
-    def single_value?
-      false
-    end
+FactoryBot.define do
+  factory :ical_meeting_token, class: "::Token::ICalMeeting" do
+    user
+    sequence(:token_name) { |n| "My Meetings Calendar #{n}" }
   end
 end

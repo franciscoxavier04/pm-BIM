@@ -55,10 +55,10 @@ See COPYRIGHT and LICENSE files for more details.
               name: :openproject_api_access_token,
               label: token.model_name.human,
               visually_hide_label: false,
-              value: private_token_value
+              value: token.display_value
             )
             input_group.with_trailing_action_clipboard_copy_button(
-              value: private_token_value,
+              value: token.display_value,
               aria: {
                 label: I18n.t("button_copy_to_clipboard")
               }

@@ -67,6 +67,10 @@ module Token
       end
     end
 
+    def display_value
+      plain_value.presence || I18n.t("token.hashed_token.display_value_placeholder")
+    end
+
     ##
     # Validate the user input on the token
     # 1. The token is still valid

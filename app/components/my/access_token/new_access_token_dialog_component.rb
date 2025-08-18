@@ -52,11 +52,7 @@ module My
       end
 
       def i18n_scope
-        case new_token
-        when Token::API then "my.access_token.dialog.api"
-        when Token::ICalMeeting then "my.access_token.dialog.ical_meeting"
-        else raise ArgumentError, "Unknown token type: #{token_type}"
-        end
+        [:my, :access_token, :dialog, new_token.model_name.i18n_key]
       end
     end
   end
