@@ -71,12 +71,15 @@ class WorkPackages::SetAttributesService
     end
 
     def derive_remaining_work?
-      remaining_work_not_provided_by_user? && (work_changed? || percent_complete_changed?)
+      (remaining_work_not_provided_by_user? && (work_changed? || percent_complete_changed?)) \
+        || fixable_remaining_work?
     end
 
     def derive_percent_complete?
-      percent_complete_not_provided_by_user? && (work_changed? || remaining_work_changed?) \
-        && !skip_percent_complete_derivation
+      return false if skip_percent_complete_derivation
+
+      (percent_complete_not_provided_by_user? && (work_changed? || remaining_work_changed?)) \
+        || fixable_percent_complete?
     end
 
     def set_complete
@@ -169,6 +172,22 @@ class WorkPackages::SetAttributesService
       work_empty? \
         || (remaining_work_came_from_user? && percent_complete_came_from_user?) \
         || (remaining_work_empty? && remaining_work_came_from_user?)
+    end
+
+    def fixable_remaining_work?
+      no_progress_value_provided_by_user? \
+        && correctable_remaining_work_value?(work:, remaining_work:, percent_complete:)
+    end
+
+    def fixable_percent_complete?
+      no_progress_value_provided_by_user? \
+        && correctable_percent_complete_value?(work:, remaining_work:, percent_complete:)
+    end
+
+    def no_progress_value_provided_by_user?
+      work_not_provided_by_user? \
+        && remaining_work_not_provided_by_user? \
+        && percent_complete_not_provided_by_user?
     end
   end
 end

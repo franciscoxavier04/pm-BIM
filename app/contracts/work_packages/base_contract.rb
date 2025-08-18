@@ -398,9 +398,7 @@ module WorkPackages
     end
 
     def validate_percent_complete_matches_work_and_remaining_work
-      return if percent_complete_derivation_unapplicable?
-
-      if !consistent_progress_values?(work:, remaining_work:, percent_complete:)
+      if correctable_percent_complete_value?(work:, remaining_work:, percent_complete:)
         errors.add(:done_ratio, :does_not_match_work_and_remaining_work)
       end
     end
@@ -474,12 +472,6 @@ module WorkPackages
 
     def percent_complete_empty?
       percent_complete.nil?
-    end
-
-    def percent_complete_derivation_unapplicable?
-      WorkPackage.status_based_mode? || # only applicable in work-based mode
-        work_empty? || remaining_work_empty? || percent_complete_empty? || # only applicable if all 3 values are set
-        work == 0 || percent_complete == 100 # only applicable if not in special cases leading to divisions by zero
     end
 
     def validate_no_reopen_on_closed_version

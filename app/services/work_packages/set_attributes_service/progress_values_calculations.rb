@@ -64,10 +64,44 @@ class WorkPackages::SetAttributesService
       end
     end
 
-    def consistent_progress_values?(work:, remaining_work:, percent_complete:)
+    # Check if the remaining work value is wrong and can be corrected regarding
+    # work and % complete values.
+    #
+    # In most cases, it's not remaining work but % complete which must change.
+    # The only case where remaining work must be corrected is when work is set,
+    # % complete is 100% and remaining work is not 0h. In this case this method
+    # returns `true`.
+    def correctable_remaining_work_value?(work:, remaining_work:, percent_complete:)
+      work.present? && remaining_work != 0 && percent_complete == 100
+    end
+
+    # Check if the % complete value is wrong and can be corrected regarding work
+    # and remaining work values.
+    #
+    # Returns `false` if the percent complete is the same as the one calculated
+    # from work and remaining work, or if the remaining work is the same as the
+    # one calculated from work and percent complete.
+    #
+    # Returns `false` also if the percent complete value cannot be calculated
+    # because other values are missing or out of bounds.
+    #
+    # Returns `false` also in the special case where % complete is 100% and
+    # remaining work greater than 0h. In this case, it's remaining work which needs to
+    # be corrected to 0h.
+    def correctable_percent_complete_value?(work:, remaining_work:, percent_complete:)
+      return false unless percent_complete_calculation_applicable?(work:, remaining_work:, percent_complete:)
+
       # Check if one of provided remaining_work or percent_complete matches the calculated one
-      percent_complete == calculate_percent_complete(work:, remaining_work:) \
-        || remaining_work == calculate_remaining_work(work:, percent_complete:)
+      percent_complete != calculate_percent_complete(work:, remaining_work:) \
+        && remaining_work != calculate_remaining_work(work:, percent_complete:)
+    end
+
+    def percent_complete_calculation_applicable?(work:, remaining_work:, percent_complete:)
+      WorkPackage.work_based_mode? && # only applicable in work-based mode
+        work && remaining_work && percent_complete && # only applicable if all 3 values are set
+        work != 0 && # only applicable if not leading to divisions by zero
+        percent_complete != 100 && # keep 100% complete as is
+        remaining_work >= 0 && work >= remaining_work # only applicable if positive and work is greater than remaining work
     end
   end
 end
