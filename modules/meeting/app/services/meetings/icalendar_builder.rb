@@ -146,7 +146,7 @@ module Meetings
         .not_cancelled
         .instantiated
         .includes(meeting: [:project], recurring_meeting: [:project])
-        .index_by(&:recurring_meeting_id)
+        .group_by(&:recurring_meeting_id)
 
       @series_cache_loaded = true
     end
@@ -208,7 +208,7 @@ module Meetings
 
     # Methods for recurring meetings
     def add_instantiated_occurrences(recurring_meeting:)
-      upcoming_instantiated_schedules(recurring_meeting).find_each do |scheduled_meeting|
+      upcoming_instantiated_schedules(recurring_meeting).each do |scheduled_meeting|
         add_single_recurring_occurrence(scheduled_meeting:)
       end
     end
