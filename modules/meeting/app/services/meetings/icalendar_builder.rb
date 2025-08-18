@@ -85,10 +85,10 @@ module Meetings
       end
 
       # Add single events for all occurrences
-      add_instantiated_occurences(recurring_meeting: recurring_meeting)
+      add_instantiated_occurrences(recurring_meeting: recurring_meeting)
     end
 
-    def add_single_recurring_occurence(scheduled_meeting:) # rubocop:disable Metrics/AbcSize
+    def add_single_recurring_occurrence(scheduled_meeting:) # rubocop:disable Metrics/AbcSize
       recurring_meeting = scheduled_meeting.recurring_meeting
       meeting = scheduled_meeting.meeting
 
@@ -181,10 +181,10 @@ module Meetings
       @url_helpers ||= OpenProject::StaticRouting::StaticUrlHelpers.new
     end
 
-    # Methods for recurrence meetings
-    def add_instantiated_occurences(recurring_meeting:)
+    # Methods for recurring meetings
+    def add_instantiated_occurrences(recurring_meeting:)
       upcoming_instantiated_schedules(recurring_meeting).find_each do |scheduled_meeting|
-        add_single_recurring_occurence(scheduled_meeting:)
+        add_single_recurring_occurrence(scheduled_meeting:)
       end
     end
 

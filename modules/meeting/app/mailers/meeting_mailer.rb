@@ -129,7 +129,7 @@ class MeetingMailer < UserMailer
     elsif meeting.recurring?
       ::RecurringMeetings::ICalService
         .new(user:, series: meeting.recurring_meeting)
-        .generate_single_occurence(meeting: meeting, **args)
+        .generate_single_occurrence(meeting: meeting, **args)
     else
       ::Meetings::ICalService
         .new(user:, meeting:)

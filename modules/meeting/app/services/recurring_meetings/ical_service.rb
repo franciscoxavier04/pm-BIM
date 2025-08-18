@@ -54,17 +54,17 @@ module RecurringMeetings
       ServiceResult.failure(message: e.message)
     end
 
-    def generate_single_occurence(meeting:, cancelled: false)
+    def generate_single_occurrence(meeting:, cancelled: false) # rubocop:disable Metrics/AbcSize
       User.execute_as(user) do
         calendar = Meetings::IcalendarBuilder.new(timezone: Time.zone || Time.zone_default)
-        calendar.add_single_recurring_occurence(scheduled_meeting: meeting.scheduled_meeting)
+        calendar.add_single_recurring_occurrence(scheduled_meeting: meeting.scheduled_meeting)
         calendar.update_calendar_status(cancelled:)
 
         ServiceResult.success(result: calendar.to_ical)
       end
-      # rescue StandardError => e
-      #  Rails.logger.error("Failed to generate ICS for meeting series #{series.id}: #{e.message}")
-      #  ServiceResult.failure(message: e.message)
+    rescue StandardError => e
+      Rails.logger.error("Failed to generate ICS for meeting series #{series.id}: #{e.message}")
+      ServiceResult.failure(message: e.message)
     end
   end
 end
