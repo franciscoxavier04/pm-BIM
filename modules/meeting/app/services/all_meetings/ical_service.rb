@@ -46,8 +46,8 @@ module AllMeetings
           calendar.add_single_meeting_event(meeting:, cancelled: false)
         end
 
-        # This generates a lot of subqueries.
-        # TODO: Optimize this to avoid subqueries.
+        calendar.preload_for_recurring_meetings(recurring_meetings: recurring_meetings)
+
         recurring_meetings.each do |recurring_meeting|
           calendar.add_series_event(recurring_meeting:, cancelled: false)
         end
