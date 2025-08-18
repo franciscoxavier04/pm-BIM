@@ -127,10 +127,12 @@ RSpec.describe Projects::Exports::PDF do
         "4.5"
       when "text"
         "Some  long  text"
-      when "string", "list", "link"
+      when "string", "list"
         "Some small text"
       when "date"
         format_date(Time.zone.today)
+      when "link"
+        "https://www.example.com"
       end
     end
 
