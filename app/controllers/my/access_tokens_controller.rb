@@ -148,13 +148,13 @@ module My
 
       # rubocop:disable Rails/ActionControllerFlashBeforeRender
       result.on_success do
-        flash[:notice] = t("my.access_token.revocation.ical_meeting.notice_success")
+        flash[:notice] = t("my.access_token.revocation.token/ical_meeting.notice_success")
       end
 
       result.on_failure do |r|
         error = r.errors.map(&:message).join("; ")
         Rails.logger.error("Failed to revoke ical meeting token ##{current_user.id}: #{error}")
-        flash[:error] = t("my.access_token.ical_meeting.notice_failure", error:)
+        flash[:error] = t("my.access_token.recocation.token/ical_meeting.notice_failure", error:)
       end
       # rubocop:enable Rails/ActionControllerFlashBeforeRender
 

@@ -75,7 +75,7 @@ RSpec.describe "my access tokens", :js do
         find_test_selector("create-api-token-button").click
 
         within("dialog#api-created-dialog") do
-          expect(page).to have_content "The Access token token has been generated"
+          expect(page).to have_content "The API token has been generated"
           expect(page).to have_field("openproject_api_access_token", with: %r{[a-f0-9]{64}}, readonly: true)
           click_on "Close"
         end
@@ -239,7 +239,7 @@ RSpec.describe "my access tokens", :js do
     end
   end
 
-  describe "iCal Meeting tokens" do
+  describe "iCal Meeting tokens", with_flag: { meeting_ical_subscription: true } do
     context "when iCal access is disabled via global settings", with_settings: { ical_enabled: false } do
       it "shows notice about disabled token" do
         visit my_access_tokens_path
@@ -269,7 +269,7 @@ RSpec.describe "my access tokens", :js do
         find_test_selector("create-api-token-button").click
 
         within("dialog#ical_meeting-created-dialog") do
-          expect(page).to have_content "The iCal Meeting subscription token has been generated"
+          expect(page).to have_content "An iCal meeting subscription token has been generated"
           expect(page).to have_field("openproject_api_access_token",
                                      with: %r{http(s?)://[^/]+/meetings/ical/[a-f0-9]{64}.ics},
                                      readonly: true)
@@ -292,7 +292,7 @@ RSpec.describe "my access tokens", :js do
           end
         end
 
-        expect(page).to have_content I18n.t("my.access_token.revocation.ical_meeting.notice_success")
+        expect(page).to have_content I18n.t("my.access_token.revocation.token/ical_meeting.notice_success")
 
         User.current.reload
         visit my_access_tokens_path
