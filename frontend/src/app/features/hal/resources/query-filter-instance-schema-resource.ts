@@ -36,7 +36,6 @@ import { QueryFilterResource } from 'core-app/features/hal/resources/query-filte
 import { SchemaDependencyResource } from 'core-app/features/hal/resources/schema-dependency-resource';
 import { SchemaAttributeObject } from 'core-app/features/hal/resources/schema-attribute-object';
 import merge from 'lodash-es/merge';
-import some from 'lodash-es/some';
 
 export interface QueryFilterInstanceSchemaResourceLinks {
   self:HalLink;
@@ -120,9 +119,8 @@ export class QueryFilterInstanceSchemaResource extends SchemaResource {
   }
 
   private definesAllowedValues() {
-    return some(
-      this._dependencies[0].dependencies,
-      (dependency:any) => dependency.values && dependency.values._links && dependency.values._links.allowedValues,
+    return this._dependencies[0].dependencies.some(
+      (dependency:any) => dependency.values?._links?.allowedValues,
     );
   }
 }

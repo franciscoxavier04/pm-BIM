@@ -45,7 +45,6 @@ import { HalResourceNotificationService } from 'core-app/features/hal/services/h
 import { HalResourceSortingService } from 'core-app/features/hal/services/hal-resource-sorting.service';
 import { EditFieldComponent } from '../../edit-field.component';
 import { HalLink } from 'core-app/features/hal/hal-link/hal-link';
-import some from 'lodash-es/some';
 
 export interface ValueOption {
   name:string;
@@ -219,7 +218,7 @@ export class SelectEditFieldComponent extends EditFieldComponent implements OnIn
 
   public get currentValueInvalid():boolean {
     return !!(
-      (this.value && !some(this.availableOptions, (option:HalResource) => (option.href === this.value.href)))
+      (this.value && !this.availableOptions.some((option:HalResource) => (option.href === this.value.href)))
       || (!this.value && this.schema.required)
     );
   }

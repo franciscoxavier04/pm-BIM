@@ -37,7 +37,6 @@ import { InjectField } from 'core-app/shared/helpers/angular/inject-field.decora
 import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
 import { UserResource } from 'core-app/features/hal/resources/user-resource';
 import castArray from 'lodash-es/castArray';
-import some from 'lodash-es/some';
 
 @Component({
   templateUrl: './multi-select-edit-field.component.html',
@@ -229,7 +228,7 @@ export class MultiSelectEditFieldComponent extends EditFieldComponent implements
       this.currentValueInvalid = !!(
         // (If value AND)
         // MultiSelect AND there is no value which href is not in the options hrefs
-        (!some(this.value, (value:HalResource) => some(this.availableOptions, (option) => (option.href === value.href))))
+        (!this.value.some((value:HalResource) => this.availableOptions.some((option) => (option.href === value.href))))
       );
     } else {
       // If no value but required
