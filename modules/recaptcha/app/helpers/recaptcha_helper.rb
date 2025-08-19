@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RecaptchaHelper
   def recaptcha_available_options
     [
