@@ -60,7 +60,6 @@ import moment from 'moment-timezone';
 import { BannersService } from 'core-app/core/enterprise/banners.service';
 import { enterpriseDocsUrl } from 'core-app/core/setup/globals/constants.const';
 import { DayElement } from 'flatpickr/dist/types/instance';
-import every from 'lodash-es/every';
 import isEqual from 'lodash-es/isEqual';
 
 const DEFAULT_SELECTED_TIME = '08:00';
@@ -240,7 +239,7 @@ export class OpBaselineComponent extends UntilDestroyedMixin implements OnInit {
   }
 
   public dateChange(values:string[]):void {
-    if (every(values, validDate)) {
+    if (values.every(validDate)) {
       this.selectedDates = values;
     }
   }

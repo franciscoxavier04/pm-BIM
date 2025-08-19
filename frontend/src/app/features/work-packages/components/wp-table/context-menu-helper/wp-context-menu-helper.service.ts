@@ -35,7 +35,6 @@ import { WorkPackageViewTimelineService } from 'core-app/features/work-packages/
 import { WorkPackageViewHierarchyIdentationService } from 'core-app/features/work-packages/routing/wp-view-base/view-services/wp-view-hierarchy-indentation.service';
 import { WorkPackageViewDisplayRepresentationService } from 'core-app/features/work-packages/routing/wp-view-base/view-services/wp-view-display-representation.service';
 import each from 'lodash-es/each';
-import every from 'lodash-es/every';
 import filter from 'lodash-es/filter';
 
 export type WorkPackageAction = {
@@ -129,7 +128,7 @@ export class WorkPackageContextMenuHelperService {
   public getIntersectOfPermittedActions(workPackages:any) {
     const bulkPermittedActions:any = [];
     const possibleActions = this.BULK_ACTIONS.concat(this.HookService.call('workPackageBulkContextMenu'));
-    const permittedActions = filter(possibleActions, (action:any) => every(workPackages, (workPackage:WorkPackageResource) => this.isActionAllowed(workPackage, action)));
+    const permittedActions = filter(possibleActions, (action:any) => workPackages.every((workPackage:WorkPackageResource) => this.isActionAllowed(workPackage, action)));
 
     each(permittedActions, (permittedAction:any) => {
       bulkPermittedActions.push({

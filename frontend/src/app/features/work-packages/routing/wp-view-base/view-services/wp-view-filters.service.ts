@@ -41,7 +41,6 @@ import { WorkPackageQueryStateService } from './wp-view-base.service';
 import { firstValueFrom } from 'rxjs';
 import { map } from 'rxjs/operators';
 import differenceBy from 'lodash-es/differenceBy';
-import every from 'lodash-es/every';
 import findIndex from 'lodash-es/findIndex';
 import isEqual from 'lodash-es/isEqual';
 import reject from 'lodash-es/reject';
@@ -211,7 +210,7 @@ export class WorkPackageViewFiltersService extends WorkPackageQueryStateService<
    * @param filters
    */
   public isComplete(filters:QueryFilterInstanceResource[]):boolean {
-    return every(filters, (filter) => filter.isCompletelyDefined());
+    return filters.every((filter) => filter.isCompletelyDefined());
   }
 
   /**
