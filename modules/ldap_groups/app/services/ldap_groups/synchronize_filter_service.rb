@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module LdapGroups
   class SynchronizeFilterService
     attr_reader :filter

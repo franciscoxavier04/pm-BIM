@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OpenProject::LdapGroups
   class Engine < ::Rails::Engine
     engine_name :openproject_ldap_groups

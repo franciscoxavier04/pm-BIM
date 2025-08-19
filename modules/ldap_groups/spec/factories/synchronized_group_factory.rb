@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :ldap_synchronized_group, class: "::LdapGroups::SynchronizedGroup" do
     dn { "cn=foo,ou=groups,dc=example,dc=com" }

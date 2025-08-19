@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module LdapGroups
   class SynchronizedFiltersController < ::ApplicationController
     before_action :require_admin
