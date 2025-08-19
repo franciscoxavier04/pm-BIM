@@ -39,7 +39,6 @@ import { sharedUserColumn } from 'core-app/features/work-packages/components/wp-
 import compact from 'lodash-es/compact';
 import difference from 'lodash-es/difference';
 import differenceBy from 'lodash-es/differenceBy';
-import find from 'lodash-es/find';
 import findIndex from 'lodash-es/findIndex';
 import isEqual from 'lodash-es/isEqual';
 
@@ -88,21 +87,21 @@ export class WorkPackageViewColumnsService extends WorkPackageQueryStateService<
       queryColumnTypes.RELATION_OF_TYPE,
       queryColumnTypes.RELATION_TO_TYPE,
     ];
-    return !!find(this.getColumns(), (c) => relationColumns.indexOf(c._type) >= 0);
+    return !!this.getColumns().find((c) => relationColumns.indexOf(c._type) >= 0);
   }
 
   /**
    * Returns whether the current set of columns include child relations
    */
   public hasChildRelationsColumn() {
-    return !!find(this.getColumns(), (c) => c._type === queryColumnTypes.RELATION_CHILD);
+    return !!this.getColumns().find((c) => c._type === queryColumnTypes.RELATION_CHILD);
   }
 
   /**
    * Returns whether the current set of columns include shares
    */
   public hasShareColumn() {
-    return !!find(this.getColumns(), (c) => c.id === sharedUserColumn.id);
+    return !!this.getColumns().find((c) => c.id === sharedUserColumn.id);
   }
 
   /**
@@ -125,7 +124,7 @@ export class WorkPackageViewColumnsService extends WorkPackageQueryStateService<
    * @param id
    */
   public findById(id:string):QueryColumn|undefined {
-    return find(this.getColumns(), (column) => column.id === id);
+    return this.getColumns().find((column) => column.id === id);
   }
 
   /**
@@ -183,7 +182,7 @@ export class WorkPackageViewColumnsService extends WorkPackageQueryStateService<
   }
 
   public setColumnsById(columnIds:string[]) {
-    const mapped = columnIds.map((id) => find(this.all, (c) => c.id === id));
+    const mapped = columnIds.map((id) => this.all.find((c) => c.id === id));
     this.setColumns(compact(mapped));
   }
 
@@ -234,7 +233,7 @@ export class WorkPackageViewColumnsService extends WorkPackageQueryStateService<
     }
 
     if (this.index(id) === -1) {
-      const newColumn = find(this.all, (column) => column.id === id);
+      const newColumn = this.all.find((column) => column.id === id);
 
       if (!newColumn) {
         throw new Error('Column with provided name is not found');

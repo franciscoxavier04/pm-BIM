@@ -16,7 +16,6 @@ import {
   groupByProperty,
   groupedRowClassName,
 } from './grouped-rows-helpers';
-import find from 'lodash-es/find';
 import isArray from 'lodash-es/isArray';
 import isEqualWith from 'lodash-es/isEqualWith';
 import map from 'lodash-es/map';
@@ -74,7 +73,7 @@ export class GroupedRenderPass extends PlainRenderPass {
    * The API sadly doesn't provide us with the information which group a WP belongs to.
    */
   private matchingGroup(workPackage:WorkPackageResource) {
-    return find(this.groups, (group:GroupObject) => {
+    return this.groups.find((group:GroupObject) => {
       let property = workPackage[groupByProperty(group)];
       // explicitly check for undefined as `false` (bool) is a valid value.
       if (property === undefined) {
@@ -90,7 +89,7 @@ export class GroupedRenderPass extends PlainRenderPass {
       /// / If it's a linked resource, compare the href,
       /// / which is an array of links the resource offers
       if (property && property.href) {
-        return !!find(group._links.valueLink, (l:any):any => property.href === l.href);
+        return !!group._links.valueLink.find((l:any):any => property.href === l.href);
       }
 
       // Otherwise, fall back to simple value comparison.

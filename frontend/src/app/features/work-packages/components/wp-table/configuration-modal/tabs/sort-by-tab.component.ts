@@ -115,7 +115,7 @@ export class WpTableConfigurationSortByTabComponent implements TabComponent {
   }
 
   public updateSelection(sort:SortModalObject, selected:string | null) {
-    sort.column = find(this.allColumns, (column) => column.href === selected) || this.emptyColumn;
+    sort.column = this.allColumns.find((column) => column.href === selected) || this.emptyColumn;
     this.updateUsedColumns();
   }
 
@@ -132,7 +132,7 @@ export class WpTableConfigurationSortByTabComponent implements TabComponent {
   }
 
   private getMatchingSort(column:string, direction:string) {
-    return find(this.wpTableSortBy.available, (sort) => sort.column.href === column && sort.direction.href === direction);
+    return this.wpTableSortBy.available.find((sort) => sort.column.href === column && sort.direction.href === direction);
   }
 
   private fillUpSortElements() {

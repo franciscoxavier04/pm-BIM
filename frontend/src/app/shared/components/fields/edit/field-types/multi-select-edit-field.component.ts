@@ -37,7 +37,6 @@ import { InjectField } from 'core-app/shared/helpers/angular/inject-field.decora
 import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
 import { UserResource } from 'core-app/features/hal/resources/user-resource';
 import castArray from 'lodash-es/castArray';
-import find from 'lodash-es/find';
 import some from 'lodash-es/some';
 
 @Component({
@@ -130,7 +129,7 @@ export class MultiSelectEditFieldComponent extends EditFieldComponent implements
   public set selectedOption(val:ValueOption[]) {
     this._selectedOption = val;
     const mapper = (val:ValueOption) => {
-      const option = find(this.availableOptions, (o) => o.href === val.href) || this.nullOption;
+      const option = this.availableOptions.find((o) => o.href === val.href) || this.nullOption;
 
       // Special case 'null' value, which angular
       // only understands in ng-options as an empty string.
@@ -172,7 +171,7 @@ export class MultiSelectEditFieldComponent extends EditFieldComponent implements
     let result;
 
     if (option) {
-      result = find(this.availableOptions, (valueOption) => valueOption.href === option.href)!;
+      result = this.availableOptions.find((valueOption) => valueOption.href === option.href)!;
     }
 
     return result || this.nullOption;

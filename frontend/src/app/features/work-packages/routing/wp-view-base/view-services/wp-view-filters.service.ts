@@ -42,7 +42,6 @@ import { firstValueFrom } from 'rxjs';
 import { map } from 'rxjs/operators';
 import differenceBy from 'lodash-es/differenceBy';
 import every from 'lodash-es/every';
-import find from 'lodash-es/find';
 import findIndex from 'lodash-es/findIndex';
 import isEqual from 'lodash-es/isEqual';
 import reject from 'lodash-es/reject';
@@ -165,9 +164,8 @@ export class WorkPackageViewFiltersService extends WorkPackageQueryStateService<
   public instantiate(filterOrId:QueryFilterResource|string):QueryFilterInstanceResource {
     const id = (filterOrId instanceof QueryFilterResource) ? filterOrId.id : filterOrId;
 
-    const schema = find(
-      this.availableSchemas,
-      (schema) => (schema.filter.allowedValues as HalResource)[0].id === id,
+    const schema = this.availableSchemas.find((schema) => 
+      (schema.filter.allowedValues as HalResource)[0].id === id
     )!;
 
     return schema.getFilter();

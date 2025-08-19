@@ -34,7 +34,6 @@ import { QueryColumn } from 'core-app/features/work-packages/components/wp-query
 import { HalResource } from 'core-app/features/hal/resources/hal-resource';
 import { QueryGroupByResource } from 'core-app/features/hal/resources/query-group-by-resource';
 import { WorkPackageQueryStateService } from './wp-view-base.service';
-import find from 'lodash-es/find';
 import isEqual from 'lodash-es/isEqual';
 
 @Injectable()
@@ -64,7 +63,7 @@ export class WorkPackageViewGroupByService extends WorkPackageQueryStateService<
   }
 
   public isGroupable(column:QueryColumn):boolean {
-    return !!find(this.available, (candidate) => candidate.id === column.id);
+    return !!this.available.find((candidate) => candidate.id === column.id);
   }
 
   public disable() {
@@ -72,7 +71,7 @@ export class WorkPackageViewGroupByService extends WorkPackageQueryStateService<
   }
 
   public setBy(column:QueryColumn) {
-    const groupBy = find(this.available, (candidate) => candidate.id === column.id);
+    const groupBy = this.available.find((candidate) => candidate.id === column.id);
 
     if (groupBy) {
       this.update(groupBy);

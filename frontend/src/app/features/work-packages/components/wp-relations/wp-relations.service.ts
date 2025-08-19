@@ -10,7 +10,6 @@ import { map } from 'rxjs/operators';
 import { RelationResource } from 'core-app/features/hal/resources/relation-resource';
 import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
 import { ApiV3Filter } from 'core-app/shared/helpers/api-v3/api-v3-filter-builder';
-import find from 'lodash-es/find';
 import keyBy from 'lodash-es/keyBy';
 import values from 'lodash-es/values';
 
@@ -115,7 +114,7 @@ export class WorkPackageRelationsService extends StateCacheService<RelationsStat
       return;
     }
 
-    return find(relations, (relation:RelationResource) => {
+    return Object.values(relations).find((relation) => {
       const denormalized = relation.denormalized(from);
       // Check that
       // 1. the denormalized relation points at "to"

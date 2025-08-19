@@ -12,7 +12,6 @@ import { QueryFilterInstanceResource } from 'core-app/features/hal/resources/que
 import { HalResource } from 'core-app/features/hal/resources/hal-resource';
 import { SchemaCacheService } from 'core-app/core/schemas/schema-cache.service';
 import filter from 'lodash-es/filter';
-import find from 'lodash-es/find';
 import includes from 'lodash-es/includes';
 
 @Component({
@@ -80,7 +79,7 @@ export class WpTableConfigurationRelationSelectorComponent implements OnInit {
   private setSelectedRelationFilter():void {
     const currentRelationFilters:QueryFilterInstanceResource[] = this.relationFiltersOf(this.wpTableFilters.current) as QueryFilterInstanceResource[];
     if (currentRelationFilters.length > 0) {
-      this.selectedRelationFilter = find(this.availableRelationFilters, { id: currentRelationFilters[0].id }) as QueryFilterResource;
+      this.selectedRelationFilter = this.availableRelationFilters.find((f) => f.id === currentRelationFilters[0].id);
     } else {
       this.selectedRelationFilter = this.availableRelationFilters[0];
     }
@@ -113,7 +112,7 @@ export class WpTableConfigurationRelationSelectorComponent implements OnInit {
   }
 
   private getOperatorForId(filter:QueryFilterResource, id:string):QueryOperatorResource {
-    return find(this.schemaCache.of(filter).availableOperators, { id }) as QueryOperatorResource;
+    return this.schemaCache.of(filter).availableOperators.find((f:QueryOperatorResource) => f.id === id);
   }
 
   public compareRelationFilters(f1:undefined|QueryFilterResource, f2:undefined|QueryFilterResource):boolean {

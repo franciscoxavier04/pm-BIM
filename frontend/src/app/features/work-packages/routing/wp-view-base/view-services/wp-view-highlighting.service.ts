@@ -10,7 +10,6 @@ import {
   WorkPackageViewHighlight,
 } from 'core-app/features/work-packages/routing/wp-view-base/view-services/wp-table-highlight';
 import { WorkPackageQueryStateService } from './wp-view-base.service';
-import find from 'lodash-es/find';
 import isEmpty from 'lodash-es/isEmpty';
 import isEqual from 'lodash-es/isEqual';
 
@@ -45,7 +44,7 @@ export class WorkPackageViewHighlightingService extends WorkPackageQueryStateSer
     }
 
     // 3. Is name in selected attributes ?
-    return !!find(this.current.selectedAttributes, (attr:HalResource) => attr.id === name);
+    return !!this.current.selectedAttributes?.find((attr) => attr.id === name);
   }
 
   public get current():WorkPackageViewHighlight {

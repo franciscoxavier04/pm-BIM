@@ -37,7 +37,6 @@ import { QuerySortByResource } from 'core-app/features/hal/resources/query-sort-
 import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
 import { QueryColumn } from 'core-app/features/work-packages/components/wp-query/query-column';
 import { WorkPackageQueryStateService } from './wp-view-base.service';
-import find from 'lodash-es/find';
 import isEqual from 'lodash-es/isEqual';
 import uniqBy from 'lodash-es/uniqBy';
 
@@ -80,10 +79,7 @@ export class WorkPackageViewSortByService extends WorkPackageQueryStateService<Q
   }
 
   public isSortable(column:QueryColumn):boolean {
-    return !!find(
-      this.available,
-      (candidate) => candidate.column.href === column.href,
-    );
+    return !!this.available.find((candidate) => candidate.column.href === column.href);
   }
 
   public addSortCriteria(column:QueryColumn, criteria:string) {
@@ -103,8 +99,7 @@ export class WorkPackageViewSortByService extends WorkPackageQueryStateService<Q
   }
 
   public findAvailableDirection(column:QueryColumn, direction:string):QuerySortByResource | undefined {
-    return find(
-      this.available,
+    return this.available.find(
       (candidate) => (candidate.column.href === column.href
         && candidate.direction.href === direction),
     );
@@ -151,6 +146,6 @@ export class WorkPackageViewSortByService extends WorkPackageQueryStateService<Q
   }
 
   private get manualSortObject() {
-    return find(this.available, (sort) => sort.column.href!.endsWith('/manualSorting'));
+    return this.available.find((sort) => sort.column.href!.endsWith('/manualSorting'));
   }
 }

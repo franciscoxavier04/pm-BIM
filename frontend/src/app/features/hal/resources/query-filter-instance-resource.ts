@@ -34,7 +34,6 @@ import { HalResource } from 'core-app/features/hal/resources/hal-resource';
 import idFromLink from 'core-app/features/hal/helpers/id-from-link';
 import { QueryFilterInstanceSchemaResource } from 'core-app/features/hal/resources/query-filter-instance-schema-resource';
 import { QueryFilterResource } from 'core-app/features/hal/resources/query-filter-resource';
-import find from 'lodash-es/find';
 
 export class QueryFilterInstanceResource extends HalResource {
   public filter:QueryFilterResource;
@@ -95,7 +94,7 @@ export class QueryFilterInstanceResource extends HalResource {
   }
 
   public findOperator(operatorSymbol:string):QueryOperatorResource|undefined {
-    return find(this.schemaCache.of(this).availableOperators, (operator:QueryOperatorResource) => operator.id === operatorSymbol) as QueryOperatorResource|undefined;
+    return this.schemaCache.of(this).availableOperators.find((operator:QueryOperatorResource) => operator.id === operatorSymbol) as QueryOperatorResource|undefined;
   }
 
   public isTemplated() {

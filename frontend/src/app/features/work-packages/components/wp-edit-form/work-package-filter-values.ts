@@ -10,7 +10,6 @@ import { QueryFilterInstanceResource } from 'core-app/features/hal/resources/que
 import { CurrentProjectService } from 'core-app/core/current-project/current-project.service';
 import castArray from 'lodash-es/castArray';
 import each from 'lodash-es/each';
-import find from 'lodash-es/find';
 
 export class WorkPackageFilterValues {
   @InjectField() currentUser:CurrentUserService;
@@ -44,7 +43,7 @@ export class WorkPackageFilterValues {
       if (filter.id === 'project') {
         if (operator !== '=') return;
 
-        const projectFilter = find(filter.values, (resource:HalResource|string) => {
+        const projectFilter = filter.values.find((resource:HalResource|string) => {
           return ((resource instanceof HalResource) ? resource.href : resource) === this.currentProject.apiv3Path;
         });
         this.setValue(change, 'project', projectFilter || filter.values[0]);

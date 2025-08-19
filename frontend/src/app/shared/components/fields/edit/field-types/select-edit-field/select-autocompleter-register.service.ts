@@ -27,7 +27,6 @@
 //++
 
 import { Injectable } from '@angular/core';
-import find from 'lodash-es/find';
 
 interface SelectAutocompleterAssignment {
   attribute:string;
@@ -43,7 +42,7 @@ export class SelectAutocompleterRegisterService {
   }
 
   public getAutocompleterOfAttribute(attribute:string) {
-    const assignment = find(this._fields, (field) => field.attribute === attribute);
+    const assignment = this._fields.find((field) => field.attribute === attribute);
     return assignment ? assignment.component : undefined;
   }
 }

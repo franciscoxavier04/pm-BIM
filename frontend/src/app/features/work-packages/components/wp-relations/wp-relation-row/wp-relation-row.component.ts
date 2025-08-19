@@ -11,7 +11,6 @@ import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
 import { RelationResource } from 'core-app/features/hal/resources/relation-resource';
 import { WorkPackageRelationsService } from '../wp-relations.service';
 import { Highlighting } from 'core-app/features/work-packages/components/wp-fast-table/builders/highlighting/highlighting.functions';
-import find from 'lodash-es/find';
 
 
 @Component({
@@ -82,8 +81,7 @@ export class WorkPackageRelationRowComponent extends UntilDestroyedMixin impleme
 
     this.userInputs.newRelationText = this.relation.description || '';
     this.availableRelationTypes = RelationResource.LOCALIZED_RELATION_TYPES(false);
-    this.selectedRelationType = find(this.availableRelationTypes,
-      { name: this.relation.normalizedType(this.workPackage) })!;
+    this.selectedRelationType = this.availableRelationTypes.find((type) => type.name === this.relation.normalizedType(this.workPackage))!;
 
     this
       .apiV3Service

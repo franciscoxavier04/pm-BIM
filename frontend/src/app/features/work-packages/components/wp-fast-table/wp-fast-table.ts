@@ -17,7 +17,6 @@ import { PrimaryRenderPass } from './builders/primary-render-pass';
 import { WorkPackageTableEditingContext } from './wp-table-editing';
 import { WorkPackageTableRow } from './wp-table.interfaces';
 import each from 'lodash-es/each';
-import find from 'lodash-es/find';
 import findIndex from 'lodash-es/findIndex';
 
 export class WorkPackageTable {
@@ -76,7 +75,7 @@ export class WorkPackageTable {
   }
 
   public get rowBuilder():RowsBuilder {
-    return find(this.builders, (builder:RowsBuilder) => builder.isApplicable(this))!;
+    return this.builders.find((builder:RowsBuilder) => builder.isApplicable(this))!;
   }
 
   /**
