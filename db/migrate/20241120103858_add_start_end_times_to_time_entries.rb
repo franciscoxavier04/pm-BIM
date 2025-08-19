@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddStartEndTimesToTimeEntries < ActiveRecord::Migration[7.1]
   def change
     change_table :time_entries, bulk: true do |t|
