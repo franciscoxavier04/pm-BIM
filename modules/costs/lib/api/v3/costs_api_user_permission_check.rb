@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module API::V3::CostsApiUserPermissionCheck
   def overall_costs_visible?
     (view_time_entries_allowed? && user_has_hourly_rate_permissions?) ||
