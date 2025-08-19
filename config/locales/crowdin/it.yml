@@ -372,7 +372,7 @@ it:
       description: Raggruppando gli utenti, puoi aggiungerli come membri agli stessi progetti o assegnare loro gli stessi ruoli globali.
     table_component:
       blank_slate:
-        description: È possibile definire gruppi di utenti con nomi specifici
+        description: You can define named groups of users with specific permissions.
         title: Non sono ancora stati creati gruppi
       user_count: Numero di utenti
     users:
@@ -683,8 +683,10 @@ it:
         excluded_from_totals: "Escluso dai totali"
   themes:
     dark: "Scuro"
+    dark_high_contrast: "Dark high contrast"
     light: "Chiaro"
     light_high_contrast: "Chiaro ad alto contrasto"
+    sync_with_os: "Automatico (abbina modalità colore del sistema operativo)"
   types:
     index:
       no_results_title_text: Al momento non esistono tipi.
@@ -1286,6 +1288,7 @@ it:
         odd: "deve essere dispari."
         regex_match_failed: "non corrisponde all'espressione regolare %{expression}."
         regex_invalid: "non può essere convalidato con l'espressione regolare associata."
+        regex_list_invalid: "non può essere analizzato come espressione regolare nelle righe %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "deve essere minore o uguale alla lunghezza massima."
         taken: "è già stato usato."
         too_long: "è troppo lungo (il massimo è %{count} caratteri)."
@@ -1616,6 +1619,7 @@ it:
         one: "Servizio di autenticazione"
         other: "Servizi di autenticazione"
       category: "Categoria"
+      color: "Color"
       comment: "Commento"
       custom_action: "Azione personalizzata"
       custom_field: "Campo personalizzato"
@@ -2247,6 +2251,13 @@ it:
         Voglio ricevere la newsletter di <a target="_blank" href="https://www.openproject.org/newsletter/">OpenProject</a>.
       consent_html: >
         Accetto i <a target="_blank" href="https://www.openproject.org/terms-of-service/">termini di servizio</a> e l'<a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">informativa sulla privacy</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Disabilitati."
+      enabled: "Abilitati."
+    button:
+      disabled: "Abilita"
+      enabled: "Disabilita"
   enumeration_activities: "Attività di monitoraggio dei tempi"
   enumeration_work_package_priorities: "Priorità della macro-attività"
   enumeration_reported_project_statuses: "Stato di progetto segnalato"
@@ -2392,6 +2403,7 @@ it:
           label: "Includi descrizioni"
           caption: "Questa opzione aggiungerà una colonna descrizione in formato grezzo."
     your_work_packages_export: "Le macro-attività sono in fase di esportazione"
+    your_projects_export: "Projects are being exported"
     succeeded: "Esportazione completata"
     failed: "Si è verificato un errore durante il tentativo di esportare le macro-attività: %{message}"
     errors:
@@ -2454,6 +2466,13 @@ it:
       xls2csv: "Xls2csv disponibile (opzionale)"
       catppt: "Catppt disponibile (opzionale)"
       tesseract: "Tesseract disponibile (opzionale)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","
@@ -2921,6 +2940,7 @@ it:
   label_custom_logo: "Logo personalizzato"
   label_custom_export_logo: "Esportazione personalizzata logo"
   label_custom_export_cover: "Sfondo della copertina di esportazione personalizzata"
+  label_custom_export_footer: "Custom export footer image"
   label_custom_export_cover_overlay: "Sovrimpressione dello sfondo della copertina di esportazione personalizzata"
   label_custom_export_cover_text_color: "Colore del testo"
   label_custom_pdf_export_settings: "Impostazioni di esportazione PDF personalizzate"
@@ -4173,6 +4193,8 @@ it:
     Questo è il logo che appare nelle tue esportazioni PDF. Deve essere un file immagine PNG o JPEG. Si consiglia un logo nero o colorato su sfondo trasparente o bianco.
   text_custom_export_cover_instructions: >
     Questa è l'immagine che appare sullo sfondo di una copertina nelle tue esportazioni PDF. Deve essere un file immagine PNG o JPEG di circa 800 px di larghezza per 500 px di altezza.
+  text_custom_export_footer_instructions: >
+    PDF exports will include a graphical element positioned to the left of the footer. This image must be a PNG or JPEG file with approximately 200 pixels in width.
   text_custom_favicon_instructions: >
     Questa è l'icona che appare nella scheda del tuo browser vicino al titolo della pagina. È necessario che questa sia un'immagine quadrata di dimensioni 32x32, in formato PNG e con sfondo trasparente.
   text_custom_touch_icon_instructions: >
@@ -4513,6 +4535,8 @@ it:
       code_500_missing_enterprise_token: "La richiesta non può essere gestita a causa di un token Enterprise non valido o mancante."
       bad_request:
         emoji_reactions_activity_type_not_supported: "Questo tipo di attività non supporta le reazioni emoji."
+        invalid_link: "The link under key '%{key}' is not valid."
+        links_not_an_object: "_links must be a JSON object."
       conflict:
         multiple_reminders_not_allowed: |-
           È possibile impostare un solo promemoria alla volta per ogni macro-attività. Elimina o aggiorna il promemoria esistente.

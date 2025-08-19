@@ -83,7 +83,7 @@ zh-CN:
         token_placeholder: "在此处粘贴您的企业版支持令牌"
       add_token: "上传企业版支持令牌"
       replace_token: "替换您当前的支持令牌"
-      order: "订购本地部署版的 Enterprise edition"
+      order: "订购本地部署的 Enterprise edition"
       paste: "粘贴您企业版的支持令牌"
       required_for_feature: "此功能仅限具激活的企业版支持令牌的订阅者使用。"
       enterprise_link: "如需了解详细信息，请单击此处。"
@@ -371,7 +371,7 @@ zh-CN:
       description: 通过将用户分组到一起，您可以将他们添加为同一项目的成员，也可以将相同的全局角色分配给他们。
     table_component:
       blank_slate:
-        description: 您可以使用特定名称定义用户群组
+        description: You can define named groups of users with specific permissions.
         title: 尚未设置群组
       user_count: 用户数
     users:
@@ -675,8 +675,10 @@ zh-CN:
         excluded_from_totals: "不包括在总计中"
   themes:
     dark: "暗黑"
+    dark_high_contrast: "Dark high contrast"
     light: "浅色模式"
     light_high_contrast: "高对比度模式"
+    sync_with_os: "自动（匹配操作系统颜色模式）"
   types:
     index:
       no_results_title_text: 目前没有类型。
@@ -994,7 +996,7 @@ zh-CN:
         page: "页"
         row_count: "行数"
         column_count: "列数"
-        widgets: "微件"
+        widgets: "小部件"
       journal:
         notes: "备注"
         cause_type: "Cause 类型"
@@ -1277,6 +1279,7 @@ zh-CN:
         odd: "必须是奇数。"
         regex_match_failed: "与正则表达式 %{expression}不匹配。"
         regex_invalid: "无法与关联的正则表达式进行验证。"
+        regex_list_invalid: "%{invalid_lines}行中的正则表达式无法被解析。"
         smaller_than_or_equal_to_max_length: "必须小于或等于最大长度。"
         taken: "已经采取。"
         too_long: "太长 (最多 %{count} 个字符)。"
@@ -1604,6 +1607,7 @@ zh-CN:
       auth_provider:
         other: "身份验证提供方"
       category: "类别"
+      color: "Color"
       comment: "评论"
       custom_action: "自定义操作"
       custom_field: "自定义字段"
@@ -2202,6 +2206,13 @@ zh-CN:
         我希望接收 OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">简报</a>。
       consent_html: >
         我同意<a target="_blank" href="https://www.openproject.org/terms-of-service/">服务条款</a>和<a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">隐私政策</a>。
+  email_calendar_updates:
+    state:
+      disabled: "已禁用。"
+      enabled: "已启用。"
+    button:
+      disabled: "启用"
+      enabled: "禁用"
   enumeration_activities: "时间跟踪活动"
   enumeration_work_package_priorities: "工作包优先级"
   enumeration_reported_project_statuses: "报告的项目状态"
@@ -2347,6 +2358,7 @@ zh-CN:
           label: "包含描述"
           caption: "该选项将添加原始格式的描述列。"
     your_work_packages_export: "正在导出工作包"
+    your_projects_export: "Projects are being exported"
     succeeded: "导出完成"
     failed: "在尝试导出工作包时发生错误： %{message}"
     errors:
@@ -2409,6 +2421,13 @@ zh-CN:
       xls2csv: "Xls2csv 可用 (可选)"
       catppt: "Catppt 可用 (可选)"
       tesseract: "Tesseract 可用 (可选)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","
@@ -2876,6 +2895,7 @@ zh-CN:
   label_custom_logo: "自定义徽标"
   label_custom_export_logo: "自定义导出徽标"
   label_custom_export_cover: "自定义导出封面背景"
+  label_custom_export_footer: "Custom export footer image"
   label_custom_export_cover_overlay: "自定义导出封面背景叠加"
   label_custom_export_cover_text_color: "文本颜色"
   label_custom_pdf_export_settings: "自定义 PDF 导出设置"
@@ -3068,7 +3088,7 @@ zh-CN:
   label_revision_id: "修订版本 %{value}"
   label_revision_plural: "修订"
   label_roadmap: "路线图"
-  label_roadmap_edit: "编辑路线图%{name}"
+  label_roadmap_edit: "编辑路线图 %{name}"
   label_roadmap_due_in: "%{value} 到期"
   label_roadmap_no_work_packages: "该版本没有工作包。"
   label_roadmap_overdue: "%{value} 超时"
@@ -3758,7 +3778,7 @@ zh-CN:
       managed: "在 OpenProject 中创建新的存储库"
     storage:
       not_available: "磁盘存储开销不可用于此存储库。"
-      update_timeout: "在 N 分钟内保留存储库最后所需的磁盘空间信息。由于计算存储库所需的磁盘空间可能增加系统开销，增加该值可以减少性能影响。"
+      update_timeout: "在 N 分钟内保留存储库最后所需磁盘空间的信息。由于计算存储库所需的磁盘空间可能增加系统开销，增加该值可以减少性能影响。"
       oauth_application_details: "关闭此窗口后，将无法再次访问客户端密钥值。请将这些值复制到 Nextcloud OpenProject 集成设置中："
       oauth_application_details_link_text: "转到设置页面"
       setup_documentation_details: "如果您在配置新文件存储方面需要帮助，请查看文档："
@@ -3950,7 +3970,7 @@ zh-CN:
   setting_session_ttl_hint: "当设置的值低于5时，其作用类似于禁用。"
   setting_session_ttl_enabled: "会话过期"
   setting_start_of_week: "一周起始日"
-  setting_sys_api_enabled: "启用存储库管理网页服务"
+  setting_sys_api_enabled: "启用版本库管理 web 服务"
   setting_sys_api_description: "存储库管理网页服务提供了集成的，用户授权的存储库访问。"
   setting_time_format: "时间"
   setting_total_percent_complete_mode: "计算 完成% 层次结构总数"
@@ -4121,6 +4141,8 @@ zh-CN:
     这是在 PDF 导出文件中显示的徽标。它需要为 PNG 或 JPEG 图像文件。建议使用带有透明或白色背景的黑色或彩色徽标。
   text_custom_export_cover_instructions: >
     这是在您的 PDF 导出的封面页面背景中显示的图像。 它需要是大约800像素宽度 × 500像素高度的 PNG 或 JPEG 图像文件。
+  text_custom_export_footer_instructions: >
+    PDF exports will include a graphical element positioned to the left of the footer. This image must be a PNG or JPEG file with approximately 200 pixels in width.
   text_custom_favicon_instructions: >
     这是显示在浏览器窗口/选项卡中页面标题旁边的小图标。它是具有透明背景，大小为 32x32 像素的正方形 PNG 图像文件。
   text_custom_touch_icon_instructions: >
@@ -4298,7 +4320,7 @@ zh-CN:
   warning_user_limit_reached_admin: >
     添加额外的用户将超出当前限制。请<a href="%{upgrade_url}">升级您的计划</a>，以确保外部用户能够访问此实例。
   warning_user_limit_reached_instructions: >
-    您已达到用户限制（%{current}/%{max} 活跃用户）。请联系 sales@openproject.com 升级您的企业版计划以添加额外用户。
+    您达到了用户限制（%{current}/%{max}活跃用户）。 请联系sales@openproject.com以升级您的Enterprise edition计划并添加其他用户。
   warning_protocol_mismatch_html: >
 
   warning_bar:
@@ -4459,6 +4481,8 @@ zh-CN:
       code_500_missing_enterprise_token: "由于企业令牌是无效的或缺失的，故无法处理该请求。"
       bad_request:
         emoji_reactions_activity_type_not_supported: "此活动类型不支持表情符号回应。"
+        invalid_link: "The link under key '%{key}' is not valid."
+        links_not_an_object: "_links must be a JSON object."
       conflict:
         multiple_reminders_not_allowed: |-
           您每次只能设置一个工作包提醒。请删除或更新现有提醒。

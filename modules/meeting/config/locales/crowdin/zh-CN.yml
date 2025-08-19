@@ -238,9 +238,29 @@ zh-CN:
     label_export_pdf: "导出 PDF"
     export:
       your_meeting_export: "会议正在导出"
+      minutes:
+        footer_page_numbers: "P. %{current_page} of %{total_pages}"
+        author: "Author"
+        date: "Date"
+        time: "Time"
+        location: "Location"
+        title: "Minutes"
     export_pdf_dialog:
       title: 导出 PDF
       description: 生成当前状态下此会议的可打印 PDF 文件。
+      templates:
+        default:
+          label: Default
+          caption: The default template is suitable for most meetings and represent the current state.
+        minutes:
+          label: Minutes
+          caption: The minutes template is suitable for closed and archived meetings.
+      first_page_header_left:
+        label: First page header left
+        caption: This text will appear on the first page at the left of the header.
+      author:
+        label: Author
+        caption: The author of the minutes will be displayed in the subtitle.
       include_participants:
         label: 包含与会者名单
         caption: 与会者名单将列在会议议程上方。
@@ -260,16 +280,10 @@ zh-CN:
     notifications:
       sidepanel:
         title: "电子邮件日历更新"
-        state:
-          disabled: "已禁用。"
-          enabled: "已启用。"
         description:
           disabled: "与会者不会收到向其通知更改的电子邮件。"
           enabled: "所有与会者都将通过电子邮件收到更新的日历邀请，向其通知相关更改。"
           change_via_template: "要更改此设置，请编辑系列模板。"
-        button:
-          disable: "禁用"
-          enable: "启用"
       dialog:
         title:
           enable: "启用电子邮件日历更新？"

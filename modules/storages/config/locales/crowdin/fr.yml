@@ -319,6 +319,15 @@ fr:
         oidc_token_acquisition_failed: Votre configuration OpenID Connect ne fournit pas l'audience nécessaire, ni les capacités d'échange de jetons. Veuillez consulter notre documentation pour obtenir plus d'informations.
         oidc_token_exchange_failed: Il semble y avoir un problème avec la configuration de l'échange de jetons sur votre fournisseur OpenID Connect. Veuillez vérifier sa configuration et réessayer.
         oidc_token_refresh_failed: Une erreur s'est produite lors de la vérification de votre accès à l'espace de stockage. Veuillez consulter les journaux du serveur pour obtenir plus d'informations.
+        sp_client_cant_delete_folder: The client is having trouble deleting folders in SharePoint. Please check the setup documentation for your storage.
+        sp_client_id_missing: The configured OAuth 2 client id is missing for SharePoint. Please check the configuration.
+        sp_client_secret_missing: The configured OAuth 2 client secret is missing for SharePoint. Please check the configuration.
+        sp_client_write_permission_missing: The client seems to have write permissions missing in SharePoint. Please check the setup documentation for your storage.
+        sp_existing_test_folder: The folder %{folder_name} needed for testing already exists in SharePoint. Please delete it and try again.
+        sp_oauth_request_error: The user-bound request to SharePoint failed. Please check the server logs for further information.
+        sp_oauth_token_missing: OpenProject cannot test the user level communication with SharePoint as the user did not yet link their SharePoint account.
+        sp_tenant_id_missing: The configured directory (tenant) id is missing for SharePoint. Please check the configuration.
+        sp_unexpected_content: Unexpected content found in the SharePoint drive.
         unknown_error: La connexion n'a pas pu être validée. Une erreur inconnue s'est produite. Veuillez consulter les journaux du serveur pour en savoir plus.
       label_error: Erreur
       label_failed: Échec
@@ -339,12 +348,10 @@ fr:
         warning: Certaines vérifications ont renvoyé un avertissement. Cela peut entraîner un comportement inattendu.
       title: Rapport sur l'état de santé
     health_email_notifications:
-      description_subscribed: Tous les administrateurs reçoivent des notifications par e-mail concernant le statut de cet espace de stockage.
-      description_unsubscribed: Les notifications par e-mail du statut de santé de cet espace de stockage ont été désactivées pour tous les administrateurs.
+      description_disabled: Les administrateurs ne recevront pas de mises à jour par e-mail lors des mises à jour importantes.
+      description_enabled: Les administrateurs recevront des mises à jour par e-mail lors des mises à jour importantes.
       error_could_not_be_saved: Les paramètres de notification par e-mail n'ont pas pu être enregistrés. Veuillez réessayer.
-      subscribe: S'abonner
-      title: Notifications par email
-      unsubscribe: Se désabonner
+      title: Envoi de mises à jour par e-mail aux administrateurs
     help_texts:
       project_folder: Le dossier de projet est le dossier par défaut pour les téléversements de fichiers pour ce projet. Les utilisateurs peuvent néanmoins encore téléverser des fichiers vers d'autres emplacements.
       project_folder_bulk: Le dossier du projet est le dossier par défaut pour les téléchargements de fichiers pour tous les projets sélectionnés. Vous pouvez le modifier individuellement dans les paramètres de chaque projet. Les utilisateurs peuvent néanmoins télécharger des fichiers vers d'autres emplacements.
@@ -392,7 +399,7 @@ fr:
         application_link_text: Site SharePoint
         integration: Administration SharePoint/OpenProject
         oauth_configuration: Copiez ces valeurs de l'application souhaitée dans %{application_link_text}.
-        provider_configuration: Veuillez vous assurer que vous disposez des droits d'administration dans votre instance SharePoint et que l'application d'intégration OpenProject est installée avant de procéder à l'installation.
+        provider_configuration: Veuillez vous assurer que vous disposez des privilèges d'administration dans le %{application_link_text} ou contactez votre administrateur Microsoft avant de procéder à l'installation. Dans le portail, vous devez également enregistrer une application Azure ou utiliser une application existante pour l'authentification.
       type: 'Veuillez vous assurer que vous avez les privilèges d''administration dans votre instance Nextcloud et que l''application suivante est installée avant de procéder à l''installation :'
       type_link_text: "« Intégration OpenProject »"
     label_active: Actif

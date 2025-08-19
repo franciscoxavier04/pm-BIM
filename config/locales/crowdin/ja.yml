@@ -372,7 +372,7 @@ ja:
       description: ユーザーをグループ化することで、メンバーを同じプロジェクトに追加したり、同じグローバルロールを割り当てたりできます。
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
+        description: 特定の権限を持つユーザーの名前付きグループを定義できます。
         title: まだグループが設定されていません
       user_count: ユーザー数
     users:
@@ -677,8 +677,10 @@ ja:
         excluded_from_totals: "Excluded from totals"
   themes:
     dark: "Dark"
+    dark_high_contrast: "Dark high contrast"
     light: "Light"
     light_high_contrast: "Light high contrast"
+    sync_with_os: "Automatic (match OS colour mode)"
   types:
     index:
       no_results_title_text: 現在、種類はありません。
@@ -1279,6 +1281,7 @@ ja:
         odd: "は奇数にしてください。"
         regex_match_failed: "正規表現 %{expression}と一致しません。"
         regex_invalid: "関連付けられた正規表現を検証できませんでした。"
+        regex_list_invalid: "%{invalid_lines} 行目で正規表現として解析できませんでした。"
         smaller_than_or_equal_to_max_length: "は最大長さより以下でなければなりません。"
         taken: "は既に使用されています。"
         too_long: "は%{count}文字以内を入力してください。"
@@ -1606,6 +1609,7 @@ ja:
       auth_provider:
         other: "認証プロバイダー"
       category: "カテゴリ"
+      color: "色"
       comment: "コメント"
       custom_action: "カスタムアクション"
       custom_field: "カスタムフィールド"
@@ -2204,6 +2208,13 @@ ja:
         OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">ニュースレター</a> を受け取りたい。
       consent_html: >
         I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
   enumeration_activities: "タイムトラッキングアクティビティ"
   enumeration_work_package_priorities: "ワークパッケージの優先度"
   enumeration_reported_project_statuses: "報告されるプロジェクト進捗状況"
@@ -2349,6 +2360,7 @@ ja:
           label: "説明を含める"
           caption: "このオプションは、説明列をraw形式で追加します。"
     your_work_packages_export: "作業項目をエクスポートしています"
+    your_projects_export: "プロジェクトはエクスポートされています"
     succeeded: "エクスポート完了"
     failed: "作業項目のエクスポート中にエラーが発生しました: %{message}"
     errors:
@@ -2411,6 +2423,13 @@ ja:
       xls2csv: "Xls2csvが利用可能 (オプション)"
       catppt: "Catpptが利用可能 (オプション)"
       tesseract: "Tesseractが利用可能 (オプション)"
+  filterable_tree_view:
+    filter_mode:
+      all: "すべて"
+      label: "フィルタモード"
+      selected: "選択済み"
+    include_sub_items: "サブアイテムを含める"
+    no_results_text: "結果がありません"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","
@@ -2878,6 +2897,7 @@ ja:
   label_custom_logo: "カスタムロゴ"
   label_custom_export_logo: "Custom export logo"
   label_custom_export_cover: "Custom export cover background"
+  label_custom_export_footer: "Custom export footer image"
   label_custom_export_cover_overlay: "Custom export cover background overlay"
   label_custom_export_cover_text_color: "Text color"
   label_custom_pdf_export_settings: "Custom PDF export settings"
@@ -4128,6 +4148,8 @@ ja:
     This is the logo that appears in your PDF exports. It needs to be a PNG or JPEG image file. A black or colored logo on transparent or white background is recommended.
   text_custom_export_cover_instructions: >
     This is the image that appears in the background of a cover page in your PDF exports. It needs to be an about 800px width by 500px height sized PNG or JPEG image file.
+  text_custom_export_footer_instructions: >
+    PDF exports will include a graphical element positioned to the left of the footer. This image must be a PNG or JPEG file with approximately 200 pixels in width.
   text_custom_favicon_instructions: >
     This is the tiny icon that appears in your browser window/tab next to the page's title. It needs to be a squared 32 by 32 pixels sized PNG image file with a transparent background.
   text_custom_touch_icon_instructions: >
@@ -4466,6 +4488,8 @@ ja:
       code_500_missing_enterprise_token: "Enterprise トークンが無効または見つからないため、リクエストを処理できません。"
       bad_request:
         emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+        invalid_link: "The link under key '%{key}' is not valid."
+        links_not_an_object: "_links must be a JSON object."
       conflict:
         multiple_reminders_not_allowed: |-
           You can only set one reminder at a time for a work package. Please delete or update the existing reminder.

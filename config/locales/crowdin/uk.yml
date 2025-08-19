@@ -370,7 +370,7 @@ uk:
       description: Згрупувавши користувачів, можна додавати їх як членів в одні й ті самі проєкти або призначати їм однакові глобальні ролі.
     table_component:
       blank_slate:
-        description: Для груп користувачів можна вказувати назви
+        description: You can define named groups of users with specific permissions.
         title: Ще немає налаштованих груп
       user_count: Кількість користувачів
     users:
@@ -694,8 +694,10 @@ uk:
         excluded_from_totals: "Виключено з підсумків"
   themes:
     dark: "Темна"
+    dark_high_contrast: "Dark high contrast"
     light: "Світла"
     light_high_contrast: "Світла, високий контраст"
+    sync_with_os: "Автоматично (колірний режим ОС)"
   types:
     index:
       no_results_title_text: Наразі немає типів.
@@ -1298,6 +1300,7 @@ uk:
         odd: "має бути непарним."
         regex_match_failed: "не збігається з регулярним виразом %{expression}."
         regex_invalid: "неможливо перевірити з відповідним регулярним виразом."
+        regex_list_invalid: "не вдалося проаналізувати як регулярний вираз у рядках %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "має бути меншою або дорівнює максимальній довжині."
         taken: "вже прийнято."
         too_long: "занадто довгий (максимум - %{count} characters).\n"
@@ -1634,6 +1637,7 @@ uk:
         many: "Постачальники послуг автентифікації"
         other: "Постачальники послуг автентифікації"
       category: "Категорія"
+      color: "Колір"
       comment: "Коментар"
       custom_action: "Спеціальні дії"
       custom_field: "Користувацьке поле"
@@ -2331,6 +2335,13 @@ uk:
         Я хочу отримувати <a target="_blank" href="https://www.openproject.org/newsletter/">інформаційний бюлетень</a> OpenProject.
       consent_html: >
         Я погоджуюся з <a target="_blank" href="https://www.openproject.org/terms-of-service/">умовами надання послуг</a> і <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">політикою конфіденційності</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Вимкнено."
+      enabled: "Увімкнено."
+    button:
+      disabled: "Увімкнути"
+      enabled: "Вимкнути"
   enumeration_activities: "Дії щодо відстеження часу"
   enumeration_work_package_priorities: "Пріоритети робочого пакету"
   enumeration_reported_project_statuses: "Повідомлення про статус проекту"
@@ -2476,6 +2487,7 @@ uk:
           label: "Включити описи"
           caption: "Цей параметр додає стовпець опису в необробленому форматі."
     your_work_packages_export: "Пакет робіт експортуються"
+    your_projects_export: "Projects are being exported"
     succeeded: "Експорт завершено"
     failed: "Під час спроби експортувати пакети робіт сталася помилка: %{message}"
     errors:
@@ -2538,6 +2550,13 @@ uk:
       xls2csv: "Xls 2csv доступно (необов'язково)"
       catppt: "Catppt доступний (необов'язково)"
       tesseract: "Tesseract доступний (необов'язково)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","
@@ -2962,7 +2981,7 @@ uk:
   label_index_by_title: "Індекс за назвою"
   label_information: "Інформація"
   label_information_plural: "Інформація"
-  label_installation_guides: "Інструкції із встановлення"
+  label_installation_guides: "Інструкції зі встановлення"
   label_integer: "Ціле число"
   label_interface: "Інтерфейс"
   label_internal: "Власне"
@@ -3005,6 +3024,7 @@ uk:
   label_custom_logo: "Спеціальний логотип"
   label_custom_export_logo: "Користувацький логотип експорту"
   label_custom_export_cover: "Фон обкладинки експорту"
+  label_custom_export_footer: "Custom export footer image"
   label_custom_export_cover_overlay: "Накладення фону обкладинки експорту"
   label_custom_export_cover_text_color: "Колір тексту"
   label_custom_pdf_export_settings: "Налаштування експорту PDF"
@@ -4259,6 +4279,8 @@ uk:
     Це логотип з’являється, що відображається у ваших експортах PDF. Він має бути у форматі файлу зображення PNG або JPEG. Рекомендується чорний або кольоровий логотип на прозорому чи білому фоні.
   text_custom_export_cover_instructions: >
     Це зображення, що з’являється на фоні сторінки обкладинки у ваших експортах PDF. Вимоги до зображення: 800 пікс. (ширина) на 500 пікс. (висота), файл PNG або JPEG.
+  text_custom_export_footer_instructions: >
+    PDF exports will include a graphical element positioned to the left of the footer. This image must be a PNG or JPEG file with approximately 200 pixels in width.
   text_custom_favicon_instructions: >
     Це крихітний значок, який з’являється у вікні / на вкладці вашого браузера біля назви сторінки. Це має бути квадратний файл зображення 32 на 32 пікселі з прозорим фоном у форматі PNG.
   text_custom_touch_icon_instructions: >
@@ -4600,6 +4622,8 @@ uk:
       code_500_missing_enterprise_token: "Цей запит не можна обробити через недійсний або відсутній маркер версії Enterprise."
       bad_request:
         emoji_reactions_activity_type_not_supported: "Дія такого типу не підтримує реакцію за допомогою емодзі."
+        invalid_link: "The link under key '%{key}' is not valid."
+        links_not_an_object: "_links must be a JSON object."
       conflict:
         multiple_reminders_not_allowed: |-
           Можна одночасно встановити лише одне нагадування для пакета робіт. Видаліть або оновіть наявне нагадування.

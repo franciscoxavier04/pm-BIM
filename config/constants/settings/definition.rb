@@ -725,6 +725,7 @@ module Settings
       oauth_allow_remapping_of_existing_users: {
         description: "When set to false, prevent users from other identity providers to take over accounts " \
                      "that exist in OpenProject.",
+        format: :boolean,
         default: true
       },
       omniauth_direct_login_provider: {

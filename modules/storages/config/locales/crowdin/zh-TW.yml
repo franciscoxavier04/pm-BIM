@@ -317,6 +317,15 @@ zh-TW:
         oidc_token_acquisition_failed: OpenID Connect 配置中缺少所需的 audience 且不支援 Token Exchange，請查看官方文件了解更多。
         oidc_token_exchange_failed: 您的 OpenID Connect 提供者似乎存在令牌交換設定問題。請檢查其設定並重試。
         oidc_token_refresh_failed: 在檢查您存取儲存空間的權限時發生錯誤。請查看伺服器日誌以取得更多資訊。
+        sp_client_cant_delete_folder: 客戶在刪除 SharePoint 資料夾時遇到問題。請檢查您的儲存空間設定文件。
+        sp_client_id_missing: 已設定的 SharePoint OAuth 2 用戶端 ID 遺失。請檢查設定。
+        sp_client_secret_missing: 已設定的 SharePoint OAuth 2 用戶端密鑰遺失。請檢查設定。
+        sp_client_write_permission_missing: 客戶在 SharePoint 中似乎缺少寫入權限。請檢查您的儲存空間設定文件。
+        sp_existing_test_folder: 用於測試的資料夾 %{folder_name} 已存在於 SharePoint 中。請將其刪除後再試一次。
+        sp_oauth_request_error: 綁定至使用者的 SharePoint 請求失敗。請檢查伺服器日誌以取得更多資訊。
+        sp_oauth_token_missing: 由於使用者尚未連結其 SharePoint 帳號，OpenProject 無法測試使用者層級的與 SharePoint 之間的通訊。
+        sp_tenant_id_missing: 已設定的 SharePoint 目錄（租用戶）Id 遺失。請檢查設定。
+        sp_unexpected_content: 在 SharePoint 磁碟機中發現非預期的內容。
         unknown_error: 連線無法驗證。發生未知錯誤。請檢查伺服器日誌以瞭解進一步資訊。
       label_error: 錯誤
       label_failed: 損壞
@@ -337,12 +346,10 @@ zh-TW:
         warning: 某些檢查返回警告，可能會引發預期外的行為。
       title: 健康狀況報告
     health_email_notifications:
-      description_subscribed: 所有管理員都會收到此儲存空間的運作狀況電子郵件通知。
-      description_unsubscribed: 已向所有管理員關閉此儲存的運作狀況電子郵件通知。
+      description_disabled: 當有重要更新時，管理員將不會透過電子郵件收到更新。
+      description_enabled: 當有重要更新時，管理員將透過電子郵件收到更新。
       error_could_not_be_saved: 無法儲存電子郵件通知設定。 請再試一次。
-      subscribe: 訂閱
-      title: 電子郵件通知
-      unsubscribe: 取消訂閱
+      title: 以電子郵件更新管理員
     help_texts:
       project_folder: 項目資料夾是該項目文件上傳的預設資料夾。 儘管如此，用戶仍然可以將文件上傳到其他位置。
       project_folder_bulk: 專案資料夾是所有選取專案的預設檔案上傳資料夾。您可以在每個專案設定中個別修改。使用者仍可上傳檔案到其他位置。
@@ -390,7 +397,7 @@ zh-TW:
         application_link_text: SharePoint 網站
         integration: SharePoint 管理 / OpenProject
         oauth_configuration: 從 %{application_link_text}中的所需應用程式複製這些值。
-        provider_configuration: 請先確保您在 SharePoint 實例中擁有管理員權限，並已安裝 OpenProject 的整合應用程式，才能進行設定。
+        provider_configuration: 請確保您在%{application_link_text} 具有管理權限，或在進行設置之前與您的 Microsoft 管理員聯繫。在門戶中，您還需要註冊一個 Azure 應用程序或使用現有的應用程序進行身份驗證。
       type: '請確保您在 Nextcloud 實例中具有管理權限，並在進行設置之前安裝了以下應用程序：'
       type_link_text: "“整合 OpenProject”"
     label_active: 啟用

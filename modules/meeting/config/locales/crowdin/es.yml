@@ -242,9 +242,29 @@ es:
     label_export_pdf: "Exportar PDF"
     export:
       your_meeting_export: "Se está exportando la reunión"
+      minutes:
+        footer_page_numbers: "P. %{current_page} of %{total_pages}"
+        author: "Autor"
+        date: "Fecha"
+        time: "Hora"
+        location: "Ubicación"
+        title: "Minutos"
     export_pdf_dialog:
       title: Exportar PDF
       description: Genere un archivo PDF imprimible de esta reunión en el estado actual.
+      templates:
+        default:
+          label: Por defecto
+          caption: La plantilla por defecto es adecuada para la mayoría de las reuniones y representa el estado actual.
+        minutes:
+          label: Minutos
+          caption: La plantilla de minutos es adecuada para reuniones cerradas y archivadas.
+      first_page_header_left:
+        label: Primera Página Encabezado izquierdo
+        caption: Este texto aparecerá en la primera página ala izquierda del encabezado.
+      author:
+        label: Autor
+        caption: The author of the minutes will be displayed in the subtitle.
       include_participants:
         label: Incluir lista de participantes
         caption: Se establecerá previamente una lista de participantes encima de la agenda de la reunión.
@@ -264,16 +284,10 @@ es:
     notifications:
       sidepanel:
         title: "Enviar actualizaciones de calendario por correo electrónico"
-        state:
-          disabled: "Deshabilitado."
-          enabled: "Habilitado."
         description:
           disabled: "Los participantes no recibirán un correo electrónico informándoles de los cambios."
           enabled: "Todos los participantes recibirán por correo electrónico invitaciones de calendario actualizadas en las que se les informará de los cambios."
           change_via_template: "Para cambiar esto, edite la plantilla de la serie."
-        button:
-          disable: "Deshabilitar"
-          enable: "Habilitar"
       dialog:
         title:
           enable: "¿Habilitar actualizaciones de calendario por correo electrónico?"
