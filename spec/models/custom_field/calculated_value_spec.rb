@@ -33,10 +33,37 @@ require "spec_helper"
 RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_project_attribute: true } do
   subject(:custom_field) { create(:calculated_value_project_custom_field, formula: "1 + 1") }
 
-  describe ".affected_calculated_fields", :aggregate_failures do
+  def ref(custom_field) = "{{cf_#{custom_field.id}}}"
+
+  describe ".with_formula_referencing", :aggregate_failures do
+    shared_let(:cf_a) { create(:integer_project_custom_field, default_value: 1) }
+    shared_let(:cf_b) { create(:integer_project_custom_field, default_value: 2) }
+    shared_let(:cf_c) { create(:integer_project_custom_field, default_value: 3) }
+
+    shared_let(:cf1) { create(:calculated_value_project_custom_field, :skip_validations, formula: "#{ref cf_a} + #{ref cf_b}") }
+    shared_let(:cf2) { create(:calculated_value_project_custom_field, :skip_validations, formula: "#{ref cf_b} + #{ref cf1}") }
+
     let(:scope) { CustomField }
 
-    def ref(custom_field) = "{{cf_#{custom_field.id}}}"
+    it "finds all fields referencing given id" do
+      expect(scope.with_formula_referencing(cf_a.id)).to contain_exactly(cf1)
+      expect(scope.with_formula_referencing(cf_b.id)).to contain_exactly(cf1, cf2)
+      expect(scope.with_formula_referencing(cf_c.id)).to be_empty
+      expect(scope.with_formula_referencing(cf1.id)).to contain_exactly(cf2)
+      expect(scope.with_formula_referencing(cf2.id)).to be_empty
+    end
+
+    it "finds all fields referencing given custom field" do
+      expect(scope.with_formula_referencing(cf_a)).to contain_exactly(cf1)
+      expect(scope.with_formula_referencing(cf_b)).to contain_exactly(cf1, cf2)
+      expect(scope.with_formula_referencing(cf_c)).to be_empty
+      expect(scope.with_formula_referencing(cf1)).to contain_exactly(cf2)
+      expect(scope.with_formula_referencing(cf2)).to be_empty
+    end
+  end
+
+  describe ".affected_calculated_fields", :aggregate_failures do
+    let(:scope) { CustomField }
 
     context "given simple formulas" do
       shared_let(:cf_a) { create(:integer_project_custom_field, default_value: 1) }
