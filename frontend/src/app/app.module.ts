@@ -26,7 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { ApplicationRef, DoBootstrap, Injector, NgModule, inject, provideAppInitializer } from '@angular/core';
+import { ApplicationRef, DoBootstrap, inject, Injector, NgModule, provideAppInitializer } from '@angular/core';
 import { A11yModule } from '@angular/cdk/a11y';
 import { HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -205,7 +205,6 @@ import {
   OpWpDatePickerInstanceComponent,
 } from 'core-app/shared/components/datepicker/wp-date-picker-modal/wp-date-picker-instance.component';
 import { OpInviteUserModalAugmentService } from 'core-app/features/invite-user-modal/invite-user-modal-augment.service';
-import { TurboLoadEvent } from '@hotwired/turbo';
 
 export function initializeServices(injector:Injector) {
   return () => {
@@ -236,6 +235,16 @@ export function initializeServices(injector:Injector) {
 
     return injector.get(ConfigurationService).initialize();
   };
+}
+
+export function runBootstrap(appRef:ApplicationRef) {
+  // Try to bootstrap a dynamic root element
+  const root = document.querySelector(appBaseSelector);
+  if (root) {
+    appRef.bootstrap(ApplicationBaseComponent, root);
+  }
+
+  document.body.classList.add('__ng2-bootstrap-has-run');
 }
 
 @NgModule({
@@ -361,43 +370,8 @@ export function initializeServices(injector:Injector) {
 export class OpenProjectModule implements DoBootstrap {
   // noinspection JSUnusedGlobalSymbols
   ngDoBootstrap(appRef:ApplicationRef) {
-    this.runBootstrap(appRef);
-
-    // Remember the initial page load
-    let initialHref:string|null = window.location.href;
-
-    // Connect ui router to turbo drive
-    document.addEventListener('turbo:load', (evt:TurboLoadEvent) => {
-      // Skip a turbo:load event on the current URL
-      // as this might happen if bootstrap runs before turbo init
-      if (initialHref && evt.detail.url === initialHref) {
-        // Unset the href so that any following turbo:load fires
-        initialHref = null;
-        return;
-      }
-
-      // Remove all previous references to components
-      // This is mainly the bsae component
-      appRef.components.slice().forEach((component) => {
-        appRef.detachView(component.hostView);
-        component.destroy();
-      });
-
-      // Run bootstrap again to initialize the new application
-      this.runBootstrap(appRef);
-    });
-
+    runBootstrap(appRef);
     this.registerCustomElements(appRef.injector);
-  }
-
-  private runBootstrap(appRef:ApplicationRef) {
-    // Try to bootstrap a dynamic root element
-    const root = document.querySelector(appBaseSelector);
-    if (root) {
-      appRef.bootstrap(ApplicationBaseComponent, root);
-    }
-
-    document.body.classList.add('__ng2-bootstrap-has-run');
   }
 
   private registerCustomElements(injector:Injector) {
