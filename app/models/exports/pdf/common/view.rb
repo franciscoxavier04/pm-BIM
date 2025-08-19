@@ -127,8 +127,10 @@ class Exports::PDF::Common::View
       normal: default,
       bold: font_or_default(cs.export_font_bold, default),
       italic: font_or_default(cs.export_font_italic, default),
-      bold_italic: font_or_default(cs.export_font_bold_italic, default)
-    }
+      bold_italic: font_or_default(cs.export_font_bold_italic,
+                                   font_or_default(cs.export_font_bold,
+                                                   font_or_default(cs.export_font_italic, default)))
+    }.compact
   end
 
   STYLE_SUFFIX = {
