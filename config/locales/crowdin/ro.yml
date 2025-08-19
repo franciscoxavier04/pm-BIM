@@ -4584,6 +4584,8 @@ ro:
       code_500_missing_enterprise_token: "Cererea nu poate fi gestionată din cauza token-ului Enterprise invalid sau lipsă."
       bad_request:
         emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+        invalid_link: "The link under key '%{key}' is not valid."
+        links_not_an_object: "_links must be a JSON object."
       conflict:
         multiple_reminders_not_allowed: |-
           Poți seta doar un memento la un moment dat pentru un pachet de lucru. Te rog să ștergi sau să actualizezi memento-ul existent.

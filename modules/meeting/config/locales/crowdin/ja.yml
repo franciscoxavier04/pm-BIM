@@ -309,9 +309,9 @@ ja:
             Email calendar updates are disabled for the meeting series. Participants will not receive an email informing them of your changes to this occurrence.
         template:
           enabled: >
-            Email calendar updates are enabled for the meeting series. All participants will receive updated calendar invites informing them of your changes to this template or to individual occurrences.
+            ミーティングシリーズでは，メールカレンダーの更新が有効になります． すべての参加者は、更新されたカレンダー招待状を受け取り、このテンプレートまたは個々のオカレンダーへの変更を通知します。
           disabled: >
-            Email calendar updates are disabled for the meeting series. Participants will not receive an email informing them of your changes to this template or to individual occurrences.
+            ミーティングシリーズのメールカレンダーの更新は無効になっています． 参加者は、このテンプレートまたは個々のオカレンスへの変更を通知するメールを受信しません。
   meeting_section:
     untitled_title: "タイトルなしセクション"
     delete_confirmation: "セクションを削除すると、そのすべての議題項目も削除されます。これを実行してもよろしいですか？"
@@ -393,7 +393,7 @@ ja:
       title: "ミーティングのキャンセル"
       heading: "このミーティングをキャンセルしますか？"
       confirmation_message_html: >
-        Any meeting information not in the template will be lost. Do you want to continue?
+        テンプレートにない会議情報は失われます。 続行しますか？
       confirm_button: "この予定をキャンセル"
     end_series_dialog:
       title: "一連の会議を終了"

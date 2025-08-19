@@ -4485,6 +4485,8 @@ zh-TW:
       code_500_missing_enterprise_token: "由於企業令牌(Token)是無效的或缺失的，故無法處理該請求。"
       bad_request:
         emoji_reactions_activity_type_not_supported: "此活動類型不支持表情符號反應。"
+        invalid_link: "The link under key '%{key}' is not valid."
+        links_not_an_object: "_links must be a JSON object."
       conflict:
         multiple_reminders_not_allowed: |-
           每次只能為一個工作套件設定一個提醒。請先刪除或更新現有的提醒。
