@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Grids
   class Engine < ::Rails::Engine
     include OpenProject::Plugins::ActsAsOpEngine
