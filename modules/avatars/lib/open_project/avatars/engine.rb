@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # OpenProject Avatars plugin
 #
 # Copyright (C) the OpenProject GmbH

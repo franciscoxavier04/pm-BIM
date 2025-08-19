@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ::Avatars
   class UsersController < BaseController
     before_action :require_admin
