@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Webhooks
   class Log < ApplicationRecord
     belongs_to :webhook, foreign_key: :webhooks_webhook_id, class_name: "::Webhooks::Webhook", dependent: :destroy

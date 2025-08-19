@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OpenProject::Webhooks::EventResources
   class Base
     class << self

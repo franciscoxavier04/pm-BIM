@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Webhooks
   class Webhook < ApplicationRecord
     default_scope { order(id: :asc) }
