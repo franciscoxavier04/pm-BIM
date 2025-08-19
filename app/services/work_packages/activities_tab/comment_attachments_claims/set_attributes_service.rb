@@ -37,10 +37,6 @@ module WorkPackages
         ATTACHMENT_CSS_SELECTOR = "img.op-uc-image"
 
         def perform
-          # Only claim attachments that are actually claimable. We must not try to
-          # reassign attachments that are already attached to another container
-          # (e.g., the work package), and we must only claim unattached files of
-          # the current user to satisfy validation rules.
           ids_from_notes = collect_attachment_ids_from_notes
           claimable_ids = filter_claimable_attachment_ids(ids_from_notes)
 
@@ -67,12 +63,15 @@ module WorkPackages
         def filter_claimable_attachment_ids(ids)
           return [] if ids.blank?
 
+          # Only claim attachments that are actually claimable. We must not try to
+          # reassign attachments that are already attached to another container
+          # (e.g., the work package, or another comment), and we must only claim unattached files of
+          # the current user to satisfy validation rules.
           Attachment
             .where(container: nil)
             .or(Attachment.where(container: model))
-            .where(id: ids)
+            .where(id: ids, author: User.current)
             .pluck(:id)
-            .map(&:to_s)
         end
 
         def parser

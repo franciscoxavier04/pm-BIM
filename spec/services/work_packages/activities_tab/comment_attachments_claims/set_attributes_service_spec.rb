@@ -31,9 +31,12 @@
 require "spec_helper"
 
 RSpec.describe WorkPackages::ActivitiesTab::CommentAttachmentsClaims::SetAttributesService do
-  let(:user) { build_stubbed(:user) }
+  shared_let(:user) { create(:user) }
+  shared_let(:other_user) { create(:user) }
+  shared_let(:work_package) { create(:work_package, author: user) }
+  shared_let(:journal) { create(:work_package_journal, journable: work_package, version: 2, notes: "") }
 
-  let(:journal) { build_stubbed(:work_package_journal, notes:) }
+  current_user { user }
 
   subject(:set_attributes_service) do
     described_class.new(
@@ -44,9 +47,13 @@ RSpec.describe WorkPackages::ActivitiesTab::CommentAttachmentsClaims::SetAttribu
   end
 
   describe "#call" do
+    before do
+      journal.update!(notes:)
+    end
+
     context "when the journal notes have attachments" do
-      let(:attachment1) { build_stubbed(:attachment, container: nil) }
-      let(:attachment2) { build_stubbed(:attachment, container: nil) }
+      shared_let(:attachment1) { create(:attachment, author: user, container: nil) }
+      shared_let(:attachment2) { create(:attachment, author: user, container: nil) }
 
       let(:notes) do
         <<~HTML
@@ -57,60 +64,33 @@ RSpec.describe WorkPackages::ActivitiesTab::CommentAttachmentsClaims::SetAttribu
         HTML
       end
 
-      before do
-        relation = double("ActiveRecord::Relation")
-
-        # SQL-level filtering chain used by the service
-        allow(Attachment).to receive(:where).with(container: nil).and_return(relation)
-        allow(Attachment).to receive(:where).with(container: journal).and_return(relation)
-        allow(relation).to receive(:or).with(anything).and_return(relation)
-        allow(relation).to receive(:where).with(id: [attachment1.id.to_s, attachment2.id.to_s]).and_return(relation)
-        allow(relation).to receive(:pluck).with(:id).and_return([attachment1.id, attachment2.id])
-
-        # Final lookup for replacements inside Attachments::SetReplacements
-        allow(Attachment).to receive(:where)
-          .with(id: [attachment1.id.to_s, attachment2.id.to_s])
-          .and_return([attachment1, attachment2])
-      end
-
       it "sets the attachments replacements" do
         expect(set_attributes_service).to be_success
         expect(set_attributes_service.result.attachments_replacements).to contain_exactly(attachment1, attachment2)
       end
     end
 
-    context "when the journal notes reference an attachment already assigned to a container" do
-      let(:assigned_attachment) { build_stubbed(:attachment, container: build_stubbed(:work_package)) }
-      let(:unattached_attachment) { build_stubbed(:attachment, container: nil) }
+    context "when the journal notes reference containered attachments or attachments belonging to other users" do
+      shared_let(:existing_work_package_attachment) { create(:attachment, author: user, container: work_package) }
+      shared_let(:existing_journal_attachment) { create(:attachment, author: user, container: journal) }
+      shared_let(:containered_attachment_other_user) { create(:attachment, author: other_user, container: work_package) }
+      shared_let(:uncontainered_attachment_other_user) { create(:attachment, author: other_user, container: nil) }
+      shared_let(:newly_attached) { create(:attachment, author: user, container: nil) }
 
       let(:notes) do
         <<~HTML
-          <img class="op-uc-image op-uc-image_inline" src="/api/v3/attachments/#{assigned_attachment.id}/content">
-          <img class="op-uc-image op-uc-image_inline" src="/api/v3/attachments/#{unattached_attachment.id}/content">
+          <img class="op-uc-image op-uc-image_inline" src="/api/v3/attachments/#{existing_work_package_attachment.id}/content">
+          <img class="op-uc-image op-uc-image_inline" src="/api/v3/attachments/#{existing_journal_attachment.id}/content">
+          <img class="op-uc-image op-uc-image_inline" src="/api/v3/attachments/#{containered_attachment_other_user.id}/content">
+          <img class="op-uc-image op-uc-image_inline" src="/api/v3/attachments/#{uncontainered_attachment_other_user.id}/content">
+          <img class="op-uc-image op-uc-image_inline" src="/api/v3/attachments/#{newly_attached.id}/content">
         HTML
       end
 
-      before do
-        relation = double("ActiveRecord::Relation")
-
-        # SQL-level filtering chain used by the service
-        allow(Attachment).to receive(:where).with(container: nil).and_return(relation)
-        allow(Attachment).to receive(:where).with(container: journal).and_return(relation)
-        allow(relation).to receive(:or).with(anything).and_return(relation)
-        allow(relation).to receive(:where).with(id: [assigned_attachment.id.to_s,
-                                                     unattached_attachment.id.to_s]).and_return(relation)
-        # Only the unattached one should be returned by the filter
-        allow(relation).to receive(:pluck).with(:id).and_return([unattached_attachment.id])
-
-        # Final lookup for replacements inside Attachments::SetReplacements
-        allow(Attachment).to receive(:where)
-          .with(id: [unattached_attachment.id.to_s])
-          .and_return([unattached_attachment])
-      end
-
-      it "filters out the assigned attachment and only sets unattached ones" do
+      it "sets attachment replacements only for attachments belonging to the journal and the user" do
         expect(set_attributes_service).to be_success
-        expect(set_attributes_service.result.attachments_replacements).to contain_exactly(unattached_attachment)
+        expect(set_attributes_service.result.attachments_replacements)
+          .to contain_exactly(existing_journal_attachment, newly_attached)
       end
     end
 
