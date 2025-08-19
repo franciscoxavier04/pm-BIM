@@ -205,6 +205,7 @@ import {
   OpWpDatePickerInstanceComponent,
 } from 'core-app/shared/components/datepicker/wp-date-picker-modal/wp-date-picker-instance.component';
 import { OpInviteUserModalAugmentService } from 'core-app/features/invite-user-modal/invite-user-modal-augment.service';
+import { TurboLoadEvent } from '@hotwired/turbo';
 
 export function initializeServices(injector:Injector) {
   return () => {
@@ -362,8 +363,19 @@ export class OpenProjectModule implements DoBootstrap {
   ngDoBootstrap(appRef:ApplicationRef) {
     this.runBootstrap(appRef);
 
+    // Remember the initial page load
+    let initialHref:string|null = window.location.href;
+
     // Connect ui router to turbo drive
-    document.addEventListener('turbo:load', () => {
+    document.addEventListener('turbo:load', (evt:TurboLoadEvent) => {
+      // Skip a turbo:load event on the current URL
+      // as this might happen if bootstrap runs before turbo init
+      if (initialHref && evt.detail.url === initialHref) {
+        // Unset the href so that any following turbo:load fires
+        initialHref = null;
+        return;
+      }
+
       // Remove all previous references to components
       // This is mainly the bsae component
       appRef.components.slice().forEach((component) => {
