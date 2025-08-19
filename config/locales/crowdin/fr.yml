@@ -4535,6 +4535,8 @@ fr:
       code_500_missing_enterprise_token: "La requête ne peut pas être traitée en raison d'un jeton Enterprise invalide ou manquant."
       bad_request:
         emoji_reactions_activity_type_not_supported: "Ce type d'activité ne prend pas en charge les réactions via émojis."
+        invalid_link: "The link under key '%{key}' is not valid."
+        links_not_an_object: "_links must be a JSON object."
       conflict:
         multiple_reminders_not_allowed: |-
           Vous ne pouvez définir qu'un seul rappel à la fois pour un lot de travaux. Veuillez supprimer ou mettre à jour le rappel existant.

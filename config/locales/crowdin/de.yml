@@ -836,10 +836,10 @@ de:
         Die minimale Anzahl von Arbeitstagen zwischen den zwei Arbeitspaketen; kann auch negativ sein.
     relations:
       label_new_child_created: "Neues Arbeitspaket erstellt und als Unteraufgabe hinzugefügt"
-      label_relates_singular: "Beziehung mit"
-      label_relates_plural: "Beziehung mit"
-      label_relates_to_singular: "Beziehungen mit"
-      label_relates_to_plural: "Beziehungen mit"
+      label_relates_singular: "Verwandt mit"
+      label_relates_plural: "Verwandt mit"
+      label_relates_to_singular: "Verwandt mit"
+      label_relates_to_plural: "Verwandt mit"
       relates_description: "Erstellt eine sichtbare Beziehung zwischen den zwei Arbeitspaketen ohne weitere Auswirkungen"
       relates_to_description: "Erstellt eine sichtbare Beziehung zwischen den zwei Arbeitspaketen ohne weitere Auswirkungen"
       label_precedes_singular: "Nachfolger"
@@ -4529,6 +4529,8 @@ de:
       code_500_missing_enterprise_token: "Die Anfrage kann wegen ungültigem oder fehlenden Enterprise Token nicht bearbeitet werden."
       bad_request:
         emoji_reactions_activity_type_not_supported: "Dieser Aktivitätstyp unterstützt keine Emoji-Reaktionen."
+        invalid_link: "The link under key '%{key}' is not valid."
+        links_not_an_object: "_links must be a JSON object."
       conflict:
         multiple_reminders_not_allowed: |-
           Sie können nur eine Erinnerung gleichzeitig für ein Arbeitspaket festlegen. Bitte löschen oder aktualisieren Sie die bestehende Erinnerung.

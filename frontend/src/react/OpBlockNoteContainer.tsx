@@ -33,7 +33,7 @@ import { BlockNoteView } from "@blocknote/mantine";
 import { getDefaultReactSlashMenuItems, SuggestionMenuController, useCreateBlockNote } from "@blocknote/react";
 import { dummyBlockSpec, getDefaultOpenProjectSlashMenuItems, openProjectWorkPackageBlockSpec } from "op-blocknote-extensions";
 import { useEffect, useState } from "react";
-import { OpTheme } from "core-app/core/setup/globals/theme-utils";
+import { OpColorMode } from "core-app/core/setup/globals/theme-utils";
 
 export interface OpBlockNoteContainerProps {
   inputField: HTMLInputElement;
@@ -48,12 +48,7 @@ const schema = BlockNoteSchema.create({
   },
 });
 
-const detectTheme = (): OpTheme => {
-  if (document.body.getAttribute('data-color-mode') === 'dark') {
-    return 'dark';
-  }
-  return 'light';
-};
+const detectTheme = ():OpColorMode => { return window.OpenProject.theme.detectOpColorMode(); };
 
 export default function OpBlockNoteContainer({ inputField, inputText }: OpBlockNoteContainerProps) {
   const [isLoading, setIsLoading] = useState(true);

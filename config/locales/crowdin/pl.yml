@@ -4625,6 +4625,8 @@ pl:
       code_500_missing_enterprise_token: "Żądania nie można obsłużyć z powodu nieprawidłowego lub brakującego tokena wersji Enterprise."
       bad_request:
         emoji_reactions_activity_type_not_supported: "Ten typ działań nie obsługuje reakcji emoji."
+        invalid_link: "The link under key '%{key}' is not valid."
+        links_not_an_object: "_links must be a JSON object."
       conflict:
         multiple_reminders_not_allowed: |-
           Dla jednego pakietu roboczego można ustawić tylko jedno przypomnienie. Usuń lub zaktualizuj istniejące przypomnienie.

@@ -4532,6 +4532,8 @@ pt-PT:
       code_500_missing_enterprise_token: "O pedido não pode ser tratado devido a um token empresarial inválido ou em falta."
       bad_request:
         emoji_reactions_activity_type_not_supported: "Este tipo de atividade não suporta reações de emoji."
+        invalid_link: "The link under key '%{key}' is not valid."
+        links_not_an_object: "_links must be a JSON object."
       conflict:
         multiple_reminders_not_allowed: |-
           Só é possível definir um lembrete de cada vez para um pacote de trabalho. Elimine ou atualize o lembrete existente.
