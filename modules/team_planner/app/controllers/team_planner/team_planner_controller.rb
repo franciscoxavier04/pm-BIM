@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ::TeamPlanner
   class TeamPlannerController < BaseController
     include EnterpriseHelper
