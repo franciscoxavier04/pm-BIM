@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OpenProject::XlsExport::XlsViews
   include Redmine::I18n
   include ActionView::Helpers::NumberHelper

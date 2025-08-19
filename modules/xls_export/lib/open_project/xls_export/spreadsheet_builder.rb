@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spreadsheet"
 
 # A simple convenience class that wraps some of the spreadsheet

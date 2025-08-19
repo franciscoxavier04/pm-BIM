@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OpenProject::XlsExport::Hooks
   class WorkPackageHook < OpenProject::Hook::ViewListener
     def link_to_xls(context, label, options = {})
