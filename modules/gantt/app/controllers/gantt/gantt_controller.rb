@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ::Gantt
   class GanttController < ApplicationController
     include Layout
