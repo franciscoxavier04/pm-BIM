@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Shares
   # @logical_path OpenProject/Shares
   class ShareDialogComponentPreview < Lookbook::Preview

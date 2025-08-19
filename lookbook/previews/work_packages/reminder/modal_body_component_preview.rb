@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module WorkPackages
   module Reminder
     # @logical_path OpenProject/WorkPackages/Reminder
