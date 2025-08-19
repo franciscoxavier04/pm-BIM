@@ -37,7 +37,14 @@ module WorkPackages
         ATTACHMENT_CSS_SELECTOR = "img.op-uc-image"
 
         def perform
-          self.params = params.reverse_merge(attachment_ids: collect_attachment_ids_from_notes)
+          # Only claim attachments that are actually claimable. We must not try to
+          # reassign attachments that are already attached to another container
+          # (e.g., the work package), and we must only claim unattached files of
+          # the current user to satisfy validation rules.
+          ids_from_notes = collect_attachment_ids_from_notes
+          claimable_ids = filter_claimable_attachment_ids(ids_from_notes)
+
+          self.params = params.reverse_merge(attachment_ids: claimable_ids)
           super
         end
 
@@ -55,6 +62,17 @@ module WorkPackages
             match = src.match(%r{/attachments/(\d+)/content})
             match[1] if match
           end
+        end
+
+        def filter_claimable_attachment_ids(ids)
+          return [] if ids.blank?
+
+          Attachment
+            .where(container: nil)
+            .or(Attachment.where(container: model))
+            .where(id: ids)
+            .pluck(:id)
+            .map(&:to_s)
         end
 
         def parser
