@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 PaperTrail.config.enabled = true # PT will be disabled by rspec
 PaperTrail.config.has_paper_trail_defaults = {
   versions: {

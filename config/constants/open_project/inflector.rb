@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OpenProject
   class Inflector < Zeitwerk::GemInflector
     alias_method :default_inflect, :camelize

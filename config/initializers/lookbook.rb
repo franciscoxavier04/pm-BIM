@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   next unless OpenProject::Configuration.lookbook_enabled?
 

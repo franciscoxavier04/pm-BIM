@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require Rails.root.join("config/constants/open_project/inflector")
 
 OpenProject::Inflector.rule do |_, abspath|

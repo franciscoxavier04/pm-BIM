@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Be sure to restart your server when you modify this file.
 
 # For development and non-eager load mode, we need to load models using acts_as_watchable manually

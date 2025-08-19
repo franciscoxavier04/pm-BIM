@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   config.after_initialize do
     ActiveSupport::Notifications.subscribe("openproject_grape_logger") do |_, _, _, _, payload|
