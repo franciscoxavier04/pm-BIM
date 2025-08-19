@@ -834,10 +834,10 @@ de:
         Die minimale Anzahl von Arbeitstagen zwischen den zwei Arbeitspaketen; kann auch negativ sein.
     relations:
       label_new_child_created: "Neues Arbeitspaket erstellt und als Unteraufgabe hinzugefügt"
-      label_relates_singular: "Beziehung mit"
-      label_relates_plural: "Beziehung mit"
-      label_relates_to_singular: "Beziehungen mit"
-      label_relates_to_plural: "Beziehungen mit"
+      label_relates_singular: "Verwandt mit"
+      label_relates_plural: "Verwandt mit"
+      label_relates_to_singular: "Verwandt mit"
+      label_relates_to_plural: "Verwandt mit"
       relates_description: "Erstellt eine sichtbare Beziehung zwischen den zwei Arbeitspaketen ohne weitere Auswirkungen"
       relates_to_description: "Erstellt eine sichtbare Beziehung zwischen den zwei Arbeitspaketen ohne weitere Auswirkungen"
       label_precedes_singular: "Nachfolger"
