@@ -92,7 +92,7 @@ module Exports::PDF
     end
 
     def footer_title
-      I18n.t("export.demo.footer",)
+      I18n.t("export.demo.footer")
     end
 
     # Suggested filename
@@ -133,8 +133,8 @@ module Exports::PDF
 
       write_demo_text(
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " \
-          "Vivamus lacinia odio vitae vestibulum vestibulum. " \
-          "Cras venenatis euismod malesuada.",
+        "Vivamus lacinia odio vitae vestibulum vestibulum. " \
+        "Cras venenatis euismod malesuada.",
         size: 11
       )
     end

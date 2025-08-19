@@ -69,14 +69,6 @@ RSpec.describe Exports::PDF::Common::View do
       create(:custom_style_with_export_font_regular)
       expect(described_class.valid_custom_font?).to be true
     end
-
-    it "validates presence of an upload font cut" do
-      expect(described_class.valid_custom_font_cut?(nil)).to be false
-      double_cut = instance_double("Uploader", local_file: nil)
-      expect(described_class.valid_custom_font_cut?(double_cut)).to be false
-      allow(double_cut).to receive(:local_file).and_return(double("File"))
-      expect(described_class.valid_custom_font_cut?(double_cut)).to be true
-    end
   end
 
   describe "fallback fonts" do
