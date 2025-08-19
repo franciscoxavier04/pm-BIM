@@ -521,7 +521,9 @@ Rails.application.routes.draw do
     post "design/export_cover_text_color" => "custom_styles#update_export_cover_text_color",
          as: "update_custom_style_export_cover_text_color"
 
-    resource :custom_style, only: %i[update show create], path: "design"
+    resource :custom_style, only: %i[update show create], path: "design" do
+      get :export_demo_pdf_download
+    end
 
     resources :attribute_help_texts, only: %i(index new create edit update destroy)
 

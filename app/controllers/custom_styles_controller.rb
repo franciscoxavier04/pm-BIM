@@ -184,6 +184,19 @@ class CustomStylesController < ApplicationController
     redirect_to custom_style_path
   end
 
+  def export_demo_pdf_download
+    result = ::Exports::PDF::DemoGenerator.new.export!
+    expires_in 0, public: false
+    send_data result.content,
+              filename: result.title,
+              type: "application/pdf",
+              disposition: "inline"
+  rescue StandardError => e
+    Rails.logger.error "Failed to generate demo PDF: #{e.message}"
+    flash[:error] = e.message
+    redirect_to custom_style_path
+  end
+
   private
 
   def theme_from_params
