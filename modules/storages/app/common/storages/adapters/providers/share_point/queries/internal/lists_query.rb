@@ -83,8 +83,9 @@ module Storages
               end
 
               def request_uri
-                storage_host = URI(@storage.host)
-                URI.join(base_uri.origin, "/v1.0/sites/#{storage_host.host}:#{storage_host.path}:/lists").to_s
+                endpoint_uri = UrlBuilder.url(base_uri, "/v1.0/sites", host_uri.host)
+
+                "#{endpoint_uri}:#{site_path}:/lists"
               end
 
               def build_collection(files)
