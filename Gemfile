@@ -227,7 +227,7 @@ gem "yabeda-rails"
 
 gem "view_component"
 # Lookbook
-gem "lookbook", "~> 2.3.11"
+gem "lookbook", "2.3.13"
 
 # Require factory_bot for usage with openproject plugins testing
 gem "factory_bot", "~> 6.5.0", require: false
