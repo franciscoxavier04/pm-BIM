@@ -371,7 +371,7 @@ lt:
       description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
+        description: You can define named groups of users with specific permissions.
         title: No groups set up yet
       user_count: User count
     users:
@@ -697,8 +697,10 @@ lt:
         excluded_from_totals: "Excluded from totals"
   themes:
     dark: "Tamsi"
+    dark_high_contrast: "Dark high contrast"
     light: "Šviesi"
     light_high_contrast: "Šviesi kontrastinga"
+    sync_with_os: "Automatic (match OS colour mode)"
   types:
     index:
       no_results_title_text: Nėra jokių rūšių.
@@ -1302,6 +1304,7 @@ lt:
         odd: "turi būti nelyginis."
         regex_match_failed: "neatitinka reguliariosios išraiškos %{expression}."
         regex_invalid: "negalėjo būti patvirtintas su susieta reguliaria išraiška."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "turi būti mažesnis arba lygus didžiausiam ilgiui."
         taken: "jau užimtas."
         too_long: "yra per ilgas (daugiausiai galima %{count} simbolių)."
@@ -1638,6 +1641,7 @@ lt:
         many: "Authentication providers"
         other: "Authentication providers"
       category: "Kategorija"
+      color: "Color"
       comment: "Komentaras"
       custom_action: "Pasirinktinis veiksmas"
       custom_field: "Kliento laukelis"
@@ -2335,6 +2339,13 @@ lt:
         I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
       consent_html: >
         I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
   enumeration_activities: "Laiko sekimo veiklos"
   enumeration_work_package_priorities: "Darbų paketo prioritetai"
   enumeration_reported_project_statuses: "Pranešta projekto būsena"
@@ -2480,6 +2491,7 @@ lt:
           label: "Include descriptions"
           caption: "This option will add a description column in raw format."
     your_work_packages_export: "Work packages are being exported"
+    your_projects_export: "Projects are being exported"
     succeeded: "Export completed"
     failed: "An error has occurred while trying to export the work packages: %{message}"
     errors:
@@ -2542,6 +2554,13 @@ lt:
       xls2csv: "Xls2csv pasiekiamas (pasirinktinai)"
       catppt: "Catppt pasiekiamas (pasirinktinai)"
       tesseract: "Tesseract pasiekiamas (pasirinktinai)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","
@@ -3009,6 +3028,7 @@ lt:
   label_custom_logo: "Savo sukurtas logotipas"
   label_custom_export_logo: "Savas eksporto logotipas"
   label_custom_export_cover: "Savas eksporto viršelio fonas"
+  label_custom_export_footer: "Custom export footer image"
   label_custom_export_cover_overlay: "Savas eksporto viršelio fono perdengimas"
   label_custom_export_cover_text_color: "Teksto spalva"
   label_custom_pdf_export_settings: "Savi PDF eksporto nustatymai"
@@ -4262,6 +4282,8 @@ lt:
     Tai logotipas, kuris rodomas jūsų PDF eksportuose. Tai turi būti PNG arba JPEG piešinio failas. Rekomenduojamas juodas arba spalvotas logotipas ant permatomo balto fono.
   text_custom_export_cover_instructions: >
     Tai yra nuotrauka, kuri rodoma jūsų PDF eksportų viršelio puslapio fone. Ji turi būti daugmaž 800px pločio ir 500px aukščio, PNG arba JPEG formato nuotrauka.
+  text_custom_export_footer_instructions: >
+    PDF exports will include a graphical element positioned to the left of the footer. This image must be a PNG or JPEG file with approximately 200 pixels in width.
   text_custom_favicon_instructions: >
     Šis mažas paveikslėlis atsiranda Jūsų naršyklės lange, kortelėje šalia puslapio pavadinimo. Jis turi būti kvadratinis 32 pikselio ilgio ir pločio PNG paveikslėlis su permatomu fonu.
   text_custom_touch_icon_instructions: >
@@ -4603,6 +4625,8 @@ lt:
       code_500_missing_enterprise_token: "Užklausos nepavyko apdoroti dėl netinkamo ar trūkstamo Enterprise žetono."
       bad_request:
         emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+        invalid_link: "The link under key '%{key}' is not valid."
+        links_not_an_object: "_links must be a JSON object."
       conflict:
         multiple_reminders_not_allowed: |-
           You can only set one reminder at a time for a work package. Please delete or update the existing reminder.

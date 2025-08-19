@@ -373,7 +373,7 @@ ru:
       description: By grouping users together, you can add them as members to the same projects or assign the same global roles to them.
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
+        description: You can define named groups of users with specific permissions.
         title: Группы еще не созданы
       user_count: Количество пользователей
     users:
@@ -698,8 +698,10 @@ ru:
         excluded_from_totals: "Исключен из итогов"
   themes:
     dark: "Тёмная"
+    dark_high_contrast: "Темный высокий контраст"
     light: "Светлая"
     light_high_contrast: "Светлый высокий контраст"
+    sync_with_os: "Automatic (match OS colour mode)"
   types:
     index:
       no_results_title_text: В данный момент типы отсутствуют.
@@ -1303,6 +1305,7 @@ ru:
         odd: "должно быть нечетным."
         regex_match_failed: "не соответствует регулярному выражению %{expression}."
         regex_invalid: "не может быть проверен связанным регулярным выражением."
+        regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
         smaller_than_or_equal_to_max_length: "должно быть меньше или равно максимальной длине."
         taken: "уже принято."
         too_long: "слишком длинно (максимум — %{count} знаков)."
@@ -1639,6 +1642,7 @@ ru:
         many: "Authentication providers"
         other: "Authentication providers"
       category: "Категория"
+      color: "Цвет"
       comment: "Комментарий"
       custom_action: "Пользовательское действие"
       custom_field: "Настраиваемое поле"
@@ -2336,6 +2340,13 @@ ru:
         Я хочу получить <a target="_blank" href="https://www.openproject.org/newsletter/">информационный бюллетень OpenProject</a>.
       consent_html: >
         Я подтверждаю <a target="_blank" href="https://www.openproject.org/terms-of-service/">правила</a> и <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">условия пользования</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Отключено."
+      enabled: "Включено."
+    button:
+      disabled: "Включить"
+      enabled: "Отключить"
   enumeration_activities: "Отслеживание времени"
   enumeration_work_package_priorities: "Приоритеты пакета работ"
   enumeration_reported_project_statuses: "Перечень отчетов о статусах проекта"
@@ -2481,6 +2492,7 @@ ru:
           label: "Включить описания"
           caption: "Эта опция добавит колонку описания в необработанном формате."
     your_work_packages_export: "Пакеты работ экспортируются"
+    your_projects_export: "Projects are being exported"
     succeeded: "Экспорт завершен"
     failed: "Произошла ошибка при попытке экспортировать пакеты работ: %{message}"
     errors:
@@ -2543,6 +2555,13 @@ ru:
       xls2csv: "Xls2csv доступно (опционально)"
       catppt: "Catppt доступно (опционально)"
       tesseract: "Tesseract доступно (опционально)"
+  filterable_tree_view:
+    filter_mode:
+      all: "All"
+      label: "Filter mode"
+      selected: "Selected"
+    include_sub_items: "Include sub-items"
+    no_results_text: "No results"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","
@@ -3010,6 +3029,7 @@ ru:
   label_custom_logo: "Свой логотип"
   label_custom_export_logo: "Пользовательский логотип экспорта"
   label_custom_export_cover: "Фон обложки для экспорта"
+  label_custom_export_footer: "Custom export footer image"
   label_custom_export_cover_overlay: "Накладываемое фоновое покрытие для экспорта"
   label_custom_export_cover_text_color: "Цвет текста"
   label_custom_pdf_export_settings: "Настройки экспорта PDF"
@@ -4263,6 +4283,8 @@ ru:
     Это логотип, который отображается при экспорте в формате PDF. Это должен быть файл изображения в формате PNG или JPEG. Рекомендуется использовать черный или цветной логотип на прозрачном или белом фоне.
   text_custom_export_cover_instructions: >
     Это изображение, которое появляется на обложке страницы в экспорте PDF. Он должен быть около 800px ширины на 500px высоты в PNG или JPEG файл изображения.
+  text_custom_export_footer_instructions: >
+    PDF exports will include a graphical element positioned to the left of the footer. This image must be a PNG or JPEG file with approximately 200 pixels in width.
   text_custom_favicon_instructions: >
     Это крошечный значок, который появляется в окне / вкладке вашего браузера рядом с заголовком страницы. Это должен быть файл изображения в формате PNG размером 32 на 32 пикселя с прозрачным фоном.
   text_custom_touch_icon_instructions: >
@@ -4604,6 +4626,8 @@ ru:
       code_500_missing_enterprise_token: "Запрос не может быть обработан из-за недействительного или отсутствующего корпоративного токена."
       bad_request:
         emoji_reactions_activity_type_not_supported: "Этот тип деятельности не поддерживает реакции эмодзи."
+        invalid_link: "The link under key '%{key}' is not valid."
+        links_not_an_object: "_links must be a JSON object."
       conflict:
         multiple_reminders_not_allowed: |-
           Вы можете установить только одно напоминание для пакета работ. Пожалуйста, удалите или обновите напоминание.
