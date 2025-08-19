@@ -30,7 +30,9 @@
 
 require "rails_helper"
 
-RSpec.describe CustomFields::Hierarchy::GenerateRootContract, with_ee: [:custom_field_hierarchies] do
+RSpec.describe CustomFields::Hierarchy::GenerateRootContract,
+               with_ee: [:custom_field_hierarchies],
+               with_flag: { scored_list_custom_fields: true } do
   subject { described_class.new }
 
   describe "#call" do
@@ -50,12 +52,22 @@ RSpec.describe CustomFields::Hierarchy::GenerateRootContract, with_ee: [:custom_
       it "is invalid" do
         result = subject.call(custom_field:)
         expect(result).to be_failure
-        expect(result.errors[:custom_field]).to match_array("cannot be defined")
+        expect(result.errors[:custom_field]).to match_array("must not be defined.")
+      end
+    end
+
+    context "when custom field format is not supported" do
+      let(:custom_field) { create(:string_wp_custom_field) }
+
+      it "is invalid" do
+        result = subject.call(custom_field:)
+        expect(result).to be_failure
+        expect(result.errors[:custom_field]).to match_array("format is of unsupported type.")
       end
     end
 
     context "when inputs are valid" do
-      let(:custom_field) { create(:hierarchy_wp_custom_field, hierarchy_root: nil) }
+      let(:custom_field) { create(:scored_list_wp_custom_field, hierarchy_root: nil) }
 
       it "creates a success result" do
         expect(subject.call(custom_field:)).to be_success

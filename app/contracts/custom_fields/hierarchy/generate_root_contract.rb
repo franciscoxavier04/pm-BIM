@@ -31,13 +31,15 @@
 module CustomFields
   module Hierarchy
     class GenerateRootContract < Dry::Validation::Contract
+      config.messages.backend = :i18n
+
       params do
         required(:custom_field).filled(type?: CustomField)
       end
 
       rule(:custom_field) do
-        key.failure("must have field format 'hierarchy'") if value.field_format != "hierarchy"
-        key.failure("cannot be defined") if value.hierarchy_root.present?
+        key.failure(:format_not_supported) if %w[hierarchy scored_list].exclude?(value.field_format)
+        key.failure(:defined) if value.hierarchy_root.present?
       end
     end
   end

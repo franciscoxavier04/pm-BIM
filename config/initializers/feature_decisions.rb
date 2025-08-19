@@ -60,3 +60,7 @@ OpenProject::FeatureDecisions.add :block_note_editor,
 OpenProject::FeatureDecisions.add :minutes_styling_meeting_pdf,
                                   description: "Allow exporting a meeting with FITKO styling. " \
                                                "See #65124 for details."
+
+OpenProject::FeatureDecisions.add :scored_list_custom_fields,
+                                  description: "Enables the use of the custom field type 'Scored List', which lets " \
+                                               "the admin add scores to list items."
