@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Overviews
   class GridRegistration < ::Grids::Configuration::InProjectBaseRegistration
     grid_class "Grids::Overview"
