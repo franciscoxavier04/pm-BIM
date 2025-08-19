@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,11 +26,39 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
+module Meetings
+  class ICalController < ApplicationController
+    skip_before_action :check_if_login_required
+    authorization_checked! :index
 
-module My
-  module AccessToken
-    class NewAccessTokenComponent < ApplicationComponent
+    EMPTY_ICS = "BEGIN:VCALENDAR\nVERSION:2.0\nEND:VCALENDAR"
+
+    def index
+      token = Token::ICalMeeting.find_by_plaintext_value!(params[:token]) # rubocop:disable Rails/DynamicFindBy
+
+      user = token.user
+
+      service = AllMeetings::ICalService.new(user:)
+      s_call = service.call
+
+      ics_body = if s_call.success?
+                   s_call.result
+                 else
+                   Rails.logger.error "Could not generate ICS feed: #{s_call.message}"
+                   EMPTY_ICS
+                 end
+
+      respond_to do |format|
+        format.ics do
+          send_data(
+            ics_body,
+            filename: "openproject-meetings.ics",
+            disposition: "inline; filename=openproject-meetings.ics",
+            type: "text/calendar"
+          )
+        end
+      end
     end
   end
 end

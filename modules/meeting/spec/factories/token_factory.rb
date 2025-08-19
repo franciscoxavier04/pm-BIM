@@ -28,46 +28,11 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-# This components renders a dialog to confirm the deletion of a project from a storage.
-module My
-  module AccessToken
-    class APITokensSectionComponent < ::ApplicationComponent
-      include OpTurbo::Streamable
-      include Redmine::I18n
+require "securerandom"
 
-      attr_reader :tokens, :token_type
-
-      def initialize(tokens:, token_type:)
-        super
-
-        @tokens = tokens
-        @token_type = token_type
-      end
-
-      private
-
-      def wrapper_key
-        "#{token_type.model_name.element}-token-component"
-      end
-
-      def i18n_scope
-        [:my_account, :access_tokens, token_type.model_name.i18n_key]
-      end
-
-      def token_available?
-        case token_type.to_s
-        when "Token::API" then Setting.rest_api_enabled?
-        when "Token::ICalMeeting" then Setting.ical_enabled?
-        else raise ArgumentError, "Unknown token type: #{token_type}"
-        end
-      end
-
-      def add_button_icon
-        case token_type.to_s
-        when "Token::ICalMeeting" then :rss
-        else :plus
-        end
-      end
-    end
+FactoryBot.define do
+  factory :ical_meeting_token, class: "::Token::ICalMeeting" do
+    user
+    sequence(:token_name) { |n| "My Meetings Calendar #{n}" }
   end
 end

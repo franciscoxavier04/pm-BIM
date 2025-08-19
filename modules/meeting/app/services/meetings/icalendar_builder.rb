@@ -38,6 +38,9 @@ module Meetings
       @timezone = timezone
       @calendar = build_icalendar
       @calendar_timezones = Set.new
+      @excluded_dates_cache = {}
+      @instantiated_occurrences_cache = {}
+      @series_cache_loaded = false
     end
 
     def add_single_meeting_event(meeting:, cancelled: false) # rubocop:disable Metrics/AbcSize
@@ -130,7 +133,29 @@ module Meetings
       calendar.to_ical
     end
 
+    def preload_for_recurring_meetings(recurring_meetings:)
+      @excluded_dates_cache = ScheduledMeeting
+        .where(recurring_meeting: recurring_meetings)
+        .group(:recurring_meeting_id)
+        .pluck(:recurring_meeting_id, "array_agg(start_time)")
+        .to_h
+        .transform_values { |dates| dates.map { |date| ical_datetime(date) } }
+
+      @instantiated_occurrences_cache = ScheduledMeeting
+        .where(recurring_meeting: recurring_meetings)
+        .not_cancelled
+        .instantiated
+        .includes(meeting: [:project], recurring_meeting: [:project])
+        .group_by(&:recurring_meeting_id)
+
+      @series_cache_loaded = true
+    end
+
     private
+
+    def series_cache_loaded?
+      @series_cache_loaded
+    end
 
     def build_icalendar
       ::Icalendar::Calendar.new.tap do |calendar|
@@ -183,25 +208,33 @@ module Meetings
 
     # Methods for recurring meetings
     def add_instantiated_occurrences(recurring_meeting:)
-      upcoming_instantiated_schedules(recurring_meeting).find_each do |scheduled_meeting|
+      upcoming_instantiated_schedules(recurring_meeting).each do |scheduled_meeting|
         add_single_recurring_occurrence(scheduled_meeting:)
       end
     end
 
     def set_excluded_recurrence_dates(event:, recurring_meeting:)
-      event.exdate = recurring_meeting
-        .scheduled_meetings
-        .cancelled
-        .pluck(:start_time)
-        .map { ical_datetime(it) }
+      event.exdate = if series_cache_loaded?
+                       @excluded_dates_cache[recurring_meeting.id] || []
+                     else
+                       recurring_meeting
+                         .scheduled_meetings
+                         .cancelled
+                         .pluck(:start_time)
+                         .map { ical_datetime(it) }
+                     end
     end
 
     def upcoming_instantiated_schedules(recurring_meeting)
-      recurring_meeting
-        .scheduled_meetings
-        .not_cancelled
-        .instantiated
-        .includes(meeting: [:project], recurring_meeting: [:project])
+      if series_cache_loaded?
+        @instantiated_occurrences_cache[recurring_meeting.id] || []
+      else
+        recurring_meeting
+          .scheduled_meetings
+          .not_cancelled
+          .instantiated
+          .includes(meeting: [:project], recurring_meeting: [:project])
+      end
     end
   end
 end
