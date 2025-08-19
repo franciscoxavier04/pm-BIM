@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -32,7 +33,7 @@ module RecurringMeetings
     include GoodJob::ActiveJobExtensions::Concurrency
     discard_on ActiveJob::DeserializationError
 
-    CONCURRENCY_KEY_BASE = "RecurringMeetings::InitNextOccurrenceJob-".freeze
+    CONCURRENCY_KEY_BASE = "RecurringMeetings::InitNextOccurrenceJob-"
 
     good_job_control_concurrency_with(
       # Allow the running job to enqueue the next one

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module RecurringMeetings
   class ScheduleController < ApplicationController
     around_action :with_user_time_zone
