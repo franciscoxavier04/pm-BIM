@@ -30,6 +30,7 @@ import AutoThemeSwitcher from './controllers/auto-theme-switcher.controller';
 import { OpenProjectStimulusApplication } from 'core-stimulus/openproject-stimulus-application';
 import { Application } from '@hotwired/stimulus';
 import { BeforeunloadController } from './controllers/beforeunload.controller';
+import DisableWhenClickedController from 'core-stimulus/controllers/disable-when-clicked.controller';
 
 declare global {
   interface Window {
@@ -40,6 +41,7 @@ declare global {
 OpenProjectStimulusApplication.preregister('application', OpApplicationController);
 OpenProjectStimulusApplication.preregister('async-dialog', AsyncDialogController);
 OpenProjectStimulusApplication.preregister('disable-when-checked', OpDisableWhenCheckedController);
+OpenProjectStimulusApplication.preregister('disable-when-clicked', DisableWhenClickedController);
 OpenProjectStimulusApplication.preregister('flash', FlashController);
 OpenProjectStimulusApplication.preregister('menus--main', MainMenuController);
 OpenProjectStimulusApplication.preregister('password-confirmation-dialog', PasswordConfirmationDialogController);
