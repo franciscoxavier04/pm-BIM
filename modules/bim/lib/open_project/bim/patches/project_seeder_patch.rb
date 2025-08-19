@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OpenProject::Bim::Patches::ProjectSeederPatch
   def self.included(base) # :nodoc:
     base.prepend InstanceMethods

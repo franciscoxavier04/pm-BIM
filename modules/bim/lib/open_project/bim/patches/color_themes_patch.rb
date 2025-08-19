@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require "open_project/custom_styles/design"
 
-OpenProject::CustomStyles::ColorThemes::BIM_THEME_NAME = "OpenProject BIM".freeze
+OpenProject::CustomStyles::ColorThemes::BIM_THEME_NAME = "OpenProject BIM"
 
 module OpenProject::Bim
   module Patches

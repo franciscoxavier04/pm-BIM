@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Bim::Bcf
   ##
   # Module to set an initial UUID on the model

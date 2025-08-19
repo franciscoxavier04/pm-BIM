@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ::Bim
   module Views
     class ContractStrategy < ::BaseContract

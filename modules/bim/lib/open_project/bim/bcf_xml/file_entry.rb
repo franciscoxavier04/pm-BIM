@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ##
 # Helper class to provide uploads from IO streams.
 module OpenProject::Bim::BcfXml

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ##
 # Creates or updates a BCF issue and markup from a work package
 module OpenProject::Bim::BcfXml

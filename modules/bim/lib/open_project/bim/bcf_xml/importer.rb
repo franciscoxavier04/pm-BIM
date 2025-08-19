@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "activerecord-import"
 require_relative "issue_reader"
 require_relative "aggregations"

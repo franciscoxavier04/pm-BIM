@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_context "bcf_topic with stubbed comment" do |attributes = {}|
   let(:attachment) { build_stubbed(:attachment, description: "snapshot") }
   let(:viewpoint) { build_stubbed(:bcf_viewpoint, attachments: [attachment]) }

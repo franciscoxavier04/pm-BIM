@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Bim
   module IfcModels
     class IfcModel < ApplicationRecord

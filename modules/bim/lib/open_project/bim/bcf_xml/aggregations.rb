@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OpenProject::Bim::BcfXml
   class Aggregations
     attr_reader :listings, :project, :instance_cache

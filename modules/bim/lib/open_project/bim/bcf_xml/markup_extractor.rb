@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ##
 # Extracts sections of a BCF markup file
 # manually. If we want to extract the entire markup,
@@ -113,13 +115,13 @@ module OpenProject::Bim::BcfXml
       Time.iso8601(date_time) unless date_time.nil?
     end
 
-    def extract(path, prefix: "/Markup/Topic/".freeze, attribute: false)
+    def extract(path, prefix: "/Markup/Topic/", attribute: false)
       path = [prefix, path.to_s].join("")
       extract_from_node(path, doc, attribute:)
     end
 
     def extract_from_node(path, node, attribute: false)
-      suffix = attribute ? "" : "/text()".freeze
+      suffix = attribute ? "" : "/text()"
       path = [path.to_s, suffix].join("")
       node.xpath(path).to_s.presence
     end
