@@ -110,7 +110,7 @@ RSpec.describe "Recurring meetings creation",
         template_page.expect_participant(other_user, editable: false)
         template_page.expect_available_participants(count: 2)
 
-        click_on "Cancel"
+        page.find(".close-button").click
       end
       wait_for_network_idle
 

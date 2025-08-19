@@ -32,7 +32,7 @@ class Meeting::Participant < ApplicationForm
   form do |participant_form|
     participant_form.autocompleter(
       name: :user_id,
-      label: MeetingAgendaItem.human_attribute_name(:presenter),
+      label: MeetingParticipant.model_name.human,
       visually_hide_label: true,
       autocomplete_options: {
         defaultData: true,
@@ -41,11 +41,11 @@ class Meeting::Participant < ApplicationForm
         filters:,
         searchKey: "any_name_attribute",
         resource: "principals",
-        focusDirectly: false,
+        focusDirectly: true,
         multiple: false,
         isOpenedInModal: true,
         hoverCards: true,
-        placeholder: I18n.t("activerecord.attributes.meeting_agenda_item.presenter"),
+        placeholder: I18n.t("meeting.participants.text.search_for_members"),
         data: {
           "test-selector": "participants-dialog-autocomplete"
         }
@@ -56,12 +56,12 @@ class Meeting::Participant < ApplicationForm
   private
 
   def excluded_ids
-    @excluded_ids ||= @builder.object.meeting.invited_participants.filter_map(&:user_id)
+    @excluded_ids ||= @builder.object.meeting.participants.filter_map(&:user_id)
   end
 
   def filters
     list = [
-      { name: "type", operator: "=", values: %w[User Group] },
+      { name: "type", operator: "=", values: %w[User] },
       { name: "member", operator: "=", values: [@builder.object.meeting.project_id] },
       { name: "status", operator: "=", values: [Principal.statuses[:active], Principal.statuses[:invited]] }
     ]

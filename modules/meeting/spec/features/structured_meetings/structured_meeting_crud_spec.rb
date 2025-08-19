@@ -300,7 +300,7 @@ RSpec.describe "Meetings CRUD",
     show_page.in_participant_form do
       show_page.select_participant(other_user)
 
-      click_on "Cancel"
+      page.find(".close-button").click
     end
 
     wait_for_network_idle

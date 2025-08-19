@@ -29,7 +29,7 @@
 #++
 
 module Meetings
-  class SidePanel::Participants::ManageParticipantsDialog < ApplicationComponent
+  class Participants::ManageParticipantsDialog < ApplicationComponent
     include ApplicationHelper
     include OpenProject::FormTagHelper
     include OpTurbo::Streamable

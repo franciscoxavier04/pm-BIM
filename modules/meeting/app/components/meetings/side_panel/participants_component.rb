@@ -49,7 +49,7 @@ module Meetings
     end
 
     def elements
-      @elements ||= @meeting.invited_participants.sort
+      @elements ||= @meeting.participants.sort
     end
 
     def count

@@ -29,7 +29,7 @@
 #++
 
 module Meetings
-  class SidePanel::Participants::ListComponent < ApplicationComponent
+  class Participants::AddUserFormComponent < ApplicationComponent
     include ApplicationHelper
     include OpenProject::FormTagHelper
     include OpTurbo::Streamable
@@ -39,12 +39,6 @@ module Meetings
       super
 
       @meeting = meeting
-    end
-
-    private
-
-    def show_mark_all_attended?
-      @meeting.participants.where(attended: true).count != @meeting.participants.count && @meeting.in_progress?
     end
   end
 end

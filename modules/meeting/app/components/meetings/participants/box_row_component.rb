@@ -29,16 +29,17 @@
 #++
 
 module Meetings
-  class SidePanel::Participants::AddUserFormComponent < ApplicationComponent
+  class Participants::BoxRowComponent < ApplicationComponent
     include ApplicationHelper
     include OpenProject::FormTagHelper
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
-    def initialize(meeting:)
+    def initialize(meeting:, participant:)
       super
 
       @meeting = meeting
+      @participant = participant
     end
   end
 end

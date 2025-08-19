@@ -85,13 +85,13 @@ module Meetings
 
       def update_add_user_form_component_via_turbo_stream(meeting: @meeting)
         update_via_turbo_stream(
-          component: Meetings::SidePanel::Participants::AddUserFormComponent.new(meeting:)
+          component: Meetings::Participants::AddUserFormComponent.new(meeting:)
         )
       end
 
       def update_list_component_via_turbo_stream(meeting: @meeting)
         update_via_turbo_stream(
-          component: Meetings::SidePanel::Participants::ListComponent.new(meeting:)
+          component: Meetings::Participants::ListComponent.new(meeting:)
         )
       end
 

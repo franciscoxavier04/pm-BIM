@@ -29,7 +29,7 @@
 #++
 
 module Meetings
-  class SidePanel::Participants::AttendedToggleButtonComponent < ApplicationComponent
+  class Participants::AttendedToggleButtonComponent < ApplicationComponent
     include ApplicationHelper
     include OpenProject::FormTagHelper
     include OpTurbo::Streamable
@@ -66,7 +66,8 @@ module Meetings
     end
 
     def label
-      @participant.attended? ? "Attended" : "Mark as attended"
+      key = @participant.attended? ? "attended" : "mark_as_attended"
+      I18n.t("meeting.participants.label.#{key}")
     end
   end
 end

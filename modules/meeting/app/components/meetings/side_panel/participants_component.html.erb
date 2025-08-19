@@ -2,10 +2,10 @@
   component_wrapper do
     render(Primer::OpenProject::SidePanel::Section.new) do |section|
       section.with_title { Meeting.human_attribute_name(:participants) }
-      section.with_counter(count: @meeting.invited_participants.count)
+      section.with_counter(count: @meeting.participants.count)
 
       if @meeting.templated?
-        section.with_description { I18n.t("meeting.participants.template") }
+        section.with_description { I18n.t("meeting.participants.text.template") }
       end
 
       if @meeting.editable?
@@ -16,7 +16,7 @@
           href: manage_participants_dialog_meeting_participants_path(@meeting),
           classes: "hide-when-print",
           data: { controller: "async-dialog" },
-          "aria-label": t("label_meeting_manage_participants"),
+          "aria-label": I18n.t("meeting.participants.label.manage_participants"),
           test_selector: "manage-participants-button"
         )
       end
@@ -46,7 +46,7 @@
                 )
               ) do |button|
                 button.with_leading_visual_icon(icon: "person-add")
-                "Manage participants"
+                I18n.t("meeting.participants.label.manage_participants")
               end
             end
           end

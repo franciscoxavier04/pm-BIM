@@ -40,7 +40,7 @@ class MeetingParticipantsController < ApplicationController
   def create
     user_id = params[:meeting_participant][:user_id]
 
-    if MeetingParticipant.exists?(user_id: user_id, meeting_id: @meeting.id)
+    if MeetingParticipant.exists?(user_id: user_id, meeting_id: @meeting.id) || user_id.blank?
       update_add_user_form_component_via_turbo_stream
       update_list_component_via_turbo_stream
 
@@ -87,7 +87,7 @@ class MeetingParticipantsController < ApplicationController
   end
 
   def manage_participants_dialog
-    respond_with_dialog Meetings::SidePanel::Participants::ManageParticipantsDialog.new(meeting: @meeting)
+    respond_with_dialog Meetings::Participants::ManageParticipantsDialog.new(meeting: @meeting)
   end
 
   private
