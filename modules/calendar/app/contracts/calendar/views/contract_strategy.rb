@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ::Calendar
   module Views
     class ContractStrategy < ::BaseContract
