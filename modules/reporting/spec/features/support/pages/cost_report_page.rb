@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Pages
   class CostReportPage < ::Pages::Page
     attr_reader :project

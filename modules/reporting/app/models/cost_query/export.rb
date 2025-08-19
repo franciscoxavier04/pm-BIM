@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CostQuery::Export < Export
   acts_as_attachable view_permission: :export_work_packages,
                      add_permission: :export_work_packages,

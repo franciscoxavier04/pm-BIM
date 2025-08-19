@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 require_relative "support/pages/cost_report_page"
 
