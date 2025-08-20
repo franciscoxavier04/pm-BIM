@@ -34,19 +34,19 @@ require_module_spec_helper
 module Storages
   module Adapters
     module Providers
-      module SharePoint
+      module Sharepoint
         module Queries
           RSpec.describe OpenFileLinkQuery, :vcr, :webmock do
             let(:user) { create(:user) }
-            let(:storage) { create(:share_point_storage, :sandbox, oauth_client_token_user: user) }
-            let(:auth_strategy) { Registry.resolve("share_point.authentication.user_bound").call(user, storage) }
+            let(:storage) { create(:sharepoint_storage, :sandbox, oauth_client_token_user: user) }
+            let(:auth_strategy) { Registry.resolve("sharepoint.authentication.user_bound").call(user, storage) }
             let(:drive_id) { "b!FeOZEMfQx0eGQKqVBLcP__BG8mq-4-9FuRqOyk3MXY87vnZ6fgfvQanZHX-XCAyw" }
-            let(:separator) { SharePointStorage::IDENTIFIER_SEPARATOR }
+            let(:separator) { SharepointStorage::IDENTIFIER_SEPARATOR }
 
             it_behaves_like "adapter open_file_link_query: basic query setup"
 
             context "with outbound requests successful" do
-              context "with open location flag not set", vcr: "share_point/open_file_link_query_success" do
+              context "with open location flag not set", vcr: "sharepoint/open_file_link_query_success" do
                 let(:file_id) { "#{drive_id}#{separator}01ANJ53WYLXAJW5PXSCJB2CFCD42UPDKMI" }
                 let(:input_data) { Input::OpenFileLink.build(file_id:).value! }
                 let(:open_file_link) { "https://ymt6d.sharepoint.com/sites/OPTest/Shared%20Documents/Folder" }
@@ -54,7 +54,7 @@ module Storages
                 it_behaves_like "adapter open_file_link_query: successful link response"
               end
 
-              context "with open location flag set", vcr: "share_point/open_file_link_location_query_success" do
+              context "with open location flag set", vcr: "sharepoint/open_file_link_location_query_success" do
                 let(:file_id) { "#{drive_id}#{separator}01ANJ53WYLXAJW5PXSCJB2CFCD42UPDKMI" }
                 let(:input_data) { Input::OpenFileLink.build(file_id:, open_location: true).value! }
                 let(:open_file_link) { "https://ymt6d.sharepoint.com/sites/OPTest/Shared%20Documents" }
@@ -62,7 +62,7 @@ module Storages
                 it_behaves_like "adapter open_file_link_query: successful link response"
 
                 context "if file id already points at root element",
-                        vcr: "share_point/open_file_link_location_on_root_query_success" do
+                        vcr: "sharepoint/open_file_link_location_on_root_query_success" do
                   let(:file_id) { "#{drive_id}#{separator}01ANJ53W56Y2GOVW7725BZO354PWSELRRZ" }
 
                   it_behaves_like "adapter open_file_link_query: successful link response"
@@ -70,7 +70,7 @@ module Storages
               end
             end
 
-            context "with not existent file id", vcr: "share_point/open_file_link_query_not_found" do
+            context "with not existent file id", vcr: "sharepoint/open_file_link_query_not_found" do
               let(:file_id) { "#{drive_id}#{separator}YouShallNotPass" }
               let(:input_data) { Input::OpenFileLink.build(file_id:).value! }
               let(:error_source) { Internal::DriveItemQuery }

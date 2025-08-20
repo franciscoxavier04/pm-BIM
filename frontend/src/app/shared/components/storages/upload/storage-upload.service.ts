@@ -74,7 +74,7 @@ export class StorageUploadService extends OpUploadService {
         this.uploadStrategy = new OneDriveUploadStrategy(this.http);
         break;
       case sharepoint:
-        this.uploadStrategy = new OneDriveUploadStrategy((this.http));
+        this.uploadStrategy = new OneDriveUploadStrategy(this.http);
         break;
       default:
         throw new Error('unknown storage type');

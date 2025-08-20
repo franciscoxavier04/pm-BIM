@@ -46,7 +46,7 @@ module Storages
 
             def files_request(folder, http)
               if folder.root?
-                info "Requesting all libraries for the Sharepoint site #{site_name}"
+                info "Requesting all libraries for the SharePoint site #{site_name}"
                 Internal::ListsQuery.call(storage: @storage, http:)
               else
                 drive_name, location = split_drive_and_folder(folder)
