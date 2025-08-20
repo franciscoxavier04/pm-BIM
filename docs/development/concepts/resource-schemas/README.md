@@ -74,6 +74,9 @@ An exemplary schema response on the Community for the OpenProject project (`ID=1
 
 The work package schema also contains the reference to the attribute groups from the form configuration in the `_attributeGroups` property.
 
+The project schema also contains the reference the project attribute sections and their project attributes in the `_attributeGroups` property.
+
+
 ## Frontend usage
 
 The OpenProject frontend usually ensure that whenever you get access to a HAL resource, its associated schema (if there is any) is also loaded. This is done through the [`SchemaCacheService`](https://github.com/opf/openproject/blob/dev/frontend/src/app/core/schemas/schema-cache.service.ts). It will request the associated schema unless it has already been cached in the global states object to avoid loading a schema multiple times.
