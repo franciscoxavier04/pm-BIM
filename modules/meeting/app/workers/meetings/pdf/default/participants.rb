@@ -55,7 +55,7 @@ module Meetings::PDF::Default::Participants
   end
 
   def participants
-    meeting.invited_or_attended_participants.sort_by(&:name)
+    meeting.participants.sort_by(&:name)
   end
 
   def participants_groups(columns_count)
@@ -103,6 +103,6 @@ module Meetings::PDF::Default::Participants
   end
 
   def participants_title
-    "#{Meeting.human_attribute_name(:participants)} (#{meeting.invited_or_attended_participants.count})"
+    "#{Meeting.human_attribute_name(:participants)} (#{meeting.participants.count})"
   end
 end
