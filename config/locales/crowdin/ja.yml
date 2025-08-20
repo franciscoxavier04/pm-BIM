@@ -372,7 +372,7 @@ ja:
       description: ユーザーをグループ化することで、メンバーを同じプロジェクトに追加したり、同じグローバルロールを割り当てたりできます。
     table_component:
       blank_slate:
-        description: You can define groups of users with specific names
+        description: 特定の権限を持つユーザーの名前付きグループを定義できます。
         title: まだグループが設定されていません
       user_count: ユーザー数
     users:
@@ -462,7 +462,7 @@ ja:
       life_cycle:
         header:
           title: "Project life cycle"
-          description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
+          description_html: 'The active project phases define this project''s life cycle and are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target="_blank">project overview</a>.'
         non_defined: "No phases are currently defined."
         section_header: "Phases"
         step:
@@ -565,26 +565,26 @@ ja:
       will_revoke_access_to_all: "This action will revoke their access to all of them."
   my:
     access_token:
-      create_dialog:
-        title: トークン生成完了
-        header: '%{type} トークンが生成されました'
-        warning: このトークンが表示されるのは今回だけなので、必ずコピーしてください。
+      dialog:
+        token/api:
+          dialog_title: "Create new API token"
+          attention_text: "Treat API tokens like passwords. Anyone with this token will have access to information from this instance, share it only with trusted users."
+          dialog_body: "This token will allow third-party applications to communicate with your instance. To differentiate the new API token, please give it a name."
+          create_button: "Create"
+          name_label: "Token name"
+      created_dialog:
+        token/api:
+          title: "The API token has been generated"
+          warning: "This is the only time you will see this token. Make sure to copy it now."
       errors:
         token_name_blank: "APIトークン名を入力してください"
         token_name_in_use: "この API トークン名は既に使用されています。別のトークンを選択してください"
-      new_access_token_dialog_title: "新しいAPIトークンを作成"
-      new_access_token_dialog_show_button_text: "APIトークン"
-      new_access_token_dialog_text_field_placeholder_text: "My API token"
-      new_access_token_dialog_text_field_label: "名称"
-      new_access_token_dialog_submit_button_text: "作成"
-      new_access_token_dialog_text: "This token will allow third-party applications to communicate with your instance. To differentiate the new API token, please give it a name."
-      new_access_token_dialog_attention_text: "Treat API tokens like passwords. Anyone with this link will have access to information from this instance, share it only with trusted users."
       failed_to_reset_token: "アクセストークンをリセットできませんでした: %{error}"
       failed_to_create_token: "Failed to create access token: %{error}"
       failed_to_revoke_token: "Failed to revoke access token: %{error}"
       notice_reset_token: "新しい %{type} トークンが生成されました。アクセストークンは:"
       token_value_warning: "注: これはこのトークンが表示される唯一の機会です。今すぐコピーして確認してください。"
-      no_results_title_text: 現在、有効なアクセス トークンはありません。
+      no_results_title_text: "現在、有効なアクセス トークンはありません。"
       notice_api_token_revoked: "APIトークンが削除されました。新しいトークンを作成するには、APIセクションの作成ボタンを使用してください。"
       notice_rss_token_revoked: "The RSS token has been deleted. To create a new token please use the link in the RSS section."
       notice_ical_token_revoked: 'iCalendar token "%{token_name}" for calendar "%{calendar_name}" of project "%{project_name}" has been revoked. The iCalendar URL with this token is now invalid.'
@@ -677,8 +677,10 @@ ja:
         excluded_from_totals: "Excluded from totals"
   themes:
     dark: "Dark"
+    dark_high_contrast: "Dark high contrast"
     light: "Light"
     light_high_contrast: "Light high contrast"
+    sync_with_os: "Automatic (match OS colour mode)"
   types:
     index:
       no_results_title_text: 現在、種類はありません。
@@ -711,7 +713,7 @@ ja:
         pattern:
           label: "Subject pattern"
           caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
-          insert_as_text: "No attributes found. Add as text: \"%{word}\""
+          insert_as_text: 'No attributes found. Add as text: "%{word}"'
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1281,6 +1283,7 @@ ja:
         odd: "は奇数にしてください。"
         regex_match_failed: "正規表現 %{expression}と一致しません。"
         regex_invalid: "関連付けられた正規表現を検証できませんでした。"
+        regex_list_invalid: "%{invalid_lines} 行目で正規表現として解析できませんでした。"
         hexcode_invalid: "is not a valid 6-digit hexadecimal color code."
         smaller_than_or_equal_to_max_length: "は最大長さより以下でなければなりません。"
         taken: "は既に使用されています。"
@@ -1547,8 +1550,7 @@ ja:
               cant_exceed_work: "仕事より高くすることはできません。"
               must_be_set_when_work_is_set: "作業が設定されている場合に必要です。"
               must_be_set_when_work_and_percent_complete_are_set: "required when Work and % Complete are set."
-              must_be_set_to_zero_hours_when_work_is_set_and_percent_complete_is_100p: >-
-                作業が設定されている場合は0時間で、%が100%である必要があります。
+              must_be_set_to_zero_hours_when_work_is_set_and_percent_complete_is_100p: '>- must be 0h when Work is set and % Complete is 100%.'
               must_be_empty_when_work_is_empty_and_percent_complete_is_100p: >-
                 must be empty when Work is empty and % Complete is 100%.
           readonly_status: "ワークパッケージは読み取り専用の状態になっているため、その属性は変更できません。"
@@ -1609,6 +1611,7 @@ ja:
       auth_provider:
         other: "認証プロバイダー"
       category: "カテゴリ"
+      color: "色"
       comment: "コメント"
       custom_action: "カスタムアクション"
       custom_field: "カスタムフィールド"
@@ -1942,11 +1945,11 @@ ja:
       succeeded: 'プロジェクト「%{target_project_name}」にプロジェクト「%{source_project_name}」をコピーしました。'
     source_project_label: "Project copied"
     copy_options:
-      dependencies_label: 'Copy from project'
+      dependencies_label: "Copy from project"
   create_project:
     template_label: "Use template"
     copy_options:
-      dependencies_label: 'Copy from template'
+      dependencies_label: "Copy from template"
   create_wiki_page: "Create new wiki page"
   create_wiki_page_button: "Wiki ページ"
   date:
@@ -2102,7 +2105,7 @@ ja:
       project_list_sharing: Project List Sharing
       readonly_work_packages: Readonly Work Packages
       scim_api: SCIM server API
-      sso_auth_providers: Single sign-on
+      sso_auth_providers: Single Sign-On
       team_planner_view: Team Planner View
       virus_scanning: Antivirus Scanning
       work_package_query_relation_columns: Work Package Query Relation Columns
@@ -2171,6 +2174,9 @@ ja:
       scim_api:
         title: "SCIMクライアント"
         description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
+      sso_auth_providers:
+        title: "Single Sign-On (SSO)"
+        description: "Enable users to log in via external SSO providers using SAML or OpenID Connect for seamless access and integration with existing identity systems."
       virus_scanning:
         description: "他のユーザーがアクセスできるようになる前に、OpenProjectにアップロードされたファイルがウイルスでスキャンされていることを確認してください。"
       placeholder_users:
@@ -2207,6 +2213,13 @@ ja:
         OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">ニュースレター</a> を受け取りたい。
       consent_html: >
         I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
+  email_calendar_updates:
+    state:
+      disabled: "Disabled."
+      enabled: "Enabled."
+    button:
+      disabled: "Enable"
+      enabled: "Disable"
   enumeration_activities: "タイムトラッキングアクティビティ"
   enumeration_work_package_priorities: "ワークパッケージの優先度"
   enumeration_reported_project_statuses: "報告されるプロジェクト進捗状況"
@@ -2352,6 +2365,7 @@ ja:
           label: "説明を含める"
           caption: "このオプションは、説明列をraw形式で追加します。"
     your_work_packages_export: "作業項目をエクスポートしています"
+    your_projects_export: "プロジェクトはエクスポートされています"
     succeeded: "エクスポート完了"
     failed: "作業項目のエクスポート中にエラーが発生しました: %{message}"
     errors:
@@ -2414,6 +2428,13 @@ ja:
       xls2csv: "Xls2csvが利用可能 (オプション)"
       catppt: "Catpptが利用可能 (オプション)"
       tesseract: "Tesseractが利用可能 (オプション)"
+  filterable_tree_view:
+    filter_mode:
+      all: "すべて"
+      label: "フィルタモード"
+      selected: "選択済み"
+    include_sub_items: "サブアイテムを含める"
+    no_results_text: "結果がありません"
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","
@@ -2519,11 +2540,12 @@ ja:
         expiration: "有効期限"
       indefinite_expiration: "なし"
       simple_revoke_confirmation: "Are you sure you want to revoke this token?"
-      api:
+      token/api:
         title: "API"
         text_hint: "API tokens allow third-party applications to communicate with this OpenProject instance via REST APIs."
         static_token_name: "API token"
         disabled_text: "API tokens are not enabled by the administrator. Please contact your administrator to use this feature."
+        add_button: "API Token"
       ical:
         title: "iCalendar"
         text_hint: 'iCalendar tokens allow users to <a href="%{path}" target="_blank">subscribe to OpenProject calendars</a> and view up-to-date work package information from external clients.'
@@ -2881,6 +2903,7 @@ ja:
   label_custom_logo: "カスタムロゴ"
   label_custom_export_logo: "Custom export logo"
   label_custom_export_cover: "Custom export cover background"
+  label_custom_export_footer: "Custom export footer image"
   label_custom_export_cover_overlay: "Custom export cover background overlay"
   label_custom_export_cover_text_color: "Text color"
   label_custom_pdf_export_settings: "Custom PDF export settings"
@@ -3823,6 +3846,7 @@ ja:
   setting_attachment_whitelist: "添付ファイルのアップロードホワイトリスト"
   setting_email_delivery_method: "メールの配信方法"
   setting_emails_salutation: "メール中のアドレス ユーザー"
+  setting_oauth_allow_remapping_of_existing_users: "Allow remapping of existing users"
   setting_sendmail_location: "Sendmail の実行可能ファイルの場所"
   setting_smtp_enable_starttls_auto: "利用可能な場合、STARTTLS を自動的に使用する"
   setting_smtp_ssl: "SSL接続を使用する"
@@ -3983,11 +4007,13 @@ ja:
   setting_working_days: "Working days"
   settings:
     authentication:
-      login_and_sso: "Login and SSO"
+      login: "Login"
       registration: "Registration"
-      single_sign_on: "Single Sign-On"
+      sso: "Single Sign-On (SSO)"
       omniauth_direct_login_hint_html: >
         If this option is active, login requests will redirect to the configured omniauth provider. The login dropdown and sign-in page will be disabled. <br/> <strong>Note:</strong> Unless you also disable password logins, with this option enabled, users can still log in internally by visiting the <code>%{internal_path}</code> login page.
+      remapping_existing_users_hint: >
+        If enabled, allows any configured identity provider to login existing users based on their email address, even if the user never signed in through that provider before. This can be useful when migrating the OpenProject instance to a new SSO provider, but is not recommended when using a provider that is not trusted by all users of your instance.
     attachments:
       whitelist_text_html: >
         Define a list of valid file extensions and/or mime types for uploaded files. <br/> Enter file extensions (e.g., <code>%{ext_example}</code>) or mime types (e.g., <code>%{mime_example}</code>). <br/> Leave empty to allow any file type to be uploaded. Multiple values allowed (one line for each value).
@@ -4131,6 +4157,8 @@ ja:
     これは、PDFエクスポートに表示されるロゴです。PNGまたはJPEG画像ファイルである必要があります。 透明または白背景の黒または色のロゴをお勧めします。
   text_custom_export_cover_instructions: >
     これは、PDFエクスポートのカバーページの背景に表示される画像です。 幅800px×高さ500pxのPNGまたはJPEG画像ファイルである必要があります。
+  text_custom_export_footer_instructions: >
+    PDFエクスポートには、フッターの左に配置されたグラフィカル要素が含まれます。 画像の幅は約 200 ピクセルの PNG または JPEG ファイルでなければなりません。
   text_custom_favicon_instructions: >
     これは、ページのタイトルの横にあるブラウザのウィンドウ/タブに表示される小さなアイコンです。 透明な背景を持つ32×32ピクセルサイズのPNG画像ファイルである必要があります。
   text_custom_touch_icon_instructions: >
@@ -4469,6 +4497,8 @@ ja:
       code_500_missing_enterprise_token: "Enterprise トークンが無効または見つからないため、リクエストを処理できません。"
       bad_request:
         emoji_reactions_activity_type_not_supported: "このアクティビティタイプは絵文字リアクションをサポートしていません。"
+        invalid_link: "キー '%{key}' の下のリンクは無効です。"
+        links_not_an_object: "_links は JSON オブジェクトでなければなりません。"
       conflict:
         multiple_reminders_not_allowed: |-
           作業項目に一度に1つのリマインダーのみを設定できます。既存のリマインダーを削除または更新してください。
@@ -4670,3 +4700,6 @@ ja:
     description: "OmniAuthSAMLプロバイダをOpenProjectに追加"
   enterprise_plans:
     legacy_enterprise: "Enterprise Plan"
+  token:
+    hashed_token:
+      display_value_placeholder: "***"

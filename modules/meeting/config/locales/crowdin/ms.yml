@@ -73,6 +73,8 @@ ms:
       meeting_agenda_item: "Item agenda"
       meeting_agenda: "Agenda"
       meeting_section: "Bahagian"
+      token/ical_meeting:
+        other: "iCal Meeting subscription"
   activity:
     filter:
       meeting: "Mesyuarat-mesyuarat"
@@ -166,6 +168,7 @@ ms:
   label_version: "Versi"
   label_time_zone: "Zon waktu"
   label_start_date: "Tarikh mula"
+  label_subscribe_icalendar: "Subscribe to calendar"
   meeting:
     participants:
       template: "Peserta ini akan dijemput secara automatik ke semua mesyuarat akan datang apabila ia dibuat."
@@ -238,9 +241,29 @@ ms:
     label_export_pdf: "Export PDF"
     export:
       your_meeting_export: "Meeting is being exported"
+      minutes:
+        footer_page_numbers: "P. %{current_page} of %{total_pages}"
+        author: "Author"
+        date: "Date"
+        time: "Time"
+        location: "Location"
+        title: "Minutes"
     export_pdf_dialog:
       title: Export PDF
       description: Generate a printable PDF file of this meeting at the current state.
+      templates:
+        default:
+          label: Default
+          caption: The default template is suitable for most meetings and represent the current state.
+        minutes:
+          label: Minutes
+          caption: The minutes template is suitable for closed and archived meetings.
+      first_page_header_left:
+        label: First page header left
+        caption: This text will appear on the first page at the left of the header.
+      author:
+        label: Author
+        caption: The author of the minutes will be displayed in the subtitle.
       include_participants:
         label: Include list of participants
         caption: A list of participants will be preset above the meeting agenda.
@@ -260,16 +283,10 @@ ms:
     notifications:
       sidepanel:
         title: "Email calendar updates"
-        state:
-          disabled: "Disabled."
-          enabled: "Enabled."
         description:
           disabled: "Participants will not receive an email informing them of changes."
           enabled: "All participants will receive updated calendar invites via email informing them of changes."
           change_via_template: "To change this, edit the series template."
-        button:
-          disable: "Disable"
-          enable: "Enable"
       dialog:
         title:
           enable: "Enable email calendar updates?"
@@ -462,8 +479,8 @@ ms:
   text_series_backlog_clear_description: >
     This will remove all items in the series backlog, which is shared with all meetings in the series. Are you sure you want to continue? This action is not reversible.
   text_agenda_item_title: 'Item agenda "%{title}"'
-  text_agenda_work_package_deleted: 'Item agenda untuk pakej kerja yang telah dipadam'
-  text_deleted_agenda_item: 'Item agenda yang telah dipadam'
+  text_agenda_work_package_deleted: "Item agenda untuk pakej kerja yang telah dipadam"
+  text_deleted_agenda_item: "Item agenda yang telah dipadam"
   label_initial_meeting_details: "Mesyuarat"
   label_meeting_details: "Butiran mesyuarat"
   label_meeting_series_details: "Butiran siri mesyuarat"
@@ -506,4 +523,29 @@ ms:
   text_work_package_has_no_past_meeting_agenda_items: "Pakej kerja ini tidak diutarakan dalam mesyuarat yang lalu."
   text_email_updates_muted: "Email calendar updates are muted. Participants will not receive updated invites via email when you make changes."
   text_email_updates_enabled: "Email calendar updates are enabled. All participants will receive updated invites via email when you make changes."
-
+  my_account:
+    access_tokens:
+      token/ical_meeting:
+        title: "iCalendar for meetings"
+        text_hint: "iCalendar meeting tokens allow users to subscribe to all their meetings and view up-to-date meeting information in external clients."
+        disabled_text: "iCalendar meeting subscriptions are not enabled by the administrator. Please contact your administrator to use this feature."
+        empty_text_hint: 'To add an iCalendar meeting token, go to the <a href="%{path}">meetings section</a> and subscribe from there.'
+        add_button: "Subscribe to calendar"
+  my:
+    access_token:
+      dialog:
+        token/ical_meeting:
+          dialog_title: "New iCal subscription token for meetings"
+          dialog_body: "This token will generate an iCal subscription URL that lets you view all your meetings in an external calendar application."
+          create_button: "Create subscription"
+          name_label: "Token name"
+          name_caption: 'You can name it after where you will use it, such as"My phone" or "Work computer.'
+      created_dialog:
+        token/ical_meeting:
+          title: "An iCal meeting subscription token has been generated"
+          body: "Treat the following URL as you would a password. Anyone who has access to it can view all your meetings."
+          warning: "This is the only time you will see this token. Make sure to copy it now."
+      revocation:
+        token/ical_meeting:
+          notice_success: "The iCalendar meeting subscription has been revoked successfully."
+          notice_failure: "Failed to revoke iCalendar meeting subscription: %{error}"

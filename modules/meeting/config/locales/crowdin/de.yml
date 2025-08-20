@@ -74,6 +74,9 @@ de:
       meeting_agenda_item: "Tagesordnungspunkt"
       meeting_agenda: "Agenda"
       meeting_section: "Abschnitt"
+      token/ical_meeting:
+        one: "iCal Meeting subscription"
+        other: "iCal Meeting subscription"
   activity:
     filter:
       meeting: "Besprechungen"
@@ -170,6 +173,7 @@ de:
   label_version: "Version"
   label_time_zone: "Zeitzone"
   label_start_date: "Beginn"
+  label_subscribe_icalendar: "Subscribe to calendar"
   meeting:
     participants:
       template: "Diese Teilnehmer werden automatisch zu allen zukünftigen Besprechungen eingeladen, sobald diese erstellt werden."
@@ -242,9 +246,29 @@ de:
     label_export_pdf: "PDF exportieren"
     export:
       your_meeting_export: "Besprechung wird exportiert"
+      minutes:
+        footer_page_numbers: "S. %{current_page} von %{total_pages}"
+        author: "Verfasser:in"
+        date: "Datum"
+        time: "Zeit"
+        location: "Ort"
+        title: "Protokoll"
     export_pdf_dialog:
       title: PDF exportieren
       description: Erstellen Sie eine druckbare PDF-Datei dieser Besprechung im aktuellen Zustand.
+      templates:
+        default:
+          label: Standard
+          caption: Die Standardvorlage ist für die meisten Besprechungen geeignet und repräsentiert den aktuellen Zustand.
+        minutes:
+          label: Protokoll
+          caption: Die Protokollvorlage eignet sich für geschlossene und archivierte Besprechungen.
+      first_page_header_left:
+        label: Erste Kopfzeile links
+        caption: Dieser Text erscheint auf der ersten Seite links im Seitenkopf.
+      author:
+        label: Verfasser:in
+        caption: Der/die Verfasser:in des Protokolls wird im Untertitel angezeigt.
       include_participants:
         label: Liste der Teilnehmer einfügen
         caption: Eine Liste der Teilnehmer wird oberhalb der Agenda ausgegeben.
@@ -264,16 +288,10 @@ de:
     notifications:
       sidepanel:
         title: "E-Mail-Kalender-Aktualisierungen"
-        state:
-          disabled: "Deaktiviert."
-          enabled: "Aktiviert."
         description:
           disabled: "Die Teilnehmer erhalten keine E-Mail bei Änderungen an der Besprechung."
           enabled: "Alle Teilnehmenden erhalten aktualisierte Kalendereinladungen per E-Mail bei wesentlichen Änderungen der Besprechung."
           change_via_template: "Bearbeiten Sie die Vorlage der Terminserie, um diese Einstellung zu ändern."
-        button:
-          disable: "Deaktivieren"
-          enable: "Aktivieren"
       dialog:
         title:
           enable: "E-Mail-Kalender-Aktualisierungen aktivieren?"
@@ -468,8 +486,8 @@ de:
   text_series_backlog_clear_description: >
     Dadurch werden alle Elemente des Backlogs entfernt, die mit allen Besprechungen in der Terminserie geteilt werden. Sind Sie sicher, dass Sie fortfahren möchten? Diese Aktion kann nicht rückgängig gemacht werden.
   text_agenda_item_title: 'Tagesordnungspunkt „%{title}“'
-  text_agenda_work_package_deleted: 'Tagesordnungspunkt für gelöschtes Arbeitspaket'
-  text_deleted_agenda_item: 'Gelöschter Tagesordnungspunkt'
+  text_agenda_work_package_deleted: "Tagesordnungspunkt für gelöschtes Arbeitspaket"
+  text_deleted_agenda_item: "Gelöschter Tagesordnungspunkt"
   label_initial_meeting_details: "Besprechung"
   label_meeting_details: "Besprechungsdetails"
   label_meeting_series_details: "Details der Terminserie"
@@ -512,4 +530,29 @@ de:
   text_work_package_has_no_past_meeting_agenda_items: "Dieses Arbeitspaket wurde in keinen früheren Besprechungen erwähnt."
   text_email_updates_muted: "E-Mail-Kalenderaktualisierungen sind deaktiviert. Die Teilnehmer erhalten keine aktualisierten Einladungen per E-Mail, wenn Sie Änderungen vornehmen."
   text_email_updates_enabled: "E-Mail-Kalenderaktualisierungen sind aktiviert. Alle Teilnehmenden erhalten aktualisierte Einladungen per E-Mail, wenn Sie Änderungen vornehmen."
-
+  my_account:
+    access_tokens:
+      token/ical_meeting:
+        title: "iCalendar for meetings"
+        text_hint: "iCalendar meeting tokens allow users to subscribe to all their meetings and view up-to-date meeting information in external clients."
+        disabled_text: "iCalendar meeting subscriptions are not enabled by the administrator. Please contact your administrator to use this feature."
+        empty_text_hint: 'To add an iCalendar meeting token, go to the <a href="%{path}">meetings section</a> and subscribe from there.'
+        add_button: "Subscribe to calendar"
+  my:
+    access_token:
+      dialog:
+        token/ical_meeting:
+          dialog_title: "New iCal subscription token for meetings"
+          dialog_body: "This token will generate an iCal subscription URL that lets you view all your meetings in an external calendar application."
+          create_button: "Create subscription"
+          name_label: "Token name"
+          name_caption: 'You can name it after where you will use it, such as"My phone" or "Work computer.'
+      created_dialog:
+        token/ical_meeting:
+          title: "An iCal meeting subscription token has been generated"
+          body: "Treat the following URL as you would a password. Anyone who has access to it can view all your meetings."
+          warning: "This is the only time you will see this token. Make sure to copy it now."
+      revocation:
+        token/ical_meeting:
+          notice_success: "The iCalendar meeting subscription has been revoked successfully."
+          notice_failure: "Failed to revoke iCalendar meeting subscription: %{error}"
