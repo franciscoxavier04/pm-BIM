@@ -23,7 +23,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
@@ -62,7 +62,7 @@ RSpec.describe CustomFields::Hierarchy::GenerateRootContract,
       it "is invalid" do
         result = subject.call(custom_field:)
         expect(result).to be_failure
-        expect(result.errors[:custom_field]).to match_array("format is of unsupported type.")
+        expect(result.errors[:custom_field]).to match_array("format 'string' is unsupported.")
       end
     end
 

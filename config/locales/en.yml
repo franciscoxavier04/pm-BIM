@@ -370,7 +370,7 @@ en:
         copy_workflow_from:
           workflow_missing: "has no own workflow."
         custom_field:
-          format_not_supported: "format is of unsupported type."
+          format_not_supported: "format '%{field_format}' is unsupported."
         item:
           root_item: "cannot be a root item."
           not_persisted: "must be an already existing item."

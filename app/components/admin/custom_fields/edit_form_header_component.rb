@@ -46,7 +46,7 @@ module Admin
           }
         ]
 
-        if @custom_field.field_format_hierarchy? || @custom_field.field_format_scored_list?
+        if @custom_field.hierarchical_list?
           tabs << {
             name: "items",
             path: custom_field_items_path(@custom_field),

@@ -71,10 +71,6 @@ module CustomFieldsHelper
                 class: "form--label"
   end
 
-  def show_primer_forms?(custom_field)
-    custom_field.field_format_hierarchy? || custom_field.field_format_scored_list?
-  end
-
   def custom_field_tag_for_bulk_edit(name, custom_field, project = nil) # rubocop:disable Metrics/AbcSize
     field_name = "#{name}[custom_field_values][#{custom_field.id}]"
     field_id = "#{name}_custom_field_values_#{custom_field.id}"
