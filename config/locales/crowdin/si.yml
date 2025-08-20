@@ -464,7 +464,7 @@ si:
       life_cycle:
         header:
           title: "Project life cycle"
-          description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
+          description_html: 'The active project phases define this project''s life cycle and are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target="_blank">project overview</a>.'
         non_defined: "No phases are currently defined."
         section_header: "Phases"
         step:
@@ -573,26 +573,26 @@ si:
       will_revoke_access_to_all: "This action will revoke their access to all of them."
   my:
     access_token:
-      create_dialog:
-        title: Token generated
-        header: The %{type} token has been generated
-        warning: Note that this is the only time you will see this token, make sure to copy it now.
+      dialog:
+        token/api:
+          dialog_title: "Create new API token"
+          attention_text: "Treat API tokens like passwords. Anyone with this token will have access to information from this instance, share it only with trusted users."
+          dialog_body: "This token will allow third-party applications to communicate with your instance. To differentiate the new API token, please give it a name."
+          create_button: "Create"
+          name_label: "Token name"
+      created_dialog:
+        token/api:
+          title: "The API token has been generated"
+          warning: "This is the only time you will see this token. Make sure to copy it now."
       errors:
         token_name_blank: "Please provide an API token name"
         token_name_in_use: "This API token name is already in use, please select a different one"
-      new_access_token_dialog_title: "Create new API token"
-      new_access_token_dialog_show_button_text: "API token"
-      new_access_token_dialog_text_field_placeholder_text: "My API token"
-      new_access_token_dialog_text_field_label: "නම"
-      new_access_token_dialog_submit_button_text: "සාදන්න"
-      new_access_token_dialog_text: "This token will allow third-party applications to communicate with your instance. To differentiate the new API token, please give it a name."
-      new_access_token_dialog_attention_text: "Treat API tokens like passwords. Anyone with this link will have access to information from this instance, share it only with trusted users."
       failed_to_reset_token: "ප්රවේශ ටෝකනය නැවත සකස් කිරීමට අපොහොසත් විය: %{error}"
       failed_to_create_token: "Failed to create access token: %{error}"
       failed_to_revoke_token: "Failed to revoke access token: %{error}"
       notice_reset_token: "නව %{type} ටෝකනයක් ජනනය කර ඇත. ඔබගේ ප්රවේශ ටෝකනය:"
       token_value_warning: "සටහන: ඔබ මෙම ටෝකනය දකින එකම අවස්ථාව මෙයයි, දැන් එය පිටපත් කිරීමට වග බලා ගන්න."
-      no_results_title_text: දැනට ප්රවේශ ටෝකන නොමැත.
+      no_results_title_text: "දැනට ප්රවේශ ටෝකන නොමැත."
       notice_api_token_revoked: "The API token has been deleted. To create a new token please use the button in the API section."
       notice_rss_token_revoked: "The RSS token has been deleted. To create a new token please use the link in the RSS section."
       notice_ical_token_revoked: 'iCalendar token "%{token_name}" for calendar "%{calendar_name}" of project "%{project_name}" has been revoked. The iCalendar URL with this token is now invalid.'
@@ -722,7 +722,7 @@ si:
         pattern:
           label: "Subject pattern"
           caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
-          insert_as_text: "No attributes found. Add as text: \"%{word}\""
+          insert_as_text: 'No attributes found. Add as text: "%{word}"'
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -983,6 +983,8 @@ si:
         admin_only: "Admin-only"
       custom_value:
         value: "අගය"
+      design_color:
+        variable: "Variable"
       doorkeeper/application:
         uid: "සේවාලාභියා හැඳුනුම්පත"
         secret: "සේවාලාභියා රහස්"
@@ -1292,6 +1294,7 @@ si:
         regex_match_failed: "does not match the regular expression %{expression}."
         regex_invalid: "ආශ්රිත නිත්ය ප්රකාශනය සමඟ වලංගු කළ නොහැකි විය."
         regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
+        hexcode_invalid: "is not a valid 6-digit hexadecimal color code."
         smaller_than_or_equal_to_max_length: "උපරිම දිගට වඩා කුඩා හෝ සමාන විය යුතුය."
         taken: "දැනටමත් ගෙන ඇත."
         too_long: "ඉතා දිගු වේ (උපරිම %{count} අක්ෂර)."
@@ -1557,8 +1560,7 @@ si:
               cant_exceed_work: "cannot be higher than Work."
               must_be_set_when_work_is_set: "required when Work is set."
               must_be_set_when_work_and_percent_complete_are_set: "required when Work and % Complete are set."
-              must_be_set_to_zero_hours_when_work_is_set_and_percent_complete_is_100p: >-
-                must be 0h when Work is set and % Complete is 100%.
+              must_be_set_to_zero_hours_when_work_is_set_and_percent_complete_is_100p: '>- must be 0h when Work is set and % Complete is 100%.'
               must_be_empty_when_work_is_empty_and_percent_complete_is_100p: >-
                 must be empty when Work is empty and % Complete is 100%.
           readonly_status: "The work package is in a readonly status so its attributes cannot be changed."
@@ -1968,11 +1970,11 @@ si:
       succeeded: 'Copied project "%{source_project_name}" to "%{target_project_name}".'
     source_project_label: "Project copied"
     copy_options:
-      dependencies_label: 'Copy from project'
+      dependencies_label: "Copy from project"
   create_project:
     template_label: "Use template"
     copy_options:
-      dependencies_label: 'Copy from template'
+      dependencies_label: "Copy from template"
   create_wiki_page: "Create new wiki page"
   create_wiki_page_button: "විකි පිටුව"
   date:
@@ -2148,7 +2150,7 @@ si:
       project_list_sharing: Project List Sharing
       readonly_work_packages: Readonly Work Packages
       scim_api: SCIM server API
-      sso_auth_providers: Single sign-on
+      sso_auth_providers: Single Sign-On
       team_planner_view: Team Planner View
       virus_scanning: Antivirus Scanning
       work_package_query_relation_columns: Work Package Query Relation Columns
@@ -2217,6 +2219,9 @@ si:
       scim_api:
         title: "SCIM clients"
         description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
+      sso_auth_providers:
+        title: "Single Sign-On (SSO)"
+        description: "Enable users to log in via external SSO providers using SAML or OpenID Connect for seamless access and integration with existing identity systems."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       placeholder_users:
@@ -2581,11 +2586,12 @@ si:
         expiration: "කල් ඉකුත්"
       indefinite_expiration: "කිසි විටෙකත්"
       simple_revoke_confirmation: "Are you sure you want to revoke this token?"
-      api:
-        title: "යෙ.ක්‍ර.මු."
+      token/api:
+        title: "API"
         text_hint: "API tokens allow third-party applications to communicate with this OpenProject instance via REST APIs."
         static_token_name: "API token"
         disabled_text: "API tokens are not enabled by the administrator. Please contact your administrator to use this feature."
+        add_button: "API Token"
       ical:
         title: "iCalendar"
         text_hint: 'iCalendar tokens allow users to <a href="%{path}" target="_blank">subscribe to OpenProject calendars</a> and view up-to-date work package information from external clients.'
@@ -3888,6 +3894,7 @@ si:
   setting_attachment_whitelist: "Attachment upload whitelist"
   setting_email_delivery_method: "විද්යුත් තැපැල් බෙදාහැරීමේ ක්රමය"
   setting_emails_salutation: "Address user in emails with"
+  setting_oauth_allow_remapping_of_existing_users: "Allow remapping of existing users"
   setting_sendmail_location: "ක්රියාත්මක කළ හැකි sendmail ස්ථානය"
   setting_smtp_enable_starttls_auto: "තිබේ නම් ස්වයංක්රීයව STARTTLS භාවිතා කරන්න"
   setting_smtp_ssl: "SSL සම්බන්ධතාවය භාවිතා කරන්න"
@@ -4048,11 +4055,13 @@ si:
   setting_working_days: "Working days"
   settings:
     authentication:
-      login_and_sso: "Login and SSO"
+      login: "Login"
       registration: "Registration"
-      single_sign_on: "Single Sign-On"
+      sso: "Single Sign-On (SSO)"
       omniauth_direct_login_hint_html: >
         If this option is active, login requests will redirect to the configured omniauth provider. The login dropdown and sign-in page will be disabled. <br/> <strong>Note:</strong> Unless you also disable password logins, with this option enabled, users can still log in internally by visiting the <code>%{internal_path}</code> login page.
+      remapping_existing_users_hint: >
+        If enabled, allows any configured identity provider to login existing users based on their email address, even if the user never signed in through that provider before. This can be useful when migrating the OpenProject instance to a new SSO provider, but is not recommended when using a provider that is not trusted by all users of your instance.
     attachments:
       whitelist_text_html: >
         Define a list of valid file extensions and/or mime types for uploaded files. <br/> Enter file extensions (e.g., <code>%{ext_example}</code>) or mime types (e.g., <code>%{mime_example}</code>). <br/> Leave empty to allow any file type to be uploaded. Multiple values allowed (one line for each value).
@@ -4742,3 +4751,6 @@ si:
     description: "Adds the OmniAuth SAML provider to OpenProject"
   enterprise_plans:
     legacy_enterprise: "Enterprise Plan"
+  token:
+    hashed_token:
+      display_value_placeholder: "***"

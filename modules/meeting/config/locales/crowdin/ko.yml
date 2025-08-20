@@ -73,6 +73,8 @@ ko:
       meeting_agenda_item: "의제 항목"
       meeting_agenda: "의제"
       meeting_section: "섹션"
+      token/ical_meeting:
+        other: "iCal Meeting subscription"
   activity:
     filter:
       meeting: "미팅"
@@ -166,6 +168,7 @@ ko:
   label_version: "버전"
   label_time_zone: "표준 시간대"
   label_start_date: "시작일"
+  label_subscribe_icalendar: "Subscribe to calendar"
   meeting:
     participants:
       template: "이러한 참가자는 향후 생성되는 모든 미팅에 자동으로 초대됩니다."
@@ -476,8 +479,8 @@ ko:
   text_series_backlog_clear_description: >
     이렇게 하면 시리즈의 모든 미팅과 공유되는 시리즈 백로그의 모든 항목이 제거됩니다. 계속하시겠습니까? 이 작업은 되돌릴 수 없습니다.
   text_agenda_item_title: '의제 항목 "%{title}"'
-  text_agenda_work_package_deleted: '삭제된 작업 패키지에 대한 의제 항목'
-  text_deleted_agenda_item: '삭제된 의제 항목'
+  text_agenda_work_package_deleted: "삭제된 작업 패키지에 대한 의제 항목"
+  text_deleted_agenda_item: "삭제된 의제 항목"
   label_initial_meeting_details: "미팅"
   label_meeting_details: "미팅 세부 정보"
   label_meeting_series_details: "미팅 시리즈 세부 정보"
@@ -520,4 +523,29 @@ ko:
   text_work_package_has_no_past_meeting_agenda_items: "이 작업 패키지는 과거 미팅에서 멘션되지 않았습니다."
   text_email_updates_muted: "이메일 캘린더 업데이트가 음소거되었습니다. 변경해도 이메일을 통해 업데이트된 초대장이 참가자에게 전송되지 않습니다."
   text_email_updates_enabled: "이메일 캘린더 업데이트가 활성화되었습니다. 변경하면 이메일을 통해 업데이트된 초대장이 모든 참가자에게 전송됩니다."
-
+  my_account:
+    access_tokens:
+      token/ical_meeting:
+        title: "iCalendar for meetings"
+        text_hint: "iCalendar meeting tokens allow users to subscribe to all their meetings and view up-to-date meeting information in external clients."
+        disabled_text: "iCalendar meeting subscriptions are not enabled by the administrator. Please contact your administrator to use this feature."
+        empty_text_hint: 'To add an iCalendar meeting token, go to the <a href="%{path}">meetings section</a> and subscribe from there.'
+        add_button: "Subscribe to calendar"
+  my:
+    access_token:
+      dialog:
+        token/ical_meeting:
+          dialog_title: "New iCal subscription token for meetings"
+          dialog_body: "This token will generate an iCal subscription URL that lets you view all your meetings in an external calendar application."
+          create_button: "Create subscription"
+          name_label: "Token name"
+          name_caption: 'You can name it after where you will use it, such as"My phone" or "Work computer.'
+      created_dialog:
+        token/ical_meeting:
+          title: "An iCal meeting subscription token has been generated"
+          body: "Treat the following URL as you would a password. Anyone who has access to it can view all your meetings."
+          warning: "This is the only time you will see this token. Make sure to copy it now."
+      revocation:
+        token/ical_meeting:
+          notice_success: "The iCalendar meeting subscription has been revoked successfully."
+          notice_failure: "Failed to revoke iCalendar meeting subscription: %{error}"

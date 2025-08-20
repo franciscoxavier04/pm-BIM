@@ -73,6 +73,8 @@ zh-TW:
       meeting_agenda_item: "議程項目"
       meeting_agenda: "會議大綱"
       meeting_section: "區段"
+      token/ical_meeting:
+        other: "iCal Meeting subscription"
   activity:
     filter:
       meeting: "會議"
@@ -166,6 +168,7 @@ zh-TW:
   label_version: "版本"
   label_time_zone: "時區"
   label_start_date: "開始日期"
+  label_subscribe_icalendar: "Subscribe to calendar"
   meeting:
     participants:
       template: "這些參與者將自動被邀請參加未來所有建立的會議。"
@@ -476,8 +479,8 @@ zh-TW:
   text_series_backlog_clear_description: >
     這將移除系列待辦清單中的所有項目，該清單與此系列中的所有會議共用。您確定要繼續嗎？此操作無法復原。
   text_agenda_item_title: '議程項目 "%{title}"'
-  text_agenda_work_package_deleted: '已刪除工作套件的議程項目'
-  text_deleted_agenda_item: '已刪除的議程項目'
+  text_agenda_work_package_deleted: "已刪除工作套件的議程項目"
+  text_deleted_agenda_item: "已刪除的議程項目"
   label_initial_meeting_details: "會議"
   label_meeting_details: "會議詳情"
   label_meeting_series_details: "會議詳細資訊"
@@ -520,4 +523,29 @@ zh-TW:
   text_work_package_has_no_past_meeting_agenda_items: "在過往會議中沒有提及本工作套件。"
   text_email_updates_muted: "電子郵件行事曆更新已靜音。當您變更時，參與者將不會透過電子郵件收到更新的邀請。"
   text_email_updates_enabled: "已啟用電子郵件行事曆更新。當您作出變更時，所有參與者都會透過電子郵件收到更新的邀請。"
-
+  my_account:
+    access_tokens:
+      token/ical_meeting:
+        title: "iCalendar for meetings"
+        text_hint: "iCalendar meeting tokens allow users to subscribe to all their meetings and view up-to-date meeting information in external clients."
+        disabled_text: "iCalendar meeting subscriptions are not enabled by the administrator. Please contact your administrator to use this feature."
+        empty_text_hint: 'To add an iCalendar meeting token, go to the <a href="%{path}">meetings section</a> and subscribe from there.'
+        add_button: "Subscribe to calendar"
+  my:
+    access_token:
+      dialog:
+        token/ical_meeting:
+          dialog_title: "New iCal subscription token for meetings"
+          dialog_body: "This token will generate an iCal subscription URL that lets you view all your meetings in an external calendar application."
+          create_button: "Create subscription"
+          name_label: "Token name"
+          name_caption: 'You can name it after where you will use it, such as"My phone" or "Work computer.'
+      created_dialog:
+        token/ical_meeting:
+          title: "An iCal meeting subscription token has been generated"
+          body: "Treat the following URL as you would a password. Anyone who has access to it can view all your meetings."
+          warning: "This is the only time you will see this token. Make sure to copy it now."
+      revocation:
+        token/ical_meeting:
+          notice_success: "The iCalendar meeting subscription has been revoked successfully."
+          notice_failure: "Failed to revoke iCalendar meeting subscription: %{error}"

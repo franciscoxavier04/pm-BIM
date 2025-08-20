@@ -464,7 +464,7 @@
       life_cycle:
         header:
           title: "Project life cycle"
-          description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
+          description_html: 'The active project phases define this project''s life cycle and are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target="_blank">project overview</a>.'
         non_defined: "Ingen faser definert."
         section_header: "Faser"
         step:
@@ -573,26 +573,26 @@
       will_revoke_access_to_all: "Denne handlingen vil fjerne deres tilgang til alle."
   my:
     access_token:
-      create_dialog:
-        title: Token generated
-        header: The %{type} token has been generated
-        warning: Note that this is the only time you will see this token, make sure to copy it now.
+      dialog:
+        token/api:
+          dialog_title: "Create new API token"
+          attention_text: "Treat API tokens like passwords. Anyone with this token will have access to information from this instance, share it only with trusted users."
+          dialog_body: "This token will allow third-party applications to communicate with your instance. To differentiate the new API token, please give it a name."
+          create_button: "Create"
+          name_label: "Token name"
+      created_dialog:
+        token/api:
+          title: "The API token has been generated"
+          warning: "This is the only time you will see this token. Make sure to copy it now."
       errors:
         token_name_blank: "Vennligst oppgi navn på API-token"
         token_name_in_use: "Dette API-token-navnet er allerede i bruk, velg et annet"
-      new_access_token_dialog_title: "Opprett nytt API-token"
-      new_access_token_dialog_show_button_text: "API-nøkkel"
-      new_access_token_dialog_text_field_placeholder_text: "Mitt API-token"
-      new_access_token_dialog_text_field_label: "Navn"
-      new_access_token_dialog_submit_button_text: "Opprett"
-      new_access_token_dialog_text: "Dette tokenet tillater tredjepartsprogrammer å kommunisere med forekomsten. For å differensiere den nye API-token, vennligst gi den et navn."
-      new_access_token_dialog_attention_text: "Behandle API-token som passord. Alle med denne lenken vil ha tilgang til informasjon fra denne forekomsten, del den bare med pålitelige brukere."
       failed_to_reset_token: "Tilgangstoken kunne ikke tilbakestilles: %{error}"
       failed_to_create_token: "Tilgangsnøkkelen kunne ikke opprettes: %{error}"
       failed_to_revoke_token: "Kunne ikke oppheve tilgangstoken: %{error}"
       notice_reset_token: "En ny %{type} token har blitt generert. Din tilgangstoken er:"
       token_value_warning: "Merk: Du vil ikke kunne se denne token på nytt, sørg for å kopiere den nå."
-      no_results_title_text: Det er ingen tilgangsnøkler tilgjengelig.
+      no_results_title_text: "Det er ingen tilgangsnøkler tilgjengelig."
       notice_api_token_revoked: "The API token has been deleted. To create a new token please use the button in the API section."
       notice_rss_token_revoked: "RSS-koden er slettet. For å opprette et nytt token må du bruke linken i RSS-avsnittet."
       notice_ical_token_revoked: 'iCalendar token "%{token_name}" for kalender "%{calendar_name}" i prosjekt "%{project_name}" er trukket tilbake. iCalendar-URL''en med dette tokenet er nå ugyldig.'
@@ -721,7 +721,7 @@
         pattern:
           label: "Subject pattern"
           caption: Create patterns by adding text, or type "/" to search for [supported attributes](attributes_url).
-          insert_as_text: "No attributes found. Add as text: \"%{word}\""
+          insert_as_text: 'No attributes found. Add as text: "%{word}"'
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -982,6 +982,8 @@
         admin_only: "Kun administratorer"
       custom_value:
         value: "Verdi"
+      design_color:
+        variable: "Variable"
       doorkeeper/application:
         uid: "Klient ID"
         secret: "Klient hemmlighet"
@@ -1291,6 +1293,7 @@
         regex_match_failed: "samsvarer ikke med det regulære uttrykket %{expression}."
         regex_invalid: "kunne ikke valideres med det tilhørende regulære uttrykket."
         regex_list_invalid: "could not be parsed as regular expression in lines %{invalid_lines}."
+        hexcode_invalid: "is not a valid 6-digit hexadecimal color code."
         smaller_than_or_equal_to_max_length: "må være mindre enn eller lik maksimumslengden."
         taken: "er allerede tatt."
         too_long: "er for lang (maks antall tegn er %{count})."
@@ -1556,8 +1559,7 @@
               cant_exceed_work: "kan ikke være høyere enn Arbeid."
               must_be_set_when_work_is_set: "kreves når Arbeid er satt."
               must_be_set_when_work_and_percent_complete_are_set: "påkrevd når gjenværende arbeid og % Fullført er satt."
-              must_be_set_to_zero_hours_when_work_is_set_and_percent_complete_is_100p: >-
-                må være 0 timer når arbeidet er satt og % Komplett er 100%.
+              must_be_set_to_zero_hours_when_work_is_set_and_percent_complete_is_100p: '>- must be 0h when Work is set and % Complete is 100%.'
               must_be_empty_when_work_is_empty_and_percent_complete_is_100p: >-
                 må være tom når arbeidet er tomt og % Komplett er 100%.
           readonly_status: "Arbeidspakken er i skrivebeskyttet status slik at egenskapene ikke kan endres."
@@ -1967,11 +1969,11 @@
       succeeded: 'Prosjektet "%{source_project_name}" ble kopiert til "%{target_project_name}".'
     source_project_label: "Project copied"
     copy_options:
-      dependencies_label: 'Copy from project'
+      dependencies_label: "Copy from project"
   create_project:
     template_label: "Use template"
     copy_options:
-      dependencies_label: 'Copy from template'
+      dependencies_label: "Copy from template"
   create_wiki_page: "Create new wiki page"
   create_wiki_page_button: "Wiki-side"
   date:
@@ -2147,7 +2149,7 @@
       project_list_sharing: Project List Sharing
       readonly_work_packages: Readonly Work Packages
       scim_api: SCIM server API
-      sso_auth_providers: Single sign-on
+      sso_auth_providers: Single Sign-On
       team_planner_view: Team Planner View
       virus_scanning: Antivirus Scanning
       work_package_query_relation_columns: Work Package Query Relation Columns
@@ -2216,6 +2218,9 @@
       scim_api:
         title: "SCIM clients"
         description: "Automate user management in OpenProject by seamlessly integrating external identity services like Microsoft Entra or Keycloak through our SCIM Server API. Available starting with the Enterprise corporate plan."
+      sso_auth_providers:
+        title: "Single Sign-On (SSO)"
+        description: "Enable users to log in via external SSO providers using SAML or OpenID Connect for seamless access and integration with existing identity systems."
       virus_scanning:
         description: "Sikre at opplastede filer i OpenProject blir skannet for virus før de er tilgjengelige for andre brukere."
       placeholder_users:
@@ -2580,11 +2585,12 @@
         expiration: "Utløper"
       indefinite_expiration: "Aldri"
       simple_revoke_confirmation: "Er du sikker på at du vil oppheve denne nøkkelen?"
-      api:
+      token/api:
         title: "API"
-        text_hint: "API-tokens tillater tredjepartsapplikasjoner å kommunisere med denne OpenProject instansen via REST APIs."
-        static_token_name: "API-token"
-        disabled_text: "API-nøkler er ikke aktivert av administratoren. Kontakt systemansvarlig for å bruke denne funksjonen."
+        text_hint: "API tokens allow third-party applications to communicate with this OpenProject instance via REST APIs."
+        static_token_name: "API token"
+        disabled_text: "API tokens are not enabled by the administrator. Please contact your administrator to use this feature."
+        add_button: "API Token"
       ical:
         title: "iCalendar"
         text_hint: 'iCalendar nøkler tillater brukere <a href="%{path}" target="_blank"> å abbonnere på OpneProject kalendere og se oppdatert informasjon om arbeidspakker fra eskterne klienter.'
@@ -3887,6 +3893,7 @@
   setting_attachment_whitelist: "Last opp hviteliste for vedlegg"
   setting_email_delivery_method: "Leveringsmetode for e-post"
   setting_emails_salutation: "Adresser bruker i e-post med"
+  setting_oauth_allow_remapping_of_existing_users: "Allow remapping of existing users"
   setting_sendmail_location: "Plasseringen av sendmail kjørbar"
   setting_smtp_enable_starttls_auto: "Bruk STARTTLS automatisk hvis tilgjengelig"
   setting_smtp_ssl: "Bruk SSL-tilkobling"
@@ -4047,11 +4054,13 @@
   setting_working_days: "Arbeidsdager"
   settings:
     authentication:
-      login_and_sso: "Login and SSO"
+      login: "Login"
       registration: "Registration"
-      single_sign_on: "Single Sign-On"
+      sso: "Single Sign-On (SSO)"
       omniauth_direct_login_hint_html: >
         If this option is active, login requests will redirect to the configured omniauth provider. The login dropdown and sign-in page will be disabled. <br/> <strong>Note:</strong> Unless you also disable password logins, with this option enabled, users can still log in internally by visiting the <code>%{internal_path}</code> login page.
+      remapping_existing_users_hint: >
+        If enabled, allows any configured identity provider to login existing users based on their email address, even if the user never signed in through that provider before. This can be useful when migrating the OpenProject instance to a new SSO provider, but is not recommended when using a provider that is not trusted by all users of your instance.
     attachments:
       whitelist_text_html: >
         Definer en liste over gydlige fil-typer og/eller mime typer for opplastingsfiler.<br/>Sett inn fil-typer (f.eks. <code>%{ext_example}</code>) eller mime typer (f.eks. <code>%{mime_example}</code>).<br/> La stå tom for å godta at alle filtyper kan lastes opp.  Flere verdier er tillatt (en linje for hver verdi).
@@ -4741,3 +4750,6 @@
     description: "Legger til OmniAuth SAML leverandør til OpenProject"
   enterprise_plans:
     legacy_enterprise: "Enterprise Plan"
+  token:
+    hashed_token:
+      display_value_placeholder: "***"

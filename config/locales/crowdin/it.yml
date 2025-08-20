@@ -462,7 +462,7 @@ it:
       life_cycle:
         header:
           title: "Ciclo di vita del progetto"
-          description_html: "Le fasi attive del progetto definiscono il ciclo di vita di questo progetto e sono definite nelle <a href=%{admin_settings_url} target=\"_blank\">impostazioni di amministrazione</a>. Le fasi abilitate saranno visualizzate nella <a href=%{overview_url} target=\"_blank\">panoramica del progetto</a>."
+          description_html: 'Le fasi attive del progetto definiscono il ciclo di vita di questo progetto e sono definite nelle <a href=%{admin_settings_url} target="_blank">impostazioni di amministrazione</a>. Le fasi abilitate saranno visualizzate nella <a href=%{overview_url} target="_blank">panoramica del progetto</a>.'
         non_defined: "Nessuna fase è attualmente definita."
         section_header: "Fasi"
         step:
@@ -571,26 +571,26 @@ it:
       will_revoke_access_to_all: "Quest'azione revocherà l'accesso a tutti loro."
   my:
     access_token:
-      create_dialog:
-        title: Token generato
-        header: Il token %{type} è stato generato
-        warning: 'Nota: Questa è l''unica volta in cui vedrai questo token, assicurati di copiarlo subito.'
+      dialog:
+        token/api:
+          dialog_title: "Create new API token"
+          attention_text: "Treat API tokens like passwords. Anyone with this token will have access to information from this instance, share it only with trusted users."
+          dialog_body: "This token will allow third-party applications to communicate with your instance. To differentiate the new API token, please give it a name."
+          create_button: "Create"
+          name_label: "Token name"
+      created_dialog:
+        token/api:
+          title: "The API token has been generated"
+          warning: "This is the only time you will see this token. Make sure to copy it now."
       errors:
         token_name_blank: "Indica un nome per il token API"
         token_name_in_use: "Questo nome di token API è già utilizzato, scegline uno differente"
-      new_access_token_dialog_title: "Crea nuovo token API"
-      new_access_token_dialog_show_button_text: "Token API"
-      new_access_token_dialog_text_field_placeholder_text: "Il mio token API"
-      new_access_token_dialog_text_field_label: "Nome"
-      new_access_token_dialog_submit_button_text: "Crea"
-      new_access_token_dialog_text: "Questo token consentirà alle applicazioni di terzi di comunicare con la tua istanza. Per distinguere il nuovo token API, assegnagli un nome."
-      new_access_token_dialog_attention_text: "Tratta i token API come password. Chiunque sia in possesso di questo link potrà accedere alle informazioni di questa istanza. Condividilo solo con utenti fidati."
       failed_to_reset_token: "Impossibile reimpostare il token di accesso: %{error}"
       failed_to_create_token: "Creazione del token di accesso non riuscita: %{error}"
       failed_to_revoke_token: "Revoca del token di accesso non riuscita: %{error}"
       notice_reset_token: "È stato generato un nuovo token %{type}. Il tuo token di accesso è:"
       token_value_warning: "Nota: Questa è l'unica volta in cui vedrai questo token, assicurati di copiarlo subito."
-      no_results_title_text: Al momento non sono disponibili token di accesso.
+      no_results_title_text: "Al momento non sono disponibili token di accesso."
       notice_api_token_revoked: "Il token API è stato eliminato. Per creare un nuovo token utilizza il pulsante nella sezione API."
       notice_rss_token_revoked: "Il token RSS è stato eliminato. Per creare un nuovo token utilizza il link nella sezione RSS."
       notice_ical_token_revoked: 'Il token di iCalendar "%{token_name}" per il calendario "%{calendar_name}" del progetto "%{project_name}" è stato revocato. L''URL di iCalendar con questo token non è ora valido.'
@@ -719,7 +719,7 @@ it:
         pattern:
           label: "Schema dell'oggetto"
           caption: Crea modelli aggiungendo testo oppure digita "/" per cercare [attributi supportati](attributes_url).
-          insert_as_text: "Nessun attributo trovato. Aggiungi come testo: \"%{word}\""
+          insert_as_text: 'Nessun attributo trovato. Aggiungi come testo: "%{word}"'
       export_configuration:
         tab: "Genera PDF"
         intro: "Seleziona quali modelli tra quelli disponibili desideri abilitare per questo tipo. Il modello determina il design e gli attributi visibili nel PDF esportato di una macro-attività che utilizza questo tipo. Il primo modello nell'elenco è selezionato per impostazione predefinita."
@@ -980,6 +980,8 @@ it:
         admin_only: "Solo amministratore"
       custom_value:
         value: "Valore"
+      design_color:
+        variable: "Variable"
       doorkeeper/application:
         uid: "Client ID"
         secret: "Chiave segreta del client"
@@ -1289,6 +1291,7 @@ it:
         regex_match_failed: "non corrisponde all'espressione regolare %{expression}."
         regex_invalid: "non può essere convalidato con l'espressione regolare associata."
         regex_list_invalid: "non può essere analizzato come espressione regolare nelle righe %{invalid_lines}."
+        hexcode_invalid: "is not a valid 6-digit hexadecimal color code."
         smaller_than_or_equal_to_max_length: "deve essere minore o uguale alla lunghezza massima."
         taken: "è già stato usato."
         too_long: "è troppo lungo (il massimo è %{count} caratteri)."
@@ -1554,8 +1557,7 @@ it:
               cant_exceed_work: "non può essere superiore a Lavoro."
               must_be_set_when_work_is_set: "obbligatorio quando è impostato Lavoro."
               must_be_set_when_work_and_percent_complete_are_set: "obbligatorio quando sono impostate le opzioni Lavoro e % completamento."
-              must_be_set_to_zero_hours_when_work_is_set_and_percent_complete_is_100p: >-
-                deve essere 0h quando è impostato il Lavoro e la % completamento è 100%.
+              must_be_set_to_zero_hours_when_work_is_set_and_percent_complete_is_100p: '>- must be 0h when Work is set and % Complete is 100%.'
               must_be_empty_when_work_is_empty_and_percent_complete_is_100p: >-
                 deve essere vuoto quando il Lavoro è vuoto e la % completamento è 100%.
           readonly_status: "La macro-attività è in uno stato di sola lettura perciò i suoi attributi non possono essere modificati."
@@ -1965,11 +1967,11 @@ it:
       succeeded: 'Progetto "%{source_project_name}" copiato in "%{target_project_name}".'
     source_project_label: "Progetto copiato"
     copy_options:
-      dependencies_label: 'Copia dal progetto'
+      dependencies_label: "Copia dal progetto"
   create_project:
     template_label: "Usa modello"
     copy_options:
-      dependencies_label: 'Copia da modello'
+      dependencies_label: "Copia da modello"
   create_wiki_page: "Crea nuova pagina della wiki"
   create_wiki_page_button: "Pagina wiki"
   date:
@@ -2145,7 +2147,7 @@ it:
       project_list_sharing: Condivisione elenco progetti
       readonly_work_packages: Macro-attività di sola lettura
       scim_api: API server SCIM
-      sso_auth_providers: Single sign-on
+      sso_auth_providers: Single Sign-On
       team_planner_view: Vista del Pianificatore di team
       virus_scanning: Scansione antivirus
       work_package_query_relation_columns: Colonne di relazione delle query della macro-attività
@@ -2214,6 +2216,9 @@ it:
       scim_api:
         title: "Client SCIM"
         description: "Automatizza la gestione degli utenti in OpenProject integrando perfettamente servizi di identità esterni come Microsoft Entra o Keycloak attraverso la nostra API Server SCIM. Disponibile a partire dal piano aziendale Enterprise."
+      sso_auth_providers:
+        title: "Single Sign-On (SSO)"
+        description: "Enable users to log in via external SSO providers using SAML or OpenID Connect for seamless access and integration with existing identity systems."
       virus_scanning:
         description: "Assicurati che i file caricati in OpenProject vengano scansionati alla ricerca di virus prima di renderli accessibili ad altri utenti."
       placeholder_users:
@@ -2578,11 +2583,12 @@ it:
         expiration: "Scade"
       indefinite_expiration: "Mai"
       simple_revoke_confirmation: "Revocare il token?"
-      api:
+      token/api:
         title: "API"
-        text_hint: "I token API consentono alle applicazioni di terze parti di comunicare con questa istanza OpenProject tramite le API REST."
-        static_token_name: "Token API"
-        disabled_text: "I token API non sono abilitati dall'amministratore. Contatta il tuo amministratore per utilizzare questa funzione."
+        text_hint: "API tokens allow third-party applications to communicate with this OpenProject instance via REST APIs."
+        static_token_name: "API token"
+        disabled_text: "API tokens are not enabled by the administrator. Please contact your administrator to use this feature."
+        add_button: "API Token"
       ical:
         title: "iCalendar"
         text_hint: 'I token iCalendar consentono agli utenti di <a href="%{path}" target="_blank">iscriversi ai calendari di OpenProject</a> e visualizzare informazioni aggiornate sulle macro-attività da client esterni.'
@@ -3885,6 +3891,7 @@ it:
   setting_attachment_whitelist: "Whitelist di caricamento di allegati"
   setting_email_delivery_method: "Metodo di invio e-mail"
   setting_emails_salutation: "Rivolgiti all'utente nelle e-mail con"
+  setting_oauth_allow_remapping_of_existing_users: "Allow remapping of existing users"
   setting_sendmail_location: "Percorso dell'eseguibile del programma di invio della posta"
   setting_smtp_enable_starttls_auto: "Usa automaticamente, se disponibile, STARTTLS"
   setting_smtp_ssl: "Usa connessione SSL"
@@ -4045,11 +4052,13 @@ it:
   setting_working_days: "Giorni lavorativi"
   settings:
     authentication:
-      login_and_sso: "Accesso e SSO"
+      login: "Login"
       registration: "Registrazione"
-      single_sign_on: "Single Sign-On"
+      sso: "Single Sign-On (SSO)"
       omniauth_direct_login_hint_html: >
         Se questa opzione è attiva, le richieste di accesso saranno reindirizzate al fornitore omniauth configurato. Il menu a tendina di accesso e la pagina di accesso saranno disabilitate. <br/> <strong>Nota:</strong> a meno che non si disabiliti anche l'accesso con password, con questa opzione abilitata, gli utenti possono ancora accedere internamente visitando la pagina di accesso <code>%{internal_path}</code>.
+      remapping_existing_users_hint: >
+        If enabled, allows any configured identity provider to login existing users based on their email address, even if the user never signed in through that provider before. This can be useful when migrating the OpenProject instance to a new SSO provider, but is not recommended when using a provider that is not trusted by all users of your instance.
     attachments:
       whitelist_text_html: >
         Definisci un elenco di estensioni di file valide e/o tipi MIME per i file caricati. <br/> Inserisci le estensioni dei file (ad es. <code>%{ext_example}</code>) o i tipi MIME (ad es. <code>%{mime_example}</code>). <br/> Lascia vuoto per consentire il caricamento di qualsiasi tipo di file. Sono consentiti più valori (una riga per ogni valore).
@@ -4739,3 +4748,6 @@ it:
     description: "Aggiunge il provider OmniAuth SAML a OpenProject"
   enterprise_plans:
     legacy_enterprise: "Programma aziendale"
+  token:
+    hashed_token:
+      display_value_placeholder: "***"

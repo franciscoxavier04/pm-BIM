@@ -74,6 +74,9 @@ pt-PT:
       meeting_agenda_item: "Pontos da ordem de trabalhos"
       meeting_agenda: "Agenda"
       meeting_section: "Secção"
+      token/ical_meeting:
+        one: "iCal Meeting subscription"
+        other: "iCal Meeting subscription"
   activity:
     filter:
       meeting: "Reuniões"
@@ -170,6 +173,7 @@ pt-PT:
   label_version: "Versão"
   label_time_zone: "Fuso horário"
   label_start_date: "Data de início"
+  label_subscribe_icalendar: "Subscribe to calendar"
   meeting:
     participants:
       template: "Estes participantes serão convidados automaticamente para todas as reuniões futuras à medida que forem sendo criadas."
@@ -482,8 +486,8 @@ pt-PT:
   text_series_backlog_clear_description: >
     Esta ação irá remover todos os itens do backlog de série, que é partilhado com todas as reuniões da série. Tem certeza de que deseja continuar? Esta ação não é reversível.
   text_agenda_item_title: 'Ponto da ordem de trabalhos "%{title}"'
-  text_agenda_work_package_deleted: 'Ponto da ordem de trabalhos para pacote de trabalho eliminado'
-  text_deleted_agenda_item: 'Ponto da ordem de trabalhos eliminado'
+  text_agenda_work_package_deleted: "Ponto da ordem de trabalhos para pacote de trabalho eliminado"
+  text_deleted_agenda_item: "Ponto da ordem de trabalhos eliminado"
   label_initial_meeting_details: "Reunião"
   label_meeting_details: "Detalhes da Reunião"
   label_meeting_series_details: "Detalhes das séries de reuniões"
@@ -526,4 +530,29 @@ pt-PT:
   text_work_package_has_no_past_meeting_agenda_items: "Este pacote de trabalho não foi mencionado numa reunião anterior."
   text_email_updates_muted: "As atualizações do calendário por e-mail estão silenciadas. Os participantes não receberão convites atualizados por e-mail quando fizer alterações."
   text_email_updates_enabled: "As atualizações do calendário por e-mail estão ativadas. Todos os participantes receberão convites atualizados por e-mail quando fizer alterações."
-
+  my_account:
+    access_tokens:
+      token/ical_meeting:
+        title: "iCalendar for meetings"
+        text_hint: "iCalendar meeting tokens allow users to subscribe to all their meetings and view up-to-date meeting information in external clients."
+        disabled_text: "iCalendar meeting subscriptions are not enabled by the administrator. Please contact your administrator to use this feature."
+        empty_text_hint: 'To add an iCalendar meeting token, go to the <a href="%{path}">meetings section</a> and subscribe from there.'
+        add_button: "Subscribe to calendar"
+  my:
+    access_token:
+      dialog:
+        token/ical_meeting:
+          dialog_title: "New iCal subscription token for meetings"
+          dialog_body: "This token will generate an iCal subscription URL that lets you view all your meetings in an external calendar application."
+          create_button: "Create subscription"
+          name_label: "Token name"
+          name_caption: 'You can name it after where you will use it, such as"My phone" or "Work computer.'
+      created_dialog:
+        token/ical_meeting:
+          title: "An iCal meeting subscription token has been generated"
+          body: "Treat the following URL as you would a password. Anyone who has access to it can view all your meetings."
+          warning: "This is the only time you will see this token. Make sure to copy it now."
+      revocation:
+        token/ical_meeting:
+          notice_success: "The iCalendar meeting subscription has been revoked successfully."
+          notice_failure: "Failed to revoke iCalendar meeting subscription: %{error}"
