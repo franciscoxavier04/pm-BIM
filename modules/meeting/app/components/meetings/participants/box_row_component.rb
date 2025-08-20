@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -27,32 +28,18 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class MeetingAgendaItem::Presenter < ApplicationForm
-  form do |agenda_item_form|
-    agenda_item_form.autocompleter(
-      name: :presenter_id,
-      label: MeetingAgendaItem.human_attribute_name(:presenter),
-      visually_hide_label: true,
-      autocomplete_options: {
-        defaultData: true,
-        component: "opce-user-autocompleter",
-        url: ::API::V3::Utilities::PathHelper::ApiV3Path.principals,
-        filters: [{ name: "type", operator: "=", values: %w[User] },
-                  { name: "member", operator: "=", values: [@builder.object.meeting.project_id] },
-                  { name: "status", operator: "=", values: [Principal.statuses[:active], Principal.statuses[:invited]] }],
-        searchKey: "any_name_attribute",
-        resource: "principals",
-        focusDirectly: false,
-        multiple: false,
-        appendTo: "body",
-        placeholder: I18n.t("activerecord.attributes.meeting_agenda_item.presenter"),
-        disabled: @disabled
-      }
-    )
-  end
+module Meetings
+  class Participants::BoxRowComponent < ApplicationComponent
+    include ApplicationHelper
+    include OpenProject::FormTagHelper
+    include OpTurbo::Streamable
+    include OpPrimer::ComponentHelpers
 
-  def initialize(disabled: false)
-    super()
-    @disabled = disabled
+    def initialize(meeting:, participant:)
+      super
+
+      @meeting = meeting
+      @participant = participant
+    end
   end
 end

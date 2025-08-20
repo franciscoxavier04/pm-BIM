@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -27,32 +28,46 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class MeetingAgendaItem::Presenter < ApplicationForm
-  form do |agenda_item_form|
-    agenda_item_form.autocompleter(
-      name: :presenter_id,
-      label: MeetingAgendaItem.human_attribute_name(:presenter),
-      visually_hide_label: true,
-      autocomplete_options: {
-        defaultData: true,
-        component: "opce-user-autocompleter",
-        url: ::API::V3::Utilities::PathHelper::ApiV3Path.principals,
-        filters: [{ name: "type", operator: "=", values: %w[User] },
-                  { name: "member", operator: "=", values: [@builder.object.meeting.project_id] },
-                  { name: "status", operator: "=", values: [Principal.statuses[:active], Principal.statuses[:invited]] }],
-        searchKey: "any_name_attribute",
-        resource: "principals",
-        focusDirectly: false,
-        multiple: false,
-        appendTo: "body",
-        placeholder: I18n.t("activerecord.attributes.meeting_agenda_item.presenter"),
-        disabled: @disabled
-      }
-    )
-  end
+module Meetings
+  class Participants::AttendedToggleButtonComponent < ApplicationComponent
+    include ApplicationHelper
+    include OpenProject::FormTagHelper
+    include OpTurbo::Streamable
+    include OpPrimer::ComponentHelpers
 
-  def initialize(disabled: false)
-    super()
-    @disabled = disabled
+    def initialize(meeting:, participant:)
+      super
+
+      @meeting = meeting
+      @participant = participant
+    end
+
+    def call
+      render(
+        Primer::Beta::Button.new(
+          tag: :a,
+          href: toggle_attendance_meeting_participant_path(@meeting, @participant),
+          data: {
+            turbo_method: :post,
+            test_selector: "attendance_button_#{@participant.user_id}"
+          },
+          align_self: :center
+        )
+      ) do |button|
+        button.with_leading_visual_icon(icon:)
+        label
+      end
+    end
+
+    private
+
+    def icon
+      @participant.attended? ? :check : "op-person-assigned"
+    end
+
+    def label
+      key = @participant.attended? ? "attended" : "mark_as_attended"
+      I18n.t("meeting.participants.label.#{key}")
+    end
   end
 end

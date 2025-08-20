@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -27,32 +28,46 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class MeetingAgendaItem::Presenter < ApplicationForm
-  form do |agenda_item_form|
-    agenda_item_form.autocompleter(
-      name: :presenter_id,
-      label: MeetingAgendaItem.human_attribute_name(:presenter),
+class Meeting::Participant < ApplicationForm
+  form do |participant_form|
+    participant_form.autocompleter(
+      name: :user_id,
+      label: MeetingParticipant.model_name.human,
       visually_hide_label: true,
       autocomplete_options: {
         defaultData: true,
         component: "opce-user-autocompleter",
         url: ::API::V3::Utilities::PathHelper::ApiV3Path.principals,
-        filters: [{ name: "type", operator: "=", values: %w[User] },
-                  { name: "member", operator: "=", values: [@builder.object.meeting.project_id] },
-                  { name: "status", operator: "=", values: [Principal.statuses[:active], Principal.statuses[:invited]] }],
+        filters:,
         searchKey: "any_name_attribute",
         resource: "principals",
-        focusDirectly: false,
+        focusDirectly: true,
         multiple: false,
-        appendTo: "body",
-        placeholder: I18n.t("activerecord.attributes.meeting_agenda_item.presenter"),
-        disabled: @disabled
+        isOpenedInModal: true,
+        hoverCards: true,
+        placeholder: I18n.t("meeting.participants.text.search_for_members"),
+        data: {
+          "test-selector": "participants-dialog-autocomplete"
+        }
       }
     )
   end
 
-  def initialize(disabled: false)
-    super()
-    @disabled = disabled
+  private
+
+  def excluded_ids
+    @excluded_ids ||= @builder.object.meeting.participants.filter_map(&:user_id)
+  end
+
+  def filters
+    list = [
+      { name: "type", operator: "=", values: %w[User] },
+      { name: "member", operator: "=", values: [@builder.object.meeting.project_id] },
+      { name: "status", operator: "=", values: [Principal.statuses[:active], Principal.statuses[:invited]] }
+    ]
+
+    list << { name: "id", operator: "!", values: excluded_ids } if excluded_ids.any?
+
+    list
   end
 end

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,7 +29,7 @@
 #++
 
 module Meetings
-  class SidePanel::ParticipantsDialog < ApplicationComponent
+  class Participants::AddUserFormComponent < ApplicationComponent
     include ApplicationHelper
     include OpenProject::FormTagHelper
     include OpTurbo::Streamable
@@ -38,11 +39,6 @@ module Meetings
       super
 
       @meeting = meeting
-      @project = meeting.project
-    end
-
-    def render?
-      User.current.allowed_in_project?(:view_meetings, @project)
     end
   end
 end

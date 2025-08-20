@@ -193,21 +193,6 @@ class Meeting < ApplicationRecord
     end
   end
 
-  def invited_or_attended_participants
-    participants.where(invited: true).or(participants.where(attended: true))
-  end
-
-  def all_changeable_participants
-    changeable_participants = participants.select(&:invited).collect(&:user)
-    changeable_participants = changeable_participants + participants.select(&:attended).collect(&:user)
-    changeable_participants = changeable_participants +
-      User.allowed_members(:view_meetings, project)
-
-    changeable_participants
-      .compact
-      .uniq(&:id)
-  end
-
   def self.group_by_time(meetings)
     by_start_year_month_date = ActiveSupport::OrderedHash.new do |hy, year|
       hy[year] = ActiveSupport::OrderedHash.new do |hm, month|
