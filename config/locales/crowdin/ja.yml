@@ -971,6 +971,8 @@ ja:
         admin_only: "管理者のみ"
       custom_value:
         value: "値"
+      design_color:
+        variable: "Variable"
       doorkeeper/application:
         uid: "クライアントID"
         secret: "秘密鍵"
@@ -1279,6 +1281,7 @@ ja:
         odd: "は奇数にしてください。"
         regex_match_failed: "正規表現 %{expression}と一致しません。"
         regex_invalid: "関連付けられた正規表現を検証できませんでした。"
+        hexcode_invalid: "is not a valid 6-digit hexadecimal color code."
         smaller_than_or_equal_to_max_length: "は最大長さより以下でなければなりません。"
         taken: "は既に使用されています。"
         too_long: "は%{count}文字以内を入力してください。"
@@ -3603,14 +3606,14 @@ ja:
   permission_view_changesets: "OpenProject にリポジトリのリビジョンを表示"
   permission_view_internal_comments: "内部コメントの閲覧"
   permission_view_commit_author_statistics: "コミット作成者の統計情報の閲覧"
-  permission_view_dashboards: "View dashboards"
+  permission_view_dashboards: "ダッシュボードを表示"
   permission_view_work_package_watchers: "ウォッチャー一覧の閲覧"
   permission_view_work_packages: "ワークパッケージの表示"
   permission_view_messages: "メッセージの閲覧"
   permission_view_news: "View news"
   permission_view_members: "メンバーを表示"
   permission_view_reportings: "レポートの閲覧"
-  permission_view_shared_work_packages: "View work package shares"
+  permission_view_shared_work_packages: "作業項目の共有を表示"
   permission_view_time_entries: "作業時間記録の閲覧"
   permission_view_timelines: "タイムラインの閲覧"
   permission_view_user_email: "ユーザーのメールアドレス閲覧"
@@ -3618,15 +3621,15 @@ ja:
   permission_view_wiki_pages: "Wikiの閲覧"
   permission_work_package_assigned: "担当者/責任者になる"
   permission_work_package_assigned_explanation: "それぞれのプロジェクトで、ワークパッケージはこの役割をもつユーザーおよびグループに割り当てることができます。"
-  permission_view_project_activity: "View project activity"
+  permission_view_project_activity: "プロジェクトのアクティビティを表示"
   permission_view_project_attributes: "プロジェクト属性の閲覧"
-  permission_view_project_phases: "View project phases"
-  permission_save_bcf_queries: "Save BCF queries"
-  permission_manage_public_bcf_queries: "Manage public BCF queries"
-  permission_edit_attribute_help_texts: "Edit attribute help texts"
+  permission_view_project_phases: "プロジェクトのフェーズを表示"
+  permission_save_bcf_queries: "BCF クエリを保存"
+  permission_manage_public_bcf_queries: "公開BCFクエリの管理"
+  permission_edit_attribute_help_texts: "属性のヘルプテキストを編集"
   permission_manage_public_project_queries: "公開プロジェクトリストの管理"
-  permission_view_project_query: "View project query"
-  permission_edit_project_query: "Edit project query"
+  permission_view_project_query: "プロジェクトのクエリを表示"
+  permission_edit_project_query: "プロジェクトのクエリを編集"
   placeholders:
     default: "-"
   project:
@@ -3634,21 +3637,21 @@ ja:
       are_you_sure: "プロジェクト '%{name}' をアーカイブしてもよろしいですか？"
       archived: "アーカイブ済み"
     count:
-      zero: "0 projects"
+      zero: "0件のプロジェクト"
       one: "1 プロジェクト"
       other: "%{count} プロジェクト"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
-      project_delete_result_2: "Delete all managed project folders in the attached storages."
+      project_delete_result_2: "添付されているストレージ内のすべての管理対象プロジェクトフォルダを削除します。"
       info: "プロジェクトの削除は復元できない操作です。"
       project_verification: "削除を確認するため、プロジェクト名 %{name} を入力してください。"
       subprojects_confirmation: "子プロジェクト: %{value} も削除されます。"
       title: "プロジェクト %{name} を削除"
     filters:
-      project_phase: "Project phase: %{phase}"
-      project_phase_any: "Project phase: Any"
-      project_phase_gate: "Project phase gate: %{gate}"
+      project_phase: "プロジェクトフェーズ: %{phase}"
+      project_phase_any: "プロジェクトフェーズ: すべて"
+      project_phase_gate: "プロジェクトフェーズゲート: %{gate}"
     identifier:
       warning_one: プロジェクトのメンバーは、プロジェクトのリポジトリを再配置する必要があります。
       warning_two: プロジェクトへの既存のリンクは機能しなくなります。
@@ -3679,8 +3682,8 @@ ja:
     name_or_identifier: "名前または ID"
     only_subproject_id: "サブプロジェクトのみ"
     shared_with_user: "ユーザーと共有"
-    shared_with_me: "Shared with me"
-    subproject_id: "Including subproject"
+    shared_with_me: "自分と共有"
+    subproject_id: "サブプロジェクトを含む"
   repositories:
     at_identifier: "%{identifier} で"
     atom_revision_feed: "Atom リビジョンフィード"
@@ -3767,9 +3770,9 @@ ja:
       not_available: "このリポジトリのディスク ストレージ消費量は利用できません。"
       update_timeout: "最後のリポジトリに必要なディスク容量の情報を N 分間保持します。\nリポジトリの必要なディスク容量を計算するにはコストがかかるため、パフォーマンスへの影響を減らすにはこの値を増やしてください。"
       oauth_application_details: "The client secret value will not be accessible again after you close this window. Please copy these values into the Nextcloud OpenProject Integration settings:"
-      oauth_application_details_link_text: "Go to settings page"
-      setup_documentation_details: "If you need help configuring a new file storage please check the documentation: "
-      setup_documentation_details_link_text: "File storages setup"
+      oauth_application_details_link_text: "設定ページに移動"
+      setup_documentation_details: "新しいファイルストレージの設定にヘルプが必要な場合は、ドキュメントを確認してください。 "
+      setup_documentation_details_link_text: "ファイルストレージのセットアップ"
       show_warning_details: "このファイルストレージを使用するには、各プロジェクトのプロジェクト設定でモジュールと特定のストレージを有効にする必要があります。"
     subversion:
       existing_title: "既存の Subversion リポジトリ"
@@ -3793,33 +3796,33 @@ ja:
     manual: "手動"
     automatic: "自動"
   search_input_placeholder: "検索…"
-  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols: "許可されたリンクプロトコル"
   setting_allowed_link_protocols_text_html: >-
     Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
-  setting_after_first_login_redirect_url: "First login redirect"
+  setting_after_first_login_redirect_url: "最初のログインリダイレクト"
   setting_after_first_login_redirect_url_text_html: >
-    Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
-  setting_after_login_default_redirect_url: "After login redirect"
+    最初のログイン後にユーザーをリダイレクトするパスを設定します。空の場合は、オンボーディングツアーのホームページにリダイレクトします。 <br/> 例: <code>/my/page</code>
+  setting_after_login_default_redirect_url: "ログインリダイレクト後"
   setting_after_login_default_redirect_url_text_html: >
-    Set a default path to redirect users after login, if no back link was provided. Redirects to home page if not set. <br/> Example: <code>/my/page</code>
-  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
+    バックリンクが指定されていない場合、ログイン後にユーザーをリダイレクトするデフォルトのパスを設定します。 設定されていない場合はホームページにリダイレクトします。 <br/> 例: <code>/my/page</code>
+  setting_apiv3_cors_title: "クロスオリジン資源共有 (CORS)"
   setting_apiv3_cors_enabled: "CORSを有効にする"
   setting_apiv3_cors_origins: "API V3のオリジン間リソース共有 (CORS) が許可されています"
   setting_apiv3_cors_origins_text_html: >
     CORS が有効になっている場合、これらは OpenProject API へのアクセスが許可されている起源です。 <br/> 期待される値を指定する方法については、 <a href="%{origin_link}" target="_blank">Origin ヘッダー</a> のドキュメントを確認してください。
-  setting_apiv3_write_readonly_attributes: "Write access to read-only attributes"
+  setting_apiv3_write_readonly_attributes: "読み取り専用属性への書き込み権限"
   setting_apiv3_write_readonly_attributes_instructions_html: >
     If enabled, the API will allow administrators to write static read-only attributes during creation, such as createdAt and author. <br/> <strong>Warning:</strong> This setting has a use-case for e.g., importing data, but allows administrators to impersonate the creation of items as other users. All creation requests are being logged however with the true author. </br> For more information on attributes and supported resources, please see the %{api_documentation_link}.
-  setting_apiv3_max_page_size: "Maximum API page size"
+  setting_apiv3_max_page_size: "API ページの最大サイズ"
   setting_apiv3_max_page_instructions_html: >
-    Set the maximum page size the API will respond with. It will not be possible to perform API requests that return more values on a single page. <br/> <strong>Warning:</strong> Please only change this value if you are sure why you need it. Setting to a high value will result in significant performance impacts, while a value lower than the per page options will cause errors in paginated views.
+    API が応答する最大ページサイズを設定します。 単一ページでより多くの値を返すAPIリクエストを実行することはできません。 <br/> <strong>警告:</strong> 必要な理由がわかった場合にのみ、この値を変更してください。 高い値に設定すると、パフォーマンスへの影響が大きくなります。 に対し、ページ化されたビューでは、ページ化されたビューでエラーが発生します。
   setting_apiv3_docs: "文章"
-  setting_apiv3_docs_enabled: "Enable docs page"
+  setting_apiv3_docs_enabled: "ドキュメントページを有効にする"
   setting_apiv3_docs_enabled_instructions_html: >
-    If the docs page is enabled you can get an interactive view of the APIv3 documentation under <a href="%{link}" target="_blank">%{link}</a>.
-  setting_attachment_whitelist: "Attachment upload whitelist"
+    Docsページが有効になっている場合は、 <a href="%{link}" target="_blank">%{link}</a> の下でAPIv3 ドキュメントのインタラクティブなビューを取得できます。
+  setting_attachment_whitelist: "添付ファイルのアップロードホワイトリスト"
   setting_email_delivery_method: "メールの配信方法"
-  setting_emails_salutation: "Address user in emails with"
+  setting_emails_salutation: "メール中のアドレス ユーザー"
   setting_sendmail_location: "Sendmail の実行可能ファイルの場所"
   setting_smtp_enable_starttls_auto: "利用可能な場合、STARTTLS を自動的に使用する"
   setting_smtp_ssl: "SSL接続を使用する"
@@ -3833,9 +3836,9 @@ ja:
   setting_app_subtitle: "アプリケーションのサブタイトル"
   setting_app_title: "アプリケーションのタイトル"
   setting_attachment_max_size: "添付ファイルの最大サイズ"
-  setting_show_work_package_attachments: "Show attachments in the files tab by default"
-  setting_antivirus_scan_mode: "Scan mode"
-  setting_antivirus_scan_action: "Infected file action"
+  setting_show_work_package_attachments: "デフォルトで添付ファイルをファイルタブに表示"
+  setting_antivirus_scan_mode: "スキャンモード"
+  setting_antivirus_scan_action: "感染したファイルのアクション"
   setting_autofetch_changesets: "リポジトリの変更を自動取得"
   setting_autologin: "自動ログイン"
   setting_available_languages: "利用できる言語"
@@ -3844,7 +3847,7 @@ ja:
   setting_brute_force_block_minutes: "ユーザーがロックされている期間"
   setting_cache_formatted_text: "書式化されたテキストをキャッシュする"
   setting_use_wysiwyg_description: "すべてのユーザーに対してデフォルトで CKEditor5 WYSIWYGエディタ を有効にする場合に選択します。 CKEditor は GFM Markdown の機能が制限されています。"
-  setting_column_options: "Default work package lists columns"
+  setting_column_options: "デフォルトの作業項目は列を一覧表示します"
   setting_commit_fix_keywords: "修正用キーワード"
   setting_commit_logs_encoding: "メッセージのエンコードをコミット"
   setting_commit_logtime_activity_id: "コミット時に作業時間を記録する"
@@ -3860,9 +3863,9 @@ ja:
   setting_default_language: "デフォルトの言語"
   setting_default_projects_modules: "新規プロジェクトにおいてデフォルトで有効になるモジュール"
   setting_default_projects_public: "デフォルトで新しいプロジェクトは公開にする"
-  setting_disable_password_login: "Disable password authentication"
+  setting_disable_password_login: "パスワード認証を無効にする"
   setting_diff_max_lines_displayed: "差分の表示行数の上限"
-  setting_omniauth_direct_login_provider: "Direct login SSO provider"
+  setting_omniauth_direct_login_provider: "ダイレクトログインの SSO プロバイダー"
   setting_display_subprojects_work_packages: "デフォルトで子プロジェクトのワークパッケージを親プロジェクトに表示する"
   setting_duration_format: "期間の形式"
   setting_duration_format_hours_only: "時間のみ"
@@ -3872,7 +3875,7 @@ ja:
   setting_emails_header: "電子メールのヘッダー"
   setting_email_login: "メールアドレスをログインに使用する"
   setting_enabled_scm: "使用するバージョン管理システム"
-  setting_enabled_projects_columns: "Columns in a projects list displayed by default"
+  setting_enabled_projects_columns: "デフォルトで表示されるプロジェクト リストの列"
   setting_feeds_enabled: "フィードを有効にする"
   setting_ical_enabled: "iCalendar サブスクリプションを有効にする"
   setting_feeds_limit: "フィードの項目数の上限"
@@ -3882,9 +3885,9 @@ ja:
   setting_hours_per_day_explanation: >-
     1営業日あたりの稼働時間を定義します (例えば、 1日が8時間で32時間稼働した場合は4日間です)。
   setting_invitation_expiration_days: "アクティベーションのメールは次で有効期限切れ"
-  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
-  setting_work_package_done_ratio: "Progress calculation mode"
-  setting_work_package_done_ratio_field: "Work-based"
+  setting_invitation_expiration_days_caption: "有効化メールの有効期限が切れる日数です。"
+  setting_work_package_done_ratio: "進行状況計算モード"
+  setting_work_package_done_ratio_field: "ワークベース"
   setting_work_package_done_ratio_field_caption_html: >-
     <i>% Complete</i> can be freely set to any value. If you optionally enter a value for <i>Work</i>, <i>Remaining work</i> will automatically be derived.
   setting_work_package_done_ratio_status: "Status-based"
@@ -4005,8 +4008,8 @@ ja:
         instructions_html: >
           Select the action to perform for files on which a virus has been detected: <br/> <ul> <li><strong>%{quarantine_option}</strong>: Quarantine the file, preventing users from accessing it. Administrators can review and delete quarantined files in the administration.</li> <li><strong>%{delete_option}</strong>: Delete the file immediately.</li> </ul>
       modes:
-        clamav_socket_html: Enter the socket to the clamd daemon, e.g., %{example}
-        clamav_host_html: Enter the hostname and port to the clamd daemon separated by colon. e.g., %{example}
+        clamav_socket_html: クラムデーモンのソケットを入力します。例えば、 %{example}
+        clamav_host_html: ホスト名とポートをコロンで区切って入力します。例： %{example}
         description_html: >
           Select the mode in which the antivirus scanner integration should operate. <br/> <ul> <li><strong>%{disabled_option}</strong>: Uploaded files are not scanned for viruses.</li> <li><strong>%{socket_option}</strong>: You have set up ClamAV on the same server as OpenProject and the scan daemon clamd is running in the background</li> <li><strong>%{host_option}</strong>: You are streaming files to an external virus scanning host.</li> </ul>
     brute_force_prevention: "自動的にユーザをロック"
@@ -4016,8 +4019,8 @@ ja:
       first_week_of_year_text_html: >
         年の最初の週に含まれる1月の日付を選択します。 この値は週の最初の日と一緒に年の週の合計数を決定します。 詳細については、このトピックに関する <a href="%{link}" target="_blank">ドキュメント</a> をご覧ください。
     experimental:
-      save_confirmation: Caution! Risk of data loss! Only activate experimental features if you do not mind breaking your OpenProject installation and losing all of its data.
-      warning_toast: Feature flags are settings that activate features that are still under development. They shall only be used for testing purposes. They shall never be activated on OpenProject installations holding important data. These features will very likely corrupt your data. Use them at your own risk.
+      save_confirmation: 注意! データ損失のリスク! OpenProjectのインストールを中断し、すべてのデータを失うことを気にしない場合にのみ、実験的な機能を有効にしてください。
+      warning_toast: 機能フラグは、開発中の機能を有効にする設定です。これらはテスト目的のみに使用されます。 重要なデータを保持しているOpenProjectインストールでは、これらの機能は、データが破損する可能性が高いです。自己責任で使用してください。
       feature_flags: Feature flags
     general: "概要"
     highlighting:
@@ -4029,49 +4032,49 @@ ja:
         priority: "優先度別に行全体"
     icalendar:
       enable_subscriptions_text_html: 必要な権限を持つユーザーが、OpenProject のカレンダーを購読し、外部のカレンダークライアントを介してワークパッケージ情報にアクセスできるようにします。<strong>注意:</strong>この機能を有効にする前に、<a href="%{link}" target="_blank">iCalendar サブスクリプションについてを</a>読み、潜在的なセキュリティリスクを理解してください。
-    language_name_being_default: "%{language_name} (default)"
+    language_name_being_default: "%{language_name} (デフォルト)"
     notifications:
-      events_explanation: "Governs for which event an email is sent out. Work packages are excluded from this list as the notifications for them can be configured specifically for every user."
+      events_explanation: "メールが送信されるイベントを管理します。 作業項目はすべてのユーザーに特に設定できるため、リストから除外されます。"
       delay_minutes_explanation: "メール送信を遅らせることで、アプリ内通知を設定したユーザーが、メールを送信前にアプリケーション内で通知を確認できるようにすることができます。 アプリケーション内で通知を読んだユーザーは、すでに読んだ通知の電子メールを受け取りません。"
     other: "その他"
     passwords: "パスワード"
     project_attributes:
-      heading: "Project attributes"
-      label_new_attribute: "Project attribute"
+      heading: "プロジェクトの属性"
+      label_new_attribute: "プロジェクトの属性"
       label_new_section: "セクション"
       label_edit_section: "タイトルの編集"
-      label_section_actions: "Section actions"
-      heading_description: "These project attributes appear in the overview page of each project. You can add new attributes, group them into sections and re-order them as you please. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_project_custom_field_actions: "Project attribute actions"
-      label_no_project_custom_fields: "No project attributes defined in this section"
+      label_section_actions: "セクションアクション"
+      heading_description: "これらのプロジェクト属性は、各プロジェクトの概要ページに表示されます。 新しい属性を追加したり、セクションにグループ化したり、好きなように並べ替えたりできます。 これらの属性は、有効または無効にできますが、プロジェクトレベルでの順序は変更できません。"
+      label_project_custom_field_actions: "プロジェクト属性アクション"
+      label_no_project_custom_fields: "このセクションにはプロジェクト属性が定義されていません"
       edit:
-        description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
+        description: "このプロジェクト属性の変更は、有効なすべてのプロジェクトに反映されます。プロジェクトごとに必要な属性を無効にすることはできません。"
       new:
-        heading: "New attribute"
-        description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
+        heading: "新しい属性"
+        description: "このプロジェクト属性の変更は、有効なすべてのプロジェクトに反映されます。プロジェクトごとに必要な属性を無効にすることはできません。"
     project_phase_definitions:
-      heading: "Project life cycle"
-      heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
+      heading: "プロジェクトのライフ サイクル"
+      heading_description: "プロジェクトのライフサイクルでは、プロジェクト計画に使用できるプロジェクトフェーズを定義し、各プロジェクトの概要ページに表示されます。 これらの属性は、有効または無効にできますが、プロジェクトレベルでの順序は変更できません。"
       label_add: "追加"
-      label_add_description: "Add project phase definition"
+      label_add_description: "プロジェクトフェーズ定義を追加"
       filter:
-        label: "Search project phase"
-      section_header: "Phases"
-      non_defined: "No phases are currently defined."
-      phase_gates: "Phase gates"
+        label: "プロジェクトフェーズを検索"
+      section_header: "フェーズ"
+      non_defined: "現在定義されているフェーズはありません。"
+      phase_gates: "フェーズゲート"
       new:
-        description: "Changes to this project phase will be reflected in all projects where it is enabled."
-        heading: "New phase"
-      both_gate: "Start and finish gate"
-      no_gate: "No gate"
-      start_gate: "Start gate"
-      start_gate_caption: "Add a gate with the start date of the phase"
-      finish_gate: "Finish gate"
-      finish_gate_caption: "Add a gate with the end date of the phase"
+        description: "このプロジェクトフェーズの変更は、有効になっているすべてのプロジェクトに反映されます。"
+        heading: "新しいフェーズ"
+      both_gate: "ゲートの開始と終了"
+      no_gate: "ゲートなし"
+      start_gate: "ゲートを開始"
+      start_gate_caption: "開始日付のゲートを追加する"
+      finish_gate: "ゲートを終了する"
+      finish_gate_caption: "フェーズの終了日付のゲートを追加します"
     projects:
-      missing_dependencies: "Project module %{module} was checked which depends on %{dependencies}. You need to check these dependencies as well."
+      missing_dependencies: "プロジェクトモジュール %{module} は、 %{dependencies}に依存しています。これらの依存関係も確認する必要があります。"
       section_new_projects: "新規プロジェクトの設定"
-      section_project_overview: "Settings for project lists"
+      section_project_overview: "プロジェクトリストの設定"
     session: "セッション"
     user:
       default_preferences: "デフォルト設定"
@@ -4081,16 +4084,16 @@ ja:
       section_work_week: "作業週"
       section_holidays_and_closures: "休日と休業日"
     work_packages:
-      not_allowed_text: "You do not have the necessary permissions to view this page."
+      not_allowed_text: "このページを表示するために必要な権限がありません。"
       activities:
-        enable_internal_comments: "Enable internal comments"
-        helper_text: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
+        enable_internal_comments: "内部コメントを有効にする"
+        helper_text: "社内コメントにより、社内チームは個人的にコミュニケーションを取ることができます。 これらは、必要な権限を持つ選択したロールにのみ表示され、公開されません。 %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "プレーンテキスト"
   status_active: "アクティブ"
   status_archived: "アーカイブ済"
-  status_blocked: "blocked"
+  status_blocked: "ブロック"
   status_invited: 招待済み
   status_locked: ロック済み
   status_registered: 登録済み
@@ -4103,10 +4106,10 @@ ja:
   text_access_token_hint: "アクセストークンで、外部アプリケーションが OpenProject のリソースへのアクセスを許可することができます。"
   text_analyze: "さらに分析: %{subject}"
   text_are_you_sure: "よろしいですか？"
-  text_are_you_sure_continue: "Are you sure you want to continue?"
+  text_are_you_sure_continue: "続行してもよろしいですか？"
   text_are_you_sure_with_children: "仕事項目と子項目を削除してもよろしいですか？"
-  text_are_you_sure_with_project_custom_fields: "Deleting this attribute will also delete its values in all projects. Are you sure you want to do this?"
-  text_are_you_sure_with_project_life_cycle_step: "Deleting this phase will also delete its usages in all projects. Are you sure you want to do this?"
+  text_are_you_sure_with_project_custom_fields: "この属性を削除すると、すべてのプロジェクトの値も削除されます。よろしいですか？"
+  text_are_you_sure_with_project_life_cycle_step: "このフェーズを削除すると、すべてのプロジェクトでの使用も削除されます。よろしいですか？"
   text_assign_to_project: "プロジェクト自体に割り当てする"
   text_form_configuration: >
     ワークパッケージのフォームに表示されるフィールドをカスタマイズできます。自由にフィールドをグループ化して、あなたのドメインのニーズを反映できます。
@@ -4125,13 +4128,13 @@ ja:
   text_custom_logo_instructions: >
     透明な背景の白いロゴをお勧めします。 従来、および Retina ディスプレイの両方で最高の結果となるように、画像の寸法は、460px x 60px を確認してください。
   text_custom_export_logo_instructions: >
-    This is the logo that appears in your PDF exports. It needs to be a PNG or JPEG image file. A black or colored logo on transparent or white background is recommended.
+    これは、PDFエクスポートに表示されるロゴです。PNGまたはJPEG画像ファイルである必要があります。 透明または白背景の黒または色のロゴをお勧めします。
   text_custom_export_cover_instructions: >
-    This is the image that appears in the background of a cover page in your PDF exports. It needs to be an about 800px width by 500px height sized PNG or JPEG image file.
+    これは、PDFエクスポートのカバーページの背景に表示される画像です。 幅800px×高さ500pxのPNGまたはJPEG画像ファイルである必要があります。
   text_custom_favicon_instructions: >
-    This is the tiny icon that appears in your browser window/tab next to the page's title. It needs to be a squared 32 by 32 pixels sized PNG image file with a transparent background.
+    これは、ページのタイトルの横にあるブラウザのウィンドウ/タブに表示される小さなアイコンです。 透明な背景を持つ32×32ピクセルサイズのPNG画像ファイルである必要があります。
   text_custom_touch_icon_instructions: >
-    This is the icon that appears in your mobile or tablet when you place a bookmark on your homescreen. It needs to be a squared 180 by 180 pixels sized PNG image file. Please make sure the image's background is not transparent otherwise it will look bad on iOS.
+    ホーム画面にブックマークを置くと、モバイルまたはタブレットに表示されるアイコンです。 180 x 180 ピクセルサイズの PNG イメージファイルである必要があります。 画像の背景が透明でないことを確認してください。そうしないと、iOS では悪く見えません。
   text_database_allows_tsv: "データベースはTSVectorが利用可能 (オプション)"
   text_default_administrator_account_changed: "管理者アカウントでデフォルト設定が変更済み"
   text_default_encoding: "既定値: UTF-8"
@@ -4157,9 +4160,9 @@ ja:
   text_work_packages_destroy_confirmation: "選択したワークパッケージを削除してもよろしいですか？"
   text_work_packages_ref_in_commit_messages: "コミットメッセージ内でのワークパッケージの参照 / 修正"
   text_journal_added: "%{label}で%{value}を追加"
-  text_journal_attachment_added: "%{label} %{value} added as attachment"
-  text_journal_attachment_deleted: "%{label} %{old} removed as attachment"
-  text_journal_changed_plain: "%{label} changed from %{old} %{linebreak}to %{new}"
+  text_journal_attachment_added: "%{label} %{value} が添付ファイルとして追加されました"
+  text_journal_attachment_deleted: "%{label} %{old} が添付ファイルとして削除されました"
+  text_journal_changed_plain: "%{label} が %{old} %{linebreak}から %{new} に変更されました"
   text_journal_changed_no_detail: "%{label}を更新"
   text_journal_changed_with_diff: "%{label}を変更（%{link}）"
   text_journal_deleted: "%{label}を削除（%{old}）"
@@ -4382,55 +4385,55 @@ ja:
       type: "タイプ"
     denied: "You don't have permissions to share %{entities}."
     label_search: "Search for users to invite"
-    label_search_placeholder: "Search by user or email address"
-    label_toggle_all: "Toggle all shares"
+    label_search_placeholder: "ユーザーまたはメールアドレスで検索"
+    label_toggle_all: "すべての共有を切り替える"
     remove: "削除"
     share: "共有"
-    text_empty_search_description: "There are no users with the current filter criteria."
-    text_empty_search_header: "We couldn't find any matching results."
-    text_empty_state_description: "The %{entity} has not been shared with anyone yet."
+    text_empty_search_description: "現在のフィルタ条件を持つユーザーはいません。"
+    text_empty_search_header: "一致する結果が見つかりませんでした。"
+    text_empty_state_description: "%{entity} はまだ誰とも共有されていません。"
     text_empty_state_header: "共有しない"
-    text_user_limit_reached: "Adding additional users will exceed the current limit. Please contact an administrator to increase the user limit to ensure external users are able to access this %{entity}."
+    text_user_limit_reached: "追加ユーザーを追加すると、現在の上限を超えます。 外部ユーザーがこの %{entity} にアクセスできるようにするには、管理者に問い合わせてください。"
     text_user_limit_reached_admins: 'Adding additional users will exceed the current limit. Please <a href="%{upgrade_url}">upgrade your plan</a> to be able to add more users.'
     warning_user_limit_reached: >
-      Adding additional users will exceed the current limit. Please contact an administrator to increase the user limit to ensure external users are able to access this %{entity}.
+      追加ユーザーを追加すると、現在の上限を超えます。 外部ユーザーがこの %{entity} にアクセスできるようにするには、管理者に問い合わせてください。
     warning_user_limit_reached_admin: >
       Adding additional users will exceed the current limit. Please <a href="%{upgrade_url}">upgrade your plan</a> to be able to ensure external users are able to access this %{entity}.
-    warning_no_selected_user: "Please select users to share this %{entity} with"
-    warning_locked_user: "The user %{user} is locked and cannot be shared with"
+    warning_no_selected_user: "この %{entity} を共有するユーザーを選択してください"
+    warning_locked_user: "ユーザー %{user} はロックされているため、共有することはできません"
     user_details:
-      locked: "Locked user"
-      invited: "Invite sent. "
+      locked: "ロックされたユーザー"
+      invited: "招待を送信しました。 "
       resend_invite: "Resend."
-      invite_resent: "Invite has been resent"
-      not_project_member: "Not a project member"
-      project_group: "Group members might have additional privileges (as project members)"
+      invite_resent: "招待を再送信しました"
+      not_project_member: "プロジェクトメンバーではありません"
+      project_group: "グループメンバには追加の権限があります(プロジェクトメンバとして)"
       not_project_group: "Group (shared with all members)"
-      additional_privileges_project: "Might have additional privileges (as project member)"
+      additional_privileges_project: "プロジェクトメンバーとして追加の権限を持つ可能性があります"
       additional_privileges_group: "Might have additional privileges (as group member)"
-      additional_privileges_project_or_group: "Might have additional privileges (as project or group member)"
+      additional_privileges_project_or_group: "(プロジェクトまたはグループメンバーとして) 追加の権限を持っている可能性があります"
     project_queries:
       publishing_denied: "プロジェクトリストを公開する権限がありません。"
-      access_warning: "Users will only see the projects they have access to. Sharing project lists does not impact individual project permissions."
+      access_warning: "ユーザーは、自分がアクセスできるプロジェクトのみが表示されます。プロジェクトリストを共有することは、個々のプロジェクトの権限には影響しません。"
       user_details:
         owner: "リストの所有者"
         can_view_because_public: "リストがすべての人と共有されているため、すでに表示できます"
         can_manage_public_lists: "グローバル権限により編集可能"
       public_flag:
-        label: "Share with everyone at %{instance_name}"
-        caption: "Everyone can view this project list. Those with global edit permissions can modify it."
+        label: "%{instance_name} で全員と共有"
+        caption: "誰でもこのプロジェクト一覧を見ることができます。グローバル編集権限を持つユーザーは変更できます。"
       blank_state:
         public:
-          header: "Shared with everyone"
-          description: "Everyone can view this project list. You can also add individual users with extra permissions."
+          header: "全員と共有"
+          description: "誰でもこのプロジェクト一覧を表示できます。さらに権限を持つ個々のユーザーを追加することもできます。"
         private:
-          header: "Not shared: Private"
-          description: "This project list has not been shared with anyone yet. Only you can access this list."
+          header: "共有されていません: 非公開"
+          description: "このプロジェクトリストはまだ誰とも共有されていません。あなただけがこのリストにアクセスできます。"
       permissions:
         view: "表示"
-        view_description: "Can view this project list."
+        view_description: "このプロジェクト リストを表示できます。"
         edit: "編集"
-        edit_description: "Can view, share and edit this project list."
+        edit_description: "このプロジェクト リストを表示、共有、編集できます。"
       upsell:
         message: "個人ユーザーとのプロジェクトリストの共有は、エンタープライズアドオンです。"
   working_days:
@@ -4442,17 +4445,17 @@ ja:
     warning: >
       営業日とみなす曜日を変更すると、このインスタンス内のすべてのプロジェクトのすべての作業項目の開始日と終了日に影響を与える可能性があります。
     journal_note:
-      changed: _**Working days** changed (%{changes})._
+      changed: _**営業日**変更（%{changes}）_
       days:
-        working: "%{day} is now working"
-        non_working: "%{day} is now non-working"
+        working: "%{day} は現在作業中です"
+        non_working: "%{day} は現在機能していません"
       dates:
-        working: "%{date} is now working"
-        non_working: "%{date} is now non-working"
+        working: "%{date} は現在作業中です"
+        non_working: "%{date} は現在機能していません"
   nothing_to_preview: "プレビューできるものは何もありません。"
   api_v3:
     attributes:
-      property: "Property"
+      property: "属性"
     errors:
       code_400: "不正なリクエスト: %{message}"
       code_401: "このリソースへのアクセスするには認証を行う必要があります。"
@@ -4462,16 +4465,16 @@ ja:
       code_409: "競合する変更のためにリソースを更新できませんでした。"
       code_429: "リクエストが多すぎます。 後でもう一度やり直してください。"
       code_500: "内部エラーが発生しました。"
-      code_500_outbound_request_failure: "An outbound request to another resource has failed with status code %{status_code}."
+      code_500_outbound_request_failure: "別のリソースへのアウトバウンドリクエストはステータスコード %{status_code}で失敗しました。"
       code_500_missing_enterprise_token: "Enterprise トークンが無効または見つからないため、リクエストを処理できません。"
       bad_request:
-        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+        emoji_reactions_activity_type_not_supported: "このアクティビティタイプは絵文字リアクションをサポートしていません。"
       conflict:
         multiple_reminders_not_allowed: |-
-          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
+          作業項目に一度に1つのリマインダーのみを設定できます。既存のリマインダーを削除または更新してください。
       not_found:
-        work_package: "The work package you are looking for cannot be found or has been deleted."
-        reminder: "The reminder you are looking for cannot be found or has been deleted."
+        work_package: "探している作業項目が見つからないか、削除されています。"
+        reminder: "お探しのリマインダーが見つからないか、削除されました。"
       expected:
         date: "YYYY-MM-DD (ISO 8601 日付のみ)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+h:mm] (ISO 8601形式の日時)"
@@ -4486,7 +4489,7 @@ ja:
         select: "要求された %{invalid} の選択はサポートされていません。 サポートされている選択は %{supported} です。"
       invalid_user_status_transition: "現在のユーザーのアカウントステータスはこの操作を許可していません。"
       missing_content_type: "指定されていません。"
-      missing_property: "Missing property '%{property}'."
+      missing_property: "プロパティ「%{property} 」がありません。"
       missing_request_body: "要求の本体がありませんでした。"
       missing_or_malformed_parameter: "クエリパラメーター '%{parameter}' が存在しないか、正しくありません。"
       multipart_body_error: "要求の本体に、期待したマルチパートが含まれていませんでした。"
@@ -4507,8 +4510,8 @@ ja:
     resources:
       schema: "スキーマ"
     undisclosed:
-      parent: Undisclosed - The selected parent is invisible because of lacking permissions.
-      ancestor: Undisclosed - The ancestor is invisible because of lacking permissions.
+      parent: 未公開 - 権限がないため、選択された親は見えません。
+      ancestor: 未公開 - アクセス許可がないため、祖先は見えません。
   doorkeeper:
     pre_authorization:
       status: "事前承認"
@@ -4520,7 +4523,7 @@ ja:
         invalid_request:
           unknown: "リクエストに必要なパラメーターがありません、サポートされていないパラメーター値が含まれているか、その他の形式に誤りがあります。"
           missing_param: "Missing required parameter: %{value}."
-          request_not_authorized: "Request need to be authorized. Required parameter for authorizing request is missing or invalid."
+          request_not_authorized: "リクエストを承認する必要があります。リクエストを承認するための必須パラメータがありません。"
         invalid_redirect_uri: "要求されたリダイレクトURIが不正な形式であるか、クライアントのリダイレクトURIと一致しません。"
         unauthorized_client: "クライアントはこのメソッドを使用してリクエストを実行することが許可されていません。"
         access_denied: "リソース所有者または認証サーバーが要求を拒否しました。"
@@ -4534,7 +4537,7 @@ ja:
         admin_authenticator_not_configured: "Doorkeeper.configure.admin_authenticatorの設定が解除されているため、管理パネルへのアクセスは禁止されています。"
         #Access grant errors
         unsupported_response_type: "認証サーバーはこのレスポンスタイプをサポートしません。"
-        unsupported_response_mode: "The authorization server does not support this response mode."
+        unsupported_response_mode: "認証サーバーはこの応答モードをサポートしていません。"
         #Access token errors
         invalid_client: "不明なクライアント、クライアント認証が含まれていない、またはサポートされていない認証方法のため、クライアント認証が失敗しました。"
         invalid_grant: "提供された許可付与が無効、期限切れ、取り消された、許可要求で使用されたリダイレクトURIと一致しない、または別のクライアントに発行されました。"
@@ -4544,7 +4547,7 @@ ja:
           expired: "アクセストークンの有効期限が切れました"
           unknown: "アクセストークンが無効です"
         revoke:
-          unauthorized: "You are not authorized to revoke this token."
+          unauthorized: "このトークンを取り消す権限がありません。"
         forbidden_token:
           missing_scope: 'Access to this resource requires scope "%{oauth_scopes}".'
   unsupported_browser:

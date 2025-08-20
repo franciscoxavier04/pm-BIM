@@ -989,6 +989,8 @@ ro:
         admin_only: "Doar administratorii"
       custom_value:
         value: "Valoare"
+      design_color:
+        variable: "Variable"
       doorkeeper/application:
         uid: "ID Client"
         secret: "Client Secret"
@@ -1297,6 +1299,7 @@ ro:
         odd: "trebuie să fie impar."
         regex_match_failed: "does not match the regular expression %{expression}."
         regex_invalid: "nu a putut fi validată cu expresia regulată asociată."
+        hexcode_invalid: "is not a valid 6-digit hexadecimal color code."
         smaller_than_or_equal_to_max_length: "trebuie să fie mai mic sau egal cu lungimea maximă."
         taken: "este deja utilizat"
         too_long: "este prea lung (maximul admis este de %{count} caractere)."

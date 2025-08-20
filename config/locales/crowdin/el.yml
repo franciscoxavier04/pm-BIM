@@ -977,6 +977,8 @@ el:
         admin_only: "Admin-only"
       custom_value:
         value: "Τιμή"
+      design_color:
+        variable: "Variable"
       doorkeeper/application:
         uid: "Ταυτότητα Πελάτη"
         secret: "Μυστικό πελάτη"
@@ -1285,6 +1287,7 @@ el:
         odd: "πρέπει να είναι μονός."
         regex_match_failed: "does not match the regular expression %{expression}."
         regex_invalid: "δεν ήταν δυνατή η επικύρωση με τη συσχετιζόμενη κανονική έκφραση."
+        hexcode_invalid: "is not a valid 6-digit hexadecimal color code."
         smaller_than_or_equal_to_max_length: "πρέπει να είναι μικρότερο ή ίσο με το μέγιστο μήκος."
         taken: "έχει ήδη κατοχυρωθεί."
         too_long: "είναι πολύ μεγάλο (το μέγιστο είναι %{count} χαρακτήρες)."

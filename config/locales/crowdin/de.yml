@@ -973,6 +973,8 @@ de:
         admin_only: "Nur für Administratoren"
       custom_value:
         value: "Wert"
+      design_color:
+        variable: "Variable"
       doorkeeper/application:
         uid: "Client-ID"
         secret: "Clientschlüssel"
@@ -1281,6 +1283,7 @@ de:
         odd: "muss ungerade sein."
         regex_match_failed: "stimmt nicht mit dem regulären Ausdruck %{expression} überein."
         regex_invalid: "konnte nicht mit dem zugehörigen regulären Ausdruck überprüft werden."
+        hexcode_invalid: "is not a valid 6-digit hexadecimal color code."
         smaller_than_or_equal_to_max_length: "muss kleiner als oder gleich der maximalen Länge sein."
         taken: "ist bereits vergeben."
         too_long: "ist zu lang (nicht mehr als %{count} Zeichen)."

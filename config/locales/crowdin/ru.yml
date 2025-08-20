@@ -995,6 +995,8 @@ ru:
         admin_only: "Только администратор"
       custom_value:
         value: "Значение"
+      design_color:
+        variable: "Variable"
       doorkeeper/application:
         uid: "ID клиента"
         secret: "Секрет клиента"
@@ -1303,6 +1305,7 @@ ru:
         odd: "должно быть нечетным."
         regex_match_failed: "не соответствует регулярному выражению %{expression}."
         regex_invalid: "не может быть проверен связанным регулярным выражением."
+        hexcode_invalid: "is not a valid 6-digit hexadecimal color code."
         smaller_than_or_equal_to_max_length: "должно быть меньше или равно максимальной длине."
         taken: "уже принято."
         too_long: "слишком длинно (максимум — %{count} знаков)."
