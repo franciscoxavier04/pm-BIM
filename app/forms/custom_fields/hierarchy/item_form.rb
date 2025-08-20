@@ -46,16 +46,30 @@ module CustomFields
             validation_message: validation_message_for(:label)
           )
 
-          input_group.text_field(
-            name: :short,
-            label: "Short",
-            value: @target_item.short,
-            visually_hide_label: true,
-            full_width: false,
-            required: false,
-            placeholder: I18n.t("custom_fields.admin.items.placeholder.short"),
-            validation_message: validation_message_for(:short)
-          )
+          if @input_format == :short
+            input_group.text_field(
+              name: :short,
+              label: "Short",
+              value: @target_item.short,
+              visually_hide_label: true,
+              full_width: false,
+              required: false,
+              placeholder: I18n.t("custom_fields.admin.items.placeholder.short"),
+              validation_message: validation_message_for(:short)
+            )
+          elsif @input_format == :score
+            input_group.text_field(
+              name: :score,
+              label: "Score",
+              type: :number,
+              value: @target_item.score,
+              visually_hide_label: true,
+              full_width: false,
+              required: true,
+              placeholder: I18n.t("custom_fields.admin.items.placeholder.score"),
+              validation_message: validation_message_for(:score)
+            )
+          end
         end
 
         item_form.group(layout: :horizontal, align_self: :end) do |button_group|
@@ -70,9 +84,10 @@ module CustomFields
       end
 
       # @param target_item [CustomField::Hierarchy::Item] item that will be acted upon
-      def initialize(target_item:)
+      def initialize(target_item:, input_format:)
         super()
         @target_item = target_item
+        @input_format = input_format
       end
 
       private
