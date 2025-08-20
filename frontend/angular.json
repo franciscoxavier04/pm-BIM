@@ -35,7 +35,7 @@
               "base": "../public/assets/frontend",
               "browser": ""
             },
-            "index": "src/index2.html",
+            "index": false,
             "browser": "src/main.ts",
             "polyfills": ["src/polyfills.ts"],
             "tsConfig": "tsconfig.app.json",
