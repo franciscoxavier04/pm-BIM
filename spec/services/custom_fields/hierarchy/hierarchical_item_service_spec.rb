@@ -50,7 +50,7 @@ RSpec.describe CustomFields::Hierarchy::HierarchicalItemService, with_ee: [:cust
     it "requires a custom field of type hierarchy" do
       result = service.generate_root(invalid_custom_field).failure
 
-      expect(result.errors[:custom_field]).to eq(["must have field format 'hierarchy'"])
+      expect(result.errors[:custom_field]).to eq(["format is of unsupported type."])
     end
 
     context "with persistence of hierarchy root fails" do
