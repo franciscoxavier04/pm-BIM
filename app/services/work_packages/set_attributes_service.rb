@@ -45,6 +45,8 @@ class WorkPackages::SetAttributesService < BaseServices::SetAttributes
     end
 
     set_custom_attributes(attributes)
+    set_custom_values_to_validate(params)
+
     mark_templated_subject
   end
 
@@ -245,8 +247,6 @@ class WorkPackages::SetAttributesService < BaseServices::SetAttributes
     end
 
     work_package.attributes = assignable_attributes
-
-    initialize_unset_custom_values
   end
 
   def custom_field_context_changed?
@@ -380,12 +380,6 @@ class WorkPackages::SetAttributesService < BaseServices::SetAttributes
     if work_package.type_id_changed?
       reassign_status work_package.type.statuses(include_default: true)
     end
-  end
-
-  # Take over any default custom values
-  # for new custom fields
-  def initialize_unset_custom_values
-    work_package.set_default_values! if custom_field_context_changed?
   end
 
   def new_start_date
