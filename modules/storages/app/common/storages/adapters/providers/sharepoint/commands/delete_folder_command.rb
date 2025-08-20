@@ -28,41 +28,46 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "dry/container"
-
 module Storages
   module Adapters
-    class Registry
-      extend Dry::Container::Mixin
+    module Providers
+      module Sharepoint
+        module Commands
+          class DeleteFolderCommand < Base
+            def call(auth_strategy:, input_data:)
+              with_tagged_logger do
+                Authentication[auth_strategy].call(storage: @storage) do |http|
+                  info "Deleting folder of identifier #{split_identifier(input_data.location).inspect}"
+                  handle_response http.delete(request_uri(**split_identifier(input_data.location)))
+                end
+              end
+            end
 
-      # Extracts the known_providers from the registered keys
-      # @return [Array<String>]
-      def self.known_providers
-        keys.map { it.split(".").first }.uniq
-      end
+            private
 
-      class Resolver < Dry::Container::Resolver
-        include TaggedLogging
+            def request_uri(drive_id:, location:)
+              UrlBuilder.url(base_uri, "/v1.0/drives", drive_id, "/items", location.path)
+            end
 
-        def call(container, key)
-          with_tagged_logger("Adapters::Registry") do
-            info "Resolving #{key}"
-            super
+            def handle_response(response)
+              error = Results::Error.new(source: self.class, payload: response)
+
+              case response
+              in { status: 200..299 }
+                Success()
+              in { status: 401 }
+                Failure(error.with(code: :unauthorized))
+              in { status: 404 }
+                Failure(error.with(code: :not_found))
+              in { status: 409 }
+                Failure(error.with(code: :conflict))
+              else
+                Failure(error.with(code: :error))
+              end
+            end
           end
-        rescue Dry::Container::KeyError
-          error = Errors.registry_error_for(key)
-
-          with_tagged_logger("Adapters::Registry") { error error.message }
-          raise error
         end
       end
-
-      config.resolver = Resolver.new
-
-      # Need to make this dynamic to ease new providers to be registered
-      import Providers::Nextcloud::NextcloudRegistry
-      import Providers::OneDrive::OneDriveRegistry
-      import Providers::Sharepoint::SharepointRegistry
     end
   end
 end

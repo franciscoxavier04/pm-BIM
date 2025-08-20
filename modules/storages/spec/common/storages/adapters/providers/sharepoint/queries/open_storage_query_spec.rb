@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,34 +28,31 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-# Nextcloud VCR credentials
+require "spec_helper"
+require_module_spec_helper
 
-NEXTCLOUD_LOCAL_OAUTH_CLIENT_ID=
-NEXTCLOUD_LOCAL_OAUTH_CLIENT_SECRET=
+module Storages
+  module Adapters
+    module Providers
+      module Sharepoint
+        module Queries
+          RSpec.describe OpenStorageQuery do
+            let(:storage) { create(:sharepoint_storage, :sandbox) }
 
-NEXTCLOUD_LOCAL_OPENPROJECT_UID=
-NEXTCLOUD_LOCAL_OPENPROJECT_SECRET=
-NEXTCLOUD_LOCAL_OPENPROJECT_REDIRECT_URI=https://nextcloud.local/index.php/apps/integration_openproject/oauth-redirect
+            it "responds to .call" do
+              expect(described_class).to respond_to(:call)
 
-NEXTCLOUD_LOCAL_OAUTH_CLIENT_ACCESS_TOKEN=
-NEXTCLOUD_LOCAL_OAUTH_CLIENT_REFRESH_TOKEN=
+              method = described_class.method(:call)
+              expect(method.parameters).to contain_exactly(%i[keyreq storage], %i[keyreq auth_strategy], %i[keyreq input_data])
+            end
 
-# Sharepoint/OneDrive VCR credentials
-
-ONE_DRIVE_TEST_TENANT_ID=
-ONE_DRIVE_TEST_DRIVE_ID=
-
-ONE_DRIVE_TEST_OAUTH_CLIENT_ID=
-ONE_DRIVE_TEST_OAUTH_CLIENT_SECRET=
-
-ONE_DRIVE_TEST_OAUTH_CLIENT_ACCESS_TOKEN=
-ONE_DRIVE_TEST_OAUTH_CLIENT_REFRESH_TOKEN=
-
-SHAREPOINT_TEST_HOST=
-SHAREPOINT_TEST_TENANT_ID=
-
-SHAREPOINT_TEST_OAUTH_CLIENT_ID=
-SHAREPOINT_TEST_OAUTH_CLIENT_SECRET=
-
-SHAREPOINT_TEST_OAUTH_CLIENT_ACCESS_TOKEN=
-SHAREPOINT_TEST_OAUTH_CLIENT_REFRESH_TOKEN=
+            it "returns the url for opening the file on storage" do
+              url = described_class.call(storage:, auth_strategy: nil, input_data: nil).value!
+              expect(url).to eq("https://ymt6d.sharepoint.com/sites/OPTest/")
+            end
+          end
+        end
+      end
+    end
+  end
+end

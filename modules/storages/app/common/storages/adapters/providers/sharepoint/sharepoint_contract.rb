@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,34 +28,24 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-# Nextcloud VCR credentials
+module Storages
+  module Adapters
+    module Providers
+      module Sharepoint
+        class SharepointContract < ::ModelContract
+          attribute :name
+          validates :name, presence: true, length: { maximum: 255 }
 
-NEXTCLOUD_LOCAL_OAUTH_CLIENT_ID=
-NEXTCLOUD_LOCAL_OAUTH_CLIENT_SECRET=
-
-NEXTCLOUD_LOCAL_OPENPROJECT_UID=
-NEXTCLOUD_LOCAL_OPENPROJECT_SECRET=
-NEXTCLOUD_LOCAL_OPENPROJECT_REDIRECT_URI=https://nextcloud.local/index.php/apps/integration_openproject/oauth-redirect
-
-NEXTCLOUD_LOCAL_OAUTH_CLIENT_ACCESS_TOKEN=
-NEXTCLOUD_LOCAL_OAUTH_CLIENT_REFRESH_TOKEN=
-
-# Sharepoint/OneDrive VCR credentials
-
-ONE_DRIVE_TEST_TENANT_ID=
-ONE_DRIVE_TEST_DRIVE_ID=
-
-ONE_DRIVE_TEST_OAUTH_CLIENT_ID=
-ONE_DRIVE_TEST_OAUTH_CLIENT_SECRET=
-
-ONE_DRIVE_TEST_OAUTH_CLIENT_ACCESS_TOKEN=
-ONE_DRIVE_TEST_OAUTH_CLIENT_REFRESH_TOKEN=
-
-SHAREPOINT_TEST_HOST=
-SHAREPOINT_TEST_TENANT_ID=
-
-SHAREPOINT_TEST_OAUTH_CLIENT_ID=
-SHAREPOINT_TEST_OAUTH_CLIENT_SECRET=
-
-SHAREPOINT_TEST_OAUTH_CLIENT_ACCESS_TOKEN=
-SHAREPOINT_TEST_OAUTH_CLIENT_REFRESH_TOKEN=
+          attribute :tenant_id
+          validates :tenant_id,
+                    format: { with: /\A(?:[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}|consumers)\z/i }
+          attribute :host
+          validates :host, presence: true, format: { with: URI::DEFAULT_PARSER.make_regexp }
+          validates :host,
+                    format: { with: %r{\Ahttps://[^/]+/sites/[^/]+(/.*)?\z}i,
+                              message: I18n.t("activerecord.errors.messages.invalid_sharepoint_url") }
+        end
+      end
+    end
+  end
+end
