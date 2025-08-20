@@ -57,6 +57,10 @@ module Storages
             host_uri.path&.split("/")&.last
           end
 
+          def site_path
+            UrlBuilder.path(host_uri.path)
+          end
+
           def host_uri
             URI(@storage.host)
           end
