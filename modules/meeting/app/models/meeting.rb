@@ -85,6 +85,10 @@ class Meeting < ApplicationRecord
       .merge(Project.allowed_to(args.first || User.current, :view_meetings))
   }
 
+  scope :participated_by, ->(user) {
+    joins(:participants).where(meeting_participants: { user_id: user.id })
+  }
+
   acts_as_attachable(
     after_remove: :attachments_changed,
     order: "#{Attachment.table_name}.file",

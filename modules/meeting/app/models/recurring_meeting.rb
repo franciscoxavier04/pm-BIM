@@ -99,6 +99,10 @@ class RecurringMeeting < ApplicationRecord
       .merge(Project.allowed_to(args.first || User.current, :view_meetings))
   }
 
+  scope :participated_by, ->(user) {
+    left_outer_joins(template: :participants).where(participants: { user_id: user.id })
+  }
+
   # Virtual attributes that can be passed on to the template on save
   virtual_attribute :location do
     nil
