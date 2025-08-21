@@ -73,6 +73,8 @@ ko:
       meeting_agenda_item: "의제 항목"
       meeting_agenda: "의제"
       meeting_section: "섹션"
+      token/ical_meeting:
+        other: "iCal Meeting subscription"
   activity:
     filter:
       meeting: "미팅"
@@ -166,9 +168,25 @@ ko:
   label_version: "버전"
   label_time_zone: "표준 시간대"
   label_start_date: "시작일"
+  label_subscribe_icalendar: "Subscribe to calendar"
   meeting:
     participants:
-      template: "이러한 참가자는 향후 생성되는 모든 미팅에 자동으로 초대됩니다."
+      label:
+        participants: "Participants"
+        attended: "Attended"
+        mark_as_attended: "Mark as attended"
+        mark_all_as_attended: "Mark all as attended"
+        remove_participant: "Remove participant"
+        manage_participants: "Manage participants"
+        no_participants: "No participants"
+        show_all: "Show all"
+      text:
+        template: "These participants will be invited automatically to all future meetings as they are created."
+        manage_participants: "Search for and add project members as participants to this meeting."
+        search_for_members: "Search for project members"
+      blankslate:
+        heading: "No participants"
+        description: "There are no participants yet."
     attachments:
       template: "이러한 첨부 파일은 시리즈의 모든 향후 미팅에 포함됩니다."
       text: "첨부된 파일은 모든 미팅 참가자가 사용할 수 있습니다. 이러한 파일을 의제 항목 메모에 끌어다 놓을 수도 있습니다."
@@ -238,9 +256,29 @@ ko:
     label_export_pdf: "PDF 내보내기"
     export:
       your_meeting_export: "미팅을 내보내는 중입니다"
+      minutes:
+        footer_page_numbers: "P. %{current_page} of %{total_pages}"
+        author: "Author"
+        date: "Date"
+        time: "Time"
+        location: "Location"
+        title: "Minutes"
     export_pdf_dialog:
       title: PDF 내보내기
       description: 현재 상태에서 이 미팅에 대한 인쇄 가능한 PDF 파일을 생성합니다.
+      templates:
+        default:
+          label: Default
+          caption: The default template is suitable for most meetings and represent the current state.
+        minutes:
+          label: Minutes
+          caption: The minutes template is suitable for closed and archived meetings.
+      first_page_header_left:
+        label: First page header left
+        caption: This text will appear on the first page at the left of the header.
+      author:
+        label: Author
+        caption: The author of the minutes will be displayed in the subtitle.
       include_participants:
         label: 참가자 목록 포함
         caption: 참가자 목록은 미팅 의제 위에 미리 설정됩니다.
@@ -260,16 +298,10 @@ ko:
     notifications:
       sidepanel:
         title: "이메일 캘린더 업데이트"
-        state:
-          disabled: "비활성화되었습니다."
-          enabled: "활성화되었습니다."
         description:
           disabled: "참가자에게는 변경 사항을 알려주는 이메일이 전송되지 않습니다."
           enabled: "변경 사항을 알려주는 이메일을 통해 업데이트된 캘린더 초대장이 모든 참가자에게 전송됩니다."
           change_via_template: "이를 변경하려면 시리즈 템플릿을 편집하십시오."
-        button:
-          disable: "비활성화"
-          enable: "활성화"
       dialog:
         title:
           enable: "이메일 캘린더 업데이트를 활성화하시겠습니까?"
@@ -462,8 +494,8 @@ ko:
   text_series_backlog_clear_description: >
     이렇게 하면 시리즈의 모든 미팅과 공유되는 시리즈 백로그의 모든 항목이 제거됩니다. 계속하시겠습니까? 이 작업은 되돌릴 수 없습니다.
   text_agenda_item_title: '의제 항목 "%{title}"'
-  text_agenda_work_package_deleted: '삭제된 작업 패키지에 대한 의제 항목'
-  text_deleted_agenda_item: '삭제된 의제 항목'
+  text_agenda_work_package_deleted: "삭제된 작업 패키지에 대한 의제 항목"
+  text_deleted_agenda_item: "삭제된 의제 항목"
   label_initial_meeting_details: "미팅"
   label_meeting_details: "미팅 세부 정보"
   label_meeting_series_details: "미팅 시리즈 세부 정보"
@@ -485,11 +517,6 @@ ko:
   text_meeting_open_dropdown_description: "기존 결과는 그대로 유지되지만 사용자가 새로운 결과를 추가할 수 없게 됩니다."
   text_meeting_in_progress_dropdown_description: "미팅 중에 이루어진 결정 사항 또는 필요한 정보 등의 결과를 문서화합니다."
   text_meeting_closed_dropdown_description: "이 미팅은 종료되었습니다. 더 이상 의제 항목 또는 결과를 수정할 수 없습니다."
-  label_meeting_manage_participants: "참가자 관리"
-  label_meeting_no_participants: "참가자 없음"
-  label_meeting_show_hide_participants: "%{count}개 더 표시/숨기기"
-  label_meeting_show_all_participants: "모두 표시"
-  label_meeting_add_participants: "참가자 추가"
   text_meeting_not_editable_anymore: "이 미팅은 더 이상 편집할 수 없습니다."
   text_meeting_not_present_anymore: "이 미팅은 삭제되었습니다. 다른 미팅을 선택해 주세요."
   label_add_work_package_to_meeting_dialog_title: "미팅에 작업 패키지 추가"
@@ -506,4 +533,29 @@ ko:
   text_work_package_has_no_past_meeting_agenda_items: "이 작업 패키지는 과거 미팅에서 멘션되지 않았습니다."
   text_email_updates_muted: "이메일 캘린더 업데이트가 음소거되었습니다. 변경해도 이메일을 통해 업데이트된 초대장이 참가자에게 전송되지 않습니다."
   text_email_updates_enabled: "이메일 캘린더 업데이트가 활성화되었습니다. 변경하면 이메일을 통해 업데이트된 초대장이 모든 참가자에게 전송됩니다."
-
+  my_account:
+    access_tokens:
+      token/ical_meeting:
+        title: "iCalendar for meetings"
+        text_hint: "iCalendar meeting tokens allow users to subscribe to all their meetings and view up-to-date meeting information in external clients."
+        disabled_text: "iCalendar meeting subscriptions are not enabled by the administrator. Please contact your administrator to use this feature."
+        empty_text_hint: 'To add an iCalendar meeting token, go to the <a href="%{path}">meetings section</a> and subscribe from there.'
+        add_button: "Subscribe to calendar"
+  my:
+    access_token:
+      dialog:
+        token/ical_meeting:
+          dialog_title: "New iCal subscription token for meetings"
+          dialog_body: "This token will generate an iCal subscription URL that lets you view all your meetings in an external calendar application."
+          create_button: "Create subscription"
+          name_label: "Token name"
+          name_caption: 'You can name it after where you will use it, such as"My phone" or "Work computer.'
+      created_dialog:
+        token/ical_meeting:
+          title: "An iCal meeting subscription token has been generated"
+          body: "Treat the following URL as you would a password. Anyone who has access to it can view all your meetings."
+          warning: "This is the only time you will see this token. Make sure to copy it now."
+      revocation:
+        token/ical_meeting:
+          notice_success: "The iCalendar meeting subscription has been revoked successfully."
+          notice_failure: "Failed to revoke iCalendar meeting subscription: %{error}"

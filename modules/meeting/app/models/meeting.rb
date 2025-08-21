@@ -193,21 +193,6 @@ class Meeting < ApplicationRecord
     end
   end
 
-  def invited_or_attended_participants
-    participants.where(invited: true).or(participants.where(attended: true))
-  end
-
-  def all_changeable_participants
-    changeable_participants = participants.select(&:invited).collect(&:user)
-    changeable_participants = changeable_participants + participants.select(&:attended).collect(&:user)
-    changeable_participants = changeable_participants +
-      User.allowed_members(:view_meetings, project)
-
-    changeable_participants
-      .compact
-      .uniq(&:id)
-  end
-
   def self.group_by_time(meetings)
     by_start_year_month_date = ActiveSupport::OrderedHash.new do |hy, year|
       hy[year] = ActiveSupport::OrderedHash.new do |hm, month|
@@ -244,25 +229,6 @@ class Meeting < ApplicationRecord
 
     participants
       .where(user_id: available_members)
-  end
-
-  # triggered by MeetingAgendaItem#after_create/after_destroy/after_save
-  def calculate_agenda_item_time_slots
-    current_time = start_time
-    MeetingAgendaItem.transaction do
-      changed_items = agenda_items.includes(:meeting_section).order("meeting_sections.position", :position).map do |top|
-        start_time = current_time
-        current_time += top.duration_in_minutes&.minutes || 0.minutes
-        end_time = current_time
-        top.assign_attributes(start_time:, end_time:)
-        top
-      end
-
-      MeetingAgendaItem.upsert_all(
-        changed_items.map(&:attributes),
-        unique_by: :id
-      )
-    end
   end
 
   def agenda_items_sum_duration_in_minutes

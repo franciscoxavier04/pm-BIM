@@ -43,7 +43,7 @@ module OpenProject::Meeting
       project_module :meetings do
         permission :view_meetings,
                    {
-                     meetings: %i[index show check_for_updates download_ics participants_dialog
+                     meetings: %i[index show check_for_updates download_ics
                                   generate_pdf_dialog history],
                      "meetings/menus": %i[show],
                      work_package_meetings_tab: %i[index count],
@@ -63,10 +63,11 @@ module OpenProject::Meeting
         permission :edit_meetings,
                    {
                      meetings: %i[edit cancel_edit update update_title change_state toggle_notifications_dialog
-                                  details_dialog update_details update_participants toggle_notifications],
+                                  details_dialog update_details toggle_notifications],
                      recurring_meetings: %i[edit cancel_edit update update_title details_dialog update_details
                                             notify end_series end_series_dialog],
-                     work_package_meetings_tab: %i[add_work_package_to_meeting_dialog add_work_package_to_meeting]
+                     work_package_meetings_tab: %i[add_work_package_to_meeting_dialog add_work_package_to_meeting],
+                     meeting_participants: %i[create destroy mark_all_attended toggle_attendance manage_participants_dialog]
                    },
                    permissible_on: :project,
                    require: :member
@@ -157,6 +158,11 @@ module OpenProject::Meeting
       end
     end
 
+    initializer "openproject-meetings.feature_decisions" do
+      OpenProject::FeatureDecisions.add :meeting_ical_subscription,
+                                        description: "Allows users to subscribe to all of their meetings via iCalendar"
+    end
+
     activity_provider :meetings, class_name: "Activities::MeetingActivityProvider", default: false
 
     patches [:Project]
@@ -183,7 +189,7 @@ module OpenProject::Meeting
       PermittedParams.permit(:search, :meetings)
 
       ::Exports::Register.register do
-        single(::Meeting, Meetings::PDF::Exporter)
+        single(::Meeting, Meetings::Exporter)
       end
     end
 

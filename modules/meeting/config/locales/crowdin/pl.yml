@@ -76,6 +76,11 @@ pl:
       meeting_agenda_item: "Punkt programu"
       meeting_agenda: "Plan spotkania"
       meeting_section: "Sekcja"
+      token/ical_meeting:
+        one: "iCal Meeting subscription"
+        few: "iCal Meeting subscription"
+        many: "iCal Meeting subscription"
+        other: "iCal Meeting subscription"
   activity:
     filter:
       meeting: "Spotkania"
@@ -178,9 +183,25 @@ pl:
   label_version: "Wersja"
   label_time_zone: "Strefa czasowa"
   label_start_date: "Data rozpoczęcia"
+  label_subscribe_icalendar: "Subscribe to calendar"
   meeting:
     participants:
-      template: "Uczestnicy ci będą automatycznie zapraszani na wszystkie przyszłe spotkania w miarę ich tworzenia."
+      label:
+        participants: "Participants"
+        attended: "Attended"
+        mark_as_attended: "Mark as attended"
+        mark_all_as_attended: "Mark all as attended"
+        remove_participant: "Remove participant"
+        manage_participants: "Manage participants"
+        no_participants: "No participants"
+        show_all: "Show all"
+      text:
+        template: "These participants will be invited automatically to all future meetings as they are created."
+        manage_participants: "Search for and add project members as participants to this meeting."
+        search_for_members: "Search for project members"
+      blankslate:
+        heading: "No participants"
+        description: "There are no participants yet."
     attachments:
       template: "Załączone pliki zostaną uwzględnione we wszystkich przyszłych spotkaniach z tej serii."
       text: "Załączone pliki są dostępne dla wszystkich uczestników spotkania. Można je również przeciągać i upuszczać w notatkach do punktów planu spotkania."
@@ -250,9 +271,29 @@ pl:
     label_export_pdf: "Wyeksportuj PDF"
     export:
       your_meeting_export: "Spotkanie jest eksportowane"
+      minutes:
+        footer_page_numbers: "P. %{current_page} of %{total_pages}"
+        author: "Author"
+        date: "Date"
+        time: "Time"
+        location: "Location"
+        title: "Minutes"
     export_pdf_dialog:
       title: Wyeksportuj PDF
       description: Wygeneruj do druku plik PDF z bieżącym stanem spotkania.
+      templates:
+        default:
+          label: Default
+          caption: The default template is suitable for most meetings and represent the current state.
+        minutes:
+          label: Minutes
+          caption: The minutes template is suitable for closed and archived meetings.
+      first_page_header_left:
+        label: First page header left
+        caption: This text will appear on the first page at the left of the header.
+      author:
+        label: Author
+        caption: The author of the minutes will be displayed in the subtitle.
       include_participants:
         label: Dołącz listę uczestników
         caption: Lista uczestników zostanie zamieszczona nad planem spotkania.
@@ -272,16 +313,10 @@ pl:
     notifications:
       sidepanel:
         title: "Wysyłaj aktualizacje kalendarza pocztą elektroniczną"
-        state:
-          disabled: "Wyłączono."
-          enabled: "Włączono."
         description:
           disabled: "Uczestnicy nie będą otrzymywać wiadomości e-mail z informacjami o zmianach."
           enabled: "Wszyscy uczestnicy będą otrzymywać aktualizowane zaproszenia do kalendarza pocztą elektroniczną z informacjami o zmianach."
           change_via_template: "Aby to zmienić, edytuj szablon serii."
-        button:
-          disable: "Wyłącz"
-          enable: "Włącz"
       dialog:
         title:
           enable: "Włączyć wysyłanie aktualizacji kalendarza pocztą elektroniczną?"
@@ -480,8 +515,8 @@ pl:
   text_series_backlog_clear_description: >
     Spowoduje to usunięcie z backlogu serii wszystkich elementów, które są współdzielone z wszystkimi spotkaniami w serii. Czy na pewno chcesz kontynuować? To działanie jest nieodwracalne.
   text_agenda_item_title: 'Punkt planu spotkania „%{title}”'
-  text_agenda_work_package_deleted: 'Punkt planu spotkania dotyczący usuniętego pakietu roboczego'
-  text_deleted_agenda_item: 'Usunięty punkt planu spotkania'
+  text_agenda_work_package_deleted: "Punkt planu spotkania dotyczący usuniętego pakietu roboczego"
+  text_deleted_agenda_item: "Usunięty punkt planu spotkania"
   label_initial_meeting_details: "Spotkanie"
   label_meeting_details: "Szczegóły spotkania"
   label_meeting_series_details: "Szczegóły serii spotkań"
@@ -503,11 +538,6 @@ pl:
   text_meeting_open_dropdown_description: "Wszelkie dotychczasowe wyniki pozostaną niezmienione, ale użytkownicy nie będą mogli dodawać nowych wyników."
   text_meeting_in_progress_dropdown_description: "Udokumentuj wyniki, takie jak potrzeby informacyjne lub decyzje podjęte podczas spotkania."
   text_meeting_closed_dropdown_description: "To spotkanie jest zamknięte. Nie można już modyfikować pozycji planu spotkania ani wyników."
-  label_meeting_manage_participants: "Zarządzaj uczestnikami"
-  label_meeting_no_participants: "Brak uczestników"
-  label_meeting_show_hide_participants: "Pokaż/ukryj jeszcze %{count}"
-  label_meeting_show_all_participants: "Pokaż wszystkie"
-  label_meeting_add_participants: "Dodaj uczestników"
   text_meeting_not_editable_anymore: "Tego spotkania nie można już edytować."
   text_meeting_not_present_anymore: "To spotkanie zostało usunięte. Wybierz inne spotkanie."
   label_add_work_package_to_meeting_dialog_title: "Dodaj pakiet roboczy do spotkania"
@@ -524,4 +554,29 @@ pl:
   text_work_package_has_no_past_meeting_agenda_items: "Ten pakiet roboczy nie został wspomniany na poprzednim spotkaniu."
   text_email_updates_muted: "Wysyłanie aktualizacji kalendarza pocztą elektroniczną jest wyciszone. Po wprowadzeniu zmian uczestnicy nie będą otrzymywać zaktualizowanych zaproszeń pocztą elektroniczną."
   text_email_updates_enabled: "Wysyłanie aktualizacji kalendarza pocztą elektroniczną jest włączone. Po wprowadzeniu zmian wszyscy uczestnicy będą otrzymywać zaktualizowane zaproszenia pocztą elektroniczną."
-
+  my_account:
+    access_tokens:
+      token/ical_meeting:
+        title: "iCalendar for meetings"
+        text_hint: "iCalendar meeting tokens allow users to subscribe to all their meetings and view up-to-date meeting information in external clients."
+        disabled_text: "iCalendar meeting subscriptions are not enabled by the administrator. Please contact your administrator to use this feature."
+        empty_text_hint: 'To add an iCalendar meeting token, go to the <a href="%{path}">meetings section</a> and subscribe from there.'
+        add_button: "Subscribe to calendar"
+  my:
+    access_token:
+      dialog:
+        token/ical_meeting:
+          dialog_title: "New iCal subscription token for meetings"
+          dialog_body: "This token will generate an iCal subscription URL that lets you view all your meetings in an external calendar application."
+          create_button: "Create subscription"
+          name_label: "Token name"
+          name_caption: 'You can name it after where you will use it, such as"My phone" or "Work computer.'
+      created_dialog:
+        token/ical_meeting:
+          title: "An iCal meeting subscription token has been generated"
+          body: "Treat the following URL as you would a password. Anyone who has access to it can view all your meetings."
+          warning: "This is the only time you will see this token. Make sure to copy it now."
+      revocation:
+        token/ical_meeting:
+          notice_success: "The iCalendar meeting subscription has been revoked successfully."
+          notice_failure: "Failed to revoke iCalendar meeting subscription: %{error}"
