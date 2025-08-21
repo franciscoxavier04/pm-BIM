@@ -32,8 +32,6 @@ class MeetingParticipant < ApplicationRecord
   belongs_to :meeting
   belongs_to :user
 
-  validates :user, presence: true, uniqueness: { scope: :meeting_id }
-
   scope :invited, -> { where(invited: true) }
   scope :attended, -> { where(attended: true) }
 
