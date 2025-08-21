@@ -171,7 +171,22 @@ ja:
   label_subscribe_icalendar: "Subscribe to calendar"
   meeting:
     participants:
-      template: "これらの参加者は、今後作成されたすべてのミーティングに自動的に招待されます。"
+      label:
+        participants: "Participants"
+        attended: "Attended"
+        mark_as_attended: "Mark as attended"
+        mark_all_as_attended: "Mark all as attended"
+        remove_participant: "Remove participant"
+        manage_participants: "Manage participants"
+        no_participants: "No participants"
+        show_all: "Show all"
+      text:
+        template: "These participants will be invited automatically to all future meetings as they are created."
+        manage_participants: "Search for and add project members as participants to this meeting."
+        search_for_members: "Search for project members"
+      blankslate:
+        heading: "No participants"
+        description: "There are no participants yet."
     attachments:
       template: "これらの添付ファイルは、今後の一連の会議に含まれます。"
       text: "添付ファイルはすべての会議参加者が利用可能です。また、これらのファイルを議題項目のノートにドラッグアンドドロップすることもできます。"
@@ -502,11 +517,6 @@ ja:
   text_meeting_open_dropdown_description: "Any existing outcomes will remain but users will not be able to add new outcomes."
   text_meeting_in_progress_dropdown_description: "Document outcomes like information needs or decisions taken during the meeting."
   text_meeting_closed_dropdown_description: "This meeting is closed. You cannot modify agenda items or outcomes anymore."
-  label_meeting_manage_participants: "参加者を管理"
-  label_meeting_no_participants: "参加者いません"
-  label_meeting_show_hide_participants: "%{count} 件を表示/非表示"
-  label_meeting_show_all_participants: "全てを表示"
-  label_meeting_add_participants: "参加者を追加"
   text_meeting_not_editable_anymore: "この会議はもう編集できません。"
   text_meeting_not_present_anymore: "この会議は削除されました。別の会議を選択してください。"
   label_add_work_package_to_meeting_dialog_title: "会議にワークパッケージを追加"
@@ -548,4 +558,4 @@ ja:
       revocation:
         token/ical_meeting:
           notice_success: "The iCalendar meeting subscription has been revoked successfully."
-          notice_failure: "Failed to revoke iCalendar meeting subscription: %{error}"
+          notice_failure: "iCalendar ミーティング購読の取り消しに失敗しました: %{error}"

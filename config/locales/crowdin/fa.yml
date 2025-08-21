@@ -332,6 +332,7 @@ fa:
     single: "یا"
   dry_validation:
     errors:
+      defined: "must not be defined."
       int?: "must be an integer."
       filled?: "must be filled."
       greater_or_equal_zero: "must be greater or equal to 0."
@@ -339,6 +340,8 @@ fa:
       rules:
         copy_workflow_from:
           workflow_missing: "has no own workflow."
+        custom_field:
+          format_not_supported: "format '%{field_format}' is unsupported."
         item:
           root_item: "cannot be a root item."
           not_persisted: "must be an already existing item."
@@ -2589,9 +2592,10 @@ fa:
       token/api:
         title: "API"
         text_hint: "API tokens allow third-party applications to communicate with this OpenProject instance via REST APIs."
-        static_token_name: "API token"
         disabled_text: "API tokens are not enabled by the administrator. Please contact your administrator to use this feature."
         add_button: "API Token"
+      api:
+        static_token_name: "API token"
       ical:
         title: "iCalendar"
         text_hint: 'iCalendar tokens allow users to <a href="%{path}" target="_blank">subscribe to OpenProject calendars</a> and view up-to-date work package information from external clients.'
@@ -2914,6 +2918,7 @@ fa:
   label_invite_user: "Invite user"
   label_item: "Item"
   label_item_plural: "Items"
+  label_scored_list: "Scored list"
   label_share: "به اشتراک گذاری"
   label_share_project_list: "Share project list"
   label_share_work_package: "Share work package"

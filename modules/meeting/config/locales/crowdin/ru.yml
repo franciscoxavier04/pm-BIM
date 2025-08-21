@@ -186,7 +186,22 @@ ru:
   label_subscribe_icalendar: "Subscribe to calendar"
   meeting:
     participants:
-      template: "Эти участники будут автоматически приглашаться на все будущие совещания по мере их создания."
+      label:
+        participants: "Participants"
+        attended: "Attended"
+        mark_as_attended: "Mark as attended"
+        mark_all_as_attended: "Mark all as attended"
+        remove_participant: "Remove participant"
+        manage_participants: "Manage participants"
+        no_participants: "No participants"
+        show_all: "Show all"
+      text:
+        template: "These participants will be invited automatically to all future meetings as they are created."
+        manage_participants: "Search for and add project members as participants to this meeting."
+        search_for_members: "Search for project members"
+      blankslate:
+        heading: "No participants"
+        description: "There are no participants yet."
     attachments:
       template: "Эти прикрепленные файлы будут включены во все последующие совещания этой серии."
       text: "Прикрепленные файлы доступны всем участникам совещания. Вы также можете перенести их в примечания к пунктам повестки дня."
@@ -523,11 +538,6 @@ ru:
   text_meeting_open_dropdown_description: "Любые существующие результаты останутся, но пользователи не смогут добавлять новые результаты."
   text_meeting_in_progress_dropdown_description: "Итоги совещания, такие как информация или решения, принятые в ходе совещания."
   text_meeting_closed_dropdown_description: "Совещание закрыто. Вы больше не можете изменять пункты повестки дня или его результаты."
-  label_meeting_manage_participants: "Управление участниками"
-  label_meeting_no_participants: "Нет участников"
-  label_meeting_show_hide_participants: "Показать/скрыть %{count} больше"
-  label_meeting_show_all_participants: "Показать все"
-  label_meeting_add_participants: "Добавить участников"
   text_meeting_not_editable_anymore: "Это совещание больше нельзя редактировать."
   text_meeting_not_present_anymore: "Это совещание было удалено. Пожалуйста, выберите другое."
   label_add_work_package_to_meeting_dialog_title: "Добавить пакет работ в совещание"

@@ -332,6 +332,7 @@ tr:
     single: "ya da"
   dry_validation:
     errors:
+      defined: "must not be defined."
       int?: "bir tamsayı olmalıdır."
       filled?: "doldurulmalı."
       greater_or_equal_zero: "sıfıra eşit ya da büyük olmalı."
@@ -339,6 +340,8 @@ tr:
       rules:
         copy_workflow_from:
           workflow_missing: "has no own workflow."
+        custom_field:
+          format_not_supported: "format '%{field_format}' is unsupported."
         item:
           root_item: "bir kök öğe olamaz."
           not_persisted: "zaten var olan bir öğe olmalıdır."
@@ -2588,9 +2591,10 @@ tr:
       token/api:
         title: "API"
         text_hint: "API tokens allow third-party applications to communicate with this OpenProject instance via REST APIs."
-        static_token_name: "API token"
         disabled_text: "API tokens are not enabled by the administrator. Please contact your administrator to use this feature."
         add_button: "API Token"
+      api:
+        static_token_name: "API anahtarı"
       ical:
         title: "iCalendar"
         text_hint: 'iCalendar belirteçleri, kullanıcıların <a href="%{path}" target="_blank">OpenProject takvimlerine abone</a> olmalarını ve harici istemcilerden gelen güncel iş paketi bilgilerini görüntülemelerini sağlar.'
@@ -2913,6 +2917,7 @@ tr:
   label_invite_user: "Kullanıcı davet et"
   label_item: "Öğe"
   label_item_plural: "Öğe"
+  label_scored_list: "Scored list"
   label_share: "Paylaş"
   label_share_project_list: "Proje listesini paylaş"
   label_share_work_package: "İş paketini paylaş"

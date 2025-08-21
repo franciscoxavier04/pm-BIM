@@ -74,7 +74,7 @@ zh-TW:
       meeting_agenda: "會議大綱"
       meeting_section: "區段"
       token/ical_meeting:
-        other: "iCal Meeting subscription"
+        other: "iCal 會議訂閱"
   activity:
     filter:
       meeting: "會議"
@@ -168,10 +168,25 @@ zh-TW:
   label_version: "版本"
   label_time_zone: "時區"
   label_start_date: "開始日期"
-  label_subscribe_icalendar: "Subscribe to calendar"
+  label_subscribe_icalendar: "訂閱行事曆"
   meeting:
     participants:
-      template: "這些參與者將自動被邀請參加未來所有建立的會議。"
+      label:
+        participants: "Participants"
+        attended: "Attended"
+        mark_as_attended: "Mark as attended"
+        mark_all_as_attended: "Mark all as attended"
+        remove_participant: "Remove participant"
+        manage_participants: "Manage participants"
+        no_participants: "No participants"
+        show_all: "Show all"
+      text:
+        template: "These participants will be invited automatically to all future meetings as they are created."
+        manage_participants: "Search for and add project members as participants to this meeting."
+        search_for_members: "Search for project members"
+      blankslate:
+        heading: "No participants"
+        description: "There are no participants yet."
     attachments:
       template: "這些隨附的檔案將納入所有未來的系列會議中。"
       text: "所有會議參與者都可以使用附件， 您也可以將它們拖放到議程項目註釋中。"
@@ -502,11 +517,6 @@ zh-TW:
   text_meeting_open_dropdown_description: "任何現有的結果都會保留，但使用者將無法新增新的結果。"
   text_meeting_in_progress_dropdown_description: "記錄會議期間的結果，例如資訊需求或所做的決策。"
   text_meeting_closed_dropdown_description: "此會議已結束，您無法再修改議程項目或結果。"
-  label_meeting_manage_participants: "管理參與者"
-  label_meeting_no_participants: "沒有參與者"
-  label_meeting_show_hide_participants: "顯示/隱藏 %{count} 更多"
-  label_meeting_show_all_participants: "顯示全部"
-  label_meeting_add_participants: "新增參與者"
   text_meeting_not_editable_anymore: "本次會議已不可編輯。"
   text_meeting_not_present_anymore: "此次會議已被刪除。請選擇另一場會議。"
   label_add_work_package_to_meeting_dialog_title: "將工作套件新增到到會議"
@@ -526,26 +536,26 @@ zh-TW:
   my_account:
     access_tokens:
       token/ical_meeting:
-        title: "iCalendar for meetings"
-        text_hint: "iCalendar meeting tokens allow users to subscribe to all their meetings and view up-to-date meeting information in external clients."
-        disabled_text: "iCalendar meeting subscriptions are not enabled by the administrator. Please contact your administrator to use this feature."
-        empty_text_hint: 'To add an iCalendar meeting token, go to the <a href="%{path}">meetings section</a> and subscribe from there.'
-        add_button: "Subscribe to calendar"
+        title: "會議用 iCalendar"
+        text_hint: "iCalendar 會議令牌(Tokens)可讓使用者訂閱其所有會議，並在外部用戶端中檢視最新的會議資訊。"
+        disabled_text: "iCalendar 會議訂閱未由管理員啟用。若要使用此功能，請聯絡您的管理員。"
+        empty_text_hint: '若要新增 iCalendar 會議權杖，請前往 <a href="%{path}">會議區段</a> 並在那裡進行訂閱。'
+        add_button: "訂閱行事曆"
   my:
     access_token:
       dialog:
         token/ical_meeting:
-          dialog_title: "New iCal subscription token for meetings"
-          dialog_body: "This token will generate an iCal subscription URL that lets you view all your meetings in an external calendar application."
-          create_button: "Create subscription"
-          name_label: "Token name"
-          name_caption: 'You can name it after where you will use it, such as"My phone" or "Work computer.'
+          dialog_title: "新的會議 iCal 訂閱令牌(Tokens)"
+          dialog_body: "此令牌(Tokens)將產生一個 iCal 訂閱網址，讓您能在外部行事曆應用程式中檢視所有會議。"
+          create_button: "建立訂閱"
+          name_label: "令牌名稱"
+          name_caption: '您可以依使用位置為其命名，例如「我的手機」或「工作電腦」。'
       created_dialog:
         token/ical_meeting:
-          title: "An iCal meeting subscription token has been generated"
-          body: "Treat the following URL as you would a password. Anyone who has access to it can view all your meetings."
-          warning: "This is the only time you will see this token. Make sure to copy it now."
+          title: "已生成一個 iCal 會議訂閱令牌(Token)。"
+          body: "請將以下 URL 視同密碼處理。任何擁有該連結的人都能檢視您的所有會議。"
+          warning: "這是您唯一一次看到此令牌(Token)的機會，請務必立即複製。"
       revocation:
         token/ical_meeting:
-          notice_success: "The iCalendar meeting subscription has been revoked successfully."
-          notice_failure: "Failed to revoke iCalendar meeting subscription: %{error}"
+          notice_success: "iCalendar 會議訂閱已成功撤銷。"
+          notice_failure: "撤銷 iCalendar 會議訂閱失敗：%{error}"

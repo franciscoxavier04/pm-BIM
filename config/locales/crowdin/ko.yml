@@ -332,6 +332,7 @@ ko:
     single: "또는"
   dry_validation:
     errors:
+      defined: "must not be defined."
       int?: "- 정수여야 합니다."
       filled?: "- 입력해야 합니다."
       greater_or_equal_zero: "- 0보다 크거나 같아야 합니다."
@@ -339,6 +340,8 @@ ko:
       rules:
         copy_workflow_from:
           workflow_missing: "- 고유한 워크플로가 없습니다."
+        custom_field:
+          format_not_supported: "format '%{field_format}' is unsupported."
         item:
           root_item: "- 루트 항목일 수 없습니다."
           not_persisted: "- 이미 존재하는 항목이어야 합니다."
@@ -2545,9 +2548,10 @@ ko:
       token/api:
         title: "API"
         text_hint: "API tokens allow third-party applications to communicate with this OpenProject instance via REST APIs."
-        static_token_name: "API token"
         disabled_text: "API tokens are not enabled by the administrator. Please contact your administrator to use this feature."
         add_button: "API Token"
+      api:
+        static_token_name: "API 토큰"
       ical:
         title: "iCalendar"
         text_hint: 'iCalendar 토큰을 사용하면 사용자가 <a href="%{path}" target="_blank">OpenProject 캘린더를 구독</a>하고 외부 클라이언트의 최신 작업 패키지 정보를 볼 수 있습니다.'
@@ -2870,6 +2874,7 @@ ko:
   label_invite_user: "사용자 초대"
   label_item: "항목"
   label_item_plural: "항목"
+  label_scored_list: "Scored list"
   label_share: "공유"
   label_share_project_list: "프로젝트 목록 공유"
   label_share_work_package: "작업 패키지 공유"

@@ -186,7 +186,22 @@ pl:
   label_subscribe_icalendar: "Subscribe to calendar"
   meeting:
     participants:
-      template: "Uczestnicy ci będą automatycznie zapraszani na wszystkie przyszłe spotkania w miarę ich tworzenia."
+      label:
+        participants: "Participants"
+        attended: "Attended"
+        mark_as_attended: "Mark as attended"
+        mark_all_as_attended: "Mark all as attended"
+        remove_participant: "Remove participant"
+        manage_participants: "Manage participants"
+        no_participants: "No participants"
+        show_all: "Show all"
+      text:
+        template: "These participants will be invited automatically to all future meetings as they are created."
+        manage_participants: "Search for and add project members as participants to this meeting."
+        search_for_members: "Search for project members"
+      blankslate:
+        heading: "No participants"
+        description: "There are no participants yet."
     attachments:
       template: "Załączone pliki zostaną uwzględnione we wszystkich przyszłych spotkaniach z tej serii."
       text: "Załączone pliki są dostępne dla wszystkich uczestników spotkania. Można je również przeciągać i upuszczać w notatkach do punktów planu spotkania."
@@ -523,11 +538,6 @@ pl:
   text_meeting_open_dropdown_description: "Wszelkie dotychczasowe wyniki pozostaną niezmienione, ale użytkownicy nie będą mogli dodawać nowych wyników."
   text_meeting_in_progress_dropdown_description: "Udokumentuj wyniki, takie jak potrzeby informacyjne lub decyzje podjęte podczas spotkania."
   text_meeting_closed_dropdown_description: "To spotkanie jest zamknięte. Nie można już modyfikować pozycji planu spotkania ani wyników."
-  label_meeting_manage_participants: "Zarządzaj uczestnikami"
-  label_meeting_no_participants: "Brak uczestników"
-  label_meeting_show_hide_participants: "Pokaż/ukryj jeszcze %{count}"
-  label_meeting_show_all_participants: "Pokaż wszystkie"
-  label_meeting_add_participants: "Dodaj uczestników"
   text_meeting_not_editable_anymore: "Tego spotkania nie można już edytować."
   text_meeting_not_present_anymore: "To spotkanie zostało usunięte. Wybierz inne spotkanie."
   label_add_work_package_to_meeting_dialog_title: "Dodaj pakiet roboczy do spotkania"

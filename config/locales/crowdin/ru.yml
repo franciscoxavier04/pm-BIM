@@ -331,6 +331,7 @@ ru:
     single: "или"
   dry_validation:
     errors:
+      defined: "must not be defined."
       int?: "должно быть целым числом."
       filled?: "должно быть заполнено."
       greater_or_equal_zero: "должно быть больше или равно 0."
@@ -338,6 +339,8 @@ ru:
       rules:
         copy_workflow_from:
           workflow_missing: "не имеет собственного рабочего процесса."
+        custom_field:
+          format_not_supported: "format '%{field_format}' is unsupported."
         item:
           root_item: "не может быть корневым элементом."
           not_persisted: "должно быть уже существующим элементом."
@@ -2675,9 +2678,10 @@ ru:
       token/api:
         title: "API"
         text_hint: "API tokens allow third-party applications to communicate with this OpenProject instance via REST APIs."
-        static_token_name: "API token"
         disabled_text: "API tokens are not enabled by the administrator. Please contact your administrator to use this feature."
         add_button: "API Token"
+      api:
+        static_token_name: "Токен API"
       ical:
         title: "iCalendar"
         text_hint: 'Токены iCalendar позволяют пользователям <a href="%{path}" target="_blank"> подписываться на календари OpenProject</a> и просматривать актуальную информацию о рабочих пакетах от внешних клиентов.'
@@ -3000,6 +3004,7 @@ ru:
   label_invite_user: "Пригласить пользователя"
   label_item: "Элемент"
   label_item_plural: "Элементы"
+  label_scored_list: "Scored list"
   label_share: "Предоставить общий доступ"
   label_share_project_list: "Поделитесь списком проектов"
   label_share_work_package: "Поделиться пакетом работ"

@@ -176,7 +176,22 @@ nl:
   label_subscribe_icalendar: "Subscribe to calendar"
   meeting:
     participants:
-      template: "Deze deelnemers worden automatisch uitgenodigd voor alle toekomstige vergaderingen wanneer deze worden aangemaakt."
+      label:
+        participants: "Participants"
+        attended: "Attended"
+        mark_as_attended: "Mark as attended"
+        mark_all_as_attended: "Mark all as attended"
+        remove_participant: "Remove participant"
+        manage_participants: "Manage participants"
+        no_participants: "No participants"
+        show_all: "Show all"
+      text:
+        template: "These participants will be invited automatically to all future meetings as they are created."
+        manage_participants: "Search for and add project members as participants to this meeting."
+        search_for_members: "Search for project members"
+      blankslate:
+        heading: "No participants"
+        description: "There are no participants yet."
     attachments:
       template: "Deze bijgevoegde bestanden zullen in alle toekomstige vergaderingen in de serie worden opgenomen."
       text: "Bijgevoegde bestanden zijn beschikbaar voor alle deelnemers aan de vergadering. U kunt deze ook naar agendapunt notities slepen."
@@ -509,11 +524,6 @@ nl:
   text_meeting_open_dropdown_description: "Any existing outcomes will remain but users will not be able to add new outcomes."
   text_meeting_in_progress_dropdown_description: "Document outcomes like information needs or decisions taken during the meeting."
   text_meeting_closed_dropdown_description: "This meeting is closed. You cannot modify agenda items or outcomes anymore."
-  label_meeting_manage_participants: "Deelnemers beheren"
-  label_meeting_no_participants: "Geen deelnemers"
-  label_meeting_show_hide_participants: "Toon/verberg %{count} meer"
-  label_meeting_show_all_participants: "Toon alle"
-  label_meeting_add_participants: "Voeg deelnemers toe"
   text_meeting_not_editable_anymore: "Deze vergadering kan niet meer bewerkt worden."
   text_meeting_not_present_anymore: "Deze vergadering is verwijderd. Selecteer een andere vergadering."
   label_add_work_package_to_meeting_dialog_title: "Werkpakket aan vergadering toevoegen"

@@ -176,7 +176,22 @@ fr:
   label_subscribe_icalendar: "Subscribe to calendar"
   meeting:
     participants:
-      template: "Ces participants seront automatiquement invités à toutes les réunions futures au fur et à mesure qu'elles seront créées."
+      label:
+        participants: "Participants"
+        attended: "Attended"
+        mark_as_attended: "Mark as attended"
+        mark_all_as_attended: "Mark all as attended"
+        remove_participant: "Remove participant"
+        manage_participants: "Manage participants"
+        no_participants: "No participants"
+        show_all: "Show all"
+      text:
+        template: "These participants will be invited automatically to all future meetings as they are created."
+        manage_participants: "Search for and add project members as participants to this meeting."
+        search_for_members: "Search for project members"
+      blankslate:
+        heading: "No participants"
+        description: "There are no participants yet."
     attachments:
       template: "Ces fichiers joints seront inclus dans toutes les réunions futures de la série."
       text: "Les fichiers joints sont accessibles à tous les participants à la réunion. Vous pouvez également les glisser-déposer dans les notes relatives aux points de l'ordre du jour."
@@ -509,11 +524,6 @@ fr:
   text_meeting_open_dropdown_description: "Tous les résultats existants resteront, mais les utilisateurs ne pourront pas ajouter de nouveaux résultats."
   text_meeting_in_progress_dropdown_description: "Documentez les résultats tels que les besoins d'information ou les décisions prises pendant la réunion."
   text_meeting_closed_dropdown_description: "Cette réunion est terminée. Vous ne pouvez plus modifier les points de l'ordre du jour ou les résultats."
-  label_meeting_manage_participants: "Gérer les participants"
-  label_meeting_no_participants: "Aucun participant"
-  label_meeting_show_hide_participants: "Afficher/masquer %{count} autre(s)"
-  label_meeting_show_all_participants: "Afficher tout"
-  label_meeting_add_participants: "Ajouter des participants"
   text_meeting_not_editable_anymore: "Cette réunion n'est plus modifiable."
   text_meeting_not_present_anymore: "Cette réunion a été supprimée. Veuillez sélectionner une autre réunion."
   label_add_work_package_to_meeting_dialog_title: "Ajouter ce lot de travaux à une réunion"

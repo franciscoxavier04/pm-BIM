@@ -176,7 +176,22 @@ ca:
   label_subscribe_icalendar: "Subscribe to calendar"
   meeting:
     participants:
-      template: "These participants will be invited automatically to all future meetings as they are created."
+      label:
+        participants: "Participants"
+        attended: "Attended"
+        mark_as_attended: "Mark as attended"
+        mark_all_as_attended: "Mark all as attended"
+        remove_participant: "Remove participant"
+        manage_participants: "Manage participants"
+        no_participants: "No participants"
+        show_all: "Show all"
+      text:
+        template: "These participants will be invited automatically to all future meetings as they are created."
+        manage_participants: "Search for and add project members as participants to this meeting."
+        search_for_members: "Search for project members"
+      blankslate:
+        heading: "No participants"
+        description: "There are no participants yet."
     attachments:
       template: "These attached files will be included in all future meetings in the series."
       text: "Els fitxers adjunts estan disponibles per a tots els participants de la reunió. També podeu arrossegar-los i deixar-los anar a les notes dels punts de l'agenda."
@@ -509,11 +524,6 @@ ca:
   text_meeting_open_dropdown_description: "Any existing outcomes will remain but users will not be able to add new outcomes."
   text_meeting_in_progress_dropdown_description: "Document outcomes like information needs or decisions taken during the meeting."
   text_meeting_closed_dropdown_description: "This meeting is closed. You cannot modify agenda items or outcomes anymore."
-  label_meeting_manage_participants: "Gestiona els participants"
-  label_meeting_no_participants: "No hi ha participants"
-  label_meeting_show_hide_participants: "Mostra/Amaga %{count} més"
-  label_meeting_show_all_participants: "Mostrar tots"
-  label_meeting_add_participants: "Afegeix participants"
   text_meeting_not_editable_anymore: "Aquesta reunió ja no es pot editar."
   text_meeting_not_present_anymore: "Aquesta reunió es va eliminar. Si us plau, selecciona una altra reunió."
   label_add_work_package_to_meeting_dialog_title: "Afegeix un paquet de treball a una reunió"

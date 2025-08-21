@@ -330,6 +330,7 @@ it:
     single: "oppure"
   dry_validation:
     errors:
+      defined: "must not be defined."
       int?: "deve essere un intero."
       filled?: "deve essere compilato."
       greater_or_equal_zero: "deve essere maggiore o uguale a 0."
@@ -337,6 +338,8 @@ it:
       rules:
         copy_workflow_from:
           workflow_missing: "non ha un proprio flusso di lavoro."
+        custom_field:
+          format_not_supported: "format '%{field_format}' is unsupported."
         item:
           root_item: "non può essere un elemento radice."
           not_persisted: "deve essere un elemento già esistente."
@@ -2586,9 +2589,10 @@ it:
       token/api:
         title: "API"
         text_hint: "API tokens allow third-party applications to communicate with this OpenProject instance via REST APIs."
-        static_token_name: "API token"
         disabled_text: "API tokens are not enabled by the administrator. Please contact your administrator to use this feature."
         add_button: "API Token"
+      api:
+        static_token_name: "Token API"
       ical:
         title: "iCalendar"
         text_hint: 'I token iCalendar consentono agli utenti di <a href="%{path}" target="_blank">iscriversi ai calendari di OpenProject</a> e visualizzare informazioni aggiornate sulle macro-attività da client esterni.'
@@ -2911,6 +2915,7 @@ it:
   label_invite_user: "Invita utente"
   label_item: "Elemento"
   label_item_plural: "Elementi"
+  label_scored_list: "Scored list"
   label_share: "Condividi"
   label_share_project_list: "Condividi elenco progetti"
   label_share_work_package: "Condividi macro-attività"

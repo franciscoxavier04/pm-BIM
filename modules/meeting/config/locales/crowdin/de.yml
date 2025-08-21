@@ -176,7 +176,22 @@ de:
   label_subscribe_icalendar: "Subscribe to calendar"
   meeting:
     participants:
-      template: "Diese Teilnehmer werden automatisch zu allen zukünftigen Besprechungen eingeladen, sobald diese erstellt werden."
+      label:
+        participants: "Participants"
+        attended: "Attended"
+        mark_as_attended: "Mark as attended"
+        mark_all_as_attended: "Mark all as attended"
+        remove_participant: "Remove participant"
+        manage_participants: "Manage participants"
+        no_participants: "No participants"
+        show_all: "Show all"
+      text:
+        template: "These participants will be invited automatically to all future meetings as they are created."
+        manage_participants: "Search for and add project members as participants to this meeting."
+        search_for_members: "Search for project members"
+      blankslate:
+        heading: "No participants"
+        description: "There are no participants yet."
     attachments:
       template: "Die angehängten Dateien werden in alle künftigen Besprechungen dieser Terminserie einbezogen."
       text: "Angehängte Dateien sind für alle Teilnehmer der Besprechung verfügbar. Sie können diese auch per Drag-and-drop in die Notizen der Tagesordnungspunkte ziehen."
@@ -509,11 +524,6 @@ de:
   text_meeting_open_dropdown_description: "Alle bestehenden Ergebnisse bleiben bestehen, aber die Benutzer werden nicht in der Lage sein, neue Ergebnisse hinzuzufügen."
   text_meeting_in_progress_dropdown_description: "Ergebnisse der Besprechung festhalten, wie z. B. Informationsbedarf oder Entscheidungen, die während der Besprechung getroffen werden."
   text_meeting_closed_dropdown_description: "Diese Besprechung ist geschlossen. Sie können keine Tagesordnungspunkte mehr hinzufügen/entfernen."
-  label_meeting_manage_participants: "Teilnehmer verwalten"
-  label_meeting_no_participants: "Keine Teilnehmer"
-  label_meeting_show_hide_participants: "%{count} weitere anzeigen/ausblenden"
-  label_meeting_show_all_participants: "Alle anzeigen"
-  label_meeting_add_participants: "Teilnehmer hinzufügen"
   text_meeting_not_editable_anymore: "Diese Besprechung ist nicht mehr bearbeitbar."
   text_meeting_not_present_anymore: "Dieses Meeting wurde gelöscht. Bitte wählen Sie eine andere Besprechung."
   label_add_work_package_to_meeting_dialog_title: "Arbeitspaket zur Besprechung hinzufügen"

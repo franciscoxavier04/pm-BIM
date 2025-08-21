@@ -176,7 +176,22 @@ hu:
   label_subscribe_icalendar: "Subscribe to calendar"
   meeting:
     participants:
-      template: "These participants will be invited automatically to all future meetings as they are created."
+      label:
+        participants: "Participants"
+        attended: "Attended"
+        mark_as_attended: "Mark as attended"
+        mark_all_as_attended: "Mark all as attended"
+        remove_participant: "Remove participant"
+        manage_participants: "Manage participants"
+        no_participants: "No participants"
+        show_all: "Show all"
+      text:
+        template: "These participants will be invited automatically to all future meetings as they are created."
+        manage_participants: "Search for and add project members as participants to this meeting."
+        search_for_members: "Search for project members"
+      blankslate:
+        heading: "No participants"
+        description: "There are no participants yet."
     attachments:
       template: "These attached files will be included in all future meetings in the series."
       text: "A csatolt fájlok az ülés valamennyi résztvevője számára elérhetők. Ezeket a napirendi pontok jegyzeteibe is behúzhatja."
@@ -509,11 +524,6 @@ hu:
   text_meeting_open_dropdown_description: "Any existing outcomes will remain but users will not be able to add new outcomes."
   text_meeting_in_progress_dropdown_description: "Document outcomes like information needs or decisions taken during the meeting."
   text_meeting_closed_dropdown_description: "This meeting is closed. You cannot modify agenda items or outcomes anymore."
-  label_meeting_manage_participants: "Résztvevők kezelése"
-  label_meeting_no_participants: "Nincsenek résztvevők"
-  label_meeting_show_hide_participants: "%{count} további elem megjelenítése/elrejtése"
-  label_meeting_show_all_participants: "Minden megjelenítése"
-  label_meeting_add_participants: "Résztvevők hozzáadása"
   text_meeting_not_editable_anymore: "Ez a megbeszélés már nem szerkeszthető."
   text_meeting_not_present_anymore: "Ez a megbeszélés törlésre került. Kérjük, válasszon ki egy másik megbeszélést."
   label_add_work_package_to_meeting_dialog_title: "Munkacsomag hozzáadása a megbeszéléshez"

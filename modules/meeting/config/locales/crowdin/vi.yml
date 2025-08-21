@@ -171,7 +171,22 @@ vi:
   label_subscribe_icalendar: "Subscribe to calendar"
   meeting:
     participants:
-      template: "Những người này sẽ được mời tham gia tự động tất cả các cuộc họp được tạo trong tương lai."
+      label:
+        participants: "Participants"
+        attended: "Attended"
+        mark_as_attended: "Mark as attended"
+        mark_all_as_attended: "Mark all as attended"
+        remove_participant: "Remove participant"
+        manage_participants: "Manage participants"
+        no_participants: "No participants"
+        show_all: "Show all"
+      text:
+        template: "These participants will be invited automatically to all future meetings as they are created."
+        manage_participants: "Search for and add project members as participants to this meeting."
+        search_for_members: "Search for project members"
+      blankslate:
+        heading: "No participants"
+        description: "There are no participants yet."
     attachments:
       template: "Những tệp đính kèm này sẽ được bổ sung trong tất cả các cuộc họp tương lai trong chuỗi."
       text: "Các tệp đính kèm có sẵn cho tất cả người tham gia cuộc họp. Bạn cũng có thể kéo và thả các tệp này vào ghi chú mục chương trình nghị sự."
@@ -502,11 +517,6 @@ vi:
   text_meeting_open_dropdown_description: "Any existing outcomes will remain but users will not be able to add new outcomes."
   text_meeting_in_progress_dropdown_description: "Document outcomes like information needs or decisions taken during the meeting."
   text_meeting_closed_dropdown_description: "This meeting is closed. You cannot modify agenda items or outcomes anymore."
-  label_meeting_manage_participants: "Quản lý người tham gia"
-  label_meeting_no_participants: "Không có người tham gia"
-  label_meeting_show_hide_participants: "Hiện/ẩn %{count} người tham gia nữa"
-  label_meeting_show_all_participants: "Hiển thị tất cả"
-  label_meeting_add_participants: "Thêm người tham gia"
   text_meeting_not_editable_anymore: "Cuộc họp này không còn có thể chỉnh sửa nữa."
   text_meeting_not_present_anymore: "Cuộc họp này đã bị xóa. Vui lòng chọn cuộc họp khác."
   label_add_work_package_to_meeting_dialog_title: "Thêm gói công việc vào cuộc họp"

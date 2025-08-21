@@ -332,6 +332,7 @@
     single: "eller"
   dry_validation:
     errors:
+      defined: "must not be defined."
       int?: "must be an integer."
       filled?: "must be filled."
       greater_or_equal_zero: "must be greater or equal to 0."
@@ -339,6 +340,8 @@
       rules:
         copy_workflow_from:
           workflow_missing: "has no own workflow."
+        custom_field:
+          format_not_supported: "format '%{field_format}' is unsupported."
         item:
           root_item: "cannot be a root item."
           not_persisted: "must be an already existing item."
@@ -2588,9 +2591,10 @@
       token/api:
         title: "API"
         text_hint: "API tokens allow third-party applications to communicate with this OpenProject instance via REST APIs."
-        static_token_name: "API token"
         disabled_text: "API tokens are not enabled by the administrator. Please contact your administrator to use this feature."
         add_button: "API Token"
+      api:
+        static_token_name: "API-token"
       ical:
         title: "iCalendar"
         text_hint: 'iCalendar nøkler tillater brukere <a href="%{path}" target="_blank"> å abbonnere på OpneProject kalendere og se oppdatert informasjon om arbeidspakker fra eskterne klienter.'
@@ -2913,6 +2917,7 @@
   label_invite_user: "Inviter bruker"
   label_item: "Element"
   label_item_plural: "Elementer"
+  label_scored_list: "Scored list"
   label_share: "Del"
   label_share_project_list: "Del prosjektliste"
   label_share_work_package: "Del arbeidspakke"

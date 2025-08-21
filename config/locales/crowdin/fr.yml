@@ -332,6 +332,7 @@ fr:
     single: "ou"
   dry_validation:
     errors:
+      defined: "must not be defined."
       int?: "doit être un nombre entier."
       filled?: "doit être rempli."
       greater_or_equal_zero: "doit être supérieur ou égal à 0."
@@ -339,6 +340,8 @@ fr:
       rules:
         copy_workflow_from:
           workflow_missing: "n'a pas de flux de travail propre."
+        custom_field:
+          format_not_supported: "format '%{field_format}' is unsupported."
         item:
           root_item: "ne peut pas être un élément racine."
           not_persisted: "doit être un élément déjà existant."
@@ -2587,9 +2590,10 @@ fr:
       token/api:
         title: "API"
         text_hint: "API tokens allow third-party applications to communicate with this OpenProject instance via REST APIs."
-        static_token_name: "API token"
         disabled_text: "API tokens are not enabled by the administrator. Please contact your administrator to use this feature."
         add_button: "API Token"
+      api:
+        static_token_name: "Jeton d'API"
       ical:
         title: "iCalendar"
         text_hint: 'Les jetons iCalendar permettent aux utilisateurs de <a href="%{path}" target="_blank">s''abonner aux calendriers OpenProject</a> et d''afficher des informations à jour sur les lots de travaux provenant de clients externes.'
@@ -2912,6 +2916,7 @@ fr:
   label_invite_user: "Inviter utilisateur"
   label_item: "Élément"
   label_item_plural: "Éléments"
+  label_scored_list: "Scored list"
   label_share: "Partager"
   label_share_project_list: "Partager la liste des projets"
   label_share_work_package: "Partager le lot de travaux"

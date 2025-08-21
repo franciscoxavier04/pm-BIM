@@ -171,7 +171,22 @@ ko:
   label_subscribe_icalendar: "Subscribe to calendar"
   meeting:
     participants:
-      template: "이러한 참가자는 향후 생성되는 모든 미팅에 자동으로 초대됩니다."
+      label:
+        participants: "Participants"
+        attended: "Attended"
+        mark_as_attended: "Mark as attended"
+        mark_all_as_attended: "Mark all as attended"
+        remove_participant: "Remove participant"
+        manage_participants: "Manage participants"
+        no_participants: "No participants"
+        show_all: "Show all"
+      text:
+        template: "These participants will be invited automatically to all future meetings as they are created."
+        manage_participants: "Search for and add project members as participants to this meeting."
+        search_for_members: "Search for project members"
+      blankslate:
+        heading: "No participants"
+        description: "There are no participants yet."
     attachments:
       template: "이러한 첨부 파일은 시리즈의 모든 향후 미팅에 포함됩니다."
       text: "첨부된 파일은 모든 미팅 참가자가 사용할 수 있습니다. 이러한 파일을 의제 항목 메모에 끌어다 놓을 수도 있습니다."
@@ -502,11 +517,6 @@ ko:
   text_meeting_open_dropdown_description: "기존 결과는 그대로 유지되지만 사용자가 새로운 결과를 추가할 수 없게 됩니다."
   text_meeting_in_progress_dropdown_description: "미팅 중에 이루어진 결정 사항 또는 필요한 정보 등의 결과를 문서화합니다."
   text_meeting_closed_dropdown_description: "이 미팅은 종료되었습니다. 더 이상 의제 항목 또는 결과를 수정할 수 없습니다."
-  label_meeting_manage_participants: "참가자 관리"
-  label_meeting_no_participants: "참가자 없음"
-  label_meeting_show_hide_participants: "%{count}개 더 표시/숨기기"
-  label_meeting_show_all_participants: "모두 표시"
-  label_meeting_add_participants: "참가자 추가"
   text_meeting_not_editable_anymore: "이 미팅은 더 이상 편집할 수 없습니다."
   text_meeting_not_present_anymore: "이 미팅은 삭제되었습니다. 다른 미팅을 선택해 주세요."
   label_add_work_package_to_meeting_dialog_title: "미팅에 작업 패키지 추가"

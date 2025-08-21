@@ -328,6 +328,7 @@ uk:
     single: "або"
   dry_validation:
     errors:
+      defined: "must not be defined."
       int?: "має бути цілим числом."
       filled?: "має бути заповнено."
       greater_or_equal_zero: "має дорівнювати нулю або перевищувати його."
@@ -335,6 +336,8 @@ uk:
       rules:
         copy_workflow_from:
           workflow_missing: "не має власного робочого процесу."
+        custom_field:
+          format_not_supported: "format '%{field_format}' is unsupported."
         item:
           root_item: "не може бути кореневим елементом."
           not_persisted: "має бути вже наявним елементом."
@@ -2670,9 +2673,10 @@ uk:
       token/api:
         title: "API"
         text_hint: "API tokens allow third-party applications to communicate with this OpenProject instance via REST APIs."
-        static_token_name: "API token"
         disabled_text: "API tokens are not enabled by the administrator. Please contact your administrator to use this feature."
         add_button: "API Token"
+      api:
+        static_token_name: "Маркер API"
       ical:
         title: "iCalendar"
         text_hint: 'Маркери iCalendar дають змогу користувачам <a href="%{path}" target="_blank">підписуватися на календарі OpenProject</a> і переглядати інформацію про пакети робіт із зовнішніх клієнтів.'
@@ -2995,6 +2999,7 @@ uk:
   label_invite_user: "Запросити користувача"
   label_item: "Елемент"
   label_item_plural: "Елементи"
+  label_scored_list: "Scored list"
   label_share: "Поділитися"
   label_share_project_list: "Поділитися списком проєктів"
   label_share_work_package: "Поділитися пакетом робіт"

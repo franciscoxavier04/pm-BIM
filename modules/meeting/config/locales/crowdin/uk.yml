@@ -186,7 +186,22 @@ uk:
   label_subscribe_icalendar: "Subscribe to calendar"
   meeting:
     participants:
-      template: "Ці учасники автоматично отримуватимуть запрошення на всі майбутні наради, які ви створюватимете."
+      label:
+        participants: "Participants"
+        attended: "Attended"
+        mark_as_attended: "Mark as attended"
+        mark_all_as_attended: "Mark all as attended"
+        remove_participant: "Remove participant"
+        manage_participants: "Manage participants"
+        no_participants: "No participants"
+        show_all: "Show all"
+      text:
+        template: "These participants will be invited automatically to all future meetings as they are created."
+        manage_participants: "Search for and add project members as participants to this meeting."
+        search_for_members: "Search for project members"
+      blankslate:
+        heading: "No participants"
+        description: "There are no participants yet."
     attachments:
       template: "Ці прикріплені файли додаватимуться до всіх майбутніх нарад серії."
       text: "Прикріплені файли доступні всім учасникам наради. Ви також можете перетягнути їх у примітки до пунктів порядку денного."
@@ -523,11 +538,6 @@ uk:
   text_meeting_open_dropdown_description: "Усі наявні результати будуть і надалі доступні, але користувачі не зможуть додавати нові."
   text_meeting_in_progress_dropdown_description: "Результати документа, такі як потреби в інформації або рішення, прийняті під час наради."
   text_meeting_closed_dropdown_description: "Це закрита нарада. Ви більше не можете змінювати пункти порядку денного або результати."
-  label_meeting_manage_participants: "Керувати учасниками"
-  label_meeting_no_participants: "Немає учасників"
-  label_meeting_show_hide_participants: "Показати / приховати ще %{count}"
-  label_meeting_show_all_participants: "Показати всі"
-  label_meeting_add_participants: "Додати учасників"
   text_meeting_not_editable_anymore: "Цю нараду більше не можна редагувати."
   text_meeting_not_present_anymore: "Цю нараду видалено. Виберіть іншу нараду."
   label_add_work_package_to_meeting_dialog_title: "Додавання пакета робіт до наради"
