@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,32 +27,32 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+module MeetingParticipants
+  class CreateContract < ::ModelContract
+    attribute :meeting
+    attribute :user_id
+    attribute :invited
+    attribute :attended
 
-class MeetingParticipant < ApplicationRecord
-  belongs_to :meeting
-  belongs_to :user
+    validate :user_can_see_meetings_in_project
+    validate :user_allowed_to_edit
 
-  validates :user, :meeting, presence: true
+    private
 
-  scope :invited, -> { where(invited: true) }
-  scope :attended, -> { where(attended: true) }
+    def user_allowed_to_edit
+      return if model.meeting.nil?
 
-  def name
-    user.present? ? user.name : I18n.t("user.deleted")
-  end
+      unless user.allowed_in_project?(:edit_meetings, model.meeting.project)
+        errors.add(:base, :error_unauthorized)
+      end
+    end
 
-  def mail
-    user.present? ? user.mail : I18n.t("user.deleted")
-  end
+    def user_can_see_meetings_in_project
+      return if model.user.nil? || model.meeting.nil?
 
-  def <=>(other)
-    to_s.downcase <=> other.to_s.downcase
-  end
-
-  alias :to_s :name
-
-  def copy_attributes
-    # create a clean attribute set allowing to attach participants to different meetings
-    attributes.reject { |k, _v| ["id", "meeting_id", "attended", "created_at", "updated_at"].include?(k) }
+      unless model.user.allowed_in_project?(:view_meetings, model.meeting.project)
+        errors.add(:user, :invalid_user, name: model.name)
+      end
+    end
   end
 end
