@@ -208,6 +208,7 @@ import { OpInviteUserModalAugmentService } from 'core-app/features/invite-user-m
 import { TimeEntryTimerService } from 'core-app/shared/components/time_entries/services/time-entry-timer.service';
 import { MyPageComponent } from './features/my-page/my-page.component';
 import { OverviewComponent } from './features/overview/overview.component';
+import { DashboardComponent } from './features/dashboards/dashboard/dashboard.component';
 
 export function initializeServices(injector:Injector) {
   return () => {
@@ -432,5 +433,6 @@ export class OpenProjectModule implements DoBootstrap {
 
     registerCustomElement('opce-my-page', MyPageComponent, { injector });
     registerCustomElement('opce-overview', OverviewComponent, { injector });
+    registerCustomElement('opce-dashboard', DashboardComponent, { injector });
   }
 }
