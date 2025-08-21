@@ -37,7 +37,7 @@ export class GridAddWidgetService implements OnDestroy {
   }
 
   ngOnDestroy():void {
-    document.removeEventListener('overiew:addWidget', this.boundListener);
+    document.removeEventListener('overview:addWidget', this.boundListener);
   }
 
   public isAddable(area:GridArea) {
