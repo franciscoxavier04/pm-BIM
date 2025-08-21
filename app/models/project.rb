@@ -52,7 +52,7 @@ class Project < ApplicationRecord
     project: "project",
     program: "program",
     portfolio: "portfolio"
-  }
+  }, validate: true
 
   has_many :members, -> {
     # TODO: check whether this should
