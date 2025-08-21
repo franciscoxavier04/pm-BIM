@@ -61,6 +61,7 @@ class WorkPackage < ApplicationRecord
   belongs_to :priority, class_name: "IssuePriority"
   belongs_to :category, class_name: "Category", optional: true
 
+  has_one :active_project_phase, class_name: "ActiveProjectPhase", dependent: nil
   has_many :time_entries, dependent: :delete_all, inverse_of: :entity, as: :entity
   has_many :file_links, dependent: :delete_all, class_name: "Storages::FileLink", as: :container
   has_many :storages, through: :project

@@ -95,6 +95,7 @@ class Project < ApplicationRecord
   has_many :project_storages, dependent: :destroy, class_name: "Storages::ProjectStorage"
   has_many :storages, through: :project_storages
   has_many :phases, class_name: "Project::Phase", dependent: :destroy
+  has_many :active_project_phases, class_name: "ActiveProjectPhase", dependent: nil
   has_many :available_phases,
            -> { visible.order_by_position },
            class_name: "Project::Phase",

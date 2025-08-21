@@ -61,6 +61,10 @@ class Project::Phase < ApplicationRecord
     end
   end
 
+  def to_s
+    name
+  end
+
   def any_date_set?
     start_date? || finish_date?
   end
