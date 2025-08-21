@@ -1649,7 +1649,7 @@ ja:
     header_invalid_fields:
       other: "次のフィールドに問題がありました："
     header_additional_invalid_fields:
-      other: "また、以下のフィールドに問題がありました。"
+      other: "また、以下のフィールドに問題がありました："
     field_erroneous_label: "このフィールドが間違っています: %{full_errors}\n正しい値を入力してください。"
   activity:
     item:
