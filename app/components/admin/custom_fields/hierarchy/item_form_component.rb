@@ -57,7 +57,7 @@ module Admin
           end
         end
 
-        def input_format
+        def secondary_input_format
           field_format = root.custom_field.field_format
           case field_format
           when "hierarchy"

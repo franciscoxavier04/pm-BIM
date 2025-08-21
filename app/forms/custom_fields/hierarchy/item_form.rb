@@ -37,7 +37,7 @@ module CustomFields
         item_form.group(layout: :horizontal) do |input_group|
           input_group.text_field(
             name: :label,
-            label: "Label",
+            label: I18n.t("custom_fields.admin.items.placeholder.label"),
             value: @target_item.label,
             visually_hide_label: true,
             required: true,
@@ -46,29 +46,13 @@ module CustomFields
             validation_message: validation_message_for(:label)
           )
 
-          if @input_format == :short
-            input_group.text_field(
-              name: :short,
-              label: "Short",
-              value: @target_item.short,
-              visually_hide_label: true,
-              full_width: false,
-              required: false,
-              placeholder: I18n.t("custom_fields.admin.items.placeholder.short"),
-              validation_message: validation_message_for(:short)
-            )
-          elsif @input_format == :score
-            input_group.text_field(
-              name: :score,
-              label: "Score",
-              type: :number,
-              value: @target_item.score,
-              visually_hide_label: true,
-              full_width: false,
-              required: true,
-              placeholder: I18n.t("custom_fields.admin.items.placeholder.score"),
-              validation_message: validation_message_for(:score)
-            )
+          case @secondary_input_format
+          when :short
+            short_input_field(input_group)
+          when :score
+            score_input_field(input_group)
+          else
+            raise ArgumentError, "Unsupported secondary input format: #{secondary_input_format}"
           end
         end
 
@@ -84,16 +68,43 @@ module CustomFields
       end
 
       # @param target_item [CustomField::Hierarchy::Item] item that will be acted upon
-      def initialize(target_item:, input_format:)
+      def initialize(target_item:, secondary_input_format:)
         super()
         @target_item = target_item
-        @input_format = input_format
+        @secondary_input_format = secondary_input_format
       end
 
       private
 
       def root
         @root ||= @target_item.parent.root
+      end
+
+      def short_input_field(form_group)
+        form_group.text_field(
+          name: :short,
+          label: I18n.t("custom_fields.admin.items.placeholder.short"),
+          value: @target_item.short,
+          visually_hide_label: true,
+          full_width: false,
+          required: false,
+          placeholder: I18n.t("custom_fields.admin.items.placeholder.short"),
+          validation_message: validation_message_for(:short)
+        )
+      end
+
+      def score_input_field(form_group)
+        form_group.text_field(
+          name: :score,
+          label: I18n.t("custom_fields.admin.items.placeholder.score"),
+          type: :number,
+          value: @target_item.score,
+          visually_hide_label: true,
+          full_width: false,
+          required: true,
+          placeholder: I18n.t("custom_fields.admin.items.placeholder.score"),
+          validation_message: validation_message_for(:score)
+        )
       end
 
       def cancel_href
