@@ -75,6 +75,7 @@ See COPYRIGHT and LICENSE files for more details.
               </td>
             </tr>
           <% end %>
+
           <% if @changes[:old_location].present? || @changes[:new_location].present? %>
             <% if @changes[:old_location] != @changes[:new_location] %>
               <tr>
@@ -106,6 +107,7 @@ See COPYRIGHT and LICENSE files for more details.
               </tr>
             <% end %>
           <% end %>
+
           <tr>
             <td style="<%= placeholder_text_styles(width: "30%") %>">
               <%= Meeting.human_attribute_name(:project) %>
@@ -122,6 +124,7 @@ See COPYRIGHT and LICENSE files for more details.
               <%= @meeting.author %>
             </td>
           </tr>
+
           <% if @meeting.participants.exists? %>
             <tr>
               <td style="<%= placeholder_text_styles(width: "30%") %>">
