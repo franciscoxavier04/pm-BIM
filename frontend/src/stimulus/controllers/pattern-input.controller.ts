@@ -114,8 +114,12 @@ export default class PatternInputController extends Controller {
     }
 
     if (event.key === 'ArrowDown') {
-      const firstSuggestion = this.suggestionsTarget.querySelector('[role="menuitem"]') as HTMLElement;
-      firstSuggestion?.focus();
+      const firstSuggestion = this.suggestionsTarget.querySelector('[role="menuitem"]');
+      if (firstSuggestion === null) {
+        return;
+      }
+
+      (firstSuggestion as HTMLElement).focus();
       event.preventDefault();
     }
     if (event.key === 'ArrowLeft') {
@@ -461,7 +465,7 @@ export default class PatternInputController extends Controller {
       const group = this.suggestionsInitialValue[key];
       this.validSuggestions[key] = {
         title: group.title,
-        tokens: group.tokens.filter((token) => token.enabled)
+        tokens: group.tokens.filter((token) => token.enabled),
       };
     }
   }
@@ -511,7 +515,7 @@ export default class PatternInputController extends Controller {
     this.contentTarget.childNodes.forEach((node) => {
       if (this.isToken(node)) {
         const key = node.dataset.prop;
-        if(this.isSuggestable(key)) {
+        if (this.isSuggestable(key)) {
           this.setStyle(node, 'accent');
         } else {
           this.setStyle(node, 'danger');
