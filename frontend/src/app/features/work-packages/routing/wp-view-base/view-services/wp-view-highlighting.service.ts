@@ -10,6 +10,8 @@ import {
   WorkPackageViewHighlight,
 } from 'core-app/features/work-packages/routing/wp-view-base/view-services/wp-table-highlight';
 import { WorkPackageQueryStateService } from './wp-view-base.service';
+import isEmpty from 'lodash-es/isEmpty';
+import isEqual from 'lodash-es/isEqual';
 
 @Injectable()
 export class WorkPackageViewHighlightingService extends WorkPackageQueryStateService<WorkPackageViewHighlight> {
@@ -42,7 +44,7 @@ export class WorkPackageViewHighlightingService extends WorkPackageQueryStateSer
     }
 
     // 3. Is name in selected attributes ?
-    return !!_.find(this.current.selectedAttributes, (attr:HalResource) => attr.id === name);
+    return !!this.current.selectedAttributes?.find((attr) => attr.id === name);
   }
 
   public get current():WorkPackageViewHighlight {
@@ -69,7 +71,7 @@ export class WorkPackageViewHighlightingService extends WorkPackageQueryStateSer
 
   public hasChanged(query:QueryResource) {
     return query.highlightingMode !== this.current.mode
-      || !_.isEqual(query.highlightedAttributes, this.current.selectedAttributes);
+      || !isEqual(query.highlightedAttributes, this.current.selectedAttributes);
   }
 
   public applyToQuery(query:QueryResource):boolean {
@@ -82,7 +84,7 @@ export class WorkPackageViewHighlightingService extends WorkPackageQueryStateSer
   }
 
   private filteredValue(value:WorkPackageViewHighlight):WorkPackageViewHighlight {
-    if (_.isEmpty(value.selectedAttributes)) {
+    if (isEmpty(value.selectedAttributes)) {
       value.selectedAttributes = undefined;
     }
 

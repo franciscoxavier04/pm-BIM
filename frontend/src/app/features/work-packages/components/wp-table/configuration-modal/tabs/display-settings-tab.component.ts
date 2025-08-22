@@ -5,6 +5,7 @@ import { WorkPackageViewHierarchiesService } from 'core-app/features/work-packag
 import { WorkPackageViewSumService } from 'core-app/features/work-packages/routing/wp-view-base/view-services/wp-view-sum.service';
 import { Component, Injector } from '@angular/core';
 import { QueryGroupByResource } from 'core-app/features/hal/resources/query-group-by-resource';
+import sortBy from 'lodash-es/sortBy';
 
 @Component({
   selector: 'op-wp-table-configuration-settings-tab',
@@ -62,7 +63,7 @@ export class WpTableConfigurationDisplaySettingsTabComponent implements TabCompo
 
   public updateGroup(href:string) {
     this.displayMode = 'grouped';
-    this.currentGroup = _.find(this.availableGroups, (group) => group.href === href) || null;
+    this.currentGroup = this.availableGroups.find((group) => group.href === href) || null;
   }
 
   ngOnInit() {
@@ -77,7 +78,7 @@ export class WpTableConfigurationDisplaySettingsTabComponent implements TabCompo
     void this.wpTableGroupBy
       .onReady()
       .then(() => {
-        this.availableGroups = _.sortBy(this.wpTableGroupBy.available, 'name');
+        this.availableGroups = sortBy(this.wpTableGroupBy.available, 'name');
         this.currentGroup = this.wpTableGroupBy.current || this.availableGroups[0];
       });
   }

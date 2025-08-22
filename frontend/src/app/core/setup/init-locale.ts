@@ -28,6 +28,8 @@
 
 import moment from 'moment';
 import { I18n } from 'i18n-js';
+import map from 'lodash-es/map';
+import uniq from 'lodash-es/uniq';
 
 export function initializeLocale() {
   const meta = document.querySelector<HTMLMetaElement>('meta[name=openproject_initializer]');
@@ -77,15 +79,11 @@ export function initializeLocale() {
     },
   );
 
-  const localeImports = _
-    .chain([userLocale, instanceLocale])
-    .uniq()
+  const localeImports = uniq([userLocale, instanceLocale])
     .map(
-      (locale) => import(/* webpackChunkName: "locale" */ `../../../locales/${locale}.json`)
-        .then((imported:{ default:object }) => {
-          i18n.store(imported.default);
-        }),
-      )
-    .value();
+      (locale) => import(`../../../locales/${locale}.json`)
+        .then((imported:{ default:object }) => { i18n.store(imported.default); })
+    );
+
   return Promise.all(localeImports);
 }

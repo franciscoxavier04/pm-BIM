@@ -19,8 +19,8 @@ export class QueryFiltersService {
    * from the schema
    */
   private getFilterSchema(filter:QueryFilterInstanceResource, form:QueryFormResource):QueryFilterInstanceSchemaResource|undefined {
-    const available = form.$embedded.schema.filtersSchemas.elements;
-    return _.find(available, (schema) => schema.allowedFilterValue.href === filter.filter.href);
+    const available = form.$embedded.schema.filtersSchemas.elements as QueryFilterInstanceSchemaResource[];
+    return available.find((schema) => schema.allowedFilterValue.href === filter.filter.href);
   }
 
   /**

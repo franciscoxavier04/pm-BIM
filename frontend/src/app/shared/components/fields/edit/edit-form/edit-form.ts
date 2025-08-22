@@ -43,6 +43,9 @@ import { ErrorResource } from 'core-app/features/hal/resources/error-resource';
 import isNewResource from 'core-app/features/hal/helpers/is-new-resource';
 import { HalError } from 'core-app/features/hal/services/hal-error';
 import { FormResource } from 'core-app/features/hal/resources/form-resource';
+import each from 'lodash-es/each';
+import isEmpty from 'lodash-es/isEmpty';
+import keys from 'lodash-es/keys';
 
 export const activeFieldContainerClassName = 'inline-edit--active-field';
 export const activeFieldClassName = 'inline-edit--field';
@@ -100,7 +103,7 @@ export abstract class EditForm<T extends HalResource = HalResource> {
    * Return whether this form has any active fields
    */
   public hasActiveFields():boolean {
-    return !_.isEmpty(this.activeFields);
+    return !isEmpty(this.activeFields);
   }
 
   /**
@@ -150,7 +153,7 @@ export abstract class EditForm<T extends HalResource = HalResource> {
     return this.change.getForm().then((form:FormResource) => {
       const activateFields:Promise<unknown>[] = [];
 
-      _.each(form.validationErrors, (_:ErrorResource, key:string) => {
+      each(form.validationErrors, (_:ErrorResource, key:string) => {
         if (key === 'id') {
           return;
         }
@@ -178,10 +181,10 @@ export abstract class EditForm<T extends HalResource = HalResource> {
     this.errorsPerAttribute = {};
 
     // Notify all fields of upcoming save
-    const openFields = _.keys(this.activeFields);
+    const openFields = keys(this.activeFields);
 
     // Call onSubmit handlers
-    await Promise.all(_.map(this.activeFields, (handler:EditFieldHandler) => handler.onSubmit()));
+    await Promise.all(Object.values(this.activeFields).map((handler) => handler.onSubmit()));
 
     return new Promise<T>((resolve, reject) => {
       this.halEditing.save<T, ResourceChangeset<T>>(this.change)
@@ -219,7 +222,7 @@ export abstract class EditForm<T extends HalResource = HalResource> {
    */
   public closeEditFields(fields:string[]|'all' = 'all', resetChange = true) {
     if (fields === 'all') {
-      fields = _.keys(this.activeFields);
+      fields = keys(this.activeFields);
     }
 
     fields.forEach((name:string) => {
