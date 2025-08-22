@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,30 +28,34 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module CostlogHelper
-  def cost_types_collection_for_select_options(selected_type = nil)
-    cost_types = CostType.active.sort
-
-    if selected_type && !cost_types.include?(selected_type)
-      cost_types << selected_type
-      cost_types.sort
+module Budgets
+  class ChildBudgetsRowComponent < ::OpPrimer::BorderBoxRowComponent
+    def budget_relation
+      model
     end
-    cost_types.map { |t| [t.name, t.id] }
-  end
 
-  def user_collection_for_select_options(_options = {})
-    Principal
-      .possible_assignee(@project)
-      .where(type: "User")
-      .map { |t| [t.name, t.id] }
-  end
+    def budget
+      budget_relation.child_budget
+    end
 
-  def extended_progress_bar(pcts, options = {})
-    options.reverse_merge!(hide_total_progress: true)
-    return progress_bar(pcts, options) unless pcts.is_a?(Numeric) && pcts > 100
+    def id
+      link_to "##{budget.id}", budget_path(budget)
+    end
 
-    closed = ((100.0 / pcts) * 100).round
-    done = 100.0 - ((100.0 / pcts) * 100).round
-    progress_bar([closed, done], options)
+    def subject
+      link_to budget.subject, budget_path(budget)
+    end
+
+    def project
+      link_to budget.project.name, project_path(budget.project)
+    end
+
+    def relation_type
+      I18n.t(budget_relation.relation_type, scope: %i[activerecord attributes budget_relation relation_types])
+    end
+
+    def budget_amount
+      number_to_currency(budget.budget)
+    end
   end
 end

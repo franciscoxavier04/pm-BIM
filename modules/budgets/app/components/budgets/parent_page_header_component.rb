@@ -1,4 +1,6 @@
-#-- copyright
+# frozen_string_literal: true
+
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -24,32 +26,34 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-module CostlogHelper
-  def cost_types_collection_for_select_options(selected_type = nil)
-    cost_types = CostType.active.sort
+module Budgets
+  class ParentPageHeaderComponent < ApplicationComponent
+    include OpPrimer::ComponentHelpers
+    include ApplicationHelper
 
-    if selected_type && !cost_types.include?(selected_type)
-      cost_types << selected_type
-      cost_types.sort
+    def initialize(budget:, project:)
+      super
+
+      @budget = budget
+      @project = project
     end
-    cost_types.map { |t| [t.name, t.id] }
-  end
 
-  def user_collection_for_select_options(_options = {})
-    Principal
-      .possible_assignee(@project)
-      .where(type: "User")
-      .map { |t| [t.name, t.id] }
-  end
+    def breadcrumb_items
+      [
+        { href: project_overview_path(@project.id), text: @project.name },
+        { href: projects_budgets_path(@project.id), text: t(:label_budget_plural) },
+        { href: budget_path(@budget.id), text: t(:label_budget_id, id: @budget.id) },
+        t(:button_manage_parent)
+      ]
+    end
 
-  def extended_progress_bar(pcts, options = {})
-    options.reverse_merge!(hide_total_progress: true)
-    return progress_bar(pcts, options) unless pcts.is_a?(Numeric) && pcts > 100
-
-    closed = ((100.0 / pcts) * 100).round
-    done = 100.0 - ((100.0 / pcts) * 100).round
-    progress_bar([closed, done], options)
+    def call
+      render(Primer::OpenProject::PageHeader.new) do |header|
+        header.with_title { t(:button_manage_parent) }
+        header.with_breadcrumbs(breadcrumb_items)
+      end
+    end
   end
 end

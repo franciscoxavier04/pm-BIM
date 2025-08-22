@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,30 +28,43 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module CostlogHelper
-  def cost_types_collection_for_select_options(selected_type = nil)
-    cost_types = CostType.active.sort
+module Budgets
+  class ChildBudgetsTableComponent < ::OpPrimer::BorderBoxTableComponent
+    columns :id, :subject, :project, :relation_type, :budget_amount
+    main_column :subject, :proejct, :relation_type, :budget_amount
 
-    if selected_type && !cost_types.include?(selected_type)
-      cost_types << selected_type
-      cost_types.sort
+    def sortable?
+      false
     end
-    cost_types.map { |t| [t.name, t.id] }
-  end
 
-  def user_collection_for_select_options(_options = {})
-    Principal
-      .possible_assignee(@project)
-      .where(type: "User")
-      .map { |t| [t.name, t.id] }
-  end
+    def paginated?
+      false
+    end
 
-  def extended_progress_bar(pcts, options = {})
-    options.reverse_merge!(hide_total_progress: true)
-    return progress_bar(pcts, options) unless pcts.is_a?(Numeric) && pcts > 100
+    def has_actions?
+      false
+    end
 
-    closed = ((100.0 / pcts) * 100).round
-    done = 100.0 - ((100.0 / pcts) * 100).round
-    progress_bar([closed, done], options)
+    def empty_row_message
+      I18n.t :no_results_title_text
+    end
+
+    def row_class
+      Budgets::ChildBudgetsRowComponent
+    end
+
+    def mobile_title
+      I18n.t(:label_budget_child_budgets)
+    end
+
+    def headers
+      [
+        [:id, { caption: Budget.human_attribute_name(:id) }],
+        [:subject, { caption: Budget.human_attribute_name(:subject) }],
+        [:project, { caption: Budget.human_attribute_name(:project) }],
+        [:relation_type, { caption: BudgetRelation.human_attribute_name(:relation_type) }],
+        [:budget_amount, { caption: Budget.human_attribute_name(:budget) }]
+      ]
+    end
   end
 end

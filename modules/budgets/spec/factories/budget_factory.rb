@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -31,9 +33,15 @@ FactoryBot.define do
     sequence(:subject) { |n| "Budget No. #{n}" }
     sequence(:description) { |n| "I am Budget No. #{n}" }
     project
-    association :author, factory: :user
-    fixed_date { Date.today }
+    author factory: :user
+    fixed_date { Date.current }
     created_at { 3.days.ago }
     updated_at { 3.days.ago }
+
+    traits_for_enum(:state)
+
+    trait :with_base_amount do
+      base_amount { BigDecimal(250000000) }
+    end
   end
 end

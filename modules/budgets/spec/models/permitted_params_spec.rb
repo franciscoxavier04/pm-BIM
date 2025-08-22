@@ -78,6 +78,18 @@ RSpec.describe PermittedParams do
       it_behaves_like "allows params"
     end
 
+    context "base_amount" do
+      let(:hash) { { "base_amount" => "250000.00" } }
+
+      it_behaves_like "allows params"
+    end
+
+    context "state" do
+      let(:hash) { { "state" => "approved" } }
+
+      it_behaves_like "allows params"
+    end
+
     context "project_id" do
       let(:hash) { { "project_id" => 42 } }
 
