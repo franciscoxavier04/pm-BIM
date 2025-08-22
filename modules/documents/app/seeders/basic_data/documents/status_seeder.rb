@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,44 +27,23 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+module BasicData
+  module Documents
+    class StatusSeeder < ModelSeeder
+      self.model_class = DocumentStatus
+      self.seed_data_model_key = "document_statuses"
+      self.attribute_names_for_lookups = %i[name]
 
-en:
-  plugin_openproject_documents:
-    name: "OpenProject Documents"
-    description: "An OpenProject plugin to allow creation of documents in projects."
+      def model_attributes(status_data)
+        { name: status_data["name"],
+          color_variant: color_variant(status_data["color_variant"]) }
+      end
 
-  activerecord:
-    attributes:
-      document_workflow:
-        type: "Document type"
-        old_status: "Old status"
-        new_status: "New status"
-        role: "Role"
-    models:
-      document: "Document"
+      private
 
-  activity:
-    filter:
-      document: "Documents"
-
-  default_doc_category_tech: "Technical documentation"
-  default_doc_category_user: "User documentation"
-
-  enumeration_doc_categories: "Document categories"
-
-  documents:
-    label_attachment_author: "Attachment author"
-    label_categories: "Categories"
-    new_category: "New category"
-
-  label_document_added: "Document added"
-  label_document_new: "New document"
-  label_document_plural: "Documents"
-  label_documents: "Documents"
-  label_document_title: "Title"
-  label_document_description: "Description"
-  label_document_category: "Category"
-
-  permission_manage_documents: "Manage documents"
-  permission_view_documents: "View documents"
-  project_module_documents: "Documents"
+      def color_variant(color_name)
+        DocumentStatus.color_variants[color_name.to_sym]
+      end
+    end
+  end
+end

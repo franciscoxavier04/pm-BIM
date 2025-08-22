@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,43 +28,29 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-en:
-  plugin_openproject_documents:
-    name: "OpenProject Documents"
-    description: "An OpenProject plugin to allow creation of documents in projects."
+require "spec_helper"
+require_module_spec_helper
 
-  activerecord:
-    attributes:
-      document_workflow:
-        type: "Document type"
-        old_status: "Old status"
-        new_status: "New status"
-        role: "Role"
-    models:
-      document: "Document"
+RSpec.describe DocumentType do
+  describe "Associations" do
+    it do
+      expect(subject).to have_many(:documents)
+        .class_name("CollaborativeDocument")
+        .dependent(:restrict_with_exception)
+        .with_foreign_key(:type_id)
+    end
+  end
 
-  activity:
-    filter:
-      document: "Documents"
+  describe "Normalizations" do
+    it { is_expected.to normalize(:name).from("  reImburseMEnt RequeSt  ").to("Reimbursement request") }
+  end
 
-  default_doc_category_tech: "Technical documentation"
-  default_doc_category_user: "User documentation"
+  describe "Validations" do
+    it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_uniqueness_of(:name).case_insensitive }
+  end
 
-  enumeration_doc_categories: "Document categories"
-
-  documents:
-    label_attachment_author: "Attachment author"
-    label_categories: "Categories"
-    new_category: "New category"
-
-  label_document_added: "Document added"
-  label_document_new: "New document"
-  label_document_plural: "Documents"
-  label_documents: "Documents"
-  label_document_title: "Title"
-  label_document_description: "Description"
-  label_document_category: "Category"
-
-  permission_manage_documents: "Manage documents"
-  permission_view_documents: "View documents"
-  project_module_documents: "Documents"
+  describe "Database constraints" do
+    it { is_expected.to have_db_index(:name).unique(true) }
+  end
+end

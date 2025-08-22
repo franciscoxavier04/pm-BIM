@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,43 +28,31 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-en:
-  plugin_openproject_documents:
-    name: "OpenProject Documents"
-    description: "An OpenProject plugin to allow creation of documents in projects."
+class DocumentStatus < ApplicationRecord
+  # https://primer.style/product/components/label/#Label
+  enum :color_variant, {
+    default: "default",
+    primary: "primary",
+    secondary: "secondary",
+    accent: "accent",
+    success: "success",
+    attention: "attention",
+    severe: "severe",
+    danger: "danger",
+    done: "done",
+    sponsors: "sponsors"
+  }, suffix: true
 
-  activerecord:
-    attributes:
-      document_workflow:
-        type: "Document type"
-        old_status: "Old status"
-        new_status: "New status"
-        role: "Role"
-    models:
-      document: "Document"
+  has_many :documents, class_name: "CollaborativeDocument",
+                       foreign_key: :status_id,
+                       dependent: :nullify,
+                       inverse_of: :status
+  has_many :workflows, class_name: "DocumentWorkflow",
+                       foreign_key: :old_status_id,
+                       dependent: :destroy,
+                       inverse_of: :old_status
 
-  activity:
-    filter:
-      document: "Documents"
+  normalizes :name, with: ->(name) { name.strip.capitalize }
 
-  default_doc_category_tech: "Technical documentation"
-  default_doc_category_user: "User documentation"
-
-  enumeration_doc_categories: "Document categories"
-
-  documents:
-    label_attachment_author: "Attachment author"
-    label_categories: "Categories"
-    new_category: "New category"
-
-  label_document_added: "Document added"
-  label_document_new: "New document"
-  label_document_plural: "Documents"
-  label_documents: "Documents"
-  label_document_title: "Title"
-  label_document_description: "Description"
-  label_document_category: "Category"
-
-  permission_manage_documents: "Manage documents"
-  permission_view_documents: "View documents"
-  project_module_documents: "Documents"
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
+end
