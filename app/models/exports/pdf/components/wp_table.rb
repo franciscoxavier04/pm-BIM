@@ -30,10 +30,13 @@
 
 module Exports::PDF::Components::WpTable
   def write_work_packages_table!(work_packages, query)
+    puts "FOO write_work_packages_table!"
     columns = limit_table_columns_objects(query)
     if query.grouped?
+      puts "FOO write_grouped!"
       write_grouped!(work_packages, query, columns)
     else
+      puts "FOO write_grouped? else!"
       with_margin(styles.wp_table_margins) do
         write_table!(work_packages, query, columns, get_sums(query))
       end
@@ -51,6 +54,7 @@ module Exports::PDF::Components::WpTable
       query.group_by_column.value(work_package)
     end
     sums = transformed_sum_group(query)
+    puts "FOO! groups_with_work_packages: #{groups_with_work_packages.inspect}"
     groups_with_work_packages.each do |group, grouped_work_packages|
       write_group!(group, grouped_work_packages, query, columns, sums[group] || {})
     end

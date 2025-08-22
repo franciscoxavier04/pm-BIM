@@ -154,11 +154,14 @@ class WorkPackage::PDFExport::WorkPackageListToPdf < WorkPackage::Exports::Query
     if wants_gantt?
       write_work_packages_gantt! work_packages, @id_wp_meta_map
     else
+      puts "FOO write_report"
       write_report! work_packages
     end
     if should_be_batched?(work_packages)
+      puts "FOO render_batched"
       render_batched(work_packages, filename)
     else
+      puts "FOO render_pdf"
       render_pdf(work_packages, filename)
     end
   end
@@ -258,6 +261,7 @@ class WorkPackage::PDFExport::WorkPackageListToPdf < WorkPackage::Exports::Query
     work_packages.each_with_index do |work_package, index|
       infos_map[work_package.id] = { level_path: [index + 1], level: 0, children: [], work_package: }
     end
+    puts "FOO0 infos_map: #{infos_map.inspect}"
     [infos_map, work_packages.to_a]
   end
 
@@ -266,12 +270,15 @@ class WorkPackage::PDFExport::WorkPackageListToPdf < WorkPackage::Exports::Query
 
     # build a quick access map for the hierarchy tree
     infos_map = init_meta_infos_map_nodes work_packages
+    puts "FOO1 infos_map: #{infos_map.inspect}"
     # connect parent and children (only wp available in the query)
     infos_map = link_meta_infos_map_nodes infos_map, work_packages
+    puts "FOO2 infos_map: #{infos_map.inspect}"
     # recursive travers creating level index path e.g. [1, 2, 1] from root nodes
     root_nodes = infos_map.values.select { |node| node[:parent].nil? }
     flat_list = []
     fill_meta_infos_map_nodes({ children: root_nodes }, [], flat_list)
+    puts "FOO3 flat_list: #{flat_list.inspect}"
     [infos_map, flat_list]
   end
 
