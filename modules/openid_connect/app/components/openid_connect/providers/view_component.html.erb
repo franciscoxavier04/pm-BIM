@@ -270,7 +270,8 @@
                     edit_state:,
                     next_edit_state: :claims,
                     edit_mode:,
-                    heading: nil
+                    heading: nil,
+                    extra_buttons: -> { render(OpenIDConnect::Groups::MatchPreviewDialogComponent.new) }
                   )
                 )
               else

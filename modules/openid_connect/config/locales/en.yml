@@ -62,6 +62,17 @@ en:
     delete_title: "Delete OpenID Connect provider"
     group_links_heading: OpenID Connect group links
 
+    groups:
+      match_preview_component:
+        title: Extracted group names
+        placeholder_none: None
+      match_preview_dialog_component:
+        description: This allows you to test your regular expression pattern against sample data to verify that the group names you want extracted are indeed extracted properly. You can modify your pattern here but the test string and matches themselves will not be saved with the configuration.
+        group_names_label: Test group names
+        group_names_description: Enter one group name per line as it would appear in the OIDC claim, to see how your regular expression patterns affect them.
+        show_button: Test pattern
+        title: Test regular expressions
+
     instructions:
       endpoint_url: The endpoint URL given to you by the OpenID Connect provider
       group_regexes: One regular expression pattern per line. Please read [the documentation](docs_url) for more information on how to do this.
