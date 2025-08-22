@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2010-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -26,32 +26,23 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-require "spec_helper"
+module Projects
+  module Status
+    class ShowWidgetComponent < ApplicationComponent
+      include ApplicationHelper
+      include OpPrimer::ComponentHelpers
+      include OpTurbo::Streamable
 
-RSpec.describe Projects::StatusController do
-  describe "show_widget" do
-    it do
-      expect(get("/projects/123/status/show_widget")).to route_to(
-        controller: "projects/status", action: "show_widget", project_id: "123"
-      )
-    end
-  end
+      attr_reader :project, :current_user
 
-  describe "update" do
-    it do
-      expect(put("/projects/123/status")).to route_to(
-        controller: "projects/status", action: "update", project_id: "123"
-      )
-    end
-  end
+      def initialize(project:, current_user:)
+        super()
 
-  describe "destroy" do
-    it do
-      expect(delete("/projects/123/status")).to route_to(
-        controller: "projects/status", action: "destroy", project_id: "123"
-      )
+        @project = project
+        @current_user = current_user
+      end
     end
   end
 end

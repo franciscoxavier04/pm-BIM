@@ -35,6 +35,12 @@ class Projects::StatusController < ApplicationController
   before_action :find_project_by_project_id
   before_action :authorize
 
+  layout :admin_or_frame_layout
+
+  def show_widget
+    render
+  end
+
   def update
     change_status_action(params.fetch(:status_code).presence)
   end
@@ -44,6 +50,12 @@ class Projects::StatusController < ApplicationController
   end
 
   private
+
+  def admin_or_frame_layout
+    return "turbo_rails/frame" if turbo_frame_request?
+
+    "admin"
+  end
 
   def change_status_action(status_code)
     call = Projects::UpdateService

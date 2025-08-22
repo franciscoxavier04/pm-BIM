@@ -30,6 +30,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  CUSTOM_ELEMENTS_SCHEMA,
   ElementRef,
   Injector,
   OnInit,
@@ -56,7 +57,6 @@ import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
   standalone: false,
 })
 export class WidgetProjectStatusComponent extends AbstractWidgetComponent implements OnInit {
-  @ViewChild('contentContainer', { static: true }) readonly contentContainer:ElementRef;
 
   public currentStatusCode = 'not set';
 
@@ -73,14 +73,7 @@ export class WidgetProjectStatusComponent extends AbstractWidgetComponent implem
   }
 
   ngOnInit():void {
-    if (this.currentProject.id) {
-      this.project$ = this
-        .apiV3Service
-        .projects
-        .id(this.currentProject.id)
-        .get();
-      this.cdRef.detectChanges();
-    }
+
   }
 
   public get isEditable():boolean {

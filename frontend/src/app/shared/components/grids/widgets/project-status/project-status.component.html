@@ -13,17 +13,8 @@
 </widget-header>
 
 <div class="grid--widget-content -allow-inner-overflow">
-  <edit-form *ngIf="(project$ | async) as project" [resource]="project">
-    <div class="project-status--container">
-      <op-editable-attribute-field [resource]="project"
-                                fieldName="status"
-                                wrapperClasses="project-status--display-field">
-      </op-editable-attribute-field>
-    </div>
-    <div class="project-status-explanation--container">
-      <op-editable-attribute-field [resource]="project"
-                                fieldName="statusExplanation">
-      </op-editable-attribute-field>
-    </div>
-  </edit-form>
+  <turbo-frame 
+    id="projects-settings-status-show-widget-component"
+    src="/projects/footer/status/show_widget"
+  ></turbo-frame>
 </div>
