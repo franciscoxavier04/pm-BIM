@@ -245,7 +245,7 @@ ru:
         body: "Совещание '%{title}' было перенесено %{actor}."
         old_date_time: "Старые дата/время"
         new_date_time: "Новые дата/время"
-    label_mail_all_participants: "Отправьте приглашение в календарь всем участникам по электронной почте"
+    label_mail_all_participants: "Send email invite to participants"
     types:
       one_time: "Однократная"
       recurring: "Периодичность"

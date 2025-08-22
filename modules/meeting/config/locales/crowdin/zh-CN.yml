@@ -230,7 +230,7 @@ zh-CN:
         body: "会议 '%{title}' 已经由 %{actor} 重新安排。"
         old_date_time: "旧日期/时间"
         new_date_time: "新日期/时间"
-    label_mail_all_participants: "使用电子邮件向所有与会者发送日历邀请"
+    label_mail_all_participants: "Send email invite to participants"
     types:
       one_time: "动态"
       recurring: "定期"

@@ -235,7 +235,7 @@ it:
         body: "La riunione \"%{title}\" è stata riprogrammata da %{actor}."
         old_date_time: "Data/ora precedente"
         new_date_time: "Nuova data/ora"
-    label_mail_all_participants: "Invia un invito tramite email al calendario a tutti i partecipanti"
+    label_mail_all_participants: "Send email invite to participants"
     types:
       one_time: "Una tantum"
       recurring: "Ricorrente"

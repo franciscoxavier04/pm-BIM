@@ -230,7 +230,7 @@ vi:
         body: "The meeting '%{title}' has been rescheduled by %{actor}."
         old_date_time: "Ngày/giờ cũ"
         new_date_time: "Ngày/giờ mới"
-    label_mail_all_participants: "Email calendar invite to all participants"
+    label_mail_all_participants: "Send email invite to participants"
     types:
       one_time: "Một lần"
       recurring: "Định kỳ"

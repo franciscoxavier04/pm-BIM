@@ -245,7 +245,7 @@ pl:
         body: "Spotkanie „%{title}” zostało przełożone przez użytkownika %{actor}."
         old_date_time: "Stara data/godzina"
         new_date_time: "Nowa data/godzina"
-    label_mail_all_participants: "Wyślij zaproszenie do kalendarza pocztą elektroniczną do wszystkich uczestników"
+    label_mail_all_participants: "Send email invite to participants"
     types:
       one_time: "Jednorazowe"
       recurring: "Cykliczne"

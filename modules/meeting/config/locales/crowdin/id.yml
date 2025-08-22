@@ -230,7 +230,7 @@ id:
         body: "The meeting '%{title}' has been rescheduled by %{actor}."
         old_date_time: "Tanggal/waktu lama"
         new_date_time: "Tanggal/waktu baru"
-    label_mail_all_participants: "Email calendar invite to all participants"
+    label_mail_all_participants: "Send email invite to participants"
     types:
       one_time: "One-time"
       recurring: "Recurring"

@@ -235,7 +235,7 @@ tr:
         body: "%{title} toplantısı %{actor} tarafından yeniden planlanmıştır."
         old_date_time: "Eski tarih/saat"
         new_date_time: "Yeni tarih/saat"
-    label_mail_all_participants: "Email calendar invite to all participants"
+    label_mail_all_participants: "Send email invite to participants"
     types:
       one_time: "Tek seferlik"
       recurring: "Yinelenen"

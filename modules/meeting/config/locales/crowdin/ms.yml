@@ -230,7 +230,7 @@ ms:
         body: "The meeting '%{title}' has been rescheduled by %{actor}."
         old_date_time: "Tarikh/masa lama"
         new_date_time: "Tarikh/masa baharu"
-    label_mail_all_participants: "Email calendar invite to all participants"
+    label_mail_all_participants: "Send email invite to participants"
     types:
       one_time: "Sekali"
       recurring: "Berulang"

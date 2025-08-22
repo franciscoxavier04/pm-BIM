@@ -245,7 +245,7 @@ uk:
         body: "Запланований час наради «%{title}» змінив(-ла) %{actor}."
         old_date_time: "Стара дата/час"
         new_date_time: "Нова дата/час"
-    label_mail_all_participants: "Надсилати електронною поштою оновлення з календаря всім учасникам"
+    label_mail_all_participants: "Send email invite to participants"
     types:
       one_time: "Одноразова"
       recurring: "Повторювана"

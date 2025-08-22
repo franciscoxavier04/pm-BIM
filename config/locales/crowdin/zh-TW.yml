@@ -331,7 +331,7 @@ zh-TW:
     single: "或者"
   dry_validation:
     errors:
-      defined: "must not be defined."
+      defined: "必須未被定義。"
       int?: "必須是整數"
       filled?: "必填"
       greater_or_equal_zero: "必須大於或等於 0"
@@ -340,7 +340,7 @@ zh-TW:
         copy_workflow_from:
           workflow_missing: "沒有自己的工作流程。"
         custom_field:
-          format_not_supported: "format '%{field_format}' is unsupported."
+          format_not_supported: "格式 '%{field_format}' 不支援。"
         item:
           root_item: "不能為根項目"
           not_persisted: "必須是已存在的項目"
@@ -2870,7 +2870,7 @@ zh-TW:
   label_invite_user: "邀請使用者"
   label_item: "欄位"
   label_item_plural: "欄位"
-  label_scored_list: "Scored list"
+  label_scored_list: "評分清單"
   label_share: "參與"
   label_share_project_list: "分享專案清單"
   label_share_work_package: "參與工作套件"

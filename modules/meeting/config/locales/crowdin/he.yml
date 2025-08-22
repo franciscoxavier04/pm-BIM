@@ -245,7 +245,7 @@ he:
         body: "The meeting '%{title}' has been rescheduled by %{actor}."
         old_date_time: "Old date/time"
         new_date_time: "New date/time"
-    label_mail_all_participants: "Email calendar invite to all participants"
+    label_mail_all_participants: "Send email invite to participants"
     types:
       one_time: "One-time"
       recurring: "Recurring"

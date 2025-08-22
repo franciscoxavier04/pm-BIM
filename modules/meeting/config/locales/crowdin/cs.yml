@@ -245,7 +245,7 @@ cs:
         body: "The meeting '%{title}' has been rescheduled by %{actor}."
         old_date_time: "Staré datum/čas"
         new_date_time: "Nové datum/čas"
-    label_mail_all_participants: "Email calendar invite to all participants"
+    label_mail_all_participants: "Send email invite to participants"
     types:
       one_time: "Jednorázový"
       recurring: "Opakované"
