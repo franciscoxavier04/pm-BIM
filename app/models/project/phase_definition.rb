@@ -36,6 +36,7 @@ class Project::PhaseDefinition < ApplicationRecord
            foreign_key: :definition_id,
            inverse_of: :definition,
            dependent: :destroy
+  has_many :active_project_phases, class_name: "ActiveProjectPhase"
   has_many :projects, through: :phases
   belongs_to :color, optional: false
   has_many :work_packages, inverse_of: :project_phase_definition, dependent: :nullify

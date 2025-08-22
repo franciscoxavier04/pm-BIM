@@ -33,6 +33,7 @@ require "spec_helper"
 RSpec.describe WorkPackage::PDFExport::WorkPackageListToPdf do
   include Redmine::I18n
   include PDFExportSpecUtils
+
   shared_let(:type_standard) { create(:type_standard) }
   shared_let(:type_bug) { create(:type_bug) }
   shared_let(:list_custom_field) do
@@ -56,15 +57,21 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageListToPdf do
            value: list_custom_field.custom_options.first.id)
   end
   shared_let(:types) { [type_standard, type_bug] }
+
+  shared_let(:phases) { [] }
+
   shared_let(:project) do
     create(:project,
            name: "Foo Bla. Report No. 4/2021 with/for Case 42",
+           disable_modules: "costs",
            types:,
+           phases:,
            work_package_custom_fields: [list_custom_field, text_custom_field_a, text_custom_field_b, link_custom_field])
   end
+  shared_let(:user_permissions) { %w[view_work_packages export_work_packages] }
   shared_let(:user) do
     create(:user,
-           member_with_permissions: { project => %w[view_work_packages export_work_packages] })
+           member_with_permissions: { project => user_permissions })
   end
   shared_let(:export_time) { DateTime.new(2023, 6, 30, 23, 59) }
   shared_let(:export_date_formatted) { format_date(export_time) }
@@ -256,6 +263,92 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageListToPdf do
           "1/1", export_date_formatted, query.name
         ].join(" ")
       end
+    end
+
+    describe "grouped by a phase with sums" do
+      shared_let(:project_phase) { create(:project_phase, definition: create(:project_phase_definition)) }
+      shared_let(:other_project_phase) { create(:project_phase, definition: create(:project_phase_definition)) }
+      shared_let(:phases) { [project_phase, other_project_phase] }
+      shared_let(:user) { create(:admin) }
+
+      let(:column_names) { %w[id subject status story_points done_ratio project_phase] }
+      let(:query_attributes) { { display_sums: true, group_by: "status" } }
+
+      let!(:wp_with_phase) do
+        create(:work_package,
+               project:,
+               project_phase_definition: project_phase.definition,
+               subject: "Work package with phase",
+               estimated_hours: 10,
+               remaining_hours: 5,
+               done_ratio: 50,
+               story_points: 2,
+               description: "Work package with a phase")
+      end
+      let!(:other_wp_with_phase) do
+        create(:work_package,
+               project:,
+               project_phase_definition: project_phase.definition,
+               subject: "Work package 2 with phase",
+               estimated_hours: 20,
+               remaining_hours: 10,
+               done_ratio: 50,
+               story_points: 6,
+               description: "Work package 2 with a phase")
+      end
+      let!(:wp_with_other_phase) do
+        create(:work_package,
+               project:,
+               project_phase_definition: other_project_phase.definition,
+               subject: "Work package with other phase",
+               estimated_hours: 10,
+               remaining_hours: 2,
+               done_ratio: 80,
+               story_points: 2,
+               description: "Work package with another phase")
+      end
+
+      before do
+        login_as(user)
+        query.save!
+
+        described_class.new(query, options)
+        Timecop.freeze(export_time) do
+          export.export!
+        end
+      end
+
+      it "contains correct data" do
+        puts "FOOOOOOO -----------------------------------------------------------------------------------"
+        # pp project.work_packages.map { [it.subject, it.status.name] }
+        puts "Query:"
+        pp query
+        puts "Query results all_group_sums:"
+        pp query.results.all_group_sums
+        show
+        puts "FOOOOOOO -----------------------------------------------------------------------------------"
+
+        # FIXME: use correct expectations and fix spec once the query seems to work
+        expect(true).to eq(false)
+
+        # expect(pdf_strings).to eq [
+        #                             *cover_page_content,
+        #                             query.name,
+        #                             "1.", "2", work_package_parent.subject,
+        #                             "2.", "2", work_package_child.subject,
+        #                             "3.", "1", wp_with_phase.subject,
+                                  # "1/2", export_date_formatted, query.name,
+                                  # I18n.t("js.work_packages.tabs.overview"),
+                                  # column_title(:project_phaoe), column_title(:story_points), column_title(:done_ratio),
+                                  # work_package_parent.type.name, work_package_parent.story_points.to_s, "25%",
+                                  # work_package_child.type.name, work_package_child.story_points.to_s, "50%",
+                                  # I18n.t("js.label_sum"), work_packages_sum.to_s, "38%",
+                                  # *work_package_details(work_package_parent, "1", long_text_fields),
+                                  # *work_package_details(work_package_child, "2", long_text_fields),
+                                  # "2/2", export_date_formatted, query.name
+                                  # ].join(" ")
+      end
+
     end
   end
 

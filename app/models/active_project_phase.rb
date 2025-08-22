@@ -28,34 +28,10 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Queries::WorkPackages::Selects::ProjectPhaseSelect < Queries::WorkPackages::Selects::WorkPackageSelect
-  def initialize
-    super(:project_phase,
-          association: :active_project_phase,
-          group_by_column_name: :project_phase_definition,
-          sortable: "#{ActiveProjectPhase.table_name}.phase_position",
-          groupable: "#{ActiveProjectPhase.table_name}.id",
-          groupable_join: group_by_join_statement,
-    )
-  end
+class ActiveProjectPhase < ApplicationRecord
+  self.table_name = "active_project_phases"
 
-  def group_by_join_statement
-    <<~SQL.squish
-      LEFT OUTER JOIN active_project_phases ON active_project_phases.work_package_id = work_packages.id
-    SQL
-  end
-
-  def self.instances(context = nil)
-    allowed = if context
-                User.current.allowed_in_project?(:view_project_phases, context)
-              else
-                User.current.allowed_in_any_project?(:view_project_phases)
-              end
-
-    if allowed
-      [new]
-    else
-      []
-    end
-  end
+  belongs_to :work_package, inverse_of: :active_project_phase, class_name: "WorkPackage", optional: false
+  belongs_to :project_phase_definition, inverse_of: :active_project_phases, class_name: "Project::PhaseDefinition"
+  belongs_to :project, inverse_of: :active_project_phases, class_name: "Project"
 end
