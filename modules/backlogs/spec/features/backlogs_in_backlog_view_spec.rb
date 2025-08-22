@@ -135,6 +135,7 @@ RSpec.describe "Backlogs in backlog view", :js,
     check "Show versions folded"
 
     click_button "Update backlogs module"
+    expect_and_dismiss_flash(message: "Account was successfully updated.")
 
     backlogs_page.visit!
 
