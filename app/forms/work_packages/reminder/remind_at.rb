@@ -28,26 +28,47 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class WorkPackages::Reminder::RemindAtTime < ApplicationForm
+class WorkPackages::Reminder::RemindAt < ApplicationForm
   include Redmine::I18n
 
-  form do |reminder_form|
-    reminder_form.text_field(
-      name: :remind_at_time,
-      type: "time",
-      value: @initial_value,
-      placeholder: I18n.t(:label_time),
-      label: I18n.t(:label_time),
-      leading_visual: { icon: :clock },
-      required: true,
-      autofocus: false,
-      caption: formatted_time_zone_offset
-    )
+  form do |remind_at_form|
+    remind_at_form.group(layout: :vertical) do |f|
+      f.text_field(
+        name: :remind_at_date,
+        type: "date",
+        value: @remind_at_date_initial_value,
+        placeholder: I18n.t(:label_date),
+        label: I18n.t(:label_date),
+        leading_visual: { icon: :calendar },
+        required: true,
+        autofocus: false,
+        data: { action: auto_form_validation_action }
+      )
+
+      f.text_field(
+        name: :remind_at_time,
+        type: "time",
+        value: @remind_at_time_initial_value,
+        placeholder: I18n.t(:label_time),
+        label: I18n.t(:label_time),
+        leading_visual: { icon: :clock },
+        required: true,
+        autofocus: false,
+        caption: formatted_time_zone_offset,
+        data: { action: auto_form_validation_action }
+      )
+    end
   end
 
-  def initialize(initial_value: DateTime.now.strftime("%H:%M"))
+  def initialize(remind_at_date_initial_value: DateTime.now.strftime("%Y-%m-%d"),
+                 remind_at_time_initial_value: DateTime.now.strftime("%H:%M"))
     super()
 
-    @initial_value = initial_value
+    @remind_at_date_initial_value = remind_at_date_initial_value
+    @remind_at_time_initial_value = remind_at_time_initial_value
   end
+
+  private
+
+  def auto_form_validation_action = "input->auto-form-validation#validateForm"
 end

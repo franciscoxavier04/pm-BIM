@@ -36,7 +36,7 @@ class WorkPackages::RemindersController < ApplicationController
 
   before_action :find_work_package
   before_action :find_or_build_reminder, only: %i[modal_body create]
-  before_action :find_reminder, only: %i[update destroy]
+  before_action :find_reminder, only: %i[update update_form destroy]
 
   before_action :authorize
 
@@ -61,6 +61,10 @@ class WorkPackages::RemindersController < ApplicationController
     end
   end
 
+  def create_form
+    respond_with_validated_form contract_class: Reminders::CreateContract, model: @work_package.reminders.build
+  end
+
   def update
     service_result = Reminders::UpdateService.new(user: current_user,
                                                   model: @reminder)
@@ -71,6 +75,10 @@ class WorkPackages::RemindersController < ApplicationController
     else
       respond_with_error_modal_component(service_result)
     end
+  end
+
+  def update_form
+    respond_with_validated_form contract_class: Reminders::UpdateContract, model: @reminder
   end
 
   def destroy
@@ -94,6 +102,11 @@ class WorkPackages::RemindersController < ApplicationController
   end
 
   def respond_with_error_modal_component(service_result)
+    replace_modal_body_component(service_result)
+    respond_with_turbo_streams(status: :unprocessable_entity)
+  end
+
+  def replace_modal_body_component(service_result)
     replace_via_turbo_stream(
       component: WorkPackages::Reminder::ModalBodyComponent.new(
         remindable: @work_package,
@@ -103,8 +116,6 @@ class WorkPackages::RemindersController < ApplicationController
         remind_at_time: reminder_params[:remind_at_time]
       )
     )
-
-    respond_with_turbo_streams(status: :unprocessable_entity)
   end
 
   def reminder_chosen_time(reminder)
@@ -133,6 +144,14 @@ class WorkPackages::RemindersController < ApplicationController
 
   def reminders
     @work_package.reminders.upcoming_and_visible_to(User.current)
+  end
+
+  def respond_with_validated_form(contract_class:, model:)
+    service_result = Reminders::SetAttributesService.new(user: current_user, model:,
+                                                         contract_class:).call(reminder_params)
+
+    replace_modal_body_component(service_result)
+    respond_with_turbo_streams(status: service_result.success? ? :ok : :unprocessable_entity)
   end
 
   def reminder_params

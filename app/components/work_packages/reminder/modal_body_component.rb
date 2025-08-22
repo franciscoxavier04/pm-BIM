@@ -65,6 +65,14 @@ module WorkPackages
         end
       end
 
+      def form_validation_path
+        if reminder.persisted?
+          url_helpers.update_form_work_package_reminder_path(remindable, reminder)
+        else
+          url_helpers.create_form_work_package_reminders_path(remindable)
+        end
+      end
+
       def submit_button_text
         if @reminder.persisted?
           I18n.t(:button_save)
@@ -103,8 +111,9 @@ module WorkPackages
         end
 
         return format_time(@reminder.remind_at, include_date: false, format: "%H:%M") if @reminder.remind_at
+        return DEFAULT_TIME if @preset
 
-        DEFAULT_TIME
+        nil
       end
 
       private
