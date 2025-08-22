@@ -206,6 +206,9 @@ import {
 } from 'core-app/shared/components/datepicker/wp-date-picker-modal/wp-date-picker-instance.component';
 import { OpInviteUserModalAugmentService } from 'core-app/features/invite-user-modal/invite-user-modal-augment.service';
 import { TimeEntryTimerService } from 'core-app/shared/components/time_entries/services/time-entry-timer.service';
+import { MyPageComponent } from './features/my-page/my-page.component';
+import { OverviewComponent } from './features/overview/overview.component';
+import { DashboardComponent } from './features/dashboards/dashboard/dashboard.component';
 
 export function initializeServices(injector:Injector) {
   return () => {
@@ -427,5 +430,9 @@ export class OpenProjectModule implements DoBootstrap {
     registerCustomElement('opce-homescreen-new-features-block', HomescreenNewFeaturesBlockComponent, { injector });
     registerCustomElement('opce-zen-mode-toggle-button', ZenModeButtonComponent, { injector });
     registerCustomElement('opce-colors-autocompleter', ColorsAutocompleterComponent, { injector });
+
+    registerCustomElement('opce-my-page', MyPageComponent, { injector });
+    registerCustomElement('opce-overview', OverviewComponent, { injector });
+    registerCustomElement('opce-dashboard', DashboardComponent, { injector });
   }
 }
