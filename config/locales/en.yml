@@ -1146,6 +1146,7 @@ en:
         types: "Types"
         versions: "Versions"
         work_packages: "Work Packages"
+        workspace_type: "Workspace type"
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Section

@@ -81,7 +81,7 @@ RSpec.describe Projects::CreateContract do
     context "if workspace_type is nil" do
       let(:project_workspace_type) { nil }
 
-      it_behaves_like "contract is invalid", workspace_type: %i(blank)
+      it_behaves_like "contract is invalid", workspace_type: %i[inclusion]
     end
 
     context "if workspace type is 'project'" do
@@ -100,6 +100,12 @@ RSpec.describe Projects::CreateContract do
       let(:project_workspace_type) { "portfolio" }
 
       it_behaves_like "contract is valid"
+    end
+
+    context "if workspace type is 'invalid type'" do
+      let(:project_workspace_type) { "invalid type" }
+
+      it_behaves_like "contract is invalid", workspace_type: %i[inclusion]
     end
 
     describe "permissions" do
