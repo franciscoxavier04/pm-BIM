@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,44 +26,21 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-require "spec_helper"
-require_relative "shared_contract_examples"
+module Projects::Scopes
+  module AssignableParents
+    extend ActiveSupport::Concern
 
-RSpec.describe Projects::BaseContract do
-  let(:project) { Project.new(name: "Foo", identifier: "foo", templated: false) }
-  let(:contract) { described_class.new(project, current_user) }
-
-  subject { contract.validate }
-
-  describe "templated attribute" do
-    before do
-      # Assume the user may manage the project
-      allow(contract)
-        .to(receive(:validate_user_allowed_to_manage))
-        .and_return true
-
-      # Assume templated attribute got changed
-      project.templated = true
-      expect(project.templated_changed?).to be true
-    end
-
-    context "as admin" do
-      let(:current_user) { build_stubbed(:admin) }
-
-      it "validates the contract" do
-        expect(subject).to be true
-      end
-    end
-
-    context "as regular user" do
-      let(:current_user) { build_stubbed(:user) }
-
-      it "returns an error on validation" do
-        expect(subject).to be false
-        expect(contract.errors.symbols_for(:templated))
-          .to contain_exactly(:error_unauthorized)
+    class_methods do
+      def assignable_parents(user, project)
+        if project.portfolio?
+          Project.none
+        else
+          Project
+            .allowed_to(user, :add_subprojects)
+            .where.not(id: project.self_and_descendants)
+        end
       end
     end
   end

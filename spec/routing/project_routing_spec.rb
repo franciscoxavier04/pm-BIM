@@ -54,7 +54,13 @@ RSpec.describe ProjectsController do
   describe "new" do
     it do
       expect(get("/projects/new")).to route_to(
-        controller: "projects", action: "new"
+        controller: "projects", action: "new", workspace_type: "project"
+      )
+    end
+
+    it do
+      expect(get("/portfolios/new")).to route_to(
+        controller: "projects", action: "new", workspace_type: "portfolio"
       )
     end
   end
