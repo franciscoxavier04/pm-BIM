@@ -3389,6 +3389,8 @@ en:
   label_watched_work_packages: "Watched work packages"
   label_what_is_this: "What is this?"
   label_week: "Week"
+  label_widget: "Widget"
+  label_widget_new: "New widget"
   label_wiki_content_added: "Wiki page added"
   label_wiki_content_updated: "Wiki page updated"
   label_wiki_toc: "Table of Contents"
