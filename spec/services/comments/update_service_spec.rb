@@ -28,22 +28,19 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-FactoryBot.define do
-  factory :comment do
-    author factory: :user
-    sequence(:comments) { |n| "I am a comment No. #{n}" }
-    commented factory: :news
+require "spec_helper"
+require "services/base_services/behaves_like_update_service"
 
-    trait :commented_work_package do
-      commented factory: :work_package
+RSpec.describe Comments::UpdateService do
+  context "for a News comment" do
+    it_behaves_like "BaseServices update service" do
+      let(:model_instance) { build_stubbed(:comment, :commented_news) }
     end
+  end
 
-    trait :commented_news do
-      commented factory: :news
-    end
-
-    trait :internal do
-      internal { true }
+  context "for a WorkPackage comment" do
+    it_behaves_like "BaseServices update service" do
+      let(:model_instance) { build_stubbed(:comment, :commented_work_package) }
     end
   end
 end

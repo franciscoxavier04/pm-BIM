@@ -31,21 +31,39 @@
 class News::CommentsController < ApplicationController
   default_search_scope :news
   model_object Comment, scope: [News => :commented]
+
   before_action :find_object_and_scope
   before_action :authorize
 
   def create
-    @comment = Comment.new(permitted_params.comment)
-    @comment.author = User.current
-    if @news.comments << @comment
-      flash[:notice] = I18n.t(:label_comment_added)
+    service_result = Comments::CreateService
+      .new(user: current_user)
+      .call(comment_params)
+
+    redirect_to_news_with_flash(service_result:, message: I18n.t(:label_comment_added))
+  end
+
+  def destroy
+    service_result = Comments::DeleteService.new(user: current_user, model: @comment)
+                                             .call
+
+    redirect_to_news_with_flash(service_result:, message: I18n.t(:label_comment_deleted))
+  end
+
+  private
+
+  def redirect_to_news_with_flash(service_result:, message:)
+    if service_result.success?
+      flash[:notice] = message
+    else
+      flash[:error] = service_result.message
     end
 
     redirect_to news_path(@news)
   end
 
-  def destroy
-    @comment.destroy
-    redirect_to news_path(@news)
+  def comment_params
+    params.expect(comment: %i[comments])
+          .merge(commented: @news, author: current_user)
   end
 end

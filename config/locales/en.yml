@@ -2894,6 +2894,7 @@ en:
   label_configuration: configuration
   label_comment_add: "Add a comment"
   label_comment_added: "Comment added"
+  label_comment_deleted: "Comment deleted"
   label_comment_delete: "Delete comments"
   label_comment_plural: "Comments"
   label_commits_per_author: "Commits per author"

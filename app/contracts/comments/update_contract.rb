@@ -28,22 +28,31 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-FactoryBot.define do
-  factory :comment do
-    author factory: :user
-    sequence(:comments) { |n| "I am a comment No. #{n}" }
-    commented factory: :news
+module Comments
+  class UpdateContract < BaseContract
+    validate :allowed_to_edit?
+    validate :unchangeable_attributes
 
-    trait :commented_work_package do
-      commented factory: :work_package
+    private
+
+    def unchangeable_attributes
+      %i[commented author internal].each do |attribute|
+        errors.add(attribute, :unchangeable) if model.public_send("#{attribute}_changed?")
+      end
     end
 
-    trait :commented_news do
-      commented factory: :news
+    def allowed_to_edit?
+      errors.add(:base, :error_unauthorized) unless comment_editable?
     end
 
-    trait :internal do
-      internal { true }
+    def comment_editable?
+      case commentable = model.commented
+      when WorkPackage
+        commentable.comment_editable_by?(model, user)
+      else
+        # NB: Editing news comments is not supported yet
+        false
+      end
     end
   end
 end

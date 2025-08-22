@@ -28,22 +28,8 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-FactoryBot.define do
-  factory :comment do
-    author factory: :user
-    sequence(:comments) { |n| "I am a comment No. #{n}" }
-    commented factory: :news
-
-    trait :commented_work_package do
-      commented factory: :work_package
-    end
-
-    trait :commented_news do
-      commented factory: :news
-    end
-
-    trait :internal do
-      internal { true }
-    end
+class AddInternalToComments < ActiveRecord::Migration[8.0]
+  def change
+    add_column :comments, :internal, :boolean, default: false, null: false
   end
 end

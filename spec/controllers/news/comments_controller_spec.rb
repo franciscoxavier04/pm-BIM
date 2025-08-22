@@ -33,8 +33,8 @@ require "spec_helper"
 RSpec.describe News::CommentsController do
   render_views
 
-  let(:user) { create(:admin)   }
-  let(:news) { create(:news)    }
+  let(:user) { create(:admin) }
+  let(:news) { create(:news) }
 
   before do
     allow(User).to receive(:current).and_return user
@@ -56,7 +56,7 @@ RSpec.describe News::CommentsController do
       expect do
         post :create, params: { news_id: news.id, comment: { comments: "" } }
         expect(response).to redirect_to news_path(news)
-      end.not_to change { Comment.count }
+      end.not_to change(Comment, :count)
     end
   end
 
@@ -66,7 +66,7 @@ RSpec.describe News::CommentsController do
 
       expect do
         delete :destroy, params: { id: comment.id }
-      end.to change { Comment.count }.by -1
+      end.to change(Comment, :count).by(-1)
 
       expect(response).to redirect_to news_path(news)
       expect { comment.reload }.to raise_error ActiveRecord::RecordNotFound

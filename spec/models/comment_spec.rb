@@ -32,6 +32,7 @@ require "spec_helper"
 RSpec.describe Comment do
   shared_let(:user) { create(:user) }
   shared_let(:news) { create(:news) }
+  shared_let(:work_package) { create(:work_package) }
 
   let(:commented) { news }
 
@@ -62,6 +63,19 @@ RSpec.describe Comment do
           expect(OpenProject::Notifications).to have_received(:send)
           .with(OpenProject::Events::NEWS_COMMENT_CREATED,
                 comment: comment, send_notification: true)
+        end
+      end
+    end
+
+    context "for work package" do
+      let(:commented) { work_package }
+
+      it "creates the comment" do
+        expect { comment.save! }
+          .to change(described_class, :count).by(1).and change { commented.reload.comments_count }.by(1)
+
+        aggregate_failures "does not send a comment added event" do
+          expect(OpenProject::Notifications).not_to have_received(:send)
         end
       end
     end

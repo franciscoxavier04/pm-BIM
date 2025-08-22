@@ -28,22 +28,48 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-FactoryBot.define do
-  factory :comment do
-    author factory: :user
-    sequence(:comments) { |n| "I am a comment No. #{n}" }
-    commented factory: :news
+module Comments
+  class CreateContract < BaseContract
+    validate :validate_author
+    validate :allowed_to_comment?
 
-    trait :commented_work_package do
-      commented factory: :work_package
+    private
+
+    def validate_author
+      errors.add :author, :invalid unless model.author_id == user.id
     end
 
-    trait :commented_news do
-      commented factory: :news
+    def allowed_to_comment?
+      errors.add(:base, :error_unauthorized) unless can_comment?
     end
 
-    trait :internal do
-      internal { true }
+    def can_comment?
+      case model.commented
+      when WorkPackage
+        can_comment_on_work_package?
+      when News
+        can_comment_on_news?
+      else
+        false
+      end
+    end
+
+    def can_comment_on_work_package?
+      if model.internal?
+        can_add_internal_comment?
+      else
+        user.allowed_in_work_package?(:add_work_package_comments, model.commented)
+      end
+    end
+
+    def can_comment_on_news?
+      user.allowed_in_project?(:comment_news, model.commented.project)
+    end
+
+    def can_add_internal_comment?
+      EnterpriseToken.allows_to?(:internal_comments) &&
+        model.commented.project.enabled_internal_comments &&
+        user.allowed_in_project?(:add_internal_comments, model.commented.project)
     end
   end
 end

@@ -28,22 +28,19 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-FactoryBot.define do
-  factory :comment do
-    author factory: :user
-    sequence(:comments) { |n| "I am a comment No. #{n}" }
-    commented factory: :news
+module Comments
+  class DeleteContract < ::DeleteContract
+    delete_permission -> { self.class.deletion_allowed?(model, user) }
 
-    trait :commented_work_package do
-      commented factory: :work_package
-    end
-
-    trait :commented_news do
-      commented factory: :news
-    end
-
-    trait :internal do
-      internal { true }
+    def self.deletion_allowed?(model, user)
+      case model.commented
+      when News
+        user.allowed_in_project?(:manage_news, model.commented.project)
+      when WorkPackage
+        model.commented.comment_editable_by?(model, user)
+      else
+        false
+      end
     end
   end
 end

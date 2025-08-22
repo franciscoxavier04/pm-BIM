@@ -55,10 +55,10 @@ module ReportingHelper
     end
 
     name = name.camelcase
-    if CostQuery::Filter.const_defined?(name)
-      CostQuery::Filter.const_get(name).label
-    elsif CostQuery::GroupBy.const_defined?(name)
-      CostQuery::GroupBy.const_get(name).label
+    if CostQuery::Filter.const_defined?(name, false)
+      CostQuery::Filter.const_get(name, false).label
+    elsif CostQuery::GroupBy.const_defined?(name, false)
+      CostQuery::GroupBy.const_get(name, false).label
     elsif field.to_sym.in?(%i[entity entity_id entity_type entity_gid])
       # TODO: Temporary override for now
       TimeEntry.human_attribute_name(:entity)

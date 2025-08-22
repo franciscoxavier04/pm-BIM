@@ -340,10 +340,6 @@ class PermittedParams
     permitted_params.merge(custom_field_values(:version, required: false))
   end
 
-  def comment
-    params.require(:comment).permit(:commented, :author, :comments)
-  end
-
   # `params.fetch` and not `require` because the update controller action associated
   # with this is doing multiple things, therefore not requiring a message hash
   # all the time.

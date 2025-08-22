@@ -405,6 +405,16 @@ class WorkPackage < ApplicationRecord
     end
   end
 
+  def comment_editable_by?(comment, user)
+    if comment.internal?
+      user.allowed_in_project?(:edit_others_internal_comments, project) ||
+        (user.allowed_in_project?(:edit_own_internal_comments, project) && comment.author_id == user.id)
+    else
+      user.allowed_in_project?(:edit_work_package_comments, project) ||
+        (user.allowed_in_work_package?(:edit_own_work_package_comments, self) && comment.author_id == user.id)
+    end
+  end
+
   # Returns a scope for the projects
   # the user is allowed to move a work package to
   def self.allowed_target_projects_on_move(user)
