@@ -85,6 +85,10 @@ class Meeting < ApplicationRecord
       .merge(Project.allowed_to(args.first || User.current, :view_meetings))
   }
 
+  scope :participated_by, ->(user) {
+    joins(:participants).where(meeting_participants: { user_id: user.id })
+  }
+
   acts_as_attachable(
     after_remove: :attachments_changed,
     order: "#{Attachment.table_name}.file",
@@ -111,9 +115,9 @@ class Meeting < ApplicationRecord
 
   accepts_nested_attributes_for :participants, allow_destroy: true
 
-  validates_presence_of :title, :project_id
+  validates :title, :project_id, presence: true
 
-  validates_numericality_of :duration, greater_than: 0
+  validates :duration, numericality: { greater_than: 0 }
 
   before_save :add_new_participants_as_watcher
 
