@@ -53,7 +53,7 @@ import {
 } from 'rxjs';
 import { TimeEntryResource } from 'core-app/features/hal/resources/time-entry-resource';
 import { HalResourceEditingService } from 'core-app/shared/components/fields/edit/services/hal-resource-editing.service';
-import moment from 'moment';
+import { DateTime } from 'luxon';
 import { SchemaCacheService } from 'core-app/core/schemas/schema-cache.service';
 import { TimezoneService } from 'core-app/core/datetime/timezone.service';
 import { TimeEntryTimerService } from 'core-app/shared/components/time_entries/services/time-entry-timer.service';
@@ -161,7 +161,7 @@ export class WorkPackageTimerButtonComponent extends UntilDestroyedMixin impleme
 
   private startTimer():void {
     this.timeEntryCreateService
-      .createNewTimeEntry(moment(), this.workPackage, true)
+      .createNewTimeEntry(DateTime.now(), this.workPackage, true)
       .pipe(
         switchMap((changeset) => from(this.halEditing.save(changeset))),
         map((result) => result.resource as TimeEntryResource),

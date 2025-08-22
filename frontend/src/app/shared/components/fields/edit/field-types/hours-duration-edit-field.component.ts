@@ -26,11 +26,11 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import moment, { Moment, Duration } from 'moment';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { EditFieldComponent } from 'core-app/shared/components/fields/edit/edit-field.component';
 import { InjectField } from 'core-app/shared/helpers/angular/inject-field.decorator';
 import { TimezoneService } from 'core-app/core/datetime/timezone.service';
+import { DateTime, Duration } from 'luxon';
 
 @Component({
   template: `
@@ -75,24 +75,26 @@ export class HoursDurationEditFieldComponent extends EditFieldComponent {
         value = this.value as string;
       }
     }
-    return moment.duration(value, 'hours');
+    const hours = parseInt(value!);
+
+    return Duration.fromObject({ hours });
   }
 
   public formatter(value:null|string):number|null {
     if (value === null) {
       return null;
     }
-    return Number(moment.duration(value).asHours().toFixed(2));
+    return Number(Duration.fromISO(value).hours.toFixed(2));
   }
 
-  protected parseValue(val:Moment | null) {
+  protected parseValue(val:DateTime | null) {
     if (val === null || this.inputValue === '') {
       return null;
     }
 
     let parsedValue;
-    if (val.isValid()) {
-      parsedValue = val.toISOString();
+    if (val.isValid) {
+      parsedValue = val.toISO();
     } else {
       parsedValue = null;
     }
